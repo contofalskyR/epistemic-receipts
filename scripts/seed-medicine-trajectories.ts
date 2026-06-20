@@ -38446,48 +38446,6 @@ const TRAJECTORIES: Trajectory[] = [
   // ENZYME REPLACEMENT THERAPY ERA (2001–2007)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Laronidase (Aldurazyme) — first ERT for any mucopolysaccharidosis 2003 ───
-  {
-    externalId: 'trajectory:laronidase-aldurazyme-first-mps-ert-2003',
-    text: 'Laronidase (recombinant human α-L-iduronidase, Aldurazyme) is an effective enzyme replacement therapy for mucopolysaccharidosis I (Hurler/Hurler-Scheie/Scheie), a claim established by Kakkis et al. in the New England Journal of Medicine on January 18, 2001 and institutionally settled by FDA marketing approval on April 30, 2003 — the first enzyme replacement therapy for any mucopolysaccharidosis.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2001-01-18',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2001-01-18',
-        datePrecision: 'DAY',
-        reason: 'Kakkis, Muenzer, Neufeld and colleagues reported a 52-week open-label trial of weekly intravenous recombinant α-L-iduronidase in 10 MPS I patients, showing reduced hepatomegaly, urinary glycosaminoglycan excretion, improved joint mobility, growth and reduced sleep apnea. This was the first clinical demonstration that the missing lysosomal enzyme could be replaced to ameliorate a mucopolysaccharidosis, moving the efficacy claim from hypothesis to recorded evidence.',
-        source: {
-          externalId: 'src:kakkis-laronidase-mps1-nejm-2001',
-          name: 'Kakkis ED, Muenzer J, Tiller GE, et al. Enzyme-replacement therapy in mucopolysaccharidosis I. N Engl J Med. 2001;344(3):182-188.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/11172140/',
-          publishedAt: '2001-01-18',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2003-04-30',
-        datePrecision: 'DAY',
-        reason: 'The FDA granted marketing approval to Aldurazyme (laronidase, BioMarin/Genzyme, BLA 125058) for MPS I on April 30, 2003, the first approved enzyme replacement therapy for a mucopolysaccharidosis. Regulatory approval converted the trial-stage efficacy claim into a settled institutional fact and a standard of care for Hurler/Hurler-Scheie and moderate-to-severe Scheie patients.',
-        source: {
-          externalId: 'src:fda-aldurazyme-label-2003',
-          name: 'U.S. FDA. Aldurazyme (laronidase) approved labeling, BLA 125058. April 30, 2003.',
-          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2003/larobio043003LB.pdf',
-          publishedAt: '2003-04-30',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Agalsidase beta (Fabrazyme) — first treatment for Fabry disease 2003 ─────
   {
     externalId: 'trajectory:agalsidase-beta-fabrazyme-fabry-ert-2003',
@@ -38572,48 +38530,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Eculizumab (Soliris) — first complement inhibitor, first PNH treatment 2007
-  {
-    externalId: 'trajectory:eculizumab-soliris-pnh-first-complement-inhibitor-2007',
-    text: 'Eculizumab (Soliris), a humanized monoclonal antibody against complement protein C5, reduces intravascular hemolysis and transfusion dependence in paroxysmal nocturnal hemoglobinuria, a claim established by Hillmen et al. (TRIUMPH) in the New England Journal of Medicine on September 21, 2006 and institutionally settled by FDA approval on March 16, 2007 — the first complement inhibitor and the first approved treatment for PNH.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2006-09-21',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2006-09-21',
-        datePrecision: 'DAY',
-        reason: 'Hillmen and colleagues reported the randomized, double-blind, placebo-controlled TRIUMPH trial in 87 PNH patients, in which eculizumab stabilized hemoglobin without transfusion in 49% of treated patients versus 0% on placebo and cut median transfusion requirements from 10 units to zero. This first demonstrated that terminal complement blockade could control the hemolysis driving PNH.',
-        source: {
-          externalId: 'src:hillmen-eculizumab-pnh-triumph-nejm-2006',
-          name: 'Hillmen P, Young NS, Schubert J, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233-1243.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/16990386/',
-          publishedAt: '2006-09-21',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2007-03-16',
-        datePrecision: 'DAY',
-        reason: 'The FDA approved Soliris (eculizumab, Alexion, BLA 125166) on March 16, 2007 for the treatment of PNH, the first approved therapy for the disorder and the first therapeutic complement inhibitor. Approval converted the TRIUMPH efficacy claim into a settled institutional fact and inaugurated complement-targeted medicine as a drug class.',
-        source: {
-          externalId: 'src:fda-soliris-approval-package-2007',
-          name: 'U.S. FDA. Soliris (eculizumab) drug approval package, BLA 125166. March 16, 2007.',
-          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2007/125166s0000toc.cfm',
-          publishedAt: '2007-03-16',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Lead-Based Paint Poisoning Prevention Act — PL 91-695 1971 ──────────────
   {
     externalId: 'trajectory:lead-based-paint-poisoning-prevention-act-1971',
@@ -38650,6 +38566,182 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'U.S. Code Title 42, Chapter 63 — Lead-Based Paint Poisoning Prevention (codifying PL 91-695 as amended). Office of the Law Revision Counsel.',
           url: 'https://uscode.house.gov/view.xhtml?path=%2Fprelim%40title42%2Fchapter63&edition=prelim',
           publishedAt: '1973-11-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INTERVENTIONAL CARDIOLOGY & VASCULAR ERA (1998–2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── CORAL — renal-artery stenting reversal 2014 ─────────────────────────────
+  {
+    externalId: 'trajectory:coral-renal-artery-stenting-reversal-2014',
+    text: 'Catheter-based renal-artery stenting added to medical therapy improves clinical outcomes in patients with atherosclerotic renal-artery stenosis — a procedural doctrine advanced after stenting was shown superior to angioplasty for vessel patency by van de Ven (Lancet, 23 January 1999) and reversed by the sham-free randomized CORAL trial (Cooper et al., New England Journal of Medicine, 2 January 2014), which found no benefit over medical therapy alone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-01-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-01-23',
+        datePrecision: 'DAY',
+        reason: 'Van de Ven and colleagues reported a randomized trial showing that primary stent placement was superior to balloon angioplasty for achieving and maintaining vessel patency in ostial atherosclerotic renal-artery stenosis. The result entrenched percutaneous renal-artery stenting in interventional practice through the 2000s on the assumption that restoring renal blood flow would lower blood pressure and preserve kidney function, driving rapid growth in procedure volumes despite the absence of controlled clinical-outcome evidence.',
+        source: {
+          externalId: 'src:van-de-ven-renal-stenting-lancet-1999',
+          name: 'van de Ven PJ, Kaatee R, Beutler JJ, et al. Arterial stenting and balloon angioplasty in ostial atherosclerotic renovascular disease: a randomised trial. Lancet. 1999;353(9149):282-286.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9929021/',
+          publishedAt: '1999-01-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-02',
+        datePrecision: 'DAY',
+        reason: 'Cooper and the CORAL investigators randomized 947 patients with atherosclerotic renal-artery stenosis and hypertension or chronic kidney disease to renal-artery stenting plus comprehensive medical therapy versus medical therapy alone. Over a median 43 months, stenting conferred no significant reduction in the composite of major cardiovascular and renal events, demonstrating that the procedure added no clinical benefit and reversing the prevailing revascularization doctrine; guidelines subsequently restricted stenting to narrow indications.',
+        source: {
+          externalId: 'src:cooper-coral-renal-stenting-nejm-2014',
+          name: 'Cooper CJ, Murphy TP, Cutlip DE, et al. (CORAL Investigators). Stenting and medical therapy for atherosclerotic renal-artery stenosis. N Engl J Med. 2014;370(1):13-22.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24245566/',
+          publishedAt: '2014-01-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── STICH Hypothesis 2 — surgical ventricular reconstruction reversal 2009 ──
+  {
+    externalId: 'trajectory:stich-surgical-ventricular-reconstruction-reversal-2009',
+    text: 'Adding surgical ventricular reconstruction (the Dor procedure) to coronary-artery bypass grafting improves symptoms and clinical outcomes in patients with ischemic heart failure and a dilated left ventricle — a claim recorded by the RESTORE group registry (Athanasuleas et al., JACC, October 2004) and reversed by the randomized STICH Hypothesis 2 trial (Jones et al., New England Journal of Medicine, 23 April 2009), which found no clinical benefit despite reduced ventricular volume.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-10-06',
+        datePrecision: 'DAY',
+        reason: 'The RESTORE group, led by Athanasuleas and Buckberg, reported a large multicenter registry of surgical ventricular restoration for post-infarction left-ventricular dilation, claiming improved ejection fraction, reduced ventricular volume, and favorable survival. The registry experience entrenched the belief that surgically excluding akinetic/dyskinetic scar and remodeling the ventricle, added to bypass grafting, improved outcomes in ischemic cardiomyopathy, driving adoption of the procedure on observational evidence.',
+        source: {
+          externalId: 'src:athanasuleas-restore-svr-jacc-2004',
+          name: 'Athanasuleas CL, Buckberg GD, Stanley AWH, et al. (RESTORE group). Surgical ventricular restoration in the treatment of congestive heart failure due to post-infarction ventricular dilation. J Am Coll Cardiol. 2004;44(7):1439-1445.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15464326/',
+          publishedAt: '2004-10-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-04-23',
+        datePrecision: 'DAY',
+        reason: 'Jones and the STICH Hypothesis 2 investigators randomized 1,000 patients with an ejection fraction of 35% or less to CABG alone or CABG plus surgical ventricular reconstruction. SVR achieved the intended reduction in left-ventricular volume but produced no improvement in symptoms, exercise tolerance, or the rate of death or cardiac hospitalization, demonstrating that the anatomical benefit did not translate into clinical benefit and overturning the registry-based rationale for routinely adding the procedure.',
+        source: {
+          externalId: 'src:jones-stich-svr-nejm-2009',
+          name: 'Jones RH, Velazquez EJ, Michler RE, et al. (STICH Hypothesis 2 Investigators). Coronary bypass surgery with or without surgical ventricular reconstruction. N Engl J Med. 2009;360(17):1705-1717.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19329820/',
+          publishedAt: '2009-04-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INFECTION CONTROL ERA (2000–2009)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pittet — alcohol hand rub hand hygiene settled 2000 ─────────────────────
+  {
+    externalId: 'trajectory:pittet-alcohol-hand-rub-hand-hygiene-2000',
+    text: 'A hospital-wide hand-hygiene program centered on bedside alcohol-based hand rub durably improves compliance and reduces nosocomial infection and MRSA transmission, as demonstrated by Pittet and colleagues at the University of Geneva Hospitals (The Lancet, 14 October 2000), reviving and institutionalizing the Semmelweis principle and forming the evidentiary basis of the WHO Guidelines on Hand Hygiene in Health Care (2009).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-10-14',
+        datePrecision: 'DAY',
+        reason: 'Pittet and colleagues reported a four-year hospital-wide intervention at the University of Geneva Hospitals that promoted bedside alcohol-based hand disinfection over traditional handwashing. Compliance rose from 48% to 66% and was accompanied by a significant fall in nosocomial infection prevalence and MRSA transmission, recording the first rigorous institutional evidence that an alcohol-rub-based program could overcome the chronic low compliance that had limited hand hygiene since Semmelweis.',
+        source: {
+          externalId: 'src:pittet-geneva-hand-hygiene-lancet-2000',
+          name: 'Pittet D, Hugonnet S, Harbarth S, et al. Effectiveness of a hospital-wide programme to improve compliance with hand hygiene. Lancet. 2000;356(9238):1307-1312.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11073019/',
+          publishedAt: '2000-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-01-15',
+        datePrecision: 'DAY',
+        reason: 'Building on the Geneva model, the World Health Organization issued its Guidelines on Hand Hygiene in Health Care, codifying alcohol-based hand rub at the point of care and the \'My Five Moments for Hand Hygiene\' framework as the global standard under the \'Clean Care is Safer Care\' campaign. The guidelines settled bedside alcohol-rub hand hygiene as institutional best practice worldwide, converting Pittet\'s single-hospital evidence into binding international policy.',
+        source: {
+          externalId: 'src:who-hand-hygiene-guidelines-2009',
+          name: 'World Health Organization. WHO Guidelines on Hand Hygiene in Health Care. Geneva: WHO; 2009.',
+          url: 'https://www.who.int/publications/i/item/9789241597906',
+          publishedAt: '2009-01-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PREPIC2 — IVC filter plus anticoagulation reversal 2015 ─────────────────
+  {
+    externalId: 'trajectory:prepic2-ivc-filter-anticoagulation-reversal-2015',
+    text: 'Adding an inferior vena cava filter to anticoagulation reduces pulmonary embolism and benefits patients with venous thromboembolism — a claim recorded by the PREPIC trial (Decousus et al., New England Journal of Medicine, 12 February 1998), which showed early PE reduction but increased recurrent DVT and no mortality benefit, and reversed for routine retrievable filters by the randomized PREPIC2 trial (Mismetti et al., JAMA, 28 April 2015).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-02-12',
+        datePrecision: 'DAY',
+        reason: 'Decousus and the PREPIC investigators randomized patients with proximal deep-vein thrombosis to a permanent vena cava filter plus anticoagulation or anticoagulation alone. Filters significantly reduced symptomatic pulmonary embolism at 12 days, but at two years produced more recurrent DVT and no survival benefit. The early-PE result recorded into the literature the rationale for caval filtration and, despite the mixed long-term findings, helped drive a large expansion in filter use, especially with retrievable devices in the 2000s.',
+        source: {
+          externalId: 'src:decousus-prepic-ivc-filter-nejm-1998',
+          name: 'Decousus H, Leizorovicz A, Parent F, et al. (PREPIC Study Group). A clinical trial of vena caval filters in the prevention of pulmonary embolism in patients with proximal deep-vein thrombosis. N Engl J Med. 1998;338(7):409-415.',
+          url: 'https://www.nejm.org/doi/10.1056/NEJM199802123380701',
+          publishedAt: '1998-02-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-04-28',
+        datePrecision: 'DAY',
+        reason: 'Mismetti and the PREPIC2 investigators randomized 399 patients hospitalized with severe acute pulmonary embolism to a retrievable inferior vena cava filter plus anticoagulation or anticoagulation alone. Adding a filter did not reduce symptomatic recurrent pulmonary embolism at three months, leading the authors to conclude the findings do not support routine filter use in patients who can be anticoagulated, reversing the rationale for adjunctive filtration and reinforcing guideline restriction of filters to patients with contraindications to anticoagulation.',
+        source: {
+          externalId: 'src:mismetti-prepic2-ivc-filter-jama-2015',
+          name: 'Mismetti P, Laporte S, Pellerin O, et al. (PREPIC2 Study Group). Effect of a retrievable inferior vena cava filter plus anticoagulation vs anticoagulation alone on risk of recurrent pulmonary embolism: a randomized clinical trial. JAMA. 2015;313(16):1627-1635.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25919526/',
+          publishedAt: '2015-04-28',
           methodologyType: 'primary',
         },
       },
