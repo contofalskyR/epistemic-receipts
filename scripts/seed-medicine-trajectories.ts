@@ -50897,6 +50897,338 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // IMAGING & MINIMALLY INVASIVE PROCEDURES (1971--1999)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Hounsfield CT scanner — first clinical scan 1971 ──────────────────────
+  {
+    externalId: 'trajectory:hounsfield-computed-tomography-ct-1971',
+    text: 'Godfrey Hounsfield\'s EMI computed-tomography (CT) scanner can reconstruct cross-sectional X-ray images of the living human body from multiple angular projections, first demonstrated on a patient at Atkinson Morley\'s Hospital on 1 October 1971 and described by Hounsfield in the British Journal of Radiology in 1973.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Hounsfield published the formal description of the computerized transverse axial scanning system in the British Journal of Radiology in 1973, two years after the first clinical brain scan, entering into the scientific record the claim that X-ray attenuation could be mathematically reconstructed into tomographic slices. This converted an in-house engineering demonstration into a reproducible, citable method that radiology departments could build upon.',
+        source: {
+          externalId: 'src:hounsfield-bjr-computed-tomography-1973',
+          name: 'Hounsfield GN. Computerized transverse axial scanning (tomography). 1. Description of system. Br J Radiol. 1973;46(552):1016-1022.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4757352/',
+          publishedAt: '1973-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-10-12',
+        datePrecision: 'MONTH',
+        reason: 'The Nobel Prize in Physiology or Medicine for 1979 was awarded jointly to Allan Cormack and Godfrey Hounsfield \'for the development of computer assisted tomography,\' the highest institutional ratification that CT had become an established and indispensable diagnostic procedure. By this date CT scanning had been adopted worldwide as the new standard for cross-sectional imaging, settling its clinical legitimacy.',
+        source: {
+          externalId: 'src:nobel-medicine-cormack-hounsfield-1979',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1979 — Allan M. Cormack, Godfrey N. Hounsfield. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1979/summary/',
+          publishedAt: '1979-10-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lauterbur MRI — zeugmatography imaging 1973 ────────────────────────────
+  {
+    externalId: 'trajectory:lauterbur-mri-nuclear-magnetic-resonance-imaging-1973',
+    text: 'Paul Lauterbur reported in Nature on 16 March 1973 that applying magnetic field gradients to nuclear magnetic resonance signals (\'zeugmatography\') can reconstruct spatial images of an object, establishing the imaging principle underlying magnetic resonance imaging (MRI) of the human body.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-03-16',
+        datePrecision: 'DAY',
+        reason: 'Lauterbur\'s Nature paper introduced the use of switched magnetic field gradients to spatially encode NMR signals, the conceptual key that turned nuclear magnetic resonance from a spectroscopic tool into an imaging method. It built on Raymond Damadian\'s 1971 Science report that malignant and normal tissues have distinguishable NMR relaxation times, but Lauterbur supplied the missing claim — that NMR signals could be localized to form a picture.',
+        source: {
+          externalId: 'src:lauterbur-nature-nmr-image-formation-1973',
+          name: 'Lauterbur PC. Image formation by induced local interactions: examples employing nuclear magnetic resonance. Nature. 1973;242(5394):190-191.',
+          url: 'https://www.nature.com/articles/242190a0',
+          publishedAt: '1973-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-10-06',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Prize in Physiology or Medicine for 2003 was awarded to Paul Lauterbur and Sir Peter Mansfield \'for their discoveries concerning magnetic resonance imaging,\' formally ratifying the gradient-encoding principle as the foundation of a now-ubiquitous clinical imaging modality. By the time of the award MRI had been in routine worldwide clinical use for two decades, settling the original 1973 claim institutionally.',
+        source: {
+          externalId: 'src:nobel-medicine-lauterbur-mansfield-2003',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 2003 — Paul C. Lauterbur, Sir Peter Mansfield. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/2003/summary/',
+          publishedAt: '2003-10-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chymopapain chemonucleolysis — lumbar disc 1964→1999 ──────────────────
+  {
+    externalId: 'trajectory:chymopapain-chemonucleolysis-lumbar-disc-1982',
+    text: 'Chymopapain chemonucleolysis — percutaneous intradiscal injection of the enzyme chymopapain, introduced for human use by Lyman Smith (JAMA, 1964) — is a safe and effective minimally invasive alternative to open surgery for herniated lumbar discs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-01-18',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-01-18',
+        datePrecision: 'YEAR',
+        reason: 'Lyman Smith reported the first human series of intradiscal chymopapain injections to dissolve the nucleus pulposus in patients with sciatica from disc herniation, recording chemonucleolysis as a candidate non-surgical treatment. This entered the orthopedic and neurosurgical literature the claim that an injected enzyme could substitute for laminectomy/discectomy.',
+        source: {
+          externalId: 'src:smith-jama-enzyme-dissolution-nucleus-pulposus-1964',
+          name: 'Smith L. Enzyme dissolution of the nucleus pulposus in humans. JAMA. 1964;187(2):137-140 (reprinted as \'The Classic\', Clin Orthop Relat Res. 1986;(206):4-9).',
+          url: 'https://journals.lww.com/clinorthop/Abstract/1986/05000/The_Classic__Enzyme_Dissolution_of_the_Nucleus.2.aspx',
+          publishedAt: '1964-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1982-11-01',
+        datePrecision: 'MONTH',
+        reason: 'In November 1982 the U.S. FDA approved Chymodiactin (chymopapain for injection) for the treatment of herniated lumbar intervertebral discs, following randomized double-blind data (e.g., Javid et al.) showing roughly 80% success versus ~40% for placebo. Regulatory approval settled chemonucleolysis as an officially sanctioned procedure, and tens of thousands of injections were performed in the mid-1980s.',
+        source: {
+          externalId: 'src:chemonucleolysis-history-current-state-jpr',
+          name: 'Chemonucleolysis for Lumbar Disc Herniation: History and Current State of the Technology. J Pain Res. (PMC12570984).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12570984/',
+          publishedAt: '2025-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Nordby, Wright, and Schofield reported in Clinical Orthopaedics and Related Research the adverse events from chemonucleolysis submitted to the FDA between 1982 and 1991, including fatal anaphylaxis (seven cases) and serious neurologic complications such as transverse myelitis among ~135,000 patients. Mounting safety concerns — an anaphylaxis rate around 0.5-1% — undercut the safety half of the original claim and turned surgeons away from the procedure.',
+        source: {
+          externalId: 'src:nordby-corr-safety-chemonucleolysis-1993',
+          name: 'Nordby EJ, Wright PH, Schofield SR. Safety of chemonucleolysis. Adverse effects reported in the United States, 1982-1991. Clin Orthop Relat Res. 1993;(293):122-134.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8339472/',
+          publishedAt: '1993-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'ABANDONED',
+        community: 'MARKET',
+        occurredAt: '1999-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Use of chymopapain chemonucleolysis collapsed through the late 1980s and 1990s as anaphylaxis fears and improving microdiscectomy techniques eroded demand, and the manufacturer discontinued chymopapain in 1999, after which no chemonucleolytic agent remained commercially available in the United States. The once-FDA-approved procedure was effectively abandoned rather than formally found ineffective.',
+        source: {
+          externalId: 'src:chemonucleolysis-history-current-state-jpr-discontinuation',
+          name: 'Chemonucleolysis for Lumbar Disc Herniation: History and Current State of the Technology. J Pain Res. (PMC12570984) — discontinuation of chymopapain in 1999.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12570984/',
+          publishedAt: '2025-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED THERAPY ERA (2002--2005)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ATAC — anastrozole displaces tamoxifen as adjuvant endocrine therapy 2002 ─
+  {
+    externalId: 'trajectory:atac-anastrozole-aromatase-inhibitor-adjuvant-breast-cancer-2002',
+    text: 'The ATAC trialists reported in The Lancet on 22 June 2002 that the aromatase inhibitor anastrozole, given as adjuvant therapy to postmenopausal women with hormone-receptor-positive early breast cancer, produced longer disease-free survival and fewer serious side effects than the long-standing standard tamoxifen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-06-22',
+        datePrecision: 'DAY',
+        reason: 'Baum and the ATAC (\'Arimidex\', Tamoxifen, Alone or in Combination) investigators published the first results of a randomized trial in over 9,300 postmenopausal women, reporting that anastrozole significantly prolonged disease-free survival versus tamoxifen with fewer endometrial cancers and thromboembolic events. This recorded in the expert literature the novel claim that an aromatase inhibitor could displace tamoxifen as adjuvant endocrine therapy, overturning two decades of tamoxifen as the unquestioned standard.',
+        source: {
+          externalId: 'src:atac-baum-lancet-2002',
+          name: 'ATAC Trialists\' Group (Baum M, et al). Anastrozole alone or in combination with tamoxifen versus tamoxifen alone for adjuvant treatment of postmenopausal women with early breast cancer: first results of the ATAC randomised trial. Lancet. 2002;359(9324):2131-2139.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(02)09088-8/abstract',
+          publishedAt: '2002-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-09-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval of anastrozole (Arimidex) for adjuvant treatment of postmenopausal women with hormone-receptor-positive early breast cancer on 5 September 2002, converting it to regular approval on 16 September 2005 after the five-year completed-treatment analysis confirmed superiority over tamoxifen. Regulatory adoption plus the mature trial data settled aromatase inhibitors into standard adjuvant care for this population.',
+        source: {
+          externalId: 'src:atac-completed-treatment-lancet-2005',
+          name: 'ATAC Trialists\' Group (Howell A, et al). Results of the ATAC (Arimidex, Tamoxifen, Alone or in Combination) trial after completion of 5 years\' adjuvant treatment for breast cancer. Lancet. 2005;365(9453):60-62.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(04)17666-6/abstract',
+          publishedAt: '2005-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bortezomib — first proteasome inhibitor approved for myeloma 2003 ─────────
+  {
+    externalId: 'trajectory:bortezomib-velcade-first-proteasome-inhibitor-myeloma-2003',
+    text: 'Bortezomib (Velcade), the first-in-class proteasome inhibitor, induces durable responses in relapsed and refractory multiple myeloma, as recorded by the FDA\'s accelerated approval on 13 May 2003 and the SUMMIT phase 2 trial published in the New England Journal of Medicine on 26 June 2003.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to bortezomib for multiple myeloma patients who had received at least two prior therapies and progressed on the last, roughly two months after priority review and before the pivotal trial was even published. It was the first proteasome inhibitor ever approved, recording institutionally the claim that blocking the ubiquitin-proteasome pathway is a viable anticancer mechanism.',
+        source: {
+          externalId: 'src:bortezomib-fda-approval-oncologist-2003',
+          name: 'Kane RC, Bross PF, Farrell AT, Pazdur R. Velcade: U.S. FDA approval for the treatment of multiple myeloma progressing on prior therapy. Oncologist. 2003;8(6):508-513.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14657528/',
+          publishedAt: '2003-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-06-16',
+        datePrecision: 'DAY',
+        reason: 'Richardson and colleagues published the APEX phase 3 trial in the New England Journal of Medicine, showing bortezomib produced superior response rates, time to progression, and overall survival versus high-dose dexamethasone in relapsed myeloma. The confirmatory randomized data — building on the SUMMIT phase 2 study (NEJM, 26 June 2003) that had supported accelerated approval — converted bortezomib\'s provisional efficacy claim into a settled standard of care.',
+        source: {
+          externalId: 'src:bortezomib-summit-richardson-nejm-2003',
+          name: 'Richardson PG, Barlogie B, Berenson J, et al. A phase 2 study of bortezomib in relapsed, refractory myeloma. N Engl J Med. 2003;348(26):2609-2617.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12826635/',
+          publishedAt: '2003-06-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PCPT — finasteride prostate cancer prevention contested 2003 ──────────────
+  {
+    externalId: 'trajectory:pcpt-finasteride-prostate-cancer-prevention-2003',
+    text: 'Thompson and the Prostate Cancer Prevention Trial investigators reported in the New England Journal of Medicine on 24 June 2003 that finasteride reduced the prevalence of prostate cancer by about 25% in men aged 55 and older, but was associated with an apparent increase in high-grade tumors among those diagnosed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-06-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-06-24',
+        datePrecision: 'DAY',
+        reason: 'The PCPT, a randomized placebo-controlled trial in 18,882 men stopped early in June 2003, found finasteride lowered prostate cancer prevalence by roughly 25% — the first demonstration that a drug could reduce prostate cancer risk. The same report recorded a higher rate of Gleason 7-10 high-grade tumors in the finasteride arm (6.4% vs 5.1%), planting a safety signal alongside the benefit and leaving the chemoprevention claim immediately disputed.',
+        source: {
+          externalId: 'src:pcpt-thompson-nejm-2003',
+          name: 'Thompson IM, Goodman PJ, Tangen CM, et al. The influence of finasteride on the development of prostate cancer. N Engl J Med. 2003;349(3):215-224.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa030660',
+          publishedAt: '2003-06-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-06-09',
+        datePrecision: 'DAY',
+        reason: 'After reviewing the PCPT and the dutasteride REDUCE trial, the FDA on 9 June 2011 required labeling for all 5-alpha reductase inhibitors warning of an increased risk of high-grade prostate cancer and declined to approve finasteride or dutasteride for prostate cancer prevention. The agency action institutionalized the unresolved tension: the drugs cut overall cancer diagnoses but carried a high-grade signal, so chemoprevention remained contested rather than adopted, even as later analyses attributed much of the high-grade signal to detection bias.',
+        source: {
+          externalId: 'src:fda-5ari-prostate-safety-2011',
+          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: 5-alpha reductase inhibitors (5-ARIs) may increase the risk of a more serious form of prostate cancer. 9 June 2011.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-5-alpha-reductase-inhibitors-5-aris-may-increase-risk-more-serious',
+          publishedAt: '2011-06-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Erlotinib — EGFR inhibitor survival benefit in pretreated NSCLC 2004 ──────
+  {
+    externalId: 'trajectory:erlotinib-tarceva-nsclc-survival-benefit-2004',
+    text: 'Erlotinib (Tarceva), an oral EGFR tyrosine kinase inhibitor, prolongs overall survival in patients with previously treated advanced non-small-cell lung cancer, as recorded by FDA approval on 18 November 2004 and the BR.21 trial published in the New England Journal of Medicine on 14 July 2005.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-11-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-11-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved erlotinib as single-agent therapy for locally advanced or metastatic NSCLC after failure of at least one prior chemotherapy regimen, based on the placebo-controlled NCIC CTG BR.21 trial. This recorded the claim that an EGFR inhibitor extends survival in pretreated lung cancer — a sharp contrast to the related drug gefitinib, whose ISEL trial failed to show a survival benefit and whose accelerated approval was subsequently restricted.',
+        source: {
+          externalId: 'src:erlotinib-fda-approval-summary-cohen-2005',
+          name: 'Cohen MH, Johnson JR, Chen YF, Sridhara R, Pazdur R. FDA drug approval summary: erlotinib (Tarceva) tablets. Oncologist. 2005;10(7):461-466.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16166415/',
+          publishedAt: '2005-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-07-14',
+        datePrecision: 'DAY',
+        reason: 'Shepherd and the National Cancer Institute of Canada Clinical Trials Group published BR.21 in the New England Journal of Medicine, reporting that erlotinib improved median overall survival (6.7 vs 4.7 months) versus placebo in previously treated NSCLC. The randomized survival benefit settled erlotinib\'s role in second/third-line lung cancer and validated EGFR inhibition as a survival-extending strategy in an unselected pretreated population.',
+        source: {
+          externalId: 'src:erlotinib-br21-shepherd-nejm-2005',
+          name: 'Shepherd FA, Rodrigues Pereira J, Ciuleanu T, et al. Erlotinib in previously treated non-small-cell lung cancer. N Engl J Med. 2005;353(2):123-132.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16014882/',
+          publishedAt: '2005-07-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
