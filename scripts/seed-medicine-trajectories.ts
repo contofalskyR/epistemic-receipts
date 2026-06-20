@@ -40413,6 +40413,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY INFECTIOUS DISEASE ERA (1907–1937)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Typhoid Mary healthy carrier — Soper 1907 ──────────────────────────────
+  {
+    externalId: 'trajectory:soper-typhoid-mary-healthy-carrier-1907',
+    text: 'Sanitary engineer George Soper reported in JAMA on 15 June 1907 that Mary Mallon, an apparently healthy cook, was a chronic typhoid carrier who had seeded multiple household outbreaks, documenting the healthy human carrier as a source of infectious disease transmission.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1907-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1907-06-15',
+        datePrecision: 'DAY',
+        reason: 'Soper traced a chain of typhoid outbreaks across households where Mary Mallon had worked as a cook and concluded she was an asymptomatic chronic carrier shedding Salmonella typhi despite never being ill herself. Published in JAMA, this was the first detailed American documentation of a healthy human carrier as the active source of repeated epidemics, recording the carrier concept in the clinical literature.',
+        source: {
+          externalId: 'src:soper-chronic-typhoid-distributor-jama-1907',
+          name: 'Soper GA. The work of a chronic typhoid germ distributor. JAMA. 1907;48(24):2019-2022.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/463876',
+          publishedAt: '1907-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1915-03-01',
+        datePrecision: 'MONTH',
+        reason: 'New York City health authorities acted on the healthy-carrier doctrine as established fact, detaining Mallon, then permanently confining her after she caused a fresh typhoid outbreak at Sloane Maternity Hospital in 1915. The asymptomatic carrier became a standard category of public-health surveillance and disease control, settling the concept institutionally.',
+        source: {
+          externalId: 'src:marineli-mary-mallon-typhoid-history-2013',
+          name: 'Marineli F, Tsoucalas G, Karamanou M, Androutsos G. Mary Mallon (1869-1938) and the history of typhoid fever. Ann Gastroenterol. 2013;26(2):132-134.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3959940/',
+          publishedAt: '2013-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Chagas disease — Trypanosoma cruzi — 1909 ──────────────────────────────
+  {
+    externalId: 'trajectory:chagas-trypanosoma-cruzi-disease-1909',
+    text: 'Brazilian physician Carlos Chagas announced in April 1909 (with comprehensive description in Memórias do Instituto Oswaldo Cruz, August 1909) the discovery of Trypanosoma cruzi and a new human disease transmitted by triatomine bugs, the singular case of one investigator identifying pathogen, vector, and clinical entity together.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1909-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1909-08-01',
+        datePrecision: 'MONTH',
+        reason: 'After finding the flagellate in triatomine bugs and then in the blood of a feverish child (Berenice) on 14 April 1909, Chagas published a full morphological and life-cycle description of Schizotrypanum (Trypanosoma) cruzi as the etiologic agent of a new human disease in Memórias do Instituto Oswaldo Cruz. This recorded the pathogen, its insect vector, and the associated illness in the scientific literature.',
+        source: {
+          externalId: 'src:chagas-nova-tripanosomiase-memorias-1909',
+          name: 'Chagas C. Nova tripanozomiaze humana. Estudos sobre a morfolojia e o ciclo evolutivo do Schizotrypanum cruzi n.g., n.sp., ajente etiolojico de nova entidade morbida do homem. Memórias do Instituto Oswaldo Cruz. 1909;1(2):159-218.',
+          url: 'https://www.scielo.br/j/hcsm/a/5CLtpKKWctKjWqFpz78mX9f/?lang=en',
+          publishedAt: '1909-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the late 1910s and early 1920s the reality and scope of Chagas\'s disease were disputed: critics rejected his claimed links (notably to goiter/thyroid disease), few new cases were being confirmed, and a 1923 Brazilian commission cast doubt on his findings. The clinical entity nearly disappeared from medicine and its existence became genuinely contested.',
+        source: {
+          externalId: 'src:chagas-disease-successes-misunderstandings-rsbmt',
+          name: 'Coura JR. The discovery of Chagas disease (1908-1909): great successes and certain misunderstandings and challenges. Rev Soc Bras Med Trop.',
+          url: 'https://www.scielo.br/j/rsbmt/a/khpWcRrFsyq4mRBnSvjmBpx/',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Salvador Mazza\'s systematic work in Argentina (through the MEPRA mission founded 1928) documented thousands of acute and chronic cases in the 1930s, re-establishing American trypanosomiasis as a real and widespread disease and vindicating Chagas\'s etiologic claim. The disease became a settled clinical and public-health entity, later commemorated by WHO World Chagas Disease Day on 14 April.',
+        source: {
+          externalId: 'src:chagas-disease-successes-misunderstandings-rsbmt-resolution',
+          name: 'Coura JR. The discovery of Chagas disease (1908-1909): great successes and certain misunderstandings and challenges. Rev Soc Bras Med Trop. (resolution via S. Mazza, 1930s)',
+          url: 'https://www.scielo.br/j/rsbmt/a/khpWcRrFsyq4mRBnSvjmBpx/',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Typhus body-louse vector — Nicolle 1909 ────────────────────────────────
+  {
+    externalId: 'trajectory:nicolle-typhus-body-louse-vector-1909',
+    text: 'Charles Nicolle communicated to the French Académie des Sciences in September 1909 that epidemic (exanthematic) typhus is transmitted by the human body louse, demonstrated by experimental transmission to chimpanzees and macaques.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1909-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1909-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Noting that typhus patients ceased to be contagious once admitted, bathed, and de-clothed, Nicolle inferred the vector lay in clothing or on the skin and experimentally reproduced typhus in primates via the body louse. He, Comte, and Conseil reported the experimental louse transmission to the Académie des Sciences, recording the vector of epidemic typhus.',
+        source: {
+          externalId: 'src:nicolle-typhus-louse-cras-1909',
+          name: 'Nicolle C, Comte C, Conseil L. Transmission expérimentale du typhus exanthématique par le pou du corps. Comptes Rendus Hebdomadaires des Séances de l\'Académie des Sciences. 1909;149:486-489.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2819868/',
+          publishedAt: '1909-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1928-12-10',
+        datePrecision: 'DAY',
+        reason: 'Nicolle was awarded the 1928 Nobel Prize in Physiology or Medicine \'for his work on typhus,\' institutionally canonizing the louse-transmission finding that had by then underpinned delousing campaigns controlling typhus in war and famine. The vector etiology became settled fact in medicine and public health.',
+        source: {
+          externalId: 'src:nobel-nicolle-typhus-1928',
+          name: 'The Nobel Prize in Physiology or Medicine 1928 — Charles Nicolle. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1928/summary/',
+          publishedAt: '1928-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pellagra dietary deficiency — Goldberger 1914 ──────────────────────────
+  {
+    externalId: 'trajectory:goldberger-pellagra-dietary-deficiency-1914',
+    text: 'U.S. Public Health Service officer Joseph Goldberger argued in Public Health Reports on 26 June 1914 that pellagra is caused by a dietary deficiency rather than an infectious/communicable agent, overturning the era\'s dominant germ-theory explanation of the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1914-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-06-26',
+        datePrecision: 'DAY',
+        reason: 'Goldberger observed that in asylums and orphanages pellagra struck inmates but never the staff who shared the same buildings, a pattern incompatible with a contagious disease but consistent with diet. His Public Health Reports paper recorded the dietary-deficiency hypothesis against the prevailing infectious-etiology consensus.',
+        source: {
+          externalId: 'src:goldberger-etiology-pellagra-phr-1914',
+          name: 'Goldberger J. The etiology of pellagra: the significance of certain epidemiological observations with respect thereto. Public Health Reports. 1914;29(26):1683-1686.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1437745/',
+          publishedAt: '1914-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1916-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The dietary hypothesis met sustained resistance from the infectious-etiology camp, including the Thompson-McFadden Pellagra Commission, which maintained pellagra was communicable. To rebut contagion, Goldberger and volunteers staged \'filth parties\' in 1916, deliberately ingesting and injecting material from pellagrins without contracting the disease; the etiology remained openly contested for years.',
+        source: {
+          externalId: 'src:terris-goldberger-unsung-hero-1994',
+          name: 'Terris M. Joseph Goldberger: an unsung hero of American clinical epidemiology. Ann Intern Med. 1994;121(5):372-375.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-121-5-199409010-00010',
+          publishedAt: '1994-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Conrad Elvehjem and colleagues showed that nicotinic acid and its amide cured canine black tongue (the dog analogue of pellagra), identifying the specific dietary factor whose lack causes pellagra. This biochemical identification of niacin definitively settled pellagra as a deficiency disease, confirming Goldberger\'s epidemiological conclusion.',
+        source: {
+          externalId: 'src:elvehjem-nicotinic-acid-black-tongue-1937',
+          name: 'Elvehjem CA, Madden RJ, Strong FM, Woolley DW. Relation of nicotinic acid and nicotinic acid amide to canine black tongue. J Am Chem Soc. 1937;59(9):1767-1768.',
+          url: 'https://pubs.acs.org/doi/10.1021/ja01288a509',
+          publishedAt: '1937-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
