@@ -46550,7 +46550,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1994-05-26',
         datePrecision: 'DAY',
-        reason: 'The Multi-Society Task Force on PVS published a two-part consensus statement in the New England Journal of Medicine establishing agreed diagnostic criteria, prognosis, and the one-month threshold defining the persistent vegetative state in adults and children. Endorsed by the major US neurology, neurosurgery, and pediatric bodies, it consolidated Jennett and Plum's entity into a settled, professionally ratified diagnostic standard.',
+        reason: 'The Multi-Society Task Force on PVS published a two-part consensus statement in the New England Journal of Medicine establishing agreed diagnostic criteria, prognosis, and the one-month threshold defining the persistent vegetative state in adults and children. Endorsed by the major US neurology, neurosurgery, and pediatric bodies, it consolidated Jennett and Plum’s entity into a settled, professionally ratified diagnostic standard.',
         source: {
           externalId: 'src:multisociety-pvs-nejm-1994',
           name: 'The Multi-Society Task Force on PVS. Medical aspects of the persistent vegetative state (first of two parts). N Engl J Med. 1994;330(21):1499-1508.',
@@ -48929,6 +48929,484 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.nobelprize.org/prizes/medicine/1928/summary/',
           publishedAt: '1928-12-10',
           methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DIABETES / METABOLIC ERA (1997–2012)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ACCORD intensive glycemic control reversal — 2008 ──────────────────────
+  {
+    externalId: 'trajectory:accord-intensive-glycemic-control-reversal-2008',
+    text: 'The claim — embodied in the ACCORD trial\'s design and rooted in earlier glycemic-control studies — that driving blood glucose to a near-normal HbA1c target below 6.0% in high-cardiovascular-risk type 2 diabetics would reduce cardiovascular events and deaths was contested when ACCORD\'s intensive-therapy arm was halted early and reported in the New England Journal of Medicine on 12 June 2008 to have increased all-cause mortality.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-09-12',
+        datePrecision: 'DAY',
+        reason: 'The UK Prospective Diabetes Study (UKPDS 33) reported in The Lancet that intensive blood-glucose control in newly diagnosed type 2 diabetics reduced the risk of microvascular complications, with a non-significant trend toward fewer myocardial infarctions. This recorded in the expert literature the influential claim that lower glycemia is better, motivating subsequent trials that targeted ever-tighter HbA1c levels in pursuit of macrovascular benefit.',
+        source: {
+          externalId: 'src:ukpds33-intensive-glucose-lancet-1998',
+          name: 'UK Prospective Diabetes Study (UKPDS) Group. Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). Lancet. 1998;352(9131):837-853.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(98)07019-6/fulltext',
+          publishedAt: '1998-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-06-12',
+        datePrecision: 'DAY',
+        reason: 'The Action to Control Cardiovascular Risk in Diabetes (ACCORD) Study Group reported that, in 10,251 high-cardiovascular-risk type 2 diabetics, an intensive strategy targeting HbA1c below 6.0% produced higher all-cause mortality than standard therapy (257 vs 203 deaths; hazard ratio 1.22). The data and safety monitoring board stopped the intensive arm early on 5 February 2008. The first large mortality signal directly contradicted the \'lower is better\' paradigm and forced guidelines toward individualized, less-aggressive glycemic targets.',
+        source: {
+          externalId: 'src:accord-intensive-glucose-nejm-2008',
+          name: 'Action to Control Cardiovascular Risk in Diabetes Study Group. Effects of Intensive Glucose Lowering in Type 2 Diabetes. N Engl J Med. 2008;358(24):2545-2559.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4551392/',
+          publishedAt: '2008-06-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Muraglitazar cardiovascular risk — abandoned 2005 ──────────────────────
+  {
+    externalId: 'trajectory:muraglitazar-cardiovascular-risk-abandoned-2005',
+    text: 'The claim that muraglitazar (Pargluva), a dual PPAR-α/γ agonist, was a safe and effective glucose- and lipid-lowering drug ready for approval to treat type 2 diabetes — endorsed by an FDA advisory committee in September 2005 — was abandoned after a JAMA meta-analysis on 23 November 2005 found it more than doubled the risk of death, myocardial infarction, and stroke.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-09-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'ABANDONED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-09-09',
+        datePrecision: 'MONTH',
+        reason: 'The FDA Endocrinologic and Metabolic Drugs Advisory Committee reviewed Bristol-Myers Squibb/Merck\'s muraglitazar (Pargluva) and recommended approval for type 2 diabetes on the strength of its glucose- and lipid-lowering efficacy. This institutional endorsement recorded the claim that the dual PPAR agonist was an approvable, beneficial therapy, placing it on the threshold of market entry.',
+        source: {
+          externalId: 'src:nissen-muraglitazar-jama-2005',
+          name: 'Nissen SE, Wolski K, Topol EJ. Effect of Muraglitazar on Death and Major Adverse Cardiovascular Events in Patients With Type 2 Diabetes Mellitus. JAMA. 2005;294(20):2581-2586.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16239637/',
+          publishedAt: '2005-11-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-11-23',
+        datePrecision: 'DAY',
+        reason: 'Nissen, Wolski, and Topol published an expedited JAMA meta-analysis of the muraglitazar trial program showing that death, myocardial infarction, or stroke occurred in 1.47% of muraglitazar patients versus 0.67% of controls (relative risk 2.23; 95% CI 1.07-4.66). The analysis, appearing weeks after the advisory committee\'s favorable vote, prompted the sponsors to halt development; muraglitazar was never approved and the dual-PPAR-agonist class was effectively abandoned for cardiovascular safety.',
+        source: {
+          externalId: 'src:nissen-muraglitazar-jama-2005-reversal',
+          name: 'Nissen SE, Wolski K, Topol EJ. Effect of Muraglitazar on Death and Major Adverse Cardiovascular Events in Patients With Type 2 Diabetes Mellitus. JAMA. 2005;294(20):2581-2586.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16239637/',
+          publishedAt: '2005-11-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sibutramine SCOUT cardiovascular withdrawal — 2010 ─────────────────────
+  {
+    externalId: 'trajectory:sibutramine-scout-cardiovascular-withdrawal-2010',
+    text: 'The claim that sibutramine (Meridia/Reductil), a serotonin-norepinephrine reuptake inhibitor approved by the FDA on 22 November 1997, was a safe long-term pharmacological treatment for obesity was reversed when the SCOUT trial, reported in the New England Journal of Medicine on 2 September 2010, showed increased nonfatal cardiovascular events, leading to its withdrawal in Europe and the United States in 2010.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-11-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-11-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved sibutramine (Meridia) for the management of obesity, establishing it as an authorized appetite-suppressant for long-term weight management. The approval institutionally settled the drug as a safe, effective obesity treatment, and it was marketed worldwide (as Reductil) and widely prescribed through the 2000s.',
+        source: {
+          externalId: 'src:fda-meridia-sibutramine-approval-1997',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Meridia (sibutramine hydrochloride monohydrate), NDA 020632, approved 22 November 1997.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=020632',
+          publishedAt: '1997-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-09-02',
+        datePrecision: 'DAY',
+        reason: 'James and the SCOUT investigators reported in the New England Journal of Medicine that, among 9,804 overweight/obese subjects with preexisting cardiovascular disease, sibutramine increased the rate of nonfatal myocardial infarction and nonfatal stroke (primary endpoint 11.4% vs 10.0% with placebo). On the basis of these data the EMA suspended sibutramine across the EU in January 2010 and the FDA secured its withdrawal from the U.S. market on 8 October 2010, reversing the drug\'s safety claim.',
+        source: {
+          externalId: 'src:james-sibutramine-scout-nejm-2010',
+          name: 'James WPT, Caterson ID, Coutinho W, et al. Effect of Sibutramine on Cardiovascular Outcomes in Overweight and Obese Subjects. N Engl J Med. 2010;363(10):905-917.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20818901/',
+          publishedAt: '2010-09-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Rimonabant Acomplia psychiatric withdrawal — 2008 ──────────────────────
+  {
+    externalId: 'trajectory:rimonabant-acomplia-psychiatric-withdrawal-2008',
+    text: 'The claim that rimonabant (Acomplia), a cannabinoid CB1-receptor antagonist granted EU marketing authorisation in June 2006, was a safe and effective anti-obesity drug was reversed when the European Medicines Agency recommended suspension of its marketing authorisation on 23 October 2008 over a roughly doubled risk of serious psychiatric disorders, including suicidality.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-19',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-19',
+        datePrecision: 'MONTH',
+        reason: 'The European Medicines Agency granted Sanofi-Aventis a marketing authorisation for Acomplia (rimonabant), the first cannabinoid CB1-receptor antagonist, as an adjunct to diet and exercise for obese and overweight patients. The authorisation institutionally settled rimonabant as an approved metabolic/weight-loss therapy, and it was launched across Europe (it was never approved in the United States).',
+        source: {
+          externalId: 'src:ema-acomplia-epar-overview',
+          name: 'European Medicines Agency. Acomplia (rimonabant) — European public assessment report (EPAR) overview; marketing authorisation valid throughout the EU from 19 June 2006.',
+          url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/acomplia',
+          publishedAt: '2006-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'The EMA\'s Committee for Medicinal Products for Human Use concluded that the benefits of Acomplia no longer outweighed its risks and recommended EU-wide suspension of its marketing authorisation, citing an approximate doubling of psychiatric disorders and five suicides (versus one on placebo) among roughly 36,000 trial patients. Marketing was suspended in November 2008 and Sanofi-Aventis voluntarily withdrew the authorisation in December 2008, reversing the drug\'s safety claim.',
+        source: {
+          externalId: 'src:ema-acomplia-suspension-2008',
+          name: 'European Medicines Agency. The European Medicines Agency recommends suspension of the marketing authorisation of Acomplia. 23 October 2008.',
+          url: 'https://www.ema.europa.eu/en/news/european-medicines-agency-recommends-suspension-marketing-authorisation-acomplia',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Insulin glargine cancer signal — contested then re-settled 2009/2012 ────
+  {
+    externalId: 'trajectory:insulin-glargine-cancer-signal-2009',
+    text: 'The claim that the long-acting analogue insulin glargine (Lantus), approved by the FDA in April 2000, was safe with respect to cancer was contested when Hemkens and colleagues reported a dose-dependent association with malignancy in Diabetologia on 26 June 2009, then re-established when the randomized ORIGIN trial reported in 2012 that glargine carried no increased cancer risk.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-04-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-04-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Lantus (insulin glargine, NDA 21-081), the first once-daily long-acting human insulin analogue, for adults and children with diabetes. Approval established glargine as a safe, authorized basal insulin, and it became one of the world\'s most-used insulins over the following decade with no recognized oncologic concern.',
+        source: {
+          externalId: 'src:fda-lantus-glargine-approval-2000',
+          name: 'U.S. Food and Drug Administration. Drug Approval Package: Lantus (insulin glargine [rDNA origin]), NDA 21-081, approved 20 April 2000.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2000/21081_lantus.cfm',
+          publishedAt: '2000-04-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-06-26',
+        datePrecision: 'DAY',
+        reason: 'Hemkens and colleagues reported in Diabetologia a retrospective cohort of 127,031 German patients in which insulin glargine showed a dose-dependent increase in cancer incidence relative to human insulin (hazard ratio rising to 1.31 at 50 IU/day). Released with a Diabetologia press alert alongside companion European studies, the finding triggered an international safety controversy and regulatory reviews, contesting glargine\'s oncologic safety in the expert literature.',
+        source: {
+          externalId: 'src:hemkens-glargine-cancer-diabetologia-2009',
+          name: 'Hemkens LG, Grouven U, Bender R, et al. Risk of malignancies in patients with diabetes treated with human insulin or insulin analogues: a cohort study. Diabetologia. 2009;52(9):1732-1744.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19565214/',
+          publishedAt: '2009-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-06-11',
+        datePrecision: 'DAY',
+        reason: 'The ORIGIN trial — a randomized study of 12,537 dysglycemic patients followed for a median 6.2 years — reported that insulin glargine had a neutral effect on cancers (hazard ratio 1.00; P=0.97), with no excess in any organ-specific malignancy. As the first large randomized evidence on the question, it (together with subsequent observational studies that failed to confirm the 2009 signal) re-established glargine\'s cancer safety as the settled scientific consensus.',
+        source: {
+          externalId: 'src:origin-glargine-outcomes-nejm-2012',
+          name: 'ORIGIN Trial Investigators (Gerstein HC, et al.). Basal Insulin and Cardiovascular and Other Outcomes in Dysglycemia. N Engl J Med. 2012;367(4):319-328.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22686416/',
+          publishedAt: '2012-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA Opioid Analgesic REMS (IR extension) — 2012/2018 ───────────────────
+  {
+    externalId: 'trajectory:fda-opioid-analgesic-rems-immediate-release-2018',
+    text: 'The U.S. FDA approved the Opioid Analgesic REMS on September 18, 2018, extending its 2012 prescriber-education Risk Evaluation and Mitigation Strategy from extended-release/long-acting opioids to all immediate-release opioid analgesics used in the outpatient setting, thereby bringing essentially every outpatient opioid analgesic under a single class-wide safe-use education and labeling requirement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved the Extended-Release and Long-Acting (ER/LA) Opioid Analgesics REMS, the first class-wide opioid Risk Evaluation and Mitigation Strategy, requiring manufacturers to fund accredited prescriber-education programs based on an FDA Blueprint. It established the regulatory premise that opioid-prescribing risk should be mitigated through standardized clinician education — but limited that reach to ER/LA formulations, leaving the far larger volume of immediate-release opioids outside any REMS.',
+        source: {
+          externalId: 'src:fda-erla-opioid-rems-qanda-2012',
+          name: 'U.S. Food and Drug Administration. Questions and Answers: FDA approves a Risk Evaluation and Mitigation Strategy (REMS) for Extended-Release and Long-Acting (ER/LA) Opioid Analgesics. July 9, 2012.',
+          url: 'https://www.fda.gov/drugs/information-drug-class/questions-and-answers-fda-approves-risk-evaluation-and-mitigation-strategy-rems-extended-release-and',
+          publishedAt: '2012-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-09-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA modified the ER/LA REMS into the Opioid Analgesic REMS, for the first time bringing all immediate-release opioid analgesics intended for outpatient use under the program, approving a revised Education Blueprint covering acute and chronic pain management and addiction medicine for all clinicians treating pain (including nurses and pharmacists), and requiring new REMS information in the products\' Boxed Warning. The action institutionally settled the judgment that every outpatient opioid prescriber — not only those using long-acting formulations — should be reachable by a unified safe-use education and labeling framework.',
+        source: {
+          externalId: 'src:fda-opioid-analgesic-rems-2018',
+          name: 'U.S. Food and Drug Administration. Opioid Analgesic Risk Evaluation and Mitigation Strategy (REMS). Approved September 18, 2018.',
+          url: 'https://www.fda.gov/drugs/information-drug-class/opioid-analgesic-risk-evaluation-and-mitigation-strategy-rems',
+          publishedAt: '2018-09-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Evzio naloxone auto-injector take-home approval — 2014 ─────────────────
+  {
+    externalId: 'trajectory:evzio-naloxone-autoinjector-take-home-2014',
+    text: 'The U.S. FDA approved Evzio (naloxone hydrochloride auto-injector, kaléo, Inc.) on April 3, 2014, the first combination drug-device product designed to deliver a dose of the opioid-overdose antidote naloxone outside a health care setting by family members or caregivers, establishing that laypersons could administer naloxone in the community without clinical supervision.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-04-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-04-03',
+        datePrecision: 'DAY',
+        reason: 'After a 15-week fast-track review, the FDA — in an announcement by Commissioner Margaret Hamburg — approved Evzio, a hand-held, voice-guided naloxone auto-injector and the first naloxone product specifically designed to be given by family members or caregivers outside a health care setting. The approval institutionally settled the claim that emergency reversal of opioid overdose could be safely placed in lay hands in the community, moving naloxone from an EMS/clinical drug toward a take-home rescue product and laying the regulatory groundwork later extended by the 2015 Narcan nasal-spray approval and 2023 over-the-counter conversion.',
+        source: {
+          externalId: 'src:fda-evzio-naloxone-autoinjector-2014',
+          name: 'U.S. Food and Drug Administration. FDA approves new hand-held auto-injector to reverse opioid overdose. Press Announcement, April 3, 2014.',
+          url: 'https://wayback.archive-it.org/7993/20170112032835/https:/www.fda.gov/NewsEvents/Newsroom/PressAnnouncements/ucm391465.htm',
+          publishedAt: '2014-04-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACP low back pain guideline — 2017 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:acp-noninvasive-low-back-pain-guideline-2017',
+    text: 'The American College of Physicians published a clinical practice guideline in Annals of Internal Medicine (Qaseem et al.), released online February 14, 2017, recommending nonpharmacologic therapies as first-line treatment for acute, subacute, and chronic low back pain, with NSAIDs, duloxetine, or tramadol as pharmacologic options and opioids reserved only for patients who fail other treatments and only when benefits outweigh risks — formally subordinating opioids to last-line therapy for the most common chronic-pain indication.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-02-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-02-14',
+        datePrecision: 'DAY',
+        reason: 'Drawing on an AHRQ-funded evidence review, the American College of Physicians issued a graded guideline directing clinicians to use nonpharmacologic treatments (exercise, heat, acupuncture, spinal manipulation, cognitive behavioral therapy) first for low back pain, to prefer NSAIDs or duloxetine/tramadol when drug therapy is used, and to consider opioids only after other options fail. A major professional society codifying opioid analgesics as a treatment of last resort for the leading cause of disability-associated pain marked a clear institutional shift away from the prior opioid-permissive prescribing norm.',
+        source: {
+          externalId: 'src:acp-low-back-pain-guideline-annals-2017',
+          name: 'Qaseem A, Wilt TJ, McLean RM, Forciea MA; Clinical Guidelines Committee of the American College of Physicians. Noninvasive Treatments for Acute, Subacute, and Chronic Low Back Pain: A Clinical Practice Guideline From the American College of Physicians. Ann Intern Med. 2017 Apr 4;166(7):514-530.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28192789/',
+          publishedAt: '2017-02-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Allen & Doisy ovarian hormone 1923 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:allen-doisy-ovarian-hormone-1923',
+    text: 'Edgar Allen and Edward A. Doisy reported in JAMA on 8 September 1923 that the ovarian follicle secretes a specific hormone whose extract, assayed by inducing estrus (vaginal cornification) in ovariectomized rodents, controls the female reproductive cycle — the first demonstration of what would be named estrogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-09-08',
+        datePrecision: 'DAY',
+        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals,\' showing that a lipid-soluble extract of the follicular fluid produced cyclic estrus changes (the Allen–Doisy bioassay) in spayed mice and rats. This recorded in the expert literature the claim that the ovary acts as an endocrine gland secreting a discrete sex hormone, supplying the assay that made all subsequent estrogen chemistry possible.',
+        source: {
+          externalId: 'src:allen-doisy-jama-1923',
+          name: 'Allen E, Doisy EA. An ovarian hormone. Preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(11):819-821. (Landmark reprint JAMA 1983;250(19):2681-2683.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
+          publishedAt: '1923-09-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Once Doisy, Veler, and Thayer (and independently Butenandt) isolated the hormone in pure crystalline form from pregnancy urine in 1929, the existence of a discrete ovarian sex hormone could no longer be doubted; the functional entity Allen and Doisy had inferred from bioassay became a defined chemical substance. The molecular reality settled the 1923 claim within the field.',
+        source: {
+          externalId: 'src:estrone-isolation-embryo-1929',
+          name: 'Estrogen and the Menstrual Cycle in Humans. Embryo Project Encyclopedia, Arizona State University (citing Doisy CD, Veler CD, Thayer S, 1929; Butenandt A, 1929).',
+          url: 'https://embryo.asu.edu/pages/estrogen-and-menstrual-cycle-humans',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Estrone crystalline isolation 1929 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:estrone-crystalline-isolation-1929',
+    text: 'In 1929 Edward Doisy (with Clement Veler and Sidney Thayer) in St. Louis and, independently, Adolf Butenandt in Germany isolated the first female sex hormone in pure crystalline form — estrone (theelin/folliculin/progynon) — from the urine of pregnant women, converting the bioassay-defined \'ovarian hormone\' into a defined chemical substance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Doisy, Veler, and Thayer reported the isolation of crystalline \'theelin\' (estrone) from pregnancy urine, with Butenandt reporting crystalline \'progynon\'/folliculin independently the same year (Butenandt obtaining ~20 mg from 18,000 L of urine). This recorded the first purification of a female sex hormone as a single chemical entity, opening the way to its molecular formula (1931) and structure (1932).',
+        source: {
+          externalId: 'src:doisy-butenandt-estrone-embryo',
+          name: 'Estrogen and the Menstrual Cycle in Humans. Embryo Project Encyclopedia, Arizona State University (Doisy CD, Veler CD, Thayer S, 1929; Butenandt A, Über \'Progynon\', Naturwissenschaften 1929).',
+          url: 'https://embryo.asu.edu/pages/estrogen-and-menstrual-cycle-humans',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-12-10',
+        datePrecision: 'DAY',
+        reason: 'The Royal Swedish Academy of Sciences awarded Adolf Butenandt the 1939 Nobel Prize in Chemistry for his work on sex hormones, including the isolation of estrone — institutional recognition that the crystalline-isolation result had become settled foundational endocrinology. The ceremony speech credits his purification of the female sex hormone.',
+        source: {
+          externalId: 'src:nobel-chemistry-1939-butenandt',
+          name: 'The Nobel Prize in Chemistry 1939 — Adolf Butenandt (award ceremony speech). NobelPrize.org, Royal Swedish Academy of Sciences. 1939.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/ceremony-speech/',
+          publishedAt: '1939-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Papanicolaou & Traut vaginal smear 1941 ────────────────────────────────
+  {
+    externalId: 'trajectory:papanicolaou-traut-vaginal-smear-1941',
+    text: 'George N. Papanicolaou and Herbert F. Traut reported in the American Journal of Obstetrics and Gynecology in 1941 that exfoliated cells in vaginal smears could detect carcinoma of the uterus (including pre-symptomatic cervical cancer), establishing the cytological screening method that became the Pap test.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Papanicolaou and Traut published \'The diagnostic value of vaginal smears in carcinoma of the uterus\' (Am J Obstet Gynecol 1941;42:193-206), demonstrating that malignant cells shed into vaginal secretions could be recognized microscopically, including in early/occult uterine cancer. This recorded in the expert literature the claim that a simple smear could detect cervical/uterine cancer before clinical signs — the conceptual basis of population cancer screening.',
+        source: {
+          externalId: 'src:papanicolaou-traut-ajog-1941',
+          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42:193-206. (Reprinted Arch Pathol Lab Med 1997;121(3):211-224.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9111103/',
+          publishedAt: '1941-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Papanicolaou and Traut consolidated the method in the 1943 Commonwealth Fund monograph \'Diagnosis of Uterine Cancer by the Vaginal Smear,\' which standardized smear technique and cytological criteria and was reviewed and taken up across pathology. This moved the screening claim from a single report toward an accepted diagnostic method, preceding its mass institutional adoption in the 1950s.',
+        source: {
+          externalId: 'src:papanicolaou-traut-monograph-1943',
+          name: 'Papanicolaou GN, Traut HF. Diagnosis of Uterine Cancer by the Vaginal Smear. New York: The Commonwealth Fund; 1943 (reviewed in Anat Rec 1943;86(4)).',
+          url: 'https://onlinelibrary.wiley.com/doi/abs/10.1002/ar.1090860410',
+          publishedAt: '1943-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Premarin conjugated estrogens FDA approval 1942 ───────────────────────
+  {
+    externalId: 'trajectory:premarin-conjugated-estrogens-fda-1942',
+    text: 'The U.S. Food and Drug Administration approved Premarin (conjugated equine estrogens, NDA 4-782, Ayerst) in 1942 as safe for the treatment of menopausal symptoms, making orally administered estrogen-replacement therapy an institutionally sanctioned drug for women.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Under the 1938 Food, Drug, and Cosmetic Act\'s pre-market safety regime, the FDA approved Premarin (conjugated estrogens isolated from pregnant mares\' urine, NDA 4-782) in 1942 for menopausal symptom relief. This institutionally settled the claim that conjugated estrogens were a safe marketable therapy for menopause, launching what became one of the most widely prescribed drugs of the century; the menopausal-symptom indication remains FDA-approved (current labeling states \'Initial U.S. Approval: 1942\').',
+        source: {
+          externalId: 'src:premarin-dailymed-label-1942',
+          name: 'PREMARIN (conjugated estrogens) tablets — FDA prescribing information, \'Initial U.S. Approval: 1942\' (NDA 004782). DailyMed, U.S. National Library of Medicine.',
+          url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=258e1602-a3cf-4ccc-ca80-73dbbfb812ff',
+          publishedAt: '1942-01-01',
+          methodologyType: 'primary',
         },
       },
     ],
