@@ -46523,7 +46523,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Persistent vegetative state — Jennett & Plum 1972 ──────────────────────
   {
     externalId: 'trajectory:jennett-plum-persistent-vegetative-state-1972',
-    text: 'Scottish neurosurgeon Bryan Jennett and American neurologist Fred Plum reported in The Lancet in April 1972 a clinical entity — the 'persistent vegetative state' — in which patients with severe brain damage recover wakefulness and sleep-wake cycles without any detectable awareness of self or environment, naming a condition previously lacking a coherent definition.',
+    text: 'Scottish neurosurgeon Bryan Jennett and American neurologist Fred Plum reported in The Lancet in April 1972 a clinical entity — the \'persistent vegetative state\' — in which patients with severe brain damage recover wakefulness and sleep-wake cycles without any detectable awareness of self or environment, naming a condition previously lacking a coherent definition.',
     claimType: 'HYBRID',
     claimEmergedAt: '1972-04',
     claimEmergedPrecision: 'MONTH',
@@ -48311,6 +48311,437 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-25-6-986',
           publishedAt: '1946-12-01',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED THERAPY ERA (1998–2011)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Trastuzumab / HER2 breast cancer — FDA approval 1998 ────────────────────
+  {
+    externalId: 'trajectory:trastuzumab-herceptin-her2-breast-cancer-1998',
+    text: 'On 25 September 1998 the U.S. FDA approved trastuzumab (Herceptin), the first HER2-targeted humanized monoclonal antibody, for HER2-overexpressing metastatic breast cancer, establishing that antibody-directed blockade of a growth-factor receptor could treat a solid tumor.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-09-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Genentech\'s trastuzumab (with the companion HercepTest diagnostic) for HER2-overexpressing metastatic breast cancer on the basis of the pivotal H0648g trial, recording on the regulatory record the claim that targeting the HER2 receptor confers clinical benefit. It was the first monoclonal antibody approved for a solid tumor and the first therapy paired with a companion diagnostic to select patients.',
+        source: {
+          externalId: 'src:fda-herceptin-approval-letter-1998',
+          name: 'U.S. Food and Drug Administration. Trastuzumab (Herceptin), Genentech — BLA approval letter. 25 September 1998.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/1998/trasgen092598l.pdf',
+          publishedAt: '1998-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-03-15',
+        datePrecision: 'DAY',
+        reason: 'Slamon and colleagues published the pivotal randomized trial in the New England Journal of Medicine, reporting that adding trastuzumab to chemotherapy in HER2-positive metastatic breast cancer extended median time to progression (7.4 vs 4.6 months) and overall survival (25.1 vs 20.3 months). The full randomized data settled trastuzumab as standard targeted therapy in the expert community; adjuvant trials in 2005 (HERA, NSABP B-31/NCCTG N9831) then extended the benefit to early-stage disease, halving recurrence.',
+        source: {
+          externalId: 'src:slamon-trastuzumab-nejm-2001',
+          name: 'Slamon DJ, Leyland-Jones B, Shak S, et al. Use of chemotherapy plus a monoclonal antibody against HER2 for metastatic breast cancer that overexpresses HER2. N Engl J Med. 2001;344(11):783-792.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11248153/',
+          publishedAt: '2001-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gemtuzumab / Mylotarg — accelerated approval & withdrawal 2000–2010 ─────
+  {
+    externalId: 'trajectory:gemtuzumab-mylotarg-accelerated-approval-withdrawal-2000',
+    text: 'The claim that gemtuzumab ozogamicin (Mylotarg), the first antibody-drug conjugate, was a safe and effective treatment for CD33-positive acute myeloid leukemia — granted FDA accelerated approval on 17 May 2000 — was reversed when Pfizer voluntarily withdrew it from the U.S. market on 21 June 2010 after the confirmatory SWOG S0106 trial showed no clinical benefit and increased early mortality.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-05-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to gemtuzumab ozogamicin — a calicheamicin payload conjugated to an anti-CD33 antibody — for CD33-positive AML in first relapse in patients 60 or older, on the basis of single-arm response rates rather than a survival endpoint. As the first antibody-drug conjugate approved anywhere, it provisionally recorded the claim that targeted delivery of cytotoxin to leukemic blasts was safe and effective, conditional on a confirmatory trial.',
+        source: {
+          externalId: 'src:bross-gemtuzumab-approval-summary-2001',
+          name: 'Bross PF, Beitz J, Chen G, et al. Approval summary: gemtuzumab ozogamicin in relapsed acute myeloid leukemia. Clin Cancer Res. 2001;7(6):1490-1496.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11410481/',
+          publishedAt: '2001-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-06-21',
+        datePrecision: 'DAY',
+        reason: 'After the confirmatory SWOG S0106 trial was stopped early — showing no improvement in complete response, disease-free survival, or overall survival while fatal induction toxicity rose to 6% versus 1% in controls — the FDA requested withdrawal and Pfizer voluntarily pulled Mylotarg from the U.S. market. The first antibody-drug conjugate became a landmark accelerated-approval reversal; a lower-dose, fractionated regimen was later re-approved in 2017.',
+        source: {
+          externalId: 'src:pfizer-mylotarg-withdrawal-2010',
+          name: 'Pfizer Inc. / U.S. FDA. Pfizer Voluntarily Withdraws Cancer Treatment Mylotarg From U.S. Market. 21 June 2010.',
+          url: 'https://www.prnewswire.com/news-releases/fda-pfizer-voluntarily-withdraws-cancer-treatment-mylotarg-from-us-market-96819064.html',
+          publishedAt: '2010-06-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gefitinib / Iressa — NSCLC accelerated approval & restriction 2003–2005 ─
+  {
+    externalId: 'trajectory:gefitinib-iressa-accelerated-approval-restriction-2005',
+    text: 'The claim that gefitinib (Iressa) prolonged survival in advanced non-small-cell lung cancer — on which the FDA based its 5 May 2003 accelerated approval — was reversed when the confirmatory ISEL trial found no significant overall survival benefit in the unselected population, leading the FDA to restrict its labeling and distribution in June 2005.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to gefitinib, an EGFR tyrosine-kinase inhibitor, as monotherapy for previously treated advanced NSCLC, on the basis of objective tumor response rates rather than a survival endpoint. This provisionally recorded the claim of clinical benefit, contingent on a confirmatory trial demonstrating prolonged survival.',
+        source: {
+          externalId: 'src:fda-iressa-label-2003',
+          name: 'U.S. Food and Drug Administration. IRESSA (gefitinib) tablets, approved label, NDA 21-399. 2003.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2003/021399lbl.pdf',
+          publishedAt: '2003-05-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-06-17',
+        datePrecision: 'DAY',
+        reason: 'After the confirmatory ISEL trial failed to show a statistically significant survival improvement over placebo, the FDA approved new labeling restricting gefitinib to patients already benefiting from it and limited distribution through the Iressa Access Program, effectively closing it to new patients. The agency action put the original survival-benefit premise into formal dispute.',
+        source: {
+          externalId: 'src:fda-iressa-restricted-label-2005',
+          name: 'U.S. Food and Drug Administration. IRESSA (gefitinib) new labeling and restricted distribution, NDA 21-399/S-008. 17 June 2005.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2005/021399s008lbl.pdf',
+          publishedAt: '2005-06-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-29',
+        datePrecision: 'DAY',
+        reason: 'Thatcher and colleagues published the full ISEL (Iressa Survival Evaluation in Lung Cancer) results in The Lancet, reporting no significant overall survival benefit in the overall refractory NSCLC population (median 5.6 vs 5.1 months, p=0.087), with benefit confined to never-smokers and patients of Asian descent. The publication confirmed in the expert literature that the unselected-population efficacy claim was overturned; gefitinib was later re-approved in 2015 for EGFR-mutation-positive disease, validating the biomarker-selected subgroup.',
+        source: {
+          externalId: 'src:thatcher-isel-gefitinib-lancet-2005',
+          name: 'Thatcher N, Chang A, Parikh P, et al. Gefitinib plus best supportive care in previously treated patients with refractory advanced non-small-cell lung cancer (ISEL): a randomised, placebo-controlled, multicentre study. Lancet. 2005;366(9496):1527-1537.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16257339/',
+          publishedAt: '2005-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bevacizumab / Avastin — breast cancer accelerated approval & withdrawal 2008–2011 ─
+  {
+    externalId: 'trajectory:bevacizumab-avastin-breast-cancer-accelerated-approval-2008',
+    text: 'The claim that bevacizumab (Avastin) was a safe and effective treatment for metastatic breast cancer — granted FDA accelerated approval on 22 February 2008 on the strength of progression-free survival in the E2100 trial — was reversed when confirmatory trials failed to replicate the benefit and FDA Commissioner Margaret Hamburg withdrew the breast-cancer indication on 18 November 2011.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to bevacizumab plus paclitaxel for first-line HER2-negative metastatic breast cancer on the basis of the E2100 trial (Miller et al., NEJM 2007), which roughly doubled progression-free survival (median 11.8 vs 5.9 months, HR 0.60) without an overall-survival benefit. The approval was granted over the Oncologic Drugs Advisory Committee\'s recommendation against it, provisionally recording the efficacy claim pending confirmatory data.',
+        source: {
+          externalId: 'src:miller-e2100-bevacizumab-nejm-2007',
+          name: 'Miller K, Wang M, Gralow J, et al. Paclitaxel plus bevacizumab versus paclitaxel alone for metastatic breast cancer. N Engl J Med. 2007;357(26):2666-2676.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18160686/',
+          publishedAt: '2007-12-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-07-20',
+        datePrecision: 'DAY',
+        reason: 'After the confirmatory AVADO and RIBBON-1 trials showed only a small progression-free-survival gain (under three months), no overall-survival benefit, and added toxicity, the FDA\'s Oncologic Drugs Advisory Committee voted 12-1 to recommend withdrawing the breast-cancer indication. The accumulating confirmatory evidence put the original benefit claim into open institutional dispute.',
+        source: {
+          externalId: 'src:ascopost-bevacizumab-odac-decision-2011',
+          name: 'The ASCO Post. FDA Announces Bevacizumab Decision: Agency Will Revoke Breast Cancer Indication. 15 December 2011.',
+          url: 'https://ascopost.com/issues/december-15-2011/fda-announces-bevacizumab-decision-agency-will-revoke-breast-cancer-indication/',
+          publishedAt: '2011-12-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-11-18',
+        datePrecision: 'DAY',
+        reason: 'Following a June 2011 public hearing at which ODAC again voted unanimously to withdraw, FDA Commissioner Margaret Hamburg issued a final decision concluding bevacizumab had not been shown to be safe and effective for metastatic breast cancer and revoked the indication. The reversal became a defining test of the accelerated-approval framework and the requirement that surrogate-endpoint approvals be confirmed; bevacizumab retained its approvals for colon, lung, kidney, and brain cancers.',
+        source: {
+          externalId: 'src:fda-avastin-final-withdrawal-decision-2012',
+          name: 'U.S. FDA. Final Decision on Withdrawal of Breast Cancer Indication for AVASTIN (Bevacizumab) Following Public Hearing (Commissioner\'s decision dated 18 November 2011). Federal Register, 27 February 2012.',
+          url: 'https://www.federalregister.gov/documents/2012/02/27/2012-4424/final-decision-on-withdrawal-of-breast-cancer-indication-for-avastin-bevacizumab-following-public',
+          publishedAt: '2012-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── KRAS mutation as predictive biomarker for cetuximab in colorectal cancer — 2008 ─
+  {
+    externalId: 'trajectory:kras-mutation-cetuximab-colorectal-predictive-biomarker-2008',
+    text: 'Karapetis and colleagues reported in the New England Journal of Medicine on 23 October 2008 that patients with KRAS-mutated metastatic colorectal cancer derive no benefit from cetuximab, establishing KRAS mutation status as the first predictive biomarker governing use of anti-EGFR antibody therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-10-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'Karapetis et al. reported a retrospective KRAS analysis of the randomized CO.17 trial in the New England Journal of Medicine, finding that cetuximab improved overall survival in KRAS wild-type tumors (9.5 vs 4.8 months, HR 0.55) but conferred no benefit in KRAS-mutated tumors. This recorded in the expert literature the claim that a single tumor mutation could prospectively identify non-responders to an anti-EGFR antibody — the first such predictive biomarker in colorectal cancer.',
+        source: {
+          externalId: 'src:karapetis-kras-cetuximab-nejm-2008',
+          name: 'Karapetis CS, Khambata-Ford S, Jonker DJ, et al. K-ras mutations and benefit from cetuximab in advanced colorectal cancer. N Engl J Med. 2008;359(17):1757-1765.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18946061/',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-02-02',
+        datePrecision: 'DAY',
+        reason: 'The American Society of Clinical Oncology issued a Provisional Clinical Opinion recommending that all candidates for cetuximab or panitumumab undergo KRAS testing and that patients with codon 12/13 mutations not receive anti-EGFR antibody therapy. Together with FDA label revisions in mid-2009 restricting both antibodies to KRAS wild-type tumors, this settled biomarker-directed use as the institutional standard of care and made genotyping a prerequisite for treatment.',
+        source: {
+          externalId: 'src:asco-kras-provisional-clinical-opinion-2009',
+          name: 'Allegra CJ, Jessup JM, Somerfield MR, et al. American Society of Clinical Oncology provisional clinical opinion: testing for KRAS gene mutations in patients with metastatic colorectal carcinoma to predict response to anti-EGFR monoclonal antibody therapy. J Clin Oncol. 2009;27(12):2091-2096.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19188670/',
+          publishedAt: '2009-02-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CONTEMPORARY CARDIOLOGY (2010–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ORBITA sham-controlled PCI for stable angina — 2017 ────────────────────
+  {
+    externalId: 'trajectory:orbita-sham-controlled-pci-stable-angina-2017',
+    text: 'The ORBITA double-blind sham-controlled trial, published by Al-Lamee and colleagues in The Lancet on 2 November 2017, reported that percutaneous coronary intervention produced no statistically significant improvement in exercise time over a placebo procedure in patients with stable single-vessel angina and severe stenosis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2017-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-02',
+        datePrecision: 'DAY',
+        reason: 'ORBITA was the first blinded, sham-controlled trial of PCI for stable angina; it found no significant difference in the primary endpoint of exercise-time increment between PCI and placebo. This directly challenged the long-standing clinical assumption that stenting relieves angina through a mechanism beyond placebo, and was widely reported as undermining a routine indication for elective PCI.',
+        source: {
+          externalId: 'src:al-lamee-orbita-lancet-2017',
+          name: 'Al-Lamee R, Thompson D, Dehbi HM, et al. Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial. Lancet. 2018;391(10115):31-40.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29103656/',
+          publishedAt: '2017-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-11-11',
+        datePrecision: 'DAY',
+        reason: 'The successor ORBITA-2 trial (Rajkumar et al., NEJM), in patients receiving little or no antianginal medication, found that PCI did produce a significantly lower angina symptom score than a placebo procedure. This complicated ORBITA\'s apparent null result, reframing the debate as conditional on background antianginal therapy rather than settling whether PCI relieves stable angina.',
+        source: {
+          externalId: 'src:rajkumar-orbita2-nejm-2023',
+          name: 'Rajkumar CA, Foley MJ, Ahmed-Jushuf F, et al. A Placebo-Controlled Trial of Percutaneous Coronary Intervention for Stable Angina (ORBITA-2). N Engl J Med. 2023;389(25):2319-2330.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38015442/',
+          publishedAt: '2023-11-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACC/AHA hypertension 130/80 redefinition — 2017 ────────────────────────
+  {
+    externalId: 'trajectory:acc-aha-hypertension-130-80-redefinition-2017',
+    text: 'The 2017 ACC/AHA high blood pressure guideline, led by Whelton and published 13 November 2017, redefined hypertension as a blood pressure of 130/80 mm Hg or higher (down from 140/90), reclassifying roughly 46% of US adults as hypertensive.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-11-13',
+        datePrecision: 'DAY',
+        reason: 'The American College of Cardiology and American Heart Association, with eleven partner organizations, issued a guideline lowering the diagnostic threshold for hypertension to 130/80 mm Hg, citing SPRINT and other outcome data. The change institutionally redefined the disease for US cardiology, raising the hypertensive share of US adults from about 32% to about 46%.',
+        source: {
+          externalId: 'src:whelton-acc-aha-bp-guideline-2017',
+          name: 'Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. Hypertension. 2018;71(6):e13-e115.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29133356/',
+          publishedAt: '2017-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-12-12',
+        datePrecision: 'DAY',
+        reason: 'On 12 December 2017 the American Academy of Family Physicians announced it would not endorse the 2017 ACC/AHA guideline, citing flaws in the development process, limited added benefit of lower targets, and an intellectual conflict of interest (the SPRINT steering-committee chair also chaired the guideline panel); the AAFP continued to endorse the 2014 JNC8-derived 140/90 threshold. The split between major US guideline bodies left the new definition contested rather than universally adopted.',
+        source: {
+          externalId: 'src:aafp-declines-endorse-bp-guideline-2017',
+          name: 'AAFP Says It Cannot Endorse New Hypertension Guideline. TCTMD. December 12, 2017.',
+          url: 'https://www.tctmd.com/news/aafp-says-it-cannot-endorse-new-hypertension-guideline',
+          publishedAt: '2017-12-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── PARADIGM-HF sacubitril/valsartan ARNI in heart failure — 2014 ──────────
+  {
+    externalId: 'trajectory:paradigm-hf-sacubitril-valsartan-arni-heart-failure-2014',
+    text: 'The PARADIGM-HF trial, reported by McMurray and colleagues in NEJM on 11 September 2014, established that the angiotensin receptor-neprilysin inhibitor sacubitril/valsartan (LCZ696) was superior to the ACE inhibitor enalapril in reducing cardiovascular death and heart-failure hospitalization in patients with heart failure and reduced ejection fraction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-09-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-09-11',
+        datePrecision: 'DAY',
+        reason: 'PARADIGM-HF, stopped early for benefit, showed a 20% relative reduction in the composite of cardiovascular death or heart-failure hospitalization versus enalapril, then the standard of care. It was the first trial to demonstrate that a novel drug class could improve on ACE inhibition, the cornerstone of HFrEF therapy for two decades.',
+        source: {
+          externalId: 'src:mcmurray-paradigm-hf-nejm-2014',
+          name: 'McMurray JJV, Packer M, Desai AS, et al. Angiotensin-Neprilysin Inhibition versus Enalapril in Heart Failure. N Engl J Med. 2014;371(11):993-1004.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25176015/',
+          publishedAt: '2014-09-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-07-07',
+        datePrecision: 'DAY',
+        reason: 'On 7 July 2015 the FDA approved sacubitril/valsartan (Entresto) — the first-in-class ARNI — to reduce cardiovascular death and hospitalization in chronic HFrEF. Subsequent ACC/AHA/HFSA guidelines elevated ARNI to a first-line replacement for ACE inhibitors/ARBs, settling the claim institutionally.',
+        source: {
+          externalId: 'src:fda-entresto-approval-2015',
+          name: 'Entresto (sacubitril and valsartan) FDA Approval History. Drugs.com (FDA approval July 7, 2015).',
+          url: 'https://www.drugs.com/history/entresto.html',
+          publishedAt: '2015-07-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── SYMPLICITY HTN-3 renal denervation reversal and revival — 2010/2014/2023
+  {
+    externalId: 'trajectory:symplicity-htn3-renal-denervation-reversal-revival-2014',
+    text: 'Catheter-based renal sympathetic denervation, reported as a large blood-pressure-lowering therapy for resistant hypertension by the SYMPLICITY HTN-2 trial in December 2010, was contradicted by the sham-controlled SYMPLICITY HTN-3 trial (Bhatt et al., NEJM, 2014), which found no significant blood-pressure benefit versus a sham procedure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-12-04',
+        datePrecision: 'DAY',
+        reason: 'The unblinded SYMPLICITY HTN-2 randomized trial reported that catheter-based renal denervation substantially reduced office blood pressure in treatment-resistant hypertension, generating intense enthusiasm and rapid device adoption across Europe. The claim that ablating renal sympathetic nerves durably lowers blood pressure entered the literature as a promising intervention.',
+        source: {
+          externalId: 'src:esler-symplicity-htn2-lancet-2010',
+          name: 'Symplicity HTN-2 Investigators (Esler MD, Krum H, Sobotka PA, et al.). Renal sympathetic denervation in patients with treatment-resistant hypertension (The Symplicity HTN-2 Trial): a randomised controlled trial. Lancet. 2010;376(9756):1903-9.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21093036/',
+          publishedAt: '2010-12-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-03-29',
+        datePrecision: 'DAY',
+        reason: 'SYMPLICITY HTN-3, the first blinded sham-controlled trial of renal denervation, found no significant difference in systolic blood pressure between denervation and a sham procedure at six months. The result exposed the earlier unblinded trials\' susceptibility to placebo and regression effects, halted US adoption, and reversed the field\'s confidence in the therapy.',
+        source: {
+          externalId: 'src:bhatt-symplicity-htn3-nejm-2014',
+          name: 'Bhatt DL, Kandzari DE, O\'Neill WW, et al. A Controlled Trial of Renal Denervation for Resistant Hypertension. N Engl J Med. 2014;370(15):1393-1401.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24678939/',
+          publishedAt: '2014-03-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-11-17',
+        datePrecision: 'DAY',
+        reason: 'After redesigned sham-controlled trials (the SPYRAL HTN and RADIANCE programs) with refined ablation technique showed modest but significant blood-pressure reductions, the FDA approved the ReCor Paradise (early November 2023) and Medtronic Symplicity Spyral (17 November 2023) renal denervation systems. The reversal was thus partially overturned, leaving renal denervation a contested but FDA-sanctioned adjunct rather than abandoned.',
+        source: {
+          externalId: 'src:fda-symplicity-spyral-approval-tctmd-2023',
+          name: 'Symplicity Spyral Approved: FDA Clears Second Renal Denervation System. TCTMD. November 2023.',
+          url: 'https://www.tctmd.com/news/symplicity-spyral-approved-fda-clears-second-renal-denervation-system',
+          publishedAt: '2023-11-17',
+          methodologyType: 'derivative',
         },
       },
     ],
