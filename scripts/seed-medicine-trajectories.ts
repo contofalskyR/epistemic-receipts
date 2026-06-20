@@ -41671,6 +41671,129 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Norwegian timolol post-MI mortality 1981 ────────────────────────────────
+  {
+    externalId: 'trajectory:norwegian-timolol-post-mi-mortality-1981',
+    text: 'On 2 April 1981 the Norwegian Multicenter Study Group reported in the New England Journal of Medicine that timolol given to survivors of acute myocardial infarction reduced total mortality and reinfarction over a mean 17 months of follow-up, the first clear randomized evidence that long-term beta-blockade after a heart attack lowers mortality.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-04-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-04-02',
+        datePrecision: 'DAY',
+        reason: 'The Norwegian Multicenter Study Group\'s double-blind placebo-controlled trial of 1,884 post-MI patients found timolol (10 mg twice daily) cut total mortality by 39% and reinfarction by 28% over a mean 17 months. This was the first large randomized trial to demonstrate a clear long-term mortality benefit from beta-blockade started after the acute phase of myocardial infarction, putting the secondary-prevention claim on the scientific record ahead of the U.S. BHAT propranolol trial.',
+        source: {
+          externalId: 'src:norwegian-timolol-nejm-1981',
+          name: 'The Norwegian Multicenter Study Group. Timolol-induced reduction in mortality and reinfarction in patients surviving acute myocardial infarction. N Engl J Med. 1981;304(14):801-807.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7010157/',
+          publishedAt: '1981-04-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Yusuf, Peto, Lewis, Collins, and Sleight pooled roughly 65 randomized trials of beta-blockade during and after myocardial infarction, including the Norwegian timolol and U.S. propranolol (BHAT) trials, and concluded that long-term beta-blockade after MI was "of proven value," yielding about a 25% mortality reduction. The overview consolidated the individual trial findings into a settled class effect that became standard secondary-prevention practice.',
+        source: {
+          externalId: 'src:yusuf-betablocker-overview-1985',
+          name: 'Yusuf S, Peto R, Lewis J, Collins R, Sleight P. Beta blockade during and after myocardial infarction: an overview of the randomized trials. Prog Cardiovasc Dis. 1985;27(5):335-371.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2858114/',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── MRC mild hypertension trial modest benefit 1985 ─────────────────────────
+  {
+    externalId: 'trajectory:mrc-mild-hypertension-trial-modest-benefit-1985',
+    text: 'On 13 July 1985 the Medical Research Council Working Party reported in the British Medical Journal that drug treatment of mild hypertension (diastolic 90–109 mm Hg) reduced the rate of stroke but produced no significant reduction in coronary events or all-cause mortality, and that about 850 patients had to be treated for a year to prevent one stroke.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-07-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-07-13',
+        datePrecision: 'DAY',
+        reason: 'The MRC single-blind trial randomized 17,354 mildly hypertensive adults to bendrofluazide, propranolol, or placebo. Active treatment reduced stroke incidence but not coronary events or total mortality, while causing substantial adverse effects. By quantifying the very large number-needed-to-treat for a stroke-only benefit, the trial recorded a far more equivocal verdict on treating mild hypertension than the earlier HDFP, and helped push antihypertensive prescribing toward absolute-cardiovascular-risk stratification rather than blood-pressure threshold alone.',
+        source: {
+          externalId: 'src:mrc-mild-hypertension-bmj-1985',
+          name: 'Medical Research Council Working Party. MRC trial of treatment of mild hypertension: principal results. Br Med J (Clin Res Ed). 1985;291(6488):97-104.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2861880/',
+          publishedAt: '1985-07-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oslo diet-antismoking trial CHD reduction 1981 ──────────────────────────
+  {
+    externalId: 'trajectory:oslo-diet-antismoking-trial-chd-reduction-1981',
+    text: 'On 12 December 1981 the Oslo Study Group reported in The Lancet that a five-year diet and antismoking intervention in high-risk middle-aged men lowered serum cholesterol and reduced the combined incidence of first myocardial infarction and sudden death by about 47% versus untreated controls.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-12-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-12-12',
+        datePrecision: 'DAY',
+        reason: 'Hjermann and colleagues randomized 1,232 healthy hypercholesterolemic male smokers to lifestyle intervention or control; the intervention group achieved lower total cholesterol and a 47% reduction in myocardial infarction and sudden death, with the benefit correlating mainly with cholesterol change. The trial recorded positive randomized evidence that combined diet-and-smoking modification prevents coronary events, contrasting with the contemporaneous null MRFIT result and supporting the diet-heart approach to primary prevention.',
+        source: {
+          externalId: 'src:hjermann-oslo-trial-lancet-1981',
+          name: 'Hjermann I, Velve Byre K, Holme I, Leren P. Effect of diet and smoking intervention on the incidence of coronary heart disease. Report from the Oslo Study Group of a randomised trial in healthy men. Lancet. 1981;2(8259):1303-1310.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6118715/',
+          publishedAt: '1981-12-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Seven Countries Study diet-heart population 1970 ────────────────────────
+  {
+    externalId: 'trajectory:seven-countries-study-diet-heart-population-1970',
+    text: 'In April 1970 Ancel Keys\' Seven Countries Study reported in Circulation that, across populations in the United States, Europe, and Japan, the proportion of dietary saturated fat and the level of serum cholesterol predicted population rates of coronary heart disease, establishing the population-level diet–cholesterol–heart hypothesis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The Seven Countries Study\'s first comprehensive five-year report analyzed about 12,000 men across 16 cohorts and found that differences in saturated-fat intake and serum cholesterol tracked with large differences in coronary heart disease incidence between populations. It put the cross-population diet-heart hypothesis on the scientific record and became the empirical foundation for decades of dietary-fat public-health policy, even as its ecological design and country selection were later contested.',
+        source: {
+          externalId: 'src:keys-seven-countries-circulation-1970',
+          name: 'Keys A, et al. Coronary heart disease in seven countries. Summary. Circulation. 1970;41(4 Suppl):I186-I195.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5442782/',
+          publishedAt: '1970-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
