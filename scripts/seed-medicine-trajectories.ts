@@ -20607,12 +20607,12 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2002-09-05',
         datePrecision: 'DAY',
-        reason: 'On 5 September 2002 the FDA, acting on the ATAC data, granted accelerated approval (converted to regular approval 16 September 2005) of anastrozole (Arimidex) for adjuvant treatment of postmenopausal hormone-receptor-positive early breast cancer. Regulatory adoption institutionalized aromatase inhibitors as a standard adjuvant option, settling the shift away from tamoxifen monotherapy in this population.',
+        reason: 'The FDA granted accelerated approval of anastrozole (Arimidex) for adjuvant treatment of postmenopausal women with hormone-receptor-positive early breast cancer on 5 September 2002, converting it to regular approval on 16 September 2005 after the five-year completed-treatment analysis confirmed superiority over tamoxifen. Regulatory adoption plus the mature trial data settled aromatase inhibitors into standard adjuvant care for this population.',
         source: {
-          externalId: 'src:atac-baum-lancet-2002-basis',
-          name: 'Baum M, Budzar AU, Cuzick J, et al; ATAC Trialists\' Group. Anastrozole alone or in combination with tamoxifen versus tamoxifen alone for adjuvant treatment of postmenopausal women with early breast cancer: first results of the ATAC randomised trial. Lancet. 2002;359(9324):2131-2139.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/12090977/',
-          publishedAt: '2002-06-22',
+          externalId: 'src:atac-completed-treatment-lancet-2005',
+          name: 'ATAC Trialists\' Group (Howell A, et al). Results of the ATAC (Arimidex, Tamoxifen, Alone or in Combination) trial after completion of 5 years\' adjuvant treatment for breast cancer. Lancet. 2005;365(9453):60-62.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(04)17666-6/abstract',
+          publishedAt: '2005-01-01',
           methodologyType: 'primary',
         },
       },
@@ -51060,132 +51060,6 @@ const TRAJECTORIES: Trajectory[] = [
   // ═══════════════════════════════════════════════════════════════════════════════
   // TARGETED THERAPY ERA (2002--2005)
   // ═══════════════════════════════════════════════════════════════════════════════
-
-  // ── ATAC — anastrozole displaces tamoxifen as adjuvant endocrine therapy 2002 ─
-  {
-    externalId: 'trajectory:atac-anastrozole-aromatase-inhibitor-adjuvant-breast-cancer-2002',
-    text: 'The ATAC trialists reported in The Lancet on 22 June 2002 that the aromatase inhibitor anastrozole, given as adjuvant therapy to postmenopausal women with hormone-receptor-positive early breast cancer, produced longer disease-free survival and fewer serious side effects than the long-standing standard tamoxifen.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2002-06-22',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2002-06-22',
-        datePrecision: 'DAY',
-        reason: 'Baum and the ATAC (\'Arimidex\', Tamoxifen, Alone or in Combination) investigators published the first results of a randomized trial in over 9,300 postmenopausal women, reporting that anastrozole significantly prolonged disease-free survival versus tamoxifen with fewer endometrial cancers and thromboembolic events. This recorded in the expert literature the novel claim that an aromatase inhibitor could displace tamoxifen as adjuvant endocrine therapy, overturning two decades of tamoxifen as the unquestioned standard.',
-        source: {
-          externalId: 'src:atac-baum-lancet-2002',
-          name: 'ATAC Trialists\' Group (Baum M, et al). Anastrozole alone or in combination with tamoxifen versus tamoxifen alone for adjuvant treatment of postmenopausal women with early breast cancer: first results of the ATAC randomised trial. Lancet. 2002;359(9324):2131-2139.',
-          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(02)09088-8/abstract',
-          publishedAt: '2002-06-22',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2002-09-05',
-        datePrecision: 'DAY',
-        reason: 'The FDA granted accelerated approval of anastrozole (Arimidex) for adjuvant treatment of postmenopausal women with hormone-receptor-positive early breast cancer on 5 September 2002, converting it to regular approval on 16 September 2005 after the five-year completed-treatment analysis confirmed superiority over tamoxifen. Regulatory adoption plus the mature trial data settled aromatase inhibitors into standard adjuvant care for this population.',
-        source: {
-          externalId: 'src:atac-completed-treatment-lancet-2005',
-          name: 'ATAC Trialists\' Group (Howell A, et al). Results of the ATAC (Arimidex, Tamoxifen, Alone or in Combination) trial after completion of 5 years\' adjuvant treatment for breast cancer. Lancet. 2005;365(9453):60-62.',
-          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(04)17666-6/abstract',
-          publishedAt: '2005-01-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── Bortezomib — first proteasome inhibitor approved for myeloma 2003 ─────────
-  {
-    externalId: 'trajectory:bortezomib-velcade-first-proteasome-inhibitor-myeloma-2003',
-    text: 'Bortezomib (Velcade), the first-in-class proteasome inhibitor, induces durable responses in relapsed and refractory multiple myeloma, as recorded by the FDA\'s accelerated approval on 13 May 2003 and the SUMMIT phase 2 trial published in the New England Journal of Medicine on 26 June 2003.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2003-05-13',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2003-05-13',
-        datePrecision: 'DAY',
-        reason: 'The FDA granted accelerated approval to bortezomib for multiple myeloma patients who had received at least two prior therapies and progressed on the last, roughly two months after priority review and before the pivotal trial was even published. It was the first proteasome inhibitor ever approved, recording institutionally the claim that blocking the ubiquitin-proteasome pathway is a viable anticancer mechanism.',
-        source: {
-          externalId: 'src:bortezomib-fda-approval-oncologist-2003',
-          name: 'Kane RC, Bross PF, Farrell AT, Pazdur R. Velcade: U.S. FDA approval for the treatment of multiple myeloma progressing on prior therapy. Oncologist. 2003;8(6):508-513.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/14657528/',
-          publishedAt: '2003-12-01',
-          methodologyType: 'derivative',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2005-06-16',
-        datePrecision: 'DAY',
-        reason: 'Richardson and colleagues published the APEX phase 3 trial in the New England Journal of Medicine, showing bortezomib produced superior response rates, time to progression, and overall survival versus high-dose dexamethasone in relapsed myeloma. The confirmatory randomized data — building on the SUMMIT phase 2 study (NEJM, 26 June 2003) that had supported accelerated approval — converted bortezomib\'s provisional efficacy claim into a settled standard of care.',
-        source: {
-          externalId: 'src:bortezomib-summit-richardson-nejm-2003',
-          name: 'Richardson PG, Barlogie B, Berenson J, et al. A phase 2 study of bortezomib in relapsed, refractory myeloma. N Engl J Med. 2003;348(26):2609-2617.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/12826635/',
-          publishedAt: '2003-06-26',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── PCPT — finasteride prostate cancer prevention contested 2003 ──────────────
-  {
-    externalId: 'trajectory:pcpt-finasteride-prostate-cancer-prevention-2003',
-    text: 'Thompson and the Prostate Cancer Prevention Trial investigators reported in the New England Journal of Medicine on 24 June 2003 that finasteride reduced the prevalence of prostate cancer by about 25% in men aged 55 and older, but was associated with an apparent increase in high-grade tumors among those diagnosed.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2003-06-24',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'CONTESTED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2003-06-24',
-        datePrecision: 'DAY',
-        reason: 'The PCPT, a randomized placebo-controlled trial in 18,882 men stopped early in June 2003, found finasteride lowered prostate cancer prevalence by roughly 25% — the first demonstration that a drug could reduce prostate cancer risk. The same report recorded a higher rate of Gleason 7-10 high-grade tumors in the finasteride arm (6.4% vs 5.1%), planting a safety signal alongside the benefit and leaving the chemoprevention claim immediately disputed.',
-        source: {
-          externalId: 'src:pcpt-thompson-nejm-2003',
-          name: 'Thompson IM, Goodman PJ, Tangen CM, et al. The influence of finasteride on the development of prostate cancer. N Engl J Med. 2003;349(3):215-224.',
-          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa030660',
-          publishedAt: '2003-06-24',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'CONTESTED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2011-06-09',
-        datePrecision: 'DAY',
-        reason: 'After reviewing the PCPT and the dutasteride REDUCE trial, the FDA on 9 June 2011 required labeling for all 5-alpha reductase inhibitors warning of an increased risk of high-grade prostate cancer and declined to approve finasteride or dutasteride for prostate cancer prevention. The agency action institutionalized the unresolved tension: the drugs cut overall cancer diagnoses but carried a high-grade signal, so chemoprevention remained contested rather than adopted, even as later analyses attributed much of the high-grade signal to detection bias.',
-        source: {
-          externalId: 'src:fda-5ari-prostate-safety-2011',
-          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: 5-alpha reductase inhibitors (5-ARIs) may increase the risk of a more serious form of prostate cancer. 9 June 2011.',
-          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-5-alpha-reductase-inhibitors-5-aris-may-increase-risk-more-serious',
-          publishedAt: '2011-06-09',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
 
   // ── Erlotinib — EGFR inhibitor survival benefit in pretreated NSCLC 2004 ──────
   {
