@@ -43840,6 +43840,94 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // REPRODUCTIVE MEDICINE & HORMONAL PHARMACOLOGY (1941–1953)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Albright postmenopausal osteoporosis — estrogen-deficiency theory 1941 ──
+  {
+    externalId: 'trajectory:albright-postmenopausal-osteoporosis-estrogen-deficiency-1941',
+    text: 'Fuller Albright, Patricia H. Smith, and Anna M. Richardson reported in JAMA on 31 May 1941 that postmenopausal osteoporosis is a distinct clinical entity arising from ovarian (estrogen) deficiency after menopause and responsive to estrogen therapy, founding the estrogen-deficiency theory of bone loss in women.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-05-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-05-31',
+        datePrecision: 'DAY',
+        reason: 'Albright, Smith, and Richardson published \'Postmenopausal Osteoporosis: Its Clinical Features\' in JAMA, describing a series of mostly postmenopausal women with vertebral fragility fractures and proposing that loss of ovarian function (estrogen deficiency) causes the bone loss, which they reported responded to estrogen therapy. This recorded in the expert literature the claim that postmenopausal osteoporosis is a discrete hormone-deficiency disease rather than ordinary aging, founding the rationale for estrogen replacement to protect bone.',
+        source: {
+          externalId: 'src:albright-postmenopausal-osteoporosis-jama-1941',
+          name: 'Albright F, Smith PH, Richardson AM. Postmenopausal Osteoporosis: Its Clinical Features. JAMA. 1941;116(22):2465-2474.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/249029',
+          publishedAt: '1941-05-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-05-01',
+        datePrecision: 'MONTH',
+        reason: 'After decades of converging evidence — accelerated bone loss after oophorectomy, estrogen receptors identified in bone, and randomized trials showing estrogen prevents postmenopausal bone loss — the field affirmed Albright\'s etiologic hypothesis. The 1998 Journal of Bone and Mineral Research \'unitary model\' issue, including the commentary \'Was Albright Right After All?\', concluded that estrogen deficiency is the primary cause of postmenopausal osteoporosis, settling the core claim Albright advanced in 1941.',
+        source: {
+          externalId: 'src:was-albright-right-jbmr-1998',
+          name: 'Estrogens and postmenopausal osteoporosis: was Albright right after all? J Bone Miner Res. 1998;13(5):774-776. (Accompanying Riggs BL, Khosla S, Melton LJ. A unitary model for involutional osteoporosis. J Bone Miner Res. 1998;13(5):763-773.)',
+          url: 'https://academic.oup.com/jbmr/article-abstract/13/5/774/7514367',
+          publishedAt: '1998-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── DES efficacy claim — Smith 1948 reversed by Dieckmann RCT 1953 ──────────
+  {
+    externalId: 'trajectory:des-prevents-miscarriage-efficacy-dieckmann-rct-1948',
+    text: 'Olive Watkins Smith and George Van Siclen Smith reported in the American Journal of Obstetrics and Gynecology in November 1948 that prophylactic diethylstilbestrol (DES) improved pregnancy outcomes and prevented miscarriage and late complications, an efficacy claim that drove mass prescribing to pregnant women until the double-blind Dieckmann trial of 1953 found DES had no therapeutic value.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1948-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Smith and Smith published \'Diethylstilbestrol in the Prevention and Treatment of Complications of Pregnancy\' in the American Journal of Obstetrics and Gynecology, reporting that DES given to pregnant women stimulated progesterone production and reduced miscarriage and toxemia in an uncontrolled treated series. This recorded in the expert literature the efficacy claim that prophylactic DES improves pregnancy outcome; on the strength of it and follow-up papers, physicians worldwide began prescribing DES to millions of pregnant women.',
+        source: {
+          externalId: 'src:smith-smith-des-pregnancy-ajog-1948',
+          name: 'Smith OW, Smith GV. Diethylstilbestrol in the prevention and treatment of complications of pregnancy. Am J Obstet Gynecol. 1948;56(5):821-834.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10601944/',
+          publishedAt: '1948-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Dieckmann, Davis, Rynkiewicz, and Pottinger reported the University of Chicago double-blind, placebo-controlled trial of 1,646 pregnant women — one of the earliest large randomized controlled trials in obstetrics — and found that DES did not reduce abortion, prematurity, or postmaturity and may even have favored premature labor. The result refuted the Smiths\' efficacy claim, showing prophylactic DES had no therapeutic value (a finding distinct from, and predating by 18 years, the carcinogenicity reversal established by Herbst in 1971).',
+        source: {
+          externalId: 'src:dieckmann-des-therapeutic-value-ajog-1953',
+          name: 'Dieckmann WJ, Davis ME, Rynkiewicz LM, Pottinger RE. Does the administration of diethylstilbestrol during pregnancy have therapeutic value? Am J Obstet Gynecol. 1953;66(5):1062-1081.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13104505/',
+          publishedAt: '1953-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
