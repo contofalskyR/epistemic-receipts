@@ -41457,6 +41457,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ONCOLOGY / TARGETED THERAPY ERA (1990–2005)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Arsenic trioxide (Trisenox) for relapsed APL — FDA 2000 ─────────────────
+  {
+    externalId: 'trajectory:arsenic-trioxide-trisenox-relapsed-apl-2000',
+    text: 'Arsenic trioxide (Trisenox), an inorganic poison, induces complete remission in relapsed acute promyelocytic leukemia by triggering differentiation and apoptosis of malignant promyelocytes — a claim first evidenced by Soignet and colleagues in the New England Journal of Medicine on 5 November 1998 and settled institutionally by the FDA\'s approval of 25 September 2000 for relapsed or refractory APL.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-11-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-11-05',
+        datePrecision: 'DAY',
+        reason: 'Soignet and colleagues at Memorial Sloan-Kettering reported that 11 of 12 patients with APL who had relapsed after extensive prior therapy achieved complete remission on low-dose intravenous arsenic trioxide, with response associated with partial differentiation and caspase-mediated apoptosis. This was the first rigorous Western confirmation of striking Chinese clinical reports, recording the paradoxical claim that a classic toxic element could be a targeted anti-leukemic agent.',
+        source: {
+          externalId: 'src:soignet-arsenic-trioxide-apl-nejm-1998',
+          name: 'Soignet SL, Maslak P, Wang ZG, et al. Complete remission after treatment of acute promyelocytic leukemia with arsenic trioxide. N Engl J Med. 1998;339(19):1341-1348. PMID 9801394.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9801394/',
+          publishedAt: '1998-11-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-09-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Trisenox (arsenic trioxide, NDA 021248) for induction and consolidation in patients with APL refractory to or relapsed from retinoid and anthracycline chemotherapy. The approval converted the single-institution efficacy observation into a sanctioned second-line therapy; arsenic trioxide later became the backbone of chemotherapy-free front-line APL regimens, making APL the most curable acute leukemia.',
+        source: {
+          externalId: 'src:fda-trisenox-arsenic-trioxide-approval-2000',
+          name: 'U.S. FDA, Drugs@FDA. Trisenox (arsenic trioxide), NDA 021248. Approval September 25, 2000.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021248',
+          publishedAt: '2000-09-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cladribine (Leustatin) for hairy cell leukemia — FDA 1993 ───────────────
+  {
+    externalId: 'trajectory:cladribine-leustatin-hairy-cell-leukemia-1993',
+    text: 'A single continuous infusion of cladribine (2-chlorodeoxyadenosine, Leustatin) induces durable complete remission in hairy cell leukemia without maintenance therapy — a claim first evidenced by Piro and colleagues in the New England Journal of Medicine on 19 April 1990 and settled institutionally by the FDA\'s approval of 26 February 1993.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1990-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-04-19',
+        datePrecision: 'DAY',
+        reason: 'Piro, Carrera, Carson and Beutler at Scripps reported that 11 of 12 patients with hairy cell leukemia achieved complete remission after a single 7-day infusion of 2-chlorodeoxyadenosine, with no maintenance required, exceeding the complete-remission rate seen with interferon alfa. This recorded the claim that a single course of a purine analogue could produce lasting remission in a previously chronic, treatment-dependent orphan leukemia.',
+        source: {
+          externalId: 'src:piro-cladribine-hairy-cell-nejm-1990',
+          name: 'Piro LD, Carrera CJ, Carson DA, Beutler E. Lasting remissions in hairy-cell leukemia induced by a single infusion of 2-chlorodeoxyadenosine. N Engl J Med. 1990;322(16):1117-1121. PMID 1969613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1969613/',
+          publishedAt: '1990-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-02-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Leustatin (cladribine, NDA 020229) for the treatment of active hairy cell leukemia. The approval established single-course cladribine as the standard first-line therapy for hairy cell leukemia, a position it retains, displacing interferon and splenectomy for most patients.',
+        source: {
+          externalId: 'src:fda-leustatin-cladribine-approval-1993',
+          name: 'U.S. FDA, Drugs@FDA. Leustatin (cladribine), NDA 020229. Approval February 26, 1993.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=020229',
+          publishedAt: '1993-02-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sodium oxybate (Xyrem) for cataplexy / narcolepsy — FDA 2002 ────────────
+  {
+    externalId: 'trajectory:sodium-oxybate-xyrem-cataplexy-narcolepsy-2002',
+    text: 'Sodium oxybate (Xyrem), the sodium salt of the controlled substance gamma-hydroxybutyrate (GHB), reduces cataplexy attacks in narcolepsy — a claim established in the US Xyrem Multicenter Study Group\'s randomized placebo-controlled trial published in Sleep in February 2002 and settled institutionally by the FDA\'s orphan approval of 17 July 2002 under tightly restricted distribution.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The US Xyrem Multicenter Study Group reported a randomized, double-blind, placebo-controlled trial in 136 narcolepsy patients showing that nightly oral sodium oxybate dose-dependently reduced weekly cataplexy attacks, reaching significance at the 9 g dose (p=0.0008). This recorded the first controlled evidence that GHB, an illicit \'date-rape\' drug, had a genuine therapeutic effect on a defining symptom of narcolepsy.',
+        source: {
+          externalId: 'src:xyrem-multicenter-sodium-oxybate-narcolepsy-sleep-2002',
+          name: 'U.S. Xyrem Multicenter Study Group. A randomized, double blind, placebo-controlled multicenter trial comparing the effects of three doses of orally administered sodium oxybate with placebo for the treatment of narcolepsy. Sleep. 2002;25(1):42-49. PMID 11833860.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11833860/',
+          publishedAt: '2002-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-07-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Xyrem (sodium oxybate, NDA 021196) for cataplexy in narcolepsy, simultaneously placing it in DEA Schedule III (with Schedule I penalties for illicit use) and mandating a restricted-distribution risk-management program with a single central pharmacy. The approval is a landmark in post-market surveillance design: it settled the efficacy claim while institutionalizing a closed distribution system to contain abuse and diversion of a notorious controlled substance.',
+        source: {
+          externalId: 'src:fda-xyrem-sodium-oxybate-approval-2002',
+          name: 'U.S. FDA, Drugs@FDA. Xyrem (sodium oxybate), NDA 021196. Approval July 17, 2002.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021196',
+          publishedAt: '2002-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Denileukin diftitox (Ontak) for CTCL — FDA 1999 ────────────────────────
+  {
+    externalId: 'trajectory:denileukin-diftitox-ontak-ctcl-1999',
+    text: 'Denileukin diftitox (Ontak), an engineered diphtheria-toxin/interleukin-2 fusion protein, selectively kills CD25-expressing malignant cells and produces durable responses in cutaneous T-cell lymphoma — a claim first settled institutionally by the FDA\'s accelerated orphan approval of 5 February 1999 and confirmed in the pivotal phase III trial published by Olsen and colleagues in the Journal of Clinical Oncology on 15 January 2001.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-02-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-02-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval (Subpart E) to Ontak (denileukin diftitox, BLA 103767) for persistent or recurrent cutaneous T-cell lymphoma whose cells express the CD25 IL-2 receptor component. As the first targeted fusion-toxin biologic approved for any cancer, it recorded the claim that a receptor-directed protein toxin could treat a lymphoma, conditioned on later confirmatory data.',
+        source: {
+          externalId: 'src:fda-ontak-denileukin-diftitox-approval-1999',
+          name: 'U.S. FDA, Drugs@FDA. Ontak (denileukin diftitox), BLA 103767. Accelerated approval February 5, 1999.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2008/103767s5094lbl.pdf',
+          publishedAt: '1999-02-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-01-15',
+        datePrecision: 'DAY',
+        reason: 'Olsen, Duvic, Frankel and colleagues published the pivotal multicenter trial in which 30% of 71 patients with heavily pretreated CTCL achieved an objective response (partial or complete) on denileukin diftitox, independent of dose. The peer-reviewed result confirmed the efficacy underlying accelerated approval; the drug received full FDA approval in 2008, and after a 2014 manufacturing-related market withdrawal the active agent was reintroduced as a purified formulation (Lymphir) in 2024.',
+        source: {
+          externalId: 'src:olsen-denileukin-diftitox-ctcl-jco-2001',
+          name: 'Olsen E, Duvic M, Frankel A, et al. Pivotal phase III trial of two dose levels of denileukin diftitox for the treatment of cutaneous T-cell lymphoma. J Clin Oncol. 2001;19(2):376-388. PMID 11208829.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11208829/',
+          publishedAt: '2001-01-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Alemtuzumab (Campath) for fludarabine-refractory CLL — FDA 2001 ─────────
+  {
+    externalId: 'trajectory:alemtuzumab-campath-fludarabine-refractory-cll-2001',
+    text: 'Alemtuzumab (Campath-1H), a humanized anti-CD52 monoclonal antibody, produces durable objective responses in B-cell chronic lymphocytic leukemia that has failed fludarabine — a claim settled institutionally by the FDA\'s accelerated orphan approval of 7 May 2001 and confirmed in the pivotal international study published by Keating and colleagues in Blood on 15 May 2002.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-05-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-05-07',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to Campath (alemtuzumab, BLA 103948) for B-CLL treated with alkylating agents and refractory to fludarabine, based on durable objective response rates of roughly 21–33% in single-arm studies. This recorded the claim that depleting CD52-bearing lymphocytes could salvage a refractory orphan leukemia, conditioned on confirmatory data.',
+        source: {
+          externalId: 'src:fda-campath-alemtuzumab-approval-2001',
+          name: 'U.S. FDA, Drugs@FDA. Campath (alemtuzumab), BLA 103948. Accelerated approval May 7, 2001.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=103948',
+          publishedAt: '2001-05-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-05-15',
+        datePrecision: 'DAY',
+        reason: 'Keating and colleagues published the pivotal CAM211 international study (93 patients across 21 centers) showing a 33% response rate and 16-month median survival in fludarabine-refractory B-CLL, confirming the efficacy underlying accelerated approval. Notably, although the efficacy claim was never refuted, Sanofi-Genzyme voluntarily withdrew Campath from the US and EU oncology markets in 2012 to relaunch the same antibody at higher price as Lemtrada for multiple sclerosis, keeping it available free to CLL patients via an access program — a market action distinct from any epistemic reversal.',
+        source: {
+          externalId: 'src:keating-alemtuzumab-cll-blood-2002',
+          name: 'Keating MJ, Flinn I, Jain V, et al. Therapeutic role of alemtuzumab (Campath-1H) in patients who have failed fludarabine: results of a large international study. Blood. 2002;99(10):3554-3561.',
+          url: 'https://ashpublications.org/blood/article/99/10/3554/106931/Therapeutic-role-of-alemtuzumab-Campath-1H-in',
+          publishedAt: '2002-05-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
