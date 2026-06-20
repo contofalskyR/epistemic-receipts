@@ -45197,6 +45197,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Kimball & Murlin glucagon discovery — 1923 ──────────────────────────────
+  {
+    externalId: 'trajectory:kimball-murlin-glucagon-discovery-1923',
+    text: 'Charles P. Kimball and John R. Murlin reported in the Journal of Biological Chemistry in 1923 that pancreatic extracts used to purify insulin contained a distinct hyperglycemic substance, which they named glucagon (from \'glucose agonist\'), identifying a second pancreatic factor that raises rather than lowers blood sugar.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kimball and Murlin, while testing precipitation methods to purify insulin from pancreatic extracts, observed and reported a transient hyperglycemic effect they attributed to a separate \'hyperglycemic substance\' they named glucagon. This first recorded the existence of a second, blood-sugar-raising pancreatic factor in the expert literature, in the same year Banting and Macleod received the Nobel Prize for insulin.',
+        source: {
+          externalId: 'src:kimball-murlin-glucagon-jbc-1923',
+          name: 'Kimball CP, Murlin JR. Aqueous extracts of pancreas. III. Some precipitation reactions of insulin. J Biol Chem. 1923;58:337-348. (citation documented in: The insulin centennial—100 years of milestones in biochemistry. J Biol Chem. 2021.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8605089/',
+          publishedAt: '1923-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-09-01',
+        datePrecision: 'MONTH',
+        reason: 'After two decades in which glucagon was widely dismissed as a meaningless impurity of insulin preparations, Earl Sutherland and Christian de Duve reported in the Journal of Biological Chemistry in September 1948 that the hyperglycemic-glycogenolytic factor originates in the alpha cells of the pancreatic islets. Localizing glucagon to a specific cell type established it as a genuine pancreatic hormone with a defined source and counter-regulatory role, settling its status as the physiological antagonist of insulin.',
+        source: {
+          externalId: 'src:sutherland-deduve-glucagon-alpha-cells-jbc-1948',
+          name: 'Sutherland EW, de Duve C. Origin and distribution of the hyperglycemic-glycogenolytic factor of the pancreas. J Biol Chem. 1948;175(2):663-674.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18880761/',
+          publishedAt: '1948-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Li, Simpson & Evans ACTH isolation — 1942 ───────────────────────────────
+  {
+    externalId: 'trajectory:li-simpson-evans-acth-isolation-1942',
+    text: 'Choh Hao Li, Miriam E. Simpson, and Herbert M. Evans reported in Science in 1942 that they had isolated adrenocorticotropic hormone (ACTH) in purified form from sheep pituitary glands, giving the anterior-pituitary factor that drives the adrenal cortex a defined chemical identity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Li, Simpson, and Evans at Berkeley used salt fractionation to isolate adrenocorticotropic hormone from sheep pituitaries and announced the purified preparation in Science in 1942. This first recorded a defined, isolable ACTH in the expert literature, separating the corticotropic activity from other pituitary hormones.',
+        source: {
+          externalId: 'src:li-simpson-evans-acth-science-1942',
+          name: 'Li CH, Simpson ME, Evans HM. Isolation of adrenocorticotropic hormone from sheep pituitaries. Science. 1942;96(2498):450. (citation documented in: ACTH Action on the Adrenals. Endotext, NCBI Bookshelf.)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK279118/',
+          publishedAt: '1942-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Li, Evans, and Simpson published the full isolation and physicochemical characterization of ACTH in the Journal of Biological Chemistry in 1943 (149:413-424), consolidating it as an established, reproducibly purified anterior-pituitary hormone. This characterization underpinned ACTH\'s rapid adoption as a physiological tool and, by the end of the decade, as a clinical agent driving adrenal cortisol release.',
+        source: {
+          externalId: 'src:li-evans-simpson-acth-jbc-1943',
+          name: 'Li CH, Evans HM, Simpson ME. Adrenocorticotropic hormone. J Biol Chem. 1943;149:413-424. (citation documented in: ACTH Action on the Adrenals. Endotext, NCBI Bookshelf.)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK279118/',
+          publishedAt: '1943-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cori glucose-1-phosphate (Cori ester) & phosphorylase — 1936 ────────────
+  {
+    externalId: 'trajectory:cori-glucose-1-phosphate-ester-1936',
+    text: 'Carl F. Cori and Gerty T. Cori reported in the Proceedings of the Society for Experimental Biology and Medicine in 1936 the isolation of glucose-1-phosphate (the \'Cori ester\') from muscle and identified the enzyme phosphorylase, revealing the enzymatic mechanism by which glycogen is broken down and resynthesized.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Coris isolated a previously unknown phosphorylated intermediate from minced frog muscle — glucose-1-phosphate, later termed the Cori ester — and named the enzyme phosphorylase that forms it. This first recorded the chemical mechanism of glycogen metabolism, establishing the activated intermediate through which stored glycogen is mobilized.',
+        source: {
+          externalId: 'src:cori-cori-new-phosphate-ester-psebm-1936',
+          name: 'Cori CF, Cori GT. Mechanism of formation of hexosemonophosphate in muscle and isolation of a new phosphate ester. Proc Soc Exp Biol Med. 1936;34:702-705. (listed in: Bibliography of Carl F. Cori, Bernard Becker Medical Library, Washington University.)',
+          url: 'https://beckerexhibits.wustl.edu/legacy-exhibits/mig/biblios/coric.html',
+          publishedAt: '1936-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Royal Caroline Institute awarded Carl and Gerty Cori the 1947 Nobel Prize in Physiology or Medicine \'for their discovery of the course of the catalytic conversion of glycogen,\' canonizing the Cori-ester/phosphorylase mechanism and the Cori cycle as the established understanding of carbohydrate metabolism. Gerty Cori became the first American woman to win a science Nobel.',
+        source: {
+          externalId: 'src:nobel-medicine-1947-cori',
+          name: 'The Nobel Prize in Physiology or Medicine 1947 — Carl Ferdinand Cori and Gerty Theresa Cori. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1947/summary/',
+          publishedAt: '1947-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
