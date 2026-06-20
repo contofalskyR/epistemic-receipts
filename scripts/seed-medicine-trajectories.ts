@@ -50124,6 +50124,350 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY / HORMONE DISCOVERY ERA (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Bayliss & Starling secretin — first hormone discovered 1902 ────────────
+  {
+    externalId: 'trajectory:bayliss-starling-secretin-hormone-1902',
+    text: 'William Bayliss and Ernest Starling demonstrated on 16 January 1902 that acid entering the duodenum releases a blood-borne chemical messenger they named \'secretin\' which stimulates pancreatic secretion independently of nerves — the first hormone discovered — and Starling in 1905 introduced the word \'hormone\' for such internal chemical messengers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1902-01-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-01-16',
+        datePrecision: 'DAY',
+        reason: 'In their famous experiment on 16 January 1902 (witnessed by Charles Martin), Bayliss and Starling showed that injecting an extract of acid-treated duodenal mucosa into the bloodstream of a dog whose nerves to the pancreas had been cut still produced a flow of pancreatic juice. They published \'The mechanism of pancreatic secretion\' in the Journal of Physiology, naming the agent \'secretin\' and recording in the expert literature the claim that a chemical substance carried in the blood — not a nervous reflex — coordinates the activity of a distant organ.',
+        source: {
+          externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325-353.',
+          url: 'https://physoc.onlinelibrary.wiley.com/doi/10.1113/jphysiol.1902.sp000920',
+          publishedAt: '1902-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-06-20',
+        datePrecision: 'DAY',
+        reason: 'In his Croonian Lectures \'On the chemical correlation of the functions of the body,\' delivered to the Royal College of Physicians beginning 20 June 1905 and published in The Lancet, Starling generalized the secretin finding and coined the term \'hormone\' (from the Greek for \'to arouse/excite\') for blood-borne chemical messengers. The concept was rapidly adopted, founding endocrinology as a discipline and settling the claim that internal secretions are discrete chemical signals.',
+        source: {
+          externalId: 'src:starling-croonian-hormone-1905',
+          name: 'Starling EH. The Croonian Lectures on the chemical correlation of the functions of the body. Lancet. 1905;166(4275):339-341 et seq. (Coinage of \'hormone\'; confirmed in review of gut hormones, PMC4214649.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4214649/',
+          publishedAt: '1905-08-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Opie islets of Langerhans diabetic lesion 1901 ─────────────────────────
+  {
+    externalId: 'trajectory:opie-islets-langerhans-diabetic-lesion-1901',
+    text: 'Eugene L. Opie reported in the Journal of Experimental Medicine on 25 March 1901 that the islands (islets) of Langerhans show hyaline degeneration in patients dying with diabetes mellitus, localizing the diabetic lesion to the islets and implicating them as the seat of the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1901-03-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-03-25',
+        datePrecision: 'DAY',
+        reason: 'Opie published \'The relation of diabetes mellitus to lesions of the pancreas: hyaline degeneration of the islands of Langerhans\' in the Journal of Experimental Medicine, describing distinctive hyaline (later identified as islet amyloid) degeneration of the islets in diabetic pancreata. This recorded in the expert literature the claim that the discrete islet tissue described by Langerhans — not the acinar/exocrine pancreas generally — is the specific site of injury in diabetes, sharpening von Mering and Minkowski\'s whole-organ result onto the islets.',
+        source: {
+          externalId: 'src:opie-islets-diabetes-jem-1901',
+          name: 'Opie EL. The relation of diabetes mellitus to lesions of the pancreas. Hyaline degeneration of the islands of Langerhans. J Exp Med. 1901;5(5):527-540.',
+          url: 'https://rupress.org/jem/article/5/5/527/10095/THE-RELATION-OE-DIABETES-MELLITUS-TO-LESIONS-OF',
+          publishedAt: '1901-03-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Opie\'s localization of the diabetic lesion to the islets was settled when Banting, Best, Collip and Macleod isolated insulin from pancreatic/islet tissue in 1921-1922 and reversed diabetes, directly demonstrating that the islets are the source of the antidiabetic internal secretion whose failure causes the disease. The islet/beta-cell origin of diabetes became and remains established pathophysiological fact.',
+        source: {
+          externalId: 'src:beta-cell-death-diabetes-review-2021',
+          name: 'β-Cell Death in Diabetes: Past Discoveries, Present Understanding, and Potential Future Advances (review tracing the islet/beta-cell lesion from Opie 1901 through insulin\'s isolation). PMC8620854.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8620854/',
+          publishedAt: '2021-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Abel crystalline insulin 1926 ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:abel-crystalline-insulin-1926',
+    text: 'John Jacob Abel announced in the Proceedings of the National Academy of Sciences on 15 February 1926 that he had obtained insulin in pure crystalline form, establishing that the antidiabetic principle of the pancreas is a discrete crystallizable substance and later that it is a protein composed of amino acids.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-02-15',
+        datePrecision: 'DAY',
+        reason: 'Abel published \'Crystalline Insulin\' in PNAS, reporting that the active antidiabetic substance could be crystallized to apparent purity — the first time insulin was reduced from a crude extract to a defined, weighable chemical entity. This recorded the claim that the hormone is a single isolable compound (and, Abel concluded, a protein built of amino acids), moving insulin from physiological activity to defined chemistry and seeding modern protein chemistry.',
+        source: {
+          externalId: 'src:abel-crystalline-insulin-pnas-1926',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci USA. 1926;12(2):132-136.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.12.2.132',
+          publishedAt: '1926-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-12-10',
+        datePrecision: 'DAY',
+        reason: 'Abel\'s claim that crystalline insulin is a defined protein was definitively settled when Frederick Sanger determined the complete amino-acid sequence of insulin (1951-1955), the first full sequence of any protein, for which he received the 1958 Nobel Prize in Chemistry \'for his work on the structure of proteins, especially that of insulin.\' The award institutionally ratified that insulin is a discrete protein of fixed structure — vindicating Abel\'s crystallization and protein interpretation.',
+        source: {
+          externalId: 'src:sanger-nobel-chemistry-1958',
+          name: 'Nobel Prize Committee. The Nobel Prize in Chemistry 1958 — Frederick Sanger (structure of proteins, especially insulin).',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1958/sanger/facts/',
+          publishedAt: '1958-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Collip parathyroid hormone 1925 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:collip-parathyroid-hormone-1925',
+    text: 'James B. Collip reported in the Journal of Biological Chemistry in 1925 that he had extracted an active parathyroid hormone that prevents and controls parathyroid tetany and regulates the level of calcium in the blood, establishing that the parathyroid gland exerts endocrine control over calcium metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1925-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on his insulin-purification experience, Collip prepared a hot-HCl extract of parathyroid glands and showed it could prevent and reverse the fatal tetany of parathyroidectomized animals and raise blood calcium. Publishing \'The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium\' in JBC, he recorded in the expert literature the claim that the parathyroid secretes a discrete hormone governing calcium homeostasis, resolving longstanding debate over the gland\'s function.',
+        source: {
+          externalId: 'src:collip-parathyroid-hormone-jbc-1925',
+          name: 'Collip JB. The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium. J Biol Chem. 1925;63:395-438. (Citation confirmed in: The history of parathyroid endocrinology, PMC3683213.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3683213/',
+          publishedAt: '1925-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Collip\'s bioactivity-defined hormone was reduced to defined chemistry when Brewer and Ronan determined the complete amino-acid sequence of bovine parathyroid hormone (PNAS 1970), confirming PTH as a single, isolable polypeptide. Together with decades of clinical use treating hypoparathyroid tetany, this settled the claim that a discrete parathyroid hormone regulates blood calcium.',
+        source: {
+          externalId: 'src:brewer-ronan-bovine-pth-sequence-pnas-1970',
+          name: 'Brewer HB Jr, Ronan R. Bovine parathyroid hormone: amino acid sequence. Proc Natl Acad Sci USA. 1970;67(4):1862-1869.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.67.4.1862',
+          publishedAt: '1970-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Houssay pituitary carbohydrate metabolism 1930 ─────────────────────────
+  {
+    externalId: 'trajectory:houssay-pituitary-carbohydrate-metabolism-1930',
+    text: 'Bernardo Houssay and Alberto Biasotti demonstrated in 1930 that removing the anterior pituitary lessens the severity of pancreatic (insulin-deficiency) diabetes in dogs while injecting anterior-pituitary extract aggravates it, establishing that the anterior pituitary secretes diabetogenic, anti-insulin principles that help govern sugar metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Houssay and Biasotti reported that pancreatectomized dogs whose anterior pituitary was also removed (the \'Houssay dog\') developed a much milder, more survivable diabetes, while implanting or injecting anterior-pituitary tissue restored or intensified the hyperglycemia. This recorded in the expert literature the claim that carbohydrate metabolism depends not on insulin alone but on an antagonistic interplay between insulin and diabetogenic hormones of the anterior pituitary.',
+        source: {
+          externalId: 'src:houssay-biasotti-hypophyseal-diabetes-1930',
+          name: 'Houssay BA, Biasotti A. La diabetes pancreática de los perros hipofisoprivos. Rev Soc Argent Biol. 1930;6:251-296. (Documented in biography: Bernardo Houssay (1887-1971): Endocrine physiologist and Nobel laureate, PMC4728695.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4728695/',
+          publishedAt: '1930-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-12-10',
+        datePrecision: 'DAY',
+        reason: 'Houssay was awarded half of the 1947 Nobel Prize in Physiology or Medicine \'for his discovery of the part played by the hormone of the anterior pituitary lobe in the metabolism of sugar.\' The award institutionally ratified the claim that the anterior pituitary exerts diabetogenic, anti-insulin control over carbohydrate metabolism, settling the multi-hormonal model of blood-sugar regulation.',
+        source: {
+          externalId: 'src:houssay-nobel-1947',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1947 — Bernardo Houssay (anterior pituitary lobe and the metabolism of sugar).',
+          url: 'https://www.nobelprize.org/prizes/medicine/1947/houssay/facts/',
+          publishedAt: '1947-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID EPIDEMIC — FOUNDATIONS & RECKONINGS (1965–2012)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Dole & Nyswander methadone maintenance 1965 ─────────────────────────────
+  {
+    externalId: 'trajectory:dole-nyswander-methadone-maintenance-1965',
+    text: 'Vincent Dole and Marie Nyswander reported in JAMA on August 23, 1965, that oral methadone hydrochloride stabilized 22 chronically heroin-addicted patients, blocking euphoria and narcotic hunger and allowing them to function socially, establishing the clinical rationale for methadone maintenance treatment of heroin addiction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-08-23',
+        datePrecision: 'DAY',
+        reason: 'Dole and Nyswander published \'A Medical Treatment for Diacetylmorphine (Heroin) Addiction: A Clinical Trial With Methadone Hydrochloride\' in JAMA, reporting that 22 patients stabilized on oral methadone lost their narcotic craving and resumed work and study. The paper reframed heroin addiction as a treatable metabolic-medical condition rather than purely a moral or criminal failing, entering the literature as the founding empirical basis for opioid agonist maintenance therapy.',
+        source: {
+          externalId: 'src:dole-nyswander-methadone-jama-1965',
+          name: 'Dole VP, Nyswander M. A Medical Treatment for Diacetylmorphine (Heroin) Addiction: A Clinical Trial With Methadone Hydrochloride. JAMA. 1965;193(8):646-650.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14321530/',
+          publishedAt: '1965-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-15',
+        datePrecision: 'MONTH',
+        reason: 'In late 1972 the FDA issued formal regulations approving methadone for the maintenance treatment of opiate addiction, creating a closed distribution system restricted to registered treatment programs and recognizing that some patients require the drug for long periods. The regulatory action institutionalized methadone maintenance as an approved standard of care, ratifying the Dole-Nyswander clinical finding at the federal level.',
+        source: {
+          externalId: 'src:nas-federal-regulation-methadone',
+          name: 'Institute of Medicine (US). Federal Regulation of Methadone Treatment. Washington (DC): National Academies Press; 1995 (documenting the FDA 1972 methadone maintenance regulations).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK232105/',
+          publishedAt: '1995-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Portenoy & Foley chronic opioids for non-malignant pain 1986 ────────────
+  {
+    externalId: 'trajectory:portenoy-foley-chronic-opioids-nonmalignant-pain-1986',
+    text: 'Russell Portenoy and Kathleen Foley reported in the journal Pain in May 1986, from a retrospective series of 38 patients, that chronic opioid maintenance therapy could be a safe, salutary, and humane alternative for intractable non-malignant pain in patients without a prior history of drug abuse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-05',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-05',
+        datePrecision: 'MONTH',
+        reason: 'Portenoy and Foley published \'Chronic use of opioid analgesics in non-malignant pain: report of 38 cases,\' reporting that most patients required modest doses, that two-thirds got adequate relief, and that management problems occurred only in patients with prior substance abuse. The paper became a foundational citation extending opioid therapy from cancer pain to chronic non-cancer pain, a key intellectual premise of the subsequent expansion of outpatient opioid prescribing.',
+        source: {
+          externalId: 'src:portenoy-foley-pain-1986',
+          name: 'Portenoy RK, Foley KM. Chronic use of opioid analgesics in non-malignant pain: report of 38 cases. Pain. 1986;25(2):171-186.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2873550/',
+          publishedAt: '1986-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-12-17',
+        datePrecision: 'DAY',
+        reason: 'In a Wall Street Journal interview published December 17, 2012, Portenoy publicly recanted, citing a 2010 video in which he said he \'gave innumerable lectures in the late 1980s and \'90s about addiction that weren\'t true\' and conceded he had overstated opioid benefits and minimized addiction risk. The lead author\'s repudiation, alongside the broader scientific reckoning that low addiction figures were unsupported, reversed the safety claim the 1986 paper had helped establish.',
+        source: {
+          externalId: 'src:wsj-portenoy-second-thoughts-2012',
+          name: 'Catan T, Perez E. A Pain-Drug Champion Has Second Thoughts. The Wall Street Journal. December 17, 2012.',
+          url: 'https://www.seattle.gov/documents/departments/cityAttorney/opioidLitigation/FN15-APain-DrugChampionHasSecondThoughts.pdf',
+          publishedAt: '2012-12-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO analgesic ladder for cancer pain 1986 ────────────────────────────────
+  {
+    externalId: 'trajectory:who-analgesic-ladder-cancer-pain-1986',
+    text: 'The World Health Organization published the monograph \'Cancer Pain Relief\' in 1986, establishing the three-step analgesic ladder that legitimized the escalating use of strong opioids such as oral morphine for moderate-to-severe cancer pain as a global standard of care.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1986',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986',
+        datePrecision: 'YEAR',
+        reason: 'WHO issued \'Cancer Pain Relief\' (Geneva, 1986, ISBN 9241561009), presenting the three-step ladder: non-opioids, then weak opioids, then strong opioids titrated to effect, with emphasis on oral morphine and on removing legal barriers to opioid availability. Endorsed and disseminated by WHO, it was rapidly adopted worldwide as the authoritative framework for cancer pain management, shown to relieve pain in roughly 70-80% of patients.',
+        source: {
+          externalId: 'src:who-cancer-pain-relief-1986',
+          name: 'World Health Organization. Cancer Pain Relief. Geneva: World Health Organization; 1986. ISBN 9241561009.',
+          url: 'https://catalogue.nla.gov.au/catalog/837604',
+          publishedAt: '1986-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022',
+        datePrecision: 'YEAR',
+        reason: 'Decades of use exposed that the ladder\'s \'weak opioid\' second step and its binary weak/strong labeling were being misapplied and were poorly supported, prompting trials of a two-step approach and critical reappraisals such as the 2022 British Journal of Anaesthesia analysis of the ladder\'s misappropriation. The ladder\'s core principle of opioid-based escalation for cancer pain remains the standard, but the intermediate weak-opioid step is contested.',
+        source: {
+          externalId: 'src:bja-who-ladder-misappropriation-2022',
+          name: 'Misappropriation of the 1986 WHO analgesic ladder: the pitfalls of labelling opioids as weak or strong. British Journal of Anaesthesia. 2022.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S000709122200126X',
+          publishedAt: '2022-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
