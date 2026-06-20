@@ -55341,6 +55341,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY / NEUROLOGY / PREVENTIVE MEDICINE (1976--1996)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Canadian Cooperative Study Group — aspirin in threatened stroke 1978 ────
+  {
+    externalId: 'trajectory:canadian-cooperative-aspirin-threatened-stroke-1978',
+    text: 'The Canadian Cooperative Study Group reported on 13 July 1978 in the New England Journal of Medicine that aspirin reduced the risk of stroke or death by 31% — and by 48% in men, with no significant effect detected in women — among patients with threatened stroke (transient ischemic attacks), the first randomized evidence that aspirin prevents stroke.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-07-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-07-13',
+        datePrecision: 'DAY',
+        reason: 'The Canadian Cooperative Study Group\'s randomized, double-blind trial in 585 patients with threatened stroke found aspirin cut the combined risk of stroke or death by 31% overall, while sulfinpyrazone showed no significant benefit. This put on the scientific record the first randomized demonstration that an antiplatelet agent prevents cerebrovascular events — but the protective effect appeared confined to men (48% reduction) with no significant trend in women, a sex-specific claim that shaped a decade of guidance.',
+        source: {
+          externalId: 'src:canadian-cooperative-aspirin-stroke-nejm-1978',
+          name: 'The Canadian Cooperative Study Group. A randomized trial of aspirin and sulfinpyrazone in threatened stroke. N Engl J Med. 1978;299(2):53-59.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/351394/',
+          publishedAt: '1978-07-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-30',
+        datePrecision: 'DAY',
+        reason: 'The Antiplatelet Trialists\' Collaboration pooled randomized trials of prolonged antiplatelet therapy (mainly aspirin) and showed a roughly 25% reduction in serious vascular events across patients with prior stroke, TIA, myocardial infarction, or unstable angina. The overview settled aspirin as established secondary prevention for cerebrovascular disease and, by demonstrating benefit in both sexes, corrected the 1978 trial\'s influential but erroneous impression that aspirin worked only in men.',
+        source: {
+          externalId: 'src:antiplatelet-trialists-collaboration-bmj-1988',
+          name: 'Antiplatelet Trialists\' Collaboration. Secondary prevention of vascular disease by prolonged antiplatelet treatment. BMJ (Clin Res Ed). 1988;296(6618):320-331.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3125992/',
+          publishedAt: '1988-01-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Australian National Blood Pressure Study — mild hypertension benefit 1980 ──
+  {
+    externalId: 'trajectory:anbp-australian-mild-hypertension-treatment-benefit-1980',
+    text: 'On 14 June 1980 the Management Committee of the Australian therapeutic trial reported in The Lancet that drug treatment of mild hypertension (entry diastolic 95–109 mm Hg) reduced cardiovascular events and mortality versus placebo, extending the proven benefit of blood-pressure lowering downward into the mild-hypertension range.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-06-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-06-14',
+        datePrecision: 'DAY',
+        reason: 'The Australian National Blood Pressure Study randomized over 3,400 patients with mild hypertension (diastolic 95–109 mm Hg) to active drug therapy or placebo and found fewer cardiovascular endpoints and deaths in the treated group. As one of the first large placebo-controlled trials confined to genuinely mild hypertension, it recorded the contested claim that pharmacologic treatment benefits patients whose pressures fall well below the severe range proven in the 1967 VA trial.',
+        source: {
+          externalId: 'src:anbp-australian-mild-hypertension-lancet-1980',
+          name: 'Management Committee. The Australian therapeutic trial in mild hypertension. Report by the Management Committee. Lancet. 1980;1(8181):1261-1267.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6104081/',
+          publishedAt: '1980-06-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-04-07',
+        datePrecision: 'DAY',
+        reason: 'Collins, Peto, MacMahon, and colleagues pooled the randomized blood-pressure-lowering drug trials (including ANBP, HDFP, and MRC) in an epidemiological overview and showed that even the modest pressure reductions achieved in mild hypertension produced the stroke reduction predicted by observational data, with a smaller but real effect on coronary events. The overview reconciled the conflicting individual trials and settled blood-pressure lowering across the mild range as evidence-based prevention.',
+        source: {
+          externalId: 'src:collins-bp-stroke-chd-overview-lancet-1990',
+          name: 'Collins R, Peto R, MacMahon S, et al. Blood pressure, stroke, and coronary heart disease. Part 2, short-term reductions in blood pressure: overview of randomised drug trials in their epidemiological context. Lancet. 1990;335(8693):827-838.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1969567/',
+          publishedAt: '1990-04-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── INTERSALT — dietary sodium and blood pressure 1988 ──────────────────────
+  {
+    externalId: 'trajectory:intersalt-dietary-sodium-blood-pressure-1988',
+    text: 'The INTERSALT study reported on 30 July 1988 in the BMJ that, across 52 population samples in 32 countries, 24-hour urinary sodium excretion was significantly and positively associated with blood pressure within centres and with the rise of blood pressure with age, providing the largest standardized epidemiological evidence linking dietary salt to blood pressure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-07-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-07-30',
+        datePrecision: 'DAY',
+        reason: 'The INTERSALT investigators measured 24-hour urinary sodium and blood pressure in more than 10,000 people across 52 standardized centres and found sodium significantly related to blood pressure within populations and to the steepness of the age–blood-pressure slope, with the four very-low-salt societies (e.g. the Yanomamo) showing little hypertension. But the across-population association with median blood pressure was weak or absent, so the result recorded the salt–blood-pressure link and the dispute over its magnitude in the same paper.',
+        source: {
+          externalId: 'src:intersalt-sodium-blood-pressure-bmj-1988',
+          name: 'Intersalt Cooperative Research Group. Intersalt: an international study of electrolyte excretion and blood pressure. Results for 24 hour urinary sodium and potassium excretion. BMJ. 1988;297(6644):319-328.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3416162/',
+          publishedAt: '1988-07-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-05-18',
+        datePrecision: 'DAY',
+        reason: 'Elliott, Stamler, and colleagues reanalyzed the INTERSALT data correcting for regression dilution and reaffirmed a substantial sodium–blood-pressure association both within and across populations, explicitly rebutting critics who argued the original cross-population signal was negligible. The published reanalysis and the rebuttals it provoked entrenched the salt–blood-pressure relationship as an actively contested claim — a controversy that persists in later population studies — rather than settling it.',
+        source: {
+          externalId: 'src:intersalt-revisited-elliott-bmj-1996',
+          name: 'Elliott P, Stamler J, Nichols R, et al. Intersalt revisited: further analyses of 24 hour sodium excretion and blood pressure within and across populations. BMJ. 1996;312(7041):1249-1253.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8634612/',
+          publishedAt: '1996-05-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── VA Cooperative Study — CABG survival benefit in left main disease 1976 ──
+  {
+    externalId: 'trajectory:va-cooperative-cabg-left-main-survival-1976',
+    text: 'The Veterans Administration Cooperative Study Group reported in Circulation in December 1976 that coronary artery bypass surgery improved survival versus medical therapy in men with significant left main coronary artery stenosis (7% vs 29% two-year mortality in the later cohort), the first randomized evidence that bypass grafting prolongs life in a defined coronary subgroup.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Takaro and colleagues reported the left-main subgroup of the VA randomized trial of coronary surgery, finding markedly lower mortality with bypass grafting than with medical therapy (3 of 42 surgical vs 12 of 41 medical deaths in the later-enrolled cohort, p<0.01). Against the backdrop of the broader VA trial showing no overall survival advantage for surgery in stable angina, this recorded the first randomized signal that CABG\'s benefit is concentrated in an anatomically high-risk subgroup rather than universal.',
+        source: {
+          externalId: 'src:va-cabg-left-main-circulation-1976',
+          name: 'Takaro T, Hultgren HN, Lipton MJ, Detre KM. The VA cooperative randomized study of surgery for coronary arterial occlusive disease II. Subgroup with significant left main lesions. Circulation. 1976;54(6 Suppl):III107-III117.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/791537/',
+          publishedAt: '1976-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-08-27',
+        datePrecision: 'DAY',
+        reason: 'The Coronary Artery Bypass Graft Surgery Trialists Collaboration (Yusuf et al.) pooled individual-patient 10-year data from the VA, European Coronary Surgery Study, CASS, and other trials and confirmed that CABG significantly improves survival, with the benefit greatest in patients with left main disease, three-vessel disease, and impaired left-ventricular function. The overview settled the risk-stratified survival benefit first glimpsed in the 1976 VA left-main subgroup as the durable, guideline-defining principle of coronary revascularization.',
+        source: {
+          externalId: 'src:cabg-trialists-overview-yusuf-lancet-1994',
+          name: 'Yusuf S, Zucker D, Peduzzi P, et al. Effect of coronary artery bypass graft surgery on survival: overview of 10-year results from randomised trials by the Coronary Artery Bypass Graft Surgery Trialists Collaboration. Lancet. 1994;344(8922):563-570.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7914958/',
+          publishedAt: '1994-08-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
