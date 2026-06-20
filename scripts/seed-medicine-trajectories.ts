@@ -44303,6 +44303,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Pronovost central-line bundle / CLABSI — 2006 ──────────────────────────
+  {
+    externalId: 'trajectory:pronovost-central-line-bundle-clabsi-2006',
+    text: 'Peter Pronovost and colleagues reported in the New England Journal of Medicine on 28 December 2006 that a simple evidence-based checklist intervention (the Michigan Keystone ICU project) produced a large and sustained reduction — to a median of zero — in catheter-related bloodstream infections across 103 intensive care units, overturning the assumption that such infections were an unavoidable cost of central venous catheterization.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-12-28',
+        datePrecision: 'DAY',
+        reason: 'Pronovost and colleagues reported the Keystone ICU collaborative across 103 Michigan ICUs, in which a five-item checklist (hand hygiene, chlorhexidine skin prep, full-barrier precautions, avoiding the femoral site, and prompt removal of unnecessary lines) coupled with a safety-culture program cut the median catheter-related bloodstream infection rate from 2.7 per 1,000 catheter-days to 0 within three months, sustained over 18 months. This recorded the claim that a low-cost procedural checklist could nearly eliminate a previously tolerated, lethal hospital-acquired infection.',
+        source: {
+          externalId: 'src:pronovost-keystone-clabsi-nejm-2006',
+          name: 'Pronovost P, Needham D, Berenholtz S, et al. An intervention to decrease catheter-related bloodstream infections in the ICU. N Engl J Med. 2006;355(26):2725-2732.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17192537/',
+          publishedAt: '2006-12-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-01-01',
+        datePrecision: 'MONTH',
+        reason: 'The Agency for Healthcare Research and Quality scaled the Keystone model nationwide as the \'On the CUSP: Stop BSI\' program, and Berenholtz and colleagues reported a roughly 40% reduction in central line-associated bloodstream infections across more than 1,000 participating ICUs. National adoption, accompanying CDC and CMS performance metrics, and the program\'s enshrinement as a patient-safety standard settled the claim that catheter bloodstream infections are largely preventable through a standardized procedural bundle.',
+        source: {
+          externalId: 'src:berenholtz-national-clabsi-iche-2014',
+          name: 'Berenholtz SM, Lubomski LH, Weeks K, et al. Eliminating central line-associated bloodstream infections: a national patient safety imperative. Infect Control Hosp Epidemiol. 2014;35(1):56-62.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24334799/',
+          publishedAt: '2014-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fecal microbiota transplantation for recurrent C. difficile — 2013 ─────
+  {
+    externalId: 'trajectory:fecal-microbiota-transplant-recurrent-cdiff-2013',
+    text: 'Els van Nood and colleagues reported in the New England Journal of Medicine (online 16 January, print 31 January 2013) that duodenal infusion of donor feces (fecal microbiota transplantation) cured recurrent Clostridium difficile infection in 81% of patients after a single infusion versus 31% for vancomycin, in the first randomized controlled trial of the procedure, which was stopped early for overwhelming efficacy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-01-31',
+        datePrecision: 'DAY',
+        reason: 'Van Nood and colleagues randomized patients with recurrent C. difficile infection to donor-feces infusion via nasoduodenal tube, standard vancomycin, or vancomycin plus bowel lavage; the trial was halted early when 13 of 16 (81%) transplant recipients were cured after one infusion versus 4 of 13 (31%) on vancomycin. This first RCT recorded into the literature the claim that restoring gut microbiota, rather than further antibiotics, is the effective treatment for relapsing C. difficile, converting an anecdotal centuries-old practice into evidence-based therapy.',
+        source: {
+          externalId: 'src:van-nood-fmt-cdiff-nejm-2013',
+          name: 'van Nood E, Vrieze A, Nieuwdorp M, et al. Duodenal infusion of donor feces for recurrent Clostridium difficile. N Engl J Med. 2013;368(5):407-415.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23323867/',
+          publishedAt: '2013-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The American College of Gastroenterology\'s 2013 clinical guideline for the diagnosis and management of C. difficile infection recommended fecal microbiota transplantation for patients with a third recurrence after vancomycin taper, and in mid-2013 the FDA announced it would exercise enforcement discretion permitting FMT for recurrent CDI not responding to standard therapy. Professional-society endorsement and regulatory accommodation settled FMT as accepted standard-of-care treatment for recurrent C. difficile.',
+        source: {
+          externalId: 'src:surawicz-acg-cdiff-guideline-2013',
+          name: 'Surawicz CM, Brandt LJ, Binion DG, et al. Guidelines for diagnosis, treatment, and prevention of Clostridium difficile infections. Am J Gastroenterol. 2013;108(4):478-498.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23439232/',
+          publishedAt: '2013-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── KANON ACL — rehab-first equivalence — 2010 ─────────────────────────────
+  {
+    externalId: 'trajectory:kanon-acl-reconstruction-rehab-first-2010',
+    text: 'A strategy of structured rehabilitation with the option of delayed ACL reconstruction yields patient-reported outcomes equivalent to routine early surgical reconstruction after an acute anterior cruciate ligament tear, allowing roughly 60% of patients to avoid surgery — established by the KANON randomized trial (Frobell et al., New England Journal of Medicine, 22 July 2010), challenging the prevailing doctrine that an acute ACL tear in active adults requires prompt reconstruction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-07-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-22',
+        datePrecision: 'DAY',
+        reason: 'Frobell and colleagues (the KANON trial) randomized 121 young active adults with acute ACL rupture to structured rehabilitation plus early reconstruction or structured rehabilitation with optional delayed reconstruction. At two years, patient-reported knee outcomes (KOOS) were equivalent, and 61% of the rehabilitation-first group avoided surgery altogether. This recorded the claim that routine early reconstruction is not necessary for good outcomes, contradicting an entrenched orthopedic preference for prompt surgery.',
+        source: {
+          externalId: 'src:frobell-kanon-acl-nejm-2010',
+          name: 'Frobell RB, Roos EM, Roos HP, Ranstam J, Lohmander LS. A randomized trial of treatment for acute anterior cruciate ligament tears. N Engl J Med. 2010;363(4):331-342.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20660401/',
+          publishedAt: '2010-07-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-01-24',
+        datePrecision: 'DAY',
+        reason: 'The five-year KANON follow-up in the BMJ confirmed no difference in patient-reported outcomes, radiographic osteoarthritis, or meniscal surgery between early reconstruction and rehabilitation-first management. Despite this reinforcing randomized evidence, routine early ACL reconstruction remained widely practiced and the trial\'s interpretation was vigorously debated, leaving the question of whether acute ACL tears require surgery genuinely contested rather than settled.',
+        source: {
+          externalId: 'src:frobell-kanon-acl-5yr-bmj-2013',
+          name: 'Frobell RB, Roos HP, Roos EM, Roemer FW, Ranstam J, Lohmander LS. Treatment for acute anterior cruciate ligament tear: five year outcome of randomised trial. BMJ. 2013;346:f232.',
+          url: 'https://www.bmj.com/content/346/bmj.f232',
+          publishedAt: '2013-01-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cricoid pressure / Sellick maneuver — 1961 → IRIS 2018 ─────────────────
+  {
+    externalId: 'trajectory:cricoid-pressure-sellick-aspiration-1961',
+    text: 'Applying cricoid pressure during induction of anaesthesia (the Sellick maneuver) prevents regurgitation and pulmonary aspiration of gastric contents — a technique introduced by Brian Sellick in The Lancet on 19 August 1961 that became a near-universal component of rapid sequence induction before being thrown into dispute by the sham-controlled IRIS trial in 2018.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-08-19',
+        datePrecision: 'DAY',
+        reason: 'Sellick described digital backward pressure on the cricoid cartilage to occlude the upper esophagus during anaesthetic induction, reporting in a case series that it prevented regurgitation of stomach contents into the pharynx. The paper recorded the claim that a simple manual maneuver could protect the airway from aspiration during induction in patients at risk (e.g., full stomach, obstetric, emergency surgery).',
+        source: {
+          externalId: 'src:sellick-cricoid-pressure-lancet-1961',
+          name: 'Sellick BA. Cricoid pressure to control regurgitation of stomach contents during induction of anaesthesia. Lancet. 1961;2(7199):404-406.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13749923/',
+          publishedAt: '1961-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-11-10',
+        datePrecision: 'DAY',
+        reason: 'Cricoid pressure was incorporated as a standard element of rapid sequence induction taught for decades, and as late as the Difficult Airway Society 2015 guidelines for the management of unanticipated difficult intubation, it remained a recommended component of rapid sequence induction. Institutional airway guidelines codified the maneuver as routine protective practice, reflecting its settled status in anaesthesia despite limited controlled evidence.',
+        source: {
+          externalId: 'src:frerk-das-2015-airway-guidelines-bja',
+          name: 'Frerk C, Mitchell VS, McNarry AF, et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26556848/',
+          publishedAt: '2015-11-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-10-17',
+        datePrecision: 'DAY',
+        reason: 'The IRIS randomized trial (Birenbaum et al.) compared cricoid pressure with a sham procedure during rapid sequence induction in 3,472 patients at aspiration risk and found nearly identical, very low aspiration rates (0.6% vs 0.5%) while cricoid pressure worsened laryngoscopic view and prolonged intubation. Although the trial formally failed to demonstrate noninferiority of the sham, its inability to show any protective benefit, together with the demonstrated harms to intubation, threw the long-settled maneuver into open dispute and prompted guidelines and clinicians to question or abandon routine cricoid pressure.',
+        source: {
+          externalId: 'src:birenbaum-iris-cricoid-jamasurg-2018',
+          name: 'Birenbaum A, Hajage D, Roche S, et al. Effect of Cricoid Pressure Compared With a Sham Procedure in the Rapid Sequence Induction of Anesthesia: The IRIS Randomized Clinical Trial. JAMA Surg. 2019;154(1):9-17.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30347104/',
+          publishedAt: '2018-10-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
