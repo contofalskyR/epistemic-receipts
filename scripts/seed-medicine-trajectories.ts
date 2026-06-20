@@ -39581,7 +39581,7 @@ const TRAJECTORIES: Trajectory[] = [
 
   // ── Fenfluramine/dexfenfluramine — valvulopathy withdrawal 1997 ──────────────
   {
-    externalId: 'trajectory:fenfluramine-dexfenfluramine-valvulopathy-withdrawal-1997',
+    externalId: 'trajectory:fenfluramine-dexfenfluramine-valvulopathy-fda-withdrawal-1997',
     text: 'The claim that the appetite suppressants fenfluramine (Pondimin) and dexfenfluramine (Redux) were safe weight-loss drugs was reversed when, after Connolly et al. reported associated valvular heart disease, the FDA requested their voluntary withdrawal from the US market on 15 September 1997.',
     claimType: 'HYBRID',
     claimEmergedAt: '1996-04',
