@@ -42746,6 +42746,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED THERAPY & IMMUNOTHERAPY ERA (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sipuleucel-T / Provenge — first therapeutic cancer vaccine (2010) ────────
+  {
+    externalId: 'trajectory:sipuleucel-t-provenge-first-cancer-vaccine-2010',
+    text: 'The FDA approved sipuleucel-T (Provenge), the first therapeutic cancer vaccine and first autologous cellular immunotherapy, on 29 April 2010 for asymptomatic or minimally symptomatic metastatic castration-resistant prostate cancer, on the basis that it prolonged overall survival.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-04-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Provenge (sipuleucel-T), an autologous active cellular immunotherapy directed against prostatic acid phosphatase, for metastatic castration-resistant prostate cancer. It was the first therapeutic cancer vaccine ever licensed in the United States, recording the claim that priming a patient\'s own antigen-presenting cells could extend survival in advanced cancer and inaugurating the autologous cellular immunotherapy class.',
+        source: {
+          externalId: 'src:fda-provenge-qa-2010',
+          name: 'U.S. Food and Drug Administration. Questions and Answers — Provenge (sipuleucel-T), BLA 125197. Approved 29 April 2010.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/questions-and-answers-provenge',
+          publishedAt: '2010-04-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-29',
+        datePrecision: 'DAY',
+        reason: 'Kantoff and the IMPACT Study investigators published the pivotal double-blind phase 3 trial in the New England Journal of Medicine, reporting in 512 men a 22% relative reduction in the risk of death (median overall survival 25.8 vs 21.7 months) despite no effect on time to disease progression. The hard survival endpoint settled in the expert literature the claim that an immunotherapy could prolong life in prostate cancer, establishing a novel benefit pattern in which survival improves without measurable tumor shrinkage.',
+        source: {
+          externalId: 'src:kantoff-impact-sipuleucel-nejm-2010',
+          name: 'Kantoff PW, Higano CS, Shore ND, et al. Sipuleucel-T immunotherapy for castration-resistant prostate cancer. N Engl J Med. 2010;363(5):411-422.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20818862/',
+          publishedAt: '2010-07-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PSA screening mortality contested — PLCO/ERSPC 2009 ─────────────────────
+  {
+    externalId: 'trajectory:psa-screening-mortality-contested-2009',
+    text: 'The longstanding clinical assumption that prostate-specific antigen (PSA) screening of asymptomatic men reduces prostate-cancer mortality was thrown into contestation on 18 March 2009, when two large randomized trials — the U.S. PLCO and the European ERSPC — published simultaneously in the New England Journal of Medicine reported conflicting results, PLCO finding no mortality benefit and ERSPC finding only a modest 20% relative reduction at the cost of substantial overdiagnosis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-04-25',
+        datePrecision: 'DAY',
+        reason: 'Catalona and colleagues reported in the New England Journal of Medicine that serum PSA measurement could detect early, potentially curable prostate cancers in asymptomatic men, establishing PSA as a practical screening test. The finding drove rapid, near-universal adoption of PSA screening in U.S. clinical practice through the 1990s, settling as de facto standard the assumption that early detection would reduce prostate-cancer death even though no randomized mortality evidence yet existed.',
+        source: {
+          externalId: 'src:catalona-psa-screening-nejm-1991',
+          name: 'Catalona WJ, Smith DS, Ratliff TL, et al. Measurement of prostate-specific antigen in serum as a screening test for prostate cancer. N Engl J Med. 1991;324(17):1156-1161.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1707140/',
+          publishedAt: '1991-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-03-18',
+        datePrecision: 'DAY',
+        reason: 'The PLCO trial (Andriole et al., 76,693 U.S. men) found no reduction in prostate-cancer death from annual PSA-plus-DRE screening, while the ERSPC trial (Schröder et al., 162,000 European men), published in the same NEJM issue, found a 20% relative mortality reduction but estimated that 1,410 men needed to be screened and 48 treated to prevent one death. The two randomized trials directly contested the two-decade assumption that PSA screening clearly saves lives, foregrounding overdiagnosis and overtreatment and setting up the USPSTF\'s 2012 Grade D recommendation against routine screening.',
+        source: {
+          externalId: 'src:andriole-plco-psa-nejm-2009',
+          name: 'Andriole GL, Crawford ED, Grubb RL, et al. Mortality results from a randomized prostate-cancer screening trial (PLCO). N Engl J Med. 2009;360(13):1310-1319.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19297565/',
+          publishedAt: '2009-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bortezomib / Velcade — first proteasome inhibitor (2003) ────────────────
+  {
+    externalId: 'trajectory:bortezomib-velcade-first-proteasome-inhibitor-2003',
+    text: 'The FDA granted accelerated approval to bortezomib (Velcade), the first proteasome inhibitor, on 13 May 2003 for relapsed and refractory multiple myeloma, establishing that blocking the 26S proteasome is a viable anticancer mechanism.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved bortezomib under its accelerated-approval pathway for multiple myeloma patients who had received at least two prior therapies and progressed, based on the single-arm SUMMIT phase 2 response rate. It was the first proteasome inhibitor licensed for any disease and the first new myeloma agent in over a decade, recording the claim that inhibiting ubiquitin-proteasome protein degradation could selectively kill malignant plasma cells.',
+        source: {
+          externalId: 'src:kane-velcade-fda-approval-oncologist-2003',
+          name: 'Kane RC, Bross PF, Farrell AT, Pazdur R. Velcade: U.S. FDA approval for the treatment of multiple myeloma progressing on prior therapy. Oncologist. 2003;8(6):508-513.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14657528/',
+          publishedAt: '2003-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-06-16',
+        datePrecision: 'DAY',
+        reason: 'Richardson and the APEX investigators published the confirmatory phase 3 trial in the New England Journal of Medicine, showing bortezomib was superior to high-dose dexamethasone in relapsed myeloma, with higher response rates, longer time to progression, and a one-year survival advantage (80% vs 66%). The randomized hard-endpoint data converted the surrogate-based accelerated approval into established standard-of-care, settling the proteasome-inhibition mechanism in the expert literature.',
+        source: {
+          externalId: 'src:richardson-apex-bortezomib-nejm-2005',
+          name: 'Richardson PG, Sonneveld P, Schuster MW, et al. Bortezomib or high-dose dexamethasone for relapsed multiple myeloma (APEX). N Engl J Med. 2005;352(24):2487-2498.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15958804/',
+          publishedAt: '2005-06-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cetuximab / KRAS biomarker restriction (2004 → 2008) ────────────────────
+  {
+    externalId: 'trajectory:cetuximab-kras-biomarker-restriction-2008',
+    text: 'The claim that cetuximab (Erbitux) benefits patients with metastatic colorectal cancer broadly — the basis of its 12 February 2004 FDA approval — was narrowed when Karapetis and colleagues reported in the New England Journal of Medicine on 23 October 2008 that the benefit is confined to tumors with wild-type KRAS, with KRAS-mutant tumors deriving no benefit.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-02-12',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to cetuximab, a chimeric anti-EGFR monoclonal antibody, in combination with irinotecan (or as monotherapy) for EGFR-expressing metastatic colorectal cancer refractory to chemotherapy. The approval recorded the claim that EGFR-expressing colorectal tumors as a class respond to EGFR blockade, with patient selection based on immunohistochemical EGFR expression.',
+        source: {
+          externalId: 'src:fda-erbitux-cetuximab-history-2004',
+          name: 'U.S. FDA. Erbitux (cetuximab) approval, BLA 125084, accelerated approval for metastatic colorectal cancer, 12 February 2004 (approval history).',
+          url: 'https://www.drugs.com/history/erbitux.html',
+          publishedAt: '2004-02-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'Karapetis et al. reported a retrospective biomarker analysis of the NCIC CO.17 trial in the New England Journal of Medicine, showing that cetuximab improved overall and progression-free survival only in patients whose tumors carried wild-type KRAS, while the roughly 40% of patients with KRAS-mutant tumors derived no benefit. The finding contested the original class-wide approval, demonstrated that EGFR expression was not a valid predictor, and rapidly drove the requirement for KRAS mutation testing before anti-EGFR therapy — a landmark in predictive biomarker-driven oncology.',
+        source: {
+          externalId: 'src:karapetis-kras-cetuximab-nejm-2008',
+          name: 'Karapetis CS, Khambata-Ford S, Jonker DJ, et al. K-ras mutations and benefit from cetuximab in advanced colorectal cancer. N Engl J Med. 2008;359(17):1757-1765.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18946061/',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
