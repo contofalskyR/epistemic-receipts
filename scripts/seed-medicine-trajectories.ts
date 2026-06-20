@@ -56315,6 +56315,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GENE THERAPY & RARE DISEASE ERA (2020--present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Lyfgenia (lovo-cel) sickle-cell gene therapy — FDA 2023 ─────────────────
+  {
+    externalId: 'trajectory:lyfgenia-lovo-cel-sickle-cell-gene-therapy-2023',
+    text: 'Lyfgenia (lovotibeglogene autotemcel), a one-time lentiviral gene-addition therapy adding an anti-sickling β-globin (HbA-T87Q), is an effective treatment for sickle cell disease in patients aged 12 and older, approved by the U.S. FDA on 8 December 2023 but carrying a boxed warning for hematologic malignancy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-01-01',
+        datePrecision: 'MONTH',
+        reason: 'The phase 1/2 HGB-206 study (NCT02140554), reported by Kanter and colleagues, showed that 28 of 32 (87.5%) recipients of lovo-cel achieved complete resolution of vaso-occlusive events during 6–18 months of follow-up, establishing in the expert literature that lentiviral gene addition could functionally treat sickle cell disease.',
+        source: {
+          externalId: 'src:kanter-lovocel-hgb206-ajh-2023',
+          name: 'Kanter J, Thompson AA, Pierciey FJ Jr, et al. LoVo-cel gene therapy for sickle cell disease: treatment process evolution and outcomes in the initial groups of the HGB-206 study. Am J Hematol. 2023;98(1):11-22.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36161320/',
+          publishedAt: '2023-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-12-08',
+        datePrecision: 'DAY',
+        reason: 'Under Priority Review and Fast Track designation, the FDA approved Lyfgenia for individuals aged 12 and older with sickle cell disease and recurrent vaso-occlusive crises on 8 December 2023, the same day it approved the CRISPR therapy Casgevy. Regulatory approval settled gene-addition therapy as a sanctioned, curative-intent treatment for sickle cell disease.',
+        source: {
+          externalId: 'src:acmg-lyfgenia-casgevy-bulletin-2024',
+          name: 'Goldman A, et al. Casgevy (exagamglogene autotemcel) and Lyfgenia (lovotibeglogene autotemcel) for individuals 12 years and older with sickle cell disease and recurrent vaso-occlusive crises: A therapeutics bulletin of the American College of Medical Genetics and Genomics (ACMG). Genet Med Open. 2024.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11736165/',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-12-08',
+        datePrecision: 'DAY',
+        reason: 'Acute myeloid leukemia occurred in patients treated with Lyfgenia, so the FDA placed a boxed warning for hematologic malignancy on its label and required lifelong (15-year) monitoring — unlike Casgevy, which carries no boxed warning. The unresolved insertional-oncogenesis safety signal leaves the therapy\'s net benefit contested, and clinical uptake has remained minimal.',
+        source: {
+          externalId: 'src:acmg-lyfgenia-boxed-warning-2024',
+          name: 'Goldman A, et al. ACMG therapeutics bulletin: boxed warning for hematologic malignancy with Lyfgenia (lovotibeglogene autotemcel). Genet Med Open. 2024.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11736165/',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Vosoritide (Voxzogo) achondroplasia — FDA 2021 ──────────────────────────
+  {
+    externalId: 'trajectory:vosoritide-voxzogo-achondroplasia-approval-2021',
+    text: 'Vosoritide (Voxzogo), a C-type natriuretic peptide analogue that counteracts FGFR3 overactivity, increases linear growth velocity in children with achondroplasia and became the first FDA-approved disease-targeting treatment for the condition on 19 November 2021.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-09-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-09-05',
+        datePrecision: 'DAY',
+        reason: 'Savarirayan and colleagues published a randomised, double-blind, placebo-controlled phase 3 trial in The Lancet showing daily subcutaneous vosoritide produced an adjusted mean increase in annualised growth velocity of 1.57 cm/year versus placebo (p<0.0001) over 52 weeks in children with achondroplasia, establishing the first controlled evidence that the underlying growth defect was pharmacologically modifiable.',
+        source: {
+          externalId: 'src:savarirayan-vosoritide-lancet-2020',
+          name: 'Savarirayan R, Tofts L, Irving M, et al. Once-daily, subcutaneous vosoritide therapy in children with achondroplasia: a randomised, double-blind, phase 3, placebo-controlled, multicentre trial. Lancet. 2020;396(10252):684-692.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32891212/',
+          publishedAt: '2020-09-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-11-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to vosoritide (Voxzogo) on 19 November 2021 for children aged 5 and older with achondroplasia and open growth plates — the first approved treatment targeting the disease rather than its complications. The indication was later expanded to children of all ages with open growth plates in late 2023, consolidating its institutional standing.',
+        source: {
+          externalId: 'src:acmg-vosoritide-bulletin-2024',
+          name: 'American College of Medical Genetics and Genomics. Vosoritide approved for treatment of linear growth in pediatric patients with achondroplasia: A therapeutics bulletin of the ACMG. Genet Med. 2024.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11613676/',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Vamorolone (Agamree) DMD dissociative steroid — FDA 2023 ────────────────
+  {
+    externalId: 'trajectory:vamorolone-agamree-dmd-dissociative-steroid-2023',
+    text: 'Vamorolone (Agamree), a first-in-class dissociative steroid, is an effective treatment for Duchenne muscular dystrophy with fewer bone, growth and behavioral side effects than prednisone, approved by the U.S. FDA for patients aged 2 and older on 26 October 2023.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-10-01',
+        datePrecision: 'DAY',
+        reason: 'Guglieri and colleagues published the VISION-DMD randomized clinical trial in JAMA Neurology showing vamorolone improved the primary motor outcome (time-to-stand velocity) versus placebo while causing less bone-mineral and growth impairment than prednisone, establishing in the literature that a glucocorticoid-receptor agonist could dissociate efficacy from key steroid toxicities in Duchenne muscular dystrophy.',
+        source: {
+          externalId: 'src:guglieri-vamorolone-vision-dmd-jamaneurol-2022',
+          name: 'Guglieri M, Clemens PR, Perlman SJ, et al. Efficacy and Safety of Vamorolone vs Placebo and Prednisone Among Boys With Duchenne Muscular Dystrophy: A Randomized Clinical Trial. JAMA Neurol. 2022;79(10):1005-1014.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36036925/',
+          publishedAt: '2022-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-10-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved vamorolone (Agamree) for Duchenne muscular dystrophy in patients aged 2 and older on 26 October 2023, granting it orphan-drug exclusivity. Approval settled the dissociative steroid as a sanctioned alternative to conventional glucocorticoids, the standard-of-care chronic therapy for the disease.',
+        source: {
+          externalId: 'src:fda-agamree-drug-trials-snapshot-2023',
+          name: 'U.S. Food and Drug Administration. Drug Trials Snapshots: AGAMREE (vamorolone). Approved October 26, 2023.',
+          url: 'https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots-agamree',
+          publishedAt: '2023-10-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Givinostat (Duvyzat) DMD non-steroidal HDAC inhibitor — FDA 2024 ────────
+  {
+    externalId: 'trajectory:givinostat-duvyzat-dmd-nonsteroidal-2024',
+    text: 'Givinostat (Duvyzat), an oral histone deacetylase inhibitor, slows functional decline in Duchenne muscular dystrophy and became the first non-steroidal drug approved for the disease across all genetic variants when the U.S. FDA cleared it for patients aged 6 and older on 21 March 2024.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-03-18',
+        datePrecision: 'MONTH',
+        reason: 'The EPIDYS phase 3 trial (Mercuri et al), conducted at 41 sites across 11 countries in 179 ambulant boys, showed a significantly smaller decline in four-stair-climb performance over 72 weeks with givinostat than placebo, establishing in the literature that an HDAC inhibitor could slow Duchenne progression independently of the underlying dystrophin mutation.',
+        source: {
+          externalId: 'src:mercuri-givinostat-epidys-lancetneurol-2024',
+          name: 'Mercuri E, Vilchez JJ, Boespflug-Tanguy O, et al. Safety and efficacy of givinostat in boys with Duchenne muscular dystrophy (EPIDYS): a multicentre, randomised, double-blind, placebo-controlled, phase 3 trial. Lancet Neurol. 2024;23(4):393-403.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38508835/',
+          publishedAt: '2024-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-03-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved givinostat (Duvyzat) for Duchenne muscular dystrophy in patients aged 6 and older on 21 March 2024 — the first non-steroidal therapy approved for all genetic variants of the disease. Approval settled HDAC inhibition as a mutation-agnostic disease-modifying option, broadening treatment beyond mutation-specific exon-skipping drugs and glucocorticoids.',
+        source: {
+          externalId: 'src:mda-givinostat-fda-approval-2024',
+          name: 'Muscular Dystrophy Association. MDA\'s Funding of Foundational Research Leads to New FDA Approved Treatment Duvyzat (givinostat) for Duchenne Muscular Dystrophy. March 21, 2024.',
+          url: 'https://www.mda.org/press-releases/mdas-funding-of-foundational-research-leads-to-new-fda-approved-treatment-duvyzat-givinostat-for-duchenne-muscular-dystrophy',
+          publishedAt: '2024-03-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
