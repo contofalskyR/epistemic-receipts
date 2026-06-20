@@ -43683,6 +43683,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS & DRUG POLICY ERA (2016–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── DEA kratom emergency scheduling withdrawn under public pressure 2016 ────
+  {
+    externalId: 'trajectory:dea-kratom-schedule-i-intent-withdrawn-2016',
+    text: 'The U.S. Drug Enforcement Administration published a notice of intent on August 31, 2016 (81 FR 59929) to temporarily place the kratom alkaloids mitragynine and 7-hydroxymitragynine into Schedule I of the Controlled Substances Act as opioids posing an imminent hazard to public safety with no accepted medical use.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-08-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-08-31',
+        datePrecision: 'DAY',
+        reason: 'Invoking the emergency temporary-scheduling provisions of the Controlled Substances Act, the DEA announced its intent to place mitragynine and 7-hydroxymitragynine — which it characterized as opioids — into Schedule I, the category reserved for substances with high abuse potential and no accepted medical use. The notice entered the regulatory record as a finding that kratom\'s principal alkaloids were an imminent hazard to public safety.',
+        source: {
+          externalId: 'src:fr-dea-kratom-notice-of-intent-2016',
+          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Temporary Placement of Mitragynine and 7-Hydroxymitragynine Into Schedule I. 81 Fed. Reg. 59929, Aug. 31, 2016.',
+          url: 'https://www.federalregister.gov/documents/2016/08/31/2016-20803/schedules-of-controlled-substances-temporary-placement-of-mitragynine-and-7-hydroxymitragynine-into',
+          publishedAt: '2016-08-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-10-13',
+        datePrecision: 'DAY',
+        reason: 'After receiving an unprecedented volume of public comments challenging the action and a congressional pushback, the DEA formally withdrew its August 31 notice of intent and instead solicited public comment and requested a scientific and medical evaluation and scheduling recommendation from the FDA. The reversal — the first time the DEA had abandoned an announced emergency scheduling action under public pressure — left the substances federally unscheduled.',
+        source: {
+          externalId: 'src:fr-dea-kratom-withdrawal-2016',
+          name: 'Drug Enforcement Administration. Withdrawal of Notice of Intent to Temporarily Place Mitragynine and 7-Hydroxymitragynine Into Schedule I. 81 Fed. Reg. 70652, Oct. 13, 2016.',
+          url: 'https://www.federalregister.gov/documents/2016/10/13/2016-24659/withdrawal-of-notice-of-intent-to-temporarily-place-mitragynine-and-7-hydroxymitragynine-into',
+          publishedAt: '2016-10-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DEA reduces opioid manufacturing quotas 25%+ for 2017 ──────────────────
+  {
+    externalId: 'trajectory:dea-opioid-production-quota-reduction-2017',
+    text: 'The DEA announced on October 4, 2016 that it was reducing the aggregate manufacturing quotas for nearly every Schedule II opioid for calendar year 2017 by 25 percent or more — cutting hydrocodone to roughly two-thirds of the prior year\'s level — the first across-the-board reduction after more than a decade of escalating opioid production quotas.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-10-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-10-04',
+        datePrecision: 'DAY',
+        reason: 'Having authorized roughly a 400 percent increase in permitted oxycodone production between 2002 and 2013, the DEA reversed course and set 2017 aggregate production quotas at least 25 percent below 2016 levels for almost all Schedule II opioids, with hydrocodone reduced further to about 66 percent. The order, formalized as the established 2017 quotas effective October 5, 2016, repudiated the long-standing premise that ever-rising opioid supply matched legitimate medical need.',
+        source: {
+          externalId: 'src:dea-opioid-quota-reduction-2017-press-release',
+          name: 'Drug Enforcement Administration. DEA Reduces Amount Of Opioid Controlled Substances To Be Manufactured In 2017. Press release, Oct. 4, 2016.',
+          url: 'https://www.dea.gov/press-releases/2016/10/04/dea-reduces-amount-opioid-controlled-substances-be-manufactured-2017',
+          publishedAt: '2016-10-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-09-11',
+        datePrecision: 'DAY',
+        reason: 'The DEA sustained the downward trajectory across successive years, proposing on September 11, 2019 to again reduce the manufacturing quotas for the five most-diverted opioids — oxycodone, hydrocodone, oxymorphone, hydromorphone, and fentanyl — for 2020. The repeated annual cuts established quota reduction as settled federal supply-control policy rather than a one-time adjustment.',
+        source: {
+          externalId: 'src:dea-opioid-quota-reduction-2020-proposed',
+          name: 'Drug Enforcement Administration. DEA Proposes to Reduce the Amount of Five Opioids Manufactured in 2020, Marijuana Quota for Research Increases by Almost a Third. Press release, Sept. 11, 2019.',
+          url: 'https://www.dea.gov/press-releases/2019/09/11/dea-proposes-reduce-amount-five-opioids-manufactured-2020-marijuana-quota',
+          publishedAt: '2019-09-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── HHS Pain Management Task Force: individualized care over rigid thresholds 2019 ──
+  {
+    externalId: 'trajectory:hhs-pain-management-task-force-individualized-care-2019',
+    text: 'The HHS Pain Management Best Practices Inter-Agency Task Force issued its final report on May 9, 2019, concluding that effective acute and chronic pain care requires an individualized, patient-centered, multidisciplinary approach, and warning that rigid application of fixed dosage thresholds and forced opioid tapering — as misapplied from the 2016 CDC guideline — had harmed patients.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-05-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-05-09',
+        datePrecision: 'MONTH',
+        reason: 'Convened under the 2016 Comprehensive Addiction and Recovery Act, the 29-member federal task force published its final report identifying gaps and inconsistencies in U.S. pain management and recommending individualized, multimodal care. It explicitly cautioned against the rigid, one-size-fits-all use of dose ceilings and abrupt tapering, recording a federal course-correction against the restrictive misapplication of the 2016 CDC opioid guideline.',
+        source: {
+          externalId: 'src:hhs-pain-management-task-force-final-report-2019',
+          name: 'U.S. Department of Health and Human Services. Pain Management Best Practices Inter-Agency Task Force Report: Updates, Gaps, Inconsistencies, and Recommendations. May 9, 2019.',
+          url: 'https://www.hhs.gov/sites/default/files/pmtf-final-report-2019-05-23.pdf',
+          publishedAt: '2019-05-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-04',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s revised 2022 Clinical Practice Guideline for Prescribing Opioids for Pain removed the prior fixed morphine-milligram-equivalent thresholds and embraced individualized, patient-centered decision-making, cautioning against abrupt tapering. The revision adopted the Task Force\'s central recommendation, institutionalizing the individualized-care correction as settled federal guidance.',
+        source: {
+          externalId: 'src:cdc-2022-opioid-guideline-mmwr',
+          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022 Nov 4;71(3):1-95.',
+          url: 'https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm',
+          publishedAt: '2022-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Surgeon General: addiction is a brain disease, not a moral failing 2016 ─
+  {
+    externalId: 'trajectory:surgeon-general-facing-addiction-brain-disease-2016',
+    text: 'U.S. Surgeon General Vivek Murthy released Facing Addiction in America on November 17, 2016 — the first Surgeon General\'s report devoted to alcohol, drugs, and addiction — concluding that substance addiction is a chronic neurological disorder (a brain disease) rather than a moral failing, and must be prevented and treated like other chronic medical conditions.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-11-17',
+        datePrecision: 'DAY',
+        reason: 'The Surgeon General\'s office issued the first cabinet-level federal report dedicated to addiction, synthesizing neuroscience evidence that substance use disorders involve measurable changes in brain reward, stress, and executive-control circuitry. By framing addiction as a treatable chronic brain disease rather than a character defect, the report placed the whole-of-government weight of the U.S. Public Health Service behind the medical model of addiction, reinforcing the reclassification reflected in DSM-5.',
+        source: {
+          externalId: 'src:surgeon-general-facing-addiction-report-2016',
+          name: 'U.S. Department of Health and Human Services, Office of the Surgeon General. Facing Addiction in America: The Surgeon General\'s Report on Alcohol, Drugs, and Health. Nov. 17, 2016.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK424849/',
+          publishedAt: '2016-11-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
