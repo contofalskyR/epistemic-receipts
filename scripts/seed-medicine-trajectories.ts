@@ -50683,6 +50683,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CHEMOTHERAPY & RARE DISEASE FIRSTS
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Salvarsan — first chemotherapeutic 1910 ────────────────────────────────
+  {
+    externalId: 'trajectory:salvarsan-arsphenamine-first-chemotherapeutic-1910',
+    text: 'Paul Ehrlich and Sahachiro Hata announced at the Congress for Internal Medicine in Wiesbaden in April 1910 that arsphenamine (compound 606, marketed as Salvarsan) cured syphilis, establishing the first deliberately designed antimicrobial chemotherapeutic — the original \'magic bullet\'.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1910-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1910-04-01',
+        datePrecision: 'MONTH',
+        reason: 'At the Wiesbaden Congress for Internal Medicine in April 1910, Ehrlich and Hata presented compound 606 (arsphenamine/Salvarsan) as a cure for syphilis, reporting Hata\'s animal experiments (begun 31 August 1909) in which the arsenical cleared spirochaetal infection and healed syphilitic chancres. This recorded the first instance of a chemical agent rationally designed to destroy an invading micro-organism without killing the host — the founding claim of chemotherapy.',
+        source: {
+          externalId: 'src:james-lind-arsphenamine-magic-bullet',
+          name: 'James Lind Library. The introduction of \'chemotherapy\' using arsphenamine — the first magic bullet.',
+          url: 'https://www.jameslindlibrary.org/articles/the-introduction-of-chemotherapy-using-arsphenamine-the-first-magic-bullet/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1910-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Hoechst mass-produced Salvarsan and, by the end of 1910, some 65,000 doses had been administered to more than 20,000 patients — an unprecedented pre-marketing series. Arsphenamine rapidly became the standard antisyphilitic treatment worldwide and remained so until penicillin in the 1940s, settling it as the first effective chemical cure for a systemic infectious disease.',
+        source: {
+          externalId: 'src:james-lind-arsphenamine-uptake',
+          name: 'James Lind Library. The introduction of \'chemotherapy\' using arsphenamine — the first magic bullet.',
+          url: 'https://www.jameslindlibrary.org/articles/the-introduction-of-chemotherapy-using-arsphenamine-the-first-magic-bullet/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ivacaftor (Kalydeco) — first CFTR modulator 2012 ──────────────────────
+  {
+    externalId: 'trajectory:ivacaftor-kalydeco-first-cftr-modulator-2012',
+    text: 'Ivacaftor (Kalydeco, VX-770) is an effective treatment for cystic fibrosis caused by the G551D-CFTR mutation, a claim established by Ramsey and colleagues\' STRIVE trial in the NEJM (3 November 2011) and ratified by the FDA\'s approval on 31 January 2012 — the first drug to target the underlying CFTR protein defect rather than symptoms.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-11-03',
+        datePrecision: 'DAY',
+        reason: 'Ramsey, Davies, McElvaney and colleagues published the randomized, double-blind, placebo-controlled STRIVE trial in the New England Journal of Medicine, showing that the CFTR potentiator ivacaftor improved predicted FEV1 by 10.6 percentage points over placebo in cystic fibrosis patients carrying the G551D mutation. This recorded the first demonstration that pharmacologically restoring mutant CFTR channel function produces clinical benefit, distinct from all prior symptom-directed CF therapy.',
+        source: {
+          externalId: 'src:ramsey-ivacaftor-strive-nejm-2011',
+          name: 'Ramsey BW, Davies J, McElvaney NG, et al. A CFTR potentiator in patients with cystic fibrosis and the G551D mutation. N Engl J Med. 2011;365(18):1663-1672.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22047557/',
+          publishedAt: '2011-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-01-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kalydeco (ivacaftor, NDA 203188) on 31 January 2012 for cystic fibrosis patients aged 6 and older with the G551D mutation, with FDA\'s Janet Woodcock describing it as the first available treatment targeting the defective CFTR protein that is the underlying cause of cystic fibrosis. The approval settled the claim institutionally and launched the CFTR-modulator drug class.',
+        source: {
+          externalId: 'src:fda-kalydeco-label-2012',
+          name: 'U.S. Food and Drug Administration. KALYDECO (ivacaftor) tablets — initial FDA approval label, NDA 203188.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/203188lbl.pdf',
+          publishedAt: '2012-01-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nusinersen (Spinraza) — first SMA treatment 2016 ──────────────────────
+  {
+    externalId: 'trajectory:nusinersen-spinraza-first-sma-treatment-2016',
+    text: 'Nusinersen (Spinraza), an antisense oligonucleotide that increases SMN2 exon-7 inclusion, is an effective treatment for spinal muscular atrophy — a claim established by the FDA\'s approval on 23 December 2016 (the first treatment ever approved for SMA) and corroborated by the ENDEAR trial in the NEJM.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-12-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Spinraza (nusinersen) on 23 December 2016 under priority review and orphan-drug designation as the first drug ever approved for spinal muscular atrophy, a leading genetic cause of infant death. Approval rested on interim ENDEAR data in 121 infantile-onset patients showing a clinically meaningful motor-milestone response absent in untreated controls, institutionally settling a disease that had been untreatable.',
+        source: {
+          externalId: 'src:fda-spinraza-approval-2016',
+          name: 'U.S. Food and Drug Administration. FDA approves first drug for spinal muscular atrophy. December 23, 2016.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-first-drug-for-spinal-muscular-atrophy-300383505.html',
+          publishedAt: '2016-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-02',
+        datePrecision: 'DAY',
+        reason: 'Finkel and colleagues published the full ENDEAR randomized, sham-controlled trial in the New England Journal of Medicine, reporting that 51% of nusinersen-treated infants achieved a motor-milestone response versus 0% of sham controls, with lower risk of death or permanent ventilation. The peer-reviewed result independently corroborated the regulatory claim that nusinersen alters the natural history of infantile-onset SMA.',
+        source: {
+          externalId: 'src:finkel-endear-nusinersen-nejm-2017',
+          name: 'Finkel RS, Mercuri E, Darras BT, et al. Nusinersen versus sham control in infantile-onset spinal muscular atrophy (ENDEAR). N Engl J Med. 2017;377(18):1723-1732.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29091570/',
+          publishedAt: '2017-11-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Alglucosidase alfa (Myozyme) — first Pompe ERT 2006 ───────────────────
+  {
+    externalId: 'trajectory:alglucosidase-alfa-myozyme-first-pompe-treatment-2006',
+    text: 'Alglucosidase alfa (Myozyme), recombinant human acid alpha-glucosidase, is an effective enzyme replacement therapy for Pompe disease — a claim established by the FDA\'s approval on 28 April 2006 (the first treatment ever approved for Pompe disease and the first for an inherited muscle disorder) and supported by Kishnani\'s infantile-onset trial.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-04-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted marketing approval for Myozyme (alglucosidase alfa) on 28 April 2006, the first treatment ever approved for Pompe disease (acid alpha-glucosidase deficiency) and the first for any inherited muscle disorder. Approval was based on improved survival and reduced need for ventilation in infantile-onset patients, settling enzyme replacement as effective therapy for this previously untreatable lysosomal storage disease.',
+        source: {
+          externalId: 'src:myozyme-fda-approval-2006',
+          name: 'International Pompe Association. Myozyme (alglucosidase alfa) approved in the US. April 28, 2006.',
+          url: 'https://worldpompe.org/archive/170-myozyme-approved-in-the-us/',
+          publishedAt: '2006-04-28',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-09',
+        datePrecision: 'DAY',
+        reason: 'Kishnani and colleagues published the pivotal infantile-onset trial in Neurology, reporting that recombinant human acid alpha-glucosidase substantially reduced the risk of death and invasive ventilation, with all treated patients surviving to 18 months versus historical controls who typically died in the first year. The peer-reviewed evidence corroborated the regulatory claim of efficacy in Pompe disease.',
+        source: {
+          externalId: 'src:kishnani-pompe-neurology-2007',
+          name: 'Kishnani PS, Corzo D, Nicolino M, et al. Recombinant human acid alpha-glucosidase: major clinical benefits in infantile-onset Pompe disease. Neurology. 2007;68(2):99-109.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17151339/',
+          publishedAt: '2007-01-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Laronidase (Aldurazyme) — first ERT for MPS I 2003 ────────────────────
+  {
+    externalId: 'trajectory:laronidase-aldurazyme-first-ert-mps1-2003',
+    text: 'Laronidase (Aldurazyme), recombinant human alpha-L-iduronidase, is an effective enzyme replacement therapy for mucopolysaccharidosis I (MPS I) — a claim established by the FDA\'s approval on 30 April 2003 (the first treatment for MPS I) and by Wraith and colleagues\' randomized placebo-controlled trial in the Journal of Pediatrics.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-04-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Aldurazyme (laronidase) on 30 April 2003 for MPS I patients with Hurler and Hurler-Scheie forms and moderate-to-severe Scheie syndrome, the first treatment for the disease. Approval was based on a 45-patient randomized placebo-controlled trial, settling enzyme replacement as effective therapy for the iduronidase-deficiency lysosomal storage disorder.',
+        source: {
+          externalId: 'src:aldurazyme-laronidase-mps1-review',
+          name: 'Enzyme replacement therapy with laronidase (Aldurazyme) for treating mucopolysaccharidosis type I. PubMed record (FDA approval 30 April 2003).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24257962/',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Wraith and colleagues published the pivotal randomized, double-blind, placebo-controlled multinational trial of recombinant human alpha-L-iduronidase (laronidase) in 45 MPS I patients in the Journal of Pediatrics, confirming improvements in pulmonary function and walking capacity. The peer-reviewed result corroborated the regulatory efficacy claim that underpinned the 2003 approval.',
+        source: {
+          externalId: 'src:wraith-laronidase-jpediatr-2004',
+          name: 'Wraith JE, Clarke LA, Beck M, et al. Enzyme replacement therapy for mucopolysaccharidosis I: a randomized, double-blinded, placebo-controlled, multinational study of recombinant human alpha-L-iduronidase (laronidase). J Pediatr. 2004;144(5):581-588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15126990/',
+          publishedAt: '2004-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
