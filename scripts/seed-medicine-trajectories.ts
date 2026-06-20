@@ -51592,6 +51592,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GYNECOLOGY & REPRODUCTIVE ENDOCRINOLOGY (1894–1960)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Papanicolaou vaginal smear for uterine cancer — 1928 ────────────────────
+  {
+    externalId: 'trajectory:papanicolaou-vaginal-smear-uterine-cancer-1928',
+    text: 'George N. Papanicolaou claimed, first in January 1928 and decisively with Herbert Traut in 1941, that malignant cells exfoliated from the uterus and cervix can be detected in a stained vaginal smear, enabling diagnosis of uterine cancer before clinical symptoms appear.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Papanicolaou\'s original 1928 presentation \'New Cancer Diagnosis\' at the Third Race Betterment Conference was largely ignored by clinicians for over a decade. The claim was recorded in the expert literature only when Papanicolaou and gynecologist Herbert Traut published \'The diagnostic value of vaginal smears in carcinoma of the uterus\' in the American Journal of Obstetrics & Gynecology (1941;42:193-206), supplying the systematic clinical evidence that made cytologic cancer detection credible to pathologists and gynecologists.',
+        source: {
+          externalId: 'src:papanicolaou-traut-vaginal-smears-ajog-1941',
+          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42:193--206. (Reprinted Arch Pathol Lab Med. 1997.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9111103/',
+          publishedAt: '1941-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Papanicolaou and Traut\'s 1943 Commonwealth Fund monograph \'Diagnosis of Uterine Cancer by the Vaginal Smear\' standardized the smear, staining, and cell-classification method, converting an isolated finding into a reproducible diagnostic technique. The monograph established the method that the field adopted and that drove the subsequent mass cervical-cancer screening programs and the steep decline in cervical-cancer mortality.',
+        source: {
+          externalId: 'src:papanicolaou-traut-monograph-1943',
+          name: 'Wells SP (review). Diagnosis of Uterine Cancer by the Vaginal Smear, by George N. Papanicolaou and Herbert F. Traut. The Commonwealth Fund, New York, 1943. The Anatomical Record. 1943;86(4).',
+          url: 'https://onlinelibrary.wiley.com/doi/abs/10.1002/ar.1090860410',
+          publishedAt: '1943-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halsted radical mastectomy as curative breast-cancer operation — 1894 ───
+  {
+    externalId: 'trajectory:halsted-radical-mastectomy-1894',
+    text: 'William Stewart Halsted claimed in his November 1894 Annals of Surgery report that the radical mastectomy — en bloc removal of the breast, both pectoral muscles, and the axillary lymph nodes — is the necessary operation for curing breast cancer and minimizing local recurrence.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1894-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Halsted reported 50 operations performed at Johns Hopkins between 1889 and 1894, arguing that wide en bloc excision of breast, pectoral muscles, and axillary nodes reduced local recurrence dramatically compared with the lesser operations of the era. This recorded in the surgical literature the claim that radical removal was the curative operation for breast cancer.',
+        source: {
+          externalId: 'src:halsted-cancer-breast-annals-1894',
+          name: 'Halsted WS. The results of operations for the cure of cancer of the breast performed at the Johns Hopkins Hospital from June, 1889, to January, 1894. Ann Surg. 1894;20(5):497--555.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17860107/',
+          publishedAt: '1894-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1907-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In his 1907 follow-up read before the American Surgical Association, Halsted presented 252 cases with a local relapse rate of about 6% versus roughly 50% for conventional surgery of the period. The durable cure data settled the radical mastectomy as the unquestioned standard of care, a status it held essentially unchallenged for the next seven decades worldwide.',
+        source: {
+          externalId: 'src:halsted-radical-operations-annals-1907',
+          name: 'Halsted WS. The results of radical operations for the cure of carcinoma of the breast. Ann Surg. 1907;46(1):1--19.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1414357/',
+          publishedAt: '1907-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The NIH Consensus Development Conference on the Treatment of Early-Stage Breast Cancer (June 1990, published JAMA 1991;265:391-395) concluded that breast-conserving surgery plus radiation was preferable to mastectomy for most stage I and II disease because it preserved the breast without compromising survival. Building on the NSABP B-06 trial, this institutionally reversed the Halsted radical mastectomy as the necessary standard, ending the paradigm that had dominated surgery since 1894.',
+        source: {
+          externalId: 'src:nih-consensus-early-breast-cancer-1991',
+          name: 'NIH Consensus Conference. Treatment of early-stage breast cancer. JAMA. 1991;265(3):391--395.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1984541/',
+          publishedAt: '1991-01-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Enovid oral contraceptive FDA approval — 1960 ───────────────────────────
+  {
+    externalId: 'trajectory:enovid-oral-contraceptive-fda-1960',
+    text: 'The G.D. Searle drug Enovid (norethynodrel plus mestranol) was claimed to be a safe and effective oral contraceptive that suppresses ovulation, a claim institutionally established when the FDA approved it for contraceptive use on 9 May 1960 — the first oral contraceptive approved anywhere.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1957-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Gregory Pincus, John Rock, and Celso-Ramón García reported the results of the Río Piedras and Humacao field trials in Puerto Rico, showing that daily oral norethynodrel-mestranol reliably suppressed ovulation and prevented pregnancy. This recorded in the expert literature the claim that a steroid pill could serve as a reversible oral contraceptive, after Enovid had already been approved in 1957 only for menstrual disorders.',
+        source: {
+          externalId: 'src:pincus-rock-pill-lifestyle-drug-pmc',
+          name: 'Watkins ES. How the Pill Became a Lifestyle Drug: The Pharmaceutical Industry and Birth Control in the United States Since 1960. Am J Public Health. 2012;102(8):1462--1472.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3464843/',
+          publishedAt: '2012-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-05-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Searle\'s supplemental application for Enovid-10 as an oral contraceptive on 9 May 1960, the first regulatory approval of a contraceptive pill. The institutional act settled the claim that hormonal suppression of ovulation was an acceptable, marketable method of birth control and inaugurated the modern era of oral contraception.',
+        source: {
+          externalId: 'src:fda-approves-the-pill-1960',
+          name: 'FDA approves \'the pill,\' May 9, 1960. HISTORY (This Day in History).',
+          url: 'https://www.history.com/this-day-in-history/may-9/fda-approves-the-pill',
+          publishedAt: '1960-05-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Premarin conjugated estrogens for menopause — 1942 ──────────────────────
+  {
+    externalId: 'trajectory:premarin-conjugated-estrogens-menopause-1942',
+    text: 'Conjugated equine estrogens (Premarin, Wyeth-Ayerst), introduced after FDA marketing clearance in May 1942, were claimed to be a safe and effective treatment for menopausal vasomotor symptoms — the first widely marketed estrogen-replacement product.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-05-01',
+        datePrecision: 'MONTH',
+        reason: 'In May 1942 the FDA permitted Wyeth-Ayerst to market Premarin, a mixture of conjugated estrogens isolated from pregnant-mare urine, for the treatment of menopausal symptoms. The approval institutionally established the claim that estrogen replacement was a safe and effective therapy for menopause, and Premarin went on to become one of the most-prescribed drugs in the United States for decades.',
+        source: {
+          externalId: 'src:hersh-estrogens-progestins-ajm-2005',
+          name: 'Hersh AL, Stefanick ML, Stafford RS. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005 (documents 1942 Premarin approval).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16414329/',
+          publishedAt: '2005-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-12-04',
+        datePrecision: 'DAY',
+        reason: 'Ziel and Finkle reported in the New England Journal of Medicine (1975;293:1167-1170) that women using conjugated estrogens had roughly a 7.6-fold increased risk of endometrial carcinoma, rising with duration of exposure. Together with a companion paper by Smith et al. in the same issue, this contested the long-settled safety of unopposed estrogen replacement and led to the practice of adding a progestin in women with an intact uterus.',
+        source: {
+          externalId: 'src:ziel-finkle-endometrial-carcinoma-nejm-1975',
+          name: 'Ziel HK, Finkle WD. Increased risk of endometrial carcinoma among users of conjugated estrogens. N Engl J Med. 1975;293(23):1167--1170.',
+          url: 'https://www.nejm.org/doi/abs/10.1056/NEJM197512042932303',
+          publishedAt: '1975-12-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Allen & Doisy ovarian hormone (estrogen) discovery — 1923 ───────────────
+  {
+    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
+    text: 'Edgar Allen and Edward A. Doisy claimed, in their JAMA report of 8 September 1923, that the ovarian follicle contains and secretes a specific hormone (later named estrogen) whose presence can be detected by a reproducible vaginal-smear bioassay in ovariectomized animals.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-09-08',
+        datePrecision: 'DAY',
+        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA, demonstrating with a quantitative vaginal-smear bioassay in spayed rodents that follicular-fluid extracts produced estrus. This recorded in the expert literature the claim that the ovary produces a discrete chemical hormone, founding reproductive endocrinology.',
+        source: {
+          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
+          name: 'Allen E, Doisy EA. An ovarian hormone. Preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819--821. (Landmark reprint.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
+          publishedAt: '1923-09-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1929 Doisy in the United States and Adolf Butenandt in Germany independently isolated and crystallized the first pure estrogen (estrone/theelin) from pregnancy urine, converting Allen and Doisy\'s bioassay-defined \'ovarian hormone\' into a defined chemical compound. The crystallization settled the existence and identity of estrogen as established biochemical fact; Butenandt\'s sex-hormone work was recognized with the 1939 Nobel Prize in Chemistry.',
+        source: {
+          externalId: 'src:doisy-butenandt-estrone-crystallization-1929',
+          name: 'Embryo Project Encyclopedia. Estrogen and the Menstrual Cycle in Humans (documents 1929 crystallization of estrone by Doisy and Butenandt).',
+          url: 'https://embryo.asu.edu/pages/estrogen-and-menstrual-cycle-humans',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
