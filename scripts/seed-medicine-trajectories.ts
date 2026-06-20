@@ -54205,6 +54205,251 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // BACTERIOLOGY & EARLY VACCINE ERA (pre-1910)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Penicillin treats syphilis — Mahoney 1943 ──────────────────────────────
+  {
+    externalId: 'trajectory:mahoney-penicillin-treats-syphilis-1943',
+    text: 'John F. Mahoney, R.C. Arnold, and Ad Harris reported on 14 October 1943 that intramuscular penicillin cured early (seropositive primary) syphilis in human patients, the first demonstration that penicillin could treat syphilis and the beginning of the end of arsenical (Salvarsan) therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1943-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-10-14',
+        datePrecision: 'DAY',
+        reason: 'Mahoney and colleagues at the US Marine Hospital, Staten Island, treated four patients with primary syphilitic chancres using four-hourly intramuscular penicillin over about eight days (~1.2 million units) and observed cure, presenting the preliminary report at the American Public Health Association meeting in New York on 14 October 1943 (published in Venereal Disease Information, vol. 24, 1943:355-357). The presentation electrified the audience and recorded the first evidence that penicillin cured human syphilis, directly challenging three decades of arsenotherapy.',
+        source: {
+          externalId: 'src:parascandola-mahoney-penicillin-syphilis-nlm',
+          name: 'Parascandola J. John Mahoney and the Introduction of Penicillin to Treat Syphilis. (NLM/Pharmacy in History account; documents the original Mahoney RC Arnold, A Harris. Penicillin treatment of early syphilis—a preliminary report. Venereal Disease Information 1943;24:355-357.)',
+          url: 'https://lhncbc.nlm.nih.gov/LHC-publications/PDF/pub2001051.pdf',
+          publishedAt: '1943-10-14',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-09-09',
+        datePrecision: 'DAY',
+        reason: 'Rapid confirmatory trials followed; Mahoney, Arnold, Sterner, Harris, and Zwally reported in JAMA on 9 September 1944 the treatment of 1,418 cases of early syphilis with penicillin, and the US Public Health Service / armed forces adopted penicillin as standard therapy for syphilis, displacing arsphenamine and bismuth within a few years. Institutional adoption settled penicillin as the treatment of choice for syphilis.',
+        source: {
+          externalId: 'src:mahoney-1418-cases-jama-1944',
+          name: 'Mahoney JF, Arnold RC, Sterner BL, Harris A, Zwally MR. Penicillin treatment of early syphilis: a preliminary report of 1,418 cases. JAMA. 1944;126(2):63-67.',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/270334',
+          publishedAt: '1944-09-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pasteur anthrax vaccine — Pouilly-le-Fort 1881 ─────────────────────────
+  {
+    externalId: 'trajectory:pasteur-anthrax-vaccine-pouilly-le-fort-1881',
+    text: 'Louis Pasteur publicly demonstrated at Pouilly-le-Fort, near Melun, that an attenuated anthrax vaccine protected sheep against lethal anthrax challenge, with results examined before some 200 witnesses on 2 June 1881: all vaccinated animals survived while the unvaccinated controls had died or were dying.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1881-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1881-06-02',
+        datePrecision: 'DAY',
+        reason: 'In a prospectively announced public experiment, Pasteur\'s team vaccinated a group of sheep, cattle, and goats on 5 May and 17 May 1881, challenged all animals (vaccinated and controls) with virulent anthrax bacilli on 31 May, and on 2 June 1881 displayed the outcome to a large audience of officials, veterinarians, farmers, and reporters: the vaccinated animals were healthy while the controls were dead or moribund. This recorded the first rigorously witnessed demonstration of a deliberately attenuated bacterial vaccine protecting against disease.',
+        source: {
+          externalId: 'src:pasteur-father-of-immunology-pmc-2012',
+          name: 'Smith KA. Louis Pasteur, the Father of Immunology? Front Immunol. 2012;3:68. (documents the Pouilly-le-Fort anthrax vaccination trial of May–June 1881).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3342039/',
+          publishedAt: '2012-04-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1882',
+        datePrecision: 'YEAR',
+        reason: 'Following the Pouilly-le-Fort success, French livestock owners adopted the anthrax vaccine en masse; hundreds of thousands of sheep and cattle were vaccinated within roughly a year, with sharply reduced anthrax mortality among vaccinated herds. Widespread practical adoption settled the claim that attenuated vaccination could prevent a bacterial disease in the field and launched the vaccine industry.',
+        source: {
+          externalId: 'src:sciencehistory-pasteur-biography',
+          name: 'Science History Institute. Louis Pasteur (scientific biography; documents post-1881 mass adoption of the anthrax vaccine).',
+          url: 'https://www.sciencehistory.org/education/scientific-biographies/louis-pasteur/',
+          publishedAt: '2017-12-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Haffkine plague vaccine & Mulkowal disaster 1897–1907 ──────────────────
+  {
+    externalId: 'trajectory:haffkine-plague-vaccine-mulkowal-disaster-1897',
+    text: 'Waldemar Haffkine developed the first killed bubonic-plague vaccine in Bombay and self-inoculated on 10 January 1897 to prove its safety; the vaccine was deployed at mass scale across British India until the 1902 Mulkowal incident, in which 19 villagers died of tetanus after inoculation and Haffkine\'s laboratory was blamed before being exonerated in 1907.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1897-01-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1897-01-10',
+        datePrecision: 'DAY',
+        reason: 'Haffkine, working at a makeshift laboratory in Bombay during the plague epidemic, produced a heat-killed broth-culture vaccine against bubonic plague and tested it on himself on 10 January 1897, demonstrating tolerability and recording the existence of a usable anti-plague inoculation.',
+        source: {
+          externalId: 'src:historyofvaccines-haffkine-incidents',
+          name: 'The History of Vaccines (College of Physicians of Philadelphia). Historical Vaccine-Associated Incidents (documents Haffkine\'s 1897 plague vaccine and the 1902 Mulkowal disaster).',
+          url: 'https://historyofvaccines.org/blog/historical-vaccine-associated-incidents/',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1900',
+        datePrecision: 'YEAR',
+        reason: 'British Indian authorities adopted Haffkine\'s vaccine for mass campaigns; controlled comparisons showed inoculated persons were several times less likely to fall ill, and an estimated 26 million doses were distributed from Bombay between 1897 and 1925, reducing plague mortality by 50–85%. Institutional uptake settled the vaccine\'s protective efficacy.',
+        source: {
+          externalId: 'src:plague-vaccine-haffkine-adoption',
+          name: 'Wikipedia. Plague vaccine (summary of Haffkine\'s vaccine, efficacy data, and ~26 million doses distributed 1897–1925).',
+          url: 'https://en.wikipedia.org/wiki/Plague_vaccine',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1902-10-30',
+        datePrecision: 'DAY',
+        reason: 'In late October 1902 at Mulkowal, Punjab, 19 people inoculated from a single bottle of Haffkine\'s plague vaccine died of tetanus. An official commission of inquiry attributed the contamination to Haffkine\'s Bombay laboratory and its abandonment of carbolic-acid sterilisation; Haffkine was removed from his directorship, throwing the safety of his vaccine and his methods into open dispute (the \'Little Dreyfus Affair\').',
+        source: {
+          externalId: 'src:historyofvaccines-mulkowal-1902',
+          name: 'The History of Vaccines. Historical Vaccine-Associated Incidents (Mulkowal, Punjab: 19 tetanus deaths after plague inoculation, 1902; laboratory initially blamed).',
+          url: 'https://historyofvaccines.org/blog/historical-vaccine-associated-incidents/',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1907',
+        datePrecision: 'YEAR',
+        reason: 'A campaign led by Ronald Ross and others reexamined the evidence and concluded the contamination occurred at the inoculation site in the village — a bottle opened and contaminated during the field procedure 41 days earlier, not in Haffkine\'s laboratory. Haffkine was exonerated in 1907 and his vaccine remained in use, settling that the disaster was a point-of-use accident rather than a defect of the vaccine or its manufacture.',
+        source: {
+          externalId: 'src:haffkine-exoneration-1907-ipkat',
+          name: 'Waldemar Haffkine: Pioneer of plague vaccine and the \'Little Dreyfus Affair\' (account of the 1902 Mulkowal incident and 1907 exoneration via Ronald Ross\'s campaign).',
+          url: 'https://ipkitten.blogspot.com/2017/10/waldemar-haffkine-pioneer-of-plague.html',
+          publishedAt: '2017-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wassermann serodiagnostic test for syphilis — 1906 ─────────────────────
+  {
+    externalId: 'trajectory:wassermann-serodiagnostic-test-syphilis-1906',
+    text: 'August von Wassermann, Albert Neisser, and Carl Bruck reported on 10 May 1906 a complement-fixation blood test for syphilis (the Wassermann reaction), the first serological diagnostic for the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1906-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1906-05-10',
+        datePrecision: 'DAY',
+        reason: 'Wassermann, Neisser, and Bruck published their complement-fixation assay in Deutsche Medizinische Wochenschrift on 10 May 1906, applying Bordet and Gengou\'s complement-fixation method to detect antibody-like reactivity in the sera of syphilitic patients. This recorded the first laboratory blood test able to diagnose syphilis, only the year after the spirochete Treponema pallidum had been identified.',
+        source: {
+          externalId: 'src:asm-history-syphilis-diagnostics-2020',
+          name: 'American Society for Microbiology. A Brief History of Laboratory Diagnostics for Syphilis. 2020 (documents the 1906 Wassermann-Neisser-Bruck complement-fixation test).',
+          url: 'https://asm.org/articles/2020/january/a-brief-history-of-laboratory-diagnostics-for-syph',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1910',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years the Wassermann reaction was standardised and adopted worldwide as the routine serodiagnostic screen for syphilis (including a method codified at the US Hygienic Laboratory), becoming the foundation of mass syphilis screening for decades and establishing serological diagnosis of infection as standard practice; the specific reaction was later refined and superseded by nontreponemal (VDRL/RPR) and treponemal tests, but serodiagnosis itself remained settled.',
+        source: {
+          externalId: 'src:serological-tests-syphilis-pmc',
+          name: 'Serological Tests for Syphilis (historical review documenting worldwide adoption and standardisation of the Wassermann reaction).',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5068001/',
+          publishedAt: '2016-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bordet-Gengou pertussis isolation — 1906 ────────────────────────────────
+  {
+    externalId: 'trajectory:bordet-gengou-pertussis-isolation-1906',
+    text: 'Jules Bordet and Octave Gengou reported in 1906 that they had isolated the whooping-cough bacillus (later named Bordetella pertussis) in pure culture using a custom potato-blood medium, identifying it as the cause of pertussis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1906',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1906',
+        datePrecision: 'YEAR',
+        reason: 'Having microscopically observed the organism in pertussis sputum in 1900, Bordet and Gengou succeeded in 1906 in growing it in pure culture on a newly devised potato-extract/blood medium (the Bordet-Gengou medium) and published \'Le microbe de la coqueluche\' in the Annales de l\'Institut Pasteur (1906;20:731-741), declaring this fastidious bacillus the cause of whooping cough.',
+        source: {
+          externalId: 'src:bordet-nobel-tribute-pmc-2019',
+          name: '100th Anniversary of Jules Bordet\'s Nobel Prize: Tribute to a Founding Father of Immunology. (PMC, 2019; documents the 1906 isolation of B. pertussis and publication in Annales de l\'Institut Pasteur.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6749103/',
+          publishedAt: '2019-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920',
+        datePrecision: 'YEAR',
+        reason: 'The isolation was reproduced and accepted; the bacillus\'s role as the etiologic agent of whooping cough became textbook consensus and the foundation for diagnostic culture and, ultimately, the whole-cell pertussis vaccine, with the genus later named Bordetella in Bordet\'s honour. Acceptance of the organism as the cause of pertussis settled the etiology.',
+        source: {
+          externalId: 'src:cmr-bordetella-review-2005',
+          name: 'Mattoo S, Cherry JD. Molecular Pathogenesis, Epidemiology, and Clinical Manifestations of Respiratory Infections Due to Bordetella pertussis and Other Bordetella Subspecies. Clin Microbiol Rev. 2005;18(2):326-382.',
+          url: 'https://cmr.asm.org/content/18/2/326',
+          publishedAt: '2005-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
