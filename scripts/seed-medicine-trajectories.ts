@@ -46833,6 +46833,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL / DEVICE REVERSALS & PRACTICE-CHANGING TRIALS (1993–2018)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aprotinin (Trasylol) cardiac-surgery safety reversal 1993–2008 ──────────
+  {
+    externalId: 'trajectory:aprotinin-trasylol-cardiac-surgery-safety-reversal-1993',
+    text: 'Aprotinin (Trasylol), the serine-protease-inhibitor antifibrinolytic approved by the FDA in December 1993 to reduce perioperative blood loss in coronary-artery-bypass-graft surgery, is a safe and effective hemostatic agent for cardiac surgery.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1993-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-12-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved aprotinin (Trasylol, NDA 020-304) to reduce perioperative blood loss and the need for transfusion in patients undergoing cardiopulmonary bypass for CABG surgery. Over the next decade it became a widely used hemostatic agent in cardiac surgery worldwide, institutionally settling the premise that it was a safe, effective way to limit operative bleeding.',
+        source: {
+          externalId: 'src:fda-trasylol-nda-020304',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Trasylol (aprotinin injection), NDA 020-304 — approval record and labeling.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/98/020304s004.cfm',
+          publishedAt: '1993-12-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-26',
+        datePrecision: 'DAY',
+        reason: 'Mangano and colleagues published an observational study of 4,374 cardiac-surgery patients in the New England Journal of Medicine finding that aprotinin was associated with a doubling of the risk of renal failure requiring dialysis and increased risks of myocardial infarction, heart failure, and stroke, concluding that \'continued use is not prudent.\' The first large safety signal placed the drug\'s established safety claim into open dispute and triggered FDA review.',
+        source: {
+          externalId: 'src:mangano-aprotinin-risk-nejm-2006',
+          name: 'Mangano DT, Tudor IC, Dietzel C; Multicenter Study of Perioperative Ischemia Research Group. The risk associated with aprotinin in cardiac surgery. N Engl J Med. 2006;354(4):353-365.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16436767/',
+          publishedAt: '2006-01-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-05-29',
+        datePrecision: 'DAY',
+        reason: 'The randomized BART trial (Fergusson et al., NEJM) compared aprotinin with the lysine analogues tranexamic acid and aminocaproic acid in high-risk cardiac surgery and was stopped early when 30-day mortality reached 6.0% with aprotinin versus ~4.0% with the comparators (relative risk 1.53). After Bayer had already suspended marketing in November 2007 on FDA request, this definitive trial led to the drug\'s removal from the U.S. and other markets, reversing the safety-and-efficacy claim through manufacturer withdrawal and regulatory action.',
+        source: {
+          externalId: 'src:fergusson-bart-aprotinin-nejm-2008',
+          name: 'Fergusson DA, Hébert PC, Mazer CD, et al; BART Investigators. A comparison of aprotinin and lysine analogues in high-risk cardiac surgery. N Engl J Med. 2008;358(22):2319-2331.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18480196/',
+          publishedAt: '2008-05-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACOSOG Z0011 axillary dissection omission 2011 ──────────────────────────
+  {
+    externalId: 'trajectory:acosog-z0011-axillary-dissection-omission-2011',
+    text: 'Completion axillary lymph node dissection can be safely omitted, without compromising survival, in women with clinical T1–T2 invasive breast cancer and one or two positive sentinel lymph nodes treated with breast-conserving surgery plus whole-breast irradiation, as established by the ACOSOG Z0011 randomized trial reported by Giuliano and colleagues in JAMA on 9 February 2011.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-02-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-02-09',
+        datePrecision: 'DAY',
+        reason: 'Giuliano and colleagues published the primary results of the American College of Surgeons Oncology Group Z0011 trial in JAMA, randomizing 891 women with T1–T2 breast cancer and sentinel-node metastases to completion axillary dissection or no further axillary surgery. At median 6.3 years there was no significant difference in locoregional recurrence or overall survival, recording in the literature the claim that the long-standing surgical doctrine requiring axillary dissection for node-positive disease could be abandoned for this group.',
+        source: {
+          externalId: 'src:giuliano-z0011-jama-2011',
+          name: 'Giuliano AE, Hunt KK, Ballman KV, et al. Axillary dissection vs no axillary dissection in women with invasive breast cancer and sentinel node metastasis: a randomized clinical trial. JAMA. 2011;305(6):569-575.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21304082/',
+          publishedAt: '2011-02-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-09-12',
+        datePrecision: 'DAY',
+        reason: 'Giuliano and colleagues reported the 10-year follow-up of Z0011 in JAMA, finding sentinel-node dissection alone noninferior to axillary dissection for overall survival (86.3% vs 83.6%) and concluding the data \'do not support routine use of axillary lymph node dissection.\' The durable long-term result, incorporated into ASCO and NCCN guidance, settled axillary de-escalation as standard surgical practice for Z0011-eligible breast cancer.',
+        source: {
+          externalId: 'src:giuliano-z0011-10yr-jama-2017',
+          name: 'Giuliano AE, Ballman KV, McCall L, et al. Effect of axillary dissection vs no axillary dissection on 10-year overall survival among women with invasive breast cancer and sentinel node metastasis: the ACOSOG Z0011 randomized clinical trial. JAMA. 2017;318(10):918-926.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28898379/',
+          publishedAt: '2017-09-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── LACC minimally invasive radical hysterectomy reversal 2018 ───────────────
+  {
+    externalId: 'trajectory:lacc-minimally-invasive-radical-hysterectomy-reversal-2018',
+    text: 'Minimally invasive (laparoscopic or robotic) radical hysterectomy is at least oncologically equivalent to open abdominal radical hysterectomy for early-stage cervical cancer — a premise reversed when the LACC randomized trial (Ramirez et al., NEJM, 15 November 2018) found minimally invasive surgery produced significantly lower disease-free and overall survival.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2008-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the late 2000s and 2010s minimally invasive radical hysterectomy was widely adopted as a standard approach for early-stage cervical cancer on the basis of retrospective series suggesting oncologic outcomes equivalent to open surgery but with less morbidity, and it was incorporated into routine practice and treatment guidelines as an accepted option. The LACC report documents this prior status as the prevailing surgical assumption.',
+        source: {
+          externalId: 'src:ramirez-lacc-background-nejm-2018',
+          name: 'Ramirez PT, Frumovitz M, Pareja R, et al. Minimally invasive versus abdominal radical hysterectomy for cervical cancer (introduction documenting prior widespread adoption of minimally invasive radical hysterectomy). N Engl J Med. 2018;379(20):1895-1904.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30380365/',
+          publishedAt: '2018-11-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-15',
+        datePrecision: 'DAY',
+        reason: 'The multicenter LACC randomized trial assigned 631 women with early-stage cervical cancer to minimally invasive or open radical hysterectomy and was stopped early when the minimally invasive arm showed markedly worse outcomes: 4.5-year disease-free survival of 86.0% versus 96.5% and 3-year overall survival of 93.8% versus 99.0%. The result directly contradicted the equivalence assumption, and NCCN and other bodies promptly revised guidance toward open surgery, reversing a widely practiced minimally invasive operation.',
+        source: {
+          externalId: 'src:ramirez-lacc-nejm-2018',
+          name: 'Ramirez PT, Frumovitz M, Pareja R, et al. Minimally invasive versus abdominal radical hysterectomy for cervical cancer. N Engl J Med. 2018;379(20):1895-1904.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30380365/',
+          publishedAt: '2018-11-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Essure permanent contraception restriction 2002–2018 ────────────────────
+  {
+    externalId: 'trajectory:essure-permanent-contraception-restriction-2018',
+    text: 'Essure, the hysteroscopically placed permanent contraceptive coil approved by the FDA in November 2002, is a safe and effective non-surgical permanent birth-control device — a status the FDA progressively contested and that ended when sales were restricted in April 2018 and Bayer halted U.S. distribution on 31 December 2018.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-11-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-11-04',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted premarket approval (PMA P020014) to Essure as the first non-incisional, hysteroscopically delivered permanent contraceptive device, establishing it on the regulatory record as a safe and effective alternative to surgical tubal ligation. It was marketed and implanted in hundreds of thousands of women over the following decade as a settled standard option for permanent contraception.',
+        source: {
+          externalId: 'src:fda-essure-approval-pma-p020014',
+          name: 'U.S. Food and Drug Administration. Essure Permanent Birth Control — device overview and PMA P020014 approval (2002).',
+          url: 'https://www.fda.gov/medical-devices/implants-and-prosthetics/essure-permanent-birth-control',
+          publishedAt: '2002-11-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-02-29',
+        datePrecision: 'DAY',
+        reason: 'After thousands of adverse-event reports of pain, bleeding, device migration, perforation, and unintended pregnancy, the FDA ordered a boxed warning and a patient decision checklist and required Bayer to conduct a new postmarket surveillance (522) study to better characterize the device\'s risks. The agency\'s escalation formally placed Essure\'s safety-and-effectiveness claim in dispute.',
+        source: {
+          externalId: 'src:fda-essure-additional-action-2016',
+          name: 'U.S. Food and Drug Administration. FDA takes additional action to better understand safety of Essure, inform patients of potential risks. Press announcement, 29 February 2016.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-takes-additional-action-better-understand-safety-essure-inform-patients-potential-risks',
+          publishedAt: '2016-02-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-04-09',
+        datePrecision: 'DAY',
+        reason: 'In April 2018 the FDA issued an order restricting the sale and distribution of Essure to providers who reviewed a risk checklist with patients, an unusual use of its restricted-device authority; Bayer subsequently announced it would stop U.S. sales, and distribution ended on 31 December 2018. The combined regulatory restriction and market withdrawal effectively reversed the device\'s status as an approvable, marketable permanent-contraception option in the United States.',
+        source: {
+          externalId: 'src:fda-activities-essure-restriction-2018',
+          name: 'U.S. Food and Drug Administration. FDA Activities Related to Essure (April 2018 sale/distribution restriction; 31 December 2018 Bayer discontinuation of U.S. sales).',
+          url: 'https://www.fda.gov/medical-devices/essure-permanent-birth-control/fda-activities-related-essure',
+          publishedAt: '2018-04-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
