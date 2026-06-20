@@ -38259,6 +38259,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Kefauver-Harris Drug Amendments — efficacy requirement 1962 ─────────────
+  {
+    externalId: 'trajectory:kefauver-harris-drug-amendments-efficacy-1962',
+    text: 'The Drug Amendments of 1962 (Kefauver-Harris Amendment, Public Law 87-781), signed by President Kennedy on October 10, 1962, required drug manufacturers to prove substantial evidence of efficacy — not merely safety — from adequate and well-controlled investigations before FDA marketing approval, and mandated informed consent of investigational subjects.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1962-10-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-10-10',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted and President Kennedy signed PL 87-781 in the immediate aftermath of the thalidomide tragedy, transforming the 1938 safety-only standard into a dual safety-and-efficacy requirement and adding informed-consent rules for clinical investigations. This recorded a new federal evidentiary standard for drug approval that underlies the modern randomized-controlled-trial-based approval regime.',
+        source: {
+          externalId: 'src:fda-100-years-safe-effective-drugs',
+          name: 'U.S. Food and Drug Administration. Promoting Safe & Effective Drugs for 100 Years (history of the 1962 Drug Amendments). FDA Histories of Product Regulation.',
+          url: 'https://www.fda.gov/about-fda/histories-product-regulation/promoting-safe-effective-drugs-100-years',
+          publishedAt: '1962-10-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1973-06-18',
+        datePrecision: 'DAY',
+        reason: 'In Weinberger v. Hynson, Westcott & Dunning, 412 U.S. 609 (1973), the U.S. Supreme Court upheld the FDA\'s authority to require substantial evidence of efficacy and to withdraw approval of drugs failing the Drug Efficacy Study Implementation (DESI) review without a prior full hearing. The decision settled the constitutionality and reach of the 1962 efficacy mandate against industry challenge.',
+        source: {
+          externalId: 'src:weinberger-v-hynson-412-us-609-1973',
+          name: 'Weinberger v. Hynson, Westcott & Dunning, Inc., 412 U.S. 609 (1973). U.S. Supreme Court, decided June 18, 1973.',
+          url: 'https://supreme.justia.com/cases/federal/us/412/609/',
+          publishedAt: '1973-06-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sabin trivalent oral polio vaccine licensure — 1963 ─────────────────────
+  {
+    externalId: 'trajectory:sabin-trivalent-oral-polio-vaccine-licensure-1963',
+    text: 'Sabin\'s live attenuated trivalent oral poliovirus vaccine (tOPV) was licensed in the United States in 1963 and, after the American Academy of Pediatrics endorsed it in 1964, became the preferred childhood polio vaccine that displaced the injected Salk IPV for routine immunization.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1963-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After monovalent oral poliovirus vaccines for types 1 and 2 were licensed in 1961 and type 3 in 1962, the combined trivalent OPV was licensed in 1963. Licensure recorded official acceptance that an orally administered live attenuated vaccine could safely and effectively immunize children against all three poliovirus serotypes.',
+        source: {
+          externalId: 'src:cdc-pinkbook-poliomyelitis-ch18',
+          name: 'Centers for Disease Control and Prevention. Epidemiology and Prevention of Vaccine-Preventable Diseases (Pink Book), Chapter 18: Poliomyelitis.',
+          url: 'https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-18-poliomyelitis.html',
+          publishedAt: '1963-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1964 the American Academy of Pediatrics Committee on Infectious Diseases recommended routine use of OPV, and trivalent OPV largely replaced IPV as the polio vaccine of choice in the U.S. childhood schedule for the next three decades. This settled OPV as the standard of pediatric polio prevention.',
+        source: {
+          externalId: 'src:cdc-pinkbook-polio-opv-adoption',
+          name: 'Centers for Disease Control and Prevention. Pink Book, Chapter 18: Poliomyelitis — vaccine history and U.S. immunization policy.',
+          url: 'https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-18-poliomyelitis.html',
+          publishedAt: '1964-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Because OPV caused roughly 8-10 cases of vaccine-associated paralytic poliomyelitis (VAPP) annually in the U.S. once wild poliovirus was eliminated, the ACIP transitioned to an all-IPV schedule effective January 2000, withdrawing OPV from routine U.S. use. The judgment that live OPV was the preferred childhood polio vaccine was thereby reversed.',
+        source: {
+          externalId: 'src:cdc-pinkbook-polio-opv-to-ipv-2000',
+          name: 'Centers for Disease Control and Prevention. Pink Book, Chapter 18: Poliomyelitis — U.S. switch from OPV to IPV (2000) and VAPP.',
+          url: 'https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-18-poliomyelitis.html',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tris flame retardant children's sleepwear ban — 1977 ────────────────────
+  {
+    externalId: 'trajectory:tris-flame-retardant-childrens-sleepwear-ban-1977',
+    text: 'Blum and Ames reported in Science on January 7, 1977 that the brominated flame retardant Tris (tris(2,3-dibromopropyl) phosphate), used to treat children\'s polyester sleepwear, was mutagenic and a probable carcinogen; the U.S. Consumer Product Safety Commission banned Tris-treated children\'s garments on April 7, 1977.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1977-01-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-07',
+        datePrecision: 'DAY',
+        reason: 'Arlene Blum and Bruce Ames published \'Flame-retardant additives as possible cancer hazards\' in Science (195:17-23), showing that Tris-BP applied to children\'s sleepwear was mutagenic in the Salmonella/Ames assay and structurally a probable carcinogen. This recorded the first systematic scientific warning that a chemical mandated onto children\'s clothing posed a cancer risk.',
+        source: {
+          externalId: 'src:blum-ames-flame-retardant-cancer-science-1977',
+          name: 'Blum A, Ames BN. Flame-retardant additives as possible cancer hazards. Science. 1977 Jan 7;195(4273):17-23. PMID:831254.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/831254/',
+          publishedAt: '1977-01-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1977-04-07',
+        datePrecision: 'DAY',
+        reason: 'On April 7, 1977 the Consumer Product Safety Commission banned the sale of children\'s clothing treated with Tris, following a National Cancer Institute bioassay showing Tris caused cancer in animals. A subsequent Science paper (Blum et al., 1978, PMID 684422) found the mutagenic metabolite 2,3-dibromopropanol in the urine of children who wore treated sleepwear, confirming absorption and cementing the regulatory judgment despite later procedural litigation over the ban.',
+        source: {
+          externalId: 'src:blum-children-absorb-tris-science-1978',
+          name: 'Blum A, Gold MD, Ames BN, et al. Children absorb tris-BP flame retardant from sleepwear: urine contains the mutagenic metabolite, 2,3-dibromopropanol. Science. 1978 Sep 15;201(4360):1020-1023. PMID:684422.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/684422/',
+          publishedAt: '1978-09-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tetracycline tooth discoloration in children — Wallman & Hilton 1962 ─────
+  {
+    externalId: 'trajectory:tetracycline-tooth-discoloration-children-1962',
+    text: 'Wallman and Hilton reported in The Lancet on April 21, 1962 that tetracycline antibiotics permanently pigment developing teeth, establishing that tetracyclines incorporate into calcifying dentition and leading to their contraindication in pregnancy and in children under eight years of age.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-04-21',
+        datePrecision: 'DAY',
+        reason: 'Wallman and Hilton published \'Teeth pigmented by tetracycline\' in The Lancet (1962;1:827-829), documenting that children exposed to tetracycline during tooth development showed permanent yellow-gray-brown discoloration. This recorded the causal link between a widely used pediatric antibiotic and an irreversible developmental dental defect, following scattered case observations from the late 1950s.',
+        source: {
+          externalId: 'src:wallman-hilton-teeth-tetracycline-lancet-1962',
+          name: 'Wallman IS, Hilton HB. Teeth pigmented by tetracycline. Lancet. 1962 Apr 21;1(7234):827-829. PMID:14004715.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14004715/',
+          publishedAt: '1962-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By around 1970 the FDA required class-wide labeling warning that tetracyclines may cause permanent tooth discoloration when used during tooth development (last half of pregnancy, infancy, and childhood to age 8), making the drugs contraindicated in these groups absent a compelling alternative. The dosing/age restriction became standard pediatric practice worldwide.',
+        source: {
+          externalId: 'src:sanchez-tetracycline-tooth-staining-review-2004',
+          name: 'Sanchez AR, Rogers RS, Sheridan PJ. Tetracycline and other tetracycline-derivative staining of the teeth and oral cavity. Int J Dermatol. 2004 Oct;43(10):709-715. PMID:15485524.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15485524/',
+          publishedAt: '2004-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lead-Based Paint Poisoning Prevention Act — PL 91-695 1971 ──────────────
+  {
+    externalId: 'trajectory:lead-based-paint-poisoning-prevention-act-1971',
+    text: 'The Lead-Based Paint Poisoning Prevention Act (Public Law 91-695), signed January 13, 1971, established childhood lead-based paint poisoning as a federal public-health hazard, funding local screening and treatment programs and prohibiting lead-based paint in federally constructed or assisted housing.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1971-01-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-01-13',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted and President Nixon signed PL 91-695, providing federal financial assistance for local programs to detect and treat childhood lead poisoning, establishing a federal demonstration and research program, and prohibiting future use of lead-based paint in federal or federally assisted construction. This recorded the first federal commitment treating low-level childhood lead exposure as a preventable hazard, and led to the CDC Childhood Lead Poisoning Prevention Program.',
+        source: {
+          externalId: 'src:pl-91-695-lead-paint-act-statute-1971',
+          name: 'Lead-Based Paint Poisoning Prevention Act, Public Law 91-695, 84 Stat. 2078, January 13, 1971.',
+          url: 'https://www.congress.gov/91/statute/STATUTE-84/STATUTE-84-Pg2078.pdf',
+          publishedAt: '1971-01-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-11-09',
+        datePrecision: 'DAY',
+        reason: 'The 1973 amendments to the Act (PL 93-151) extended the prohibition on lead-based paint to federally assisted housing and directed progressive reduction of allowable lead content, hardening the 1971 recognition into a binding nationwide prohibition that culminated in the Consumer Product Safety Commission\'s 0.06% residential lead-paint ban. The premise that childhood lead-paint exposure must be eliminated became settled federal policy.',
+        source: {
+          externalId: 'src:uscode-chapter63-lead-paint-poisoning-prevention',
+          name: 'U.S. Code Title 42, Chapter 63 — Lead-Based Paint Poisoning Prevention (codifying PL 91-695 as amended). Office of the Law Revision Counsel.',
+          url: 'https://uscode.house.gov/view.xhtml?path=%2Fprelim%40title42%2Fchapter63&edition=prelim',
+          publishedAt: '1973-11-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
