@@ -55513,6 +55513,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA — NEUROLOGY / PSYCHIATRY / RARE DISEASE (2020–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── AMX0035 / Relyvrio — ALS efficacy claim approved then reversed ──────────
+  {
+    externalId: 'trajectory:amx0035-relyvrio-als-approval-withdrawn-2022',
+    text: 'AMX0035 (sodium phenylbutyrate–taurursodiol, Relyvrio) slows functional decline and prolongs survival in amyotrophic lateral sclerosis — a claim established by the CENTAUR trial (Paganoni et al., NEJM, 3 September 2020), institutionally adopted by FDA approval on 29 September 2022, then reversed after the confirmatory PHOENIX trial failed and Amylyx withdrew the drug in 2024.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-09-03',
+        datePrecision: 'DAY',
+        reason: 'Paganoni and colleagues published the CENTAUR phase 2 trial (137 patients, 2:1 randomization) in the New England Journal of Medicine, reporting that AMX0035 slowed ALSFRS-R functional decline over 24 weeks versus placebo, with a later open-label analysis suggesting a survival benefit. This recorded the first randomized evidence that the phenylbutyrate–taurursodiol combination modified ALS progression, generating intense patient-advocacy pressure for approval.',
+        source: {
+          externalId: 'src:paganoni-centaur-amx0035-nejm-2020',
+          name: 'Paganoni S, Macklin EA, Hendrix S, et al. Trial of Sodium Phenylbutyrate–Taurursodiol for Amyotrophic Lateral Sclerosis. N Engl J Med. 2020;383(10):919-930.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32877582/',
+          publishedAt: '2020-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-09-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Relyvrio for ALS on 29 September 2022 on the strength of the single CENTAUR study, after an advisory committee that initially voted against approval reversed itself under patient pressure at a second meeting. The approval institutionally endorsed the efficacy claim despite acknowledged uncertainty, with Amylyx publicly committing to withdraw the drug if the ongoing confirmatory trial failed.',
+        source: {
+          externalId: 'src:fda-relyvrio-drug-trials-snapshot-2022',
+          name: 'U.S. FDA. Drug Trials Snapshots: RELYVRIO (sodium phenylbutyrate and taurursodiol). Approved 29 September 2022.',
+          url: 'https://www.fda.gov/drugs/drug-trials-snapshots/drug-trials-snapshots-relyvrio',
+          publishedAt: '2022-09-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-04-04',
+        datePrecision: 'DAY',
+        reason: 'The confirmatory global phase 3 PHOENIX trial (664 patients) missed its primary and secondary endpoints, reported in March 2024; honoring its prior commitment, Amylyx announced on 4 April 2024 that it would voluntarily remove Relyvrio/Albrioza from the US and Canadian markets. The FDA subsequently formalized withdrawal of the NDA, making this one of the cleanest modern cases of an approved drug\'s efficacy claim being reversed by its own confirmatory evidence.',
+        source: {
+          externalId: 'src:fedreg-amylyx-relyvrio-withdrawal-2025',
+          name: 'U.S. FDA / Federal Register. Amylyx Pharmaceuticals, Inc.; Withdrawal of Approval of New Drug Application for RELYVRIO (Sodium Phenylbutyrate and Taurursodiol) for Suspension. 29 August 2025.',
+          url: 'https://www.federalregister.gov/documents/2025/08/29/2025-16646/amylyx-pharmaceuticals-inc-withdrawal-of-approval-of-new-drug-application-for-relyvrio-sodium',
+          publishedAt: '2025-08-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── KarXT / Cobenfy — first non-dopaminergic antipsychotic ──────────────────
+  {
+    externalId: 'trajectory:karxt-cobenfy-muscarinic-antipsychotic-schizophrenia-2024',
+    text: 'Xanomeline–trospium (KarXT, Cobenfy), a muscarinic M1/M4 receptor agonist that does not block dopamine D2 receptors, reduces schizophrenia symptoms — established by the EMERGENT-2 phase 3 trial (Kaul et al., Lancet, online 14 December 2023) and adopted by FDA approval on 26 September 2024 as the first antipsychotic with a fundamentally new mechanism of action since the 1950s.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-12-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-12-14',
+        datePrecision: 'DAY',
+        reason: 'Kaul and colleagues published the EMERGENT-2 randomized, double-blind, placebo-controlled phase 3 trial in The Lancet, reporting a statistically significant ~9.6-point greater reduction in PANSS total score versus placebo at five weeks in acutely psychotic adults. This recorded the first phase 3 confirmation that a purely muscarinic-agonist mechanism — with no dopamine D2 blockade — could treat schizophrenia, breaking the 70-year dopamine-antagonist paradigm.',
+        source: {
+          externalId: 'src:kaul-emergent2-karxt-lancet-2024',
+          name: 'Kaul I, Sawchak S, Correll CU, et al. Efficacy and safety of the muscarinic receptor agonist KarXT (xanomeline-trospium) in schizophrenia (EMERGENT-2) in the USA: results from a randomised, double-blind, placebo-controlled, flexible-dose phase 3 trial. Lancet. 2024;403(10422):160-170.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38104575/',
+          publishedAt: '2023-12-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-09-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Cobenfy (xanomeline and trospium chloride) for schizophrenia in adults on 26 September 2024, the first novel antipsychotic mechanism approved in decades and the first that avoids the metabolic and movement side effects tied to dopamine-blocking agents. The approval institutionally validated muscarinic agonism as a stand-alone antipsychotic strategy and reframed the field\'s mechanistic understanding of psychosis.',
+        source: {
+          externalId: 'src:bms-cobenfy-fda-approval-2024',
+          name: 'Bristol Myers Squibb. U.S. FDA Approves COBENFY (xanomeline and trospium chloride), a First-In-Class Muscarinic Agonist for the Treatment of Schizophrenia in Adults. 26 September 2024.',
+          url: 'https://news.bms.com/news/details/2024/U.S.-Food-and-Drug-Administration-Approves-Bristol-Myers-Squibbs-COBENFY-xanomeline-and-trospium-chloride-a-First-In-Class-Muscarinic-Agonist-for-the-Treatment-of-Schizophrenia-in-Adults/default.aspx',
+          publishedAt: '2024-09-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AXS-05 / Auvelity — first oral NMDA-antagonist antidepressant ───────────
+  {
+    externalId: 'trajectory:axs05-auvelity-oral-nmda-antagonist-mdd-2022',
+    text: 'Dextromethorphan–bupropion (AXS-05, Auvelity), an oral NMDA-receptor antagonist, produces rapid antidepressant effects in major depressive disorder — established by the GEMINI phase 3 trial (Iosifescu et al., J Clin Psychiatry, 30 May 2022) and adopted by FDA approval on 18 August 2022 as the first oral NMDA-antagonist antidepressant and the first new oral antidepressant mechanism in decades.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-05-30',
+        datePrecision: 'DAY',
+        reason: 'Iosifescu and colleagues published the GEMINI phase 3 randomized placebo-controlled trial in the Journal of Clinical Psychiatry, reporting that dextromethorphan-bupropion was superior to placebo on MADRS (−3.87-point difference at week 6) with significantly higher remission rates and separation from placebo as early as week one. This recorded the first phase 3 evidence that an oral NMDA-antagonist mechanism could deliver rapid antidepressant benefit, extending the ketamine/esketamine rationale to an oral agent.',
+        source: {
+          externalId: 'src:iosifescu-gemini-axs05-jcp-2022',
+          name: 'Iosifescu DV, Jones A, O\'Gorman C, et al. Efficacy and Safety of AXS-05 (Dextromethorphan-Bupropion) in Patients With Major Depressive Disorder: A Phase 3 Randomized Clinical Trial (GEMINI). J Clin Psychiatry. 2022;83(4):21m14345.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35649167/',
+          publishedAt: '2022-05-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-08-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Auvelity (dextromethorphan HBr–bupropion HCl extended-release) for major depressive disorder in adults on 18 August 2022 (announced by Axsome 19 August), the first oral NMDA-receptor antagonist approved for MDD and the first rapid-acting oral antidepressant with labeling of efficacy versus placebo from week one. The approval institutionally endorsed glutamatergic modulation as a mainstream oral antidepressant strategy beyond the monoamine paradigm.',
+        source: {
+          externalId: 'src:axsome-auvelity-fda-approval-2022',
+          name: 'Axsome Therapeutics. FDA Approval of AUVELITY, the First and Only Oral NMDA Receptor Antagonist for the Treatment of Major Depressive Disorder in Adults. 19 August 2022.',
+          url: 'https://www.globenewswire.com/news-release/2022/08/19/2501453/33090/en/axsome-therapeutics-announces-fda-approval-of-auvelity-the-first-and-only-oral-nmda-receptor-antagonist-for-the-treatment-of-major-depressive-disorder-in-adults.html',
+          publishedAt: '2022-08-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tofersen / Qalsody — SOD1-ALS surrogate-endpoint accelerated approval ───
+  {
+    externalId: 'trajectory:tofersen-qalsody-sod1-als-accelerated-approval-2023',
+    text: 'Tofersen (Qalsody), an antisense oligonucleotide targeting SOD1, treats SOD1-mutation amyotrophic lateral sclerosis — a clinical-benefit claim recorded conditionally when the pivotal VALOR trial (Miller et al., NEJM, 22 September 2022) missed its primary functional endpoint but lowered neurofilament, then institutionally adopted via FDA accelerated approval on 25 April 2023 on the neurofilament surrogate, the first therapy targeting a genetic cause of ALS.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-09-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-09-22',
+        datePrecision: 'DAY',
+        reason: 'Miller and colleagues published the VALOR phase 3 trial in the New England Journal of Medicine, reporting that tofersen did NOT significantly improve the primary clinical endpoint (ALSFRS-R change at 28 weeks in faster-progressing patients) but markedly reduced plasma neurofilament light chain, a marker of axonal degeneration. This recorded an ambiguous result: a robust biomarker effect without demonstrated clinical benefit, setting up a surrogate-endpoint regulatory debate.',
+        source: {
+          externalId: 'src:miller-valor-tofersen-nejm-2022',
+          name: 'Miller TM, Cudkowicz ME, Genge A, et al. Trial of Antisense Oligonucleotide Tofersen for SOD1 ALS. N Engl J Med. 2022;387(12):1099-1110.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36129998/',
+          publishedAt: '2022-09-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-04-25',
+        datePrecision: 'DAY',
+        reason: 'After the FDA\'s Peripheral and Central Nervous System Drugs Advisory Committee voted 9-0 on 22 March 2023 that neurofilament reduction was \'reasonably likely\' to predict clinical benefit, the FDA granted accelerated approval to Qalsody for SOD1-ALS on 25 April 2023 — the first treatment targeting a genetic cause of ALS. The institution settled on the surrogate despite the failed clinical primary endpoint, with continued approval contingent on the confirmatory presymptomatic ATLAS trial.',
+        source: {
+          externalId: 'src:biogen-qalsody-accelerated-approval-2023',
+          name: 'Biogen. FDA Grants Accelerated Approval for QALSODY (tofersen) for SOD1-ALS, the First Treatment to Target a Genetic Cause of ALS. 25 April 2023.',
+          url: 'https://www.globenewswire.com/news-release/2023/04/25/2654404/0/en/FDA-Grants-Accelerated-Approval-for-QALSODY-tofersen-for-SOD1-ALS-a-Major-Scientific-Advancement-as-the-First-Treatment-to-Target-a-Genetic-Cause-of-ALS.html',
+          publishedAt: '2023-04-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Trofinetide / Daybue — first Rett syndrome treatment ────────────────────
+  {
+    externalId: 'trajectory:trofinetide-daybue-first-rett-syndrome-treatment-2023',
+    text: 'Trofinetide (Daybue) improves core symptoms of Rett syndrome — established when the FDA approved it on 10 March 2023 as the first and only treatment for Rett syndrome, with the supporting LAVENDER phase 3 trial subsequently published peer-reviewed (Neul et al., Nature Medicine, 8 June 2023).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Daybue (trofinetide) for Rett syndrome in patients aged two and older on 10 March 2023, the first drug ever approved for this X-linked neurodevelopmental disorder, based on the LAVENDER trial\'s statistically significant improvements on the Rett Syndrome Behaviour Questionnaire and Clinical Global Impression-Improvement scale. The approval converted a previously untreatable genetic neurodevelopmental condition into one with an evidence-backed pharmacological therapy.',
+        source: {
+          externalId: 'src:acadia-daybue-fda-approval-2023',
+          name: 'Acadia Pharmaceuticals. U.S. FDA Approval of DAYBUE (trofinetide) for the Treatment of Rett Syndrome in Adult and Pediatric Patients Two Years of Age and Older. 10 March 2023.',
+          url: 'https://acadia.com/en-us/media/news-releases/acadia-pharmaceuticals-announces-us-fda-approval-daybuetm',
+          publishedAt: '2023-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-06-08',
+        datePrecision: 'DAY',
+        reason: 'Neul and colleagues published the full LAVENDER phase 3 results in Nature Medicine, confirming that trofinetide met both co-primary endpoints versus placebo over 12 weeks in 187 girls and women with Rett syndrome, with diarrhea and vomiting the principal adverse effects. Peer-reviewed publication entrenched the efficacy claim in the literature underpinning the first Rett-syndrome therapy.',
+        source: {
+          externalId: 'src:neul-lavender-trofinetide-natmed-2023',
+          name: 'Neul JL, Percy AK, Benke TA, et al. Trofinetide for the treatment of Rett syndrome: a randomized phase 3 study. Nat Med. 2023;29(6):1468-1475.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/37291210/',
+          publishedAt: '2023-06-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
