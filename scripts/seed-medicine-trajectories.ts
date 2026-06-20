@@ -47994,6 +47994,156 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── RTS,S/AS01 malaria vaccine — phase 3 results 2015 → WHO recommendation 2021 ──
+  {
+    externalId: 'trajectory:rtss-malaria-vaccine-who-recommendation-2021',
+    text: 'The RTS,S/AS01 (Mosquirix) vaccine partially protects young children against Plasmodium falciparum malaria — established by the phase 3 RTS,S Clinical Trials Partnership final results reported on 24 April 2015 and recommended for broad use in children in moderate-to-high-transmission areas by the World Health Organization on 6 October 2021, the first vaccine ever recommended against a human parasitic disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-04-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-04-24',
+        datePrecision: 'DAY',
+        reason: 'The RTS,S Clinical Trials Partnership published the final phase 3 results in The Lancet, reporting that in 8,922 children aged 5–17 months a four-dose RTS,S/AS01 schedule reduced clinical malaria by roughly 36% over four years. This recorded in the expert literature the first demonstration of partial but reproducible vaccine efficacy against a human parasite, while the modest and waning protection left its public-health value unsettled.',
+        source: {
+          externalId: 'src:rtss-phase3-final-lancet-2015',
+          name: 'RTS,S Clinical Trials Partnership. Efficacy and safety of RTS,S/AS01 malaria vaccine with or without a booster dose in infants and children in Africa: final results of a phase 3, individually randomised, controlled trial. Lancet. 2015;386(9988):31-45.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25913272/',
+          publishedAt: '2015-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-10-06',
+        datePrecision: 'DAY',
+        reason: 'After the Malaria Vaccine Implementation Programme reached more than 900,000 children across Ghana, Kenya, and Malawi with a favorable safety and feasibility profile, the WHO recommended RTS,S/AS01 in a four-dose schedule from 5 months of age for children in regions of moderate-to-high P. falciparum transmission. The recommendation moved the partial-efficacy finding from contested literature into endorsed global child-health policy — the first vaccine recommended for broad use against any human parasitic disease.',
+        source: {
+          externalId: 'src:who-rtss-malaria-recommendation-2021',
+          name: 'World Health Organization. WHO recommends groundbreaking malaria vaccine for children at risk. News release. 6 October 2021.',
+          url: 'https://www.who.int/news/item/06-10-2021-who-recommends-groundbreaking-malaria-vaccine-for-children-at-risk',
+          publishedAt: '2021-10-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EPA Lead and Copper Rule Improvements — final rule 2024 ─────────────────
+  {
+    externalId: 'trajectory:epa-lead-copper-rule-improvements-2024',
+    text: 'The U.S. Environmental Protection Agency finalized the Lead and Copper Rule Improvements on 8 October 2024, lowering the lead action level for drinking water to 10 µg/L (10 ppb) and requiring nearly all U.S. water systems to identify and replace their lead service lines within ten years, on the determination that there is no safe level of lead exposure for children.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2024-10-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-10-08',
+        datePrecision: 'DAY',
+        reason: 'The EPA issued a final rule requiring drinking-water systems nationwide to replace lead pipes within ten years and lowering the lead action level from 15 ppb to 10 ppb, with more rigorous tap-water testing. As the most consequential federal tightening of lead-in-water limits since 1991, it institutionally settled the principle — already adopted for blood lead in 2012 — that no level of childhood lead exposure is safe, converting it into an enforceable infrastructure mandate.',
+        source: {
+          externalId: 'src:epa-lead-copper-rule-improvements-2024',
+          name: 'U.S. Environmental Protection Agency. Lead and Copper Rule Improvements (LCRI) — final rule. 8 October 2024 (Federal Register 30 October 2024).',
+          url: 'https://www.epa.gov/ground-water-and-drinking-water/lead-and-copper-rule-improvements',
+          publishedAt: '2024-10-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP pediatric hypertension guideline — Flynn et al. 2017 ────────────────
+  {
+    externalId: 'trajectory:aap-pediatric-hypertension-guideline-2017',
+    text: 'The American Academy of Pediatrics published its Clinical Practice Guideline for Screening and Management of High Blood Pressure in Children and Adolescents (Flynn et al.) in Pediatrics, posted online on 21 August 2017, replacing the 2004 Fourth Report and adopting new normative blood-pressure tables derived only from normal-weight children that lowered diagnostic thresholds and reclassified a substantially larger share of children as hypertensive.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-08-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-08-21',
+        datePrecision: 'DAY',
+        reason: 'The AAP, with American Heart Association endorsement, issued a comprehensive update to the 2004 Fourth Report, introducing new normative BP tables excluding overweight and obese children, lowering thresholds for elevated BP and hypertension, and aligning adolescent definitions with adult categories. By redefining the empirical norms used to diagnose pediatric hypertension, the guideline settled a new institutional standard of care that increased measured hypertension prevalence in U.S. youth.',
+        source: {
+          externalId: 'src:flynn-aap-pediatric-hypertension-cpg-2017',
+          name: 'Flynn JT, Kaelber DC, Baker-Smith CM, et al. Clinical Practice Guideline for Screening and Management of High Blood Pressure in Children and Adolescents. Pediatrics. 2017;140(3):e20171904.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28827377/',
+          publishedAt: '2017-08-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP corporal punishment policy — Sege et al. 2018 ──────────────────────
+  {
+    externalId: 'trajectory:aap-corporal-punishment-policy-2018',
+    text: 'The American Academy of Pediatrics issued the policy statement 'Effective Discipline to Raise Healthy Children' (Sege et al.) in Pediatrics on 5 November 2018, recommending that adults caring for children avoid all corporal punishment — including spanking — and verbal shaming, strengthening its 1998 guidance into an unequivocal position that physical punishment is harmful and ineffective.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-11-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-11-05',
+        datePrecision: 'DAY',
+        reason: 'Citing accumulated longitudinal and meta-analytic evidence linking corporal punishment to negative behavioral, cognitive, psychosocial, and emotional outcomes, the AAP issued a strengthened policy advising clinicians and parents to avoid all physical punishment and verbal shaming. The statement hardened the academy\'s earlier 1998 position into an unambiguous institutional stance, settling spanking\'s status as a discouraged, evidence-contraindicated practice in U.S. pediatric guidance.',
+        source: {
+          externalId: 'src:sege-aap-effective-discipline-2018',
+          name: 'Sege RD, Siegel BS; AAP Council on Child Abuse and Neglect, Committee on Psychosocial Aspects of Child and Family Health. Effective Discipline to Raise Healthy Children. Pediatrics. 2018;142(6):e20183112.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30397164/',
+          publishedAt: '2018-11-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── USPSTF anxiety screening in children — first-ever recommendation 2022 ───
+  {
+    externalId: 'trajectory:uspstf-anxiety-screening-children-2022',
+    text: 'The U.S. Preventive Services Task Force issued its first-ever recommendation on screening for anxiety in children and adolescents on 11 October 2022, concluding with moderate certainty that screening youth aged 8 to 18 years for anxiety has a moderate net benefit and assigning it a Grade B recommendation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-10-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-10-11',
+        datePrecision: 'DAY',
+        reason: 'The USPSTF published in JAMA its inaugural recommendation statement on anxiety screening in this age group, finding moderate net benefit and recommending (Grade B) universal screening of asymptomatic children and adolescents aged 8–18, while issuing an I-statement (insufficient evidence) for children 7 and younger. A Grade B determination by the nation\'s leading preventive-services body settled routine pediatric anxiety screening as a recommended, insurance-covered standard for the first time.',
+        source: {
+          externalId: 'src:uspstf-anxiety-children-jama-2022',
+          name: 'US Preventive Services Task Force. Screening for Anxiety in Children and Adolescents: US Preventive Services Task Force Recommendation Statement. JAMA. 2022;328(14):1438-1444.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36219403/',
+          publishedAt: '2022-10-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
