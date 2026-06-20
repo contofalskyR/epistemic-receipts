@@ -46493,7 +46493,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1968-08-05',
         datePrecision: 'DAY',
-        reason: 'The Harvard committee, chaired by anesthesiologist Henry Beecher, published 'A Definition of Irreversible Coma' in JAMA, setting out clinical criteria (unreceptivity, no movements or breathing, no reflexes, flat EEG) for diagnosing a permanently nonfunctioning brain. It was the first formal medical proposal to define death by neurological rather than cardiopulmonary criteria, motivated partly by the new realities of mechanical ventilation and organ transplantation.',
+        reason: 'The Harvard committee, chaired by anesthesiologist Henry Beecher, published \'A Definition of Irreversible Coma\' in JAMA, setting out clinical criteria (unreceptivity, no movements or breathing, no reflexes, flat EEG) for diagnosing a permanently nonfunctioning brain. It was the first formal medical proposal to define death by neurological rather than cardiopulmonary criteria, motivated partly by the new realities of mechanical ventilation and organ transplantation.',
         source: {
           externalId: 'src:harvard-irreversible-coma-jama-1968',
           name: 'Ad Hoc Committee of the Harvard Medical School to Examine the Definition of Brain Death. A definition of irreversible coma. JAMA. 1968;205(6):337-340.',
@@ -46508,10 +46508,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1981-07-01',
         datePrecision: 'MONTH',
-        reason: 'The President's Commission for the Study of Ethical Problems in Medicine issued 'Defining Death' (July 1981) and, together with the AMA, ABA, and Uniform Law Commission, advanced the Uniform Determination of Death Act, which codified that death may be determined by irreversible cessation of all functions of the entire brain. Subsequently adopted by most US states, this gave the Harvard concept the force of uniform law, settling brain death as a medical-legal standard.',
+        reason: 'The President\'s Commission for the Study of Ethical Problems in Medicine issued \'Defining Death\' (July 1981) and, together with the AMA, ABA, and Uniform Law Commission, advanced the Uniform Determination of Death Act, which codified that death may be determined by irreversible cessation of all functions of the entire brain. Subsequently adopted by most US states, this gave the Harvard concept the force of uniform law, settling brain death as a medical-legal standard.',
         source: {
           externalId: 'src:uniform-determination-death-act-1981',
-          name: 'National Conference of Commissioners on Uniform State Laws. Uniform Determination of Death Act. 1981 (with President's Commission, Defining Death, July 1981).',
+          name: 'National Conference of Commissioners on Uniform State Laws. Uniform Determination of Death Act. 1981 (with President\'s Commission, Defining Death, July 1981).',
           url: 'https://en.wikipedia.org/wiki/Uniform_Determination_of_Death_Act',
           publishedAt: '1981-07-01',
           methodologyType: 'derivative',
@@ -48138,6 +48138,178 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'US Preventive Services Task Force. Screening for Anxiety in Children and Adolescents: US Preventive Services Task Force Recommendation Statement. JAMA. 2022;328(14):1438-1444.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/36219403/',
           publishedAt: '2022-10-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE & ANTISENSE ERA (2018–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Inotersen/Tegsedi — first antisense drug for hATTR polyneuropathy 2018 ──
+  {
+    externalId: 'trajectory:inotersen-tegsedi-first-antisense-hattr-polyneuropathy-2018',
+    text: 'Benson and colleagues reported in the New England Journal of Medicine on 5 July 2018 that the antisense oligonucleotide inotersen significantly slowed neuropathy progression in hereditary transthyretin amyloidosis, and the FDA approved Tegsedi on 5 October 2018 as the first antisense drug for the polyneuropathy of hATTR amyloidosis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-07-05',
+        datePrecision: 'DAY',
+        reason: 'The phase 3 NEURO-TTR randomized, placebo-controlled trial (172 patients) showed inotersen, a TTR-lowering antisense oligonucleotide, produced significant benefit on both co-primary endpoints (mNIS+7 neuropathy score and Norfolk QoL-DN) versus placebo. Published in NEJM, it established the first antisense-oligonucleotide efficacy signal for hereditary transthyretin amyloidosis with polyneuropathy, a mechanistically distinct approach from the RNAi agent patisiran approved the same year.',
+        source: {
+          externalId: 'src:benson-neuro-ttr-inotersen-nejm-2018',
+          name: 'Benson MD, Waddington-Cruz M, Berk JL, et al. Inotersen Treatment for Patients with Hereditary Transthyretin Amyloidosis. N Engl J Med. 2018;379(1):22-31.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29972757/',
+          publishedAt: '2018-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-10-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Tegsedi (inotersen) for the polyneuropathy of hereditary transthyretin-mediated amyloidosis in adults, with a boxed warning and REMS for thrombocytopenia and glomerulonephritis monitoring. Regulatory approval converted the trial efficacy signal into an institutionally settled therapeutic option for a rare, progressive, fatal disease.',
+        source: {
+          externalId: 'src:ionis-fda-approval-tegsedi-2018',
+          name: 'Ionis Pharmaceuticals. Akcea and Ionis Receive FDA Approval of TEGSEDI (inotersen) for the Treatment of the Polyneuropathy of Hereditary Transthyretin-Mediated Amyloidosis in Adults. October 5, 2018.',
+          url: 'https://ir.ionis.com/news-releases/news-release-details/akcea-and-ionis-receive-fda-approval-tegseditm-inotersen',
+          publishedAt: '2018-10-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sutimlimab/Enjaymo — first therapy for cold agglutinin disease 2022 ─────
+  {
+    externalId: 'trajectory:sutimlimab-enjaymo-first-cold-agglutinin-disease-therapy-2022',
+    text: 'Röth and colleagues reported in the New England Journal of Medicine on 8 April 2021 that the C1s complement inhibitor sutimlimab rapidly halted hemolysis and raised hemoglobin in cold agglutinin disease, and the FDA approved Enjaymo on 4 February 2022 as the first therapy ever approved for that rare autoimmune hemolytic anemia.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-04-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-04-08',
+        datePrecision: 'DAY',
+        reason: 'The phase 3 open-label CARDINAL trial showed sutimlimab, a humanized monoclonal antibody against complement C1s, inhibited classical-pathway hemolysis within one week and met its composite primary endpoint (hemoglobin increase and transfusion avoidance) in transfusion-dependent cold agglutinin disease. Published in NEJM, it provided the first prospective trial evidence that selective classical-complement-pathway inhibition treats CAD-mediated hemolysis.',
+        source: {
+          externalId: 'src:roth-cardinal-sutimlimab-nejm-2021',
+          name: 'Röth A, Barcellini W, D\'Sa S, et al. Sutimlimab in Cold Agglutinin Disease. N Engl J Med. 2021;384(14):1323-1334.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33826820/',
+          publishedAt: '2021-04-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-02-04',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Enjaymo (sutimlimab-jome) to decrease the need for red-cell transfusion due to hemolysis in adults with cold agglutinin disease — the first and only approved treatment for the condition. Approval converted the CARDINAL efficacy result into an institutionally settled standard of care for a rare disease that previously had no approved therapy.',
+        source: {
+          externalId: 'src:sanofi-fda-enjaymo-cad-2022',
+          name: 'Sanofi. Positive results from the sutimlimab pivotal trial for people with cold agglutinin disease published in New England Journal of Medicine (pivotal program supporting Enjaymo FDA approval Feb 4, 2022).',
+          url: 'https://www.news.sanofi.us/2021-04-07-Positive-results-from-the-sutimlimab-pivotal-trial-for-people-with-cold-agglutinin-disease-published-in-New-England-Journal-of-Medicine',
+          publishedAt: '2021-04-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── King & Waugh vitamin C isolation — hexuronic acid identity 1932 ──────────
+  {
+    externalId: 'trajectory:king-waugh-vitamin-c-isolation-identity-hexuronic-acid-1932',
+    text: 'Waugh and King reported in the Journal of Biological Chemistry in 1932 that they had isolated and crystallized the antiscorbutic factor (vitamin C) from lemon juice and identified it as identical to hexuronic acid, fixing the chemical identity of the agent that cures scurvy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Charles Glen King and W. A. Waugh at the University of Pittsburgh crystallized the antiscorbutic factor from lemon juice and showed it was chemically identical to the hexuronic acid Szent-Györgyi had isolated from adrenal cortex, converting scurvy\'s curative agent from an operationally-defined dietary \'factor\' into a specific identified compound. Their Science note (April 1, 1932) and JBC paper established the chemical identity of vitamin C, touching off a priority dispute with Szent-Györgyi\'s Szeged laboratory.',
+        source: {
+          externalId: 'src:waugh-king-vitamin-c-jbc-1932',
+          name: 'Waugh WA, King CG. Isolation and identification of vitamin C. J Biol Chem. 1932;97:325-331.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/768830/',
+          publishedAt: '1932-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1937-12-10',
+        datePrecision: 'DAY',
+        reason: 'After Haworth and Hirst determined ascorbic acid\'s structure and Reichstein achieved its synthesis (1933), the 1937 Nobel Prizes — Physiology or Medicine to Albert Szent-Györgyi for work including vitamin C, and Chemistry to Walter Haworth for carbohydrate and vitamin C research — cemented the compound\'s identity and structure as settled science. The antiscorbutic factor was now a fully characterized, synthesizable molecule.',
+        source: {
+          externalId: 'src:nobel-1937-vitamin-c-szent-gyorgyi-haworth',
+          name: 'The Nobel Prize in Physiology or Medicine 1937 — Albert Szent-Györgyi (and Nobel Prize in Chemistry 1937 — Walter Haworth). Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1937/szent-gyorgyi/facts/',
+          publishedAt: '1937-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── BAL/dimercaprol — first chelation antidote 1945 ─────────────────────────
+  {
+    externalId: 'trajectory:bal-dimercaprol-first-chelation-antidote-1945',
+    text: 'Peters, Stocken, and Thompson disclosed in Nature in 1945 that British Anti-Lewisite (BAL, 2,3-dimercaptopropanol), developed in secret during the war, antagonizes the toxicity of the arsenical vesicant Lewisite, introducing the first chelating antidote for heavy-metal poisoning.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1945-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1945-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Rudolph Peters\' Oxford biochemistry group, having worked in wartime secrecy since 1939 to find an antidote to the arsenical war gas Lewisite, disclosed BAL (2,3-dimercaptopropanol) to the scientific community at war\'s end. The Nature paper established that the dithiol competes with tissue sulfhydryl groups to bind arsenic, providing the first rationally designed chelation antidote and the conceptual basis for treating heavy-metal poisoning.',
+        source: {
+          externalId: 'src:peters-stocken-thompson-bal-nature-1945',
+          name: 'Peters RA, Stocken LA, Thompson RHS. British Anti-Lewisite (BAL). Nature. 1945;156:616-619.',
+          url: 'https://www.nature.com/articles/156616a0',
+          publishedAt: '1945-11-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Clinical reports in the Annals of Internal Medicine documented BAL\'s effectiveness against arsenic and mercury poisoning, moving the agent from a wartime laboratory discovery into accepted clinical therapeutics. BAL became the prototype chelator and later the standard treatment for Wilson\'s disease and other heavy-metal disorders, settling chelation as a therapeutic strategy.',
+        source: {
+          externalId: 'src:bal-arsenic-mercury-annals-1946',
+          name: 'BAL in the Treatment of Arsenic and Mercury Poisoning. Ann Intern Med. 1946;25(6):986.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-25-6-986',
+          publishedAt: '1946-12-01',
           methodologyType: 'primary',
         },
       },
