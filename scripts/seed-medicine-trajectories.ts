@@ -42918,6 +42918,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PHARMACOGENOMICS & PRECISION PRESCRIBING ERA (2009–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Clopidogrel CYP2C19 poor-metabolizer boxed warning — 2009–2010 ──────────
+  {
+    externalId: 'trajectory:clopidogrel-cyp2c19-poor-metabolizer-boxed-warning-2010',
+    text: 'On 22 January 2009 the FAST-MI registry analysis (Simon et al., NEJM) established that patients carrying CYP2C19 loss-of-function alleles have markedly higher cardiovascular event rates on clopidogrel, a pharmacogenomic claim the U.S. FDA settled institutionally with a boxed warning added to Plavix labeling on 12 March 2010.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-01-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-22',
+        datePrecision: 'DAY',
+        reason: 'Simon and colleagues, analyzing the French FAST-MI registry, reported that acute-MI patients carrying CYP2C19 reduced-function alleles had significantly higher rates of death, MI, and stroke on clopidogrel — with the effect roughly 3.6-fold among PCI patients. This put on the literature record the claim that a common genetic variation in the CYP2C19 enzyme, which converts clopidogrel to its active form, blunts the drug\'s antiplatelet protection.',
+        source: {
+          externalId: 'src:simon-cyp2c19-clopidogrel-fastmi-nejm-2009',
+          name: 'Simon T, Verstuyft C, Mary-Krause M, et al. Genetic determinants of response to clopidogrel and cardiovascular events. N Engl J Med. 2009;360(4):363-375.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19106083/',
+          publishedAt: '2009-01-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-03-12',
+        datePrecision: 'DAY',
+        reason: 'The FDA added a boxed warning to clopidogrel (Plavix) stating that poor metabolizers do not effectively convert the drug to its active form and may remain at risk for heart attack, stroke, and cardiovascular death, and advising consideration of genotype testing or alternative antiplatelet therapy. This institutional act converted the pharmacogenomic association into a formal regulatory standard, making clopidogrel a defining case of CYP2C19-guided precision prescribing.',
+        source: {
+          externalId: 'src:fda-clopidogrel-plavix-boxed-warning-2010',
+          name: 'FDA. FDA Drug Safety Communication: Reduced effectiveness of Plavix (clopidogrel) in patients who are poor metabolizers of the drug. 12 March 2010.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fda-drug-safety-communication-reduced-effectiveness-plavix-clopidogrel-patients-who-are-poor',
+          publishedAt: '2010-03-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PATHWAY-2 spironolactone for resistant hypertension — 2015–2018 ─────────
+  {
+    externalId: 'trajectory:pathway2-spironolactone-resistant-hypertension-2015',
+    text: 'On 21 November 2015 the PATHWAY-2 trial (Williams et al., Lancet) reported that spironolactone was the most effective add-on drug for drug-resistant hypertension, outperforming bisoprolol and doxazosin and confirming sodium retention as the dominant mechanism — a finding subsequently codified by the 2018 ESC/ESH guidelines.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-11-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-11-21',
+        datePrecision: 'DAY',
+        reason: 'The double-blind crossover PATHWAY-2 trial in 285 patients with hypertension uncontrolled on three drugs found spironolactone reduced home systolic blood pressure by 8.70 mm Hg versus placebo and by about 4 mm Hg more than bisoprolol or doxazosin, with the largest effect in patients with lower renin. This recorded for the first time, in a randomized head-to-head design, that the optimal fourth-line agent for resistant hypertension is a mineralocorticoid-receptor antagonist rather than a beta-blocker or alpha-blocker.',
+        source: {
+          externalId: 'src:pathway2-spironolactone-resistant-htn-lancet-2015',
+          name: 'Williams B, MacDonald TM, Morant S, et al. Spironolactone versus placebo, bisoprolol, and doxazosin to determine the optimal treatment for drug-resistant hypertension (PATHWAY-2). Lancet. 2015;386(10008):2059-2068.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26414968/',
+          publishedAt: '2015-11-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-09-01',
+        datePrecision: 'DAY',
+        reason: 'The 2018 ESC/ESH Guidelines for the management of arterial hypertension (Williams, Mancia, et al.) recommended spironolactone as the preferred add-on therapy for resistant hypertension, drawing directly on PATHWAY-2. The guideline endorsement settled spironolactone as standard fourth-line treatment in clinical practice across Europe and beyond.',
+        source: {
+          externalId: 'src:esc-esh-2018-arterial-hypertension-guidelines',
+          name: 'Williams B, Mancia G, Spiering W, et al. 2018 ESC/ESH Guidelines for the management of arterial hypertension. Eur Heart J. 2018;39(33):3021-3104.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30165516/',
+          publishedAt: '2018-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hygia bedtime antihypertensive dosing reversed by TIME — 2019–2022 ──────
+  {
+    externalId: 'trajectory:hygia-bedtime-antihypertensive-dosing-reversed-by-time-2022',
+    text: 'On 22 October 2019 the Hygia Chronotherapy Trial (Hermida et al., European Heart Journal) reported that taking antihypertensive drugs at bedtime rather than on waking cut major cardiovascular events by about 45%, a claim reversed when the TIME trial (Mackenzie et al., Lancet, 2022) found no difference in cardiovascular outcomes by dosing time.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-10-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-10-22',
+        datePrecision: 'DAY',
+        reason: 'The Hygia Chronotherapy Trial, reporting on 19,084 hypertensive patients over a median 6.3 years, claimed that routine bedtime dosing of antihypertensives nearly halved the risk of major cardiovascular events compared with morning dosing. The implausibly large effect put the bedtime-dosing claim onto the literature record and prompted immediate debate over the trial\'s conduct and data integrity.',
+        source: {
+          externalId: 'src:hygia-chronotherapy-bedtime-bp-eurheartj-2019',
+          name: 'Hermida RC, Crespo JJ, Domínguez-Sardiña M, et al. Bedtime hypertension treatment improves cardiovascular risk reduction: the Hygia Chronotherapy Trial. Eur Heart J. 2020;41(48):4565-4576 (published online 22 Oct 2019).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31641769/',
+          publishedAt: '2019-10-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-10-22',
+        datePrecision: 'DAY',
+        reason: 'The prospective, randomized TIME study in 21,104 UK patients found that evening dosing of usual antihypertensive medication produced no difference from morning dosing in the composite of vascular death or hospitalization for MI or stroke over a median 5.2 years (3.4% vs 3.7%). The clean, large, pragmatic result reversed the Hygia bedtime-benefit claim and established that patients may take antihypertensives at whichever time is most convenient.',
+        source: {
+          externalId: 'src:time-study-evening-morning-bp-dosing-lancet-2022',
+          name: 'Mackenzie IS, Rogers A, Poulter NR, et al. Cardiovascular outcomes in adults with hypertension with evening versus morning dosing of usual antihypertensives in the UK (TIME study). Lancet. 2022;400(10361):1417-1425.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36240838/',
+          publishedAt: '2022-10-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SSaSS salt substitute cardiovascular events — 2021 ─────────────────────
+  {
+    externalId: 'trajectory:ssass-salt-substitute-cardiovascular-events-2021',
+    text: 'On 16 September 2021 the Salt Substitute and Stroke Study (SSaSS; Neal et al., NEJM) reported that replacing regular salt with a potassium-enriched salt substitute reduced stroke, major cardiovascular events, and death in rural Chinese communities, the first large randomized proof that a population-level dietary-sodium intervention lowers hard cardiovascular outcomes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-09-16',
+        datePrecision: 'DAY',
+        reason: 'The open-label, cluster-randomized SSaSS enrolled about 20,995 participants across 600 villages and found that a 75% sodium chloride / 25% potassium chloride salt substitute reduced the rate of stroke (rate ratio 0.86), major cardiovascular events, and death from any cause versus regular salt, without a clinically significant excess of serious hyperkalemia. This recorded for the first time that a cheap, scalable substitution of dietary salt produces measurable reductions in hard cardiovascular endpoints, moving sodium-reduction from a surrogate (blood-pressure) argument to an outcomes argument.',
+        source: {
+          externalId: 'src:ssass-salt-substitute-cv-events-nejm-2021',
+          name: 'Neal B, Wu Y, Feng X, et al. Effect of salt substitution on cardiovascular events and death. N Engl J Med. 2021;385(12):1067-1077.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34459569/',
+          publishedAt: '2021-09-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── VA Diuretic Comparison Project: chlorthalidone not superior — 2022 ──────
+  {
+    externalId: 'trajectory:diuretic-comparison-project-chlorthalidone-not-superior-2022',
+    text: 'On 29 December 2022 the VA Diuretic Comparison Project (Ishani et al., NEJM) reported that chlorthalidone was not superior to hydrochlorothiazide for preventing major cardiovascular events in older hypertensive patients, contesting the long-standing guideline preference for chlorthalidone as the better thiazide-type diuretic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: 'The pragmatic, point-of-care Diuretic Comparison Project randomized 13,523 VA patients aged 65 or older on hydrochlorothiazide to continue it or switch to chlorthalidone, and found no difference in the composite of major cardiovascular events and non-cancer death over a median 2.4 years. Because guidelines had preferred chlorthalidone on the strength of ALLHAT-era and pharmacologic arguments, this first head-to-head randomized comparison contested the claim that chlorthalidone is the superior thiazide-type diuretic.',
+        source: {
+          externalId: 'src:diuretic-comparison-project-chlorthalidone-hctz-nejm-2022',
+          name: 'Ishani A, Cushman WC, Leatherman SM, et al. Chlorthalidone vs. hydrochlorothiazide for hypertension–cardiovascular events (Diuretic Comparison Project). N Engl J Med. 2022;387(26):2401-2410.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36516076/',
+          publishedAt: '2022-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
