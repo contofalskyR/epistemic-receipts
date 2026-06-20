@@ -50442,6 +50442,205 @@ const TRAJECTORIES: Trajectory[] = [
   // OPIOID EPIDEMIC — FOUNDATIONS & RECKONINGS (1965–2012)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC SAFETY & REGULATORY UPDATES (2016–2025)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── CDC blood lead reference value lowered to 3.5 µg/dL — 2021 ─────────────
+  {
+    externalId: 'trajectory:cdc-blood-lead-reference-value-3.5-2021',
+    text: 'The CDC, acting on a unanimous LEPAC recommendation, lowered the childhood blood lead reference value from 5.0 to 3.5 µg/dL on 28 October 2021, set at the 97.5th percentile of blood lead levels among U.S. children aged 1–5 in the 2015–2018 NHANES cycles.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-05-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-14',
+        datePrecision: 'DAY',
+        reason: 'The federal Lead Exposure and Prevention Advisory Committee (LEPAC) voted unanimously on 14 May 2021 to recommend that CDC update the blood lead reference value to 3.5 µg/dL based on the two most recent NHANES cycles. This formally placed the proposed lower threshold on the record as a statistically-derived population benchmark (the 97.5th percentile) rather than a health-effect threshold.',
+        source: {
+          externalId: 'src:mmwr-blrv-update-2021',
+          name: 'Ruckart PZ, Jones RL, Courtney JG, et al. Update of the Blood Lead Reference Value — United States, 2021. MMWR Morb Mortal Wkly Rep. 2021;70(43):1509-1512.',
+          url: 'https://www.cdc.gov/mmwr/volumes/70/wr/mm7043a4.htm',
+          publishedAt: '2021-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-10-28',
+        datePrecision: 'DAY',
+        reason: 'CDC adopted the 3.5 µg/dL reference value on 28 October 2021, replacing the 5 µg/dL value in place since 2012. The change institutionally lowered the level at which clinical and environmental follow-up is triggered, bringing children with blood lead between 3.5 and 5 µg/dL into the intervention population for the first time.',
+        source: {
+          externalId: 'src:mmwr-blrv-adoption-2021',
+          name: 'Ruckart PZ, Jones RL, Courtney JG, et al. Update of the Blood Lead Reference Value — United States, 2021. MMWR Morb Mortal Wkly Rep. 2021;70(43):1509-1512.',
+          url: 'https://www.cdc.gov/mmwr/volumes/70/wr/mm7043a4.htm',
+          publishedAt: '2021-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA anesthesia neurotoxicity warning for young children — 2016 ──────────
+  {
+    externalId: 'trajectory:fda-anesthesia-neurotoxicity-young-children-warning-2016',
+    text: 'The FDA issued a Drug Safety Communication on 14 December 2016 warning that repeated or lengthy (>3 hour) use of general anesthetic and sedation drugs in children younger than 3 years (or in pregnant women in the third trimester) may impair brain development, requiring new label warnings on 11 GABA/NMDA-acting anesthetics.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-12-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-12-14',
+        datePrecision: 'DAY',
+        reason: 'Citing animal studies and emerging human data showing nerve-cell loss after prolonged anesthetic exposure, the FDA on 14 December 2016 required new warnings to be added to the labels of general anesthetic and sedation drugs for use in children under 3 and third-trimester pregnancy. The action codified developmental neurotoxicity as a regulated, labeled risk of pediatric anesthesia.',
+        source: {
+          externalId: 'src:fda-dsc-anesthesia-children-2016',
+          name: 'U.S. FDA. FDA Drug Safety Communication: FDA review results in new warnings about using general anesthetics and sedation drugs in young children and pregnant women. December 14, 2016.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-review-results-new-warnings-about-using-general-anesthetics-and',
+          publishedAt: '2016-12-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-02-16',
+        datePrecision: 'DAY',
+        reason: 'The GAS trial — the first large randomized controlled trial on the question — reported 5-year neurodevelopmental outcomes showing equivalence in full-scale IQ between infants given ~1 hour of general anesthesia and those given awake-regional anesthesia. The result directly undercut the strength of the FDA\'s single/short-exposure concern, leaving the clinical significance of the 2016 warning contested even as the label remained.',
+        source: {
+          externalId: 'src:gas-trial-5yr-lancet-2019',
+          name: 'McCann ME, de Graaff JC, Dorris L, et al. Neurodevelopmental outcome at 5 years of age after general anaesthesia or awake-regional anaesthesia in infancy (GAS): an international, multicentre, randomised, controlled equivalence trial. Lancet. 2019;393(10172):664-677.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32485-1/fulltext',
+          publishedAt: '2019-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACIP universal Hep B birth dose within 24 hours — 2018 ──────────────────
+  {
+    externalId: 'trajectory:acip-universal-hepatitis-b-birth-dose-24-hours-2018',
+    text: 'The ACIP, in its updated recommendations published 12 January 2018 (Schillie et al., MMWR RR-1), strengthened policy to call for universal hepatitis B vaccination within 24 hours of birth for all medically stable infants weighing ≥2,000 grams, using single-antigen vaccine for the birth dose.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-01-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-01-12',
+        datePrecision: 'DAY',
+        reason: 'ACIP removed prior permissive language and established a firm universal-within-24-hours birth dose for all medically stable infants ≥2,000 g, published in the MMWR Recommendations and Reports. This made the newborn birth dose the institutionally settled U.S. standard of care for perinatal HBV prevention regardless of maternal status.',
+        source: {
+          externalId: 'src:mmwr-rr6701a1-hepb-2018',
+          name: 'Schillie S, Vellozzi C, Reingold A, et al. Prevention of Hepatitis B Virus Infection in the United States: Recommendations of the Advisory Committee on Immunization Practices. MMWR Recomm Rep. 2018;67(RR-1):1-31.',
+          url: 'https://www.cdc.gov/mmwr/volumes/67/rr/rr6701a1.htm',
+          publishedAt: '2018-01-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2025-12-05',
+        datePrecision: 'DAY',
+        reason: 'A reconstituted ACIP voted 8-3 on 5 December 2025 to replace the universal birth-dose recommendation with individual-based (\'shared\') decision-making for infants born to women who test negative for hepatitis B, allowing the first dose to be deferred to ≥2 months of age. The move broke the seven-year universal consensus and drew an unusually sharp warning from the AAP, leaving the birth-dose standard institutionally contested.',
+        source: {
+          externalId: 'src:cdc-acip-hepb-individual-decision-2025',
+          name: 'CDC Newsroom. ACIP Recommends Individual-Based Decision-Making for Hepatitis B Vaccine for Infants Born to Women Who Test Negative for the Virus. December 2025.',
+          url: 'https://www.cdc.gov/media/releases/2025/2025-acip-recommends-individual-based-decision-making-for-hepatitis-b-vaccine-for-infants-born-to-women.html',
+          publishedAt: '2025-12-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP safe-sleep updated recommendations — 2022 ───────────────────────────
+  {
+    externalId: 'trajectory:aap-sleep-related-infant-deaths-updated-recommendations-2022',
+    text: 'The American Academy of Pediatrics published its updated policy statement \'Sleep-Related Infant Deaths: Updated 2022 Recommendations\' (Moon et al., Pediatrics) on 21 June 2022 — its first safe-sleep update since 2016 — adding explicit guidance that infants sleep on a flat, non-inclined surface and advising against commercial devices and home cardiorespiratory monitors marketed to reduce SIDS risk.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-06-21',
+        datePrecision: 'DAY',
+        reason: 'The AAP issued updated evidence-based safe-sleep recommendations, accompanied by a separate technical report grading the evidence. Beyond reaffirming supine sleep, it newly codified the flat/non-inclined sleep-surface standard (responding to inclined-sleeper infant deaths) and explicitly advised against weighted blankets/swaddles and commercial anti-SIDS devices and monitors, settling these as institutional clinical guidance.',
+        source: {
+          externalId: 'src:aap-sids-updated-2022',
+          name: 'Moon RY, Carlin RF, Hand I; AAP Task Force on SIDS and Committee on Fetus and Newborn. Sleep-Related Infant Deaths: Updated 2022 Recommendations for Reducing Infant Deaths in the Sleep Environment. Pediatrics. 2022;150(1):e2022057990.',
+          url: 'https://publications.aap.org/pediatrics/article/150/1/e2022057990/188304/Sleep-Related-Infant-Deaths-Updated-2022',
+          publishedAt: '2022-06-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── House Oversight baby food heavy metals report — 2021 ────────────────────
+  {
+    externalId: 'trajectory:house-oversight-toxic-heavy-metals-baby-food-report-2021',
+    text: 'The U.S. House Oversight Subcommittee on Economic and Consumer Policy released a staff report on 4 February 2021, \'Baby Foods Are Tainted with Dangerous Levels of Arsenic, Lead, Cadmium, and Mercury,\' disclosing internal company test data showing major brands\' baby foods contained heavy-metal levels far above existing limits.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-02-04',
+        datePrecision: 'DAY',
+        reason: 'Drawing on subpoenaed internal testing records from Nurture, Beech-Nut, Hain, Gerber and others, the Subcommittee put on the congressional record that leading baby-food brands contained dangerous levels of arsenic, lead, cadmium, and mercury — neurotoxicants to which infants are uniquely vulnerable — and that FDA had set no limits for most products. The report converted long-suspected contamination into a documented, sourced finding.',
+        source: {
+          externalId: 'src:house-oversight-baby-food-report-2021',
+          name: 'U.S. House Subcommittee on Economic and Consumer Policy, Committee on Oversight and Reform. Baby Foods Are Tainted with Dangerous Levels of Arsenic, Lead, Cadmium, and Mercury (Staff Report). February 4, 2021.',
+          url: 'https://oversightdemocrats.house.gov/sites/evo-subsites/democrats-oversight.house.gov/files/2021-02-04%20ECP%20Baby%20Food%20Staff%20Report.pdf',
+          publishedAt: '2021-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-04-08',
+        datePrecision: 'DAY',
+        reason: 'In direct response to the congressional report, the FDA announced its \'Closer to Zero\' action plan on 8 April 2021, committing to a staged process of evaluating science and proposing/finalizing action levels for lead, arsenic, cadmium, and mercury in foods for babies and young children. This institutionalized the report\'s finding into a formal regulatory agenda that later produced the 2025 baby-food lead action levels.',
+        source: {
+          externalId: 'src:fda-closer-to-zero-2021',
+          name: 'U.S. FDA. Closer to Zero: Reducing Childhood Exposure to Contaminants from Foods. Action plan announced April 8, 2021.',
+          url: 'https://www.fda.gov/food/environmental-contaminants-food/closer-zero-reducing-childhood-exposure-contaminants-foods',
+          publishedAt: '2021-04-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Portenoy & Foley chronic opioids for non-malignant pain 1986 ────────────
   {
     externalId: 'trajectory:portenoy-foley-chronic-opioids-nonmalignant-pain-1986',
