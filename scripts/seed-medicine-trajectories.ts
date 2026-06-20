@@ -38748,6 +38748,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // THROMBOLYSIS & CARDIOVASCULAR TRIALS ERA (1993–2002)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── GUSTO-1: accelerated tPA superior to streptokinase — 1993 ───────────────
+  {
+    externalId: 'trajectory:gusto-1-accelerated-tpa-superior-streptokinase-1993',
+    text: 'The GUSTO-1 trial reported on 2 September 1993 that an accelerated infusion of tissue plasminogen activator (alteplase) with intravenous heparin reduced 30-day mortality after acute myocardial infarction to 6.3% versus about 7.3% for streptokinase, establishing accelerated tPA as the superior thrombolytic strategy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-09-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-09-02',
+        datePrecision: 'DAY',
+        reason: 'GUSTO-1 randomized 41,021 patients across 1,081 hospitals in 15 countries to four thrombolytic strategies; accelerated tPA with intravenous heparin produced a 14% relative (about 1% absolute) reduction in 30-day mortality versus the streptokinase regimens (P=0.001). The result resolved a live controversy, since the earlier GISSI-2 and ISIS-3 megatrials had found no mortality difference between agents — GUSTO recorded that the faster, fibrin-specific regimen was genuinely superior.',
+        source: {
+          externalId: 'src:gusto-1-thrombolytic-strategies-nejm-1993',
+          name: 'The GUSTO Investigators. An international randomized trial comparing four thrombolytic strategies for acute myocardial infarction. N Engl J Med. 1993;329(10):673-682.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8204123/',
+          publishedAt: '1993-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-11-25',
+        datePrecision: 'DAY',
+        reason: 'The GUSTO angiographic substudy showed accelerated tPA achieved the highest 90-minute infarct-artery patency (81%), and that early, complete reperfusion correlated with better ventricular function and lower mortality. By linking the clinical advantage to a measurable reperfusion mechanism, it settled accelerated tPA as the reference thrombolytic strategy and reframed speed of artery opening as the goal of reperfusion therapy.',
+        source: {
+          externalId: 'src:gusto-angiographic-patency-nejm-1993',
+          name: 'The GUSTO Angiographic Investigators. The effects of tissue plasminogen activator, streptokinase, or both on coronary-artery patency, ventricular function, and survival after acute myocardial infarction. N Engl J Med. 1993;329(22):1615-1622.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8232430/',
+          publishedAt: '1993-11-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ALLHAT: diuretic first-line for hypertension — 2002 ─────────────────────
+  {
+    externalId: 'trajectory:allhat-diuretic-first-line-hypertension-2002',
+    text: 'The ALLHAT trial reported on 18 December 2002 that the thiazide-type diuretic chlorthalidone was at least as effective as the calcium-channel blocker amlodipine and the ACE inhibitor lisinopril in preventing major cardiovascular events in high-risk hypertensive patients, supporting low-cost diuretics as first-line antihypertensive therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-12-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-12-18',
+        datePrecision: 'DAY',
+        reason: 'ALLHAT randomized 33,357 high-risk hypertensive patients aged 55+ to chlorthalidone, amlodipine, or lisinopril and found no difference in the primary endpoint of fatal CHD or nonfatal MI, while chlorthalidone was superior for several secondary outcomes (notably heart failure) and far cheaper. Coming after the trial\'s doxazosin arm had already been halted in 2000 for a doubled heart-failure rate (JAMA 2000;283:1967), it recorded the counter-marketing claim that older diuretics were not inferior to newer, costlier drug classes.',
+        source: {
+          externalId: 'src:allhat-main-outcomes-jama-2002',
+          name: 'ALLHAT Officers and Coordinators. Major outcomes in high-risk hypertensive patients randomized to angiotensin-converting enzyme inhibitor or calcium channel blocker vs diuretic: ALLHAT. JAMA. 2002;288(23):2981-2997.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12479763/',
+          publishedAt: '2002-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-21',
+        datePrecision: 'DAY',
+        reason: 'The JNC 7 national hypertension guideline, published five months later, recommended thiazide-type diuretics as initial therapy for most patients with uncomplicated hypertension, explicitly reflecting the ALLHAT evidence. This institutional endorsement converted the trial finding into standard-of-care policy and made diuretic-based first-line treatment the guideline default.',
+        source: {
+          externalId: 'src:jnc7-hypertension-guideline-jama-2003',
+          name: 'Chobanian AV, et al. The Seventh Report of the Joint National Committee on Prevention, Detection, Evaluation, and Treatment of High Blood Pressure: the JNC 7 report. JAMA. 2003;289(19):2560-2572.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12748199/',
+          publishedAt: '2003-05-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── DIG: digoxin no mortality benefit in heart failure — 1997 ───────────────
+  {
+    externalId: 'trajectory:dig-digoxin-no-mortality-benefit-heart-failure-1997',
+    text: 'The Digitalis Investigation Group (DIG) trial reported on 20 February 1997 that digoxin did not reduce all-cause mortality in patients with heart failure and sinus rhythm, although it lowered hospitalizations for worsening heart failure — overturning the long-held assumption that digitalis improves survival.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-02-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-02-20',
+        datePrecision: 'DAY',
+        reason: 'The NHLBI-sponsored DIG trial randomized 6,800 patients with heart failure and normal sinus rhythm to digoxin or placebo and found essentially identical all-cause mortality (relative risk 0.99) over a mean 37 months, while digoxin reduced hospitalizations for worsening heart failure. After two centuries of digitalis use since Withering\'s 1785 report, this first large mortality RCT recorded that the drug\'s value was symptomatic, not life-prolonging.',
+        source: {
+          externalId: 'src:dig-digoxin-mortality-morbidity-nejm-1997',
+          name: 'The Digitalis Investigation Group. The effect of digoxin on mortality and morbidity in patients with heart failure. N Engl J Med. 1997;336(8):525-533.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9036306/',
+          publishedAt: '1997-02-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-06-05',
+        datePrecision: 'DAY',
+        reason: 'The 2013 ACCF/AHA heart failure guideline assigned digoxin only a Class IIa recommendation — to reduce hospitalizations, not mortality — codifying the DIG result by relegating a 200-year-old therapy to adjunctive symptom control. This institutional downgrade settled digoxin\'s role as a hospitalization-reducing, mortality-neutral agent rather than a survival drug.',
+        source: {
+          externalId: 'src:accf-aha-heart-failure-guideline-circulation-2013',
+          name: 'Yancy CW, et al. 2013 ACCF/AHA guideline for the management of heart failure: a report of the ACCF/AHA Task Force on Practice Guidelines. Circulation. 2013;128(16):e240-e327.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23741058/',
+          publishedAt: '2013-06-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Heart Protection Study: statins regardless of cholesterol level — 2002 ──
+  {
+    externalId: 'trajectory:heart-protection-study-statins-regardless-of-cholesterol-2002',
+    text: 'The MRC/BHF Heart Protection Study reported on 6 July 2002 that simvastatin 40 mg reduced major vascular events by about a quarter in 20,536 high-risk individuals irrespective of baseline cholesterol — including those with LDL cholesterol below 116 mg/dL — establishing that statin benefit tracks cardiovascular risk rather than starting cholesterol level.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-06',
+        datePrecision: 'DAY',
+        reason: 'HPS randomized 20,536 high-risk UK adults to simvastatin 40 mg or placebo and found a roughly 24% reduction in major vascular events that was consistent even among participants whose baseline LDL was below 3.0 mmol/L (116 mg/dL), where benefit had previously been doubted. Distinct from the 4S trial, which treated patients with elevated cholesterol, HPS recorded the claim that absolute cardiovascular risk, not baseline lipid level, should drive statin use.',
+        source: {
+          externalId: 'src:heart-protection-study-simvastatin-lancet-2002',
+          name: 'Heart Protection Study Collaborative Group. MRC/BHF Heart Protection Study of cholesterol lowering with simvastatin in 20,536 high-risk individuals: a randomised placebo-controlled trial. Lancet. 2002;360(9326):7-22.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12114036/',
+          publishedAt: '2002-07-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-07-13',
+        datePrecision: 'DAY',
+        reason: 'The NCEP ATP III 2004 update, citing HPS and four other statin trials, lowered LDL targets and endorsed an optional goal of <70 mg/dL for very-high-risk patients plus statin therapy for high-risk patients regardless of baseline LDL. This guideline change institutionalized risk-based statin treatment, settling the HPS claim and seeding the later shift away from fixed LDL targets.',
+        source: {
+          externalId: 'src:ncep-atp3-2004-update-circulation-2004',
+          name: 'Grundy SM, et al. Implications of recent clinical trials for the National Cholesterol Education Program Adult Treatment Panel III guidelines. Circulation. 2004;110(2):227-239.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15249516/',
+          publishedAt: '2004-07-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
