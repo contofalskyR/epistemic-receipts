@@ -40787,6 +40787,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN EVIDENCE-BASED ERA (1999–2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Growth hormone doubles mortality in critically ill — Takala 1999 ─────────
+  {
+    externalId: 'trajectory:growth-hormone-critically-ill-mortality-1999',
+    text: 'The claim that high-dose recombinant human growth hormone benefits catabolic critically ill patients by improving nitrogen balance and preserving lean body mass was reversed when Jukka Takala and colleagues reported in the New England Journal of Medicine on 9 September 1999 that growth hormone roughly doubled mortality in two randomized trials of critically ill adults.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ziegler, Wilmore, and colleagues reported that recombinant human growth hormone added to nutritional support in critical-care patients enhanced the efficiency of administered protein and improved nitrogen retention without clinically significant adverse effects. Together with subsequent metabolic studies, this recorded in the expert literature the anabolic rationale that growth hormone could counter the catabolism of critical illness and improve outcomes, driving its experimental and off-label use in intensive care.',
+        source: {
+          externalId: 'src:ziegler-gh-critical-care-jpen-1990',
+          name: 'Ziegler TR, Young LS, Manson JM, Wilmore DW. Use of human growth hormone combined with nutritional support in a critical care unit. JPEN J Parenter Enteral Nutr. 1990;14(6):574-581.',
+          url: 'https://aspenjournals.onlinelibrary.wiley.com/doi/abs/10.1177/0148607190014006574',
+          publishedAt: '1990-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-09-09',
+        datePrecision: 'DAY',
+        reason: 'Takala, Ruokonen, Webster, Hinds, and colleagues reported two parallel multicenter, double-blind, placebo-controlled trials (532 critically ill adults in Finland and elsewhere in Europe) in which high-dose growth hormone roughly doubled in-hospital mortality — 39% vs 20% in the Finnish trial and 44% vs 18% in the multinational trial (relative risk 1.9–2.4). The result directly reversed the anabolic-benefit premise, ended routine growth-hormone use in critical illness, and became a textbook case of a surrogate-endpoint rationale overturned by a hard-outcome trial.',
+        source: {
+          externalId: 'src:takala-gh-critically-ill-nejm-1999',
+          name: 'Takala J, Ruokonen E, Webster NR, Nielsen MS, Zandstra DF, Vundelinckx G, Hinds CJ. Increased mortality associated with growth hormone treatment in critically ill adults. N Engl J Med. 1999;341(11):785-792.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10477776/',
+          publishedAt: '1999-09-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Annual high-dose vitamin D increases falls and fractures — Sanders 2010 ──
+  {
+    externalId: 'trajectory:annual-high-dose-vitamin-d-falls-fractures-2010',
+    text: 'The expectation that improving vitamin D status with a convenient single large annual dose would reduce falls and fractures in older women was contradicted when Kerrie Sanders and colleagues reported in JAMA on 12 May 2010 that one 500,000-IU oral dose of cholecalciferol per year actually increased falls and fractures.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-05-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-05-12',
+        datePrecision: 'DAY',
+        reason: 'Sanders and colleagues reported a double-blind randomized trial of 2,256 community-dwelling women aged 70 and older in which a single 500,000-IU annual oral dose of cholecalciferol increased rather than reduced adverse events — a roughly 15% higher rate of falls (83.4 vs 72.7 per 100 person-years) and about 26% more fractures than placebo, with the excess concentrated in the first three months after dosing. The counterintuitive result recorded in the expert literature that high-dose intermittent (bolus) vitamin D can be harmful, undercutting the assumption that more vitamin D, delivered conveniently, would prevent falls and fractures and helping turn the field against large bolus dosing.',
+        source: {
+          externalId: 'src:sanders-annual-vitamin-d-falls-jama-2010',
+          name: 'Sanders KM, Stuart AL, Williamson EJ, Simpson JA, Kotowicz MA, Young D, Nicholson GC. Annual high-dose oral vitamin D and falls and fractures in older women: a randomized controlled trial. JAMA. 2010;303(18):1815-1822.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20460620/',
+          publishedAt: '2010-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Calcium supplements associated with myocardial infarction — Bolland 2010 ─
+  {
+    externalId: 'trajectory:calcium-supplements-myocardial-infarction-risk-2010',
+    text: 'The long-settled premise that calcium supplements are a safe intervention for preventing osteoporotic fractures in older adults was thrown into doubt when Mark Bolland and colleagues reported in the BMJ on 29 July 2010 that calcium supplements taken without co-administered vitamin D are associated with an increased risk of myocardial infarction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-07-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-29',
+        datePrecision: 'DAY',
+        reason: 'Bolland, Avenell, Baron, Grey, MacLennan, Gamble, and Reid published a patient-level and trial-level meta-analysis of randomized trials in the BMJ finding that calcium supplements (without co-administered vitamin D) were associated with roughly a 30% increase in the incidence of myocardial infarction (hazard ratio ~1.31). The analysis recorded in the expert literature a previously unsuspected cardiovascular harm of an intervention used by millions for bone health, and called for its role in osteoporosis management to be reassessed.',
+        source: {
+          externalId: 'src:bolland-calcium-mi-bmj-2010',
+          name: 'Bolland MJ, Avenell A, Baron JA, Grey A, MacLennan GS, Gamble GD, Reid IR. Effect of calcium supplements on risk of myocardial infarction and cardiovascular events: meta-analysis. BMJ. 2010;341:c3691.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20671013/',
+          publishedAt: '2010-07-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-04-19',
+        datePrecision: 'DAY',
+        reason: 'Bolland and colleagues reanalyzed the Women\'s Health Initiative limited-access dataset together with an updated meta-analysis in the BMJ, reporting that calcium with or without vitamin D modestly increased the risk of cardiovascular events, especially myocardial infarction (relative risk 1.24, p=0.004), particularly in women not already taking calcium at baseline. The reanalysis reinforced the harm signal, but other investigators and guideline bodies disputed the interpretation, leaving the calcium–cardiovascular link openly contested rather than settled.',
+        source: {
+          externalId: 'src:bolland-calcium-whi-reanalysis-bmj-2011',
+          name: 'Bolland MJ, Grey A, Avenell A, Gamble GD, Reid IR. Calcium supplements with or without vitamin D and risk of cardiovascular events: reanalysis of the Women\'s Health Initiative limited access dataset and meta-analysis. BMJ. 2011;342:d2040.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21505219/',
+          publishedAt: '2011-04-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Testosterone therapy cardiovascular harm — TOM trial 2010, FDA 2015 ──────
+  {
+    externalId: 'trajectory:testosterone-therapy-cardiovascular-tom-trial-2010',
+    text: 'The claim that testosterone replacement is a safe therapy for older men with low testosterone was thrown into doubt when the Testosterone in Older Men with Mobility Limitations (TOM) trial, reported by Shehzad Basaria and colleagues in the New England Journal of Medicine on 8 July 2010, was stopped early after the testosterone group suffered substantially more cardiovascular events than placebo.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-07-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-08',
+        datePrecision: 'DAY',
+        reason: 'Basaria and colleagues reported the TOM trial, a placebo-controlled study of 209 men (mean age 74) with mobility limitations and low testosterone, which a data and safety monitoring board halted early because the testosterone group had markedly more cardiovascular events (23 vs 5) than placebo, despite greater gains in muscle strength. The trial recorded in the expert literature the first randomized signal that testosterone therapy in older men may carry cardiovascular harm, challenging the prevailing assumption of its safety.',
+        source: {
+          externalId: 'src:basaria-tom-testosterone-nejm-2010',
+          name: 'Basaria S, Coviello AD, Travison TG, et al. Adverse events associated with testosterone administration. N Engl J Med. 2010;363(2):109-122.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20592293/',
+          publishedAt: '2010-07-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-03-03',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA required class-wide labeling changes for all approved testosterone products, restricting their indicated use to men with classical hypogonadism due to specific medical conditions, warning of a possible increased risk of heart attack and stroke, and mandating a confirmatory cardiovascular-outcomes trial (which became TRAVERSE). The regulator\'s action escalated the TOM signal into formal institutional doubt over the cardiovascular safety of testosterone therapy, especially the booming use for age-related low testosterone.',
+        source: {
+          externalId: 'src:fda-testosterone-labeling-change-2015',
+          name: 'U.S. Food and Drug Administration. FDA Issues Class-wide Labeling Changes for Testosterone Products. 3 March 2015.',
+          url: 'https://www.fda.gov/drugs/drug-alerts-and-statements/fda-issues-class-wide-labeling-changes-testosterone-products',
+          publishedAt: '2015-03-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
