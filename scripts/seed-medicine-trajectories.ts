@@ -55047,6 +55047,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Arsenic trioxide (Trisenox) for relapsed APL — Soignet 1998 → FDA 2000 ─
+  {
+    externalId: 'trajectory:arsenic-trioxide-trisenox-relapsed-apl-2000',
+    text: 'Intravenous arsenic trioxide (Trisenox) induces complete remissions in relapsed acute promyelocytic leukemia, a claim first evidenced by Soignet and colleagues in the New England Journal of Medicine on 5 November 1998 and settled by the U.S. FDA\'s approval of 25 September 2000 (NDA 21-248) for relapsed or refractory APL.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-11-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-11-05',
+        datePrecision: 'DAY',
+        reason: 'Soignet and colleagues at Memorial Sloan-Kettering reported that intravenous arsenic trioxide induced complete remission in 11 of 12 patients with relapsed acute promyelocytic leukemia, with cytogenetic and molecular remissions, and identified caspase induction, differentiation, and apoptosis as the mechanism. This converted anecdotal Chinese reports of arsenic\'s anti-leukemic effect into the first rigorous Western clinical evidence, recording arsenic trioxide as a candidate therapy for a previously near-fatal relapse setting.',
+        source: {
+          externalId: 'src:soignet-arsenic-trioxide-apl-nejm-1998',
+          name: 'Soignet SL, Maslak P, Wang ZG, et al. Complete remission after treatment of acute promyelocytic leukemia with arsenic trioxide. N Engl J Med. 1998;339(19):1341-1348.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9801394/',
+          publishedAt: '1998-11-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-09-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Trisenox (arsenic trioxide, NDA 21-248) as an orphan drug for patients with acute promyelocytic leukemia who relapsed or were refractory after all-trans retinoic acid and anthracycline chemotherapy. The approval established arsenic trioxide as the standard salvage therapy for relapsed APL, validating a centuries-old toxin as a targeted anti-leukemic agent and setting the stage for its later first-line combination with ATRA.',
+        source: {
+          externalId: 'src:fda-trisenox-arsenic-trioxide-nda-021248-2000',
+          name: 'U.S. FDA, Drugs@FDA. Trisenox (arsenic trioxide) injection, NDA 021248 (original approval 25 September 2000).',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021248',
+          publishedAt: '2000-09-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Deferasirox (Exjade) — first oral iron chelator approved in US 2005 ────
+  {
+    externalId: 'trajectory:deferasirox-exjade-first-oral-iron-chelator-2005',
+    text: 'Once-daily oral deferasirox (Exjade, Novartis) is an effective treatment for chronic transfusional iron overload, a claim settled by the U.S. FDA\'s approval on 2 November 2005 — the first oral iron chelator approved in the United States, displacing the burdensome nightly subcutaneous deferoxamine infusion.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-11-02',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted priority-review, orphan-designated approval to deferasirox for chronic iron overload due to blood transfusions in adults and children aged two and older, after the Blood Products Advisory Committee voted unanimously in favor. As the first oral iron chelator in the United States, it replaced the standard of care — subcutaneous deferoxamine infused 8–12 hours nightly, five to seven nights weekly — establishing convenient oral chelation as the new institutional standard for transfusion-dependent thalassemia and other anemias.',
+        source: {
+          externalId: 'src:novartis-exjade-deferasirox-first-approval-2005',
+          name: 'Novartis Pharma AG. Exjade, a breakthrough once-daily oral iron chelator, receives first approval worldwide in the US. Press release. 3 November 2005.',
+          url: 'https://www.globenewswire.com/us/news-release/2005/11/03/1839893/0/en/Exjade-a-breakthrough-once-daily-oral-iron-chelator-receives-first-approval-worldwide-in-the-US.html',
+          publishedAt: '2005-11-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Romiplostim (Nplate) — first TPO-receptor agonist for ITP 2008 ─────────
+  {
+    externalId: 'trajectory:romiplostim-nplate-first-tpo-mimetic-itp-2008',
+    text: 'Romiplostim (Nplate, Amgen), a thrombopoietin-mimetic peptibody, raises and sustains platelet counts in chronic immune thrombocytopenia, a claim first evidenced in parallel phase 3 trials reported by Kuter and colleagues in The Lancet on 2 February 2008 and settled by the U.S. FDA\'s approval on 22 August 2008 (BLA 125268) — the first thrombopoietin-receptor agonist.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-02-02',
+        datePrecision: 'DAY',
+        reason: 'Kuter and colleagues published two parallel double-blind, placebo-controlled phase 3 trials in splenectomized and nonsplenectomized patients with chronic immune thrombocytopenic purpura, showing that weekly subcutaneous romiplostim durably raised platelet counts and let most patients reduce or discontinue other therapy. This recorded the first controlled evidence that pharmacologically stimulating platelet production — rather than suppressing platelet destruction — is an effective strategy in ITP.',
+        source: {
+          externalId: 'src:kuter-romiplostim-itp-lancet-2008',
+          name: 'Kuter DJ, Bussel JB, Lyons RM, et al. Efficacy of romiplostim in patients with chronic immune thrombocytopenic purpura: a double-blind randomised controlled trial. Lancet. 2008;371(9610):395-403.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18242413/',
+          publishedAt: '2008-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-08-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved romiplostim (Nplate, BLA 125268) for thrombocytopenia in patients with chronic ITP who had an insufficient response to corticosteroids, immunoglobulins, or splenectomy — the first thrombopoietin-receptor agonist. The approval established the thrombopoietin-mimetic class as standard second-line ITP therapy and shifted the disease\'s treatment paradigm from immunosuppression toward platelet-production stimulation, with a REMS reflecting reticulin and rebound-thrombocytopenia risks.',
+        source: {
+          externalId: 'src:fda-nplate-romiplostim-label-2008',
+          name: 'U.S. FDA. Nplate (romiplostim) for subcutaneous injection — Prescribing Information, BLA 125268 (approved 22 August 2008).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2008/125268lbl.pdf',
+          publishedAt: '2008-08-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Deferiprone (L1) Olivieri contested efficacy in thalassemia 1995–2011 ──
+  {
+    externalId: 'trajectory:deferiprone-olivieri-contested-efficacy-thalassemia-1998',
+    text: 'The claim that oral deferiprone (L1) adequately controls body iron and is safe in thalassemia major — first evidenced by Olivieri and colleagues in the New England Journal of Medicine on 6 April 1995 — was contested by the same investigator\'s NEJM report on 13 August 1998 that deferiprone fails to control iron burden and may worsen hepatic fibrosis, before the drug regained standing with FDA accelerated approval on 14 October 2011.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-04-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-04-06',
+        datePrecision: 'DAY',
+        reason: 'Olivieri and colleagues reported in the NEJM that oral deferiprone induced sustained decreases in body iron to concentrations compatible with avoiding iron-overload complications in thalassemia patients unable or unwilling to use parenteral deferoxamine. This recorded the first peer-reviewed evidence that an orally active chelator could control transfusional iron overload, a potentially transformative alternative to nightly infusions.',
+        source: {
+          externalId: 'src:olivieri-deferiprone-efficacy-nejm-1995',
+          name: 'Olivieri NF, Brittenham GM, Matsui D, et al. Iron-chelation therapy with oral deferiprone in patients with thalassemia major. N Engl J Med. 1995;332(14):918-922.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7877649/',
+          publishedAt: '1995-04-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-13',
+        datePrecision: 'DAY',
+        reason: 'Olivieri\'s longer-term NEJM study reversed her earlier findings, concluding that deferiprone does not adequately control body iron in thalassemia and may worsen hepatic fibrosis. The reversal became a landmark research-ethics and academic-freedom controversy — the Olivieri–Apotex affair — over data access, contractual gag clauses, and suppression of safety concerns, leaving the drug\'s efficacy and safety openly contested in the literature for years.',
+        source: {
+          externalId: 'src:olivieri-deferiprone-contested-nejm-1998',
+          name: 'Olivieri NF, Brittenham GM, McLaren CE, et al. Long-term safety and effectiveness of iron-chelation therapy with deferiprone for thalassemia major. N Engl J Med. 1998;339(7):417-423.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9700174/',
+          publishedAt: '1998-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-10-14',
+        datePrecision: 'DAY',
+        reason: 'After more than a decade of contestation and despite a Public Citizen petition urging rejection, the FDA granted accelerated approval to deferiprone (Ferriprox, NDA 021825) for transfusional iron overload in thalassemia patients in whom current chelation is inadequate, based on twelve studies in 236 prior-treatment-failure subjects. The approval institutionally settled deferiprone as a recognized second-line oral chelator in the United States, where it had long been used in Europe.',
+        source: {
+          externalId: 'src:fda-ferriprox-deferiprone-approval-letter-2011',
+          name: 'U.S. FDA. Ferriprox (deferiprone) Approval Letter, NDA 021825 (accelerated approval 14 October 2011).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2011/021825Orig1s000ltr.pdf',
+          publishedAt: '2011-10-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
