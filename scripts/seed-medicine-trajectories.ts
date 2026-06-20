@@ -45323,6 +45323,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // REGULATORY REVERSAL & CONTESTED SAFETY ERA (2000–2012)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Bevacizumab (Avastin) metastatic breast cancer — accelerated approval revoked 2011 ──
+  {
+    externalId: 'trajectory:bevacizumab-avastin-metastatic-breast-cancer-accelerated-approval-revoked-2008',
+    text: 'The U.S. FDA granted bevacizumab (Avastin) accelerated approval on 22 February 2008 for first-line treatment of HER2-negative metastatic breast cancer in combination with paclitaxel, on the basis of the progression-free survival benefit observed in the ECOG E2100 trial.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted bevacizumab accelerated approval for metastatic breast cancer in combination with paclitaxel, overriding its own Oncologic Drugs Advisory Committee, which had voted against approval in December 2007. The decision rested on the E2100 trial\'s improvement in progression-free survival (11.3 vs 5.8 months), establishing the institutional claim that bevacizumab benefited breast-cancer patients despite no demonstrated overall-survival gain.',
+        source: {
+          externalId: 'src:miller-e2100-paclitaxel-bevacizumab-nejm-2007',
+          name: 'Miller K, Wang M, Gralow J, et al. Paclitaxel plus Bevacizumab versus Paclitaxel Alone for Metastatic Breast Cancer. N Engl J Med. 2007;357(26):2666-2676.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18160686/',
+          publishedAt: '2007-12-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-11-18',
+        datePrecision: 'DAY',
+        reason: 'FDA Commissioner Margaret Hamburg issued a final decision withdrawing the breast-cancer indication for Avastin after the confirmatory AVADO and RIBBON1 trials failed to reproduce the E2100 magnitude of benefit and showed no overall-survival improvement, and after the Oncologic Drugs Advisory Committee voted 6-0 in June 2011 to revoke. It was a rare instance of the FDA reversing an accelerated approval, formalized in the Federal Register on 27 February 2012.',
+        source: {
+          externalId: 'src:fda-avastin-breast-cancer-withdrawal-federal-register-2012',
+          name: 'U.S. FDA. Final Decision on Withdrawal of Breast Cancer Indication for AVASTIN (Bevacizumab) Following Public Hearing. Decision of the Commissioner, 18 Nov 2011; 77 Fed. Reg. 11423.',
+          url: 'https://www.federalregister.gov/documents/2012/02/27/2012-4424/final-decision-on-withdrawal-of-breast-cancer-indication-for-avastin-bevacizumab-following-public',
+          publishedAt: '2012-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mifepristone (Mifeprex) FDA approval — medical abortion 2000 ────────────
+  {
+    externalId: 'trajectory:mifepristone-mifeprex-fda-approval-medical-abortion-2000',
+    text: 'On 28 September 2000 the U.S. FDA approved Mifeprex (mifepristone), a progesterone-receptor antagonist, under NDA 20-687 for the medical termination of intrauterine pregnancy through 49 days of gestation, making it the first non-surgical abortifacient approved in the United States.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-09-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Mifeprex under the restricted-distribution provisions of Subpart H, sending the approval letter for NDA 20-687 to the Population Council, twelve years after mifepristone (RU-486) was first licensed in France in 1988. The approval institutionally settled that a regimen of mifepristone followed by misoprostol was a safe and effective alternative to surgical abortion, subject to a restricted-distribution program later codified as a REMS.',
+        source: {
+          externalId: 'src:fda-mifeprex-approval-letter-nda20687-2000',
+          name: 'U.S. FDA, Center for Drug Evaluation and Research. Approval Letter, MIFEPREX (mifepristone) Tablets, NDA 20-687. 28 September 2000.',
+          url: 'https://webarchive.loc.gov/all/20011116012552/http:/www.fda.gov/cder/foi/appletter/2000/20687appltr.htm',
+          publishedAt: '2000-09-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SSRI maternal use and PPHN signal — Chambers 2006 → FDA walkback 2011 ───
+  {
+    externalId: 'trajectory:ssri-maternal-use-persistent-pulmonary-hypertension-newborn-2006',
+    text: 'Chambers and colleagues reported in the New England Journal of Medicine on 9 February 2006 that maternal use of a selective serotonin-reuptake inhibitor after the 20th week of pregnancy was associated with an approximately six-fold increased risk of persistent pulmonary hypertension of the newborn (PPHN).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-02-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-02-09',
+        datePrecision: 'DAY',
+        reason: 'The Chambers et al. case-control study (377 PPHN cases, 836 controls) found an adjusted odds ratio of 6.1 (95% CI 2.2–16.8) for PPHN with late-gestation SSRI exposure. The finding recorded a novel maternal-fetal safety signal in the literature and prompted the FDA to issue a Public Health Advisory in July 2006 and add PPHN language to SSRI labels.',
+        source: {
+          externalId: 'src:chambers-ssri-pphn-nejm-2006',
+          name: 'Chambers CD, Hernandez-Diaz S, Van Marter LJ, et al. Selective Serotonin-Reuptake Inhibitors and Risk of Persistent Pulmonary Hypertension of the Newborn. N Engl J Med. 2006;354(6):579-587.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16467545/',
+          publishedAt: '2006-02-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Drug Safety Communication walking back its 2006 advisory, noting that subsequent studies had produced conflicting results (two reporting increased risk, three not) and that it was premature to conclude SSRI use in pregnancy causes PPHN. The agency advised clinicians not to alter their treatment of depression in pregnancy, leaving the original claim contested rather than confirmed or refuted.',
+        source: {
+          externalId: 'src:fda-ssri-pphn-drug-safety-communication-2011',
+          name: 'U.S. FDA. Drug Safety Communication: Selective serotonin reuptake inhibitor (SSRI) antidepressant use during pregnancy and reports of a rare heart and lung condition in newborn babies. 14 December 2011.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-selective-serotonin-reuptake-inhibitor-ssri-antidepressant-use-during',
+          publishedAt: '2011-12-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Drospirenone oral contraceptive VTE signal — MEGA 2009 → FDA label 2012 ─
+  {
+    externalId: 'trajectory:drospirenone-oral-contraceptive-venous-thromboembolism-signal-2009',
+    text: 'The Dutch MEGA case-control study, published in the BMJ on 13 August 2009, reported that combined oral contraceptives containing drospirenone (Yasmin/Yaz) carried roughly a 6.3-fold venous-thromboembolism risk versus non-use — higher than levonorgestrel-containing pills — challenging the marketed safety profile of the newer-generation progestogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-13',
+        datePrecision: 'DAY',
+        reason: 'The van Hylckama Vlieg et al. MEGA study found drospirenone-containing oral contraceptives carried a 6.3-fold VTE risk relative to non-users, exceeding the ~3.6-fold risk of low-dose levonorgestrel pills; a concurrent Danish national cohort (Lidegaard, BMJ 2009) reported a similar elevation. Together these recorded the literature signal that drospirenone, marketed as a modern pill, was no safer and likely more thrombogenic than older formulations.',
+        source: {
+          externalId: 'src:vanhylckamavlieg-mega-contraceptive-thrombosis-bmj-2009',
+          name: 'van Hylckama Vlieg A, Helmerhorst FM, Vandenbroucke JP, Doggen CJM, Rosendaal FR. The venous thrombotic risk of oral contraceptives, effects of oestrogen dose and progestogen type: results of the MEGA case-control study. BMJ. 2009;339:b2921.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2726929/',
+          publishedAt: '2009-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-04-10',
+        datePrecision: 'DAY',
+        reason: 'After confirmatory studies (Jick 2011, Lidegaard 2011) and an FDA-funded cohort, the FDA issued a Drug Safety Communication and revised the labels of drospirenone-containing contraceptives to state that some epidemiologic studies reported up to a three-fold increased clot risk versus levonorgestrel products, while others found none. The agency formally acknowledged the safety signal as real but unresolved, leaving the relative-risk claim contested.',
+        source: {
+          externalId: 'src:fda-drospirenone-blood-clots-drug-safety-communication-2012',
+          name: 'U.S. FDA. Drug Safety Communication: Updated information about the risk of blood clots in women taking birth control pills containing drospirenone. 10 April 2012.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-updated-information-about-risk-blood-clots-women-taking-birth-control',
+          publishedAt: '2012-04-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
