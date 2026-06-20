@@ -56629,6 +56629,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Semmelweis: hand disinfection prevents puerperal fever — 1847/1861/1879 ───
+  {
+    externalId: 'trajectory:semmelweis-handwashing-puerperal-fever-1847',
+    text: "Ignaz Semmelweis, after introducing mandatory chlorinated-lime hand disinfection on the First Obstetrical Clinic of the Vienna General Hospital in May 1847, established that puerperal (childbed) fever is transmitted by 'cadaverous particles' carried on the unwashed hands of examining physicians and that hand disinfection sharply reduces maternal mortality.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1847-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-01-01',
+        datePrecision: 'YEAR',
+        reason: "Semmelweis set out his full doctrine in the book 'Die Aetiologie, der Begriff und die Prophylaxis des Kindbettfiebers' (1861), arguing from the contrasting mortality of the two Vienna clinics that childbed fever was caused by decomposing organic matter conveyed on attendants' hands and prevented by chlorine washing. This formally recorded in the medical literature the empirical claim that hand disinfection prevents puerperal sepsis, more than a decade after his 1847 intervention had cut clinic mortality from roughly 18% to under 2%.",
+        source: {
+          externalId: 'src:semmelweis-aetiologie-kindbettfieber-1861',
+          name: 'Semmelweis IP. Die Aetiologie, der Begriff und die Prophylaxis des Kindbettfiebers. Pest, Wien und Leipzig: C.A. Hartleben\'s Verlags-Expedition; 1861.',
+          url: 'https://www.jameslindlibrary.org/semmelweis-i-1861/',
+          publishedAt: '1861-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1865-01-01',
+        datePrecision: 'YEAR',
+        reason: "The contemporary medical establishment rejected Semmelweis's doctrine: leading authorities dismissed his 'cadaverous particles' theory as it lacked a mechanism in the pre-germ-theory era and implicitly blamed doctors for their patients' deaths. Semmelweis died in an asylum in August 1865 with his prophylactic claim widely disputed and largely unadopted, a paradigmatic case of a correct empirical finding contested for want of an accepted causal theory.",
+        source: {
+          externalId: 'src:loudon-semmelweis-death-childbirth-2013',
+          name: "Loudon I. Ignaz Phillip Semmelweis' studies of death in childbirth. James Lind Library; 2013.",
+          url: 'https://www.jameslindlibrary.org/articles/ignaz-phillip-semmelweis-studies-of-death-in-childbirth/',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-01-01',
+        datePrecision: 'YEAR',
+        reason: "The germ theory of disease vindicated Semmelweis posthumously: Louis Pasteur identified streptococci as the cause of puerperal fever (presented at the Académie de médecine, 1879), and with Lister's antiseptic surgery and Koch's microbiology the contagion model became accepted. Modern reanalysis confirms the dramatic mortality reduction his handwashing produced, and hand hygiene is now the settled cornerstone of infection control.",
+        source: {
+          externalId: 'src:larochelle-julien-semmelweis-handwashing-effects-2013',
+          name: 'La Rochelle P, Julien A-S. How dramatic were the effects of handwashing on maternal mortality observed by Ignaz Semmelweis? James Lind Library; 2013.',
+          url: 'https://www.jameslindlibrary.org/articles/how-dramatic-were-the-effects-of-handwashing-on-maternal-mortality-observed-by-ignaz-semmelweis/',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lister: antiseptic principle in surgery — 1867/1880 ──────────────────────
+  {
+    externalId: 'trajectory:lister-antiseptic-principle-surgery-1867',
+    text: "Joseph Lister established that surgical wound sepsis ('hospital gangrene', pyaemia) is caused by airborne microorganisms and can be prevented by antiseptic technique using carbolic acid, as set out in his address 'On the Antiseptic Principle in the Practice of Surgery,' read before the British Medical Association in Dublin on 9 August 1867.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1867-08-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1867-08-09',
+        datePrecision: 'DAY',
+        reason: "Lister presented and then published 'On the Antiseptic Principle in the Practice of Surgery' (BMJ 1867), explaining his reduction in wound suppuration and mortality in terms of Pasteur's germ theory and his carbolic-acid antiseptic method. This recorded in the literature the claim that putrefaction of wounds is caused by living microorganisms and is preventable by chemical antisepsis, reframing surgical infection from spontaneous 'miasma' to a controllable contagion.",
+        source: {
+          externalId: 'src:lister-antiseptic-principle-bmj-1867',
+          name: 'Lister J. On the Antiseptic Principle in the Practice of Surgery. Br Med J. 1867;2(351):246-248.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2310614/',
+          publishedAt: '1867-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1880-01-01',
+        datePrecision: 'YEAR',
+        reason: "After initial skepticism — especially among British and American surgeons who doubted germ theory — Lister's antiseptic method spread through the 1870s (adopted early by German surgeons) and, with the transition to aseptic technique, became the universal standard of surgical practice by the 1880s. The collapse of post-operative sepsis mortality settled the claim; Lister was made a baronet (1883) and a peer (1897), and antisepsis/asepsis remains foundational to surgery.",
+        source: {
+          externalId: 'src:joseph-lister-antisepsis-adoption',
+          name: 'Joseph Lister, 1st Baron Lister — antiseptic surgery and its adoption. Encyclopaedia / Wikipedia (citing primary 1867–1880s record).',
+          url: 'https://en.wikipedia.org/wiki/Joseph_Lister',
+          publishedAt: '2026-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── NASCET: carotid endarterectomy for symptomatic high-grade stenosis — 1991/1998 ──
+  {
+    externalId: 'trajectory:nascet-carotid-endarterectomy-symptomatic-stenosis-1991',
+    text: 'The North American Symptomatic Carotid Endarterectomy Trial (NASCET), reported in the New England Journal of Medicine on 15 August 1991, established that carotid endarterectomy substantially reduces the risk of ipsilateral stroke in patients with recent cerebral ischemic symptoms and high-grade (70–99%) carotid stenosis, compared with best medical therapy alone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-08-15',
+        datePrecision: 'DAY',
+        reason: "NASCET's interim analysis was published after the trial's 70–99%-stenosis arm was stopped early for clear benefit: the cumulative 2-year risk of ipsilateral stroke was 26% with medical therapy versus 9% with surgery, an absolute reduction of 17 percentage points. This recorded the first randomized evidence that surgically removing the carotid plaque prevents stroke in symptomatic high-grade stenosis, settling a long-running debate over an operation that had spread on uncontrolled data.",
+        source: {
+          externalId: 'src:nascet-carotid-endarterectomy-nejm-1991',
+          name: 'North American Symptomatic Carotid Endarterectomy Trial Collaborators. Beneficial effect of carotid endarterectomy in symptomatic patients with high-grade carotid stenosis. N Engl J Med. 1991;325(7):445-453.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1852179/',
+          publishedAt: '1991-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-11-12',
+        datePrecision: 'DAY',
+        reason: 'Barnett and the NASCET collaborators reported the final results, extending and confirming the benefit (clear benefit at 70–99% stenosis and a more modest benefit at 50–69%, with no benefit below 50%). Converging with the European Carotid Surgery Trial, these data settled carotid endarterectomy as the standard of care for symptomatic high-grade stenosis and were codified into stroke-prevention guidelines.',
+        source: {
+          externalId: 'src:nascet-barnett-final-nejm-1998',
+          name: 'Barnett HJM, Taylor DW, Eliasziw M, et al. Benefit of carotid endarterectomy in patients with symptomatic moderate or severe stenosis. N Engl J Med. 1998;339(20):1415-1425.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9811916/',
+          publishedAt: '1998-11-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Renal denervation for resistant hypertension — claim recorded 2010, contested 2014 ──
+  {
+    externalId: 'trajectory:renal-denervation-resistant-hypertension-reversal-2014',
+    text: 'Catheter-based renal sympathetic denervation, promoted after the SYMPLICITY HTN-1 (2009) and HTN-2 (2010) trials as a highly effective device therapy for treatment-resistant hypertension, had its efficacy claim overturned when the blinded sham-controlled SYMPLICITY HTN-3 trial (Bhatt et al., New England Journal of Medicine, 29 March 2014) found no significant blood-pressure benefit versus a sham procedure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-11-17',
+        datePrecision: 'DAY',
+        reason: "The SYMPLICITY HTN-2 randomized (but unblinded) trial reported that radiofrequency ablation of the renal sympathetic nerves lowered office blood pressure by roughly 32/12 mmHg in patients with treatment-resistant hypertension. Building on the open-label HTN-1 proof-of-concept, this recorded a striking efficacy claim that drove rapid international adoption of renal denervation and a wave of device development.",
+        source: {
+          externalId: 'src:symplicity-htn2-renal-denervation-lancet-2010',
+          name: 'Symplicity HTN-2 Investigators. Renal sympathetic denervation in patients with treatment-resistant hypertension (The Symplicity HTN-2 Trial): a randomised controlled trial. Lancet. 2010;376(9756):1903-1909.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21093036/',
+          publishedAt: '2010-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-03-29',
+        datePrecision: 'DAY',
+        reason: "SYMPLICITY HTN-3 — the first prospective, single-blind, sham-controlled trial — found that renal denervation did not significantly lower systolic blood pressure versus a sham renal angiogram (between-group difference −2.39 mmHg, P=0.26). The result attributed most of the earlier 'benefit' to placebo and regression effects, abruptly halting clinical adoption and device programs and contesting the efficacy claim; the field was only partly rehabilitated by later improved-design trials (SPYRAL HTN-OFF/ON, RADIANCE).",
+        source: {
+          externalId: 'src:symplicity-htn3-renal-denervation-nejm-2014',
+          name: 'Bhatt DL, Kandzari DE, O\'Neill WW, et al. A controlled trial of renal denervation for resistant hypertension. N Engl J Med. 2014;370(15):1393-1401.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24678939/',
+          publishedAt: '2014-03-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Imetelstat (Rytelo) first telomerase inhibitor for MDS — FDA 2024 ─────────
   {
     externalId: 'trajectory:imetelstat-rytelo-first-telomerase-inhibitor-mds-2024',
