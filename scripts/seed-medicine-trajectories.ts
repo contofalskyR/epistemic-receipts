@@ -52989,6 +52989,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Loubatières sulfonamide hypoglycaemia — 1942 ────────────────────────────
+  {
+    externalId: 'trajectory:loubatieres-sulfonamide-hypoglycemia-1942',
+    text: 'Auguste Loubatières at Montpellier demonstrated on 13 June 1942 that the sulfonamide 2254 RP produces a profound, pancreas-dependent fall in blood glucose in the dog by stimulating insulin secretion, establishing the discovery that sulfonamide derivatives could lower blood sugar — the origin of the oral antidiabetic (sulfonylurea) class.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-06-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-06-13',
+        datePrecision: 'DAY',
+        reason: 'After Marcel Janbon\'s infectious-diseases service in Montpellier observed fatal hypoglycaemia in typhoid patients given the sulfonamide 2254 RP, the physiologist Auguste Loubatières showed on 13 June 1942 that repeated oral 2254 RP caused a progressive, marked, long-lasting drop in blood glucose in normal conscious dogs, and that the effect required an intact pancreas. This recorded in the expert literature the previously unsuspected claim that sulfonamide drugs could lower blood sugar by acting on the pancreatic beta cell.',
+        source: {
+          externalId: 'src:lavabre-bertrand-faillie-sulphonamides-therapie-2021',
+          name: 'Lavabre-Bertrand T, Faillie JL. The discovery of hypoglycaemic sulphonamides – Montpellier, 1942. Therapie. 2021;76(6):539–547.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34656290/',
+          publishedAt: '2021-09-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Loubatières\' wartime finding was translated into therapy after carbutamide (Franke and Fuchs, 1955) and tolbutamide were shown to control diabetes orally, and Loubatières\' 1957 synthesis to the New York Academy of Sciences consolidated the 1942–1955 work into a recognized therapeutic class. The hypoglycaemic sulfonamides became the first oral antidiabetic drugs and remain in clinical use, settling the original claim.',
+        source: {
+          externalId: 'src:loubatieres-hypoglycemic-sulfonamides-nyas-1957',
+          name: 'Loubatières A. The Hypoglycemic Sulfonamides: History and Development of the Problem from 1942 to 1955. Ann N Y Acad Sci. 1957;71(1):4–11.',
+          url: 'https://nyaspubs.onlinelibrary.wiley.com/doi/pdf/10.1111/j.1749-6632.1957.tb54569.x',
+          publishedAt: '1957-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hagedorn protamine insulin — 1936 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:hagedorn-protamine-insulin-1936',
+    text: 'Hans Christian Hagedorn and colleagues reported in JAMA in January 1936 that adding protamine (from trout sperm) to insulin produces a neutral suspension with markedly prolonged glucose-lowering action, establishing the first clinically useful long-acting insulin and the foundation of protracted-action insulin therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-01-18',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-01-18',
+        datePrecision: 'MONTH',
+        reason: 'Hagedorn, Jensen, Krarup and Wodstrup published \'Protamine insulinate\' in JAMA (1936;106:177–180), reporting that combining insulin with protamine prolonged its hypoglycaemic effect so that fewer daily injections were needed. This recorded the claim that the duration of insulin action could be pharmaceutically engineered, a turning point in diabetes management.',
+        source: {
+          externalId: 'src:felig-hagedorn-protamine-insulin-jama-1984',
+          name: 'Felig P. Landmark perspective: Protamine insulin. Hagedorn\'s pioneering contribution to drug delivery in the management of diabetes. JAMA. 1984;251(3):393–396.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6361302/',
+          publishedAt: '1984-01-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The unstable early protamine suspension was reformulated by Nordisk, which crystallized a neutral protamine–insulin complex in 1946 and marketed it from 1950 as NPH (Neutral Protamine Hagedorn / isophane) insulin. NPH became the standard intermediate-acting insulin worldwide and remains in use, settling the claim that protracted-action insulin is safe and effective.',
+        source: {
+          externalId: 'src:endotext-insulin-pharmacology-nph',
+          name: 'Wallia A, Molitch ME, et al. Insulin: Pharmacology, Therapeutic Regimens and Principles of Intensive Insulin Therapy. Endotext (NCBI Bookshelf, NBK278938).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK278938/',
+          publishedAt: '2019-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kimball–Murlin glucagon discovery — 1923 ─────────────────────────────────
+  {
+    externalId: 'trajectory:kimball-murlin-glucagon-1923',
+    text: 'Charles Kimball and John Murlin reported in the Journal of Biological Chemistry in 1923 that pancreatic extracts contain a hyperglycaemic factor — which they named \'glucagon\' — that raises blood glucose in antagonism to insulin, first recording the existence of the counter-regulatory pancreatic hormone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'While studying insulin precipitation methods, Kimball and Murlin observed that certain pancreatic fractions raised rather than lowered blood glucose in dogs and rabbits, and named the responsible factor glucagon. Published in J Biol Chem (1923;58:337–348), this recorded the claim that the pancreas secretes a hyperglycaemic hormone opposing insulin.',
+        source: {
+          externalId: 'src:glucagon-pharmacology-editorial-pmc-2020',
+          name: 'Revisiting the Pharmacological Value of Glucagon (Editorial). Int J Mol Sci. 2020 (PMC7013494).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7013494/',
+          publishedAt: '2020-01-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Glucagon\'s reality was doubted for three decades, often dismissed as a contaminant of insulin preparations, until Staub, Sinn and Behrens at Eli Lilly purified and crystallized it (J Biol Chem 1955) and Bromer established its amino-acid sequence in 1957. Crystallization and sequencing confirmed glucagon as a genuine, distinct pancreatic hormone, settling the 1923 claim.',
+        source: {
+          externalId: 'src:mueller-century-of-glucagon-natrevendo-2023',
+          name: 'Müller TD, Finan B, et al. A century of glucagon. Nat Rev Endocrinol. 2023;19(6):321–335.',
+          url: 'https://www.nature.com/articles/s41574-023-00841-4',
+          publishedAt: '2023-04-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Minot–Murphy liver therapy for pernicious anaemia — 1926 ─────────────────
+  {
+    externalId: 'trajectory:minot-murphy-liver-pernicious-anemia-1926',
+    text: 'George Minot and William Murphy reported in JAMA in August 1926 that a diet rich in liver reverses pernicious anaemia in 45 patients, establishing the first effective treatment for a previously fatal disease and identifying it as a curable nutritional/metabolic deficiency.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-08-14',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-08-14',
+        datePrecision: 'MONTH',
+        reason: 'Minot and Murphy published \'Treatment of Pernicious Anemia by a Special Diet\' (JAMA 1926;87:470–476), reporting that intensive daily feeding of lightly cooked liver produced rapid reticulocyte responses and clinical recovery in 45 patients with a disease that had been almost uniformly fatal. This recorded the claim that pernicious anaemia is a treatable deficiency disorder responsive to a dietary factor.',
+        source: {
+          externalId: 'src:minot-murphy-pernicious-anemia-jama-1926',
+          name: 'Minot GR, Murphy WP. Treatment of Pernicious Anemia by a Special Diet. JAMA. 1926;87(7):470–476.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/243854',
+          publishedAt: '1926-08-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1934-10-25',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Prize in Physiology or Medicine for 1934 was awarded jointly to George Whipple, George Minot and William Murphy \'for their discoveries concerning liver therapy in cases of anaemia,\' institutionally ratifying liver therapy as a major therapeutic advance. The underlying agent, vitamin B12, was isolated in 1948, confirming the mechanism without overturning the original claim.',
+        source: {
+          externalId: 'src:nobel-medicine-1934-liver-therapy',
+          name: 'The Nobel Prize in Physiology or Medicine 1934 — George H. Whipple, George R. Minot, William P. Murphy (liver therapy in anaemia). Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1934/summary/',
+          publishedAt: '1934-10-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
