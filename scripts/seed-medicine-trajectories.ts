@@ -40615,6 +40615,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY & NOSOLOGY ERA (1949–1989)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Lithium carbonate for mania — Cade 1949 / FDA 1970 ──────────────────────
+  {
+    externalId: 'trajectory:lithium-carbonate-mania-fda-approval-1970',
+    text: 'Lithium salts are an effective treatment for mania, as first reported by John Cade in the Medical Journal of Australia in 1949 and institutionally ratified when the U.S. FDA approved lithium carbonate for the treatment of mania on 6 April 1970.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1949-09-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-09-03',
+        datePrecision: 'MONTH',
+        reason: 'Australian psychiatrist John Cade published \'Lithium salts in the treatment of psychotic excitement\' in the Medical Journal of Australia, reporting that lithium carbonate calmed manic agitation in patients after he observed its effects in guinea pigs. This recorded the first claim that a simple ion could specifically treat a major mental illness, the foundational observation of modern mood-stabilizer pharmacology, though it was published in an obscure journal and long neglected internationally.',
+        source: {
+          externalId: 'src:cade-lithium-psychotic-excitement-1949',
+          name: 'Cade JFJ. Lithium salts in the treatment of psychotic excitement. Med J Aust. 1949;2(10):349–352. (Reprinted Bull World Health Organ. 2000;78(4):518–520.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2560740/',
+          publishedAt: '1949-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-04-06',
+        datePrecision: 'DAY',
+        reason: 'After roughly two decades during which lithium remained widely used elsewhere but unapproved in the United States (partly owing to earlier lithium-chloride salt-substitute poisonings), the FDA approved lithium carbonate for the treatment of mania on 6 April 1970, making the U.S. one of the last developed countries to authorize it. Regulatory approval and rapid clinical adoption settled lithium\'s efficacy as the standard treatment for mania and bipolar disorder.',
+        source: {
+          externalId: 'src:ruffalo-history-lithium-pcc-2017',
+          name: 'Ruffalo ML. A Brief History of Lithium Treatment in Psychiatry. Prim Care Companion CNS Disord. 2017;19(5).',
+          url: 'https://www.psychiatrist.com/pcc/history-of-lithium-treatment-in-psychiatry/',
+          publishedAt: '2017-09-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Homosexuality removed from DSM — APA Board 1973 ─────────────────────────
+  {
+    externalId: 'trajectory:homosexuality-removed-dsm-1973',
+    text: 'Homosexuality, classified as a mental disorder in the American Psychiatric Association\'s diagnostic manual since DSM-I (1952), was removed as a disorder when the APA Board of Trustees voted on 15 December 1973 to delete it from DSM-II, a decision upheld by a 1974 membership referendum.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1952-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The APA\'s first Diagnostic and Statistical Manual (DSM-I, 1952) listed homosexuality among the \'sociopathic personality disturbances,\' and DSM-II (1968) retained it as a mental disorder. This institutionally established, as settled psychiatric nosology, the claim that homosexuality was a diagnosable mental illness, underpinning decades of conversion-oriented clinical practice.',
+        source: {
+          externalId: 'src:drescher-out-of-dsm-2015',
+          name: 'Drescher J. Out of DSM: Depathologizing Homosexuality. Behav Sci (Basel). 2015;5(4):565–575.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4695779/',
+          publishedAt: '2015-12-04',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-12-15',
+        datePrecision: 'DAY',
+        reason: 'Following years of activist protest and scientific challenges (notably Evelyn Hooker\'s research and gay-rights disruptions of APA meetings), the APA Board of Trustees voted on 15 December 1973 to remove homosexuality from DSM-II, replacing it with the narrower category \'sexual orientation disturbance.\' A 1974 referendum of about 10,000 members upheld the decision by a 58% majority. This reversed the institutional psychiatric claim that homosexuality is itself a mental disorder — a landmark case of organized evidence and advocacy overturning a settled diagnostic category by formal vote.',
+        source: {
+          externalId: 'src:apaf-history-dsm-homosexuality',
+          name: 'American Psychiatric Association Foundation. History of DSM and Homosexuality. APAF Library & Archives.',
+          url: 'https://www.apaf.org/library-archives/galleries/lgbtq-leaders/history-of-dsm-and-homosexuality/',
+          publishedAt: '2023-12-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── DSM-III operational diagnosis — Spitzer 1980 ────────────────────────────
+  {
+    externalId: 'trajectory:dsm-iii-operational-diagnosis-1980',
+    text: 'The American Psychiatric Association\'s DSM-III, published in 1980 under task-force head Robert Spitzer, replaced psychoanalytically framed diagnoses with explicit, symptom-based operational criteria and established reliability, reorienting psychiatric diagnosis toward a descriptive, testable model.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1980-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert Spitzer and colleagues developed the Research Diagnostic Criteria (RDC, 1978), building on the operational approach of the St. Louis/Feighner criteria, which specified explicit symptom checklists for psychiatric disorders to improve diagnostic reliability for research. This recorded into the literature the claim that mental disorders could be defined by observable operational criteria with measurable inter-rater agreement, rather than by inferred psychodynamic etiology.',
+        source: {
+          externalId: 'src:lieberman-first-spitzer-2016',
+          name: 'Lieberman JA, First MB. Robert Spitzer: A Psychiatrist for the Ages. Neuropsychopharmacology. 2016;41(8):1937–1938.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5101569/',
+          publishedAt: '2016-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The APA published DSM-III in 1980, importing operationalized diagnostic criteria with documented reliability for every mental disorder and dropping the prior manuals\' psychoanalytic framing. Its adoption made the descriptive, criteria-based model the institutional standard for psychiatric diagnosis worldwide, structuring clinical practice, insurance reimbursement, and research for the following decades.',
+        source: {
+          externalId: 'src:lieberman-first-spitzer-dsm3-2016',
+          name: 'Lieberman JA, First MB. Robert Spitzer: A Psychiatrist for the Ages. Neuropsychopharmacology. 2016;41(8):1937–1938.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5101569/',
+          publishedAt: '2016-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Clozapine for treatment-resistant schizophrenia — Kane 1988 / FDA 1989 ──
+  {
+    externalId: 'trajectory:clozapine-treatment-resistant-schizophrenia-1988',
+    text: 'Clozapine is more effective than conventional antipsychotics for treatment-resistant schizophrenia, as demonstrated by Kane and colleagues in Archives of General Psychiatry in September 1988 and ratified by FDA approval of Clozaril (NDA 019758) in 1989 — reviving a drug withdrawn after fatal agranulocytosis in 1975.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Kane, Honigfeld, Singer and Meltzer published a multicenter double-blind trial finding that 30% of rigorously defined treatment-resistant schizophrenic patients responded to clozapine versus 4% on chlorpromazine, with superiority on both positive and negative symptoms. This recorded the claim that clozapine had unique efficacy in patients who failed standard neuroleptics, and reframed a drug that Sandoz had withdrawn after eight patients died of agranulocytosis in Finland in 1975 as worth the hematologic risk under monitoring.',
+        source: {
+          externalId: 'src:kane-clozapine-resistant-schizophrenia-1988',
+          name: 'Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic. A double-blind comparison with chlorpromazine. Arch Gen Psychiatry. 1988;45(9):789–796.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3046553/',
+          publishedAt: '1988-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-09-26',
+        datePrecision: 'MONTH',
+        reason: 'On the strength of the Kane trial, the FDA approved clozapine (Clozaril, NDA 019758) in 1989 for treatment-resistant schizophrenia, conditioned on a mandatory weekly white-blood-cell monitoring system to detect agranulocytosis. The approval institutionally settled clozapine as the benchmark therapy for refractory schizophrenia and established the precedent of coupling a high-risk drug to a required safety-monitoring program.',
+        source: {
+          externalId: 'src:fda-clozaril-label-019758',
+          name: 'U.S. FDA. CLOZARIL (clozapine) prescribing information, NDA 019758 (original approval 1989). accessdata.fda.gov.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2010/019758s062lbl.pdf',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
