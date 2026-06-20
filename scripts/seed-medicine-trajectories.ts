@@ -56927,6 +56927,133 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // METABOLIC DISEASE & OBESITY ERA (2000--2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── STOP-NIDDM acarbose delays type 2 diabetes — Chiasson 2002 ──────────────
+  {
+    externalId: 'trajectory:stop-niddm-acarbose-diabetes-prevention-2002',
+    text: 'Chiasson and the STOP-NIDDM Trial Research Group reported in The Lancet on 15 June 2002 that the alpha-glucosidase inhibitor acarbose significantly delays the progression from impaired glucose tolerance to type 2 diabetes (relative hazard 0.75), establishing pharmacological prevention of diabetes in a high-risk population.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-06-15',
+        datePrecision: 'DAY',
+        reason: 'The STOP-NIDDM randomized, double-blind, placebo-controlled trial found that 32% of acarbose-treated patients versus 42% of placebo patients with impaired glucose tolerance developed diabetes over a mean 3.3 years (relative hazard 0.75, 95% CI 0.63–0.90; p=0.0015), and acarbose increased reversion to normal glucose tolerance. This recorded in the expert literature the claim that a cheap oral agent acting only in the gut could prevent or delay type 2 diabetes, alongside the lifestyle/metformin findings of the Diabetes Prevention Program. The claim never translated into a regulatory prevention indication or first-line guideline status, partly due to later methodological criticism of dropout and unblinding, so it remained a literature finding rather than settled practice.',
+        source: {
+          externalId: 'src:chiasson-stop-niddm-acarbose-lancet-2002',
+          name: 'Chiasson JL, Josse RG, Gomis R, Hanefeld M, Karasik A, Laakso M; STOP-NIDDM Trial Research Group. Acarbose for prevention of type 2 diabetes mellitus: the STOP-NIDDM randomised trial. Lancet. 2002;359(9323):2072–2077. PMID 12086760.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12086760/',
+          publishedAt: '2002-06-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NAVIGATOR nateglinide fails to prevent diabetes or CV events — 2010 ─────
+  {
+    externalId: 'trajectory:navigator-nateglinide-no-diabetes-cv-benefit-2010',
+    text: 'The NAVIGATOR Study Group reported in the New England Journal of Medicine (online 14 March 2010) that nateglinide, a short-acting insulin secretagogue, did NOT reduce the incidence of diabetes or cardiovascular outcomes in 9,306 people with impaired glucose tolerance, refuting the expectation that pharmacologic insulin-secretion support prevents progression to diabetes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-03-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-03-14',
+        datePrecision: 'DAY',
+        reason: 'In a randomized, double-blind, 2×2 factorial trial of people with impaired glucose tolerance and cardiovascular risk, nateglinide over a median 5 years did not significantly reduce the cumulative incidence of diabetes or either of the two co-primary cardiovascular composite outcomes, while it increased hypoglycemia. The null result recorded in the expert literature undercut the prevailing pre-2010 paradigm — supported by acarbose (STOP-NIDDM) and rosiglitazone (DREAM) — that pharmacologically lowering or smoothing glucose in pre-diabetes would prevent the disease and its vascular complications, sharpening the distinction between surrogate glucose effects and hard clinical benefit.',
+        source: {
+          externalId: 'src:navigator-nateglinide-nejm-2010',
+          name: 'NAVIGATOR Study Group; Holman RR, Haffner SM, McMurray JJ, et al. Effect of nateglinide on the incidence of diabetes and cardiovascular events. N Engl J Med. 2010;362(16):1463–1476. PMID 20228402.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20228402/',
+          publishedAt: '2010-03-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SOS bariatric surgery reduces mortality — Sjöström 2007 ─────────────────
+  {
+    externalId: 'trajectory:sos-bariatric-surgery-mortality-2007',
+    text: 'Sjöström and the Swedish Obese Subjects (SOS) study reported in the New England Journal of Medicine on 23 August 2007 that bariatric surgery for severe obesity is associated with decreased long-term overall mortality (adjusted hazard ratio 0.71 over ~11 years), the first prospective controlled evidence that surgical weight loss extends survival.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-08-23',
+        datePrecision: 'DAY',
+        reason: 'In a prospective, matched, controlled intervention study of 4,047 obese subjects, the surgery group had 101 deaths versus 129 in the conventionally treated control group (unadjusted HR 0.76; adjusted HR 0.71, p=0.01), with the largest reductions in myocardial infarction and cancer deaths. This recorded in the expert literature, for the first time, the claim that bariatric surgery reduces all-cause mortality rather than merely producing weight loss — moving metabolic surgery from a quality-of-life and weight intervention toward a life-extending one and seeding the later guideline shift toward surgery for severe and diabetic obesity.',
+        source: {
+          externalId: 'src:sjostrom-sos-bariatric-mortality-nejm-2007',
+          name: 'Sjöström L, Narbro K, Sjöström CD, et al; Swedish Obese Subjects Study. Effects of bariatric surgery on mortality in Swedish obese subjects. N Engl J Med. 2007;357(8):741–752. PMID 17715408.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17715408/',
+          publishedAt: '2007-08-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── TSH reference range controversy — Wartofsky & Dickey vs Surks 2005 ──────
+  {
+    externalId: 'trajectory:tsh-narrower-reference-range-controversy-2005',
+    text: 'Wartofsky and Dickey argued in the Journal of Clinical Endocrinology & Metabolism on 1 September 2005 that the evidence for narrowing the upper limit of the serum thyrotropin (TSH) reference range to about 2.5 mIU/L was compelling — a claim that the same journal issue simultaneously contested.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-09-01',
+        datePrecision: 'DAY',
+        reason: 'Building on earlier National Academy of Clinical Biochemistry (2002–2003) observations that more than 95% of rigorously screened euthyroid individuals have TSH below 2.5 mIU/L, Wartofsky and Dickey formally argued in JCEM that older reference ranges were inflated by undetected Hashimoto thyroiditis in \'normal\' reference populations and that the upper limit should be lowered toward 2.5 mIU/L. This recorded in the endocrinology literature the position that millions more people should be reclassified as having (subclinical) thyroid dysfunction.',
+        source: {
+          externalId: 'src:wartofsky-dickey-narrower-tsh-range-jcem-2005',
+          name: 'Wartofsky L, Dickey RA. The evidence for a narrower thyrotropin reference range is compelling. J Clin Endocrinol Metab. 2005;90(9):5483–5488.',
+          url: 'https://academic.oup.com/jcem/article/90/9/5483/2838302',
+          publishedAt: '2005-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-09-01',
+        datePrecision: 'DAY',
+        reason: 'In the same JCEM issue, Surks, Goswami, and Daniels published the opposing \'Controversy in Clinical Endocrinology\' rebuttal arguing the thyrotropin reference range should remain unchanged, contending that lowering the upper limit toward 2.5 mIU/L would medicalize healthy people without evidence of benefit, since levothyroxine treatment is not recommended for subclinical hypothyroidism. The formal point–counterpoint left the reference-range question openly disputed; major bodies (e.g., the American Thyroid Association) subsequently declined to adopt the narrower upper limit, and the controversy persists.',
+        source: {
+          externalId: 'src:surks-tsh-range-unchanged-jcem-2005',
+          name: 'Surks MI, Goswami G, Daniels GH. The thyrotropin reference range should remain unchanged. J Clin Endocrinol Metab. 2005;90(9):5489–5496.',
+          url: 'https://academic.oup.com/jcem/article-lookup/doi/10.1210/jc.2005-0170',
+          publishedAt: '2005-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
