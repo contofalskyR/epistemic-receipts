@@ -56839,6 +56839,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — Vaccines & Antibiotics
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Enders, Weller & Robbins — poliovirus tissue culture 1949 ───────────────
+  {
+    externalId: 'trajectory:enders-weller-robbins-poliovirus-tissue-culture-1949',
+    text: 'John Enders, Thomas Weller, and Frederick Robbins reported in Science on 28 January 1949 that the Lansing strain of poliomyelitis virus could be propagated in cultures of non-neural human embryonic tissue, overturning the prevailing belief that poliovirus would grow only in nervous tissue and opening the path to large-scale virus production for vaccines.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-01-28',
+        datePrecision: 'DAY',
+        reason: 'Enders, Weller, and Robbins reported that the Lansing (type 2) poliovirus multiplied and produced cytopathic effect in roller-tube cultures of human embryonic skin, muscle, and intestinal tissue — not only nervous tissue. This recorded in the literature that poliovirus is not strictly neurotropic in vitro, removing the chief technical barrier to mass-producing the virus and titrating it without live monkeys, and supplying the method on which both the Salk and Sabin vaccines were later built.',
+        source: {
+          externalId: 'src:enders-weller-robbins-poliovirus-science-1949',
+          name: 'Enders JF, Weller TH, Robbins FC. Cultivation of the Lansing strain of poliomyelitis virus in cultures of various human embryonic tissues. Science. 1949;109(2822):85-87.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17794160/',
+          publishedAt: '1949-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1954-12-10',
+        datePrecision: 'DAY',
+        reason: 'Enders, Weller, and Robbins shared the 1954 Nobel Prize in Physiology or Medicine \'for their discovery of the ability of poliomyelitis viruses to grow in cultures of various types of tissue.\' The award, made as the Salk field-trial results were being evaluated, ratified tissue-culture propagation of poliovirus as the foundational technique of modern virology and vaccine production.',
+        source: {
+          externalId: 'src:nobel-enders-weller-robbins-1954',
+          name: 'The Nobel Prize in Physiology or Medicine 1954 — John F. Enders, Thomas H. Weller, Frederick C. Robbins, \'for their discovery of the ability of poliomyelitis viruses to grow in cultures of various types of tissue.\' Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1954/',
+          publishedAt: '1954-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Schatz, Bugie & Waksman — streptomycin discovery 1944 ──────────────────
+  {
+    externalId: 'trajectory:schatz-bugie-waksman-streptomycin-discovery-1944',
+    text: 'Albert Schatz, Elizabeth Bugie, and Selman Waksman reported in early 1944 that streptomycin, an antibiotic isolated from the soil actinomycete Streptomyces griseus, inhibited gram-positive and gram-negative bacteria including the tubercle bacillus — the first antibiotic effective against Mycobacterium tuberculosis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1944-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-01-01',
+        datePrecision: 'MONTH',
+        reason: 'In the Proceedings of the Society for Experimental Biology and Medicine, Schatz, Bugie, and Waksman described streptomycin, a substance from Streptomyces griseus with antibiotic activity against gram-positive and gram-negative organisms. The note recorded the isolation of an antibiotic whose in-vitro activity against tubercle bacilli — beyond the reach of penicillin — made it the first credible chemotherapeutic candidate against tuberculosis.',
+        source: {
+          externalId: 'src:schatz-bugie-waksman-streptomycin-1944',
+          name: 'Schatz A, Bugie E, Waksman SA. Streptomycin, a substance exhibiting antibiotic activity against gram-positive and gram-negative bacteria. Proc Soc Exp Biol Med. 1944;55:66-69. (Reprinted Clin Orthop Relat Res. 2005;(437):3-6.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16056018/',
+          publishedAt: '1944-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1952-12-10',
+        datePrecision: 'DAY',
+        reason: 'Selman Waksman received the 1952 Nobel Prize in Physiology or Medicine \'for his discovery of streptomycin, the first antibiotic effective against tuberculosis.\' Following clinical confirmation of efficacy, the award institutionally settled streptomycin as a landmark anti-tuberculosis agent — though the omission of co-author Albert Schatz, who had sued in 1950 and been legally recognized as co-discoverer, left the credit for the discovery permanently disputed.',
+        source: {
+          externalId: 'src:nobel-waksman-streptomycin-1952',
+          name: 'The Nobel Prize in Physiology or Medicine 1952 — Selman A. Waksman, \'for his discovery of streptomycin, the first antibiotic effective against tuberculosis.\' Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1952/',
+          publishedAt: '1952-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Yellow fever vaccine / serum hepatitis epidemic 1942 ────────────────────
+  {
+    externalId: 'trajectory:yellow-fever-vaccine-serum-hepatitis-army-1942',
+    text: 'A 1942 epidemic of jaundice among U.S. Army personnel — affecting roughly 330,000 vaccinees and causing about 50,000 clinical cases of hepatitis — was traced to human-serum stabilizer in lots of the 17D yellow fever vaccine, and was later serologically confirmed to be the largest recorded single-source outbreak of hepatitis B.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-04-01',
+        datePrecision: 'MONTH',
+        reason: 'As a wave of jaundice spread through recently vaccinated U.S. troops in spring 1942, epidemiologic investigation tied the cases to specific lots of 17D yellow fever vaccine stabilized with pooled human serum, and the Army abandoned serum-containing vaccine in April 1942 in favor of an aqueous-base preparation. This recorded the claim that an icteric agent transmissible by the serum stabilizer — not the attenuated virus itself — had caused mass hepatitis, the first recognition of a blood-borne contaminant in a licensed vaccine.',
+        source: {
+          externalId: 'src:seeff-yellow-fever-hepatitis-nejm-1987',
+          name: 'Seeff LB, Beebe GW, Hoofnagle JH, et al. A serologic follow-up of the 1942 epidemic of post-vaccination hepatitis in the United States Army. N Engl J Med. 1987;316(16):965-970.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2436048/',
+          publishedAt: '1987-04-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-04-16',
+        datePrecision: 'DAY',
+        reason: 'Seeff and colleagues performed a serologic follow-up of surviving 1942 vaccinees and demonstrated, by hepatitis B surface and core antibody markers, that the icteric agent had been hepatitis B virus carried in the serum stabilizer — resolving decades of uncertainty over whether the epidemic had been hepatitis A or B. The study settled the identity of history\'s largest single-source HBV outbreak and confirmed the vaccine-serum transmission route.',
+        source: {
+          externalId: 'src:seeff-yellow-fever-hbv-serology-nejm-1987',
+          name: 'Seeff LB, Beebe GW, Hoofnagle JH, et al. A serologic follow-up of the 1942 epidemic of post-vaccination hepatitis in the United States Army. N Engl J Med. 1987;316(16):965-970.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2436048/',
+          publishedAt: '1987-04-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kendrick & Eldering — pertussis vaccine field trial 1939 ────────────────
+  {
+    externalId: 'trajectory:kendrick-eldering-pertussis-vaccine-field-trial-1939',
+    text: 'Pearl Kendrick and Grace Eldering reported in 1939, from a controlled field trial in Grand Rapids, Michigan, that their whole-cell pertussis vaccine sharply reduced whooping cough in vaccinated children versus unvaccinated controls (about 4 mild cases among 712 vaccinated vs 45 among 880 controls), providing the first rigorous field evidence of pertussis vaccine efficacy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kendrick and Eldering, working at the Michigan state laboratory in Grand Rapids, ran a controlled field trial enrolling vaccinated and matched unvaccinated children and published the results in the American Journal of Hygiene in 1939, showing whooping cough struck only a handful of vaccinated children versus the large majority of exposed controls. This recorded in the expert literature, with concurrent controls, that a whole-cell pertussis vaccine could prevent the disease — earlier vaccines having lacked credible efficacy evidence.',
+        source: {
+          externalId: 'src:shapiro-shapin-kendrick-eldering-pertussis-eid-2010',
+          name: 'Shapiro-Shapin CG. Pearl Kendrick, Grace Eldering, and the pertussis vaccine. Emerg Infect Dis. 2010;16(8):1273-1278. (documenting Kendrick P, Eldering G. A study in active immunization against pertussis. Am J Hyg. 1939;29(Sect B):133-153.)',
+          url: 'https://wwwnc.cdc.gov/eid/article/16/8/10-0288_article',
+          publishedAt: '2010-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-01-01',
+        datePrecision: 'YEAR',
+        reason: 'On the strength of the Grand Rapids trial the American Academy of Pediatrics endorsed routine pertussis immunization in the mid-1940s, and Kendrick\'s combined diphtheria-tetanus-pertussis (DTP) preparation entered standard use by 1948, driving a steep national decline in whooping cough deaths. Institutional adoption settled pertussis vaccine efficacy as established preventive practice.',
+        source: {
+          externalId: 'src:shapiro-shapin-pertussis-adoption-eid-2010',
+          name: 'Shapiro-Shapin CG. Pearl Kendrick, Grace Eldering, and the pertussis vaccine. Emerg Infect Dis. 2010;16(8):1273-1278.',
+          url: 'https://wwwnc.cdc.gov/eid/article/16/8/10-0288_article',
+          publishedAt: '2010-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
