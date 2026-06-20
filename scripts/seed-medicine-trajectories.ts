@@ -39491,6 +39491,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & POST-MARKET SURVEILLANCE ERA (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── HERS — HRT secondary CHD prevention failure 1998 ────────────────────────
+  {
+    externalId: 'trajectory:hers-hrt-secondary-chd-prevention-failure-1998',
+    text: 'The Heart and Estrogen/progestin Replacement Study (HERS), reported by Hulley et al. in JAMA on 19 August 1998, found that estrogen plus progestin did not reduce coronary heart disease events in postmenopausal women with established coronary disease, contradicting the prevailing observational claim that hormone therapy was cardioprotective.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-19',
+        datePrecision: 'DAY',
+        reason: 'Hulley and the HERS Research Group reported the first large randomized secondary-prevention trial of conjugated equine estrogen plus medroxyprogesterone in 2,763 postmenopausal women with established coronary disease, finding no overall reduction in CHD events (relative hazard 0.99) despite favorable lipid changes, with an early increase in thromboembolic events. This recorded the first RCT-grade contradiction of the observational consensus that HRT protected the heart.',
+        source: {
+          externalId: 'src:hers-hulley-jama-1998',
+          name: 'Hulley S, Grady D, Bush T, et al. Randomized trial of estrogen plus progestin for secondary prevention of coronary heart disease in postmenopausal women (HERS). JAMA. 1998;280(7):605-613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9718051/',
+          publishedAt: '1998-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-07-24',
+        datePrecision: 'DAY',
+        reason: 'The American Heart Association issued a scientific statement (Mosca et al., Circulation 2001;104:499-503) advising against initiating hormone replacement therapy for the secondary prevention of cardiovascular disease, citing HERS and related trials. A major professional body institutionally settled the finding that HRT does not protect women with existing heart disease, reversing decades of observationally driven practice.',
+        source: {
+          externalId: 'src:aha-hrt-cvd-statement-2001',
+          name: 'Mosca L, Collins P, Herrington DM, et al. Hormone replacement therapy and cardiovascular disease: a statement for healthcare professionals from the American Heart Association. Circulation. 2001;104(4):499-503.',
+          url: 'https://www.ahajournals.org/doi/10.1161/hc2901.092200',
+          publishedAt: '2001-07-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Third-generation oral contraceptives — VTE risk 1995 ────────────────────
+  {
+    externalId: 'trajectory:third-generation-oral-contraceptives-vte-risk-1995',
+    text: 'The UK Committee on Safety of Medicines warned on 18 October 1995 that third-generation combined oral contraceptives containing desogestrel or gestodene approximately doubled the risk of venous thromboembolism compared with older levonorgestrel-containing pills, a claim then confirmed in the expert literature in December 1995.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-10-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-10-18',
+        datePrecision: 'DAY',
+        reason: "Acting on three still-unpublished studies, the UK Committee on Safety of Medicines issued an urgent 'Dear Doctor' warning that combined oral contraceptives containing desogestrel or gestodene carried roughly twice the venous-thromboembolism risk of levonorgestrel products, advising restricted use. The warning triggered the '1995 pill scare,' a mass switch away from third-generation pills, and recorded the differential-VTE claim as institutional safety guidance.",
+        source: {
+          externalId: 'src:csm-third-gen-oc-vte-warning-1995',
+          name: 'Medsafe (reproducing UK CSM advice). The Risk of Venous Thromboembolism with Third Generation Oral Contraceptives. February 1996.',
+          url: 'https://www.medsafe.govt.nz/profs/PUarticles/contraceptivesFeb96.htm',
+          publishedAt: '1996-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-12-16',
+        datePrecision: 'DAY',
+        reason: 'Jick et al. published in The Lancet, finding that nonfatal venous thromboembolism was about twice as common in users of desogestrel- or gestodene-containing pills as in levonorgestrel users; converging Lancet papers (the WHO Collaborative Study and the Transnational Study) the same month gave a consistent picture. The expert literature settled the ~2-fold relative VTE risk that the regulator had pre-announced.',
+        source: {
+          externalId: 'src:jick-third-gen-oc-vte-lancet-1995',
+          name: 'Jick H, Jick SS, Gurewich V, et al. Risk of idiopathic cardiovascular death and nonfatal venous thromboembolism in women using oral contraceptives with differing progestagen components. Lancet. 1995;346(8990):1589-1593.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7500750/',
+          publishedAt: '1995-12-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fenfluramine/dexfenfluramine — valvulopathy withdrawal 1997 ──────────────
+  {
+    externalId: 'trajectory:fenfluramine-dexfenfluramine-valvulopathy-withdrawal-1997',
+    text: 'The claim that the appetite suppressants fenfluramine (Pondimin) and dexfenfluramine (Redux) were safe weight-loss drugs was reversed when, after Connolly et al. reported associated valvular heart disease, the FDA requested their voluntary withdrawal from the US market on 15 September 1997.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-04',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-28',
+        datePrecision: 'DAY',
+        reason: "Connolly et al. reported in the New England Journal of Medicine 24 women with no prior cardiac disease who developed unusual valvular morphology and regurgitation while taking fenfluramine-phentermine, with eight also showing pulmonary hypertension. This recorded the first systematic clinical evidence that the widely used 'fen-phen' diet drugs caused structural heart-valve damage.",
+        source: {
+          externalId: 'src:connolly-fenphen-valvulopathy-nejm-1997',
+          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997;337(9):581-588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
+          publishedAt: '1997-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09-15',
+        datePrecision: 'DAY',
+        reason: "The FDA announced it had asked Wyeth-Ayerst and Interneuron to voluntarily withdraw fenfluramine and dexfenfluramine, reporting that about 30% of evaluated patients had abnormal echocardiograms despite being asymptomatic. The regulatory withdrawal repudiated the drugs' safety premise and became a landmark post-market-surveillance action affecting drugs taken predominantly by women.",
+        source: {
+          externalId: 'src:fda-fenphen-withdrawal-1997',
+          name: 'U.S. Food and Drug Administration. FDA Announces Withdrawal of Fenfluramine and Dexfenfluramine (Fen-Phen). 15 September 1997.',
+          url: 'https://dn710602.ca.archive.org/0/items/www.fda.gov/www.fda.gov/Drugs/DrugSafety/PostmarketDrugSafetyInformationforPatientsandProviders/ucm179871.htm',
+          publishedAt: '1997-09-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cerivastatin (Baycol) — rhabdomyolysis withdrawal 2001 ──────────────────
+  {
+    externalId: 'trajectory:cerivastatin-baycol-rhabdomyolysis-withdrawal-2001',
+    text: 'The claim that cerivastatin (Baycol), the statin approved by the FDA in June 1997, was a safe cholesterol-lowering drug was reversed when Bayer voluntarily withdrew it from the US market on 8 August 2001 after reports of fatal rhabdomyolysis, especially in combination with gemfibrozil.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-06-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved cerivastatin (Baycol, NDA 020740) as a safe and effective HMG-CoA reductase inhibitor for lowering cholesterol. Regulatory approval institutionally established the drug as a safe statin, and it went on to be widely marketed by Bayer.',
+        source: {
+          externalId: 'src:fda-baycol-approval-package-1997',
+          name: 'U.S. Food and Drug Administration. Drug Approval Package: Baycol (cerivastatin sodium) NDA 020740. 26 June 1997.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/97/020740_baycol_toc.cfm',
+          publishedAt: '1997-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2001-08-08',
+        datePrecision: 'DAY',
+        reason: 'Bayer announced the voluntary worldwide withdrawal of cerivastatin after the FDA linked it to 31 US deaths from rhabdomyolysis (12 involving concomitant gemfibrozil), a rate far higher than other statins. The withdrawal reversed the drug\'s safety premise through manufacturer action and became a defining statin-class post-market-surveillance case.',
+        source: {
+          externalId: 'src:who-cerivastatin-withdrawal-alert-2001',
+          name: 'World Health Organization. Drug Alert No. 102: Voluntary Withdrawal of Cerivastatin. August 2001.',
+          url: 'https://cdn.who.int/media/docs/default-source/pvg/drug-alerts/da102---drugalert102.pdf',
+          publishedAt: '2001-08-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHI estrogen-alone — stroke, no benefit 2004 ─────────────────────────────
+  {
+    externalId: 'trajectory:whi-estrogen-alone-stroke-no-benefit-2004',
+    text: 'The Women\'s Health Initiative estrogen-alone trial, reported by Anderson et al. in JAMA on 14 April 2004, found that conjugated equine estrogen in postmenopausal women with prior hysterectomy increased stroke risk and conferred no overall chronic-disease benefit, leading the NIH to halt the trial and conclude that unopposed estrogen should not be used for disease prevention.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-04-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-03-02',
+        datePrecision: 'DAY',
+        reason: 'In late February/early March 2004 the NIH instructed the ~10,700 women in the WHI estrogen-alone (conjugated equine estrogen) arm to stop their study pills, after the data monitoring board found an increased stroke risk and no protection against coronary heart disease, concluding the result would not change by the planned 2005 end. The early termination reversed, at the regulator/sponsor level, the residual claim that unopposed estrogen was beneficial for women with hysterectomy.',
+        source: {
+          externalId: 'src:nhlbi-whi-estrogen-alone-overview',
+          name: 'National Heart, Lung, and Blood Institute (NIH). Women\'s Health Initiative (WHI) — estrogen-alone trial stopped early (Feb–Mar 2004).',
+          url: 'https://www.nhlbi.nih.gov/science/womens-health-initiative-whi',
+          publishedAt: '2004-03-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-14',
+        datePrecision: 'DAY',
+        reason: 'Anderson and the WHI Steering Committee published the full estrogen-alone results in JAMA: in 10,739 postmenopausal women with prior hysterectomy followed a mean of 6.8 years, conjugated equine estrogen increased stroke, decreased hip fracture, and did not affect CHD, with no overall benefit, concluding CEE should not be recommended for chronic-disease prevention. The published RCT confirmed in the expert literature the reversal of the unopposed-estrogen prevention claim.',
+        source: {
+          externalId: 'src:whi-estrogen-alone-anderson-jama-2004',
+          name: 'Anderson GL, Limacher M, Assaf AR, et al. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701-1712.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15082697/',
+          publishedAt: '2004-04-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
