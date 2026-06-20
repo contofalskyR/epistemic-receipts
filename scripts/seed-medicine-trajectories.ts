@@ -51103,6 +51103,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — sulfonamides & biologics
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Prontosil / first sulfonamide antibacterial — Domagk 1935 ──────────────
+  {
+    externalId: 'trajectory:prontosil-first-sulfonamide-antibacterial-1935',
+    text: 'Gerhard Domagk reported in February 1935 in Deutsche Medizinische Wochenschrift that the azo dye Prontosil (sulfamidochrysoidine) protected mice and patients against streptococcal infection, establishing the first systemically effective antibacterial drug and inaugurating the sulfonamide era.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Domagk published \'Ein Beitrag zur Chemotherapie der bakteriellen Infektionen\' in Deutsche Medizinische Wochenschrift, reporting that Prontosil protected mice against lethal streptococcal infection and described early clinical cures. This recorded in the expert literature the first claim that a synthetic compound could cure systemic bacterial infection in the living body — the foundational sulfonamide observation.',
+        source: {
+          externalId: 'src:domagk-prontosil-dmw-1935',
+          name: 'Domagk G. Ein Beitrag zur Chemotherapie der bakteriellen Infektionen. Dtsch Med Wochenschr. 1935;61(7):250-253.',
+          url: 'https://www.thieme-connect.com/products/ejournals/abstract/10.1055/s-0028-1129486',
+          publishedAt: '1935-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-12-10',
+        datePrecision: 'DAY',
+        reason: 'After clinical confirmation in puerperal sepsis and other infections across the late 1930s, the Karolinska Institute awarded Domagk the 1939 Nobel Prize in Physiology or Medicine for the discovery of the antibacterial effects of Prontosil. The award cemented institutional recognition that sulfonamide chemotherapy was a genuine, reproducible therapeutic advance.',
+        source: {
+          externalId: 'src:nobel-domagk-1939',
+          name: 'Nobel Prize in Physiology or Medicine 1939 — Gerhard Domagk, \'for the discovery of the antibacterial effects of prontosil\'. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1939/domagk/facts/',
+          publishedAt: '1939-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Biologics Control Act / diphtheria antitoxin deaths — 1902 ─────────────
+  {
+    externalId: 'trajectory:biologics-control-act-diphtheria-antitoxin-1902',
+    text: 'Thirteen children in St. Louis died in autumn 1901 of tetanus contracted from diphtheria antitoxin produced from a tetanus-infected serum horse, exposing the absence of any federal oversight of vaccines and antitoxins and leading the United States to enact the Biologics Control Act, effective 1 July 1902 — the first federal law regulating biologics safety.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1901-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1901-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Public-health investigations in late 1901 traced the St. Louis tetanus deaths to antitoxin drawn from a horse (\'Jim\') that had developed tetanus, with serum mislabeled to an earlier bleeding date and distributed without guinea-pig safety testing; a parallel Camden, New Jersey smallpox-vaccine tetanus cluster occurred the same year. These constituted the first pharmacoepidemiologic investigations and put on record that lawfully sold biologics could carry lethal contamination.',
+        source: {
+          externalId: 'src:lilienfeld-drug-safety-1901-1902',
+          name: 'Lilienfeld DE. The first pharmacoepidemiologic investigations: national drug safety policy in the United States, 1901-1902. Perspect Biol Med. 2008;51(2):188-198. PMID 18453724.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18453724/',
+          publishedAt: '2008-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1902-07-01',
+        datePrecision: 'DAY',
+        reason: 'Congress responded to the 1901 deaths by passing the Biologics Control Act (Virus-Toxin Law), effective 1 July 1902, requiring manufacturers of vaccines, sera, and antitoxins shipped interstate to be licensed and inspected. This established the durable principle of federal premarket regulation of biologics — a framework still administered today by the FDA.',
+        source: {
+          externalId: 'src:biologics-control-act-1902',
+          name: 'Biologics Control Act (Virus-Toxin Law), 32 Stat. 728, enacted 1 July 1902.',
+          url: 'https://en.wikipedia.org/wiki/Biologics_Control_Act',
+          publishedAt: '1902-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Yellow fever 17D vaccine — Theiler & Smith 1937 ────────────────────────
+  {
+    externalId: 'trajectory:yellow-fever-17d-vaccine-1937',
+    text: 'Max Theiler and Hugh Smith reported on 31 May 1937 in the Journal of Experimental Medicine that an attenuated yellow fever virus strain (17D) safely immunized humans, establishing the first practical yellow fever vaccine — a claim later shaken by a 1942 manufacturing-contamination hepatitis disaster before being re-settled.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1937-05-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-05-31',
+        datePrecision: 'DAY',
+        reason: 'Theiler and Smith published \'The Use of Yellow Fever Virus Modified by In Vitro Cultivation for Human Immunization\' in the Journal of Experimental Medicine, showing the attenuated 17D strain immunized humans with minimal reactions. This recorded the first practical, attenuated yellow fever vaccine in the expert literature.',
+        source: {
+          externalId: 'src:theiler-smith-17d-jem-1937',
+          name: 'Theiler M, Smith HH. The use of yellow fever virus modified by in vitro cultivation for human immunization. J Exp Med. 1937;65(6):787-800.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2133527/',
+          publishedAt: '1937-05-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Rockefeller Foundation scaled up 17D production and, with wartime mobilization, the U.S. Army adopted mass yellow fever vaccination; more than 28 million doses were produced from 1940 to 1947. Institutional adoption settled 17D as the standard yellow fever vaccine.',
+        source: {
+          externalId: 'src:lowy-1942-yf-contamination-ajph-2021',
+          name: 'Löwy I. The 1942 massive contamination of yellow fever vaccine: a public health consequence of scientific arrogance. Am J Public Health. 2021;111(9):1610-1617.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8589052/',
+          publishedAt: '2021-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1942-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Batches of 17D vaccine stabilized with normal human serum transmitted hepatitis (later identified as hepatitis B); an official July 1942 count recorded 28,525 cases of jaundice and 62 deaths among vaccinated U.S. troops, ultimately affecting tens of thousands. The vaccine\'s safety, as manufactured, was thrown into acute public and institutional doubt — one of the largest iatrogenic outbreaks on record.',
+        source: {
+          externalId: 'src:lowy-1942-yf-jaundice-ajph-2021',
+          name: 'Löwy I. The 1942 massive contamination of yellow fever vaccine: a public health consequence of scientific arrogance. Am J Public Health. 2021;111(9):1610-1617.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8589052/',
+          publishedAt: '2021-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-12-01',
+        datePrecision: 'YEAR',
+        reason: 'Investigators identified the human-serum stabilizer as the contamination source and manufacturers removed it, switching to serum-free (egg-fluid) preparations, after which vaccine-related jaundice ceased. The 17D vaccine itself was exonerated and remained the global standard, re-settling the safety claim around a corrected production method.',
+        source: {
+          externalId: 'src:lowy-1942-yf-resolution-ajph-2021',
+          name: 'Löwy I. The 1942 massive contamination of yellow fever vaccine: a public health consequence of scientific arrogance. Am J Public Health. 2021;111(9):1610-1617.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8589052/',
+          publishedAt: '2021-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lübeck BCG disaster — 1930 ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:lubeck-bcg-disaster-1930',
+    text: 'The Lübeck disaster of 1930 — in which 251 newborns given oral BCG vaccine fell ill and 77 died — was established by the 6 February 1932 criminal trial and the Lange inquiry to have resulted from accidental laboratory contamination of the doses with virulent Mycobacterium tuberculosis, not from the BCG vaccine itself.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1930-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Between April and September 1930, of 251 Lübeck neonates given oral BCG, dozens developed tuberculosis and many died, raising an urgent open question across the medical community as to whether BCG vaccine was inherently dangerous. The deaths were recorded and investigated as a potential indictment of BCG vaccination itself.',
+        source: {
+          externalId: 'src:donald-lubeck-revisited-err-2022',
+          name: 'Donald PR, Kaufmann SHE, Thee S, Mandalakas AM, Lange C. Pathogenesis of tuberculosis: the 1930 Lübeck disaster revisited. Eur Respir Rev. 2022;31(164):220046. PMID 35768133.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35768133/',
+          publishedAt: '2022-06-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1932-02-06',
+        datePrecision: 'DAY',
+        reason: 'On 6 February 1932 the Lübeck court convicted Georg Deycke and Ernst Altstaedt of negligent homicide, while the Lange inquiry conclusively traced the deaths to laboratory contamination of the BCG doses with a virulent human M. tuberculosis (Kiel) strain handled in the same facility. BCG and its originators Calmette and Guérin were exonerated, settling the cause as manufacturing error rather than vaccine reversion to virulence.',
+        source: {
+          externalId: 'src:nakayama-bcg-vaccination-on-trial-2025',
+          name: 'Nakayama DK. A novel microbe, immunization deaths, and vaccination on trial: BCG and the Lübeck disaster of 1930. Am Surg. 2025. PMID 39788567.',
+          url: 'https://journals.sagepub.com/doi/10.1177/00031348251313994',
+          publishedAt: '2025-01-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
