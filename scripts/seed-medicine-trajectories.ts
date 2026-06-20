@@ -51821,6 +51821,147 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Holliday-Segar pediatric maintenance fluid formula 1957 ─────────────────
+  {
+    externalId: 'trajectory:holliday-segar-pediatric-maintenance-fluid-1957',
+    text: 'Malcolm Holliday and William Segar reported in Pediatrics in 1957 a body-weight-based method (the 100/50/20 mL/kg, or \'4/2/1\', rule) for calculating the maintenance water requirement of children receiving parenteral fluids, paired with a hypotonic electrolyte composition, establishing the standard system for prescribing pediatric maintenance intravenous fluids.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1957-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Holliday and Segar derived maintenance water needs from caloric expenditure and proposed the now-ubiquitous weight-banded formula (100 mL/kg for the first 10 kg, 50 mL/kg for the next 10 kg, 20 mL/kg thereafter) delivered as hypotonic saline in dextrose. The paper put on the literature record a simple, generalizable prescription that within a decade became the worldwide teaching standard for pediatric IV fluid therapy.',
+        source: {
+          externalId: 'src:holliday-segar-maintenance-water-pediatrics-1957',
+          name: 'Holliday MA, Segar WE. The maintenance need for water in parenteral fluid therapy. Pediatrics. 1957;19(5):823-832.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13431307/',
+          publishedAt: '1957-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-11-01',
+        datePrecision: 'MONTH',
+        reason: 'After randomized trials and meta-analyses linked the hypotonic component of the Holliday-Segar prescription to a high incidence of hospital-acquired hyponatremia (including fatal cerebral edema), the American Academy of Pediatrics issued its first clinical practice guideline on maintenance IV fluids, recommending isotonic solutions for patients 28 days to 18 years. This institutionally reversed the tonicity half of the original method while retaining its volume formula, leaving the 60-year-old standard partially overturned.',
+        source: {
+          externalId: 'src:aap-maintenance-iv-fluids-guideline-pediatrics-2018',
+          name: 'Feld LG, Neuspiel DR, Foster BA, et al. Clinical Practice Guideline: Maintenance Intravenous Fluids in Children. Pediatrics. 2018;142(6):e20183083.',
+          url: 'https://publications.aap.org/pediatrics/article/142/6/e20183083/37529/Clinical-Practice-Guideline-Maintenance',
+          publishedAt: '2018-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Steinschneider apnea-SIDS home monitoring 1972 ──────────────────────────
+  {
+    externalId: 'trajectory:steinschneider-apnea-sids-home-monitoring-1972',
+    text: 'Alfred Steinschneider reported in Pediatrics in October 1972 that prolonged sleep apnea is a precursor of sudden infant death syndrome and may run in families, providing the clinical rationale that launched the widespread use of home cardiorespiratory (apnea) monitors to prevent SIDS.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Steinschneider described two siblings in one family who he said had recurrent prolonged apnea and later died of SIDS, proposing apnea as the physiological mechanism of SIDS. The \'apnea hypothesis\' was rapidly adopted, spawning a home apnea-monitor industry and decades of monitoring of infants deemed at risk, placing the apnea-SIDS causal claim on the medical record.',
+        source: {
+          externalId: 'src:steinschneider-prolonged-apnea-sids-pediatrics-1972',
+          name: 'Steinschneider A. Prolonged apnea and the sudden infant death syndrome: clinical and laboratory observations. Pediatrics. 1972;50(4):646-654.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4342142/',
+          publishedAt: '1972-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The Collaborative Home Infant Monitoring Evaluation (CHIME, JAMA 2001) found that home monitors did not identify infants who would die of SIDS, and the two infants in Steinschneider\'s index family were later shown to have been murdered by their mother, Waneta Hoyt (convicted 1995). The AAP policy statement concluded that home cardiorespiratory monitoring should not be used as a strategy to prevent SIDS, reversing the apnea hypothesis and the monitoring practice it had justified.',
+        source: {
+          externalId: 'src:aap-apnea-sids-home-monitoring-pediatrics-2003',
+          name: 'American Academy of Pediatrics, Committee on Fetus and Newborn. Apnea, sudden infant death syndrome, and home monitoring. Pediatrics. 2003;111(4):914-917.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12671135/',
+          publishedAt: '2003-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Intramuscular vitamin K childhood cancer signal 1990 ─────────────────────
+  {
+    externalId: 'trajectory:intramuscular-vitamin-k-childhood-cancer-1990',
+    text: 'Jean Golding and colleagues reported in the British Journal of Cancer in 1990 that drug administration in the first week of life — subsequently identified as intramuscular vitamin K prophylaxis given routinely to newborns — was associated with an increased risk of later childhood cancer, raising a safety signal against a long-settled neonatal practice.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-08-01',
+        datePrecision: 'MONTH',
+        reason: 'In a national cohort of 16,193 British infants born in one week of 1970, Golding, Paterson and Kinlen found an unexpected statistically significant association between cancer by age 10 and drug administration in the first week of life. The finding put on the literature record an apparent link between a routine neonatal intervention and childhood malignancy, the seed of the vitamin K controversy.',
+        source: {
+          externalId: 'src:golding-childhood-cancer-cohort-bjc-1990',
+          name: 'Golding J, Paterson M, Kinlen LJ. Factors associated with childhood cancer in a national cohort study. Br J Cancer. 1990;62(2):304-308.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2386748/',
+          publishedAt: '1990-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-08-08',
+        datePrecision: 'DAY',
+        reason: 'Golding and colleagues published a Bristol case-control study specifically implicating intramuscular (but not oral) vitamin K, reporting an approximate doubling of childhood cancer risk. The paper escalated the signal into an active controversy: several countries reconsidered IM versus oral vitamin K dosing for prevention of haemorrhagic disease of the newborn, contesting a previously settled prophylaxis.',
+        source: {
+          externalId: 'src:golding-im-vitamin-k-pethidine-bmj-1992',
+          name: 'Golding J, Greenwood R, Birmingham K, Mott M. Childhood cancer, intramuscular vitamin K, and pethidine given during labour. BMJ. 1992;305(6849):341-346.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1392886/',
+          publishedAt: '1992-08-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The large population-based United Kingdom Childhood Cancer Study (2,530 cancer cases, 4,487 controls) found no association between intramuscular vitamin K and leukaemia or other childhood cancers, consistent with multiple intervening studies. This refuted the Golding hypothesis and re-established routine neonatal intramuscular vitamin K prophylaxis as safe, reversing the cancer-risk claim.',
+        source: {
+          externalId: 'src:ukccs-vitamin-k-childhood-cancer-bjc-2003',
+          name: 'Roman E, Fear NT, Ansell P, et al. Vitamin K and childhood cancer: a report from the United Kingdom Childhood Cancer Study. Br J Cancer. 2003;89(7):1228-1231.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14520451/',
+          publishedAt: '2003-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
