@@ -55742,6 +55742,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY / METABOLISM (pre-1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Allen starvation diet for diabetes — 1919 ──────────────────────────────
+  {
+    externalId: 'trajectory:allen-starvation-diet-diabetes-1919',
+    text: "Frederick M. Allen, Edgar Stillman, and Reginald Fitz reported in their 1919 Rockefeller Institute monograph 'Total Dietary Regulation in the Treatment of Diabetes' that strict caloric undernutrition ('starvation' therapy) was the most effective available means of prolonging the lives of patients with severe diabetes mellitus.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Allen, Stillman, and Fitz published the 646-page Rockefeller Institute monograph documenting roughly 76 diabetic patients managed by total dietary regulation — fasting alternating with calorie allowances often of only 200–1000 kcal/day. In the pre-insulin era this recorded in the expert literature the claim that systematic undernutrition was the best available therapy for severe diabetes, becoming the dominant standard of care in leading clinics.',
+        source: {
+          externalId: 'src:allen-stillman-fitz-total-dietary-regulation-1919',
+          name: 'Allen FM, Stillman E, Fitz R. Total Dietary Regulation in the Treatment of Diabetes. Monographs of the Rockefeller Institute for Medical Research, No. 11. New York: Rockefeller Institute; 1919.',
+          url: 'https://archive.org/details/b32819766',
+          publishedAt: '1919-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-01-11',
+        datePrecision: 'DAY',
+        reason: 'The first successful clinical use of Banting–Best pancreatic extract (insulin) in Leonard Thompson on 11 January 1922, and the worldwide adoption of insulin over the following year, made caloric-starvation therapy obsolete as the treatment of choice for severe diabetes. Insulin directly reversed the prevailing claim that undernutrition was the optimal management, transforming a near-uniformly fatal disease into a survivable one and ending the Allen regimen as standard care.',
+        source: {
+          externalId: 'src:rockefeller-centennial-allen-dietary-therapy',
+          name: 'Rockefeller University Hospital Centennial. An Effective Dietary Therapy for Diabetes Before the Discovery of Insulin (Frederick M. Allen).',
+          url: 'https://centennial.rucares.org/index.php?page=Dietary_Therapy_Diabetes',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Butenandt estrone isolation — 1929 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:butenandt-estrone-isolation-1929',
+    text: "Adolf Butenandt reported in Die Naturwissenschaften in 1929 the isolation of a crystalline female sex hormone (which he named 'Progynon', later estrone) from the urine of pregnant women — the first sex hormone obtained in pure crystalline form, isolated independently the same year by Edward Doisy.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: "Butenandt published 'Über \"Progynon\" ein krystallisiertes weibliches Sexualhormon' in Die Naturwissenschaften, reporting about 20 mg of crystalline estrone extracted from roughly 18,000 liters of pregnancy urine and characterized as a phenolic steroid. This recorded the claim that a defined, isolable molecule was the active female sex hormone, moving reproductive endocrinology from crude ovarian extracts to pure chemistry — the first of any sex hormone obtained in crystalline form.",
+        source: {
+          externalId: 'src:butenandt-progynon-naturwissenschaften-1929',
+          name: "Butenandt A. Über 'Progynon' ein krystallisiertes weibliches Sexualhormon. Die Naturwissenschaften. 1929;17(45):879.",
+          url: 'https://link.springer.com/article/10.1007/BF01506919',
+          publishedAt: '1929-11-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-12-10',
+        datePrecision: 'DAY',
+        reason: 'Butenandt was awarded the 1939 Nobel Prize in Chemistry for his work on the sex hormones (shared with Leopold Ruzicka), institutionally ratifying the isolation and structural elucidation of the steroid sex hormones. By then estrone\'s identity, structure, and synthesis were established and the steroid-hormone field was a settled foundation of endocrinology, a status it has retained.',
+        source: {
+          externalId: 'src:nobel-chemistry-1939-butenandt-ruzicka',
+          name: 'Nobel Prize Committee. The Nobel Prize in Chemistry 1939 — Adolf Butenandt (sex hormones) and Leopold Ruzicka.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/summary/',
+          publishedAt: '1939-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Testosterone isolation and naming — 1935 ───────────────────────────────
+  {
+    externalId: 'trajectory:testosterone-isolation-naming-1935',
+    text: "Károly Gyula David, Elisabeth Dingemanse, János Freud, and Ernst Laqueur reported in Hoppe-Seyler's Zeitschrift für physiologische Chemie in 1935 the isolation of a crystalline male hormone from bull testes, which they named 'testosterone' — the first isolation of the principal androgen in pure form.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-05-01',
+        datePrecision: 'MONTH',
+        reason: "David, Dingemanse, Freud, and Laqueur of the Pharmaco-Therapeutic Laboratory at Amsterdam published 'Über krystallinisches männliches Hormon aus Hoden (Testosteron)...', reporting a crystalline androgen isolated from bull testes that was more potent than urinary androsterone, and coining the name testosterone. This recorded in the expert literature the claim that the chief male sex hormone was a defined isolable steroid.",
+        source: {
+          externalId: 'src:david-laqueur-testosteron-zphyschem-1935',
+          name: "David K, Dingemanse E, Freud J, Laqueur E. Über krystallinisches männliches Hormon aus Hoden (Testosteron), wirksamer als aus Harn oder aus Cholesterin bereitetes Androsteron. Hoppe-Seyler's Z Physiol Chem. 1935;233(5-6):281-282.",
+          url: 'https://www.degruyterbrill.com/document/doi/10.1515/bchm2.1935.233.5-6.281/html?lang=en',
+          publishedAt: '1935-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-12-10',
+        datePrecision: 'DAY',
+        reason: 'Within months of the isolation, Ruzicka & Wettstein and Butenandt & Hanisch independently achieved the total chemical synthesis of testosterone (August 1935), proving its structure and making it reproducibly available; Butenandt and Ruzicka were awarded the 1939 Nobel Prize in Chemistry for the sex-hormone and steroid work. Synthesis plus Nobel recognition settled testosterone\'s identity as the principal androgen, the basis of androgen pharmacology ever since.',
+        source: {
+          externalId: 'src:nobel-chemistry-1939-ruzicka-butenandt-testosterone',
+          name: 'Nobel Prize Committee. The Nobel Prize in Chemistry 1939 — Leopold Ruzicka (polymethylenes and higher terpenes, incl. testosterone synthesis) and Adolf Butenandt.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/summary/',
+          publishedAt: '1939-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Houssay pituitary diabetogenic effect — 1930 ───────────────────────────
+  {
+    externalId: 'trajectory:houssay-pituitary-diabetes-1930',
+    text: 'Bernardo Houssay and Alberto Biasotti reported in 1930 that removal of the anterior pituitary markedly attenuates the severity of pancreatic (insulin-deficient) diabetes in dogs and toads, while injection of anterior-pituitary extract aggravates it — establishing that anterior pituitary hormones oppose insulin in the regulation of blood glucose.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: "Houssay and Biasotti showed that hypophysectomized, depancreatized animals had far milder diabetes and survived longer than animals with pancreatectomy alone, and that anterior-pituitary extract restored or worsened the diabetes — the 'Houssay phenomenon'. This recorded in the expert literature the claim that the anterior pituitary secretes diabetogenic, insulin-antagonist hormones, opening the modern understanding of counter-regulatory control of blood glucose.",
+        source: {
+          externalId: 'src:houssay-endocrine-physiologist-nobel-pmc',
+          name: 'Lopez de Maturana D, et al. Bernardo Houssay (1887–1971): Endocrine physiologist and Nobel laureate. Singapore Med J / PMC4728695.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4728695/',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-12-10',
+        datePrecision: 'DAY',
+        reason: 'Houssay was awarded a share of the 1947 Nobel Prize in Physiology or Medicine (with Carl and Gerty Cori) for his discovery of the part played by the anterior pituitary hormone in the metabolism of sugar. The award institutionally settled the claim that pituitary hormones regulate carbohydrate metabolism and antagonize insulin — a cornerstone of endocrine physiology.',
+        source: {
+          externalId: 'src:nobel-medicine-1947-houssay',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1947 — Carl Cori, Gerty Cori, and Bernardo Houssay (role of pituitary hormone in sugar metabolism).',
+          url: 'https://www.nobelprize.org/prizes/medicine/1947/summary/',
+          publishedAt: '1947-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cushing pituitary basophilism — 1932 ───────────────────────────────────
+  {
+    externalId: 'trajectory:cushing-pituitary-basophilism-1932',
+    text: "Harvey Cushing reported in the Bulletin of the Johns Hopkins Hospital in 1932 that a distinct clinical syndrome — central obesity, hypertension, hirsutism, and glycosuria — is caused by basophil adenomas of the anterior pituitary ('pituitary basophilism'), defining the disorder now known as Cushing's disease.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-01',
+        datePrecision: 'YEAR',
+        reason: "Cushing published 'The Basophil Adenomas of the Pituitary Body and Their Clinical Manifestations (Pituitary Basophilism)' (Bull Johns Hopkins Hosp 1932;50:137-195), collecting patients with a shared syndrome and correctly proposing a small basophil pituitary adenoma as the cause. This recorded in the expert literature the claim that a specific pituitary lesion produces a defined endocrine disease, distinguishing it from generalized adrenal or metabolic disorders.",
+        source: {
+          externalId: 'src:cushing-basophil-adenomas-pituitary-1932',
+          name: "Cushing H. The basophil adenomas of the pituitary body and their clinical manifestations (pituitary basophilism). Bull Johns Hopkins Hosp. 1932;50:137-195. (Reprinted Obes Res. 1994;2(5):486-508; PMID 16353601.)",
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16353601/',
+          publishedAt: '1932-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-10-01',
+        datePrecision: 'MONTH',
+        reason: "Over the subsequent decades the entity Cushing described entered nosology under the eponym 'Cushing's disease' (pituitary ACTH excess), distinguished from the broader 'Cushing's syndrome', and was mechanistically confirmed as ACTH-driven adrenal hyperfunction. Modern endocrinology reviews treat Cushing's 1932 attribution as established fact, settling the pituitary origin of the syndrome.",
+        source: {
+          externalId: 'src:harvey-cushing-cushings-disease-review-2012',
+          name: "Lanzino G, Maartens NF, Laws ER. Harvey Cushing: Cushing's disease. Review. PMID 23101174.",
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23101174/',
+          publishedAt: '2012-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
