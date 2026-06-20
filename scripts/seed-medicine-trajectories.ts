@@ -46210,6 +46210,144 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── CABANA — catheter ablation vs antiarrhythmic drugs in AF (2019) ─────────
+  {
+    externalId: 'trajectory:cabana-catheter-ablation-vs-drugs-atrial-fibrillation-2019',
+    text: 'On 2 April 2019 the CABANA randomized trial (Packer et al., JAMA) reported that catheter ablation did not significantly reduce the composite of death, disabling stroke, serious bleeding, or cardiac arrest compared with antiarrhythmic drug therapy in patients with atrial fibrillation, challenging the assumption that ablation improves hard clinical outcomes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-04-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-04-02',
+        datePrecision: 'DAY',
+        reason: 'Douglas Packer and the CABANA investigators reported in JAMA the first large randomized comparison of catheter ablation versus antiarrhythmic drug therapy in 2,204 atrial-fibrillation patients. By intention-to-treat, ablation did not significantly reduce the primary composite of death, disabling stroke, serious bleeding, or cardiac arrest (8.0% vs 9.2%, HR 0.86, P=0.30), although it reduced AF recurrence and cardiovascular hospitalization. The neutral primary result, complicated by high crossover and lower-than-expected event rates, put on record a genuine contest over whether ablation improves hard outcomes rather than only symptoms.',
+        source: {
+          externalId: 'src:packer-cabana-jama-2019',
+          name: 'Packer DL, Mark DB, Robb RA, et al. Effect of Catheter Ablation vs Antiarrhythmic Drug Therapy on Mortality, Stroke, Bleeding, and Cardiac Arrest Among Patients With Atrial Fibrillation: The CABANA Randomized Clinical Trial. JAMA. 2019;321(13):1261-1274.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30874766/',
+          publishedAt: '2019-04-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EAST-AFNET 4 — early rhythm control in atrial fibrillation (2020) ───────
+  {
+    externalId: 'trajectory:east-afnet4-early-rhythm-control-atrial-fibrillation-2020',
+    text: 'On 29 August 2020 the EAST-AFNET 4 trial (Kirchhof et al., NEJM) reported that initiating rhythm-control therapy early after a diagnosis of atrial fibrillation reduced cardiovascular death, stroke, and hospitalization for heart failure or acute coronary syndrome compared with usual rate-control-first care, overturning the post-AFFIRM orthodoxy that rhythm and rate control yield equivalent outcomes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-08-29',
+        datePrecision: 'DAY',
+        reason: 'Paulus Kirchhof and the EAST-AFNET 4 investigators reported in the New England Journal of Medicine that among 2,789 patients with early atrial fibrillation, systematic early rhythm control reduced the primary composite of cardiovascular death, stroke, or hospitalization for worsening heart failure or acute coronary syndrome (HR 0.79); the trial was stopped early for efficacy. After the AFFIRM and RACE trials had established rate control as broadly equivalent two decades earlier, this recorded the first randomized evidence that early rhythm restoration improves hard cardiovascular outcomes, reopening and reversing a settled question.',
+        source: {
+          externalId: 'src:kirchhof-east-afnet4-nejm-2020',
+          name: 'Kirchhof P, Camm AJ, Goette A, et al. Early Rhythm-Control Therapy in Patients with Atrial Fibrillation. N Engl J Med. 2020;383(14):1305-1316.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32865375/',
+          publishedAt: '2020-08-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── VICTORIA — vericiguat sGC stimulator in HFrEF (2020) ───────────────────
+  {
+    externalId: 'trajectory:victoria-vericiguat-sgc-stimulator-heart-failure-2020',
+    text: 'On 28 March 2020 the VICTORIA trial (Armstrong et al., NEJM) reported that the soluble guanylate cyclase stimulator vericiguat modestly reduced cardiovascular death or heart-failure hospitalization in high-risk patients with worsening heart failure and reduced ejection fraction, a finding the FDA adopted by approving Verquvo on 20 January 2021 as a new mechanistic class of heart-failure therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-03-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-03-28',
+        datePrecision: 'DAY',
+        reason: 'Paul Armstrong and the VICTORIA investigators reported in the New England Journal of Medicine that vericiguat, a soluble guanylate cyclase stimulator, reduced the primary composite of cardiovascular death or first heart-failure hospitalization (35.5% vs 38.5%, HR 0.90, P=0.02) versus placebo in 5,050 patients with recently worsened HFrEF. The result recorded the first outcome benefit for direct sGC stimulation, a mechanism distinct from neurohormonal blockade, in a high-risk population previously lacking dedicated therapy.',
+        source: {
+          externalId: 'src:armstrong-victoria-vericiguat-nejm-2020',
+          name: 'Armstrong PW, Pieske B, Anstrom KJ, et al. Vericiguat in Patients with Heart Failure and Reduced Ejection Fraction. N Engl J Med. 2020;382(20):1883-1893.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32222134/',
+          publishedAt: '2020-03-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-01-20',
+        datePrecision: 'DAY',
+        reason: 'On the basis of VICTORIA, the FDA approved Verquvo (vericiguat) on 20 January 2021 to reduce the risk of cardiovascular death and heart-failure hospitalization following a worsening event in adults with symptomatic chronic heart failure and ejection fraction below 45%. As the first treatment approved specifically for patients after a heart-failure hospitalization or need for outpatient IV diuretics, the approval institutionally settled sGC stimulation as a sanctioned HFrEF therapy.',
+        source: {
+          externalId: 'src:fda-verquvo-vericiguat-approval-2021',
+          name: 'Bayer/Merck. U.S. FDA approves vericiguat (Verquvo) for patients with symptomatic chronic heart failure. Press release, 20 January 2021.',
+          url: 'https://www.bayer.com/media/en-us/us-fda-approves-vericiguat-for-patients-with-symptomatic-chronic-heart-failure/',
+          publishedAt: '2021-01-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── GALACTIC-HF — omecamtiv mecarbil cardiac myosin activator / FDA CRL (2020/2023) ─
+  {
+    externalId: 'trajectory:galactic-hf-omecamtiv-mecarbil-fda-rejection-2020',
+    text: 'On 13 November 2020 the GALACTIC-HF trial (Teerlink et al., NEJM) reported that the cardiac myosin activator omecamtiv mecarbil produced a small reduction in heart-failure events or cardiovascular death in patients with reduced ejection fraction, but the FDA found the evidence unpersuasive and issued a Complete Response Letter on 28 February 2023, declining approval and requiring an additional trial.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-11-13',
+        datePrecision: 'DAY',
+        reason: 'John Teerlink and the GALACTIC-HF investigators reported in the New England Journal of Medicine that omecamtiv mecarbil, a selective cardiac myosin activator that increases myocardial contractility without raising intracellular calcium, reduced the primary composite of a heart-failure event or cardiovascular death (37.0% vs 39.1%, HR 0.92, P=0.03) in 8,256 patients with HFrEF. The statistically significant but small effect recorded proof-of-concept for direct sarcomere activation as a novel inotropic mechanism, while leaving its clinical magnitude in question.',
+        source: {
+          externalId: 'src:teerlink-galactic-hf-omecamtiv-nejm-2021',
+          name: 'Teerlink JR, Diaz R, Felker GM, et al. Cardiac Myosin Activation with Omecamtiv Mecarbil in Systolic Heart Failure. N Engl J Med. 2021;384(2):105-116.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33185990/',
+          publishedAt: '2020-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-02-28',
+        datePrecision: 'DAY',
+        reason: 'On 28 February 2023 the FDA issued Cytokinetics a Complete Response Letter for the omecamtiv mecarbil New Drug Application, concluding that GALACTIC-HF was not sufficiently persuasive to establish substantial evidence of effectiveness and that an additional trial would be required. The regulatory rejection contested the trial\'s positive-but-modest result, leaving the clinical value of cardiac myosin activation in heart failure unresolved rather than settled.',
+        source: {
+          externalId: 'src:cytokinetics-omecamtiv-fda-crl-2023',
+          name: 'Cytokinetics, Incorporated. Cytokinetics Receives Complete Response Letter From FDA for New Drug Application for Omecamtiv Mecarbil. Press release, 28 February 2023.',
+          url: 'https://www.globenewswire.com/news-release/2023/02/28/2617757/35409/en/Cytokinetics-Receives-Complete-Response-Letter-From-FDA-for-New-Drug-Application-for-Omecamtiv-Mecarbil.html',
+          publishedAt: '2023-02-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
