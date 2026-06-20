@@ -56502,6 +56502,160 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // FEDERAL REGULATION & ANTICOAGULATION ERA (1900--1940)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pure Food and Drugs Act (Wiley Act) — U.S. 1906 ─────────────────────────
+  {
+    externalId: 'trajectory:pure-food-and-drugs-act-1906',
+    text: 'The United States enacted the Pure Food and Drugs Act (the Wiley Act) on 30 June 1906, establishing the first federal authority to prohibit the interstate sale of adulterated or misbranded drugs and to require accurate labeling of dangerous ingredients such as alcohol, morphine, opium, and cannabis.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1906-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1906-06-30',
+        datePrecision: 'DAY',
+        reason: 'President Theodore Roosevelt signed the Food and Drugs Act (Public Law 59-384, 34 Stat. 768) into law on 30 June 1906, effective 1 January 1907, with enforcement assigned to the USDA Bureau of Chemistry under Harvey W. Wiley, the body that evolved into the FDA. It established federal drug regulation as legitimate national policy, but reached only adulteration and labeling — not pre-market proof of safety or efficacy — gaps later closed by the 1938 Federal Food, Drug, and Cosmetic Act and the 1962 Kefauver-Harris Amendment.',
+        source: {
+          externalId: 'src:pure-food-and-drugs-act-1906-statute',
+          name: 'Pure Food and Drugs Act of 1906 (Wiley Act), Public Law 59-384, 34 Stat. 768, Ch. 3915. Signed 30 June 1906.',
+          url: 'https://en.wikipedia.org/wiki/Pure_Food_and_Drug_Act',
+          publishedAt: '1906-06-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Crafoord heparin postoperative thromboprophylaxis — 1937 ─────────────────
+  {
+    externalId: 'trajectory:crafoord-heparin-postoperative-thromboprophylaxis-1937',
+    text: 'The Swedish surgeon Clarence Crafoord reported in 1937 that postoperative administration of purified heparin prevented venous thrombosis, providing the first clinical demonstration of heparin as a prophylactic anticoagulant in surgical patients.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1937-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Crafoord published \'Preliminary report on postoperative treatment with heparin as a prevention of thrombosis\' (Acta Chirurgica Scandinavica 1937;79:407-426), describing heparin prophylaxis in 12 surgical patients, beginning with an intravenous dose before a prostatectomy. This first translated the natural anticoagulant — isolated from liver and lung tissue in the late 1910s-1920s and purified at the Karolinska under Erik Jorpes — into a deliberate clinical prophylactic against deep vein thrombosis.',
+        source: {
+          externalId: 'src:heparin-history-anaesth-intensive-care-2024',
+          name: 'Review: The history of heparin. Anaesthesia and Intensive Care. 2024 (online 20 Dec 2024). Cites Crafoord C. Preliminary report on postoperative treatment with heparin as a prevention of thrombosis. Acta Chir Scandinav 1937;79:407-426.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11796296/',
+          publishedAt: '2024-12-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Once Vitrum AB could manufacture purified heparin for clinical use, Crafoord treated some 325 patients and other Swedish surgeons (e.g., Wetterdahl in Stockholm, Leissner in Lund) used it in at least 500 further cases to prevent post-surgical and post-partum thrombosis by the late 1930s, with parallel trials in Toronto. This established heparin thromboprophylaxis as accepted clinical practice; heparin remains a foundational anticoagulant.',
+        source: {
+          externalId: 'src:heparin-history-anaesth-intensive-care-2024-adoption',
+          name: 'Review: The history of heparin. Anaesthesia and Intensive Care. 2024 (online 20 Dec 2024). Section on mid-1930s Swedish/Toronto clinical adoption and Vitrum AB manufacture.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11796296/',
+          publishedAt: '2024-12-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Crinecerfont (Crenessity) first CAH treatment — FDA 2024 ─────────────────
+  {
+    externalId: 'trajectory:crinecerfont-crenessity-first-cah-drug-2024',
+    text: 'The U.S. FDA approved crinecerfont (Crenessity) on 13 December 2024 as the first-in-class corticotropin-releasing factor type 1 (CRF1) receptor antagonist for classic congenital adrenal hyperplasia, the first new treatment for the rare disorder in roughly 70 years.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-12-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved crinecerfont as an adjunct to glucocorticoid replacement to control adrenal androgens in adult and pediatric patients aged 4 and older with classic CAH. In phase 3 trials roughly 63% of adults achieved physiologic glucocorticoid dosing while maintaining androstenedione control, versus 18% on placebo. It established a non-glucocorticoid mechanism — reducing pituitary ACTH drive — as a therapeutic approach for CAH, the first novel strategy since corticosteroid/mineralocorticoid replacement was introduced in the 1950s.',
+        source: {
+          externalId: 'src:neurocrine-crenessity-fda-approval-2024',
+          name: 'Neurocrine Biosciences. Neurocrine Biosciences Announces FDA Approval of CRENESSITY (crinecerfont), a First-in-Class Treatment for Children and Adults With Classic Congenital Adrenal Hyperplasia. 13 December 2024.',
+          url: 'https://www.prnewswire.com/news-releases/neurocrine-biosciences-announces-fda-approval-of-crenessity-crinecerfont-a-first-in-class-treatment-for-children-and-adults-with-classic-congenital-adrenal-hyperplasia-302331772.html',
+          publishedAt: '2024-12-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Olezarsen (Tryngolza) first FCS treatment — FDA 2024 ─────────────────────
+  {
+    externalId: 'trajectory:olezarsen-tryngolza-first-fcs-treatment-2024',
+    text: 'The U.S. FDA approved olezarsen (Tryngolza) on 19 December 2024 as the first-ever treatment for familial chylomicronemia syndrome, an apolipoprotein C-III-targeting antisense oligonucleotide shown to lower triglycerides and reduce acute pancreatitis in the ultra-rare disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-12-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-12-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved olezarsen as an adjunct to diet to reduce triglycerides in adults with familial chylomicronemia syndrome (FCS), a genetic disorder affecting roughly 3,000 people in the U.S. The apoC-III antisense oligonucleotide produced about a 57% mean reduction in triglycerides versus placebo over 12 months and markedly reduced acute pancreatitis events. It is the first approved pharmacotherapy for a disease previously managed only by extreme dietary fat restriction.',
+        source: {
+          externalId: 'src:ionis-tryngolza-fda-approval-2024',
+          name: 'Ionis Pharmaceuticals. TRYNGOLZA (olezarsen) approved in U.S. as first-ever treatment for adults living with familial chylomicronemia syndrome as an adjunct to diet. 19 December 2024.',
+          url: 'https://www.prnewswire.com/news-releases/tryngolza-olezarsen-approved-in-us-as-first-ever-treatment-for-adults-living-with-familial-chylomicronemia-syndrome-as-an-adjunct-to-diet-302336747.html',
+          publishedAt: '2024-12-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Imetelstat (Rytelo) first telomerase inhibitor for MDS — FDA 2024 ─────────
+  {
+    externalId: 'trajectory:imetelstat-rytelo-first-telomerase-inhibitor-mds-2024',
+    text: 'The U.S. FDA approved imetelstat (Rytelo) on 6 June 2024 as the first telomerase inhibitor, indicated for transfusion-dependent anemia in adults with lower-risk (low- to intermediate-1) myelodysplastic syndromes who have failed, lost response to, or are ineligible for erythropoiesis-stimulating agents.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-06-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved imetelstat, a first-in-class oligonucleotide telomerase inhibitor that binds the RNA template region of human telomerase, for transfusion-dependent anemia in lower-risk MDS. In the pivotal IMerge trial the rate of ≥8-week red-blood-cell transfusion independence was 39.8% with imetelstat versus 15% with placebo. The approval validated telomerase inhibition as a clinical therapeutic strategy and created a new option for ESA-refractory lower-risk MDS.',
+        source: {
+          externalId: 'src:fda-imetelstat-approval-summary-jco-2025',
+          name: 'FDA (CDER/Oncology Center of Excellence). FDA Approval Summary: Imetelstat for Treatment of Selected Patients with Low- to Intermediate-1 Risk Myelodysplastic Syndromes with Transfusion-Dependent Anemia. J Clin Oncol. 2025;43(35):3760-3768.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12614338/',
+          publishedAt: '2025-10-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
