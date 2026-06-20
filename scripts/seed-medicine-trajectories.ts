@@ -54450,6 +54450,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEUROSCIENCE / PSYCHIATRY / PHARMACOVIGILANCE (1964–1986)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Johnstone ventricular enlargement in schizophrenia 1976 ──────────────────
+  {
+    externalId: 'trajectory:johnstone-ventricular-enlargement-schizophrenia-1976',
+    text: 'On 30 October 1976, Eve Johnstone, Tim Crow, and colleagues reported in The Lancet that institutionalized chronic schizophrenia patients had significantly enlarged cerebral lateral ventricles on computed tomography, with ventricular size correlated to cognitive impairment — the first in-vivo demonstration of structural brain abnormality in schizophrenia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-10-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-10-30',
+        datePrecision: 'DAY',
+        reason: 'Johnstone, Crow, Frith, Husband, and Kreel published the first study using computed tomography to show that chronic schizophrenia patients had enlarged cerebral ventricles relative to controls, and that ventricular size tracked with cognitive impairment. Against the then-dominant psychogenic and \'functional\' models that held schizophrenia to have no detectable neuropathology, this recorded the claim that schizophrenia is associated with measurable structural brain change.',
+        source: {
+          externalId: 'src:johnstone-ventricular-schizophrenia-lancet-1976',
+          name: 'Johnstone EC, Crow TJ, Frith CD, Husband J, Kreel L. Cerebral ventricular size and cognitive impairment in chronic schizophrenia. Lancet. 1976;2(7992):924-6.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/62160/',
+          publishedAt: '1976-10-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Van Horn and McManus pooled 39 studies of the ventricle:brain ratio in a multivariate meta-analysis, confirming that lateral ventricular enlargement is a replicable, statistically robust correlate of schizophrenia across the literature (while noting that effect sizes attenuated in later, better-diagnosed samples). The accumulation and meta-analytic synthesis settled ventricular enlargement as one of the most reproduced biological findings in schizophrenia and helped reframe the disorder as a brain disease.',
+        source: {
+          externalId: 'src:vanhorn-mcmanus-vbr-meta-analysis-bjp-1992',
+          name: 'Van Horn JD, McManus IC. Ventricular enlargement in schizophrenia. A meta-analysis of studies of the ventricle:brain ratio (VBR). Br J Psychiatry. 1992;160:687-97.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1534268/',
+          publishedAt: '1992-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hachinski multi-infarct dementia 1974 ────────────────────────────────────
+  {
+    externalId: 'trajectory:hachinski-multi-infarct-dementia-1974',
+    text: 'On 27 July 1974, Vladimir Hachinski, Niels Lassen, and John Marshall argued in The Lancet that much late-life \'arteriosclerotic\' or senile mental deterioration is in fact multi-infarct dementia — cumulative brain damage from multiple small strokes — rather than diffuse vascular insufficiency, defining vascular dementia as a distinct, identifiable entity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-07-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-07-27',
+        datePrecision: 'DAY',
+        reason: 'Hachinski, Lassen, and Marshall coined \'multi-infarct dementia,\' arguing that dementia attributed vaguely to cerebral arteriosclerosis was actually caused by the cumulative effect of multiple discrete infarcts, and that chronic global ischemia was not the mechanism. This recorded a sharply revised etiological claim distinguishing vascular dementia from primary degenerative (Alzheimer-type) dementia.',
+        source: {
+          externalId: 'src:hachinski-multi-infarct-dementia-lancet-1974',
+          name: 'Hachinski VC, Lassen NA, Marshall J. Multi-infarct dementia. A cause of mental deterioration in the elderly. Lancet. 1974;2(7874):207-10.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4135618/',
+          publishedAt: '1974-07-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Hachinski and colleagues operationalized the concept with the \'Ischemic Score,\' showing that cerebral blood flow was normal in primary degenerative dementia but reduced in the multi-infarct group, giving clinicians a quantitative instrument to separate the two. The Hachinski Ischemic Score became a widely used clinical standard, settling multi-infarct/vascular dementia as a distinct diagnostic category that later entered formal nosologies.',
+        source: {
+          externalId: 'src:hachinski-cerebral-blood-flow-dementia-archneurol-1975',
+          name: 'Hachinski VC, Iliff LD, Zilhka E, et al. Cerebral blood flow in dementia. Arch Neurol. 1975;32(9):632-7.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1164215/',
+          publishedAt: '1975-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Methysergide retroperitoneal fibrosis reversal 1966 ──────────────────────
+  {
+    externalId: 'trajectory:methysergide-retroperitoneal-fibrosis-reversal-1966',
+    text: 'John R. Graham established methysergide (Sansert) as an effective long-term prophylactic for migraine in a 500-patient NEJM series on 9 January 1964, a claim contested two years later when his 17 February 1966 NEJM report linked the drug to retroperitoneal, pleuropulmonary, and cardiac fibrosis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-01-09',
+        datePrecision: 'DAY',
+        reason: 'Graham reported three years\' experience in 500 patients, establishing methysergide (marketed as Sansert) as the leading pharmacological prophylactic against migraine and the standard of preventive care. This settled the claim that methysergide was a safe and effective long-term agent for headache prevention.',
+        source: {
+          externalId: 'src:graham-methysergide-prevention-headache-nejm-1964',
+          name: 'Graham JR. Methysergide for prevention of headache; experience in five hundred patients over three years. N Engl J Med. 1964;270:67-72.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14063471/',
+          publishedAt: '1964-01-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-02-17',
+        datePrecision: 'DAY',
+        reason: 'Graham, Suby, LeCompte, and Sadowsky reported retroperitoneal, pleuropulmonary, and cardiac-valvular fibrosis in patients on chronic methysergide — a serious, sometimes irreversible iatrogenic harm from the same drug Graham had championed. The finding forced mandatory drug-free intervals and intensive monitoring, contesting the safety of long-term use and driving methysergide from first-line prophylaxis toward eventual market withdrawal.',
+        source: {
+          externalId: 'src:graham-fibrotic-disorders-methysergide-nejm-1966',
+          name: 'Graham JR, Suby HI, LeCompte PR, Sadowsky NL. Fibrotic disorders associated with methysergide therapy for headache. N Engl J Med. 1966;274(7):359-68.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5903120/',
+          publishedAt: '1966-02-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nomifensine (Merital) hemolytic anemia withdrawal 1986 ───────────────────
+  {
+    externalId: 'trajectory:nomifensine-merital-hemolytic-anemia-withdrawal-1986',
+    text: 'Hoechst-Roussel\'s antidepressant nomifensine (Merital), approved by the FDA on 31 December 1984, was withdrawn worldwide on 23 January 1986 after a rising toll of acute immune hemolytic anemia, including fatal cases — reversing its safety as a marketed antidepressant barely a year after U.S. launch.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1984-12-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-12-31',
+        datePrecision: 'DAY',
+        reason: 'After roughly six years of review and three pivotal trials among 17 submitted studies, the FDA approved nomifensine (Merital), already marketed in some 80 countries since 1976, as a new antidepressant for the U.S. market. The approval institutionally settled the claim that nomifensine was a safe and effective antidepressant.',
+        source: {
+          externalId: 'src:fda-nomifensine-merital-approval-1984',
+          name: 'FDA / Hoechst-Roussel. Merital (nomifensine) U.S. approval, 31 December 1984 (reported in F-D-C \'Pink Sheet\', 1986).',
+          url: 'https://pink.citeline.com/PS009590/HOECHSTROUSSEL-MERITAL-NOMIFENSINE-WORLDWIDE-MARKET-WITHDRAWAL-FOLLOWS-REPORTED-INCREASE-IN-INCIDENC',
+          publishedAt: '1986-01-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-01-23',
+        datePrecision: 'DAY',
+        reason: 'Following a sharp rise in reports of acute immune (Rh-specific antibody-mediated) hemolytic anemia with renal failure and several deaths, the Hoechst Group withdrew nomifensine from the worldwide market as a precautionary measure, and the U.S. application holder removed Merital capsules on 23 January 1986. The withdrawal — barely a year after U.S. approval — reversed the safety claim and became a textbook post-marketing pharmacovigilance reversal.',
+        source: {
+          externalId: 'src:fda-drug-bulletin-nomifensine-withdrawn-1986',
+          name: 'Nomifensine withdrawn by manufacturer. FDA Drug Bull. 1986;16(1):7-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3732683/',
+          publishedAt: '1986-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
