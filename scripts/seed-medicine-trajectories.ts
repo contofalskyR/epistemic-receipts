@@ -54622,6 +54622,431 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Humatrope (somatropin) FDA approval for idiopathic short stature 2003 ───
+  {
+    externalId: 'trajectory:humatrope-somatropin-idiopathic-short-stature-fda-approval-2003',
+    text: 'On 25 July 2003 the U.S. FDA approved Eli Lilly\'s Humatrope (somatropin, rDNA origin) for the long-term treatment of idiopathic short stature — healthy non-growth-hormone-deficient children at or below −2.25 standard deviations in height for age and sex — making recombinant growth hormone the first drug sanctioned to increase the height of children with no underlying disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-06-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-06-10',
+        datePrecision: 'DAY',
+        reason: 'At its 10 June 2003 meeting the FDA\'s Endocrinologic and Metabolic Drugs Advisory Committee reviewed Eli Lilly\'s pivotal placebo-controlled trial (showing a ~4–7 cm adult-height gain) and voted that growth hormone was approvable for idiopathic short stature in children below −2.25 SD. The vote formally placed on the expert/regulatory record the contested claim that treating constitutionally short but otherwise healthy children was a legitimate medical use of growth hormone.',
+        source: {
+          externalId: 'src:pmc-fda-ema-gh-idiopathic-short-stature-2020',
+          name: 'Bossi I, et al. A Disability Bioethics Reading of the FDA and EMA Evaluations on the Marketing Authorisation of Growth Hormone for Idiopathic Short Stature Children. Health Care Anal. 2020;28(4):324-348.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7411515/',
+          publishedAt: '2020-08-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-07-25',
+        datePrecision: 'DAY',
+        reason: 'Following the advisory-committee vote, the FDA approved the Humatrope supplement (NDA 019640) in late July 2003, institutionally settling idiopathic short stature as an authorized growth-hormone indication. The decision drew sustained bioethical criticism for medicalizing healthy short stature, but it remains an approved indication and established the regulatory precedent for non-deficiency height treatment.',
+        source: {
+          externalId: 'src:pmc-fda-ema-gh-iss-approval-2020',
+          name: 'Bossi I, et al. A Disability Bioethics Reading of the FDA and EMA Evaluations on the Marketing Authorisation of Growth Hormone for Idiopathic Short Stature Children. Health Care Anal. 2020;28(4):324-348.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7411515/',
+          publishedAt: '2020-08-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Liraglutide (Victoza) first daily GLP-1 approval with thyroid warning 2010 ─
+  {
+    externalId: 'trajectory:liraglutide-victoza-first-daily-glp1-thyroid-warning-2010',
+    text: 'On 25 January 2010 the U.S. FDA approved Novo Nordisk\'s liraglutide (Victoza), the first once-daily human GLP-1 receptor agonist for type 2 diabetes, mandating a boxed warning and risk-management program because the drug caused dose- and duration-dependent thyroid C-cell (medullary) tumors in rodents.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-01-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-01-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved liraglutide as the first once-daily human GLP-1 analog, recording its glucose-lowering efficacy on the regulatory record while leaving two questions explicitly open: the cardiovascular safety required of new diabetes drugs after the 2008 guidance, and the human relevance of rodent thyroid C-cell tumors, which the agency addressed with a boxed warning, a contraindication in medullary thyroid carcinoma/MEN-2, and a REMS plus C-cell cancer registry.',
+        source: {
+          externalId: 'src:fda-victoza-liraglutide-approval-letter-2010',
+          name: 'U.S. FDA Center for Drug Evaluation and Research. Approval Letter, NDA 022341, VICTOZA (liraglutide [rDNA origin] injection). 25 January 2010.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2010/022341s000ltr.pdf',
+          publishedAt: '2010-01-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-06-13',
+        datePrecision: 'DAY',
+        reason: 'The LEADER trial (9,340 high-cardiovascular-risk type 2 diabetics, median 3.8-year follow-up) found liraglutide significantly reduced major adverse cardiovascular events versus placebo (13.0% vs 14.9%, HR 0.87) with no excess of medullary thyroid cancer. Published online in the New England Journal of Medicine on 13 June 2016, it converted liraglutide from a glucose-lowering agent of uncertain cardiovascular profile into an evidence-based cardioprotective therapy, settling the central open question from approval.',
+        source: {
+          externalId: 'src:marso-leader-liraglutide-cv-nejm-2016',
+          name: 'Marso SP, Daniels GH, Brown-Frandsen K, et al. Liraglutide and Cardiovascular Outcomes in Type 2 Diabetes. N Engl J Med. 2016;375(4):311-322.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27295427/',
+          publishedAt: '2016-06-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Insulin lispro (Humalog) — first rapid-acting insulin analog approval 1996 ─
+  {
+    externalId: 'trajectory:insulin-lispro-humalog-first-rapid-acting-analog-approval-1996',
+    text: 'On 14 June 1996 the U.S. FDA approved Eli Lilly\'s insulin lispro (Humalog), the first rapid-acting human insulin analog — engineered by recombinant DNA to swap the B28 proline and B29 lysine residues so it absorbs and acts faster than regular human insulin — establishing the era of designer insulin analogs for mealtime glycemic control.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1996-06-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-06-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved insulin lispro as the first structurally modified (\'analog\') insulin, validating the principle that deliberately altering the insulin molecule could improve its pharmacokinetics — here, faster onset and shorter duration than regular human insulin for postprandial control. The approval institutionally settled the safety and efficacy of recombinant insulin analogs and opened the analog class (aspart, glulisine, glargine, detemir) that became standard of care in diabetes management.',
+        source: {
+          externalId: 'src:dailymed-humalog-insulin-lispro-label',
+          name: 'U.S. FDA / NLM DailyMed. HUMALOG (insulin lispro) injection prescribing information — Initial U.S. Approval: 1996.',
+          url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c5f75765-86b8-4926-b8c3-b42133ca7ac8',
+          publishedAt: '1996-06-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pramlintide (Symlin) — first amylin analog approval 2005 ────────────────
+  {
+    externalId: 'trajectory:pramlintide-symlin-first-amylin-analog-approval-2005',
+    text: 'On 16 March 2005 the U.S. FDA approved Amylin Pharmaceuticals\' pramlintide (Symlin), the first amylin analog — a synthetic version of the beta-cell hormone amylin that slows gastric emptying, suppresses glucagon, and curbs appetite — as an injectable adjunct to mealtime insulin for type 1 and type 2 diabetes, with a boxed warning for severe insulin-induced hypoglycemia.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2005-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-03-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved pramlintide as the first-in-class amylin replacement therapy, formally recognizing amylin as a second beta-cell hormone (co-secreted with insulin) whose deficiency contributes to post-meal hyperglycemia. The approval institutionally settled amylin agonism as a distinct, validated mechanism for glycemic control, while the boxed warning recorded the hypoglycemia risk of combining it with insulin.',
+        source: {
+          externalId: 'src:fda-symlin-pramlintide-approval-package-2005',
+          name: 'U.S. FDA Center for Drug Evaluation and Research. Drug Approval Package, NDA 021332, SYMLIN (pramlintide acetate) injection. Approved 16 March 2005.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2005/21-332_Symlin.cfm',
+          publishedAt: '2005-03-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS ERA (2000--2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Opana ER reformulation / abuse-deterrent premise reversed — 2011--2017 ──
+  {
+    externalId: 'trajectory:opana-er-reformulation-abuse-deterrent-removal-2011',
+    text: "Endo Pharmaceuticals' reformulated, crush-resistant Opana ER (oxymorphone hydrochloride extended-release), approved by the FDA in December 2011 and marketed on the premise that the new physical-barrier formulation would deter abuse, was the subject of an FDA request for market withdrawal on June 8, 2017 — the first time the agency had ever asked that a marketed opioid be removed for the public-health consequences of abuse.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-12',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12',
+        datePrecision: 'MONTH',
+        reason: "The FDA approved Endo's reformulated, crush-resistant version of Opana ER, which the company marketed on the premise that its new physical-barrier design would make the product harder to crush, snort, or inject and thereby deter abuse. The reformulation entered the market as the presumptively safer successor to the original tablet, embedding the abuse-deterrence rationale into clinical use even though the FDA never granted formal abuse-deterrent labeling.",
+        source: {
+          externalId: 'src:fda-opana-er-removal-pr-2017',
+          name: 'FDA. FDA requests removal of Opana ER for risks related to abuse. Press announcement. June 8, 2017.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: "After postmarketing data showed a significant shift in the route of abuse from snorting to injection following the reformulation — linked to an HIV and hepatitis C outbreak and cases of thrombotic microangiopathy — and an FDA advisory committee voted 18-8 in March 2017 that benefits no longer outweighed risks, the FDA formally requested that Endo remove reformulated Opana ER from the market. It was the first time the agency took such a step for any opioid, repudiating the premise that the reformulation reduced abuse-related harm.",
+        source: {
+          externalId: 'src:fda-opana-er-removal-pr-2017b',
+          name: 'FDA. FDA requests removal of Opana ER for risks related to abuse. Press announcement. June 8, 2017.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2017-07-06',
+        datePrecision: 'DAY',
+        reason: "Following the FDA's request, Endo announced on July 6, 2017 that it would voluntarily remove reformulated Opana ER from the market, taking an approximately $20 million pre-tax impairment charge, and in October 2017 requested withdrawal of NDA 201655. The market exit confirmed the institutional reversal of the abuse-deterrence premise.",
+        source: {
+          externalId: 'src:endo-opana-er-withdrawal-2017',
+          name: 'Endo International plc. Endo Provides Update on OPANA ER. Investor news release. July 6, 2017.',
+          url: 'https://investor.endo.com/2017-07-06-Endo-Provides-Update-On-OPANA-R-ER',
+          publishedAt: '2017-07-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Harrington v. Purdue Pharma — nonconsensual third-party releases — 2023--2024 ──
+  {
+    externalId: 'trajectory:scotus-purdue-pharma-nonconsensual-releases-2024',
+    text: 'The legal proposition that a Chapter 11 reorganization plan could extinguish opioid-related claims against the Sackler family through nonconsensual third-party releases — upheld by the U.S. Court of Appeals for the Second Circuit on May 30, 2023 — was rejected by the U.S. Supreme Court in Harrington v. Purdue Pharma L.P. on June 27, 2024, which held 5-4 that the Bankruptcy Code does not authorize such releases of non-debtors without claimant consent.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2023-05-30',
+        datePrecision: 'DAY',
+        reason: "After the bankruptcy court confirmed Purdue's reorganization plan, the Second Circuit on May 30, 2023 upheld its provision releasing and enjoining all current and future opioid claims against the Sackler family in exchange for a roughly $6 billion contribution, even though the Sacklers had not themselves filed for bankruptcy. The appellate ruling made nonconsensual nondebtor releases the prevailing, legally settled mechanism for resolving the mass opioid litigation.",
+        source: {
+          externalId: 'src:crs-purdue-pharma-third-party-releases-2024',
+          name: 'Congressional Research Service. Harrington v. Purdue Pharma: Supreme Court Holds That a Chapter 11 Reorganization Plan Cannot Include a Nonconsensual Release of Claims Against Non-Debtors. Legal Sidebar LSB11201. 2024.',
+          url: 'https://crsreports.congress.gov/product/pdf/LSB/LSB11201',
+          publishedAt: '2024-07-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-06-27',
+        datePrecision: 'DAY',
+        reason: 'In Harrington v. Purdue Pharma L.P., the Supreme Court held 5-4 that the Bankruptcy Code does not authorize a Chapter 11 plan to discharge claims against non-debtors (the Sacklers) without the affected claimants\' consent, reversing the Second Circuit and unwinding the negotiated settlement. The decision overturned the established appellate position and removed the legal basis for shielding the Sackler family from opioid liability through Purdue\'s bankruptcy.',
+        source: {
+          externalId: 'src:scotus-harrington-purdue-2024',
+          name: 'Harrington v. Purdue Pharma L.P., 603 U.S. ___ (2024), No. 23-124. Slip opinion. June 27, 2024.',
+          url: 'https://www.supremecourt.gov/opinions/23pdf/23-124_8nk0.pdf',
+          publishedAt: '2024-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Narcan OTC naloxone approval — 2023 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:narcan-otc-naloxone-approval-2023',
+    text: 'On March 29, 2023 the FDA approved Narcan (4 mg naloxone hydrochloride nasal spray), granted to Emergent BioSolutions, as the first naloxone product cleared for over-the-counter, nonprescription use for the emergency reversal of opioid overdose.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Narcan 4 mg naloxone nasal spray for over-the-counter sale, the first time an opioid-overdose reversal agent could be sold without a prescription in pharmacies, convenience stores, and online. The approval institutionally settled the determination that naloxone is safe and effective enough for lay use without clinician oversight, a major shift in overdose-prevention policy.',
+        source: {
+          externalId: 'src:fda-otc-naloxone-narcan-2023',
+          name: 'FDA. FDA Approves First Over-the-Counter Naloxone Nasal Spray. Press announcement. March 29, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray',
+          publishedAt: '2023-03-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MAT Act / X-waiver elimination — buprenorphine OUD prescribing — 2000--2022 ──
+  {
+    externalId: 'trajectory:mat-act-x-waiver-elimination-buprenorphine-2022',
+    text: "The longstanding federal requirement, established by the Drug Addiction Treatment Act of 2000, that physicians obtain a special DEA 'X' waiver — with mandatory training and patient caps — to prescribe buprenorphine for opioid use disorder was eliminated on December 29, 2022 when President Biden signed the Consolidated Appropriations Act, 2023, Section 1262 of which (the MAT Act) abolished the DATA-Waiver program.",
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-10',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: "For over two decades, federal law required a separate DEA registration (the 'X' waiver), counseling-referral attestation, and patient caps (initially 30, later up to 275) before a clinician could prescribe buprenorphine for opioid use disorder. Section 1262 of the Consolidated Appropriations Act, 2023 (the Mainstreaming Addiction Treatment Act), signed December 29, 2022, eliminated the DATA-Waiver program entirely, so any practitioner with a standard Schedule III DEA registration may now prescribe buprenorphine for OUD. The reversal abandoned the premise that addiction-treatment prescribing demands a special regulatory gate distinct from ordinary controlled-substance authority.",
+        source: {
+          externalId: 'src:samhsa-mat-act-waiver-elimination-2022',
+          name: 'SAMHSA. Waiver Elimination (MAT Act): Removal of DATA-Waiver Requirement, Section 1262 of the Consolidated Appropriations Act, 2023.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/statutes-regulations-guidelines/mat-act',
+          publishedAt: '2023-01-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY / REPRODUCTIVE MEDICINE (pre-1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aschheim–Zondek pregnancy test 1928 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that subcutaneous injection of the urine of pregnant women into immature female mice induced rapid ovarian follicular maturation, hemorrhage, and luteinization, establishing the first reliable biological test for early pregnancy (the Aschheim–Zondek reaction) by detecting a gonadotropic hormone excreted in pregnancy urine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: "Aschheim and Zondek published 'Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons' in Klinische Wochenschrift (1928;7:1404), showing that pregnancy urine injected into immature mice provoked characteristic ovarian changes within days. This recorded in the expert literature the claim that pregnancy could be diagnosed early and reliably by detecting a hormone (the gonadotropin later identified as hCG) in urine — the founding of hormonal pregnancy diagnosis and, more broadly, of urinary hormone bioassay.",
+        source: {
+          externalId: 'src:aschheim-zondek-klin-wochenschr-1928',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klinische Wochenschrift. 1928;7:1404-1411,1453-1457. (English translation reproduced, UNSW Embryology.)',
+          url: 'https://embryology.med.unsw.edu.au/embryology/index.php/Paper_-_The_Aschheim-Zondek_hormone_test_for_pregnancy',
+          publishedAt: '1928-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: "Within two years the Aschheim–Zondek reaction diffused internationally into routine clinical laboratory services, becoming the standard diagnostic test for pregnancy through the 1930s, as documented by Olszynko-Gryn's analysis of pregnancy-testing laboratory services in 1930s Britain. Institutional adoption as the accepted clinical test settled the claim that a urinary gonadotropin bioassay could diagnose pregnancy; though the mouse bioassay was later superseded by frog tests and ultimately hCG immunoassays, the underlying principle endures as the basis of all modern pregnancy tests.",
+        source: {
+          externalId: 'src:olszynko-gryn-aschheim-zondek-demand-2014',
+          name: 'Olszynko-Gryn J. The demand for pregnancy testing: the Aschheim-Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47 Pt B:233-247.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24388014/',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Corner–Allen progesterone / corpus luteum 1929 ──────────────────────────
+  {
+    externalId: 'trajectory:corner-allen-progesterone-corpus-luteum-1929',
+    text: 'George W. Corner and Willard M. Allen reported in the American Journal of Physiology in 1929 that an extract of the corpus luteum produced a specific progestational proliferation of the uterine endometrium in ovariectomized animals, establishing the existence of a second ovarian hormone (later named progesterone) responsible for preparing and maintaining the uterus for pregnancy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: "Corner and Allen published 'Physiology of the Corpus Luteum II: Production of a Special Uterine Reaction (Progestational Proliferation) by Extracts of the Corpus Luteum' (Am J Physiol 1929;88:326-339), showing that alcoholic extracts of pig corpora lutea induced progestational endometrial changes and could maintain pregnancy in ovariectomized animals. This recorded in the expert literature the claim that the corpus luteum secretes a discrete second ovarian hormone distinct from estrogen, defining the progestational bioassay that guided its subsequent isolation.",
+        source: {
+          externalId: 'src:corner-allen-corpus-luteum-ajp-1929',
+          name: 'Corner GW, Allen WM. Physiology of the corpus luteum. II. Production of a special uterine reaction (progestational proliferation) by extracts of the corpus luteum. Am J Physiol. 1929;88(2):326-339. (Seminal article reprinted Am J Obstet Gynecol. 2005;193(4):1574-1575.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16202759/',
+          publishedAt: '1929-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-08-24',
+        datePrecision: 'DAY',
+        reason: "After four laboratories (Butenandt & Westphal; Hartmann & Wettstein; Slotta et al.; Wintersteiner & Allen) independently isolated the crystalline corpus-luteum hormone in 1934, Allen, Butenandt, Corner, and Slotta published a joint letter in Nature agreeing to use a single name, 'progesterone,' for the pure hormone. Convergent isolation by independent groups plus formal nomenclature agreement settled the hormone's identity as a defined, weighable molecule, completing the transition from bioassay-defined factor to established endocrine entity.",
+        source: {
+          externalId: 'src:allen-butenandt-corner-slotta-nomenclature-nature-1935',
+          name: 'Allen WM, Butenandt A, Corner GW, Slotta KH. Nomenclature of Corpus Luteum Hormone. Nature. 1935;136(3433):303.',
+          url: 'https://www.nature.com/articles/136303a0',
+          publishedAt: '1935-08-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dudley–Moir ergometrine isolation 1935 ──────────────────────────────────
+  {
+    externalId: 'trajectory:dudley-moir-ergometrine-isolation-1935',
+    text: 'Harold W. Dudley and John Chassar Moir reported in the British Medical Journal in March 1935 that they had isolated a new ergot alkaloid, ergometrine (ergonovine), as the substance responsible for ergot\'s traditional oxytocic effect on the postpartum uterus, providing a defined, fast-acting agent to prevent and treat postpartum hemorrhage.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-03-01',
+        datePrecision: 'MONTH',
+        reason: "Following Moir's 1932 observation that crude ergot extracts contracted the human puerperal uterus through a then-unidentified constituent, Dudley and Moir published 'The substance responsible for the traditional clinical effect of ergot' (BMJ 1935;1(3871):520-523), reporting the isolation of a previously unknown, water-soluble alkaloid they named ergometrine. This recorded the claim that ergot's centuries-old obstetric action was attributable to a single, rapidly acting compound that could be standardized and administered to prevent uterine hemorrhage after childbirth.",
+        source: {
+          externalId: 'src:dudley-moir-ergometrine-bmj-1935',
+          name: 'Dudley HW, Moir C. The substance responsible for the traditional clinical effect of ergot. Br Med J. 1935;1(3871):520-523.',
+          url: 'https://www.bmj.com/content/1/3871/520',
+          publishedAt: '1935-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ergometrine entered routine obstetric practice for active management of the third stage of labour within years of its isolation and remains enshrined as a WHO-recommended uterotonic and a WHO Model List of Essential Medicines drug for the prevention and treatment of postpartum haemorrhage. Durable institutional endorsement settled the claim that the isolated ergot alkaloid is a safe and effective uterotonic, even as oxytocin later became the preferred first-line agent.',
+        source: {
+          externalId: 'src:who-uterotonics-pph-recommendations-2018',
+          name: 'World Health Organization. WHO recommendations: Uterotonics for the prevention of postpartum haemorrhage. Geneva: WHO; 2018. (Choice of uterotonic agents.)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK535972/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
