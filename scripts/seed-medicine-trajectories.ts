@@ -38920,6 +38920,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINE TRIALS & PANDEMIC RESPONSE ERA (2003–2009)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── RV144 Thai HIV Vaccine Trial — 2009 ────────────────────────────────────
+  {
+    externalId: 'trajectory:rv144-thai-hiv-vaccine-efficacy-2009',
+    text: 'The RV144 (ALVAC-HIV + AIDSVAX B/E) prime-boost regimen, reported by Rerks-Ngarm et al. on 20 October 2009, showed a modest 31.2% efficacy in preventing HIV-1 infection in a Thai community-based trial — the first HIV vaccine candidate ever to demonstrate any protective effect in humans.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-10-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-10-20',
+        datePrecision: 'DAY',
+        reason: 'Rerks-Ngarm and the MOPH-TAVEG Investigators published the RV144 trial (16,402 Thai volunteers) in the New England Journal of Medicine, reporting vaccine efficacy of 31.2% (95% CI 1.1–52.1; P=0.04) in the modified intention-to-treat analysis. Coming two years after the failure of the cell-mediated-immunity Step Study, this put on record the first signal that a vaccine could partially protect against HIV-1, though the protection was modest, waned over time, and did not reduce post-infection viral load — leaving the result recorded but contested rather than settled.',
+        source: {
+          externalId: 'src:rerks-ngarm-rv144-nejm-2009',
+          name: 'Rerks-Ngarm S, Pitisuttithum P, Nitayaphan S, et al. Vaccination with ALVAC and AIDSVAX to prevent HIV-1 infection in Thailand. N Engl J Med. 2009;361(23):2209-2220.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19843557/',
+          publishedAt: '2009-10-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── RotaTeq Pentavalent Rotavirus Vaccine — 2006 ───────────────────────────
+  {
+    externalId: 'trajectory:rotateq-pentavalent-rotavirus-vaccine-2006',
+    text: 'The pentavalent human-bovine reassortant rotavirus vaccine RotaTeq was shown by the 70,000-infant REST trial (Vesikari et al., 5 January 2006) to be ~95% effective against severe rotavirus gastroenteritis while showing no increased intussusception risk, and was FDA-licensed and ACIP-recommended for routine U.S. infant immunization in 2006 — re-establishing rotavirus vaccination as safe after the 1999 RotaShield withdrawal.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-01-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-05',
+        datePrecision: 'DAY',
+        reason: 'Vesikari et al. published the Rotavirus Efficacy and Safety Trial (REST) in the New England Journal of Medicine, enrolling 68,038 infants specifically to be powered to detect an intussusception signal like the one that doomed RotaShield. The vaccine reduced rotavirus-related hospitalizations and emergency visits by 94.5%, and intussusception rates were comparable between vaccine and placebo groups. This recorded the claim that a rotavirus vaccine could be both highly effective and free of the safety defect that had withdrawn the first-generation product.',
+        source: {
+          externalId: 'src:vesikari-rest-rotateq-nejm-2006',
+          name: 'Vesikari T, Matson DO, Dennehy P, et al. Safety and efficacy of a pentavalent human-bovine (WC3) reassortant rotavirus vaccine. N Engl J Med. 2006;354(1):23-33.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16394299/',
+          publishedAt: '2006-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-02-03',
+        datePrecision: 'DAY',
+        reason: 'Following FDA licensure of RotaTeq on 3 February 2006, the CDC\'s Advisory Committee on Immunization Practices recommended routine vaccination of all U.S. infants with three oral doses at ages 2, 4, and 6 months. The institutional adoption settled rotavirus vaccination as standard pediatric immunization policy, reversing the post-RotaShield retreat and validating the larger safety-trial design that the intussusception scare had made mandatory.',
+        source: {
+          externalId: 'src:acip-rotavirus-rotateq-mmwr-2006',
+          name: 'CDC. Prevention of Rotavirus Gastroenteritis Among Infants and Children: Recommendations of the Advisory Committee on Immunization Practices (ACIP). MMWR Recomm Rep. 2006;55(RR-12):1-13.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/rr5512a1.htm',
+          publishedAt: '2006-08-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oseltamivir Complications Claim — Contested 2009 ───────────────────────
+  {
+    externalId: 'trajectory:oseltamivir-complications-claim-contested-2009',
+    text: 'The claim that oseltamivir (Tamiflu) reduces influenza-related lower respiratory tract complications and hospitalizations — established by Kaiser et al.\'s 2003 manufacturer-sponsored pooled analysis and used to justify national stockpiling — was thrown into doubt on 8 December 2009 when a Cochrane/BMJ review by Jefferson et al. found the claim unverifiable because eight of ten underlying trials were unpublished and the data were withheld.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-07-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-07-28',
+        datePrecision: 'DAY',
+        reason: 'Kaiser et al. published a pooled analysis of ten trials in Archives of Internal Medicine reporting that oseltamivir cut influenza-related lower respiratory tract complications requiring antibiotics by 55% and hospitalizations by 59%. This finding became the central evidence underpinning the drug\'s value beyond symptom relief and helped drive governments to spend billions stockpiling oseltamivir for pandemic preparedness, settling its complication-reducing benefit in policy and prescribing.',
+        source: {
+          externalId: 'src:kaiser-oseltamivir-complications-aim-2003',
+          name: 'Kaiser L, Wat C, Mills T, et al. Impact of oseltamivir treatment on influenza-related lower respiratory tract complications and hospitalizations. Arch Intern Med. 2003;163(14):1667-1672.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12885681/',
+          publishedAt: '2003-07-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-12-08',
+        datePrecision: 'DAY',
+        reason: 'Jefferson, Jones, Doshi, and Del Mar published an updated Cochrane review in the BMJ that could no longer confirm oseltamivir reduces influenza complications, because eight of the ten trials in the Kaiser pooled analysis were never published and Roche declined to release the full clinical-study reports. The reviewers excluded the unverifiable complications data and called for independent trials, turning a settled benefit into a contested claim and igniting a multi-year open-data campaign over hidden trial evidence.',
+        source: {
+          externalId: 'src:jefferson-neuraminidase-bmj-2009',
+          name: 'Jefferson T, Jones M, Doshi P, Del Mar C. Neuraminidase inhibitors for preventing and treating influenza in healthy adults: systematic review and meta-analysis. BMJ. 2009;339:b5106.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19995812/',
+          publishedAt: '2009-12-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO H1N1 Pandemic Phase 6 Declaration — 2009 ───────────────────────────
+  {
+    externalId: 'trajectory:who-h1n1-pandemic-phase-6-2009',
+    text: 'On 11 June 2009, WHO Director-General Margaret Chan raised the influenza pandemic alert from phase 5 to phase 6, formally declaring the 2009 H1N1 (\'swine flu\') outbreak the first influenza pandemic of the 21st century — the first time the WHO had declared an influenza pandemic since 1968.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2009-06-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-06-11',
+        datePrecision: 'DAY',
+        reason: 'Following the fourth meeting of its Emergency Committee, WHO Director-General Margaret Chan declared that the scientific criteria for an influenza pandemic had been met and raised the alert to phase 6, the highest level, citing sustained community transmission of the novel A(H1N1) virus across multiple WHO regions (28,774 confirmed cases in 74 countries). The dated institutional act settled the existence of a global influenza pandemic under international health law and triggered national pandemic response plans, mass vaccine procurement, and antiviral deployment worldwide.',
+        source: {
+          externalId: 'src:who-h1n1-phase6-declaration-2009',
+          name: 'WHO. Director-General statement following the fourth meeting of the Emergency Committee: World now at the start of 2009 influenza pandemic. 11 June 2009.',
+          url: 'https://www.who.int/news/item/11-06-2009-director-general-statement-following-the-fourth-meeting-of-the-emergency-committee',
+          publishedAt: '2009-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
