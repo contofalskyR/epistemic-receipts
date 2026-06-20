@@ -39062,6 +39062,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TREATMENT-RESISTANT DEPRESSION / PHARMACOGENOMICS / ALS STEM CELLS ERA (2019–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ELEKT-D: ketamine noninferior to ECT for TRD — Anand 2023 ──────────────
+  {
+    externalId: 'trajectory:elekt-d-ketamine-noninferior-ect-trd-2023',
+    text: 'Anand and colleagues reported in the New England Journal of Medicine on 24 May 2023 that intravenous ketamine is noninferior to electroconvulsive therapy for nonpsychotic treatment-resistant major depression (ELEKT-D trial).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2023-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-05-24',
+        datePrecision: 'DAY',
+        reason: 'The ELEKT-D open-label randomized trial (403 patients at five sites, funded by PCORI) found that IV ketamine met the prespecified noninferiority margin against ECT, the long-standing gold standard for treatment-resistant depression, with response in 55.4% of ketamine versus 41.2% of ECT patients and less memory impairment. Published in NEJM, it recorded into the literature the claim that a far less burdensome treatment could match ECT for nonpsychotic TRD, challenging ECT\'s presumed superiority and reframing the treatment hierarchy.',
+        source: {
+          externalId: 'src:anand-elektd-nejm-2023',
+          name: 'Anand A, Mathew SJ, Sanacora G, et al. Ketamine versus ECT for Nonpsychotic Treatment-Resistant Major Depression. N Engl J Med. 2023;388(25):2315-2325.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/37224232/',
+          publishedAt: '2023-05-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ANTLER: maintenance antidepressants reduce relapse in primary care — Lewis 2021 ──
+  {
+    externalId: 'trajectory:antler-maintenance-antidepressants-relapse-prevention-2021',
+    text: 'Lewis and colleagues reported in the New England Journal of Medicine on 30 September 2021 that primary-care patients who discontinued long-term antidepressants relapsed substantially more often than those who continued them (ANTLER trial: 56% vs 39% over 52 weeks).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-09-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-09-30',
+        datePrecision: 'DAY',
+        reason: 'The ANTLER double-blind randomized trial (478 patients across 150 UK general practices who felt well enough to consider stopping) found relapse in 39% of the maintenance group versus 56% of those tapered to placebo, roughly doubling relapse risk. Published in NEJM, it recorded the most rigorous primary-care evidence to date that continued antidepressant therapy meaningfully reduces relapse, sharpening the discontinuation debate against the parallel recognition of withdrawal harms.',
+        source: {
+          externalId: 'src:lewis-antler-nejm-2021',
+          name: 'Lewis G, Marston L, Duffy L, et al. Maintenance or Discontinuation of Antidepressants in Primary Care. N Engl J Med. 2021;385(14):1257-1267.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34587384/',
+          publishedAt: '2021-09-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── GUIDED / PRIME Care: pharmacogenomic antidepressant testing — contested 2022 ──
+  {
+    externalId: 'trajectory:guided-prime-care-pharmacogenomic-antidepressant-testing-2019',
+    text: 'The GUIDED trial (Greden et al., April 2019) reported that pharmacogenomic (drug-gene) testing improves response and remission rates when selecting antidepressants for major depressive disorder.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The industry-sponsored GUIDED trial (1,167 treatment-resistant patients) reported that combinatorial pharmacogenomic testing (GeneSight) significantly raised antidepressant response (26.0% vs 19.9%) and remission (15.3% vs 10.1%) rates, although it missed its primary symptom-reduction endpoint. Published in the Journal of Psychiatric Research, it recorded and helped commercialize the claim that genetic testing should guide antidepressant selection.',
+        source: {
+          externalId: 'src:greden-guided-jpsychres-2019',
+          name: 'Greden JF, Parikh SV, Rothschild AJ, et al. Impact of pharmacogenomics on clinical outcomes in major depressive disorder in the GUIDED trial: A large, patient- and rater-blinded, randomized, controlled study. J Psychiatr Res. 2019;111:59-67.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30677646/',
+          publishedAt: '2019-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-07-12',
+        datePrecision: 'DAY',
+        reason: 'The large independent PRIME Care randomized trial (1,944 patients, 676 clinicians, 22 VA centers) found that while pharmacogenomic testing modestly reduced prescriptions with predicted drug-gene interactions, depression remission at 24 weeks was not significantly higher than usual care (risk difference 1.5%, P=.45). Published in JAMA, this NIH/VA-funded trial undercut the GUIDED outcome claim and placed the clinical value of pharmacogenomic-guided antidepressant prescribing into open dispute.',
+        source: {
+          externalId: 'src:oslin-primecare-jama-2022',
+          name: 'Oslin DW, Lynch KG, Shih MC, et al. Effect of Pharmacogenomic Testing for Drug-Gene Interactions on Medication Selection and Remission of Symptoms in Major Depressive Disorder: The PRIME Care Randomized Clinical Trial. JAMA. 2022;328(2):151-161.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35819423/',
+          publishedAt: '2022-07-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NurOwn / debamestrocel ALS: FDA adcom rejection 2023 ────────────────────
+  {
+    externalId: 'trajectory:nurown-debamestrocel-als-efficacy-fda-rejection-2022',
+    text: 'BrainStorm Cell Therapeutics claimed that its autologous mesenchymal stem-cell therapy NurOwn (debamestrocel) is an effective treatment for amyotrophic lateral sclerosis, a claim the FDA\'s advisory committee rejected on 27 September 2023.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-01-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-01-05',
+        datePrecision: 'DAY',
+        reason: 'The phase 3 randomized placebo-controlled trial of NurOwn (MSC-NTF cells) was published in Muscle & Nerve; it did NOT meet its primary endpoint (33% MSC-NTF vs 28% placebo responders, OR 1.33, P=.45), but a prespecified subgroup with less severe baseline disease suggested possible benefit. On the strength of that subgroup the manufacturer advanced and later filed a BLA asserting efficacy, recording the contested effectiveness claim into the literature and regulatory record.',
+        source: {
+          externalId: 'src:cudkowicz-nurown-phase3-musclenerve-2022',
+          name: 'Cudkowicz ME, Lindborg SR, Goyal NA, et al. A randomized placebo-controlled phase 3 study of mesenchymal stem cells induced to secrete high levels of neurotrophic factors in amyotrophic lateral sclerosis. Muscle Nerve. 2022;65(3):291-302.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34890069/',
+          publishedAt: '2022-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-09-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s Cellular, Tissue, and Gene Therapies Advisory Committee voted 17-1 (1 abstention) that the available evidence did not demonstrate that NurOwn is effective for ALS, with reviewers also calling the manufacturing application grossly deficient. Following the vote BrainStorm withdrew its BLA ahead of the PDUFA date, reversing the effectiveness claim and ending the regulatory bid — an institutional rejection of a stem-cell therapy advanced largely on post-hoc subgroup data.',
+        source: {
+          externalId: 'src:brainstorm-nurown-adcomm-2023',
+          name: 'BrainStorm Cell Therapeutics. BrainStorm Cell Therapeutics Provides Update on FDA Advisory Committee Meeting to Review NurOwn for the Treatment of ALS. September 27, 2023.',
+          url: 'https://ir.brainstorm-cell.com/2023-09-27-BrainStorm-Cell-Therapeutics-Provides-Update-on-FDA-Advisory-Committee-Meeting-to-Review-NurOwn-for-the-Treatment-of-ALS',
+          publishedAt: '2023-09-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
