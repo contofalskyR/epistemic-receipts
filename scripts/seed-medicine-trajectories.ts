@@ -39705,6 +39705,328 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── ACIP HPV 2-dose schedule for adolescents 2016 ───────────────────────────
+  {
+    externalId: 'trajectory:acip-hpv-two-dose-adolescent-schedule-2016',
+    text: 'On 19 October 2016 the U.S. Advisory Committee on Immunization Practices recommended a 2-dose HPV vaccination schedule (at 0 and 6–12 months) for adolescents initiating the series before their 15th birthday, replacing the prior 3-dose requirement on the basis of immunobridging data showing younger adolescents mount antibody responses after two doses comparable to older recipients after three.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-12-16',
+        datePrecision: 'DAY',
+        reason: 'After its 19 October 2016 vote, ACIP published the recommendation in MMWR on 16 December 2016 (Meites, Kempe, Markowitz), formally adopting a 2-dose HPV schedule for persons starting before age 15 and reserving 3 doses for those initiating at 15 or older or who are immunocompromised. The change institutionalized a simpler, immunobridging-justified schedule into the U.S. adolescent immunization program, settling 2 doses as the standard of care for young adolescents and partially superseding the 3-dose regimen used since licensure.',
+        source: {
+          externalId: 'src:meites-hpv-two-dose-acip-mmwr-2016',
+          name: 'Meites E, Kempe A, Markowitz LE. Use of a 2-Dose Schedule for Human Papillomavirus Vaccination — Updated Recommendations of the Advisory Committee on Immunization Practices. MMWR Morb Mortal Wkly Rep. 2016;65(49):1405-1408.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/wr/mm6549a5.htm',
+          publishedAt: '2016-12-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACOG delayed umbilical cord clamping 2017 ───────────────────────────────
+  {
+    externalId: 'trajectory:acog-delayed-umbilical-cord-clamping-2017',
+    text: 'In Committee Opinion No. 684 (Obstetrics & Gynecology, January 2017) the American College of Obstetricians and Gynecologists recommended a delay in umbilical cord clamping of at least 30–60 seconds for vigorous term and preterm infants, reversing decades of routine immediate cord clamping at birth.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Citing trial evidence that delayed clamping increases neonatal hemoglobin and iron stores in term infants and reduces intraventricular hemorrhage and necrotizing enterocolitis in preterm infants, ACOG issued Committee Opinion No. 684 recommending a delay of at least 30–60 seconds for vigorous newborns. The opinion from the body that sets U.S. obstetric standards overturned the long-entrenched routine of immediate cord clamping, settling delayed clamping as recommended practice and aligning with concurrent AAP and WHO guidance.',
+        source: {
+          externalId: 'src:acog-committee-opinion-684-cord-clamping-2017',
+          name: 'Committee on Obstetric Practice, American College of Obstetricians and Gynecologists. Committee Opinion No. 684: Delayed Umbilical Cord Clamping After Birth. Obstet Gynecol. 2017;129(1):e5-e10.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28002310/',
+          publishedAt: '2017-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Teplizumab (Tzield) — delay of type 1 diabetes onset 2019 / FDA 2022 ───
+  {
+    externalId: 'trajectory:teplizumab-tzield-delay-type-1-diabetes-2019',
+    text: 'The TrialNet TN-10 randomized trial (Herold et al., New England Journal of Medicine, online 9 June 2019) reported that a single 14-day course of teplizumab, an anti-CD3 monoclonal antibody, delayed the median onset of clinical (stage 3) type 1 diabetes by about two years versus placebo in at-risk relatives, the first demonstration that an immunotherapy can postpone the disease in presymptomatic individuals.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-06-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-06-09',
+        datePrecision: 'DAY',
+        reason: 'Herold and colleagues reported the TN-10 phase 2 trial of 76 high-risk relatives (55 aged ≤18), finding median time to type 1 diabetes diagnosis of 48.4 months with teplizumab versus 24.4 months with placebo (hazard ratio 0.41). Published online in NEJM during the American Diabetes Association meeting, the result recorded in the expert literature the previously unproven claim that the clinical onset of type 1 diabetes could be pharmacologically delayed in presymptomatic, largely pediatric, at-risk individuals.',
+        source: {
+          externalId: 'src:herold-teplizumab-tn10-nejm-2019',
+          name: 'Herold KC, Bundy BN, Long SA, et al. An Anti-CD3 Antibody, Teplizumab, in Relatives at Risk for Type 1 Diabetes. N Engl J Med. 2019;381(7):603-613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31180194/',
+          publishedAt: '2019-06-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 November 2022 the FDA approved Tzield (teplizumab-mzwv) to delay the onset of stage 3 type 1 diabetes in adult and pediatric patients aged 8 years and older with stage 2 disease — the first and only disease-modifying therapy ever approved for this purpose, citing the roughly 25-month delay seen in the pivotal trial. The approval converted the TN-10 finding into a settled regulatory fact and established presymptomatic immunotherapy as an approved treatment category.',
+        source: {
+          externalId: 'src:fda-tzield-teplizumab-approval-2022',
+          name: 'Sanofi/Provention Bio. TZIELD (teplizumab-mzwv) Approved by FDA as the First and Only Treatment Indicated to Delay the Onset of Stage 3 Type 1 Diabetes in Adult and Pediatric Patients Aged 8 Years and Older With Stage 2 T1D. 17 November 2022.',
+          url: 'https://www.news.sanofi.us/2022-11-17-TZIELD-TM-teplizumab-mzwv-approved-by-FDA-as-the-first-and-only-treatment-indicated-to-delay-the-onset-of-Stage-3-type-1-diabetes-T1D-in-adult-and-pediatric-patients-aged-8-years-and-older-with-Stage-2-T1D',
+          publishedAt: '2022-11-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP pediatric hypertension guideline — new normative BP tables 2017 ─────
+  {
+    externalId: 'trajectory:aap-pediatric-hypertension-guideline-normative-bp-tables-2017',
+    text: 'The American Academy of Pediatrics\' 2017 Clinical Practice Guideline (Flynn et al., Pediatrics, September 2017) redefined childhood high blood pressure using new normative BP tables derived only from normal-weight children, replaced the term \'prehypertension\' with \'elevated blood pressure,\' and adopted a simplified adult-aligned classification for adolescents ≥13, reclassifying many youth previously considered normotensive.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Superseding the 2004 Fourth Report, the AAP issued a new clinical practice guideline that excluded overweight and obese children from the reference population used to build normative BP percentiles, lowering the thresholds defining hypertension, and introduced static adult-style cutoffs for adolescents 13 and older. By changing the normative standard itself, the guideline reclassified a substantial share of children and settled a revised, lower-threshold definition of pediatric hypertension as the U.S. standard of care.',
+        source: {
+          externalId: 'src:flynn-aap-pediatric-hypertension-cpg-pediatrics-2017',
+          name: 'Flynn JT, Kaelber DC, Baker-Smith CM, et al. Clinical Practice Guideline for Screening and Management of High Blood Pressure in Children and Adolescents. Pediatrics. 2017;140(3):e20171904.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28827377/',
+          publishedAt: '2017-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GENE THERAPY & RARE DISEASE ERA (2020–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Beremagene geperpavec (Vyjuvek) — first topical redosable gene therapy 2023 ──
+  {
+    externalId: 'trajectory:beremagene-geperpavec-vyjuvek-first-topical-redosable-gene-therapy-2023',
+    text: 'On May 19, 2023, the U.S. FDA approved beremagene geperpavec (Vyjuvek), an HSV-1-vector gene therapy delivering functional COL7A1 applied topically to wounds, as the first topical and first redosable gene therapy, for dystrophic epidermolysis bullosa.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-12-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-12-15',
+        datePrecision: 'DAY',
+        reason: 'Guide and colleagues published the Phase 3 GEM-3 trial in the New England Journal of Medicine, reporting that topically applied beremagene geperpavec (B-VEC) healed significantly more dystrophic epidermolysis bullosa wounds at 6 months than placebo (67% vs 22% complete healing). The result recorded the first controlled evidence that a redosable, topically administered gene therapy delivering COL7A1 could restore type VII collagen and heal wounds in a skin-fragility disorder previously managed only with wound care.',
+        source: {
+          externalId: 'src:guide-gem3-bvec-nejm-2022',
+          name: 'Guide SV, Gonzalez ME, Bağcı IS, et al. Trial of Beremagene Geperpavec (B-VEC) for Dystrophic Epidermolysis Bullosa. N Engl J Med. 2022;387(24):2211-2219.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa2206663',
+          publishedAt: '2022-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-05-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Vyjuvek for patients 6 months and older with dystrophic epidermolysis bullosa carrying COL7A1 mutations, making it the first topical gene therapy and the first redosable gene therapy ever authorized in the United States. The approval converted the GEM-3 efficacy finding into established standard of care for a rare, debilitating skin disease and validated repeated topical administration of a non-integrating HSV-1 vector as a regulator-sanctioned modality.',
+        source: {
+          externalId: 'src:krystal-vyjuvek-fda-approval-2023',
+          name: 'Krystal Biotech, Inc. Krystal Biotech Receives FDA Approval for the First-Ever Redosable Gene Therapy, VYJUVEK (beremagene geperpavec-svdt) for the Treatment of Dystrophic Epidermolysis Bullosa. Press release. May 19, 2023.',
+          url: 'https://ir.krystalbio.com/news-releases/news-release-details/krystal-biotech-receives-fda-approval-first-ever-redosable-gene',
+          publishedAt: '2023-05-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pegcetacoplan (Empaveli) — first C3 inhibitor superior to eculizumab in PNH 2021 ──
+  {
+    externalId: 'trajectory:pegcetacoplan-empaveli-first-c3-inhibitor-pnh-superior-eculizumab-2021',
+    text: 'On May 14, 2021, the U.S. FDA approved pegcetacoplan (Empaveli), the first targeted complement C3 inhibitor, for paroxysmal nocturnal hemoglobinuria, after the Phase 3 PEGASUS trial showed it raised hemoglobin superior to the established C5 inhibitor eculizumab.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-03-18',
+        datePrecision: 'DAY',
+        reason: 'Hillmen and colleagues published the head-to-head Phase 3 PEGASUS trial in the New England Journal of Medicine, reporting that proximal C3 inhibition with pegcetacoplan was superior to the long-standing C5 inhibitor eculizumab for change in hemoglobin at 16 weeks (adjusted difference 3.84 g/dL), with 85% versus 15% of patients transfusion-free. This recorded the first controlled evidence that blocking complement at C3 could outperform the C5 standard of care in paroxysmal nocturnal hemoglobinuria.',
+        source: {
+          externalId: 'src:hillmen-pegasus-pegcetacoplan-nejm-2021',
+          name: 'Hillmen P, Szer J, Weitz I, et al. Pegcetacoplan versus Eculizumab in Paroxysmal Nocturnal Hemoglobinuria. N Engl J Med. 2021;384(11):1028-1037.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa2029073',
+          publishedAt: '2021-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Empaveli (pegcetacoplan) for adults with paroxysmal nocturnal hemoglobinuria, including treatment-naive patients and those switching from the C5 inhibitors eculizumab and ravulizumab, making it the first targeted C3 therapy. The approval institutionalized proximal complement inhibition as a sanctioned alternative to the decade-old C5-blockade paradigm for a disease with persistent extravascular hemolysis on C5 inhibitors.',
+        source: {
+          externalId: 'src:apellis-empaveli-fda-approval-2021',
+          name: 'Apellis Pharmaceuticals, Inc. Apellis Announces U.S. FDA Approval of EMPAVELI (pegcetacoplan) for Adults with Paroxysmal Nocturnal Hemoglobinuria (PNH). Press release. May 14, 2021.',
+          url: 'https://investors.apellis.com/news-releases/news-release-details/apellis-announces-us-food-and-drug-administration-fda-approval',
+          publishedAt: '2021-05-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mavorixafor (Xolremdi) — first WHIM syndrome treatment 2024 ─────────────
+  {
+    externalId: 'trajectory:mavorixafor-xolremdi-first-whim-syndrome-treatment-2024',
+    text: 'On April 26, 2024, the U.S. FDA approved mavorixafor (Xolremdi), an oral CXCR4 antagonist, as the first drug ever indicated for WHIM syndrome (warts, hypogammaglobulinemia, immunodeficiency, myelokathexis) in patients 12 and older.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2024-04-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-04-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA, under Priority Review and following Breakthrough Therapy designation, approved Xolremdi (mavorixafor) based on the Phase 3 4WHIM trial, in which the selective CXCR4 antagonist increased circulating neutrophils and lymphocytes and reduced infection burden. It is the first therapy ever specifically indicated for WHIM syndrome, an ultra-rare combined primary immunodeficiency caused by gain-of-function CXCR4 mutations, establishing pharmacologic CXCR4 antagonism as the regulator-sanctioned treatment for a disorder with roughly 100 documented cases worldwide.',
+        source: {
+          externalId: 'src:x4-xolremdi-mavorixafor-fda-approval-2024',
+          name: 'X4 Pharmaceuticals, Inc. X4 Pharmaceuticals Announces FDA Approval of XOLREMDI (mavorixafor) Capsules, First Drug Indicated in Patients with WHIM Syndrome. Press release. April 29, 2024.',
+          url: 'https://investors.x4pharma.com/news-releases/news-release-details/x4-pharmaceuticals-announces-fda-approval-xolremditm-mavorixafor',
+          publishedAt: '2024-04-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Arimoclomol (Miplyffa) — first Niemann-Pick type C treatment 2024 ───────
+  {
+    externalId: 'trajectory:arimoclomol-miplyffa-first-niemann-pick-type-c-treatment-2024',
+    text: 'On September 20, 2024, the U.S. FDA approved arimoclomol (Miplyffa), in combination with miglustat, as the first treatment ever approved for the neurological manifestations of Niemann-Pick disease type C, in patients 2 years and older.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2024-09-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-09-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Miplyffa (arimoclomol) in combination with miglustat based on a randomized, double-blind, placebo-controlled 12-month trial in 50 patients aged 2–19 showing slowed progression on a disease-specific severity scale. The approval — which followed an earlier FDA Complete Response Letter that had rejected the original application — made arimoclomol the first drug ever authorized for Niemann-Pick disease type C, a fatal lysosomal cholesterol-trafficking disorder previously managed only off-label, establishing heat-shock-protein/chaperone modulation as a sanctioned approach.',
+        source: {
+          externalId: 'src:zevra-miplyffa-arimoclomol-fda-approval-2024',
+          name: 'Zevra Therapeutics, Inc. Zevra Therapeutics\' MIPLYFFA (arimoclomol) Receives U.S. FDA Approval as Treatment for Niemann-Pick Disease Type C. Press release. September 20, 2024.',
+          url: 'https://investors.kempharm.com/news-releases/news-release-details/zevra-therapeutics-miplyffatm-arimoclomol-receives-us-fda',
+          publishedAt: '2024-09-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Valoctocogene roxaparvovec (Roctavian) — first hemophilia A gene therapy 2023 ──
+  {
+    externalId: 'trajectory:valoctocogene-roxaparvovec-roctavian-first-hemophilia-a-gene-therapy-2023',
+    text: 'Valoctocogene roxaparvovec (Roctavian), a single-dose AAV5 gene therapy delivering a factor VIII transgene, produces durable factor VIII expression and reduces bleeding in severe hemophilia A — a claim whose durability the FDA first rejected in 2020 and then accepted with full approval on June 29, 2023, as the first hemophilia A gene therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-01-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-02',
+        datePrecision: 'DAY',
+        reason: 'Pasi and colleagues published multiyear follow-up of the AAV5-hFVIII-SQ (valoctocogene roxaparvovec) Phase 1/2 study in the New England Journal of Medicine, reporting sustained factor VIII expression and near-elimination of bleeding events out to several years after a single infusion. This recorded the first claim that one-time AAV gene transfer could provide durable correction of hemophilia A.',
+        source: {
+          externalId: 'src:pasi-valrox-multiyear-nejm-2020',
+          name: 'Pasi KJ, Rangarajan S, Mitchell N, et al. Multiyear Follow-up of AAV5-hFVIII-SQ Gene Therapy for Hemophilia A. N Engl J Med. 2020;382(1):29-40.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1908490',
+          publishedAt: '2020-01-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-08-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Complete Response Letter rejecting BioMarin\'s Biologics License Application, citing concern that factor VIII expression appeared to wane after 12–18 months and demanding two years of Phase 3 (GENEr8-1) follow-up using annualized bleeding rate as the primary endpoint. The unexpected rejection placed the durability of the gene therapy\'s effect into active institutional dispute and became a landmark in debates over evidentiary standards for one-time gene therapies.',
+        source: {
+          externalId: 'src:biomarin-valrox-crl-2020',
+          name: 'BioMarin Pharmaceutical Inc. BioMarin Receives Complete Response Letter (CRL) from FDA for Valoctocogene Roxaparvovec Gene Therapy for Severe Hemophilia A. Press release. August 19, 2020.',
+          url: 'https://www.biomarin.com/news/press-releases/biomarin-receives-complete-response-letter-crl-from-fda-for-valoctocogene-roxaparvovec-gene-therapy-for-severe-hemophilia-a/',
+          publishedAt: '2020-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-06-29',
+        datePrecision: 'DAY',
+        reason: 'After the GENEr8-1 Phase 3 trial supplied multiyear annualized-bleeding-rate data (published by Ozelo et al. in NEJM in 2022), the FDA approved Roctavian as the first and only gene therapy for adults with severe hemophilia A, resolving the durability objection that had blocked approval in 2020. The decision settled, at the institutional level, that a single AAV5 factor VIII infusion meets the regulatory bar for durable clinical benefit.',
+        source: {
+          externalId: 'src:biomarin-roctavian-fda-approval-2023',
+          name: 'BioMarin Pharmaceutical Inc. U.S. Food and Drug Administration Approves BioMarin\'s ROCTAVIAN (valoctocogene roxaparvovec-rvox), the First and Only Gene Therapy for Adults with Severe Hemophilia A. Press release. June 29, 2023.',
+          url: 'https://www.biomarin.com/news/press-releases/u-s-food-and-drug-administration-approves-biomarins-roctavian-valoctocogene-roxaparvovec-rvox-the-first-and-only-gene-therapy-for-adults-with-severe-hemophilia-a/',
+          publishedAt: '2023-06-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
