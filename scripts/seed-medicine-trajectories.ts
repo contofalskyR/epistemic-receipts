@@ -51477,6 +51477,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID REGULATION ERA (2012--2019)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ER/LA Opioid Class-Wide REMS — FDA 2012 ────────────────────────────────
+  {
+    externalId: 'trajectory:fda-erla-opioid-rems-2012',
+    text: 'The U.S. Food and Drug Administration approved on July 9, 2012 the first class-wide Risk Evaluation and Mitigation Strategy (REMS) for extended-release and long-acting (ER/LA) opioid analgesics, requiring more than 20 manufacturers of over 30 products to fund prescriber education on safe opioid prescribing as a condition of continued marketing.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA imposed its first risk-management program spanning an entire opioid drug class, requiring sponsors of all ER/LA opioids (covering buprenorphine, fentanyl, hydromorphone, methadone, morphine, oxycodone, oxymorphone, tapentadol, and others) to make accredited prescriber education and patient counseling materials available to reduce misuse, abuse, and overdose. The action institutionally established that opioid safety required active post-market risk mitigation, not just labeling — the regulatory foundation later extended to immediate-release opioids in 2018.',
+        source: {
+          externalId: 'src:fda-erla-opioid-rems-qa-2012',
+          name: 'U.S. Food and Drug Administration. Questions and Answers: FDA approves a Risk Evaluation and Mitigation Strategy (REMS) for Extended-Release and Long-Acting (ER/LA) Opioid Analgesics. July 9, 2012.',
+          url: 'https://www.fda.gov/drugs/information-drug-class/questions-and-answers-fda-approves-risk-evaluation-and-mitigation-strategy-rems-extended-release-and',
+          publishedAt: '2012-07-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Codeine & Tramadol Pediatric Contraindication — FDA 2013/2017 ──────────
+  {
+    externalId: 'trajectory:fda-codeine-tramadol-pediatric-contraindication-2017',
+    text: 'The U.S. Food and Drug Administration established that codeine and tramadol are unsafe in young children because cytochrome P450 2D6 ultra-rapid metabolizers convert them into dangerously high opioid levels, adding its strongest Boxed Warning on codeine after tonsillectomy on February 20, 2013 and contraindicating both drugs in children under 12 on April 20, 2017.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-02-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-02-20',
+        datePrecision: 'DAY',
+        reason: 'After reports of children dying or suffering severe respiratory depression from codeine given for post-tonsillectomy/adenoidectomy pain — with deaths traced to CYP2D6 ultra-rapid metabolism producing toxic morphine levels — the FDA required a new Boxed Warning and contraindication on codeine in that surgical setting. This converted scattered pharmacogenomic case reports into a formal, label-level safety claim about a previously routine pediatric analgesic.',
+        source: {
+          externalId: 'src:fda-codeine-children-boxed-warning-2013',
+          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: Safety review update of codeine use in children; new Boxed Warning and Contraindication on use after tonsillectomy and/or adenoidectomy. February 20, 2013.',
+          url: 'https://www.fda.gov/files/drugs/published/FDA-Drug-Safety-Communication--Safety-review-update-of-codeine-use-in-children--new-Boxed-Warning-and-Contraindication-on-use-after-tonsillectomy-and-or-adenoidectomy-(pdf).pdf',
+          publishedAt: '2013-02-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-04-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA broadened the restriction into a full contraindication: codeine and tramadol are contraindicated for pain or cough in all children under 12, tramadol is contraindicated in those under 18 after tonsillectomy/adenoidectomy, and both are warned against in breastfeeding women and adolescents with respiratory risk factors. This generalized the CYP2D6 ultra-rapid-metabolizer hazard from a single surgical context to the entire pediatric population, settling the reversal of decades of routine pediatric codeine/tramadol use.',
+        source: {
+          externalId: 'src:fda-codeine-tramadol-children-restriction-2017',
+          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: FDA restricts use of prescription codeine pain and cough medicines and tramadol pain medicines in children; recommends against use in breastfeeding women. April 20, 2017.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-restricts-use-prescription-codeine-pain-and-cough-medicines-and',
+          publishedAt: '2017-04-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dsuvia (Sufentanil) FDA Approval — 2018/2019 ───────────────────────────
+  {
+    externalId: 'trajectory:dsuvia-sufentanil-sublingual-approval-2018',
+    text: 'The U.S. Food and Drug Administration approved Dsuvia (sufentanil sublingual tablet, NDA 209128) on November 2, 2018, judging the ultra-potent opioid — roughly ten times more potent than fentanyl — safe and effective for managing acute pain in certified, medically supervised healthcare settings.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-11-02',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved AcelRx\'s sufentanil sublingual tablet (Dsuvia) for acute pain in medically supervised settings, with Commissioner Scott Gottlieb issuing a contemporaneous statement defending the decision and the agency\'s process for evaluating new opioids. The approval institutionally certified a new ultra-potent opioid as safe and effective, even as the agency acknowledged the unusual scrutiny it drew during a peak phase of the opioid epidemic.',
+        source: {
+          externalId: 'src:fda-gottlieb-dsuvia-statement-2018',
+          name: 'U.S. Food and Drug Administration. Statement from FDA Commissioner Scott Gottlieb, M.D., on agency\'s approval of Dsuvia and the FDA\'s future consideration of new opioids. November 2, 2018.',
+          url: 'https://www.fda.gov/news-events/press-announcements/statement-fda-commissioner-scott-gottlieb-md-agencys-approval-dsuvia-and-fdas-future-consideration-new',
+          publishedAt: '2018-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The approval was publicly contested from the moment it was announced: Dr. Raeford Brown, chair of the FDA\'s Anesthetic and Analgesic Drug Products Advisory Committee, who had been absent from the 10-3 recommending vote, condemned the decision, and four senators plus Public Citizen called for it to be reversed, arguing Dsuvia offered no unique benefit and was readily divertible. Peer-reviewed commentary in Addiction systematically refuted the Commissioner\'s justifications, keeping the safety-and-need claim under expert dispute.',
+        source: {
+          externalId: 'src:bernstein-dsuvia-addiction-2019',
+          name: 'Bernstein J, Bernstein E, D\'Onofrio G. Response to FDA Commissioner\'s statement on Dsuvia approval. Addiction. 2019;114(3):564-565.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1111/add.14539',
+          publishedAt: '2019-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gabapentinoid Respiratory Depression Warning — FDA 2019 ────────────────
+  {
+    externalId: 'trajectory:fda-gabapentinoid-respiratory-depression-warning-2019',
+    text: 'The U.S. Food and Drug Administration warned on December 19, 2019 that the widely used nerve-pain and seizure medicines gabapentin and pregabalin can cause serious, life-threatening, and fatal respiratory depression — particularly when combined with opioids or other CNS depressants — and required new respiratory warnings be added to their labeling.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-12-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-12-19',
+        datePrecision: 'DAY',
+        reason: 'Reviewing case reports, clinical trials, and animal studies — including 49 respiratory-depression reports to the FDA from 2012–2017 with 12 deaths, all in patients with at least one risk factor — the FDA concluded that gabapentinoids, long perceived as safe alternatives or adjuncts to opioids for pain, carry their own serious breathing risk, especially in opioid co-prescription. The agency mandated labeling warnings and required manufacturers to conduct trials on combined gabapentinoid-opioid use, institutionally establishing a safety signal against a reassuring prior consensus.',
+        source: {
+          externalId: 'src:fda-gabapentinoid-breathing-dsc-2019',
+          name: 'U.S. Food and Drug Administration. FDA warns about serious breathing problems with seizure and nerve pain medicines gabapentin (Neurontin, Gralise, Horizant) and pregabalin (Lyrica, Lyrica CR). December 19, 2019.',
+          url: 'https://www.fda.gov/safety/medical-product-safety-information/neurontin-gralise-horizant-gabapentin-and-lyrica-lyrica-cr-pregabalin-drug-safety-communication',
+          publishedAt: '2019-12-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
