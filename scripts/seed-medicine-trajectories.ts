@@ -52130,6 +52130,338 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CRITICAL CARE, SURGERY & RESEARCH INTEGRITY (1999–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Hydroxyethyl starch resuscitation reversal (2007–2022) ─────────────────
+  {
+    externalId: 'trajectory:hydroxyethyl-starch-resuscitation-reversal-2012',
+    text: 'Hydroxyethyl starch (HES) colloid solutions — modern tetrastarch HES 130/0.4 (Voluven) gained US FDA approval on 28 December 2007 — are a safe and effective fluid for volume resuscitation in critically ill and surgical patients.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-06-27',
+        datePrecision: 'DAY',
+        reason: 'The Scandinavian 6S trial (Perner et al., NEJM, published online 27 June 2012) randomized 804 patients with severe sepsis and found that HES 130/0.42 increased 90-day mortality (51% vs 43% with Ringer\'s acetate) and the need for renal-replacement therapy. The near-simultaneous Australasian CHEST trial (Myburgh et al., NEJM, October 2012) independently found more renal injury with HES, putting the colloid\'s safety in serious dispute.',
+        source: {
+          externalId: 'src:perner-6s-hes-sepsis-nejm-2012',
+          name: 'Perner A, Haase N, Guttormsen AB, et al. Hydroxyethyl starch 130/0.42 versus Ringer\'s acetate in severe sepsis. N Engl J Med. 2012;367(2):124-134.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22738085/',
+          publishedAt: '2012-06-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-02-11',
+        datePrecision: 'DAY',
+        reason: 'After the FDA added a boxed warning against HES use in critically ill and septic patients in 2013 and the EMA restricted HES to accredited hospitals in 2018, the EMA\'s Pharmacovigilance Risk Assessment Committee (PRAC) recommended on 11 February 2022 that all HES infusion solutions be suspended from the EU market because continued misuse in contraindicated patients kept causing kidney injury and death. The CMDh endorsed the suspension on 23 February 2022, ending the decades-long use of HES colloids for resuscitation.',
+        source: {
+          externalId: 'src:ema-prac-hes-suspension-2022',
+          name: 'European Medicines Agency. Hydroxyethyl-starch solutions for infusion recommended for suspension from the market. PRAC recommendation, 11 February 2022.',
+          url: 'https://www.ema.europa.eu/en/news/hydroxyethyl-starch-solutions-infusion-recommended-suspension-market',
+          publishedAt: '2022-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Perioperative beta-blocker fraud reversal (1999–2014) ──────────────────
+  {
+    externalId: 'trajectory:perioperative-beta-blocker-decrease-fraud-reversal-1999',
+    text: 'Routine initiation of perioperative beta-blockade reduces cardiac death and myocardial infarction in patients undergoing non-cardiac surgery — a claim launched when Poldermans et al. reported in NEJM on 9 December 1999 that bisoprolol cut cardiac death or nonfatal MI from 34% to 3.4% in high-risk vascular surgery patients (the DECREASE trial).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-12-09',
+        datePrecision: 'DAY',
+        reason: 'Poldermans and the DECREASE investigators reported an approximately ten-fold reduction in perioperative cardiac death or MI with bisoprolol in high-risk vascular surgery. The dramatic result, together with Mangano\'s 1996 atenolol trial, rapidly established perioperative beta-blockade as standard care and earned a Class I recommendation in ACC/AHA perioperative guidelines through the 2000s.',
+        source: {
+          externalId: 'src:poldermans-decrease-bisoprolol-nejm-1999',
+          name: 'Poldermans D, Boersma E, Bax JJ, et al. The effect of bisoprolol on perioperative mortality and myocardial infarction in high-risk patients undergoing vascular surgery (DECREASE). N Engl J Med. 1999;341(24):1789-1794.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10588963/',
+          publishedAt: '1999-12-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-05-31',
+        datePrecision: 'DAY',
+        reason: 'The POISE trial (Devereaux et al., Lancet, 31 May 2008) randomized 8,351 patients to extended-release metoprolol or placebo and found that although beta-blockade lowered MI (4.2% vs 5.7%), it significantly increased total mortality (3.1% vs 2.3%) and stroke (1.0% vs 0.5%). The largest trial on the question directly contradicted the assumed net benefit of routine perioperative beta-blockade.',
+        source: {
+          externalId: 'src:poise-metoprolol-noncardiac-surgery-lancet-2008',
+          name: 'POISE Study Group; Devereaux PJ, Yang H, Yusuf S, et al. Effects of extended-release metoprolol succinate in patients undergoing non-cardiac surgery (POISE trial): a randomised controlled trial. Lancet. 2008;371(9627):1839-1847.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18479744/',
+          publishedAt: '2008-05-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-03-01',
+        datePrecision: 'MONTH',
+        reason: 'After Erasmus Medical Center investigations (2011–2012) found the DECREASE family of trials scientifically unreliable and based on fabricated data, leading to Poldermans\' dismissal, Bouri et al. (Heart, March 2014) meta-analyzed only the \'secure\' (non-DECREASE) randomized trials and found that initiating beta-blockers before surgery increased 30-day mortality by 27%. The authors called for guidelines to retract their recommendation, and ESC/ESA and ACC/AHA guidelines duly downgraded routine perioperative beta-blocker initiation in 2014.',
+        source: {
+          externalId: 'src:bouri-secure-betablocker-perioperative-heart-2014',
+          name: 'Bouri S, Shun-Shin MJ, Cole GD, Mayet J, Francis DP. Meta-analysis of secure randomised controlled trials of beta-blockade to prevent perioperative death in non-cardiac surgery. Heart. 2014;100(6):456-464.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23904357/',
+          publishedAt: '2014-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Macchiarini synthetic trachea transplant fraud (2011–2018) ─────────────
+  {
+    externalId: 'trajectory:macchiarini-synthetic-trachea-transplant-2011',
+    text: 'Tracheobronchial transplantation using a synthetic nanocomposite scaffold seeded with the patient\'s own bone-marrow stem cells is a viable regenerative-medicine treatment, as claimed by Jungebluth, Macchiarini and colleagues in a Lancet proof-of-concept study first published online on 24 November 2011.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-11-24',
+        datePrecision: 'DAY',
+        reason: 'Jungebluth, Macchiarini et al. reported in The Lancet the first transplantation of a tissue-engineered synthetic (POSS-PCU nanocomposite) trachea seeded with autologous stem cells in a patient with tracheal cancer, describing a patent, vascularized airway five months post-operation. The paper was hailed as a landmark of regenerative surgery and recorded the procedure as a successful clinical breakthrough in the expert literature.',
+        source: {
+          externalId: 'src:jungebluth-macchiarini-trachea-lancet-2011',
+          name: 'Jungebluth P, Alici E, Baiguera S, et al. Tracheobronchial transplantation with a stem-cell-seeded bioartificial nanocomposite: a proof-of-concept study. Lancet. 2011;378(9808):1997-2004.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22119609/',
+          publishedAt: '2011-11-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-07-07',
+        datePrecision: 'DAY',
+        reason: 'Following whistleblower complaints, a Karolinska Institutet misconduct investigation, and a Lancet Expression of Concern (April 2016), The Lancet formally retracted the 2011 paper on 7 July 2018 because the work was found to misrepresent patient outcomes and lack ethical approval. Most of Macchiarini\'s synthetic-trachea recipients died, the procedure was abandoned as unsafe, and Macchiarini was later criminally convicted, reversing the original claim of a viable treatment.',
+        source: {
+          externalId: 'src:lancet-retraction-macchiarini-trachea-2018',
+          name: 'The Editors of The Lancet. Retraction—Tracheobronchial transplantation with a stem-cell-seeded bioartificial nanocomposite: a proof-of-concept study. Lancet. 2018;392(10141):11.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30047380/',
+          publishedAt: '2018-07-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── rhBMP-2 (Infuse) spinal fusion safety contested (2002–2011) ────────────
+  {
+    externalId: 'trajectory:rhbmp2-infuse-spinal-fusion-safety-contested-2002',
+    text: 'Recombinant human bone morphogenetic protein-2 (rhBMP-2, Medtronic\'s Infuse Bone Graft), granted FDA premarket approval (P000058) on 2 July 2002 for anterior lumbar interbody fusion, is a safe and effective alternative to autograft bone with minimal adverse events.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-07-02',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted premarket approval (P000058) to Infuse Bone Graft (rhBMP-2 on an absorbable collagen sponge with the LT-Cage) for single-level anterior lumbar interbody fusion in degenerative disc disease. On the strength of industry-sponsored trials reporting essentially no associated adverse events, rhBMP-2 was widely adopted and used extensively off-label, settling it as a routine bone-graft substitute in spine surgery.',
+        source: {
+          externalId: 'src:fda-pma-infuse-rhbmp2-p000058-2002',
+          name: 'U.S. Food and Drug Administration. Premarket Approval (PMA) P000058: InFUSE Bone Graft/LT-CAGE Lumbar Tapered Fusion Device. Approved 2 July 2002.',
+          url: 'https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P000058',
+          publishedAt: '2002-07-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In a critical review anchoring a dedicated June 2011 issue of The Spine Journal, Carragee, Hurwitz and Weiner showed that the original industry-funded rhBMP-2 trials had reported essentially zero adverse events while FDA data and later analyses revealed adverse-event rates of 10–50% (including retrograde ejaculation, ectopic bone, radiculitis, and a possible cancer signal) — 10 to 50 times the published estimates. The exposé, alongside a U.S. Senate Finance Committee investigation, reversed the perception of rhBMP-2 as low-risk and put its safety and effectiveness into open dispute.',
+        source: {
+          externalId: 'src:carragee-rhbmp2-spinej-2011',
+          name: 'Carragee EJ, Hurwitz EL, Weiner BK. A critical review of recombinant human bone morphogenetic protein-2 trials in spinal surgery: emerging safety concerns and lessons learned. Spine J. 2011;11(6):471-491.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21729796/',
+          publishedAt: '2011-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CANCER TREATMENT ORIGINS (1865–1903)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Lissauer: Fowler's solution / arsenic for leukaemia 1865 ───────────────
+  {
+    externalId: 'trajectory:lissauer-fowlers-solution-arsenic-leukemia-1865',
+    text: 'The German physician David Lissauer reported in 1865 that Fowler\'s solution (potassium arsenite) produced clinical and haematological improvement in a patient with leukaemia, the first recorded use of a chemical agent to treat a cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1865-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1865-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lissauer published two cases of leukaemia treated with Fowler\'s solution (an alkaline 1% potassium-arsenite preparation of arsenic trioxide) in Berliner klinische Wochenschrift; a young woman, probably with chronic myeloid leukaemia, improved enough to leave hospital. This is generally regarded as the first attempt to treat a malignancy with a systemic chemical agent, recording the idea that a drug could induce remission in cancer.',
+        source: {
+          externalId: 'src:manley-lissauer-arsenic-leukaemia-2022',
+          name: 'Manley PW. Evidence supporting that the attribution of first success in use of arsenic for the treatment of leukaemia should be to David Lissauer (1836–1892). Leukemia. 2022;36(6):1697–1698. [citing Lissauer D. Zwei Fälle von Leucaemie. Berl klin Wochenschr. 1865;2:403–404.]',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35590032/',
+          publishedAt: '2022-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1903-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Arsenic (Fowler\'s solution) remained a mainstay of leukaemia treatment for roughly four decades but was progressively abandoned in the early twentieth century, first superseded by splenic X-ray irradiation and subsequently by cytotoxic chemotherapy. The chemical approach to leukaemia fell out of standard practice, the original claim shelved rather than disproven.',
+        source: {
+          externalId: 'src:manley-arsenic-superseded-2022',
+          name: 'Manley PW. Evidence supporting that the attribution of first success in use of arsenic for the treatment of leukaemia should be to David Lissauer (1836–1892). Leukemia. 2022;36(6):1697–1698.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35590032/',
+          publishedAt: '2022-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'ABANDONED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-09-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved arsenic trioxide (Trisenox, NDA 21-248) on 25 September 2000 for relapsed or refractory acute promyelocytic leukaemia, reviving the nineteenth-century arsenic-for-leukaemia approach on a rigorous molecular and clinical basis. Arsenic trioxide is now an established, often curative, first-line component of APL therapy, settling the long-dormant claim that an arsenic compound can treat leukaemia.',
+        source: {
+          externalId: 'src:fda-trisenox-arsenic-trioxide-apl-2000',
+          name: 'U.S. FDA. Drugs@FDA: Trisenox (arsenic trioxide), NDA 021248, original approval for acute promyelocytic leukemia. 25 September 2000.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021248',
+          publishedAt: '2000-09-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Despeignes: first radiotherapy for cancer 1896 ─────────────────────────
+  {
+    externalId: 'trajectory:despeignes-first-radiotherapy-cancer-1896',
+    text: 'The French physician Victor Despeignes reported that X-ray irradiation produced roughly 50% regression of a gastric carcinoma, beginning treatment on 4 July 1896 and publishing the case in Lyon Médical that same month — the first documented use of ionizing radiation to treat cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1896-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-07-28',
+        datePrecision: 'DAY',
+        reason: 'Less than a year after Röntgen\'s discovery of X-rays, Despeignes irradiated a 52-year-old man with pyloric/gastric cancer in two daily half-hour sessions from 4 July 1896, observing pain relief and tumour shrinkage before the patient died on 24 July; he published the case (\'Observation concernant un cas de cancer de l\'estomac traité par les rayons Röntgen\') in Lyon Médical on 28 July 1896. This recorded the first evidence that ionizing radiation could regress a malignant tumour.',
+        source: {
+          externalId: 'src:sgantzos-despeignes-first-radiotherapy-2014',
+          name: 'Sgantzos M, Tsoucalas G, Laios K, Androutsos G. The physician who first applied radiotherapy, Victor Despeignes, on 1896. Hell J Nucl Med. 2014;17(1):45–46. [documenting Despeignes V. Lyon Médical. 1896.]',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24563880/',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over the following decades, and especially after fractionated X-ray therapy was shown in the 1920s to control deep carcinomas without lethal toxicity, radiotherapy was adopted worldwide as a standard treatment for cancer. Despeignes\' isolated 1896 observation matured into one of the principal, institutionally settled modalities of oncology.',
+        source: {
+          externalId: 'src:sgantzos-despeignes-radiotherapy-legacy-2014',
+          name: 'Sgantzos M, Tsoucalas G, Laios K, Androutsos G. The physician who first applied radiotherapy, Victor Despeignes, on 1896. Hell J Nucl Med. 2014;17(1):45–46.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24563880/',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Senn: X-ray for leukaemia/pseudoleukaemia 1903 ─────────────────────────
+  {
+    externalId: 'trajectory:senn-xray-leukemia-pseudoleukemia-1903',
+    text: 'Nicholas Senn reported in 1903 that Roentgen-ray (X-ray) irradiation produced dramatic, if transient, regression of enlarged spleen and lymph nodes in a patient with pseudoleukaemia/leukaemia, the first use of radiation to treat a lymphoid malignancy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1903-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1903-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Senn published \'The therapeutic value of the Roentgen ray in the treatment of pseudoleucaemia\' (New York Medical Journal, 1903;77:665–668), reporting that X-ray irradiation of the spleen markedly shrank the splenomegaly and lymphadenopathy of leukaemia/pseudoleukaemia (the contemporary term for Hodgkin\'s disease and allied lymphomas). This recorded the first evidence that radiation could act on a systemic lymphoid malignancy.',
+        source: {
+          externalId: 'src:stover-xray-leukemia-pseudoleukemia-jama-1904',
+          name: 'Stover GH. X-Ray in Leukemia and Pseudoleukemia. JAMA. 1904;XLIII(6):412. [referencing Senn N. New York Medical Journal. 1903.]',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/461654',
+          publishedAt: '1904-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1904-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within roughly a year, multiple physicians (Pusey, Stover, and Senn himself) independently reported that X-ray therapy regressed leukaemic and lymphomatous masses, and Stover\'s 1904 JAMA report documents this rapid corroboration. Radiation became an accepted treatment for leukaemia and the lymphomas, remaining a central, settled modality in Hodgkin lymphoma care to the present day.',
+        source: {
+          externalId: 'src:stover-xray-rapid-corroboration-jama-1904',
+          name: 'Stover GH. X-Ray in Leukemia and Pseudoleukemia. JAMA. 1904;XLIII(6):412.',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/461654',
+          publishedAt: '1904-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
