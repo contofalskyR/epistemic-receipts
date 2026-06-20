@@ -43484,6 +43484,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DIABETES, OBESITY & METABOLIC PHARMACOLOGY (1997–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── UKPDS 33 — intensive glucose control in type 2 diabetes 1998 ────────────
+  {
+    externalId: 'trajectory:ukpds-33-intensive-glucose-type2-diabetes-1998',
+    text: 'The UK Prospective Diabetes Study (UKPDS 33) Group reported in The Lancet on 12 September 1998 that intensive blood-glucose control with sulphonylureas or insulin in newly diagnosed type 2 diabetes substantially reduces the risk of microvascular complications, establishing that hyperglycaemia drives microvascular disease in type 2 as well as type 1 diabetes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-09-12',
+        datePrecision: 'DAY',
+        reason: 'The UKPDS 33 randomized controlled trial followed 3,867 newly diagnosed type 2 diabetes patients for a median 10 years and found that an intensive glucose-lowering policy (median HbA1c 7.0% vs 7.9%) produced a 25% reduction in microvascular endpoints, driven largely by reduced need for retinal photocoagulation, with no significant macrovascular benefit. This recorded in the expert literature the long-debated claim that tight glycemic control prevents microvascular complications in type 2 diabetes, complementing the DCCT\'s earlier type 1 result.',
+        source: {
+          externalId: 'src:ukpds33-intensive-glucose-lancet-1998',
+          name: 'UK Prospective Diabetes Study (UKPDS) Group. Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). Lancet. 1998;352(9131):837-853.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9742976/',
+          publishedAt: '1998-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-09-12',
+        datePrecision: 'DAY',
+        reason: 'Because UKPDS was the definitive large long-term randomized trial in type 2 diabetes — the type 2 analogue of the DCCT — its microvascular finding was immediately accepted as settling the \'glucose hypothesis\' for type 2 disease and was incorporated into diabetes standards of care recommending HbA1c targets. The microvascular benefit of glycemic control remains settled today, even as later trials (ACCORD, ADVANCE, VADT) qualified the macrovascular and intensive-target question.',
+        source: {
+          externalId: 'src:ukpds33-intensive-glucose-lancet-1998',
+          name: 'UK Prospective Diabetes Study (UKPDS) Group. Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). Lancet. 1998;352(9131):837-853.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9742976/',
+          publishedAt: '1998-09-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Exenatide / Byetta — first GLP-1 receptor agonist approval 2005 ─────────
+  {
+    externalId: 'trajectory:exenatide-byetta-first-glp1-approval-2005',
+    text: 'The U.S. FDA approved exenatide (Byetta, Amylin/Eli Lilly) on 28 April 2005 as the first incretin mimetic / glucagon-like peptide-1 (GLP-1) receptor agonist, an injectable adjunctive treatment to improve glycemic control in type 2 diabetes.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2005-04-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved exenatide as adjunctive therapy for patients with type 2 diabetes inadequately controlled on metformin and/or a sulfonylurea, the first agent in a new mechanistic class (incretin mimetics) that reproduces the actions of the gut hormone GLP-1 — glucose-dependent insulin secretion, slowed gastric emptying, and weight loss. Regulatory approval institutionally established the safety and efficacy of GLP-1 receptor agonism for type 2 diabetes, founding a drug class that would later expand into obesity and cardiovascular indications.',
+        source: {
+          externalId: 'src:lilly-byetta-exenatide-fda-approval-2005',
+          name: 'Amylin Pharmaceuticals and Eli Lilly and Company. Amylin and Lilly Announce FDA Approval of BYETTA (Exenatide) Injection. Press release, 28 April 2005.',
+          url: 'https://investor.lilly.com/news-releases/news-release-details/amylin-and-lilly-announce-fda-approval-byettatm-exenatide',
+          publishedAt: '2005-04-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sitagliptin / Januvia — first DPP-4 inhibitor approval 2006 ─────────────
+  {
+    externalId: 'trajectory:sitagliptin-januvia-first-dpp4-approval-2006',
+    text: 'The U.S. FDA approved sitagliptin (Januvia, Merck) on 17 October 2006 as the first dipeptidyl peptidase-4 (DPP-4) inhibitor, an oral incretin-enhancing treatment to improve glycemic control in adults with type 2 diabetes.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-10-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-10-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved sitagliptin as the first orally active DPP-4 inhibitor, a class that raises endogenous incretin (GLP-1 and GIP) levels by blocking their enzymatic degradation, providing glucose-lowering with low hypoglycemia risk and weight neutrality. The approval institutionally established a second incretin-based drug class for type 2 diabetes — the oral counterpart to the injectable GLP-1 agonists — and sitagliptin became one of the most widely prescribed oral antidiabetic agents.',
+        source: {
+          externalId: 'src:fda-januvia-sitagliptin-label-approval',
+          name: 'FDA. JANUVIA (sitagliptin) Tablets — Drugs@FDA label and approval history (NDA 021995; original approval 17 October 2006). U.S. Food and Drug Administration.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/021995s046lbl.pdf',
+          publishedAt: '2006-10-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sibutramine / Meridia — cardiovascular safety reversal 2010 ──────────────
+  {
+    externalId: 'trajectory:sibutramine-meridia-cardiovascular-withdrawal-2010',
+    text: 'The claim that the appetite-suppressant sibutramine (Meridia, Abbott), FDA-approved in November 1997 as a safe and effective weight-loss drug, was reversed when the SCOUT trial showed it increased cardiovascular events and Abbott withdrew it from the U.S. market on 8 October 2010 at the FDA\'s request.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-11',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-11',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved sibutramine (Meridia), a serotonin-norepinephrine reuptake inhibitor that suppresses appetite, for the management of obesity. Regulatory approval institutionally established it as a safe and effective long-term weight-loss agent, and it became one of the few approved chronic anti-obesity drugs of the era.',
+        source: {
+          externalId: 'src:fr-meridia-sibutramine-withdrawal-2010',
+          name: 'FDA. Abbott Laboratories, Inc.; Withdrawal of Approval of a New Drug Application for MERIDIA (documents original NDA approval and 2010 withdrawal). Federal Register, 21 December 2010.',
+          url: 'https://www.federalregister.gov/documents/2010/12/21/2010-31986/abbott-laboratories-inc-withdrawal-of-approval-of-a-new-drug-application-for-meridia',
+          publishedAt: '2010-12-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-09-02',
+        datePrecision: 'DAY',
+        reason: 'James and the SCOUT (Sibutramine Cardiovascular Outcomes) investigators reported in the New England Journal of Medicine on a 10,744-patient randomized trial in overweight/obese subjects aged 55+ with cardiovascular disease or type 2 diabetes, finding that sibutramine increased the risk of nonfatal myocardial infarction and nonfatal stroke (a 16% rise in cardiovascular events) versus placebo. The post-marketing trial directly contested the drug\'s established cardiovascular safety in the population most likely to use it.',
+        source: {
+          externalId: 'src:scout-sibutramine-cv-nejm-2010',
+          name: 'James WPT, Caterson ID, Coutinho W, et al. Effect of sibutramine on cardiovascular outcomes in overweight and obese subjects. N Engl J Med. 2010;363(10):905-917.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20818901/',
+          publishedAt: '2010-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-08',
+        datePrecision: 'DAY',
+        reason: 'At the FDA\'s request, Abbott Laboratories voluntarily withdrew sibutramine (Meridia) from the U.S. market on 8 October 2010, citing the SCOUT data showing increased cardiovascular risk that outweighed the drug\'s modest weight-loss benefit; the FDA advised physicians to stop prescribing it and patients to stop taking it. The withdrawal reversed the drug\'s approved-safe status and became a defining post-market surveillance action in anti-obesity pharmacotherapy.',
+        source: {
+          externalId: 'src:fr-meridia-sibutramine-withdrawal-2010-b',
+          name: 'FDA. Abbott Laboratories, Inc.; Withdrawal of Approval of a New Drug Application for MERIDIA. Federal Register, 21 December 2010 (documenting 8 October 2010 market withdrawal).',
+          url: 'https://www.federalregister.gov/documents/2010/12/21/2010-31986/abbott-laboratories-inc-withdrawal-of-approval-of-a-new-drug-application-for-meridia',
+          publishedAt: '2010-12-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Rimonabant / Acomplia — psychiatric safety suspension 2008 ───────────────
+  {
+    externalId: 'trajectory:rimonabant-acomplia-psychiatric-suspension-2008',
+    text: 'The claim that the cannabinoid CB1-receptor antagonist rimonabant (Acomplia, Sanofi-Aventis), authorised in the European Union in June 2006 as a safe and effective anti-obesity drug, was reversed when the European Medicines Agency recommended suspension of its marketing authorisation on 23 October 2008 because of a roughly doubled risk of serious psychiatric disorders, including suicide.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06',
+        datePrecision: 'MONTH',
+        reason: 'The European Medicines Agency granted Acomplia (rimonabant) a marketing authorisation in June 2006 as an adjunct to diet and exercise for obese patients or overweight patients with associated risk factors, the first selective CB1 endocannabinoid-receptor antagonist for weight management. The authorisation institutionally established the drug as a safe and effective metabolic therapy across the EU (the FDA never approved it, its advisory committee having voted against approval in June 2007 over psychiatric concerns).',
+        source: {
+          externalId: 'src:ema-acomplia-rimonabant-epar',
+          name: 'European Medicines Agency. Acomplia (rimonabant) — European Public Assessment Report (authorisation June 2006; suspension 2008).',
+          url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/acomplia',
+          publishedAt: '2006-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'At its 20–23 October 2008 meeting the EMA\'s Committee for Medicinal Products for Human Use concluded that the benefits of Acomplia no longer outweighed its risks and recommended suspension of the marketing authorisation, citing post-marketing reports and trial data showing an approximate doubling of serious psychiatric disorders, including suicide, in patients taking the drug; marketing was suspended across member states by 13 November 2008. The action reversed the drug\'s approved-safe status roughly two years after authorisation and ended the CB1-antagonist class as an obesity therapy.',
+        source: {
+          externalId: 'src:ema-acomplia-suspension-press-2008',
+          name: 'European Medicines Agency. The European Medicines Agency recommends suspension of the marketing authorisation of Acomplia. Press release, 23 October 2008.',
+          url: 'https://www.ema.europa.eu/en/documents/press-release/european-medicines-agency-recommends-suspension-marketing-authorisation-acomplia_en.pdf',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
