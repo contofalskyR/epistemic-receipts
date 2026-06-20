@@ -46306,6 +46306,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Mahoney penicillin cures early syphilis 1943 ───────────────────────────
+  {
+    externalId: 'trajectory:mahoney-penicillin-cures-early-syphilis-1943',
+    text: 'John F. Mahoney, R. C. Arnold, and Ad Harris reported on 14 October 1943 that four patients with early syphilis were cured by an eight-day course of intramuscular penicillin (totaling 1,200,000 units), establishing penicillin as an effective treatment for syphilis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1943-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Mahoney, Arnold, and Harris of the U.S. Marine Hospital, Staten Island, published their preliminary report (first presented at the American Public Health Association meeting on 14 October 1943) in the American Journal of Public Health, documenting that four early-syphilis patients were rendered seronegative and lesion-free after an eight-day penicillin course. This was the first recorded evidence that penicillin cured syphilis.',
+        source: {
+          externalId: 'src:mahoney-penicillin-syphilis-ajph-1943',
+          name: 'Mahoney JF, Arnold RC, Harris A. Penicillin Treatment of Early Syphilis—A Preliminary Report. Am J Public Health Nations Health. 1943;33(12):1387-1391.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1527687/',
+          publishedAt: '1943-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Confirmatory cooperative studies and the U.S. Public Health Service\'s wartime rapid-treatment program adopted penicillin within months, displacing the lengthy and toxic arsenical (Salvarsan/neoarsphenamine) and bismuth regimens that had been the standard since Ehrlich. Penicillin became the institutionally accepted treatment of choice for syphilis, a status it retains.',
+        source: {
+          externalId: 'src:nlm-mahoney-penicillin-syphilis-history',
+          name: 'Frith J / National Library of Medicine. John Mahoney and the Introduction of Penicillin to Treat Syphilis. NLM Lister Hill Center publication.',
+          url: 'https://lhncbc.nlm.nih.gov/LHC-publications/PDF/pub2001051.pdf',
+          publishedAt: '2001-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gregg congenital rubella cataract 1941 ─────────────────────────────────
+  {
+    externalId: 'trajectory:gregg-congenital-rubella-cataract-1941',
+    text: 'Norman McAlister Gregg reported in October 1941, from a series of 78 congenital cataract cases, that maternal German measles (rubella) in early pregnancy causes congenital cataracts and other defects in the newborn, establishing rubella as a teratogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Gregg, an Australian ophthalmologist, observed an unusual cluster of infantile cataracts following a 1940 rubella epidemic and published \'Congenital Cataract following German Measles in the Mother\' analyzing 78 cases. This was the first recorded evidence that a maternal viral infection could cross the placenta to cause birth defects, introducing the concept of an environmental (viral) teratogen.',
+        source: {
+          externalId: 'src:gregg-congenital-cataract-german-measles-1941',
+          name: 'Gregg NM. Congenital Cataract following German Measles in the Mother. Trans Ophthalmol Soc Aust. 1941;3:35-46.',
+          url: 'https://embryo.asu.edu/pages/congenital-cataract-following-german-measles-mother-1941-norman-mcalister-gregg',
+          publishedAt: '1941-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Initial skepticism gave way as Charlotte Swan and other Australian investigators epidemiologically confirmed the broader pattern of rubella-induced defects (cataract, deafness, cardiac and developmental anomalies), defining what became congenital rubella syndrome. Acceptance was cemented by the 1962 isolation of rubella virus and the 1964-65 epidemic, and the teratogenic claim directly motivated rubella vaccine development.',
+        source: {
+          externalId: 'src:asu-gregg-congenital-rubella-significance',
+          name: 'The Embryo Project Encyclopedia (Arizona State University). \'Congenital Cataract following German Measles in the Mother\' (1941), by Norman McAlister Gregg.',
+          url: 'https://embryo.asu.edu/pages/congenital-cataract-following-german-measles-mother-1941-norman-mcalister-gregg',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Brotzu cephalosporin discovery 1948 ────────────────────────────────────
+  {
+    externalId: 'trajectory:brotzu-cephalosporin-discovery-1948',
+    text: 'Giuseppe Brotzu reported in 1948, from a Cephalosporium acremonium mould he isolated in 1945 near a Cagliari sewage outfall, that the fungus produced a substance inhibiting Gram-positive and Gram-negative bacteria including Salmonella typhi, the first observation of cephalosporin antibiotic activity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1948-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Brotzu, Professor of Hygiene and Rector at the University of Cagliari, isolated a Cephalosporium mould from Sardinian seawater near a sewage outfall in 1945 and published his observation that its crude extract inhibited a broad range of bacteria in the local journal Lavori dell\'Istituto di Igiene di Cagliari. Lacking facilities to purify the agent, he recorded the antibacterial activity but could not develop it further.',
+        source: {
+          externalId: 'src:etymologia-cephalosporin-brotzu-2012',
+          name: 'Etymologia: Cephalosporin. Emerg Infect Dis. 2012 (PMC3320480).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3320480/',
+          publishedAt: '2012-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1964-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Brotzu sent the strain to Oxford in 1948, E. P. Abraham and G. G. F. Newton isolated and characterized cephalosporin C; the first clinically used cephalosporin (cephalothin) reached the market in 1964, founding the cephalosporin class of beta-lactam antibiotics now in worldwide use as semisynthetic derivatives of Brotzu\'s original compound.',
+        source: {
+          externalId: 'src:etymologia-cephalosporin-class-2012',
+          name: 'Etymologia: Cephalosporin. Emerg Infect Dis. 2012 (PMC3320480).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3320480/',
+          publishedAt: '2012-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bordet-Gengou pertussis bacillus 1906 ──────────────────────────────────
+  {
+    externalId: 'trajectory:bordet-gengou-pertussis-bacillus-1906',
+    text: 'Jules Bordet and Octave Gengou reported in 1906 that they had isolated and cultivated the bacillus (later named Bordetella pertussis) responsible for whooping cough, identifying its causative organism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1906-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1906-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Belgian bacteriologists Jules Bordet and Octave Gengou, working at the Pasteur Institute in Brussels, succeeded in cultivating the fastidious whooping-cough bacillus on a specially enriched blood medium (later the Bordet-Gengou agar) and published \'Le microbe de la coqueluche.\' This first recorded the causative organism of pertussis, enabling diagnosis and later vaccine work.',
+        source: {
+          externalId: 'src:bordet-gengou-microbe-coqueluche-1906',
+          name: 'Bordet J, Gengou O. Le microbe de la coqueluche. Ann Inst Pasteur (Paris). 1906;20:731-741.',
+          url: 'https://wwwnc.cdc.gov/eid/article/16/8/et-1608_article',
+          publishedAt: '1906-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The organism\'s role as the etiologic agent of whooping cough became firmly established as it underpinned killed-whole-cell pertussis vaccine development, and in 1952 the genus Bordetella was created (named for Bordet) to taxonomically consolidate the species. This institutional naming reflected settled acceptance of Bordet and Gengou\'s identification.',
+        source: {
+          externalId: 'src:etymologia-bordetella-pertussis-2010',
+          name: 'Etymologia: Bordetella pertussis. Emerg Infect Dis. 2010;16(8) (CDC).',
+          url: 'https://wwwnc.cdc.gov/eid/article/16/8/et-1608_article',
+          publishedAt: '2010-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
