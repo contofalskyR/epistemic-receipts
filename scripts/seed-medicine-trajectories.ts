@@ -43102,6 +43102,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // BIOLOGICS, VACCINE REGULATION & ANTIBIOTIC RESISTANCE (1901–1955)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Biologics Control Act — St. Louis antitoxin deaths 1902 ─────────────────
+  {
+    externalId: 'trajectory:biologics-control-act-st-louis-antitoxin-1902',
+    text: 'Following the deaths of thirteen St. Louis children in autumn 1901 from tetanus-contaminated diphtheria antitoxin, the U.S. Congress enacted the Biologics Control Act on 1 July 1902, establishing the first federal premarket licensing and inspection regime for vaccines, antitoxins, and serums.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1901-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1901-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Investigation of the St. Louis diphtheria-antitoxin deaths (and a parallel Camden, NJ smallpox-vaccine tetanus outbreak) traced the fatalities to serum drawn from a tetanus-infected horse and mislabeled with an earlier bleeding date, with no potency or contamination testing. These were among the first formal pharmacoepidemiologic investigations and documented that unregulated biologics were a lethal hazard.',
+        source: {
+          externalId: 'src:lilienfeld-pharmacoepi-1901-1902-2008',
+          name: 'Lilienfeld DE. The first pharmacoepidemiologic investigations: national drug safety policy in the United States, 1901-1902. Perspect Biol Med. 2008;51(2):188-198.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18453724/',
+          publishedAt: '2008-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1902-07-01',
+        datePrecision: 'DAY',
+        reason: "Prompted by the Hygienic Laboratory and the Medical Society of the District of Columbia, Congress passed the Biologics Control Act (the 'Virus-Toxin Law') on 1 July 1902, requiring federal licensure and inspection of biologics producers. It established the durable precedent of federal premarket regulation of medical products, later extended by the 1906 Pure Food and Drug Act and absorbed into the modern FDA framework.",
+        source: {
+          externalId: 'src:fdli-early-biologics-regulation-2016',
+          name: 'Early Developments in the Regulation of Biologics. Food and Drug Law Journal. 2016;71(4).',
+          url: 'https://www.fdli.org/wp-content/uploads/2017/01/FDLJ-71-4-early-developments-in-regulation-biologics-5221114-open.pdf',
+          publishedAt: '2016-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ramon diphtheria toxoid — 1923 ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:ramon-diphtheria-toxoid-anatoxine-1923',
+    text: "In 1923 Gaston Ramon, working at the Institut Pasteur, showed that diphtheria toxin inactivated with formalin and heat (his 'anatoxine'/toxoid) lost its toxicity while retaining the ability to induce lasting active immunity in humans — the first toxoid vaccine and the basis of modern diphtheria immunization.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: "Ramon reported that formalin-and-heat treatment converted diphtheria toxin into a non-toxic but still immunogenic 'anatoxine,' enabling safe active vaccination rather than the passive, transient protection of Behring's antitoxin serum. This introduced the toxoid principle (independently paralleled by Glenny) and the forerunner of the DTP vaccine.",
+        source: {
+          externalId: 'src:pasteur-ramon-diphtheria-toxoid-centenary-2023',
+          name: 'Institut Pasteur. Diphtheria: a hundred years ago, the first toxoid vaccine. 2023.',
+          url: 'https://www.pasteur.fr/en/research-journal/news/diphtheria-hundred-years-ago-first-toxoid-vaccine',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the late 1920s and 1930s diphtheria toxoid was adopted in large-scale public immunization campaigns, producing dramatic declines in diphtheria incidence and mortality, and became a permanent component of routine childhood vaccination (later combined into DTP). Toxoid immunization is now an established and uncontested cornerstone of vaccinology.',
+        source: {
+          externalId: 'src:frontiers-vaccines-through-centuries-2015',
+          name: 'Plotkin S. Vaccines Through Centuries: Major Cornerstones of Global Health. Front Public Health. 2015;3:269.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4659912/',
+          publishedAt: '2015-11-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Smith, Andrewes & Laidlaw influenza virus — 1933 ────────────────────────
+  {
+    externalId: 'trajectory:smith-andrewes-laidlaw-influenza-virus-1933',
+    text: "On 8 July 1933 Wilson Smith, Christopher Andrewes, and Patrick Laidlaw of the National Institute for Medical Research reported in The Lancet that filtered throat-washings from influenza patients produced a transmissible febrile illness in ferrets, establishing that human influenza is caused by a filterable virus rather than Pfeiffer's bacillus (Haemophilus influenzae).",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1933-07-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-07-08',
+        datePrecision: 'DAY',
+        reason: "Smith, Andrewes, and Laidlaw intranasally inoculated ferrets with bacteria-free filtrates of human influenza throat-washings and reproduced the illness, then showed convalescent ferret serum neutralized the agent. This was the first isolation of a human influenza virus and the first concrete evidence overturning Richard Pfeiffer's long-dominant 1892 claim that Bacillus influenzae was the cause of influenza.",
+        source: {
+          externalId: 'src:smith-andrewes-laidlaw-lancet-1933',
+          name: 'Smith W, Andrewes CH, Laidlaw PP. A virus obtained from influenza patients. Lancet. 1933;222(5732):66-68.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(00)78541-2/fulltext',
+          publishedAt: '1933-07-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-01-01',
+        datePrecision: 'YEAR',
+        reason: "Thomas Francis independently recovered filterable influenza virus from US patients and characterized the immunological relationships of recovered strains, confirming the ferret findings and consolidating the viral (later 'influenza A') etiology. The bacterial theory of influenza was definitively abandoned, and the virus became the basis for serology and the first inactivated influenza vaccines.",
+        source: {
+          externalId: 'src:francis-filterable-influenza-virus-1935',
+          name: 'Francis T. Immunological Relationships of Strains of Filtrable Virus Recovered from Cases of Human Influenza. Proc Soc Exp Biol Med. 1935;32:1116-1119.',
+          url: 'https://journals.sagepub.com/doi/10.3181/00379727-32-8016C',
+          publishedAt: '1935-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Duggar — aureomycin / chlortetracycline 1948 ────────────────────────────
+  {
+    externalId: 'trajectory:duggar-aureomycin-chlortetracycline-broad-spectrum-1948',
+    text: 'On 21 July 1948 Benjamin Minge Duggar of Lederle Laboratories announced at the New York Academy of Sciences that chlortetracycline (Aureomycin), produced by the soil actinomycete Streptomyces aureofaciens, was an orally active broad-spectrum antibiotic effective against bacteria and rickettsiae — the first of the tetracyclines.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1948-07-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-07-21',
+        datePrecision: 'DAY',
+        reason: 'Duggar reported the isolation of Aureomycin from a screen of thousands of soil samples and documented its activity across a wide range of Gram-positive, Gram-negative, and rickettsial organisms, with oral bioavailability. This established the first true broad-spectrum antibiotic and launched the tetracycline class, marking a discovery distinct from the narrow-spectrum penicillin and streptomycin already in use.',
+        source: {
+          externalId: 'src:duggar-aureomycin-annals-1948',
+          name: 'Duggar BM. Aureomycin: a product of the continuing search for new antibiotics. Ann N Y Acad Sci. 1948;51(2):177-181.',
+          url: 'https://doi.org/10.1111/j.1749-6632.1948.tb27262.x',
+          publishedAt: '1948-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Aureomycin was approved for clinical use and marketed by Lederle the same year it was reported, rapidly becoming a widely used oral antibiotic and the founding member of the tetracycline family. Its commercial and clinical adoption settled chlortetracycline\'s status as an established broad-spectrum therapeutic.',
+        source: {
+          externalId: 'src:nelson-levy-tetracyclines-history-2011',
+          name: 'Nelson ML, Levy SB. The history of the tetracyclines. Ann N Y Acad Sci. 2011;1241:17-32.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4817740/',
+          publishedAt: '2011-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Barber — penicillin-resistant Staphylococcus hospital epidemiology 1947 ──
+  {
+    externalId: 'trajectory:barber-penicillin-resistant-staphylococcus-hospital-1947',
+    text: 'On 29 November 1947 Mary Barber reported in the British Medical Journal that penicillin-resistant Staphylococcus aureus strains were spreading rapidly through hospital wards via cross-infection from a minority of resistant clones — among the first systematic documentation of acquired antibiotic resistance as a clinical and epidemiological threat.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-11-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-11-29',
+        datePrecision: 'DAY',
+        reason: "Using the new technique of bacteriophage typing, Barber documented that the proportion of penicillin-resistant staphylococci in her hospital had risen 'so rapidly as to be alarming,' and that the rise reflected nosocomial spread of resistant strains rather than only selection within individual treated patients. This was a foundational epidemiological account of hospital-acquired antibiotic resistance, fewer than seven years after penicillin's clinical introduction.",
+        source: {
+          externalId: 'src:barber-penicillin-resistant-staph-bmj-1947',
+          name: 'Barber M. Staphylococcal infection due to penicillin-resistant strains. Br Med J. 1947;2(4534):863-865.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2056216',
+          publishedAt: '1947-11-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: "By the mid-1950s penicillin-resistant S. aureus — including the pandemic phage-type 80/81 clone — dominated hospital infections worldwide, confirming Barber's warning and making penicillin resistance an accepted, established feature of staphylococcal disease that drove development of penicillinase-stable agents such as methicillin.",
+        source: {
+          externalId: 'src:lowy-staphylococcus-antimicrobial-resistance-2003',
+          name: 'Lowy FD. Antimicrobial resistance: the example of Staphylococcus aureus. J Clin Invest. 2003;111(9):1265-1273.',
+          url: 'https://www.jci.org/articles/view/18535',
+          publishedAt: '2003-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
