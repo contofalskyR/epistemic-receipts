@@ -39205,6 +39205,121 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG POLICY / PAIN MANAGEMENT ERA (1963–1970)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Saunders regular opioid dosing for terminal pain — 1963 ─────────────────
+  {
+    externalId: 'trajectory:saunders-regular-opioid-dosing-terminal-pain-1963',
+    text: 'Cicely Saunders, reporting in the Proceedings of the Royal Society of Medicine in March 1963, argued that intractable pain in terminal cancer should be controlled by giving opioids on a regular fixed schedule to pre-empt pain rather than waiting for it to recur (\'as needed\'), and that such regular therapeutic dosing did not produce meaningful addiction in dying patients.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Saunders, drawing on her clinical work at St Joseph\'s Hospice, published \'The treatment of intractable pain in terminal cancer,\' contending that constant pain demands continuous regular analgesia given before pain returns rather than the prevailing \'as required\' practice, and that fear of addiction should not withhold opioids from the dying. The paper recorded the regular round-the-clock dosing principle into the medical literature, directly challenging the PRN orthodoxy.',
+        source: {
+          externalId: 'src:saunders-intractable-pain-prsm-1963',
+          name: 'Saunders CM. The treatment of intractable pain in terminal cancer. Proc R Soc Med. 1963 Mar;56(3):195-197.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13986816/',
+          publishedAt: '1963-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Saunders founded St Christopher\'s Hospice, which opened in 1967 as the first modern research-and-teaching hospice, embedding regular round-the-clock opioid administration and the \'total pain\' approach into institutional practice. The hospice became the template for the global palliative-care movement, and the regular-dosing principle was later codified worldwide in WHO\'s 1986 \'by the clock\' cancer-pain guidance — settling Saunders\' method as standard end-of-life pain care.',
+        source: {
+          externalId: 'src:saunders-evolution-palliative-care-jrsm-2001',
+          name: 'Saunders C. The evolution of palliative care. J R Soc Med. 2001 Sep;94(9):430-432.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11535742/',
+          publishedAt: '2001-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO drug dependence terminology replaces addiction — 1965 ───────────────
+  {
+    externalId: 'trajectory:who-drug-dependence-terminology-replaces-addiction-1965',
+    text: 'A WHO expert group (Eddy, Halbach, Isbell, and Seevers), reporting in the Bulletin of the World Health Organization in 1965, recommended abandoning the ill-defined terms \'drug addiction\' and \'drug habituation\' in favor of a single unifying concept, \'drug dependence\' — psychic and/or physical dependence on a drug, qualified by the type of agent — as the scientific basis for classifying problematic drug use.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1965-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Eddy, Halbach, Isbell, and Seevers published \'Drug dependence: its significance and characteristics\' in the Bulletin of the World Health Organization in 1965, arguing that no single definition of \'addiction\' could span agents as different as opioids, barbiturates, and stimulants, and proposing \'drug dependence of [a specified] type\' as the replacement nomenclature. The paper recorded into the scientific literature a new taxonomy that separated the concept of dependence from moralized notions of \'addiction.\'',
+        source: {
+          externalId: 'src:eddy-drug-dependence-bullwho-1965',
+          name: 'Eddy NB, Halbach H, Isbell H, Seevers MH. Drug dependence: its significance and characteristics. Bull World Health Organ. 1965;32(5):721-733.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5294186/',
+          publishedAt: '1965-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1969-01-01',
+        datePrecision: 'YEAR',
+        reason: 'WHO formally adopted the new framework by renaming its standing advisory body the Expert Committee on Drug Dependence, whose 16th report (Technical Report Series No. 407, 1969) operationalized \'drug dependence\' as the official WHO concept. Institutional adoption settled the terminology that subsequently shaped the diagnostic categories of the ICD and DSM and the modern distinction between physical dependence and addiction.',
+        source: {
+          externalId: 'src:who-trs-407-drug-dependence-1969',
+          name: 'WHO Expert Committee on Drug Dependence. Sixteenth Report. WHO Technical Report Series No. 407. Geneva: World Health Organization; 1969.',
+          url: 'https://ecddrepository.org/sites/default/files/2023-04/who_trs_407_text_version.pdf',
+          publishedAt: '1969-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Controlled Substances Act opioid scheduling — 1970 ──────────────────────
+  {
+    externalId: 'trajectory:controlled-substances-act-opioid-scheduling-1970',
+    text: 'The Controlled Substances Act — Title II of the Comprehensive Drug Abuse Prevention and Control Act of 1970 (Pub. L. 91-513), signed on 27 October 1970 — placed medical opioids such as morphine, oxycodone, methadone, and fentanyl in Schedule II, formally classifying them as drugs with accepted medical use but high potential for abuse and dependence, under a unified five-schedule federal control system.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-10-27',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted and President Nixon signed Pub. L. 91-513 on 27 October 1970, replacing the Harrison Narcotics Act regime with a single graded scheduling framework and assigning therapeutic opioids to Schedule II. The statute institutionally settled the dual epistemic premise that medical opioids have a legitimate accepted medical use yet carry high abuse and dependence liability, governing how every opioid analgesic has since been classified, manufactured, and prescribed in the United States.',
+        source: {
+          externalId: 'src:pl-91-513-csa-1970',
+          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970 (Controlled Substances Act), Pub. L. 91-513, 84 Stat. 1236 (Oct. 27, 1970).',
+          url: 'https://www.govinfo.gov/content/pkg/STATUTE-84/pdf/STATUTE-84-Pg1236.pdf',
+          publishedAt: '1970-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // ENDOCRINOLOGY / ORGANOTHERAPY ERA (1889–1944)
   // ═══════════════════════════════════════════════════════════════════════════════
 
