@@ -46264,48 +46264,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── VICTORIA — vericiguat sGC stimulator in HFrEF (2020) ───────────────────
-  {
-    externalId: 'trajectory:victoria-vericiguat-sgc-stimulator-heart-failure-2020',
-    text: 'On 28 March 2020 the VICTORIA trial (Armstrong et al., NEJM) reported that the soluble guanylate cyclase stimulator vericiguat modestly reduced cardiovascular death or heart-failure hospitalization in high-risk patients with worsening heart failure and reduced ejection fraction, a finding the FDA adopted by approving Verquvo on 20 January 2021 as a new mechanistic class of heart-failure therapy.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2020-03-28',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2020-03-28',
-        datePrecision: 'DAY',
-        reason: 'Paul Armstrong and the VICTORIA investigators reported in the New England Journal of Medicine that vericiguat, a soluble guanylate cyclase stimulator, reduced the primary composite of cardiovascular death or first heart-failure hospitalization (35.5% vs 38.5%, HR 0.90, P=0.02) versus placebo in 5,050 patients with recently worsened HFrEF. The result recorded the first outcome benefit for direct sGC stimulation, a mechanism distinct from neurohormonal blockade, in a high-risk population previously lacking dedicated therapy.',
-        source: {
-          externalId: 'src:armstrong-victoria-vericiguat-nejm-2020',
-          name: 'Armstrong PW, Pieske B, Anstrom KJ, et al. Vericiguat in Patients with Heart Failure and Reduced Ejection Fraction. N Engl J Med. 2020;382(20):1883-1893.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/32222134/',
-          publishedAt: '2020-03-28',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2021-01-20',
-        datePrecision: 'DAY',
-        reason: 'On the basis of VICTORIA, the FDA approved Verquvo (vericiguat) on 20 January 2021 to reduce the risk of cardiovascular death and heart-failure hospitalization following a worsening event in adults with symptomatic chronic heart failure and ejection fraction below 45%. As the first treatment approved specifically for patients after a heart-failure hospitalization or need for outpatient IV diuretics, the approval institutionally settled sGC stimulation as a sanctioned HFrEF therapy.',
-        source: {
-          externalId: 'src:fda-verquvo-vericiguat-approval-2021',
-          name: 'Bayer/Merck. U.S. FDA approves vericiguat (Verquvo) for patients with symptomatic chronic heart failure. Press release, 20 January 2021.',
-          url: 'https://www.bayer.com/media/en-us/us-fda-approves-vericiguat-for-patients-with-symptomatic-chronic-heart-failure/',
-          publishedAt: '2021-01-20',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── GALACTIC-HF — omecamtiv mecarbil cardiac myosin activator / FDA CRL (2020/2023) ─
   {
     externalId: 'trajectory:galactic-hf-omecamtiv-mecarbil-fda-rejection-2020',
