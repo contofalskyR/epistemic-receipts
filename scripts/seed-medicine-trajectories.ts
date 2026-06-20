@@ -75,7 +75,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Fleming publishes his observation in the British Journal of Experimental Pathology, describing the mold\'s bacteriostatic effect. The finding is noted but largely ignored for a decade — Fleming himself was unable to stabilize the compound.',
         source: {
           externalId: 'src:fleming-penicillin-1929',
-          name: 'Fleming A. On the antibacterial action of cultures of a Penicillium. British Journal of Experimental Pathology. 1929;10(3):226–236.',
+          name: 'Fleming A. On the antibacterial action of cultures of a Penicillium. British Journal of Experimental Pathology. 1929;10(3):226--236.',
           url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2048009/',
           publishedAt: '1929-06-01',
           methodologyType: 'primary',
@@ -90,7 +90,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Chain, Florey, and colleagues at Oxford publish the first clinical results demonstrating penicillin\'s efficacy in infected mice in The Lancet, establishing its therapeutic potential. This paper restarts serious scientific and institutional interest.',
         source: {
           externalId: 'src:chain-florey-penicillin-1940',
-          name: 'Chain E, Florey HW, et al. Penicillin as a Chemotherapeutic Agent. Lancet. 1940;236(6104):226–228.',
+          name: 'Chain E, Florey HW, et al. Penicillin as a Chemotherapeutic Agent. Lancet. 1940;236(6104):226--228.',
           url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(01)08728-1/fulltext',
           publishedAt: '1940-08-24',
           methodologyType: 'primary',
@@ -115,7 +115,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CLINICAL TRIALS ERA (1950–1990)
+  // CLINICAL TRIALS ERA (1950--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 2. Smoking causes lung cancer — Doll & Hill 1950 ───────────────────────
@@ -136,7 +136,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Doll and Hill publish a landmark case-control study in the British Medical Journal showing a statistically significant association between cigarette smoking and lung cancer. Simultaneously Wynder & Graham publish similar findings in JAMA. Expert literature moves from OPEN to RECORDED.',
         source: {
           externalId: 'src:doll-hill-smoking-1950',
-          name: 'Doll R, Hill AB. Smoking and Carcinoma of the Lung. BMJ. 1950;2(4682):739–748.',
+          name: 'Doll R, Hill AB. Smoking and Carcinoma of the Lung. BMJ. 1950;2(4682):739--748.',
           url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2038856/',
           publishedAt: '1950-09-30',
           methodologyType: 'primary',
@@ -176,10 +176,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // VACCINE SAFETY & EFFICACY ERA (1990–2010)
+  // VACCINE SAFETY & EFFICACY ERA (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── 4. Wakefield MMR-autism fraud — 1998–2010 ───────────────────────────────
+  // ── 4. Wakefield MMR-autism fraud — 1998--2010 ───────────────────────────────
   {
     externalId: 'trajectory:wakefield-mmr-autism-1998',
     text: 'Andrew Wakefield and colleagues reported in The Lancet on 28 February 1998 that MMR vaccination was temporally associated with the onset of behavioural (autistic) regression and non-specific colitis in 12 children, suggesting a possible link between the MMR vaccine and pervasive developmental disorder.',
@@ -209,7 +209,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2002-11-07',
         datePrecision: 'DAY',
-        reason: 'Madsen et al. published a population-based cohort study of all 537,303 children born in Denmark 1991–1998 in the New England Journal of Medicine, finding no increased risk of autism among MMR-vaccinated children. This and subsequent large epidemiological studies failed to replicate any MMR–autism association, placing the original claim in serious dispute.',
+        reason: 'Madsen et al. published a population-based cohort study of all 537,303 children born in Denmark 1991--1998 in the New England Journal of Medicine, finding no increased risk of autism among MMR-vaccinated children. This and subsequent large epidemiological studies failed to replicate any MMR--autism association, placing the original claim in serious dispute.',
         source: {
           externalId: 'src:madsen-nejm-mmr-2002',
           name: 'Madsen KM, Hviid A, Vestergaard M, et al. A population-based study of measles, mumps, and rubella vaccination and autism. N Engl J Med. 2002;347(19):1477-1482.',
@@ -224,7 +224,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2010-02-02',
         datePrecision: 'DAY',
-        reason: 'Following the UK General Medical Council\'s Fitness to Practise Panel finding (28 January 2010) that key claims in the paper were false and that the research was conducted unethically, The Lancet fully retracted the 1998 article. The retraction formally erased the study from the scientific record, completing the reversal of the MMR–autism claim.',
+        reason: 'Following the UK General Medical Council\'s Fitness to Practise Panel finding (28 January 2010) that key claims in the paper were false and that the research was conducted unethically, The Lancet fully retracted the 1998 article. The retraction formally erased the study from the scientific record, completing the reversal of the MMR--autism claim.',
         source: {
           externalId: 'src:lancet-retraction-wakefield-2010',
           name: 'The Editors of The Lancet. Retraction—Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children. Lancet. 2010;375(9713):445.',
@@ -236,7 +236,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 5. RotaShield rotavirus vaccine withdrawal — 1998–1999 ──────────────────
+  // ── 5. RotaShield rotavirus vaccine withdrawal — 1998--1999 ──────────────────
   {
     externalId: 'trajectory:rotashield-rotavirus-withdrawal-1999',
     text: 'RotaShield (RRV-TV), the first licensed rotavirus vaccine, was approved by the FDA on 31 August 1998 and recommended for routine infant immunization in the United States as a safe and effective vaccine.',
@@ -281,7 +281,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1999-10-22',
         datePrecision: 'DAY',
-        reason: 'After analysis confirmed a significantly increased risk of intussusception in the 1–2 weeks following vaccination, ACIP withdrew its recommendation on 22 October 1999 and the manufacturer withdrew RotaShield from the market. It was the first vaccine pulled in the U.S. primarily on the basis of a post-licensure safety signal.',
+        reason: 'After analysis confirmed a significantly increased risk of intussusception in the 1--2 weeks following vaccination, ACIP withdrew its recommendation on 22 October 1999 and the manufacturer withdrew RotaShield from the market. It was the first vaccine pulled in the U.S. primarily on the basis of a post-licensure safety signal.',
         source: {
           externalId: 'src:cdc-mmwr-rotashield-withdraw-1999',
           name: 'CDC. Withdrawal of rotavirus vaccine recommendation. MMWR Morb Mortal Wkly Rep. 1999;48(43):1007.',
@@ -293,7 +293,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 6. HAART triple therapy for HIV — 1997–1998 ─────────────────────────────
+  // ── 6. HAART triple therapy for HIV — 1997--1998 ─────────────────────────────
   {
     externalId: 'trajectory:haart-triple-therapy-hiv-1997',
     text: 'A randomized controlled trial reported on 11 September 1997 that adding the protease inhibitor indinavir to two nucleoside analogues (triple combination antiretroviral therapy) roughly halved progression to AIDS or death in patients with advanced HIV infection.',
@@ -377,7 +377,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 8. Gardasil HPV vaccine approval — 2006–2007 ───────────────────────────
+  // ── 8. Gardasil HPV vaccine approval — 2006--2007 ───────────────────────────
   {
     externalId: 'trajectory:gardasil-hpv-vaccine-approval-2006',
     text: 'The FDA approved Gardasil, the first quadrivalent human papillomavirus (HPV types 6, 11, 16, 18) vaccine, on 8 June 2006 to prevent cervical cancer and precancerous cervical lesions in females.',
@@ -392,7 +392,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2006-06-08',
         datePrecision: 'DAY',
-        reason: 'The FDA licensed Merck\'s Gardasil for females aged 9–26 based on the FUTURE clinical trial program, formally recording the claim that vaccination against oncogenic HPV types could prevent cervical cancer precursors. It was the first vaccine specifically licensed to prevent a cancer in women.',
+        reason: 'The FDA licensed Merck\'s Gardasil for females aged 9--26 based on the FUTURE clinical trial program, formally recording the claim that vaccination against oncogenic HPV types could prevent cervical cancer precursors. It was the first vaccine specifically licensed to prevent a cancer in women.',
         source: {
           externalId: 'src:fda-gardasil-approval-2006',
           name: 'U.S. Food and Drug Administration. Gardasil — Product Approval Information (Licensing Action), June 8, 2006.',
@@ -456,7 +456,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The Kefauver-Harris Amendment to the U.S. Federal Food, Drug and Cosmetic Act is signed on October 10, 1962, requiring proof of efficacy (not just safety) for drug approval. The law was directly prompted by the thalidomide crisis, though the FDA\'s Frances Kelsey had blocked U.S. approval. The amendment transforms global drug regulation.',
         source: {
           externalId: 'src:kefauver-harris-1962',
-          name: 'Drug Amendments Act of 1962 (Kefauver-Harris Amendment). Pub. L. 87–781, 76 Stat. 780.',
+          name: 'Drug Amendments Act of 1962 (Kefauver-Harris Amendment). Pub. L. 87--781, 76 Stat. 780.',
           url: 'https://www.fda.gov/patients/drug-development-process/step-3-clinical-research',
           publishedAt: '1962-10-10',
           methodologyType: 'primary',
@@ -481,13 +481,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHIATRIC NEUROSURGERY ERA (1930s–1960s)
+  // PSYCHIATRIC NEUROSURGERY ERA (1930s--1960s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 9. Prefrontal lobotomy — Nobel → abandoned ───────────────────────────────
   {
     externalId: 'trajectory:prefrontal-lobotomy-therapeutic-value-1936',
-    text: 'Prefrontal leucotomy (lobotomy), introduced by António Egas Moniz and Almeida Lima in 1935–1936, has therapeutic value as a treatment for severe psychoses and mental illness.',
+    text: 'Prefrontal leucotomy (lobotomy), introduced by António Egas Moniz and Almeida Lima in 1935--1936, has therapeutic value as a treatment for severe psychoses and mental illness.',
     claimType: 'HYBRID',
     claimEmergedAt: '1936-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -542,7 +542,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ALZHEIMER'S / AMYLOID HYPOTHESIS ERA (2006–2024)
+  // ALZHEIMER'S / AMYLOID HYPOTHESIS ERA (2006--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 10. Lesné Aβ*56 — fabrication retracted 2024 ────────────────────────────
@@ -702,7 +702,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DRUG DISCOVERY ERA — EARLY 20TH CENTURY (1930s–1940s)
+  // DRUG DISCOVERY ERA — EARLY 20TH CENTURY (1930s--1940s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 14. Dinitrophenol (DNP) for obesity — 1933 → reversed 1938 ──────────────
@@ -723,7 +723,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Tainter, Stockton, and Cutting published \'Use of Dinitrophenol in Obesity and Related Conditions: A Progress Report\' in JAMA, reporting 113 consecutive obesity cases in which DNP raised metabolic rate roughly 11% per 100 mg and produced rapid weight loss \'without important damage to vital organs.\' Following Tainter and Cutting\'s Stanford work earlier that year, this recorded in the expert literature the claim that DNP was a safe, effective anti-obesity agent, and the drug was sold under names such as Alpha-Dinitrophenol and Dinitrenal.',
         source: {
           externalId: 'src:tainter-dnp-jama-progress-1933',
-          name: 'Tainter ML, Stockton AB, Cutting WC. Use of Dinitrophenol in Obesity and Related Conditions: A Progress Report. JAMA. 1933;101(19):1472–1475.',
+          name: 'Tainter ML, Stockton AB, Cutting WC. Use of Dinitrophenol in Obesity and Related Conditions: A Progress Report. JAMA. 1933;101(19):1472--1475.',
           url: 'https://jamanetwork.com/journals/jama/fullarticle/245872',
           publishedAt: '1933-11-04',
           methodologyType: 'primary',
@@ -738,7 +738,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After thousands of users suffered irreversible harm — rapidly developing cataracts, agranulocytosis, fatal hyperthermia — and multiple deaths, physicians recognized that DNP\'s therapeutic index was untenable, and passage of the Federal Food, Drug, and Cosmetic Act of 1938 gave regulators the authority to halt its distribution as \'extremely dangerous and not fit for human consumption.\' DNP was effectively removed from medical use, reversing the original safety-and-efficacy claim.',
         source: {
           externalId: 'src:colman-dnp-regulatory-dilemma-2007',
-          name: 'Colman E. Dinitrophenol and obesity: an early twentieth-century regulatory dilemma. Regul Toxicol Pharmacol. 2007;48(2):115–117.',
+          name: 'Colman E. Dinitrophenol and obesity: an early twentieth-century regulatory dilemma. Regul Toxicol Pharmacol. 2007;48(2):115--117.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/17475379/',
           publishedAt: '2007-07-01',
           methodologyType: 'derivative',
@@ -765,7 +765,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Dodds, Goldberg, Lawson, and Robinson reported in Nature that diethylstilbestrol possessed potent oestrogenic activity — about three times that of natural estrogen and effective orally — establishing the first inexpensive, unpatented synthetic estrogen. This recorded the claim of a usable synthetic estrogen, which over the following decade was promoted (notably by Smith & Smith) and used to prevent miscarriage in pregnant women.',
         source: {
           externalId: 'src:dodds-des-nature-1938',
-          name: 'Dodds EC, Goldberg L, Lawson W, Robinson R. Oestrogenic Activity of Certain Synthetic Compounds. Nature. 1938;141(3562):247–248.',
+          name: 'Dodds EC, Goldberg L, Lawson W, Robinson R. Oestrogenic Activity of Certain Synthetic Compounds. Nature. 1938;141(3562):247--248.',
           url: 'https://www.nature.com/articles/141247b0',
           publishedAt: '1938-02-05',
           methodologyType: 'primary',
@@ -780,7 +780,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Herbst, Ulfelder, and Poskanzer reported in the New England Journal of Medicine that seven of eight young women with clear-cell adenocarcinoma of the vagina had mothers who took DES during the first trimester of pregnancy — the first evidence of a transplacental carcinogen. The finding overturned the claim that DES was a safe drug in pregnancy, transforming it from therapeutic agent to documented cause of cancer in exposed daughters.',
         source: {
           externalId: 'src:herbst-des-vaginal-cancer-nejm-1971',
-          name: 'Herbst AL, Ulfelder H, Poskanzer DC. Adenocarcinoma of the vagina. Association of maternal stilbestrol therapy with tumor appearance in young women. N Engl J Med. 1971;284(15):878–881.',
+          name: 'Herbst AL, Ulfelder H, Poskanzer DC. Adenocarcinoma of the vagina. Association of maternal stilbestrol therapy with tumor appearance in young women. N Engl J Med. 1971;284(15):878--881.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/5549830/',
           publishedAt: '1971-04-22',
           methodologyType: 'primary',
@@ -819,10 +819,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1949-04-01',
         datePrecision: 'MONTH',
-        reason: 'Following the first injection of compound E into a rheumatoid arthritis patient (Mrs. G.) at the Mayo Clinic in September 1948, Hench, Kendall, Slocumb, and Polley published their preliminary report in the Proceedings of the Staff Meetings of the Mayo Clinic (1949;24:181–197), describing rapid, dramatic relief of joint inflammation. This recorded in the expert literature the claim that an adrenal-cortex hormone could reverse the symptoms of rheumatoid disease, opening the corticosteroid era.',
+        reason: 'Following the first injection of compound E into a rheumatoid arthritis patient (Mrs. G.) at the Mayo Clinic in September 1948, Hench, Kendall, Slocumb, and Polley published their preliminary report in the Proceedings of the Staff Meetings of the Mayo Clinic (1949;24:181--197), describing rapid, dramatic relief of joint inflammation. This recorded in the expert literature the claim that an adrenal-cortex hormone could reverse the symptoms of rheumatoid disease, opening the corticosteroid era.',
         source: {
           externalId: 'src:hench-cortisone-mayo-1949',
-          name: 'Hench PS, Kendall EC, Slocumb CH, Polley HF. The effect of a hormone of the adrenal cortex (17-hydroxy-11-dehydrocorticosterone: compound E) and of pituitary adrenocorticotropic hormone on rheumatoid arthritis. Proc Staff Meet Mayo Clin. 1949;24(8):181–197.',
+          name: 'Hench PS, Kendall EC, Slocumb CH, Polley HF. The effect of a hormone of the adrenal cortex (17-hydroxy-11-dehydrocorticosterone: compound E) and of pituitary adrenocorticotropic hormone on rheumatoid arthritis. Proc Staff Meet Mayo Clin. 1949;24(8):181--197.',
           url: 'https://en.wikipedia.org/wiki/Cortisone',
           publishedAt: '1949-04-01',
           methodologyType: 'derivative',
@@ -864,7 +864,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Himsworth published \'Diabetes Mellitus: Its Differentiation into Insulin-Sensitive and Insulin-Insensitive Types\' in The Lancet, using glucose-plus-insulin tolerance tests to show that some diabetics responded poorly to administered insulin. Decades before insulin could be measured directly, this recorded in the expert literature the claim that diabetes comprises at least two pathophysiologically distinct conditions — effectively the first description of insulin resistance.',
         source: {
           externalId: 'src:himsworth-diabetes-types-lancet-1936',
-          name: 'Himsworth HP. Diabetes mellitus: its differentiation into insulin-sensitive and insulin-insensitive types. Lancet. 1936;227(5864):127–130. (Reprinted Int J Epidemiol. 2013;42(6):1594–1598.)',
+          name: 'Himsworth HP. Diabetes mellitus: its differentiation into insulin-sensitive and insulin-insensitive types. Lancet. 1936;227(5864):127--130. (Reprinted Int J Epidemiol. 2013;42(6):1594--1598.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/24415598/',
           publishedAt: '1936-01-18',
           methodologyType: 'primary',
@@ -879,7 +879,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The National Diabetes Data Group published \'Classification and Diagnosis of Diabetes Mellitus and Other Categories of Glucose Intolerance\' in Diabetes, formally codifying the two major forms as insulin-dependent (IDDM) and non-insulin-dependent (NIDDM) diabetes — the standard later endorsed by the ADA, British Diabetic Association, and WHO. This institutional classification settled, as the official framework of diabetology, the two-type distinction Himsworth had proposed in 1936.',
         source: {
           externalId: 'src:nddg-diabetes-classification-1979',
-          name: 'National Diabetes Data Group. Classification and Diagnosis of Diabetes Mellitus and Other Categories of Glucose Intolerance. Diabetes. 1979;28(12):1039–1057.',
+          name: 'National Diabetes Data Group. Classification and Diagnosis of Diabetes Mellitus and Other Categories of Glucose Intolerance. Diabetes. 1979;28(12):1039--1057.',
           url: 'https://diabetesjournals.org/diabetes/article/28/12/1039/5951/Classification-and-Diagnosis-of-Diabetes-Mellitus',
           publishedAt: '1979-12-01',
           methodologyType: 'primary',
@@ -889,7 +889,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS ERA (1980–2022)
+  // OPIOID CRISIS ERA (1980--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 18. Porter-Jick NEJM letter — addiction rare in hospitalized patients 1980 ─
@@ -1076,13 +1076,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOVASCULAR EVIDENCE ERA (1967–1994)
+  // CARDIOVASCULAR EVIDENCE ERA (1967--1994)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 22. VA Hypertension Trial — first RCT proving BP treatment prevents harm ──
   {
     externalId: 'trajectory:va-hypertension-treatment-benefit-1967',
-    text: 'In 1967 the Veterans Administration Cooperative Study Group on Antihypertensive Agents reported that drug treatment of severe hypertension (diastolic 115–129 mm Hg) sharply reduced morbid cardiovascular events, the first randomized proof that lowering blood pressure prevents harm.',
+    text: 'In 1967 the Veterans Administration Cooperative Study Group on Antihypertensive Agents reported that drug treatment of severe hypertension (diastolic 115--129 mm Hg) sharply reduced morbid cardiovascular events, the first randomized proof that lowering blood pressure prevents harm.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1967-12-11',
     claimEmergedPrecision: 'DAY',
@@ -1094,7 +1094,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1967-12-11',
         datePrecision: 'DAY',
-        reason: 'The VA Cooperative Study Group published the first randomized controlled trial showing that antihypertensive drug therapy in men with severe diastolic hypertension (115–129 mm Hg) markedly reduced strokes, heart failure, and death versus placebo — so decisively that the severe-hypertension arm was halted early. This put the claim that treating high blood pressure prevents cardiovascular events on the scientific record for the first time.',
+        reason: 'The VA Cooperative Study Group published the first randomized controlled trial showing that antihypertensive drug therapy in men with severe diastolic hypertension (115--129 mm Hg) markedly reduced strokes, heart failure, and death versus placebo — so decisively that the severe-hypertension arm was halted early. This put the claim that treating high blood pressure prevents cardiovascular events on the scientific record for the first time.',
         source: {
           externalId: 'src:va-coop-hypertension-severe-jama-1967',
           name: 'Veterans Administration Cooperative Study Group on Antihypertensive Agents. Effects of treatment on morbidity in hypertension. Results in patients with diastolic blood pressures averaging 115 through 129 mm Hg. JAMA. 1967;202(11):1028-1034.',
@@ -1109,7 +1109,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1970-08-17',
         datePrecision: 'DAY',
-        reason: 'The VA Cooperative Study Group\'s second report extended the benefit to the far larger population with moderate hypertension (diastolic 90–114 mm Hg), showing treatment roughly halved morbid events, with the largest effect on stroke. This generalized the treatment benefit from rare severe cases to common moderate hypertension, settling antihypertensive therapy as standard preventive care and launching routine blood-pressure screening.',
+        reason: 'The VA Cooperative Study Group\'s second report extended the benefit to the far larger population with moderate hypertension (diastolic 90--114 mm Hg), showing treatment roughly halved morbid events, with the largest effect on stroke. This generalized the treatment benefit from rare severe cases to common moderate hypertension, settling antihypertensive therapy as standard preventive care and launching routine blood-pressure screening.',
         source: {
           externalId: 'src:va-coop-hypertension-moderate-jama-1970',
           name: 'Veterans Administration Cooperative Study Group on Antihypertensive Agents. Effects of treatment on morbidity in hypertension. II. Results in patients with diastolic blood pressure averaging 90 through 114 mm Hg. JAMA. 1970;213(7):1143-1152.',
@@ -1232,7 +1232,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1994-11-19',
         datePrecision: 'DAY',
-        reason: 'The Scandinavian Simvastatin Survival Study (4S), a randomized placebo-controlled trial in 4,444 coronary heart disease patients, reported a 30% relative reduction in all-cause mortality (relative risk 0.70, 95% CI 0.58–0.85, p=0.0003) with a statin. This converted the statin class from a cholesterol-lowering agent of presumed benefit into a therapy with proven survival benefit, settling statins as standard secondary-prevention treatment.',
+        reason: 'The Scandinavian Simvastatin Survival Study (4S), a randomized placebo-controlled trial in 4,444 coronary heart disease patients, reported a 30% relative reduction in all-cause mortality (relative risk 0.70, 95% CI 0.58--0.85, p=0.0003) with a statin. This converted the statin class from a cholesterol-lowering agent of presumed benefit into a therapy with proven survival benefit, settling statins as standard secondary-prevention treatment.',
         source: {
           externalId: 'src:4s-simvastatin-lancet-1994',
           name: 'Scandinavian Simvastatin Survival Study Group. Randomised trial of cholesterol lowering in 4444 patients with coronary heart disease: the Scandinavian Simvastatin Survival Study (4S). Lancet. 1994;344(8934):1383-1389.',
@@ -1245,7 +1245,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // VACCINE REVERSAL & ANTIMICROBIAL RESISTANCE ERA (2000–2012)
+  // VACCINE REVERSAL & ANTIMICROBIAL RESISTANCE ERA (2000--2012)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 27. LYMErix Lyme vaccine withdrawal — 2002 ──────────────────────────────
@@ -1446,7 +1446,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2010-08-27',
         datePrecision: 'DAY',
-        reason: "After clusters of new childhood narcolepsy cases in Finland and Sweden, Finland's National Institute for Health and Welfare (THL) recommended suspending Pandemrix, and on 27 August 2010 the European Medicines Agency initiated an Article 20 review of a possible Pandemrix–narcolepsy link. The post-marketing safety signal was formally recorded.",
+        reason: "After clusters of new childhood narcolepsy cases in Finland and Sweden, Finland's National Institute for Health and Welfare (THL) recommended suspending Pandemrix, and on 27 August 2010 the European Medicines Agency initiated an Article 20 review of a possible Pandemrix--narcolepsy link. The post-marketing safety signal was formally recorded.",
         source: {
           externalId: 'src:ema-pandemrix-narcolepsy-review-2010',
           name: 'European Medicines Agency. European Medicines Agency reviews further data on narcolepsy and possible association with Pandemrix (review initiated 27 August 2010). 2011.',
@@ -1461,7 +1461,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2012-03-28',
         datePrecision: 'DAY',
-        reason: 'Nohynek et al. published a retrospective cohort of all Finnish children showing an abrupt rise in narcolepsy incidence among 4–19-year-olds vaccinated with Pandemrix (roughly a 12-fold increased risk), with no increase in other age groups. The epidemiological association became widely accepted, later attributed to an autoimmune molecular-mimicry mechanism, and Pandemrix use was restricted.',
+        reason: 'Nohynek et al. published a retrospective cohort of all Finnish children showing an abrupt rise in narcolepsy incidence among 4--19-year-olds vaccinated with Pandemrix (roughly a 12-fold increased risk), with no increase in other age groups. The epidemiological association became widely accepted, later attributed to an autoimmune molecular-mimicry mechanism, and Pandemrix use was restricted.',
         source: {
           externalId: 'src:nohynek-pandemrix-narcolepsy-plosone-2012',
           name: 'Nohynek H, Jokinen J, Partinen M, et al. AS03 adjuvanted AH1N1 vaccine associated with an abrupt increase in the incidence of childhood narcolepsy in Finland. PLoS One. 2012;7(3):e33536.',
@@ -1474,10 +1474,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN DRUG APPROVALS ERA (2014–2024)
+  // MODERN DRUG APPROVALS ERA (2014--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── 32. Donanemab (Kisunla) Alzheimer's approval — 2023–2024 ─────────────────
+  // ── 32. Donanemab (Kisunla) Alzheimer's approval — 2023--2024 ─────────────────
   {
     externalId: 'trajectory:donanemab-kisunla-alzheimers-approval-2024',
     text: "Eli Lilly's donanemab (Kisunla), an anti-amyloid-beta monoclonal antibody, slows clinical decline in early symptomatic Alzheimer's disease, as demonstrated by the phase 3 TRAILBLAZER-ALZ 2 trial reported on 17 July 2023 and ratified by FDA traditional approval on 2 July 2024.",
@@ -1576,7 +1576,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 34. Brexanolone (Zulresso) for postpartum depression — 2018–2019 ─────────
+  // ── 34. Brexanolone (Zulresso) for postpartum depression — 2018--2019 ─────────
   {
     externalId: 'trajectory:brexanolone-zulresso-postpartum-depression-2019',
     text: 'Brexanolone (Zulresso, Sage Therapeutics), an intravenous neuroactive-steroid GABA-A modulator identical to endogenous allopregnanolone, is an effective treatment for postpartum depression, as shown in phase 3 trials reported on 22 September 2018 and approved by the FDA on 19 March 2019 as the first drug indicated specifically for postpartum depression.',
@@ -1618,7 +1618,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 35. Pimavanserin (Nuplazid) for Parkinson's disease psychosis — 2014–2018 ─
+  // ── 35. Pimavanserin (Nuplazid) for Parkinson's disease psychosis — 2014--2018 ─
   {
     externalId: 'trajectory:pimavanserin-nuplazid-parkinsons-psychosis-2016',
     text: 'Pimavanserin (Nuplazid, Acadia), a selective 5-HT2A inverse agonist with no dopamine-receptor blockade, is an effective and safe treatment for hallucinations and delusions of Parkinson\'s disease psychosis, as shown in a phase 3 trial reported on 8 February 2014 and approved by the FDA on 29 April 2016 as the first drug for that indication.',
@@ -1676,7 +1676,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY ERA (1891–1924)
+  // ENDOCRINOLOGY ERA (1891--1924)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 36. Murray thyroid extract for myxoedema — 1891 ─────────────────────────
@@ -1697,7 +1697,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Murray published \'Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep\' in the BMJ, reporting a 46-year-old woman with characteristic myxoedema who, after injections begun 13 April 1891, was dramatically improved within three months. This recorded in the expert literature the claim that supplying thyroid-gland material could reverse a deficiency disease — the conceptual birth of hormone replacement therapy, before any thyroid hormone had been chemically identified.',
         source: {
           externalId: 'src:murray-myxoedema-bmj-1891',
-          name: 'Murray GR. Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep. Br Med J. 1891;2(1606):796–797.',
+          name: 'Murray GR. Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep. Br Med J. 1891;2(1606):796--797.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2273741/',
           publishedAt: '1891-10-10',
           methodologyType: 'primary',
@@ -1712,7 +1712,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Thyroid therapy was rapidly and universally adopted: oral dried-thyroid extract replaced injections, entered the pharmacopoeias as standard treatment for myxoedema/hypothyroidism, and Murray\'s original patient survived 28 years on continuous treatment — confirming durable, reproducible benefit. By the 1920s thyroid replacement was the settled standard of care for hypothyroidism, a status it retains today (now as levothyroxine).',
         source: {
           externalId: 'src:slater-thyroid-replacement-history-jrsm-2011',
-          name: 'Slater S. The discovery of thyroid replacement therapy. J R Soc Med. 2011;104(1):15–18 (Part 1) and related parts.',
+          name: 'Slater S. The discovery of thyroid replacement therapy. J R Soc Med. 2011;104(1):15--18 (Part 1) and related parts.',
           url: 'https://journals.sagepub.com/doi/10.1258/jrsm.2010.10k052',
           publishedAt: '2011-01-01',
           methodologyType: 'derivative',
@@ -1736,10 +1736,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1915-06-19',
         datePrecision: 'DAY',
-        reason: 'Kendall published \'The Isolation in Crystalline Form of the Compound Containing Iodin, Which Occurs in the Thyroid: Its Chemical Nature and Physiologic Activity\' in JAMA, reporting a crystalline compound (~60–65% iodine) extracted from hog thyroid that produced the physiologic effects of thyroid administration in dogs and humans. This recorded the claim that a single iodine-bearing molecule was the active hormone of the thyroid, moving thyroid function from organ extract to defined chemistry.',
+        reason: 'Kendall published \'The Isolation in Crystalline Form of the Compound Containing Iodin, Which Occurs in the Thyroid: Its Chemical Nature and Physiologic Activity\' in JAMA, reporting a crystalline compound (~60--65% iodine) extracted from hog thyroid that produced the physiologic effects of thyroid administration in dogs and humans. This recorded the claim that a single iodine-bearing molecule was the active hormone of the thyroid, moving thyroid function from organ extract to defined chemistry.',
         source: {
           externalId: 'src:kendall-thyroxin-isolation-jama-1915',
-          name: 'Kendall EC. The Isolation in Crystalline Form of the Compound Containing Iodin, Which Occurs in the Thyroid: Its Chemical Nature and Physiologic Activity. JAMA. 1915;64(25):2042–2043. (Landmark reprint: PMID 6352971.)',
+          name: 'Kendall EC. The Isolation in Crystalline Form of the Compound Containing Iodin, Which Occurs in the Thyroid: Its Chemical Nature and Physiologic Activity. JAMA. 1915;64(25):2042--2043. (Landmark reprint: PMID 6352971.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6352971/',
           publishedAt: '1915-06-19',
           methodologyType: 'primary',
@@ -1754,7 +1754,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Charles Harington and George Barger established the correct chemical constitution of thyroxine and achieved its total synthesis, publishing \'Chemistry of Thyroxine: Constitution and Synthesis of Thyroxine\' in the Biochemical Journal. Synthesis from defined precursors proved the molecule\'s structure (Kendall\'s proposed formula was wrong) and made it reproducibly available, settling thyroxine\'s chemical identity as the thyroid hormone.',
         source: {
           externalId: 'src:harington-barger-thyroxine-synthesis-biochemj-1927',
-          name: 'Harington CR, Barger G. Chemistry of Thyroxine: Constitution and Synthesis of Thyroxine. Biochem J. 1927;21(1):169–183.',
+          name: 'Harington CR, Barger G. Chemistry of Thyroxine: Constitution and Synthesis of Thyroxine. Biochem J. 1927;21(1):169--183.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1251886/',
           publishedAt: '1927-01-01',
           methodologyType: 'primary',
@@ -1781,7 +1781,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Marine and Kimball published \'The Prevention of Simple Goiter in Man\' (fourth paper) reporting their large controlled trial in ~2,000+ Akron schoolgirls given sodium iodide twice yearly versus untreated controls; goiter incidence in the treated group was a small fraction (≈0.2%) of that in controls. This recorded in the expert literature the first convincing controlled-trial evidence that iodine prevents endemic goiter, establishing the deficiency etiology.',
         source: {
           externalId: 'src:marine-kimball-prevention-goiter-aim-1920',
-          name: 'Marine D, Kimball OP. The Prevention of Simple Goiter in Man (Fourth Paper). Arch Intern Med. 1920;25(6):661–672.',
+          name: 'Marine D, Kimball OP. The Prevention of Simple Goiter in Man (Fourth Paper). Arch Intern Med. 1920;25(6):661--672.',
           url: 'https://www.jameslindlibrary.org/marine-d-kimball-op-1920/',
           publishedAt: '1920-01-01',
           methodologyType: 'primary',
@@ -1805,7 +1805,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 39. Elixir sulfanilamide disaster — FDCA premarket safety 1937–1938 ───────
+  // ── 39. Elixir sulfanilamide disaster — FDCA premarket safety 1937--1938 ───────
   {
     externalId: 'trajectory:elixir-sulfanilamide-fdca-premarket-safety-1937',
     text: 'The Elixir Sulfanilamide disaster of autumn 1937 — in which a diethylene-glycol solvent in an untested liquid sulfanilamide preparation killed at least 105 people — established that drugs could be marketed without any safety testing, a gap closed when the U.S. Federal Food, Drug, and Cosmetic Act of 25 June 1938 first required proof of safety before a new drug could be sold.',
@@ -1820,10 +1820,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1938-01-01',
         datePrecision: 'YEAR',
-        reason: 'During September–October 1937 the S. E. Massengill Company\'s Elixir Sulfanilamide killed more than 100 people across 15 states; E. M. K. Geiling and P. R. Cannon\'s investigation, published in JAMA in 1938, established through animal studies that the diethylene-glycol solvent — not the sulfanilamide — was the lethal agent. This recorded in the expert literature that an untested, lawfully sold drug had caused mass death, exposing the absence of any premarket safety requirement.',
+        reason: 'During September--October 1937 the S. E. Massengill Company\'s Elixir Sulfanilamide killed more than 100 people across 15 states; E. M. K. Geiling and P. R. Cannon\'s investigation, published in JAMA in 1938, established through animal studies that the diethylene-glycol solvent — not the sulfanilamide — was the lethal agent. This recorded in the expert literature that an untested, lawfully sold drug had caused mass death, exposing the absence of any premarket safety requirement.',
         source: {
           externalId: 'src:geiling-cannon-elixir-sulfanilamide-jama-1938',
-          name: 'Geiling EMK, Cannon PR. Pathologic Effects of Elixir of Sulfanilamide (Diethylene Glycol) Poisoning. JAMA. 1938;111(10):919–926.',
+          name: 'Geiling EMK, Cannon PR. Pathologic Effects of Elixir of Sulfanilamide (Diethylene Glycol) Poisoning. JAMA. 1938;111(10):919--926.',
           url: 'https://jamanetwork.com/journals/jama/fullarticle/282251',
           publishedAt: '1938-09-03',
           methodologyType: 'primary',
@@ -1848,7 +1848,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH / POST-MARKET REVERSAL ERA (1992–2009)
+  // WOMEN'S HEALTH / POST-MARKET REVERSAL ERA (1992--2009)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 40. WHI estrogen-plus-progestin HRT reversal — 2002 ─────────────────────
@@ -2007,7 +2007,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2003-08-09',
         datePrecision: 'DAY',
-        reason: 'The Million Women Study, a prospective cohort of more than one million UK women aged 50–64, reported that current HRT users had significantly elevated breast cancer incidence and mortality, with estrogen-progestin combinations carrying substantially greater risk than estrogen-only preparations. Arriving a year after the WHI trial, the largest observational dataset on the question converged with the RCT, recording the HRT–breast-cancer link in the expert literature with high statistical power.',
+        reason: 'The Million Women Study, a prospective cohort of more than one million UK women aged 50--64, reported that current HRT users had significantly elevated breast cancer incidence and mortality, with estrogen-progestin combinations carrying substantially greater risk than estrogen-only preparations. Arriving a year after the WHI trial, the largest observational dataset on the question converged with the RCT, recording the HRT--breast-cancer link in the expert literature with high statistical power.',
         source: {
           externalId: 'src:million-women-study-lancet-2003',
           name: 'Million Women Study Collaborators (Beral V, et al.). Breast cancer and hormone-replacement therapy in the Million Women Study. Lancet. 2003;362(9382):419-427.',
@@ -2037,7 +2037,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── 44. USPSTF mammography screening revision — 2009 ─────────────────────────
   {
     externalId: 'trajectory:uspstf-mammography-screening-revision-2009',
-    text: 'The U.S. Preventive Services Task Force recommended on 17 November 2009 against routine screening mammography for average-risk women aged 40–49 and advised biennial rather than annual screening for women aged 50–74, revising the prior standard of routine screening from age 40.',
+    text: 'The U.S. Preventive Services Task Force recommended on 17 November 2009 against routine screening mammography for average-risk women aged 40--49 and advised biennial rather than annual screening for women aged 50--74, revising the prior standard of routine screening from age 40.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2009-11-17',
     claimEmergedPrecision: 'DAY',
@@ -2049,7 +2049,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2009-11-17',
         datePrecision: 'DAY',
-        reason: 'The USPSTF published its updated breast cancer screening recommendation statement (Ann Intern Med 2009;151:716-726), grading routine screening for women 40–49 as not recommended (individualized decision) and recommending biennial screening for women 50–74, citing the balance of benefits against false positives and overdiagnosis. This recorded a formal institutional reversal of the earlier recommendation to screen from age 40.',
+        reason: 'The USPSTF published its updated breast cancer screening recommendation statement (Ann Intern Med 2009;151:716-726), grading routine screening for women 40--49 as not recommended (individualized decision) and recommending biennial screening for women 50--74, citing the balance of benefits against false positives and overdiagnosis. This recorded a formal institutional reversal of the earlier recommendation to screen from age 40.',
         source: {
           externalId: 'src:uspstf-breast-cancer-screening-2009',
           name: 'U.S. Preventive Services Task Force. Screening for Breast Cancer: U.S. Preventive Services Task Force Recommendation Statement. Ann Intern Med. 2009;151(10):716-726.',
@@ -2077,7 +2077,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRIC SAFETY ERA (1992–2017)
+  // PEDIATRIC SAFETY ERA (1992--2017)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 45. AAP supine sleep / Back to Sleep — SIDS 1992 ─────────────────────────
@@ -2152,7 +2152,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2017-01-01',
         datePrecision: 'MONTH',
-        reason: 'A NIAID-sponsored expert panel issued Addendum Guidelines for the Prevention of Peanut Allergy recommending introduction of age-appropriate peanut-containing foods as early as 4–6 months in high-risk infants, codifying the LEAP finding into U.S. national clinical guidance. The translation of a single trial into formal prevention guidelines settled early peanut introduction as standard practice.',
+        reason: 'A NIAID-sponsored expert panel issued Addendum Guidelines for the Prevention of Peanut Allergy recommending introduction of age-appropriate peanut-containing foods as early as 4--6 months in high-risk infants, codifying the LEAP finding into U.S. national clinical guidance. The translation of a single trial into formal prevention guidelines settled early peanut introduction as standard practice.',
         source: {
           externalId: 'src:niaid-peanut-addendum-guidelines-jaci-2017',
           name: 'Togias A, Cooper SF, Acebal ML, et al. Addendum Guidelines for the Prevention of Peanut Allergy in the United States: Report of the NIAID-Sponsored Expert Panel. J Allergy Clin Immunol. 2017;139(1):29-44.',
@@ -2182,7 +2182,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Accepting its Advisory Committee on Childhood Lead Poisoning Prevention recommendation, the CDC replaced the static 10 µg/dL \'level of concern\' with a population-based upper reference interval of 5 µg/dL (the 97.5th percentile of NHANES blood lead distributions). MMWR formally reported the new reference value, recording institutionally the principle that there is no identified safe blood lead level for children.',
         source: {
           externalId: 'src:cdc-mmwr-blood-lead-5-ugdl-2013',
-          name: 'CDC. Blood Lead Levels in Children Aged 1–5 Years — United States, 1999–2010. MMWR Morb Mortal Wkly Rep. 2013;62(13):245-248.',
+          name: 'CDC. Blood Lead Levels in Children Aged 1--5 Years — United States, 1999--2010. MMWR Morb Mortal Wkly Rep. 2013;62(13):245-248.',
           url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6213a3.htm',
           publishedAt: '2013-04-05',
           methodologyType: 'primary',
@@ -2194,7 +2194,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2021-10-28',
         datePrecision: 'DAY',
-        reason: 'The CDC updated the blood lead reference value downward from 5 µg/dL to 3.5 µg/dL based on 2015–2018 NHANES data, applying the same NHANES-percentile methodology adopted in 2012. The continued use and tightening of the reference-value framework cemented the no-safe-level approach as settled federal policy rather than a one-time revision.',
+        reason: 'The CDC updated the blood lead reference value downward from 5 µg/dL to 3.5 µg/dL based on 2015--2018 NHANES data, applying the same NHANES-percentile methodology adopted in 2012. The continued use and tightening of the reference-value framework cemented the no-safe-level approach as settled federal policy rather than a one-time revision.',
         source: {
           externalId: 'src:cdc-mmwr-blood-lead-3-5-ugdl-2021',
           name: 'Ruckart PZ, Jones RL, Courtney JG, et al. Update of the Blood Lead Reference Value — United States, 2021. MMWR Morb Mortal Wkly Rep. 2021;70(43):1509-1512.',
@@ -2206,7 +2206,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 48. Codeine contraindicated in children — FDA 2013–2017 ──────────────────
+  // ── 48. Codeine contraindicated in children — FDA 2013--2017 ──────────────────
   {
     externalId: 'trajectory:codeine-contraindicated-children-2013',
     text: 'The FDA determined that codeine is unsafe for pain management in young children — issuing a Boxed Warning and contraindication against codeine use after tonsillectomy/adenoidectomy on 20 February 2013 following reports of deaths in ultra-rapid CYP2D6 metabolizers, and extending the contraindication to all children younger than 12 on 20 April 2017.',
@@ -2236,7 +2236,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2017-04-20',
         datePrecision: 'DAY',
-        reason: 'The FDA broadened the action into a full contraindication of codeine for pain and cough in all children younger than 12, and of tramadol in the same group, with added warnings for adolescents 12–18 with obesity or sleep apnea. Generalizing the restriction beyond the surgical setting to all young children settled codeine\'s contraindication in pediatrics as established regulatory fact.',
+        reason: 'The FDA broadened the action into a full contraindication of codeine for pain and cough in all children younger than 12, and of tramadol in the same group, with added warnings for adolescents 12--18 with obesity or sleep apnea. Generalizing the restriction beyond the surgical setting to all young children settled codeine\'s contraindication in pediatrics as established regulatory fact.',
         source: {
           externalId: 'src:aap-pediatrics-codeine-2017-dsc-impact-2022',
           name: 'Chua KP, Shrime MG, Conti RM, et al. Impact of the 2017 FDA Drug Safety Communication on Codeine and Tramadol Dispensing to Children. Pediatrics. 2022;150(5):e2021055887.',
@@ -2249,7 +2249,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASE & ORPHAN DRUG ERA (1983–2016)
+  // RARE DISEASE & ORPHAN DRUG ERA (1983--2016)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Orphan Drug Act — regulatory framework for rare diseases 1983 ────────────
@@ -2421,7 +2421,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SHAM-CONTROLLED SURGERY ERA (1958–1985)
+  // SHAM-CONTROLLED SURGERY ERA (1958--1985)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Internal mammary artery ligation for angina — 1958 → reversed 1959 ──────
@@ -2593,7 +2593,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // TARGETED THERAPY & MONOCLONAL ANTIBODY ERA (1997–2011)
+  // TARGETED THERAPY & MONOCLONAL ANTIBODY ERA (1997--2011)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 26. Imatinib (Gleevec) for CML — 2001 ───────────────────────────────────
@@ -2770,7 +2770,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Following ISEL, the FDA revised the Iressa label on 17 June 2005 to restrict use to patients already benefiting from the drug and barred new patients outside approved trials, effectively withdrawing the broad refractory-NSCLC indication granted in 2003. It became a defining case of an accelerated approval reversed when the confirmatory trial failed; gefitinib was only re-approved in 2015 for the narrow EGFR-mutation-positive subgroup.',
         source: {
           externalId: 'src:kazandjian-gefitinib-fda-approval-ccr-2016',
-          name: 'Kazandjian D, Blumenthal GM, Yuan W, et al. FDA Approval of Gefitinib for the Treatment of Patients with Metastatic EGFR Mutation–Positive Non–Small Cell Lung Cancer. Clin Cancer Res. 2016;22(6):1307-1312.',
+          name: 'Kazandjian D, Blumenthal GM, Yuan W, et al. FDA Approval of Gefitinib for the Treatment of Patients with Metastatic EGFR Mutation--Positive Non--Small Cell Lung Cancer. Clin Cancer Res. 2016;22(6):1307-1312.',
           url: 'https://aacrjournals.org/clincancerres/article/22/6/1307/121642/',
           publishedAt: '2016-03-15',
           methodologyType: 'derivative',
@@ -2794,7 +2794,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2008-02-22',
         datePrecision: 'DAY',
-        reason: 'The FDA granted accelerated approval to bevacizumab with paclitaxel for first-line metastatic HER2-negative breast cancer on 22 February 2008, based on the E2100 trial\'s near-doubling of progression-free survival (11.8 vs 5.9 months) despite no overall survival benefit. The approval came over the 5–4 negative vote of the Oncologic Drugs Advisory Committee, recording a contested claim that PFS gain alone justified the indication.',
+        reason: 'The FDA granted accelerated approval to bevacizumab with paclitaxel for first-line metastatic HER2-negative breast cancer on 22 February 2008, based on the E2100 trial\'s near-doubling of progression-free survival (11.8 vs 5.9 months) despite no overall survival benefit. The approval came over the 5--4 negative vote of the Oncologic Drugs Advisory Committee, recording a contested claim that PFS gain alone justified the indication.',
         source: {
           externalId: 'src:miller-e2100-bevacizumab-nejm-2007',
           name: 'Miller K, Wang M, Gralow J, et al. Paclitaxel plus bevacizumab versus paclitaxel alone for metastatic breast cancer. N Engl J Med. 2007;357(26):2666-2676.',
@@ -2809,7 +2809,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2010-07-20',
         datePrecision: 'DAY',
-        reason: 'The confirmatory AVADO and RIBBON-1 trials showed much smaller PFS gains (under one month median) than E2100 and again no overall-survival benefit, while exposing patients to hypertension, hemorrhage, and perforation risks. On these data the FDA\'s Oncologic Drugs Advisory Committee voted 12–1 in July 2010 to recommend withdrawing the breast cancer indication, contesting the durability of the original claim.',
+        reason: 'The confirmatory AVADO and RIBBON-1 trials showed much smaller PFS gains (under one month median) than E2100 and again no overall-survival benefit, while exposing patients to hypertension, hemorrhage, and perforation risks. On these data the FDA\'s Oncologic Drugs Advisory Committee voted 12--1 in July 2010 to recommend withdrawing the breast cancer indication, contesting the durability of the original claim.',
         source: {
           externalId: 'src:fda-odac-avastin-breast-review-2010',
           name: 'Sridhara R, et al. / FDA. Regulatory withdrawal of medicines marketed with uncertain benefits: the bevacizumab (Avastin) breast cancer case study. (2015 review documenting AVADO/RIBBON-1 and the July 2010 ODAC vote).',
@@ -2879,13 +2879,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRIC DOSING & NEONATAL PHARMACOLOGY ERA (1951–1982)
+  // PEDIATRIC DOSING & NEONATAL PHARMACOLOGY ERA (1951--1982)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── RLF / Retinopathy of Prematurity — oxygen causes infant blindness 1956 ──
   {
     externalId: 'trajectory:rlf-oxygen-premature-infants-cooperative-study-1956',
-    text: 'The 1954–1956 Cooperative Study of Retrolental Fibroplasia, reported by V. E. Kinsey in 1956, established through a controlled multi-hospital clinical trial that liberal supplemental oxygen given to premature infants causes retrolental fibroplasia (now retinopathy of prematurity), the leading cause of infant blindness of the era.',
+    text: 'The 1954--1956 Cooperative Study of Retrolental Fibroplasia, reported by V. E. Kinsey in 1956, established through a controlled multi-hospital clinical trial that liberal supplemental oxygen given to premature infants causes retrolental fibroplasia (now retinopathy of prematurity), the leading cause of infant blindness of the era.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1951-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -3009,7 +3009,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SHAM-CONTROLLED SURGERY ERA (2002–2017)
+  // SHAM-CONTROLLED SURGERY ERA (2002--2017)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Arthroscopic knee surgery for osteoarthritis reversed — 2002 ─────────────
@@ -3154,7 +3154,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // GLP-1 / GENE THERAPY ERA (2021–2023)
+  // GLP-1 / GENE THERAPY ERA (2021--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Semaglutide (Wegovy) FDA approval for obesity — 2021 ────────────────────
@@ -3271,7 +3271,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1982-06-11',
         datePrecision: 'DAY',
-        reason: 'The U.S. Surgeon General, via an MMWR advisory, formally warned against giving salicylate-containing medications to children with influenza or chickenpox. This institutional act settled the aspirin–Reye association as actionable public-health fact; FDA label warnings followed in 1986–1988 and U.S. Reye syndrome incidence fell more than 90%, with the steep decline serving as confirmatory evidence.',
+        reason: 'The U.S. Surgeon General, via an MMWR advisory, formally warned against giving salicylate-containing medications to children with influenza or chickenpox. This institutional act settled the aspirin--Reye association as actionable public-health fact; FDA label warnings followed in 1986--1988 and U.S. Reye syndrome incidence fell more than 90%, with the steep decline serving as confirmatory evidence.',
         source: {
           externalId: 'src:mmwr-surgeon-general-salicylates-reye-1982',
           name: 'CDC. Surgeon General\'s advisory on the use of salicylates and Reye syndrome. MMWR Morb Mortal Wkly Rep. 1982;31(22):289-290.',
@@ -3414,7 +3414,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOVASCULAR EPIDEMIOLOGY & THERAPEUTICS ERA (1961–1998)
+  // CARDIOVASCULAR EPIDEMIOLOGY & THERAPEUTICS ERA (1961--1998)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── N+5. Framingham risk-factor concept — 1961 → settled 1998 ───────────────
@@ -3671,7 +3671,7 @@ const TRAJECTORIES: Trajectory[] = [
 
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ANTIBIOTIC RESISTANCE & EMERGING PATHOGENS ERA (1997–2000)
+  // ANTIBIOTIC RESISTANCE & EMERGING PATHOGENS ERA (1997--2000)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── N+5. VISA — vancomycin-intermediate S. aureus 1997 ──────────────────────
@@ -3801,7 +3801,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY & NEURO ERA (2021–2024)
+  // PSYCHOPHARMACOLOGY & NEURO ERA (2021--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Zuranolone (Zurzuvae) — first oral PPD treatment 2023 ───────────────────
@@ -3846,7 +3846,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2022-07-20',
         datePrecision: 'DAY',
-        reason: 'Moncrieff et al. synthesized the major strands of serotonin-depression research (CSF metabolites, receptor and transporter imaging, tryptophan-depletion studies, gene–environment interactions) and concluded none provided consistent support for the low-serotonin hypothesis. This formally recorded into the peer-reviewed literature a systematic refutation of the popular chemical-imbalance account that had underpinned public messaging about SSRIs since the 1990s.',
+        reason: 'Moncrieff et al. synthesized the major strands of serotonin-depression research (CSF metabolites, receptor and transporter imaging, tryptophan-depletion studies, gene--environment interactions) and concluded none provided consistent support for the low-serotonin hypothesis. This formally recorded into the peer-reviewed literature a systematic refutation of the popular chemical-imbalance account that had underpinned public messaging about SSRIs since the 1990s.',
         source: {
           externalId: 'src:moncrieff-serotonin-umbrella-review-2022',
           name: 'Moncrieff J, Cooper RE, Stockmann T, Amendola S, Hengartner MP, Horowitz MA. The serotonin theory of depression: a systematic umbrella review of the evidence. Molecular Psychiatry. 2023;28(8):3243-3256.',
@@ -3942,10 +3942,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1997-12-19',
         datePrecision: 'DAY',
-        reason: 'After the index virus was identified as subtype H5N1 in August 1997 by laboratories in Atlanta, Rotterdam, and London, the CDC reported in MMWR a cluster of human H5N1 infections in Hong Kong (May–December 1997), with multiple deaths. This formally documented that an avian influenza subtype was infecting humans directly from poultry — a recognized emerging public-health threat.',
+        reason: 'After the index virus was identified as subtype H5N1 in August 1997 by laboratories in Atlanta, Rotterdam, and London, the CDC reported in MMWR a cluster of human H5N1 infections in Hong Kong (May--December 1997), with multiple deaths. This formally documented that an avian influenza subtype was infecting humans directly from poultry — a recognized emerging public-health threat.',
         source: {
           externalId: 'src:cdc-mmwr-h5n1-hongkong-1997',
-          name: 'CDC. Isolation of Avian Influenza A(H5N1) Viruses from Humans — Hong Kong, May–December 1997. MMWR Morb Mortal Wkly Rep. 1997 Dec 19;46(50):1204-1207.',
+          name: 'CDC. Isolation of Avian Influenza A(H5N1) Viruses from Humans — Hong Kong, May--December 1997. MMWR Morb Mortal Wkly Rep. 1997 Dec 19;46(50):1204-1207.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/9414153/',
           publishedAt: '1997-12-19',
           methodologyType: 'primary',
@@ -3976,7 +3976,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── von Mering & Minkowski pancreatectomy → diabetes 1889 ──────────────────
   {
     externalId: 'trajectory:minkowski-von-mering-pancreatectomy-diabetes-1889',
-    text: 'Joseph von Mering and Oskar Minkowski reported in 1889–1890 (Archiv für experimentelle Pathologie und Pharmakologie) that total surgical removal of the pancreas in dogs produces severe, fatal diabetes with glycosuria, establishing that the pancreas governs carbohydrate metabolism and is the seat of the lesion in diabetes mellitus.',
+    text: 'Joseph von Mering and Oskar Minkowski reported in 1889--1890 (Archiv für experimentelle Pathologie und Pharmakologie) that total surgical removal of the pancreas in dogs produces severe, fatal diabetes with glycosuria, establishing that the pancreas governs carbohydrate metabolism and is the seat of the lesion in diabetes mellitus.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1889-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -3988,10 +3988,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1890-01-01',
         datePrecision: 'YEAR',
-        reason: 'After their 1889 experiments at Strassburg in which total pancreatectomy in dogs was followed within hours by glycosuria exceeding 10% and rapidly fatal diabetes, von Mering and Minkowski published their full report \'Diabetes mellitus nach Pankreasexstirpation\' in the Archiv für experimentelle Pathologie und Pharmakologie (1890;26:371–387), emphasizing that no other organ was damaged. This recorded in the expert literature the claim that the pancreas controls blood sugar and that its loss causes diabetes — the experimental foundation for the search for an internal pancreatic secretion.',
+        reason: 'After their 1889 experiments at Strassburg in which total pancreatectomy in dogs was followed within hours by glycosuria exceeding 10% and rapidly fatal diabetes, von Mering and Minkowski published their full report \'Diabetes mellitus nach Pankreasexstirpation\' in the Archiv für experimentelle Pathologie und Pharmakologie (1890;26:371--387), emphasizing that no other organ was damaged. This recorded in the expert literature the claim that the pancreas controls blood sugar and that its loss causes diabetes — the experimental foundation for the search for an internal pancreatic secretion.',
         source: {
           externalId: 'src:von-mering-minkowski-pankreasexstirpation-1890',
-          name: 'von Mering J, Minkowski O. Diabetes mellitus nach Pankreasexstirpation. Archiv für experimentelle Pathologie und Pharmakologie. 1890;26:371–387.',
+          name: 'von Mering J, Minkowski O. Diabetes mellitus nach Pankreasexstirpation. Archiv für experimentelle Pathologie und Pharmakologie. 1890;26:371--387.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9581824/',
           publishedAt: '1890-01-01',
           methodologyType: 'primary',
@@ -4003,7 +4003,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1922-01-01',
         datePrecision: 'YEAR',
-        reason: 'The pancreatic origin of diabetes, hypothesized from the 1889–1890 pancreatectomy work, was confirmed when Banting, Best, Collip and Macleod isolated insulin from pancreatic tissue in 1921–1922 and reversed diabetes in dogs and humans, directly demonstrating the internal secretion whose loss von Mering and Minkowski\'s experiment had implied. This settled the pancreatic-secretion model of diabetes as established physiological fact, a status it has retained.',
+        reason: 'The pancreatic origin of diabetes, hypothesized from the 1889--1890 pancreatectomy work, was confirmed when Banting, Best, Collip and Macleod isolated insulin from pancreatic tissue in 1921--1922 and reversed diabetes in dogs and humans, directly demonstrating the internal secretion whose loss von Mering and Minkowski\'s experiment had implied. This settled the pancreatic-secretion model of diabetes as established physiological fact, a status it has retained.',
         source: {
           externalId: 'src:minkowski-gley-cradle-antidiabetic-review-2022',
           name: 'European research, the cradle of the discovery of the antidiabetic hormone: the pioneer roles and the relevance of Oskar Minkowski and Eugène Gley. (historical review). PMC9581824.',
@@ -4033,7 +4033,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In March 1942 Janbon attributed several deaths among typhoid patients treated with the new sulfonamide 2254 RP (VK 57) to severe prolonged hypoglycemia, and asked the physiologist Loubatières to investigate. On 13 June 1942 Loubatières observed in conscious fasting dogs that repeated oral 2254 RP produced a progressive, marked, long-lasting fall in blood glucose, and went on to show the effect required an intact pancreas and reflected stimulated insulin secretion. This recorded in the expert literature the claim that a synthetic sulfonamide could lower blood sugar via the pancreatic beta cells.',
         source: {
           externalId: 'src:janbon-2254rp-hypoglycemia-montpellier-1942',
-          name: 'Janbon M, Chaptal J, Vedel A, Schaap J. Accidents hypoglycémiques graves par un sulfamidothiodiazol (le VK 57 ou 2254 RP). Montpellier Médical. 1942;441:21–22.',
+          name: 'Janbon M, Chaptal J, Vedel A, Schaap J. Accidents hypoglycémiques graves par un sulfamidothiodiazol (le VK 57 ou 2254 RP). Montpellier Médical. 1942;441:21--22.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/34656290/',
           publishedAt: '1942-03-01',
           methodologyType: 'primary',
@@ -4045,10 +4045,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1956-01-01',
         datePrecision: 'YEAR',
-        reason: 'The 1942 observation became the basis of the sulfonylurea drug class: carbutamide and then tolbutamide were introduced in Germany in 1955–1956 as the first oral antidiabetic drugs marketed for type 2 diabetes, with Loubatières\' pancreatic-stimulation mechanism providing the rationale. Clinical adoption of oral sulfonylureas worldwide settled the claim that sulfonamide-derived compounds lower blood glucose through insulin secretion.',
+        reason: 'The 1942 observation became the basis of the sulfonylurea drug class: carbutamide and then tolbutamide were introduced in Germany in 1955--1956 as the first oral antidiabetic drugs marketed for type 2 diabetes, with Loubatières\' pancreatic-stimulation mechanism providing the rationale. Clinical adoption of oral sulfonylureas worldwide settled the claim that sulfonamide-derived compounds lower blood glucose through insulin secretion.',
         source: {
           externalId: 'src:lavabre-bertrand-hypoglycaemic-sulphonamides-therapie-2021',
-          name: 'Lavabre-Bertrand T, Faillie JL. The discovery of hypoglycaemic sulphonamides – Montpellier, 1942. Therapie. 2021;76(6):559–566.',
+          name: 'Lavabre-Bertrand T, Faillie JL. The discovery of hypoglycaemic sulphonamides -- Montpellier, 1942. Therapie. 2021;76(6):559--566.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/34656290/',
           publishedAt: '2021-11-01',
           methodologyType: 'derivative',
@@ -4075,7 +4075,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Building on observations that guanidine derivatives lower blood glucose, Frank, Nothmann and Wagner — working in Oskar Minkowski\'s Breslau (Wroclaw) clinic — reported in 1926 that the synthetic guanidine compound Synthalin produced insulin-like hypoglycemic effects when given by mouth to normal and diabetic subjects. This recorded the claim that an orally active synthetic drug could substitute for injected insulin in managing diabetes.',
         source: {
           externalId: 'src:frank-nothmann-wagner-synthalin-klinwochenschr-1926',
-          name: 'Frank E, Nothmann M, Wagner A. Über synthetisch dargestellte Körper mit insulinartiger Wirkung auf den normalen und diabetischen Organismus. Klin Wochenschr. 1926;5:2100–2107.',
+          name: 'Frank E, Nothmann M, Wagner A. Über synthetisch dargestellte Körper mit insulinartiger Wirkung auf den normalen und diabetischen Organismus. Klin Wochenschr. 1926;5:2100--2107.',
           url: 'https://en.wikipedia.org/wiki/Synthalin',
           publishedAt: '1926-01-01',
           methodologyType: 'primary',
@@ -4129,10 +4129,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1936-01-18',
         datePrecision: 'DAY',
-        reason: 'Hagedorn, Jensen, Krarup and Wodstrup published \'Protamine insulinate\' in JAMA (1936;106:177–180), showing that combining insulin with protamine slowed its absorption and prolonged its hypoglycemic effect, after earlier attempts using gum arabic, oils, lecithin and vasoconstrictors had failed. This recorded the claim that insulin\'s duration of action could be deliberately extended by formulation, freeing diabetics from multiple daily injections.',
+        reason: 'Hagedorn, Jensen, Krarup and Wodstrup published \'Protamine insulinate\' in JAMA (1936;106:177--180), showing that combining insulin with protamine slowed its absorption and prolonged its hypoglycemic effect, after earlier attempts using gum arabic, oils, lecithin and vasoconstrictors had failed. This recorded the claim that insulin\'s duration of action could be deliberately extended by formulation, freeing diabetics from multiple daily injections.',
         source: {
           externalId: 'src:hagedorn-protamine-insulinate-jama-1936',
-          name: 'Hagedorn HC, Jensen BN, Krarup NB, Wodstrup I. Protamine insulinate. JAMA. 1936;106:177–180. (Landmark reprint: JAMA. 1984;251(3):389–392; PMID 6361301.)',
+          name: 'Hagedorn HC, Jensen BN, Krarup NB, Wodstrup I. Protamine insulinate. JAMA. 1936;106:177--180. (Landmark reprint: JAMA. 1984;251(3):389--392; PMID 6361301.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6361301/',
           publishedAt: '1936-01-18',
           methodologyType: 'primary',
@@ -4157,7 +4157,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS ERA (1965–2018)
+  // OPIOID CRISIS ERA (1965--2018)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Dole & Nyswander methadone maintenance 1965 ────────────────────────────
@@ -4359,7 +4359,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRIC & GENE THERAPY ERA (2015–2023)
+  // PEDIATRIC & GENE THERAPY ERA (2015--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Zolgensma FDA approval — gene therapy for SMA 2019 ─────────────────────
@@ -4422,7 +4422,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The CDC published its own MMWR analysis confirming that blood lead levels among Flint children rose during the period of Flint River water use and declined after the switch back to Detroit water, institutionally ratifying Hanna-Attisha\'s finding. Federal confirmation cemented the Flint pediatric lead exposure as established public-health fact and a reference case for childhood environmental lead policy.',
         source: {
           externalId: 'src:cdc-mmwr-flint-blood-lead-2016',
-          name: 'Kennedy C, Yard E, Dignam T, et al. Blood Lead Levels Among Children Aged <6 Years — Flint, Michigan, 2013–2016. MMWR Morb Mortal Wkly Rep. 2016;65(25):650-654.',
+          name: 'Kennedy C, Yard E, Dignam T, et al. Blood Lead Levels Among Children Aged <6 Years — Flint, Michigan, 2013--2016. MMWR Morb Mortal Wkly Rep. 2016;65(25):650-654.',
           url: 'https://www.cdc.gov/mmwr/volumes/65/wr/mm6525e1.htm',
           publishedAt: '2016-06-24',
           methodologyType: 'primary',
@@ -4446,7 +4446,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2023-07-17',
         datePrecision: 'DAY',
-        reason: 'The FDA approved nirsevimab for prevention of RSV lower respiratory tract disease in infants in their first RSV season and in vulnerable children up to 24 months, based on trials showing roughly 70–75% reduction in medically attended RSV. The approval recorded the first broadly indicated immunization-style product protecting all infants (not just high-risk preterm babies, as the older antibody palivizumab did) against the leading cause of infant hospitalization.',
+        reason: 'The FDA approved nirsevimab for prevention of RSV lower respiratory tract disease in infants in their first RSV season and in vulnerable children up to 24 months, based on trials showing roughly 70--75% reduction in medically attended RSV. The approval recorded the first broadly indicated immunization-style product protecting all infants (not just high-risk preterm babies, as the older antibody palivizumab did) against the leading cause of infant hospitalization.',
         source: {
           externalId: 'src:sanofi-beyfortus-fda-approval-2023',
           name: 'Sanofi. Press Release: FDA approves Beyfortus (nirsevimab-alip) to protect infants against RSV disease. 17 July 2023.',
@@ -4461,7 +4461,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2023-08-03',
         datePrecision: 'DAY',
-        reason: 'The CDC\'s Advisory Committee on Immunization Practices recommended nirsevimab for all infants younger than 8 months entering their first RSV season and for certain high-risk children 8–19 months, incorporating it into the childhood immunization schedule and the Vaccines for Children program. ACIP adoption moved nirsevimab from an approved product to a universally recommended element of routine infant preventive care.',
+        reason: 'The CDC\'s Advisory Committee on Immunization Practices recommended nirsevimab for all infants younger than 8 months entering their first RSV season and for certain high-risk children 8--19 months, incorporating it into the childhood immunization schedule and the Vaccines for Children program. ACIP adoption moved nirsevimab from an approved product to a universally recommended element of routine infant preventive care.',
         source: {
           externalId: 'src:cdc-mmwr-nirsevimab-acip-2023',
           name: 'Jones JM, Fleming-Dutra KE, Prill MM, et al. Use of Nirsevimab for the Prevention of RSV Disease Among Infants and Young Children: Recommendations of the ACIP — United States, 2023. MMWR Morb Mortal Wkly Rep. 2023;72(34):920-925.',
@@ -4473,7 +4473,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── FDA EUA Pfizer COVID vaccine — children 5–11 2021 ───────────────────────
+  // ── FDA EUA Pfizer COVID vaccine — children 5--11 2021 ───────────────────────
   {
     externalId: 'trajectory:fda-eua-pfizer-covid-vaccine-children-5-11-2021',
     text: 'On 29 October 2021 the US FDA authorized emergency use of the Pfizer-BioNTech COVID-19 vaccine, at a 10-µg two-dose regimen, for children 5 through 11 years of age — the first COVID-19 vaccine made available to US elementary-school-age children, with reported efficacy of 90.7%.',
@@ -4488,7 +4488,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2021-10-29',
         datePrecision: 'DAY',
-        reason: 'Following an overwhelmingly favorable advisory committee vote, the FDA issued an Emergency Use Authorization extending the Pfizer-BioNTech vaccine to children 5–11 at a reduced 10-µg dose, citing 90.7% efficacy in a ~3,100-child trial. Days later the CDC/ACIP recommended it, settling pediatric COVID-19 vaccination as authorized institutional practice even as it remained publicly contested over uptake and necessity in low-risk children.',
+        reason: 'Following an overwhelmingly favorable advisory committee vote, the FDA issued an Emergency Use Authorization extending the Pfizer-BioNTech vaccine to children 5--11 at a reduced 10-µg dose, citing 90.7% efficacy in a ~3,100-child trial. Days later the CDC/ACIP recommended it, settling pediatric COVID-19 vaccination as authorized institutional practice even as it remained publicly contested over uptake and necessity in low-risk children.',
         source: {
           externalId: 'src:fda-eua-covid-vaccine-children-5-11-2021',
           name: 'US FDA. FDA Authorizes Pfizer-BioNTech COVID-19 Vaccine for Emergency Use in Children 5 through 11 Years of Age. Press announcement. 29 October 2021.',
@@ -4522,7 +4522,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'At the Wiesbaden Congress for Internal Medicine, Ehrlich and Hata reported that arsenical compound 606 (arsphenamine) eradicated spirochaetes in animals and early human syphilis cases. This was the first agent rationally selected from a chemical screen to kill a specific pathogen without killing the host, founding the discipline of chemotherapy.',
         source: {
           externalId: 'src:williams-arsphenamine-magic-bullet-jrsm-2009',
-          name: 'Williams KJ. The introduction of \'chemotherapy\' using arsphenamine — the first magic bullet. J R Soc Med. 2009;102(8):343–348. (PMC2726818)',
+          name: 'Williams KJ. The introduction of \'chemotherapy\' using arsphenamine — the first magic bullet. J R Soc Med. 2009;102(8):343--348. (PMC2726818)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2726818/',
           publishedAt: '2009-08-01',
           methodologyType: 'derivative',
@@ -4537,7 +4537,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Hoechst marketed Salvarsan from 1910; by the end of that year roughly 65,000 doses had been administered to more than 20,000 patients worldwide, and it rapidly became the standard treatment for syphilis until penicillin superseded it in the 1940s. Rapid clinical and commercial adoption settled the efficacy claim across the medical community.',
         source: {
           externalId: 'src:bosch-rosich-ehrlich-pharmacology-2008',
-          name: 'Bosch F, Rosich L. The contributions of Paul Ehrlich to pharmacology: a tribute on the occasion of the centenary of his Nobel Prize. Pharmacology. 2008;82(3):171–179. (PMC2790789)',
+          name: 'Bosch F, Rosich L. The contributions of Paul Ehrlich to pharmacology: a tribute on the occasion of the centenary of his Nobel Prize. Pharmacology. 2008;82(3):171--179. (PMC2790789)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2790789/',
           publishedAt: '2008-10-01',
           methodologyType: 'derivative',
@@ -4564,7 +4564,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Minot and Murphy reported that feeding large quantities of liver induced reticulocyte responses and clinical remission in 45 consecutive patients with pernicious anemia. This was the first effective therapy for a disease that had been invariably fatal, and it later led to the isolation of vitamin B12.',
         source: {
           externalId: 'src:minot-murphy-liver-pernicious-anemia-jama-1926',
-          name: 'Minot GR, Murphy WP. Treatment of pernicious anemia by a special diet. JAMA. 1926;87(7):470–476. (Full-text reprint: Yale J Biol Med. 2001;74(5):341–353, PMC2588744)',
+          name: 'Minot GR, Murphy WP. Treatment of pernicious anemia by a special diet. JAMA. 1926;87(7):470--476. (Full-text reprint: Yale J Biol Med. 2001;74(5):341--353, PMC2588744)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2588744/',
           publishedAt: '1926-08-14',
           methodologyType: 'primary',
@@ -4610,7 +4610,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Kakkis and colleagues reported a 52-week study of 10 patients showing that recombinant human alpha-L-iduronidase reduced hepatic lysosomal glycosaminoglycan storage and ameliorated clinical manifestations of MPS I. This provided the first human evidence that enzyme replacement could treat this lysosomal storage disorder.',
         source: {
           externalId: 'src:kakkis-rhidu-mps-i-nejm-2001',
-          name: 'Kakkis ED, Muenzer J, Tiller GE, et al. Enzyme-replacement therapy in mucopolysaccharidosis I. N Engl J Med. 2001;344(3):182–188. PMID 11172140.',
+          name: 'Kakkis ED, Muenzer J, Tiller GE, et al. Enzyme-replacement therapy in mucopolysaccharidosis I. N Engl J Med. 2001;344(3):182--188. PMID 11172140.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/11172140/',
           publishedAt: '2001-01-18',
           methodologyType: 'primary',
@@ -4622,7 +4622,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2003-04-30',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Aldurazyme (laronidase, BLA 125058) on 30 April 2003 with priority review and seven-year orphan-drug exclusivity — the first drug ever approved to treat MPS I. The phase 3 randomized trial (Wraith et al., J Pediatr 2004;144:581–588) subsequently confirmed improved respiratory function and physical capacity.',
+        reason: 'The FDA approved Aldurazyme (laronidase, BLA 125058) on 30 April 2003 with priority review and seven-year orphan-drug exclusivity — the first drug ever approved to treat MPS I. The phase 3 randomized trial (Wraith et al., J Pediatr 2004;144:581--588) subsequently confirmed improved respiratory function and physical capacity.',
         source: {
           externalId: 'src:fda-aldurazyme-bla-125058-2003',
           name: 'U.S. FDA, Drugs@FDA. Aldurazyme (laronidase), BLA 125058. Approved April 30, 2003.',
@@ -4652,7 +4652,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Eng and the International Collaborative Fabry Disease Study Group reported a double-blind, placebo-controlled trial in 58 patients showing that agalsidase beta cleared microvascular endothelial deposits of globotriaosylceramide from the kidneys, heart, and skin in 69% of treated patients versus none on placebo. This was the first controlled evidence that ERT could reverse the underlying lipid storage in Fabry disease.',
         source: {
           externalId: 'src:eng-agalsidase-fabry-nejm-2001',
-          name: 'Eng CM, Guffon N, Wilcox WR, et al. Safety and efficacy of recombinant human alpha-galactosidase A replacement therapy in Fabry\'s disease. N Engl J Med. 2001;345(1):9–16. PMID 11439963.',
+          name: 'Eng CM, Guffon N, Wilcox WR, et al. Safety and efficacy of recombinant human alpha-galactosidase A replacement therapy in Fabry\'s disease. N Engl J Med. 2001;345(1):9--16. PMID 11439963.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/11439963/',
           publishedAt: '2001-07-05',
           methodologyType: 'primary',
@@ -4677,7 +4677,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL & PROCEDURAL INNOVATION ERA (1950–1990)
+  // SURGICAL & PROCEDURAL INNOVATION ERA (1950--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Gibbon heart-lung machine — open-heart surgery 1953 ─────────────────────
@@ -4752,10 +4752,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1966-10-24',
         datePrecision: 'DAY',
-        reason: 'Following a May 1966 conference, the Ad Hoc Committee on Cardiopulmonary Resuscitation of the National Academy of Sciences–National Research Council published the first national CPR standards in JAMA, integrating closed-chest compression with Safar\'s mouth-to-mouth ventilation into the standardized A-B-C protocol. Institutional codification by the NAS-NRC (and subsequent American Heart Association adoption) settled chest-compression CPR as the universal standard of care for cardiac arrest.',
+        reason: 'Following a May 1966 conference, the Ad Hoc Committee on Cardiopulmonary Resuscitation of the National Academy of Sciences--National Research Council published the first national CPR standards in JAMA, integrating closed-chest compression with Safar\'s mouth-to-mouth ventilation into the standardized A-B-C protocol. Institutional codification by the NAS-NRC (and subsequent American Heart Association adoption) settled chest-compression CPR as the universal standard of care for cardiac arrest.',
         source: {
           externalId: 'src:nas-nrc-cpr-standards-jama-1966',
-          name: 'Ad Hoc Committee on Cardiopulmonary Resuscitation, Division of Medical Sciences, National Academy of Sciences–National Research Council. Cardiopulmonary Resuscitation. JAMA. 1966;198(4):372-379.',
+          name: 'Ad Hoc Committee on Cardiopulmonary Resuscitation, Division of Medical Sciences, National Academy of Sciences--National Research Council. Cardiopulmonary Resuscitation. JAMA. 1966;198(4):372-379.',
           url: 'https://jamanetwork.com/journals/jama/article-abstract/661914',
           publishedAt: '1966-10-24',
           methodologyType: 'primary',
@@ -4779,7 +4779,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1953-07-01',
         datePrecision: 'MONTH',
-        reason: 'In \'A proposal for a new method of evaluation of the newborn infant,\' anesthesiologist Virginia Apgar argued that the condition of the neonate at birth was being judged haphazardly and proposed five quickly observable signs scored 0–2 each. This recorded the claim that newborn vitality could be standardized into a single reproducible number, creating the first objective metric for triaging infants needing resuscitation.',
+        reason: 'In \'A proposal for a new method of evaluation of the newborn infant,\' anesthesiologist Virginia Apgar argued that the condition of the neonate at birth was being judged haphazardly and proposed five quickly observable signs scored 0--2 each. This recorded the claim that newborn vitality could be standardized into a single reproducible number, creating the first objective metric for triaging infants needing resuscitation.',
         source: {
           externalId: 'src:apgar-newborn-evaluation-1953',
           name: 'Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953;32(4):260-267.',
@@ -4912,7 +4912,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Ramsey and colleagues reported a randomized, double-blind, placebo-controlled trial showing that ivacaftor, a small-molecule potentiator of the defective CFTR protein, improved FEV1 by 10.6 percentage points through 24 weeks in patients aged 12 and older with the G551D mutation. This was the first demonstration that a drug could correct the function of the mutant CFTR channel rather than merely treat symptoms.',
         source: {
           externalId: 'src:ramsey-ivacaftor-g551d-nejm-2011',
-          name: 'Ramsey BW, Davies J, McElvaney NG, et al. A CFTR potentiator in patients with cystic fibrosis and the G551D mutation. N Engl J Med. 2011;365(18):1663–1672. PMID 22047557.',
+          name: 'Ramsey BW, Davies J, McElvaney NG, et al. A CFTR potentiator in patients with cystic fibrosis and the G551D mutation. N Engl J Med. 2011;365(18):1663--1672. PMID 22047557.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/22047557/',
           publishedAt: '2011-11-03',
           methodologyType: 'primary',
@@ -4970,7 +4970,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2012-05',
         datePrecision: 'MONTH',
-        reason: 'Drawing on the 2009 trial evidence, the U.S. Preventive Services Task Force issued a Grade D recommendation against PSA-based screening for men of all ages, concluding the harms outweighed the benefits. This institutionalized the reversal of routine-screening advice; the Task Force later softened the position to Grade C (shared decision-making for men 55–69) in 2018, leaving the question genuinely contested rather than fully settled.',
+        reason: 'Drawing on the 2009 trial evidence, the U.S. Preventive Services Task Force issued a Grade D recommendation against PSA-based screening for men of all ages, concluding the harms outweighed the benefits. This institutionalized the reversal of routine-screening advice; the Task Force later softened the position to Grade C (shared decision-making for men 55--69) in 2018, leaving the question genuinely contested rather than fully settled.',
         source: {
           externalId: 'src:uspstf-prostate-screening-2012',
           name: 'U.S. Preventive Services Task Force. Recommendation: Prostate Cancer Screening (2012 Grade D recommendation).',
@@ -5109,7 +5109,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOVASCULAR MEDICINE ERA (2010–2024)
+  // CARDIOVASCULAR MEDICINE ERA (2010--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── SPRINT intensive BP control — 2015 ─────────────────────────────────────
@@ -5154,7 +5154,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Evolocumab PCSK9 / FOURIER CV outcomes — 2015–2017 ─────────────────────
+  // ── Evolocumab PCSK9 / FOURIER CV outcomes — 2015--2017 ─────────────────────
   {
     externalId: 'trajectory:evolocumab-pcsk9-fourier-cv-outcomes-2017',
     text: 'PCSK9 inhibition with evolocumab, approved by the FDA on 27 August 2015 as an LDL-cholesterol-lowering adjunct to statins, was proven on 17 March 2017 by the FOURIER trial to reduce cardiovascular events in patients with established atherosclerotic disease.',
@@ -5196,7 +5196,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Niacin add-on to statin reversed — 1975–2014 ───────────────────────────
+  // ── Niacin add-on to statin reversed — 1975--2014 ───────────────────────────
   {
     externalId: 'trajectory:niacin-add-on-statin-reversed-2014',
     text: 'The claim that niacin — shown by the 1975 Coronary Drug Project to reduce nonfatal myocardial infarction — confers additional cardiovascular benefit when added to statin therapy was reversed when the AIM-HIGH (2011) and HPS2-THRIVE (2014) trials found no reduction in events despite favorable changes in HDL and triglycerides.',
@@ -5253,7 +5253,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Apixaban vs warfarin ARISTOTLE — 2011–2012 ─────────────────────────────
+  // ── Apixaban vs warfarin ARISTOTLE — 2011--2012 ─────────────────────────────
   {
     externalId: 'trajectory:apixaban-vs-warfarin-aristotle-2011',
     text: 'On 27 August 2011 the ARISTOTLE trial reported that the direct oral anticoagulant apixaban was superior to warfarin in patients with atrial fibrillation, reducing stroke or systemic embolism, major bleeding, and all-cause mortality.',
@@ -5295,7 +5295,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Semaglutide SELECT CV outcomes in obesity — 2023–2024 ──────────────────
+  // ── Semaglutide SELECT CV outcomes in obesity — 2023--2024 ──────────────────
   {
     externalId: 'trajectory:semaglutide-select-cv-outcomes-obesity-2023',
     text: 'On 11 November 2023 the SELECT trial reported that weekly subcutaneous semaglutide 2.4 mg reduced major adverse cardiovascular events by about 20% in overweight or obese adults with established cardiovascular disease but without diabetes, a finding the FDA adopted as a labeled cardiovascular indication on 8 March 2024.',
@@ -5486,7 +5486,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After 251 Lübeck infants were vaccinated with BCG in early 1930, dozens fell ill with tuberculosis and many died, provoking public alarm and a medical controversy over whether the BCG vaccine itself was dangerous, including the hypothesis that the attenuated strain had reverted to full virulence. The deaths placed the safety of BCG — in use since 1921 — into open dispute.',
         source: {
           externalId: 'src:lubeck-bcg-plos-pathogens-2016',
-          name: 'Tuberculosis in Newborns: The Lessons of the \'Lübeck Disaster\' (1929–1933). PLOS Pathogens. 2016;12(1):e1005271.',
+          name: 'Tuberculosis in Newborns: The Lessons of the \'Lübeck Disaster\' (1929--1933). PLOS Pathogens. 2016;12(1):e1005271.',
           url: 'https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1005271',
           publishedAt: '2016-01-21',
           methodologyType: 'derivative',
@@ -5511,7 +5511,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY ERA (1950–1990)
+  // PSYCHOPHARMACOLOGY ERA (1950--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Chlorpromazine first antipsychotic — Delay & Deniker 1952 ───────────────
@@ -5532,7 +5532,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After clinical trials began at Sainte-Anne Hospital under Deniker on 24 March 1952, Delay and Deniker presented their first findings on 25 May 1952 and published a rapid series of papers in the Annales Médico-Psychologiques, reporting that chlorpromazine at ~75 mg/day controlled psychotic excitation and improved thinking and emotional behavior without simple sedation. This recorded the first claim that a drug could specifically treat psychosis, founding modern psychopharmacology.',
         source: {
           externalId: 'src:ban-fifty-years-chlorpromazine-2007',
-          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495–500.',
+          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495--500.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2655089/',
           publishedAt: '2007-08-01',
           methodologyType: 'derivative',
@@ -5547,7 +5547,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Chlorpromazine was adopted internationally within two years and in 1957 Henri Laborit, Jean Delay, Pierre Deniker, and Heinz Lehmann received the Albert Lasker Clinical Medical Research Award for introducing antipsychotic medication. The award, alongside the drug\'s worldwide clinical use and its displacement of lobotomy, ratified chlorpromazine\'s antipsychotic efficacy as settled medical knowledge.',
         source: {
           externalId: 'src:ban-fifty-years-chlorpromazine-2007',
-          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495–500.',
+          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495--500.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2655089/',
           publishedAt: '2007-08-01',
           methodologyType: 'derivative',
@@ -5574,7 +5574,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Kuhn, testing Geigy\'s antihistamine-like compound G22355 in roughly 100 patients, observed that it did not help psychosis but lifted mood in depressed patients, and published \'Über die Behandlung depressiver Zustände mit einem Iminodibenzylderivat (G 22355)\'. This recorded the first claim that a drug could specifically treat depression, launching the tricyclic antidepressant era.',
         source: {
           externalId: 'src:kuhn-imipramine-g22355-1957',
-          name: 'Kuhn R. Über die Behandlung depressiver Zustände mit einem Iminodibenzylderivat (G 22355). Schweiz Med Wochenschr. 1957;87(35–36):1135–40.',
+          name: 'Kuhn R. Über die Behandlung depressiver Zustände mit einem Iminodibenzylderivat (G 22355). Schweiz Med Wochenschr. 1957;87(35--36):1135--40.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/13467194/',
           publishedAt: '1957-08-31',
           methodologyType: 'primary',
@@ -5616,7 +5616,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Building on his 1967 report of high-dose DL-dopa, Cotzias published \'Modification of Parkinsonism — Chronic Treatment with L-Dopa,\' showing that slowly increased oral levodopa improved 28 patients (marked or dramatic benefit in 20) sustained up to two years. This recorded the claim that replenishing dopamine precursor could reverse parkinsonian disability, overturning therapeutic nihilism about Parkinson\'s disease.',
         source: {
           externalId: 'src:cotzias-modification-parkinsonism-ldopa-1969',
-          name: 'Cotzias GC, Papavasiliou PS, Gellene R. Modification of Parkinsonism — chronic treatment with L-dopa. N Engl J Med. 1969;280(7):337–45.',
+          name: 'Cotzias GC, Papavasiliou PS, Gellene R. Modification of Parkinsonism — chronic treatment with L-dopa. N Engl J Med. 1969;280(7):337--45.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/4178641/',
           publishedAt: '1969-02-13',
           methodologyType: 'primary',
@@ -5700,7 +5700,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Petursson and Lader published \'Withdrawal from long-term benzodiazepine treatment\' in the BMJ, documenting a reproducible withdrawal syndrome on gradual discontinuation in patients taking therapeutic doses. This established that benzodiazepines produce genuine physical dependence even when used as prescribed, directly contesting the non-addictive claim.',
         source: {
           externalId: 'src:petursson-lader-benzodiazepine-withdrawal-1981',
-          name: 'Petursson H, Lader MH. Withdrawal from long-term benzodiazepine treatment. Br Med J (Clin Res Ed). 1981;283(6292):643–5.',
+          name: 'Petursson H, Lader MH. Withdrawal from long-term benzodiazepine treatment. Br Med J (Clin Res Ed). 1981;283(6292):643--5.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6114776/',
           publishedAt: '1981-09-05',
           methodologyType: 'primary',
@@ -5712,7 +5712,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1988-01-01',
         datePrecision: 'YEAR',
-        reason: 'The UK Committee on Safety of Medicines issued guidance (Current Problems No. 21) restricting benzodiazepines to short-term use of 2–4 weeks for anxiety or insomnia that is severe and disabling, citing dependence and withdrawal. This regulatory reversal overturned the prior standard of safe long-term prescribing.',
+        reason: 'The UK Committee on Safety of Medicines issued guidance (Current Problems No. 21) restricting benzodiazepines to short-term use of 2--4 weeks for anxiety or insomnia that is severe and disabling, citing dependence and withdrawal. This regulatory reversal overturned the prior standard of safe long-term prescribing.',
         source: {
           externalId: 'src:wikipedia-benzodiazepine-csm-1988',
           name: 'Benzodiazepine. Wikipedia (Committee on Safety of Medicines 1988 guidance).',
@@ -5725,7 +5725,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // POST-MARKET SURVEILLANCE & REVERSAL ERA (1996–2008)
+  // POST-MARKET SURVEILLANCE & REVERSAL ERA (1996--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Fen-phen valvulopathy reversal — 1997 ───────────────────────────────────
@@ -5872,7 +5872,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Cerivastatin (Baycol) rhabdomyolysis withdrawal — 2001 ──────────────────
   {
     externalId: 'trajectory:cerivastatin-baycol-withdrawal-2001',
-    text: "Cerivastatin (Baycol/Lipobay, Bayer), an HMG-CoA reductase inhibitor approved by the FDA in 1997 and marketed as a safe and effective cholesterol-lowering statin, was voluntarily withdrawn from the market on 8 August 2001 after post-marketing surveillance linked it to fatal rhabdomyolysis at rates roughly 5–10 times higher than other statins.",
+    text: "Cerivastatin (Baycol/Lipobay, Bayer), an HMG-CoA reductase inhibitor approved by the FDA in 1997 and marketed as a safe and effective cholesterol-lowering statin, was voluntarily withdrawn from the market on 8 August 2001 after post-marketing surveillance linked it to fatal rhabdomyolysis at rates roughly 5--10 times higher than other statins.",
     claimType: 'HYBRID',
     claimEmergedAt: '1997-06-26',
     claimEmergedPrecision: 'DAY',
@@ -6052,7 +6052,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── DSM-5 substance use disorder reclassification — 2013 ─────────────────────
   {
     externalId: 'trajectory:dsm5-substance-use-disorder-reclassification-2013',
-    text: 'On May 18, 2013 the American Psychiatric Association released the DSM-5, which abolished the separate DSM-IV diagnoses of \'substance abuse\' and \'substance dependence\' and merged them into a single \'substance use disorder\' graded on a mild–moderate–severe severity continuum — reclassifying addiction, including opioid use disorder, as a unitary spectrum condition.',
+    text: 'On May 18, 2013 the American Psychiatric Association released the DSM-5, which abolished the separate DSM-IV diagnoses of \'substance abuse\' and \'substance dependence\' and merged them into a single \'substance use disorder\' graded on a mild--moderate--severe severity continuum — reclassifying addiction, including opioid use disorder, as a unitary spectrum condition.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2013-05-18',
     claimEmergedPrecision: 'DAY',
@@ -6119,13 +6119,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH & HORMONES ERA (1894–1960)
+  // WOMEN'S HEALTH & HORMONES ERA (1894--1960)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Allen–Doisy ovarian hormone / estrogen — 1923 ───────────────────────────
+  // ── Allen--Doisy ovarian hormone / estrogen — 1923 ───────────────────────────
   {
     externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
-    text: 'Edgar Allen and Edward A. Doisy reported in JAMA on 8 September 1923 that an extract of ovarian follicular fluid produced characteristic estrus changes in spayed test animals, establishing the existence of a specific ovarian hormone (later named estrogen) and a quantitative bioassay (the Allen–Doisy test) for it.',
+    text: 'Edgar Allen and Edward A. Doisy reported in JAMA on 8 September 1923 that an extract of ovarian follicular fluid produced characteristic estrus changes in spayed test animals, establishing the existence of a specific ovarian hormone (later named estrogen) and a quantitative bioassay (the Allen--Doisy test) for it.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1923-09-08',
     claimEmergedPrecision: 'DAY',
@@ -6137,10 +6137,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1923-09-08',
         datePrecision: 'DAY',
-        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA (1923;81:819–821), showing that follicular-fluid extract induced cornification of the vaginal epithelium and estrus in ovariectomized rodents. This recorded in the expert literature the claim that the ovary secretes a discrete chemical hormone and provided the first reproducible bioassay to detect and measure it, founding the field of estrogen endocrinology.',
+        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA (1923;81:819--821), showing that follicular-fluid extract induced cornification of the vaginal epithelium and estrus in ovariectomized rodents. This recorded in the expert literature the claim that the ovary secretes a discrete chemical hormone and provided the first reproducible bioassay to detect and measure it, founding the field of estrogen endocrinology.',
         source: {
           externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
-          name: 'Allen E, Doisy EA. An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819–821. (Landmark article reproduced JAMA. 1983;250(19):2681–2683.)',
+          name: 'Allen E, Doisy EA. An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819--821. (Landmark article reproduced JAMA. 1983;250(19):2681--2683.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
           publishedAt: '1923-09-08',
           methodologyType: 'primary',
@@ -6152,10 +6152,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1929-08-01',
         datePrecision: 'MONTH',
-        reason: 'Doisy, working with Clement Veler and Sidney Thayer, isolated pure crystalline estrone (\'theelin\') from pregnancy urine (announced at the 13th International Physiological Congress, Boston, August 1929; published as \'The preparation of the crystalline follicular ovarian hormone: theelin,\' J Biol Chem 1930;87:357–371), with Adolf Butenandt crystallizing the same compound independently. Reducing the bioassay-defined hormone to a defined, weighable chemical substance settled the claim that the ovarian hormone was a single isolable molecule and made standardized estrogen therapy and synthesis possible.',
+        reason: 'Doisy, working with Clement Veler and Sidney Thayer, isolated pure crystalline estrone (\'theelin\') from pregnancy urine (announced at the 13th International Physiological Congress, Boston, August 1929; published as \'The preparation of the crystalline follicular ovarian hormone: theelin,\' J Biol Chem 1930;87:357--371), with Adolf Butenandt crystallizing the same compound independently. Reducing the bioassay-defined hormone to a defined, weighable chemical substance settled the claim that the ovarian hormone was a single isolable molecule and made standardized estrogen therapy and synthesis possible.',
         source: {
           externalId: 'src:doisy-crystalline-theelin-jbc-1930',
-          name: 'Doisy EA, Veler CD, Thayer S. The preparation of the crystalline follicular ovarian hormone: theelin. J Biol Chem. 1930;87:357–371.',
+          name: 'Doisy EA, Veler CD, Thayer S. The preparation of the crystalline follicular ovarian hormone: theelin. J Biol Chem. 1930;87:357--371.',
           url: 'https://www.jbc.org/article/S0021-9258(19)66427-6/pdf',
           publishedAt: '1930-01-01',
           methodologyType: 'primary',
@@ -6179,10 +6179,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1894-01-01',
         datePrecision: 'YEAR',
-        reason: 'Halsted published \'The results of operations for the cure of cancer of the breast performed at the Johns Hopkins Hospital from June, 1889, to January, 1894\' (Annals of Surgery 1894;20:497–555), reporting local-recurrence rates of about 6% versus the 51–82% of leading European surgeons. The dramatic results rapidly established the radical mastectomy as the unquestioned standard of care for breast cancer for the better part of a century, embodying the doctrine that cancer spreads by contiguous local extension and is cured by ever-wider resection.',
+        reason: 'Halsted published \'The results of operations for the cure of cancer of the breast performed at the Johns Hopkins Hospital from June, 1889, to January, 1894\' (Annals of Surgery 1894;20:497--555), reporting local-recurrence rates of about 6% versus the 51--82% of leading European surgeons. The dramatic results rapidly established the radical mastectomy as the unquestioned standard of care for breast cancer for the better part of a century, embodying the doctrine that cancer spreads by contiguous local extension and is cured by ever-wider resection.',
         source: {
           externalId: 'src:halsted-radical-mastectomy-annals-1894',
-          name: 'Halsted WS. The results of operations for the cure of cancer of the breast performed at the Johns Hopkins Hospital from June, 1889, to January, 1894. Ann Surg. 1894;20(5):497–555.',
+          name: 'Halsted WS. The results of operations for the cure of cancer of the breast performed at the Johns Hopkins Hospital from June, 1889, to January, 1894. Ann Surg. 1894;20(5):497--555.',
           url: 'https://embryo.asu.edu/pages/results-operations-cure-cancer-breast-performed-johns-hopkins-hospital-june-1889-january-1894',
           publishedAt: '1894-01-01',
           methodologyType: 'derivative',
@@ -6194,10 +6194,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2002-08-22',
         datePrecision: 'DAY',
-        reason: 'Fisher and the NSABP reported 25-year follow-up of the randomized B-04 trial (NEJM 2002;347:567–575), which had compared radical mastectomy with total mastectomy with or without radiation: there was no significant difference in disease-free survival, distant-disease-free survival, or overall survival. The trial directly refuted the Halstedian rationale that wider en bloc resection improves cure, confirming that outcomes are governed by occult micrometastatic spread, and the disfiguring radical mastectomy was abandoned in favor of less extensive surgery.',
+        reason: 'Fisher and the NSABP reported 25-year follow-up of the randomized B-04 trial (NEJM 2002;347:567--575), which had compared radical mastectomy with total mastectomy with or without radiation: there was no significant difference in disease-free survival, distant-disease-free survival, or overall survival. The trial directly refuted the Halstedian rationale that wider en bloc resection improves cure, confirming that outcomes are governed by occult micrometastatic spread, and the disfiguring radical mastectomy was abandoned in favor of less extensive surgery.',
         source: {
           externalId: 'src:fisher-nsabp-b04-25yr-nejm-2002',
-          name: 'Fisher B, Jeong J-H, Anderson S, Bryant J, Fisher ER, Wolmark N. Twenty-five-year follow-up of a randomized trial comparing radical mastectomy, total mastectomy, and total mastectomy followed by irradiation. N Engl J Med. 2002;347(8):567–575.',
+          name: 'Fisher B, Jeong J-H, Anderson S, Bryant J, Fisher ER, Wolmark N. Twenty-five-year follow-up of a randomized trial comparing radical mastectomy, total mastectomy, and total mastectomy followed by irradiation. N Engl J Med. 2002;347(8):567--575.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/12192016/',
           publishedAt: '2002-08-22',
           methodologyType: 'primary',
@@ -6224,7 +6224,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In 1942 the FDA approved conjugated equine estrogens (Premarin), extracted from the urine of pregnant mares, for relief of menopausal symptoms — one of the first products cleared under the 1938 Federal Food, Drug, and Cosmetic Act\'s new safety-review regime. Institutional approval settled the claim that conjugated estrogen replacement was a safe, effective treatment for menopause, and Premarin went on to become one of the most prescribed drugs in the United States.',
         source: {
           externalId: 'src:stefanick-estrogens-history-amjmed-2005',
-          name: 'Stefanick ML. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005;118(12 Suppl 2):64–73.',
+          name: 'Stefanick ML. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005;118(12 Suppl 2):64--73.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16414329/',
           publishedAt: '2005-12-19',
           methodologyType: 'derivative',
@@ -6236,10 +6236,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2004-04-14',
         datePrecision: 'DAY',
-        reason: 'The Women\'s Health Initiative reported the estrogen-alone arm (conjugated equine estrogen — i.e., Premarin — in 10,739 women with prior hysterectomy; JAMA 2004;291:1701–1712); the NIH had stopped the trial early on 29 February 2004 because CEE increased the risk of stroke (hazard ratio 1.39) without reducing coronary heart disease. The first large randomized trial of Premarin itself overturned the assumption of net cardiovascular benefit and threw the long-settled safety premise of conjugated-estrogen therapy into dispute, sharply curtailing its use.',
+        reason: 'The Women\'s Health Initiative reported the estrogen-alone arm (conjugated equine estrogen — i.e., Premarin — in 10,739 women with prior hysterectomy; JAMA 2004;291:1701--1712); the NIH had stopped the trial early on 29 February 2004 because CEE increased the risk of stroke (hazard ratio 1.39) without reducing coronary heart disease. The first large randomized trial of Premarin itself overturned the assumption of net cardiovascular benefit and threw the long-settled safety premise of conjugated-estrogen therapy into dispute, sharply curtailing its use.',
         source: {
           externalId: 'src:whi-estrogen-alone-cee-jama-2004',
-          name: 'Women\'s Health Initiative Steering Committee. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701–1712.',
+          name: 'Women\'s Health Initiative Steering Committee. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701--1712.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/15082697/',
           publishedAt: '2004-04-14',
           methodologyType: 'primary',
@@ -6278,10 +6278,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1968-04-27',
         datePrecision: 'DAY',
-        reason: 'Inman and Vessey reported in the BMJ (1968;2(5599):193–199) a controlled investigation of deaths from pulmonary, coronary, and cerebral thrombosis and embolism in women of childbearing age, demonstrating a significant association between oral-contraceptive use and fatal thromboembolism. This and parallel UK studies converted the pill\'s settled safety profile into an active safety controversy, prompting U.S. Senate (Nelson Pill) hearings, the first patient package insert, and a shift to lower-dose formulations; high-estrogen Enovid was eventually withdrawn in 1988.',
+        reason: 'Inman and Vessey reported in the BMJ (1968;2(5599):193--199) a controlled investigation of deaths from pulmonary, coronary, and cerebral thrombosis and embolism in women of childbearing age, demonstrating a significant association between oral-contraceptive use and fatal thromboembolism. This and parallel UK studies converted the pill\'s settled safety profile into an active safety controversy, prompting U.S. Senate (Nelson Pill) hearings, the first patient package insert, and a shift to lower-dose formulations; high-estrogen Enovid was eventually withdrawn in 1988.',
         source: {
           externalId: 'src:inman-vessey-oc-thromboembolism-bmj-1968',
-          name: 'Inman WHW, Vessey MP. Investigation of deaths from pulmonary, coronary, and cerebral thrombosis and embolism in women of child-bearing age. Br Med J. 1968;2(5599):193–199.',
+          name: 'Inman WHW, Vessey MP. Investigation of deaths from pulmonary, coronary, and cerebral thrombosis and embolism in women of child-bearing age. Br Med J. 1968;2(5599):193--199.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1985904/',
           publishedAt: '1968-04-27',
           methodologyType: 'primary',
@@ -6291,7 +6291,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRIC & NEONATAL MEDICINE ERA (1958–1991)
+  // PEDIATRIC & NEONATAL MEDICINE ERA (1958--1991)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Cremer phototherapy neonatal jaundice 1958 ─────────────────────────────
@@ -6393,7 +6393,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1991-10-01',
         datePrecision: 'MONTH',
-        reason: 'The CDC\'s 1991 statement Preventing Lead Poisoning in Young Children lowered the blood-lead level of concern from 25 to 10 µg/dL and called for near-universal screening of 1–6-year-olds, citing the accumulated evidence of harm at low levels that Needleman\'s work anchored. Although Needleman personally faced a scientific-misconduct inquiry (1990–1994) from which he was ultimately exonerated, his core finding was independently replicated, and the subclinical-neurotoxicity claim became the basis of U.S. lead policy.',
+        reason: 'The CDC\'s 1991 statement Preventing Lead Poisoning in Young Children lowered the blood-lead level of concern from 25 to 10 µg/dL and called for near-universal screening of 1--6-year-olds, citing the accumulated evidence of harm at low levels that Needleman\'s work anchored. Although Needleman personally faced a scientific-misconduct inquiry (1990--1994) from which he was ultimately exonerated, his core finding was independently replicated, and the subclinical-neurotoxicity claim became the basis of U.S. lead policy.',
         source: {
           externalId: 'src:cdc-preventing-lead-poisoning-1991',
           name: 'Centers for Disease Control. Preventing Lead Poisoning in Young Children: A Statement by the Centers for Disease Control. October 1991.',
@@ -6490,7 +6490,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // GENE THERAPY & RARE DISEASE ERA (1995–2007)
+  // GENE THERAPY & RARE DISEASE ERA (1995--2007)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 1. Jesse Gelsinger gene-therapy death — 1999 ───────────────────────────
@@ -6704,7 +6704,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL PROCEDURE REVERSALS (1990–2020)
+  // SURGICAL PROCEDURE REVERSALS (1990--2020)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── LACC trial: minimally invasive radical hysterectomy reversal 2018 ────────
@@ -6725,7 +6725,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "Following the introduction of laparoscopic radical hysterectomy in the early 1990s and the clearance and rapid uptake of robotic surgical systems in the mid-2000s, minimally invasive radical hysterectomy was widely adopted as standard for early-stage cervical cancer on the strength of retrospective series suggesting equivalent oncologic outcomes with less surgical morbidity. As the LACC investigators document, the approach 'has been widely adopted' largely on the basis of this non-randomized evidence.",
         source: {
           externalId: 'src:ramirez-lacc-nejm-2018-adoption',
-          name: 'Ramirez PT, et al. Minimally Invasive versus Abdominal Radical Hysterectomy for Cervical Cancer. N Engl J Med. 2018;379(20):1895–1904 (background documenting prior adoption from retrospective data).',
+          name: 'Ramirez PT, et al. Minimally Invasive versus Abdominal Radical Hysterectomy for Cervical Cancer. N Engl J Med. 2018;379(20):1895--1904 (background documenting prior adoption from retrospective data).',
           url: 'https://pubmed.ncbi.nlm.nih.gov/30380365/',
           publishedAt: '2018-10-31',
           methodologyType: 'primary',
@@ -6740,7 +6740,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The randomized LACC trial (631 women) was stopped early when minimally invasive radical hysterectomy showed markedly worse outcomes than open surgery: 4.5-year disease-free survival 86.0% vs 96.5% and 3-year overall survival 93.8% vs 99.0%. The unexpected result contradicted the retrospective evidence base, prompting NCCN and professional societies to revise guidance toward open surgery and overturning a settled surgical preference.',
         source: {
           externalId: 'src:ramirez-lacc-nejm-2018',
-          name: 'Ramirez PT, Frumovitz M, Pareja R, et al. Minimally Invasive versus Abdominal Radical Hysterectomy for Cervical Cancer. N Engl J Med. 2018;379(20):1895–1904.',
+          name: 'Ramirez PT, Frumovitz M, Pareja R, et al. Minimally Invasive versus Abdominal Radical Hysterectomy for Cervical Cancer. N Engl J Med. 2018;379(20):1895--1904.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/30380365/',
           publishedAt: '2018-10-31',
           methodologyType: 'primary',
@@ -6767,7 +6767,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After Joseph DeLee advocated prophylactic episiotomy in 1920, routine episiotomy became entrenched standard obstetric practice through the mid-20th century, performed in a majority of US vaginal deliveries on the belief that the controlled surgical incision prevented severe perineal tearing and protected pelvic-floor function. The Hartmann review documents that the procedure became one of the most common surgical interventions in obstetrics without supporting randomized evidence.',
         source: {
           externalId: 'src:hartmann-episiotomy-jama-2005-history',
-          name: 'Hartmann K, et al. Outcomes of routine episiotomy: a systematic review. JAMA. 2005;293(17):2141–2148 (documenting historical routine use).',
+          name: 'Hartmann K, et al. Outcomes of routine episiotomy: a systematic review. JAMA. 2005;293(17):2141--2148 (documenting historical routine use).',
           url: 'https://pubmed.ncbi.nlm.nih.gov/15870418/',
           publishedAt: '2005-05-04',
           methodologyType: 'primary',
@@ -6782,7 +6782,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "The systematic review of randomized and observational evidence found that routine episiotomy did not reduce severe perineal trauma, improve healing, or protect pelvic-floor function, and that outcomes 'can be considered worse since some proportion of women who would have had lesser injury instead had a surgical incision.' The conclusion that 'evidence does not support maternal benefits traditionally ascribed to routine episiotomy' was rapidly codified by ACOG Practice Bulletin No. 71 (2006), which recommended restricted rather than routine use.",
         source: {
           externalId: 'src:hartmann-episiotomy-jama-2005',
-          name: 'Hartmann K, Viswanathan M, Palmieri R, Gartlehner G, Thorp J Jr, Lohr KN. Outcomes of routine episiotomy: a systematic review. JAMA. 2005;293(17):2141–2148.',
+          name: 'Hartmann K, Viswanathan M, Palmieri R, Gartlehner G, Thorp J Jr, Lohr KN. Outcomes of routine episiotomy: a systematic review. JAMA. 2005;293(17):2141--2148.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/15870418/',
           publishedAt: '2005-05-04',
           methodologyType: 'primary',
@@ -6791,7 +6791,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Pulmonary artery catheter reversal 1996–2005 ──────────────────────────────
+  // ── Pulmonary artery catheter reversal 1996--2005 ──────────────────────────────
   {
     externalId: 'trajectory:pulmonary-artery-catheter-reversal-1996',
     text: 'Connors et al. (JAMA, 18 September 1996) reported that pulmonary artery (Swan-Ganz) catheterization in the first 24 hours of ICU care was associated with increased 30-day mortality and resource use in critically ill patients, contesting — and ultimately, with the PAC-Man randomized trial (Lancet, 2005), reversing — the long-settled belief that routine right-heart catheterization improves outcomes.',
@@ -6809,7 +6809,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After Swan and Ganz introduced the balloon-flotation pulmonary artery catheter in 1970, bedside right-heart catheterization was adopted across intensive care and cardiac units worldwide as a routine tool for hemodynamic monitoring, on the assumption that the physiologic data it provided guided better therapy and improved survival. By the early 1990s it was one of the most widely used invasive monitoring procedures in critical care, with little randomized evidence of benefit.',
         source: {
           externalId: 'src:connors-pac-jama-1996-context',
-          name: 'Connors AF Jr, et al. The effectiveness of right heart catheterization in the initial care of critically ill patients. JAMA. 1996;276(11):889–897 (documenting widespread prior use).',
+          name: 'Connors AF Jr, et al. The effectiveness of right heart catheterization in the initial care of critically ill patients. JAMA. 1996;276(11):889--897 (documenting widespread prior use).',
           url: 'https://pubmed.ncbi.nlm.nih.gov/8782638/',
           publishedAt: '1996-09-18',
           methodologyType: 'primary',
@@ -6824,7 +6824,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "The SUPPORT prospective cohort study (5,735 critically ill patients) found that receiving a pulmonary artery catheter was associated with increased 30-day mortality (roughly 24% higher risk), greater costs, and longer ICU stays, with no patient subgroup identified as benefiting. The finding that 'RHC was associated with increased mortality and increased utilization of resources' overturned the presumption of benefit and triggered calls for a moratorium and for randomized trials.",
         source: {
           externalId: 'src:connors-pac-jama-1996',
-          name: 'Connors AF Jr, Speroff T, Dawson NV, et al. The effectiveness of right heart catheterization in the initial care of critically ill patients (SUPPORT). JAMA. 1996;276(11):889–897.',
+          name: 'Connors AF Jr, Speroff T, Dawson NV, et al. The effectiveness of right heart catheterization in the initial care of critically ill patients (SUPPORT). JAMA. 1996;276(11):889--897.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/8782638/',
           publishedAt: '1996-09-18',
           methodologyType: 'primary',
@@ -6839,7 +6839,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The PAC-Man randomized controlled trial (Harvey et al., 1,041 patients across 65 UK ICUs) found no difference in hospital mortality between management with or without a pulmonary artery catheter, providing definitive evidence that routine PAC use conferred no survival benefit. Combined with concurrent negative trials (e.g., ESCAPE), the result drove a sharp and sustained decline in PAC use, abandoning the procedure as routine critical-care practice.',
         source: {
           externalId: 'src:harvey-pacman-lancet-2005',
-          name: 'Harvey S, Harrison DA, Singer M, et al. Assessment of the clinical effectiveness of pulmonary artery catheters in management of patients in intensive care (PAC-Man): a randomised controlled trial. Lancet. 2005;366(9484):472–477.',
+          name: 'Harvey S, Harrison DA, Singer M, et al. Assessment of the clinical effectiveness of pulmonary artery catheters in management of patients in intensive care (PAC-Man): a randomised controlled trial. Lancet. 2005;366(9484):472--477.',
           url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(05)67061-4/abstract',
           publishedAt: '2005-08-06',
           methodologyType: 'primary',
@@ -6906,7 +6906,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ONCOLOGY FOUNDATIONS ERA (1941–1956)
+  // ONCOLOGY FOUNDATIONS ERA (1941--1956)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Huggins hormonal therapy for prostate cancer — 1941 ────────────────────
@@ -6994,7 +6994,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOVASCULAR PHARMACOLOGY ERA (1964–1991)
+  // CARDIOVASCULAR PHARMACOLOGY ERA (1964--1991)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── WHO clofibrate primary prevention reversal — 1978 ──────────────────────
@@ -7166,7 +7166,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN ERA — INFECTIOUS DISEASE & VACCINE SAFETY (1994–2006)
+  // MODERN ERA — INFECTIOUS DISEASE & VACCINE SAFETY (1994--2006)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ACTG 076 — zidovudine perinatal HIV transmission 1994 ───────────────────
@@ -7241,7 +7241,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── XDR-TB global emergence 2006 ─────────────────────────────────────────────
   {
     externalId: 'trajectory:xdr-tb-global-emergence-2006',
-    text: 'On 24 March 2006, the CDC and WHO reported the worldwide emergence of extensively drug-resistant tuberculosis (XDR-TB), finding that 2% of surveyed TB isolates (2000–2004) were resistant to second-line drugs, defining a nearly untreatable form of TB.',
+    text: 'On 24 March 2006, the CDC and WHO reported the worldwide emergence of extensively drug-resistant tuberculosis (XDR-TB), finding that 2% of surveyed TB isolates (2000--2004) were resistant to second-line drugs, defining a nearly untreatable form of TB.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2006-03-24',
     claimEmergedPrecision: 'DAY',
@@ -7256,7 +7256,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'A joint CDC/WHO MMWR report analyzed surveillance data and defined XDR-TB, documenting that among 17,690 isolates 20% were MDR and 2% were XDR, with markedly worse mortality. This established the empirical claim that drug-resistance had progressed beyond multidrug-resistant TB to strains resistant to the best second-line regimens.',
         source: {
           externalId: 'src:cdc-who-xdr-tb-mmwr-2006',
-          name: 'CDC. Emergence of Mycobacterium tuberculosis with Extensive Resistance to Second-Line Drugs — Worldwide, 2000–2004. MMWR Morb Mortal Wkly Rep. 2006;55(11):301-305.',
+          name: 'CDC. Emergence of Mycobacterium tuberculosis with Extensive Resistance to Second-Line Drugs — Worldwide, 2000--2004. MMWR Morb Mortal Wkly Rep. 2006;55(11):301-305.',
           url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5511a2.htm',
           publishedAt: '2006-03-24',
           methodologyType: 'primary',
@@ -7325,7 +7325,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Community-acquired MRSA pediatric deaths 1999 ────────────────────────────
   {
     externalId: 'trajectory:community-acquired-mrsa-pediatric-deaths-1999',
-    text: 'On 20 August 1999, the CDC reported four fatal community-acquired MRSA infections in previously healthy children in Minnesota and North Dakota (1997–1999), documenting that methicillin-resistant Staphylococcus aureus had emerged outside healthcare settings in people without established risk factors.',
+    text: 'On 20 August 1999, the CDC reported four fatal community-acquired MRSA infections in previously healthy children in Minnesota and North Dakota (1997--1999), documenting that methicillin-resistant Staphylococcus aureus had emerged outside healthcare settings in people without established risk factors.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1999-08-20',
     claimEmergedPrecision: 'DAY',
@@ -7365,7 +7365,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY & NEUROLOGY (2005–2023)
+  // PSYCHOPHARMACOLOGY & NEUROLOGY (2005--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Citalopram high-dose QT safety reversal — FDA 2011 ───────────────────────
@@ -7524,10 +7524,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1901-01-01',
         datePrecision: 'YEAR',
-        reason: 'Building on Oliver and Schäfer\'s 1895 demonstration (J Physiol) that adrenal extract raises blood pressure and on Abel\'s impure \'epinephrin\' (1897–1899), Takamine — aided by Keizo Uenaka — crystallized the pure active base in 1900 and announced and published the isolation in 1901 (Am J Pharm 1901;73:523–535). Thomas Aldrich at Parke, Davis independently confirmed the crystalline substance in the American Journal of Physiology (1901;5:457–461), recording in the expert literature the claim that a single isolable molecule is the active hormone of the adrenal gland.',
+        reason: 'Building on Oliver and Schäfer\'s 1895 demonstration (J Physiol) that adrenal extract raises blood pressure and on Abel\'s impure \'epinephrin\' (1897--1899), Takamine — aided by Keizo Uenaka — crystallized the pure active base in 1900 and announced and published the isolation in 1901 (Am J Pharm 1901;73:523--535). Thomas Aldrich at Parke, Davis independently confirmed the crystalline substance in the American Journal of Physiology (1901;5:457--461), recording in the expert literature the claim that a single isolable molecule is the active hormone of the adrenal gland.',
         source: {
           externalId: 'src:litfl-adrenaline-epinephrine-history',
-          name: 'Adrenaline or epinephrine? (LITFL Eponymictionary — dated history of Oliver & Schäfer 1895, Abel 1897–99, Takamine 1900–01 crystalline Adrenalin, Aldrich Am J Physiol 1901;5:457–461, Parke-Davis commercialization).',
+          name: 'Adrenaline or epinephrine? (LITFL Eponymictionary — dated history of Oliver & Schäfer 1895, Abel 1897--99, Takamine 1900--01 crystalline Adrenalin, Aldrich Am J Physiol 1901;5:457--461, Parke-Davis commercialization).',
           url: 'https://litfl.com/epinephrine-or-adrenaline/',
           publishedAt: '1901-01-01',
           methodologyType: 'derivative',
@@ -7542,7 +7542,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Parke, Davis & Co. commercialized Takamine\'s crystalline substance under the trademark \'Adrenalin\' beginning in 1901, and independent confirmation by Aldrich plus rapid clinical use as a vasopressor and local hemostatic established adrenaline as the first pure hormone in routine medical use. Its isolation became the proof-of-concept that the body\'s internal secretions are discrete, isolable chemical compounds, founding the field of endocrine chemistry.',
         source: {
           externalId: 'src:litfl-adrenaline-epinephrine-history',
-          name: 'Adrenaline or epinephrine? (LITFL Eponymictionary — dated history of Oliver & Schäfer 1895, Abel 1897–99, Takamine 1900–01 crystalline Adrenalin, Aldrich Am J Physiol 1901;5:457–461, Parke-Davis commercialization).',
+          name: 'Adrenaline or epinephrine? (LITFL Eponymictionary — dated history of Oliver & Schäfer 1895, Abel 1897--99, Takamine 1900--01 crystalline Adrenalin, Aldrich Am J Physiol 1901;5:457--461, Parke-Davis commercialization).',
           url: 'https://litfl.com/epinephrine-or-adrenaline/',
           publishedAt: '1901-01-01',
           methodologyType: 'derivative',
@@ -7551,7 +7551,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Banting–Best insulin — clinical treatment 1922 ───────────────────────
+  // ── Banting--Best insulin — clinical treatment 1922 ───────────────────────
   {
     externalId: 'trajectory:banting-best-insulin-clinical-treatment-1922',
     text: 'Frederick Banting, Charles Best, James Collip and colleagues reported in the Canadian Medical Association Journal in March 1922 that injection of a pancreatic extract (insulin) into diabetic patients — beginning with 14-year-old Leonard Thompson on 11 January 1922 — abolished glycosuria and ketosis and reversed the metabolic derangement of diabetes mellitus, establishing insulin as an effective treatment for human diabetes.',
@@ -7566,10 +7566,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1922-03-01',
         datePrecision: 'MONTH',
-        reason: 'After the first administration of Banting–Best pancreatic extract to Leonard Thompson on 11 January 1922 and a markedly more effective dose of Collip\'s purified extract on 23 January, the Toronto group published \'Pancreatic Extracts in the Treatment of Diabetes Mellitus\' in the Canadian Medical Association Journal (1922;12:141–146), reporting that the extract reduced blood and urine sugar and cleared ketonuria in seven diabetic patients. This recorded in the expert literature the claim that an injectable pancreatic internal secretion could treat human diabetes.',
+        reason: 'After the first administration of Banting--Best pancreatic extract to Leonard Thompson on 11 January 1922 and a markedly more effective dose of Collip\'s purified extract on 23 January, the Toronto group published \'Pancreatic Extracts in the Treatment of Diabetes Mellitus\' in the Canadian Medical Association Journal (1922;12:141--146), reporting that the extract reduced blood and urine sugar and cleared ketonuria in seven diabetic patients. This recorded in the expert literature the claim that an injectable pancreatic internal secretion could treat human diabetes.',
         source: {
           externalId: 'src:banting-best-pancreatic-extracts-cmaj-1922',
-          name: 'Banting FG, Best CH, Collip JB, Campbell WR, Fletcher AA. Pancreatic Extracts in the Treatment of Diabetes Mellitus. Can Med Assoc J. 1922;12(3):141–146. (PMID 20314060; PMC1524425.)',
+          name: 'Banting FG, Best CH, Collip JB, Campbell WR, Fletcher AA. Pancreatic Extracts in the Treatment of Diabetes Mellitus. Can Med Assoc J. 1922;12(3):141--146. (PMID 20314060; PMC1524425.)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1524425/',
           publishedAt: '1922-03-01',
           methodologyType: 'primary',
@@ -7608,10 +7608,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1926-02-01',
         datePrecision: 'MONTH',
-        reason: 'Abel published \'Crystalline Insulin\' in PNAS (1926;12(2):132–136), describing reproducible preparation of crystalline insulin and arguing that the hormone itself was a protein. This recorded the claim that insulin is a definite crystallizable protein molecule, against the then-prevailing colloid-chemistry view (Willstätter and others) that the active principle might be a small molecule merely adsorbed onto an inert protein carrier.',
+        reason: 'Abel published \'Crystalline Insulin\' in PNAS (1926;12(2):132--136), describing reproducible preparation of crystalline insulin and arguing that the hormone itself was a protein. This recorded the claim that insulin is a definite crystallizable protein molecule, against the then-prevailing colloid-chemistry view (Willstätter and others) that the active principle might be a small molecule merely adsorbed onto an inert protein carrier.',
         source: {
           externalId: 'src:abel-crystalline-insulin-pnas-1926',
-          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132–136. (PMC1253372.)',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132--136. (PMC1253372.)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1253372/',
           publishedAt: '1926-02-01',
           methodologyType: 'primary',
@@ -7623,10 +7623,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1955-01-01',
         datePrecision: 'YEAR',
-        reason: 'Abel\'s protein claim was contested through the 1920s–30s but was decisively confirmed when Frederick Sanger completed the full amino-acid sequence of bovine insulin (1951–1955), proving it to be a defined 51-residue, two-chain polypeptide — the first protein ever sequenced. Sanger\'s work definitively settled that insulin is itself a protein, vindicating Abel\'s crystallization, and earned the 1958 Nobel Prize in Chemistry.',
+        reason: 'Abel\'s protein claim was contested through the 1920s--30s but was decisively confirmed when Frederick Sanger completed the full amino-acid sequence of bovine insulin (1951--1955), proving it to be a defined 51-residue, two-chain polypeptide — the first protein ever sequenced. Sanger\'s work definitively settled that insulin is itself a protein, vindicating Abel\'s crystallization, and earned the 1958 Nobel Prize in Chemistry.',
         source: {
           externalId: 'src:insulin-pacesetter-nobel-history-pmc8513142',
-          name: 'Insulin: A pacesetter for the shape of modern biomedical science and the Nobel Prize. (historical review covering Abel\'s 1926 crystallization and Sanger\'s 1951–55 sequencing). PMC8513142.',
+          name: 'Insulin: A pacesetter for the shape of modern biomedical science and the Nobel Prize. (historical review covering Abel\'s 1926 crystallization and Sanger\'s 1951--55 sequencing). PMC8513142.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8513142/',
           publishedAt: '2021-09-01',
           methodologyType: 'derivative',
@@ -7635,7 +7635,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── David–Laqueur — testosterone isolated and named 1935 ────────────────
+  // ── David--Laqueur — testosterone isolated and named 1935 ────────────────
   {
     externalId: 'trajectory:testosterone-first-isolation-synthesis-1935',
     text: 'Karoly Gyula David, Elisabeth Dingemanse, Janos Freud and Ernst Laqueur (Organon, Amsterdam) reported in Hoppe-Seyler\'s Zeitschrift für physiologische Chemie in May 1935 that they had isolated the principal crystalline male sex hormone from testicular tissue, naming it testosterone; it was chemically synthesized the same year by Adolf Butenandt and Leopold Ruzicka.',
@@ -7653,7 +7653,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'David and colleagues in Laqueur\'s Organon laboratory published \'Über krystallinisches männliches Hormon aus Hoden (Testosteron), wirksamer als aus Harn oder aus Cholesterin bereitetes Androsteron\' in Hoppe-Seyler\'s Z Physiol Chem (1935;233:281), the first description of the isolation of crystalline testosterone and the source of its name. This recorded in the expert literature the claim that testosterone is the principal hormone of the testis.',
         source: {
           externalId: 'src:david-laqueur-testosteron-hoppe-seyler-1935',
-          name: 'David KG, Dingemanse E, Freud J, Laqueur E. Über krystallinisches männliches Hormon aus Hoden (Testosteron)... Hoppe-Seyler\'s Z Physiol Chem. 1935;233(5–6):281–282. (DOI 10.1515/bchm2.1935.233.5-6.281.)',
+          name: 'David KG, Dingemanse E, Freud J, Laqueur E. Über krystallinisches männliches Hormon aus Hoden (Testosteron)... Hoppe-Seyler\'s Z Physiol Chem. 1935;233(5--6):281--282. (DOI 10.1515/bchm2.1935.233.5-6.281.)',
           url: 'https://doi.org/10.1515/bchm2.1935.233.5-6.281',
           publishedAt: '1935-05-01',
           methodologyType: 'primary',
@@ -7765,10 +7765,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2011-11-04',
         datePrecision: 'DAY',
-        reason: 'CDC\'s Vital Signs surveillance report quantified the parallel rise in opioid prescribing and overdose deaths from 1999 to 2008–2010 and stated that death from opioid pain relievers had become an epidemic in the United States. The report placed on the official public-health record the empirical claim that the prescribing of medical opioids — not illicit narcotics — was the principal driver of the overdose surge.',
+        reason: 'CDC\'s Vital Signs surveillance report quantified the parallel rise in opioid prescribing and overdose deaths from 1999 to 2008--2010 and stated that death from opioid pain relievers had become an epidemic in the United States. The report placed on the official public-health record the empirical claim that the prescribing of medical opioids — not illicit narcotics — was the principal driver of the overdose surge.',
         source: {
           externalId: 'src:cdc-vital-signs-opr-overdose-mmwr-2011',
-          name: 'CDC. Vital Signs: Overdoses of Prescription Opioid Pain Relievers — United States, 1999–2008. MMWR Morb Mortal Wkly Rep. 2011;60(43):1487-1492.',
+          name: 'CDC. Vital Signs: Overdoses of Prescription Opioid Pain Relievers — United States, 1999--2008. MMWR Morb Mortal Wkly Rep. 2011;60(43):1487-1492.',
           url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6043a4.htm',
           publishedAt: '2011-11-04',
           methodologyType: 'primary',
@@ -7847,7 +7847,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // HORMONE THERAPY & CONTRACEPTION (1995–2013)
+  // HORMONE THERAPY & CONTRACEPTION (1995--2013)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── HERS: HRT does not prevent cardiac events — Hulley 1998 ────────────────
@@ -7907,7 +7907,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2004-04-14',
         datePrecision: 'DAY',
-        reason: 'The WHI estrogen-alone trial randomized 10,739 hysterectomized women aged 50–79 to conjugated equine estrogen or placebo; the NIH stopped it early (mean 6.8 years) after estrogen increased stroke, produced no coronary benefit, and showed an unfavorable global index. Unlike the combined-therapy arm, it did not raise breast cancer risk, refining rather than simply repeating the 2002 finding and recording that unopposed estrogen also fails as chronic-disease prevention.',
+        reason: 'The WHI estrogen-alone trial randomized 10,739 hysterectomized women aged 50--79 to conjugated equine estrogen or placebo; the NIH stopped it early (mean 6.8 years) after estrogen increased stroke, produced no coronary benefit, and showed an unfavorable global index. Unlike the combined-therapy arm, it did not raise breast cancer risk, refining rather than simply repeating the 2002 finding and recording that unopposed estrogen also fails as chronic-disease prevention.',
         source: {
           externalId: 'src:anderson-whi-estrogen-alone-jama-2004',
           name: 'Anderson GL, Limacher M, Assaf AR, et al. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701-1712.',
@@ -7991,7 +7991,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2009-08-13',
         datePrecision: 'DAY',
-        reason: 'Lidegaard\'s Danish national cohort (10.4 million woman-years) reported that drospirenone-containing combined oral contraceptives carried about a 1.6-fold higher VTE rate than levonorgestrel pills, with companion BMJ studies that year giving estimates up to 2–3 fold. This was the first large-scale epidemiologic signal that the heavily marketed drospirenone pills (Yasmin approved 2001, Yaz 2006) were not as safe as their levonorgestrel predecessors.',
+        reason: 'Lidegaard\'s Danish national cohort (10.4 million woman-years) reported that drospirenone-containing combined oral contraceptives carried about a 1.6-fold higher VTE rate than levonorgestrel pills, with companion BMJ studies that year giving estimates up to 2--3 fold. This was the first large-scale epidemiologic signal that the heavily marketed drospirenone pills (Yasmin approved 2001, Yaz 2006) were not as safe as their levonorgestrel predecessors.',
         source: {
           externalId: 'src:lidegaard-hormonal-contraception-vte-bmj-2009',
           name: 'Lidegaard Ø, Løkkegaard E, Svendsen AL, Agger C. Hormonal contraception and risk of venous thromboembolism: national follow-up study. BMJ. 2009;339:b2890.',
@@ -8019,10 +8019,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // VACCINE SAFETY & POLICY (2010s–2020s)
+  // VACCINE SAFETY & POLICY (2010s--2020s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Dengvaxia serostatus reversal — 2015–2017 ───────────────────────────────
+  // ── Dengvaxia serostatus reversal — 2015--2017 ───────────────────────────────
   {
     externalId: 'trajectory:dengvaxia-dengue-vaccine-serostatus-reversal-2017',
     text: 'Sanofi Pasteur\'s dengue vaccine Dengvaxia (CYD-TDV), licensed for children on the basis of ~60% efficacy and deployed in the Philippines\' mass school-based immunization program, was found on 29 November 2017 to increase the risk of severe dengue and hospitalization in recipients who had not been previously infected with dengue.',
@@ -8037,7 +8037,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2015-01-08',
         datePrecision: 'DAY',
-        reason: 'Villar et al. published the CYD15 phase 3 randomized trial in the New England Journal of Medicine, reporting 60.8% vaccine efficacy against virologically confirmed dengue in children aged 9–16 across five Latin American countries. This efficacy result, alongside the parallel Asian trial, was the empirical basis for licensure in roughly 20 countries and for the Philippines launching the world\'s first public dengue immunization program for schoolchildren in 2016.',
+        reason: 'Villar et al. published the CYD15 phase 3 randomized trial in the New England Journal of Medicine, reporting 60.8% vaccine efficacy against virologically confirmed dengue in children aged 9--16 across five Latin American countries. This efficacy result, alongside the parallel Asian trial, was the empirical basis for licensure in roughly 20 countries and for the Philippines launching the world\'s first public dengue immunization program for schoolchildren in 2016.',
         source: {
           externalId: 'src:villar-nejm-dengvaxia-2015',
           name: 'Villar L, Dayan GH, Arredondo-García JL, et al. Efficacy of a Tetravalent Dengue Vaccine in Children in Latin America. N Engl J Med. 2015;372(2):113-123.',
@@ -8064,7 +8064,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── NTP fluoride child IQ — 2024–2025 ───────────────────────────────────────
+  // ── NTP fluoride child IQ — 2024--2025 ───────────────────────────────────────
   {
     externalId: 'trajectory:ntp-fluoride-child-iq-2024',
     text: 'The U.S. National Toxicology Program concluded on 21 August 2024, with moderate confidence, that higher fluoride exposure — drinking water above 1.5 mg/L — is associated with lower IQ in children.',
@@ -8109,7 +8109,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── ACIP Tdap every pregnancy — 2012 ────────────────────────────────────────
   {
     externalId: 'trajectory:acip-tdap-every-pregnancy-2012',
-    text: 'On 24 October 2012 the U.S. Advisory Committee on Immunization Practices recommended a dose of Tdap during every pregnancy (27–36 weeks\' gestation), regardless of prior vaccination, to transfer maternal antibodies that protect newborns from pertussis before their own vaccinations begin.',
+    text: 'On 24 October 2012 the U.S. Advisory Committee on Immunization Practices recommended a dose of Tdap during every pregnancy (27--36 weeks\' gestation), regardless of prior vaccination, to transfer maternal antibodies that protect newborns from pertussis before their own vaccinations begin.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2012-10-24',
     claimEmergedPrecision: 'DAY',
@@ -8133,7 +8133,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Acetaminophen in pregnancy & neurodevelopment — 2021–2024 ───────────────
+  // ── Acetaminophen in pregnancy & neurodevelopment — 2021--2024 ───────────────
   {
     externalId: 'trajectory:acetaminophen-pregnancy-neurodevelopment-2021',
     text: 'An international consensus statement led by Ann Bauer published on 23 September 2021 in Nature Reviews Endocrinology asserted that prenatal acetaminophen (paracetamol) exposure may increase the risk of neurodevelopmental disorders such as autism and ADHD, calling for precautionary restriction of its use in pregnancy.',
@@ -8176,7 +8176,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // BIOLOGICS & GENE THERAPY ERA (1990–2020)
+  // BIOLOGICS & GENE THERAPY ERA (1990--2020)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Adagen — first enzyme replacement therapy & first PEGylated protein drug 1990 ──
@@ -8348,7 +8348,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL FIRSTS & CRITICAL CARE (1944–1954)
+  // SURGICAL FIRSTS & CRITICAL CARE (1944--1954)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Blalock-Taussig 'blue baby' operation — 1944 ────────────────────────────
@@ -8520,7 +8520,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ONCOLOGY & PRECISION MEDICINE ERA (1990–2010)
+  // ONCOLOGY & PRECISION MEDICINE ERA (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Paclitaxel (Taxol) FDA approval — first taxane — 1992 ──────────────────
@@ -8683,7 +8683,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Working for the Medical Research Council\'s Therapeutic Trials Committee at Queen Charlotte\'s Hospital, Colebrook and Kenny published \'Treatment with prontosil of puerperal infections due to haemolytic streptococci\' in The Lancet, reporting 8 deaths among 64 Prontosil-treated cases (4.7%) versus 19 of 76 (25%) in the preceding untreated series. This recorded the first clinical evidence that a synthetic chemotherapeutic agent could cure an established bacterial infection and slash maternal mortality from childbed fever.',
         source: {
           externalId: 'src:colebrook-kenny-prontosil-puerperal-lancet-1936',
-          name: 'Colebrook L, Kenny M. Treatment of human puerperal infections, and of experimental infections in mice, with prontosil. Lancet. 1936;228(5884):1279–1286; and Treatment with prontosil of puerperal infections due to haemolytic streptococci. Lancet. 1936;228(5887):1319–1322.',
+          name: 'Colebrook L, Kenny M. Treatment of human puerperal infections, and of experimental infections in mice, with prontosil. Lancet. 1936;228(5884):1279--1286; and Treatment with prontosil of puerperal infections due to haemolytic streptococci. Lancet. 1936;228(5887):1319--1322.',
           url: 'https://embryo.asu.edu/pages/leonard-colebrooks-use-sulfonamides-treatment-puerperal-fever-1935-1937',
           publishedAt: '1936-12-05',
           methodologyType: 'derivative',
@@ -8698,7 +8698,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Colebrook and A. W. Purdie published a larger confirmatory two-part series in The Lancet, \'Treatment of 106 cases of puerperal fever by sulphanilamide,\' showing that sulfanilamide itself (the active moiety of Prontosil) produced equally dramatic results in a larger cohort. The independent, scaled-up confirmation settled within the expert community the claim that sulphonamide chemotherapy is effective treatment for puerperal streptococcal sepsis, ushering in the steep fall in maternal mortality recorded across Britain in the late 1930s.',
         source: {
           externalId: 'src:colebrook-purdie-106-cases-sulphanilamide-lancet-1937',
-          name: 'Colebrook L, Purdie AW. Treatment of 106 cases of puerperal fever by sulphanilamide (streptocide). Lancet. 1937;2:1237–1242 & 1291–1294.',
+          name: 'Colebrook L, Purdie AW. Treatment of 106 cases of puerperal fever by sulphanilamide (streptocide). Lancet. 1937;2:1237--1242 & 1291--1294.',
           url: 'https://www.jameslindlibrary.org/colebrook-l-purdie-aw-1937/',
           publishedAt: '1937-12-04',
           methodologyType: 'primary',
@@ -8725,7 +8725,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Wills published \'Treatment of "Pernicious Anaemia of Pregnancy" and "Tropical Anaemia"\' in the BMJ, showing that pregnant women in Bombay with severe macrocytic anaemia who failed to respond to purified liver extract (the antipernicious/B12 factor) nonetheless recovered when given crude yeast extract. This recorded the claim that a previously unrecognised dietary haemopoietic factor — heat-stable and water-soluble — was responsible for the macrocytic anaemia of pregnancy.',
         source: {
           externalId: 'src:wills-pernicious-anaemia-pregnancy-bmj-1931',
-          name: 'Wills L. Treatment of \'pernicious anaemia of pregnancy\' and \'tropical anaemia\' with special reference to yeast extract as a curative agent. Br Med J. 1931;1(3676):1059–1064.',
+          name: 'Wills L. Treatment of \'pernicious anaemia of pregnancy\' and \'tropical anaemia\' with special reference to yeast extract as a curative agent. Br Med J. 1931;1(3676):1059--1064.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2314785/',
           publishedAt: '1931-06-20',
           methodologyType: 'primary',
@@ -8740,7 +8740,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Over the 1940s the \'Wills factor\' was chemically characterised, isolated, and synthesised as folic acid (pteroylglutamic acid), and folic acid was shown to cure the megaloblastic anaemia of pregnancy and tropical macrocytic anaemia. This identification settled Wills\'s claim that her dietary factor was a discrete vitamin distinct from B12, establishing folate as a foundational nutrient of maternal and fetal health.',
         source: {
           externalId: 'src:james-lind-library-lucy-wills-folate',
-          name: 'Bastian H. Lucy Wills (1888–1964): the life and research of an adventurous independent woman. James Lind Library / J R Coll Physicians Edinb. 2008;38(1):89–91.',
+          name: 'Bastian H. Lucy Wills (1888--1964): the life and research of an adventurous independent woman. James Lind Library / J R Coll Physicians Edinb. 2008;38(1):89--91.',
           url: 'https://www.jameslindlibrary.org/articles/lucy-wills-1888-1964-the-life-and-research-of-an-adventurous-independent-woman/',
           publishedAt: '2008-03-01',
           methodologyType: 'derivative',
@@ -8752,7 +8752,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── HIP trial — mammography screening reduces breast cancer mortality — 1971 ─
   {
     externalId: 'trajectory:hip-mammography-screening-reduces-breast-cancer-mortality-1971',
-    text: 'Sam Shapiro, Philip Strax, and Louis Venet reported in JAMA on 15 March 1971 that the Health Insurance Plan of Greater New York (HIP) randomized trial showed periodic screening with mammography plus clinical breast examination reduced breast cancer mortality by roughly one third in women aged 40–64.',
+    text: 'Sam Shapiro, Philip Strax, and Louis Venet reported in JAMA on 15 March 1971 that the Health Insurance Plan of Greater New York (HIP) randomized trial showed periodic screening with mammography plus clinical breast examination reduced breast cancer mortality by roughly one third in women aged 40--64.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1971-03-15',
     claimEmergedPrecision: 'DAY',
@@ -8767,7 +8767,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Shapiro, Strax, and Venet published the HIP results in JAMA, the first randomized controlled trial evidence that inviting women to periodic mammographic screening lowered breast cancer mortality — about 30% fewer breast cancer deaths in the screened group at follow-up. This recorded the claim that early radiographic detection of breast cancer could prevent deaths, launching the modern breast-screening era.',
         source: {
           externalId: 'src:shapiro-hip-mammography-mortality-jama-1971',
-          name: 'Shapiro S, Strax P, Venet L. Periodic breast cancer screening in reducing mortality from breast cancer. JAMA. 1971;215(11):1777–1785.',
+          name: 'Shapiro S, Strax P, Venet L. Periodic breast cancer screening in reducing mortality from breast cancer. JAMA. 1971;215(11):1777--1785.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/5107709/',
           publishedAt: '1971-03-15',
           methodologyType: 'primary',
@@ -8782,7 +8782,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'László Tabár and colleagues published the Swedish Two-County randomized trial in The Lancet, reporting a 31% reduction in breast cancer mortality among women invited to mammographic screening across 134,867 participants. This large, independent confirmation of the HIP finding settled, within the expert community, the claim that population mammographic screening reduces breast cancer mortality and underpinned national screening programs.',
         source: {
           externalId: 'src:tabar-swedish-two-county-mammography-lancet-1985',
-          name: 'Tabár L, Fagerberg CJ, Gad A, et al. Reduction in mortality from breast cancer after mass screening with mammography. Randomised trial from the Breast Cancer Screening Working Group of the Swedish National Board of Health and Welfare. Lancet. 1985;1(8433):829–832.',
+          name: 'Tabár L, Fagerberg CJ, Gad A, et al. Reduction in mortality from breast cancer after mass screening with mammography. Randomised trial from the Breast Cancer Screening Working Group of the Swedish National Board of Health and Welfare. Lancet. 1985;1(8433):829--832.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/2858707/',
           publishedAt: '1985-04-13',
           methodologyType: 'primary',
@@ -8809,7 +8809,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Freda (obstetrician), Gorman (pathologist), and Pollack (Ortho research scientist) published \'Successful prevention of experimental Rh sensitization in man with an anti-Rh gamma2-globulin antibody preparation: a preliminary report\' in Transfusion. In Rh-negative male volunteers repeatedly challenged with Rh-positive blood, those given the anti-Rh globulin did not form anti-Rh antibodies while controls became sensitized. This recorded the claim that passive anti-D immunoprophylaxis could prevent maternal Rh isoimmunization.',
         source: {
           externalId: 'src:freda-gorman-pollack-rh-sensitization-transfusion-1964',
-          name: 'Freda VJ, Gorman JG, Pollack W. Successful prevention of experimental Rh sensitization in man with an anti-Rh gamma2-globulin antibody preparation: a preliminary report. Transfusion. 1964;4(1):26–32.',
+          name: 'Freda VJ, Gorman JG, Pollack W. Successful prevention of experimental Rh sensitization in man with an anti-Rh gamma2-globulin antibody preparation: a preliminary report. Transfusion. 1964;4(1):26--32.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/14105934/',
           publishedAt: '1964-01-01',
           methodologyType: 'primary',
@@ -8879,7 +8879,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1955-04-12',
         datePrecision: 'DAY',
-        reason: 'At the University of Michigan, Thomas Francis Jr., director of the Poliomyelitis Vaccine Evaluation Center, announced the results of the 1954 field trial of roughly 1.8 million children, declaring the Salk inactivated vaccine \'safe, effective, and potent\' (60–90% efficacy against paralytic polio). The federal government licensed six manufacturers the same day, placing on the official record the claim that an inactivated poliovirus vaccine could prevent paralytic disease.',
+        reason: 'At the University of Michigan, Thomas Francis Jr., director of the Poliomyelitis Vaccine Evaluation Center, announced the results of the 1954 field trial of roughly 1.8 million children, declaring the Salk inactivated vaccine \'safe, effective, and potent\' (60--90% efficacy against paralytic polio). The federal government licensed six manufacturers the same day, placing on the official record the claim that an inactivated poliovirus vaccine could prevent paralytic disease.',
         source: {
           externalId: 'src:francis-1954-polio-vaccine-trials-1955',
           name: 'Francis T Jr, Korns RF, Voight RB, et al. An evaluation of the 1954 poliomyelitis vaccine trials. Am J Public Health. 1955;45(5 Pt 2):1-63.',
@@ -8951,7 +8951,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1990-01-11',
         datePrecision: 'DAY',
-        reason: 'Needleman\'s 11-year follow-up of the original cohort showed that childhood lead exposure predicted lower class standing, reading disability, and higher school dropout into young adulthood, confirming durable harm. Combined with the EPA\'s phasedown of leaded gasoline and the CDC\'s progressive lowering of the blood-lead level of concern, the no-safe-threshold view became scientific consensus; data-integrity allegations raised against Needleman in 1990–1991 were investigated and ultimately dismissed, leaving the finding intact.',
+        reason: 'Needleman\'s 11-year follow-up of the original cohort showed that childhood lead exposure predicted lower class standing, reading disability, and higher school dropout into young adulthood, confirming durable harm. Combined with the EPA\'s phasedown of leaded gasoline and the CDC\'s progressive lowering of the blood-lead level of concern, the no-safe-threshold view became scientific consensus; data-integrity allegations raised against Needleman in 1990--1991 were investigated and ultimately dismissed, leaving the finding intact.',
         source: {
           externalId: 'src:needleman-11-year-lead-followup-nejm-1990',
           name: 'Needleman HL, Schell A, Bellinger D, Leviton A, Allred EN. The long-term effects of exposure to low doses of lead in childhood. An 11-year follow-up report. N Engl J Med. 1990;322(2):83-88.',
@@ -8966,7 +8966,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Killed inactivated measles vaccine — withdrawal 1967 ────────────────────
   {
     externalId: 'trajectory:killed-inactivated-measles-vaccine-withdrawal-1967',
-    text: 'A formalin-inactivated (\'killed\') measles virus vaccine was licensed in the United States in 1963 as a safe and effective means of immunizing children against measles, then withdrawn in 1967–1968 after recipients were found to develop severe atypical measles on later exposure to wild virus.',
+    text: 'A formalin-inactivated (\'killed\') measles virus vaccine was licensed in the United States in 1963 as a safe and effective means of immunizing children against measles, then withdrawn in 1967--1968 after recipients were found to develop severe atypical measles on later exposure to wild virus.',
     claimType: 'HYBRID',
     claimEmergedAt: '1963-03',
     claimEmergedPrecision: 'MONTH',
@@ -9020,7 +9020,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1985-04',
         datePrecision: 'MONTH',
-        reason: 'The FDA licensed the first Hib vaccine, an unconjugated PRP capsular polysaccharide, and it was recommended for children 18–59 months of age. This recorded the claim that a polysaccharide vaccine could protect young children against invasive Haemophilus influenzae type b disease—then a leading cause of childhood bacterial meningitis.',
+        reason: 'The FDA licensed the first Hib vaccine, an unconjugated PRP capsular polysaccharide, and it was recommended for children 18--59 months of age. This recorded the claim that a polysaccharide vaccine could protect young children against invasive Haemophilus influenzae type b disease—then a leading cause of childhood bacterial meningitis.',
         source: {
           externalId: 'src:cdc-pinkbook-hib-chapter8',
           name: 'CDC. Epidemiology and Prevention of Vaccine-Preventable Diseases (Pink Book), Chapter 8: Haemophilus influenzae type b.',
@@ -9035,7 +9035,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1988-09-09',
         datePrecision: 'DAY',
-        reason: 'Osterholm et al. reported in JAMA that the PRP polysaccharide vaccine provided no measurable protection in Minnesota children—including those in the licensed 18–59-month range—and may even have been associated with increased early risk. The finding directly contradicted the licensed efficacy claim and, with poor immunogenicity under 18 months already known, put the vaccine\'s usefulness in serious dispute.',
+        reason: 'Osterholm et al. reported in JAMA that the PRP polysaccharide vaccine provided no measurable protection in Minnesota children—including those in the licensed 18--59-month range—and may even have been associated with increased early risk. The finding directly contradicted the licensed efficacy claim and, with poor immunogenicity under 18 months already known, put the vaccine\'s usefulness in serious dispute.',
         source: {
           externalId: 'src:osterholm-hib-polysaccharide-no-efficacy-jama-1988',
           name: 'Osterholm MT, Rambeck JH, White KE, et al. Lack of efficacy of Haemophilus b polysaccharide vaccine in Minnesota. JAMA. 1988;260(10):1423-1428.',
@@ -9120,7 +9120,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ORPHAN DRUGS, RARE DISEASE THERAPY & POST-MARKET REVERSALS (2001–2010)
+  // ORPHAN DRUGS, RARE DISEASE THERAPY & POST-MARKET REVERSALS (2001--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Sapropterin / Kuvan — first PKU drug 2007 ───────────────────────────────
@@ -9425,7 +9425,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1995-11-16',
         datePrecision: 'DAY',
-        reason: 'WOSCOPS, reported in the New England Journal of Medicine, randomized 6,595 men aged 45–64 with high cholesterol but no history of myocardial infarction to pravastatin or placebo and found a 31% reduction in nonfatal MI or coronary death over 4.9 years, with a 22% reduction in all-cause mortality. Where 4S had proven benefit in patients with existing disease, WOSCOPS extended the statin claim to apparently healthy high-cholesterol men, establishing statins for primary prevention in the literature.',
+        reason: 'WOSCOPS, reported in the New England Journal of Medicine, randomized 6,595 men aged 45--64 with high cholesterol but no history of myocardial infarction to pravastatin or placebo and found a 31% reduction in nonfatal MI or coronary death over 4.9 years, with a 22% reduction in all-cause mortality. Where 4S had proven benefit in patients with existing disease, WOSCOPS extended the statin claim to apparently healthy high-cholesterol men, establishing statins for primary prevention in the literature.',
         source: {
           externalId: 'src:woscops-pravastatin-nejm-1995',
           name: 'Shepherd J, Cobbe SM, Ford I, et al. Prevention of coronary heart disease with pravastatin in men with hypercholesterolemia. West of Scotland Coronary Prevention Study Group. N Engl J Med. 1995;333(20):1301-1307.',
@@ -9467,7 +9467,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1991-06-26',
         datePrecision: 'DAY',
-        reason: 'SHEP, a randomized double-blind placebo-controlled trial of 4,736 participants aged 60+ with systolic BP 160–219 mmHg and diastolic <90 mmHg, reported in JAMA that stepped-care treatment beginning with low-dose chlorthalidone cut total stroke by 36% over ~4.5 years. Isolated systolic hypertension in the elderly had previously been regarded by many clinicians as a benign or untreatable consequence of aging; SHEP put on record that treating it prevents stroke.',
+        reason: 'SHEP, a randomized double-blind placebo-controlled trial of 4,736 participants aged 60+ with systolic BP 160--219 mmHg and diastolic <90 mmHg, reported in JAMA that stepped-care treatment beginning with low-dose chlorthalidone cut total stroke by 36% over ~4.5 years. Isolated systolic hypertension in the elderly had previously been regarded by many clinicians as a benign or untreatable consequence of aging; SHEP put on record that treating it prevents stroke.',
         source: {
           externalId: 'src:shep-isolated-systolic-jama-1991',
           name: 'SHEP Cooperative Research Group. Prevention of stroke by antihypertensive drug treatment in older persons with isolated systolic hypertension. Final results of the Systolic Hypertension in the Elderly Program (SHEP). JAMA. 1991;265(24):3255-3264.',
@@ -9576,7 +9576,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // HIV/AIDS TREATMENT ERA (1990–2010)
+  // HIV/AIDS TREATMENT ERA (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ACTG 076 — zidovudine cuts perinatal HIV transmission 1994 ─────────────
@@ -9664,13 +9664,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // EMERGING INFECTIOUS DISEASE ERA (2000–2010)
+  // EMERGING INFECTIOUS DISEASE ERA (2000--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── US measles elimination declared — CDC expert panel March 2000 ──────────
   {
     externalId: 'trajectory:us-measles-elimination-declared-2000',
-    text: 'Endemic measles transmission was declared eliminated in the United States following a March 16–17, 2000 expert panel convened by the CDC, which concluded that sustained two-dose MMR vaccination coverage had interrupted year-round indigenous measles circulation — the first elimination of an endemic vaccine-preventable disease in a large industrialized nation.',
+    text: 'Endemic measles transmission was declared eliminated in the United States following a March 16--17, 2000 expert panel convened by the CDC, which concluded that sustained two-dose MMR vaccination coverage had interrupted year-round indigenous measles circulation — the first elimination of an endemic vaccine-preventable disease in a large industrialized nation.',
     claimType: 'HYBRID',
     claimEmergedAt: '2000-03',
     claimEmergedPrecision: 'MONTH',
@@ -9682,7 +9682,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2000-03',
         datePrecision: 'MONTH',
-        reason: 'A CDC-convened expert panel reviewing surveillance and molecular-epidemiology data concluded at its 16–17 March 2000 meeting that measles was no longer endemic in the United States — defined as the absence of continuous year-round transmission for 12 months under adequate surveillance — with virtually all remaining cases traceable to importation. The summary published by Katz and Hinman documents this institutional determination, settling measles elimination as official U.S. public-health status and validating the two-dose vaccination strategy adopted after the 1989–1991 resurgence.',
+        reason: 'A CDC-convened expert panel reviewing surveillance and molecular-epidemiology data concluded at its 16--17 March 2000 meeting that measles was no longer endemic in the United States — defined as the absence of continuous year-round transmission for 12 months under adequate surveillance — with virtually all remaining cases traceable to importation. The summary published by Katz and Hinman documents this institutional determination, settling measles elimination as official U.S. public-health status and validating the two-dose vaccination strategy adopted after the 1989--1991 resurgence.',
         source: {
           externalId: 'src:katz-hinman-measles-elimination-jid-2004',
           name: 'Katz SL, Hinman AR. Summary and conclusions: measles elimination meeting, 16-17 March 2000. J Infect Dis. 2004;189(Suppl 1):S43-S47.',
@@ -9764,7 +9764,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHIATRY & NEUROLOGY ERA (2017–2019)
+  // PSYCHIATRY & NEUROLOGY ERA (2017--2019)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Cipriani 21-antidepressants network meta-analysis — Lancet 2018 ─────────
@@ -9978,7 +9978,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINE / NUTRITION ERA (1891–1949)
+  // ENDOCRINE / NUTRITION ERA (1891--1949)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Marine & Kimball — iodine prevents goiter — 1920 ───────────────────────
@@ -9999,7 +9999,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Marine and Kimball published their plan and baseline survey of thyroid enlargement among Akron schoolgirls and proposed a controlled trial of sodium iodide prophylaxis. This recorded the testable claim that iodine deficiency causes simple goiter and that supplementation would prevent it.',
         source: {
           externalId: 'src:marine-kimball-goiter-plan-1917',
-          name: 'Marine D, Kimball OP. The prevention of simple goiter in man (first paper): survey of schoolgirls of Akron, Ohio, and the plan of prevention. Journal of Laboratory and Clinical Medicine. 1917;3:40–48.',
+          name: 'Marine D, Kimball OP. The prevention of simple goiter in man (first paper): survey of schoolgirls of Akron, Ohio, and the plan of prevention. Journal of Laboratory and Clinical Medicine. 1917;3:40--48.',
           url: 'https://www.jameslindlibrary.org/marine-d-kimball-op-1920/',
           publishedAt: '1917-01-01',
           methodologyType: 'primary',
@@ -10014,7 +10014,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The completed controlled trial of ~4,500 Akron schoolgirls, published in Archives of Internal Medicine in 1920, showed that iodine-supplemented girls developed far less goiter than untreated controls, demonstrating safe and effective prophylaxis. The result was rapidly accepted and led to the introduction of iodized salt in Michigan in 1924 and nationwide thereafter, settling iodine prophylaxis as standard practice.',
         source: {
           externalId: 'src:marine-kimball-goiter-archintmed-1920',
-          name: 'Marine D, Kimball OP. Prevention of simple goiter in man (fourth paper). Archives of Internal Medicine. 1920;25(6):661–672. doi:10.1001/archinte.1920.00090350088005.',
+          name: 'Marine D, Kimball OP. Prevention of simple goiter in man (fourth paper). Archives of Internal Medicine. 1920;25(6):661--672. doi:10.1001/archinte.1920.00090350088005.',
           url: 'https://www.jameslindlibrary.org/marine-d-kimball-op-1920/',
           publishedAt: '1920-06-01',
           methodologyType: 'primary',
@@ -10024,7 +10024,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID POLICY & PALLIATIVE CARE ERA (1970–2007)
+  // OPIOID POLICY & PALLIATIVE CARE ERA (1970--2007)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Naloxone (Narcan) — opioid antagonist approval — 1971 ───────────────────
@@ -10139,7 +10139,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DRUG SAFETY & SCREENING ERA (1971–2004)
+  // DRUG SAFETY & SCREENING ERA (1971--2004)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── DES transplacental carcinogenesis — Herbst 1971 ─────────────────────────
@@ -10157,7 +10157,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1971-04-22',
         datePrecision: 'DAY',
-        reason: 'Herbst and colleagues conducted a matched case-control study of eight young women aged 15–22 with clear-cell adenocarcinoma of the vagina at one Boston hospital and found that seven of the eight mothers had taken stilbestrol (DES) during the relevant pregnancy versus none of the matched controls. This established prenatal DES as a transplacental carcinogen, overturning the assumption that the placenta protected the fetus from a maternal drug\'s cancer risk.',
+        reason: 'Herbst and colleagues conducted a matched case-control study of eight young women aged 15--22 with clear-cell adenocarcinoma of the vagina at one Boston hospital and found that seven of the eight mothers had taken stilbestrol (DES) during the relevant pregnancy versus none of the matched controls. This established prenatal DES as a transplacental carcinogen, overturning the assumption that the placenta protected the fetus from a maternal drug\'s cancer risk.',
         source: {
           externalId: 'src:herbst-nejm-des-vaginal-adenocarcinoma-1971',
           name: 'Herbst AL, Ulfelder H, Poskanzer DC. Adenocarcinoma of the vagina: association of maternal stilbestrol therapy with tumor appearance in young women. N Engl J Med. 1971 Apr 22;284(15):878-881.',
@@ -10241,7 +10241,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Fen-phen valvulopathy and withdrawal — 1996–1997 ────────────────────────
+  // ── Fen-phen valvulopathy and withdrawal — 1996--1997 ────────────────────────
   {
     externalId: 'trajectory:fenfluramine-dexfenfluramine-valvulopathy-withdrawal-1997',
     text: 'Dexfenfluramine (Redux), approved by the U.S. FDA on 29 April 1996, and fenfluramine (Pondimin) were marketed as safe appetite suppressants until Connolly and colleagues reported fen-phen-associated valvular heart disease and the FDA requested both drugs\' withdrawal on 15 September 1997.',
@@ -10313,7 +10313,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2004-09-14',
         datePrecision: 'DAY',
-        reason: 'An FDA-commissioned pooled analysis of 24 short-term placebo-controlled pediatric trials (over 4,400 patients) found suicidality in about 4% of those on antidepressants versus 2% on placebo. A joint meeting of the Psychopharmacologic Drugs and Pediatric Advisory Committees on 13–14 September 2004 voted to recommend a boxed warning, recording the causal-link concern at expert level.',
+        reason: 'An FDA-commissioned pooled analysis of 24 short-term placebo-controlled pediatric trials (over 4,400 patients) found suicidality in about 4% of those on antidepressants versus 2% on placebo. A joint meeting of the Psychopharmacologic Drugs and Pediatric Advisory Committees on 13--14 September 2004 voted to recommend a boxed warning, recording the causal-link concern at expert level.',
         source: {
           externalId: 'src:leslie-pediatrics-fda-antidepressant-deliberations-2005',
           name: 'Leslie LK, Newman TB, Chesney PJ, Perrin JM. The Food and Drug Administration\'s deliberations on antidepressant use in pediatric patients. Pediatrics. 2005 Jul;116(1):195-204.',
@@ -10368,7 +10368,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRIC OBESITY & DRUG APPROVALS ERA (2012–2023)
+  // PEDIATRIC OBESITY & DRUG APPROVALS ERA (2012--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── BPA removed from baby bottles and sippy cups — FDA 2012 ─────────────────
@@ -10524,7 +10524,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2021-12-06',
         datePrecision: 'DAY',
-        reason: 'The phase 3 LAVENDER trial of trofinetide in girls and women with Rett syndrome met both co-primary endpoints, showing statistically significant improvement versus placebo on the Rett Syndrome Behaviour Questionnaire and the Clinical Global Impression–Improvement scale. The result, later published in Nature Medicine, recorded the first controlled evidence that a pharmacologic agent could modify the core features of Rett syndrome, previously managed only symptomatically.',
+        reason: 'The phase 3 LAVENDER trial of trofinetide in girls and women with Rett syndrome met both co-primary endpoints, showing statistically significant improvement versus placebo on the Rett Syndrome Behaviour Questionnaire and the Clinical Global Impression--Improvement scale. The result, later published in Nature Medicine, recorded the first controlled evidence that a pharmacologic agent could modify the core features of Rett syndrome, previously managed only symptomatically.',
         source: {
           externalId: 'src:neul-lavender-trofinetide-natmed-2023',
           name: 'Neul JL, Percy AK, Benke TA, et al. Trofinetide for the treatment of Rett syndrome: a randomized phase 3 study (LAVENDER). Nat Med. 2023;29(6):1468-1475.',
@@ -10720,7 +10720,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIAC SURGERY & REPRODUCTIVE MEDICINE ERA (1958–1983)
+  // CARDIAC SURGERY & REPRODUCTIVE MEDICINE ERA (1958--1983)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Barnard first human heart transplant — 1967 ─────────────────────────────
@@ -10741,7 +10741,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Barnard transplanted the heart of accident victim Denise Darvall into 53-year-old Louis Washkansky during the night of 2/3 December 1967 and published his interim report in the South African Medical Journal weeks later. Washkansky survived 18 days before dying of pneumonia under immunosuppression, but the operation recorded the first evidence that human cardiac transplantation was technically feasible and could sustain a recipient.',
         source: {
           externalId: 'src:barnard-human-cardiac-transplant-samj-1967',
-          name: 'Barnard CN. A human cardiac transplant: an interim report of a successful operation performed at Groote Schuur Hospital, Cape Town. S Afr Med J. 1967 Dec 30;41(48):1271–1274.',
+          name: 'Barnard CN. A human cardiac transplant: an interim report of a successful operation performed at Groote Schuur Hospital, Cape Town. S Afr Med J. 1967 Dec 30;41(48):1271--1274.',
           url: 'http://www.samj.org.za/index.php/samj/article/view/12165',
           publishedAt: '1967-12-30',
           methodologyType: 'primary',
@@ -10753,10 +10753,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1971-01-01',
         datePrecision: 'YEAR',
-        reason: 'After roughly 100 heart transplants were performed worldwide in 1968 amid global excitement, dismal survival driven by uncontrollable acute rejection led most centers to abandon the operation by 1970–1971, leaving only a handful of programs (notably Shumway\'s at Stanford) active. The therapeutic legitimacy of cardiac transplantation became widely doubted, amounting to a near-global moratorium.',
+        reason: 'After roughly 100 heart transplants were performed worldwide in 1968 amid global excitement, dismal survival driven by uncontrollable acute rejection led most centers to abandon the operation by 1970--1971, leaving only a handful of programs (notably Shumway\'s at Stanford) active. The therapeutic legitimacy of cardiac transplantation became widely doubted, amounting to a near-global moratorium.',
         source: {
           externalId: 'src:gsh-cardiac-transplant-history-2014',
-          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31–35.',
+          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31--35.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4200566/',
           publishedAt: '2009-02-01',
           methodologyType: 'derivative',
@@ -10771,7 +10771,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'FDA approval of the calcineurin-inhibitor immunosuppressant cyclosporine in 1983 transformed graft survival and triggered a worldwide resurgence of heart transplantation, which became the established standard of care for selected patients with end-stage heart failure. The procedure Barnard pioneered was thereby re-legitimized institutionally after its near-abandonment.',
         source: {
           externalId: 'src:gsh-cardiac-transplant-resurgence-2014',
-          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31–35.',
+          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31--35.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4200566/',
           publishedAt: '2009-02-01',
           methodologyType: 'derivative',
@@ -10840,7 +10840,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Senning surgically implanted a pacemaker designed by Elmqvist into Arne Larsson, who suffered Stokes-Adams attacks from complete heart block. The first device failed after about three hours and was replaced the next morning, but the operation recorded the first evidence that a self-contained pacemaker could be implanted in the body to drive the heart.',
         source: {
           externalId: 'src:nielsen-d-day-implantable-pacemaker-2008',
-          name: 'Nielsen JC. 8 October 1958, D Day for the implantable pacemaker. Neth Heart J. 2008;16(Suppl 1):S3–S4.',
+          name: 'Nielsen JC. 8 October 1958, D Day for the implantable pacemaker. Neth Heart J. 2008;16(Suppl 1):S3--S4.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2572009/',
           publishedAt: '2008-10-01',
           methodologyType: 'derivative',
@@ -10852,7 +10852,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1960-01-01',
         datePrecision: 'YEAR',
-        reason: 'Transistorized, longer-lived implantable pacemakers were developed and commercialized from 1960 (notably the Chardack–Greatbatch device manufactured by Medtronic), and implantable pacing was rapidly adopted internationally as standard therapy for symptomatic bradyarrhythmia and heart block. Arne Larsson himself lived to 86 on a succession of 26 pacemakers, exemplifying the technology\'s establishment.',
+        reason: 'Transistorized, longer-lived implantable pacemakers were developed and commercialized from 1960 (notably the Chardack--Greatbatch device manufactured by Medtronic), and implantable pacing was rapidly adopted internationally as standard therapy for symptomatic bradyarrhythmia and heart block. Arne Larsson himself lived to 86 on a succession of 26 pacemakers, exemplifying the technology\'s establishment.',
         source: {
           externalId: 'src:elema-schoenander-first-pacemaker-implants',
           name: 'Elema-Schoenander and the Very First Human Implants of a Pacemaker in Sweden (1958) and Uruguay (1960). The World of Implantable Devices.',
@@ -10897,7 +10897,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The birth provoked intense ethical, religious, and scientific controversy: some scientists doubted that the child was truly conceived in vitro or feared developmental abnormalities, while religious authorities and bioethicists questioned the morality of laboratory conception. The legitimacy and safety of IVF were widely contested in the immediate aftermath.',
         source: {
           externalId: 'src:ivf-british-press-1978-contested',
-          name: 'Johnson MH. \'The men who made the breakthrough\': How the British press represented Patrick Steptoe and Robert Edwards in 1978. Reprod Biomed Soc Online. 2018;6:39–50.',
+          name: 'Johnson MH. \'The men who made the breakthrough\': How the British press represented Patrick Steptoe and Robert Edwards in 1978. Reprod Biomed Soc Online. 2018;6:39--50.',
           url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5952836/',
           publishedAt: '2018-01-01',
           methodologyType: 'derivative',
@@ -10922,7 +10922,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // TARGETED THERAPY ERA (2000–2010)
+  // TARGETED THERAPY ERA (2000--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Trastuzumab adjuvant HER2+ early breast cancer — 2005 ───────────────────
@@ -11136,7 +11136,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // LIPID-LOWERING & ANTITHROMBOTIC ERA (2015–2024)
+  // LIPID-LOWERING & ANTITHROMBOTIC ERA (2015--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── IMPROVE-IT: ezetimibe non-statin LDL benefit 2015 ───────────────────────
@@ -11350,7 +11350,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // GERM THEORY & INFECTIOUS DISEASE ERA (1885–1933)
+  // GERM THEORY & INFECTIOUS DISEASE ERA (1885--1933)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Pasteur rabies vaccine — Joseph Meister 1885 ────────────────────────────
@@ -11371,7 +11371,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Having treated Joseph Meister (bitten 14 times by a rabid dog) from July 6, 1885 with 13 progressively more virulent injections of dried rabbit spinal cord, Pasteur reported the boy\'s survival to the Académie des sciences on October 26, 1885 in \'Méthode pour prévenir la rage après morsure.\' This was the first recorded demonstration of post-exposure immunoprophylaxis in a human and the birth of the modern era of vaccination beyond Jenner\'s cowpox.',
         source: {
           externalId: 'src:pasteur-rage-cr-acad-sci-1885',
-          name: 'Pasteur L. Méthode pour prévenir la rage après morsure. Comptes rendus hebdomadaires des séances de l\'Académie des sciences. 1885;101:765–774.',
+          name: 'Pasteur L. Méthode pour prévenir la rage après morsure. Comptes rendus hebdomadaires des séances de l\'Académie des sciences. 1885;101:765--774.',
           url: 'https://www.pasteur.fr/en/research-journal/news/history-first-rabies-vaccination-1885',
           publishedAt: '1885-10-26',
           methodologyType: 'primary',
@@ -11386,7 +11386,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After Pasteur reported in March 1886 that of some 350 bitten patients treated only one had died, public subscription funded the Institut Pasteur, inaugurated November 14, 1888, as a dedicated rabies-treatment and research institution. Institutional establishment and the worldwide replication of Pasteur clinics settled post-exposure rabies vaccination as accepted practice.',
         source: {
           externalId: 'src:institut-pasteur-founding-1888',
-          name: 'Institut Pasteur. The final years 1877–1887 and the founding of the Institut Pasteur (inaugurated 14 November 1888).',
+          name: 'Institut Pasteur. The final years 1877--1887 and the founding of the Institut Pasteur (inaugurated 14 November 1888).',
           url: 'https://www.pasteur.fr/en/institut-pasteur/history/troisieme-epoque-1877-1887',
           publishedAt: '1888-11-14',
           methodologyType: 'derivative',
@@ -11413,7 +11413,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In the December 4, 1890 issue of the Deutsche Medizinische Wochenschrift, Behring and Kitasato reported that blood serum from animals rendered immune to tetanus toxin could neutralize the toxin and protect naive animals; Behring extended the finding to diphtheria one week later. This first demonstrated humoral (antitoxin) immunity and launched serum therapy as a recordable therapeutic principle.',
         source: {
           externalId: 'src:behring-kitasato-dmw-1890',
-          name: 'von Behring E, Kitasato S. Ueber das Zustandekommen der Diphtherie-Immunität und der Tetanus-Immunität bei Thieren. Deutsche Medizinische Wochenschrift. 1890;16(49):1113–1114.',
+          name: 'von Behring E, Kitasato S. Ueber das Zustandekommen der Diphtherie-Immunität und der Tetanus-Immunität bei Thieren. Deutsche Medizinische Wochenschrift. 1890;16(49):1113--1114.',
           url: 'https://www.nobelprize.org/prizes/medicine/1901/behring/article/',
           publishedAt: '1890-12-04',
           methodologyType: 'primary',
@@ -11455,7 +11455,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Reed, Carroll, Agramonte, and Lazear, testing Carlos Finlay\'s mosquito hypothesis in Cuba, found that volunteers developed yellow fever only after bites from mosquitoes that had fed on patients 12+ days earlier. Their preliminary note was read to the American Public Health Association on October 23, 1900 and published days later, recording the mosquito-vector claim against the entrenched fomite/filth theory.',
         source: {
           externalId: 'src:reed-etiology-yellow-fever-preliminary-1900',
-          name: 'Reed W, Carroll J, Agramonte A, Lazear JW. The etiology of yellow fever: a preliminary note. Philadelphia Medical Journal. 1900 Oct 27;6:790–796.',
+          name: 'Reed W, Carroll J, Agramonte A, Lazear JW. The etiology of yellow fever: a preliminary note. Philadelphia Medical Journal. 1900 Oct 27;6:790--796.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/30327122/',
           publishedAt: '1900-10-27',
           methodologyType: 'primary',
@@ -11470,7 +11470,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Controlled experiments at Camp Lazear (with screened huts isolating mosquito bites from contaminated fomites) confirmed the vector, published as \'an additional note\' in JAMA on February 16, 1901. William Gorgas\'s mosquito-control campaign in Havana in 1901 then eliminated yellow fever from the city, operationally validating the theory and settling it as the basis for vector control (and later the Panama Canal sanitation).',
         source: {
           externalId: 'src:reed-etiology-yellow-fever-additional-1901',
-          name: 'Reed W, Carroll J, Agramonte A. The etiology of yellow fever: an additional note. JAMA. 1901;36(7):431–440.',
+          name: 'Reed W, Carroll J, Agramonte A. The etiology of yellow fever: an additional note. JAMA. 1901;36(7):431--440.',
           url: 'https://armyhistory.org/major-walter-reed-and-the-eradication-of-yellow-fever/',
           publishedAt: '1901-02-16',
           methodologyType: 'primary',
@@ -11497,7 +11497,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In \'The etiology of pellagra,\' Goldberger argued from epidemiological observation (the disease struck inmates and patients but spared staff at the same institutions) that pellagra was dietary, not infectious — directly contradicting the prevailing infectious-disease consensus championed by the Thompson-McFadden Commission. The claim entered the literature as a hypothesis against the dominant germ-theory view.',
         source: {
           externalId: 'src:goldberger-etiology-pellagra-1914',
-          name: 'Goldberger J. The etiology of pellagra. The significance of certain epidemiological observations with respect thereto. Public Health Reports. 1914;29(26):1683–1686. (PMID 808825)',
+          name: 'Goldberger J. The etiology of pellagra. The significance of certain epidemiological observations with respect thereto. Public Health Reports. 1914;29(26):1683--1686. (PMID 808825)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1437745/',
           publishedAt: '1914-06-26',
           methodologyType: 'primary',
@@ -11512,7 +11512,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Goldberger and Wheeler induced pellagra in eleven previously healthy Mississippi convict volunteers fed a restricted corn-based diet (announced via Public Health Reports in late 1915), providing experimental causal proof that diet — not contagion — produces the disease. The controlled induction shifted expert opinion away from the infectious theory; the dietary etiology was definitively mechanized when Elvehjem identified nicotinic acid (niacin) as the missing factor in 1937.',
         source: {
           externalId: 'src:harkness-prisoners-pellagra-1996',
-          name: 'Harkness JM. Prisoners and pellagra. Public Health Reports. 1996;111(5):463–467 (documenting Goldberger\'s 1915 convict-diet experiment at Rankin Prison Farm).',
+          name: 'Harkness JM. Prisoners and pellagra. Public Health Reports. 1996;111(5):463--467 (documenting Goldberger\'s 1915 convict-diet experiment at Rankin Prison Farm).',
           url: 'https://stacks.cdc.gov/view/cdc/64410',
           publishedAt: '1996-09-01',
           methodologyType: 'derivative',
@@ -11539,7 +11539,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Filtering bacteria from throat washings of influenza patients and instilling the cell-free filtrate into ferrets reproduced influenza, demonstrating a filterable viral agent. Published in The Lancet (\'A virus obtained from influenza patients\'), the result overturned the decades-old belief — dating to Pfeiffer\'s 1892 \'Bacillus influenzae\' — that influenza was a bacterial disease, recording its true viral etiology.',
         source: {
           externalId: 'src:smith-andrewes-laidlaw-lancet-1933',
-          name: 'Smith W, Andrewes CH, Laidlaw PP. A virus obtained from influenza patients. The Lancet. 1933;222(5732):66–68.',
+          name: 'Smith W, Andrewes CH, Laidlaw PP. A virus obtained from influenza patients. The Lancet. 1933;222(5732):66--68.',
           url: 'https://www.sciencedirect.com/science/article/pii/S0140673600785412',
           publishedAt: '1933-07-08',
           methodologyType: 'primary',
@@ -11564,7 +11564,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY ERA (1949–1990)
+  // PSYCHOPHARMACOLOGY ERA (1949--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Lithium for mania — Cade 1949 ───────────────────────────────────────────
@@ -11585,7 +11585,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Cade, working at Bundoora Repatriation Mental Hospital in Melbourne, treated ten manic patients with lithium citrate and carbonate and observed that several previously chronic, agitated patients became calm enough for discharge. His paper \'Lithium salts in the treatment of psychotic excitement\' recorded the first claim that a simple ion could specifically treat a major psychiatric illness, predating chlorpromazine and helping launch psychopharmacology.',
         source: {
           externalId: 'src:cade-lithium-psychotic-excitement-1949',
-          name: 'Cade JFJ. Lithium salts in the treatment of psychotic excitement. Med J Aust. 1949;2(10):349–52. (Reprinted Bull World Health Organ. 2000;78(4):518–20.)',
+          name: 'Cade JFJ. Lithium salts in the treatment of psychotic excitement. Med J Aust. 1949;2(10):349--52. (Reprinted Bull World Health Organ. 2000;78(4):518--20.)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2560740/',
           publishedAt: '1949-09-03',
           methodologyType: 'primary',
@@ -11597,7 +11597,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1970-04-06',
         datePrecision: 'DAY',
-        reason: 'After Mogens Schou\'s controlled trials in the 1950s–60s confirmed lithium\'s antimanic and prophylactic efficacy, the U.S. FDA approved lithium carbonate for acute mania on 6 April 1970 (and for maintenance therapy in 1974). Regulatory approval and global clinical adoption settled lithium as the standard mood-stabilizing treatment for bipolar disorder, a status it retains.',
+        reason: 'After Mogens Schou\'s controlled trials in the 1950s--60s confirmed lithium\'s antimanic and prophylactic efficacy, the U.S. FDA approved lithium carbonate for acute mania on 6 April 1970 (and for maintenance therapy in 1974). Regulatory approval and global clinical adoption settled lithium as the standard mood-stabilizing treatment for bipolar disorder, a status it retains.',
         source: {
           externalId: 'src:wikipedia-lithium-medication-history',
           name: 'Lithium (medication). Wikipedia (history and medical use sections).',
@@ -11627,7 +11627,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Loomer, Saunders, and Kline published \'A clinical and pharmacodynamic evaluation of iproniazid as a psychic energizer,\' reporting that iproniazid energized rather than sedated withdrawn, depressed patients. This recorded the first claim that monoamine oxidase inhibition could treat depression, founding the MAOI antidepressant class alongside Kuhn\'s contemporaneous tricyclic work.',
         source: {
           externalId: 'src:loomer-saunders-kline-iproniazid-1957',
-          name: 'Loomer HP, Saunders JC, Kline NS. A clinical and pharmacodynamic evaluation of iproniazid as a psychic energizer. Psychiatr Res Rep Am Psychiatr Assoc. 1957;8:129–41.',
+          name: 'Loomer HP, Saunders JC, Kline NS. A clinical and pharmacodynamic evaluation of iproniazid as a psychic energizer. Psychiatr Res Rep Am Psychiatr Assoc. 1957;8:129--41.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/13542681/',
           publishedAt: '1957-12-01',
           methodologyType: 'primary',
@@ -11642,7 +11642,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Iproniazid was widely prescribed as an antidepressant after 1957, but mounting reports of severe, sometimes fatal hepatotoxicity (drug-induced hepatitis) led to its withdrawal from the U.S. market in 1961. While MAO inhibition as an antidepressant principle survived in safer successors, the specific claim that iproniazid was an acceptable antidepressant was reversed on safety grounds.',
         source: {
           externalId: 'src:lopez-munoz-history-antidepressants-2009',
-          name: 'López-Muñoz F, Alamo C. Monoaminergic neurotransmission: the history of the discovery of antidepressants from 1950s until today. Curr Pharm Des. 2009;15(14):1563–86.',
+          name: 'López-Muñoz F, Alamo C. Monoaminergic neurotransmission: the history of the discovery of antidepressants from 1950s until today. Curr Pharm Des. 2009;15(14):1563--86.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3136031/',
           publishedAt: '2009-01-01',
           methodologyType: 'derivative',
@@ -11669,7 +11669,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The American Psychiatric Association\'s first Diagnostic and Statistical Manual (DSM-I, 1952) listed homosexuality as a \'sociopathic personality disturbance,\' carried forward in DSM-II (1968). This institutionally settled the classification of homosexuality as a mental disorder within mainstream American psychiatry.',
         source: {
           externalId: 'src:drescher-out-of-dsm-2015',
-          name: 'Drescher J. Out of DSM: Depathologizing Homosexuality. Behav Sci (Basel). 2015;5(4):565–75.',
+          name: 'Drescher J. Out of DSM: Depathologizing Homosexuality. Behav Sci (Basel). 2015;5(4):565--75.',
           url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4695779/',
           publishedAt: '2015-12-04',
           methodologyType: 'derivative',
@@ -11711,7 +11711,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Clozapine had been largely abandoned after a 1975 cluster of fatal agranulocytosis cases in Finland. Kane, Honigfeld, Singer, and Meltzer\'s double-blind multicenter trial of 268 treatment-resistant patients found 30% responded to clozapine versus 4% to chlorpromazine, recording the claim that clozapine had unique efficacy where other antipsychotics failed and justifying its use under hematologic monitoring.',
         source: {
           externalId: 'src:kane-clozapine-treatment-resistant-1988',
-          name: 'Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic. A double-blind comparison with chlorpromazine. Arch Gen Psychiatry. 1988;45(9):789–96.',
+          name: 'Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic. A double-blind comparison with chlorpromazine. Arch Gen Psychiatry. 1988;45(9):789--96.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/3046553/',
           publishedAt: '1988-09-01',
           methodologyType: 'primary',
@@ -11736,7 +11736,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DIABETES & METABOLIC DISEASE ERA (1993–2010)
+  // DIABETES & METABOLIC DISEASE ERA (1993--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── DCCT intensive glycemic control type 1 diabetes — 1993 ──────────────────
@@ -11893,7 +11893,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID EPIDEMIC ERA (2011–2024)
+  // OPIOID EPIDEMIC ERA (2011--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── SPACE trial: opioids not superior for chronic pain — Krebs 2018 ─────────
@@ -11938,7 +11938,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Opana ER reformulation approved then removed — 2011–2020 ────────────────
+  // ── Opana ER reformulation approved then removed — 2011--2020 ────────────────
   {
     externalId: 'trajectory:opana-er-reformulation-removed-abuse-2011',
     text: 'The FDA approved Endo Pharmaceuticals\' reformulated Opana ER (oxymorphone hydrochloride extended-release, NDA 201655) on December 9, 2011, with physicochemical properties intended to resist crushing for abuse by snorting and injection — a benefit premise the agency repudiated on June 8, 2017, when it requested the drug\'s removal as the first marketed opioid pulled for the public-health consequences of abuse.',
@@ -12122,7 +12122,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ONCOLOGY & WOMEN'S HEALTH ERA (1894–1996)
+  // ONCOLOGY & WOMEN'S HEALTH ERA (1894--1996)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Progesterone isolation — 1934 → 1935 ────────────────────────────────────
@@ -12185,7 +12185,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Ziel and Finkle published a case-control study (94 endometrial-carcinoma cases) finding conjugated-estrogen use in 57% of cases versus 15% of controls, a risk ratio of 7.6 that climbed to 13.9 with seven or more years of exposure. Together with a companion paper by Smith et al. in the same issue, this recorded the claim that unopposed estrogen replacement is a cause of endometrial cancer, challenging the prevailing assumption that estrogen therapy was benign.',
         source: {
           externalId: 'src:ziel-finkle-endometrial-carcinoma-nejm-1975',
-          name: 'Ziel HK, Finkle WD. Increased risk of endometrial carcinoma among users of conjugated estrogens. N Engl J Med. 1975;293(23):1167–1170.',
+          name: 'Ziel HK, Finkle WD. Increased risk of endometrial carcinoma among users of conjugated estrogens. N Engl J Med. 1975;293(23):1167--1170.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/171569/',
           publishedAt: '1975-12-04',
           methodologyType: 'primary',
@@ -12197,10 +12197,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1978-11-16',
         datePrecision: 'DAY',
-        reason: 'Ralph Horwitz and Alvan Feinstein argued in the New England Journal of Medicine that the estrogen–endometrial-cancer association was inflated by detection bias: women on estrogen bleed more, prompting more diagnostic curettage and detection of cancer. Using an \'alternative\' control group of women who had all undergone curettage or hysterectomy, the odds ratio fell from ~12 to 1.7. This methodological challenge threw the causal claim into active dispute.',
+        reason: 'Ralph Horwitz and Alvan Feinstein argued in the New England Journal of Medicine that the estrogen--endometrial-cancer association was inflated by detection bias: women on estrogen bleed more, prompting more diagnostic curettage and detection of cancer. Using an \'alternative\' control group of women who had all undergone curettage or hysterectomy, the odds ratio fell from ~12 to 1.7. This methodological challenge threw the causal claim into active dispute.',
         source: {
           externalId: 'src:horwitz-feinstein-detection-bias-nejm-1978',
-          name: 'Horwitz RI, Feinstein AR. Alternative analytic methods for case-control studies of estrogens and endometrial cancer. N Engl J Med. 1978;299(20):1089–1094.',
+          name: 'Horwitz RI, Feinstein AR. Alternative analytic methods for case-control studies of estrogens and endometrial cancer. N Engl J Med. 1978;299(20):1089--1094.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/703785/',
           publishedAt: '1978-11-16',
           methodologyType: 'primary',
@@ -12212,10 +12212,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1996-02-07',
         datePrecision: 'DAY',
-        reason: 'The randomized, placebo-controlled PEPI trial reported in JAMA that 62% of postmenopausal women given unopposed conjugated equine estrogen developed endometrial hyperplasia over three years versus 2% on placebo, while adding a progestin nearly abolished the excess. Randomized evidence immune to the detection-bias critique confirmed that unopposed estrogen is an endometrial carcinogen, settling the causal claim and entrenching combined estrogen–progestin regimens for women with a uterus.',
+        reason: 'The randomized, placebo-controlled PEPI trial reported in JAMA that 62% of postmenopausal women given unopposed conjugated equine estrogen developed endometrial hyperplasia over three years versus 2% on placebo, while adding a progestin nearly abolished the excess. Randomized evidence immune to the detection-bias critique confirmed that unopposed estrogen is an endometrial carcinogen, settling the causal claim and entrenching combined estrogen--progestin regimens for women with a uterus.',
         source: {
           externalId: 'src:pepi-endometrial-histology-jama-1996',
-          name: 'Writing Group for the PEPI Trial. Effects of hormone replacement therapy on endometrial histology in postmenopausal women: the Postmenopausal Estrogen/Progestin Interventions (PEPI) Trial. JAMA. 1996;275(5):370–375.',
+          name: 'Writing Group for the PEPI Trial. Effects of hormone replacement therapy on endometrial histology in postmenopausal women: the Postmenopausal Estrogen/Progestin Interventions (PEPI) Trial. JAMA. 1996;275(5):370--375.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/8569016/',
           publishedAt: '1996-02-07',
           methodologyType: 'primary',
@@ -12225,10 +12225,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRICS & NEONATOLOGY ERA (1971–1989)
+  // PEDIATRICS & NEONATOLOGY ERA (1971--1989)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Jones–Smith fetal alcohol syndrome — Lancet 1973 ────────────────────────
+  // ── Jones--Smith fetal alcohol syndrome — Lancet 1973 ────────────────────────
   {
     externalId: 'trajectory:jones-smith-fetal-alcohol-syndrome-1973',
     text: 'Kenneth Jones, David Smith, and colleagues reported in The Lancet on 9 June 1973 that the offspring of chronic alcoholic mothers share a distinct pattern of craniofacial, limb, and cardiovascular malformation with prenatal growth deficiency and developmental delay, the first documented association between maternal alcoholism and a recognizable birth-defect syndrome (later named fetal alcohol syndrome).',
@@ -12397,7 +12397,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASE & ORPHAN DRUG ERA (1993–2008)
+  // RARE DISEASE & ORPHAN DRUG ERA (1993--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Tetrabenazine / Xenazine — first Huntington's chorea drug 2008 ──────────
@@ -12472,7 +12472,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2001-11-20',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Tracleer (bosentan, Actelion, NDA 21-290) for PAH patients with WHO functional class III–IV symptoms, to improve exercise ability and slow clinical worsening — the first orally active treatment for PAH. The approval rested on the Channick study and the larger BREATHE-1 trial (Rubin et al., N Engl J Med. 2002;346:896-903, PMID 11907289), and transformed PAH management from infusion-only prostacyclin to oral therapy.',
+        reason: 'The FDA approved Tracleer (bosentan, Actelion, NDA 21-290) for PAH patients with WHO functional class III--IV symptoms, to improve exercise ability and slow clinical worsening — the first orally active treatment for PAH. The approval rested on the Channick study and the larger BREATHE-1 trial (Rubin et al., N Engl J Med. 2002;346:896-903, PMID 11907289), and transformed PAH management from infusion-only prostacyclin to oral therapy.',
         source: {
           externalId: 'src:fda-tracleer-bosentan-approval-2001',
           name: 'Actelion / FDA. Tracleer (bosentan) approved by the US FDA — first oral treatment of pulmonary arterial hypertension, NDA 21-290. November 20, 2001.',
@@ -12569,7 +12569,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DEVICE & PROCEDURE REVERSAL ERA (2010–2025)
+  // DEVICE & PROCEDURE REVERSAL ERA (2010--2025)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Renal denervation for resistant hypertension — SYMPLICITY HTN-3 2014 ────
@@ -12590,7 +12590,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Krum, Schlaich, and colleagues published the SYMPLICITY HTN-1 multicentre, non-randomised proof-of-principle cohort study in The Lancet, reporting that percutaneous radiofrequency renal sympathetic denervation in 45 patients with resistant hypertension produced office blood-pressure falls of about 27/17 mm Hg at 12 months. This first clinical evidence launched intense enthusiasm for a device-based cure of resistant hypertension, reinforced by the unblinded randomised SYMPLICITY HTN-2 trial in 2010.',
         source: {
           externalId: 'src:krum-symplicity-htn1-lancet-2009',
-          name: 'Krum H, Schlaich M, Whitbourn R, et al. Catheter-based renal sympathetic denervation for resistant hypertension: a multicentre safety and proof-of-principle cohort study. Lancet. 2009;373(9671):1275–1281.',
+          name: 'Krum H, Schlaich M, Whitbourn R, et al. Catheter-based renal sympathetic denervation for resistant hypertension: a multicentre safety and proof-of-principle cohort study. Lancet. 2009;373(9671):1275--1281.',
           url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(09)60566-3/abstract',
           publishedAt: '2009-04-11',
           methodologyType: 'primary',
@@ -12605,7 +12605,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Bhatt and the SYMPLICITY HTN-3 investigators published the first blinded, sham-controlled randomised trial of renal denervation in the New England Journal of Medicine. With patients and assessors blinded and a sham (renal angiography only) control arm, denervation produced only a 2.39 mm Hg greater office systolic reduction at 6 months — failing the 5 mm Hg superiority margin and showing no significant benefit. The blinding exposed the earlier open-label results as largely placebo and regression effects, collapsing clinical enthusiasm and halting device programs.',
         source: {
           externalId: 'src:bhatt-symplicity-htn3-nejm-2014',
-          name: 'Bhatt DL, Kandzari DE, O\'Neill WW, et al. A controlled trial of renal denervation for resistant hypertension. N Engl J Med. 2014;370(15):1393–1401.',
+          name: 'Bhatt DL, Kandzari DE, O\'Neill WW, et al. A controlled trial of renal denervation for resistant hypertension. N Engl J Med. 2014;370(15):1393--1401.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/24678939/',
           publishedAt: '2014-04-10',
           methodologyType: 'primary',
@@ -12704,7 +12704,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Through the 1990s and 2000s arthroscopic partial meniscectomy (APM) for degenerative meniscal tears became one of the most frequently performed orthopedic procedures — on the order of 700,000 operations per year in the United States — justified by uncontrolled case series and the intuitive rationale that trimming the torn meniscus relieves mechanical knee symptoms. The practice was standard of care without placebo-controlled validation.',
         source: {
           externalId: 'src:sihvonen-apm-background-nejm-2013',
-          name: 'Sihvonen R, Paavola M, Malmivaara A, et al. Arthroscopic partial meniscectomy versus sham surgery for a degenerative meniscal tear (background: APM among the most common orthopedic procedures). N Engl J Med. 2013;369(26):2515–2524.',
+          name: 'Sihvonen R, Paavola M, Malmivaara A, et al. Arthroscopic partial meniscectomy versus sham surgery for a degenerative meniscal tear (background: APM among the most common orthopedic procedures). N Engl J Med. 2013;369(26):2515--2524.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/24369076/',
           publishedAt: '2013-12-26',
           methodologyType: 'derivative',
@@ -12719,7 +12719,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Sihvonen and the Finnish Degenerative Meniscal Lesion Study Group randomised 146 patients with a degenerative medial meniscal tear and no knee osteoarthritis to arthroscopic partial meniscectomy or a sham arthroscopic procedure, with patients and assessors blinded. At 12 months the two groups showed equivalent improvements in pain and function, demonstrating that the apparent benefit of APM for degenerative tears was a placebo response and providing rigorous evidence that the operation is ineffective for this indication — a finding reinforced by the trial group\'s later multi-year follow-ups.',
         source: {
           externalId: 'src:sihvonen-apm-sham-nejm-2013',
-          name: 'Sihvonen R, Paavola M, Malmivaara A, et al. Arthroscopic partial meniscectomy versus sham surgery for a degenerative meniscal tear. N Engl J Med. 2013;369(26):2515–2524.',
+          name: 'Sihvonen R, Paavola M, Malmivaara A, et al. Arthroscopic partial meniscectomy versus sham surgery for a degenerative meniscal tear. N Engl J Med. 2013;369(26):2515--2524.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/24369076/',
           publishedAt: '2013-12-26',
           methodologyType: 'primary',
@@ -12743,10 +12743,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2015-01-01',
         datePrecision: 'DAY',
-        reason: 'Berkhemer and the MR CLEAN investigators randomised 500 patients with acute anterior-circulation large-vessel-occlusion stroke to intra-arterial treatment (mostly retrievable-stent thrombectomy) within 6 hours plus usual care versus usual care alone. Endovascular treatment produced a significant shift toward functional independence on the modified Rankin scale at 90 days (32.6% vs 19.1% achieving mRS 0–2). This was the first positive randomised evidence, overturning the pessimism created by the 2013 IMS III, SYNTHESIS Expansion, and MR RESCUE trials, which had shown no benefit using mostly older devices.',
+        reason: 'Berkhemer and the MR CLEAN investigators randomised 500 patients with acute anterior-circulation large-vessel-occlusion stroke to intra-arterial treatment (mostly retrievable-stent thrombectomy) within 6 hours plus usual care versus usual care alone. Endovascular treatment produced a significant shift toward functional independence on the modified Rankin scale at 90 days (32.6% vs 19.1% achieving mRS 0--2). This was the first positive randomised evidence, overturning the pessimism created by the 2013 IMS III, SYNTHESIS Expansion, and MR RESCUE trials, which had shown no benefit using mostly older devices.',
         source: {
           externalId: 'src:berkhemer-mr-clean-nejm-2015',
-          name: 'Berkhemer OA, Fransen PSS, Beumer D, et al. A randomized trial of intraarterial treatment for acute ischemic stroke (MR CLEAN). N Engl J Med. 2015;372(1):11–20.',
+          name: 'Berkhemer OA, Fransen PSS, Beumer D, et al. A randomized trial of intraarterial treatment for acute ischemic stroke (MR CLEAN). N Engl J Med. 2015;372(1):11--20.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/25517348/',
           publishedAt: '2015-01-01',
           methodologyType: 'primary',
@@ -12761,7 +12761,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In the first half of 2015 four further randomised trials (ESCAPE, EXTEND-IA, SWIFT PRIME, and REVASCAT) were stopped early after interim analyses showed consistent, large benefits of stent-retriever thrombectomy, replicating MR CLEAN. The HERMES collaboration pooled the trials and confirmed a robust treatment effect, and within the year endovascular thrombectomy was incorporated into AHA/ASA and international stroke guidelines as standard care — settling the claim across the expert community.',
         source: {
           externalId: 'src:hermes-thrombectomy-meta-lancet-2016',
-          name: 'Goyal M, Menon BK, van Zwam WH, et al. (HERMES collaborators). Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials. Lancet. 2016;387(10029):1723–1731.',
+          name: 'Goyal M, Menon BK, van Zwam WH, et al. (HERMES collaborators). Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials. Lancet. 2016;387(10029):1723--1731.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/26898852/',
           publishedAt: '2016-04-23',
           methodologyType: 'derivative',
@@ -12770,7 +12770,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── PARTNER cohort B TAVR for inoperable aortic stenosis — 2010–2011 ─────────
+  // ── PARTNER cohort B TAVR for inoperable aortic stenosis — 2010--2011 ─────────
   {
     externalId: 'trajectory:partner-tavr-inoperable-aortic-stenosis-2010',
     text: 'Transcatheter aortic-valve implantation reduces mortality versus standard therapy in patients with severe symptomatic aortic stenosis who cannot undergo open surgery — established by the PARTNER cohort B trial (Leon et al., NEJM, 21 October 2010) and confirmed by FDA approval of the Edwards Sapien valve on 2 November 2011.',
@@ -12788,7 +12788,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Leon and the PARTNER investigators published cohort B, the first randomised trial of transcatheter aortic-valve implantation (TAVI) versus standard therapy (including balloon valvuloplasty) in patients with severe aortic stenosis deemed unsuitable for surgery. At one year, all-cause mortality was 30.7% with TAVI versus 50.7% with standard therapy (hazard ratio 0.55), the first rigorous evidence that a catheter-delivered valve could prolong life in inoperable patients, despite higher early stroke and vascular-complication rates.',
         source: {
           externalId: 'src:leon-partner-cohort-b-nejm-2010',
-          name: 'Leon MB, Smith CR, Mack M, et al. Transcatheter aortic-valve implantation for aortic stenosis in patients who cannot undergo surgery (PARTNER cohort B). N Engl J Med. 2010;363(17):1597–1607.',
+          name: 'Leon MB, Smith CR, Mack M, et al. Transcatheter aortic-valve implantation for aortic stenosis in patients who cannot undergo surgery (PARTNER cohort B). N Engl J Med. 2010;363(17):1597--1607.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/20961243/',
           publishedAt: '2010-10-21',
           methodologyType: 'primary',
@@ -12813,7 +12813,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CANCER BIOLOGY & ONCOLOGY FOUNDATIONS (1896–1966)
+  // CANCER BIOLOGY & ONCOLOGY FOUNDATIONS (1896--1966)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 1. Beatson oophorectomy — hormone-dependent breast cancer 1896 ───────────
@@ -12834,7 +12834,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Beatson, a Glasgow surgeon, reasoning from the ovarian control of lactation, removed the ovaries in women with inoperable breast cancer and observed marked tumor regression in a responding case (a remission lasting some 42 months). Published in The Lancet, this recorded the claim that breast cancer can be hormonally dependent and controlled by ablating an endocrine organ — decades before estrogen or its receptor were known.',
         source: {
           externalId: 'src:beatson-inoperable-carcinoma-mamma-lancet-1896',
-          name: 'Beatson GT. On the Treatment of Inoperable Cases of Carcinoma of the Mamma: Suggestions for a New Method of Treatment, with Illustrative Cases. Lancet. 1896;148(3802):104–107; (3803):162–165.',
+          name: 'Beatson GT. On the Treatment of Inoperable Cases of Carcinoma of the Mamma: Suggestions for a New Method of Treatment, with Illustrative Cases. Lancet. 1896;148(3802):104--107; (3803):162--165.',
           url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(01)72384-7/fulltext',
           publishedAt: '1896-07-11',
           methodologyType: 'primary',
@@ -12876,7 +12876,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Rous, at the Rockefeller Institute, showed that a spindle-cell sarcoma in Plymouth Rock hens could be propagated in new birds using a Berkefeld-filtered, cell-free tumor extract that excluded both tumor cells and bacteria. This recorded in the expert literature the radical claim that cancer could be caused by a filterable infectious agent. The finding was widely doubted for decades because it was thought to be a peculiarity of birds with no bearing on mammalian or human cancer.',
         source: {
           externalId: 'src:rous-fowl-sarcoma-jem-1911',
-          name: 'Rous P. A Sarcoma of the Fowl Transmissible by an Agent Separable from the Tumor Cells. J Exp Med. 1911;13(4):397–411.',
+          name: 'Rous P. A Sarcoma of the Fowl Transmissible by an Agent Separable from the Tumor Cells. J Exp Med. 1911;13(4):397--411.',
           url: 'https://rupress.org/jem/article/13/4/397/6143/A-SARCOMA-OF-THE-FOWL-TRANSMISSIBLE-BY-AN-AGENT',
           publishedAt: '1911-04-01',
           methodologyType: 'primary',
@@ -12918,7 +12918,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Fibiger published experiments reporting that rats fed cockroaches infected with a nematode he called Spiroptera developed papillomatous and carcinomatous tumors of the stomach, asserting the first deliberate experimental induction of cancer by a defined parasitic cause. This recorded in the literature the claim that a worm could cause cancer.',
         source: {
           externalId: 'src:fibiger-spiroptera-krebsforschung-1913',
-          name: 'Fibiger J. Untersuchungen über eine Nematode (Spiroptera sp. n.) und deren Fähigkeit, papillomatöse und carcinomatöse Geschwulstbildungen im Magen der Ratte hervorzurufen. Zeitschrift für Krebsforschung. 1913;13:217–280. (history in Wikipedia: Johannes Fibiger)',
+          name: 'Fibiger J. Untersuchungen über eine Nematode (Spiroptera sp. n.) und deren Fähigkeit, papillomatöse und carcinomatöse Geschwulstbildungen im Magen der Ratte hervorzurufen. Zeitschrift für Krebsforschung. 1913;13:217--280. (history in Wikipedia: Johannes Fibiger)',
           url: 'https://en.wikipedia.org/wiki/Johannes_Fibiger',
           publishedAt: '1913-01-01',
           methodologyType: 'derivative',
@@ -12948,7 +12948,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Controlled experiments — culminating in Hitchcock and Bell\'s 1952 study — showed that the nematode is not carcinogenic and that the gastric lesions Fibiger observed were largely vitamin-A-deficiency-driven metaplasia and benign papillomas, not true invasive carcinomas. Historical reanalysis confirmed Fibiger had mistaken non-malignant lesions for cancer, overturning the prize-winning claim; it is now the canonical example of a \'wrong\' Nobel Prize.',
         source: {
           externalId: 'src:fibiger-wrong-nobel-annals-1992',
-          name: 'Stolt CM, et al. Johannes Fibiger and His Nobel Prize for the Hypothesis That a Worm Causes Stomach Cancer. Ann Intern Med. 1992;116(9):765–769. (documents 1952 disproof and vitamin-A explanation)',
+          name: 'Stolt CM, et al. Johannes Fibiger and His Nobel Prize for the Hypothesis That a Worm Causes Stomach Cancer. Ann Intern Med. 1992;116(9):765--769. (documents 1952 disproof and vitamin-A explanation)',
           url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-116-9-765',
           publishedAt: '1992-05-01',
           methodologyType: 'derivative',
@@ -12957,7 +12957,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 4. Yamagiwa–Ichikawa coal-tar chemical carcinogenesis 1915 ───────────────
+  // ── 4. Yamagiwa--Ichikawa coal-tar chemical carcinogenesis 1915 ───────────────
   {
     externalId: 'trajectory:yamagiwa-ichikawa-coal-tar-chemical-carcinogenesis-1915',
     text: 'Katsusaburo Yamagiwa and Koichi Ichikawa reported in 1915 that repeatedly painting coal tar on the inner ears of rabbits induced squamous-cell carcinoma, providing the first experimental proof that a chemical agent can cause cancer.',
@@ -12975,7 +12975,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Yamagiwa and Ichikawa of Tokyo Imperial University, after months of repeated coal-tar application to rabbit ears, observed progression from papillomas to true squamous-cell carcinoma and published the first report of \'Experimental study on the pathogenesis of epithelial tumors\' (in German, Mitteilungen of the Medical Faculty, 1915; English translation in the Journal of Cancer Research, 1918). This recorded the claim that cancer could be artificially produced by a chemical, transforming Percivall Pott\'s epidemiologic observation into reproducible laboratory science.',
         source: {
           externalId: 'src:yamagiwa-ichikawa-epithelial-tumors-1915',
-          name: 'Yamagiwa K, Ichikawa K. Experimental study on the pathogenesis of epithelial tumors (I report), 1915; English: Experimental study of the pathogenesis of carcinoma. J Cancer Res. 1918;3:1–29. (reproduced/summarized in Nakayama, Cancer Sci. 2015, PMC4317818)',
+          name: 'Yamagiwa K, Ichikawa K. Experimental study on the pathogenesis of epithelial tumors (I report), 1915; English: Experimental study of the pathogenesis of carcinoma. J Cancer Res. 1918;3:1--29. (reproduced/summarized in Nakayama, Cancer Sci. 2015, PMC4317818)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4317818/',
           publishedAt: '1915-01-01',
           methodologyType: 'primary',
@@ -13032,7 +13032,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Late-20th-century cancer genetics — the demonstration of clonal somatic mutation, cellular oncogenes, tumor-suppressor genes, and aneuploidy in tumors — confirmed Boveri\'s core predictions, and Henry Harris\'s authoritative 2008 translation and reassessment recognized the 1914 monograph as a foundational, vindicated statement of how cancer originates. The somatic-mutation theory Boveri sketched is now the settled framework of molecular oncology.',
         source: {
           externalId: 'src:harris-boveri-reassessment-jcs-2008',
-          name: 'Harris H. Concerning the Origin of Malignant Tumours by Theodor Boveri — translation and commentary. J Cell Sci. 2008;121(Suppl 1):1–84.',
+          name: 'Harris H. Concerning the Origin of Malignant Tumours by Theodor Boveri — translation and commentary. J Cell Sci. 2008;121(Suppl 1):1--84.',
           url: 'https://doi.org/10.1242/jcs.025759',
           publishedAt: '2008-01-01',
           methodologyType: 'derivative',
@@ -13042,7 +13042,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ANTITHROMBOTIC & VASODILATOR ERA (1979–1994)
+  // ANTITHROMBOTIC & VASODILATOR ERA (1979--1994)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── AFASAK — warfarin prevents stroke in atrial fibrillation 1989 ───────────
@@ -13132,7 +13132,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── NCEP ATP-I — national cholesterol treatment guidelines 1988 ─────────────
   {
     externalId: 'trajectory:ncep-atp1-cholesterol-treatment-guidelines-1988',
-    text: 'On its publication in Archives of Internal Medicine in January 1988, the first National Cholesterol Education Program (NCEP) Adult Treatment Panel report established national clinical guidelines defining blood-cholesterol thresholds (desirable <200 mg/dL, borderline-high 200–239, high ≥240) and LDL-based criteria for diet and drug treatment in adults, institutionalizing population-wide cholesterol detection and management.',
+    text: 'On its publication in Archives of Internal Medicine in January 1988, the first National Cholesterol Education Program (NCEP) Adult Treatment Panel report established national clinical guidelines defining blood-cholesterol thresholds (desirable <200 mg/dL, borderline-high 200--239, high ≥240) and LDL-based criteria for diet and drug treatment in adults, institutionalizing population-wide cholesterol detection and management.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '1988-01-01',
     claimEmergedPrecision: 'MONTH',
@@ -13159,7 +13159,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── HDFP — mild hypertension treatment reduces mortality 1979 ───────────────
   {
     externalId: 'trajectory:hdfp-mild-hypertension-treatment-benefit-1979',
-    text: 'The Hypertension Detection and Follow-up Program reported in JAMA on 7 December 1979 that systematic stepped-care antihypertensive treatment reduced five-year all-cause mortality by 17% overall and by 20% in the mild-hypertension subgroup (entry diastolic 90–104 mm Hg) versus referred community care, extending the proven benefit of blood-pressure lowering to mild hypertension.',
+    text: 'The Hypertension Detection and Follow-up Program reported in JAMA on 7 December 1979 that systematic stepped-care antihypertensive treatment reduced five-year all-cause mortality by 17% overall and by 20% in the mild-hypertension subgroup (entry diastolic 90--104 mm Hg) versus referred community care, extending the proven benefit of blood-pressure lowering to mild hypertension.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1979-12-07',
     claimEmergedPrecision: 'DAY',
@@ -13226,7 +13226,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // POST-MARKET SURVEILLANCE & VACCINE SAFETY ERA (1996–2009)
+  // POST-MARKET SURVEILLANCE & VACCINE SAFETY ERA (1996--2009)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── vCJD / BSE human transmission 1996 ─────────────────────────────────────
@@ -13316,7 +13316,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Hispaniola circulating vaccine-derived poliovirus 2000 ─────────────────
   {
     externalId: 'trajectory:hispaniola-circulating-vaccine-derived-poliovirus-2000',
-    text: 'During 2000–2001 an outbreak of paralytic poliomyelitis in the Dominican Republic and Haiti was shown to be caused by a circulating vaccine-derived poliovirus (cVDPV) — the first documented proof that attenuated oral polio vaccine (OPV) strains can mutate, regain neurovirulence and transmissibility, and cause polio outbreaks in under-immunized populations.',
+    text: 'During 2000--2001 an outbreak of paralytic poliomyelitis in the Dominican Republic and Haiti was shown to be caused by a circulating vaccine-derived poliovirus (cVDPV) — the first documented proof that attenuated oral polio vaccine (OPV) strains can mutate, regain neurovirulence and transmissibility, and cause polio outbreaks in under-immunized populations.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2000-07-01',
     claimEmergedPrecision: 'MONTH',
@@ -13470,13 +13470,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PRECISION MEDICINE & NOVEL MECHANISMS ERA (2020–2024)
+  // PRECISION MEDICINE & NOVEL MECHANISMS ERA (2020--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Relyvrio (AMX0035) ALS — CENTAUR 2020 / FDA approval 2022 / withdrawal 2024
   {
     externalId: 'trajectory:relyvrio-amx0035-als-approval-withdrawal-2022',
-    text: 'Sodium phenylbutyrate–taurursodiol (AMX0035, marketed as Relyvrio/Albrioza, Amylyx) slows the loss of physical function in amyotrophic lateral sclerosis, as reported in the phase 2 CENTAUR trial on 3 September 2020 and ratified by FDA approval on 29 September 2022.',
+    text: 'Sodium phenylbutyrate--taurursodiol (AMX0035, marketed as Relyvrio/Albrioza, Amylyx) slows the loss of physical function in amyotrophic lateral sclerosis, as reported in the phase 2 CENTAUR trial on 3 September 2020 and ratified by FDA approval on 29 September 2022.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2020-09-03',
     claimEmergedPrecision: 'DAY',
@@ -13488,10 +13488,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2020-09-03',
         datePrecision: 'DAY',
-        reason: 'Paganoni and colleagues published the 24-week, randomized, placebo-controlled phase 2 CENTAUR trial in the New England Journal of Medicine, reporting a 2.32-point difference favoring AMX0035 on the ALSFRS-R functional scale, with a later survival analysis suggesting prolonged survival. The result recorded into the top-tier literature the claim that a sodium phenylbutyrate–taurursodiol combination could slow ALS progression, on the strength of a single modest-sized phase 2 study.',
+        reason: 'Paganoni and colleagues published the 24-week, randomized, placebo-controlled phase 2 CENTAUR trial in the New England Journal of Medicine, reporting a 2.32-point difference favoring AMX0035 on the ALSFRS-R functional scale, with a later survival analysis suggesting prolonged survival. The result recorded into the top-tier literature the claim that a sodium phenylbutyrate--taurursodiol combination could slow ALS progression, on the strength of a single modest-sized phase 2 study.',
         source: {
           externalId: 'src:paganoni-centaur-amx0035-nejm-2020',
-          name: 'Paganoni S, Macklin EA, Hendrix S, et al. Trial of Sodium Phenylbutyrate–Taurursodiol for Amyotrophic Lateral Sclerosis. N Engl J Med. 2020;383(10):919-930.',
+          name: 'Paganoni S, Macklin EA, Hendrix S, et al. Trial of Sodium Phenylbutyrate--Taurursodiol for Amyotrophic Lateral Sclerosis. N Engl J Med. 2020;383(10):919-930.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/32877582/',
           publishedAt: '2020-09-03',
           methodologyType: 'primary',
@@ -13572,10 +13572,10 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Xanomeline–trospium (KarXT / Cobenfy) schizophrenia — EMERGENT-2 2023 / FDA approval 2024
+  // ── Xanomeline--trospium (KarXT / Cobenfy) schizophrenia — EMERGENT-2 2023 / FDA approval 2024
   {
     externalId: 'trajectory:xanomeline-trospium-karxt-cobenfy-schizophrenia-approval-2023',
-    text: 'Xanomeline–trospium (KarXT, marketed as Cobenfy, Karuna/Bristol Myers Squibb), a dual M1/M4 muscarinic-receptor agonist paired with a peripheral muscarinic antagonist and acting without dopamine D2 blockade, reduces schizophrenia symptoms, as shown in the phase 3 EMERGENT-2 trial published 13 December 2023 and ratified by FDA approval on 26 September 2024 — the first antipsychotic with a fundamentally new mechanism in decades.',
+    text: 'Xanomeline--trospium (KarXT, marketed as Cobenfy, Karuna/Bristol Myers Squibb), a dual M1/M4 muscarinic-receptor agonist paired with a peripheral muscarinic antagonist and acting without dopamine D2 blockade, reduces schizophrenia symptoms, as shown in the phase 3 EMERGENT-2 trial published 13 December 2023 and ratified by FDA approval on 26 September 2024 — the first antipsychotic with a fundamentally new mechanism in decades.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2023-12-13',
     claimEmergedPrecision: 'DAY',
@@ -13590,7 +13590,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Kaul and colleagues published the randomized, double-blind, placebo-controlled phase 3 EMERGENT-2 trial in The Lancet, reporting that KarXT significantly reduced PANSS total scores at five weeks in acutely psychotic adults with schizophrenia and was generally well tolerated, without the weight gain and movement effects tied to dopamine antagonists. The trial recorded pivotal evidence that muscarinic agonism, with no D2 blockade, could treat schizophrenia — challenging the seventy-year dopamine-centric paradigm of antipsychotic action.',
         source: {
           externalId: 'src:kaul-emergent2-karxt-lancet-2024',
-          name: 'Kaul I, Sawchak S, Correll CU, et al. Efficacy and safety of the muscarinic receptor agonist KarXT (xanomeline–trospium) in schizophrenia (EMERGENT-2) in the USA: results from a randomised, double-blind, placebo-controlled, flexible-dose phase 3 trial. Lancet. 2024;403(10422):160-170.',
+          name: 'Kaul I, Sawchak S, Correll CU, et al. Efficacy and safety of the muscarinic receptor agonist KarXT (xanomeline--trospium) in schizophrenia (EMERGENT-2) in the USA: results from a randomised, double-blind, placebo-controlled, flexible-dose phase 3 trial. Lancet. 2024;403(10422):160-170.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/38104575/',
           publishedAt: '2023-12-13',
           methodologyType: 'primary',
@@ -13614,10 +13614,10 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Dextromethorphan–bupropion (AXS-05 / Auvelity) MDD — GEMINI 2022 / FDA approval 2022
+  // ── Dextromethorphan--bupropion (AXS-05 / Auvelity) MDD — GEMINI 2022 / FDA approval 2022
   {
     externalId: 'trajectory:dextromethorphan-bupropion-auvelity-mdd-approval-2022',
-    text: 'Dextromethorphan–bupropion (AXS-05, marketed as Auvelity, Axsome), an oral combination of an NMDA-receptor antagonist/sigma-1 agonist with a metabolic enhancer, is a rapid-acting treatment for major depressive disorder, as shown in the phase 3 GEMINI trial published 30 May 2022 and ratified by FDA approval on 18 August 2022.',
+    text: 'Dextromethorphan--bupropion (AXS-05, marketed as Auvelity, Axsome), an oral combination of an NMDA-receptor antagonist/sigma-1 agonist with a metabolic enhancer, is a rapid-acting treatment for major depressive disorder, as shown in the phase 3 GEMINI trial published 30 May 2022 and ratified by FDA approval on 18 August 2022.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2022-05-30',
     claimEmergedPrecision: 'DAY',
@@ -13629,7 +13629,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2022-05-30',
         datePrecision: 'DAY',
-        reason: 'Iosifescu and colleagues published the phase 3 GEMINI trial in the Journal of Clinical Psychiatry, reporting that once-daily dextromethorphan–bupropion produced rapid, statistically significant reductions in MADRS depression scores versus placebo, with separation as early as one week. The trial recorded into the literature the claim that an oral glutamatergic (NMDA-antagonist) agent could rapidly treat major depression, a mechanism distinct from the monoamine reuptake basis of conventional oral antidepressants.',
+        reason: 'Iosifescu and colleagues published the phase 3 GEMINI trial in the Journal of Clinical Psychiatry, reporting that once-daily dextromethorphan--bupropion produced rapid, statistically significant reductions in MADRS depression scores versus placebo, with separation as early as one week. The trial recorded into the literature the claim that an oral glutamatergic (NMDA-antagonist) agent could rapidly treat major depression, a mechanism distinct from the monoamine reuptake basis of conventional oral antidepressants.',
         source: {
           externalId: 'src:iosifescu-gemini-axs05-jcp-2022',
           name: 'Iosifescu DV, Jones A, O\'Gorman C, et al. Efficacy and Safety of AXS-05 (Dextromethorphan-Bupropion) in Patients With Major Depressive Disorder: A Phase 3 Randomized Clinical Trial (GEMINI). J Clin Psychiatry. 2022;83(4):21m14345.',
@@ -13644,7 +13644,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2022-08-18',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Auvelity (dextromethorphan–bupropion extended-release) for major depressive disorder in adults, the first oral antidepressant to act through an NMDA-receptor-antagonist mechanism and, per the manufacturer, the first new oral antidepressant mechanism cleared in more than sixty years. The approval institutionally established a rapid-acting oral glutamatergic option for general MDD, extending to the broad outpatient population the mechanism that esketamine had previously reached only for treatment-resistant depression under a restricted REMS.',
+        reason: 'The FDA approved Auvelity (dextromethorphan--bupropion extended-release) for major depressive disorder in adults, the first oral antidepressant to act through an NMDA-receptor-antagonist mechanism and, per the manufacturer, the first new oral antidepressant mechanism cleared in more than sixty years. The approval institutionally established a rapid-acting oral glutamatergic option for general MDD, extending to the broad outpatient population the mechanism that esketamine had previously reached only for treatment-resistant depression under a restricted REMS.',
         source: {
           externalId: 'src:auvelity-axs05-fda-approval-history-2022',
           name: 'Drugs.com. Auvelity (dextromethorphan and bupropion) FDA Approval History. Approval date August 18, 2022.',
@@ -13657,7 +13657,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // HORMONE DISCOVERY ERA (1902–1957)
+  // HORMONE DISCOVERY ERA (1902--1957)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Bayliss & Starling secretin / first hormone — 1902 ─────────────────────
@@ -13678,7 +13678,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Bayliss and Starling published \'The mechanism of pancreatic secretion\' in The Journal of Physiology, showing that injecting an extract of acid-treated duodenal mucosa into the bloodstream of a dog with severed pancreatic nerves still produced a flow of pancreatic juice. They named the active agent \'secretin\' and concluded that a chemical carried by the blood, not a nervous reflex, drives pancreatic secretion. This recorded in the expert literature the first instance of chemical (humoral) control of a distant organ.',
         source: {
           externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
-          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325–353.',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325--353.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1540572/',
           publishedAt: '1902-09-12',
           methodologyType: 'primary',
@@ -13720,7 +13720,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Paulescu published \'Recherche sur le rôle du pancréas dans l\'assimilation nutritive\' in the Archives Internationales de Physiologie, presenting for the first time the quantitative effect of an intravenous pancreatic extract on glycemia, glycosuria, acetonemia, and acetonuria in diabetic dogs — months before the Toronto group\'s first dog experiments. This recorded in the expert literature the claim that a pancreatic internal secretion could reverse diabetic derangement, and Paulescu secured a Romanian patent on the manufacture of \'pancréine\' in April 1922.',
         source: {
           externalId: 'src:paulescu-role-pancreas-arch-int-physiol-1921',
-          name: 'Paulescu NC. Recherche sur le rôle du pancréas dans l\'assimilation nutritive. Arch Int Physiol. 1921;17:85–109.',
+          name: 'Paulescu NC. Recherche sur le rôle du pancréas dans l\'assimilation nutritive. Arch Int Physiol. 1921;17:85--109.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8919497/',
           publishedAt: '1921-08-31',
           methodologyType: 'primary',
@@ -13735,7 +13735,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'When the 1923 Nobel Prize in Physiology or Medicine was awarded to Banting and Macleod for the discovery of insulin, Paulescu wrote to the Nobel Committee asserting priority on the basis of his August 1921 publication; the claim was rejected. The dispute — fueled by Banting and Best\'s citation of Paulescu\'s earlier work and by the difference between Paulescu\'s crude pancréine and the clinically usable Toronto extract — left his priority permanently contested rather than settled, a controversy still actively debated in the historical literature a century later.',
         source: {
           externalId: 'src:bentia-paulescu-centenary-acta-endocrinol-2021',
-          name: 'Benția D, Saceleanu MV, Marinescu AA, Ciurea AV. Centenary of Insulin Discovery (1921–2021): Nicolae Paulescu\'s Original Contributions. Acta Endocrinol (Buchar). 2021;17(3):406–411.',
+          name: 'Benția D, Saceleanu MV, Marinescu AA, Ciurea AV. Centenary of Insulin Discovery (1921--2021): Nicolae Paulescu\'s Original Contributions. Acta Endocrinol (Buchar). 2021;17(3):406--411.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8919497/',
           publishedAt: '2021-09-01',
           methodologyType: 'derivative',
@@ -13759,10 +13759,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1932-01-01',
         datePrecision: 'YEAR',
-        reason: 'Cushing published \'The basophil adenomas of the pituitary body and their clinical manifestations (pituitary basophilism)\' in the Bulletin of the Johns Hopkins Hospital (1932;50:137–195), gathering twelve patients with a shared clinical picture and proposing that pituitary basophil adenomas were the cause. This recorded in the expert literature the claim that a specific pituitary lesion produces a defined metabolic/endocrine syndrome, distinguishing it from generic obesity or adrenal disorders.',
+        reason: 'Cushing published \'The basophil adenomas of the pituitary body and their clinical manifestations (pituitary basophilism)\' in the Bulletin of the Johns Hopkins Hospital (1932;50:137--195), gathering twelve patients with a shared clinical picture and proposing that pituitary basophil adenomas were the cause. This recorded in the expert literature the claim that a specific pituitary lesion produces a defined metabolic/endocrine syndrome, distinguishing it from generic obesity or adrenal disorders.',
         source: {
           externalId: 'src:cushing-basophil-adenomas-pituitary-bjhh-1932',
-          name: 'Cushing H. The basophil adenomas of the pituitary body and their clinical manifestations (pituitary basophilism). Bull Johns Hopkins Hosp. 1932;50:137–195. (Landmark reprint: PMID 16353601.)',
+          name: 'Cushing H. The basophil adenomas of the pituitary body and their clinical manifestations (pituitary basophilism). Bull Johns Hopkins Hosp. 1932;50:137--195. (Landmark reprint: PMID 16353601.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16353601/',
           publishedAt: '1932-01-01',
           methodologyType: 'primary',
@@ -13819,7 +13819,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Insulin coma therapy spread rapidly through psychiatric hospitals across Europe and North America in the late 1930s and 1940s, with dedicated \'insulin units\' established as standard infrastructure and the method endorsed at international meetings (notably the 1937 Münsingen conference on the new shock therapies). Institutional adoption made insulin coma a settled, mainstream treatment for schizophrenia for roughly two decades.',
         source: {
           externalId: 'src:insulin-shock-therapy-decline-britannica',
-          name: 'Insulin shock therapy: description, uses, effects, and decline (documenting widespread institutional adoption in the 1930s–1950s). Encyclopædia Britannica.',
+          name: 'Insulin shock therapy: description, uses, effects, and decline (documenting widespread institutional adoption in the 1930s--1950s). Encyclopædia Britannica.',
           url: 'https://www.britannica.com/science/insulin-shock-therapy',
           publishedAt: '2023-01-01',
           methodologyType: 'derivative',
@@ -13834,7 +13834,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Brian Ackner, Arthur Harris, and A. J. Oldham published a randomized controlled trial in The Lancet on 23 March 1957 comparing insulin coma with barbiturate-induced unconsciousness in schizophrenia and found no difference in outcome — showing insulin\'s apparent benefit was attributable to nonspecific factors and patient selection, not the hypoglycemic coma. This rigorous trial (among the first RCTs in psychiatry) reversed the claim, and insulin coma therapy was abandoned as neuroleptic drugs took its place.',
         source: {
           externalId: 'src:ackner-insulin-treatment-schizophrenia-lancet-1957',
-          name: 'Ackner B, Harris A, Oldham AJ. Insulin treatment of schizophrenia; a controlled study. Lancet. 1957 Mar 23;272(6969):607–611. (PMID 13407078.)',
+          name: 'Ackner B, Harris A, Oldham AJ. Insulin treatment of schizophrenia; a controlled study. Lancet. 1957 Mar 23;272(6969):607--611. (PMID 13407078.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/13407078/',
           publishedAt: '1957-03-23',
           methodologyType: 'primary',
@@ -13844,7 +13844,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH & PREVENTION ERA (1992–2007)
+  // WOMEN'S HEALTH & PREVENTION ERA (1992--2007)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── STAR trial — raloxifene vs tamoxifen breast cancer prevention 2006 ──────
@@ -14016,13 +14016,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN ERA — PEDIATRIC & EMERGENCY MEDICINE (2011–2022)
+  // MODERN ERA — PEDIATRIC & EMERGENCY MEDICINE (2011--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Palforzia peanut OIT FDA approval 2020 ──────────────────────────────────
   {
     externalId: 'trajectory:palforzia-peanut-oral-immunotherapy-2020',
-    text: 'AR101 (Palforzia), a standardized peanut-protein oral immunotherapy, desensitizes peanut-allergic children aged 4–17 and was approved by the FDA on 31 January 2020 as the first drug ever approved to treat a food allergy.',
+    text: 'AR101 (Palforzia), a standardized peanut-protein oral immunotherapy, desensitizes peanut-allergic children aged 4--17 and was approved by the FDA on 31 January 2020 as the first drug ever approved to treat a food allergy.',
     claimType: 'HYBRID',
     claimEmergedAt: '2018-11-22',
     claimEmergedPrecision: 'DAY',
@@ -14034,7 +14034,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2018-11-22',
         datePrecision: 'DAY',
-        reason: 'The phase 3 PALISADE trial, published in the New England Journal of Medicine, randomized 496 peanut-allergic participants and found that 67.2% of children aged 4–17 receiving AR101 could tolerate ≥600 mg of peanut protein versus 4.0% on placebo. This recorded the first large randomized evidence that a standardized oral immunotherapy product could reliably desensitize peanut-allergic children, while showing no benefit in adults.',
+        reason: 'The phase 3 PALISADE trial, published in the New England Journal of Medicine, randomized 496 peanut-allergic participants and found that 67.2% of children aged 4--17 receiving AR101 could tolerate ≥600 mg of peanut protein versus 4.0% on placebo. This recorded the first large randomized evidence that a standardized oral immunotherapy product could reliably desensitize peanut-allergic children, while showing no benefit in adults.',
         source: {
           externalId: 'src:palisade-ar101-nejm-2018',
           name: 'PALISADE Group of Clinical Investigators; Vickery BP, et al. AR101 Oral Immunotherapy for Peanut Allergy. N Engl J Med. 2018;379(21):1991-2001.',
@@ -14064,7 +14064,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2020-01-31',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Palforzia (peanut allergen powder-dnfp) for peanut-allergic patients aged 4–17, the first approved treatment for any food allergy, dispensed under a risk-mitigation (REMS) program because of the anaphylaxis risk. The approval settled the product as authorized institutional practice—accepting the desensitization benefit while structurally managing the safety signal the meta-analysis had raised.',
+        reason: 'The FDA approved Palforzia (peanut allergen powder-dnfp) for peanut-allergic patients aged 4--17, the first approved treatment for any food allergy, dispensed under a risk-mitigation (REMS) program because of the anaphylaxis risk. The approval settled the product as authorized institutional practice—accepting the desensitization benefit while structurally managing the safety signal the meta-analysis had raised.',
         source: {
           externalId: 'src:fda-palforzia-approval-2020',
           name: 'U.S. Food and Drug Administration. Palforzia [Peanut (Arachis hypogaea) Allergen Powder-dnfp] — first treatment for peanut allergy. Approved January 31, 2020.',
@@ -14091,7 +14091,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2011-05-26',
         datePrecision: 'DAY',
-        reason: 'The FEAST trial (3,141 children at six East African centers), published in the New England Journal of Medicine, found 48-hour mortality of 10.5–10.6% with saline or albumin boluses versus 7.3% with no bolus—a 45% relative increase in death. This recorded the first large randomized evidence that bolus fluid resuscitation, a near-universal element of pediatric emergency care, actively increased mortality in this population.',
+        reason: 'The FEAST trial (3,141 children at six East African centers), published in the New England Journal of Medicine, found 48-hour mortality of 10.5--10.6% with saline or albumin boluses versus 7.3% with no bolus—a 45% relative increase in death. This recorded the first large randomized evidence that bolus fluid resuscitation, a near-universal element of pediatric emergency care, actively increased mortality in this population.',
         source: {
           externalId: 'src:maitland-feast-nejm-2011',
           name: 'Maitland K, Kiguli S, Opoka RO, et al. Mortality after Fluid Bolus in African Children with Severe Infection. N Engl J Med. 2011;364(26):2483-2495.',
@@ -14148,10 +14148,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2018-12-31',
         datePrecision: 'YEAR',
-        reason: 'By the end of 2018 all 50 U.S. states and the District of Columbia had implemented mandated or universal newborn CCHD pulse-oximetry screening, as documented in the CDC\'s MMWR review of actions taken from 2011–2018. The transition from a federal recommendation to near-complete legislative and operational uptake nationwide settled CCHD pulse-oximetry screening as standard newborn care.',
+        reason: 'By the end of 2018 all 50 U.S. states and the District of Columbia had implemented mandated or universal newborn CCHD pulse-oximetry screening, as documented in the CDC\'s MMWR review of actions taken from 2011--2018. The transition from a federal recommendation to near-complete legislative and operational uptake nationwide settled CCHD pulse-oximetry screening as standard newborn care.',
         source: {
           externalId: 'src:cdc-mmwr-cchd-screening-actions-2019',
-          name: 'Glidewell J, Olney RS, Hinton C, et al. Actions in Support of Newborn Screening for Critical Congenital Heart Disease — United States, 2011–2018. MMWR Morb Mortal Wkly Rep. 2019;68(5):107-111.',
+          name: 'Glidewell J, Olney RS, Hinton C, et al. Actions in Support of Newborn Screening for Critical Congenital Heart Disease — United States, 2011--2018. MMWR Morb Mortal Wkly Rep. 2019;68(5):107-111.',
           url: 'https://www.cdc.gov/mmwr/volumes/68/wr/mm6805a3.htm',
           publishedAt: '2019-02-08',
           methodologyType: 'primary',
@@ -14291,7 +14291,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN ERA (2010–present) — regulatory & rare disease
+  // MODERN ERA (2010--present) — regulatory & rare disease
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── FDA Breakthrough Therapy designation — FDASIA 2012 ─────────────────────
@@ -14421,7 +14421,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // INFECTION CONTROL & ANTISEPSIS (1847–1867)
+  // INFECTION CONTROL & ANTISEPSIS (1847--1867)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Semmelweis handwashing / puerperal fever — 1847 ────────────────────────
@@ -14439,7 +14439,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1848-01-01',
         datePrecision: 'YEAR',
-        reason: 'After his colleague Jakob Kolletschka died in March 1847 from a wound sustained during an autopsy and showed the same pathology as women dying of puerperal fever, Semmelweis inferred that \'cadaverous particles\' carried on physicians\' hands caused the disease and ordered chlorinated-lime handwashing; monthly maternal mortality in the doctors\' clinic fell from roughly 18% to under 2%. His findings were communicated to the Vienna medical community and published in editorials by Ferdinand von Hebra in the journal of the Vienna Medical Society in 1847–1848, recording the claim in the expert literature.',
+        reason: 'After his colleague Jakob Kolletschka died in March 1847 from a wound sustained during an autopsy and showed the same pathology as women dying of puerperal fever, Semmelweis inferred that \'cadaverous particles\' carried on physicians\' hands caused the disease and ordered chlorinated-lime handwashing; monthly maternal mortality in the doctors\' clinic fell from roughly 18% to under 2%. His findings were communicated to the Vienna medical community and published in editorials by Ferdinand von Hebra in the journal of the Vienna Medical Society in 1847--1848, recording the claim in the expert literature.',
         source: {
           externalId: 'src:best-neuhauser-semmelweis-qshc-2004',
           name: 'Best M, Neuhauser D. Ignaz Semmelweis and the birth of infection control. Qual Saf Health Care. 2004;13(3):233-234.',
@@ -14524,7 +14524,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL TRANSPLANTATION ERA (1954–1967)
+  // SURGICAL TRANSPLANTATION ERA (1954--1967)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Barnard first heart transplant — 1967 ──────────────────────────────────
@@ -14557,7 +14557,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1971-01-01',
         datePrecision: 'YEAR',
-        reason: 'Barnard\'s operation triggered a global heart-transplant boom in 1968, with roughly a hundred procedures performed worldwide, but most recipients died within weeks from acute rejection and infection. By 1970–1971 dismal survival led the great majority of centers to abandon the operation, and the medical community openly questioned whether cardiac transplantation was clinically or ethically justifiable—throwing the procedure\'s viability into serious dispute.',
+        reason: 'Barnard\'s operation triggered a global heart-transplant boom in 1968, with roughly a hundred procedures performed worldwide, but most recipients died within weeks from acute rejection and infection. By 1970--1971 dismal survival led the great majority of centers to abandon the operation, and the medical community openly questioned whether cardiac transplantation was clinically or ethically justifiable—throwing the procedure\'s viability into serious dispute.',
         source: {
           externalId: 'src:groote-schuur-heart-transplant-history-pmc',
           name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31-35.',
@@ -14585,7 +14585,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // TARGETED THERAPY & PERSONALIZED MEDICINE ERA (1990–2010)
+  // TARGETED THERAPY & PERSONALIZED MEDICINE ERA (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Imatinib / BCR-ABL targeted therapy — Druker 2001 ──────────────────────
@@ -14799,7 +14799,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CONTEMPORARY CARDIOLOGY & NOVEL THERAPEUTICS ERA (2009–2021)
+  // CONTEMPORARY CARDIOLOGY & NOVEL THERAPEUTICS ERA (2009--2021)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ACCORD-BP intensive blood pressure in diabetes — no benefit 2010 ────────
@@ -15031,7 +15031,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1939-01-01',
         datePrecision: 'YEAR',
-        reason: 'Kendrick and Eldering published \'A study in active immunization against pertussis\' (American Journal of Hygiene, 1939), reporting a controlled field trial of 5,815 children run 1934–1937 in Grand Rapids, Michigan. It was the first large-scale controlled clinical trial of a pertussis vaccine, with a difference between groups significant to roughly one in several million by chance, establishing whole-cell pertussis vaccine efficacy in the literature.',
+        reason: 'Kendrick and Eldering published \'A study in active immunization against pertussis\' (American Journal of Hygiene, 1939), reporting a controlled field trial of 5,815 children run 1934--1937 in Grand Rapids, Michigan. It was the first large-scale controlled clinical trial of a pertussis vaccine, with a difference between groups significant to roughly one in several million by chance, establishing whole-cell pertussis vaccine efficacy in the literature.',
         source: {
           externalId: 'src:kendrick-eldering-pertussis-ajh-1939',
           name: 'Kendrick P, Eldering G. A study in active immunization against pertussis. American Journal of Hygiene. 1939;29(Sec B):133-153.',
@@ -15130,7 +15130,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'MARKET',
         occurredAt: '1940-01-01',
         datePrecision: 'YEAR',
-        reason: 'Tyrothricin/gramicidin became the first antibiotic to be produced commercially and used clinically, with Hotchkiss and Dubos characterizing its polypeptide components in 1940–1941. Although too toxic for systemic use, gramicidin entered durable topical and veterinary use, settling the discovery\'s status as the launch of the systematic-screening antibiotic era.',
+        reason: 'Tyrothricin/gramicidin became the first antibiotic to be produced commercially and used clinically, with Hotchkiss and Dubos characterizing its polypeptide components in 1940--1941. Although too toxic for systemic use, gramicidin entered durable topical and veterinary use, settling the discovery\'s status as the launch of the systematic-screening antibiotic era.',
         source: {
           externalId: 'src:dubos-antibiotics-jem-commentary-2006',
           name: 'Van Epps HL. René Dubos: unearthing antibiotics. Journal of Experimental Medicine. 2006;203(2):259.',
@@ -15145,7 +15145,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Yellow fever vaccine hepatitis B disaster — 1942 ─────────────────────────
   {
     externalId: 'trajectory:yellow-fever-vaccine-hepatitis-b-disaster-1942',
-    text: 'In spring 1942 the human-serum stabilizer used in the 17D yellow fever vaccine was found to have caused a massive epidemic of serum hepatitis (later identified as hepatitis B) in US military personnel, with an estimated 40,000–50,000 cases of jaundice.',
+    text: 'In spring 1942 the human-serum stabilizer used in the 17D yellow fever vaccine was found to have caused a massive epidemic of serum hepatitis (later identified as hepatitis B) in US military personnel, with an estimated 40,000--50,000 cases of jaundice.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1942-03-01',
     claimEmergedPrecision: 'MONTH',
@@ -15227,7 +15227,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHIATRY & NEUROLOGY ERA (1958–1986)
+  // PSYCHIATRY & NEUROLOGY ERA (1958--1986)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 1. Haloperidol — first butyrophenone antipsychotic — Janssen 1958 ────────
@@ -15245,7 +15245,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1958-02-11',
         datePrecision: 'DAY',
-        reason: 'Haloperidol (compound R 1625) was synthesized by Bert Hermans in Paul Janssen\'s laboratory in Beerse, Belgium, and within about seven weeks was administered to psychiatric patients, with Belgian clinicians (notably at Liège under Divry, Bobon and Collard) reporting that it rapidly controlled psychomotor excitation and hallucinations. The first clinical reports of 1958–1959 recorded the claim that a structurally novel non-phenothiazine compound could specifically treat psychosis, opening the butyrophenone class.',
+        reason: 'Haloperidol (compound R 1625) was synthesized by Bert Hermans in Paul Janssen\'s laboratory in Beerse, Belgium, and within about seven weeks was administered to psychiatric patients, with Belgian clinicians (notably at Liège under Divry, Bobon and Collard) reporting that it rapidly controlled psychomotor excitation and hallucinations. The first clinical reports of 1958--1959 recorded the claim that a structurally novel non-phenothiazine compound could specifically treat psychosis, opening the butyrophenone class.',
         source: {
           externalId: 'src:lopez-munoz-haloperidol-discovery-2009',
           name: 'López-Muñoz F, Alamo C. The consolidation of neuroleptic therapy: Janssen, the discovery of haloperidol and its introduction into clinical practice. Brain Res Bull. 2009;79(2):130-141.',
@@ -15287,7 +15287,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1973-01-19',
         datePrecision: 'DAY',
-        reason: 'Rosenhan published \'On being sane in insane places\' in Science, describing how pseudopatients gained admission to 12 hospitals with a feigned symptom and were detained 7–52 days. The study recorded into the top-tier literature the claim that psychiatric diagnosis lacked reliability and validity, becoming one of the most influential critiques of psychiatry and contributing to the impetus for operationalized diagnosis in DSM-III.',
+        reason: 'Rosenhan published \'On being sane in insane places\' in Science, describing how pseudopatients gained admission to 12 hospitals with a feigned symptom and were detained 7--52 days. The study recorded into the top-tier literature the claim that psychiatric diagnosis lacked reliability and validity, becoming one of the most influential critiques of psychiatry and contributing to the impetus for operationalized diagnosis in DSM-III.',
         source: {
           externalId: 'src:rosenhan-being-sane-science-1973',
           name: 'Rosenhan DL. On being sane in insane places. Science. 1973;179(4070):250-258.',
@@ -15426,7 +15426,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY / PHARMACOVIGILANCE ERA (1997–2008)
+  // ENDOCRINOLOGY / PHARMACOVIGILANCE ERA (1997--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Levothyroxine / Synthroid bioequivalence suppression 1997 ───────────────
@@ -15613,7 +15613,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS ERA (2010–2021)
+  // OPIOID CRISIS ERA (2010--2021)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Reformulated OxyContin abuse-deterrent claim — 2010 ────────────────────
@@ -15987,7 +15987,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRIC & NEONATAL PHARMACOLOGY / VACCINE POLICY (1956–1986)
+  // PEDIATRIC & NEONATAL PHARMACOLOGY / VACCINE POLICY (1956--1986)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Sulfonamide kernicterus in premature infants — Silverman 1956 ────────────
@@ -16104,7 +16104,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'PUBLIC',
         occurredAt: '1974-01-01',
         datePrecision: 'YEAR',
-        reason: 'The Kulenkampff report fueled a UK television documentary and intense press coverage in 1974, and pertussis vaccine coverage in England and Wales collapsed from roughly 80% to about 30%. The claim moved from a clinical case series into a public-health crisis, triggering major whooping-cough epidemics in 1977–79 and 1982 with tens of thousands of cases.',
+        reason: 'The Kulenkampff report fueled a UK television documentary and intense press coverage in 1974, and pertussis vaccine coverage in England and Wales collapsed from roughly 80% to about 30%. The claim moved from a clinical case series into a public-health crisis, triggering major whooping-cough epidemics in 1977--79 and 1982 with tens of thousands of cases.',
         source: {
           externalId: 'src:iom-pertussis-rubella-brief-chronology-1991',
           name: 'Institute of Medicine. Pertussis and Rubella Vaccines: A Brief Chronology. In: Adverse Effects of Pertussis and Rubella Vaccines. Washington, DC: National Academy Press; 1991.',
@@ -16707,7 +16707,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2002-01-12',
         datePrecision: 'DAY',
-        reason: 'The expanded Antithrombotic Trialists\' Collaboration synthesized 287 trials in roughly 135,000 high-risk patients, confirming and broadening the ~25% reduction in serious vascular events and defining low-dose aspirin (75–150 mg) as optimal. This much larger overview cemented antiplatelet therapy as the guideline cornerstone of secondary cardiovascular prevention, settling the 1988 claim into routine global practice.',
+        reason: 'The expanded Antithrombotic Trialists\' Collaboration synthesized 287 trials in roughly 135,000 high-risk patients, confirming and broadening the ~25% reduction in serious vascular events and defining low-dose aspirin (75--150 mg) as optimal. This much larger overview cemented antiplatelet therapy as the guideline cornerstone of secondary cardiovascular prevention, settling the 1988 claim into routine global practice.',
         source: {
           externalId: 'src:antithrombotic-trialists-collaboration-bmj-2002',
           name: 'Antithrombotic Trialists\' Collaboration. Collaborative meta-analysis of randomised trials of antiplatelet therapy for prevention of death, myocardial infarction, and stroke in high risk patients. BMJ. 2002;324(7329):71-86.',
@@ -16818,7 +16818,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2005-10-25',
         datePrecision: 'DAY',
-        reason: 'The ANRS 1265 randomized controlled trial in Orange Farm, South Africa, randomized 3,274 uncircumcised men aged 18–24 and was stopped early at interim analysis because circumcision conferred roughly 60% protection (20 vs 49 HIV infections). This converted decades of suggestive observational and ecological data into the first experimental evidence that male circumcision reduces female-to-male HIV transmission.',
+        reason: 'The ANRS 1265 randomized controlled trial in Orange Farm, South Africa, randomized 3,274 uncircumcised men aged 18--24 and was stopped early at interim analysis because circumcision conferred roughly 60% protection (20 vs 49 HIV infections). This converted decades of suggestive observational and ecological data into the first experimental evidence that male circumcision reduces female-to-male HIV transmission.',
         source: {
           externalId: 'src:auvert-plosmed-circumcision-2005',
           name: 'Auvert B, Taljaard D, Lagarde E, Sobngwi-Tambekou J, Sitta R, Puren A. Randomized, controlled intervention trial of male circumcision for reduction of HIV infection risk: the ANRS 1265 Trial. PLoS Med. 2005 Nov;2(11):e298.',
@@ -16833,7 +16833,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2007-02-24',
         datePrecision: 'DAY',
-        reason: 'Two independent randomized trials published together in The Lancet — Bailey et al. in Kisumu, Kenya (53% reduction) and Gray et al. in Rakai, Uganda (~51–60% reduction) — were both halted early by their data monitoring boards and replicated the Orange Farm result. The convergence of three RCTs led WHO and UNAIDS to recommend on 28 March 2007 that voluntary medical male circumcision be recognized as an effective HIV prevention intervention, settling the claim in both the literature and global health policy.',
+        reason: 'Two independent randomized trials published together in The Lancet — Bailey et al. in Kisumu, Kenya (53% reduction) and Gray et al. in Rakai, Uganda (~51--60% reduction) — were both halted early by their data monitoring boards and replicated the Orange Farm result. The convergence of three RCTs led WHO and UNAIDS to recommend on 28 March 2007 that voluntary medical male circumcision be recognized as an effective HIV prevention intervention, settling the claim in both the literature and global health policy.',
         source: {
           externalId: 'src:bailey-lancet-circumcision-kisumu-2007',
           name: 'Bailey RC, Moses S, Parker CB, et al. Male circumcision for HIV prevention in young men in Kisumu, Kenya: a randomised controlled trial. Lancet. 2007 Feb 24;369(9562):643-656.',
@@ -16848,7 +16848,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── iPrEx oral PrEP HIV prevention — Grant / NEJM 2010 ──────────────────────
   {
     externalId: 'trajectory:iprex-oral-prep-hiv-prevention-2010',
-    text: 'Grant and the iPrEx Study Team reported in the New England Journal of Medicine on 23 November 2010 that daily oral emtricitabine–tenofovir (FTC-TDF) pre-exposure prophylaxis reduced HIV acquisition by 44% among men who have sex with men, the first randomized proof that an antiretroviral pill could prevent HIV infection in HIV-negative people.',
+    text: 'Grant and the iPrEx Study Team reported in the New England Journal of Medicine on 23 November 2010 that daily oral emtricitabine--tenofovir (FTC-TDF) pre-exposure prophylaxis reduced HIV acquisition by 44% among men who have sex with men, the first randomized proof that an antiretroviral pill could prevent HIV infection in HIV-negative people.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2010-11-23',
     claimEmergedPrecision: 'DAY',
@@ -16875,7 +16875,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2012-07-16',
         datePrecision: 'DAY',
-        reason: 'On 16 July 2012, supported by the iPrEx and Partners PrEP trial results, the FDA approved Truvada (emtricitabine–tenofovir) for HIV pre-exposure prophylaxis — the first drug ever approved to prevent HIV in uninfected people. Regulatory adoption converted the trial finding into an institutionally sanctioned standard of HIV prevention.',
+        reason: 'On 16 July 2012, supported by the iPrEx and Partners PrEP trial results, the FDA approved Truvada (emtricitabine--tenofovir) for HIV pre-exposure prophylaxis — the first drug ever approved to prevent HIV in uninfected people. Regulatory adoption converted the trial finding into an institutionally sanctioned standard of HIV prevention.',
         source: {
           externalId: 'src:fda-truvada-prep-approval-2012',
           name: 'U.S. Food and Drug Administration. FDA approves first drug for reducing the risk of sexually acquired HIV infection. July 16, 2012.',
@@ -16888,7 +16888,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASE & NEUROMODULATION ERA (2019–2024)
+  // RARE DISEASE & NEUROMODULATION ERA (2019--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Omaveloxolone / Skyclarys — first treatment for Friedreich's ataxia 2023 ──
@@ -16978,7 +16978,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Simufilam / Cassava Sciences — Alzheimer's efficacy claim reversed 2024 ──
   {
     externalId: 'trajectory:simufilam-cassava-alzheimers-efficacy-reversal-2024',
-    text: 'Cassava Sciences\' simufilam, a small molecule the company claimed stabilizes an altered form of the scaffolding protein filamin A, improves cognition in patients with mild-to-moderate Alzheimer\'s disease — a claim promoted from 2020–2021 that the U.S. SEC charged as misleading on 26 September 2024 and that collapsed when the Phase 3 ReThink-ALZ trial failed every endpoint on 25 November 2024.',
+    text: 'Cassava Sciences\' simufilam, a small molecule the company claimed stabilizes an altered form of the scaffolding protein filamin A, improves cognition in patients with mild-to-moderate Alzheimer\'s disease — a claim promoted from 2020--2021 that the U.S. SEC charged as misleading on 26 September 2024 and that collapsed when the Phase 3 ReThink-ALZ trial failed every endpoint on 25 November 2024.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2021-07-01',
     claimEmergedPrecision: 'YEAR',
@@ -17075,7 +17075,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // EARLY ENDOCRINOLOGY & DIABETES (1902–1930)
+  // EARLY ENDOCRINOLOGY & DIABETES (1902--1930)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Bayliss & Starling — secretin, first hormone — 1902 ────────────────────
@@ -17096,7 +17096,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Bayliss and Starling published \'The mechanism of pancreatic secretion\' in the Journal of Physiology, showing that acid instilled into a denervated loop of duodenum still provoked pancreatic flow, and that injecting an extract of duodenal mucosa reproduced the effect. This recorded in the expert literature the claim that a chemical substance carried in the blood — not a nerve reflex — controls a digestive secretion, the first demonstration of hormonal signaling.',
         source: {
           externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
-          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325–353.',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325--353.',
           url: 'https://physoc.onlinelibrary.wiley.com/doi/10.1113/jphysiol.1902.sp000920',
           publishedAt: '1902-09-12',
           methodologyType: 'primary',
@@ -17150,7 +17150,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1920-01-01',
         datePrecision: 'YEAR',
-        reason: 'The Allen undernutrition regimen was adopted as the dominant clinical standard for serious diabetes around 1915–1921, used at leading centers including Elliott Joslin\'s Boston practice, with no competing therapy able to extend life. Its position as the accepted standard of care settled the claim that dietary undernutrition was the best management for severe diabetes.',
+        reason: 'The Allen undernutrition regimen was adopted as the dominant clinical standard for serious diabetes around 1915--1921, used at leading centers including Elliott Joslin\'s Boston practice, with no competing therapy able to extend life. Its position as the accepted standard of care settled the claim that dietary undernutrition was the best management for severe diabetes.',
         source: {
           externalId: 'src:rockefeller-centennial-dietary-therapy-diabetes',
           name: 'Rockefeller University. An Effective Dietary Therapy for Diabetes Before the Discovery of Insulin (centennial history of the Allen diet).',
@@ -17195,7 +17195,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Abel published \'Crystalline Insulin\' in PNAS, reporting that he had crystallized insulin and that the crystals retained full hypoglycemic activity. Against the then-influential view (held by Willstätter and others) that hormones and enzymes were not themselves proteins, this recorded in the expert literature the claim that insulin is a discrete crystallizable protein, moving it from a standardized biological extract toward a defined chemical entity.',
         source: {
           externalId: 'src:abel-crystalline-insulin-pnas-1926',
-          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132–136.',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132--136.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1084434',
           publishedAt: '1926-02-15',
           methodologyType: 'primary',
@@ -17207,7 +17207,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1955-01-01',
         datePrecision: 'YEAR',
-        reason: 'Abel\'s crystallization was reproduced and extended — D. A. Scott showed in 1934 that crystalline insulin is a zinc-containing protein, and crystallization became the basis of standardized commercial insulin — and Frederick Sanger\'s complete determination of insulin\'s amino-acid sequence (1951–1955) proved definitively that insulin is a protein with a fixed structure. This settled, as established biochemical fact, the claim that insulin is a discrete crystallizable protein.',
+        reason: 'Abel\'s crystallization was reproduced and extended — D. A. Scott showed in 1934 that crystalline insulin is a zinc-containing protein, and crystallization became the basis of standardized commercial insulin — and Frederick Sanger\'s complete determination of insulin\'s amino-acid sequence (1951--1955) proved definitively that insulin is a protein with a fixed structure. This settled, as established biochemical fact, the claim that insulin is a discrete crystallizable protein.',
         source: {
           externalId: 'src:insulin-formulation-century-pmc-2021',
           name: 'Hua QX, et al. Structural principles of insulin formulation and analog design: A century of innovation (review tracing Abel 1926 crystallization to defined protein structure). Mol Metab. 2021;52:101245.',
@@ -17234,7 +17234,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1930-01-01',
         datePrecision: 'YEAR',
-        reason: 'Houssay and Biasotti published their work on pancreatic diabetes in hypophysectomized dogs (\'La diabetes pancreática de los perros hipofisoprivos\', Rev Soc Argent Biol 1930;6:251–296; German version Pflügers Archiv 1931;227:664), demonstrating that the anterior pituitary conditions the severity of diabetes and that its extract is diabetogenic. This recorded in the expert literature the claim that carbohydrate metabolism is governed not only by insulin but by a counter-regulatory anterior-pituitary hormone.',
+        reason: 'Houssay and Biasotti published their work on pancreatic diabetes in hypophysectomized dogs (\'La diabetes pancreática de los perros hipofisoprivos\', Rev Soc Argent Biol 1930;6:251--296; German version Pflügers Archiv 1931;227:664), demonstrating that the anterior pituitary conditions the severity of diabetes and that its extract is diabetogenic. This recorded in the expert literature the claim that carbohydrate metabolism is governed not only by insulin but by a counter-regulatory anterior-pituitary hormone.',
         source: {
           externalId: 'src:houssay-nobel-lecture-1947',
           name: 'Houssay BA. The role of the hypophysis in carbohydrate metabolism and in diabetes. Nobel Lecture, 11 December 1947.',
@@ -17276,7 +17276,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1964-01-01',
         datePrecision: 'YEAR',
-        reason: 'After its thirteenth session (Geneva, 25–30 November 1963), the WHO Expert Committee on Addiction-Producing Drugs published Technical Report Series 273 in 1964, concluding that the long-attempted distinction between \'addiction\' and \'habituation\' had failed in practice and recommending their replacement by the general term \'drug dependence.\' This recorded a deliberate reclassification of how the international health community conceptualized and named compulsive drug use, including opioid use.',
+        reason: 'After its thirteenth session (Geneva, 25--30 November 1963), the WHO Expert Committee on Addiction-Producing Drugs published Technical Report Series 273 in 1964, concluding that the long-attempted distinction between \'addiction\' and \'habituation\' had failed in practice and recommending their replacement by the general term \'drug dependence.\' This recorded a deliberate reclassification of how the international health community conceptualized and named compulsive drug use, including opioid use.',
         source: {
           externalId: 'src:who-trs-273-13th-report-1964',
           name: 'WHO Expert Committee on Addiction-Producing Drugs. Thirteenth Report. World Health Organ Tech Rep Ser. 1964;273:1-20.',
@@ -17291,7 +17291,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1969-01-01',
         datePrecision: 'YEAR',
-        reason: 'The renamed WHO Expert Committee on Drug Dependence, meeting 1–7 October 1968, formalized the new framework in its sixteenth report (Technical Report Series 407, 1969), defining specific dependence types including \'drug dependence of morphine type.\' The operationalized, type-specific definitions cemented \'drug dependence\' as the established international nomenclature, displacing \'addiction\' in official usage and feeding directly into the WHO\'s drug-control classifications.',
+        reason: 'The renamed WHO Expert Committee on Drug Dependence, meeting 1--7 October 1968, formalized the new framework in its sixteenth report (Technical Report Series 407, 1969), defining specific dependence types including \'drug dependence of morphine type.\' The operationalized, type-specific definitions cemented \'drug dependence\' as the established international nomenclature, displacing \'addiction\' in official usage and feeding directly into the WHO\'s drug-control classifications.',
         source: {
           externalId: 'src:who-trs-407-16th-report-1969',
           name: 'WHO Expert Committee on Drug Dependence. Sixteenth Report. World Health Organ Tech Rep Ser. 1969;407 (defines drug dependence of morphine type).',
@@ -17346,7 +17346,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH / CONTRACEPTION / VACCINES ERA (1997–2006)
+  // WOMEN'S HEALTH / CONTRACEPTION / VACCINES ERA (1997--2006)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Fen-phen valvular heart disease — Connolly 1997 ────────────────────────
@@ -17476,7 +17476,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CELL & GENE THERAPY / PRECISION PEDIATRICS ERA (2017–2021)
+  // CELL & GENE THERAPY / PRECISION PEDIATRICS ERA (2017--2021)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Tisagenlecleucel (Kymriah) — first CAR T-cell therapy, FDA 2017 ─────────
@@ -17608,7 +17608,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Liraglutide 3.0 mg (Saxenda) — adolescent obesity, FDA 2020 ─────────────
   {
     externalId: 'trajectory:liraglutide-saxenda-adolescent-obesity-2020',
-    text: 'On 4 December 2020 the U.S. FDA approved liraglutide 3.0 mg (Saxenda, Novo Nordisk) for chronic weight management in adolescents aged 12–17 with obesity — the first GLP-1 receptor agonist and the first drug in more than a decade approved to treat pediatric obesity.',
+    text: 'On 4 December 2020 the U.S. FDA approved liraglutide 3.0 mg (Saxenda, Novo Nordisk) for chronic weight management in adolescents aged 12--17 with obesity — the first GLP-1 receptor agonist and the first drug in more than a decade approved to treat pediatric obesity.',
     claimType: 'HYBRID',
     claimEmergedAt: '2020-12-04',
     claimEmergedPrecision: 'DAY',
@@ -17635,7 +17635,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2020-12-04',
         datePrecision: 'DAY',
-        reason: 'The FDA extended the Saxenda label to adolescents aged 12–17 on the basis of the 56-week randomized trial, making liraglutide the first GLP-1 agonist approved for pediatric obesity and the first new pharmacotherapy for the indication in over a decade. The decision institutionally settled GLP-1 incretin pharmacotherapy as an approvable option in children, presaging the later semaglutide pediatric approvals.',
+        reason: 'The FDA extended the Saxenda label to adolescents aged 12--17 on the basis of the 56-week randomized trial, making liraglutide the first GLP-1 agonist approved for pediatric obesity and the first new pharmacotherapy for the indication in over a decade. The decision institutionally settled GLP-1 incretin pharmacotherapy as an approvable option in children, presaging the later semaglutide pediatric approvals.',
         source: {
           externalId: 'src:novo-saxenda-adolescent-fda-approval-2020',
           name: 'Novo Nordisk. FDA approves Saxenda (liraglutide) for the treatment of obesity in adolescents aged 12-17. December 4, 2020.',
@@ -17679,7 +17679,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL PROCEDURES ERA (1950–2000)
+  // SURGICAL PROCEDURES ERA (1950--2000)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Starzl — first successful liver transplantation 1967 ────────────────────
@@ -17712,10 +17712,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1983-06-23',
         datePrecision: 'DAY',
-        reason: 'Following the introduction of ciclosporin, which sharply improved graft and patient survival, the NIH Consensus Development Conference on Liver Transplantation (20–23 June 1983) concluded that liver transplantation had become a clinical service and was no longer merely an experimental procedure. The institutional declaration settled the claim that liver replacement was a legitimate, deliverable therapy.',
+        reason: 'Following the introduction of ciclosporin, which sharply improved graft and patient survival, the NIH Consensus Development Conference on Liver Transplantation (20--23 June 1983) concluded that liver transplantation had become a clinical service and was no longer merely an experimental procedure. The institutional declaration settled the claim that liver replacement was a legitimate, deliverable therapy.',
         source: {
           externalId: 'src:nih-consensus-liver-transplantation-1983',
-          name: 'National Institutes of Health Consensus Development Conference Statement: Liver Transplantation — June 20–23, 1983. Hepatology. 1984;4(1 Suppl):107S-110S.',
+          name: 'National Institutes of Health Consensus Development Conference Statement: Liver Transplantation — June 20--23, 1983. Hepatology. 1984;4(1 Suppl):107S-110S.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6363254/',
           publishedAt: '1983-06-23',
           methodologyType: 'primary',
@@ -17754,7 +17754,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1992-09-16',
         datePrecision: 'DAY',
-        reason: 'After explosive worldwide uptake of the technique from 1989 onward, the NIH Consensus Development Conference on Gallstones and Laparoscopic Cholecystectomy (14–16 September 1992) concluded that laparoscopic cholecystectomy provides a safe and effective treatment and had become the procedure of choice for most patients with symptomatic gallstones. The institutional consensus settled the claim and helped launch the broader minimally invasive surgery era.',
+        reason: 'After explosive worldwide uptake of the technique from 1989 onward, the NIH Consensus Development Conference on Gallstones and Laparoscopic Cholecystectomy (14--16 September 1992) concluded that laparoscopic cholecystectomy provides a safe and effective treatment and had become the procedure of choice for most patients with symptomatic gallstones. The institutional consensus settled the claim and helped launch the broader minimally invasive surgery era.',
         source: {
           externalId: 'src:nih-consensus-gallstones-laparoscopic-cholecystectomy-jama-1993',
           name: 'NIH Consensus Development Panel. Gallstones and Laparoscopic Cholecystectomy. NIH Consensus Conference. JAMA. 1993;269(8):1018-1024.',
@@ -17796,7 +17796,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1991-08-15',
         datePrecision: 'DAY',
-        reason: 'Carotid endarterectomy had spread for decades without randomized proof of benefit, and its value was openly doubted after the failure of EC-IC bypass (1985) and reports of inappropriate overuse. The NASCET trial, reported in NEJM on 15 August 1991, was stopped early after showing that endarterectomy markedly reduced ipsilateral stroke in symptomatic patients with 70–99% stenosis, settling the claim for that defined population on rigorous trial evidence.',
+        reason: 'Carotid endarterectomy had spread for decades without randomized proof of benefit, and its value was openly doubted after the failure of EC-IC bypass (1985) and reports of inappropriate overuse. The NASCET trial, reported in NEJM on 15 August 1991, was stopped early after showing that endarterectomy markedly reduced ipsilateral stroke in symptomatic patients with 70--99% stenosis, settling the claim for that defined population on rigorous trial evidence.',
         source: {
           externalId: 'src:nascet-symptomatic-carotid-endarterectomy-nejm-1991',
           name: 'North American Symptomatic Carotid Endarterectomy Trial Collaborators. Beneficial effect of carotid endarterectomy in symptomatic patients with high-grade carotid stenosis. N Engl J Med. 1991;325(7):445-453.',
@@ -17809,7 +17809,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MICROBIOLOGY & VIROLOGY (1896–1941)
+  // MICROBIOLOGY & VIROLOGY (1896--1941)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 1. D'Hérelle bacteriophage discovery 1917 ──────────────────────────────
@@ -17830,7 +17830,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'D\'Hérelle\'s note \'Sur un microbe invisible antagoniste des bacilles dysentériques,\' presented to the Académie des Sciences through Émile Roux, described a filterable agent from convalescent dysentery patients that produced clear lytic zones (plaques) and dissolved cultures of Shigella. He coined the term \'bacteriophage,\' recording the existence of bacteria-specific viruses and founding the study of phages and phage therapy.',
         source: {
           externalId: 'src:dherelle-cras-bacteriophage-1917',
-          name: 'd\'Hérelle F. Sur un microbe invisible antagoniste des bacilles dysentériques. Comptes Rendus de l\'Académie des Sciences. 1917;165:373–375.',
+          name: 'd\'Hérelle F. Sur un microbe invisible antagoniste des bacilles dysentériques. Comptes Rendus de l\'Académie des Sciences. 1917;165:373--375.',
           url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/herelle-f',
           publishedAt: '1917-09-10',
           methodologyType: 'primary',
@@ -17869,10 +17869,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1909-09-01',
         datePrecision: 'MONTH',
-        reason: 'Reasoning that typhus disappeared once patients were stripped and bathed on hospital admission, Nicolle infected a chimpanzee, transferred its body lice to a healthy macaque, and reproduced the disease, then confirmed the result by repetition. He reported the experimental louse-borne transmission to the Académie des Sciences (C R Acad Sci 1909;149:486–489), recording the vector of epidemic typhus and the rationale for delousing as disease control.',
+        reason: 'Reasoning that typhus disappeared once patients were stripped and bathed on hospital admission, Nicolle infected a chimpanzee, transferred its body lice to a healthy macaque, and reproduced the disease, then confirmed the result by repetition. He reported the experimental louse-borne transmission to the Académie des Sciences (C R Acad Sci 1909;149:486--489), recording the vector of epidemic typhus and the rationale for delousing as disease control.',
         source: {
           externalId: 'src:nicolle-typhus-louse-cras-1909',
-          name: 'Nicolle C, Comte C, Conseil E. Transmission expérimentale du typhus exanthématique par le pou du corps. Comptes Rendus de l\'Académie des Sciences. 1909;149:486–489.',
+          name: 'Nicolle C, Comte C, Conseil E. Transmission expérimentale du typhus exanthématique par le pou du corps. Comptes Rendus de l\'Académie des Sciences. 1909;149:486--489.',
           url: 'https://en.wikipedia.org/wiki/Charles_Nicolle',
           publishedAt: '1909-09-01',
           methodologyType: 'primary',
@@ -17911,10 +17911,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1941-08-16',
         datePrecision: 'DAY',
-        reason: 'Abraham, Chain, Fletcher, Florey, Gardner, Heatley, and Jennings published \'Further observations on penicillin\' (Lancet 1941;238:177–188), reporting the first series of patients given purified penicillin. Albert Alexander, dying of mixed staphylococcal/streptococcal sepsis, became afebrile with resolving abscesses within days of his 12 February 1941 dose, then relapsed and died on 15 March 1941 once the tiny supply ran out. This recorded the first human evidence of systemic efficacy and proved the bottleneck was production, not biology — distinct from Fleming\'s 1928 discovery and the 1940 mouse-protection paper already in the dataset.',
+        reason: 'Abraham, Chain, Fletcher, Florey, Gardner, Heatley, and Jennings published \'Further observations on penicillin\' (Lancet 1941;238:177--188), reporting the first series of patients given purified penicillin. Albert Alexander, dying of mixed staphylococcal/streptococcal sepsis, became afebrile with resolving abscesses within days of his 12 February 1941 dose, then relapsed and died on 15 March 1941 once the tiny supply ran out. This recorded the first human evidence of systemic efficacy and proved the bottleneck was production, not biology — distinct from Fleming\'s 1928 discovery and the 1940 mouse-protection paper already in the dataset.',
         source: {
           externalId: 'src:abraham-further-observations-penicillin-lancet-1941',
-          name: 'Abraham EP, Chain E, Fletcher CM, Florey HW, Gardner AD, Heatley NG, Jennings MA. Further observations on penicillin. Lancet. 1941;238(6155):177–188.',
+          name: 'Abraham EP, Chain E, Fletcher CM, Florey HW, Gardner AD, Heatley NG, Jennings MA. Further observations on penicillin. Lancet. 1941;238(6155):177--188.',
           url: 'https://hekint.org/2024/08/01/albert-alexander-unsung-hero-of-penicillin/',
           publishedAt: '1941-08-16',
           methodologyType: 'primary',
@@ -17926,7 +17926,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1943-01-01',
         datePrecision: 'YEAR',
-        reason: 'The dramatic human responses in the Oxford cases drove the U.S./U.K. wartime mass-production program (deep-tank fermentation, War Production Board allocation), and confirmatory clinical use in military casualties in 1943–1944 settled penicillin as an effective and producible human antibiotic, transitioning it from a laboratory curiosity to standard care.',
+        reason: 'The dramatic human responses in the Oxford cases drove the U.S./U.K. wartime mass-production program (deep-tank fermentation, War Production Board allocation), and confirmatory clinical use in military casualties in 1943--1944 settled penicillin as an effective and producible human antibiotic, transitioning it from a laboratory curiosity to standard care.',
         source: {
           externalId: 'src:penicillin-human-scaleup-hektoen-2024',
           name: 'Saxon W. Albert Alexander: unsung hero of penicillin. Hektoen International. 1 August 2024. (historical account of the first human treatment and subsequent scale-up)',
@@ -17956,7 +17956,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Wright, professor of pathology at the Army Medical School at Netley, published a short note titled \'Typhoid Vaccination\' in September 1896 describing inoculation with heat-killed typhoid bacilli, after testing it on himself and then on soldiers. This recorded the claim that a killed-bacterial vaccine could protect against typhoid fever.',
         source: {
           externalId: 'src:wright-pfeiffer-typhoid-priority-2021',
-          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074–2079.',
+          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074--2079.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/33726955/',
           publishedAt: '2021-03-15',
           methodologyType: 'derivative',
@@ -17971,7 +17971,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Richard Pfeiffer (with Wilhelm Kolle) at Koch\'s Berlin institute published typhoid vaccination results in November 1896, and Wright published a January 1897 paper explicitly claiming precedence. Wright conceded his work began only after speaking with Pfeiffer; modern historical analysis concludes Pfeiffer, not Wright, gave the first account of human typhoid vaccination — leaving the priority of the claim contested even as the vaccine concept advanced.',
         source: {
           externalId: 'src:wright-pfeiffer-typhoid-priority-2021-dispute',
-          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074–2079.',
+          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074--2079.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/33726955/',
           publishedAt: '2021-03-15',
           methodologyType: 'derivative',
@@ -17986,7 +17986,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The British Army approved typhoid vaccination at the outbreak of the First World War in 1914; the resulting mass inoculation of troops was followed by a sharp fall in typhoid incidence and deaths compared with earlier campaigns (e.g., the Boer War), institutionally settling the efficacy of killed typhoid vaccine and cementing Wright\'s reputation as its champion.',
         source: {
           externalId: 'src:wright-typhoid-army-adoption-1914',
-          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074–2079. (British Army 1914 approval of typhoid vaccination)',
+          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074--2079. (British Army 1914 approval of typhoid vaccination)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/33726955/',
           publishedAt: '2021-03-15',
           methodologyType: 'derivative',
@@ -18038,7 +18038,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY & NEUROLOGY (1954–1989)
+  // PSYCHOPHARMACOLOGY & NEUROLOGY (1954--1989)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Reserpine as antipsychotic — Kline 1954 ────────────────────────────────
@@ -18210,13 +18210,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CRITICAL CARE / ENDOCRINOLOGY (2001–2009)
+  // CRITICAL CARE / ENDOCRINOLOGY (2001--2009)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Intensive insulin therapy in ICU — Van den Berghe 2001 / NICE-SUGAR 2009 ─
   {
     externalId: 'trajectory:intensive-insulin-icu-glycemic-control-2001',
-    text: 'Greet Van den Berghe and colleagues reported in the New England Journal of Medicine on 8 November 2001 that intensive insulin therapy maintaining blood glucose at 80–110 mg/dL reduced mortality among critically ill surgical-ICU patients, establishing tight glycemic control as a life-saving intervention in intensive care.',
+    text: 'Greet Van den Berghe and colleagues reported in the New England Journal of Medicine on 8 November 2001 that intensive insulin therapy maintaining blood glucose at 80--110 mg/dL reduced mortality among critically ill surgical-ICU patients, establishing tight glycemic control as a life-saving intervention in intensive care.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2001-11-08',
     claimEmergedPrecision: 'DAY',
@@ -18228,7 +18228,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2001-11-08',
         datePrecision: 'DAY',
-        reason: 'Van den Berghe et al. published the single-center Leuven randomized trial of 1,548 ventilated surgical-ICU patients, reporting that intensive insulin therapy targeting normoglycemia (80–110 mg/dL) cut in-ICU mortality from 8.0% to 4.6%, with the largest benefit among patients staying longer than five days. This recorded in the expert literature the claim that tight glycemic control directly reduces mortality in critical illness, a finding rapidly incorporated into intensive-care and sepsis management.',
+        reason: 'Van den Berghe et al. published the single-center Leuven randomized trial of 1,548 ventilated surgical-ICU patients, reporting that intensive insulin therapy targeting normoglycemia (80--110 mg/dL) cut in-ICU mortality from 8.0% to 4.6%, with the largest benefit among patients staying longer than five days. This recorded in the expert literature the claim that tight glycemic control directly reduces mortality in critical illness, a finding rapidly incorporated into intensive-care and sepsis management.',
         source: {
           externalId: 'src:van-den-berghe-intensive-insulin-nejm-2001',
           name: 'van den Berghe G, Wouters P, Weekers F, et al. Intensive insulin therapy in critically ill patients. N Engl J Med. 2001;345(19):1359-1367.',
@@ -18243,7 +18243,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2009-03-26',
         datePrecision: 'DAY',
-        reason: 'The multinational NICE-SUGAR trial randomized 6,104 ICU patients and found that intensive glucose control (target 81–108 mg/dL) increased 90-day mortality versus a conventional target of 180 mg/dL or less (27.5% vs 24.9%), with far more severe hypoglycemia (6.8% vs 0.5%). The largest trial on the question directly contradicted the Leuven result, reversing the claim that tight glycemic control benefits the critically ill and prompting guideline bodies to abandon normoglycemia targets in the ICU.',
+        reason: 'The multinational NICE-SUGAR trial randomized 6,104 ICU patients and found that intensive glucose control (target 81--108 mg/dL) increased 90-day mortality versus a conventional target of 180 mg/dL or less (27.5% vs 24.9%), with far more severe hypoglycemia (6.8% vs 0.5%). The largest trial on the question directly contradicted the Leuven result, reversing the claim that tight glycemic control benefits the critically ill and prompting guideline bodies to abandon normoglycemia targets in the ICU.',
         source: {
           externalId: 'src:nice-sugar-glucose-control-nejm-2009',
           name: 'NICE-SUGAR Study Investigators; Finfer S, Chittock DR, Su SY, et al. Intensive versus conventional glucose control in critically ill patients. N Engl J Med. 2009;360(13):1283-1297.',
@@ -18381,7 +18381,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2018-11-02',
         datePrecision: 'DAY',
-        reason: 'FDA\'s Center for Drug Evaluation and Research approved Dsuvia, a sublingual sufentanil tablet roughly 5–10 times more potent than fentanyl, after its Anesthetic and Analgesic Drug Products Advisory Committee voted 10-3 in favor, with the agency citing military battlefield-analgesia interest and tight distribution restrictions. The approval institutionally ratified the benefit-risk profile of a highly potent new opioid in the midst of the overdose epidemic.',
+        reason: 'FDA\'s Center for Drug Evaluation and Research approved Dsuvia, a sublingual sufentanil tablet roughly 5--10 times more potent than fentanyl, after its Anesthetic and Analgesic Drug Products Advisory Committee voted 10-3 in favor, with the agency citing military battlefield-analgesia interest and tight distribution restrictions. The approval institutionally ratified the benefit-risk profile of a highly potent new opioid in the midst of the overdose epidemic.',
         source: {
           externalId: 'src:acelrx-dsuvia-fda-approval-8k-2018',
           name: 'AcelRx Pharmaceuticals, Inc. Press release: AcelRx announces FDA approval of DSUVIA. Filed as Exhibit 99.1 to Form 8-K, U.S. SEC EDGAR. November 2, 2018.',
@@ -18507,7 +18507,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2015-08-13',
         datePrecision: 'DAY',
-        reason: 'The FDA approved a prior-approval supplement to NDA 022272 extending OxyContin\'s labeling to opioid-tolerant children aged 11–16, based on an open-label trial in pediatric patients, with the agency reasoning that it was filling a knowledge gap for off-label prescribing already occurring. The approval institutionally established a pediatric indication for the most notorious branded opioid, prompting immediate public and political backlash that nonetheless did not reverse the label.',
+        reason: 'The FDA approved a prior-approval supplement to NDA 022272 extending OxyContin\'s labeling to opioid-tolerant children aged 11--16, based on an open-label trial in pediatric patients, with the agency reasoning that it was filling a knowledge gap for off-label prescribing already occurring. The approval institutionally established a pediatric indication for the most notorious branded opioid, prompting immediate public and political backlash that nonetheless did not reverse the label.',
         source: {
           externalId: 'src:fda-oxycontin-pediatric-approval-letter-2015',
           name: 'U.S. FDA Center for Drug Evaluation and Research. Approval letter, NDA 022272/S-027 (OxyContin extended-release tablets, pediatric labeling supplement), Purdue Pharma. August 13, 2015.',
@@ -18565,7 +18565,7 @@ const TRAJECTORIES: Trajectory[] = [
   // WOMEN'S HEALTH & ENDOCRINOLOGY (pre-1950)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Pap smear / cervical cancer screening — Papanicolaou 1928–1943 ──────────
+  // ── Pap smear / cervical cancer screening — Papanicolaou 1928--1943 ──────────
   {
     externalId: 'trajectory:papanicolaou-pap-smear-cervical-screening-1928',
     text: 'George Papanicolaou\'s claim that uterine and cervical cancer could be detected in asymptomatic women by microscopic examination of exfoliated cells in a vaginal smear — first presented in January 1928 and established by his 1943 monograph with Herbert Traut — became the foundation of modern cervical cancer screening.',
@@ -18580,10 +18580,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1928-01',
         datePrecision: 'MONTH',
-        reason: 'Papanicolaou presented \'New Cancer Diagnosis\' at the Third Race Betterment Conference in Battle Creek, Michigan (January 2–6, 1928), proposing that cancer of the uterus could be diagnosed from cells in a vaginal smear. The claim was met with skepticism because contemporaries held that biopsy and tissue histology were the only valid means of cancer diagnosis, and it had no clinical uptake for over a decade. This recorded the cytologic-screening hypothesis in the literature while leaving it unaccepted.',
+        reason: 'Papanicolaou presented \'New Cancer Diagnosis\' at the Third Race Betterment Conference in Battle Creek, Michigan (January 2--6, 1928), proposing that cancer of the uterus could be diagnosed from cells in a vaginal smear. The claim was met with skepticism because contemporaries held that biopsy and tissue histology were the only valid means of cancer diagnosis, and it had no clinical uptake for over a decade. This recorded the cytologic-screening hypothesis in the literature while leaving it unaccepted.',
         source: {
           externalId: 'src:papanicolaou-new-cancer-diagnosis-1928',
-          name: 'Papanicolaou GN. New Cancer Diagnosis. Proceedings of the Third Race Betterment Conference, Battle Creek, Michigan, January 2–6, 1928. Race Betterment Foundation; 1928:528–534.',
+          name: 'Papanicolaou GN. New Cancer Diagnosis. Proceedings of the Third Race Betterment Conference, Battle Creek, Michigan, January 2--6, 1928. Race Betterment Foundation; 1928:528--534.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/4196138/',
           publishedAt: '1928-01-06',
           methodologyType: 'primary',
@@ -18607,7 +18607,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Corner & Allen — progesterone / corpus luteum 1929–1934 ─────────────────
+  // ── Corner & Allen — progesterone / corpus luteum 1929--1934 ─────────────────
   {
     externalId: 'trajectory:corner-allen-progesterone-corpus-luteum-1929',
     text: 'George Corner and Willard Allen reported in the American Journal of Physiology in 1929 that extracts of the corpus luteum produced progestational changes in the rabbit uterus, demonstrating a second ovarian hormone — progesterone — which four independent groups then isolated in pure crystalline form in 1934.',
@@ -18622,10 +18622,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1929',
         datePrecision: 'YEAR',
-        reason: 'Corner and Allen published \'Physiology of the corpus luteum\' in the American Journal of Physiology (1929;88:326–346), showing that corpus-luteum extracts induced progestational proliferation of the rabbit endometrium and could maintain pregnancy in castrated animals. This recorded in the literature the existence of a second ovarian hormone distinct from estrogen — the progestational hormone later named progesterone — central to the eventual development of the oral contraceptive.',
+        reason: 'Corner and Allen published \'Physiology of the corpus luteum\' in the American Journal of Physiology (1929;88:326--346), showing that corpus-luteum extracts induced progestational proliferation of the rabbit endometrium and could maintain pregnancy in castrated animals. This recorded in the literature the existence of a second ovarian hormone distinct from estrogen — the progestational hormone later named progesterone — central to the eventual development of the oral contraceptive.',
         source: {
           externalId: 'src:corner-allen-corpus-luteum-ajp-1929',
-          name: 'Corner GW, Allen WM. Physiology of the corpus luteum. II. Production of a special uterine reaction (progestational proliferation) by extracts of the corpus luteum. Am J Physiol. 1929;88(2):326–346.',
+          name: 'Corner GW, Allen WM. Physiology of the corpus luteum. II. Production of a special uterine reaction (progestational proliferation) by extracts of the corpus luteum. Am J Physiol. 1929;88(2):326--346.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16202759/',
           publishedAt: '1929-01-01',
           methodologyType: 'primary',
@@ -18650,7 +18650,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASE / ORPHAN DRUG ERA (1996–2025)
+  // RARE DISEASE / ORPHAN DRUG ERA (1996--2025)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Sodium phenylbutyrate (Buphenyl) — urea cycle disorders, FDA 1996 ───────
@@ -18671,7 +18671,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The FDA approved Buphenyl powder (NDA 020573) as an orphan drug for urea cycle disorders, providing the first marketed oral alternative-pathway nitrogen scavenger building on Saul Brusilow\'s phenylacetate/benzoate work. This converted an investigational metabolic-rescue regimen into a labeled chronic therapy for a group of rare, life-threatening genetic enzyme deficiencies.',
         source: {
           externalId: 'src:fda-buphenyl-approval-package-1996',
-          name: 'U.S. Food and Drug Administration. Buphenyl (sodium phenylbutyrate) Drug Approval Package, NDA 020573/020572. April–May 1996.',
+          name: 'U.S. Food and Drug Administration. Buphenyl (sodium phenylbutyrate) Drug Approval Package, NDA 020573/020572. April--May 1996.',
           url: 'https://archive.org/details/buphenyl-us-fda-drug-approval-package',
           publishedAt: '1996-04-30',
           methodologyType: 'primary',
@@ -18879,7 +18879,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL TRIALS ERA (2000s–2020s)
+  // SURGICAL TRIALS ERA (2000s--2020s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Radical prostatectomy vs observation — SPCG-4 / PIVOT ───────────────────
@@ -19026,7 +19026,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Coley, a New York bone-sarcoma surgeon, deliberately induced erysipelas infections in cancer patients after observing tumor regression following accidental infection, and reported ten cases with objective tumor shrinkage. The paper recorded the radical claim that a cancer could be made to regress by stimulating the body\'s reaction to bacterial products — the conceptual origin of cancer immunotherapy.',
         source: {
           externalId: 'src:coley-erysipelas-malignant-tumors-ajms-1893',
-          name: 'Coley WB. The treatment of malignant tumors by repeated inoculations of erysipelas: with a report of ten original cases. Am J Med Sci. 1893;105(5):487–511.',
+          name: 'Coley WB. The treatment of malignant tumors by repeated inoculations of erysipelas: with a report of ten original cases. Am J Med Sci. 1893;105(5):487--511.',
           url: 'https://archive.org/details/b30587979',
           publishedAt: '1893-05-01',
           methodologyType: 'primary',
@@ -19041,7 +19041,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Coley\'s toxins were displaced by radiation therapy and emerging chemotherapy, their inconsistent preparations and poorly documented results drew sustained skepticism, Parke-Davis ceased manufacture in 1952, and in 1962 the FDA refused to recognize Coley\'s Toxins as a proven drug — making their use for cancer treatment illegal. The original efficacy claim was institutionally rejected by mainstream oncology, even as the underlying immunotherapeutic principle was vindicated decades later.',
         source: {
           externalId: 'src:mccarthy-coley-toxins-sarcomas-iowa-orthop-2006',
-          name: 'McCarthy EF. The toxins of William B. Coley and the treatment of bone and soft-tissue sarcomas. Iowa Orthop J. 2006;26:154–158.',
+          name: 'McCarthy EF. The toxins of William B. Coley and the treatment of bone and soft-tissue sarcomas. Iowa Orthop J. 2006;26:154--158.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1888599/',
           publishedAt: '2006-01-01',
           methodologyType: 'derivative',
@@ -19068,7 +19068,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Lacassagne, at the Institut du Radium in Paris, administered repeated folliculin (estrone) injections to male mice of a high-tumor strain and produced mammary carcinomas, recording the claim that an exogenous sex hormone is itself carcinogenic. This extended carcinogenesis beyond coal-tar chemicals to endogenous hormones and laid the experimental basis for later concern about estrogenic drugs (DES, oral contraceptives, HRT).',
         source: {
           externalId: 'src:lacassagne-folliculine-mammary-cancer-cr-soc-biol-1932',
-          name: 'Lacassagne A. Apparition de cancers de la mamelle chez la souris mâle soumise à des injections de folliculine. C R Séances Soc Biol Fil. 1932;195:632–638.',
+          name: 'Lacassagne A. Apparition de cancers de la mamelle chez la souris mâle soumise à des injections de folliculine. C R Séances Soc Biol Fil. 1932;195:632--638.',
           url: 'https://www.ncbi.nlm.nih.gov/books/NBK234352/',
           publishedAt: '1932-01-01',
           methodologyType: 'derivative',
@@ -19137,7 +19137,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Urethane for multiple myeloma — controlled trial reversal — 1947/1966 ───
   {
     externalId: 'trajectory:urethane-multiple-myeloma-chemotherapy-1947',
-    text: 'Following reports beginning in 1946–1947 (Lancet), oral urethane (ethyl carbamate) was adopted as one of the earliest systemic chemotherapeutic agents for multiple myeloma, a use overturned in 1966 when a controlled trial showed it was no better than flavored placebo.',
+    text: 'Following reports beginning in 1946--1947 (Lancet), oral urethane (ethyl carbamate) was adopted as one of the earliest systemic chemotherapeutic agents for multiple myeloma, a use overturned in 1966 when a controlled trial showed it was no better than flavored placebo.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1947',
     claimEmergedPrecision: 'YEAR',
@@ -19152,7 +19152,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Building on Haddow\'s finding that carbamate esters retarded experimental rat tumors and Paterson\'s observation that urethane lowered leukocyte counts, clinicians reported urethane producing apparent benefit in multiple myeloma. Urethane was taken up as a standard oral chemotherapeutic for myeloma through the 1950s on the basis of uncontrolled case reports — recording the claim that the agent was effective therapy.',
         source: {
           externalId: 'src:urethane-stilbamidine-myeloma-lancet-1947',
-          name: 'Urethane and stilbamidine in multiple myeloma: report on two cases. Lancet. 1947;249(6457):820–821.',
+          name: 'Urethane and stilbamidine in multiple myeloma: report on two cases. Lancet. 1947;249(6457):820--821.',
           url: 'https://www.sciencedirect.com/science/article/abs/pii/S0140673647903759',
           publishedAt: '1947-05-31',
           methodologyType: 'primary',
@@ -19167,7 +19167,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Holland and colleagues randomized 83 multiple-myeloma patients to coded urethane versus a cherry-and-cola-flavored placebo syrup and found no difference in objective improvement or survival, with recognizable benefits nearly equally distributed between arms. This landmark double-blind controlled trial overturned two decades of presumed efficacy, ended urethane\'s use in myeloma, and became an early demonstration that randomized comparison can refute an established cancer therapy.',
         source: {
           externalId: 'src:holland-urethane-myeloma-controlled-trial-blood-1966',
-          name: 'Holland JF, Hosley H, Scharlau C, Carbone PP, Frei E, Brindley CO, et al. A controlled trial of urethane treatment in multiple myeloma. Blood. 1966;27(3):328–342.',
+          name: 'Holland JF, Hosley H, Scharlau C, Carbone PP, Frei E, Brindley CO, et al. A controlled trial of urethane treatment in multiple myeloma. Blood. 1966;27(3):328--342.',
           url: 'https://doi.org/10.1182/blood.V27.3.328.328',
           publishedAt: '1966-03-01',
           methodologyType: 'primary',
@@ -19179,7 +19179,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Therapeutic hypothermia after cardiac arrest — HACA / TTM / TTM2 ────────
   {
     externalId: 'trajectory:therapeutic-hypothermia-cardiac-arrest-reversal-2013',
-    text: 'Therapeutic hypothermia (cooling comatose survivors to 32–34°C) after out-of-hospital cardiac arrest improves neurological outcome and survival compared with normothermia.',
+    text: 'Therapeutic hypothermia (cooling comatose survivors to 32--34°C) after out-of-hospital cardiac arrest improves neurological outcome and survival compared with normothermia.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2002-02-21',
     claimEmergedPrecision: 'DAY',
@@ -19191,7 +19191,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2002-02-21',
         datePrecision: 'DAY',
-        reason: 'The HACA (Hypothermia After Cardiac Arrest) trial reported that cooling comatose post-arrest patients to 32–34°C for 24 hours increased favorable neurologic outcome (55% vs 39%) and reduced mortality versus normothermia. Together with a concurrent Australian trial, it recorded the claim that induced hypothermia protects the brain after cardiac arrest.',
+        reason: 'The HACA (Hypothermia After Cardiac Arrest) trial reported that cooling comatose post-arrest patients to 32--34°C for 24 hours increased favorable neurologic outcome (55% vs 39%) and reduced mortality versus normothermia. Together with a concurrent Australian trial, it recorded the claim that induced hypothermia protects the brain after cardiac arrest.',
         source: {
           externalId: 'src:haca-hypothermia-cardiac-arrest-nejm-2002',
           name: 'Hypothermia After Cardiac Arrest Study Group. Mild therapeutic hypothermia to improve the neurologic outcome after cardiac arrest. N Engl J Med. 2002;346(8):549-556.',
@@ -19206,7 +19206,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2003-07-08',
         datePrecision: 'DAY',
-        reason: 'The International Liaison Committee on Resuscitation (ILCOR) Advanced Life Support Task Force issued an advisory statement recommending that unconscious adults with restored circulation after out-of-hospital ventricular-fibrillation arrest be cooled to 32–34°C for 12–24 hours. Adoption by ILCOR and subsequent AHA/ERC guidelines settled targeted hypothermia as the global standard of post-resuscitation care.',
+        reason: 'The International Liaison Committee on Resuscitation (ILCOR) Advanced Life Support Task Force issued an advisory statement recommending that unconscious adults with restored circulation after out-of-hospital ventricular-fibrillation arrest be cooled to 32--34°C for 12--24 hours. Adoption by ILCOR and subsequent AHA/ERC guidelines settled targeted hypothermia as the global standard of post-resuscitation care.',
         source: {
           externalId: 'src:nolan-ilcor-hypothermia-advisory-circulation-2003',
           name: 'Nolan JP, Morley PT, Vanden Hoek TL, et al. Therapeutic hypothermia after cardiac arrest: an advisory statement by the Advanced Life Support Task Force of the International Liaison Committee on Resuscitation. Circulation. 2003;108(1):118-121.',
@@ -19221,7 +19221,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2013-11-17',
         datePrecision: 'DAY',
-        reason: 'The TTM trial (Nielsen et al.) randomized 950 out-of-hospital arrest survivors to a target of 33°C versus 36°C and found no difference in mortality (50% vs 48%) or neurologic outcome. By showing that strict fever avoidance at 36°C worked as well as deep cooling, the trial cast doubt on the specific benefit of 32–34°C hypothermia that had become standard, moving the claim into active contest.',
+        reason: 'The TTM trial (Nielsen et al.) randomized 950 out-of-hospital arrest survivors to a target of 33°C versus 36°C and found no difference in mortality (50% vs 48%) or neurologic outcome. By showing that strict fever avoidance at 36°C worked as well as deep cooling, the trial cast doubt on the specific benefit of 32--34°C hypothermia that had become standard, moving the claim into active contest.',
         source: {
           externalId: 'src:nielsen-ttm-33-vs-36-cardiac-arrest-nejm-2013',
           name: 'Nielsen N, Wetterslev J, Cronberg T, et al. (TTM Trial Investigators). Targeted temperature management at 33°C versus 36°C after cardiac arrest. N Engl J Med. 2013;369(23):2197-2206.',
@@ -19236,7 +19236,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2021-06-17',
         datePrecision: 'DAY',
-        reason: 'The TTM2 trial (Dankiewicz et al.) randomized 1,850 patients to hypothermia at 33°C versus normothermia with active fever prevention and found no reduction in 6-month death (50% vs 48%) or disability. The large, definitive negative result reversed routine deep cooling: resuscitation guidelines moved to recommend only active fever prevention (keeping temperature ≤37.5°C) rather than induced 32–34°C hypothermia.',
+        reason: 'The TTM2 trial (Dankiewicz et al.) randomized 1,850 patients to hypothermia at 33°C versus normothermia with active fever prevention and found no reduction in 6-month death (50% vs 48%) or disability. The large, definitive negative result reversed routine deep cooling: resuscitation guidelines moved to recommend only active fever prevention (keeping temperature ≤37.5°C) rather than induced 32--34°C hypothermia.',
         source: {
           externalId: 'src:dankiewicz-ttm2-hypothermia-normothermia-nejm-2021',
           name: 'Dankiewicz J, Cronberg T, Lilja G, et al. (TTM2 Trial Investigators). Hypothermia versus normothermia after out-of-hospital cardiac arrest. N Engl J Med. 2021;384(24):2283-2294.',
@@ -19305,7 +19305,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1980-10-16',
         datePrecision: 'DAY',
-        reason: 'DeWood and colleagues performed coronary arteriography in 322 patients during acute transmural MI and found total coronary occlusion in 110 of 126 (87%) studied within four hours of symptom onset, with the proportion falling to 65% by 12–24 hours. This first-in-life angiographic evidence recorded that an occlusive coronary thrombus is present at the moment of infarction, contradicting the then-influential view (e.g., among some pathologists) that intracoronary thrombus was a consequence, not the cause, of myocardial necrosis.',
+        reason: 'DeWood and colleagues performed coronary arteriography in 322 patients during acute transmural MI and found total coronary occlusion in 110 of 126 (87%) studied within four hours of symptom onset, with the proportion falling to 65% by 12--24 hours. This first-in-life angiographic evidence recorded that an occlusive coronary thrombus is present at the moment of infarction, contradicting the then-influential view (e.g., among some pathologists) that intracoronary thrombus was a consequence, not the cause, of myocardial necrosis.',
         source: {
           externalId: 'src:dewood-total-coronary-occlusion-nejm-1980',
           name: 'DeWood MA, Spores J, Notske R, et al. Prevalence of total coronary occlusion during the early hours of transmural myocardial infarction. N Engl J Med. 1980;303(16):897-902.',
@@ -19477,7 +19477,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2009-10-20',
         datePrecision: 'DAY',
-        reason: 'Rerks-Ngarm and colleagues published the full RV144 results in the New England Journal of Medicine (online 20 October 2009), reporting 31.2% vaccine efficacy in the modified intention-to-treat analysis (95% CI 1.1–52.1; P=0.04) among 16,402 volunteers. After two decades of failed candidates and the abandonment of the T-cell paradigm with the Step Study, this recorded in the expert literature the first statistically significant signal that a vaccine could reduce HIV acquisition, reviving the antibody-based prevention field.',
+        reason: 'Rerks-Ngarm and colleagues published the full RV144 results in the New England Journal of Medicine (online 20 October 2009), reporting 31.2% vaccine efficacy in the modified intention-to-treat analysis (95% CI 1.1--52.1; P=0.04) among 16,402 volunteers. After two decades of failed candidates and the abandonment of the T-cell paradigm with the Step Study, this recorded in the expert literature the first statistically significant signal that a vaccine could reduce HIV acquisition, reviving the antibody-based prevention field.',
         source: {
           externalId: 'src:rerks-ngarm-rv144-nejm-2009',
           name: 'Rerks-Ngarm S, Pitisuttithum P, Nitayaphan S, et al. Vaccination with ALVAC and AIDSVAX to prevent HIV-1 infection in Thailand. N Engl J Med. 2009;361(23):2209-2220.',
@@ -19633,7 +19633,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2001-02-01',
         datePrecision: 'DAY',
-        reason: 'Two studies in the same 1 February 2001 issue of the New England Journal of Medicine refuted the hypothesis: Ascherio et al. (nested case-control in the Nurses\' Health Studies) found no association between hepatitis B vaccination and MS (multivariate RR 0.9, 95% CI 0.5–1.6), and Confavreux et al. found vaccination did not increase the short-term risk of MS relapse. The WHO Global Advisory Committee on Vaccine Safety subsequently concluded there is no causal relationship, leaving the safety claim refuted and the vaccine recommendation unchanged.',
+        reason: 'Two studies in the same 1 February 2001 issue of the New England Journal of Medicine refuted the hypothesis: Ascherio et al. (nested case-control in the Nurses\' Health Studies) found no association between hepatitis B vaccination and MS (multivariate RR 0.9, 95% CI 0.5--1.6), and Confavreux et al. found vaccination did not increase the short-term risk of MS relapse. The WHO Global Advisory Committee on Vaccine Safety subsequently concluded there is no causal relationship, leaving the safety claim refuted and the vaccine recommendation unchanged.',
         source: {
           externalId: 'src:ascherio-hepb-ms-nejm-2001',
           name: 'Ascherio A, Zhang SM, Hernán MA, et al. Hepatitis B vaccination and the risk of multiple sclerosis. N Engl J Med. 2001;344(5):327-332.',
@@ -19646,13 +19646,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN ERA (2013–2024) — Neurology / ALS / Psychiatry
+  // MODERN ERA (2013--2024) — Neurology / ALS / Psychiatry
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Relyvrio (AMX0035) ALS — approved 2022, withdrawn 2024 ──────────────────
   {
     externalId: 'trajectory:relyvrio-amx0035-als-efficacy-2020',
-    text: 'Sodium phenylbutyrate–taurursodiol (AMX0035, marketed as Relyvrio) slows functional decline in amyotrophic lateral sclerosis, a claim first reported in the phase 2 CENTAUR trial (NEJM, 3 September 2020) and used to obtain FDA approval on 29 September 2022.',
+    text: 'Sodium phenylbutyrate--taurursodiol (AMX0035, marketed as Relyvrio) slows functional decline in amyotrophic lateral sclerosis, a claim first reported in the phase 2 CENTAUR trial (NEJM, 3 September 2020) and used to obtain FDA approval on 29 September 2022.',
     claimType: 'HYBRID',
     claimEmergedAt: '2020-09-03',
     claimEmergedPrecision: 'DAY',
@@ -19664,10 +19664,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2020-09-03',
         datePrecision: 'DAY',
-        reason: 'Paganoni and colleagues reported the phase 2 CENTAUR randomized controlled trial (137 patients) in the New England Journal of Medicine, finding that AMX0035 significantly slowed ALSFRS-R functional decline versus placebo over 24 weeks. This recorded the first controlled-trial evidence that the sodium phenylbutyrate–taurursodiol combination could alter ALS progression.',
+        reason: 'Paganoni and colleagues reported the phase 2 CENTAUR randomized controlled trial (137 patients) in the New England Journal of Medicine, finding that AMX0035 significantly slowed ALSFRS-R functional decline versus placebo over 24 weeks. This recorded the first controlled-trial evidence that the sodium phenylbutyrate--taurursodiol combination could alter ALS progression.',
         source: {
           externalId: 'src:paganoni-centaur-amx0035-nejm-2020',
-          name: 'Paganoni S, et al. Trial of Sodium Phenylbutyrate–Taurursodiol for Amyotrophic Lateral Sclerosis. N Engl J Med. 2020;383(10):919-930.',
+          name: 'Paganoni S, et al. Trial of Sodium Phenylbutyrate--Taurursodiol for Amyotrophic Lateral Sclerosis. N Engl J Med. 2020;383(10):919-930.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/32877582/',
           publishedAt: '2020-09-03',
           methodologyType: 'primary',
@@ -19736,7 +19736,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2024-08-09',
         datePrecision: 'DAY',
-        reason: 'On 4 June 2024 an FDA Psychopharmacologic Drugs Advisory Committee voted 2–9 that MDMA-assisted therapy was not shown effective and 1–10 that its benefits did not outweigh risks, citing concerns about functional unblinding, trial conduct, and data reliability. On 9 August 2024 the FDA issued a Complete Response Letter to Lykos declining approval and requiring an additional phase 3 trial, placing the efficacy and safety claim into active institutional contestation.',
+        reason: 'On 4 June 2024 an FDA Psychopharmacologic Drugs Advisory Committee voted 2--9 that MDMA-assisted therapy was not shown effective and 1--10 that its benefits did not outweigh risks, citing concerns about functional unblinding, trial conduct, and data reliability. On 9 August 2024 the FDA issued a Complete Response Letter to Lykos declining approval and requiring an additional phase 3 trial, placing the efficacy and safety claim into active institutional contestation.',
         source: {
           externalId: 'src:lykos-mdma-ptsd-crl-2024',
           name: 'Lykos Therapeutics. Lykos Therapeutics Announces Complete Response Letter for Midomafetamine Capsules for PTSD. 9 August 2024.',
@@ -19848,7 +19848,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY ERA (1939–1951)
+  // ENDOCRINOLOGY ERA (1939--1951)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Astwood thiouracil antithyroid drug 1943 ────────────────────────────────
@@ -19866,10 +19866,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1943-05-08',
         datePrecision: 'DAY',
-        reason: 'Astwood published \'Treatment of Hyperthyroidism with Thiourea and Thiouracil\' in JAMA (1943;122(2):78–81), reporting that after establishing the approximate dose, hyperthyroid patients showed clear clinical and metabolic improvement on the orally administered compounds. Following his work on goitrogens that blocked thyroid hormone synthesis, this recorded in the expert literature the claim that a chemical agent could pharmacologically inhibit the overactive thyroid, opening the era of medical (non-surgical, non-radioactive) therapy for hyperthyroidism.',
+        reason: 'Astwood published \'Treatment of Hyperthyroidism with Thiourea and Thiouracil\' in JAMA (1943;122(2):78--81), reporting that after establishing the approximate dose, hyperthyroid patients showed clear clinical and metabolic improvement on the orally administered compounds. Following his work on goitrogens that blocked thyroid hormone synthesis, this recorded in the expert literature the claim that a chemical agent could pharmacologically inhibit the overactive thyroid, opening the era of medical (non-surgical, non-radioactive) therapy for hyperthyroidism.',
         source: {
           externalId: 'src:astwood-thiourea-thiouracil-jama-1943',
-          name: 'Astwood EB. Treatment of Hyperthyroidism with Thiourea and Thiouracil. JAMA. 1943;122(2):78–81. (Landmark reprint: JAMA. 1984;251(13):1743–6; PMID 6422063.)',
+          name: 'Astwood EB. Treatment of Hyperthyroidism with Thiourea and Thiouracil. JAMA. 1943;122(2):78--81. (Landmark reprint: JAMA. 1984;251(13):1743--6; PMID 6422063.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6422063/',
           publishedAt: '1943-05-08',
           methodologyType: 'primary',
@@ -19884,7 +19884,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Within a few years the antithyroid drugs were refined into the safer congeners propylthiouracil and methimazole, which were adopted internationally as standard first-line medical therapy for Graves\' hyperthyroidism. The thionamide class established by Astwood remains in routine clinical use in essentially the same way to the present day, institutionally settling the claim that hyperthyroidism can be controlled pharmacologically.',
         source: {
           externalId: 'src:sawin-cooper-origin-antithyroid-drugs-thyroid-2023',
-          name: 'Sawin CT, Cooper DS. The Origin of Antithyroid Drugs. Thyroid. 2023;33(8):885–893.',
+          name: 'Sawin CT, Cooper DS. The Origin of Antithyroid Drugs. Thyroid. 2023;33(8):885--893.',
           url: 'https://www.liebertpub.com/doi/10.1089/thy.2022.0410',
           publishedAt: '2023-08-01',
           methodologyType: 'derivative',
@@ -19908,10 +19908,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1946-05-11',
         datePrecision: 'DAY',
-        reason: 'After preclinical work in rabbits with Arthur Roberts and the first patient treatment on 31 March 1941, Hertz and Roberts published \'Radioactive Iodine in the Study of Thyroid Physiology. VII. The Use of Radioactive Iodine Therapy in Hyperthyroidism\' (JAMA 1946;131(2):81–86), reporting 29 hyperthyroid patients treated 1941–1943. This recorded in the expert literature the claim that an isotope selectively concentrated by the thyroid could be used to ablate overactive thyroid tissue, founding therapeutic nuclear medicine.',
+        reason: 'After preclinical work in rabbits with Arthur Roberts and the first patient treatment on 31 March 1941, Hertz and Roberts published \'Radioactive Iodine in the Study of Thyroid Physiology. VII. The Use of Radioactive Iodine Therapy in Hyperthyroidism\' (JAMA 1946;131(2):81--86), reporting 29 hyperthyroid patients treated 1941--1943. This recorded in the expert literature the claim that an isotope selectively concentrated by the thyroid could be used to ablate overactive thyroid tissue, founding therapeutic nuclear medicine.',
         source: {
           externalId: 'src:hertz-roberts-radioiodine-hyperthyroidism-1946',
-          name: 'Hertz S, Roberts A. Radioactive Iodine in the Study of Thyroid Physiology. VII. The Use of Radioactive Iodine Therapy in Hyperthyroidism. JAMA. 1946;131(2):81–86. (Documented in: American Chemical Society National Historic Chemical Landmark, \'Saul Hertz and the Medical Uses of Radioiodine.\')',
+          name: 'Hertz S, Roberts A. Radioactive Iodine in the Study of Thyroid Physiology. VII. The Use of Radioactive Iodine Therapy in Hyperthyroidism. JAMA. 1946;131(2):81--86. (Documented in: American Chemical Society National Historic Chemical Landmark, \'Saul Hertz and the Medical Uses of Radioiodine.\')',
           url: 'https://www.acs.org/education/whatischemistry/landmarks/medical-uses-of-radioiodine.html',
           publishedAt: '1946-05-11',
           methodologyType: 'primary',
@@ -19926,7 +19926,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'With reactor-produced I-131 made widely available through the U.S. Atomic Energy Commission after 1946 and the parallel demonstration of radioiodine ablation of functioning thyroid-cancer metastases (Seidlin, Marinelli, Oshry, JAMA 1946), radioactive iodine became an established standard treatment for hyperthyroidism and differentiated thyroid carcinoma by the early 1950s, a status it retains. This institutionally settled the claim that radioiodine is a definitive therapy for thyroid overactivity.',
         source: {
           externalId: 'src:fahey-radionuclide-therapy-eighty-years-2021',
-          name: 'Fahey FH, Grant FD, Thrall JH. Celebrating eighty years of radionuclide therapy and the work of Saul Hertz. J Appl Clin Med Phys. 2021;22(2):7–11. (PMC7856499.)',
+          name: 'Fahey FH, Grant FD, Thrall JH. Celebrating eighty years of radionuclide therapy and the work of Saul Hertz. J Appl Clin Med Phys. 2021;22(2):7--11. (PMC7856499.)',
           url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7856499/',
           publishedAt: '2021-02-01',
           methodologyType: 'derivative',
@@ -19950,10 +19950,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1939-01-01',
         datePrecision: 'YEAR',
-        reason: 'Following Steiger and Reichstein\'s 1937 chemical synthesis of desoxycorticosterone, Thorn, Howard, Emerson, and Firor published \'Treatment of Addison\'s Disease with Desoxycorticosterone Acetate, a Synthetic Adrenal Cortical Hormone (Preliminary Report)\' (Bull Johns Hopkins Hosp. 1939;64:339–364), implanting DOCA pellets in patients with Addison\'s disease and showing normalization of serum sodium and potassium and restored plasma volume. This recorded the claim that a single laboratory-synthesized steroid could replace the salt-retaining function of the adrenal cortex.',
+        reason: 'Following Steiger and Reichstein\'s 1937 chemical synthesis of desoxycorticosterone, Thorn, Howard, Emerson, and Firor published \'Treatment of Addison\'s Disease with Desoxycorticosterone Acetate, a Synthetic Adrenal Cortical Hormone (Preliminary Report)\' (Bull Johns Hopkins Hosp. 1939;64:339--364), implanting DOCA pellets in patients with Addison\'s disease and showing normalization of serum sodium and potassium and restored plasma volume. This recorded the claim that a single laboratory-synthesized steroid could replace the salt-retaining function of the adrenal cortex.',
         source: {
           externalId: 'src:thorn-doca-addisons-historical-vignette-jcem-1998',
-          name: 'Thorn GW, Howard RP, Emerson K Jr, Firor WM. Treatment of Addison\'s Disease with Desoxycorticosterone Acetate. Bull Johns Hopkins Hosp. 1939;64:339–364. (Reviewed in: Loriaux DL. Early Investigations on the Use of Deoxycorticosterone in Addison\'s Disease: A Historical Vignette. J Clin Endocrinol Metab. 1998;83(5):1428.)',
+          name: 'Thorn GW, Howard RP, Emerson K Jr, Firor WM. Treatment of Addison\'s Disease with Desoxycorticosterone Acetate. Bull Johns Hopkins Hosp. 1939;64:339--364. (Reviewed in: Loriaux DL. Early Investigations on the Use of Deoxycorticosterone in Addison\'s Disease: A Historical Vignette. J Clin Endocrinol Metab. 1998;83(5):1428.)',
           url: 'https://academic.oup.com/jcem/article/83/5/1428/2865134',
           publishedAt: '1998-05-01',
           methodologyType: 'derivative',
@@ -19968,7 +19968,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'By 1942 Thorn and colleagues had evaluated DOCA therapy in well over a hundred Addison\'s-disease patients, and DOCA—often combined with salt and adrenal cortical extract—became the standard maintenance treatment for adrenal insufficiency through the 1940s, establishing mineralocorticoid replacement as durable life-saving therapy. (DOCA was later supplemented by cortisone in 1949 and superseded by oral fludrocortisone in the 1950s, but the underlying claim that synthetic adrenal hormone replacement corrects Addison\'s disease became permanently settled.)',
         source: {
           externalId: 'src:thorn-doca-158-patients-clinical-evaluation-1942',
-          name: 'Thorn GW, Dorrance SS, Day E. Addison\'s Disease: Evaluation of Synthetic Desoxycorticosterone Acetate Therapy in 158 Patients. Ann Intern Med. 1942;16(6):1053–1096.',
+          name: 'Thorn GW, Dorrance SS, Day E. Addison\'s Disease: Evaluation of Synthetic Desoxycorticosterone Acetate Therapy in 158 Patients. Ann Intern Med. 1942;16(6):1053--1096.',
           url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-16-6-1053',
           publishedAt: '1942-06-01',
           methodologyType: 'primary',
@@ -19978,7 +19978,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH / REPRODUCTIVE MEDICINE ERA (1991–2010)
+  // WOMEN'S HEALTH / REPRODUCTIVE MEDICINE ERA (1991--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Folic acid prevents neural tube defects — MRC 1991 ─────────────────────
@@ -19996,7 +19996,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1991-07-20',
         datePrecision: 'DAY',
-        reason: 'The MRC Vitamin Study Research Group published a double-blind randomized trial of 1,817 high-risk women across 33 centers in seven countries, finding that 4 mg/day folic acid reduced recurrent neural tube defects by 72% (RR 0.28) while other vitamins showed no benefit. This was the first randomized-controlled evidence that a single nutrient given before and in early pregnancy could prevent a major congenital malformation, recording the folate–NTD causal claim in the expert literature.',
+        reason: 'The MRC Vitamin Study Research Group published a double-blind randomized trial of 1,817 high-risk women across 33 centers in seven countries, finding that 4 mg/day folic acid reduced recurrent neural tube defects by 72% (RR 0.28) while other vitamins showed no benefit. This was the first randomized-controlled evidence that a single nutrient given before and in early pregnancy could prevent a major congenital malformation, recording the folate--NTD causal claim in the expert literature.',
         source: {
           externalId: 'src:mrc-vitamin-study-folic-acid-ntd-1991',
           name: 'MRC Vitamin Study Research Group. Prevention of neural tube defects: results of the Medical Research Council Vitamin Study. Lancet. 1991;338(8760):131-137.',
@@ -20137,7 +20137,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2005-12-08',
         datePrecision: 'DAY',
-        reason: 'The FDA issued a Public Health Advisory and, with GlaxoSmithKline, changed paroxetine\'s pregnancy category from C to D after preliminary analyses of two epidemiologic studies (a Swedish national registry and a U.S. insurance-claims dataset) showed roughly a 1.5–2-fold higher rate of cardiac malformations—chiefly atrial and ventricular septal defects—with first-trimester exposure. This recorded paroxetine first-trimester cardiac teratogenicity as an institutionally endorsed safety claim.',
+        reason: 'The FDA issued a Public Health Advisory and, with GlaxoSmithKline, changed paroxetine\'s pregnancy category from C to D after preliminary analyses of two epidemiologic studies (a Swedish national registry and a U.S. insurance-claims dataset) showed roughly a 1.5--2-fold higher rate of cardiac malformations—chiefly atrial and ventricular septal defects—with first-trimester exposure. This recorded paroxetine first-trimester cardiac teratogenicity as an institutionally endorsed safety claim.',
         source: {
           externalId: 'src:fda-paroxetine-pregnancy-advisory-2005',
           name: 'U.S. Food and Drug Administration. Public Health Advisory: Paroxetine. 8 December 2005.',
@@ -20194,10 +20194,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2004-05-06',
         datePrecision: 'DAY',
-        reason: 'After the FDA\'s Nonprescription Drugs and Reproductive Health joint advisory committees voted 23–4 in December 2003 that Plan B was safe and effective for over-the-counter use, FDA leadership issued a \'not approvable\' letter rejecting the OTC switch. The override of the agency\'s own scientific panels was widely criticized as political interference, making the safety-for-OTC claim institutionally contested even though the expert bodies had endorsed it.',
+        reason: 'After the FDA\'s Nonprescription Drugs and Reproductive Health joint advisory committees voted 23--4 in December 2003 that Plan B was safe and effective for over-the-counter use, FDA leadership issued a \'not approvable\' letter rejecting the OTC switch. The override of the agency\'s own scientific panels was widely criticized as political interference, making the safety-for-OTC claim institutionally contested even though the expert bodies had endorsed it.',
         source: {
           externalId: 'src:nhlp-plan-b-otc-rejection-2004',
-          name: 'National Health Law Program. FDA\'s Approval of Plan B (documenting the 23–4 advisory vote of December 2003 and the May 2004 not-approvable letter). 2006.',
+          name: 'National Health Law Program. FDA\'s Approval of Plan B (documenting the 23--4 advisory vote of December 2003 and the May 2004 not-approvable letter). 2006.',
           url: 'https://healthlaw.org/resource/fdas-approval-of-plan-b-women-still-have-no-sure-access-to-over-the-counter-emergency-contraception/',
           publishedAt: '2006-09-01',
           methodologyType: 'derivative',
@@ -20236,7 +20236,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2021-07-09',
         datePrecision: 'DAY',
-        reason: 'After an emergency ACIP review on 23–25 June 2021 of VAERS and Vaccine Safety Datalink data, CDC published an MMWR update documenting a likely causal association between mRNA COVID-19 vaccination and myocarditis, with observed-to-expected excess cases concentrated in males aged 12–29 after dose two (about 40.6 cases per million second doses in males 12–29 vs background). This formally recorded a real vaccine-attributable cardiac adverse event for the first time, even as ACIP reaffirmed that benefits outweigh risks.',
+        reason: 'After an emergency ACIP review on 23--25 June 2021 of VAERS and Vaccine Safety Datalink data, CDC published an MMWR update documenting a likely causal association between mRNA COVID-19 vaccination and myocarditis, with observed-to-expected excess cases concentrated in males aged 12--29 after dose two (about 40.6 cases per million second doses in males 12--29 vs background). This formally recorded a real vaccine-attributable cardiac adverse event for the first time, even as ACIP reaffirmed that benefits outweigh risks.',
         source: {
           externalId: 'src:gargano-mmwr-myocarditis-mrna-2021',
           name: 'Gargano JW, Wallace M, Hadler SC, et al. Use of mRNA COVID-19 Vaccine After Reports of Myocarditis Among Vaccine Recipients: Update from the Advisory Committee on Immunization Practices — United States, June 2021. MMWR Morb Mortal Wkly Rep. 2021;70(27):977-982.',
@@ -20251,10 +20251,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2021-08-06',
         datePrecision: 'DAY',
-        reason: 'CDC published a dedicated MMWR analysis of adolescent (12–17 year) safety surveillance confirming that myocarditis was the most frequently reported serious adverse event, occurring disproportionately in adolescent males after the second dose. Coupled with the FDA\'s addition of a myocarditis/pericarditis warning to the Pfizer-BioNTech and Moderna fact sheets, the pediatric-specific signal became an institutionally settled, labeled adverse effect rather than a provisional surveillance flag.',
+        reason: 'CDC published a dedicated MMWR analysis of adolescent (12--17 year) safety surveillance confirming that myocarditis was the most frequently reported serious adverse event, occurring disproportionately in adolescent males after the second dose. Coupled with the FDA\'s addition of a myocarditis/pericarditis warning to the Pfizer-BioNTech and Moderna fact sheets, the pediatric-specific signal became an institutionally settled, labeled adverse effect rather than a provisional surveillance flag.',
         source: {
           externalId: 'src:hause-mmwr-adolescent-vaccine-safety-2021',
-          name: 'Hause AM, Gee J, Baggs J, et al. COVID-19 Vaccine Safety in Adolescents Aged 12–17 Years — United States, December 14, 2020–July 16, 2021. MMWR Morb Mortal Wkly Rep. 2021;70(31):1053-1058.',
+          name: 'Hause AM, Gee J, Baggs J, et al. COVID-19 Vaccine Safety in Adolescents Aged 12--17 Years — United States, December 14, 2020--July 16, 2021. MMWR Morb Mortal Wkly Rep. 2021;70(31):1053-1058.',
           url: 'https://www.cdc.gov/mmwr/volumes/70/wr/mm7031e1.htm',
           publishedAt: '2021-08-06',
           methodologyType: 'primary',
@@ -20308,7 +20308,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Abrysvo maternal RSV vaccine FDA approval — 2023 ────────────────────────
   {
     externalId: 'trajectory:abrysvo-maternal-rsv-vaccine-pregnancy-2023',
-    text: 'On 21 August 2023 the US FDA approved Abrysvo (RSVpreF), Pfizer\'s bivalent prefusion-F vaccine, for administration to pregnant individuals at 32–36 weeks of gestation to protect their infants from severe RSV lower respiratory tract disease in the first six months of life — the first vaccine approved for maternal immunization against RSV.',
+    text: 'On 21 August 2023 the US FDA approved Abrysvo (RSVpreF), Pfizer\'s bivalent prefusion-F vaccine, for administration to pregnant individuals at 32--36 weeks of gestation to protect their infants from severe RSV lower respiratory tract disease in the first six months of life — the first vaccine approved for maternal immunization against RSV.',
     claimType: 'HYBRID',
     claimEmergedAt: '2023-04-20',
     claimEmergedPrecision: 'DAY',
@@ -20335,10 +20335,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2023-08-21',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Abrysvo for maternal use, but restricted administration to weeks 32–36 of gestation specifically to mitigate a numerical imbalance of preterm births observed in the trial (5.7% vaccine vs 4.7% placebo) — a safety signal that had earlier prompted GSK to halt its competing maternal RSV vaccine program. The approval institutionally settled maternal RSV immunization as authorized practice while explicitly bounding it against the contested preterm-birth risk; CDC/ACIP recommended it in September 2023.',
+        reason: 'The FDA approved Abrysvo for maternal use, but restricted administration to weeks 32--36 of gestation specifically to mitigate a numerical imbalance of preterm births observed in the trial (5.7% vaccine vs 4.7% placebo) — a safety signal that had earlier prompted GSK to halt its competing maternal RSV vaccine program. The approval institutionally settled maternal RSV immunization as authorized practice while explicitly bounding it against the contested preterm-birth risk; CDC/ACIP recommended it in September 2023.',
         source: {
           externalId: 'src:pfizer-abrysvo-maternal-fda-approval-2023',
-          name: 'Pfizer. U.S. FDA Approves ABRYSVO, Pfizer\'s Vaccine for the Prevention of RSV in Infants Through Active Immunization of Pregnant Individuals 32–36 Weeks of Gestational Age. Press release. 21 August 2023.',
+          name: 'Pfizer. U.S. FDA Approves ABRYSVO, Pfizer\'s Vaccine for the Prevention of RSV in Infants Through Active Immunization of Pregnant Individuals 32--36 Weeks of Gestational Age. Press release. 21 August 2023.',
           url: 'https://www.pfizer.com/news/press-release/press-release-detail/us-fda-approves-abrysvotm-pfizers-vaccine-prevention-0',
           publishedAt: '2023-08-21',
           methodologyType: 'primary',
@@ -20394,11 +20394,11 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASE / ORPHAN DRUG ERA (2000s–2010s) — additions
+  // RARE DISEASE / ORPHAN DRUG ERA (2000s--2010s) — additions
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIAC SURGERY / DEVICE ERA (1960s–1990s)
+  // CARDIAC SURGERY / DEVICE ERA (1960s--1990s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Favaloro CABG — first saphenous-vein coronary bypass 1968 ───────────────
@@ -20416,10 +20416,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1968-01-01',
         datePrecision: 'YEAR',
-        reason: 'Following his first saphenous-vein coronary bypass operation in May 1967, Favaloro published \'Saphenous vein autograft replacement of severe segmental coronary artery occlusion: operative technique\' in Ann Thorac Surg (1968;5:334–339), describing a standardized, angiographically confirmed method of revascularizing occluded coronary arteries. This recorded in the surgical literature the claim that direct coronary bypass was a feasible, reproducible operation — the founding document of modern CABG.',
+        reason: 'Following his first saphenous-vein coronary bypass operation in May 1967, Favaloro published \'Saphenous vein autograft replacement of severe segmental coronary artery occlusion: operative technique\' in Ann Thorac Surg (1968;5:334--339), describing a standardized, angiographically confirmed method of revascularizing occluded coronary arteries. This recorded in the surgical literature the claim that direct coronary bypass was a feasible, reproducible operation — the founding document of modern CABG.',
         source: {
           externalId: 'src:favaloro-saphenous-vein-cabg-ats-1968',
-          name: 'Favaloro RG. Saphenous vein autograft replacement of severe segmental coronary artery occlusion: operative technique. Ann Thorac Surg. 1968;5(4):334–339. (50th-anniversary landmark commentary, PMID 25639386.)',
+          name: 'Favaloro RG. Saphenous vein autograft replacement of severe segmental coronary artery occlusion: operative technique. Ann Thorac Surg. 1968;5(4):334--339. (50th-anniversary landmark commentary, PMID 25639386.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/25639386/',
           publishedAt: '1968-01-01',
           methodologyType: 'primary',
@@ -20458,10 +20458,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1980-08-07',
         datePrecision: 'DAY',
-        reason: 'After the first human implant in February 1980 at Johns Hopkins, Mirowski, Reid, Mower and colleagues published \'Termination of malignant ventricular arrhythmias with an implanted automatic defibrillator in human beings\' (NEJM 1980;303:322–324), documenting that an implanted device could automatically sense and defibrillate life-threatening arrhythmias. This recorded the claim that a permanently implantable defibrillator was feasible in patients, overcoming a decade of skepticism that such a device was practical or safe.',
+        reason: 'After the first human implant in February 1980 at Johns Hopkins, Mirowski, Reid, Mower and colleagues published \'Termination of malignant ventricular arrhythmias with an implanted automatic defibrillator in human beings\' (NEJM 1980;303:322--324), documenting that an implanted device could automatically sense and defibrillate life-threatening arrhythmias. This recorded the claim that a permanently implantable defibrillator was feasible in patients, overcoming a decade of skepticism that such a device was practical or safe.',
         source: {
           externalId: 'src:mirowski-implantable-defibrillator-nejm-1980',
-          name: 'Mirowski M, Reid PR, Mower MM, et al. Termination of malignant ventricular arrhythmias with an implanted automatic defibrillator in human beings. N Engl J Med. 1980;303(7):322–324.',
+          name: 'Mirowski M, Reid PR, Mower MM, et al. Termination of malignant ventricular arrhythmias with an implanted automatic defibrillator in human beings. N Engl J Med. 1980;303(7):322--324.',
           url: 'https://www.nejm.org/doi/full/10.1056/NEJM198008073030607',
           publishedAt: '1980-08-07',
           methodologyType: 'primary',
@@ -20473,10 +20473,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1996-12-26',
         datePrecision: 'DAY',
-        reason: 'Moss and colleagues reported MADIT (NEJM 1996;335:1933–1940), the first randomized controlled trial showing that prophylactic ICD implantation reduced mortality in high-risk coronary patients versus conventional therapy. This converted the ICD from a feasible device into an evidence-based, guideline-endorsed standard for prevention of sudden cardiac death, a status reinforced by AVID and MADIT-II and durable to the present.',
+        reason: 'Moss and colleagues reported MADIT (NEJM 1996;335:1933--1940), the first randomized controlled trial showing that prophylactic ICD implantation reduced mortality in high-risk coronary patients versus conventional therapy. This converted the ICD from a feasible device into an evidence-based, guideline-endorsed standard for prevention of sudden cardiac death, a status reinforced by AVID and MADIT-II and durable to the present.',
         source: {
           externalId: 'src:moss-madit-implantable-defibrillator-nejm-1996',
-          name: 'Moss AJ, Hall WJ, Cannom DS, et al. Improved survival with an implanted defibrillator in patients with coronary disease at high risk for ventricular arrhythmia (MADIT). N Engl J Med. 1996;335(26):1933–1940.',
+          name: 'Moss AJ, Hall WJ, Cannom DS, et al. Improved survival with an implanted defibrillator in patients with coronary disease at high risk for ventricular arrhythmia (MADIT). N Engl J Med. 1996;335(26):1933--1940.',
           url: 'https://www.nejm.org/doi/full/10.1056/NEJM199612263352601',
           publishedAt: '1996-12-26',
           methodologyType: 'primary',
@@ -20486,7 +20486,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SHAM-CONTROLLED REVERSAL ERA (1990s–2000s)
+  // SHAM-CONTROLLED REVERSAL ERA (1990s--2000s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Fetal dopamine grafts for Parkinson's — sham-trial reversal 2001 ─────────
@@ -20504,10 +20504,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1990-02-02',
         datePrecision: 'DAY',
-        reason: 'Lindvall and colleagues reported \'Grafts of fetal dopamine neurons survive and improve motor function in Parkinson\'s disease\' (Science 1990;247:574–577), showing that fetal mesencephalic dopamine neurons stereotactically implanted into the putamen survived, restored fluorodopa uptake on PET, and gave marked, sustained symptomatic relief in a severely affected patient. This recorded the open-label claim that fetal-cell grafting could be a restorative procedural therapy for Parkinson\'s disease, launching a wave of optimism and further transplant series.',
+        reason: 'Lindvall and colleagues reported \'Grafts of fetal dopamine neurons survive and improve motor function in Parkinson\'s disease\' (Science 1990;247:574--577), showing that fetal mesencephalic dopamine neurons stereotactically implanted into the putamen survived, restored fluorodopa uptake on PET, and gave marked, sustained symptomatic relief in a severely affected patient. This recorded the open-label claim that fetal-cell grafting could be a restorative procedural therapy for Parkinson\'s disease, launching a wave of optimism and further transplant series.',
         source: {
           externalId: 'src:lindvall-fetal-dopamine-graft-science-1990',
-          name: 'Lindvall O, Brundin P, Widner H, et al. Grafts of fetal dopamine neurons survive and improve motor function in Parkinson\'s disease. Science. 1990;247(4942):574–577.',
+          name: 'Lindvall O, Brundin P, Widner H, et al. Grafts of fetal dopamine neurons survive and improve motor function in Parkinson\'s disease. Science. 1990;247(4942):574--577.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/2105529/',
           publishedAt: '1990-02-02',
           methodologyType: 'primary',
@@ -20519,10 +20519,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2001-03-08',
         datePrecision: 'DAY',
-        reason: 'Freed and colleagues published the first prospective double-blind trial with sham (placebo) surgery (NEJM 2001;344:710–719), randomizing 40 patients to embryonic dopamine-neuron implantation or a sham burr-hole procedure. Despite graft survival, there was no significant benefit on the primary global rating, improvement was confined to younger patients, and 15% developed disabling off-medication dyskinesias attributed to the grafts. The placebo-controlled design overturned the open-label evidence base, putting fetal-cell transplantation for Parkinson\'s into durable scientific contestation.',
+        reason: 'Freed and colleagues published the first prospective double-blind trial with sham (placebo) surgery (NEJM 2001;344:710--719), randomizing 40 patients to embryonic dopamine-neuron implantation or a sham burr-hole procedure. Despite graft survival, there was no significant benefit on the primary global rating, improvement was confined to younger patients, and 15% developed disabling off-medication dyskinesias attributed to the grafts. The placebo-controlled design overturned the open-label evidence base, putting fetal-cell transplantation for Parkinson\'s into durable scientific contestation.',
         source: {
           externalId: 'src:freed-embryonic-dopamine-transplant-nejm-2001',
-          name: 'Freed CR, Greene PE, Breeze RE, et al. Transplantation of embryonic dopamine neurons for severe Parkinson\'s disease. N Engl J Med. 2001;344(10):710–719.',
+          name: 'Freed CR, Greene PE, Breeze RE, et al. Transplantation of embryonic dopamine neurons for severe Parkinson\'s disease. N Engl J Med. 2001;344(10):710--719.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/11236774/',
           publishedAt: '2001-03-08',
           methodologyType: 'primary',
@@ -20532,7 +20532,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // EARLY 2000s TARGETED ONCOLOGY ERA (2000–2004)
+  // EARLY 2000s TARGETED ONCOLOGY ERA (2000--2004)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Gemtuzumab/Mylotarg — first ADC, accelerated approval then withdrawal ────
@@ -20763,7 +20763,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The randomized, double-blind, placebo-controlled TRIUMPH trial of 87 transfusion-dependent PNH patients (Hillmen et al., NEJM) showed eculizumab stabilized hemoglobin in 49% versus 0% on placebo and produced transfusion independence in 51% versus 0%. It was the first demonstration that pharmacologic terminal-complement blockade controls intravascular hemolysis in PNH.',
         source: {
           externalId: 'src:hillmen-triumph-eculizumab-nejm-2006',
-          name: 'Hillmen P, Young NS, Schubert J, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233–1243.',
+          name: 'Hillmen P, Young NS, Schubert J, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233--1243.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16990386/',
           publishedAt: '2006-09-21',
           methodologyType: 'primary',
@@ -20789,13 +20789,13 @@ const TRAJECTORIES: Trajectory[] = [
 
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN ERA — INFLAMMATION, HEART FAILURE & SGLT2 (2014–2023)
+  // MODERN ERA — INFLAMMATION, HEART FAILURE & SGLT2 (2014--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── PARADIGM-HF — sacubitril/valsartan superior to enalapril in HFrEF 2014 ──
   {
     externalId: 'trajectory:paradigm-hf-sacubitril-valsartan-2014',
-    text: 'On 30 August 2014 the PARADIGM-HF trial reported that the angiotensin receptor–neprilysin inhibitor sacubitril/valsartan was superior to the ACE inhibitor enalapril in reducing cardiovascular death and heart-failure hospitalization in patients with heart failure and reduced ejection fraction, a finding the FDA adopted on 7 July 2015 by approving Entresto.',
+    text: 'On 30 August 2014 the PARADIGM-HF trial reported that the angiotensin receptor--neprilysin inhibitor sacubitril/valsartan was superior to the ACE inhibitor enalapril in reducing cardiovascular death and heart-failure hospitalization in patients with heart failure and reduced ejection fraction, a finding the FDA adopted on 7 July 2015 by approving Entresto.',
     claimType: 'HYBRID',
     claimEmergedAt: '2014-08-30',
     claimEmergedPrecision: 'DAY',
@@ -20822,7 +20822,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2015-07-07',
         datePrecision: 'DAY',
-        reason: 'The U.S. FDA approved sacubitril/valsartan (Entresto, Novartis) to reduce the risk of cardiovascular death and hospitalization in chronic heart failure with reduced ejection fraction, the first angiotensin receptor–neprilysin inhibitor approved. The approval, granted under fast-track review on the strength of PARADIGM-HF, made ARNI therapy a guideline-endorsed pillar of HFrEF treatment.',
+        reason: 'The U.S. FDA approved sacubitril/valsartan (Entresto, Novartis) to reduce the risk of cardiovascular death and hospitalization in chronic heart failure with reduced ejection fraction, the first angiotensin receptor--neprilysin inhibitor approved. The approval, granted under fast-track review on the strength of PARADIGM-HF, made ARNI therapy a guideline-endorsed pillar of HFrEF treatment.',
         source: {
           externalId: 'src:fda-entresto-sacubitril-valsartan-approval-2015',
           name: 'Entresto (sacubitril and valsartan) FDA Approval History. Drugs.com. 2015.',
@@ -20934,7 +20934,7 @@ const TRAJECTORIES: Trajectory[] = [
   // DRUG DISCOVERY ERA (pre-1950) — IMMUNOLOGY & VIROLOGY
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Koch tuberculin reversal 1890–1891 ────────────────────────────────────────
+  // ── Koch tuberculin reversal 1890--1891 ────────────────────────────────────────
   {
     externalId: 'trajectory:koch-tuberculin-tuberculosis-remedy-reversal-1890',
     text: 'Robert Koch announced in November 1890 that his preparation tuberculin was a remedy capable of arresting and curing tuberculosis in living patients.',
@@ -21006,7 +21006,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1925-01-01',
         datePrecision: 'YEAR',
-        reason: 'Through the second and third papers (1923–1925) the authors extended the polysaccharide-antigen finding across pneumococcal types and quantified the type-specific reactions, and the carbohydrate basis of immunological specificity became accepted doctrine. The principle directly underwrote later pneumococcal polysaccharide vaccines.',
+        reason: 'Through the second and third papers (1923--1925) the authors extended the polysaccharide-antigen finding across pneumococcal types and quantified the type-specific reactions, and the carbohydrate basis of immunological specificity became accepted doctrine. The principle directly underwrote later pneumococcal polysaccharide vaccines.',
         source: {
           externalId: 'src:heidelberger-avery-sss-third-paper-1925',
           name: 'Heidelberger M, Avery OT. The soluble specific substance of pneumococcus: third paper. J Exp Med. 1925;42(3):367-376.',
@@ -21159,7 +21159,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1968-05-04',
         datePrecision: 'DAY',
-        reason: 'Barry Blackwell and Michael Shepherd published \'Prophylactic lithium: another therapeutic myth?\' in The Lancet, arguing that the Baastrup–Schou evidence rested on uncontrolled, retrospective observation vulnerable to selection bias and regression to the mean, and demanding a randomized double-blind trial before the prophylaxis claim could be accepted. The critique placed the claim into active expert dispute and framed it as potentially another in a long line of unproven psychiatric treatments.',
+        reason: 'Barry Blackwell and Michael Shepherd published \'Prophylactic lithium: another therapeutic myth?\' in The Lancet, arguing that the Baastrup--Schou evidence rested on uncontrolled, retrospective observation vulnerable to selection bias and regression to the mean, and demanding a randomized double-blind trial before the prophylaxis claim could be accepted. The critique placed the claim into active expert dispute and framed it as potentially another in a long line of unproven psychiatric treatments.',
         source: {
           externalId: 'src:blackwell-shepherd-lithium-myth-1968',
           name: 'Blackwell B, Shepherd M. Prophylactic lithium: another therapeutic myth? An examination of the evidence to date. Lancet. 1968;1(7549):968-71.',
@@ -21216,7 +21216,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1980-10-01',
         datePrecision: 'MONTH',
-        reason: 'The American Psychiatric Association\'s Task Force on Late Neurological Effects of Antipsychotic Drugs published its report in the American Journal of Psychiatry, concluding that tardive dyskinesia is a genuine drug-induced disorder occurring in at least 10–20% of patients on prolonged neuroleptics and higher among the elderly, and issuing prevention and monitoring guidance. The profession\'s premier body institutionally ratified the causal claim, settling tardive dyskinesia as an accepted hazard of antipsychotic treatment.',
+        reason: 'The American Psychiatric Association\'s Task Force on Late Neurological Effects of Antipsychotic Drugs published its report in the American Journal of Psychiatry, concluding that tardive dyskinesia is a genuine drug-induced disorder occurring in at least 10--20% of patients on prolonged neuroleptics and higher among the elderly, and issuing prevention and monitoring guidance. The profession\'s premier body institutionally ratified the causal claim, settling tardive dyskinesia as an accepted hazard of antipsychotic treatment.',
         source: {
           externalId: 'src:apa-task-force-tardive-dyskinesia-1980',
           name: 'Task Force on Late Neurological Effects of Antipsychotic Drugs. Tardive dyskinesia: summary of a Task Force Report of the American Psychiatric Association. Am J Psychiatry. 1980;137(10):1163-72.',
@@ -21231,7 +21231,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── MAOI tyramine cheese reaction — Blackwell 1963 → Blackwell et al. 1967 ──
   {
     externalId: 'trajectory:maoi-tyramine-cheese-reaction-1963',
-    text: 'Barry Blackwell reported in The Lancet on 26 October 1963 that monoamine-oxidase-inhibitor antidepressants cause dangerous hypertensive crises when patients eat tyramine-rich foods such as cheese — identifying the food–drug interaction (the \'cheese reaction\') that would constrain MAOI use thereafter.',
+    text: 'Barry Blackwell reported in The Lancet on 26 October 1963 that monoamine-oxidase-inhibitor antidepressants cause dangerous hypertensive crises when patients eat tyramine-rich foods such as cheese — identifying the food--drug interaction (the \'cheese reaction\') that would constrain MAOI use thereafter.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1963-10-26',
     claimEmergedPrecision: 'DAY',
@@ -21243,7 +21243,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1963-10-26',
         datePrecision: 'DAY',
-        reason: 'Blackwell, then a registrar at the Maudsley Hospital, published a Lancet letter linking severe throbbing-headache hypertensive attacks in patients on MAOIs (chiefly tranylcypromine/Parnate) to dietary cheese, against initial skepticism from his seniors. This recorded the first clinical claim that a specific food–drug interaction, not the drug alone, produced the crises — converting scattered anecdotal \'headache\' reports into a defined, mechanistic safety signal for an entire antidepressant class.',
+        reason: 'Blackwell, then a registrar at the Maudsley Hospital, published a Lancet letter linking severe throbbing-headache hypertensive attacks in patients on MAOIs (chiefly tranylcypromine/Parnate) to dietary cheese, against initial skepticism from his seniors. This recorded the first clinical claim that a specific food--drug interaction, not the drug alone, produced the crises — converting scattered anecdotal \'headache\' reports into a defined, mechanistic safety signal for an entire antidepressant class.',
         source: {
           externalId: 'src:blackwell-maoi-hypertensive-crisis-1963',
           name: 'Blackwell B. Hypertensive crisis due to monoamine-oxidase inhibitors. Lancet. 1963;2(7313):849-50.',
@@ -21288,7 +21288,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The DCCT, a randomized controlled trial in 1,441 type 1 diabetic patients followed for a mean 6.5 years, reported that intensive therapy reduced the risk of clinically meaningful retinopathy by roughly 76% in primary prevention and similarly cut nephropathy and neuropathy, at the cost of a roughly threefold increase in severe hypoglycemia. This recorded in the expert literature the long-debated \'glucose hypothesis\' — that tight glycemic control, not merely the presence of diabetes, drives microvascular complications.',
         source: {
           externalId: 'src:dcct-nejm-1993',
-          name: 'The Diabetes Control and Complications Trial Research Group. The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus. N Engl J Med. 1993;329(14):977–986.',
+          name: 'The Diabetes Control and Complications Trial Research Group. The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus. N Engl J Med. 1993;329(14):977--986.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/8366922/',
           publishedAt: '1993-09-30',
           methodologyType: 'primary',
@@ -21303,7 +21303,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The American Diabetes Association issued its position statement \'Implications of the Diabetes Control and Complications Trial\' (Diabetes Care, November 1993), recommending intensive therapy with the goal of near-normoglycemia for most patients with type 1 diabetes. The professional body that sets U.S. diabetes standards converted the trial result into formal standard of care, settling intensive glycemic control as the institutional treatment paradigm.',
         source: {
           externalId: 'src:ada-dcct-implications-1993',
-          name: 'American Diabetes Association. Implications of the Diabetes Control and Complications Trial. Diabetes Care. 1993;16(11):1517–1520.',
+          name: 'American Diabetes Association. Implications of the Diabetes Control and Complications Trial. Diabetes Care. 1993;16(11):1517--1520.',
           url: 'https://diabetesjournals.org/care/article/16/11/1517/17286/Implications-of-the-Diabetes-Control-and',
           publishedAt: '1993-11-01',
           methodologyType: 'derivative',
@@ -21342,10 +21342,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2007-05-21',
         datePrecision: 'DAY',
-        reason: 'Nissen and Wolski published a meta-analysis of 42 randomized trials in the NEJM finding that rosiglitazone was associated with a significant increase in myocardial infarction (odds ratio 1.43, 95% CI 1.03–1.98) and a borderline increase in cardiovascular death (OR 1.64). Drawing only on the manufacturer\'s own pooled trial data, the analysis directly challenged the cardiovascular safety of an approved blockbuster and triggered congressional hearings, an FDA boxed warning, and the eventual 2010 REMS prescribing restrictions — making the drug\'s safety institutionally contested.',
+        reason: 'Nissen and Wolski published a meta-analysis of 42 randomized trials in the NEJM finding that rosiglitazone was associated with a significant increase in myocardial infarction (odds ratio 1.43, 95% CI 1.03--1.98) and a borderline increase in cardiovascular death (OR 1.64). Drawing only on the manufacturer\'s own pooled trial data, the analysis directly challenged the cardiovascular safety of an approved blockbuster and triggered congressional hearings, an FDA boxed warning, and the eventual 2010 REMS prescribing restrictions — making the drug\'s safety institutionally contested.',
         source: {
           externalId: 'src:nissen-wolski-rosiglitazone-nejm-2007',
-          name: 'Nissen SE, Wolski K. Effect of rosiglitazone on the risk of myocardial infarction and death from cardiovascular causes. N Engl J Med. 2007;356(24):2457–2471.',
+          name: 'Nissen SE, Wolski K. Effect of rosiglitazone on the risk of myocardial infarction and death from cardiovascular causes. N Engl J Med. 2007;356(24):2457--2471.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/17517853/',
           publishedAt: '2007-05-21',
           methodologyType: 'primary',
@@ -21387,7 +21387,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Connolly and colleagues at the Mayo Clinic reported in the NEJM 24 women on fenfluramine-phentermine who developed unusual valvular morphology and regurgitation affecting both right- and left-sided heart valves, with histology resembling carcinoid or ergotamine-induced disease. The first case series linking these widely used diet drugs to a serious, previously unrecognized cardiac harm contested their safety in the expert literature.',
         source: {
           externalId: 'src:connolly-fenphen-valvulopathy-nejm-1997',
-          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997;337(9):581–588.',
+          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997;337(9):581--588.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
           publishedAt: '1997-08-28',
           methodologyType: 'primary',
@@ -21441,7 +21441,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2007-06-13',
         datePrecision: 'DAY',
-        reason: 'A U.S. FDA Endocrinologic and Metabolic Drugs Advisory Committee voted unanimously (14–0) against recommending approval of rimonabant, citing increased anxiety, depression, and suicidality signals; Sanofi-Aventis withdrew its U.S. application shortly after. The rejection by a major regulator\'s expert panel placed the drug\'s safety in active dispute even as it remained marketed in Europe.',
+        reason: 'A U.S. FDA Endocrinologic and Metabolic Drugs Advisory Committee voted unanimously (14--0) against recommending approval of rimonabant, citing increased anxiety, depression, and suicidality signals; Sanofi-Aventis withdrew its U.S. application shortly after. The rejection by a major regulator\'s expert panel placed the drug\'s safety in active dispute even as it remained marketed in Europe.',
         source: {
           externalId: 'src:ema-acomplia-suspension-pressrelease-2008',
           name: 'European Medicines Agency. The European Medicines Agency recommends suspension of the marketing authorisation of Acomplia (background on benefit-risk reassessment). 23 October 2008.',
@@ -21469,10 +21469,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS REGULATORY ERA (2013–2022)
+  // OPIOID CRISIS REGULATORY ERA (2013--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── FDA ER/LA opioid class labeling — indication narrowed 2013–2014 ──────────
+  // ── FDA ER/LA opioid class labeling — indication narrowed 2013--2014 ──────────
   {
     externalId: 'trajectory:fda-erla-opioid-class-labeling-narrowed-indication-2013',
     text: 'The FDA announced on September 10, 2013 class-wide safety labeling changes for all extended-release and long-acting (ER/LA) opioid analgesics, narrowing their approved indication from \'moderate to severe\' pain to pain \'severe enough to require daily, around-the-clock, long-term opioid treatment and for which alternative treatments are inadequate,\' adding a boxed warning on neonatal opioid withdrawal syndrome, and mandating new postmarketing studies of misuse, addiction, hyperalgesia, overdose, and death.',
@@ -21514,7 +21514,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── FDA opioid–benzodiazepine boxed warning — 2016 ──────────────────────────
+  // ── FDA opioid--benzodiazepine boxed warning — 2016 ──────────────────────────
   {
     externalId: 'trajectory:fda-opioid-benzodiazepine-boxed-warning-2016',
     text: 'The claim that concurrent use of opioids and benzodiazepines produces dangerous, potentially fatal respiratory depression was elevated from clinical-guidance caution to the FDA\'s strongest regulatory warning when the agency required class-wide boxed warnings and updated Medication Guides on nearly 400 opioid analgesic, prescription opioid cough, and benzodiazepine products on August 31, 2016.',
@@ -21544,7 +21544,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2016-08-31',
         datePrecision: 'DAY',
-        reason: 'The FDA announced on August 31, 2016 that it would require boxed warnings — its strongest warning — and new or revised Medication Guides on nearly 400 opioid analgesic, prescription opioid cough, and benzodiazepine products, citing evidence of serious sedation, respiratory depression, coma, and death from combined use. The boxed warning made the opioid–benzodiazepine interaction a settled, legally mandated element of the drug labels across both classes.',
+        reason: 'The FDA announced on August 31, 2016 that it would require boxed warnings — its strongest warning — and new or revised Medication Guides on nearly 400 opioid analgesic, prescription opioid cough, and benzodiazepine products, citing evidence of serious sedation, respiratory depression, coma, and death from combined use. The boxed warning made the opioid--benzodiazepine interaction a settled, legally mandated element of the drug labels across both classes.',
         source: {
           externalId: 'src:fda-opioid-benzodiazepine-boxed-warning-2016',
           name: 'U.S. FDA. New Safety Measures Announced for Opioid Analgesics, Prescription Opioid Cough Products, and Benzodiazepines. Drug class information, August 31, 2016.',
@@ -21578,7 +21578,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After Moir\'s 1932 observation that crude ergot extracts produced powerful uterine contractions not attributable to the known ergot alkaloids, Dudley and Moir isolated the responsible water-soluble alkaloid — a simpler structure than the previously known ergotoxine-group alkaloids — and named it ergometrine. This recorded the identification of a pure, quick-acting uterotonic, resolving a centuries-old puzzle about why ergot acted clinically and giving obstetrics its first standardized drug for postpartum hemorrhage.',
         source: {
           externalId: 'src:dudley-moir-ergometrine-bmj-1935',
-          name: 'Dudley HW, Moir C. The substance responsible for the traditional clinical effect of ergot. Br Med J. 1935;1(3871):520–523.',
+          name: 'Dudley HW, Moir C. The substance responsible for the traditional clinical effect of ergot. Br Med J. 1935;1(3871):520--523.',
           url: 'https://doi.org/10.1136/bmj.1.3871.520',
           publishedAt: '1935-03-09',
           methodologyType: 'primary',
@@ -21593,7 +21593,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Within two decades ergometrine (ergonovine) and its derivatives became established worldwide as standard uterotonic agents for the active management of the third stage of labour and the prevention and treatment of postpartum hemorrhage, as documented in Chassar Moir\'s 1955 review of the clinical use of ergot. Routine incorporation into obstetric practice and pharmacopoeias settled the drug\'s efficacy and role in reducing maternal hemorrhage death.',
         source: {
           externalId: 'src:moir-history-present-day-use-ergot-cmaj-1955',
-          name: 'Moir JC. The history and present-day use of ergot. Can Med Assoc J. 1955;72(10):727–734.',
+          name: 'Moir JC. The history and present-day use of ergot. Can Med Assoc J. 1955;72(10):727--734.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1825855/',
           publishedAt: '1955-05-15',
           methodologyType: 'derivative',
@@ -21605,7 +21605,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Rh factor / hemolytic disease of the newborn — Levine & Stetson 1939 ───
   {
     externalId: 'trajectory:rh-factor-hemolytic-disease-newborn-1939',
-    text: 'Philip Levine and Rufus E. Stetson reported in JAMA on 8 July 1939 that a woman who delivered a stillborn infant suffered a severe reaction to a transfusion of her ABO-compatible husband\'s blood, caused by a previously unrecognized maternal antibody — the observation that, after Karl Landsteiner and Alexander Wiener identified the rhesus (Rh) factor in 1940, established maternal–fetal Rh incompatibility as the cause of erythroblastosis fetalis (hemolytic disease of the newborn).',
+    text: 'Philip Levine and Rufus E. Stetson reported in JAMA on 8 July 1939 that a woman who delivered a stillborn infant suffered a severe reaction to a transfusion of her ABO-compatible husband\'s blood, caused by a previously unrecognized maternal antibody — the observation that, after Karl Landsteiner and Alexander Wiener identified the rhesus (Rh) factor in 1940, established maternal--fetal Rh incompatibility as the cause of erythroblastosis fetalis (hemolytic disease of the newborn).',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1939-07-08',
     claimEmergedPrecision: 'DAY',
@@ -21620,7 +21620,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Levine and Stetson described a woman who, after delivering a macerated stillborn fetus, developed a hemolytic transfusion reaction to her husband\'s ABO-matched blood, implicating an atypical antibody she had formed against an antigen inherited by the fetus from the father. This recorded in the expert literature the first evidence that maternal sensitization to a paternally derived red-cell antigen could occur, the seed observation behind the entire concept of Rh disease.',
         source: {
           externalId: 'src:levine-stetson-intragroup-agglutination-jama-1939',
-          name: 'Levine P, Stetson RE. An unusual case of intra-group agglutination. JAMA. 1939;113(2):126–127. (Landmark Article reprint.)',
+          name: 'Levine P, Stetson RE. An unusual case of intra-group agglutination. JAMA. 1939;113(2):126--127. (Landmark Article reprint.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6366259/',
           publishedAt: '1939-07-08',
           methodologyType: 'primary',
@@ -21635,7 +21635,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Landsteiner and Wiener showed that immune sera raised against rhesus-monkey red cells agglutinated about 85% of human bloods, defining the rhesus (Rh) factor; combined with Levine\'s contemporaneous work linking maternal anti-Rh antibodies to fetal red-cell destruction, this identified Rh incompatibility as the mechanism of erythroblastosis fetalis. The convergence settled in the expert community the etiology of hemolytic disease of the newborn, opening the path to antenatal screening and, decades later, anti-D immunoprophylaxis.',
         source: {
           externalId: 'src:landsteiner-wiener-rhesus-factor-1940',
-          name: 'Landsteiner K, Wiener AS. An agglutinable factor in human blood recognized by immune sera for rhesus blood. Proc Soc Exp Biol Med. 1940;43(1):223–224.',
+          name: 'Landsteiner K, Wiener AS. An agglutinable factor in human blood recognized by immune sera for rhesus blood. Proc Soc Exp Biol Med. 1940;43(1):223--224.',
           url: 'https://journals.sagepub.com/doi/abs/10.3181/00379727-43-11151',
           publishedAt: '1940-01-01',
           methodologyType: 'primary',
@@ -21687,13 +21687,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CLINICAL TRIALS ERA (1968–1997) — PEDIATRICS, IMMUNOLOGY & VACCINES
+  // CLINICAL TRIALS ERA (1968--1997) — PEDIATRICS, IMMUNOLOGY & VACCINES
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Nalin/Cash ORT — Lancet 1968 ────────────────────────────────────────────
   {
     externalId: 'trajectory:nalin-cash-oral-rehydration-therapy-1968',
-    text: 'Nalin, Cash, and colleagues reported in The Lancet on 17 August 1968 that an oral glucose–electrolyte solution, exploiting glucose-coupled sodium absorption in the intact gut, maintained hydration in cholera patients and cut intravenous fluid requirements by about 80%, establishing oral rehydration therapy.',
+    text: 'Nalin, Cash, and colleagues reported in The Lancet on 17 August 1968 that an oral glucose--electrolyte solution, exploiting glucose-coupled sodium absorption in the intact gut, maintained hydration in cholera patients and cut intravenous fluid requirements by about 80%, establishing oral rehydration therapy.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1968-08-17',
     claimEmergedPrecision: 'DAY',
@@ -21705,7 +21705,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1968-08-17',
         datePrecision: 'DAY',
-        reason: 'Nalin, Cash, Islam, Molla, and Phillips published a controlled study in Dhaka showing that an oral glucose–salt solution sustained cholera patients and reduced intravenous fluid needs by ~80% versus IV-only controls. The result demonstrated that glucose-driven sodium co-transport remains intact during secretory diarrhea, providing the physiological basis for treating dehydration by mouth.',
+        reason: 'Nalin, Cash, Islam, Molla, and Phillips published a controlled study in Dhaka showing that an oral glucose--salt solution sustained cholera patients and reduced intravenous fluid needs by ~80% versus IV-only controls. The result demonstrated that glucose-driven sodium co-transport remains intact during secretory diarrhea, providing the physiological basis for treating dehydration by mouth.',
         source: {
           externalId: 'src:nalin-cash-oral-maintenance-cholera-lancet-1968',
           name: 'Nalin DR, Cash RA, Islam R, Molla M, Phillips RA. Oral maintenance therapy for cholera in adults. Lancet. 1968 Aug 17;2(7564):370-373.',
@@ -21804,7 +21804,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1994-03-02',
         datePrecision: 'DAY',
-        reason: 'After two decades of slow uptake, the NIH Consensus Development Conference (28 February–2 March 1994) reviewed the accumulated trial evidence and recommended antenatal corticosteroids for all pregnant women at 24–34 weeks at risk of preterm delivery. The consensus statement converted a long-underused finding into a binding standard of perinatal care.',
+        reason: 'After two decades of slow uptake, the NIH Consensus Development Conference (28 February--2 March 1994) reviewed the accumulated trial evidence and recommended antenatal corticosteroids for all pregnant women at 24--34 weeks at risk of preterm delivery. The consensus statement converted a long-underused finding into a binding standard of perinatal care.',
         source: {
           externalId: 'src:nih-consensus-antenatal-corticosteroids-1994',
           name: 'NIH Consensus Development Panel. Effect of corticosteroids for fetal maturation on perinatal outcomes. NIH Consens Statement. 1994 Feb 28-Mar 2;12(2):1-24.',
@@ -21888,7 +21888,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1997-01-01',
         datePrecision: 'YEAR',
-        reason: 'After large efficacy trials in the 1990s confirmed acellular vaccines protect against pertussis with fewer reactions, US ACIP and the FDA adopted DTaP for the full infant series (1996–1997), and Japan\'s 23-year national-program experience confirmed sustained safety and efficacy. Acellular pertussis became the settled standard for childhood immunization schedules across high-income countries.',
+        reason: 'After large efficacy trials in the 1990s confirmed acellular vaccines protect against pertussis with fewer reactions, US ACIP and the FDA adopted DTaP for the full infant series (1996--1997), and Japan\'s 23-year national-program experience confirmed sustained safety and efficacy. Acellular pertussis became the settled standard for childhood immunization schedules across high-income countries.',
         source: {
           externalId: 'src:kuno-sakai-acellular-pertussis-23-years-japan-2004',
           name: 'Kuno-Sakai H, Kimura M. Safety and efficacy of acellular pertussis vaccine in Japan, evaluated by 23 years of its use for routine immunization. Pediatr Int. 2004 Dec;46(6):650-655.',
@@ -21901,7 +21901,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ORPHAN DRUG & ENZYME REPLACEMENT THERAPY ERA (1994–2010)
+  // ORPHAN DRUG & ENZYME REPLACEMENT THERAPY ERA (1994--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Imiglucerase (Cerezyme) — first recombinant ERT for Gaucher disease 1994 ─
@@ -22115,7 +22115,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOLOGY / LIPID HYPOTHESIS (1958–1990)
+  // CARDIOLOGY / LIPID HYPOTHESIS (1958--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Helsinki Heart Study — gemfibrozil primary prevention 1987 ──────────────
@@ -22286,7 +22286,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Nipah virus — novel paramyxovirus identification 1999 ───────────────────
   {
     externalId: 'trajectory:nipah-virus-novel-paramyxovirus-identification-1999',
-    text: 'In March 1999 Malaysian virologists isolated a previously unknown paramyxovirus — named Nipah virus after the village Kampung Sungai Nipah — as the cause of a fatal encephalitis outbreak among pig farmers in Malaysia and Singapore (265 cases, 105 deaths in 1998–1999), identifying an entirely new emerging zoonotic pathogen.',
+    text: 'In March 1999 Malaysian virologists isolated a previously unknown paramyxovirus — named Nipah virus after the village Kampung Sungai Nipah — as the cause of a fatal encephalitis outbreak among pig farmers in Malaysia and Singapore (265 cases, 105 deaths in 1998--1999), identifying an entirely new emerging zoonotic pathogen.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1999-03',
     claimEmergedPrecision: 'MONTH',
@@ -22533,7 +22533,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY / METABOLIC DISEASE ERA (1891–1950)
+  // ENDOCRINOLOGY / METABOLIC DISEASE ERA (1891--1950)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Kendall isolates thyroxine — 1915 ───────────────────────────────────────
@@ -22554,7 +22554,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Kendall published \'The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity\' in JAMA, reporting a pure crystalline substance (~60% iodine) extracted from thousands of pounds of hog thyroid that reproduced thyroid physiologic activity. This recorded in the expert literature the claim that the thyroid\'s active principle was a single isolable iodinated compound rather than a diffuse \'colloid\' property.',
         source: {
           externalId: 'src:kendall-thyroxine-isolation-jama-1915',
-          name: 'Kendall EC. The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity. JAMA. 1915;64(25):2042–2043.',
+          name: 'Kendall EC. The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity. JAMA. 1915;64(25):2042--2043.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6352971/',
           publishedAt: '1915-06-19',
           methodologyType: 'primary',
@@ -22569,7 +22569,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Charles Harington and George Barger determined the correct structure of thyroxine and achieved its total chemical synthesis, published in the Biochemical Journal in 1927 (correcting Kendall\'s originally proposed formula). Synthesis of an identical, fully active molecule settled the identity and constitution of the thyroid hormone, converting Kendall\'s isolation claim into established chemistry and the basis of synthetic levothyroxine.',
         source: {
           externalId: 'src:harington-barger-thyroxine-synthesis-biochemj-1927',
-          name: 'Harington CR, Barger G. Chemistry of thyroxine. III. Constitution and synthesis of thyroxine. Biochem J. 1927;21(1):169–183.',
+          name: 'Harington CR, Barger G. Chemistry of thyroxine. III. Constitution and synthesis of thyroxine. Biochem J. 1927;21(1):169--183.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1251886/',
           publishedAt: '1927-01-01',
           methodologyType: 'primary',
@@ -22596,7 +22596,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Hagedorn, Jensen, Krarup, and Wodstrup published \'Protamine insulinate\' in JAMA, showing that combining insulin with protamine (from fish milt) at neutral pH slowed its absorption and extended its duration of action. This recorded in the expert literature the claim that insulin\'s pharmacokinetics could be deliberately engineered, freeing diabetics from multiple daily soluble-insulin injections.',
         source: {
           externalId: 'src:hagedorn-protamine-insulinate-jama-1936',
-          name: 'Hagedorn HC, Jensen BN, Krarup NB, Wodstrup I. Protamine insulinate. JAMA. 1936 Jan 18;106(3):177–180. (Landmark reprint PMID 6361301.)',
+          name: 'Hagedorn HC, Jensen BN, Krarup NB, Wodstrup I. Protamine insulinate. JAMA. 1936 Jan 18;106(3):177--180. (Landmark reprint PMID 6361301.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6361301/',
           publishedAt: '1936-01-18',
           methodologyType: 'primary',
@@ -22611,7 +22611,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Protamine-based protracted insulins were rapidly adopted and refined into protamine zinc insulin and then the stable, crystalline Neutral Protamine Hagedorn (NPH) insulin developed at Nordisk (introduced around 1950), which became one of the most widely used intermediate-acting insulins worldwide for the rest of the century. The protraction principle Hagedorn established became settled, foundational diabetes pharmacology.',
         source: {
           externalId: 'src:owens-protracted-insulin-history-2011',
-          name: 'Owens DR. Insulin preparations with prolonged effect. Diabetes Technol Ther. 2011;13(Suppl 1):S5–S14.',
+          name: 'Owens DR. Insulin preparations with prolonged effect. Diabetes Technol Ther. 2011;13(Suppl 1):S5--S14.',
           url: 'https://doi.org/10.1089/dia.2011.0068',
           publishedAt: '2011-06-01',
           methodologyType: 'derivative',
@@ -22621,10 +22621,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // HORMONE THERAPY & CARDIOVASCULAR ERA (1990–2010)
+  // HORMONE THERAPY & CARDIOVASCULAR ERA (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── HERS — HRT secondary prevention CHD reversed 1998–2002 ──────────────────
+  // ── HERS — HRT secondary prevention CHD reversed 1998--2002 ──────────────────
   {
     externalId: 'trajectory:hers-hrt-secondary-prevention-chd-1998',
     text: 'Hulley and the Heart and Estrogen/progestin Replacement Study (HERS) Research Group reported in JAMA on 19 August 1998 that estrogen plus progestin did not reduce the rate of coronary heart disease events in postmenopausal women with established coronary disease, contradicting the prevailing observational belief that hormone therapy was cardioprotective.',
@@ -22639,7 +22639,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1991-09-12',
         datePrecision: 'DAY',
-        reason: 'Stampfer, Colditz, Willett and colleagues reported the ten-year follow-up of the Nurses\' Health Study in the New England Journal of Medicine, finding that current postmenopausal estrogen users had a relative risk of major coronary disease of 0.56 (95% CI 0.40–0.80) — roughly a 44% reduction. This large prospective cohort consolidated the observational consensus that postmenopausal hormone therapy protects the heart, the belief on which secondary-prevention prescribing in women with established coronary disease rested.',
+        reason: 'Stampfer, Colditz, Willett and colleagues reported the ten-year follow-up of the Nurses\' Health Study in the New England Journal of Medicine, finding that current postmenopausal estrogen users had a relative risk of major coronary disease of 0.56 (95% CI 0.40--0.80) — roughly a 44% reduction. This large prospective cohort consolidated the observational consensus that postmenopausal hormone therapy protects the heart, the belief on which secondary-prevention prescribing in women with established coronary disease rested.',
         source: {
           externalId: 'src:stampfer-nurses-health-estrogen-chd-nejm-1991',
           name: 'Stampfer MJ, Colditz GA, Willett WC, et al. Postmenopausal estrogen therapy and cardiovascular disease. Ten-year follow-up from the nurses\' health study. N Engl J Med. 1991;325(11):756-762.',
@@ -22726,7 +22726,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2004-04-14',
         datePrecision: 'DAY',
-        reason: 'Anderson and the WHI Steering Committee published the principal results of the conjugated-equine-estrogen trial in 10,739 hysterectomized women: estrogen alone significantly increased stroke (hazard ratio 1.39, 95% CI 1.10–1.77; an excess of 12 strokes per 10,000 person-years) and did not affect CHD incidence (HR 0.91, 95% CI 0.75–1.12). The investigators concluded that CEE should not be recommended for chronic disease prevention, completing the reversal in the expert literature for the estrogen-only regimen — distinct from the 2002 estrogen-plus-progestin reversal.',
+        reason: 'Anderson and the WHI Steering Committee published the principal results of the conjugated-equine-estrogen trial in 10,739 hysterectomized women: estrogen alone significantly increased stroke (hazard ratio 1.39, 95% CI 1.10--1.77; an excess of 12 strokes per 10,000 person-years) and did not affect CHD incidence (HR 0.91, 95% CI 0.75--1.12). The investigators concluded that CEE should not be recommended for chronic disease prevention, completing the reversal in the expert literature for the estrogen-only regimen — distinct from the 2002 estrogen-plus-progestin reversal.',
         source: {
           externalId: 'src:whi-estrogen-alone-anderson-jama-2004',
           name: 'Anderson GL, Limacher M, Assaf AR, et al. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701-1712.',
@@ -22738,7 +22738,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Third-generation oral contraceptives VTE risk settled 1995–2009 ─────────
+  // ── Third-generation oral contraceptives VTE risk settled 1995--2009 ─────────
   {
     externalId: 'trajectory:third-generation-oral-contraceptives-vte-1995',
     text: 'In October 1995 the UK Committee on Safety of Medicines warned that combined oral contraceptives containing the third-generation progestogens desogestrel or gestodene carried about twice the risk of venous thromboembolism of older levonorgestrel-containing pills, a finding documented by the WHO Collaborative Study published in The Lancet on 16 December 1995.',
@@ -22796,7 +22796,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // GENE THERAPY & PEDIATRIC SAFETY ERA (2018–PRESENT)
+  // GENE THERAPY & PEDIATRIC SAFETY ERA (2018--PRESENT)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── SMA newborn screening RUSP addition — 2018 ──────────────────────────────
@@ -22844,7 +22844,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Skysona/elivaldogene CALD gene therapy — 2022 ──────────────────────────
   {
     externalId: 'trajectory:skysona-elivaldogene-cald-gene-therapy-2022',
-    text: 'On 16 September 2022 the U.S. FDA granted accelerated approval to elivaldogene autotemcel (Skysona), an ex vivo lentiviral gene therapy, to slow neurologic progression in boys aged 4–17 with early active cerebral adrenoleukodystrophy (CALD), based on 24-month major-functional-disability-free survival.',
+    text: 'On 16 September 2022 the U.S. FDA granted accelerated approval to elivaldogene autotemcel (Skysona), an ex vivo lentiviral gene therapy, to slow neurologic progression in boys aged 4--17 with early active cerebral adrenoleukodystrophy (CALD), based on 24-month major-functional-disability-free survival.',
     claimType: 'HYBRID',
     claimEmergedAt: '2022-09-16',
     claimEmergedPrecision: 'DAY',
@@ -22928,7 +22928,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Elevidys/delandistrogene DMD gene therapy — 2023 ────────────────────────
   {
     externalId: 'trajectory:elevidys-delandistrogene-dmd-gene-therapy-2023',
-    text: 'On 22 June 2023 the U.S. FDA granted accelerated approval to delandistrogene moxeparvovec-rokl (Elevidys), an AAV micro-dystrophin gene therapy, for ambulatory boys aged 4–5 years with Duchenne muscular dystrophy, on the surrogate basis of micro-dystrophin expression and over the reservations of the agency\'s own review staff.',
+    text: 'On 22 June 2023 the U.S. FDA granted accelerated approval to delandistrogene moxeparvovec-rokl (Elevidys), an AAV micro-dystrophin gene therapy, for ambulatory boys aged 4--5 years with Duchenne muscular dystrophy, on the surrogate basis of micro-dystrophin expression and over the reservations of the agency\'s own review staff.',
     claimType: 'HYBRID',
     claimEmergedAt: '2023-06-22',
     claimEmergedPrecision: 'DAY',
@@ -22968,7 +22968,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SICKLE CELL & ALS DISEASE-MODIFYING THERAPY ERA (1994–2024)
+  // SICKLE CELL & ALS DISEASE-MODIFYING THERAPY ERA (1994--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Voxelotor/Oxbryta — accelerated approval 2019 → withdrawal 2024 ─────────
@@ -23140,7 +23140,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIAC RESUSCITATION & SURGICAL ERA (1956–1990)
+  // CARDIAC RESUSCITATION & SURGICAL ERA (1956--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Zoll external defibrillation — 1956 ────────────────────────────────────
@@ -23228,7 +23228,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPHTHALMIC SURGERY ERA (1967–1996)
+  // OPHTHALMIC SURGERY ERA (1967--1996)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Kelman phacoemulsification cataract surgery — 1967 ─────────────────────
@@ -23316,7 +23316,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ══════════════════════════════════════════════════════════════════════════════
-  // ONCOLOGY ERA (2000–2006)
+  // ONCOLOGY ERA (2000--2006)
   // ══════════════════════════════════════════════════════════════════════════════
 
   // ── Temozolomide + radiotherapy for glioblastoma — Stupp 2005 ───────────────
@@ -23334,7 +23334,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2005-03-10',
         datePrecision: 'DAY',
-        reason: 'The EORTC 26981/22981–NCIC CE.3 randomized phase III trial (573 patients) reported in NEJM that concomitant and adjuvant temozolomide added to radiotherapy produced a statistically significant survival benefit (hazard ratio for death 0.63) with minimal added toxicity. This was the first treatment in decades to improve survival in newly diagnosed glioblastoma, a uniformly fatal disease.',
+        reason: 'The EORTC 26981/22981--NCIC CE.3 randomized phase III trial (573 patients) reported in NEJM that concomitant and adjuvant temozolomide added to radiotherapy produced a statistically significant survival benefit (hazard ratio for death 0.63) with minimal added toxicity. This was the first treatment in decades to improve survival in newly diagnosed glioblastoma, a uniformly fatal disease.',
         source: {
           externalId: 'src:stupp-temozolomide-glioblastoma-nejm-2005',
           name: 'Stupp R, Mason WP, van den Bent MJ, et al. Radiotherapy plus concomitant and adjuvant temozolomide for glioblastoma. N Engl J Med. 2005;352(10):987-996.',
@@ -23532,7 +23532,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2006-03-01',
         datePrecision: 'DAY',
-        reason: 'Three weeks after the trial publication, the FDA approved cetuximab (Erbitux, BLA 125084 supplement, priority review with orphan designation) in combination with radiation therapy for locally or regionally advanced head and neck cancer. The cetuximab–radiotherapy regimen entered NCCN guidelines as a standard option, particularly for cisplatin-ineligible patients.',
+        reason: 'Three weeks after the trial publication, the FDA approved cetuximab (Erbitux, BLA 125084 supplement, priority review with orphan designation) in combination with radiation therapy for locally or regionally advanced head and neck cancer. The cetuximab--radiotherapy regimen entered NCCN guidelines as a standard option, particularly for cisplatin-ineligible patients.',
         source: {
           externalId: 'src:fda-erbitux-head-neck-approval-2006',
           name: 'U.S. FDA. Drugs@FDA, Erbitux (cetuximab), BLA 125084, supplemental efficacy approval (head and neck cancer with radiotherapy). 1 Mar 2006.',
@@ -23545,7 +23545,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ══════════════════════════════════════════════════════════════════════════════
-  // CARDIOLOGY — HYPOTHESIS REVERSALS & FIRST-IN-CLASS DRUGS (2007–2022)
+  // CARDIOLOGY — HYPOTHESIS REVERSALS & FIRST-IN-CLASS DRUGS (2007--2022)
   // ══════════════════════════════════════════════════════════════════════════════
 
   // ── CETP inhibition / HDL-raising hypothesis reversed — dal-OUTCOMES 2012 ───
@@ -23596,7 +23596,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The REVEAL trial of anacetrapib (Bowman et al., NEJM) showed only a modest reduction in coronary events, which investigators attributed to the drug\'s LDL/non-HDL lowering rather than to its large HDL increase; Merck announced it would not seek regulatory approval. Combined with the earlier futility termination of evacetrapib (ACCELERATE), this ended commercial development of the class and confirmed abandonment of the HDL-raising-via-CETP cardioprotection rationale.',
         source: {
           externalId: 'src:reveal-anacetrapib-nejm-2017',
-          name: 'HPS3/TIMI55–REVEAL Collaborative Group; Bowman L, Hopewell JC, Chen F, et al. Effects of anacetrapib in patients with atherosclerotic vascular disease. N Engl J Med. 2017;377(13):1217-1227.',
+          name: 'HPS3/TIMI55--REVEAL Collaborative Group; Bowman L, Hopewell JC, Chen F, et al. Effects of anacetrapib in patients with atherosclerotic vascular disease. N Engl J Med. 2017;377(13):1217-1227.',
           url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1706444',
           publishedAt: '2017-08-28',
           methodologyType: 'primary',
@@ -23608,7 +23608,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Andexanet alfa (Andexxa) factor Xa reversal — approved 2018, withdrawn 2025 ─
   {
     externalId: 'trajectory:andexanet-alfa-andexxa-factor-xa-reversal-agent-reversed-2025',
-    text: 'Andexanet alfa (Andexxa), the first specific reversal agent for factor Xa–inhibitor anticoagulants such as apixaban and rivaroxaban, restores hemostasis in life-threatening bleeding — a claim the U.S. FDA accepted under accelerated approval on 3 May 2018, contested by the ANNEXA-I trial in May 2024, and effectively reversed when AstraZeneca withdrew the product from the U.S. market on 22 December 2025.',
+    text: 'Andexanet alfa (Andexxa), the first specific reversal agent for factor Xa--inhibitor anticoagulants such as apixaban and rivaroxaban, restores hemostasis in life-threatening bleeding — a claim the U.S. FDA accepted under accelerated approval on 3 May 2018, contested by the ANNEXA-I trial in May 2024, and effectively reversed when AstraZeneca withdrew the product from the U.S. market on 22 December 2025.',
     claimType: 'HYBRID',
     claimEmergedAt: '2018-05-03',
     claimEmergedPrecision: 'DAY',
@@ -23620,7 +23620,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2018-05-03',
         datePrecision: 'DAY',
-        reason: 'The FDA granted Portola Pharmaceuticals accelerated approval (STN BL 125586) for Andexxa, the first and only antidote for factor Xa–inhibitor anticoagulation in patients with life-threatening or uncontrolled bleeding. The approval, based on reversal of anti-factor Xa activity in healthy volunteers, institutionally established a specific reversal strategy for the DOAC class, paralleling idarucizumab for dabigatran.',
+        reason: 'The FDA granted Portola Pharmaceuticals accelerated approval (STN BL 125586) for Andexxa, the first and only antidote for factor Xa--inhibitor anticoagulation in patients with life-threatening or uncontrolled bleeding. The approval, based on reversal of anti-factor Xa activity in healthy volunteers, institutionally established a specific reversal strategy for the DOAC class, paralleling idarucizumab for dabigatran.',
         source: {
           externalId: 'src:fda-andexxa-accelerated-approval-2018',
           name: 'U.S. Food and Drug Administration. ANDEXXA (coagulation factor Xa (recombinant), inactivated-zhzo) — Accelerated Approval (STN BL 125586). 3 May 2018.',
@@ -23635,10 +23635,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2024-05-16',
         datePrecision: 'MONTH',
-        reason: 'The randomized ANNEXA-I trial (Connolly et al., NEJM) in factor Xa inhibitor–associated intracerebral hemorrhage found andexanet improved hemostatic efficacy (67.0% vs 53.1%) but nearly doubled 30-day thrombotic events (10.3% vs 5.6%) and sharply increased ischemic stroke (6.5% vs 1.5%) versus usual care. The first randomized clinical-outcome evidence undercut the assumption that improved hemostasis translated into net patient benefit, putting the drug\'s value in genuine dispute.',
+        reason: 'The randomized ANNEXA-I trial (Connolly et al., NEJM) in factor Xa inhibitor--associated intracerebral hemorrhage found andexanet improved hemostatic efficacy (67.0% vs 53.1%) but nearly doubled 30-day thrombotic events (10.3% vs 5.6%) and sharply increased ischemic stroke (6.5% vs 1.5%) versus usual care. The first randomized clinical-outcome evidence undercut the assumption that improved hemostasis translated into net patient benefit, putting the drug\'s value in genuine dispute.',
         source: {
           externalId: 'src:connolly-annexa-i-andexanet-ich-nejm-2024',
-          name: 'Connolly SJ, Sharma M, Cohen AT, et al. Andexanet for factor Xa inhibitor–associated acute intracerebral hemorrhage (ANNEXA-I). N Engl J Med. 2024;390(19):1745-1755.',
+          name: 'Connolly SJ, Sharma M, Cohen AT, et al. Andexanet for factor Xa inhibitor--associated acute intracerebral hemorrhage (ANNEXA-I). N Engl J Med. 2024;390(19):1745-1755.',
           url: 'https://www.nejm.org/doi/abs/10.1056/NEJMoa2313040',
           publishedAt: '2024-05-16',
           methodologyType: 'primary',
@@ -23734,7 +23734,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2022-04-28',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Camzyos (mavacamten) for adults with symptomatic NYHA class II–III obstructive hypertrophic cardiomyopathy to improve functional capacity and symptoms, the first-in-class cardiac myosin inhibitor, on the basis of EXPLORER-HCM. The approval (with a REMS for the risk of heart failure) institutionally settled targeted reduction of cardiac contractility as an approved therapeutic strategy for obstructive HCM.',
+        reason: 'The FDA approved Camzyos (mavacamten) for adults with symptomatic NYHA class II--III obstructive hypertrophic cardiomyopathy to improve functional capacity and symptoms, the first-in-class cardiac myosin inhibitor, on the basis of EXPLORER-HCM. The approval (with a REMS for the risk of heart failure) institutionally settled targeted reduction of cardiac contractility as an approved therapeutic strategy for obstructive HCM.',
         source: {
           externalId: 'src:bms-fda-camzyos-mavacamten-approval-2022',
           name: 'Bristol Myers Squibb. U.S. FDA Approves Camzyos (mavacamten) for the Treatment of Adults With Symptomatic NYHA Class II-III Obstructive Hypertrophic Cardiomyopathy. Press release, 28 April 2022.',
@@ -23789,7 +23789,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // EARLY DIAGNOSTICS & PRE-ANTIBIOTIC CHEMOTHERAPY ERA (1913–1938)
+  // EARLY DIAGNOSTICS & PRE-ANTIBIOTIC CHEMOTHERAPY ERA (1913--1938)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Schick test — diphtheria susceptibility 1913 ────────────────────────────
@@ -23810,7 +23810,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Schick published his description of the intracutaneous diphtheria-toxin reaction in the Münchener Medizinische Wochenschrift, showing that a localized erythematous skin response to a minute injected dose of toxin marks the absence of circulating antitoxin and hence susceptibility to diphtheria. This recorded the first practical method to distinguish immune from non-immune individuals and to identify who needed prophylaxis.',
         source: {
           externalId: 'src:schick-diphtherietoxin-hautreaktion-mmw-1913',
-          name: 'Schick B. Die Diphtherietoxin-Hautreaktion des Menschen als Vorprobe der prophylaktischen Diphtherieheilseruminjektion. Münchener Medizinische Wochenschrift. 1913;60:2608–2610.',
+          name: 'Schick B. Die Diphtherietoxin-Hautreaktion des Menschen als Vorprobe der prophylaktischen Diphtherieheilseruminjektion. Münchener Medizinische Wochenschrift. 1913;60:2608--2610.',
           url: 'https://en.wikipedia.org/wiki/Schick_test',
           publishedAt: '1913-12-01',
           methodologyType: 'derivative',
@@ -23822,7 +23822,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1924-01-01',
         datePrecision: 'YEAR',
-        reason: 'Public-health authorities adopted the Schick test as the screening backbone of mass diphtheria-immunization programs in the 1920s, most prominently the New York City campaigns associated with William H. Park, which Schick-tested and then immunized hundreds of thousands of schoolchildren with toxin–antitoxin. Institutional uptake settled the test\'s validity as a routine diagnostic and made population-scale diphtheria control feasible.',
+        reason: 'Public-health authorities adopted the Schick test as the screening backbone of mass diphtheria-immunization programs in the 1920s, most prominently the New York City campaigns associated with William H. Park, which Schick-tested and then immunized hundreds of thousands of schoolchildren with toxin--antitoxin. Institutional uptake settled the test\'s validity as a routine diagnostic and made population-scale diphtheria control feasible.',
         source: {
           externalId: 'src:schick-introduces-test-diphtheria-ebsco',
           name: 'Schick Introduces a Test for Diphtheria. EBSCO Research Starters: History.',
@@ -23852,7 +23852,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In the 26 January 1924 issue of JAMA the Dicks published companion papers — \'The etiology of scarlet fever\' and \'A skin test for susceptibility to scarlet fever\' — establishing that a hemolytic streptococcus elaborating a soluble erythrogenic toxin causes scarlet fever (satisfying Koch\'s postulates via volunteer inoculation) and that an intradermal injection of the toxin reveals who lacks immunity. This recorded both the bacterial etiology and a practical susceptibility test.',
         source: {
           externalId: 'src:dick-skin-test-etiology-jama-1924',
-          name: 'Dick GF, Dick GH. A skin test for susceptibility to scarlet fever; The etiology of scarlet fever. JAMA. 1924;82(4):265–266, 301–302.',
+          name: 'Dick GF, Dick GH. A skin test for susceptibility to scarlet fever; The etiology of scarlet fever. JAMA. 1924;82(4):265--266, 301--302.',
           url: 'https://www.britannica.com/science/Dick-test',
           publishedAt: '1924-01-26',
           methodologyType: 'derivative',
@@ -23867,7 +23867,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Through the later 1920s the streptococcal etiology was confirmed by independent workers and underpinned the production of scarlet-fever antitoxin and toxin immunization, settling within the medical community the claim that a toxigenic hemolytic streptococcus causes scarlet fever. The Dick skin test itself later fell out of use as antibiotics made susceptibility screening unnecessary, but the streptococcal cause it established remained correct.',
         source: {
           externalId: 'src:gladys-dick-eponym-litfl',
-          name: 'Gladys Dick (1881–1963). LITFL Medical Eponym Library.',
+          name: 'Gladys Dick (1881--1963). LITFL Medical Eponym Library.',
           url: 'https://litfl.com/gladys-dick/',
           publishedAt: '2021-01-01',
           methodologyType: 'derivative',
@@ -23879,7 +23879,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── BCG — first human tuberculosis vaccination 1921 ─────────────────────────
   {
     externalId: 'trajectory:bcg-first-human-tuberculosis-vaccination-1921',
-    text: 'The first human administration of Bacille Calmette–Guérin (BCG), Calmette and Guérin\'s attenuated Mycobacterium bovis strain, was given orally to a newborn at high risk of tuberculosis at the Charité in Paris in July 1921, inaugurating human tuberculosis vaccination.',
+    text: 'The first human administration of Bacille Calmette--Guérin (BCG), Calmette and Guérin\'s attenuated Mycobacterium bovis strain, was given orally to a newborn at high risk of tuberculosis at the Charité in Paris in July 1921, inaugurating human tuberculosis vaccination.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1921-07-18',
     claimEmergedPrecision: 'DAY',
@@ -23891,7 +23891,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1921-07-18',
         datePrecision: 'DAY',
-        reason: 'After Calmette and Guérin had attenuated a bovine tubercle bacillus through some 230 serial passages over 1908–1920, the physician Benjamin Weill-Hallé administered the BCG strain by mouth to a newborn whose mother had died of tuberculosis; the infant remained well. This recorded the first use of a live attenuated vaccine against human tuberculosis.',
+        reason: 'After Calmette and Guérin had attenuated a bovine tubercle bacillus through some 230 serial passages over 1908--1920, the physician Benjamin Weill-Hallé administered the BCG strain by mouth to a newborn whose mother had died of tuberculosis; the infant remained well. This recorded the first use of a live attenuated vaccine against human tuberculosis.',
         source: {
           externalId: 'src:pasteur-bcg-first-vaccination-centenary',
           name: 'Institut Pasteur. BCG vaccine: the first tuberculosis vaccination took place a century ago.',
@@ -23933,10 +23933,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1935-02-15',
         datePrecision: 'MONTH',
-        reason: 'Domagk published \'Ein Beitrag zur Chemotherapie der bakteriellen Infektionen\' in the Deutsche Medizinische Wochenschrift (vol. 61, pp. 250–253), disclosing experiments — begun in 1932 at Bayer but withheld for years — in which Prontosil rescued mice from otherwise fatal streptococcal sepsis. This recorded the first demonstration that a synthetic compound could cure an established systemic bacterial infection in vivo.',
+        reason: 'Domagk published \'Ein Beitrag zur Chemotherapie der bakteriellen Infektionen\' in the Deutsche Medizinische Wochenschrift (vol. 61, pp. 250--253), disclosing experiments — begun in 1932 at Bayer but withheld for years — in which Prontosil rescued mice from otherwise fatal streptococcal sepsis. This recorded the first demonstration that a synthetic compound could cure an established systemic bacterial infection in vivo.',
         source: {
           externalId: 'src:domagk-chemotherapie-bakteriellen-infektionen-dmw-1935',
-          name: 'Domagk G. Ein Beitrag zur Chemotherapie der bakteriellen Infektionen. Deutsche Medizinische Wochenschrift. 1935;61(7):250–253.',
+          name: 'Domagk G. Ein Beitrag zur Chemotherapie der bakteriellen Infektionen. Deutsche Medizinische Wochenschrift. 1935;61(7):250--253.',
           url: 'https://www.thieme-connect.com/products/ejournals/abstract/10.1055/s-0028-1129486',
           publishedAt: '1935-02-15',
           methodologyType: 'primary',
@@ -23975,10 +23975,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1938-07-02',
         datePrecision: 'MONTH',
-        reason: 'Following Lionel Whitby\'s demonstration that the new sulfonamide sulfapyridine acted specifically against the pneumococcus, G. M. Evans and Wilfrid Gaisford published \'Treatment of pneumonia with 2-(p-aminobenzenesulphonamido)pyridine\' in The Lancet (1938;ii:14–19), reporting a fall in lobar-pneumonia mortality from roughly 78% to 8% in 100 treated patients. This recorded the first effective drug treatment for pneumococcal lobar pneumonia, then a leading cause of death.',
+        reason: 'Following Lionel Whitby\'s demonstration that the new sulfonamide sulfapyridine acted specifically against the pneumococcus, G. M. Evans and Wilfrid Gaisford published \'Treatment of pneumonia with 2-(p-aminobenzenesulphonamido)pyridine\' in The Lancet (1938;ii:14--19), reporting a fall in lobar-pneumonia mortality from roughly 78% to 8% in 100 treated patients. This recorded the first effective drug treatment for pneumococcal lobar pneumonia, then a leading cause of death.',
         source: {
           externalId: 'src:evans-gaisford-sulfapyridine-pneumonia-lancet-1938',
-          name: 'Evans GM, Gaisford WF. Treatment of pneumonia with 2-(p-aminobenzenesulphonamido)pyridine. Lancet. 1938;2:14–19. (James Lind Library record.)',
+          name: 'Evans GM, Gaisford WF. Treatment of pneumonia with 2-(p-aminobenzenesulphonamido)pyridine. Lancet. 1938;2:14--19. (James Lind Library record.)',
           url: 'https://www.jameslindlibrary.org/evans-gm-gaisford-wf-1938/',
           publishedAt: '1938-07-02',
           methodologyType: 'derivative',
@@ -23990,10 +23990,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1939-01-01',
         datePrecision: 'YEAR',
-        reason: 'The Evans–Gaisford result triggered rapid, widespread confirmatory trials; sulfapyridine went on the market in October 1938 (May & Baker licensing Merck for US manufacture) and was quickly accepted as standard therapy for pneumococcal pneumonia, settling its place in clinical practice before being superseded by less toxic sulfonamides and then penicillin.',
+        reason: 'The Evans--Gaisford result triggered rapid, widespread confirmatory trials; sulfapyridine went on the market in October 1938 (May & Baker licensing Merck for US manufacture) and was quickly accepted as standard therapy for pneumococcal pneumonia, settling its place in clinical practice before being superseded by less toxic sulfonamides and then penicillin.',
         source: {
           externalId: 'src:sulfonamides-introduction-revisited-annals-1991',
-          name: 'Lesch JE. Scientific Evidence versus Therapeutic Demand: The Introduction of the Sulfonamides Revisited. Annals of Internal Medicine. 1991;115(4):315–320.',
+          name: 'Lesch JE. Scientific Evidence versus Therapeutic Demand: The Introduction of the Sulfonamides Revisited. Annals of Internal Medicine. 1991;115(4):315--320.',
           url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-115-4-315',
           publishedAt: '1991-08-15',
           methodologyType: 'derivative',
@@ -24003,7 +24003,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHIATRY & NEUROLOGY ERA (1958–1990)
+  // PSYCHIATRY & NEUROLOGY ERA (1958--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Haloperidol — first butyrophenone antipsychotic 1958 ────────────────────
@@ -24093,7 +24093,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Tardive dyskinesia — antipsychotic iatrogenic cost 1964/1980 ─────────────
   {
     externalId: 'trajectory:tardive-dyskinesia-antipsychotic-iatrogenic-1980',
-    text: 'The American Psychiatric Association Task Force on Late Neurological Effects of Antipsychotic Drugs reported in October 1980 that tardive dyskinesia — an often irreversible involuntary movement disorder — is a genuine complication of long-term antipsychotic treatment, occurring in at least 10–20% of at-risk patients.',
+    text: 'The American Psychiatric Association Task Force on Late Neurological Effects of Antipsychotic Drugs reported in October 1980 that tardive dyskinesia — an often irreversible involuntary movement disorder — is a genuine complication of long-term antipsychotic treatment, occurring in at least 10--20% of at-risk patients.',
     claimType: 'HYBRID',
     claimEmergedAt: '1964-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -24120,7 +24120,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1980-10-01',
         datePrecision: 'MONTH',
-        reason: 'The APA Task Force on Late Neurological Effects of Antipsychotic Drugs published its summary report in the American Journal of Psychiatry, formally concluding that tardive dyskinesia is a real, prevalent (≥10–20% of at-risk patients), and often irreversible complication of prolonged antipsychotic use of unknown but dopamine-related pathophysiology with no satisfactory treatment. Ratification by organized American psychiatry settled the claim that the antipsychotics hailed as replacements for lobotomy carried a serious, sometimes permanent iatrogenic cost.',
+        reason: 'The APA Task Force on Late Neurological Effects of Antipsychotic Drugs published its summary report in the American Journal of Psychiatry, formally concluding that tardive dyskinesia is a real, prevalent (≥10--20% of at-risk patients), and often irreversible complication of prolonged antipsychotic use of unknown but dopamine-related pathophysiology with no satisfactory treatment. Ratification by organized American psychiatry settled the claim that the antipsychotics hailed as replacements for lobotomy carried a serious, sometimes permanent iatrogenic cost.',
         source: {
           externalId: 'src:apa-task-force-tardive-dyskinesia-1980',
           name: 'Task Force on Late Neurological Effects of Antipsychotic Drugs. Tardive dyskinesia: summary of a Task Force Report of the American Psychiatric Association. Am J Psychiatry. 1980;137(10):1163-72.',
@@ -24175,7 +24175,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DIABETES, OBESITY & METABOLIC ERA (1992–2008)
+  // DIABETES, OBESITY & METABOLIC ERA (1992--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── DCCT intensive glycemic control type 1 diabetes — 1993 ─────────────────
@@ -24391,7 +24391,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── FDA acetaminophen 325 mg limit in prescription combination products — 2011 ─
   {
     externalId: 'trajectory:fda-acetaminophen-325mg-limit-rx-combination-2011',
-    text: 'The FDA announced on January 13, 2011 that it would require manufacturers to limit acetaminophen to no more than 325 mg per dosage unit in prescription combination products — predominantly acetaminophen-opioid analgesics such as Vicodin and Percocet — and to add a boxed warning for severe liver injury, reversing the prior regulatory tolerance of 500–750 mg of acetaminophen per tablet in these pain products.',
+    text: 'The FDA announced on January 13, 2011 that it would require manufacturers to limit acetaminophen to no more than 325 mg per dosage unit in prescription combination products — predominantly acetaminophen-opioid analgesics such as Vicodin and Percocet — and to add a boxed warning for severe liver injury, reversing the prior regulatory tolerance of 500--750 mg of acetaminophen per tablet in these pain products.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2011-01-13',
     claimEmergedPrecision: 'DAY',
@@ -24669,10 +24669,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DRUG WITHDRAWALS & FIRST-IN-CLASS (2005–2008)
+  // DRUG WITHDRAWALS & FIRST-IN-CLASS (2005--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Valdecoxib (Bextra) COX-2 withdrawal — 2001–2005 ─────────────────────────
+  // ── Valdecoxib (Bextra) COX-2 withdrawal — 2001--2005 ─────────────────────────
   {
     externalId: 'trajectory:valdecoxib-bextra-cox2-withdrawal-2005',
     text: 'The COX-2 selective inhibitor valdecoxib (Bextra), approved by the FDA on 16 November 2001 for osteoarthritis, rheumatoid arthritis, and primary dysmenorrhea, was withdrawn from the US market on 7 April 2005 after post-marketing evidence showed its cardiovascular and serious-skin-reaction risks outweighed its benefits.',
@@ -24756,7 +24756,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Aprotinin (Trasylol) cardiac surgery mortality — 2006–2007 ───────────────
+  // ── Aprotinin (Trasylol) cardiac surgery mortality — 2006--2007 ───────────────
   {
     externalId: 'trajectory:aprotinin-trasylol-cardiac-surgery-mortality-2007',
     text: 'An observational study by Mangano et al. in the New England Journal of Medicine on 26 January 2006 reported that the antifibrinolytic aprotinin (Trasylol), widely used to limit bleeding in cardiac surgery, was associated with increased renal failure, myocardial infarction, and stroke — contradicting its established safety profile and culminating in worldwide marketing suspension on 5 November 2007.',
@@ -24840,7 +24840,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Deferasirox (Exjade) first oral iron chelator — 2005–2006 ────────────────
+  // ── Deferasirox (Exjade) first oral iron chelator — 2005--2006 ────────────────
   {
     externalId: 'trajectory:deferasirox-exjade-first-oral-iron-chelator-2005',
     text: 'Deferasirox (Exjade), the first once-daily oral iron chelator, received accelerated FDA approval on 2 November 2005 for chronic transfusional iron overload, offering an oral alternative to overnight subcutaneous deferoxamine for patients with thalassemia, sickle cell disease, and other transfusion-dependent anemias.',
@@ -24855,7 +24855,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2005-11-02',
         datePrecision: 'DAY',
-        reason: 'The FDA granted accelerated approval to deferasirox (Exjade, Novartis) — the first oral iron chelator worldwide — for chronic iron overload from blood transfusions in patients aged 2 and older, after a unanimous positive Blood Products Advisory Committee vote. Accelerated approval recorded the drug as available while confirmatory phase 3 outcome data were still maturing, supplanting burdensome 8–12 hour nightly deferoxamine infusions for a rare transfusion-dependent population.',
+        reason: 'The FDA granted accelerated approval to deferasirox (Exjade, Novartis) — the first oral iron chelator worldwide — for chronic iron overload from blood transfusions in patients aged 2 and older, after a unanimous positive Blood Products Advisory Committee vote. Accelerated approval recorded the drug as available while confirmatory phase 3 outcome data were still maturing, supplanting burdensome 8--12 hour nightly deferoxamine infusions for a rare transfusion-dependent population.',
         source: {
           externalId: 'src:novartis-exjade-fda-approval-2005',
           name: 'Novartis. Exjade, a breakthrough once-daily oral iron chelator, receives first approval worldwide in the US. Press release, 3 November 2005.',
@@ -25048,7 +25048,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // INFECTIOUS DISEASE / VIROLOGY (1990–2010)
+  // INFECTIOUS DISEASE / VIROLOGY (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── KSHV/HHV-8 — Kaposi's sarcoma etiology — Chang & Moore 1994 ─────────────
@@ -25108,7 +25108,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1996-05-31',
         datePrecision: 'DAY',
-        reason: 'After years of debate over how to prevent early-onset GBS sepsis (then a leading cause of neonatal infection and death), CDC, ACOG, and AAP jointly endorsed intrapartum antibiotic prophylaxis and recommended clinicians adopt one of two strategies — antenatal culture screening at 35–37 weeks or an obstetric risk-factor approach. This recorded intrapartum prophylaxis as official policy but left the choice of strategy unresolved.',
+        reason: 'After years of debate over how to prevent early-onset GBS sepsis (then a leading cause of neonatal infection and death), CDC, ACOG, and AAP jointly endorsed intrapartum antibiotic prophylaxis and recommended clinicians adopt one of two strategies — antenatal culture screening at 35--37 weeks or an obstetric risk-factor approach. This recorded intrapartum prophylaxis as official policy but left the choice of strategy unresolved.',
         source: {
           externalId: 'src:cdc-mmwr-gbs-1996-rr7',
           name: 'CDC. Prevention of perinatal group B streptococcal disease: a public health perspective. MMWR Recomm Rep. 1996;45(RR-7):1-24.',
@@ -25138,7 +25138,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Hib conjugate vaccine in infants — decline confirmed 1993 ───────────────
   {
     externalId: 'trajectory:hib-conjugate-vaccine-infants-decline-1990',
-    text: 'Haemophilus influenzae type b (Hib) conjugate vaccines, licensed for U.S. infants as young as two months in October 1990, were shown to have driven a >70–80% decline in invasive childhood Hib disease within two years, succeeding where the earlier polysaccharide vaccine had failed in infants.',
+    text: 'Haemophilus influenzae type b (Hib) conjugate vaccines, licensed for U.S. infants as young as two months in October 1990, were shown to have driven a >70--80% decline in invasive childhood Hib disease within two years, succeeding where the earlier polysaccharide vaccine had failed in infants.',
     claimType: 'HYBRID',
     claimEmergedAt: '1990-10',
     claimEmergedPrecision: 'MONTH',
@@ -25249,7 +25249,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2000-01-01',
         datePrecision: 'DAY',
-        reason: 'After the Western Hemisphere was certified free of wild poliovirus (1994) and the only indigenous U.S. cases were the roughly 8–10 annual VAPP cases caused by OPV, ACIP voted on 17 June 1999 to recommend an exclusive IPV schedule, effective 1 January 2000. A vaccine that had been standard for nearly 40 years was abandoned in the U.S. because, once the disease it prevented disappeared domestically, its own residual harm exceeded its benefit — a textbook post-elimination risk-benefit reversal.',
+        reason: 'After the Western Hemisphere was certified free of wild poliovirus (1994) and the only indigenous U.S. cases were the roughly 8--10 annual VAPP cases caused by OPV, ACIP voted on 17 June 1999 to recommend an exclusive IPV schedule, effective 1 January 2000. A vaccine that had been standard for nearly 40 years was abandoned in the U.S. because, once the disease it prevented disappeared domestically, its own residual harm exceeded its benefit — a textbook post-elimination risk-benefit reversal.',
         source: {
           externalId: 'src:cdc-mmwr-polio-rr5-2000-reversal',
           name: 'CDC. Poliomyelitis prevention in the United States: updated recommendations of the Advisory Committee on Immunization Practices (ACIP). MMWR Recomm Rep. 2000;49(RR-5):1-22.',
@@ -25262,7 +25262,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // EVIDENCE-BASED PHARMACOLOGY & ORAL THERAPIES ERA (2010–2015)
+  // EVIDENCE-BASED PHARMACOLOGY & ORAL THERAPIES ERA (2010--2015)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Reboxetine ineffective antidepressant — Eyding et al. BMJ 2010 ──────────
@@ -25433,7 +25433,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2015-01-14',
         datePrecision: 'MONTH',
-        reason: 'McElroy et al. published a randomized, double-blind, placebo-controlled trial in JAMA Psychiatry showing lisdexamfetamine at 50 and 70 mg/day significantly reduced binge-eating days per week and raised 4-week binge cessation rates (42–50% vs 21% placebo) in adults with moderate-to-severe binge-eating disorder. The trial recorded the first high-quality pharmacological evidence that a stimulant could treat a disorder of compulsive eating, distinct from its established ADHD indication.',
+        reason: 'McElroy et al. published a randomized, double-blind, placebo-controlled trial in JAMA Psychiatry showing lisdexamfetamine at 50 and 70 mg/day significantly reduced binge-eating days per week and raised 4-week binge cessation rates (42--50% vs 21% placebo) in adults with moderate-to-severe binge-eating disorder. The trial recorded the first high-quality pharmacological evidence that a stimulant could treat a disorder of compulsive eating, distinct from its established ADHD indication.',
         source: {
           externalId: 'src:mcelroy-lisdexamfetamine-bed-jamapsych-2015',
           name: 'McElroy SL, Hudson JI, Mitchell JE, et al. Efficacy and safety of lisdexamfetamine for treatment of adults with moderate to severe binge-eating disorder: a randomized clinical trial. JAMA Psychiatry. 2015;72(3):235-246.',
@@ -25461,7 +25461,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID ANALGESICS — REVERSAL ARCS (1957–2010)
+  // OPIOID ANALGESICS — REVERSAL ARCS (1957--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Propoxyphene (Darvon) — safe analgesic reversed cardiac-risk withdrawal 2010 ──
@@ -25591,7 +25591,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN ERA (2010–present) — SMA / Vaccines / Newborn screening / Environmental
+  // MODERN ERA (2010--present) — SMA / Vaccines / Newborn screening / Environmental
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Risdiplam (Evrysdi) — first oral SMA treatment 2020 ────────────────────
@@ -25609,7 +25609,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2020-08-07',
         datePrecision: 'DAY',
-        reason: 'The FDA approved risdiplam (Evrysdi, Genentech/Roche; developed with PTC Therapeutics and the SMA Foundation) for SMA across types 1–3 in patients aged two months and older, based on the FIREFISH (infantile-onset) and SUNFISH (later-onset) trials. As an orally/feeding-tube-administered daily liquid, it recorded a new institutional finding that SMN2 splicing could be modulated systemically by a small molecule, removing the need for repeated intrathecal injection (nusinersen) or one-time AAV gene therapy (onasemnogene) and broadening access to SMA disease-modifying treatment.',
+        reason: 'The FDA approved risdiplam (Evrysdi, Genentech/Roche; developed with PTC Therapeutics and the SMA Foundation) for SMA across types 1--3 in patients aged two months and older, based on the FIREFISH (infantile-onset) and SUNFISH (later-onset) trials. As an orally/feeding-tube-administered daily liquid, it recorded a new institutional finding that SMN2 splicing could be modulated systemically by a small molecule, removing the need for repeated intrathecal injection (nusinersen) or one-time AAV gene therapy (onasemnogene) and broadening access to SMA disease-modifying treatment.',
         source: {
           externalId: 'src:roche-evrysdi-risdiplam-fda-approval-2020',
           name: 'Roche. FDA approves Roche\'s Evrysdi (risdiplam) for treatment of spinal muscular atrophy (SMA) in adults and children 2 months and older. Press release. 10 August 2020 (FDA approval 7 August 2020).',
@@ -25639,7 +25639,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── LAIV / FluMist — ACIP not-recommended reversal 2016 ────────────────────
   {
     externalId: 'trajectory:laiv-flumist-acip-not-recommended-reversal-2016',
-    text: 'The U.S. Advisory Committee on Immunization Practices recommended that the live attenuated influenza vaccine (LAIV, FluMist) NOT be used during the 2016–17 season because post-marketing studies found it ineffective against influenza A(H1N1)pdm09 — withdrawing a nasal-spray vaccine that had been a routinely recommended childhood option (and, in 2014, preferentially recommended for healthy children) — before reinstating it as an acceptable option in February 2018 after the vaccine\'s H1N1 component was reformulated.',
+    text: 'The U.S. Advisory Committee on Immunization Practices recommended that the live attenuated influenza vaccine (LAIV, FluMist) NOT be used during the 2016--17 season because post-marketing studies found it ineffective against influenza A(H1N1)pdm09 — withdrawing a nasal-spray vaccine that had been a routinely recommended childhood option (and, in 2014, preferentially recommended for healthy children) — before reinstating it as an acceptable option in February 2018 after the vaccine\'s H1N1 component was reformulated.',
     claimType: 'HYBRID',
     claimEmergedAt: '2003-06-17',
     claimEmergedPrecision: 'DAY',
@@ -25651,7 +25651,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2003-06-17',
         datePrecision: 'DAY',
-        reason: 'The FDA licensed FluMist, the first live attenuated, intranasally administered influenza vaccine, for healthy persons aged 5–49 years, recording the institutional judgment that a needle-free live vaccine was a safe and effective influenza-prevention option. Its use was later expanded to children aged 2–4 (2007).',
+        reason: 'The FDA licensed FluMist, the first live attenuated, intranasally administered influenza vaccine, for healthy persons aged 5--49 years, recording the institutional judgment that a needle-free live vaccine was a safe and effective influenza-prevention option. Its use was later expanded to children aged 2--4 (2007).',
         source: {
           externalId: 'src:flumist-fda-approval-history-2003',
           name: 'Drugs.com. FluMist (Influenza Virus Vaccine, Live, Intranasal) FDA Approval History (first approved 17 June 2003).',
@@ -25666,10 +25666,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2014-06',
         datePrecision: 'MONTH',
-        reason: 'After an evidence review concluded LAIV had superior efficacy to inactivated vaccine in young children, ACIP issued a preferential recommendation that LAIV be used, when immediately available, for healthy children aged 2 through 8 years for the 2014–15 season. This elevated the nasal-spray vaccine to the preferred pediatric influenza vaccine, marking its high-water mark as settled childhood-schedule practice.',
+        reason: 'After an evidence review concluded LAIV had superior efficacy to inactivated vaccine in young children, ACIP issued a preferential recommendation that LAIV be used, when immediately available, for healthy children aged 2 through 8 years for the 2014--15 season. This elevated the nasal-spray vaccine to the preferred pediatric influenza vaccine, marking its high-water mark as settled childhood-schedule practice.',
         source: {
           externalId: 'src:acip-laiv-preferential-children-mmwr-2014',
-          name: 'Grohskopf LA, et al. Prevention and Control of Seasonal Influenza with Vaccines: Recommendations of the ACIP — United States, 2014–15 Influenza Season. MMWR Recomm Rep. 2014 (LAIV preferential recommendation for healthy children 2–8).',
+          name: 'Grohskopf LA, et al. Prevention and Control of Seasonal Influenza with Vaccines: Recommendations of the ACIP — United States, 2014--15 Influenza Season. MMWR Recomm Rep. 2014 (LAIV preferential recommendation for healthy children 2--8).',
           url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6332a3.htm',
           publishedAt: '2014-08-15',
           methodologyType: 'primary',
@@ -25681,10 +25681,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2016-08-26',
         datePrecision: 'DAY',
-        reason: 'After U.S. Flu Vaccine Effectiveness Network data from 2013–14 and 2015–16 showed LAIV4 provided little or no protection against influenza A(H1N1)pdm09 — while inactivated vaccine did — ACIP voted in June 2016 to make the interim recommendation that LAIV4 not be used, formalized in MMWR on 26 August 2016. The reversal stripped the routinely recommended status from the nasal-spray vaccine and threw its effectiveness into active dispute, collapsing FluMist\'s U.S. market the following seasons.',
+        reason: 'After U.S. Flu Vaccine Effectiveness Network data from 2013--14 and 2015--16 showed LAIV4 provided little or no protection against influenza A(H1N1)pdm09 — while inactivated vaccine did — ACIP voted in June 2016 to make the interim recommendation that LAIV4 not be used, formalized in MMWR on 26 August 2016. The reversal stripped the routinely recommended status from the nasal-spray vaccine and threw its effectiveness into active dispute, collapsing FluMist\'s U.S. market the following seasons.',
         source: {
           externalId: 'src:acip-laiv-not-recommended-mmwr-2016',
-          name: 'Grohskopf LA, Sokolow LZ, Broder KR, et al. Prevention and Control of Seasonal Influenza with Vaccines — Recommendations of the ACIP, United States, 2016–17 Influenza Season. MMWR Recomm Rep. 2016;65(5):1-54.',
+          name: 'Grohskopf LA, Sokolow LZ, Broder KR, et al. Prevention and Control of Seasonal Influenza with Vaccines — Recommendations of the ACIP, United States, 2016--17 Influenza Season. MMWR Recomm Rep. 2016;65(5):1-54.',
           url: 'https://www.cdc.gov/mmwr/volumes/65/rr/rr6505a1.htm',
           publishedAt: '2016-08-26',
           methodologyType: 'primary',
@@ -25696,10 +25696,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2018-02-21',
         datePrecision: 'DAY',
-        reason: 'After the manufacturer replaced the poorly performing H1N1 vaccine strain (A/Slovenia) and presented new replication and shedding data, ACIP voted on 21 February 2018 to reinstate LAIV4 as an acceptable influenza-vaccination option for the 2018–19 season, ending the two-season do-not-use recommendation. The restoration — published in MMWR — re-settled the nasal-spray vaccine within the childhood and adult schedules, an unusual case of a withdrawn vaccine recommendation being reversed on the strength of a reformulation.',
+        reason: 'After the manufacturer replaced the poorly performing H1N1 vaccine strain (A/Slovenia) and presented new replication and shedding data, ACIP voted on 21 February 2018 to reinstate LAIV4 as an acceptable influenza-vaccination option for the 2018--19 season, ending the two-season do-not-use recommendation. The restoration — published in MMWR — re-settled the nasal-spray vaccine within the childhood and adult schedules, an unusual case of a withdrawn vaccine recommendation being reversed on the strength of a reformulation.',
         source: {
           externalId: 'src:acip-laiv-reinstated-mmwr-2018',
-          name: 'Grohskopf LA, et al. Update: ACIP Recommendations for the Use of Quadrivalent Live Attenuated Influenza Vaccine (LAIV4) — United States, 2018–19 Influenza Season. MMWR Morb Mortal Wkly Rep. 2018;67(22):643-645. PMID 29879095.',
+          name: 'Grohskopf LA, et al. Update: ACIP Recommendations for the Use of Quadrivalent Live Attenuated Influenza Vaccine (LAIV4) — United States, 2018--19 Influenza Season. MMWR Morb Mortal Wkly Rep. 2018;67(22):643-645. PMID 29879095.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/29879095/',
           publishedAt: '2018-06-08',
           methodologyType: 'primary',
@@ -25794,7 +25794,7 @@ const TRAJECTORIES: Trajectory[] = [
 
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASE / PRECISION MEDICINE ERA (2000–2015) — Enzyme replacement, complement inhibition, CFTR modulation, cofactor therapy
+  // RARE DISEASE / PRECISION MEDICINE ERA (2000--2015) — Enzyme replacement, complement inhibition, CFTR modulation, cofactor therapy
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Alglucosidase alfa (Myozyme) — first ERT for Pompe disease 2006 ─────────
@@ -25945,7 +25945,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The Phase II placebo-controlled trial of azidothymidine in AIDS and AIDS-related complex was halted early by its data safety monitoring board in September 1986 because AZT recipients had dramatically lower mortality (1 death versus 19 on placebo) and fewer opportunistic infections. The results, published by Fischl and colleagues in the New England Journal of Medicine on 23 July 1987, were the first controlled evidence that any drug could alter the course of AIDS.',
         source: {
           externalId: 'src:fischl-azt-aids-arc-nejm-1987',
-          name: 'Fischl MA, Richman DD, Grieco MH, et al. The efficacy of azidothymidine (AZT) in the treatment of patients with AIDS and AIDS-related complex. A double-blind, placebo-controlled trial. N Engl J Med. 1987;317(4):185–191.',
+          name: 'Fischl MA, Richman DD, Grieco MH, et al. The efficacy of azidothymidine (AZT) in the treatment of patients with AIDS and AIDS-related complex. A double-blind, placebo-controlled trial. N Engl J Med. 1987;317(4):185--191.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/3299089/',
           publishedAt: '1987-07-23',
           methodologyType: 'primary',
@@ -26019,10 +26019,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1960-03-09',
         datePrecision: 'DAY',
-        reason: 'On 9 March 1960 surgeon David Dillard implanted the first Scribner shunt — indwelling Teflon arterial and venous cannulas joined by an external loop between dialyses — in patient Clyde Shields, who survived 11 further years on dialysis. Quinton, Dillard, and Scribner reported the device in \'Cannulation of blood vessels for prolonged hemodialysis\' (Trans Am Soc Artif Intern Organs 1960;6:104–113), solving the central obstacle that had limited dialysis to single acute treatments.',
+        reason: 'On 9 March 1960 surgeon David Dillard implanted the first Scribner shunt — indwelling Teflon arterial and venous cannulas joined by an external loop between dialyses — in patient Clyde Shields, who survived 11 further years on dialysis. Quinton, Dillard, and Scribner reported the device in \'Cannulation of blood vessels for prolonged hemodialysis\' (Trans Am Soc Artif Intern Organs 1960;6:104--113), solving the central obstacle that had limited dialysis to single acute treatments.',
         source: {
           externalId: 'src:blagg-50th-anniversary-longterm-hemodialysis-2011',
-          name: 'Blagg CR. The 50th anniversary of long-term hemodialysis: University of Washington Hospital, March 9th, 1960. J Nephrol. 2011;24(Suppl 17):S84–S88.',
+          name: 'Blagg CR. The 50th anniversary of long-term hemodialysis: University of Washington Hospital, March 9th, 1960. J Nephrol. 2011;24(Suppl 17):S84--S88.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/21614785/',
           publishedAt: '2011-05-01',
           methodologyType: 'derivative',
@@ -26037,7 +26037,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Within a few years of the shunt\'s introduction, chronic outpatient hemodialysis programs were established across the United States and worldwide and maintenance dialysis became the accepted standard of care for end-stage renal disease, later underwritten by national funding programs. The settling of repeatable hemodialysis as durable therapy is reflected in its scale — more than a million people are now alive on chronic dialysis traceable to the Scribner team\'s work.',
         source: {
           externalId: 'src:blagg-50th-anniversary-longterm-hemodialysis-2011',
-          name: 'Blagg CR. The 50th anniversary of long-term hemodialysis: University of Washington Hospital, March 9th, 1960. J Nephrol. 2011;24(Suppl 17):S84–S88.',
+          name: 'Blagg CR. The 50th anniversary of long-term hemodialysis: University of Washington Hospital, March 9th, 1960. J Nephrol. 2011;24(Suppl 17):S84--S88.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/21614785/',
           publishedAt: '2011-05-01',
           methodologyType: 'derivative',
@@ -26047,7 +26047,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MEDICAL DEVICES / ENDOSCOPY ERA (1957–1961)
+  // MEDICAL DEVICES / ENDOSCOPY ERA (1957--1961)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Hirschowitz fiberoptic endoscope — 1958 ──────────────────────────────────
@@ -26068,7 +26068,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After first passing his prototype instrument down his own throat in February 1957, Hirschowitz, with Curtiss, Peters, and Pollard, published \'Demonstration of a new gastroscope, the fiberscope\' (Gastroenterology 1958;35(1):50), reporting that a bundle of coated glass fibers could carry a coherent image out of the body. This recorded the first practical flexible fiberoptic endoscope, replacing the limited, hazardous semi-rigid gastroscopes then in use.',
         source: {
           externalId: 'src:hirschowitz-fiberscope-gastroenterology-1958',
-          name: 'Hirschowitz BI, Curtiss LE, Peters CW, Pollard HM. Demonstration of a new gastroscope, the fiberscope. Gastroenterology. 1958;35(1):50; discussion 51–53.',
+          name: 'Hirschowitz BI, Curtiss LE, Peters CW, Pollard HM. Demonstration of a new gastroscope, the fiberscope. Gastroenterology. 1958;35(1):50; discussion 51--53.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/13562387/',
           publishedAt: '1958-01-01',
           methodologyType: 'primary',
@@ -26083,7 +26083,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'By 1961 Hirschowitz, working with American Cystoscope Makers Inc. (ACMI), produced the commercial Hirschowitz Gastroduodenal Fiberscope, and flexible fiberoptic endoscopy rapidly displaced rigid and semi-rigid gastroscopy as the standard means of examining the upper gastrointestinal tract — the direct ancestor of modern video endoscopy.',
         source: {
           externalId: 'src:edmonson-hirschowitz-fiberoptic-endoscopy-annals-2016',
-          name: 'Modlin IM, et al. Visceral Vistas: Basil Hirschowitz and the Birth of Fiberoptic Endoscopy. Ann Intern Med. 2016;165(3):214–218.',
+          name: 'Modlin IM, et al. Visceral Vistas: Basil Hirschowitz and the Birth of Fiberoptic Endoscopy. Ann Intern Med. 2016;165(3):214--218.',
           url: 'https://www.acpjournals.org/doi/10.7326/M16-0025',
           publishedAt: '2016-08-02',
           methodologyType: 'derivative',
@@ -26093,7 +26093,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CHEMOPREVENTION REVERSALS / MODERN ONCOLOGY (1981–2011)
+  // CHEMOPREVENTION REVERSALS / MODERN ONCOLOGY (1981--2011)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 1. Beta-carotene lung-cancer chemoprevention reversal — 1994/1996 ────────
@@ -26307,7 +26307,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIORENAL / CARDIOLOGY ERA (2009–2021)
+  // CARDIORENAL / CARDIOLOGY ERA (2009--2021)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── 6. Finerenone FIDELIO-DKD — nonsteroidal MRA cardiorenal 2021 ───────────
@@ -26424,7 +26424,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2011-07-20',
         datePrecision: 'DAY',
-        reason: 'After an extended review centered on a paradoxical absence of benefit in the U.S.-enrolled PLATO subgroup, the FDA approved ticagrelor (Brilinta) with a boxed warning attributing the regional anomaly to high maintenance doses of concomitant aspirin and directing that aspirin be kept at 75–100 mg/day. The approval institutionally settled ticagrelor for U.S. acute-coronary-syndrome care while making the aspirin-dose interaction a formal labeling requirement — a notable case of regulatory resolution of a geographic-subgroup signal.',
+        reason: 'After an extended review centered on a paradoxical absence of benefit in the U.S.-enrolled PLATO subgroup, the FDA approved ticagrelor (Brilinta) with a boxed warning attributing the regional anomaly to high maintenance doses of concomitant aspirin and directing that aspirin be kept at 75--100 mg/day. The approval institutionally settled ticagrelor for U.S. acute-coronary-syndrome care while making the aspirin-dose interaction a formal labeling requirement — a notable case of regulatory resolution of a geographic-subgroup signal.',
         source: {
           externalId: 'src:fda-brilinta-ticagrelor-approval-2011',
           name: 'Brilinta (ticagrelor) FDA Approval History (documenting FDA approval 20 July 2011 with boxed warning on bleeding and aspirin maintenance dose). Drugs.com.',
@@ -26451,7 +26451,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2020-03-28',
         datePrecision: 'DAY',
-        reason: 'Armstrong and the VICTORIA investigators reported a double-blind randomized trial in 5,050 patients with chronic HFrEF (ejection fraction <45%) after a recent worsening event, finding that vericiguat reduced the composite of cardiovascular death or first heart-failure hospitalization versus placebo on top of guideline therapy (hazard ratio 0.90). Presented at the virtual ACC 2020 meeting and published online 28 March 2020, it recorded a novel disease pathway — sGC–cGMP stimulation — as therapeutically actionable in advanced heart failure.',
+        reason: 'Armstrong and the VICTORIA investigators reported a double-blind randomized trial in 5,050 patients with chronic HFrEF (ejection fraction <45%) after a recent worsening event, finding that vericiguat reduced the composite of cardiovascular death or first heart-failure hospitalization versus placebo on top of guideline therapy (hazard ratio 0.90). Presented at the virtual ACC 2020 meeting and published online 28 March 2020, it recorded a novel disease pathway — sGC--cGMP stimulation — as therapeutically actionable in advanced heart failure.',
         source: {
           externalId: 'src:armstrong-victoria-vericiguat-nejm-2020',
           name: 'Armstrong PW, Pieske B, Anstrom KJ, et al. Vericiguat in patients with heart failure and reduced ejection fraction. N Engl J Med. 2020;382(20):1883-1893.',
@@ -26479,7 +26479,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NEUROLOGY / PSYCHIATRY ERA (1964–1989)
+  // NEUROLOGY / PSYCHIATRY ERA (1964--1989)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Klein imipramine delineates panic anxiety — 1964 ────────────────────────
@@ -26678,7 +26678,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DIABETES & ENDOCRINOLOGY (1998–2008)
+  // DIABETES & ENDOCRINOLOGY (1998--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── UKPDS 33 — intensive glucose control in type 2 diabetes — 1998 ───────────
@@ -26862,7 +26862,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID EPIDEMIC ERA (2000–2023)
+  // OPIOID EPIDEMIC ERA (2000--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── OxyContin reformulation → heroin substitution — Cicero 2012 ─────────────
@@ -27067,7 +27067,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'MARKET',
         occurredAt: '1980-09-22',
         datePrecision: 'DAY',
-        reason: 'After CDC\'s second study (CDC-2) specifically implicated the Rely brand, Procter & Gamble recalled Rely on 22 September 1980 and entered a consent agreement with the FDA to notify consumers and remove the product. The withdrawal — and the subsequent decline in high-absorbency tampon use accompanied by a marked drop in menstrual TSS incidence — institutionally ratified the tampon–TSS causal claim and drove later federal tampon absorbency labeling standards.',
+        reason: 'After CDC\'s second study (CDC-2) specifically implicated the Rely brand, Procter & Gamble recalled Rely on 22 September 1980 and entered a consent agreement with the FDA to notify consumers and remove the product. The withdrawal — and the subsequent decline in high-absorbency tampon use accompanied by a marked drop in menstrual TSS incidence — institutionally ratified the tampon--TSS causal claim and drove later federal tampon absorbency labeling standards.',
         source: {
           externalId: 'src:vostral-rely-toxic-shock-yjbm-2011',
           name: 'Vostral SL. Rely and Toxic Shock Syndrome: A Technological Health Crisis. Yale J Biol Med. 2011;84(4):447-459.',
@@ -27079,10 +27079,10 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Bendectin / doxylamine–pyridoxine pregnancy safety 1956–2013 ────────────
+  // ── Bendectin / doxylamine--pyridoxine pregnancy safety 1956--2013 ────────────
   {
     externalId: 'trajectory:bendectin-doxylamine-pyridoxine-pregnancy-safety-1956',
-    text: 'The claim that the doxylamine–pyridoxine combination (marketed as Bendectin, later Diclegis) is a safe and effective treatment for nausea and vomiting of pregnancy was established with U.S. approval in 1956, thrown into public and legal dispute by birth-defect litigation that drove its withdrawal in 1983, and ultimately vindicated and re-approved by the FDA on 8 April 2013.',
+    text: 'The claim that the doxylamine--pyridoxine combination (marketed as Bendectin, later Diclegis) is a safe and effective treatment for nausea and vomiting of pregnancy was established with U.S. approval in 1956, thrown into public and legal dispute by birth-defect litigation that drove its withdrawal in 1983, and ultimately vindicated and re-approved by the FDA on 8 April 2013.',
     claimType: 'HYBRID',
     claimEmergedAt: '1956-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -27112,7 +27112,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Beginning in the late 1970s, hundreds of lawsuits alleged that Bendectin caused limb-reduction and other birth defects, generating intense media coverage despite a lack of confirmatory epidemiologic evidence. Unable to sustain the cost of litigation, Merrell Dow voluntarily withdrew Bendectin from the U.S. market in June 1983 — a market and reputational reversal driven by tort exposure rather than by demonstrated teratogenicity, leaving the safety claim in active public dispute and the U.S. without any approved morning-sickness drug.',
         source: {
           externalId: 'src:nejm-doxylamine-pyridoxine-pregnancy-2013',
-          name: 'FDA Approval of Doxylamine–Pyridoxine Therapy for Use in Pregnancy. N Engl J Med. 2013;368(16):1466-1467 (recounting the 1983 withdrawal amid litigation).',
+          name: 'FDA Approval of Doxylamine--Pyridoxine Therapy for Use in Pregnancy. N Engl J Med. 2013;368(16):1466-1467 (recounting the 1983 withdrawal amid litigation).',
           url: 'https://www.nejm.org/doi/full/10.1056/NEJMp1316042',
           publishedAt: '2013-04-18',
           methodologyType: 'derivative',
@@ -27142,7 +27142,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The FDA approved Diclegis (delayed-release doxylamine succinate/pyridoxine hydrochloride, NDA 021876) on 8 April 2013 for nausea and vomiting of pregnancy unresponsive to conservative management, designating it Pregnancy Category A — the strongest evidence of fetal safety — and making it the first morning-sickness drug approved in the U.S. in more than 30 years. The regulator formally re-established the same combination\'s safety and efficacy claim that litigation had driven from the market, closing the arc.',
         source: {
           externalId: 'src:nejm-diclegis-fda-approval-2013',
-          name: 'FDA Approval of Doxylamine–Pyridoxine Therapy for Use in Pregnancy. N Engl J Med. 2013;368(16):1466-1467 (documenting the 8 April 2013 Diclegis approval, Pregnancy Category A).',
+          name: 'FDA Approval of Doxylamine--Pyridoxine Therapy for Use in Pregnancy. N Engl J Med. 2013;368(16):1466-1467 (documenting the 8 April 2013 Diclegis approval, Pregnancy Category A).',
           url: 'https://www.nejm.org/doi/full/10.1056/NEJMp1316042',
           publishedAt: '2013-04-18',
           methodologyType: 'derivative',
@@ -27194,7 +27194,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRICS / CHILD HEALTH / PUBLIC HEALTH (1968–1995)
+  // PEDIATRICS / CHILD HEALTH / PUBLIC HEALTH (1968--1995)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Steinschneider apnea-SIDS hypothesis 1972 → reversed by Hoyt conviction 1995 ──
@@ -27227,7 +27227,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1986-09-29',
         datePrecision: 'DAY',
-        reason: 'The NIH Consensus Development Conference on Infantile Apnea and Home Monitoring (Sept 29–Oct 1, 1986) endorsed home cardiorespiratory monitoring for defined high-risk infants—including those with severe idiopathic apparent life-threatening events and siblings of multiple SIDS victims—institutionalizing the apnea-as-SIDS-precursor framework and the monitoring practice it justified.',
+        reason: 'The NIH Consensus Development Conference on Infantile Apnea and Home Monitoring (Sept 29--Oct 1, 1986) endorsed home cardiorespiratory monitoring for defined high-risk infants—including those with severe idiopathic apparent life-threatening events and siblings of multiple SIDS victims—institutionalizing the apnea-as-SIDS-precursor framework and the monitoring practice it justified.',
         source: {
           externalId: 'src:nih-consensus-infantile-apnea-monitoring-1987',
           name: 'National Institutes of Health Consensus Development Conference on Infantile Apnea and Home Monitoring, Sept 29 to Oct 1, 1986. Pediatrics. 1987;79(2):292-299.',
@@ -27329,7 +27329,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'At the WHO/UNICEF policymakers\' meeting in Florence, governments adopted the Innocenti Declaration (1 August 1990), committing all member states to give effect to the Code\'s principles and to enact national legislation by 1995. This reaffirmation—reinforced by the Baby-Friendly Hospital Initiative and the eventual enactment of Code-based law in scores of countries—settled the Code as the global standard governing breast-milk-substitute marketing.',
         source: {
           externalId: 'src:innocenti-declaration-breastfeeding-1990',
-          name: 'WHO/UNICEF. Innocenti Declaration on the Protection, Promotion and Support of Breastfeeding. Florence, 30 July–1 August 1990.',
+          name: 'WHO/UNICEF. Innocenti Declaration on the Protection, Promotion and Support of Breastfeeding. Florence, 30 July--1 August 1990.',
           url: 'https://worldbreastfeedingweek.org/2018/wp-content/uploads/2018/07/1990-Innocenti-Declaration.pdf',
           publishedAt: '1990-08-01',
           methodologyType: 'primary',
@@ -27381,7 +27381,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ORPHAN / LYSOSOMAL STORAGE DISEASE DRUG APPROVALS (1992–2007)
+  // ORPHAN / LYSOSOMAL STORAGE DISEASE DRUG APPROVALS (1992--2007)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Nitisinone / Orfadin — hereditary tyrosinemia type 1, 1992 ──────────────
@@ -27399,7 +27399,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1992-10',
         datePrecision: 'MONTH',
-        reason: 'Lindstedt, Holme, Lock, Hjalmarson, and Strandvik reported in The Lancet that oral NTBC (0.1–0.6 mg/kg/day) drove plasma succinylacetone to the detection limit and normalized liver function in children with hereditary tyrosinemia type 1, with no side-effects observed. Until then the only effective treatment was liver transplantation; this recorded the proof-of-concept that pharmacologically inhibiting an upstream enzyme could halt the disease.',
+        reason: 'Lindstedt, Holme, Lock, Hjalmarson, and Strandvik reported in The Lancet that oral NTBC (0.1--0.6 mg/kg/day) drove plasma succinylacetone to the detection limit and normalized liver function in children with hereditary tyrosinemia type 1, with no side-effects observed. Until then the only effective treatment was liver transplantation; this recorded the proof-of-concept that pharmacologically inhibiting an upstream enzyme could halt the disease.',
         source: {
           externalId: 'src:lindstedt-ntbc-tyrosinemia-lancet-1992',
           name: 'Lindstedt S, Holme E, Lock EA, Hjalmarson O, Strandvik B. Treatment of hereditary tyrosinaemia type I by inhibition of 4-hydroxyphenylpyruvate dioxygenase. Lancet. 1992;340(8823):813-817. PMID 1383656.',
@@ -27511,7 +27511,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL FIRSTS & FOUNDATIONS (1809–1929)
+  // SURGICAL FIRSTS & FOUNDATIONS (1809--1929)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── McDowell first ovariotomy 1809 ──────────────────────────────────────────
@@ -27589,7 +27589,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "Leading American obstetricians Charles D. Meigs and Hugh L. Hodge publicly rejected Holmes's thesis, Meigs deriding it as the 'jejune and fizzenless dreamings' of a sophomore and insisting that 'doctors are gentlemen, and gentlemen's hands are clean,' while Hodge's 1852 textbook urged physicians to dismiss the 'overpowering dread' that they could transmit the disease. The contagion claim was actively contested by the obstetric establishment, prompting Holmes's expanded 1855 reprint.",
         source: {
           externalId: 'src:tan-holmes-semmelweis-ajph-2010',
-          name: 'Tan SY, Brown J. Oliver Wendell Holmes (1809–1894) and Ignaz Philipp Semmelweis (1818–1865): Preventing the Transmission of Puerperal Fever. Am J Public Health. 2010;100(6):1037.',
+          name: 'Tan SY, Brown J. Oliver Wendell Holmes (1809--1894) and Ignaz Philipp Semmelweis (1818--1865): Preventing the Transmission of Puerperal Fever. Am J Public Health. 2010;100(6):1037.',
           url: 'https://ajph.aphapublications.org/doi/full/10.2105/AJPH.2009.185363',
           publishedAt: '2010-06-01',
           methodologyType: 'derivative',
@@ -27772,7 +27772,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Edward B. Krumbhaar and Helen D. Krumbhaar published autopsy findings from 75 mustard-gas casualties of World War I, documenting that the agent\'s first systemic effect was exhaustion of leukocyte-forming centers and severe bone-marrow aplasia. This was the first careful pathological demonstration that an alkylating war gas is selectively cytotoxic to rapidly dividing hematopoietic and lymphoid tissue — the empirical seed from which nitrogen-mustard chemotherapy would later grow.',
         source: {
           externalId: 'src:krumbhaar-jmedres-1919',
-          name: 'Krumbhaar EB, Krumbhaar HD. The Blood and Bone Marrow in Yellow Cross Gas (Mustard Gas) Poisoning: Changes Produced in the Bone Marrow of Fatal Cases. J Med Res. 1919;40(3):497–508.',
+          name: 'Krumbhaar EB, Krumbhaar HD. The Blood and Bone Marrow in Yellow Cross Gas (Mustard Gas) Poisoning: Changes Produced in the Bone Marrow of Fatal Cases. J Med Res. 1919;40(3):497--508.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2104437/',
           publishedAt: '1919-09-01',
           methodologyType: 'primary',
@@ -27787,7 +27787,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The selective lympho- and myelotoxicity Krumbhaar documented became the accepted mechanistic rationale for using nitrogen mustard against lymphoma, validated when Goodman, Gilman, and colleagues published the clinical chemotherapy results in 1946. The observation that alkylating agents preferentially injure dividing hematopoietic tissue passed from an isolated wartime toxicology report into settled pharmacological doctrine.',
         source: {
           externalId: 'src:gilman-goodman-nitrogen-mustard-1946',
-          name: 'Goodman LS, Wintrobe MM, Dameshek W, et al. Nitrogen mustard therapy. JAMA. 1946;132(3):126–132.',
+          name: 'Goodman LS, Wintrobe MM, Dameshek W, et al. Nitrogen mustard therapy. JAMA. 1946;132(3):126--132.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/20997191/',
           publishedAt: '1946-09-21',
           methodologyType: 'primary',
@@ -27814,7 +27814,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After first administering radiophosphorus to a 28-year-old chronic-leukemia patient on Christmas Eve 1936 and treating polycythemia vera patients from 1937 at Berkeley\'s Donner Laboratory, Lawrence published the consolidated method in Radiology in 1940. This formally recorded the claim that a cyclotron-made radioisotope, given systemically, could control myeloproliferative disease — the founding therapeutic demonstration of nuclear medicine.',
         source: {
           externalId: 'src:lawrence-radiology-1940',
-          name: 'Lawrence JH. Nuclear Physics and Therapy: Preliminary Report on a New Method for the Treatment of Leukemia and Polycythemia. Radiology. 1940;35(1):51–60.',
+          name: 'Lawrence JH. Nuclear Physics and Therapy: Preliminary Report on a New Method for the Treatment of Leukemia and Polycythemia. Radiology. 1940;35(1):51--60.',
           url: 'https://pubs.rsna.org/doi/10.1148/35.1.51',
           publishedAt: '1940-07-01',
           methodologyType: 'primary',
@@ -27856,7 +27856,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Haddow, Watkinson, Paterson, and Koller reported that synthetic oestrogens (stilboestrol and triphenylethylene derivatives) given at high dose produced measurable regression of advanced malignant disease, with about one in three breast-cancer patients responding when treated well after menopause. It was the first demonstration that an administered chemical compound could induce objective remission of a human cancer.',
         source: {
           externalId: 'src:haddow-bmj-1944',
-          name: 'Haddow A, Watkinson JM, Paterson E, Koller PC. Influence of Synthetic Oestrogens upon Advanced Malignant Disease. Br Med J. 1944;2(4368):393–398.',
+          name: 'Haddow A, Watkinson JM, Paterson E, Koller PC. Influence of Synthetic Oestrogens upon Advanced Malignant Disease. Br Med J. 1944;2(4368):393--398.',
           url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2286289/',
           publishedAt: '1944-09-23',
           methodologyType: 'primary',
@@ -27871,7 +27871,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'High-dose oestrogen therapy became an accepted endocrine treatment for postmenopausal advanced breast cancer through the 1950s and 1960s and remained a recognized standard until the antiestrogen tamoxifen later supplanted it. Haddow\'s finding that hormones could be used as cancer drugs was absorbed into the foundations of clinical endocrine oncology.',
         source: {
           externalId: 'src:jordan-haddow-historical-review',
-          name: 'Jordan VC. The new biology of estrogen-induced apoptosis applied to treat and prevent breast cancer (historical account of Haddow 1944). Endocr Relat Cancer. 2014;21(6):R287–R299.',
+          name: 'Jordan VC. The new biology of estrogen-induced apoptosis applied to treat and prevent breast cancer (historical account of Haddow 1944). Endocr Relat Cancer. 2014;21(6):R287--R299.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/25339261/',
           publishedAt: '2014-12-01',
           methodologyType: 'derivative',
@@ -27898,7 +27898,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Seidlin (Montefiore Hospital) with physicists Marinelli and Oshry documented a patient whose functioning thyroid-cancer metastases avidly took up radioiodine, allowing targeted internal radiation and dramatic clinical improvement. It was the first report that a systemically administered radioisotope could selectively treat metastatic solid-tumor cancer, launching radioiodine theranostics for thyroid carcinoma.',
         source: {
           externalId: 'src:seidlin-jama-1946',
-          name: 'Seidlin SM, Marinelli LD, Oshry E. Radioactive Iodine Therapy: Effect on Functioning Metastases of Adenocarcinoma of the Thyroid. JAMA. 1946;132(14):838–847.',
+          name: 'Seidlin SM, Marinelli LD, Oshry E. Radioactive Iodine Therapy: Effect on Functioning Metastases of Adenocarcinoma of the Thyroid. JAMA. 1946;132(14):838--847.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/2118413/',
           publishedAt: '1946-12-07',
           methodologyType: 'primary',
@@ -27923,7 +27923,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOLOGY & INTERVENTIONAL CARDIOLOGY (1970–1996)
+  // CARDIOLOGY & INTERVENTIONAL CARDIOLOGY (1970--1996)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Swan-Ganz balloon-flotation catheter — Swan et al. NEJM 1970 ─────────────
@@ -28068,7 +28068,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINE HISTORY ERA (1921–1931)
+  // ENDOCRINE HISTORY ERA (1921--1931)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Evans & Long pituitary growth hormone — 1921 ────────────────────────────
@@ -28089,7 +28089,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Evans and Long reported in the Anatomical Record that intact, growth-plateaued female rats given an aqueous saline emulsion of bovine anterior pituitary lobes gained significantly more body weight than littermate controls. This recorded the first positive experimental evidence that the anterior pituitary secretes a growth-promoting factor, the conceptual origin of growth hormone.',
         source: {
           externalId: 'src:evans-long-anterior-pituitary-growth-1921',
-          name: 'Evans HM, Long JA. The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrous cycles of the rat. Anat Rec. 1921;21:62–63.',
+          name: 'Evans HM, Long JA. The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrous cycles of the rat. Anat Rec. 1921;21:62--63.',
           url: 'https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2021.709936/full',
           publishedAt: '1921-01-01',
           methodologyType: 'derivative',
@@ -28128,10 +28128,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1925-02-01',
         datePrecision: 'MONTH',
-        reason: "Collip published 'The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium' (J Biol Chem 1925;63:395–438), showing that an acid extract of parathyroid tissue relieved post-parathyroidectomy tetany in dogs while raising blood calcium. This recorded in the expert literature the first effective parathyroid hormone preparation and resolved the long-standing question of whether the parathyroids were an endocrine organ regulating calcium.",
+        reason: "Collip published 'The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium' (J Biol Chem 1925;63:395--438), showing that an acid extract of parathyroid tissue relieved post-parathyroidectomy tetany in dogs while raising blood calcium. This recorded in the expert literature the first effective parathyroid hormone preparation and resolved the long-standing question of whether the parathyroids were an endocrine organ regulating calcium.",
         source: {
           externalId: 'src:collip-parathormone-jbc-1925',
-          name: 'Collip JB. The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium. J Biol Chem. 1925;63:395–438.',
+          name: 'Collip JB. The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium. J Biol Chem. 1925;63:395--438.',
           url: 'https://www.jbc.org/article/S0021-9258(18)85065-3/fulltext',
           publishedAt: '1925-02-01',
           methodologyType: 'primary',
@@ -28146,7 +28146,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "Across the following decades Collip's parathormone became the foundation of parathyroid endocrinology: PTH was purified, sequenced, and ultimately developed into recombinant teriparatide therapy, with calcium homeostasis textbook physiology. Potts's 2005 'Parathyroid hormone: past and present' review documents how Collip's 1925 extract is recognized as the origin of an established hormone, confirming the claim as settled in the expert community.",
         source: {
           externalId: 'src:potts-parathyroid-hormone-past-present-joe-2005',
-          name: 'Potts JT. Parathyroid hormone: past and present. J Endocrinol. 2005;187(3):311–325.',
+          name: 'Potts JT. Parathyroid hormone: past and present. J Endocrinol. 2005;187(3):311--325.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3683213/',
           publishedAt: '2005-12-01',
           methodologyType: 'derivative',
@@ -28170,10 +28170,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1930-03-21',
         datePrecision: 'DAY',
-        reason: "Swingle and Pfiffner published 'An Aqueous Extract of the Suprarenal Cortex Which Maintains the Life of Bilaterally Adrenalectomized Cats' (Science 1930;71(1832):321–322), showing that adrenalectomized cats given the cortical extract survived far longer than untreated controls. This recorded the first life-sustaining adrenocortical preparation and established that the cortex, not the medulla, secretes the hormone essential to survival.",
+        reason: "Swingle and Pfiffner published 'An Aqueous Extract of the Suprarenal Cortex Which Maintains the Life of Bilaterally Adrenalectomized Cats' (Science 1930;71(1832):321--322), showing that adrenalectomized cats given the cortical extract survived far longer than untreated controls. This recorded the first life-sustaining adrenocortical preparation and established that the cortex, not the medulla, secretes the hormone essential to survival.",
         source: {
           externalId: 'src:swingle-pfiffner-cortical-extract-science-1930',
-          name: 'Swingle WW, Pfiffner JJ. An Aqueous Extract of the Suprarenal Cortex Which Maintains the Life of Bilaterally Adrenalectomized Cats. Science. 1930;71(1832):321–322.',
+          name: 'Swingle WW, Pfiffner JJ. An Aqueous Extract of the Suprarenal Cortex Which Maintains the Life of Bilaterally Adrenalectomized Cats. Science. 1930;71(1832):321--322.',
           url: 'https://www.science.org/doi/10.1126/science.71.1832.321',
           publishedAt: '1930-03-21',
           methodologyType: 'primary',
@@ -28367,7 +28367,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // HRT SAFETY & BREAST CANCER ERA (2000–2009)
+  // HRT SAFETY & BREAST CANCER ERA (2000--2009)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── HABITS trial — HRT breast-cancer recurrence 2004 ────────────────────────
@@ -28415,7 +28415,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Ravdin — HRT breast-cancer incidence decline 2007 ───────────────────────
   {
     externalId: 'trajectory:ravdin-breast-cancer-incidence-decline-hrt-2007',
-    text: 'The sharp 6.7% drop in US breast-cancer incidence in 2003 was caused by the post-2002 collapse in hormone-replacement-therapy use following the Women\'s Health Initiative, as argued by Ravdin and colleagues in the New England Journal of Medicine on 19 April 2007 — population-level confirmation of the HRT–breast-cancer causal link.',
+    text: 'The sharp 6.7% drop in US breast-cancer incidence in 2003 was caused by the post-2002 collapse in hormone-replacement-therapy use following the Women\'s Health Initiative, as argued by Ravdin and colleagues in the New England Journal of Medicine on 19 April 2007 — population-level confirmation of the HRT--breast-cancer causal link.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2007-04-19',
     claimEmergedPrecision: 'DAY',
@@ -28523,7 +28523,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2009-02-01',
         datePrecision: 'MONTH',
-        reason: 'The LIBERATE non-inferiority trial of 3,098 breast-cancer survivors with vasomotor symptoms found cancer recurrence in 15.2% of tibolone-treated women versus 10.7% on placebo (hazard ratio 1.40; 95% CI 1.14–1.70; p=0.001), prompting early termination. The result contradicted the working assumption that tibolone\'s tissue-selective profile made it a safe HRT alternative for survivors, reversing that premise in the expert literature alongside the earlier HABITS reversal for conventional HRT.',
+        reason: 'The LIBERATE non-inferiority trial of 3,098 breast-cancer survivors with vasomotor symptoms found cancer recurrence in 15.2% of tibolone-treated women versus 10.7% on placebo (hazard ratio 1.40; 95% CI 1.14--1.70; p=0.001), prompting early termination. The result contradicted the working assumption that tibolone\'s tissue-selective profile made it a safe HRT alternative for survivors, reversing that premise in the expert literature alongside the earlier HABITS reversal for conventional HRT.',
         source: {
           externalId: 'src:kenemans-liberate-lancet-oncol-2009',
           name: 'Kenemans P, Bundred NJ, Foidart JM, et al. Safety and efficacy of tibolone in breast-cancer patients with vasomotor symptoms: a double-blind, randomised, non-inferiority trial (LIBERATE). Lancet Oncol. 2009;10(2):135-146.',
@@ -28536,7 +28536,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CHILD SAFETY & ENVIRONMENTAL HEALTH ERA (2010–2025)
+  // CHILD SAFETY & ENVIRONMENTAL HEALTH ERA (2010--2025)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── CPSC drop-side crib ban 2010 ────────────────────────────────────────────
@@ -28596,7 +28596,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2023-10-28',
         datePrecision: 'DAY',
-        reason: 'North Carolina\'s routine childhood blood-lead screening identified four children with elevated blood lead levels in June–August 2023, and environmental investigation traced the exposure to WanaBana Apple Cinnamon Fruit Puree pouches testing at 1.9–3.0 ppm lead. The FDA issued a public health advisory on October 28, 2023, followed by a voluntary recall on October 30, recording a novel dietary lead exposure source in young children.',
+        reason: 'North Carolina\'s routine childhood blood-lead screening identified four children with elevated blood lead levels in June--August 2023, and environmental investigation traced the exposure to WanaBana Apple Cinnamon Fruit Puree pouches testing at 1.9--3.0 ppm lead. The FDA issued a public health advisory on October 28, 2023, followed by a voluntary recall on October 30, recording a novel dietary lead exposure source in young children.',
         source: {
           externalId: 'src:fda-cinnamon-applesauce-lead-investigation-2023',
           name: 'U.S. Food and Drug Administration. Investigation of Elevated Lead & Chromium Levels: Cinnamon Applesauce Pouches (November 2023).',
@@ -28614,7 +28614,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'On January 5, 2024 the FDA identified the contamination source as Ecuadorian cinnamon adulterated with lead chromate, and the CDC\'s MMWR report of July 18, 2024 documented the full outbreak, establishing causation, scale (~500 children nationwide), and the role of routine lead screening. The published surveillance settled the outbreak as a confirmed adulteration event.',
         source: {
           externalId: 'src:cdc-mmwr-applesauce-lead-nc-2024',
-          name: 'Centers for Disease Control and Prevention. Childhood Lead Exposure Linked to Apple Cinnamon Fruit Puree Pouches — North Carolina, June 2023–January 2024. MMWR Morb Mortal Wkly Rep. 2024;73(28):630–633.',
+          name: 'Centers for Disease Control and Prevention. Childhood Lead Exposure Linked to Apple Cinnamon Fruit Puree Pouches — North Carolina, June 2023--January 2024. MMWR Morb Mortal Wkly Rep. 2024;73(28):630--633.',
           url: 'https://www.cdc.gov/mmwr/volumes/73/wr/mm7328a2.htm',
           publishedAt: '2024-07-18',
           methodologyType: 'primary',
@@ -28666,7 +28666,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASE / FIRST-IN-CLASS ERT & TARGETED THERAPY ERA (2015–2022)
+  // RARE DISEASE / FIRST-IN-CLASS ERT & TARGETED THERAPY ERA (2015--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Sebelipase alfa (Kanuma) — first LAL deficiency ERT 2015 ─────────────────
@@ -28805,7 +28805,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL EVIDENCE ERA (1984–2006)
+  // SURGICAL EVIDENCE ERA (1984--2006)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Tonsillectomy RCT — Paradise 1984 ──────────────────────────────────────
@@ -28944,7 +28944,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // TARGETED ONCOLOGY ERA (1988–2009)
+  // TARGETED ONCOLOGY ERA (1988--2009)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ATRA differentiation therapy APL — Huang 1988 / Tallman 1997 ────────────
@@ -28962,7 +28962,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1988-08-01',
         datePrecision: 'MONTH',
-        reason: 'Huang, Ye, Chen and colleagues at Shanghai reported that 24 patients with acute promyelocytic leukemia treated with oral all-trans retinoic acid (45–100 mg/m²/day) all attained complete remission without bone-marrow hypoplasia. This recorded the radical claim that a malignancy could be controlled by forcing the leukemic cells to differentiate into mature granulocytes rather than by cytotoxic killing, founding differentiation therapy in oncology.',
+        reason: 'Huang, Ye, Chen and colleagues at Shanghai reported that 24 patients with acute promyelocytic leukemia treated with oral all-trans retinoic acid (45--100 mg/m²/day) all attained complete remission without bone-marrow hypoplasia. This recorded the radical claim that a malignancy could be controlled by forcing the leukemic cells to differentiate into mature granulocytes rather than by cytotoxic killing, founding differentiation therapy in oncology.',
         source: {
           externalId: 'src:huang-atra-apl-blood-1988',
           name: 'Huang ME, Ye YC, Chen SR, et al. Use of all-trans retinoic acid in the treatment of acute promyelocytic leukemia. Blood. 1988;72(2):567-572.',
@@ -29076,7 +29076,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Oxaliplatin FOLFOX MOSAIC adjuvant colon — André 2004 / 2009 ────────────
   {
     externalId: 'trajectory:oxaliplatin-folfox-mosaic-adjuvant-colon-2004',
-    text: 'Adding oxaliplatin to fluorouracil–leucovorin (the FOLFOX regimen) improves disease-free and overall survival as adjuvant treatment for resected stage III colon cancer, as established by the MOSAIC trial first reported in the New England Journal of Medicine on 3 June 2004 and confirmed by six-year overall-survival data in 2009.',
+    text: 'Adding oxaliplatin to fluorouracil--leucovorin (the FOLFOX regimen) improves disease-free and overall survival as adjuvant treatment for resected stage III colon cancer, as established by the MOSAIC trial first reported in the New England Journal of Medicine on 3 June 2004 and confirmed by six-year overall-survival data in 2009.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2004-06-03',
     claimEmergedPrecision: 'DAY',
@@ -29088,7 +29088,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2004-06-03',
         datePrecision: 'DAY',
-        reason: 'André and the MOSAIC investigators reported in the New England Journal of Medicine that adding oxaliplatin to infusional fluorouracil–leucovorin raised three-year disease-free survival from 72.9% to 78.2% in resected stage II/III colon cancer. This recorded the claim that oxaliplatin-based combination chemotherapy should replace fluorouracil–leucovorin alone as adjuvant therapy, on a disease-free-survival surrogate endpoint.',
+        reason: 'André and the MOSAIC investigators reported in the New England Journal of Medicine that adding oxaliplatin to infusional fluorouracil--leucovorin raised three-year disease-free survival from 72.9% to 78.2% in resected stage II/III colon cancer. This recorded the claim that oxaliplatin-based combination chemotherapy should replace fluorouracil--leucovorin alone as adjuvant therapy, on a disease-free-survival surrogate endpoint.',
         source: {
           externalId: 'src:andre-mosaic-folfox-nejm-2004',
           name: 'André T, Boni C, Mounedji-Boudiaf L, et al. Oxaliplatin, fluorouracil, and leucovorin as adjuvant treatment for colon cancer. N Engl J Med. 2004;350(23):2343-2351.',
@@ -29158,7 +29158,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOLOGY & PHARMACOLOGY ERA (1975–2017)
+  // CARDIOLOGY & PHARMACOLOGY ERA (1975--2017)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Aspirin primary prevention reversal — PHS 1989 → ASPREE 2018 → ACC/AHA 2019 ─
@@ -29206,7 +29206,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2019-03-17',
         datePrecision: 'DAY',
-        reason: 'The 2019 ACC/AHA Guideline on the Primary Prevention of Cardiovascular Disease (Arnett et al.) downgraded aspirin, stating it should be used infrequently for primary prevention because of lack of net benefit (Class IIb only for select 40–70-year-olds at higher risk) and recommending against routine use in adults over 70 (Class III: Harm). The reversal of decades of guideline endorsement formally retired routine primary-prevention aspirin from standard cardiovascular practice.',
+        reason: 'The 2019 ACC/AHA Guideline on the Primary Prevention of Cardiovascular Disease (Arnett et al.) downgraded aspirin, stating it should be used infrequently for primary prevention because of lack of net benefit (Class IIb only for select 40--70-year-olds at higher risk) and recommending against routine use in adults over 70 (Class III: Harm). The reversal of decades of guideline endorsement formally retired routine primary-prevention aspirin from standard cardiovascular practice.',
         source: {
           externalId: 'src:acc-aha-primary-prevention-guideline-2019',
           name: 'Arnett DK, Blumenthal RS, Albert MA, et al. 2019 ACC/AHA Guideline on the Primary Prevention of Cardiovascular Disease. Circulation. 2019;140(11):e596-e646 (published online 17 Mar 2019).',
@@ -29303,7 +29303,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NEUROSCIENCE & PRION BIOLOGY (1966–1997)
+  // NEUROSCIENCE & PRION BIOLOGY (1966--1997)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Kuru transmission to chimpanzees — Gajdusek 1966 ───────────────────────
@@ -29420,7 +29420,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1976-06-24',
         datePrecision: 'DAY',
-        reason: 'Within two months, Seeman, Lee, Chau-Wong & Wong independently reported in Nature (\'Antipsychotic drug doses and neuroleptic/dopamine receptors\') the same dose–receptor-affinity correlation, converging on the conclusion that antipsychotic action is mediated by dopamine-receptor (D2) blockade. The rapid independent replication settled the dopamine-receptor mechanism as the unifying account of antipsychotic potency.',
+        reason: 'Within two months, Seeman, Lee, Chau-Wong & Wong independently reported in Nature (\'Antipsychotic drug doses and neuroleptic/dopamine receptors\') the same dose--receptor-affinity correlation, converging on the conclusion that antipsychotic action is mediated by dopamine-receptor (D2) blockade. The rapid independent replication settled the dopamine-receptor mechanism as the unifying account of antipsychotic potency.',
         source: {
           externalId: 'src:seeman-neuroleptic-dopamine-receptors-nature-1976',
           name: 'Seeman P, Lee T, Chau-Wong M, Wong K. Antipsychotic drug doses and neuroleptic/dopamine receptors. Nature. 1976 Jun 24;261(5562):717-9.',
@@ -29492,7 +29492,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Rudman et al. published \'Effects of human growth hormone in men over 60 years old\' in NEJM, reporting that biosynthetic GH given to 12 healthy older men for six months produced an ~8.8% gain in lean body mass and ~14.4% loss of fat mass versus untreated controls. The paper recorded in the expert literature the claim that age-related body-composition decline reflects a treatable growth-hormone deficiency, and it became the scientific touchstone cited by a rapidly growing anti-aging GH industry.',
         source: {
           externalId: 'src:rudman-gh-elderly-nejm-1990',
-          name: 'Rudman D, Feller AG, Nagraj HS, et al. Effects of human growth hormone in men over 60 years old. N Engl J Med. 1990;323(1):1–6. PMID 2355952.',
+          name: 'Rudman D, Feller AG, Nagraj HS, et al. Effects of human growth hormone in men over 60 years old. N Engl J Med. 1990;323(1):1--6. PMID 2355952.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/2355952/',
           publishedAt: '1990-07-05',
           methodologyType: 'primary',
@@ -29507,7 +29507,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Liu and colleagues published \'Systematic review: the safety and efficacy of growth hormone in the healthy elderly\' in Annals of Internal Medicine, pooling 31 controlled trials. They found only modest body-composition changes accompanied by significantly increased rates of soft-tissue edema, arthralgia, carpal tunnel syndrome, gynecomastia, and new-onset diabetes, concluding that \'GH cannot be recommended as an antiaging therapy.\' The synthesis directly contested the inference drawn from Rudman\'s 1990 study and aligned with the position that GH is not licensed and is illegal to distribute for anti-aging use in the U.S.',
         source: {
           externalId: 'src:liu-gh-healthy-elderly-aim-2007',
-          name: 'Liu H, Bravata DM, Olkin I, et al. Systematic review: the safety and efficacy of growth hormone in the healthy elderly. Ann Intern Med. 2007;146(2):104–115. PMID 17227934.',
+          name: 'Liu H, Bravata DM, Olkin I, et al. Systematic review: the safety and efficacy of growth hormone in the healthy elderly. Ann Intern Med. 2007;146(2):104--115. PMID 17227934.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/17227934/',
           publishedAt: '2007-01-16',
           methodologyType: 'derivative',
@@ -29534,7 +29534,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Bunevicius, Kazanavicius, Zalinkevicius, and Prange published \'Effects of thyroxine as compared with thyroxine plus triiodothyronine in patients with hypothyroidism\' in NEJM, a crossover trial in which substituting 12.5 µg T3 for 50 µg of a patient\'s T4 dose improved scores on 6 of 17 cognitive/mood tests and several mood scales. This recorded in the expert literature the claim that combination T4+T3 therapy was superior to levothyroxine monotherapy, energizing patient demand and clinical interest in adding liothyronine.',
         source: {
           externalId: 'src:bunevicius-t4-t3-nejm-1999',
-          name: 'Bunevicius R, Kazanavicius G, Zalinkevicius R, Prange AJ Jr. Effects of thyroxine as compared with thyroxine plus triiodothyronine in patients with hypothyroidism. N Engl J Med. 1999;340(6):424–429. PMID 9971866.',
+          name: 'Bunevicius R, Kazanavicius G, Zalinkevicius R, Prange AJ Jr. Effects of thyroxine as compared with thyroxine plus triiodothyronine in patients with hypothyroidism. N Engl J Med. 1999;340(6):424--429. PMID 9971866.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/9971866/',
           publishedAt: '1999-02-11',
           methodologyType: 'primary',
@@ -29549,7 +29549,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Clyde, Harari, Getka, and Shakir published a randomized controlled trial, \'Combined levothyroxine plus liothyronine compared with levothyroxine alone in primary hypothyroidism,\' in JAMA, finding no advantage for combination therapy: quality-of-life change was statistically similar between groups, 12 of 13 neuropsychological tests showed no difference, and body weight, lipids, and symptoms were unchanged. This and subsequent failed replications contested the 1999 claim, and combination T4+T3 has not become recommended standard therapy.',
         source: {
           externalId: 'src:clyde-t4-t3-jama-2003',
-          name: 'Clyde PW, Harari AE, Getka EJ, Shakir KMM. Combined levothyroxine plus liothyronine compared with levothyroxine alone in primary hypothyroidism: a randomized controlled trial. JAMA. 2003;290(22):2952–2958. PMID 14665656.',
+          name: 'Clyde PW, Harari AE, Getka EJ, Shakir KMM. Combined levothyroxine plus liothyronine compared with levothyroxine alone in primary hypothyroidism: a randomized controlled trial. JAMA. 2003;290(22):2952--2958. PMID 14665656.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/14665656/',
           publishedAt: '2003-12-10',
           methodologyType: 'primary',
@@ -29576,7 +29576,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Sjöström and colleagues published a two-year multicentre randomized placebo-controlled trial in The Lancet showing that orlistat plus a calorie-restricted diet produced greater weight loss than placebo (10.2% vs 6.1% in year one) and reduced weight regain in year two. The trial recorded in the expert literature the claim that inhibiting intestinal lipase is a viable, non-CNS mechanism for treating obesity, distinguishing orlistat from the appetite-suppressant drugs then dominating the field.',
         source: {
           externalId: 'src:sjostrom-orlistat-lancet-1998',
-          name: 'Sjöström L, Rissanen A, Andersen T, et al. Randomised placebo-controlled trial of orlistat for weight loss and prevention of weight regain in obese patients. Lancet. 1998;352(9123):167–172. PMID 9683204.',
+          name: 'Sjöström L, Rissanen A, Andersen T, et al. Randomised placebo-controlled trial of orlistat for weight loss and prevention of weight regain in obese patients. Lancet. 1998;352(9123):167--172. PMID 9683204.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/9683204/',
           publishedAt: '1998-07-18',
           methodologyType: 'primary',
@@ -29618,7 +29618,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Ratner and colleagues published a 52-week double-blind randomized controlled trial in Diabetic Medicine in which adding mealtime pramlintide to insulin in 651 patients with type 1 diabetes significantly lowered HbA1c (−0.29% to −0.34% vs −0.04% with placebo) without weight gain. The trial recorded in the expert literature the claim that replacing the co-secreted hormone amylin — which slows gastric emptying and suppresses glucagon — adds glycemic and weight benefit beyond insulin alone, validating amylin as a druggable target.',
         source: {
           externalId: 'src:ratner-pramlintide-diabetmed-2004',
-          name: 'Ratner RE, Dickey R, Fineman M, et al. Amylin replacement with pramlintide as an adjunct to insulin therapy improves long-term glycaemic and weight control in Type 1 diabetes mellitus: a 1-year, randomized controlled trial. Diabet Med. 2004;21(11):1204–1212. PMID 15498087.',
+          name: 'Ratner RE, Dickey R, Fineman M, et al. Amylin replacement with pramlintide as an adjunct to insulin therapy improves long-term glycaemic and weight control in Type 1 diabetes mellitus: a 1-year, randomized controlled trial. Diabet Med. 2004;21(11):1204--1212. PMID 15498087.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/15498087/',
           publishedAt: '2004-11-01',
           methodologyType: 'primary',
@@ -29660,7 +29660,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Following the rosiglitazone cardiovascular-safety controversy, the FDA announced in the Federal Register (73 FR 77724) the availability of its guidance \'Diabetes Mellitus — Evaluating Cardiovascular Risk in New Antidiabetic Therapies to Treat Type 2 Diabetes,\' recommending that sponsors rule out unacceptable cardiovascular risk, in practice mandating large dedicated cardiovascular outcomes trials (CVOTs). The Level 1 guidance reset the evidentiary standard for the entire drug class away from surrogate glucose endpoints toward demonstrated cardiovascular safety, shaping more than a dozen subsequent CVOTs for DPP-4 inhibitors, GLP-1 agonists, and SGLT2 inhibitors.',
         source: {
           externalId: 'src:fda-cv-guidance-fr-2008',
-          name: 'Food and Drug Administration. Guidance for Industry on Diabetes Mellitus—Evaluating Cardiovascular Risk in New Antidiabetic Therapies to Treat Type 2 Diabetes; Availability. Federal Register. 2008;73(245):77724–77725.',
+          name: 'Food and Drug Administration. Guidance for Industry on Diabetes Mellitus—Evaluating Cardiovascular Risk in New Antidiabetic Therapies to Treat Type 2 Diabetes; Availability. Federal Register. 2008;73(245):77724--77725.',
           url: 'https://www.govinfo.gov/content/pkg/FR-2008-12-19/html/E8-30086.htm',
           publishedAt: '2008-12-19',
           methodologyType: 'primary',
@@ -29670,7 +29670,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS ERA (2012–2022)
+  // OPIOID CRISIS ERA (2012--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Opana ER abuse-deterrent reformulation withdrawal 2017 ──────────────────
@@ -29746,7 +29746,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH / REPRODUCTIVE ENDOCRINOLOGY (1928–2000)
+  // WOMEN'S HEALTH / REPRODUCTIVE ENDOCRINOLOGY (1928--2000)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Frank premenstrual tension 1931 ─────────────────────────────────────────
@@ -29936,7 +29936,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1966-09-15',
         datePrecision: 'DAY',
-        reason: 'Meyer, Parkman and Panos reported in the New England Journal of Medicine the production of an experimental live attenuated rubella vaccine (HPV-77) and its first clinical trial in children, demonstrating seroconversion with attenuated reactogenicity. Published in the aftermath of the 1964–65 U.S. rubella epidemic that caused roughly 20,000 cases of congenital rubella syndrome, the report recorded the claim that maternal-fetal rubella damage could be prevented by vaccinating children.',
+        reason: 'Meyer, Parkman and Panos reported in the New England Journal of Medicine the production of an experimental live attenuated rubella vaccine (HPV-77) and its first clinical trial in children, demonstrating seroconversion with attenuated reactogenicity. Published in the aftermath of the 1964--65 U.S. rubella epidemic that caused roughly 20,000 cases of congenital rubella syndrome, the report recorded the claim that maternal-fetal rubella damage could be prevented by vaccinating children.',
         source: {
           externalId: 'src:meyer-parkman-attenuated-rubella-vaccine-nejm-1966',
           name: 'Meyer HM Jr, Parkman PD, Panos TC. Attenuated rubella virus. II. Production of an experimental live-virus vaccine and clinical trial. N Engl J Med. 1966;275(11):575-580.',
@@ -30156,7 +30156,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PROCEDURES REVERSED BY RANDOMIZED TRIALS (1988–2017)
+  // PROCEDURES REVERSED BY RANDOMIZED TRIALS (1988--2017)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── High-dose chemo + autologous BMT for breast cancer — reversed 2000 ──────
@@ -30204,7 +30204,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Carotid endarterectomy for symptomatic stenosis — NASCET 1991 ───────────
   {
     externalId: 'trajectory:carotid-endarterectomy-symptomatic-stenosis-nascet-1991',
-    text: 'The North American Symptomatic Carotid Endarterectomy Trial (NASCET) established that carotid endarterectomy added to medical therapy substantially reduces the risk of ipsilateral stroke in patients with symptomatic high-grade (70–99%) internal-carotid stenosis, first announced by an NINDS clinical alert in February 1991 after the trial was stopped early for clear benefit.',
+    text: 'The North American Symptomatic Carotid Endarterectomy Trial (NASCET) established that carotid endarterectomy added to medical therapy substantially reduces the risk of ipsilateral stroke in patients with symptomatic high-grade (70--99%) internal-carotid stenosis, first announced by an NINDS clinical alert in February 1991 after the trial was stopped early for clear benefit.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1991-02-01',
     claimEmergedPrecision: 'MONTH',
@@ -30216,7 +30216,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1991-02-01',
         datePrecision: 'MONTH',
-        reason: 'The Stroke and Trauma Division of the National Institute of Neurological Disorders and Stroke (NINDS) issued an unusual clinical alert announcing that NASCET had been halted early for the high-grade-stenosis stratum because surgery was clearly superior, and urging clinicians to consider carotid endarterectomy for symptomatic patients with 70–99% stenosis. The federal alert recorded the efficacy claim ahead of full publication, an institutional action reflecting the strength and urgency of the interim result.',
+        reason: 'The Stroke and Trauma Division of the National Institute of Neurological Disorders and Stroke (NINDS) issued an unusual clinical alert announcing that NASCET had been halted early for the high-grade-stenosis stratum because surgery was clearly superior, and urging clinicians to consider carotid endarterectomy for symptomatic patients with 70--99% stenosis. The federal alert recorded the efficacy claim ahead of full publication, an institutional action reflecting the strength and urgency of the interim result.',
         source: {
           externalId: 'src:ninds-nascet-clinical-alert-1991',
           name: 'NINDS Stroke and Trauma Division. Clinical alert: benefit of carotid endarterectomy for patients with high-grade stenosis of the internal carotid artery. North American Symptomatic Carotid Endarterectomy Trial (NASCET) investigators. Stroke. 1991;22(6):816-817.',
@@ -30231,7 +30231,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1991-08-15',
         datePrecision: 'DAY',
-        reason: 'The full NASCET results in the New England Journal of Medicine reported that endarterectomy reduced the two-year risk of any ipsilateral stroke by an absolute 17 percentage points (from 26% to 9%) in patients with 70–99% symptomatic stenosis. The peer-reviewed, multicenter randomized evidence settled carotid endarterectomy as the standard of care for symptomatic high-grade stenosis and was rapidly codified into AHA and neurology practice guidelines.',
+        reason: 'The full NASCET results in the New England Journal of Medicine reported that endarterectomy reduced the two-year risk of any ipsilateral stroke by an absolute 17 percentage points (from 26% to 9%) in patients with 70--99% symptomatic stenosis. The peer-reviewed, multicenter randomized evidence settled carotid endarterectomy as the standard of care for symptomatic high-grade stenosis and was rapidly codified into AHA and neurology practice guidelines.',
         source: {
           externalId: 'src:nascet-beneficial-effect-nejm-1991',
           name: 'North American Symptomatic Carotid Endarterectomy Trial Collaborators. Beneficial effect of carotid endarterectomy in symptomatic patients with high-grade carotid stenosis. N Engl J Med. 1991;325(7):445-453.',
@@ -30355,13 +30355,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOVASCULAR PHARMACOLOGY — BETA-BLOCKERS, STATINS & LIPID CLASSIFICATION (1967–1987)
+  // CARDIOVASCULAR PHARMACOLOGY — BETA-BLOCKERS, STATINS & LIPID CLASSIFICATION (1967--1987)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Fredrickson-Levy-Lees hyperlipoproteinemia classification 1967 ─────────
   {
     externalId: 'trajectory:fredrickson-hyperlipoproteinemia-classification-1967',
-    text: 'Donald Fredrickson, Robert Levy, and Robert Lees published a lipoprotein-based phenotypic classification of hyperlipoproteinemia (types I–V) in the New England Journal of Medicine beginning 5 January 1967, which the World Health Organization adopted as an international standard in 1970.',
+    text: 'Donald Fredrickson, Robert Levy, and Robert Lees published a lipoprotein-based phenotypic classification of hyperlipoproteinemia (types I--V) in the New England Journal of Medicine beginning 5 January 1967, which the World Health Organization adopted as an international standard in 1970.',
     claimType: 'HYBRID',
     claimEmergedAt: '1967-01-05',
     claimEmergedPrecision: 'DAY',
@@ -30373,7 +30373,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1967-01-05',
         datePrecision: 'DAY',
-        reason: 'Fredrickson, Levy, and Lees published a five-part NEJM review introducing a systematic phenotyping of lipid disorders by lipoprotein pattern (electrophoresis plus cholesterol/triglyceride measurement), dividing hyperlipidemias into types I–V. This reframed diffuse \'high blood fat\' descriptions into a recorded diagnostic framework linking lipoprotein abnormalities to clinical disease.',
+        reason: 'Fredrickson, Levy, and Lees published a five-part NEJM review introducing a systematic phenotyping of lipid disorders by lipoprotein pattern (electrophoresis plus cholesterol/triglyceride measurement), dividing hyperlipidemias into types I--V. This reframed diffuse \'high blood fat\' descriptions into a recorded diagnostic framework linking lipoprotein abnormalities to clinical disease.',
         source: {
           externalId: 'src:fredrickson-fat-transport-nejm-1967',
           name: 'Fredrickson DS, Levy RI, Lees RS. Fat transport in lipoproteins—an integrated approach to mechanisms and disorders. N Engl J Med. 1967 Jan 5;276(1):34-42 (contd.).',
@@ -30443,7 +30443,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ANTIMICROBIAL RESISTANCE ERA (1997–2011)
+  // ANTIMICROBIAL RESISTANCE ERA (1997--2011)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── XDR-TB emergence — Tugela Ferry 2006 ────────────────────────────────────
@@ -30461,7 +30461,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2006-03-24',
         datePrecision: 'DAY',
-        reason: 'A CDC/WHO survey of an international network of supranational TB reference laboratories (2000–2004 isolates) coined the term \'XDR-TB\' and quantified its global distribution. The MMWR report formally placed on the institutional record that strains resistant to first-line drugs plus the main second-line classes had emerged on every populated continent, leaving few or no effective treatment options.',
+        reason: 'A CDC/WHO survey of an international network of supranational TB reference laboratories (2000--2004 isolates) coined the term \'XDR-TB\' and quantified its global distribution. The MMWR report formally placed on the institutional record that strains resistant to first-line drugs plus the main second-line classes had emerged on every populated continent, leaving few or no effective treatment options.',
         source: {
           externalId: 'src:cdc-mmwr-xdr-tb-worldwide-2006',
           name: 'CDC. Emergence of Mycobacterium tuberculosis with extensive resistance to second-line drugs—worldwide, 2000-2004. MMWR Morb Mortal Wkly Rep. 2006;55(11):301-305.',
@@ -30531,7 +30531,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN TARGETED THERAPIES & REGULATORY (2013–2023)
+  // MODERN TARGETED THERAPIES & REGULATORY (2013--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Erenumab (Aimovig) — first CGRP antibody approved for migraine prevention 2018 ──
@@ -30576,7 +30576,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Edaravone (Radicava) — first new ALS drug in 22 years, EU rejection 2017–2019 ──
+  // ── Edaravone (Radicava) — first new ALS drug in 22 years, EU rejection 2017--2019 ──
   {
     externalId: 'trajectory:edaravone-radicava-als-approval-2017',
     text: 'Edaravone (Radicava), a free-radical scavenger, was approved by the FDA on 5 May 2017 as the first new treatment for amyotrophic lateral sclerosis in 22 years on the basis of a trial in a narrowly defined ALS subpopulation, but European regulators declined to accept the same evidence.',
@@ -30618,7 +30618,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Solanezumab — anti-amyloid failure across symptomatic and prevention trials 2018–2023 ──
+  // ── Solanezumab — anti-amyloid failure across symptomatic and prevention trials 2018--2023 ──
   {
     externalId: 'trajectory:solanezumab-anti-amyloid-failure-abandoned-2023',
     text: "Solanezumab, Eli Lilly's anti-amyloid-β monoclonal antibody and one of the longest-pursued Alzheimer's candidates, failed to slow cognitive decline in the EXPEDITION3 (2018) and A4 prevention (2023) phase 3 trials, and Lilly discontinued its development on 8 March 2023.",
@@ -30703,7 +30703,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY FOUNDATIONS (1895–1958)
+  // ENDOCRINOLOGY FOUNDATIONS (1895--1958)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Secretin and the first hormone — Bayliss & Starling 1902 ───────────────
@@ -30917,7 +30917,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PAIN NEUROSCIENCE & OPIOID PHARMACOLOGY (1965–1990)
+  // PAIN NEUROSCIENCE & OPIOID PHARMACOLOGY (1965--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Gate control theory of pain — Melzack & Wall 1965 ──────────────────────
@@ -30935,7 +30935,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1965-11-19',
         datePrecision: 'DAY',
-        reason: 'Melzack and Wall published \'Pain mechanisms: a new theory\' in Science (150:971–979), replacing the prevailing specificity/intensity models with a neural-circuit account in which non-painful afferent activity could \'close the gate\' on pain transmission. It entered the literature as the first physiological framework explaining how psychological, sensory, and cognitive factors could all modulate a single pain signal.',
+        reason: 'Melzack and Wall published \'Pain mechanisms: a new theory\' in Science (150:971--979), replacing the prevailing specificity/intensity models with a neural-circuit account in which non-painful afferent activity could \'close the gate\' on pain transmission. It entered the literature as the first physiological framework explaining how psychological, sensory, and cognitive factors could all modulate a single pain signal.',
         source: {
           externalId: 'src:melzack-wall-gate-control-science-1965',
           name: 'Melzack R, Wall PD. Pain mechanisms: a new theory. Science. 1965 Nov 19;150(3699):971-979.',
@@ -31047,7 +31047,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH / PHARMACOVIGILANCE ERA (1995–2014)
+  // WOMEN'S HEALTH / PHARMACOVIGILANCE ERA (1995--2014)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── HERS: HRT secondary prevention failure — 1998 ──────────────────────────
@@ -31233,7 +31233,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2005-12-08',
         datePrecision: 'DAY',
-        reason: 'The FDA issued a Public Health Advisory and directed the manufacturer to change paroxetine\'s pregnancy classification from Category C to Category D, citing two preliminary epidemiological studies showing an approximately 1.5–2-fold increased risk of cardiac defects (mainly septal defects) with first-trimester exposure. This regulatory action recorded the paroxetine teratogenicity signal on the official record and prompted prescribing changes for women of childbearing age.',
+        reason: 'The FDA issued a Public Health Advisory and directed the manufacturer to change paroxetine\'s pregnancy classification from Category C to Category D, citing two preliminary epidemiological studies showing an approximately 1.5--2-fold increased risk of cardiac defects (mainly septal defects) with first-trimester exposure. This regulatory action recorded the paroxetine teratogenicity signal on the official record and prompted prescribing changes for women of childbearing age.',
         source: {
           externalId: 'src:fda-paroxetine-pregnancy-advisory-2005',
           name: 'U.S. Food and Drug Administration. Public Health Advisory: Paroxetine. 8 December 2005.',
@@ -31261,7 +31261,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PEDIATRIC SAFETY & COVID ERA (2019–2026)
+  // PEDIATRIC SAFETY & COVID ERA (2019--2026)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── MIS-C — CDC HAN-432 + Feldstein NEJM 2020 ──────────────────────────────
@@ -31432,7 +31432,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── NEC / cow-milk formula litigation — Enfamil verdict & reversal 2024–2026
+  // ── NEC / cow-milk formula litigation — Enfamil verdict & reversal 2024--2026
   {
     externalId: 'trajectory:nec-cow-milk-formula-litigation-enfamil-verdict-2024',
     text: 'A St. Clair County, Illinois jury found Mead Johnson liable on 14 March 2024 for failing to warn that its cow\'s-milk-based Enfamil preterm formula caused necrotizing enterocolitis (NEC) in a premature infant, awarding $60 million — a causal claim that U.S. federal agencies (FDA, CDC, NIH) publicly disputed on 2 October 2024 and that an Illinois appellate court vacated on 12 June 2026.',
@@ -31490,7 +31490,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // GENE THERAPY & RARE DISEASE ERA (2019–2023)
+  // GENE THERAPY & RARE DISEASE ERA (2019--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Hemgenix — first hemophilia B gene therapy, FDA 2022 ────────────────────
@@ -31619,7 +31619,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Crizanlizumab (Adakveo) — sickle cell vaso-occlusive crises, 2017–2023 ──
+  // ── Crizanlizumab (Adakveo) — sickle cell vaso-occlusive crises, 2017--2023 ──
   {
     externalId: 'trajectory:crizanlizumab-adakveo-sickle-cell-vaso-occlusive-2019',
     text: 'Crizanlizumab (Adakveo, Novartis), a monoclonal antibody blocking P-selectin, reduces the frequency of vaso-occlusive pain crises in sickle cell disease — a claim first recorded in the phase 2 SUSTAIN trial, settled by the U.S. FDA\'s approval of 15 November 2019, and then contested after the confirmatory phase 3 STAND trial failed and European regulators moved to revoke its authorization in 2023.',
@@ -31677,7 +31677,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL REVERSAL & IATROGENIC HARM (1950–1990)
+  // SURGICAL REVERSAL & IATROGENIC HARM (1950--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── EC/IC bypass surgery — reversed by RCT 1985 ────────────────────────────
@@ -31776,7 +31776,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1950-10-01',
         datePrecision: 'MONTH',
-        reason: 'Duffy and Fitzgerald\'s report of 28 thyroid cancers in patients aged 4–18 noted that a substantial subset had received X-ray irradiation in infancy, often for supposed thymic enlargement. This was the first published evidence raising the possibility that medical irradiation in childhood causes thyroid cancer, recording a harm signal against a then-common pediatric procedure (irradiation of the enlarged thymus).',
+        reason: 'Duffy and Fitzgerald\'s report of 28 thyroid cancers in patients aged 4--18 noted that a substantial subset had received X-ray irradiation in infancy, often for supposed thymic enlargement. This was the first published evidence raising the possibility that medical irradiation in childhood causes thyroid cancer, recording a harm signal against a then-common pediatric procedure (irradiation of the enlarged thymus).',
         source: {
           externalId: 'src:duffy-fitzgerald-thyroid-cancer-children-jcem-1950',
           name: 'Duffy BJ Jr, Fitzgerald PJ. Cancer of the thyroid in children: a report of 28 cases. J Clin Endocrinol Metab. 1950;10(10):1296-1308.',
@@ -31804,7 +31804,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // TARGETED ONCOLOGY — ACCELERATED APPROVAL ERA (2000–2010)
+  // TARGETED ONCOLOGY — ACCELERATED APPROVAL ERA (2000--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Gemtuzumab ozogamicin (Mylotarg) — first ADC, accelerated approval then withdrawal ──
@@ -31976,7 +31976,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHIATRIC TREATMENTS & NEUROSCIENCE (1933–1982)
+  // PSYCHIATRIC TREATMENTS & NEUROSCIENCE (1933--1982)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Imipramine pharmacologically delineates panic disorder — Klein 1964 ───────
@@ -32064,7 +32064,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DIABETES & ENDOCRINE POST-MARKET SAFETY (1970–2017)
+  // DIABETES & ENDOCRINE POST-MARKET SAFETY (1970--2017)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── UGDP tolbutamide cardiovascular mortality — 1970 ──────────────────────────
@@ -32082,10 +32082,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1970-05-20',
         datePrecision: 'MONTH',
-        reason: 'The UGDP — the first large randomized controlled trial in type 2 diabetes — reported in its mortality results paper (Diabetes 1970;19[Suppl 2]:789–830) that patients on a fixed dose of tolbutamide had roughly 2.5 times the cardiovascular mortality of diet-treated controls, leading the investigators to halt the tolbutamide arm. This recorded in the expert literature the alarming claim that a widely used oral antidiabetic agent might increase cardiac death, overturning the prevailing assumption that lowering blood glucose with sulfonylureas was straightforwardly beneficial.',
+        reason: 'The UGDP — the first large randomized controlled trial in type 2 diabetes — reported in its mortality results paper (Diabetes 1970;19[Suppl 2]:789--830) that patients on a fixed dose of tolbutamide had roughly 2.5 times the cardiovascular mortality of diet-treated controls, leading the investigators to halt the tolbutamide arm. This recorded in the expert literature the alarming claim that a widely used oral antidiabetic agent might increase cardiac death, overturning the prevailing assumption that lowering blood glucose with sulfonylureas was straightforwardly beneficial.',
         source: {
           externalId: 'src:ugdp-mortality-results-diabetes-1970',
-          name: 'University Group Diabetes Program. A study of the effects of hypoglycemic agents on vascular complications in patients with adult-onset diabetes. II. Mortality results. Diabetes. 1970;19(Suppl 2):789–830.',
+          name: 'University Group Diabetes Program. A study of the effects of hypoglycemic agents on vascular complications in patients with adult-onset diabetes. II. Mortality results. Diabetes. 1970;19(Suppl 2):789--830.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/4926376/',
           publishedAt: '1970-05-20',
           methodologyType: 'primary',
@@ -32112,7 +32112,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Cadaveric pituitary hGH / CJD withdrawal — 1985 ──────────────────────────
   {
     externalId: 'trajectory:cadaveric-pituitary-hgh-cjd-withdrawal-1985',
-    text: 'Pituitary-derived (cadaveric) human growth hormone, distributed in the United States through the National Hormone and Pituitary Program since the 1960s as a safe and effective treatment for growth hormone deficiency, was shown in 1985 to transmit fatal Creutzfeldt–Jakob disease, prompting the NIH to halt its distribution.',
+    text: 'Pituitary-derived (cadaveric) human growth hormone, distributed in the United States through the National Hormone and Pituitary Program since the 1960s as a safe and effective treatment for growth hormone deficiency, was shown in 1985 to transmit fatal Creutzfeldt--Jakob disease, prompting the NIH to halt its distribution.',
     claimType: 'HYBRID',
     claimEmergedAt: '1963-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -32139,10 +32139,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1985-04-19',
         datePrecision: 'DAY',
-        reason: 'After reports that three young men treated with NHPP pituitary hGH had died of Creutzfeldt–Jakob disease, the NIH on April 19, 1985 suspended distribution of human growth hormone and other cadaveric pituitary hormones, a decision documented in the CDC\'s MMWR report of June 1985. The recognition that the therapy could transmit a fatal prion disease reversed the safety claim and ended cadaveric hGH use; recombinant human growth hormone (Genentech\'s Protropin) was approved later that year as the replacement.',
+        reason: 'After reports that three young men treated with NHPP pituitary hGH had died of Creutzfeldt--Jakob disease, the NIH on April 19, 1985 suspended distribution of human growth hormone and other cadaveric pituitary hormones, a decision documented in the CDC\'s MMWR report of June 1985. The recognition that the therapy could transmit a fatal prion disease reversed the safety claim and ended cadaveric hGH use; recombinant human growth hormone (Genentech\'s Protropin) was approved later that year as the replacement.',
         source: {
           externalId: 'src:cdc-mmwr-pituitary-hgh-cjd-1985',
-          name: 'CDC. Fatal Degenerative Neurologic Disease in Patients Who Received Pituitary-Derived Human Growth Hormone. MMWR Morb Mortal Wkly Rep. 1985;34(24):359–360, 365–366.',
+          name: 'CDC. Fatal Degenerative Neurologic Disease in Patients Who Received Pituitary-Derived Human Growth Hormone. MMWR Morb Mortal Wkly Rep. 1985;34(24):359--360, 365--366.',
           url: 'https://www.cdc.gov/MMWr/preview/mmwrhtml/00000563.htm',
           publishedAt: '1985-06-21',
           methodologyType: 'primary',
@@ -32181,10 +32181,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2013-09-02',
         datePrecision: 'DAY',
-        reason: 'The SAVOR-TIMI 53 randomized trial of 16,492 patients, published in the New England Journal of Medicine, found that saxagliptin did not change ischemic cardiovascular events but significantly increased hospitalization for heart failure (3.5% vs 2.8%; HR 1.27, 95% CI 1.07–1.51; P=0.007). This unexpected safety signal contested the presumption of cardiovascular neutrality for DPP-4 inhibitors and led the FDA in 2016 to add a heart-failure warning to saxagliptin and alogliptin labeling.',
+        reason: 'The SAVOR-TIMI 53 randomized trial of 16,492 patients, published in the New England Journal of Medicine, found that saxagliptin did not change ischemic cardiovascular events but significantly increased hospitalization for heart failure (3.5% vs 2.8%; HR 1.27, 95% CI 1.07--1.51; P=0.007). This unexpected safety signal contested the presumption of cardiovascular neutrality for DPP-4 inhibitors and led the FDA in 2016 to add a heart-failure warning to saxagliptin and alogliptin labeling.',
         source: {
           externalId: 'src:scirica-savor-timi-53-nejm-2013',
-          name: 'Scirica BM, Bhatt DL, Braunwald E, et al. Saxagliptin and Cardiovascular Outcomes in Patients with Type 2 Diabetes Mellitus. N Engl J Med. 2013;369(14):1317–1326.',
+          name: 'Scirica BM, Bhatt DL, Braunwald E, et al. Saxagliptin and Cardiovascular Outcomes in Patients with Type 2 Diabetes Mellitus. N Engl J Med. 2013;369(14):1317--1326.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/23992601/',
           publishedAt: '2013-10-03',
           methodologyType: 'primary',
@@ -32211,7 +32211,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Stott and colleagues reported the TRUST trial, a double-blind randomized placebo-controlled study of 737 adults aged 65 and older with persistent subclinical hypothyroidism, finding that levothyroxine produced no improvement in the co-primary outcomes of hypothyroid symptom score or tiredness score despite normalizing TSH. This recorded in the expert literature the claim that routinely treating subclinical hypothyroidism in older adults yields no symptomatic benefit, contradicting widespread prescribing practice.',
         source: {
           externalId: 'src:stott-trust-levothyroxine-nejm-2017',
-          name: 'Stott DJ, Rodondi N, Kearney PM, et al. Thyroid Hormone Therapy for Older Adults with Subclinical Hypothyroidism. N Engl J Med. 2017;376(26):2534–2544.',
+          name: 'Stott DJ, Rodondi N, Kearney PM, et al. Thyroid Hormone Therapy for Older Adults with Subclinical Hypothyroidism. N Engl J Med. 2017;376(26):2534--2544.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/28402245/',
           publishedAt: '2017-04-03',
           methodologyType: 'primary',
@@ -32236,7 +32236,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID EPIDEMIC / REGULATORY (2014–2024)
+  // OPIOID EPIDEMIC / REGULATORY (2014--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── DEA reclassifies hydrocodone combinations to Schedule II — 2014 ─────────
@@ -32257,7 +32257,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After an FDA recommendation and years of debate, the DEA issued a final rule moving hydrocodone combination products from Schedule III to Schedule II, the tier reserved for drugs with high abuse potential. The reclassification imposed Schedule II controls—no refills, written prescriptions, tighter storage and dispensing—on the most commonly prescribed opioid in the United States, codifying a higher institutional assessment of their addiction risk amid the prescription opioid epidemic.',
         source: {
           externalId: 'src:dea-hydrocodone-rescheduling-final-rule-2014',
-          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Rescheduling of Hydrocodone Combination Products From Schedule III to Schedule II. Final rule. Fed Regist. 2014 Aug 22;79(163):49661–49682.',
+          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Rescheduling of Hydrocodone Combination Products From Schedule III to Schedule II. Final rule. Fed Regist. 2014 Aug 22;79(163):49661--49682.',
           url: 'https://www.federalregister.gov/documents/2014/08/22/2014-19922/schedules-of-controlled-substances-rescheduling-of-hydrocodone-combination-products-from-schedule',
           publishedAt: '2014-08-22',
           methodologyType: 'primary',
@@ -32296,7 +32296,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2017-06-08',
         datePrecision: 'DAY',
-        reason: 'Following an 18–8 March 2017 advisory committee vote that the benefits of reformulated Opana ER no longer outweighed its risks, the FDA formally requested its removal from the market—its first such action against a marketed opioid on abuse grounds—because the reformulation had shifted abuse from nasal to injection routes, fueling HIV and hepatitis C outbreaks. Endo agreed to withdraw the product roughly a month later, and FDA finalized withdrawal of the approval in 2020.',
+        reason: 'Following an 18--8 March 2017 advisory committee vote that the benefits of reformulated Opana ER no longer outweighed its risks, the FDA formally requested its removal from the market—its first such action against a marketed opioid on abuse grounds—because the reformulation had shifted abuse from nasal to injection routes, fueling HIV and hepatitis C outbreaks. Endo agreed to withdraw the product roughly a month later, and FDA finalized withdrawal of the approval in 2020.',
         source: {
           externalId: 'src:fda-opana-er-removal-request-2017',
           name: 'U.S. FDA. FDA Requests Removal of Opana ER for Risks Related to Abuse (FDA Newsroom press announcement). June 8, 2017.',
@@ -32326,7 +32326,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The CDC issued a revised opioid prescribing guideline in MMWR Recommendations and Reports that superseded its influential 2016 guideline. It moved specific dosage figures out of the recommendation statements into implementation considerations and stated that policies treating thresholds like 90 MME as hard limits "are not consistent with the 2016 CDC Opioid Prescribing Guideline and have contributed to patient harm." This reversed the rigid-threshold interpretation that had driven forced tapering and abrupt discontinuation across payers, pharmacies, and state laws.',
         source: {
           externalId: 'src:cdc-mmwr-opioid-guideline-2022',
-          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022 Nov 4;71(3):1–95.',
+          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022 Nov 4;71(3):1--95.',
           url: 'https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm',
           publishedAt: '2022-11-04',
           methodologyType: 'primary',
@@ -32338,7 +32338,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── SCOTUS strikes Sackler nonconsensual bankruptcy releases — 2024 ─────────
   {
     externalId: 'trajectory:scotus-harrington-purdue-sackler-release-struck-2024',
-    text: 'On June 27, 2024, the U.S. Supreme Court held 5–4 in Harrington v. Purdue Pharma L.P. that the Bankruptcy Code does not authorize a Chapter 11 plan to release and enjoin claims against the Sackler family—non-debtors who had not filed for bankruptcy—without the consent of the opioid victims holding those claims, undoing the third-party releases that had been approved below.',
+    text: 'On June 27, 2024, the U.S. Supreme Court held 5--4 in Harrington v. Purdue Pharma L.P. that the Bankruptcy Code does not authorize a Chapter 11 plan to release and enjoin claims against the Sackler family—non-debtors who had not filed for bankruptcy—without the consent of the opioid victims holding those claims, undoing the third-party releases that had been approved below.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2024-06-27',
     claimEmergedPrecision: 'DAY',
@@ -32486,7 +32486,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL PRACTICE REVERSALS & CRITICAL-CARE BREAKTHROUGHS (2004–2013)
+  // SURGICAL PRACTICE REVERSALS & CRITICAL-CARE BREAKTHROUGHS (2004--2013)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── CRASH — Corticosteroids for head injury reversed 2004 ───────────────────
@@ -32586,7 +32586,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OCCUPATIONAL & ENVIRONMENTAL ONCOLOGY (1775–1947)
+  // OCCUPATIONAL & ENVIRONMENTAL ONCOLOGY (1775--1947)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Pott chimney-sweeps scrotal cancer — 1775 ──────────────────────────────
@@ -32607,7 +32607,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "Pott, a surgeon at St Bartholomew's Hospital, observed an unusually high rate of scrotal carcinoma in men who had worked as chimney sweeps since boyhood and attributed it to soot retained in the rugae of the scrotum, writing that 'the disease, in these people, seems to derive its origin from a lodgment of soot.' This recorded in the surgical literature the first causal link between a specific environmental exposure and a human cancer, founding occupational carcinogenesis.",
         source: {
           externalId: 'src:pott-chirurgical-observations-scrotum-1775',
-          name: 'Pott P. Chirurgical Observations Relative to the Cataract, the Polypus of the Nose, the Cancer of the Scrotum, the Different Kinds of Ruptures, and the Mortification of the Toes and Feet. London: Hawes, Clarke and Collins; 1775. pp. 63–68. (documented and quoted in: Chimney sweeps\' carcinoma, Wikipedia)',
+          name: 'Pott P. Chirurgical Observations Relative to the Cataract, the Polypus of the Nose, the Cancer of the Scrotum, the Different Kinds of Ruptures, and the Mortification of the Toes and Feet. London: Hawes, Clarke and Collins; 1775. pp. 63--68. (documented and quoted in: Chimney sweeps\' carcinoma, Wikipedia)',
           url: "https://en.wikipedia.org/wiki/Chimney_sweeps%27_carcinoma",
           publishedAt: '1775-01-01',
           methodologyType: 'primary',
@@ -32664,7 +32664,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "Press and Pharoah re-analyzed Lane-Claypon's original 1926 data (and its 1931 US replication by Wainwright) with modern statistical methods and confirmed that her reproductive risk-factor findings were valid, while historians of epidemiology recognized the study as the foundational case-control design. Reproductive and hormonal factors are now established breast-cancer risk determinants, settling both the methodological and the etiologic claims.",
         source: {
           externalId: 'src:press-pharoah-lane-claypon-reanalysis-epidemiology-2010',
-          name: 'Press DJ, Pharoah P. Risk factors for breast cancer: a reanalysis of two case-control studies from 1926 and 1931. Epidemiology. 2010;21(4):566–572.',
+          name: 'Press DJ, Pharoah P. Risk factors for breast cancer: a reanalysis of two case-control studies from 1926 and 1931. Epidemiology. 2010;21(4):566--572.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/20498604/',
           publishedAt: '2010-07-01',
           methodologyType: 'derivative',
@@ -32673,10 +32673,10 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Berenblum–Shubik two-stage carcinogenesis — 1947 ──────────────────────
+  // ── Berenblum--Shubik two-stage carcinogenesis — 1947 ──────────────────────
   {
     externalId: 'trajectory:berenblum-shubik-two-stage-carcinogenesis-1947',
-    text: "Isaac Berenblum and Philippe Shubik reported in the British Journal of Cancer in December 1947 that chemical carcinogenesis in mouse skin proceeds in two separable stages — irreversible 'initiation' by a carcinogen followed by 'promotion' by a non-carcinogenic irritant (croton oil) — establishing the initiation–promotion (multistage) model of cancer.",
+    text: "Isaac Berenblum and Philippe Shubik reported in the British Journal of Cancer in December 1947 that chemical carcinogenesis in mouse skin proceeds in two separable stages — irreversible 'initiation' by a carcinogen followed by 'promotion' by a non-carcinogenic irritant (croton oil) — establishing the initiation--promotion (multistage) model of cancer.",
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1947-12-01',
     claimEmergedPrecision: 'MONTH',
@@ -32691,7 +32691,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Berenblum and Shubik showed quantitatively that a single sub-carcinogenic dose of a polycyclic aromatic hydrocarbon followed by repeated application of croton oil produced tumors, whereas either alone did not, and that the initiating effect persisted over time. This recorded the claim that carcinogenesis is a multistep process with mechanistically distinct initiation and promotion phases — a foundational concept of experimental oncology, first presented at the Fourth International Cancer Congress (St. Louis) in September 1947.',
         source: {
           externalId: 'src:berenblum-shubik-two-stage-bjc-1947',
-          name: "Berenblum I, Shubik P. A new, quantitative, approach to the study of the stages of chemical carcinogenesis in the mouse's skin. Br J Cancer. 1947;1(4):383–391.",
+          name: "Berenblum I, Shubik P. A new, quantitative, approach to the study of the stages of chemical carcinogenesis in the mouse's skin. Br J Cancer. 1947;1(4):383--391.",
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2007527/',
           publishedAt: '1947-12-01',
           methodologyType: 'primary',
@@ -32703,7 +32703,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2019-01-01',
         datePrecision: 'YEAR',
-        reason: "The initiation–promotion paradigm was reproduced across species and tissues, mechanistically tied to DNA-damaging initiators and tumor-promoting agents (e.g., phorbol esters), and incorporated into standard carcinogen-testing protocols and IARC frameworks for evaluating carcinogenic mechanisms. Multistage carcinogenesis became the settled organizing principle of chemical carcinogenesis and a direct conceptual ancestor of the modern 'hallmarks of cancer.'",
+        reason: "The initiation--promotion paradigm was reproduced across species and tissues, mechanistically tied to DNA-damaging initiators and tumor-promoting agents (e.g., phorbol esters), and incorporated into standard carcinogen-testing protocols and IARC frameworks for evaluating carcinogenic mechanisms. Multistage carcinogenesis became the settled organizing principle of chemical carcinogenesis and a direct conceptual ancestor of the modern 'hallmarks of cancer.'",
         source: {
           externalId: 'src:multistage-carcinogenesis-iarc-nbk570326',
           name: 'Mechanisms of carcinogenesis: from initiation and promotion to the hallmarks. In: Tumour Site Concordance and Mechanisms of Carcinogenesis (IARC Scientific Publication No. 165). NCBI Bookshelf NBK570326.',
@@ -32733,7 +32733,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: "Shope, at the Rockefeller Institute, showed that cutaneous papillomas of wild rabbits could be transmitted to healthy wild and domestic rabbits by a Berkefeld-filtered, cell-free extract, and that the agent was heat-stable and neutralizable by immune serum — properties of a filterable virus. This recorded the radical claim that a mammalian tumor could be caused by a virus, extending Rous's avian sarcoma finding into mammals and identifying what is now recognized as a papillomavirus.",
         source: {
           externalId: 'src:shope-infectious-papillomatosis-rabbits-jem-1933',
-          name: 'Shope RE, Hurst EW. Infectious papillomatosis of rabbits: with a note on the histopathology. J Exp Med. 1933;58(5):607–624. doi:10.1084/jem.58.5.607.',
+          name: 'Shope RE, Hurst EW. Infectious papillomatosis of rabbits: with a note on the histopathology. J Exp Med. 1933;58(5):607--624. doi:10.1084/jem.58.5.607.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2132321/',
           publishedAt: '1933-10-31',
           methodologyType: 'primary',
@@ -32745,10 +32745,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1935-01-01',
         datePrecision: 'YEAR',
-        reason: "Peyton Rous and J. W. Beard demonstrated in 1935 that Shope's virus-induced rabbit papillomas progress to invasive squamous-cell carcinoma, proving that a virus can drive a benign mammalian tumor to malignancy. The Shope papillomavirus became the foundational model of viral oncogenesis by DNA tumor viruses, a lineage ultimately vindicated by the human papillomavirus–cervical cancer link and now-settled papillomavirus oncology.",
+        reason: "Peyton Rous and J. W. Beard demonstrated in 1935 that Shope's virus-induced rabbit papillomas progress to invasive squamous-cell carcinoma, proving that a virus can drive a benign mammalian tumor to malignancy. The Shope papillomavirus became the foundational model of viral oncogenesis by DNA tumor viruses, a lineage ultimately vindicated by the human papillomavirus--cervical cancer link and now-settled papillomavirus oncology.",
         source: {
           externalId: 'src:rabbit-papillomavirus-model-review-pmc6501911',
-          name: 'The rabbit papillomavirus model: a valuable tool to study viral–host interactions. (review documenting Shope 1933 and Rous & Beard\'s 1935 demonstration of carcinoma progression). PMC6501911.',
+          name: 'The rabbit papillomavirus model: a valuable tool to study viral--host interactions. (review documenting Shope 1933 and Rous & Beard\'s 1935 demonstration of carcinoma progression). PMC6501911.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6501911/',
           publishedAt: '2019-01-01',
           methodologyType: 'derivative',
@@ -32785,7 +32785,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOLOGY & LIPID SCIENCE (1977–1991)
+  // CARDIOLOGY & LIPID SCIENCE (1977--1991)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── HDL as protective factor — Framingham 1977 ──────────────────────────────
@@ -32818,7 +32818,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1993-06-16',
         datePrecision: 'DAY',
-        reason: 'The National Cholesterol Education Program\'s Second Adult Treatment Panel (ATP II) report, published in JAMA, formally incorporated HDL cholesterol as a measured factor in cardiovascular risk assessment, with low HDL designated a positive risk factor and high HDL a negative (protective) one. This institutionalized the inverse HDL–CHD association into routine clinical risk stratification, settling HDL\'s status as a recognized protective marker.',
+        reason: 'The National Cholesterol Education Program\'s Second Adult Treatment Panel (ATP II) report, published in JAMA, formally incorporated HDL cholesterol as a measured factor in cardiovascular risk assessment, with low HDL designated a positive risk factor and high HDL a negative (protective) one. This institutionalized the inverse HDL--CHD association into routine clinical risk stratification, settling HDL\'s status as a recognized protective marker.',
         source: {
           externalId: 'src:ncep-atp2-jama-1993',
           name: 'Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults. Summary of the second report of the National Cholesterol Education Program (NCEP) Expert Panel (Adult Treatment Panel II). JAMA. 1993;269(23):3015-3023.',
@@ -32957,7 +32957,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // VACCINE SAFETY & HIV MEDICINE (2003–2015)
+  // VACCINE SAFETY & HIV MEDICINE (2003--2015)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── MMRV ProQuad — febrile seizure preferential recommendation reversal 2008 ─
@@ -32990,7 +32990,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2008-02-01',
         datePrecision: 'MONTH',
-        reason: 'Postlicensure Vaccine Safety Datalink surveillance found that the first MMRV dose roughly doubled the risk of febrile seizures 7–10 days after vaccination versus separate MMR+varicella (relative risk ~2). In February 2008 ACIP withdrew its preference for MMRV, and in June 2009 finalized a recommendation that separate injections be used by default for the first dose. The empirical signal was later confirmed by Klein et al. (Pediatrics 2010).',
+        reason: 'Postlicensure Vaccine Safety Datalink surveillance found that the first MMRV dose roughly doubled the risk of febrile seizures 7--10 days after vaccination versus separate MMR+varicella (relative risk ~2). In February 2008 ACIP withdrew its preference for MMRV, and in June 2009 finalized a recommendation that separate injections be used by default for the first dose. The empirical signal was later confirmed by Klein et al. (Pediatrics 2010).',
         source: {
           externalId: 'src:klein-mmrv-febrile-seizures-pediatrics-2010',
           name: 'Klein NP, Fireman B, Yih WK, et al. Measles-mumps-rubella-varicella combination vaccine and the risk of febrile seizures. Pediatrics. 2010;126(1):e1-e8.',
@@ -33017,7 +33017,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2003-04-03',
         datePrecision: 'DAY',
-        reason: 'Nichol and colleagues, pooling data from three managed-care organizations, reported that influenza vaccination in the elderly was associated with a ~48–50% reduction in all-cause mortality during influenza season. This large effect estimate became the standard justification for universal elderly influenza vaccination policy.',
+        reason: 'Nichol and colleagues, pooling data from three managed-care organizations, reported that influenza vaccination in the elderly was associated with a ~48--50% reduction in all-cause mortality during influenza season. This large effect estimate became the standard justification for universal elderly influenza vaccination policy.',
         source: {
           externalId: 'src:nichol-influenza-elderly-mortality-nejm-2003',
           name: 'Nichol KL, Nordin J, Mullooly J, et al. Influenza vaccination and reduction in hospitalizations for cardiac disease and stroke among the elderly. N Engl J Med. 2003;348(14):1322-1332.',
@@ -33032,7 +33032,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2007-10-01',
         datePrecision: 'MONTH',
-        reason: 'Simonsen, Jackson, and colleagues argued that a ~50% all-cause mortality reduction was biologically implausible—it exceeded total winter influenza-attributable mortality—and arose from healthy-vaccinee selection bias in cohort studies, since vaccinated elders were measurably healthier even outside influenza season. They estimated the true mortality benefit could be no greater than ~5–10%, reopening a debate that remains unresolved.',
+        reason: 'Simonsen, Jackson, and colleagues argued that a ~50% all-cause mortality reduction was biologically implausible—it exceeded total winter influenza-attributable mortality—and arose from healthy-vaccinee selection bias in cohort studies, since vaccinated elders were measurably healthier even outside influenza season. They estimated the true mortality benefit could be no greater than ~5--10%, reopening a debate that remains unresolved.',
         source: {
           externalId: 'src:simonsen-influenza-elderly-controversy-lancet-id-2007',
           name: 'Simonsen L, Taylor RJ, Viboud C, Miller MA, Jackson LA. Mortality benefits of influenza vaccination in elderly people: an ongoing controversy. Lancet Infect Dis. 2007;7(10):658-666.',
@@ -33059,10 +33059,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2005-01-14',
         datePrecision: 'DAY',
-        reason: 'On 14 January 2005 the FDA licensed Menactra (MCV4, Sanofi Pasteur) on the basis of non-inferior safety and immunogenicity versus the polysaccharide vaccine Menomune. In February 2005 ACIP recommended routine MCV4 vaccination at the 11–12-year preadolescent visit, establishing conjugate meningococcal vaccination as standard adolescent practice.',
+        reason: 'On 14 January 2005 the FDA licensed Menactra (MCV4, Sanofi Pasteur) on the basis of non-inferior safety and immunogenicity versus the polysaccharide vaccine Menomune. In February 2005 ACIP recommended routine MCV4 vaccination at the 11--12-year preadolescent visit, establishing conjugate meningococcal vaccination as standard adolescent practice.',
         source: {
           externalId: 'src:mmwr-gbs-menactra-2005',
-          name: 'CDC. Guillain-Barré Syndrome Among Recipients of Menactra Meningococcal Conjugate Vaccine—United States, June–July 2005. MMWR Morb Mortal Wkly Rep. 2005;54(40):1023-1025.',
+          name: 'CDC. Guillain-Barré Syndrome Among Recipients of Menactra Meningococcal Conjugate Vaccine—United States, June--July 2005. MMWR Morb Mortal Wkly Rep. 2005;54(40):1023-1025.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16224452/',
           publishedAt: '2005-10-14',
           methodologyType: 'primary',
@@ -33077,7 +33077,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Following VAERS reports of Guillain-Barré syndrome occurring within weeks of MCV4 vaccination in adolescents, the FDA and CDC issued a joint advisory and the package insert was updated to note a possible association, with a prior history of GBS added as a precaution/contraindication. This raised an active post-market safety question about the newly recommended vaccine.',
         source: {
           externalId: 'src:mmwr-gbs-menactra-junejuly-2005',
-          name: 'CDC. Guillain-Barré Syndrome Among Recipients of Menactra Meningococcal Conjugate Vaccine—United States, June–July 2005. MMWR Morb Mortal Wkly Rep. 2005;54(40):1023-1025.',
+          name: 'CDC. Guillain-Barré Syndrome Among Recipients of Menactra Meningococcal Conjugate Vaccine—United States, June--July 2005. MMWR Morb Mortal Wkly Rep. 2005;54(40):1023-1025.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16224452/',
           publishedAt: '2005-10-14',
           methodologyType: 'primary',
@@ -33186,10 +33186,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NEUROLOGY, RARE DISEASE & FDA ACCELERATED APPROVALS (2011–2024)
+  // NEUROLOGY, RARE DISEASE & FDA ACCELERATED APPROVALS (2011--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Relyvrio (AMX0035) — ALS approval then voluntary withdrawal 2022–2024 ────
+  // ── Relyvrio (AMX0035) — ALS approval then voluntary withdrawal 2022--2024 ────
   {
     externalId: 'trajectory:relyvrio-amx0035-als-approval-reversal-2022',
     text: 'The U.S. FDA approved Relyvrio (AMX0035; sodium phenylbutyrate and taurursodiol; Amylyx) on 29 September 2022 for amyotrophic lateral sclerosis (ALS), on the basis of a single 137-patient phase 2 trial (CENTAUR) showing slowed functional decline and a survival signal.',
@@ -33400,7 +33400,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID SAFETY ERA (1983–2017)
+  // OPIOID SAFETY ERA (1983--2017)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Talwin Nx — pentazocine/naloxone abuse deterrence 1983 ─────────────────
@@ -33433,7 +33433,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1984-10-01',
         datePrecision: 'MONTH',
-        reason: 'Poklis documented a continuous decline in \'T\'s and Blues\' abuse following the 1983 reformulation, and surveillance data showed roughly 70–71% reductions in emergency-room and medical-examiner mentions of pentazocine per million prescriptions in the two years afterward. The epidemiological evidence confirmed that the naloxone-combination tablet had effectively suppressed parenteral abuse, establishing Talwin Nx as an early validated abuse-deterrent opioid formulation and a conceptual precursor to later abuse-deterrent designs.',
+        reason: 'Poklis documented a continuous decline in \'T\'s and Blues\' abuse following the 1983 reformulation, and surveillance data showed roughly 70--71% reductions in emergency-room and medical-examiner mentions of pentazocine per million prescriptions in the two years afterward. The epidemiological evidence confirmed that the naloxone-combination tablet had effectively suppressed parenteral abuse, establishing Talwin Nx as an early validated abuse-deterrent opioid formulation and a conceptual precursor to later abuse-deterrent designs.',
         source: {
           externalId: 'src:poklis-pentazocine-naloxone-decline-1984',
           name: 'Poklis A. Decline in abuse of pentazocine/tripelennamine (T\'s and Blues) associated with the addition of naloxone to pentazocine tablets. Drug Alcohol Depend. 1984 Oct;14(2):135-140.',
@@ -33784,7 +33784,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── ACIP HPV Vaccine Males Routine Recommendation 2011 ──────────────────────
   {
     externalId: 'trajectory:acip-hpv-vaccine-males-routine-2011',
-    text: 'On 25 October 2011 the U.S. Advisory Committee on Immunization Practices voted to recommend routine quadrivalent HPV vaccination of boys aged 11–12 years (with catch-up through age 21), upgrading the earlier 2009 permissive guidance and extending cancer-preventing HPV immunization beyond females for the first time.',
+    text: 'On 25 October 2011 the U.S. Advisory Committee on Immunization Practices voted to recommend routine quadrivalent HPV vaccination of boys aged 11--12 years (with catch-up through age 21), upgrading the earlier 2009 permissive guidance and extending cancer-preventing HPV immunization beyond females for the first time.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2011-10-25',
     claimEmergedPrecision: 'DAY',
@@ -33796,7 +33796,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2011-12-23',
         datePrecision: 'DAY',
-        reason: 'After its 25 October 2011 vote, ACIP published the recommendation in MMWR on 23 December 2011, moving HPV4 for males from a 2009 \'permissive\' (may be given) status to a routine recommendation at ages 11–12. This institutionalized male HPV vaccination into the U.S. childhood/adolescent immunization schedule to prevent anogenital and oropharyngeal cancers and warts and to reduce population transmission — settling boys\' HPV vaccination as standard pediatric practice.',
+        reason: 'After its 25 October 2011 vote, ACIP published the recommendation in MMWR on 23 December 2011, moving HPV4 for males from a 2009 \'permissive\' (may be given) status to a routine recommendation at ages 11--12. This institutionalized male HPV vaccination into the U.S. childhood/adolescent immunization schedule to prevent anogenital and oropharyngeal cancers and warts and to reduce population transmission — settling boys\' HPV vaccination as standard pediatric practice.',
         source: {
           externalId: 'src:acip-hpv-males-mmwr-2011',
           name: 'Centers for Disease Control and Prevention. Recommendations on the Use of Quadrivalent Human Papillomavirus Vaccine in Males — Advisory Committee on Immunization Practices (ACIP), 2011. MMWR Morb Mortal Wkly Rep. 2011;60(50):1705-1708.',
@@ -33937,7 +33937,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Cuchel and colleagues reported a single-arm, open-label phase 3 trial in The Lancet showing that lomitapide reduced mean LDL-C by roughly half in adults with HoFH on top of existing lipid-lowering therapy. The trial provided the first prospective efficacy evidence that pharmacologic MTP inhibition could lower LDL-C in a disease largely refractory to statins.',
         source: {
           externalId: 'src:cuchel-lomitapide-hofh-lancet-2013',
-          name: 'Cuchel M, Meagher EA, du Toit Theron H, et al. Efficacy and safety of a microsomal triglyceride transfer protein inhibitor in patients with homozygous familial hypercholesterolaemia: a single-arm, open-label, phase 3 study. Lancet. 2013;381(9860):40–46.',
+          name: 'Cuchel M, Meagher EA, du Toit Theron H, et al. Efficacy and safety of a microsomal triglyceride transfer protein inhibitor in patients with homozygous familial hypercholesterolaemia: a single-arm, open-label, phase 3 study. Lancet. 2013;381(9860):40--46.',
           url: 'https://doi.org/10.1016/S0140-6736(12)61731-0',
           publishedAt: '2012-11-02',
           methodologyType: 'primary',
@@ -33964,7 +33964,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Deflazacort (Emflaza) first corticosteroid approved for DMD 2017 ──────────
   {
     externalId: 'trajectory:deflazacort-emflaza-first-dmd-corticosteroid-2017',
-    text: 'On 9 February 2017 the U.S. FDA approved deflazacort (Emflaza) for patients aged five years and older with Duchenne muscular dystrophy, the first corticosteroid formally approved for DMD in the United States, formalizing decades of off-label glucocorticoid use; the approval immediately drew controversy when Marathon Pharmaceuticals set a U.S. list price near $89,000 per year for a drug available abroad for about $1,000–1,200.',
+    text: 'On 9 February 2017 the U.S. FDA approved deflazacort (Emflaza) for patients aged five years and older with Duchenne muscular dystrophy, the first corticosteroid formally approved for DMD in the United States, formalizing decades of off-label glucocorticoid use; the approval immediately drew controversy when Marathon Pharmaceuticals set a U.S. list price near $89,000 per year for a drug available abroad for about $1,000--1,200.',
     claimType: 'HYBRID',
     claimEmergedAt: '2016-10-19',
     claimEmergedPrecision: 'MONTH',
@@ -33979,7 +33979,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Griggs and colleagues published in Neurology a randomized, double-blind trial (conducted in the 1990s) showing deflazacort and prednisone improved muscle strength versus placebo in boys with DMD, with deflazacort associated with less weight gain. The delayed publication of this pivotal evidence supplied the formal trial basis for a corticosteroid long used off-label in DMD.',
         source: {
           externalId: 'src:griggs-deflazacort-prednisone-dmd-neurology-2016',
-          name: 'Griggs RC, Miller JP, Greenberg CR, et al. Efficacy and safety of deflazacort vs prednisone and placebo for Duchenne muscular dystrophy. Neurology. 2016;87(20):2123–2131.',
+          name: 'Griggs RC, Miller JP, Greenberg CR, et al. Efficacy and safety of deflazacort vs prednisone and placebo for Duchenne muscular dystrophy. Neurology. 2016;87(20):2123--2131.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/27566742/',
           publishedAt: '2016-10-19',
           methodologyType: 'primary',
@@ -34102,7 +34102,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1983-11-01',
         datePrecision: 'MONTH',
-        reason: 'By the 1960s–70s IPPB had become a widely prescribed, costly mainstay of respiratory therapy for COPD, adopted on physiological reasoning rather than controlled outcome evidence. The IPPB Trial Group randomized 985 ambulatory COPD patients to IPPB versus a simple compressor nebulizer and, over roughly three years, found no significant difference in mortality, hospitalization, decline in lung function, or quality of life. The result refuted the presumed benefit of IPPB and collapsed its routine use, a landmark in the controlled evaluation of an entrenched procedural therapy.',
+        reason: 'By the 1960s--70s IPPB had become a widely prescribed, costly mainstay of respiratory therapy for COPD, adopted on physiological reasoning rather than controlled outcome evidence. The IPPB Trial Group randomized 985 ambulatory COPD patients to IPPB versus a simple compressor nebulizer and, over roughly three years, found no significant difference in mortality, hospitalization, decline in lung function, or quality of life. The result refuted the presumed benefit of IPPB and collapsed its routine use, a landmark in the controlled evaluation of an entrenched procedural therapy.',
         source: {
           externalId: 'src:ippb-trial-copd-annals-1983',
           name: 'Intermittent Positive Pressure Breathing Trial Group. Intermittent positive pressure breathing therapy of chronic obstructive pulmonary disease. A clinical trial. Ann Intern Med. 1983;99(5):612-620.',
@@ -34142,7 +34142,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ONCOLOGY / TARGETED THERAPY (2003–2008)
+  // ONCOLOGY / TARGETED THERAPY (2003--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ESA cancer mortality reversal — FDA boxed warning 2007 ──────────────────
@@ -34175,7 +34175,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2003-10-18',
         datePrecision: 'DAY',
-        reason: 'Henke and colleagues published a randomized, double-blind, placebo-controlled trial in The Lancet showing that epoetin beta, although it corrected anemia in head and neck cancer patients undergoing radiotherapy, produced poorer locoregional progression-free survival than placebo (adjusted relative risk 1.62; 95% CI 1.22–2.14; p=0.0008). The first major randomized signal that an ESA could impair cancer control directly contested the prevailing safety assumption in the expert literature.',
+        reason: 'Henke and colleagues published a randomized, double-blind, placebo-controlled trial in The Lancet showing that epoetin beta, although it corrected anemia in head and neck cancer patients undergoing radiotherapy, produced poorer locoregional progression-free survival than placebo (adjusted relative risk 1.62; 95% CI 1.22--2.14; p=0.0008). The first major randomized signal that an ESA could impair cancer control directly contested the prevailing safety assumption in the expert literature.',
         source: {
           externalId: 'src:henke-epoetin-head-neck-lancet-2003',
           name: 'Henke M, Laszig R, Rübe C, et al. Erythropoietin to treat head and neck cancer patients with anaemia undergoing radiotherapy: randomised, double-blind, placebo-controlled trial. Lancet. 2003;362(9392):1255-1260.',
@@ -34205,7 +34205,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2008-02-27',
         datePrecision: 'DAY',
-        reason: 'Bennett and colleagues published in JAMA a meta-analysis of 51 randomized trials (13,611 cancer patients with survival data) finding that ESA administration was associated with increased mortality (hazard ratio 1.10; 95% CI 1.01–1.20) and increased venous thromboembolism. The pooled randomized evidence confirmed the reversal in the expert literature, hardening the conclusion that ESAs harm rather than help cancer patients.',
+        reason: 'Bennett and colleagues published in JAMA a meta-analysis of 51 randomized trials (13,611 cancer patients with survival data) finding that ESA administration was associated with increased mortality (hazard ratio 1.10; 95% CI 1.01--1.20) and increased venous thromboembolism. The pooled randomized evidence confirmed the reversal in the expert literature, hardening the conclusion that ESAs harm rather than help cancer patients.',
         source: {
           externalId: 'src:bennett-esa-mortality-jama-2008',
           name: 'Bennett CL, Silver SM, Djulbegovic B, et al. Venous thromboembolism and mortality associated with recombinant erythropoietin and darbepoetin administration for the treatment of cancer-associated anemia. JAMA. 2008;299(8):914-924.',
@@ -34344,13 +34344,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOVASCULAR / GUIDELINES ERA (2014–2022)
+  // CARDIOVASCULAR / GUIDELINES ERA (2014--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── PARADIGM-HF — sacubitril/valsartan HFrEF — McMurray 2014 / FDA 2015 ─────
   {
     externalId: 'trajectory:sacubitril-valsartan-paradigm-hf-2014',
-    text: 'The PARADIGM-HF trial reported on 30 August 2014 that sacubitril/valsartan (LCZ696), the first angiotensin receptor–neprilysin inhibitor, was superior to enalapril in reducing cardiovascular death and heart-failure hospitalization in patients with heart failure and reduced ejection fraction, establishing a new pharmacologic standard subsequently approved by the FDA on 7 July 2015.',
+    text: 'The PARADIGM-HF trial reported on 30 August 2014 that sacubitril/valsartan (LCZ696), the first angiotensin receptor--neprilysin inhibitor, was superior to enalapril in reducing cardiovascular death and heart-failure hospitalization in patients with heart failure and reduced ejection fraction, establishing a new pharmacologic standard subsequently approved by the FDA on 7 July 2015.',
     claimType: 'HYBRID',
     claimEmergedAt: '2014-08-30',
     claimEmergedPrecision: 'DAY',
@@ -34362,7 +34362,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2014-09-11',
         datePrecision: 'DAY',
-        reason: 'McMurray and colleagues published PARADIGM-HF in NEJM (online 30 Aug 2014): in 8,442 HFrEF patients the trial was stopped early for overwhelming benefit, with LCZ696 cutting the primary composite of cardiovascular death or HF hospitalization to 21.8% versus 26.5% with the ACE-inhibitor enalapril (HR 0.80). This recorded the first evidence that neprilysin inhibition added to renin–angiotensin blockade improves survival in heart failure.',
+        reason: 'McMurray and colleagues published PARADIGM-HF in NEJM (online 30 Aug 2014): in 8,442 HFrEF patients the trial was stopped early for overwhelming benefit, with LCZ696 cutting the primary composite of cardiovascular death or HF hospitalization to 21.8% versus 26.5% with the ACE-inhibitor enalapril (HR 0.80). This recorded the first evidence that neprilysin inhibition added to renin--angiotensin blockade improves survival in heart failure.',
         source: {
           externalId: 'src:paradigm-hf-sacubitril-valsartan-nejm-2014',
           name: 'McMurray JJV, Packer M, Desai AS, et al. Angiotensin-Neprilysin Inhibition versus Enalapril in Heart Failure. N Engl J Med. 2014;371(11):993-1004.',
@@ -34404,7 +34404,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2014-07-17',
         datePrecision: 'DAY',
-        reason: 'The HPS2-THRIVE Collaborative Group reported in NEJM that adding extended-release niacin–laropiprant to effective statin therapy in 25,673 high-risk patients did not significantly reduce major vascular events (13.2% vs 13.7%) and significantly increased serious adverse events including diabetes disturbances, infections, and bleeding. Coming after AIM-HIGH (2011), this large outcomes trial ended niacin\'s role as a cardiovascular risk-reducing add-on, and Merck withdrew the niacin/laropiprant product Tredaptive.',
+        reason: 'The HPS2-THRIVE Collaborative Group reported in NEJM that adding extended-release niacin--laropiprant to effective statin therapy in 25,673 high-risk patients did not significantly reduce major vascular events (13.2% vs 13.7%) and significantly increased serious adverse events including diabetes disturbances, infections, and bleeding. Coming after AIM-HIGH (2011), this large outcomes trial ended niacin\'s role as a cardiovascular risk-reducing add-on, and Merck withdrew the niacin/laropiprant product Tredaptive.',
         source: {
           externalId: 'src:hps2-thrive-niacin-laropiprant-nejm-2014',
           name: 'HPS2-THRIVE Collaborative Group; Landray MJ, Haynes R, Hopewell JC, et al. Effects of Extended-Release Niacin with Laropiprant in High-Risk Patients. N Engl J Med. 2014;371(3):203-212.',
@@ -34515,7 +34515,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2022-04-26',
         datePrecision: 'DAY',
-        reason: 'The U.S. Preventive Services Task Force issued its final recommendation assigning a Grade D (recommend against initiating) to low-dose aspirin for primary CVD prevention in adults 60 and older, and a Grade C (individualized) for ages 40–59. A federal screening body reversing a prior endorsement formally retired aspirin as a routine primary-prevention measure.',
+        reason: 'The U.S. Preventive Services Task Force issued its final recommendation assigning a Grade D (recommend against initiating) to low-dose aspirin for primary CVD prevention in adults 60 and older, and a Grade C (individualized) for ages 40--59. A federal screening body reversing a prior endorsement formally retired aspirin as a routine primary-prevention measure.',
         source: {
           externalId: 'src:uspstf-aspirin-cvd-2022',
           name: 'U.S. Preventive Services Task Force. Aspirin Use to Prevent Cardiovascular Disease: Preventive Medication. Final Recommendation Statement. 26 April 2022.',
@@ -34528,7 +34528,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY ORIGINS (1949–1988)
+  // PSYCHOPHARMACOLOGY ORIGINS (1949--1988)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Cade — lithium for manic-depressive illness — 1949 ──────────────────────
@@ -34561,7 +34561,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1970-04-06',
         datePrecision: 'DAY',
-        reason: 'After controlled trials by Mogens Schou and others in the 1950s–60s validated lithium\'s antimanic and prophylactic effects, the U.S. Food and Drug Administration approved three new drug applications for lithium carbonate on 6 April 1970 for the control of manic episodes of manic-depressive illness, making the United States the 50th country to register the drug. Regulatory approval settled lithium as standard psychiatric therapy decades after Cade\'s report.',
+        reason: 'After controlled trials by Mogens Schou and others in the 1950s--60s validated lithium\'s antimanic and prophylactic effects, the U.S. Food and Drug Administration approved three new drug applications for lithium carbonate on 6 April 1970 for the control of manic episodes of manic-depressive illness, making the United States the 50th country to register the drug. Regulatory approval settled lithium as standard psychiatric therapy decades after Cade\'s report.',
         source: {
           externalId: 'src:tondo-lithium-prescribers-2019',
           name: 'Tondo L, Alda M, Bauer M, et al. Clinical use of lithium salts: guide for users and prescribers. Int J Bipolar Disord. 2019;7:16.',
@@ -34911,7 +34911,7 @@ const TRAJECTORIES: Trajectory[] = [
 
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS ERA — LAW, POLICY & GUIDELINE CORRECTIONS (2007–2022)
+  // OPIOID CRISIS ERA — LAW, POLICY & GUIDELINE CORRECTIONS (2007--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Purdue Frederick misbranding guilty plea — 2007 ─────────────────────────
@@ -35023,13 +35023,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH & REPRODUCTIVE MEDICINE (1928–1931)
+  // WOMEN'S HEALTH & REPRODUCTIVE MEDICINE (1928--1931)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Aschheim–Zondek pregnancy test — 1928 ──────────────────────────────────
+  // ── Aschheim--Zondek pregnancy test — 1928 ──────────────────────────────────
   {
     externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
-    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting a woman\'s urine into sexually immature mice provoked ovarian maturation and hemorrhagic follicles only when she was pregnant, establishing the first reliable biological test for early pregnancy (the Aschheim–Zondek reaction) by detecting a pregnancy hormone excreted in the urine.',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting a woman\'s urine into sexually immature mice provoked ovarian maturation and hemorrhagic follicles only when she was pregnant, establishing the first reliable biological test for early pregnancy (the Aschheim--Zondek reaction) by detecting a pregnancy hormone excreted in the urine.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1928-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -35044,7 +35044,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Aschheim and Zondek published in Klinische Wochenschrift that the urine of pregnant women contains a hormone (later identified as human chorionic gonadotropin) that triggers follicular maturation, luteinization and hemorrhagic follicles when injected into immature female mice, whereas non-pregnant urine produces no change. This recorded the first hormone-based diagnostic test for pregnancy, reported as roughly 98% accurate, replacing inference from symptoms with a laboratory assay.',
         source: {
           externalId: 'src:aschheim-zondek-schwangerschaftsdiagnose-harn-1928',
-          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7(28):1404–1411.',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7(28):1404--1411.',
           url: 'https://doi.org/10.1007/BF01749963',
           publishedAt: '1928-01-01',
           methodologyType: 'primary',
@@ -35056,10 +35056,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1931-01-01',
         datePrecision: 'YEAR',
-        reason: 'Independent investigators worldwide validated the reaction within a few years; Rupp\'s 1931 examination of the Aschheim–Zondek test in the Medical Journal of Australia confirmed its diagnostic reliability, and the assay became the routine laboratory pregnancy diagnostic of the 1930s. Replication and clinical adoption settled the claim that a urinary pregnancy hormone exists and can be assayed, the conceptual foundation of all later immunoassay pregnancy tests.',
+        reason: 'Independent investigators worldwide validated the reaction within a few years; Rupp\'s 1931 examination of the Aschheim--Zondek test in the Medical Journal of Australia confirmed its diagnostic reliability, and the assay became the routine laboratory pregnancy diagnostic of the 1930s. Replication and clinical adoption settled the claim that a urinary pregnancy hormone exists and can be assayed, the conceptual foundation of all later immunoassay pregnancy tests.',
         source: {
           externalId: 'src:rupp-examination-aschheim-zondek-mja-1931',
-          name: 'Rupp. An Examination of the Aschheim–Zondek Test for Pregnancy. Med J Aust. 1931;1(13).',
+          name: 'Rupp. An Examination of the Aschheim--Zondek Test for Pregnancy. Med J Aust. 1931;1(13).',
           url: 'https://onlinelibrary.wiley.com/doi/abs/10.5694/j.1326-5377.1931.tb119293.x',
           publishedAt: '1931-01-01',
           methodologyType: 'primary',
@@ -35086,7 +35086,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Frank described a series of women with cyclic premenstrual irritability, tension, fatigue and pain, and attributed the syndrome to an excess of circulating ovarian hormone (estrogen) and resulting fluid retention. This recorded in the medical literature the claim that premenstrual symptoms are a genuine hormonally driven clinical disorder rather than a psychological or imaginary complaint, naming \'premenstrual tension\' as a medical entity.',
         source: {
           externalId: 'src:frank-hormonal-causes-premenstrual-tension-1931',
-          name: 'Frank RT. The Hormonal Causes of Premenstrual Tension. Arch Neurol Psychiatry. 1931;26(5):1053–1057.',
+          name: 'Frank RT. The Hormonal Causes of Premenstrual Tension. Arch Neurol Psychiatry. 1931;26(5):1053--1057.',
           url: 'https://doi.org/10.1001/archneurpsyc.1931.02230110151009',
           publishedAt: '1931-11-01',
           methodologyType: 'primary',
@@ -35128,7 +35128,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Warren published a stereoscopic roentgenographic technique, imaging patients lying on their side with one arm raised, that revealed tissue-density differences distinguishing malignant from normal breast tissue, correctly diagnosing cancer in 54 of 58 affected patients. This recorded the claim that breast cancer could be detected radiographically in the living patient without surgical biopsy, sparking international interest in X-ray imaging of the breast.',
         source: {
           externalId: 'src:warren-roentgenologic-study-breast-1930',
-          name: 'Warren SL. A Roentgenologic Study of the Breast. Am J Roentgenol Radium Ther. 1930;24:113–124. (documented via Embryo Project Encyclopedia)',
+          name: 'Warren SL. A Roentgenologic Study of the Breast. Am J Roentgenol Radium Ther. 1930;24:113--124. (documented via Embryo Project Encyclopedia)',
           url: 'https://embryo.asu.edu/pages/stafford-leak-warren-1896-1981',
           publishedAt: '1930-01-01',
           methodologyType: 'derivative',
@@ -35143,7 +35143,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Robert L. Egan published a standardized, high-resolution, low-kilovoltage mammographic technique in Radiology in 1960 that produced consistent, reproducible breast images across institutions, demonstrated in a large tumor-institution series. Reproducibility and subsequent adoption by the radiologic community settled mammography as a reliable clinical breast-imaging modality, transforming Warren\'s exploratory technique into established practice.',
         source: {
           externalId: 'src:egan-experience-mammography-radiology-1960',
-          name: 'Egan RL. Experience with Mammography in a Tumor Institution: Evaluation of 1,000 Studies. Radiology. 1960;75(6):894–900.',
+          name: 'Egan RL. Experience with Mammography in a Tumor Institution: Evaluation of 1,000 Studies. Radiology. 1960;75(6):894--900.',
           url: 'https://doi.org/10.1148/75.6.894',
           publishedAt: '1960-01-01',
           methodologyType: 'primary',
@@ -35153,7 +35153,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SIDS & PEDIATRIC PHARMACOLOGY (1950–1990)
+  // SIDS & PEDIATRIC PHARMACOLOGY (1950--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Silverman sulfisoxazole kernicterus — 1956 ──────────────────────────────
@@ -35366,7 +35366,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Knaus–Ogino ovulation timing / rhythm method — 1929 ────────────────────
+  // ── Knaus--Ogino ovulation timing / rhythm method — 1929 ────────────────────
   {
     externalId: 'trajectory:knaus-ogino-ovulation-timing-rhythm-method-1929',
     text: 'Working independently, Kyusaku Ogino and Hermann Knaus established by the late 1920s (Knaus, Zentralblatt für Gynäkologie, 1929) that ovulation occurs at a fixed interval of roughly 14 days before the next menstruation, defining a predictable fertile window and providing the physiological basis for the calendar \'rhythm\' method of family planning.',
@@ -35381,10 +35381,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1929-01-01',
         datePrecision: 'YEAR',
-        reason: 'Building on Ogino\'s observations published in Japan from 1924, Knaus published experimental studies of ovulation in regularly menstruating women in Zentralblatt für Gynäkologie (1929), concluding that ovulation occurs at a fixed interval before the next menses (Knaus held exactly 14 days; Ogino 12–16). The convergent independent findings recorded the claim that the fertile period of the menstrual cycle is predictable, overturning the older belief that conception could occur at any time.',
+        reason: 'Building on Ogino\'s observations published in Japan from 1924, Knaus published experimental studies of ovulation in regularly menstruating women in Zentralblatt für Gynäkologie (1929), concluding that ovulation occurs at a fixed interval before the next menses (Knaus held exactly 14 days; Ogino 12--16). The convergent independent findings recorded the claim that the fertile period of the menstrual cycle is predictable, overturning the older belief that conception could occur at any time.',
         source: {
           externalId: 'src:knaus-ogino-ovulation-timing-1929',
-          name: 'Knaus H. Eine neue Methode zur Bestimmung des Ovulationstermines. Zentralbl Gynäkol. 1929;53:2193–2203. (Knaus–Ogino method; documented with Ogino\'s 1924 priority)',
+          name: 'Knaus H. Eine neue Methode zur Bestimmung des Ovulationstermines. Zentralbl Gynäkol. 1929;53:2193--2203. (Knaus--Ogino method; documented with Ogino\'s 1924 priority)',
           url: 'https://en.wikipedia.org/wiki/Knaus-Ogino_method',
           publishedAt: '1929-01-01',
           methodologyType: 'derivative',
@@ -35414,7 +35414,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Large efficacy reviews established that calendar-based fertility-awareness methods have high typical-use failure rates — Trussell\'s 2011 synthesis put first-year typical-use failure for calendar rhythm at roughly 24% — far worse than modern hormonal or long-acting contraception. While the underlying physiology (ovulation ~14 days before menses) remains correct, the claim that the calendar rhythm method reliably prevents pregnancy is contested, and medical bodies recommend more effective methods.',
         source: {
           externalId: 'src:trussell-contraceptive-failure-us-2011',
-          name: 'Trussell J. Contraceptive failure in the United States. Contraception. 2011;83(5):397–404.',
+          name: 'Trussell J. Contraceptive failure in the United States. Contraception. 2011;83(5):397--404.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/21477680/',
           publishedAt: '2011-05-01',
           methodologyType: 'derivative',
@@ -35424,7 +35424,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // POST-MARKET SURVEILLANCE & DRUG SAFETY (1993–2011)
+  // POST-MARKET SURVEILLANCE & DRUG SAFETY (1993--2011)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Cisapride (Propulsid) cardiac withdrawal — 2000 ────────────────────────
@@ -35469,7 +35469,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Natalizumab (Tysabri) PML withdrawal & reinstatement — 2004–2006 ───────
+  // ── Natalizumab (Tysabri) PML withdrawal & reinstatement — 2004--2006 ───────
   {
     externalId: 'trajectory:natalizumab-tysabri-pml-withdrawal-reinstatement-2005',
     text: 'Natalizumab (Tysabri, Biogen Idec/Elan), an alpha-4-integrin monoclonal antibody granted accelerated FDA approval on 23 November 2004 as a safe and effective treatment for relapsing multiple sclerosis, was voluntarily withdrawn from the market on 28 February 2005 after cases of progressive multifocal leukoencephalopathy (PML), then returned to the U.S. market on 5 June 2006 under the restricted TOUCH risk-management program.',
@@ -35526,7 +35526,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Deferiprone (L1 / Ferriprox) thalassemia efficacy contested — 1995–2011
+  // ── Deferiprone (L1 / Ferriprox) thalassemia efficacy contested — 1995--2011
   {
     externalId: 'trajectory:deferiprone-l1-thalassemia-efficacy-contested-2011',
     text: 'Oral deferiprone (L1, later Ferriprox) is an effective iron-chelation therapy for transfusional iron overload in thalassemia major — a claim first recorded by Olivieri and colleagues in the New England Journal of Medicine on 6 April 1995, contested by the same group\'s NEJM report of 13 August 1998 finding loss of efficacy and possible worsening hepatic fibrosis, and ultimately settled by the FDA\'s accelerated approval of Ferriprox on 14 October 2011 as second-line therapy for thalassemia iron overload.',
@@ -35556,7 +35556,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1998-08-13',
         datePrecision: 'DAY',
-        reason: 'Olivieri et al. reported longer-term follow-up in NEJM finding that deferiprone did not adequately control body iron burden in many patients and that five deferiprone-treated patients showed progression of hepatic fibrosis versus none on deferoxamine. The paper directly contested the drug\'s efficacy and safety and triggered the landmark Olivieri–Apotex academic-freedom dispute over suppression of trial data.',
+        reason: 'Olivieri et al. reported longer-term follow-up in NEJM finding that deferiprone did not adequately control body iron burden in many patients and that five deferiprone-treated patients showed progression of hepatic fibrosis versus none on deferoxamine. The paper directly contested the drug\'s efficacy and safety and triggered the landmark Olivieri--Apotex academic-freedom dispute over suppression of trial data.',
         source: {
           externalId: 'src:olivieri-deferiprone-fibrosis-nejm-1998',
           name: 'Olivieri NF, Brittenham GM, McLaren CE, et al. Long-term safety and effectiveness of iron-chelation therapy with deferiprone for thalassemia major. N Engl J Med. 1998;339(7):417-423. PMID 9700174.',
@@ -35611,13 +35611,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // REGULATORY REVERSALS & OTC ERA (2011–2024)
+  // REGULATORY REVERSALS & OTC ERA (2011--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Oral phenylephrine OTC decongestant — FDA advisory committee 2023 ───────
   {
     externalId: 'trajectory:oral-phenylephrine-decongestant-ineffective-2023',
-    text: 'On 12 September 2023 the FDA Nonprescription Drugs Advisory Committee voted unanimously (16–0) that the available scientific data do not support that the monograph dose of orally administered phenylephrine is effective as a nasal decongestant, overturning its long-standing over-the-counter status.',
+    text: 'On 12 September 2023 the FDA Nonprescription Drugs Advisory Committee voted unanimously (16--0) that the available scientific data do not support that the monograph dose of orally administered phenylephrine is effective as a nasal decongestant, overturning its long-standing over-the-counter status.',
     claimType: 'HYBRID',
     claimEmergedAt: '1976-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -35632,7 +35632,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The FDA\'s OTC Drug Review (Advisory Review Panel on Cold, Cough, Allergy, Bronchodilator and Antiasthmatic products) classified oral phenylephrine hydrochloride as Category I — generally recognized as safe and effective — as a nasal decongestant, embedding it in the OTC monograph. This institutionally settled oral phenylephrine as an effective decongestant, and after the 2006 Combat Methamphetamine Epidemic Act restricted pseudoephedrine, it became the dominant OTC oral decongestant in the United States.',
         source: {
           externalId: 'src:fda-ndac-phenylephrine-briefing-2023',
-          name: 'U.S. FDA. Nonprescription Drugs Advisory Committee Meeting: Oral Phenylephrine — Briefing Document and Meeting Materials. September 11–12, 2023.',
+          name: 'U.S. FDA. Nonprescription Drugs Advisory Committee Meeting: Oral Phenylephrine — Briefing Document and Meeting Materials. September 11--12, 2023.',
           url: 'https://www.fda.gov/media/172701/download',
           publishedAt: '2023-09-07',
           methodologyType: 'derivative',
@@ -35644,7 +35644,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2023-09-12',
         datePrecision: 'DAY',
-        reason: 'After FDA scientists presented evidence that less than 1% of an oral dose reaches systemic circulation and that adequately powered trials showed no decongestant effect over placebo, the Nonprescription Drugs Advisory Committee voted 16–0 that monograph-dose oral phenylephrine is not effective as a nasal decongestant. The vote formally contested the efficacy of a ubiquitous OTC ingredient and led the FDA to issue a proposed order on 7 November 2024 to remove oral phenylephrine from the OTC monograph, leaving its regulatory status unresolved.',
+        reason: 'After FDA scientists presented evidence that less than 1% of an oral dose reaches systemic circulation and that adequately powered trials showed no decongestant effect over placebo, the Nonprescription Drugs Advisory Committee voted 16--0 that monograph-dose oral phenylephrine is not effective as a nasal decongestant. The vote formally contested the efficacy of a ubiquitous OTC ingredient and led the FDA to issue a proposed order on 7 November 2024 to remove oral phenylephrine from the OTC monograph, leaving its regulatory status unresolved.',
         source: {
           externalId: 'src:fda-proposed-order-phenylephrine-fr-2024',
           name: 'U.S. FDA. Amending Over-the-Counter Monograph M012: Cold, Cough, Allergy, Bronchodilator, and Antiasthmatic Drug Products (Proposed Order; oral phenylephrine not GRASE). Federal Register. November 8, 2024.',
@@ -35798,7 +35798,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CANCER CHEMOTHERAPY & SCREENING ORIGINS (1941–1984)
+  // CANCER CHEMOTHERAPY & SCREENING ORIGINS (1941--1984)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Papanicolaou & Traut — Pap smear cervical cancer screening, 1941 ───────
@@ -35819,7 +35819,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After Papanicolaou\'s 1928 conference abstract proposing cancer diagnosis by vaginal smear was largely ignored, his and Traut\'s 1941 AJOG paper presented systematic evidence that microscopic examination of exfoliated cells could identify uterine carcinoma, including early and asymptomatic disease. This substantively recorded in the expert literature the claim that cytological screening could detect cervical cancer.',
         source: {
           externalId: 'src:papanicolaou-traut-vaginal-smear-ajog-1941',
-          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42(2):193–206.',
+          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42(2):193--206.',
           url: 'https://doi.org/10.1016/S0002-9378(16)40621-6',
           publishedAt: '1941-08-01',
           methodologyType: 'primary',
@@ -35861,7 +35861,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Farber, Diamond, Mercer, Sylvester, and Wolff reported in NEJM that aminopterin produced clinical, hematological, and bone-marrow remissions in 10 of 16 children with acute leukemia treated between November 1947 and April 1948. This recorded in the expert literature the unprecedented claim that a designed antimetabolite could induce remission in a uniformly fatal childhood malignancy, launching antifolate chemotherapy.',
         source: {
           externalId: 'src:farber-aminopterin-nejm-1948',
-          name: 'Farber S, Diamond LK, Mercer RD, Sylvester RF Jr, Wolff JA. Temporary remissions in acute leukemia in children produced by folic acid antagonist, 4-aminopteroyl-glutamic acid. N Engl J Med. 1948;238(23):787–793.',
+          name: 'Farber S, Diamond LK, Mercer RD, Sylvester RF Jr, Wolff JA. Temporary remissions in acute leukemia in children produced by folic acid antagonist, 4-aminopteroyl-glutamic acid. N Engl J Med. 1948;238(23):787--793.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/18860765/',
           publishedAt: '1948-06-03',
           methodologyType: 'primary',
@@ -35876,7 +35876,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Li, Hertz, and Spencer reported that methotrexate (the close aminopterin successor) produced durable regression — ultimately cure — of metastatic gestational choriocarcinoma, the first solid tumor cured by chemotherapy alone. This confirmed and settled the antimetabolite principle Farber pioneered: folic-acid antagonists could not merely remit but eradicate metastatic cancer.',
         source: {
           externalId: 'src:li-hertz-methotrexate-choriocarcinoma-1956',
-          name: 'Li MC, Hertz R, Spencer DB. Effect of methotrexate therapy upon choriocarcinoma and chorioadenoma. Proc Soc Exp Biol Med. 1956;93(2):361–366.',
+          name: 'Li MC, Hertz R, Spencer DB. Effect of methotrexate therapy upon choriocarcinoma and chorioadenoma. Proc Soc Exp Biol Med. 1956;93(2):361--366.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/13379512/',
           publishedAt: '1956-11-01',
           methodologyType: 'primary',
@@ -35886,7 +35886,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ANTIBIOTIC RESISTANCE & VACCINE SAFETY (1999–2020)
+  // ANTIBIOTIC RESISTANCE & VACCINE SAFETY (1999--2020)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── XDR-TB Tugela Ferry emergence — 2006 ─────────────────────────────────────
@@ -35907,7 +35907,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'A joint CDC/WHO survey of an international laboratory network found that 347 of 3,520 MDR-TB isolates (9.9%) met criteria for extensive drug resistance, formally defining and naming XDR-TB and warning of a future epidemic of virtually untreatable tuberculosis. This MMWR report first established XDR-TB as a recognized global surveillance category.',
         source: {
           externalId: 'src:cdc-mmwr-xdr-tb-emergence-2006',
-          name: 'CDC. Emergence of Mycobacterium tuberculosis with Extensive Resistance to Second-Line Drugs — Worldwide, 2000–2004. MMWR Morb Mortal Wkly Rep. 2006 Mar 24;55(11):301-305.',
+          name: 'CDC. Emergence of Mycobacterium tuberculosis with Extensive Resistance to Second-Line Drugs — Worldwide, 2000--2004. MMWR Morb Mortal Wkly Rep. 2006 Mar 24;55(11):301-305.',
           url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5511a2.htm',
           publishedAt: '2006-03-24',
           methodologyType: 'primary',
@@ -36015,7 +36015,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Zostavax zoster vaccine efficacy & supersession — 2005–2020 ──────────────
+  // ── Zostavax zoster vaccine efficacy & supersession — 2005--2020 ──────────────
   {
     externalId: 'trajectory:zostavax-zoster-vaccine-efficacy-2006',
     text: 'The Shingles Prevention Study (Oxman et al., NEJM, 2 June 2005) showed the live zoster vaccine reduced herpes zoster incidence by 51% in adults aged 60 and older, leading to FDA approval of Zostavax on 25 May 2006; Merck later discontinued US distribution on 18 November 2020 after the more effective recombinant vaccine Shingrix superseded it.',
@@ -36073,10 +36073,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ALZHEIMER'S DISEASE / NEUROIMAGING / NEURODEGENERATION (2011–2023)
+  // ALZHEIMER'S DISEASE / NEUROIMAGING / NEURODEGENERATION (2011--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Gantenerumab GRADUATE failure — Roche/Bateman 2022–2023 ─────────────────
+  // ── Gantenerumab GRADUATE failure — Roche/Bateman 2022--2023 ─────────────────
   {
     externalId: 'trajectory:gantenerumab-graduate-alzheimers-failure-2022',
     text: 'Gantenerumab, Roche\'s anti-amyloid-β monoclonal antibody, slows cognitive and functional decline in people with early Alzheimer\'s disease — the central efficacy claim tested by the phase 3 GRADUATE I and II trials.',
@@ -36106,7 +36106,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2023-11-16',
         datePrecision: 'DAY',
-        reason: 'Bateman et al. published the full GRADUATE I and II results in the New England Journal of Medicine, confirming that gantenerumab lowered amyloid plaque burden but produced no significant slowing of clinical decline (CDR-SB difference -0.31, P=0.10; and -0.19, P=0.30). The peer-reviewed data refuted gantenerumab\'s efficacy claim and crystallized the biomarker–clinical disconnect, ending the program.',
+        reason: 'Bateman et al. published the full GRADUATE I and II results in the New England Journal of Medicine, confirming that gantenerumab lowered amyloid plaque burden but produced no significant slowing of clinical decline (CDR-SB difference -0.31, P=0.10; and -0.19, P=0.30). The peer-reviewed data refuted gantenerumab\'s efficacy claim and crystallized the biomarker--clinical disconnect, ending the program.',
         source: {
           externalId: 'src:bateman-gantenerumab-graduate-nejm-2023',
           name: 'Bateman RJ, Smith J, Donohue MC, et al. Two Phase 3 Trials of Gantenerumab in Early Alzheimer\'s Disease. N Engl J Med. 2023;389(20):1862-1876.',
@@ -36118,7 +36118,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Florbetapir/Amyvid amyloid-PET FDA approval — Clark/Lilly 2011–2012 ────
+  // ── Florbetapir/Amyvid amyloid-PET FDA approval — Clark/Lilly 2011--2012 ────
   {
     externalId: 'trajectory:florbetapir-amyvid-amyloid-pet-imaging-2012',
     text: 'Florbetapir F-18 (Amyvid) positron-emission-tomography imaging accurately detects β-amyloid neuritic plaques in the living human brain, validated against autopsy by Clark and colleagues (JAMA, 19 January 2011) and approved by the FDA on 6 April 2012 as the first amyloid imaging agent.',
@@ -36133,7 +36133,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2011-01-19',
         datePrecision: 'DAY',
-        reason: 'Clark et al. published a prospective study in JAMA showing that antemortem florbetapir-PET imaging predicted the presence of β-amyloid at autopsy with 96% agreement between PET interpretation and postmortem pathology. This recorded the first rigorous in vivo–to–neuropathology validation that a PET tracer could visualize Alzheimer\'s amyloid burden in living patients, making a previously autopsy-only pathology measurable during life.',
+        reason: 'Clark et al. published a prospective study in JAMA showing that antemortem florbetapir-PET imaging predicted the presence of β-amyloid at autopsy with 96% agreement between PET interpretation and postmortem pathology. This recorded the first rigorous in vivo--to--neuropathology validation that a PET tracer could visualize Alzheimer\'s amyloid burden in living patients, making a previously autopsy-only pathology measurable during life.',
         source: {
           externalId: 'src:clark-florbetapir-pet-autopsy-jama-2011',
           name: 'Clark CM, Schneider JA, Bedell BJ, et al. Use of florbetapir-PET for imaging beta-amyloid pathology. JAMA. 2011;305(3):275-283.',
@@ -36187,7 +36187,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Tominersen GENERATION HD1 halt — Roche/Tabrizi 2019–2021 ────────────────
+  // ── Tominersen GENERATION HD1 halt — Roche/Tabrizi 2019--2021 ────────────────
   {
     externalId: 'trajectory:tominersen-huntingtin-lowering-generation-hd1-halt-2021',
     text: 'Tominersen (IONIS-HTTRx/RG6042), an intrathecal antisense oligonucleotide that lowers mutant huntingtin, provides clinical benefit in manifest Huntington\'s disease — a hope established by CSF biomarker lowering in 2019 and then overturned when its phase 3 trial was halted in 2021.',
@@ -36202,7 +36202,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2019-06-13',
         datePrecision: 'DAY',
-        reason: 'Tabrizi et al. published the phase 1–2a trial in the New England Journal of Medicine showing that intrathecal tominersen produced dose-dependent reductions of mutant huntingtin in cerebrospinal fluid in patients with early Huntington\'s disease. This recorded the first human proof of concept that the disease-causing protein could be pharmacologically lowered, raising strong expectations that huntingtin-lowering would yield clinical benefit.',
+        reason: 'Tabrizi et al. published the phase 1--2a trial in the New England Journal of Medicine showing that intrathecal tominersen produced dose-dependent reductions of mutant huntingtin in cerebrospinal fluid in patients with early Huntington\'s disease. This recorded the first human proof of concept that the disease-causing protein could be pharmacologically lowered, raising strong expectations that huntingtin-lowering would yield clinical benefit.',
         source: {
           externalId: 'src:tabrizi-tominersen-htt-lowering-nejm-2019',
           name: 'Tabrizi SJ, Leavitt BR, Landwehrmeyer GB, et al. Targeting Huntingtin Expression in Patients with Huntington\'s Disease. N Engl J Med. 2019;380(24):2307-2316.',
@@ -36257,7 +36257,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY & ORGANOTHERAPY (1889–1930)
+  // ENDOCRINOLOGY & ORGANOTHERAPY (1889--1930)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Brown-Séquard testicular extract / organotherapy — 1889 (REVERSED) ──────
@@ -36278,7 +36278,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Brown-Séquard, then aged 72, published \'The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals\' in The Lancet, reporting that ten self-administered injections of a watery extract of dog and guinea-pig testes increased his dynamometer-measured strength, urinary jet, and capacity for intellectual work. This recorded in the expert literature the claim that an internal secretion of the gonads could be replaced to restore vitality, launching the worldwide use of glandular (\'organotherapy\') extracts and seeding the concept of hormone replacement.',
         source: {
           externalId: 'src:brown-sequard-testicular-extract-lancet-1889',
-          name: 'Brown-Séquard CÉ. The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals. Lancet. 1889;134(3438):105–107.',
+          name: 'Brown-Séquard CÉ. The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals. Lancet. 1889;134(3438):105--107.',
           url: 'https://archive.org/details/Brown-sequardC.-e.TheEffectProducedOnManBySubcutaneousInjectionsOfA',
           publishedAt: '1889-07-20',
           methodologyType: 'primary',
@@ -36293,7 +36293,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The rejuvenation claim was abandoned as a placebo effect: the aqueous extracts Brown-Séquard prepared contained essentially no absorbable androgen, and modern assays of testes extracts made by his method found testosterone concentrations roughly four orders of magnitude below any biologically effective dose. Cussons, Bhagat, Fletcher, and Walsh formalized this reanalysis in the Medical Journal of Australia in December 2002, concluding the reported benefits were a placebo response and overturning the original therapeutic claim while crediting the work for catalyzing endocrinology.',
         source: {
           externalId: 'src:cussons-brown-sequard-placebo-mja-2002',
-          name: 'Cussons AJ, Bhagat CI, Fletcher SJ, Walsh JP. Brown-Séquard revisited: a lesson from history on the placebo effect of androgen treatment. Med J Aust. 2002;177(11–12):678–679.',
+          name: 'Cussons AJ, Bhagat CI, Fletcher SJ, Walsh JP. Brown-Séquard revisited: a lesson from history on the placebo effect of androgen treatment. Med J Aust. 2002;177(11--12):678--679.',
           url: 'https://www.mja.com.au/journal/2002/177/11/brown-sequard-revisited-lesson-history-placebo-effect-androgen-treatment',
           publishedAt: '2002-12-02',
           methodologyType: 'derivative',
@@ -36317,10 +36317,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1923-06-30',
         datePrecision: 'DAY',
-        reason: 'Plummer published \'Results of administering iodin to patients having exophthalmic goiter\' (JAMA 1923;80(26):1955–1956), reporting that iodine given for a few days before operation rapidly reduced the hypermetabolism and friability of the toxic thyroid, converting thyroidectomy in Graves\' disease from a high-mortality procedure to a relatively safe one. This recorded in the expert literature the counterintuitive claim that iodine — long thought only to exacerbate hyperthyroidism — could be used as deliberate short-term preoperative therapy, the effect later named \'Plummer\'s\' iodine block.',
+        reason: 'Plummer published \'Results of administering iodin to patients having exophthalmic goiter\' (JAMA 1923;80(26):1955--1956), reporting that iodine given for a few days before operation rapidly reduced the hypermetabolism and friability of the toxic thyroid, converting thyroidectomy in Graves\' disease from a high-mortality procedure to a relatively safe one. This recorded in the expert literature the counterintuitive claim that iodine — long thought only to exacerbate hyperthyroidism — could be used as deliberate short-term preoperative therapy, the effect later named \'Plummer\'s\' iodine block.',
         source: {
           externalId: 'src:plummer-iodine-exophthalmic-goiter-jama-1923',
-          name: 'Plummer HS. Results of administering iodin to patients having exophthalmic goiter. JAMA. 1923;80(26):1955–1956.',
+          name: 'Plummer HS. Results of administering iodin to patients having exophthalmic goiter. JAMA. 1923;80(26):1955--1956.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/36792929/',
           publishedAt: '1923-06-30',
           methodologyType: 'primary',
@@ -36359,10 +36359,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1909-01-01',
         datePrecision: 'YEAR',
-        reason: 'Benedict published \'A reagent for the detection of reducing sugars\' (J Biol Chem 1909;5:485–487), substituting sodium carbonate and citrate for the caustic hydroxide of Fehling\'s solution to yield a reagent that was stable on storage, less corrosive, and gave a clear cuprous-oxide colour reaction with glucose. This recorded in the expert literature a reliable, reproducible chemical test for reducing sugars suitable for routine clinical use.',
+        reason: 'Benedict published \'A reagent for the detection of reducing sugars\' (J Biol Chem 1909;5:485--487), substituting sodium carbonate and citrate for the caustic hydroxide of Fehling\'s solution to yield a reagent that was stable on storage, less corrosive, and gave a clear cuprous-oxide colour reaction with glucose. This recorded in the expert literature a reliable, reproducible chemical test for reducing sugars suitable for routine clinical use.',
         source: {
           externalId: 'src:benedict-reagent-reducing-sugars-jbc-1909',
-          name: 'Benedict SR. A reagent for the detection of reducing sugars. J Biol Chem. 1909;5(5):485–487.',
+          name: 'Benedict SR. A reagent for the detection of reducing sugars. J Biol Chem. 1909;5(5):485--487.',
           url: 'https://www.jbc.org/article/S0021-9258(19)61050-1/fulltext',
           publishedAt: '1909-01-01',
           methodologyType: 'primary',
@@ -36401,10 +36401,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1904-01-01',
         datePrecision: 'YEAR',
-        reason: 'Stolz published \'Über Adrenalin und Alkylaminoacetobrenzcatechin\' (Ber Dtsch Chem Ges 1904;37:4149–4154), describing the chemical synthesis of adrenalone, the ketone precursor of adrenaline, at Hoechst. Following the isolation of the adrenal active principle by Takamine and Abel (1901), this recorded the claim that the hormone could be built from defined organic precursors rather than extracted from glands — the first total synthesis of a hormone.',
+        reason: 'Stolz published \'Über Adrenalin und Alkylaminoacetobrenzcatechin\' (Ber Dtsch Chem Ges 1904;37:4149--4154), describing the chemical synthesis of adrenalone, the ketone precursor of adrenaline, at Hoechst. Following the isolation of the adrenal active principle by Takamine and Abel (1901), this recorded the claim that the hormone could be built from defined organic precursors rather than extracted from glands — the first total synthesis of a hormone.',
         source: {
           externalId: 'src:stolz-adrenalin-synthesis-berichte-1904',
-          name: 'Stolz F. Über Adrenalin und Alkylaminoacetobrenzcatechin. Berichte der deutschen chemischen Gesellschaft. 1904;37(4):4149–4154.',
+          name: 'Stolz F. Über Adrenalin und Alkylaminoacetobrenzcatechin. Berichte der deutschen chemischen Gesellschaft. 1904;37(4):4149--4154.',
           url: 'https://en.wikipedia.org/wiki/Friedrich_Stolz',
           publishedAt: '1904-01-01',
           methodologyType: 'derivative',
@@ -36419,7 +36419,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Stolz converted adrenalone to racemic adrenaline (marketed as Suprarenin) in 1906, enabling large-scale industrial manufacture of synthetic epinephrine that supplanted glandular extracts. Synthetic adrenaline became an established, commercially produced drug and the canonical example of the first synthesized hormone, settling the claim that hormones are ordinary organic molecules reproducible by chemistry.',
         source: {
           externalId: 'src:first-hormone-adrenaline-trends-endo-2019',
-          name: 'The First Hormone: Adrenaline. Trends in Endocrinology & Metabolism. 2019;30(5):331–334. (historical review documenting Stolz\'s 1904 synthesis and 1906 production as the first synthetic hormone)',
+          name: 'The First Hormone: Adrenaline. Trends in Endocrinology & Metabolism. 2019;30(5):331--334. (historical review documenting Stolz\'s 1904 synthesis and 1906 production as the first synthetic hormone)',
           url: 'https://www.cell.com/trends/endocrinology-metabolism/abstract/S1043-2760(19)30061-X',
           publishedAt: '2019-05-01',
           methodologyType: 'derivative',
@@ -36458,7 +36458,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1992-02-01',
         datePrecision: 'MONTH',
-        reason: 'The U.S. Agency for Health Care Policy and Research issued Clinical Practice Guideline No. 1, Acute Pain Management (AHCPR Pub. No. 92-0032), in February 1992, built explicitly on the premise that acute pain is widely and unnecessarily undertreated and must be aggressively assessed and managed. Federal codification of the undertreatment thesis into a national clinical guideline institutionally settled the core Marks–Sachar finding, even as the corollary that therapeutic opioid use rarely causes addiction was later contested during the opioid epidemic.',
+        reason: 'The U.S. Agency for Health Care Policy and Research issued Clinical Practice Guideline No. 1, Acute Pain Management (AHCPR Pub. No. 92-0032), in February 1992, built explicitly on the premise that acute pain is widely and unnecessarily undertreated and must be aggressively assessed and managed. Federal codification of the undertreatment thesis into a national clinical guideline institutionally settled the core Marks--Sachar finding, even as the corollary that therapeutic opioid use rarely causes addiction was later contested during the opioid epidemic.',
         source: {
           externalId: 'src:ahcpr-acute-pain-management-guideline-1992',
           name: 'Agency for Health Care Policy and Research. Acute Pain Management: Operative or Medical Procedures and Trauma. Clinical Practice Guideline No. 1. AHCPR Pub. No. 92-0032. Rockville, MD; February 1992.',
@@ -36596,7 +36596,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── NIH Consensus: mammography for women 40–49 — 1997 ──────────────────────
+  // ── NIH Consensus: mammography for women 40--49 — 1997 ──────────────────────
   {
     externalId: 'trajectory:nih-consensus-mammography-women-40-49-1997',
     text: 'On 23 January 1997 the NIH Consensus Development Panel on Breast Cancer Screening for Women Ages 40-49 concluded that the available evidence did not warrant a universal recommendation of screening mammography for women in their forties, issuing split majority and minority reports.',
@@ -36681,7 +36681,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NEONATOLOGY, PEDIATRIC SAFETY, PUBLIC HEALTH & VACCINES (2000s–2020s)
+  // NEONATOLOGY, PEDIATRIC SAFETY, PUBLIC HEALTH & VACCINES (2000s--2020s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Neonatal therapeutic hypothermia for HIE — Shankaran/NICHD 2005 ──────────
@@ -36741,7 +36741,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── FDA OTC benzocaine teething reversal — 2011–2018 ─────────────────────────
+  // ── FDA OTC benzocaine teething reversal — 2011--2018 ─────────────────────────
   {
     externalId: 'trajectory:fda-otc-benzocaine-teething-reversal-2018',
     text: 'The U.S. FDA determined that over-the-counter benzocaine oral products are unsafe for infant teething — first warning on 7 April 2011 that they can cause life-threatening methemoglobinemia and announcing on 23 May 2018 that they should no longer be marketed for children younger than two years given the serious risk and lack of proven benefit.',
@@ -36786,7 +36786,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── PHS fluoride optimal 0.7 mg/L recommendation — 2015 ─────────────────────
   {
     externalId: 'trajectory:phs-fluoride-optimal-0-7-recommendation-2015',
-    text: 'The U.S. Public Health Service issued its final recommendation on 27 April 2015 for a single optimal community water fluoride concentration of 0.7 mg/L, lowering and replacing the 1962 recommended range of 0.7–1.2 mg/L in order to reduce the risk of dental fluorosis in children while continuing to prevent tooth decay.',
+    text: 'The U.S. Public Health Service issued its final recommendation on 27 April 2015 for a single optimal community water fluoride concentration of 0.7 mg/L, lowering and replacing the 1962 recommended range of 0.7--1.2 mg/L in order to reduce the risk of dental fluorosis in children while continuing to prevent tooth decay.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2015-04-27',
     claimEmergedPrecision: 'DAY',
@@ -36798,7 +36798,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2015-04-27',
         datePrecision: 'DAY',
-        reason: 'HHS released the final PHS recommendation on 27 April 2015 (published in the Federal Register 1 May 2015), setting a single optimal fluoride level of 0.7 mg/L and replacing the 1962 range of 0.7–1.2 mg/L. The downward revision responded to rising childhood dental fluorosis and increased fluoride exposure from other sources such as toothpaste, formally lowering the accepted target after more than five decades.',
+        reason: 'HHS released the final PHS recommendation on 27 April 2015 (published in the Federal Register 1 May 2015), setting a single optimal fluoride level of 0.7 mg/L and replacing the 1962 range of 0.7--1.2 mg/L. The downward revision responded to rising childhood dental fluorosis and increased fluoride exposure from other sources such as toothpaste, formally lowering the accepted target after more than five decades.',
         source: {
           externalId: 'src:phs-fluoride-0-7-federal-register-2015',
           name: 'U.S. Department of Health and Human Services. Public Health Service Recommendation for Fluoride Concentration in Drinking Water for the Prevention of Dental Caries. Federal Register. 80(83):24936-24938. 1 May 2015.',
@@ -36840,7 +36840,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── MenB Bexsero accelerated approval + ACIP Category B — 2015 ──────────────
   {
     externalId: 'trajectory:menb-bexsero-accelerated-approval-category-b-2015',
-    text: 'Bexsero, a serogroup B meningococcal vaccine, received FDA accelerated approval on 23 January 2015 for ages 10–25 on the basis of immunogenicity (serum bactericidal antibody) rather than clinical efficacy, after which the ACIP on 23 October 2015 gave it only a Category B \'individual clinical decision-making\' recommendation for healthy adolescents aged 16–23 rather than a routine recommendation.',
+    text: 'Bexsero, a serogroup B meningococcal vaccine, received FDA accelerated approval on 23 January 2015 for ages 10--25 on the basis of immunogenicity (serum bactericidal antibody) rather than clinical efficacy, after which the ACIP on 23 October 2015 gave it only a Category B \'individual clinical decision-making\' recommendation for healthy adolescents aged 16--23 rather than a routine recommendation.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2015-01-23',
     claimEmergedPrecision: 'DAY',
@@ -36867,7 +36867,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2015-10-23',
         datePrecision: 'DAY',
-        reason: 'The ACIP (MacNeil et al., MMWR 23 October 2015) recommended that MenB vaccine \'may be administered\' to healthy adolescents and young adults aged 16–23 (preferred 16–18) — a Category B recommendation for individual clinical decision-making rather than routine universal use. This deliberately settled MenB into a permissive, non-routine schedule status, distinct from the Category A recommendation for those at increased risk, reflecting unresolved cost-effectiveness and strain-coverage questions.',
+        reason: 'The ACIP (MacNeil et al., MMWR 23 October 2015) recommended that MenB vaccine \'may be administered\' to healthy adolescents and young adults aged 16--23 (preferred 16--18) — a Category B recommendation for individual clinical decision-making rather than routine universal use. This deliberately settled MenB into a permissive, non-routine schedule status, distinct from the Category A recommendation for those at increased risk, reflecting unresolved cost-effectiveness and strain-coverage questions.',
         source: {
           externalId: 'src:macneil-menb-adolescents-acip-mmwr-2015',
           name: 'MacNeil JR, Rubin L, Folaranmi T, et al. Use of Serogroup B Meningococcal Vaccines in Adolescents and Young Adults: Recommendations of the Advisory Committee on Immunization Practices, 2015. MMWR Morb Mortal Wkly Rep. 2015;64(41):1171-1176.',
@@ -37033,7 +37033,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL / PROCEDURAL ERA (1958–1984)
+  // SURGICAL / PROCEDURAL ERA (1958--1984)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Diagnostic obstetric ultrasound — Donald 1958 ──────────────────────────
@@ -37205,7 +37205,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ONCOLOGY / GENOMICS ERA (2000–2010)
+  // ONCOLOGY / GENOMICS ERA (2000--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── MammaPrint 70-gene assay — first IVDMIA FDA clearance 2007 ──────────────
@@ -37377,7 +37377,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PCSK9 INHIBITOR / TAVR / PCI-vs-CABG / SGLT2 ERA (2016–2024)
+  // PCSK9 INHIBITOR / TAVR / PCI-vs-CABG / SGLT2 ERA (2016--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ODYSSEY OUTCOMES — alirocumab post-ACS mortality reduction 2018 ──────────
@@ -37464,7 +37464,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── EXCEL — PCI vs CABG left main, settled then contested 2016–2019 ─────────
+  // ── EXCEL — PCI vs CABG left main, settled then contested 2016--2019 ─────────
   {
     externalId: 'trajectory:excel-left-main-pci-vs-cabg-contested-2019',
     text: 'The EXCEL trial reported in 2016 that percutaneous coronary intervention with everolimus-eluting stents was noninferior to coronary-artery bypass grafting for left main coronary disease, a conclusion that became contested after five-year outcomes and a data-reporting controversy in 2019.',
@@ -37566,7 +37566,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Theiler and Smith of the Rockefeller Foundation published \'The use of yellow fever virus modified by in vitro cultivation for human immunization\' in the Journal of Experimental Medicine, reporting that the 17D strain — derived from the Asibi strain after ~176 tissue-culture passages — had lost viscerotropism and neurotropism yet still induced protective antibodies in human volunteers. This was the first attenuated viral vaccine produced deliberately in the laboratory rather than found in nature.',
         source: {
           externalId: 'src:theiler-smith-17d-jem-1937',
-          name: 'Theiler M, Smith HH. The use of yellow fever virus modified by in vitro cultivation for human immunization. J Exp Med. 1937;65(6):787–800.',
+          name: 'Theiler M, Smith HH. The use of yellow fever virus modified by in vitro cultivation for human immunization. J Exp Med. 1937;65(6):787--800.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/10654001/',
           publishedAt: '1937-06-01',
           methodologyType: 'primary',
@@ -37590,7 +37590,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Kendrick–Eldering pertussis vaccine field trial 1939 ────────────────────
+  // ── Kendrick--Eldering pertussis vaccine field trial 1939 ────────────────────
   {
     externalId: 'trajectory:kendrick-eldering-pertussis-vaccine-trial-1939',
     text: 'Pearl Kendrick and Grace Eldering reported in 1939 that a whole-cell pertussis vaccine, evaluated in a controlled field trial of 5,815 children in Grand Rapids, Michigan, sharply reduced whooping cough incidence, providing the first rigorous evidence that pertussis immunization was effective.',
@@ -37605,10 +37605,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1939-01-01',
         datePrecision: 'YEAR',
-        reason: 'Kendrick and Eldering of the Michigan Department of Health published \'A study in active immunization against pertussis\' in the American Journal of Hygiene, reporting their 1934–1937 controlled field trial: vaccinated children had 2.3 pertussis attacks per 100 person-years versus 15.1 in the concurrent control group. Conducted with an explicit comparison group and person-years analysis, it was one of the earliest credibly controlled vaccine efficacy trials and recorded the claim that pertussis could be prevented by vaccination.',
+        reason: 'Kendrick and Eldering of the Michigan Department of Health published \'A study in active immunization against pertussis\' in the American Journal of Hygiene, reporting their 1934--1937 controlled field trial: vaccinated children had 2.3 pertussis attacks per 100 person-years versus 15.1 in the concurrent control group. Conducted with an explicit comparison group and person-years analysis, it was one of the earliest credibly controlled vaccine efficacy trials and recorded the claim that pertussis could be prevented by vaccination.',
         source: {
           externalId: 'src:kendrick-eldering-pertussis-ajh-1939',
-          name: 'Kendrick P, Eldering G. A study in active immunization against pertussis. Am J Hyg. 1939;29(Section B):133–153.',
+          name: 'Kendrick P, Eldering G. A study in active immunization against pertussis. Am J Hyg. 1939;29(Section B):133--153.',
           url: 'https://academic.oup.com/aje/article/29-SectionB/3/133/89075',
           publishedAt: '1939-01-01',
           methodologyType: 'primary',
@@ -37620,7 +37620,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1948-01-01',
         datePrecision: 'YEAR',
-        reason: 'On the strength of the Kendrick–Eldering data, whole-cell pertussis vaccine moved into routine American use and was combined with diphtheria and tetanus toxoids as the DTP vaccine licensed in 1948, becoming a standard component of infant immunization. The efficacy claim was thereby institutionally settled into national immunization practice.',
+        reason: 'On the strength of the Kendrick--Eldering data, whole-cell pertussis vaccine moved into routine American use and was combined with diphtheria and tetanus toxoids as the DTP vaccine licensed in 1948, becoming a standard component of infant immunization. The efficacy claim was thereby institutionally settled into national immunization practice.',
         source: {
           externalId: 'src:iom-pertussis-rubella-chronology',
           name: 'Institute of Medicine. Pertussis and Rubella Vaccines: A Brief Chronology. In: Adverse Effects of Pertussis and Rubella Vaccines. National Academies Press; 1991.',
@@ -37632,7 +37632,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Smith–Andrewes–Laidlaw influenza A virus isolation 1933 ─────────────────
+  // ── Smith--Andrewes--Laidlaw influenza A virus isolation 1933 ─────────────────
   {
     externalId: 'trajectory:influenza-a-virus-isolation-1933',
     text: 'Wilson Smith, Christopher Andrewes, and Patrick Laidlaw reported in The Lancet on 8 July 1933 that they had transmitted human influenza to ferrets using filtered throat-washings, establishing that influenza is caused by a filterable virus rather than by Pfeiffer\'s bacillus.',
@@ -37650,7 +37650,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Smith, Andrewes, and Laidlaw of the National Institute for Medical Research in London published \'A virus obtained from influenza patients,\' showing that ferrets developed influenza when inoculated intranasally with bacteria-free filtrates of patients\' throat-washings. This identified the influenza A virus and overturned the long-standing view, dating to Richard Pfeiffer\'s 1892 claim, that influenza was a bacterial disease.',
         source: {
           externalId: 'src:smith-andrewes-laidlaw-influenza-lancet-1933',
-          name: 'Smith W, Andrewes CH, Laidlaw PP. A virus obtained from influenza patients. Lancet. 1933;222(5732):66–68.',
+          name: 'Smith W, Andrewes CH, Laidlaw PP. A virus obtained from influenza patients. Lancet. 1933;222(5732):66--68.',
           url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(00)78541-2/fulltext',
           publishedAt: '1933-07-08',
           methodologyType: 'primary',
@@ -37692,7 +37692,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Beginning in April 1930, infants who had received the newly introduced oral BCG vaccine at Lübeck General Hospital began dying of tuberculosis; by year\'s end 72 of 251 vaccinated newborns had died and 173 more had developed TB. The catastrophe threw the safety of Calmette and Guérin\'s BCG vaccine into public and scientific doubt, halting BCG programs in Germany and elsewhere, with some alleging the attenuated strain had reverted to virulence.',
         source: {
           externalId: 'src:lubeck-disaster-plospathogens-2016',
-          name: 'Fox GJ, Orlova M, Schurr E. Tuberculosis in Newborns: The Lessons of the \'Lübeck Disaster\' (1929–1933). PLoS Pathog. 2016;12(1):e1005271.',
+          name: 'Fox GJ, Orlova M, Schurr E. Tuberculosis in Newborns: The Lessons of the \'Lübeck Disaster\' (1929--1933). PLoS Pathog. 2016;12(1):e1005271.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4721647/',
           publishedAt: '2016-01-07',
           methodologyType: 'derivative',
@@ -37731,10 +37731,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1944-04-01',
         datePrecision: 'DAY',
-        reason: 'The Commission on Influenza (whose members included Thomas Francis and Jonas Salk) published \'A Clinical Evaluation of Vaccination Against Influenza: Preliminary Report\' in JAMA, reporting that the inactivated vaccine markedly reduced influenza A attack rates among vaccinated U.S. Army personnel during the 1943–44 season. It was the first large controlled field trial to record efficacy of an influenza vaccine in humans.',
+        reason: 'The Commission on Influenza (whose members included Thomas Francis and Jonas Salk) published \'A Clinical Evaluation of Vaccination Against Influenza: Preliminary Report\' in JAMA, reporting that the inactivated vaccine markedly reduced influenza A attack rates among vaccinated U.S. Army personnel during the 1943--44 season. It was the first large controlled field trial to record efficacy of an influenza vaccine in humans.',
         source: {
           externalId: 'src:commission-influenza-vaccination-jama-1944',
-          name: 'Commission on Influenza. A Clinical Evaluation of Vaccination Against Influenza: Preliminary Report. JAMA. 1944;124(14):982–985.',
+          name: 'Commission on Influenza. A Clinical Evaluation of Vaccination Against Influenza: Preliminary Report. JAMA. 1944;124(14):982--985.',
           url: 'https://jamanetwork.com/journals/jama/fullarticle/267441',
           publishedAt: '1944-04-01',
           methodologyType: 'primary',
@@ -37759,7 +37759,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY ERA (1954–1990)
+  // PSYCHOPHARMACOLOGY ERA (1954--1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Meprobamate (Miltown) — first minor tranquilizer 1955 ───────────────────
@@ -37931,7 +37931,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS & NON-OPIOID ANALGESIA ERA (2014–2025)
+  // OPIOID CRISIS & NON-OPIOID ANALGESIA ERA (2014--2025)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── AAN position paper: opioids for chronic noncancer pain — risks outweigh benefits 2014 ─
@@ -37949,7 +37949,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2014-09-30',
         datePrecision: 'DAY',
-        reason: 'The American Academy of Neurology issued a formal evidence-based position paper concluding that long-term opioid therapy for chronic noncancer pain likely causes more harm than benefit for common conditions, marking the first major U.S. medical specialty society to repudiate the liberal-prescribing consensus that had followed the 1980s–1990s pain-treatment movement. It recorded, in the expert literature, a reversal of the Portenoy–Foley-era position that opioids could be safely used for chronic noncancer pain.',
+        reason: 'The American Academy of Neurology issued a formal evidence-based position paper concluding that long-term opioid therapy for chronic noncancer pain likely causes more harm than benefit for common conditions, marking the first major U.S. medical specialty society to repudiate the liberal-prescribing consensus that had followed the 1980s--1990s pain-treatment movement. It recorded, in the expert literature, a reversal of the Portenoy--Foley-era position that opioids could be safely used for chronic noncancer pain.',
         source: {
           externalId: 'src:franklin-aan-opioids-chronic-pain-neurology-2014',
           name: 'Franklin GM; American Academy of Neurology. Opioids for chronic noncancer pain: a position paper of the American Academy of Neurology. Neurology. 2014 Sep 30;83(14):1277-1284.',
@@ -38088,13 +38088,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // HORMONAL DIAGNOSTICS & SYNTHETIC STEROID ERA (1928–1960)
+  // HORMONAL DIAGNOSTICS & SYNTHETIC STEROID ERA (1928--1960)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Aschheim–Zondek pregnancy test — 1928 ──────────────────────────────────
+  // ── Aschheim--Zondek pregnancy test — 1928 ──────────────────────────────────
   {
     externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
-    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that subcutaneous injection of a pregnant woman\'s urine into immature female mice produced ovarian follicle maturation, congestion, and hemorrhage, establishing the first reliable hormonal (Aschheim–Zondek) test for early pregnancy by detecting a pregnancy hormone (later identified as hCG) in urine.',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that subcutaneous injection of a pregnant woman\'s urine into immature female mice produced ovarian follicle maturation, congestion, and hemorrhage, establishing the first reliable hormonal (Aschheim--Zondek) test for early pregnancy by detecting a pregnancy hormone (later identified as hCG) in urine.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1928-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -38121,10 +38121,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1931-01-01',
         datePrecision: 'YEAR',
-        reason: 'The A–Z reaction was independently replicated (e.g., Rupp\'s 1931 examination in the Medical Journal of Australia) and rapidly adopted as a routine clinical laboratory service across Europe and the English-speaking world in the early 1930s, with reported accuracy around 98%. This widespread institutional adoption settled the claim that a urinary hormone bioassay could diagnose pregnancy, founding hormonal pregnancy diagnostics (later superseded but not contradicted by frog tests and immunoassays).',
+        reason: 'The A--Z reaction was independently replicated (e.g., Rupp\'s 1931 examination in the Medical Journal of Australia) and rapidly adopted as a routine clinical laboratory service across Europe and the English-speaking world in the early 1930s, with reported accuracy around 98%. This widespread institutional adoption settled the claim that a urinary hormone bioassay could diagnose pregnancy, founding hormonal pregnancy diagnostics (later superseded but not contradicted by frog tests and immunoassays).',
         source: {
           externalId: 'src:olszynko-gryn-aschheim-zondek-demand-2014',
-          name: 'Olszynko-Gryn J. The demand for pregnancy testing: The Aschheim–Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47 Pt B:233–247.',
+          name: 'Olszynko-Gryn J. The demand for pregnancy testing: The Aschheim--Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47 Pt B:233--247.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/24388014/',
           publishedAt: '2014-01-01',
           methodologyType: 'derivative',
@@ -38133,7 +38133,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Inhoffen–Hohlweg ethinylestradiol synthesis — 1938 ─────────────────────
+  // ── Inhoffen--Hohlweg ethinylestradiol synthesis — 1938 ─────────────────────
   {
     externalId: 'trajectory:inhoffen-hohlweg-ethinylestradiol-synthesis-1938',
     text: 'Hans Herloff Inhoffen and Walter Hohlweg reported in Naturwissenschaften in 1938 the synthesis of 17α-ethinylestradiol at Schering in Berlin, establishing the first orally active synthetic steroidal estrogen — a compound that became, and remains, the estrogen used in nearly all combined oral contraceptives.',
@@ -38163,7 +38163,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'MARKET',
         occurredAt: '1970-01-01',
         datePrecision: 'YEAR',
-        reason: 'Following its 1943 introduction for medical use, ethinylestradiol displaced mestranol in combined oral contraceptives over the 1960s–1970s and became, in the words of modern pharmacology reviews, nearly the exclusive estrogen in birth-control pills worldwide. Its near-universal incorporation into approved combined oral contraceptives settled the claim that the synthetic compound is a safe, effective, orally active estrogen.',
+        reason: 'Following its 1943 introduction for medical use, ethinylestradiol displaced mestranol in combined oral contraceptives over the 1960s--1970s and became, in the words of modern pharmacology reviews, nearly the exclusive estrogen in birth-control pills worldwide. Its near-universal incorporation into approved combined oral contraceptives settled the claim that the synthetic compound is a safe, effective, orally active estrogen.',
         source: {
           externalId: 'src:ethinylestradiol-exclusive-oc-estrogen-review',
           name: 'Ethinylestradiol — development, oral activity, and near-exclusive use as the estrogen in combined oral contraceptives (pharmacology reference review).',
@@ -38193,7 +38193,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Marker published his work on diosgenin and the multi-step degradation that opens the sapogenin side chain to yield progesterone, establishing that an abundant plant steroid could be chemically converted into a scarce mammalian hormone. This recorded in the expert literature a practical synthetic route to progesterone independent of animal-organ extraction.',
         source: {
           externalId: 'src:marker-diosgenin-jacs-1940',
-          name: 'Marker RE, Tsukamoto T, Turner DL. Sterols. C. Diosgenin. J Am Chem Soc. 1940;62(9):2525–2532.',
+          name: 'Marker RE, Tsukamoto T, Turner DL. Sterols. C. Diosgenin. J Am Chem Soc. 1940;62(9):2525--2532.',
           url: 'https://www.acs.org/education/whatischemistry/landmarks/progesteronesynthesis.html',
           publishedAt: '1940-01-01',
           methodologyType: 'primary',
@@ -38217,7 +38217,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Djerassi–Miramontes norethindrone synthesis — 15 Oct 1951 ──────────────
+  // ── Djerassi--Miramontes norethindrone synthesis — 15 Oct 1951 ──────────────
   {
     externalId: 'trajectory:djerassi-miramontes-norethindrone-synthesis-1951',
     text: 'On 15 October 1951 Luis Miramontes, working under Carl Djerassi and George Rosenkranz at Syntex in Mexico City, completed the synthesis of norethindrone (19-nor-17α-ethynyltestosterone), the first highly potent orally active progestin, which became the progestational component of oral contraceptives.',
@@ -38443,7 +38443,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENZYME REPLACEMENT THERAPY ERA (2001–2007)
+  // ENZYME REPLACEMENT THERAPY ERA (2001--2007)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Agalsidase beta (Fabrazyme) — first treatment for Fabry disease 2003 ─────
@@ -38573,7 +38573,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // INTERVENTIONAL CARDIOLOGY & VASCULAR ERA (1998–2015)
+  // INTERVENTIONAL CARDIOLOGY & VASCULAR ERA (1998--2015)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── CORAL — renal-artery stenting reversal 2014 ─────────────────────────────
@@ -38661,7 +38661,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // INFECTION CONTROL ERA (2000–2009)
+  // INFECTION CONTROL ERA (2000--2009)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Pittet — alcohol hand rub hand hygiene settled 2000 ─────────────────────
@@ -38749,7 +38749,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // THROMBOLYSIS & CARDIOVASCULAR TRIALS ERA (1993–2002)
+  // THROMBOLYSIS & CARDIOVASCULAR TRIALS ERA (1993--2002)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── GUSTO-1: accelerated tPA superior to streptokinase — 1993 ───────────────
@@ -38921,7 +38921,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // VACCINE TRIALS & PANDEMIC RESPONSE ERA (2003–2009)
+  // VACCINE TRIALS & PANDEMIC RESPONSE ERA (2003--2009)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── RV144 Thai HIV Vaccine Trial — 2009 ────────────────────────────────────
@@ -38939,7 +38939,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2009-10-20',
         datePrecision: 'DAY',
-        reason: 'Rerks-Ngarm and the MOPH-TAVEG Investigators published the RV144 trial (16,402 Thai volunteers) in the New England Journal of Medicine, reporting vaccine efficacy of 31.2% (95% CI 1.1–52.1; P=0.04) in the modified intention-to-treat analysis. Coming two years after the failure of the cell-mediated-immunity Step Study, this put on record the first signal that a vaccine could partially protect against HIV-1, though the protection was modest, waned over time, and did not reduce post-infection viral load — leaving the result recorded but contested rather than settled.',
+        reason: 'Rerks-Ngarm and the MOPH-TAVEG Investigators published the RV144 trial (16,402 Thai volunteers) in the New England Journal of Medicine, reporting vaccine efficacy of 31.2% (95% CI 1.1--52.1; P=0.04) in the modified intention-to-treat analysis. Coming two years after the failure of the cell-mediated-immunity Step Study, this put on record the first signal that a vaccine could partially protect against HIV-1, though the protection was modest, waned over time, and did not reduce post-infection viral load — leaving the result recorded but contested rather than settled.',
         source: {
           externalId: 'src:rerks-ngarm-rv144-nejm-2009',
           name: 'Rerks-Ngarm S, Pitisuttithum P, Nitayaphan S, et al. Vaccination with ALVAC and AIDSVAX to prevent HIV-1 infection in Thailand. N Engl J Med. 2009;361(23):2209-2220.',
@@ -39063,7 +39063,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // TREATMENT-RESISTANT DEPRESSION / PHARMACOGENOMICS / ALS STEM CELLS ERA (2019–2023)
+  // TREATMENT-RESISTANT DEPRESSION / PHARMACOGENOMICS / ALS STEM CELLS ERA (2019--2023)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ELEKT-D: ketamine noninferior to ECT for TRD — Anand 2023 ──────────────
@@ -39205,7 +39205,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DRUG POLICY / PAIN MANAGEMENT ERA (1963–1970)
+  // DRUG POLICY / PAIN MANAGEMENT ERA (1963--1970)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Saunders regular opioid dosing for terminal pain — 1963 ─────────────────
@@ -39320,7 +39320,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY / ORGANOTHERAPY ERA (1889–1944)
+  // ENDOCRINOLOGY / ORGANOTHERAPY ERA (1889--1944)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Brown-Séquard testicular extract rejuvenation — 1889 ───────────────────
@@ -39341,7 +39341,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Brown-Séquard, then aged 72, published \'The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals\' in The Lancet, reporting that ten self-administered injections of testicular extract had markedly increased his physical strength, urinary force, and intellectual stamina. This recorded in the expert literature the claim that an extract of a glandular organ could replace a failing internal secretion and rejuvenate the body, and it triggered widespread use of testicular and other organ extracts across Europe and North America.',
         source: {
           externalId: 'src:brown-sequard-testicle-extract-lancet-1889',
-          name: 'Brown-Séquard CE. The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals. Lancet. 1889;134(3438):105–107.',
+          name: 'Brown-Séquard CE. The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals. Lancet. 1889;134(3438):105--107.',
           url: 'https://www.usrf.org/news/TRT/Brown-Sequard,%20Lancet,%201889.pdf',
           publishedAt: '1889-07-20',
           methodologyType: 'primary',
@@ -39356,7 +39356,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The specific rejuvenation claim was overturned: the reported effects were transient and unreproducible, and modern reappraisal established that the testosterone content of Brown-Séquard\'s aqueous extract was roughly four orders of magnitude below any biologically active dose, so the benefits he felt were a placebo response. Although the broader concept he launched — that glands secrete chemical messengers replaceable by extract — was vindicated by later endocrinology, his own claim of androgenic rejuvenation was reversed.',
         source: {
           externalId: 'src:cussons-brown-sequard-placebo-mja-2002',
-          name: 'Cussons AJ, Bhagat CI, Fletcher SJ, Walsh JP. Brown-Séquard revisited: a lesson from history on the placebo effect of androgen treatment. Med J Aust. 2002;177(11–12):678–679.',
+          name: 'Cussons AJ, Bhagat CI, Fletcher SJ, Walsh JP. Brown-Séquard revisited: a lesson from history on the placebo effect of androgen treatment. Med J Aust. 2002;177(11--12):678--679.',
           url: 'https://www.mja.com.au/journal/2002/177/11/brown-sequard-revisited-lesson-history-placebo-effect-androgen-treatment',
           publishedAt: '2002-12-02',
           methodologyType: 'derivative',
@@ -39365,7 +39365,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── MacCallum–Voegtlin parathyroid calcium tetany — 1909 ───────────────────
+  // ── MacCallum--Voegtlin parathyroid calcium tetany — 1909 ───────────────────
   {
     externalId: 'trajectory:macallum-voegtlin-parathyroid-calcium-tetany-1909',
     text: 'William MacCallum and Carl Voegtlin reported in the Journal of Experimental Medicine on 9 January 1909 that tetany following removal of the parathyroid glands is caused by a fall in blood calcium and is promptly abolished by injecting calcium salts, establishing that the parathyroid glands govern calcium metabolism.',
@@ -39380,10 +39380,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1909-01-09',
         datePrecision: 'DAY',
-        reason: 'MacCallum and Voegtlin published \'On the relation of tetany to the parathyroid glands and to calcium metabolism\' in the Journal of Experimental Medicine, showing experimentally that parathyroidectomy lowers blood calcium and produces tetany, and that intravenous calcium injection promptly reverses the convulsive state. Building on their 1908 preliminary note (Bull Johns Hopkins Hosp 19:91–92), this recorded in the expert literature the claim that the parathyroid glands regulate calcium and that hypocalcemia, not the loss of a \'detoxifying\' organ, is the cause of post-thyroidectomy tetany.',
+        reason: 'MacCallum and Voegtlin published \'On the relation of tetany to the parathyroid glands and to calcium metabolism\' in the Journal of Experimental Medicine, showing experimentally that parathyroidectomy lowers blood calcium and produces tetany, and that intravenous calcium injection promptly reverses the convulsive state. Building on their 1908 preliminary note (Bull Johns Hopkins Hosp 19:91--92), this recorded in the expert literature the claim that the parathyroid glands regulate calcium and that hypocalcemia, not the loss of a \'detoxifying\' organ, is the cause of post-thyroidectomy tetany.',
         source: {
           externalId: 'src:maccallum-voegtlin-parathyroid-tetany-jem-1909',
-          name: 'MacCallum WG, Voegtlin C. On the relation of tetany to the parathyroid glands and to calcium metabolism. J Exp Med. 1909;11(1):118–151.',
+          name: 'MacCallum WG, Voegtlin C. On the relation of tetany to the parathyroid glands and to calcium metabolism. J Exp Med. 1909;11(1):118--151.',
           url: 'https://rupress.org/jem/article/11/1/118/2646/ON-THE-RELATION-OF-TETANY-TO-THE-PARATHYROID',
           publishedAt: '1909-01-09',
           methodologyType: 'primary',
@@ -39395,10 +39395,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1925-01-01',
         datePrecision: 'YEAR',
-        reason: 'The mechanism MacCallum and Voegtlin proposed was confirmed and made manipulable when James Collip in 1925 extracted an active parathyroid hormone that raised blood calcium and abolished parathyroidectomy tetany, directly demonstrating the hormonal control of calcium they had inferred. With the hormone isolated and calcium therapy established as the standard treatment for hypocalcemic tetany, the parathyroid–calcium regulatory model became settled physiology that underlies modern management of hypoparathyroidism and calcium disorders.',
+        reason: 'The mechanism MacCallum and Voegtlin proposed was confirmed and made manipulable when James Collip in 1925 extracted an active parathyroid hormone that raised blood calcium and abolished parathyroidectomy tetany, directly demonstrating the hormonal control of calcium they had inferred. With the hormone isolated and calcium therapy established as the standard treatment for hypocalcemic tetany, the parathyroid--calcium regulatory model became settled physiology that underlies modern management of hypoparathyroidism and calcium disorders.',
         source: {
           externalId: 'src:collip-parathyroid-hormone-calcium-jbc-1925',
-          name: 'Collip JB. The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium. J Biol Chem. 1925;63(2):395–438.',
+          name: 'Collip JB. The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium. J Biol Chem. 1925;63(2):395--438.',
           url: 'https://www.jbc.org/article/S0021-9258(18)85016-1/fulltext',
           publishedAt: '1925-02-01',
           methodologyType: 'primary',
@@ -39407,7 +39407,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Evans–Long anterior pituitary growth hormone — 1921 ────────────────────
+  // ── Evans--Long anterior pituitary growth hormone — 1921 ────────────────────
   {
     externalId: 'trajectory:evans-long-anterior-pituitary-growth-hormone-1921',
     text: 'Herbert McLean Evans and Joseph Long reported to the Anatomical Record in 1921 that intraperitoneal injection of fresh anterior-pituitary tissue into normal rats produced excessive (giant) body growth, the first demonstration that the anterior pituitary contains a growth-promoting hormone.',
@@ -39422,10 +39422,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1921-01-01',
         datePrecision: 'YEAR',
-        reason: 'Evans and Long published \'The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrus cycles of the rat\' (Anat Rec. 1921;21:62–63), showing that injections of bovine anterior-pituitary tissue caused normal rats to grow far beyond their expected size. This recorded in the expert literature the claim that the anterior lobe of the pituitary secretes a distinct factor controlling somatic growth, providing the experimental basis for the concept of a pituitary growth hormone and for the understanding of gigantism and acromegaly.',
+        reason: 'Evans and Long published \'The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrus cycles of the rat\' (Anat Rec. 1921;21:62--63), showing that injections of bovine anterior-pituitary tissue caused normal rats to grow far beyond their expected size. This recorded in the expert literature the claim that the anterior lobe of the pituitary secretes a distinct factor controlling somatic growth, providing the experimental basis for the concept of a pituitary growth hormone and for the understanding of gigantism and acromegaly.',
         source: {
           externalId: 'src:evans-long-anterior-pituitary-growth-anatrec-1921',
-          name: 'Evans HM, Long JA. The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrus cycles of the rat. Anat Rec. 1921;21(1):62–63. (Reviewed in: Tidblad A. The history, physiology and treatment safety of growth hormone. Acta Paediatr. 2022;111(2):215–224.)',
+          name: 'Evans HM, Long JA. The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrus cycles of the rat. Anat Rec. 1921;21(1):62--63. (Reviewed in: Tidblad A. The history, physiology and treatment safety of growth hormone. Acta Paediatr. 2022;111(2):215--224.)',
           url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/apa.15948',
           publishedAt: '1921-01-01',
           methodologyType: 'primary',
@@ -39437,10 +39437,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1944-01-01',
         datePrecision: 'YEAR',
-        reason: 'The inferred growth factor was reduced to a defined substance when Choh Hao Li and Evans isolated pituitary growth hormone in pure form in 1944 (Science. 1944;99:183–184), confirming that a single anterior-pituitary protein drives somatic growth. With the hormone purified, characterized, and later used therapeutically for growth disorders, the existence and growth-controlling role of pituitary growth hormone became settled endocrinology — the same axis on which Houssay\'s 1947 Nobel-recognized work on anterior-pituitary control of metabolism rests.',
+        reason: 'The inferred growth factor was reduced to a defined substance when Choh Hao Li and Evans isolated pituitary growth hormone in pure form in 1944 (Science. 1944;99:183--184), confirming that a single anterior-pituitary protein drives somatic growth. With the hormone purified, characterized, and later used therapeutically for growth disorders, the existence and growth-controlling role of pituitary growth hormone became settled endocrinology — the same axis on which Houssay\'s 1947 Nobel-recognized work on anterior-pituitary control of metabolism rests.',
         source: {
           externalId: 'src:li-evans-isolation-pituitary-growth-hormone-science-1944',
-          name: 'Li CH, Evans HM. The isolation of pituitary growth hormone. Science. 1944;99(2566):183–184.',
+          name: 'Li CH, Evans HM. The isolation of pituitary growth hormone. Science. 1944;99(2566):183--184.',
           url: 'https://www.science.org/doi/10.1126/science.99.2566.183',
           publishedAt: '1944-02-25',
           methodologyType: 'primary',
@@ -39449,10 +39449,10 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Aschheim–Zondek hormonal pregnancy test — 1928 ─────────────────────────
+  // ── Aschheim--Zondek hormonal pregnancy test — 1928 ─────────────────────────
   {
     externalId: 'trajectory:aschheim-zondek-hormonal-pregnancy-test-1928',
-    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting the urine of pregnant women into immature female mice causes rapid ovarian maturation and hemorrhagic follicles, providing the first reliable biological test for pregnancy (the Aschheim–Zondek test) based on a pregnancy hormone — later identified as human chorionic gonadotropin — excreted in urine.',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting the urine of pregnant women into immature female mice causes rapid ovarian maturation and hemorrhagic follicles, providing the first reliable biological test for pregnancy (the Aschheim--Zondek test) based on a pregnancy hormone — later identified as human chorionic gonadotropin — excreted in urine.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1928-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -39464,10 +39464,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1928-01-01',
         datePrecision: 'YEAR',
-        reason: 'Aschheim and Zondek published their finding (Klin Wochenschr. 1928;7:1404–1411, 1453–1457) that pregnancy urine contains a gonad-stimulating hormone whose subcutaneous injection into infantile mice produces characteristic ovarian changes within about 100 hours, allowing pregnancy to be diagnosed in the laboratory. This recorded in the expert literature the first practical hormone-based diagnostic assay in medicine, demonstrating that a circulating endocrine signal of pregnancy could be detected by a reproducible bioassay.',
+        reason: 'Aschheim and Zondek published their finding (Klin Wochenschr. 1928;7:1404--1411, 1453--1457) that pregnancy urine contains a gonad-stimulating hormone whose subcutaneous injection into infantile mice produces characteristic ovarian changes within about 100 hours, allowing pregnancy to be diagnosed in the laboratory. This recorded in the expert literature the first practical hormone-based diagnostic assay in medicine, demonstrating that a circulating endocrine signal of pregnancy could be detected by a reproducible bioassay.',
         source: {
           externalId: 'src:aschheim-zondek-pregnancy-hormone-test-1928',
-          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7:1404–1411, 1453–1457.',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7:1404--1411, 1453--1457.',
           url: 'https://embryology.med.unsw.edu.au/embryology/index.php/Paper_-_The_Aschheim-Zondek_hormone_test_for_pregnancy',
           publishedAt: '1928-01-01',
           methodologyType: 'primary',
@@ -39479,10 +39479,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1933-01-01',
         datePrecision: 'YEAR',
-        reason: 'Through the early 1930s the Aschheim–Zondek reaction was adopted as a routine clinical and laboratory service across Europe and North America, run by hospital and commercial laboratories as the standard objective pregnancy test and applied diagnostically beyond pregnancy (e.g., detecting hormone-secreting tumours). This institutional uptake settled the claim that a pregnancy hormone in urine could be reliably assayed; the underlying fact — detectable urinary hCG indicates pregnancy — remains the basis of every modern pregnancy test even though the mouse bioassay was later replaced by immunoassays.',
+        reason: 'Through the early 1930s the Aschheim--Zondek reaction was adopted as a routine clinical and laboratory service across Europe and North America, run by hospital and commercial laboratories as the standard objective pregnancy test and applied diagnostically beyond pregnancy (e.g., detecting hormone-secreting tumours). This institutional uptake settled the claim that a pregnancy hormone in urine could be reliably assayed; the underlying fact — detectable urinary hCG indicates pregnancy — remains the basis of every modern pregnancy test even though the mouse bioassay was later replaced by immunoassays.',
         source: {
           externalId: 'src:olszynko-gryn-aschheim-zondek-demand-2014',
-          name: 'Olszynko-Gryn J. The demand for pregnancy testing: the Aschheim–Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47 Pt B:233–247.',
+          name: 'Olszynko-Gryn J. The demand for pregnancy testing: the Aschheim--Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47 Pt B:233--247.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/24388014/',
           publishedAt: '2014-09-01',
           methodologyType: 'derivative',
@@ -39492,7 +39492,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // WOMEN'S HEALTH & POST-MARKET SURVEILLANCE ERA (1990–2010)
+  // WOMEN'S HEALTH & POST-MARKET SURVEILLANCE ERA (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── HERS — HRT secondary CHD prevention failure 1998 ────────────────────────
@@ -39681,7 +39681,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In late February/early March 2004 the NIH instructed the ~10,700 women in the WHI estrogen-alone (conjugated equine estrogen) arm to stop their study pills, after the data monitoring board found an increased stroke risk and no protection against coronary heart disease, concluding the result would not change by the planned 2005 end. The early termination reversed, at the regulator/sponsor level, the residual claim that unopposed estrogen was beneficial for women with hysterectomy.',
         source: {
           externalId: 'src:nhlbi-whi-estrogen-alone-overview',
-          name: 'National Heart, Lung, and Blood Institute (NIH). Women\'s Health Initiative (WHI) — estrogen-alone trial stopped early (Feb–Mar 2004).',
+          name: 'National Heart, Lung, and Blood Institute (NIH). Women\'s Health Initiative (WHI) — estrogen-alone trial stopped early (Feb--Mar 2004).',
           url: 'https://www.nhlbi.nih.gov/science/womens-health-initiative-whi',
           publishedAt: '2004-03-02',
           methodologyType: 'primary',
@@ -39708,7 +39708,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── ACIP HPV 2-dose schedule for adolescents 2016 ───────────────────────────
   {
     externalId: 'trajectory:acip-hpv-two-dose-adolescent-schedule-2016',
-    text: 'On 19 October 2016 the U.S. Advisory Committee on Immunization Practices recommended a 2-dose HPV vaccination schedule (at 0 and 6–12 months) for adolescents initiating the series before their 15th birthday, replacing the prior 3-dose requirement on the basis of immunobridging data showing younger adolescents mount antibody responses after two doses comparable to older recipients after three.',
+    text: 'On 19 October 2016 the U.S. Advisory Committee on Immunization Practices recommended a 2-dose HPV vaccination schedule (at 0 and 6--12 months) for adolescents initiating the series before their 15th birthday, replacing the prior 3-dose requirement on the basis of immunobridging data showing younger adolescents mount antibody responses after two doses comparable to older recipients after three.',
     claimType: 'HYBRID',
     claimEmergedAt: '2016-12-16',
     claimEmergedPrecision: 'DAY',
@@ -39735,7 +39735,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── ACOG delayed umbilical cord clamping 2017 ───────────────────────────────
   {
     externalId: 'trajectory:acog-delayed-umbilical-cord-clamping-2017',
-    text: 'In Committee Opinion No. 684 (Obstetrics & Gynecology, January 2017) the American College of Obstetricians and Gynecologists recommended a delay in umbilical cord clamping of at least 30–60 seconds for vigorous term and preterm infants, reversing decades of routine immediate cord clamping at birth.',
+    text: 'In Committee Opinion No. 684 (Obstetrics & Gynecology, January 2017) the American College of Obstetricians and Gynecologists recommended a delay in umbilical cord clamping of at least 30--60 seconds for vigorous term and preterm infants, reversing decades of routine immediate cord clamping at birth.',
     claimType: 'HYBRID',
     claimEmergedAt: '2017-01-01',
     claimEmergedPrecision: 'MONTH',
@@ -39747,7 +39747,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2017-01-01',
         datePrecision: 'MONTH',
-        reason: 'Citing trial evidence that delayed clamping increases neonatal hemoglobin and iron stores in term infants and reduces intraventricular hemorrhage and necrotizing enterocolitis in preterm infants, ACOG issued Committee Opinion No. 684 recommending a delay of at least 30–60 seconds for vigorous newborns. The opinion from the body that sets U.S. obstetric standards overturned the long-entrenched routine of immediate cord clamping, settling delayed clamping as recommended practice and aligning with concurrent AAP and WHO guidance.',
+        reason: 'Citing trial evidence that delayed clamping increases neonatal hemoglobin and iron stores in term infants and reduces intraventricular hemorrhage and necrotizing enterocolitis in preterm infants, ACOG issued Committee Opinion No. 684 recommending a delay of at least 30--60 seconds for vigorous newborns. The opinion from the body that sets U.S. obstetric standards overturned the long-entrenched routine of immediate cord clamping, settling delayed clamping as recommended practice and aligning with concurrent AAP and WHO guidance.',
         source: {
           externalId: 'src:acog-committee-opinion-684-cord-clamping-2017',
           name: 'Committee on Obstetric Practice, American College of Obstetricians and Gynecologists. Committee Opinion No. 684: Delayed Umbilical Cord Clamping After Birth. Obstet Gynecol. 2017;129(1):e5-e10.',
@@ -39829,7 +39829,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // GENE THERAPY & RARE DISEASE ERA (2020–2024)
+  // GENE THERAPY & RARE DISEASE ERA (2020--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Beremagene geperpavec (Vyjuvek) — first topical redosable gene therapy 2023 ──
@@ -39958,7 +39958,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2024-09-20',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Miplyffa (arimoclomol) in combination with miglustat based on a randomized, double-blind, placebo-controlled 12-month trial in 50 patients aged 2–19 showing slowed progression on a disease-specific severity scale. The approval — which followed an earlier FDA Complete Response Letter that had rejected the original application — made arimoclomol the first drug ever authorized for Niemann-Pick disease type C, a fatal lysosomal cholesterol-trafficking disorder previously managed only off-label, establishing heat-shock-protein/chaperone modulation as a sanctioned approach.',
+        reason: 'The FDA approved Miplyffa (arimoclomol) in combination with miglustat based on a randomized, double-blind, placebo-controlled 12-month trial in 50 patients aged 2--19 showing slowed progression on a disease-specific severity scale. The approval — which followed an earlier FDA Complete Response Letter that had rejected the original application — made arimoclomol the first drug ever authorized for Niemann-Pick disease type C, a fatal lysosomal cholesterol-trafficking disorder previously managed only off-label, establishing heat-shock-protein/chaperone modulation as a sanctioned approach.',
         source: {
           externalId: 'src:zevra-miplyffa-arimoclomol-fda-approval-2024',
           name: 'Zevra Therapeutics, Inc. Zevra Therapeutics\' MIPLYFFA (arimoclomol) Receives U.S. FDA Approval as Treatment for Niemann-Pick Disease Type C. Press release. September 20, 2024.',
@@ -40000,7 +40000,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2020-08-18',
         datePrecision: 'DAY',
-        reason: 'The FDA issued a Complete Response Letter rejecting BioMarin\'s Biologics License Application, citing concern that factor VIII expression appeared to wane after 12–18 months and demanding two years of Phase 3 (GENEr8-1) follow-up using annualized bleeding rate as the primary endpoint. The unexpected rejection placed the durability of the gene therapy\'s effect into active institutional dispute and became a landmark in debates over evidentiary standards for one-time gene therapies.',
+        reason: 'The FDA issued a Complete Response Letter rejecting BioMarin\'s Biologics License Application, citing concern that factor VIII expression appeared to wane after 12--18 months and demanding two years of Phase 3 (GENEr8-1) follow-up using annualized bleeding rate as the primary endpoint. The unexpected rejection placed the durability of the gene therapy\'s effect into active institutional dispute and became a landmark in debates over evidentiary standards for one-time gene therapies.',
         source: {
           externalId: 'src:biomarin-valrox-crl-2020',
           name: 'BioMarin Pharmaceutical Inc. BioMarin Receives Complete Response Letter (CRL) from FDA for Valoctocogene Roxaparvovec Gene Therapy for Severe Hemophilia A. Press release. August 19, 2020.',
@@ -40028,7 +40028,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL TECHNIQUE ERA (1960s–2000s)
+  // SURGICAL TECHNIQUE ERA (1960s--2000s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Total mesorectal excision — Heald 1982 ──────────────────────────────────
@@ -40061,7 +40061,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1986-06-28',
         datePrecision: 'DAY',
-        reason: 'Heald and Ryall reported a consecutive Basingstoke series in The Lancet showing a 5-year cumulative local recurrence risk of only 3.7% with TME, against the 25–30% local-failure rates then typical, achieved without adjuvant chemotherapy or radiotherapy. The dramatic outcome converted TME from a single surgeon\'s hypothesis into the benchmark technique, and it was subsequently codified as the standard of rectal cancer surgery and the basis of national programmes and the Dutch TME trial.',
+        reason: 'Heald and Ryall reported a consecutive Basingstoke series in The Lancet showing a 5-year cumulative local recurrence risk of only 3.7% with TME, against the 25--30% local-failure rates then typical, achieved without adjuvant chemotherapy or radiotherapy. The dramatic outcome converted TME from a single surgeon\'s hypothesis into the benchmark technique, and it was subsequently codified as the standard of rectal cancer surgery and the basis of national programmes and the Dutch TME trial.',
         source: {
           externalId: 'src:heald-ryall-tme-recurrence-survival-lancet-1986',
           name: 'Heald RJ, Ryall RDH. Recurrence and survival after total mesorectal excision for rectal cancer. Lancet. 1986;1(8496):1479-1482.',
@@ -40200,7 +40200,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // IMMUNO-ONCOLOGY & TARGETED THERAPY ERA (1999–2011)
+  // IMMUNO-ONCOLOGY & TARGETED THERAPY ERA (1999--2011)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Thalidomide antitumor activity in refractory multiple myeloma — Singhal 1999
@@ -40414,7 +40414,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // EARLY INFECTIOUS DISEASE ERA (1907–1937)
+  // EARLY INFECTIOUS DISEASE ERA (1907--1937)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Typhoid Mary healthy carrier — Soper 1907 ──────────────────────────────
@@ -40616,7 +40616,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PSYCHOPHARMACOLOGY & NOSOLOGY ERA (1949–1989)
+  // PSYCHOPHARMACOLOGY & NOSOLOGY ERA (1949--1989)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Lithium carbonate for mania — Cade 1949 / FDA 1970 ──────────────────────
@@ -40637,7 +40637,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Australian psychiatrist John Cade published \'Lithium salts in the treatment of psychotic excitement\' in the Medical Journal of Australia, reporting that lithium carbonate calmed manic agitation in patients after he observed its effects in guinea pigs. This recorded the first claim that a simple ion could specifically treat a major mental illness, the foundational observation of modern mood-stabilizer pharmacology, though it was published in an obscure journal and long neglected internationally.',
         source: {
           externalId: 'src:cade-lithium-psychotic-excitement-1949',
-          name: 'Cade JFJ. Lithium salts in the treatment of psychotic excitement. Med J Aust. 1949;2(10):349–352. (Reprinted Bull World Health Organ. 2000;78(4):518–520.)',
+          name: 'Cade JFJ. Lithium salts in the treatment of psychotic excitement. Med J Aust. 1949;2(10):349--352. (Reprinted Bull World Health Organ. 2000;78(4):518--520.)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2560740/',
           publishedAt: '1949-09-03',
           methodologyType: 'primary',
@@ -40679,7 +40679,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The APA\'s first Diagnostic and Statistical Manual (DSM-I, 1952) listed homosexuality among the \'sociopathic personality disturbances,\' and DSM-II (1968) retained it as a mental disorder. This institutionally established, as settled psychiatric nosology, the claim that homosexuality was a diagnosable mental illness, underpinning decades of conversion-oriented clinical practice.',
         source: {
           externalId: 'src:drescher-out-of-dsm-2015',
-          name: 'Drescher J. Out of DSM: Depathologizing Homosexuality. Behav Sci (Basel). 2015;5(4):565–575.',
+          name: 'Drescher J. Out of DSM: Depathologizing Homosexuality. Behav Sci (Basel). 2015;5(4):565--575.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4695779/',
           publishedAt: '2015-12-04',
           methodologyType: 'derivative',
@@ -40721,7 +40721,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Robert Spitzer and colleagues developed the Research Diagnostic Criteria (RDC, 1978), building on the operational approach of the St. Louis/Feighner criteria, which specified explicit symptom checklists for psychiatric disorders to improve diagnostic reliability for research. This recorded into the literature the claim that mental disorders could be defined by observable operational criteria with measurable inter-rater agreement, rather than by inferred psychodynamic etiology.',
         source: {
           externalId: 'src:lieberman-first-spitzer-2016',
-          name: 'Lieberman JA, First MB. Robert Spitzer: A Psychiatrist for the Ages. Neuropsychopharmacology. 2016;41(8):1937–1938.',
+          name: 'Lieberman JA, First MB. Robert Spitzer: A Psychiatrist for the Ages. Neuropsychopharmacology. 2016;41(8):1937--1938.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5101569/',
           publishedAt: '2016-07-01',
           methodologyType: 'derivative',
@@ -40736,7 +40736,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The APA published DSM-III in 1980, importing operationalized diagnostic criteria with documented reliability for every mental disorder and dropping the prior manuals\' psychoanalytic framing. Its adoption made the descriptive, criteria-based model the institutional standard for psychiatric diagnosis worldwide, structuring clinical practice, insurance reimbursement, and research for the following decades.',
         source: {
           externalId: 'src:lieberman-first-spitzer-dsm3-2016',
-          name: 'Lieberman JA, First MB. Robert Spitzer: A Psychiatrist for the Ages. Neuropsychopharmacology. 2016;41(8):1937–1938.',
+          name: 'Lieberman JA, First MB. Robert Spitzer: A Psychiatrist for the Ages. Neuropsychopharmacology. 2016;41(8):1937--1938.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5101569/',
           publishedAt: '2016-07-01',
           methodologyType: 'derivative',
@@ -40763,7 +40763,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Kane, Honigfeld, Singer and Meltzer published a multicenter double-blind trial finding that 30% of rigorously defined treatment-resistant schizophrenic patients responded to clozapine versus 4% on chlorpromazine, with superiority on both positive and negative symptoms. This recorded the claim that clozapine had unique efficacy in patients who failed standard neuroleptics, and reframed a drug that Sandoz had withdrawn after eight patients died of agranulocytosis in Finland in 1975 as worth the hematologic risk under monitoring.',
         source: {
           externalId: 'src:kane-clozapine-resistant-schizophrenia-1988',
-          name: 'Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic. A double-blind comparison with chlorpromazine. Arch Gen Psychiatry. 1988;45(9):789–796.',
+          name: 'Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic. A double-blind comparison with chlorpromazine. Arch Gen Psychiatry. 1988;45(9):789--796.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/3046553/',
           publishedAt: '1988-09-01',
           methodologyType: 'primary',
@@ -40788,7 +40788,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MODERN EVIDENCE-BASED ERA (1999–2015)
+  // MODERN EVIDENCE-BASED ERA (1999--2015)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Growth hormone doubles mortality in critically ill — Takala 1999 ─────────
@@ -40821,7 +40821,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1999-09-09',
         datePrecision: 'DAY',
-        reason: 'Takala, Ruokonen, Webster, Hinds, and colleagues reported two parallel multicenter, double-blind, placebo-controlled trials (532 critically ill adults in Finland and elsewhere in Europe) in which high-dose growth hormone roughly doubled in-hospital mortality — 39% vs 20% in the Finnish trial and 44% vs 18% in the multinational trial (relative risk 1.9–2.4). The result directly reversed the anabolic-benefit premise, ended routine growth-hormone use in critical illness, and became a textbook case of a surrogate-endpoint rationale overturned by a hard-outcome trial.',
+        reason: 'Takala, Ruokonen, Webster, Hinds, and colleagues reported two parallel multicenter, double-blind, placebo-controlled trials (532 critically ill adults in Finland and elsewhere in Europe) in which high-dose growth hormone roughly doubled in-hospital mortality — 39% vs 20% in the Finnish trial and 44% vs 18% in the multinational trial (relative risk 1.9--2.4). The result directly reversed the anabolic-benefit premise, ended routine growth-hormone use in critical illness, and became a textbook case of a surrogate-endpoint rationale overturned by a hard-outcome trial.',
         source: {
           externalId: 'src:takala-gh-critically-ill-nejm-1999',
           name: 'Takala J, Ruokonen E, Webster NR, Nielsen MS, Zandstra DF, Vundelinckx G, Hinds CJ. Increased mortality associated with growth hormone treatment in critically ill adults. N Engl J Med. 1999;341(11):785-792.',
@@ -40890,7 +40890,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2011-04-19',
         datePrecision: 'DAY',
-        reason: 'Bolland and colleagues reanalyzed the Women\'s Health Initiative limited-access dataset together with an updated meta-analysis in the BMJ, reporting that calcium with or without vitamin D modestly increased the risk of cardiovascular events, especially myocardial infarction (relative risk 1.24, p=0.004), particularly in women not already taking calcium at baseline. The reanalysis reinforced the harm signal, but other investigators and guideline bodies disputed the interpretation, leaving the calcium–cardiovascular link openly contested rather than settled.',
+        reason: 'Bolland and colleagues reanalyzed the Women\'s Health Initiative limited-access dataset together with an updated meta-analysis in the BMJ, reporting that calcium with or without vitamin D modestly increased the risk of cardiovascular events, especially myocardial infarction (relative risk 1.24, p=0.004), particularly in women not already taking calcium at baseline. The reanalysis reinforced the harm signal, but other investigators and guideline bodies disputed the interpretation, leaving the calcium--cardiovascular link openly contested rather than settled.',
         source: {
           externalId: 'src:bolland-calcium-whi-reanalysis-bmj-2011',
           name: 'Bolland MJ, Grey A, Avenell A, Gamble GD, Reid IR. Calcium supplements with or without vitamin D and risk of cardiovascular events: reanalysis of the Women\'s Health Initiative limited access dataset and meta-analysis. BMJ. 2011;342:d2040.',
@@ -40945,7 +40945,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID LITIGATION & REGULATORY ERA (2010–2024)
+  // OPIOID LITIGATION & REGULATORY ERA (2010--2024)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── OxyContin reformulation — abuse-deterrent claim contested 2012 ────────────
@@ -41005,7 +41005,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2013-05-18',
         datePrecision: 'DAY',
-        reason: 'The APA\'s DSM-5 collapsed the DSM-IV categories of substance abuse and substance dependence into one combined disorder rated on a mild–moderate–severe severity continuum, requiring two of eleven criteria, and added craving while removing legal problems. For opioids this created \'opioid use disorder,\' reclassifying addiction diagnostics away from the contested \'dependence\' label and institutionally settling the spectrum model that now governs clinical and epidemiological practice.',
+        reason: 'The APA\'s DSM-5 collapsed the DSM-IV categories of substance abuse and substance dependence into one combined disorder rated on a mild--moderate--severe severity continuum, requiring two of eleven criteria, and added craving while removing legal problems. For opioids this created \'opioid use disorder,\' reclassifying addiction diagnostics away from the contested \'dependence\' label and institutionally settling the spectrum model that now governs clinical and epidemiological practice.',
         source: {
           externalId: 'src:hasin-dsm5-substance-use-disorders-ajp-2013',
           name: 'Hasin DS, O\'Brien CP, Auriacombe M, et al. DSM-5 Criteria for Substance Use Disorders: Recommendations and Rationale. Am J Psychiatry. 2013;170(8):834-851.',
@@ -41017,7 +41017,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Oklahoma J&J public-nuisance opioid verdict reversed — 2019–2021 ─────────
+  // ── Oklahoma J&J public-nuisance opioid verdict reversed — 2019--2021 ─────────
   {
     externalId: 'trajectory:oklahoma-jj-opioid-public-nuisance-2019',
     text: 'On August 26, 2019, Oklahoma district judge Thad Balkman ruled in State of Oklahoma v. Johnson & Johnson that the company\'s prescription-opioid marketing constituted a public nuisance under Oklahoma law, ordering it to pay $465 million to abate the opioid crisis — the first opioid-manufacturer liability verdict in the U.S.',
@@ -41047,7 +41047,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'JUDICIAL',
         occurredAt: '2021-11-09',
         datePrecision: 'DAY',
-        reason: 'The Oklahoma Supreme Court, in a 5–1 decision (2021 OK 54), reversed the verdict, holding that the state\'s public-nuisance statute does not extend to the manufacturing, marketing, and sale of prescription opioids and that the district court had gone \'too far.\' The reversal undercut public-nuisance theory as a basis for opioid-manufacturer liability and reshaped subsequent national litigation strategy.',
+        reason: 'The Oklahoma Supreme Court, in a 5--1 decision (2021 OK 54), reversed the verdict, holding that the state\'s public-nuisance statute does not extend to the manufacturing, marketing, and sale of prescription opioids and that the district court had gone \'too far.\' The reversal undercut public-nuisance theory as a basis for opioid-manufacturer liability and reshaped subsequent national litigation strategy.',
         source: {
           externalId: 'src:oklahoma-sct-jj-reversal-2021',
           name: 'State of Oklahoma ex rel. Attorney General v. Johnson & Johnson, 2021 OK 54 (Okla. Nov. 9, 2021).',
@@ -41116,7 +41116,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'JUDICIAL',
         occurredAt: '2024-06-27',
         datePrecision: 'DAY',
-        reason: 'In a 5–4 decision, the Supreme Court reversed and remanded, holding that the Bankruptcy Code\'s catchall provision does not authorize a plan to extinguish claims against non-debtors without claimant consent. The ruling repudiated the lower courts\' premise, collapsing the negotiated Sackler-release structure and requiring the opioid settlement to be renegotiated.',
+        reason: 'In a 5--4 decision, the Supreme Court reversed and remanded, holding that the Bankruptcy Code\'s catchall provision does not authorize a plan to extinguish claims against non-debtors without claimant consent. The ruling repudiated the lower courts\' premise, collapsing the negotiated Sackler-release structure and requiring the opioid settlement to be renegotiated.',
         source: {
           externalId: 'src:scotus-harrington-purdue-opinion-2024',
           name: 'Harrington, U.S. Trustee v. Purdue Pharma L.P., No. 23-124, 603 U.S. ___ (June 27, 2024). Slip opinion.',
@@ -41150,7 +41150,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Papanicolaou and Traut published \'The Diagnostic Value of Vaginal Smears in Carcinoma of the Uterus,\' showing that exfoliative cytology could identify cervical and uterine cancer cells before symptoms appeared. Papanicolaou had first announced the technique in 1928 (Third Race Betterment Conference), but it was dismissed; the rigorous 1941 study revived and recorded the claim, founding the field of clinical cytopathology.',
         source: {
           externalId: 'src:papanicolaou-traut-vaginal-smears-ajog-1941',
-          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42(2):193–206.',
+          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42(2):193--206.',
           url: 'https://doi.org/10.1016/S0002-9378(16)40621-6',
           publishedAt: '1941-01-01',
           methodologyType: 'primary',
@@ -41165,7 +41165,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Following the 1943 monograph and American Cancer Society promotion of mass cytology screening through the 1950s, the Pap smear became the standard screening test for cervical cancer and premalignant lesions, credited with sharp subsequent declines in cervical cancer mortality. The claim moved from a single laboratory\'s finding to institutionalized population screening.',
         source: {
           externalId: 'src:papanicolaou-pap-smear-biography-jogi-2018',
-          name: 'Diamantis A, Magiorkinis E, Androutsos G. George Papanicolaou (1883–1962): Discoverer of the Pap Smear. J Obstet Gynaecol India. 2018;68(6):421–423.',
+          name: 'Diamantis A, Magiorkinis E, Androutsos G. George Papanicolaou (1883--1962): Discoverer of the Pap Smear. J Obstet Gynaecol India. 2018;68(6):421--423.',
           url: 'https://link.springer.com/article/10.1007/s13224-018-1102-z',
           publishedAt: '2018-06-13',
           methodologyType: 'derivative',
@@ -41192,7 +41192,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The FDA approved conjugated equine estrogens (Premarin, Wyeth-Ayerst) for treatment of menopausal symptoms, one year after approving diethylstilbestrol for the same indication. Premarin went on to become one of the most-dispensed drugs in the United States, and its menopausal vasomotor-symptom indication remains FDA-approved today; the broader claim that estrogen therapy prevents chronic disease was separately contested by the Women\'s Health Initiative in 2002.',
         source: {
           externalId: 'src:stefanick-estrogens-progestins-history-ajm-2005',
-          name: 'Stefanick ML. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005;118(12 Suppl 2):64–73.',
+          name: 'Stefanick ML. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005;118(12 Suppl 2):64--73.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16414329/',
           publishedAt: '2005-12-01',
           methodologyType: 'derivative',
@@ -41201,10 +41201,10 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Doisy estrone isolation 1929–1930 ──────────────────────────────────────
+  // ── Doisy estrone isolation 1929--1930 ──────────────────────────────────────
   {
     externalId: 'trajectory:doisy-estrone-isolation-1929',
-    text: 'Edward Doisy, with Clement Veler and Sidney Thayer, claimed in 1929–1930 to have isolated the ovarian follicular hormone in pure crystalline form (theelin, now estrone) from the urine of pregnant women — the first sex hormone obtained as a defined crystalline chemical.',
+    text: 'Edward Doisy, with Clement Veler and Sidney Thayer, claimed in 1929--1930 to have isolated the ovarian follicular hormone in pure crystalline form (theelin, now estrone) from the urine of pregnant women — the first sex hormone obtained as a defined crystalline chemical.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1929-01-01',
     claimEmergedPrecision: 'YEAR',
@@ -41219,7 +41219,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After crystallizing the hormone in 1929 (presented at the International Physiological Congress in Boston), Doisy, Veler, and Thayer published the preparation of crystalline theelin (estrone) in the Journal of Biological Chemistry. This converted the previously crude \'follicular hormone\' bioassay into a defined pure compound and laid the chemical foundation for estrogen science and later estrogen therapy.',
         source: {
           externalId: 'src:doisy-veler-thayer-crystalline-theelin-jbc-1930',
-          name: 'Doisy EA, Veler CD, Thayer S. The preparation of the crystalline follicular ovarian hormone: theelin. J Biol Chem. 1930;87(2):357–371.',
+          name: 'Doisy EA, Veler CD, Thayer S. The preparation of the crystalline follicular ovarian hormone: theelin. J Biol Chem. 1930;87(2):357--371.',
           url: 'https://www.jbc.org/article/S0021-9258(19)66427-6/fulltext',
           publishedAt: '1930-01-01',
           methodologyType: 'primary',
@@ -41261,7 +41261,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Marker and Krueger published the preparation of trillin and its conversion to progesterone in the Journal of the American Chemical Society, establishing a semisynthetic route from plant sapogenins (diosgenin) to a steroid hormone. This recorded the chemistry that would break the dependence of hormone supply on scarce, costly animal tissue.',
         source: {
           externalId: 'src:marker-krueger-trillin-progesterone-jacs-1940',
-          name: 'Marker RE, Krueger J. Sterols. CXII. Sapogenins. XLI. The preparation of trillin and its conversion to progesterone. J Am Chem Soc. 1940;62(12):3349–3350.',
+          name: 'Marker RE, Krueger J. Sterols. CXII. Sapogenins. XLI. The preparation of trillin and its conversion to progesterone. J Am Chem Soc. 1940;62(12):3349--3350.',
           url: 'https://pubs.acs.org/doi/abs/10.1021/ja01869a023',
           publishedAt: '1940-12-01',
           methodologyType: 'primary',
@@ -41286,13 +41286,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NEONATAL PHARMACOLOGY — EXCIPIENT & IATROGENIC TOXICITY (1973–1993)
+  // NEONATAL PHARMACOLOGY — EXCIPIENT & IATROGENIC TOXICITY (1973--1993)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Hexachlorophene neonatal myelinopathy — Powell 1973 ─────────────────────
   {
     externalId: 'trajectory:hexachlorophene-neonatal-myelinopathy-1973',
-    text: 'Routine total-body bathing of newborns with 3% hexachlorophene (pHisoHex) antiseptic — standard US nursery practice through the 1960s to prevent staphylococcal infection — was found in 1972–1975 to cause vacuolar myelinopathy (brain white-matter damage) in premature infants, leading the FDA to restrict it and the practice to be abandoned.',
+    text: 'Routine total-body bathing of newborns with 3% hexachlorophene (pHisoHex) antiseptic — standard US nursery practice through the 1960s to prevent staphylococcal infection — was found in 1972--1975 to cause vacuolar myelinopathy (brain white-matter damage) in premature infants, leading the FDA to restrict it and the practice to be abandoned.',
     claimType: 'HYBRID',
     claimEmergedAt: '1973-06-01',
     claimEmergedPrecision: 'MONTH',
@@ -41458,7 +41458,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ONCOLOGY / TARGETED THERAPY ERA (1990–2005)
+  // ONCOLOGY / TARGETED THERAPY ERA (1990--2005)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Arsenic trioxide (Trisenox) for relapsed APL — FDA 2000 ─────────────────
@@ -41644,7 +41644,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2001-05-07',
         datePrecision: 'DAY',
-        reason: 'The FDA granted accelerated approval to Campath (alemtuzumab, BLA 103948) for B-CLL treated with alkylating agents and refractory to fludarabine, based on durable objective response rates of roughly 21–33% in single-arm studies. This recorded the claim that depleting CD52-bearing lymphocytes could salvage a refractory orphan leukemia, conditioned on confirmatory data.',
+        reason: 'The FDA granted accelerated approval to Campath (alemtuzumab, BLA 103948) for B-CLL treated with alkylating agents and refractory to fludarabine, based on durable objective response rates of roughly 21--33% in single-arm studies. This recorded the claim that depleting CD52-bearing lymphocytes could salvage a refractory orphan leukemia, conditioned on confirmatory data.',
         source: {
           externalId: 'src:fda-campath-alemtuzumab-approval-2001',
           name: 'U.S. FDA, Drugs@FDA. Campath (alemtuzumab), BLA 103948. Accelerated approval May 7, 2001.',
@@ -41716,7 +41716,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── MRC mild hypertension trial modest benefit 1985 ─────────────────────────
   {
     externalId: 'trajectory:mrc-mild-hypertension-trial-modest-benefit-1985',
-    text: 'On 13 July 1985 the Medical Research Council Working Party reported in the British Medical Journal that drug treatment of mild hypertension (diastolic 90–109 mm Hg) reduced the rate of stroke but produced no significant reduction in coronary events or all-cause mortality, and that about 850 patients had to be treated for a year to prevent one stroke.',
+    text: 'On 13 July 1985 the Medical Research Council Working Party reported in the British Medical Journal that drug treatment of mild hypertension (diastolic 90--109 mm Hg) reduced the rate of stroke but produced no significant reduction in coronary events or all-cause mortality, and that about 850 patients had to be treated for a year to prevent one stroke.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1985-07-13',
     claimEmergedPrecision: 'DAY',
@@ -41770,7 +41770,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Seven Countries Study diet-heart population 1970 ────────────────────────
   {
     externalId: 'trajectory:seven-countries-study-diet-heart-population-1970',
-    text: 'In April 1970 Ancel Keys\' Seven Countries Study reported in Circulation that, across populations in the United States, Europe, and Japan, the proportion of dietary saturated fat and the level of serum cholesterol predicted population rates of coronary heart disease, establishing the population-level diet–cholesterol–heart hypothesis.',
+    text: 'In April 1970 Ancel Keys\' Seven Countries Study reported in Circulation that, across populations in the United States, Europe, and Japan, the proportion of dietary saturated fat and the level of serum cholesterol predicted population rates of coronary heart disease, establishing the population-level diet--cholesterol--heart hypothesis.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1970-04-01',
     claimEmergedPrecision: 'MONTH',
@@ -41795,7 +41795,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // INFECTIOUS DISEASE & VACCINES (1990s–2000s)
+  // INFECTIOUS DISEASE & VACCINES (1990s--2000s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Vibrio cholerae O139 Bengal emergence 1993 ──────────────────────────────
@@ -42009,7 +42009,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // ENDOCRINOLOGY & BIOCHEMISTRY (1896–1951)
+  // ENDOCRINOLOGY & BIOCHEMISTRY (1896--1951)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Abel crystalline insulin — protein identity 1926 ────────────────────────
@@ -42030,7 +42030,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Abel published \'Crystalline Insulin\' in PNAS, reporting that he had crystallized insulin and that the crystalline material possessed the full glucose-lowering activity of the hormone, indicating insulin is a protein. Four years after Banting and Best\'s clinical extract, this recorded in the expert literature the claim that the antidiabetic principle is a single definable chemical substance rather than an uncharacterized \'internal secretion.\' The claim was initially contested, as some held the protein was merely a carrier for a smaller active molecule.',
         source: {
           externalId: 'src:abel-crystalline-insulin-pnas-1926',
-          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132–136. (PMID 16587069; PMC1084434.)',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132--136. (PMID 16587069; PMC1084434.)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1084434/',
           publishedAt: '1926-02-15',
           methodologyType: 'primary',
@@ -42045,7 +42045,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Frederick Sanger and Hans Tuppy published the amino-acid sequence of the phenylalanyl (B) chain of insulin in the Biochemical Journal, the first complete sequence of any protein chain, definitively establishing insulin as a defined protein with a fixed primary structure. This resolved decades of doubt about whether Abel\'s crystalline protein was the hormone itself, settling insulin\'s chemical identity as a protein and earning Sanger the 1958 Nobel Prize in Chemistry.',
         source: {
           externalId: 'src:sanger-tuppy-insulin-sequence-biochemj-1951',
-          name: 'Sanger F, Tuppy H. The amino-acid sequence in the phenylalanyl chain of insulin. Biochem J. 1951;49(4):463–481. (PMID 14886310.)',
+          name: 'Sanger F, Tuppy H. The amino-acid sequence in the phenylalanyl chain of insulin. Biochem J. 1951;49(4):463--481. (PMID 14886310.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/14886310/',
           publishedAt: '1951-12-01',
           methodologyType: 'primary',
@@ -42072,7 +42072,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Bayliss and Starling published \'The Mechanism of Pancreatic Secretion\' in the Journal of Physiology, showing in anesthetized dogs that acid instilled into a denervated loop of duodenum still provoked pancreatic secretion, proving the signal was a chemical substance — secretin — carried in the blood rather than a nerve reflex. This recorded in the expert literature the claim that distant organs communicate by blood-borne chemical messengers, the first such messenger ever identified.',
         source: {
           externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
-          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325–353.',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325--353.',
           url: 'https://physoc.onlinelibrary.wiley.com/doi/10.1113/jphysiol.1902.sp000920',
           publishedAt: '1902-09-12',
           methodologyType: 'primary',
@@ -42087,7 +42087,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In his Croonian Lectures to the Royal College of Physicians (published in The Lancet, 1905), Starling generalized the secretin finding by coining the word \'hormone\' for blood-borne chemical messengers that coordinate body functions, giving the new discipline of endocrinology its central concept and vocabulary. The rapid uptake of the hormone concept by physiologists settled secretin\'s status as the prototype of a universal regulatory mechanism.',
         source: {
           externalId: 'src:starling-croonian-hormone-secretin-review-2001',
-          name: 'Modlin IM, Kidd M. Ernest Starling and the discovery of secretin. J Clin Gastroenterol. 2001;32(3):187–192. (Croonian Lectures, Lancet 1905; coining of \'hormone\'.)',
+          name: 'Modlin IM, Kidd M. Ernest Starling and the discovery of secretin. J Clin Gastroenterol. 2001;32(3):187--192. (Croonian Lectures, Lancet 1905; coining of \'hormone\'.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/11246341/',
           publishedAt: '2001-03-01',
           methodologyType: 'derivative',
@@ -42114,7 +42114,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Houssay and Biasotti showed that in hypophysectomized dogs and toads the severity of pancreatic (pancreatectomy) diabetes was markedly reduced and hypoglycemia appeared, while injection of anterior-pituitary extract produced hyperglycemia, demonstrating an anti-insulin, diabetogenic principle in the adenohypophysis. This recorded in the expert literature the claim that the anterior pituitary conditions the severity of diabetes and helps govern blood sugar — extending the endocrine control of metabolism beyond the pancreas.',
         source: {
           externalId: 'src:houssay-biasotti-hypophysis-diabetes-1930-biography',
-          name: 'Hawgood BJ. Professor Bernardo Alberto Houssay (1887–1971): Argentine physiologist and Nobel laureate. J Med Biogr. 2004;12(2):105–110. (Reviewing Houssay & Biasotti, C R Soc Biol 1930;104:407–410.)',
+          name: 'Hawgood BJ. Professor Bernardo Alberto Houssay (1887--1971): Argentine physiologist and Nobel laureate. J Med Biogr. 2004;12(2):105--110. (Reviewing Houssay & Biasotti, C R Soc Biol 1930;104:407--410.)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4728695/',
           publishedAt: '2004-05-01',
           methodologyType: 'derivative',
@@ -42156,7 +42156,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Takamine reported the isolation and crystallization of the active principle of the suprarenal gland, which he named adrenalin, succeeding where John Jacob Abel\'s \'epinephrin\' had remained an impure preparation. This recorded the claim that an endocrine secretion could be obtained as a single pure crystalline compound, the first hormone so isolated; Parke-Davis promptly commercialized it under the trade name Adrenalin.',
         source: {
           externalId: 'src:takamine-adrenaline-isolation-1901',
-          name: 'Takamine J. Adrenalin, the active principle of the suprarenal glands, and its mode of preparation. Am J Pharm. 1901;73:523–531. (Reviewed: Bennett MR. One hundred years of adrenaline: the discovery of autoreceptors. Clin Auton Res. 1999.)',
+          name: 'Takamine J. Adrenalin, the active principle of the suprarenal glands, and its mode of preparation. Am J Pharm. 1901;73:523--531. (Reviewed: Bennett MR. One hundred years of adrenaline: the discovery of autoreceptors. Clin Auton Res. 1999.)',
           url: 'https://en.wikipedia.org/wiki/Jokichi_Takamine',
           publishedAt: '1901-01-01',
           methodologyType: 'primary',
@@ -42171,7 +42171,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Friedrich Stolz achieved the chemical synthesis of adrenaline (via adrenalone) in 1904, confirming the structure of Takamine\'s crystalline substance and making it the first hormone to be both isolated in pure form and synthesized. Reproducible synthesis plus rapid clinical and pharmacological adoption settled the claim that adrenalin is a single, definite chemical agent of the adrenal medulla.',
         source: {
           externalId: 'src:stolz-adrenaline-synthesis-1904',
-          name: 'Stolz F. Über Adrenalin und Alkylaminoacetobrenzcatechin. Ber Dtsch Chem Ges. 1904;37:4149–4154. (First synthesis of adrenaline.)',
+          name: 'Stolz F. Über Adrenalin und Alkylaminoacetobrenzcatechin. Ber Dtsch Chem Ges. 1904;37:4149--4154. (First synthesis of adrenaline.)',
           url: 'https://en.wikipedia.org/wiki/Adrenaline',
           publishedAt: '1904-01-01',
           methodologyType: 'primary',
@@ -42198,7 +42198,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Baumann, having detected unexpectedly large amounts of iodine in thyroid tissue, boiled the thyroids of about a thousand sheep in dilute acid and recovered an iodine-rich organic precipitate he named iodothyrin, which reproduced thyroid effects. This recorded in the expert literature the surprising claim that iodine is a normal, functionally essential element of the thyroid gland — the first chemical clue to the nature of thyroid hormone.',
         source: {
           externalId: 'src:baumann-iodine-thyroid-historical-review',
-          name: 'McAninch EA, Bianco AC. The history and future of treatment of hypothyroidism. Ann Intern Med. (and: Hypothyroidism and Thyroid Substitution: Historical Aspects, PMC3134382) — reviewing Baumann E, Z Physiol Chem 1896;21:319–330.',
+          name: 'McAninch EA, Bianco AC. The history and future of treatment of hypothyroidism. Ann Intern Med. (and: Hypothyroidism and Thyroid Substitution: Historical Aspects, PMC3134382) — reviewing Baumann E, Z Physiol Chem 1896;21:319--330.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3134382/',
           publishedAt: '2011-01-01',
           methodologyType: 'derivative',
@@ -42210,10 +42210,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1915-06-19',
         datePrecision: 'DAY',
-        reason: 'Edward Kendall\'s isolation of crystalline thyroxine (JAMA, 19 June 1915), a single iodine-bearing molecule (~60% iodine) carrying the thyroid\'s physiologic activity, confirmed Baumann\'s claim that iodine is integral to thyroid function and located it in a defined hormone. The identification of the active iodine compound settled the iodine–thyroid link as established biochemistry.',
+        reason: 'Edward Kendall\'s isolation of crystalline thyroxine (JAMA, 19 June 1915), a single iodine-bearing molecule (~60% iodine) carrying the thyroid\'s physiologic activity, confirmed Baumann\'s claim that iodine is integral to thyroid function and located it in a defined hormone. The identification of the active iodine compound settled the iodine--thyroid link as established biochemistry.',
         source: {
           externalId: 'src:kendall-thyroxine-confirms-iodine-jama-1915',
-          name: 'Kendall EC. The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity. JAMA. 1915;64(25):2042–2043. (PMID 6352971.)',
+          name: 'Kendall EC. The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity. JAMA. 1915;64(25):2042--2043. (PMID 6352971.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/6352971/',
           publishedAt: '1915-06-19',
           methodologyType: 'primary',
@@ -42223,7 +42223,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID & ANALGESIC ERA (1968–1983)
+  // OPIOID & ANALGESIC ERA (1968--1983)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Fentanyl / Sublimaze FDA approval 1968 ──────────────────────────────────
@@ -42253,7 +42253,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Buprenorphine / Buprenex Schedule V → Schedule III 1985–2002 ────────────
+  // ── Buprenorphine / Buprenex Schedule V → Schedule III 1985--2002 ────────────
   {
     externalId: 'trajectory:buprenorphine-buprenex-low-abuse-reclassified-1985',
     text: 'Buprenorphine, approved by the FDA in 1981 and first marketed in the United States in 1985 as the injectable analgesic Buprenex, was placed in Schedule V — the least restrictive narcotic schedule — on the premise that this partial mu-opioid agonist carried low abuse and dependence liability, an assessment the DEA revised upward when it rescheduled buprenorphine to Schedule III effective in 2002.',
@@ -42380,7 +42380,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // MOLECULAR MEDICINE & BIOCHEMICAL GENETICS ERA (1902–1957)
+  // MOLECULAR MEDICINE & BIOCHEMICAL GENETICS ERA (1902--1957)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Herrick sickle-cell first description — 1910 ───────────────────────────
@@ -42401,7 +42401,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Herrick published a case report of Walter Clement Noel, a dental student with chronic anemia whose blood smears showed numerous \'thin, sickle-shaped and crescent-shaped\' erythrocytes never previously described. This recorded in the expert literature the first observation of what would become sickle cell anemia, establishing an entirely new and unexplained blood-cell morphology as a distinct clinical finding.',
         source: {
           externalId: 'src:herrick-sickle-shaped-corpuscles-1910',
-          name: 'Herrick JB. Peculiar elongated and sickle-shaped red blood corpuscles in a case of severe anemia. Arch Intern Med. 1910;6(5):517–521. (Landmark reprint: Yale J Biol Med. 2001;74(3):179–184, PMID 11501714.)',
+          name: 'Herrick JB. Peculiar elongated and sickle-shaped red blood corpuscles in a case of severe anemia. Arch Intern Med. 1910;6(5):517--521. (Landmark reprint: Yale J Biol Med. 2001;74(3):179--184, PMID 11501714.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/11501714/',
           publishedAt: '1910-11-01',
           methodologyType: 'primary',
@@ -42416,7 +42416,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Pauling, Itano, Singer, and Wells demonstrated that the hemoglobin of sickle cell patients differs electrophoretically from normal hemoglobin, defining sickle cell anemia as a \'molecular disease\' with a specific abnormal protein. This converted Herrick\'s unexplained morphological curiosity into a mechanistically defined, heritable disease entity, settling sickle cell anemia in the expert literature as a discrete pathological condition.',
         source: {
           externalId: 'src:pauling-sickle-cell-molecular-disease-1949',
-          name: 'Pauling L, Itano HA, Singer SJ, Wells IC. Sickle Cell Anemia, a Molecular Disease. Science. 1949;110(2865):543–548. PMID 15395398.',
+          name: 'Pauling L, Itano HA, Singer SJ, Wells IC. Sickle Cell Anemia, a Molecular Disease. Science. 1949;110(2865):543--548. PMID 15395398.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/15395398/',
           publishedAt: '1949-11-25',
           methodologyType: 'primary',
@@ -42443,7 +42443,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Using electrophoresis, the Pauling group showed that hemoglobin from sickle cell patients carries a different net electric charge than normal adult hemoglobin, with heterozygotes showing a mixture of both — directly tying a human disease to a defined molecular abnormality in a single protein. This recorded the founding concept of molecular medicine: that an inherited disease can arise from a structurally altered molecule.',
         source: {
           externalId: 'src:pauling-itano-molecular-disease-science-1949',
-          name: 'Pauling L, Itano HA, Singer SJ, Wells IC. Sickle Cell Anemia, a Molecular Disease. Science. 1949;110(2865):543–548. PMID 15395398.',
+          name: 'Pauling L, Itano HA, Singer SJ, Wells IC. Sickle Cell Anemia, a Molecular Disease. Science. 1949;110(2865):543--548. PMID 15395398.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/15395398/',
           publishedAt: '1949-11-25',
           methodologyType: 'primary',
@@ -42458,7 +42458,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Vernon Ingram reported in Nature that sickle cell hemoglobin differs from normal hemoglobin by a single amino acid — the substitution of valine for glutamic acid at the sixth position of the beta chain — the first demonstration that a point change in a protein causes a human disease. This pinpointed Pauling\'s \'molecular disease\' to a precise lesion, settling the molecular-disease paradigm in the expert literature.',
         source: {
           externalId: 'src:ingram-sickle-hemoglobin-amino-acid-1957',
-          name: 'Ingram VM. Gene mutations in human haemoglobin: the chemical difference between normal and sickle cell haemoglobin. Nature. 1957;180(4581):326–328. PMID 13464827.',
+          name: 'Ingram VM. Gene mutations in human haemoglobin: the chemical difference between normal and sickle cell haemoglobin. Nature. 1957;180(4581):326--328. PMID 13464827.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/13464827/',
           publishedAt: '1957-08-01',
           methodologyType: 'primary',
@@ -42485,7 +42485,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Garrod, drawing on William Bateson\'s newly rediscovered Mendelian analysis, argued that alkaptonuria (lifelong excretion of homogentisic acid, blackening urine) is not a disease in the ordinary sense but a rare inherited \'chemical individuality\' transmitted as a recessive trait. This recorded in the expert literature the first claim that a human metabolic abnormality follows Mendelian inheritance, the conceptual seed of biochemical genetics.',
         source: {
           externalId: 'src:garrod-incidence-alkaptonuria-lancet-1902',
-          name: 'Garrod AE. The Incidence of Alkaptonuria: A Study in Chemical Individuality. Lancet. 1902;160(4137):1616–1620. (Reprint: Mol Med. 1996;2(3):274–282, PMC2230159.)',
+          name: 'Garrod AE. The Incidence of Alkaptonuria: A Study in Chemical Individuality. Lancet. 1902;160(4137):1616--1620. (Reprint: Mol Med. 1996;2(3):274--282, PMC2230159.)',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2230159/',
           publishedAt: '1902-12-01',
           methodologyType: 'primary',
@@ -42500,7 +42500,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Bert La Du and colleagues demonstrated that alkaptonuria results from a deficiency of the enzyme homogentisic acid oxidase, directly vindicating Garrod\'s half-century-old hypothesis that the disorder is an inherited block in a specific metabolic step. This biochemical confirmation settled the inborn-errors-of-metabolism concept as established fact, identifying the precise enzymatic lesion Garrod had inferred.',
         source: {
           externalId: 'src:la-du-alcaptonuria-tyrosine-defect-jbc-1958',
-          name: 'La Du BN, Zannoni VG, Laster L, Seegmiller JE. The nature of the defect in tyrosine metabolism in alcaptonuria. J Biol Chem. 1958;230(1):251–260. PMID 13502394.',
+          name: 'La Du BN, Zannoni VG, Laster L, Seegmiller JE. The nature of the defect in tyrosine metabolism in alcaptonuria. J Biol Chem. 1958;230(1):251--260. PMID 13502394.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/13502394/',
           publishedAt: '1958-01-01',
           methodologyType: 'primary',
@@ -42527,7 +42527,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In a 200-plus-page monograph based on his doctoral thesis, Wilson delineated a previously unrecognized hereditary disorder in which bilateral degeneration of the lenticular nuclei produces tremor, rigidity, and dysarthria together with cirrhosis of the liver. This recorded in the expert literature a new, clinically and pathologically defined familial disease entity, distinguishing it from other movement disorders.',
         source: {
           externalId: 'src:wilson-progressive-lenticular-degeneration-brain-1912',
-          name: 'Wilson SAK. Progressive lenticular degeneration: a familial nervous disease associated with cirrhosis of the liver. Brain. 1912;34(4):295–509.',
+          name: 'Wilson SAK. Progressive lenticular degeneration: a familial nervous disease associated with cirrhosis of the liver. Brain. 1912;34(4):295--509.',
           url: 'https://academic.oup.com/brain/article/34/4/295/338655',
           publishedAt: '1912-03-01',
           methodologyType: 'primary',
@@ -42542,7 +42542,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'John Cumings showed that the brain and liver of patients with hepatolenticular degeneration contain markedly excess copper, identifying abnormal copper accumulation as the biochemical basis of the disease Wilson had described clinically. This established the pathophysiological mechanism and the rationale for copper-chelation therapy, settling Wilson\'s disease as a defined, mechanistically understood inherited disorder of copper metabolism.',
         source: {
           externalId: 'src:cumings-copper-hepatolenticular-brain-1948',
-          name: 'Cumings JN. The copper and iron content of brain and liver in the normal and in hepato-lenticular degeneration. Brain. 1948;71(4):410–415. PMID 18124738.',
+          name: 'Cumings JN. The copper and iron content of brain and liver in the normal and in hepato-lenticular degeneration. Brain. 1948;71(4):410--415. PMID 18124738.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/18124738/',
           publishedAt: '1948-12-01',
           methodologyType: 'primary',
@@ -42570,7 +42570,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1861-01-01',
         datePrecision: 'YEAR',
-        reason: 'After his May 1847 chlorinated-lime handwashing policy cut First-Clinic maternal mortality from roughly 18% in April 1847 to about 1–2% by mid-year, Semmelweis set out his contagion-and-prophylaxis doctrine in his 1861 monograph \'Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers.\' The book formally recorded into the literature the claim that decomposing organic matter carried on examiners\' hands causes childbed fever and that hand disinfection prevents it — a claim that was largely rejected or ignored by contemporaries who lacked any germ-theory framework to explain it.',
+        reason: 'After his May 1847 chlorinated-lime handwashing policy cut First-Clinic maternal mortality from roughly 18% in April 1847 to about 1--2% by mid-year, Semmelweis set out his contagion-and-prophylaxis doctrine in his 1861 monograph \'Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers.\' The book formally recorded into the literature the claim that decomposing organic matter carried on examiners\' hands causes childbed fever and that hand disinfection prevents it — a claim that was largely rejected or ignored by contemporaries who lacked any germ-theory framework to explain it.',
         source: {
           externalId: 'src:semmelweis-aetiologie-kindbettfieber-1861',
           name: 'Semmelweis IP. Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers. Pest, Wien und Leipzig: C.A. Hartleben; 1861. (documented in: Ignaz Semmelweis, Wikipedia.)',
@@ -42588,7 +42588,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Fourteen years after Semmelweis\'s death, Louis Pasteur identified the chain-forming streptococcus in the blood and lochia of women dying of puerperal fever and, in an 1879 session of the Académie de Médecine, declared that it was the medical and nursing staff who carried the microbe from sick to healthy women. This germ-theory demonstration supplied the causal mechanism Semmelweis had lacked and vindicated his contagion-and-handwashing doctrine, which thereafter became settled medical orthodoxy and the foundation of infection control.',
         source: {
           externalId: 'src:pasteur-septicemie-puerperale-academie-1879',
-          name: 'Pasteur L. Septicémie puerpérale. Bulletin de l\'Académie de Médecine (Paris), 2nd series, 1879;8:271–274, 505–508. (reprinted as Classic Pages in Obstetrics and Gynecology, PMID 4588534.)',
+          name: 'Pasteur L. Septicémie puerpérale. Bulletin de l\'Académie de Médecine (Paris), 2nd series, 1879;8:271--274, 505--508. (reprinted as Classic Pages in Obstetrics and Gynecology, PMID 4588534.)',
           url: 'https://pubmed.ncbi.nlm.nih.gov/4588534/',
           publishedAt: '1879-01-01',
           methodologyType: 'primary',
@@ -42615,7 +42615,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'After his Lancet series \'On a New Method of Treating Compound Fracture, Abscess, etc.\' (begun 16 March 1867, featuring the James Greenlees case), Lister read his address \'On the Antiseptic Principle in the Practice of Surgery\' at the British Medical Association\'s Dublin meeting, published in the BMJ on 21 September 1867. The paper recorded into the literature the germ-based doctrine that wound suppuration is caused by airborne living organisms and can be prevented by antiseptic destruction of those germs with carbolic acid.',
         source: {
           externalId: 'src:lister-antiseptic-principle-bmj-1867',
-          name: 'Lister J. On the Antiseptic Principle in the Practice of Surgery. Br Med J. 1867 Sep 21;2(351):246–248.',
+          name: 'Lister J. On the Antiseptic Principle in the Practice of Surgery. Br Med J. 1867 Sep 21;2(351):246--248.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2310614/',
           publishedAt: '1867-09-21',
           methodologyType: 'primary',
@@ -42630,7 +42630,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Lister\'s antiseptic system was sharply contested in Britain through the 1870s and 1880s, with Thomas Nunneley attacking it at the 1869 BMA meeting and Lawson Tait and William Savory repeatedly arguing that Lister had not produced adequate comparative statistics to prove that carbolic antisepsis lowered mortality. The dispute, which turned on what counted as valid evidence, kept the efficacy of Listerism in open question among many British surgeons.',
         source: {
           externalId: 'src:trohler-british-controversy-listerism-jll-2014',
-          name: 'Tröhler U. Statistics and the British controversy about the effects of Joseph Lister\'s system of antisepsis for surgery, 1867–1890. James Lind Library; 2014.',
+          name: 'Tröhler U. Statistics and the British controversy about the effects of Joseph Lister\'s system of antisepsis for surgery, 1867--1890. James Lind Library; 2014.',
           url: 'https://www.jameslindlibrary.org/articles/statistics-and-the-british-controversy-about-the-effects-of-joseph-listers-system-of-antisepsis-for-surgery-1867-1890/',
           publishedAt: '2014-01-01',
           methodologyType: 'derivative',
@@ -42645,7 +42645,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Continental surgeons (Volkmann, Nussbaum, Saxtorph) adopted Lister\'s method in the early 1870s with striking falls in wound mortality, and the consolidation of germ theory by Pasteur and Koch\'s late-1870s work on wound-infection organisms supplied decisive mechanistic support. Antisepsis was thereby established as the foundation of safe operative surgery — soon refined into the aseptic technique that superseded carbolic spray — making the underlying antiseptic principle a permanent fixture of surgical practice.',
         source: {
           externalId: 'src:lister-performance-antiseptic-surgery-notesrec-2013',
-          name: 'Worboys M. Joseph Lister and the performance of antiseptic surgery. Notes Rec R Soc Lond. 2013;67(3):199–209.',
+          name: 'Worboys M. Joseph Lister and the performance of antiseptic surgery. Notes Rec R Soc Lond. 2013;67(3):199--209.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3744349/',
           publishedAt: '2013-01-01',
           methodologyType: 'derivative',
@@ -42676,7 +42676,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Fisher, Redmond, Fisher and colleagues reported the ten-year results of NSABP B-04, which had randomized 1,665 women from 1971 to radical mastectomy versus total mastectomy with or without radiation. They found no significant differences among the treatment groups in disease-free, distant-disease-free, or overall survival (about 57% at ten years), recording the claim that the extent of local-regional surgery does not determine breast-cancer survival and directly challenging the Halstedian rationale for radical mastectomy.',
         source: {
           externalId: 'src:fisher-nsabp-b04-ten-year-nejm-1985',
-          name: 'Fisher B, Redmond C, Fisher ER, et al. Ten-year results of a randomized clinical trial comparing radical mastectomy and total mastectomy with or without radiation. N Engl J Med. 1985;312(11):674–681. (PMID 3883168.)',
+          name: 'Fisher B, Redmond C, Fisher ER, et al. Ten-year results of a randomized clinical trial comparing radical mastectomy and total mastectomy with or without radiation. N Engl J Med. 1985;312(11):674--681. (PMID 3883168.)',
           url: 'https://www.nejm.org/doi/full/10.1056/NEJM198503143121102',
           publishedAt: '1985-03-14',
           methodologyType: 'primary',
@@ -42691,7 +42691,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Fisher and colleagues published 25-year follow-up of NSABP B-04 in the NEJM, confirming the absence of any significant survival difference among radical mastectomy, total mastectomy, and total mastectomy plus irradiation. The mature long-term data cemented within the surgical community the conclusion that the radical (Halsted) mastectomy offered no survival benefit, completing the evidentiary basis for abandoning it as the standard operation for breast cancer.',
         source: {
           externalId: 'src:fisher-nsabp-b04-25-year-nejm-2002',
-          name: 'Fisher B, Jeong JH, Anderson S, et al. Twenty-five-year follow-up of a randomized trial comparing radical mastectomy, total mastectomy, and total mastectomy followed by irradiation. N Engl J Med. 2002;347(8):567–575.',
+          name: 'Fisher B, Jeong JH, Anderson S, et al. Twenty-five-year follow-up of a randomized trial comparing radical mastectomy, total mastectomy, and total mastectomy followed by irradiation. N Engl J Med. 2002;347(8):567--575.',
           url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa020128',
           publishedAt: '2002-08-22',
           methodologyType: 'primary',
@@ -42722,7 +42722,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'In \'Recherches sur les effets de la saignée dans quelques maladies inflammatoires,\' Louis applied systematic group comparison to a homogeneous series of pneumonia patients and found that early bleeding was associated with higher rather than lower mortality, concluding that venesection\'s utility was confined to narrow limits. This recorded into the literature both the claim that the era\'s most fashionable therapeutic procedure was largely ineffective and the numerical method itself — the precursor of medical statistics and modern clinical trials.',
         source: {
           externalId: 'src:morabia-louis-bloodletting-jrsm-2006',
-          name: 'Morabia A. Pierre-Charles-Alexandre Louis and the evaluation of bloodletting. J R Soc Med. 2006;99(3):158–160.',
+          name: 'Morabia A. Pierre-Charles-Alexandre Louis and the evaluation of bloodletting. J R Soc Med. 2006;99(3):158--160.',
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1383766/',
           publishedAt: '2006-03-01',
           methodologyType: 'derivative',
@@ -42737,7 +42737,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'Over the later nineteenth century therapeutic bloodletting was progressively abandoned as Louis\'s quantitative critique, reinforced by the rise of germ theory and pathophysiology, undermined the humoral rationale for venesection. Louis\'s numerical method was retrospectively recognized as foundational to epidemiology and the controlled clinical trial, settling both the rejection of routine bloodletting and the legitimacy of statistical evaluation of treatments.',
         source: {
           externalId: 'src:louis-medical-statistics-pneumonology-ajrccm-2010',
-          name: 'Best M, Neuhauser D. P. C. A. Louis (1787–1872): Introducing Medical Statistics in Pneumonology. Am J Respir Crit Care Med. 2010;182(12):1569.',
+          name: 'Best M, Neuhauser D. P. C. A. Louis (1787--1872): Introducing Medical Statistics in Pneumonology. Am J Respir Crit Care Med. 2010;182(12):1569.',
           url: 'https://www.atsjournals.org/doi/full/10.1164/ajrccm.182.12.1569',
           publishedAt: '2010-12-15',
           methodologyType: 'derivative',
@@ -42747,7 +42747,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // TARGETED THERAPY & IMMUNOTHERAPY ERA (1990–2010)
+  // TARGETED THERAPY & IMMUNOTHERAPY ERA (1990--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Sipuleucel-T / Provenge — first therapeutic cancer vaccine (2010) ────────
@@ -42919,10 +42919,10 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // PHARMACOGENOMICS & PRECISION PRESCRIBING ERA (2009–2022)
+  // PHARMACOGENOMICS & PRECISION PRESCRIBING ERA (2009--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Clopidogrel CYP2C19 poor-metabolizer boxed warning — 2009–2010 ──────────
+  // ── Clopidogrel CYP2C19 poor-metabolizer boxed warning — 2009--2010 ──────────
   {
     externalId: 'trajectory:clopidogrel-cyp2c19-poor-metabolizer-boxed-warning-2010',
     text: 'On 22 January 2009 the FAST-MI registry analysis (Simon et al., NEJM) established that patients carrying CYP2C19 loss-of-function alleles have markedly higher cardiovascular event rates on clopidogrel, a pharmacogenomic claim the U.S. FDA settled institutionally with a boxed warning added to Plavix labeling on 12 March 2010.',
@@ -42964,7 +42964,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── PATHWAY-2 spironolactone for resistant hypertension — 2015–2018 ─────────
+  // ── PATHWAY-2 spironolactone for resistant hypertension — 2015--2018 ─────────
   {
     externalId: 'trajectory:pathway2-spironolactone-resistant-hypertension-2015',
     text: 'On 21 November 2015 the PATHWAY-2 trial (Williams et al., Lancet) reported that spironolactone was the most effective add-on drug for drug-resistant hypertension, outperforming bisoprolol and doxazosin and confirming sodium retention as the dominant mechanism — a finding subsequently codified by the 2018 ESC/ESH guidelines.',
@@ -43006,7 +43006,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Hygia bedtime antihypertensive dosing reversed by TIME — 2019–2022 ──────
+  // ── Hygia bedtime antihypertensive dosing reversed by TIME — 2019--2022 ──────
   {
     externalId: 'trajectory:hygia-bedtime-antihypertensive-dosing-reversed-by-time-2022',
     text: 'On 22 October 2019 the Hygia Chronotherapy Trial (Hermida et al., European Heart Journal) reported that taking antihypertensive drugs at bedtime rather than on waking cut major cardiovascular events by about 45%, a claim reversed when the TIME trial (Mackenzie et al., Lancet, 2022) found no difference in cardiovascular outcomes by dosing time.',
@@ -43093,7 +43093,7 @@ const TRAJECTORIES: Trajectory[] = [
         reason: 'The pragmatic, point-of-care Diuretic Comparison Project randomized 13,523 VA patients aged 65 or older on hydrochlorothiazide to continue it or switch to chlorthalidone, and found no difference in the composite of major cardiovascular events and non-cancer death over a median 2.4 years. Because guidelines had preferred chlorthalidone on the strength of ALLHAT-era and pharmacologic arguments, this first head-to-head randomized comparison contested the claim that chlorthalidone is the superior thiazide-type diuretic.',
         source: {
           externalId: 'src:diuretic-comparison-project-chlorthalidone-hctz-nejm-2022',
-          name: 'Ishani A, Cushman WC, Leatherman SM, et al. Chlorthalidone vs. hydrochlorothiazide for hypertension–cardiovascular events (Diuretic Comparison Project). N Engl J Med. 2022;387(26):2401-2410.',
+          name: 'Ishani A, Cushman WC, Leatherman SM, et al. Chlorthalidone vs. hydrochlorothiazide for hypertension--cardiovascular events (Diuretic Comparison Project). N Engl J Med. 2022;387(26):2401-2410.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/36516076/',
           publishedAt: '2022-12-29',
           methodologyType: 'primary',
@@ -43103,7 +43103,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // BIOLOGICS, VACCINE REGULATION & ANTIBIOTIC RESISTANCE (1901–1955)
+  // BIOLOGICS, VACCINE REGULATION & ANTIBIOTIC RESISTANCE (1901--1955)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Biologics Control Act — St. Louis antitoxin deaths 1902 ─────────────────
@@ -43442,7 +43442,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Blessed–Tomlinson–Roth dementia / plaque correlation — 1968 ─────────────
+  // ── Blessed--Tomlinson--Roth dementia / plaque correlation — 1968 ─────────────
   {
     externalId: 'trajectory:blessed-tomlinson-roth-dementia-plaque-correlation-1968',
     text: 'Garry Blessed, Bernard Tomlinson, and Martin Roth reported in the British Journal of Psychiatry in July 1968 that the severity of dementia in elderly subjects correlates quantitatively with the density of senile plaques in the cerebral grey matter, linking clinical dementia to Alzheimer-type neuropathology.',
@@ -43472,7 +43472,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1976-04-01',
         datePrecision: 'MONTH',
-        reason: 'Robert Katzman\'s 1976 Archives of Neurology editorial, building directly on the Blessed–Tomlinson–Roth and Tomlinson neuropathology findings, argued that presenile (Alzheimer) and senile dementia are a single disease and that Alzheimer\'s disease is therefore a leading cause of death — \'a major killer.\' This unification of the disease concept, widely adopted by the field, settled the claim that age-associated dementia is Alzheimer pathology and catalyzed Alzheimer\'s disease as a research and public-health priority.',
+        reason: 'Robert Katzman\'s 1976 Archives of Neurology editorial, building directly on the Blessed--Tomlinson--Roth and Tomlinson neuropathology findings, argued that presenile (Alzheimer) and senile dementia are a single disease and that Alzheimer\'s disease is therefore a leading cause of death — \'a major killer.\' This unification of the disease concept, widely adopted by the field, settled the claim that age-associated dementia is Alzheimer pathology and catalyzed Alzheimer\'s disease as a research and public-health priority.',
         source: {
           externalId: 'src:katzman-alzheimer-major-killer-archneurol-1976',
           name: 'Katzman R. Editorial: The prevalence and malignancy of Alzheimer disease. A major killer. Arch Neurol. 1976;33(4):217-218.',
@@ -43485,7 +43485,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // DIABETES, OBESITY & METABOLIC PHARMACOLOGY (1997–2010)
+  // DIABETES, OBESITY & METABOLIC PHARMACOLOGY (1997--2010)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── UKPDS 33 — intensive glucose control in type 2 diabetes 1998 ────────────
@@ -43671,7 +43671,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2008-10-23',
         datePrecision: 'DAY',
-        reason: 'At its 20–23 October 2008 meeting the EMA\'s Committee for Medicinal Products for Human Use concluded that the benefits of Acomplia no longer outweighed its risks and recommended suspension of the marketing authorisation, citing post-marketing reports and trial data showing an approximate doubling of serious psychiatric disorders, including suicide, in patients taking the drug; marketing was suspended across member states by 13 November 2008. The action reversed the drug\'s approved-safe status roughly two years after authorisation and ended the CB1-antagonist class as an obesity therapy.',
+        reason: 'At its 20--23 October 2008 meeting the EMA\'s Committee for Medicinal Products for Human Use concluded that the benefits of Acomplia no longer outweighed its risks and recommended suspension of the marketing authorisation, citing post-marketing reports and trial data showing an approximate doubling of serious psychiatric disorders, including suicide, in patients taking the drug; marketing was suspended across member states by 13 November 2008. The action reversed the drug\'s approved-safe status roughly two years after authorisation and ended the CB1-antagonist class as an obesity therapy.',
         source: {
           externalId: 'src:ema-acomplia-suspension-press-2008',
           name: 'European Medicines Agency. The European Medicines Agency recommends suspension of the marketing authorisation of Acomplia. Press release, 23 October 2008.',
@@ -43684,7 +43684,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS & DRUG POLICY ERA (2016–2022)
+  // OPIOID CRISIS & DRUG POLICY ERA (2016--2022)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── DEA kratom emergency scheduling withdrawn under public pressure 2016 ────
@@ -43841,7 +43841,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // REPRODUCTIVE MEDICINE & HORMONAL PHARMACOLOGY (1941–1953)
+  // REPRODUCTIVE MEDICINE & HORMONAL PHARMACOLOGY (1941--1953)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Albright postmenopausal osteoporosis — estrogen-deficiency theory 1941 ──
@@ -43929,7 +43929,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NEONATAL & OBSTETRIC MEDICINE (1966–1980)
+  // NEONATAL & OBSTETRIC MEDICINE (1966--1980)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Rh immune globulin prevents hemolytic disease of the newborn — Freda 1966 ──
@@ -44059,7 +44059,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // GLOBAL HEALTH & INFECTIOUS DISEASE (1968–1978)
+  // GLOBAL HEALTH & INFECTIOUS DISEASE (1968--1978)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Nalin & Cash oral rehydration therapy — glucose-sodium cotransport 1968 ──
@@ -44105,7 +44105,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // RARE DISEASES & NOVEL THERAPIES (2002–2021)
+  // RARE DISEASES & NOVEL THERAPIES (2002--2021)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Rare Diseases Act 2002 — statutory NIH Office of Rare Diseases ──────────
@@ -44487,7 +44487,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NUCLEAR MEDICINE & EARLY ONCOLOGY (1930–1950)
+  // NUCLEAR MEDICINE & EARLY ONCOLOGY (1930--1950)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Stafford Warren in-vivo mammography — 1930 ─────────────────────────────
@@ -44674,7 +44674,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOLOGY & REPERFUSION ERA (1980–1994)
+  // CARDIOLOGY & REPERFUSION ERA (1980--1994)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── DeWood et al. — coronary thrombosis causes acute MI 1980 ────────────────
@@ -44692,7 +44692,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1980-10-16',
         datePrecision: 'DAY',
-        reason: 'DeWood et al. performed early coronary arteriography in 322 patients with acute transmural MI and found total coronary occlusion in 110 of 126 (87%) studied within four hours, falling to 65% at 12–24 hours, with thrombus retrieved at surgery. This put on the scientific record the claim that a thrombotic coronary occlusion causes acute MI, directly overturning the then-prevailing view that intracoronary thrombus was a secondary consequence of, rather than the cause of, infarction.',
+        reason: 'DeWood et al. performed early coronary arteriography in 322 patients with acute transmural MI and found total coronary occlusion in 110 of 126 (87%) studied within four hours, falling to 65% at 12--24 hours, with thrombus retrieved at surgery. This put on the scientific record the claim that a thrombotic coronary occlusion causes acute MI, directly overturning the then-prevailing view that intracoronary thrombus was a secondary consequence of, rather than the cause of, infarction.',
         source: {
           externalId: 'src:dewood-total-coronary-occlusion-nejm-1980',
           name: 'DeWood MA, Spores J, Notske R, et al. Prevalence of total coronary occlusion during the early hours of transmural myocardial infarction. N Engl J Med. 1980;303(16):897-902.',
@@ -44846,7 +44846,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // INFECTIOUS DISEASE EMERGENCE (1993–2008)
+  // INFECTIOUS DISEASE EMERGENCE (1993--2008)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── MDR-TB nosocomial outbreaks New York City 1993 ──────────────────────────
@@ -45324,7 +45324,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // REGULATORY REVERSAL & CONTESTED SAFETY ERA (2000–2012)
+  // REGULATORY REVERSAL & CONTESTED SAFETY ERA (2000--2012)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Bevacizumab (Avastin) metastatic breast cancer — accelerated approval revoked 2011 ──
@@ -45411,7 +45411,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2006-02-09',
         datePrecision: 'DAY',
-        reason: 'The Chambers et al. case-control study (377 PPHN cases, 836 controls) found an adjusted odds ratio of 6.1 (95% CI 2.2–16.8) for PPHN with late-gestation SSRI exposure. The finding recorded a novel maternal-fetal safety signal in the literature and prompted the FDA to issue a Public Health Advisory in July 2006 and add PPHN language to SSRI labels.',
+        reason: 'The Chambers et al. case-control study (377 PPHN cases, 836 controls) found an adjusted odds ratio of 6.1 (95% CI 2.2--16.8) for PPHN with late-gestation SSRI exposure. The finding recorded a novel maternal-fetal safety signal in the literature and prompted the FDA to issue a Public Health Advisory in July 2006 and add PPHN language to SSRI labels.',
         source: {
           externalId: 'src:chambers-ssri-pphn-nejm-2006',
           name: 'Chambers CD, Hernandez-Diaz S, Van Marter LJ, et al. Selective Serotonin-Reuptake Inhibitors and Risk of Persistent Pulmonary Hypertension of the Newborn. N Engl J Med. 2006;354(6):579-587.',
@@ -45522,7 +45522,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2023-08-21',
         datePrecision: 'DAY',
-        reason: 'The FDA approved Abrysvo for use in pregnant individuals at 32–36 weeks\' gestation based on the MATISSE phase 3 trial in more than 7,000 pregnant participants, which showed reduced medically attended severe RSV lower respiratory tract illness in infants through six months. This recorded, as a licensed regulatory claim, that maternal immunization could confer passive protection on newborns against RSV — a leading cause of infant hospitalization.',
+        reason: 'The FDA approved Abrysvo for use in pregnant individuals at 32--36 weeks\' gestation based on the MATISSE phase 3 trial in more than 7,000 pregnant participants, which showed reduced medically attended severe RSV lower respiratory tract illness in infants through six months. This recorded, as a licensed regulatory claim, that maternal immunization could confer passive protection on newborns against RSV — a leading cause of infant hospitalization.',
         source: {
           externalId: 'src:fda-abrysvo-maternal-rsv-approval-2023',
           name: 'U.S. Food and Drug Administration. FDA Approves First Vaccine for Pregnant Individuals to Prevent RSV in Infants. Press announcement. August 21, 2023.',
@@ -45537,7 +45537,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '2023-09-22',
         datePrecision: 'DAY',
-        reason: 'The CDC\'s Advisory Committee on Immunization Practices recommended maternal RSVpreF vaccine as a single seasonal dose during 32–36 weeks\' gestation, and the CDC director adopted the recommendation, formally entering maternal RSV immunization into the US childhood-protection schedule as an alternative to infant nirsevimab. Incorporation into ACIP policy settled maternal RSV vaccination as established institutional practice for the 2023–24 season.',
+        reason: 'The CDC\'s Advisory Committee on Immunization Practices recommended maternal RSVpreF vaccine as a single seasonal dose during 32--36 weeks\' gestation, and the CDC director adopted the recommendation, formally entering maternal RSV immunization into the US childhood-protection schedule as an alternative to infant nirsevimab. Incorporation into ACIP policy settled maternal RSV vaccination as established institutional practice for the 2023--24 season.',
         source: {
           externalId: 'src:fleming-dutra-acip-maternal-rsv-mmwr-2023',
           name: 'Fleming-Dutra KE, Jones JM, Roper LE, et al. Use of the Pfizer Respiratory Syncytial Virus Vaccine During Pregnancy for the Prevention of RSV-Associated LRTD in Infants: Recommendations of the ACIP — United States, 2023. MMWR Morb Mortal Wkly Rep. 2023;72(41):1115-1122.',
@@ -45564,7 +45564,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2024-08-21',
         datePrecision: 'DAY',
-        reason: 'After years of internal review and external pressure, the National Toxicology Program published its systematic-review monograph concluding with moderate confidence that higher estimated fluoride exposure (e.g., drinking-water levels above 1.5 mg/L) is consistently associated with lower IQ in children. A federal scientific body formally recording a fluoride–neurodevelopment association moved the long-marginalized hypothesis into the mainstream evidentiary record, while explicitly noting more research was needed at lower (US fluoridation) levels.',
+        reason: 'After years of internal review and external pressure, the National Toxicology Program published its systematic-review monograph concluding with moderate confidence that higher estimated fluoride exposure (e.g., drinking-water levels above 1.5 mg/L) is consistently associated with lower IQ in children. A federal scientific body formally recording a fluoride--neurodevelopment association moved the long-marginalized hypothesis into the mainstream evidentiary record, while explicitly noting more research was needed at lower (US fluoridation) levels.',
         source: {
           externalId: 'src:ntp-fluoride-neurodevelopment-monograph-2024',
           name: 'National Toxicology Program. NTP Monograph on the State of the Science Concerning Fluoride Exposure and Neurodevelopment and Cognition: A Systematic Review. NTP Monograph 8. U.S. Dept. of Health and Human Services. August 2024.',
@@ -46475,13 +46475,13 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // NEUROLOGY & PSYCHIATRY (1968–1987)
+  // NEUROLOGY & PSYCHIATRY (1968--1987)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Harvard brain death criteria 1968 ──────────────────────────────────────
   {
     externalId: 'trajectory:harvard-irreversible-coma-brain-death-1968',
-    text: 'The Ad Hoc Committee of the Harvard Medical School reported in JAMA on 5 August 1968 that ‘irreversible coma’ — the permanent cessation of all brain function, including the brainstem — should serve as a new criterion for death, establishing neurological (brain) death as a definition of death distinct from cardiopulmonary criteria.',
+    text: 'The Ad Hoc Committee of the Harvard Medical School reported in JAMA on 5 August 1968 that \'irreversible coma\' — the permanent cessation of all brain function, including the brainstem — should serve as a new criterion for death, establishing neurological (brain) death as a definition of death distinct from cardiopulmonary criteria.',
     claimType: 'HYBRID',
     claimEmergedAt: '1968-08-05',
     claimEmergedPrecision: 'DAY',
@@ -46493,7 +46493,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1968-08-05',
         datePrecision: 'DAY',
-        reason: 'The Harvard committee, chaired by anesthesiologist Henry Beecher, published ‘A Definition of Irreversible Coma’ in JAMA, setting out clinical criteria (unreceptivity, no movements or breathing, no reflexes, flat EEG) for diagnosing a permanently nonfunctioning brain. It was the first formal medical proposal to define death by neurological rather than cardiopulmonary criteria, motivated partly by the new realities of mechanical ventilation and organ transplantation.',
+        reason: 'The Harvard committee, chaired by anesthesiologist Henry Beecher, published 'A Definition of Irreversible Coma' in JAMA, setting out clinical criteria (unreceptivity, no movements or breathing, no reflexes, flat EEG) for diagnosing a permanently nonfunctioning brain. It was the first formal medical proposal to define death by neurological rather than cardiopulmonary criteria, motivated partly by the new realities of mechanical ventilation and organ transplantation.',
         source: {
           externalId: 'src:harvard-irreversible-coma-jama-1968',
           name: 'Ad Hoc Committee of the Harvard Medical School to Examine the Definition of Brain Death. A definition of irreversible coma. JAMA. 1968;205(6):337-340.',
@@ -46508,10 +46508,10 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1981-07-01',
         datePrecision: 'MONTH',
-        reason: 'The President’s Commission for the Study of Ethical Problems in Medicine issued ‘Defining Death’ (July 1981) and, together with the AMA, ABA, and Uniform Law Commission, advanced the Uniform Determination of Death Act, which codified that death may be determined by irreversible cessation of all functions of the entire brain. Subsequently adopted by most US states, this gave the Harvard concept the force of uniform law, settling brain death as a medical-legal standard.',
+        reason: 'The President's Commission for the Study of Ethical Problems in Medicine issued 'Defining Death' (July 1981) and, together with the AMA, ABA, and Uniform Law Commission, advanced the Uniform Determination of Death Act, which codified that death may be determined by irreversible cessation of all functions of the entire brain. Subsequently adopted by most US states, this gave the Harvard concept the force of uniform law, settling brain death as a medical-legal standard.',
         source: {
           externalId: 'src:uniform-determination-death-act-1981',
-          name: 'National Conference of Commissioners on Uniform State Laws. Uniform Determination of Death Act. 1981 (with President’s Commission, Defining Death, July 1981).',
+          name: 'National Conference of Commissioners on Uniform State Laws. Uniform Determination of Death Act. 1981 (with President's Commission, Defining Death, July 1981).',
           url: 'https://en.wikipedia.org/wiki/Uniform_Determination_of_Death_Act',
           publishedAt: '1981-07-01',
           methodologyType: 'derivative',
@@ -46523,7 +46523,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Persistent vegetative state — Jennett & Plum 1972 ──────────────────────
   {
     externalId: 'trajectory:jennett-plum-persistent-vegetative-state-1972',
-    text: 'Scottish neurosurgeon Bryan Jennett and American neurologist Fred Plum reported in The Lancet in April 1972 a clinical entity — the ‘persistent vegetative state’ — in which patients with severe brain damage recover wakefulness and sleep-wake cycles without any detectable awareness of self or environment, naming a condition previously lacking a coherent definition.',
+    text: 'Scottish neurosurgeon Bryan Jennett and American neurologist Fred Plum reported in The Lancet in April 1972 a clinical entity — the 'persistent vegetative state' — in which patients with severe brain damage recover wakefulness and sleep-wake cycles without any detectable awareness of self or environment, naming a condition previously lacking a coherent definition.',
     claimType: 'HYBRID',
     claimEmergedAt: '1972-04',
     claimEmergedPrecision: 'MONTH',
@@ -46535,7 +46535,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1972-04',
         datePrecision: 'MONTH',
-        reason: 'Jennett and Plum published ‘Persistent vegetative state after brain damage: a syndrome in search of a name’ in The Lancet, coining the term to describe wakefulness without awareness following catastrophic brain injury. The paper distinguished the state from coma and brain death and gave clinicians a shared vocabulary for a condition increasingly produced by intensive-care survival, recording a new clinical entity in the neurological literature.',
+        reason: 'Jennett and Plum published 'Persistent vegetative state after brain damage: a syndrome in search of a name' in The Lancet, coining the term to describe wakefulness without awareness following catastrophic brain injury. The paper distinguished the state from coma and brain death and gave clinicians a shared vocabulary for a condition increasingly produced by intensive-care survival, recording a new clinical entity in the neurological literature.',
         source: {
           externalId: 'src:jennett-plum-pvs-lancet-1972',
           name: 'Jennett B, Plum F. Persistent vegetative state after brain damage. A syndrome in search of a name. Lancet. 1972;1(7753):734-737.',
@@ -46550,7 +46550,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'INSTITUTIONAL',
         occurredAt: '1994-05-26',
         datePrecision: 'DAY',
-        reason: 'The Multi-Society Task Force on PVS published a two-part consensus statement in the New England Journal of Medicine establishing agreed diagnostic criteria, prognosis, and the one-month threshold defining the persistent vegetative state in adults and children. Endorsed by the major US neurology, neurosurgery, and pediatric bodies, it consolidated Jennett and Plum’s entity into a settled, professionally ratified diagnostic standard.',
+        reason: 'The Multi-Society Task Force on PVS published a two-part consensus statement in the New England Journal of Medicine establishing agreed diagnostic criteria, prognosis, and the one-month threshold defining the persistent vegetative state in adults and children. Endorsed by the major US neurology, neurosurgery, and pediatric bodies, it consolidated Jennett and Plum's entity into a settled, professionally ratified diagnostic standard.',
         source: {
           externalId: 'src:multisociety-pvs-nejm-1994',
           name: 'The Multi-Society Task Force on PVS. Medical aspects of the persistent vegetative state (first of two parts). N Engl J Med. 1994;330(21):1499-1508.',
@@ -46604,7 +46604,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1981-01',
         datePrecision: 'MONTH',
-        reason: 'Carroll et al. published ‘A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility’ in 438 subjects, reporting ~67% sensitivity and ~96% specificity for melancholia and proposing the DST as the first objective laboratory diagnostic in psychiatry. The paper generated intense interest and hundreds of follow-on studies, recording into the literature the claim that depression had a measurable biological signature.',
+        reason: 'Carroll et al. published 'A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility' in 438 subjects, reporting ~67% sensitivity and ~96% specificity for melancholia and proposing the DST as the first objective laboratory diagnostic in psychiatry. The paper generated intense interest and hundreds of follow-on studies, recording into the literature the claim that depression had a measurable biological signature.',
         source: {
           externalId: 'src:carroll-dst-melancholia-archgenpsych-1981',
           name: 'Carroll BJ, Feinberg M, Greden JF, et al. A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility. Arch Gen Psychiatry. 1981;38(1):15-22.',
@@ -46614,79 +46614,79 @@ const TRAJECTORIES: Trajectory[] = [
         },
       },
       {
-        fromAxis: ‘RECORDED’,
-        toAxis: ‘REVERSED’,
-        community: ‘EXPERT_LITERATURE’,
-        occurredAt: ‘1987-10’,
-        datePrecision: ‘MONTH’,
-        reason: "After replication studies repeatedly failed to reproduce the reported specificity, the APA Task Force on Laboratory Tests in Psychiatry published an overview in the American Journal of Psychiatry concluding that the DST lacked sufficient sensitivity and specificity for routine diagnostic use in depression. This authoritative reassessment overturned Carroll’s diagnostic-specificity claim, ending the DST’s status as a clinical diagnostic test for melancholia.",
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-10',
+        datePrecision: 'MONTH',
+        reason: "After replication studies repeatedly failed to reproduce the reported specificity, the APA Task Force on Laboratory Tests in Psychiatry published an overview in the American Journal of Psychiatry concluding that the DST lacked sufficient sensitivity and specificity for routine diagnostic use in depression. This authoritative reassessment overturned Carroll's diagnostic-specificity claim, ending the DST's status as a clinical diagnostic test for melancholia.",
         source: {
-          externalId: ‘src:apa-taskforce-dst-ajp-1987’,
-          name: ‘APA Task Force on Laboratory Tests in Psychiatry. The dexamethasone suppression test: an overview of its current status in psychiatry. Am J Psychiatry. 1987;144(10):1253-1262.’,
-          url: ‘https://pubmed.ncbi.nlm.nih.gov/3310667/’,
-          publishedAt: ‘1987-10-01’,
-          methodologyType: ‘primary’,
+          externalId: 'src:apa-taskforce-dst-ajp-1987',
+          name: 'APA Task Force on Laboratory Tests in Psychiatry. The dexamethasone suppression test: an overview of its current status in psychiatry. Am J Psychiatry. 1987;144(10):1253-1262.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3310667/',
+          publishedAt: '1987-10-01',
+          methodologyType: 'primary',
         },
       },
     ],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // OPIOID CRISIS ERA (2000–present)
+  // OPIOID CRISIS ERA (2000--present)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── Opana ER reformulation abuse-deterrent claim — reversed 2017 ────────────
   {
-    externalId: ‘trajectory:opana-er-reformulation-abuse-deterrent-2011’,
-    text: "Endo Pharmaceuticals’ reformulated, crush-resistant Opana ER (oxymorphone hydrochloride extended-release), approved by the FDA in December 2011, was claimed to deter abuse and to have a benefit-risk profile favorable enough to remain on the market.",
-    claimType: ‘HYBRID’,
-    claimEmergedAt: ‘2011-12-01’,
-    claimEmergedPrecision: ‘MONTH’,
-    currentAxis: ‘REVERSED’,
+    externalId: 'trajectory:opana-er-reformulation-abuse-deterrent-2011',
+    text: "Endo Pharmaceuticals' reformulated, crush-resistant Opana ER (oxymorphone hydrochloride extended-release), approved by the FDA in December 2011, was claimed to deter abuse and to have a benefit-risk profile favorable enough to remain on the market.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
     transitions: [
       {
         fromAxis: null,
-        toAxis: ‘SETTLED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2011-12-01’,
-        datePrecision: ‘MONTH’,
-        reason: "The FDA approved Endo’s reformulated Opana ER, designed to resist crushing for snorting and injection, marketing it as a more abuse-resistant formulation of extended-release oxymorphone. Regulatory approval institutionally established the reformulation as an acceptable, abuse-deterring product for around-the-clock pain management.",
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-01',
+        datePrecision: 'MONTH',
+        reason: "The FDA approved Endo's reformulated Opana ER, designed to resist crushing for snorting and injection, marketing it as a more abuse-resistant formulation of extended-release oxymorphone. Regulatory approval institutionally established the reformulation as an acceptable, abuse-deterring product for around-the-clock pain management.",
         source: {
-          externalId: ‘src:fda-opana-er-oxymorphone-information’,
-          name: ‘FDA. Oxymorphone (marketed as Opana ER) Information. Postmarket Drug Safety Information for Patients and Providers.’,
-          url: ‘https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/oxymorphone-marketed-opana-er-information’,
-          publishedAt: ‘2017-06-08’,
-          methodologyType: ‘primary’,
+          externalId: 'src:fda-opana-er-oxymorphone-information',
+          name: 'FDA. Oxymorphone (marketed as Opana ER) Information. Postmarket Drug Safety Information for Patients and Providers.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/oxymorphone-marketed-opana-er-information',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
         },
       },
       {
-        fromAxis: ‘SETTLED’,
-        toAxis: ‘CONTESTED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2017-03-14’,
-        datePrecision: ‘DAY’,
-        reason: ‘At a joint meeting on March 13–14, 2017, an FDA advisory committee voted 18–8 that the benefits of reformulated Opana ER no longer outweighed its risks, citing postmarketing data showing abuse had shifted from snorting to intravenous injection. The expert panel\’s vote formally placed the drug\’s favorable benefit-risk claim in dispute.’,
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-14',
+        datePrecision: 'DAY',
+        reason: 'At a joint meeting on March 13--14, 2017, an FDA advisory committee voted 18--8 that the benefits of reformulated Opana ER no longer outweighed its risks, citing postmarketing data showing abuse had shifted from snorting to intravenous injection. The expert panel\'s vote formally placed the drug\'s favorable benefit-risk claim in dispute.',
         source: {
-          externalId: ‘src:fda-opana-er-oxymorphone-information-advcom’,
-          name: ‘FDA. Oxymorphone (marketed as Opana ER) Information — joint advisory committee meeting, March 13–14, 2017 (18–8 vote).’,
-          url: ‘https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/oxymorphone-marketed-opana-er-information’,
-          publishedAt: ‘2017-06-08’,
-          methodologyType: ‘primary’,
+          externalId: 'src:fda-opana-er-oxymorphone-information-advcom',
+          name: 'FDA. Oxymorphone (marketed as Opana ER) Information — joint advisory committee meeting, March 13--14, 2017 (18--8 vote).',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/oxymorphone-marketed-opana-er-information',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
         },
       },
       {
-        fromAxis: ‘CONTESTED’,
-        toAxis: ‘REVERSED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2017-06-08’,
-        datePrecision: ‘DAY’,
-        reason: ‘On June 8, 2017, the FDA requested that Endo remove reformulated Opana ER from the market — the first time the agency had ever taken steps to remove a currently marketed opioid for public-health consequences of abuse — after data linked injection abuse to outbreaks of HIV, hepatitis C, and thrombotic microangiopathy. Endo announced voluntary withdrawal on July 6, 2017, repudiating the original abuse-deterrent and benefit-risk claims.’,
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'On June 8, 2017, the FDA requested that Endo remove reformulated Opana ER from the market — the first time the agency had ever taken steps to remove a currently marketed opioid for public-health consequences of abuse — after data linked injection abuse to outbreaks of HIV, hepatitis C, and thrombotic microangiopathy. Endo announced voluntary withdrawal on July 6, 2017, repudiating the original abuse-deterrent and benefit-risk claims.',
         source: {
-          externalId: ‘src:fda-opana-er-removal-request-2017’,
-          name: ‘FDA. FDA requests removal of Opana ER for risks related to abuse. News release, June 8, 2017.’,
-          url: ‘https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/oxymorphone-marketed-opana-er-information’,
-          publishedAt: ‘2017-06-08’,
-          methodologyType: ‘primary’,
+          externalId: 'src:fda-opana-er-removal-request-2017',
+          name: 'FDA. FDA requests removal of Opana ER for risks related to abuse. News release, June 8, 2017.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/oxymorphone-marketed-opana-er-information',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
         },
       },
     ],
@@ -46694,41 +46694,41 @@ const TRAJECTORIES: Trajectory[] = [
 
   // ── Narcan OTC naloxone approval — settled 2023 ─────────────────────────────
   {
-    externalId: ‘trajectory:narcan-otc-naloxone-approval-2023’,
-    text: ‘The FDA approved Narcan (4 mg naloxone hydrochloride nasal spray) for over-the-counter, nonprescription use on March 29, 2023, establishing that the opioid-overdose reversal drug is safe and effective for use by laypersons without medical supervision.’,
-    claimType: ‘HYBRID’,
-    claimEmergedAt: ‘2023-03-29’,
-    claimEmergedPrecision: ‘DAY’,
-    currentAxis: ‘SETTLED’,
+    externalId: 'trajectory:narcan-otc-naloxone-approval-2023',
+    text: 'The FDA approved Narcan (4 mg naloxone hydrochloride nasal spray) for over-the-counter, nonprescription use on March 29, 2023, establishing that the opioid-overdose reversal drug is safe and effective for use by laypersons without medical supervision.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
     transitions: [
       {
         fromAxis: null,
-        toAxis: ‘RECORDED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2022-11-01’,
-        datePrecision: ‘MONTH’,
-        reason: ‘In November 2022 the FDA announced a preliminary assessment that certain naloxone products had the potential to be safe and effective for over-the-counter use, and encouraged sponsors to submit OTC applications. This entered into the regulatory record the prospect that a drug long restricted to prescription or standing-order access could be sold directly to consumers.’,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-01',
+        datePrecision: 'MONTH',
+        reason: 'In November 2022 the FDA announced a preliminary assessment that certain naloxone products had the potential to be safe and effective for over-the-counter use, and encouraged sponsors to submit OTC applications. This entered into the regulatory record the prospect that a drug long restricted to prescription or standing-order access could be sold directly to consumers.',
         source: {
-          externalId: ‘src:fda-otc-naloxone-preliminary-assessment-2022’,
-          name: ‘FDA. FDA Approves First Over-the-Counter Naloxone Nasal Spray (notes November 2022 preliminary OTC assessment). News release.’,
-          url: ‘https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray’,
-          publishedAt: ‘2023-03-29’,
-          methodologyType: ‘primary’,
+          externalId: 'src:fda-otc-naloxone-preliminary-assessment-2022',
+          name: 'FDA. FDA Approves First Over-the-Counter Naloxone Nasal Spray (notes November 2022 preliminary OTC assessment). News release.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray',
+          publishedAt: '2023-03-29',
+          methodologyType: 'primary',
         },
       },
       {
-        fromAxis: ‘RECORDED’,
-        toAxis: ‘SETTLED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2023-03-29’,
-        datePrecision: ‘DAY’,
-        reason: "The FDA approved Emergent BioSolutions’ Narcan 4 mg naloxone nasal spray for over-the-counter use — the first naloxone product approved without a prescription — allowing sale in drug stores, convenience stores, grocery stores, gas stations, and online. The action institutionally settled the claim that naloxone is safe enough for unsupervised lay administration, reversing decades of prescription-only control.",
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-29',
+        datePrecision: 'DAY',
+        reason: "The FDA approved Emergent BioSolutions' Narcan 4 mg naloxone nasal spray for over-the-counter use — the first naloxone product approved without a prescription — allowing sale in drug stores, convenience stores, grocery stores, gas stations, and online. The action institutionally settled the claim that naloxone is safe enough for unsupervised lay administration, reversing decades of prescription-only control.",
         source: {
-          externalId: ‘src:fda-otc-narcan-approval-2023’,
-          name: ‘FDA. FDA Approves First Over-the-Counter Naloxone Nasal Spray. News release, March 29, 2023.’,
-          url: ‘https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray’,
-          publishedAt: ‘2023-03-29’,
-          methodologyType: ‘primary’,
+          externalId: 'src:fda-otc-narcan-approval-2023',
+          name: 'FDA. FDA Approves First Over-the-Counter Naloxone Nasal Spray. News release, March 29, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray',
+          publishedAt: '2023-03-29',
+          methodologyType: 'primary',
         },
       },
     ],
@@ -46736,41 +46736,41 @@ const TRAJECTORIES: Trajectory[] = [
 
   // ── Buprenorphine X-waiver restriction — reversed 2022 ──────────────────────
   {
-    externalId: ‘trajectory:buprenorphine-x-waiver-restriction-2000’,
-    text: "Under the Drug Addiction Treatment Act of 2000, prescribing buprenorphine for opioid use disorder was restricted to clinicians who obtained a special DATA-2000 ‘X-waiver’ and abided by patient caps, encoding the premise that office-based buprenorphine treatment required gatekeeping to be safe — a restriction Congress eliminated on December 29, 2022.",
-    claimType: ‘INSTITUTIONAL’,
-    claimEmergedAt: ‘2000-10-17’,
-    claimEmergedPrecision: ‘DAY’,
-    currentAxis: ‘REVERSED’,
+    externalId: 'trajectory:buprenorphine-x-waiver-restriction-2000',
+    text: "Under the Drug Addiction Treatment Act of 2000, prescribing buprenorphine for opioid use disorder was restricted to clinicians who obtained a special DATA-2000 'X-waiver' and abided by patient caps, encoding the premise that office-based buprenorphine treatment required gatekeeping to be safe — a restriction Congress eliminated on December 29, 2022.",
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-10-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
     transitions: [
       {
         fromAxis: null,
-        toAxis: ‘SETTLED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2000-10-17’,
-        datePrecision: ‘DAY’,
-        reason: ‘The Drug Addiction Treatment Act of 2000 created the DATA-waiver (X-waiver) system, requiring clinicians to complete special training, file a Notice of Intent, and observe per-physician patient limits before prescribing buprenorphine for opioid use disorder. This established as settled federal policy the premise that office-based buprenorphine treatment had to be gated behind a special waiver to be administered safely.’,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-10-17',
+        datePrecision: 'DAY',
+        reason: 'The Drug Addiction Treatment Act of 2000 created the DATA-waiver (X-waiver) system, requiring clinicians to complete special training, file a Notice of Intent, and observe per-physician patient limits before prescribing buprenorphine for opioid use disorder. This established as settled federal policy the premise that office-based buprenorphine treatment had to be gated behind a special waiver to be administered safely.',
         source: {
-          externalId: ‘src:samhsa-mat-act-waiver-elimination’,
-          name: ‘SAMHSA. Waiver Elimination (MAT Act) — background on the DATA-2000 X-waiver and its removal.’,
-          url: ‘https://www.samhsa.gov/substance-use/treatment/statutes-regulations-guidelines/mat-act’,
-          publishedAt: ‘2023-01-12’,
-          methodologyType: ‘primary’,
+          externalId: 'src:samhsa-mat-act-waiver-elimination',
+          name: 'SAMHSA. Waiver Elimination (MAT Act) — background on the DATA-2000 X-waiver and its removal.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/statutes-regulations-guidelines/mat-act',
+          publishedAt: '2023-01-12',
+          methodologyType: 'primary',
         },
       },
       {
-        fromAxis: ‘SETTLED’,
-        toAxis: ‘REVERSED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2022-12-29’,
-        datePrecision: ‘DAY’,
-        reason: ‘Section 1262 of the Consolidated Appropriations Act, 2023 (the Mainstreaming Addiction Treatment / MAT Act), signed December 29, 2022, eliminated the X-waiver requirement, patient caps, and counseling-certification conditions; any clinician with a Schedule III DEA registration may now prescribe buprenorphine for opioid use disorder. The reform reversed the 22-year-old premise that special gatekeeping was needed, recasting the waiver as a barrier to evidence-based addiction treatment.’,
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: 'Section 1262 of the Consolidated Appropriations Act, 2023 (the Mainstreaming Addiction Treatment / MAT Act), signed December 29, 2022, eliminated the X-waiver requirement, patient caps, and counseling-certification conditions; any clinician with a Schedule III DEA registration may now prescribe buprenorphine for opioid use disorder. The reform reversed the 22-year-old premise that special gatekeeping was needed, recasting the waiver as a barrier to evidence-based addiction treatment.',
         source: {
-          externalId: ‘src:lopez-bernal-x-waiver-cra-2023’,
-          name: ‘Lopez Bernal V, et al. Will the End of the X-Waiver Expand Access to Buprenorphine Treatment? Achieving the Full Potential of the 2023 Consolidated Appropriations Act. 2023. PMID 37675897.’,
-          url: ‘https://pubmed.ncbi.nlm.nih.gov/37675897/’,
-          publishedAt: ‘2023-09-01’,
-          methodologyType: ‘derivative’,
+          externalId: 'src:lopez-bernal-x-waiver-cra-2023',
+          name: 'Lopez Bernal V, et al. Will the End of the X-Waiver Expand Access to Buprenorphine Treatment? Achieving the Full Potential of the 2023 Consolidated Appropriations Act. 2023. PMID 37675897.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/37675897/',
+          publishedAt: '2023-09-01',
+          methodologyType: 'derivative',
         },
       },
     ],
@@ -46778,66 +46778,66 @@ const TRAJECTORIES: Trajectory[] = [
 
   // ── Zohydro ER pure hydrocodone approval — contested 2013 ───────────────────
   {
-    externalId: ‘trajectory:zohydro-er-pure-hydrocodone-approval-2013’,
-    text: ‘The FDA approved Zohydro ER (extended-release pure hydrocodone, NDA 202880) for around-the-clock management of severe pain on October 25, 2013, judging its benefit-risk profile favorable enough to market despite its own advisory committee having voted 11–2 against approval.’,
-    claimType: ‘HYBRID’,
-    claimEmergedAt: ‘2013-10-25’,
-    claimEmergedPrecision: ‘DAY’,
-    currentAxis: ‘CONTESTED’,
+    externalId: 'trajectory:zohydro-er-pure-hydrocodone-approval-2013',
+    text: 'The FDA approved Zohydro ER (extended-release pure hydrocodone, NDA 202880) for around-the-clock management of severe pain on October 25, 2013, judging its benefit-risk profile favorable enough to market despite its own advisory committee having voted 11--2 against approval.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
     transitions: [
       {
         fromAxis: null,
-        toAxis: ‘CONTESTED’,
-        community: ‘EXPERT_LITERATURE’,
-        occurredAt: ‘2012-12-07’,
-        datePrecision: ‘DAY’,
-        reason: "On December 7, 2012, the FDA’s Anesthetic and Analgesic Drug Products Advisory Committee voted 11–2 against approving Zohydro ER, with the majority concluding that the abuse risk of a high-dose, non-abuse-deterrent pure hydrocodone product outweighed its benefits. The expert vote registered serious doubt about the drug before any regulatory decision.",
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-12-07',
+        datePrecision: 'DAY',
+        reason: "On December 7, 2012, the FDA's Anesthetic and Analgesic Drug Products Advisory Committee voted 11--2 against approving Zohydro ER, with the majority concluding that the abuse risk of a high-dose, non-abuse-deterrent pure hydrocodone product outweighed its benefits. The expert vote registered serious doubt about the drug before any regulatory decision.",
         source: {
-          externalId: ‘src:fda-zohydro-nda-202880-summary-review’,
-          name: ‘FDA. Zohydro ER (hydrocodone bitartrate ER), NDA 202880, Summary Review. Center for Drug Evaluation and Research, 2013.’,
-          url: ‘https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/202880orig1s000sumr.pdf’,
-          publishedAt: ‘2013-10-25’,
-          methodologyType: ‘primary’,
+          externalId: 'src:fda-zohydro-nda-202880-summary-review',
+          name: 'FDA. Zohydro ER (hydrocodone bitartrate ER), NDA 202880, Summary Review. Center for Drug Evaluation and Research, 2013.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/202880orig1s000sumr.pdf',
+          publishedAt: '2013-10-25',
+          methodologyType: 'primary',
         },
       },
       {
-        fromAxis: ‘CONTESTED’,
-        toAxis: ‘SETTLED’,
-        community: ‘INSTITUTIONAL’,
-        occurredAt: ‘2013-10-25’,
-        datePrecision: ‘DAY’,
-        reason: "The FDA approved Zohydro ER over its advisory committee’s 11–2 objection, accepting that the drug met agency standards for efficacy and safety for patients needing daily, long-term opioid therapy. The approval institutionally established the drug as marketable despite the absence of abuse-deterrent properties.",
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-10-25',
+        datePrecision: 'DAY',
+        reason: "The FDA approved Zohydro ER over its advisory committee's 11--2 objection, accepting that the drug met agency standards for efficacy and safety for patients needing daily, long-term opioid therapy. The approval institutionally established the drug as marketable despite the absence of abuse-deterrent properties.",
         source: {
-          externalId: ‘src:fda-zohydro-nda-202880-approval’,
-          name: ‘FDA. Zohydro ER (hydrocodone bitartrate ER), NDA 202880, Summary Review and approval, October 25, 2013.’,
-          url: ‘https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/202880orig1s000sumr.pdf’,
-          publishedAt: ‘2013-10-25’,
-          methodologyType: ‘primary’,
+          externalId: 'src:fda-zohydro-nda-202880-approval',
+          name: 'FDA. Zohydro ER (hydrocodone bitartrate ER), NDA 202880, Summary Review and approval, October 25, 2013.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/202880orig1s000sumr.pdf',
+          publishedAt: '2013-10-25',
+          methodologyType: 'primary',
         },
       },
       {
-        fromAxis: ‘SETTLED’,
-        toAxis: ‘CONTESTED’,
-        community: ‘PUBLIC’,
-        occurredAt: ‘2014-03-27’,
-        datePrecision: ‘DAY’,
-        reason: ‘Within months of approval, dozens of state attorneys general, members of Congress, and public-health groups demanded the FDA reverse the decision, and Massachusetts moved to ban the drug outright in March 2014 (an emergency order later struck down in court). The approval became a sustained public and political contest over whether a non-abuse-deterrent pure hydrocodone product should exist amid the opioid epidemic.’,
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2014-03-27',
+        datePrecision: 'DAY',
+        reason: 'Within months of approval, dozens of state attorneys general, members of Congress, and public-health groups demanded the FDA reverse the decision, and Massachusetts moved to ban the drug outright in March 2014 (an emergency order later struck down in court). The approval became a sustained public and political contest over whether a non-abuse-deterrent pure hydrocodone product should exist amid the opioid epidemic.',
         source: {
-          externalId: ‘src:nelson-juurlink-zohydro-controversial-2014’,
-          name: ‘Nelson LS, Juurlink DN. Zohydro approval by Food and Drug Administration: controversial or frightening? 2014. PMID 25054396.’,
-          url: ‘https://pubmed.ncbi.nlm.nih.gov/25054396/’,
-          publishedAt: ‘2014-07-01’,
-          methodologyType: ‘derivative’,
+          externalId: 'src:nelson-juurlink-zohydro-controversial-2014',
+          name: 'Nelson LS, Juurlink DN. Zohydro approval by Food and Drug Administration: controversial or frightening? 2014. PMID 25054396.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25054396/',
+          publishedAt: '2014-07-01',
+          methodologyType: 'derivative',
         },
       },
     ],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // SURGICAL / DEVICE REVERSALS & PRACTICE-CHANGING TRIALS (1993–2018)
+  // SURGICAL / DEVICE REVERSALS & PRACTICE-CHANGING TRIALS (1993--2018)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Aprotinin (Trasylol) cardiac-surgery safety reversal 1993–2008 ──────────
+  // ── Aprotinin (Trasylol) cardiac-surgery safety reversal 1993--2008 ──────────
   {
     externalId: 'trajectory:aprotinin-trasylol-cardiac-surgery-safety-reversal-1993',
     text: 'Aprotinin (Trasylol), the serine-protease-inhibitor antifibrinolytic approved by the FDA in December 1993 to reduce perioperative blood loss in coronary-artery-bypass-graft surgery, is a safe and effective hemostatic agent for cardiac surgery.',
@@ -46897,7 +46897,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── ACOSOG Z0011 axillary dissection omission 2011 ──────────────────────────
   {
     externalId: 'trajectory:acosog-z0011-axillary-dissection-omission-2011',
-    text: 'Completion axillary lymph node dissection can be safely omitted, without compromising survival, in women with clinical T1–T2 invasive breast cancer and one or two positive sentinel lymph nodes treated with breast-conserving surgery plus whole-breast irradiation, as established by the ACOSOG Z0011 randomized trial reported by Giuliano and colleagues in JAMA on 9 February 2011.',
+    text: 'Completion axillary lymph node dissection can be safely omitted, without compromising survival, in women with clinical T1--T2 invasive breast cancer and one or two positive sentinel lymph nodes treated with breast-conserving surgery plus whole-breast irradiation, as established by the ACOSOG Z0011 randomized trial reported by Giuliano and colleagues in JAMA on 9 February 2011.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '2011-02-09',
     claimEmergedPrecision: 'DAY',
@@ -46909,7 +46909,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '2011-02-09',
         datePrecision: 'DAY',
-        reason: 'Giuliano and colleagues published the primary results of the American College of Surgeons Oncology Group Z0011 trial in JAMA, randomizing 891 women with T1–T2 breast cancer and sentinel-node metastases to completion axillary dissection or no further axillary surgery. At median 6.3 years there was no significant difference in locoregional recurrence or overall survival, recording in the literature the claim that the long-standing surgical doctrine requiring axillary dissection for node-positive disease could be abandoned for this group.',
+        reason: 'Giuliano and colleagues published the primary results of the American College of Surgeons Oncology Group Z0011 trial in JAMA, randomizing 891 women with T1--T2 breast cancer and sentinel-node metastases to completion axillary dissection or no further axillary surgery. At median 6.3 years there was no significant difference in locoregional recurrence or overall survival, recording in the literature the claim that the long-standing surgical doctrine requiring axillary dissection for node-positive disease could be abandoned for this group.',
         source: {
           externalId: 'src:giuliano-z0011-jama-2011',
           name: 'Giuliano AE, Hunt KK, Ballman KV, et al. Axillary dissection vs no axillary dissection in women with invasive breast cancer and sentinel node metastasis: a randomized clinical trial. JAMA. 2011;305(6):569-575.',
@@ -46978,7 +46978,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Essure permanent contraception restriction 2002–2018 ────────────────────
+  // ── Essure permanent contraception restriction 2002--2018 ────────────────────
   {
     externalId: 'trajectory:essure-permanent-contraception-restriction-2018',
     text: 'Essure, the hysteroscopically placed permanent contraceptive coil approved by the FDA in November 2002, is a safe and effective non-surgical permanent birth-control device — a status the FDA progressively contested and that ended when sales were restricted in April 2018 and Bayer halted U.S. distribution on 31 December 2018.',
@@ -47153,7 +47153,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1991-01-01',
         datePrecision: 'YEAR',
-        reason: 'Lacassagne\'s finding was reproduced and extended across strains and other estrogens over subsequent decades, and exogenous estrogens became firmly established as mammary carcinogens in animal models, as summarized in authoritative reviews of sex-steroid carcinogenesis. The principle that hormones drive carcinogenesis is now foundational to oncology and to the human estrogen–breast-cancer literature.',
+        reason: 'Lacassagne\'s finding was reproduced and extended across strains and other estrogens over subsequent decades, and exogenous estrogens became firmly established as mammary carcinogens in animal models, as summarized in authoritative reviews of sex-steroid carcinogenesis. The principle that hormones drive carcinogenesis is now foundational to oncology and to the human estrogen--breast-cancer literature.',
         source: {
           externalId: 'src:iom-estrogen-mammary-carcinogenesis-review-1991',
           name: 'Institute of Medicine. Animal Models of Sex Steroid Hormones and Mammary Cancer. In: Oral Contraceptives and Breast Cancer. Washington, DC: National Academy Press; 1991. (NBK234352)',
@@ -47222,7 +47222,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1931-10-01',
         datePrecision: 'MONTH',
-        reason: 'Building on his 1924–1925 investigation of fatal \'radium necrosis\' among US Radium Corporation dial painters who tipped their brushes with their lips, Martland documented that the ingested radium deposited in bone and produced osteogenic sarcoma and anemias. His 1931 American Journal of Cancer paper recorded internally deposited radium as a cause of human malignancy.',
+        reason: 'Building on his 1924--1925 investigation of fatal \'radium necrosis\' among US Radium Corporation dial painters who tipped their brushes with their lips, Martland documented that the ingested radium deposited in bone and produced osteogenic sarcoma and anemias. His 1931 American Journal of Cancer paper recorded internally deposited radium as a cause of human malignancy.',
         source: {
           externalId: 'src:martland-malignancy-radioactive-persons-1931',
           name: 'Martland HS. The occurrence of malignancy in radioactive persons. Am J Cancer. 1931;15(4):2435-2516.',
@@ -47250,7 +47250,7 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
-  // CARDIOLOGY — ACUTE PHASE & SECONDARY PREVENTION (1980–2005)
+  // CARDIOLOGY — ACUTE PHASE & SECONDARY PREVENTION (1980--2005)
   // ═══════════════════════════════════════════════════════════════════════════════
 
   // ── ISIS-1 intravenous atenolol acute MI 1986 ──────────────────────────────
@@ -47268,7 +47268,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1986-07-12',
         datePrecision: 'DAY',
-        reason: 'The ISIS-1 Collaborative Group randomized 16,027 patients with suspected acute MI to immediate intravenous atenolol (5–10 mg) followed by oral atenolol or to control, and found a significant reduction in vascular mortality over days 0–7 (3.7% vs 4.6%), with most of the benefit in days 0–1. This was the first mega-trial evidence that beta-blockade started in the acute phase of infarction — rather than for long-term secondary prevention — reduces early death, putting acute-phase IV beta-blockade on the scientific record.',
+        reason: 'The ISIS-1 Collaborative Group randomized 16,027 patients with suspected acute MI to immediate intravenous atenolol (5--10 mg) followed by oral atenolol or to control, and found a significant reduction in vascular mortality over days 0--7 (3.7% vs 4.6%), with most of the benefit in days 0--1. This was the first mega-trial evidence that beta-blockade started in the acute phase of infarction — rather than for long-term secondary prevention — reduces early death, putting acute-phase IV beta-blockade on the scientific record.',
         source: {
           externalId: 'src:isis1-atenolol-lancet-1986',
           name: 'ISIS-1 (First International Study of Infarct Survival) Collaborative Group. Randomised trial of intravenous atenolol among 16 027 cases of suspected acute myocardial infarction: ISIS-1. Lancet. 1986;2(8498):57-66.',
@@ -47352,7 +47352,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1985-06-15',
         datePrecision: 'DAY',
-        reason: 'Amery and colleagues randomized 840 patients aged 60 or older with hypertension to a hydrochlorothiazide–triamterene regimen (with methyldopa added as needed) or placebo, and found active treatment reduced cardiovascular mortality and cardiovascular events, with the largest effect on cerebrovascular and cardiac deaths. This recorded the first randomized evidence that lowering blood pressure in older patients is beneficial, challenging the then-common clinical reluctance to treat hypertension in the elderly for fear of harm.',
+        reason: 'Amery and colleagues randomized 840 patients aged 60 or older with hypertension to a hydrochlorothiazide--triamterene regimen (with methyldopa added as needed) or placebo, and found active treatment reduced cardiovascular mortality and cardiovascular events, with the largest effect on cerebrovascular and cardiac deaths. This recorded the first randomized evidence that lowering blood pressure in older patients is beneficial, challenging the then-common clinical reluctance to treat hypertension in the elderly for fear of harm.',
         source: {
           externalId: 'src:ewphe-amery-lancet-1985',
           name: 'Amery A, Birkenhäger W, Brixko P, et al. (European Working Party on High Blood Pressure in the Elderly). Mortality and morbidity results from the European Working Party on High Blood Pressure in the Elderly trial. Lancet. 1985;1(8442):1349-1354.',
@@ -47367,13 +47367,628 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1991-11-23',
         datePrecision: 'DAY',
-        reason: 'The Swedish Trial in Old Patients with Hypertension (STOP-Hypertension) randomized 1,627 patients aged 70–84 to active antihypertensive therapy or placebo and found a significant reduction in stroke, total mortality, and cardiovascular events, leading to early termination. Coming alongside SHEP and the MRC elderly trial, STOP-Hypertension converted the EWPHE signal into a robust, replicated consensus, settling antihypertensive treatment of older patients as standard guideline-endorsed practice.',
+        reason: 'The Swedish Trial in Old Patients with Hypertension (STOP-Hypertension) randomized 1,627 patients aged 70--84 to active antihypertensive therapy or placebo and found a significant reduction in stroke, total mortality, and cardiovascular events, leading to early termination. Coming alongside SHEP and the MRC elderly trial, STOP-Hypertension converted the EWPHE signal into a robust, replicated consensus, settling antihypertensive treatment of older patients as standard guideline-endorsed practice.',
         source: {
           externalId: 'src:stop-hypertension-dahlof-lancet-1991',
           name: 'Dahlöf B, Lindholm LH, Hansson L, et al. Morbidity and mortality in the Swedish Trial in Old Patients with Hypertension (STOP-Hypertension). Lancet. 1991;338(8778):1281-1285.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/1682683/',
           publishedAt: '1991-11-23',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PGC schizophrenia GWAS — 108 loci 2014 ───────────────────────────────
+  {
+    externalId: 'trajectory:pgc-schizophrenia-108-genetic-loci-2014',
+    text: 'The Schizophrenia Working Group of the Psychiatric Genomics Consortium reported in Nature on 24 July 2014 that a genome-wide association study of up to 36,989 cases and 113,075 controls identified 128 independent associations spanning 108 conservatively defined loci meeting genome-wide significance, establishing schizophrenia as a highly polygenic disorder with a reproducible common-variant genetic architecture.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-07-24',
+        datePrecision: 'DAY',
+        reason: 'The Psychiatric Genomics Consortium published the first large, adequately powered schizophrenia GWAS, reporting 108 genome-wide-significant loci (83 of them novel), including associations at DRD2 and genes involved in glutamatergic neurotransmission and immune function. After decades of failed candidate-gene studies and non-replicating linkage findings, this entered into the literature the first robust, replicable map of common genetic risk for schizophrenia, reframing it as a polygenic disorder rather than one with a few major genes.',
+        source: {
+          externalId: 'src:pgc-schizophrenia-108-loci-nature-2014',
+          name: 'Schizophrenia Working Group of the Psychiatric Genomics Consortium. Biological insights from 108 schizophrenia-associated genetic loci. Nature. 2014;511(7510):421-427.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25056061/',
+          publishedAt: '2014-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-04-08',
+        datePrecision: 'DAY',
+        reason: 'Trubetskoy and colleagues, on behalf of the expanded Psychiatric Genomics Consortium (PGC3), reported a GWAS of 76,755 cases and 243,649 controls identifying 287 genome-wide-significant loci and prioritizing 120 genes implicated in synaptic biology and neuronal function. The replication and roughly threefold expansion of the loci count, with convergence on synaptic mechanisms, consolidated the polygenic common-variant architecture of schizophrenia as settled in psychiatric genetics.',
+        source: {
+          externalId: 'src:trubetskoy-pgc3-schizophrenia-287-loci-nature-2022',
+          name: 'Trubetskoy V, Pardiñas AF, Qi T, et al. Mapping genomic loci implicates genes and synaptic biology in schizophrenia. Nature. 2022;604(7906):502-508.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35396580/',
+          publishedAt: '2022-04-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── C4A complement — schizophrenia synaptic pruning 2016 ─────────────────
+  {
+    externalId: 'trajectory:c4a-complement-schizophrenia-synaptic-pruning-2016',
+    text: 'Aswin Sekar and colleagues reported in Nature on 27 January 2016 that structural variation in the complement component 4 (C4) genes drives schizophrenia risk in proportion to how strongly each allele increases C4A expression in the brain, providing the first specific molecular mechanism behind a schizophrenia GWAS signal and linking risk to excessive complement-mediated synaptic pruning.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-01-27',
+        datePrecision: 'DAY',
+        reason: 'Building on the major histocompatibility complex (MHC) association that had been the strongest signal in schizophrenia GWAS, Sekar et al. resolved the locus to the highly polymorphic C4 genes, showing that alleles generating greater C4A expression conferred greater schizophrenia risk and that C4 mediated synaptic pruning in mice. This recorded in the literature the first concrete biological mechanism connecting a genome-wide risk locus to a cellular process (excessive complement-driven elimination of synapses), turning an anonymous statistical association into a testable neurodevelopmental hypothesis.',
+        source: {
+          externalId: 'src:sekar-c4-schizophrenia-nature-2016',
+          name: 'Sekar A, Bialas AR, de Rivera H, et al. Schizophrenia risk from complex variation of complement component 4. Nature. 2016;530(7589):177-183.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26814963/',
+          publishedAt: '2016-01-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SSRI pregnancy — autism spectrum disorder causation 2016 ─────────────
+  {
+    externalId: 'trajectory:ssri-pregnancy-autism-spectrum-disorder-causation-2016',
+    text: 'Takoua Boukhris and colleagues reported in JAMA Pediatrics in February 2016 that maternal use of antidepressants, specifically SSRIs, during the second and/or third trimester of pregnancy increases the risk of autism spectrum disorder in children even after accounting for maternal depression (adjusted hazard ratio 2.17).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Analyzing the Quebec Pregnancy Cohort, Boukhris et al. reported that prenatal SSRI exposure roughly doubled the risk of autism spectrum disorder in offspring and claimed the association persisted after adjusting for maternal depression, implying a causal drug effect. The paper drew major media attention and entered the literature as headline evidence that antidepressant exposure in utero, not just the underlying maternal illness, could cause autism.',
+        source: {
+          externalId: 'src:boukhris-antidepressant-pregnancy-asd-jamaped-2016',
+          name: 'Boukhris T, Sheehy O, Mottron L, Bérard A. Antidepressant Use During Pregnancy and the Risk of Autism Spectrum Disorder in Children. JAMA Pediatr. 2016;170(2):117-124.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26660917/',
+          publishedAt: '2016-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-04-18',
+        datePrecision: 'DAY',
+        reason: 'Brown and colleagues, in a JAMA cohort of 35,906 Ontario births using high-dimensional propensity-score adjustment and a sibling-control design, found that an apparent crude association between prenatal serotonergic antidepressant exposure and autism disappeared once familial confounding was accounted for (sibling-matched HR 1.60, 95% CI 0.69-3.74, non-significant). A companion JAMA paper by Sujan et al. the same day reached the same conclusion, attributing the earlier signal to confounding by maternal illness and genetics. Together they overturned the causal interpretation, reversing the claim that SSRIs themselves cause autism.',
+        source: {
+          externalId: 'src:brown-ssri-pregnancy-asd-jama-2017',
+          name: 'Brown HK, Ray JG, Wilton AS, et al. Association Between Serotonergic Antidepressant Use During Pregnancy and Autism Spectrum Disorder in Children. JAMA. 2017;317(15):1544-1552.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28418480/',
+          publishedAt: '2017-04-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kimball-Murlin glucagon discovery 1923 ───────────────────────────────
+  {
+    externalId: 'trajectory:kimball-murlin-glucagon-pancreatic-hyperglycemic-1923',
+    text: 'Charles Kimball and John Murlin reported in the Journal of Biological Chemistry in 1923 that pancreatic extracts contained a second, insulin-opposing factor that raised blood glucose in rabbits and dogs, which they named glucagon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'While trying to develop a cheaper insulin-purification process, Kimball and Murlin precipitated a pancreatic fraction that, when injected, produced a robust hyperglycemic rather than hypoglycemic effect. Because the fraction could not lower blood glucose, they inferred a distinct secreted factor opposing insulin and coined the name \'glucagon.\' This recorded in the expert literature the first evidence that the pancreas secretes a counter-regulatory hyperglycemic hormone alongside insulin.',
+        source: {
+          externalId: 'src:kimball-murlin-glucagon-jbc-1923',
+          name: 'Kimball CP, Murlin JR. Aqueous Extracts of Pancreas. III. Some Precipitation Reactions of Insulin. J Biol Chem. 1923;58:337--348.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7013494/',
+          publishedAt: '1923-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Glucagon was purified and crystallized by Staub, Sinn, and Behrens at Eli Lilly in the early 1950s, establishing it as a discrete polypeptide hormone of the pancreatic alpha cells rather than an insulin contaminant; it was later sequenced and adopted clinically as emergency therapy for severe hypoglycemia. Crystallization and characterization converted Kimball and Murlin\'s tentative 1923 claim into settled endocrinology, with glucagon now a foundational counter-regulatory hormone in diabetes physiology.',
+        source: {
+          externalId: 'src:century-of-glucagon-natrevendo-2023',
+          name: 'Müller TD, Finan B, Clemmensen C, et al. A century of glucagon: from discovery to GLP-1/glucagon co-agonists (historical review documenting the 1923 naming and 1950s crystallization). Nat Rev Endocrinol. 2023.',
+          url: 'https://www.nature.com/articles/s41574-023-00841-4',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Folin-Wu blood glucose colorimetric method 1919 ──────────────────────
+  {
+    externalId: 'trajectory:folin-wu-blood-glucose-method-1919',
+    text: 'Otto Folin and Hsien Wu published \'A System of Blood Analysis\' in the Journal of Biological Chemistry in 1919, introducing a colorimetric micro-method for measuring blood sugar from a small protein-free filtrate that made quantitative blood-glucose determination clinically practical.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Folin and Wu described a system combining a protein-free tungstic-acid blood filtrate with a copper-reduction colorimetric assay, allowing blood sugar (and other analytes) to be measured from roughly a tenth of the blood volume previously required. This recorded a reproducible quantitative method for blood-glucose measurement, the analytical precondition for diagnosing and managing diabetes by blood rather than urine.',
+        source: {
+          externalId: 'src:folin-wu-system-blood-analysis-jbc-1919',
+          name: 'Folin O, Wu H. A System of Blood Analysis. J Biol Chem. 1919;38:81--110.',
+          url: 'https://academic.oup.com/clinchem/article/66/12/1577/6015831',
+          publishedAt: '1919-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1920s the Folin-Wu method and its dedicated \'Folin-Wu tube\' became the standard blood-glucose assay in clinical laboratories worldwide and remained so for decades, institutionalizing quantitative blood-glucose monitoring as routine practice in the management of diabetes. Adoption as the universal laboratory standard settled the method\'s status as the accepted means of measuring blood sugar.',
+        source: {
+          externalId: 'src:folin-wu-clinchem-history-2020',
+          name: 'Coskun A. We Know Folin, But Who Was Wu? (history of the Folin-Wu blood analysis system and its clinical adoption). Clin Chem. 2020;66(12):1577--1579.',
+          url: 'https://academic.oup.com/clinchem/article/66/12/1577/6015831',
+          publishedAt: '2020-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cori-Cori glucose-1-phosphate and phosphorylase 1936 ─────────────────
+  {
+    externalId: 'trajectory:cori-cori-glucose-1-phosphate-phosphorylase-1936',
+    text: 'Carl and Gerty Cori reported in 1936 (Proceedings of the Society for Experimental Biology and Medicine) the isolation of a new phosphate ester, glucose-1-phosphate (the \'Cori ester\'), and the enzyme phosphorylase, revealing the chemical mechanism by which glycogen is broken down and synthesized.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Working on the mechanism of carbohydrate metabolism in muscle, the Coris isolated a previously unknown phosphorylated hexose, glucose-1-phosphate, and identified phosphorylase as the enzyme catalyzing its formation from glycogen and inorganic phosphate — the first known phosphorolytic cleavage of a polysaccharide. This recorded the molecular step linking stored glycogen to circulating glucose, the biochemical core of metabolic glucose homeostasis and of the glycogen-storage diseases.',
+        source: {
+          externalId: 'src:cori-cori-hexosemonophosphate-psebm-1936',
+          name: 'Cori CF, Cori GT. Mechanism of Formation of Hexosemonophosphate in Muscle and Isolation of a New Phosphate Ester. Proc Soc Exp Biol Med. 1936;34:702--705.',
+          url: 'https://www.nobelprize.org/uploads/2018/06/cori-lecture.pdf',
+          publishedAt: '1936-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-12-10',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Assembly awarded Carl and Gerty Cori the 1947 Nobel Prize in Physiology or Medicine \'for their discovery of the course of the catalytic conversion of glycogen.\' The award institutionally ratified the glucose-1-phosphate/phosphorylase pathway as the established mechanism of glycogen metabolism, the framework later used to define enzymatic glycogen-storage disorders such as von Gierke disease.',
+        source: {
+          externalId: 'src:nobel-medicine-1947-cori',
+          name: 'Nobel Prize in Physiology or Medicine 1947 — Carl Ferdinand Cori and Gerty Theresa Cori. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1947/summary/',
+          publishedAt: '1947-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Benedict's copper-citrate reagent for urine glucose 1908 ─────────────
+  {
+    externalId: 'trajectory:benedict-reagent-urine-glucose-test-1908',
+    text: 'Stanley R. Benedict described in the Journal of Biological Chemistry around 1908 a stable copper-citrate reagent that detects reducing sugars, providing a reliable qualitative test for glucose in urine that became the basis of diabetes monitoring.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1908-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1908-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Benedict published a copper-sulfate, sodium-citrate, sodium-carbonate reagent that, on heating, is reduced by sugars to give a colored cuprous-oxide precipitate, improving on the unstable Fehling\'s solution. This recorded a robust, reproducible chemical test for reducing sugars (notably glucose) in urine, the practical tool for detecting and following glycosuria in diabetic patients.',
+        source: {
+          externalId: 'src:benedict-reagent-reducing-sugars-jbc-1908',
+          name: 'Benedict SR. A Reagent for the Detection of Reducing Sugars. J Biol Chem. 1908--1909;5:485--487.',
+          url: 'https://www.jbc.org/article/S0021-9258(19)61050-1/fulltext',
+          publishedAt: '1908-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1911-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Benedict extended the reagent into a quantitative method for estimating glucose in urine, and Benedict\'s test was adopted as the standard clinical procedure for detecting and estimating urinary sugar in virtually all laboratories, remaining the mainstay of diabetes monitoring (later packaged as Clinitest tablets) for roughly half a century until enzymatic glucose-oxidase methods superseded it. Universal clinical adoption settled it as the accepted test for glycosuria.',
+        source: {
+          externalId: 'src:benedict-jbc-classics-simoni',
+          name: 'Simoni RD, Hill RL, Vaughan M. Benedict\'s Solution, a Reagent for Measuring Reducing Sugars: the Clinical Chemistry of Stanley R. Benedict. J Biol Chem (JBC Classics).',
+          url: 'https://www.jbc.org/article/S0021-9258(19)61050-1/fulltext',
+          publishedAt: '2002-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── NIMH RDoC — dimensional classification over DSM 2010 ─────────────────
+  {
+    externalId: 'trajectory:nimh-rdoc-dimensional-classification-over-dsm-2010',
+    text: 'The U.S. National Institute of Mental Health, through the Research Domain Criteria (RDoC) framework introduced by Thomas Insel and colleagues in the American Journal of Psychiatry in July 2010, holds that mental disorders should be classified for research by underlying biological and behavioral dimensions rather than by DSM symptom-based diagnostic categories.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2010-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Insel and NIMH colleagues published the founding RDoC statement, arguing that DSM diagnostic categories lack the validity needed to anchor research and that NIMH would instead organize its research portfolio around measurable domains (e.g., negative valence, cognition, arousal) spanning genetics to behavior. As a directive from the principal U.S. funder of mental-health research, it placed on the record an institutional challenge to the DSM\'s authority as the framework for understanding psychiatric illness, foreshadowing NIMH\'s 2013 decision to reorient grant funding away from DSM categories.',
+        source: {
+          externalId: 'src:insel-rdoc-framework-ajp-2010',
+          name: 'Insel T, Cuthbert B, Garvey M, et al. Research domain criteria (RDoC): toward a new classification framework for research on mental disorders. Am J Psychiatry. 2010;167(7):748-751.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20595427/',
+          publishedAt: '2010-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dole & Nyswander methadone maintenance 1965 ───────────────────────────
+  {
+    externalId: 'trajectory:dole-nyswander-methadone-maintenance-1965',
+    text: 'Vincent Dole and Marie Nyswander reported in JAMA on August 23, 1965, that oral methadone hydrochloride maintenance stabilized heroin addicts, blocking euphoria and narcotic hunger and allowing them to return to work and social function — the founding clinical claim that opioid addiction is a treatable medical disorder rather than a moral failing.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-08-23',
+        datePrecision: 'DAY',
+        reason: 'Dole and Nyswander published \'A Medical Treatment for Diacetylmorphine (Heroin) Addiction: A Clinical Trial with Methadone Hydrochloride\' in JAMA, reporting on 22 formerly heroin-addicted patients stabilized on oral methadone who ceased drug-seeking and resumed schooling, jobs, and family life. The finding entered the literature as the first clinical evidence that a maintenance pharmacotherapy could treat opioid addiction.',
+        source: {
+          externalId: 'src:dole-nyswander-jama-1965',
+          name: 'Dole VP, Nyswander M. A medical treatment for diacetylmorphine (heroin) addiction. A clinical trial with methadone hydrochloride. JAMA. 1965 Aug 23;193:646-650.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14321530/',
+          publishedAt: '1965-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-11-19',
+        datePrecision: 'DAY',
+        reason: 'The NIH Consensus Development Panel on Effective Medical Treatment of Opiate Addiction concluded on November 17--19, 1997, that \'the safety and efficacy of narcotic agonist [methadone] maintenance treatment has been unequivocally established\' and that all opiate-dependent persons should have access to it under legal supervision. A national authority thereby ratified the Dole--Nyswander claim as settled medical knowledge after three decades of practice.',
+        source: {
+          externalId: 'src:nih-consensus-opiate-addiction-1997',
+          name: 'National Consensus Development Panel on Effective Medical Treatment of Opiate Addiction. Effective Medical Treatment of Opiate Addiction. NIH Consensus Statement 1997 Nov 17-19;15(6):1-38.',
+          url: 'https://consensus.nih.gov/1997/1998treatopiateaddiction108html.htm',
+          publishedAt: '1997-11-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Portenoy & Foley opioids for non-malignant pain 1986 ─────────────────
+  {
+    externalId: 'trajectory:portenoy-foley-opioids-nonmalignant-pain-1986',
+    text: 'Russell Portenoy and Kathleen Foley reported in the journal Pain in 1986, from a series of 38 cases, that chronic opioid therapy could be a safe and effective option for selected patients with non-malignant pain, with the management problem of addiction being uncommon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-05-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-05-01',
+        datePrecision: 'YEAR',
+        reason: 'Portenoy and Foley published \'Chronic use of opioid analgesics in non-malignant pain: report of 38 cases\' in Pain, arguing that long-term opioids could be maintained safely in carefully selected non-cancer pain patients with little risk of addiction. The paper became one of the foundational citations used through the 1990s and 2000s to legitimize expanded outpatient opioid prescribing for chronic pain.',
+        source: {
+          externalId: 'src:portenoy-foley-pain-1986',
+          name: 'Portenoy RK, Foley KM. Chronic use of opioid analgesics in non-malignant pain: report of 38 cases. Pain. 1986;25(2):171-186.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2873550/',
+          publishedAt: '1986-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-02-17',
+        datePrecision: 'DAY',
+        reason: 'Chou and colleagues published a systematic review for an NIH Pathways to Prevention Workshop in Annals of Internal Medicine concluding that evidence was insufficient to determine the effectiveness of long-term opioid therapy for chronic pain while supporting a dose-dependent risk of serious harms. The premise that chronic opioids are safe and effective for non-malignant pain — which the Portenoy--Foley case series had seeded — was repudiated by the assembled evidence at the height of the opioid overdose crisis.',
+        source: {
+          externalId: 'src:chou-long-term-opioids-aim-2015',
+          name: 'Chou R, Turner JA, Devine EB, et al. The effectiveness and risks of long-term opioid therapy for chronic pain: a systematic review for a National Institutes of Health Pathways to Prevention Workshop. Ann Intern Med. 2015 Feb 17;162(4):276-286.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25581257/',
+          publishedAt: '2015-02-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO analgesic ladder 1986 ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:who-analgesic-ladder-1986',
+    text: 'The World Health Organization published Cancer Pain Relief in 1986, establishing the three-step analgesic ladder (non-opioids, then weak opioids, then strong opioids, titrated to need) as the global clinical standard for managing cancer pain.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1986-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'WHO published the monograph Cancer Pain Relief, distilling guidelines drafted by a 1982 expert consultation into the three-step analgesic ladder. The booklet, translated into more than 20 languages, put a single global framework for cancer pain pharmacotherapy onto the institutional record for the first time.',
+        source: {
+          externalId: 'src:who-cancer-pain-relief-1986',
+          name: 'World Health Organization. Cancer pain relief. Geneva: World Health Organization; 1986.',
+          url: 'https://iris.who.int/handle/10665/43944',
+          publishedAt: '1986-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-02-15',
+        datePrecision: 'DAY',
+        reason: 'Ventafridda and colleagues published a two-year validation study from the WHO Collaborating Centre at the National Cancer Institute of Milan in Cancer, showing that correct use of the analgesic ladder reduced pain to roughly a third of its initial intensity. The empirical validation moved the ladder from a newly issued guideline to an evidence-backed standard adopted worldwide.',
+        source: {
+          externalId: 'src:ventafridda-who-validation-cancer-1987',
+          name: 'Ventafridda V, Tamburini M, Caraceni A, De Conno F, Naldi F. A validation study of the WHO method for cancer pain relief. Cancer. 1987 Feb 15;59(4):850-856.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3802043/',
+          publishedAt: '1987-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'WHO\'s 2018 guidelines for the pharmacological and radiotherapeutic management of cancer pain stepped back from the three-step ladder as a formal clinical recommendation, recasting it as an educational tool rather than a prescriptive standard amid mounting critique of the ambiguous \'weak opioid\' second step. The ladder\'s status as the settled standard of cancer pain care was thereby formally reopened by its own originating institution.',
+        source: {
+          externalId: 'src:who-cancer-pain-guidelines-2018',
+          name: 'World Health Organization. WHO Guidelines for the Pharmacological and Radiotherapeutic Management of Cancer Pain in Adults and Adolescents. Geneva: WHO; 2018.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK537489/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHI Dietary Modification Trial — low-fat diet and breast cancer null result 2006 ──
+  {
+    externalId: 'trajectory:whi-low-fat-dietary-pattern-breast-cancer-null-2006',
+    text: 'The Women\'s Health Initiative Dietary Modification Trial reported in JAMA on 8 February 2006 that a low-fat dietary pattern did not produce a statistically significant reduction in invasive breast cancer incidence among postmenopausal women (hazard ratio 0.91, 95% CI 0.83–1.01), failing to confirm the long-hypothesized protective effect of dietary fat reduction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-02-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-02-08',
+        datePrecision: 'DAY',
+        reason: 'Ecological and observational data from the 1970s–1990s had recorded a widely held hypothesis that lowering dietary fat would reduce breast cancer risk. Prentice and 47 co-authors reported the randomized WHI Dietary Modification Trial (48,835 postmenopausal women), finding no statistically significant reduction in invasive breast cancer over 8.1 years (HR 0.91), directly contesting the diet-fat–breast-cancer hypothesis in the expert literature while leaving borderline and subgroup signals that kept the question open rather than fully resolved.',
+        source: {
+          externalId: 'src:prentice-whi-low-fat-breast-cancer-jama-2006',
+          name: 'Prentice RL, Caan B, Chlebowski RT, et al. Low-fat dietary pattern and risk of invasive breast cancer: the Women\'s Health Initiative Randomized Controlled Dietary Modification Trial. JAMA. 2006;295(6):629-642.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16467232/',
+          publishedAt: '2006-02-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Depo-Provera DMPA bone mineral density boxed warning 2004 ───────────────
+  {
+    externalId: 'trajectory:depo-provera-dmpa-bone-density-boxed-warning-2004',
+    text: 'In November 2004 the U.S. FDA required a boxed warning on Depo-Provera Contraceptive Injection (depot medroxyprogesterone acetate) stating that the drug may cause significant, possibly irreversible bone mineral density loss that increases with duration of use and is of particular concern in adolescents.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-11-17',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-11-17',
+        datePrecision: 'MONTH',
+        reason: 'DMPA had been FDA-approved as a contraceptive in 1992 and was settled as a safe, effective injectable method. After accumulating densitometry studies showed bone mineral density loss with use, the FDA added a boxed warning in November 2004 cautioning that loss may be irreversible and that the method should not generally be used beyond two years. The regulatory action elevated a post-market safety signal that contested the drug\'s established safety profile, especially for adolescent users.',
+        source: {
+          externalId: 'src:fda-depo-provera-ci-boxed-warning-label',
+          name: 'U.S. FDA. DEPO-PROVERA CI (medroxyprogesterone acetate injectable suspension) prescribing information with boxed warning on bone mineral density loss, NDA 020246. (Boxed warning added November 2004.)',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2010/020246s036lbl.pdf',
+          publishedAt: '2004-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-09-01',
+        datePrecision: 'MONTH',
+        reason: 'ACOG issued a committee opinion (No. 415) concluding that the documented BMD loss is largely reversible after discontinuation and that concerns about skeletal harm should not prevent prescribing or continuing DMPA when it is the patient\'s preferred method. The expert pushback against the FDA boxed warning left the clinical significance of the bone-density claim openly contested rather than settled.',
+        source: {
+          externalId: 'src:acog-committee-opinion-415-dmpa-bone-2008',
+          name: 'American College of Obstetricians and Gynecologists. Committee Opinion No. 415: Depot medroxyprogesterone acetate and bone effects. Obstet Gynecol. 2008;112(3):727-730.',
+          url: 'https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2014/06/depot-medroxyprogesterone-acetate-and-bone-effects',
+          publishedAt: '2008-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── HPV DNA Hybrid Capture 2 — FDA approval for cervical screening 2003 ─────
+  {
+    externalId: 'trajectory:hpv-dna-hybrid-capture-cervical-screening-fda-2003',
+    text: 'On 31 March 2003 the U.S. FDA approved Digene\'s Hybrid Capture 2 High-Risk HPV DNA Test (PMA P890064/S009) for use together with the Pap test in cervical cancer screening of women aged 30 and older, establishing HPV DNA testing as a validated adjunct to cytology.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2003-03-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved a PMA supplement (P890064/S009) expanding the Hybrid Capture 2 High-Risk HPV DNA Test\'s labeled use from ASCUS triage to adjunctive primary cervical cancer screening in women 30 and older when used with the Pap test. This was the first FDA approval of HPV DNA testing for routine cervical screening, formally recording the claim that detecting oncogenic HPV improves screening in older women.',
+        source: {
+          externalId: 'src:fda-pma-p890064s009-hc2-hpv-2003',
+          name: 'U.S. FDA, CDRH. Premarket Approval P890064/S009 — Digene Hybrid Capture 2 High-Risk HPV DNA Test (approved 31 March 2003).',
+          url: 'https://fda.report/PMA/P890064S009',
+          publishedAt: '2003-03-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-03-14',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Preventive Services Task Force (and the concurrent ACS/ASCCP/ASCP guidelines) recommended cytology-plus-HPV co-testing every five years as a preferred screening strategy for women aged 30–65. National guideline endorsement institutionally settled HPV DNA co-testing as standard cervical cancer screening, building on the 2003 FDA approval.',
+        source: {
+          externalId: 'src:uspstf-cervical-screening-2012',
+          name: 'Moyer VA; U.S. Preventive Services Task Force. Screening for cervical cancer: U.S. Preventive Services Task Force recommendation statement. Ann Intern Med. 2012;156(12):880-891.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22711081/',
+          publishedAt: '2012-03-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Norplant levonorgestrel implant — FDA approval, litigation, withdrawal 1990–2002 ──
+  {
+    externalId: 'trajectory:norplant-levonorgestrel-implant-approval-withdrawal-1990',
+    text: 'On 10 December 1990 the U.S. FDA approved Norplant (a six-capsule subdermal levonorgestrel implant) as a safe and effective five-year reversible contraceptive; after a wave of product-liability litigation and adverse publicity over side effects and difficult removals, Wyeth-Ayerst withdrew it from the U.S. market in 2002.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1990-12-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-12-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Norplant (Wyeth-Ayerst), the first long-acting reversible subdermal contraceptive implant in the United States, providing up to five years of levonorgestrel-based contraception. Approval institutionally settled the claim that the implant was a safe and highly effective contraceptive, and it was rapidly adopted and promoted, including in public-assistance programs.',
+        source: {
+          externalId: 'src:kff-contraceptive-implants-norplant',
+          name: 'KFF (Kaiser Family Foundation). Contraceptive Implants — history of Norplant FDA approval (1990) and U.S. market withdrawal (2002).',
+          url: 'https://www.kff.org/womens-health-policy/contraceptive-implants/',
+          publishedAt: '1990-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By the mid-1990s tens of thousands of women had joined product-liability lawsuits alleging side effects (menstrual irregularity, headaches) and painful or scarring removals, amplified by intense media coverage. The litigation and publicity contested the implant\'s settled safety claim in the public and judicial arenas, even though most suits were ultimately dismissed and epidemiologic review did not substantiate the alleged systemic harms.',
+        source: {
+          externalId: 'src:kff-norplant-litigation-history',
+          name: 'KFF (Kaiser Family Foundation). Contraceptive Implants — Norplant litigation and complications history.',
+          url: 'https://www.kff.org/womens-health-policy/contraceptive-implants/',
+          publishedAt: '1995-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'ABANDONED',
+        community: 'MARKET',
+        occurredAt: '2002-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Facing declining sales, litigation costs, and a raw-material supply problem, Wyeth-Ayerst discontinued U.S. distribution of Norplant and withdrew it from the market in 2002. The withdrawal was a commercial/legal abandonment rather than a scientific reversal of the efficacy claim, making it a landmark case in which post-market controversy ended a contraceptive\'s availability without a validating safety finding.',
+        source: {
+          externalId: 'src:kff-norplant-market-withdrawal-2002',
+          name: 'KFF (Kaiser Family Foundation). Contraceptive Implants — Wyeth-Ayerst discontinues U.S. distribution of Norplant (2002).',
+          url: 'https://www.kff.org/womens-health-policy/contraceptive-implants/',
+          publishedAt: '2002-01-01',
+          methodologyType: 'derivative',
         },
       },
     ],
