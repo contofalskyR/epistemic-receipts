@@ -42222,6 +42222,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID & ANALGESIC ERA (1968–1983)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Fentanyl / Sublimaze FDA approval 1968 ──────────────────────────────────
+  {
+    externalId: 'trajectory:fentanyl-sublimaze-anesthetic-approval-1968',
+    text: 'The U.S. FDA approved Janssen/McNeil\'s Sublimaze (fentanyl citrate injection, NDA 016619) in 1968 as a potent intravenous opioid analgesic for use in anesthesia, institutionally establishing the synthetic phenylpiperidine fentanyl as a safe and effective agent when administered in supervised clinical settings.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1968-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1968-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Paul Janssen synthesized fentanyl in 1959 and U.S. anesthesiologists initially resisted it over abuse-potential concerns, the FDA approved fentanyl citrate (NDA 016619, marketed as Sublimaze) in 1968 — first as a component of the fentanyl-droperidol combination Innovar and then as a standalone injectable. The approval institutionally ratified fentanyl as an approximately 100-fold-more-potent-than-morphine anesthetic analgesic, a status it retains; the same molecule\'s later role as the leading driver of overdose deaths is a separate illicit-supply claim, not a reversal of the 1968 clinical approval.',
+        source: {
+          externalId: 'src:fda-sublimaze-nda-016619-appletter',
+          name: 'FDA. NDA 016619 (SUBLIMAZE, Fentanyl Citrate Injection 50 mcg/mL) supplement approval correspondence documenting the NDA originally approved 1968. Center for Drug Evaluation and Research.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2013/016619Orig1s034ltr.pdf',
+          publishedAt: '2013-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Buprenorphine / Buprenex Schedule V → Schedule III 1985–2002 ────────────
+  {
+    externalId: 'trajectory:buprenorphine-buprenex-low-abuse-reclassified-1985',
+    text: 'Buprenorphine, approved by the FDA in 1981 and first marketed in the United States in 1985 as the injectable analgesic Buprenex, was placed in Schedule V — the least restrictive narcotic schedule — on the premise that this partial mu-opioid agonist carried low abuse and dependence liability, an assessment the DEA revised upward when it rescheduled buprenorphine to Schedule III effective in 2002.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1981-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1985-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Following the 1981 FDA approval of Buprenex (injectable buprenorphine hydrochloride for moderate-to-severe pain), the DEA placed buprenorphine in Schedule V of the Controlled Substances Act, and it was first marketed in the U.S. in 1985 as a Schedule V narcotic analgesic. Assigning it the least restrictive narcotic schedule institutionally encoded the claim that the partial agonist\'s ceiling effect gave it markedly lower abuse, overdose, and dependence liability than full opioid agonists.',
+        source: {
+          externalId: 'src:dea-buprenorphine-drug-chem-info',
+          name: 'U.S. Drug Enforcement Administration, Diversion Control Division. Buprenorphine (Trade Names: Buprenex, Suboxone, Subutex) — drug fact sheet (first marketed in the U.S. in 1985 as a Schedule V narcotic analgesic).',
+          url: 'https://www.deadiversion.usdoj.gov/drug_chem_info/buprenorphine.pdf',
+          publishedAt: '2013-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-10-07',
+        datePrecision: 'DAY',
+        reason: 'After reviewing accumulated abuse and diversion data and receiving a Schedule III recommendation from HHS, the DEA published a final rule rescheduling buprenorphine from Schedule V to the more restrictive Schedule III, effective with publication. The upward move formally revised the launch-era assessment of buprenorphine\'s abuse and dependence liability, recognizing it as greater than the lowest-tier Schedule V placement had implied even as the drug simultaneously became a cornerstone of opioid-dependence treatment.',
+        source: {
+          externalId: 'src:dea-buprenorphine-schedule-iii-fr-2002',
+          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Rescheduling of Buprenorphine From Schedule V to Schedule III. Final rule. Fed. Reg. 67(194):62354, Oct. 7, 2002.',
+          url: 'https://www.federalregister.gov/documents/2002/10/07/02-25293/schedules-of-controlled-substances-rescheduling-of-buprenorphine-from-schedule-v-to-schedule-iii',
+          publishedAt: '2002-10-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Benoxaprofen / Oraflex hepatotoxicity withdrawal 1982 ───────────────────
+  {
+    externalId: 'trajectory:benoxaprofen-oraflex-hepatotoxicity-withdrawal-1982',
+    text: 'The FDA approved Eli Lilly\'s Oraflex (benoxaprofen), a non-steroidal anti-inflammatory drug for arthritis, on April 19, 1982 as safe and effective, a claim reversed less than four months later when Lilly voluntarily withdrew it from the worldwide market on August 4, 1982 after reports of fatal hepatic and renal toxicity, predominantly in elderly patients.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1982-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1982-04-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Oraflex (benoxaprofen) tablets as a once-daily NSAID for osteoarthritis and rheumatoid arthritis, with Eli Lilly mounting a large promotional launch. Regulatory approval established the drug as a safe and effective anti-inflammatory analgesic, the standard institutional endorsement on which prescribing proceeded.',
+        source: {
+          externalId: 'src:fda-oraflex-nda-withdrawal-fr',
+          name: 'FDA. Eli Lilly and Co.; Withdrawal of Approval of a New Drug Application for ORAFLEX (benoxaprofen) (documenting FDA approval April 19, 1982 and voluntary market withdrawal Aug. 4, 1982). Federal Register notice.',
+          url: 'https://www.federalregister.gov/documents/2013/06/04/2013-13053/eli-lilly-and-co-withdrawal-of-approval-of-a-new-drug-application-for-oraflex',
+          publishedAt: '2013-06-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1982-08-04',
+        datePrecision: 'DAY',
+        reason: 'On the same day the United Kingdom suspended sales of the drug (marketed there as Opren) over safety grounds, Eli Lilly voluntarily withdrew Oraflex from the U.S. and world market following postmarketing reports of severe, sometimes fatal liver and kidney toxicity concentrated in elderly users. The withdrawal reversed the April approval within months and became a landmark case in NSAID pharmacovigilance and the regulation of geriatric drug safety.',
+        source: {
+          externalId: 'src:upi-oraflex-off-market-1982',
+          name: 'United Press International. Arthritis drug Oraflex off the market. UPI Archives, Aug. 5, 1982.',
+          url: 'https://www.upi.com/Archives/1982/08/05/Arthritis-drug-Oraflex-off-the-market/8497397368000/',
+          publishedAt: '1982-08-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zomepirac / Zomax anaphylaxis withdrawal 1983 ───────────────────────────
+  {
+    externalId: 'trajectory:zomepirac-zomax-anaphylaxis-withdrawal-1983',
+    text: 'Zomepirac sodium (Zomax), a McNeil Pharmaceutical non-steroidal anti-inflammatory analgesic that the FDA approved in 1980 and that clinical trials showed to be as effective as codeine-containing opioid combinations for moderate-to-severe pain, was voluntarily withdrawn from the market in March 1983 after it was associated with fatal and near-fatal anaphylactoid reactions.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1980-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved zomepirac sodium (Zomax) in 1980 as a non-narcotic NSAID analgesic, and clinical trials reported it to be more effective than aspirin or codeine alone and comparable to opioid-containing analgesic combinations for moderate-to-severe pain. The approval and trial record established Zomax as an opioid-sparing analgesic, and it was heavily prescribed during its brief time on the market.',
+        source: {
+          externalId: 'src:mcleod-zomepirac-zomax-review-1981',
+          name: 'McLeod DC, Jackson EA, Cardoni AA. Zomepirac (Zomax, McNeil Pharmaceutical). Drug Intell Clin Pharm. 1981;15(7-8):522-530. PMID 7018870.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7018870/',
+          publishedAt: '1981-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-03-01',
+        datePrecision: 'MONTH',
+        reason: 'After roughly 28 months on the market and reports of hundreds of severe allergic reactions, McNeil voluntarily removed Zomax tablets from the market in March 1983 because zomepirac sodium was associated with fatal and near-fatal anaphylactoid reactions in an unpredictable subset of patients. The FDA later codified this safety basis, listing zomepirac among drug products withdrawn from sale for reasons of safety or effectiveness — formally reversing the drug\'s approved-analgesic status.',
+        source: {
+          externalId: 'src:fda-zomepirac-withdrawn-safety-fr-1998',
+          name: 'FDA. List of Drug Products Withdrawn or Removed From the Market for Reasons of Safety or Effectiveness (zomepirac sodium, formerly marketed as Zomax tablets, associated with fatal and near-fatal anaphylactoid reactions). Fed. Reg. 63(195):54082, Oct. 8, 1998.',
+          url: 'https://www.govinfo.gov/content/pkg/FR-1998-10-08/html/98-26923.htm',
+          publishedAt: '1998-10-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
