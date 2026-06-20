@@ -41285,6 +41285,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEONATAL PHARMACOLOGY — EXCIPIENT & IATROGENIC TOXICITY (1973–1993)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Hexachlorophene neonatal myelinopathy — Powell 1973 ─────────────────────
+  {
+    externalId: 'trajectory:hexachlorophene-neonatal-myelinopathy-1973',
+    text: 'Routine total-body bathing of newborns with 3% hexachlorophene (pHisoHex) antiseptic — standard US nursery practice through the 1960s to prevent staphylococcal infection — was found in 1972–1975 to cause vacuolar myelinopathy (brain white-matter damage) in premature infants, leading the FDA to restrict it and the practice to be abandoned.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1973-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Powell, Swarner, Gluck, and Lampert reported in the Journal of Pediatrics that premature infants who had been bathed with hexachlorophene showed vacuolar (spongiform) myelinopathy of the brainstem at autopsy, the first clear pathological documentation that the routine antiseptic was neurotoxic in newborns. This recorded the toxicity claim in the peer-reviewed literature, following the 1972 French Morhange talc disaster in which baby powder accidentally contaminated with 6% hexachlorophene killed roughly three dozen infants and prompted the FDA to move against routine hexachlorophene bathing.',
+        source: {
+          externalId: 'src:powell-hexachlorophene-myelinopathy-jpediatr-1973',
+          name: 'Powell H, Swarner O, Gluck L, Lampert P. Hexachlorophene myelinopathy in premature infants. J Pediatr. 1973;82(6):976-981.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4702917/',
+          publishedAt: '1973-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Shuman, Leech, and Alvord reported in Archives of Neurology a clinicopathological study of 46 premature infants establishing a dose-related relationship between cumulative hexachlorophene exposure and the severity of brain vacuolation, confirming causation. Combined with the FDA\'s 1972 restriction of hexachlorophene to prescription use and warnings against routine newborn bathing, the once-standard antiseptic practice was permanently abandoned, reversing the prior consensus that hexachlorophene bathing was a safe and beneficial nursery routine.',
+        source: {
+          externalId: 'src:shuman-hexachlorophene-neurotoxicity-archneurol-1975',
+          name: 'Shuman RM, Leech RW, Alvord EC Jr. Neurotoxicity of hexachlorophene in humans. II. A clinicopathological study of 46 premature infants. Arch Neurol. 1975;32(5):320-325.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1137506/',
+          publishedAt: '1975-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Benzyl alcohol gasping syndrome — Gershanik 1982 ───────────────────────
+  {
+    externalId: 'trajectory:benzyl-alcohol-gasping-syndrome-neonates-1982',
+    text: 'The neonatal \'gasping syndrome\' — a fatal metabolic acidosis with gasping respirations, neurologic deterioration, and circulatory collapse in low-birth-weight infants — was identified by Gershanik and colleagues in November 1982 as poisoning by benzyl alcohol, a preservative in bacteriostatic saline and intravascular flush solutions, leading to its removal from neonatal care.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1982-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-11-25',
+        datePrecision: 'DAY',
+        reason: 'Gershanik, Boecler, Ensley, McCloskey, and George reported in the New England Journal of Medicine that an outbreak of unexplained deaths in premature infants — marked by a characteristic gasping respiration, metabolic acidosis, and multi-organ failure — was caused by benzyl alcohol used as a bacteriostatic preservative in saline flush solutions and drug diluents, which neonates cannot metabolize. This first linked the lethal gasping syndrome to a ubiquitous, presumed-inert excipient.',
+        source: {
+          externalId: 'src:gershanik-gasping-syndrome-benzyl-alcohol-nejm-1982',
+          name: 'Gershanik J, Boecler B, Ensley H, McCloskey S, George W. The gasping syndrome and benzyl alcohol poisoning. N Engl J Med. 1982;307(22):1384-1388.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7133084/',
+          publishedAt: '1982-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The American Academy of Pediatrics Committee on Fetus and Newborn and Committee on Drugs issued a statement, \'Benzyl alcohol: toxic agent in neonatal units,\' in Pediatrics, recommending that benzyl alcohol-preserved solutions not be used in newborns; the FDA issued parallel warnings. The institutional action settled benzyl-alcohol avoidance in neonates as standard practice and established excipient (inactive-ingredient) toxicity as a recognized hazard in neonatal pharmacology.',
+        source: {
+          externalId: 'src:aap-benzyl-alcohol-toxic-neonatal-pediatrics-1983',
+          name: 'American Academy of Pediatrics, Committee on Fetus and Newborn and Committee on Drugs. Benzyl alcohol: toxic agent in neonatal units. Pediatrics. 1983;72(3):356-358.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6889041/',
+          publishedAt: '1983-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vitamin K IM / childhood cancer scare — Golding 1992 ───────────────────
+  {
+    externalId: 'trajectory:golding-vitamin-k-childhood-cancer-scare-1992',
+    text: 'British epidemiologist Jean Golding reported in the BMJ on 8 August 1992 an association between intramuscular vitamin K given to newborns and roughly a doubling of childhood cancer risk, casting doubt on the routine neonatal vitamin K prophylaxis standard since 1961 — a claim subsequently refuted by larger studies.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-08-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-08-08',
+        datePrecision: 'DAY',
+        reason: 'Golding, Greenwood, Birmingham, and Mott reported in the BMJ a case-control analysis finding that intramuscular (but not oral) vitamin K administered to neonates was associated with an approximately twofold increase in childhood cancer, particularly leukemia. The finding recorded a safety signal against a preventive practice — universal IM vitamin K to prevent hemorrhagic disease of the newborn — that had been standard since the AAP\'s 1961 recommendation, prompting several countries to reconsider the route of administration.',
+        source: {
+          externalId: 'src:golding-vitamin-k-childhood-cancer-bmj-1992',
+          name: 'Golding J, Greenwood R, Birmingham K, Mott M. Childhood cancer, intramuscular vitamin K, and pethidine given during labour. BMJ. 1992;305(6849):341-346.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1392886/',
+          publishedAt: '1992-08-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-09-23',
+        datePrecision: 'DAY',
+        reason: 'Klebanoff and colleagues reported in the New England Journal of Medicine a large US cohort study finding no association between neonatal vitamin K exposure and childhood cancer, and multiple subsequent epidemiologic studies likewise failed to replicate Golding\'s signal. The accumulated evidence refuted the cancer hypothesis, and routine intramuscular vitamin K prophylaxis was reaffirmed as safe and remained standard newborn care — reversing the contested 1992 claim.',
+        source: {
+          externalId: 'src:klebanoff-vitamin-k-childhood-cancer-nejm-1993',
+          name: 'Klebanoff MA, Read JS, Mills JL, Shiono PH. The risk of childhood cancer after neonatal exposure to vitamin K. N Engl J Med. 1993;329(13):905-908.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8361503/',
+          publishedAt: '1993-09-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Methylxanthine / caffeine for apnea of prematurity — Kuzemko 1973 ──────
+  {
+    externalId: 'trajectory:methylxanthine-caffeine-apnea-of-prematurity-1973',
+    text: 'Kuzemko and Paala reported in Archives of Disease in Childhood in May 1973 that aminophylline (a methylxanthine) abolished apnoeic attacks in premature newborns, introducing pharmacologic treatment of apnea of prematurity — a therapy whose long-term safety and benefit were definitively settled by the 2006 Caffeine for Apnea of Prematurity (CAP) randomized trial.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Kuzemko and Paala reported in Archives of Disease in Childhood that intravenous and oral aminophylline markedly reduced or abolished recurrent apnoeic attacks in premature infants, the first demonstration that a methylxanthine respiratory stimulant could treat apnea of prematurity. This recorded the claim that the condition — a major cause of morbidity in preterm neonates — was pharmacologically treatable, launching decades of theophylline and caffeine use in neonatal intensive care.',
+        source: {
+          externalId: 'src:kuzemko-aminophylline-apnoea-newborn-adc-1973',
+          name: 'Kuzemko JA, Paala J. Apnoeic attacks in the newborn treated with aminophylline. Arch Dis Child. 1973;48(5):404-406.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4703073/',
+          publishedAt: '1973-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-05-18',
+        datePrecision: 'DAY',
+        reason: 'Schmidt and the Caffeine for Apnea of Prematurity (CAP) Trial Group reported in the New England Journal of Medicine a randomized, placebo-controlled trial of 2,006 very-low-birth-weight infants showing that caffeine therapy reduced bronchopulmonary dysplasia and, on follow-up, improved survival without neurodevelopmental disability. The large trial settled methylxanthine (caffeine) therapy — born of Kuzemko\'s 1973 observation — as evidence-based standard of care for apnea of prematurity, resolving long-standing safety uncertainty about chronic neonatal stimulant exposure.',
+        source: {
+          externalId: 'src:schmidt-cap-trial-caffeine-apnea-nejm-2006',
+          name: 'Schmidt B, Roberts RS, Davis P, et al. Caffeine therapy for apnea of prematurity. N Engl J Med. 2006;354(20):2112-2121.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16707748/',
+          publishedAt: '2006-05-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
