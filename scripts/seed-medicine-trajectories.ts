@@ -46604,7 +46604,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1981-01',
         datePrecision: 'MONTH',
-        reason: 'Carroll et al. published 'A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility' in 438 subjects, reporting ~67% sensitivity and ~96% specificity for melancholia and proposing the DST as the first objective laboratory diagnostic in psychiatry. The paper generated intense interest and hundreds of follow-on studies, recording into the literature the claim that depression had a measurable biological signature.',
+        reason: 'Carroll et al. published ‘A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility’ in 438 subjects, reporting ~67% sensitivity and ~96% specificity for melancholia and proposing the DST as the first objective laboratory diagnostic in psychiatry. The paper generated intense interest and hundreds of follow-on studies, recording into the literature the claim that depression had a measurable biological signature.',
         source: {
           externalId: 'src:carroll-dst-melancholia-archgenpsych-1981',
           name: 'Carroll BJ, Feinberg M, Greden JF, et al. A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility. Arch Gen Psychiatry. 1981;38(1):15-22.',
@@ -48093,7 +48093,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── AAP corporal punishment policy — Sege et al. 2018 ──────────────────────
   {
     externalId: 'trajectory:aap-corporal-punishment-policy-2018',
-    text: 'The American Academy of Pediatrics issued the policy statement 'Effective Discipline to Raise Healthy Children' (Sege et al.) in Pediatrics on 5 November 2018, recommending that adults caring for children avoid all corporal punishment — including spanking — and verbal shaming, strengthening its 1998 guidance into an unequivocal position that physical punishment is harmful and ineffective.',
+    text: 'The American Academy of Pediatrics issued the policy statement \'Effective Discipline to Raise Healthy Children\' (Sege et al.) in Pediatrics on 5 November 2018, recommending that adults caring for children avoid all corporal punishment — including spanking — and verbal shaming, strengthening its 1998 guidance into an unequivocal position that physical punishment is harmful and ineffective.',
     claimType: 'INSTITUTIONAL',
     claimEmergedAt: '2018-11-05',
     claimEmergedPrecision: 'DAY',
@@ -49406,6 +49406,564 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'PREMARIN (conjugated estrogens) tablets — FDA prescribing information, \'Initial U.S. Approval: 1942\' (NDA 004782). DailyMed, U.S. National Library of Medicine.',
           url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=258e1602-a3cf-4ccc-ca80-73dbbfb812ff',
           publishedAt: '1942-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) / PULMONARY ARTERIAL HYPERTENSION & DRUG REPURPOSING
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Treprostinil / Remodulin — first subcutaneous prostacyclin, PAH, 2002 ───
+  {
+    externalId: 'trajectory:treprostinil-remodulin-first-subcutaneous-prostacyclin-pah-2002',
+    text: 'On 21 May 2002 the U.S. FDA approved treprostinil (Remodulin, United Therapeutics, NDA 21-272), a chemically stable prostacyclin analogue given by continuous subcutaneous infusion, for pulmonary arterial hypertension — establishing the first non-intravenous prostacyclin therapy for the orphan disease and freeing patients from the indwelling central catheter required by epoprostenol.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-03-15',
+        datePrecision: 'MONTH',
+        reason: 'Simonneau and colleagues reported the pivotal 12-week double-blind randomized placebo-controlled trial of continuous subcutaneous treprostinil in 470 PAH patients, showing improved six-minute walk distance (median between-group difference 16 m, p=0.006) plus better dyspnea, signs/symptoms, and hemodynamics, with infusion-site pain (85%) the principal limitation. This recorded the first controlled evidence that a stable prostacyclin analogue delivered subcutaneously could treat PAH.',
+        source: {
+          externalId: 'src:simonneau-treprostinil-pah-ajrccm-2002',
+          name: 'Simonneau G, Barst RJ, Galie N, et al. Continuous subcutaneous infusion of treprostinil, a prostacyclin analogue, in patients with pulmonary arterial hypertension: a double-blind, randomized, placebo-controlled trial. Am J Respir Crit Care Med. 2002;165(6):800-804.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11897647/',
+          publishedAt: '2002-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-05-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Remodulin (treprostinil, NDA 21-272) for PAH on the basis of the subcutaneous-infusion trial, making it the first prostacyclin that did not require a permanent intravenous line. The approval settled subcutaneous prostacyclin as a regulated standard-of-care option for an orphan disease and seeded the later inhaled, oral, and intravenous treprostinil formulations.',
+        source: {
+          externalId: 'src:fda-remodulin-treprostinil-nda-21272-2002',
+          name: 'U.S. FDA, Drugs@FDA. Remodulin (treprostinil sodium) injection, NDA 021272. Approved May 21, 2002.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021272',
+          publishedAt: '2002-05-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sildenafil / Revatio — PDE5 inhibitor for PAH, 2005 ─────────────────────
+  {
+    externalId: 'trajectory:sildenafil-revatio-pde5-inhibitor-pah-2005',
+    text: 'On 6 June 2005 the U.S. FDA approved sildenafil (Revatio, Pfizer, NDA 21-845), a phosphodiesterase-5 inhibitor previously marketed for erectile dysfunction, for pulmonary arterial hypertension — establishing oral PDE5 inhibition as effective PAH therapy and a landmark case of orphan-disease drug repurposing.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-06-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Revatio (sildenafil, NDA 21-845) for PAH, the first oral PDE5 inhibitor licensed for the disease and a high-profile repurposing of the same molecule sold as Viagra. The approval settled PDE5 inhibition as a regulated PAH therapy and made an inexpensive oral agent broadly available for an orphan condition.',
+        source: {
+          externalId: 'src:fda-revatio-sildenafil-nda-21845-2005',
+          name: 'U.S. FDA, Drugs@FDA. Revatio (sildenafil) tablets, NDA 021845. Approved June 6, 2005.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021845',
+          publishedAt: '2005-06-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-11-17',
+        datePrecision: 'DAY',
+        reason: 'The SUPER-1 trial (Galie et al.) randomized 278 symptomatic PAH patients to placebo or sildenafil 20/40/80 mg; all doses improved six-minute walk distance (placebo-corrected 45-50 m), WHO functional class, and hemodynamics. The peer-reviewed publication corroborated in the expert literature the efficacy claim on which the FDA had already approved Revatio.',
+        source: {
+          externalId: 'src:galie-super1-sildenafil-pah-nejm-2005',
+          name: 'Galie N, Ghofrani HA, Torbicki A, et al. Sildenafil citrate therapy for pulmonary arterial hypertension (SUPER-1). N Engl J Med. 2005;353(20):2148-2157.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16291984/',
+          publishedAt: '2005-11-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Iloprost / Ventavis — first inhaled prostacyclin, PAH, 2004 ─────────────
+  {
+    externalId: 'trajectory:iloprost-ventavis-first-inhaled-prostacyclin-pah-2004',
+    text: 'On 29 December 2004 the U.S. FDA approved inhaled iloprost (Ventavis, CoTherix/Schering, NDA 21-779), a prostacyclin analogue delivered by nebulizer, for pulmonary arterial hypertension — establishing the first inhaled prostacyclin therapy for the orphan disease and a pulmonary-selective alternative to continuous parenteral prostacyclin.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-08-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-08-01',
+        datePrecision: 'DAY',
+        reason: 'Olschewski and colleagues reported a randomized placebo-controlled trial of inhaled iloprost in 203 patients with severe pulmonary arterial hypertension or chronic thromboembolic pulmonary hypertension; the combined clinical endpoint was met by 16.8% on iloprost versus 4.9% on placebo (p=0.007), with improved walk distance and NYHA class. This recorded the first controlled evidence that a nebulized prostacyclin could treat severe pulmonary hypertension.',
+        source: {
+          externalId: 'src:olschewski-inhaled-iloprost-nejm-2002',
+          name: 'Olschewski H, Simonneau G, Galie N, et al. Inhaled iloprost for severe pulmonary hypertension. N Engl J Med. 2002;347(5):322-329.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12151469/',
+          publishedAt: '2002-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-12-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Ventavis (inhaled iloprost, NDA 21-779) for PAH, the first inhaled prostacyclin licensed in the United States. The approval settled pulmonary-selective inhaled prostacyclin delivery as a regulated standard-of-care option, adding a non-parenteral prostacyclin route to the PAH armamentarium.',
+        source: {
+          externalId: 'src:fda-ventavis-iloprost-nda-21779-2004',
+          name: 'U.S. FDA, Drugs@FDA. Ventavis (iloprost) inhalation solution, NDA 021779. Approved December 29, 2004.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021779',
+          publishedAt: '2004-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sitaxentan / Thelin — ERA approval and post-market reversal, 2006/2010 ──
+  {
+    externalId: 'trajectory:sitaxentan-thelin-pah-endothelin-antagonist-withdrawal-2010',
+    text: 'Sitaxentan (Thelin, Encysive/Pfizer), a selective endothelin-A receptor antagonist approved in the EU, Canada, and Australia in 2006 for pulmonary arterial hypertension, was voluntarily withdrawn worldwide by Pfizer on 9 December 2010 after fatal idiosyncratic liver injury was observed — a post-market reversal of a drug that the U.S. FDA had already declined to approve.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The European Medicines Agency granted Thelin (sitaxentan) a centralized marketing authorization in August 2006 for PAH, the first selective endothelin-A receptor antagonist approved for the disease (in contrast to dual ERA bosentan). The approval settled selective ETA blockade as an EU/Canada/Australia treatment option, even though the FDA issued a not-approvable decision in the United States over hepatotoxicity concerns.',
+        source: {
+          externalId: 'src:ema-thelin-sitaxentan-epar',
+          name: 'European Medicines Agency. Thelin (sitaxentan sodium): European Public Assessment Report. Marketing authorisation, August 2006.',
+          url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/thelin',
+          publishedAt: '2006-08-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2010-12-09',
+        datePrecision: 'DAY',
+        reason: 'Pfizer announced the voluntary worldwide withdrawal of Thelin and discontinuation of all sitaxentan clinical trials, citing a newly recognized potentially life-threatening idiosyncratic risk of liver injury (cases including deaths and a liver transplant among ~2,000 treated patients) and concluding the benefit no longer outweighed the risk given available alternatives; the EMA\'s CHMP concurrently recommended withdrawal. This reversed sitaxentan\'s regulatory standing and removed an approved PAH therapy from the market.',
+        source: {
+          externalId: 'src:pfizer-thelin-sitaxentan-withdrawal-2010',
+          name: 'Pfizer. Pfizer Stops Clinical Trials of Thelin and Initiates Voluntary Product Withdrawal in the Interest of Patient Safety. Press release, December 9, 2010.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/pfizer_stops_clinical_trials_of_thelin_and_initiates_voluntary_product_withdrawal_in_the_interest_of_patient_safety',
+          publishedAt: '2010-12-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Plerixafor / Mozobil — CXCR4 antagonist stem-cell mobilization, 2008 ────
+  {
+    externalId: 'trajectory:plerixafor-mozobil-cxcr4-stem-cell-mobilization-2008',
+    text: 'On 15 December 2008 the U.S. FDA approved plerixafor (Mozobil, Genzyme, NDA 22-311), a small-molecule CXCR4 chemokine-receptor antagonist, in combination with G-CSF to mobilize hematopoietic stem cells to peripheral blood for autologous transplantation in non-Hodgkin lymphoma and multiple myeloma — establishing pharmacologic CXCR4 blockade as an effective stem-cell mobilization strategy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-12-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-12-15',
+        datePrecision: 'DAY',
+        reason: 'On the basis of two multicenter randomized placebo-controlled phase 3 trials (DiPersio et al.) in non-Hodgkin lymphoma and multiple myeloma showing that adding plerixafor to G-CSF significantly increased successful CD34+ stem-cell collection, the FDA approved Mozobil. The approval settled reversible CXCR4 antagonism — which mobilizes stem cells by disrupting the CXCR4/SDF-1 (CXCL12) bone-marrow anchoring axis — as a regulated adjunct to G-CSF for autologous transplant, the first agent of its class.',
+        source: {
+          externalId: 'src:declercq-plerixafor-mozobil-review-2019',
+          name: 'De Clercq E. Mozobil (Plerixafor, AMD3100), 10 years after its approval by the US Food and Drug Administration. Antivir Chem Chemother. 2019;27:2040206619829382 (documents FDA approval Dec 15, 2008).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6379795/',
+          publishedAt: '2019-02-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DEVICE & SURGICAL REVERSALS (2001–2013)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SAMMPRIS — intracranial stenting reversed 2011 ─────────────────────────
+  {
+    externalId: 'trajectory:sammpris-intracranial-stenting-reversal-2011',
+    text: 'The SAMMPRIS trial reported in 2011 (NEJM, Chimowitz et al.) that intracranial angioplasty and stenting with the Wingspan system was inferior to aggressive medical management alone for preventing stroke in patients with symptomatic intracranial arterial stenosis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The FDA granted the Wingspan Stent System a Humanitarian Device Exemption (H050001) for intracranial atherosclerotic stenosis refractory to medical therapy. This recorded the claim that endovascular angioplasty and stenting could prevent stroke in this high-risk population, and the device entered clinical use under that premise.',
+        source: {
+          externalId: 'src:fda-wingspan-hde-h050001-2005',
+          name: 'U.S. FDA. Wingspan Stent System with Gateway PTA Balloon Catheter — Humanitarian Device Exemption (HDE) H050001. 2005.',
+          url: 'https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfhde/hde.cfm?id=h050001',
+          publishedAt: '2005-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-09-15',
+        datePrecision: 'DAY',
+        reason: 'The NIH-funded SAMMPRIS randomized trial was stopped early after the 30-day stroke-or-death rate reached 14.7% in the stenting arm versus 5.8% with aggressive medical therapy alone. Chimowitz and colleagues concluded medical management was superior, reversing the rationale for the Wingspan device and prompting the FDA to narrow its indication in 2012.',
+        source: {
+          externalId: 'src:chimowitz-sammpris-nejm-2011',
+          name: 'Chimowitz MI, Lynn MJ, Derdeyn CP, et al. Stenting versus aggressive medical therapy for intracranial arterial stenosis (SAMMPRIS). N Engl J Med. 2011;365(11):993-1003.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21899409/',
+          publishedAt: '2011-09-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NASCIS-2 — methylprednisolone in acute spinal cord injury reversed 2013 ─
+  {
+    externalId: 'trajectory:nascis-methylprednisolone-acute-spinal-cord-injury-reversal-1990',
+    text: 'The NASCIS-2 trial reported in 1990 (NEJM, Bracken et al.) that high-dose methylprednisolone given within eight hours of acute spinal cord injury improved motor and sensory recovery, establishing the steroid protocol as standard of care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-05-17',
+        datePrecision: 'DAY',
+        reason: 'Bracken and colleagues reported that methylprednisolone bolus plus 23-hour infusion begun within 8 hours of injury produced statistically significant improvements in motor and sensory scores at six months versus placebo. The result was rapidly adopted into trauma and neurosurgical practice, making high-dose steroids the de facto standard of care for acute spinal cord injury through the 1990s.',
+        source: {
+          externalId: 'src:bracken-nascis2-nejm-1990',
+          name: 'Bracken MB, Shepard MJ, Collins WF, et al. A randomized, controlled trial of methylprednisolone or naloxone in the treatment of acute spinal-cord injury (NASCIS-2). N Engl J Med. 1990;322(20):1405-1411.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2278545/',
+          publishedAt: '1990-05-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-03-01',
+        datePrecision: 'MONTH',
+        reason: 'After years of reanalysis questioning the original subgroup-driven findings and documenting steroid harms, the AANS/CNS Joint Guidelines Committee issued a Level I recommendation against the use of high-dose methylprednisolone for acute spinal cord injury, citing absence of Class I/II evidence of benefit and consistent evidence of harmful side effects. This formally reversed two decades of standard practice.',
+        source: {
+          externalId: 'src:hurlbert-aans-cns-sci-pharmacology-2013',
+          name: 'Hurlbert RJ, Hadley MN, Walters BC, et al. Pharmacological therapy for acute spinal cord injury. Neurosurgery. 2013;72(Suppl 2):93-105.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23417182/',
+          publishedAt: '2013-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DePuy ASR metal-on-metal hip recall 2010 ───────────────────────────────
+  {
+    externalId: 'trajectory:depuy-asr-metal-on-metal-hip-recall-2010',
+    text: 'On 24 August 2010 DePuy Orthopaedics (Johnson & Johnson) issued a worldwide recall of its ASR XL Acetabular and ASR Hip Resurfacing metal-on-metal hip systems after registry data showed roughly one-in-eight (~13%) implants failing within five years.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'DePuy began marketing the ASR large-diameter metal-on-metal hip system (from 2003 in Europe, later in the US), part of the early-2000s revival of metal-on-metal articulation marketed as a durable bearing expected to last 15 years or more, especially for younger, active patients. Roughly 93,000 ASR devices were implanted worldwide.',
+        source: {
+          externalId: 'src:wikipedia-2010-depuy-hip-recall',
+          name: '2010 DePuy Hip Recall. Wikipedia (sourced to DePuy/J&J recall notices and UK National Joint Registry data).',
+          url: 'https://en.wikipedia.org/wiki/2010_DePuy_Hip_Recall',
+          publishedAt: '2010-08-24',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-08-24',
+        datePrecision: 'DAY',
+        reason: 'DePuy issued a voluntary worldwide recall of the ASR XL Acetabular and ASR Hip Resurfacing systems after unpublished UK joint-registry data showed a ~13% five-year revision rate, far above expectation, with metal wear debris causing metallosis and soft-tissue reactions. The recall reversed the claim that these metal-on-metal devices were durable and precipitated billions in litigation settlements.',
+        source: {
+          externalId: 'src:wikipedia-depuy-asr-recall-2010',
+          name: '2010 DePuy Hip Recall — recall of ASR XL Acetabular System and ASR Hip Resurfacing System, DePuy Orthopaedics/Johnson & Johnson, 24 August 2010. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/2010_DePuy_Hip_Recall',
+          publishedAt: '2010-08-24',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Smith and colleagues analyzed the National Joint Registry of England and Wales and found stemmed metal-on-metal hip replacements had markedly worse implant survival than metal-on-polyethylene or ceramic bearings — worse with larger head sizes and in younger women — concluding they \'should not be implanted.\' This generalized the ASR-specific reversal to the entire metal-on-metal stemmed class.',
+        source: {
+          externalId: 'src:smith-njr-metal-on-metal-lancet-2012',
+          name: 'Smith AJ, Dieppe P, Vernon K, Porter M, Blom AW. Failure rates of stemmed metal-on-metal hip replacements: analysis of data from the National Joint Registry of England and Wales. Lancet. 2012;379(9822):1199-1204.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22417410/',
+          publishedAt: '2012-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lumbar fusion for chronic low back pain — contested 2005 ───────────────
+  {
+    externalId: 'trajectory:lumbar-fusion-chronic-low-back-pain-contested-2001',
+    text: 'The Swedish Lumbar Spine Study Group reported in 2001 (Spine, Fritzell et al.) that lumbar fusion reduced pain and disability more than nonsurgical care in chronic low back pain, supporting expanded surgical use.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-12-01',
+        datePrecision: 'MONTH',
+        reason: 'The Swedish Lumbar Spine Study Group\'s multicenter RCT (2001 Volvo Award) reported back pain reduced by 33% with fusion versus 7% with nonsurgical care, with 63% versus 29% of patients rating themselves much better/better. This recorded a randomized basis for the claim that fusion outperformed conservative treatment in severe chronic low back pain.',
+        source: {
+          externalId: 'src:fritzell-swedish-lumbar-fusion-spine-2001',
+          name: 'Fritzell P, Hägg O, Wessberg P, Nordwall A. Lumbar fusion versus nonsurgical treatment for chronic low back pain: a multicenter randomized controlled trial from the Swedish Lumbar Spine Study Group. Spine. 2001;26(23):2521-2532.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11725230/',
+          publishedAt: '2001-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-05-28',
+        datePrecision: 'DAY',
+        reason: 'The MRC Spine Stabilisation Trial (Fairbank et al., BMJ) randomized 349 patients to surgical fusion versus an intensive rehabilitation programme and found no clear evidence that fusion was more beneficial, with only a marginal between-group difference in disability that did not justify the added risk and cost. This directly contested the Swedish trial\'s conclusion and left the indication for fusion in chronic low back pain disputed.',
+        source: {
+          externalId: 'src:fairbank-mrc-spine-stabilisation-bmj-2005',
+          name: 'Fairbank J, Frost H, Wilson-MacDonald J, Yu LM, Barker K, Collins R. Randomised controlled trial to compare surgical stabilisation of the lumbar spine with an intensive rehabilitation programme for patients with chronic low back pain: the MRC spine stabilisation trial. BMJ. 2005;330(7502):1233.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15911537/',
+          publishedAt: '2005-05-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY / DIAGNOSTIC METHODS ERA (1960s–1980s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Julian coronary care unit concept 1961 ─────────────────────────────────
+  {
+    externalId: 'trajectory:julian-coronary-care-unit-concept-1961',
+    text: 'Desmond G. Julian proposed in The Lancet on 14 October 1961 that patients with acute myocardial infarction be managed in dedicated units providing continuous ECG monitoring and immediate resuscitation (closed-chest massage and defibrillation), launching the coronary care unit concept to prevent arrhythmic death.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1961-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-10-14',
+        datePrecision: 'DAY',
+        reason: 'Julian, then a senior registrar at the Royal Infirmary of Edinburgh, argued that since most early deaths after acute MI were due to potentially reversible ventricular fibrillation, patients should be concentrated in special units where trained staff and equipment could detect and treat cardiac arrest within minutes. This put into the literature the systems-of-care claim that organized continuous monitoring plus resuscitation could prevent sudden arrhythmic death after infarction.',
+        source: {
+          externalId: 'src:julian-cardiac-arrest-ami-lancet-1961',
+          name: 'Julian DG. Treatment of cardiac arrest in acute myocardial ischaemia and infarction. Lancet. 1961;2(7207):840-844.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14452757/',
+          publishedAt: '1961-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Killip and Kimball reported a two-year experience with 250 acute-MI patients treated in a coronary care unit, documenting that aggressive monitored care reduced in-hospital mortality (in patients without shock) from roughly 26% to 7%. This operational outcome evidence, together with rapid worldwide CCU adoption, settled the coronary care unit as standard practice and supplied the Killip risk-stratification classification still in use.',
+        source: {
+          externalId: 'src:killip-kimball-ccu-ajc-1967',
+          name: 'Killip T, Kimball JT. Treatment of myocardial infarction in a coronary care unit. A two year experience with 250 patients. Am J Cardiol. 1967;20(4):457-464.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6059183/',
+          publishedAt: '1967-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oslo Diet-Heart Study — Leren secondary prevention 1966 ────────────────
+  {
+    externalId: 'trajectory:oslo-diet-heart-leren-secondary-prevention-1966',
+    text: 'Paul Leren reported in 1966 (Acta Medica Scandinavica) that a controlled trial randomizing male myocardial-infarction survivors to a cholesterol-lowering diet reduced serum cholesterol and lowered the incidence of recurrent coronary events — the Oslo Diet-Heart Study.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Leren randomized 412 men aged 30-64 who had survived a first MI to a habitual diet or a plasma-cholesterol-lowering diet (reduced saturated fat, increased polyunsaturated fat) and followed them for five years. The diet group had significantly lower cholesterol and fewer recurrent coronary events, putting into the literature one of the first randomized-controlled-trial demonstrations that lowering cholesterol by diet reduces coronary risk in secondary prevention.',
+        source: {
+          externalId: 'src:leren-oslo-diet-heart-acta-1966',
+          name: 'Leren P. The effect of plasma cholesterol lowering diet in male survivors of myocardial infarction. A controlled clinical trial. Acta Med Scand Suppl. 1966;466:1-92.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5228820/',
+          publishedAt: '1966-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The eleven-year report in Circulation confirmed the durability of the finding: the diet group continued to show significantly fewer fatal myocardial infarctions than controls over extended follow-up. This longer-term confirmation cemented the Oslo trial\'s specific result as a landmark piece of evidence that diet-induced cholesterol lowering reduces coronary mortality in MI survivors.',
+        source: {
+          externalId: 'src:leren-oslo-diet-heart-eleven-year-circulation-1970',
+          name: 'Leren P. The Oslo diet-heart study. Eleven-year report. Circulation. 1970;42(5):935-942.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5477261/',
+          publishedAt: '1970-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Holter continuous ambulatory ECG 1961 ──────────────────────────────────
+  {
+    externalId: 'trajectory:holter-continuous-ambulatory-ecg-1961',
+    text: 'Norman J. Holter reported in Science on 20 October 1961 a method for prolonged continuous electrocardiography of active subjects using a portable self-contained recorder, establishing ambulatory (\'Holter\') monitoring as a way to capture transient arrhythmias and ischemia outside the resting clinic ECG.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-10-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-10-20',
+        datePrecision: 'DAY',
+        reason: 'Holter described long-period continuous recording of heart potentials with a wearable \'electrocardiocorder,\' demonstrating that cardiac electrical activity could be captured during ordinary daily activity rather than only during a brief resting tracing. This introduced the methodological claim that ambulatory recording reveals paroxysmal arrhythmias and ischemic changes invisible to the standard ECG.',
+        source: {
+          externalId: 'src:holter-new-method-heart-studies-science-1961',
+          name: 'Holter NJ. New method for heart studies: continuous electrocardiography of active subjects. Science. 1961;134(3486):1214-1220.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13908591/',
+          publishedAt: '1961-10-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-09-01',
+        datePrecision: 'MONTH',
+        reason: 'By 1999 ambulatory ECG had become a codified standard of cardiac care: the ACC/AHA Task Force on Practice Guidelines issued formal guidelines defining the established indications for ambulatory electrocardiography (arrhythmia detection, symptom correlation, ischemia and therapy assessment). The institutional guideline marks Holter monitoring\'s transition from a novel technique to settled, indication-defined clinical practice.',
+        source: {
+          externalId: 'src:acc-aha-ambulatory-ecg-guidelines-jacc-1999',
+          name: 'Crawford MH, et al. ACC/AHA guidelines for ambulatory electrocardiography: a report of the ACC/AHA Task Force on Practice Guidelines. J Am Coll Cardiol. 1999;34(3):912-948.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10483977/',
+          publishedAt: '1999-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ECSS CABG survival benefit three-vessel disease 1979 ───────────────────
+  {
+    externalId: 'trajectory:ecss-cabg-survival-benefit-three-vessel-disease-1979',
+    text: 'The European Coronary Surgery Study Group reported in The Lancet (two-year survival 1979; long-term 27 November 1982) that, in men with stable angina, coronary artery bypass grafting significantly improved survival compared with medical therapy in patients with three-vessel disease and proximal left-anterior-descending stenosis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-04-28',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-04-28',
+        datePrecision: 'MONTH',
+        reason: 'The ECSS randomized 768 men under 65 with mild-to-moderate stable angina, multivessel disease, and good left-ventricular function to bypass surgery or medical therapy. The two-year survival report gave the first randomized signal that surgery improved survival in this population, putting an early controlled-trial result into the literature that CABG could prolong life in selected stable coronary disease.',
+        source: {
+          externalId: 'src:ecss-cabg-survival-two-years-lancet-1979',
+          name: 'European Coronary Surgery Study Group. Coronary-artery bypass surgery in stable angina pectoris: survival at two years. Lancet. 1979;1(8122):889-893.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/86665/',
+          publishedAt: '1979-04-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-11-27',
+        datePrecision: 'DAY',
+        reason: 'The long-term (5-8 year) ECSS results confirmed that surgery significantly improved survival overall, in three-vessel disease, and in proximal-LAD disease (with a non-significant trend for left-main disease). Read alongside the contemporaneous CASS trial (which found no survival benefit in low-risk stable patients), ECSS settled the now-standard principle that the survival benefit of CABG is real but confined to higher-risk coronary anatomy.',
+        source: {
+          externalId: 'src:ecss-cabg-long-term-lancet-1982',
+          name: 'European Coronary Surgery Study Group. Long-term results of prospective randomised study of coronary artery bypass surgery in stable angina pectoris. Lancet. 1982;2(8309):1173-1180.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6128492/',
+          publishedAt: '1982-11-27',
           methodologyType: 'primary',
         },
       },
