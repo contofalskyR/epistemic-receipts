@@ -49970,6 +49970,160 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HIV/AIDS — VIROLOGY, ANTIRETROVIRALS & ANTIBIOTIC RESISTANCE (1995–2006)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Saquinavir — first HIV protease inhibitor approved 1995 ─────────────────
+  {
+    externalId: 'trajectory:saquinavir-first-protease-inhibitor-approval-1995',
+    text: 'The U.S. Food and Drug Administration approved saquinavir (Invirase, Hoffmann-La Roche; NDA 020628) on 6 December 1995, the first HIV protease inhibitor licensed anywhere in the world.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-12-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-06',
+        datePrecision: 'DAY',
+        reason: 'In a record 97-day review the FDA approved saquinavir as the first member of the protease inhibitor class for use with nucleoside analogues in advanced HIV infection. This institutionally established a wholly new mechanism of antiretroviral action and opened the door to the triple-combination (HAART) regimens that, alongside ritonavir approved four months later, drove a sharp fall in U.S. AIDS mortality.',
+        source: {
+          externalId: 'src:wapo-fda-saquinavir-approval-1995',
+          name: 'Schwartz J. FDA Approves First in New Family of AIDS Drugs. The Washington Post. December 8, 1995.',
+          url: 'https://www.washingtonpost.com/archive/politics/1995/12/08/fda-approves-first-in-new-family-of-aids-drugs/4556374d-0269-44d8-8c13-e5e7fa055c05/',
+          publishedAt: '1995-12-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gao et al. — SIVcpz chimpanzee origin of HIV-1 1999 ─────────────────────
+  {
+    externalId: 'trajectory:gao-sivcpz-chimpanzee-origin-hiv1-1999',
+    text: 'Gao, Hahn, Sharp and colleagues reported in Nature on 4 February 1999 that the central chimpanzee subspecies Pan troglodytes troglodytes is the natural reservoir of HIV-1, with its SIVcpz lineage being the source of all three human HIV-1 groups (M, N, O).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-02-04',
+        datePrecision: 'DAY',
+        reason: 'Gao et al. published full-length phylogenetic analysis in Nature showing that SIVcpz from P. t. troglodytes is the closest relative of all human HIV-1 strains and that the subspecies\' natural range coincides with the epicentre of the HIV-1 pandemic in west-central Africa. This converted the long-debated question of HIV-1\'s animal origin into an established cross-species (zoonotic) transmission consensus, later corroborated by Keele et al. (Science, 2006) in wild chimpanzees.',
+        source: {
+          externalId: 'src:gao-hiv1-chimpanzee-origin-nature-1999',
+          name: 'Gao F, Bailes E, Robertson DL, Chen Y, Rodenburg CM, Michael SF, Cummins LB, Arthur LO, Peeters M, Shaw GM, Sharp PM, Hahn BH. Origin of HIV-1 in the chimpanzee Pan troglodytes troglodytes. Nature. 1999;397(6718):436-441.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9989410/',
+          publishedAt: '1999-02-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Quinupristin/dalfopristin (Synercid) — first streptogramin VREF 1999 ────
+  {
+    externalId: 'trajectory:quinupristin-dalfopristin-synercid-vref-streptogramin-1999',
+    text: 'The U.S. Food and Drug Administration approved quinupristin/dalfopristin (Synercid, Rhône-Poulenc Rorer/Aventis; NDA 050747/050748) in September 1999, the first injectable streptogramin antibiotic, indicated for serious vancomycin-resistant Enterococcus faecium (VREF) bacteraemia.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-09-21',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-09-21',
+        datePrecision: 'MONTH',
+        reason: 'The FDA licensed quinupristin/dalfopristin as the first streptogramin combination, providing the first agent specifically indicated for life-threatening vancomycin-resistant Enterococcus faecium infections. This institutionally recognised a dedicated therapeutic option for a multidrug-resistant pathogen that had previously had essentially no reliable treatment, preceding linezolid\'s 2000 approval for the same organism.',
+        source: {
+          externalId: 'src:fda-synercid-quinupristin-dalfopristin-label',
+          name: 'U.S. Food and Drug Administration. Synercid I.V. (quinupristin/dalfopristin) prescribing information, NDA 050747/050748 (originally approved September 1999).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2008/050748s008,050747s008lbl.pdf',
+          publishedAt: '1999-09-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Daptomycin (Cubicin) — first cyclic lipopeptide antibiotic 2003 ──────────
+  {
+    externalId: 'trajectory:daptomycin-cubicin-first-lipopeptide-antibiotic-2003',
+    text: 'The U.S. Food and Drug Administration approved daptomycin (Cubicin, Cubist Pharmaceuticals; NDA 021572) on 12 September 2003, the first member of the cyclic lipopeptide class of antibiotics, for complicated Gram-positive skin and skin-structure infections including MRSA.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-09-12',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved daptomycin as the first cyclic lipopeptide antibiotic, acting via a novel membrane-depolarisation mechanism with bactericidal activity against MRSA, vancomycin-intermediate/resistant S. aureus, and vancomycin-resistant enterococci. The approval institutionally added a new structural class to the depleted anti-Gram-positive armamentarium amid rising resistance, and the agent\'s pre-market status remains confirmed (FDA later determined it was not withdrawn for safety).',
+        source: {
+          externalId: 'src:fda-fr-cubicin-daptomycin-determination-2023',
+          name: 'Food and Drug Administration. Determination That CUBICIN (Daptomycin) Powder for Injection ... Were Not Withdrawn From Sale for Reasons of Safety or Effectiveness (NDA 021572, approved September 12, 2003). Federal Register. August 7, 2023.',
+          url: 'https://www.federalregister.gov/documents/2023/08/07/2023-16775/determination-that-cubicin-daptomycin-powder-for-injection-250-milligramsvial-and-500-milligramsvial',
+          publishedAt: '2023-08-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gatifloxacin (Tequin) — dysglycaemia reversal 2006 ──────────────────────
+  {
+    externalId: 'trajectory:gatifloxacin-tequin-dysglycemia-withdrawal-2006',
+    text: 'The fluoroquinolone gatifloxacin (Tequin, Bristol-Myers Squibb), FDA-approved in December 1999 as a safe broad-spectrum antibiotic, was withdrawn from the U.S. market in 2006 after post-market evidence linked it to severe hypoglycaemia and hyperglycaemia, especially in older and diabetic patients.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-12-17',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-12-17',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved gatifloxacin (Tequin) in December 1999 as a once-daily broad-spectrum fluoroquinolone for respiratory and other infections, institutionally establishing the claim that it was a safe and effective antibiotic. It was widely prescribed in the early 2000s.',
+        source: {
+          externalId: 'src:fda-fr-tequin-gatifloxacin-withdrawal-determination-2008',
+          name: 'Food and Drug Administration. Determination That TEQUIN (Gatifloxacin) Was Withdrawn From Sale for Reasons of Safety or Effectiveness. Federal Register. September 9, 2008.',
+          url: 'https://www.federalregister.gov/documents/2008/09/09/E8-20938/determination-that-tequin-gatifloxacin-was-withdrawn-from-sale-for-reasons-of-safety-or',
+          publishedAt: '2008-09-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2006-05-01',
+        datePrecision: 'DAY',
+        reason: 'A population-based study by Park-Wyllie et al. in the New England Journal of Medicine (published online 1 March 2006) showed gatifloxacin sharply increased risks of hypoglycaemia (RR 4.3) and hyperglycaemia (RR 16.7) in older adults; the FDA added a contraindication/black-box warning in February 2006, and Bristol-Myers Squibb announced removal of systemic Tequin (27 April 2006), discontinuing U.S. sales on 1 May 2006. The FDA formally determined in 2008 that it had been withdrawn for reasons of safety, reversing the original safe-and-effective claim.',
+        source: {
+          externalId: 'src:park-wyllie-gatifloxacin-dysglycemia-nejm-2006',
+          name: 'Park-Wyllie LY, Juurlink DN, Kopp A, Shah BR, Stukel TA, Stumpo C, Dresser L, Low DE, Mamdani MM. Outpatient gatifloxacin therapy and dysglycemia in older adults. N Engl J Med. 2006;354(13):1352-1361.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa055191',
+          publishedAt: '2006-03-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
