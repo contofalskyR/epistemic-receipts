@@ -43316,6 +43316,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Folstein MMSE — 1975 ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:folstein-mini-mental-state-examination-1975',
+    text: 'Marshal Folstein, Susan Folstein, and Paul McHugh reported in the Journal of Psychiatric Research in November 1975 that their \'Mini-Mental State\' examination is a brief, practical, quantitative method for grading the cognitive state of patients at the bedside.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Folstein, Folstein, and McHugh published \'Mini-mental state: a practical method for grading the cognitive state of patients for the clinician,\' introducing an 11-item, 30-point bedside test that quantified orientation, registration, attention, recall, and language. The paper recorded into the expert literature the claim that cognitive impairment in dementia and delirium could be measured rapidly and reproducibly with a standardized instrument, rather than assessed only by unstructured clinical impression.',
+        source: {
+          externalId: 'src:folstein-mmse-jpsychres-1975',
+          name: 'Folstein MF, Folstein SE, McHugh PR. "Mini-mental state". A practical method for grading the cognitive state of patients for the clinician. J Psychiatr Res. 1975;12(3):189-198.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1202204/',
+          publishedAt: '1975-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Tombaugh and McIntyre published a comprehensive review in the Journal of the American Geriatrics Society synthesizing 26 years of psychometric research and documenting that the MMSE had become the most widely used cognitive screening instrument in clinical practice and research worldwide. Universal adoption as the standard brief cognitive screen — embedded in dementia evaluation, drug trials, and epidemiology — settled the claim that the MMSE validly grades cognitive state.',
+        source: {
+          externalId: 'src:tombaugh-mcintyre-mmse-review-jags-1992',
+          name: 'Tombaugh TN, McIntyre NJ. The mini-mental state examination: a comprehensive review. J Am Geriatr Soc. 1992;40(9):922-935.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1512391/',
+          publishedAt: '1992-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Carlsson dopamine neurotransmitter / reserpine antagonism — 1957 ────────
+  {
+    externalId: 'trajectory:carlsson-dopamine-neurotransmitter-reserpine-antagonism-1957',
+    text: 'Arvid Carlsson, Margit Lindqvist, and Tor Magnusson reported in Nature on 30 November 1957 that L-DOPA and 5-hydroxytryptophan reverse reserpine-induced sedation in animals, evidence that dopamine and serotonin function as neurotransmitters whose depletion underlies behavioral suppression.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-11-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-11-30',
+        datePrecision: 'DAY',
+        reason: 'Carlsson, Lindqvist, and Magnusson published a brief Nature communication showing that the catecholamine precursor L-DOPA abolished the sedation and immobility caused by reserpine, whereas 5-hydroxytryptophan did not restore motor activity. The finding recorded the claim that dopamine is a functional neurotransmitter in its own right — not merely a noradrenaline precursor — and that monoamine depletion produces a parkinsonian/depressive behavioral state, founding the monoamine theories of psychiatric and movement disorders.',
+        source: {
+          externalId: 'src:carlsson-dopa-5htp-reserpine-antagonists-nature-1957',
+          name: 'Carlsson A, Lindqvist M, Magnusson T. 3,4-Dihydroxyphenylalanine and 5-hydroxytryptophan as reserpine antagonists. Nature. 1957;180(4596):1200.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13483658/',
+          publishedAt: '1957-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-10-09',
+        datePrecision: 'DAY',
+        reason: 'Arvid Carlsson was awarded the 2000 Nobel Prize in Physiology or Medicine (shared with Paul Greengard and Eric Kandel) for discoveries concerning signal transduction in the nervous system, specifically establishing dopamine as a brain neurotransmitter and showing its role in motor control. The highest institutional honor in medicine ratified the dopamine-as-neurotransmitter claim that his 1957 reserpine-antagonism work first recorded, by then the accepted basis of antipsychotic (dopamine-blockade) and antidepressant (monoamine) pharmacology.',
+        source: {
+          externalId: 'src:nobel-carlsson-2000',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 2000 — Arvid Carlsson, Facts. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/2000/carlsson/facts/',
+          publishedAt: '2000-10-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Grundke-Iqbal tau phosphorylation / Alzheimer tangles — 1986 ───────────
+  {
+    externalId: 'trajectory:grundke-iqbal-tau-phosphorylation-alzheimer-tangles-1986',
+    text: 'Inge Grundke-Iqbal and colleagues reported in PNAS in July 1986 that the microtubule-associated protein tau is abnormally phosphorylated and is a principal protein component of the paired helical filaments that form neurofibrillary tangles in Alzheimer\'s disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Grundke-Iqbal, Iqbal, Tung, Quinlan, Wisniewski, and Binder published in PNAS that tau in Alzheimer brain is abnormally (hyper)phosphorylated and is an integral protein subunit of the paired helical filaments comprising neurofibrillary tangles. This recorded the claim that the second hallmark lesion of Alzheimer\'s disease (alongside amyloid plaques) is built from a specific, modified cytoskeletal protein, opening the tau/tangle arm of Alzheimer pathobiology.',
+        source: {
+          externalId: 'src:grundke-iqbal-tau-phosphorylation-pnas-1986',
+          name: 'Grundke-Iqbal I, Iqbal K, Tung YC, Quinlan M, Wisniewski HM, Binder LI. Abnormal phosphorylation of the microtubule-associated protein tau (tau) in Alzheimer cytoskeletal pathology. Proc Natl Acad Sci USA. 1986;83(13):4913-4917.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3088567/',
+          publishedAt: '1986-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Within the same year, multiple independent groups — including Kosik, Joachim, and Selkoe in PNAS — confirmed that tau is the major antigenic component of paired helical filaments in Alzheimer disease, providing rapid cross-laboratory replication. Convergent identification of tau as the principal tangle protein settled the claim in the expert literature and established hyperphosphorylated tau as a defining, durable feature of Alzheimer neuropathology.',
+        source: {
+          externalId: 'src:kosik-tau-phf-pnas-1986',
+          name: 'Kosik KS, Joachim CL, Selkoe DJ. Microtubule-associated protein tau (tau) is a major antigenic component of paired helical filaments in Alzheimer disease. Proc Natl Acad Sci USA. 1986;83(11):4044-4048.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2424016/',
+          publishedAt: '1986-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Blessed–Tomlinson–Roth dementia / plaque correlation — 1968 ─────────────
+  {
+    externalId: 'trajectory:blessed-tomlinson-roth-dementia-plaque-correlation-1968',
+    text: 'Garry Blessed, Bernard Tomlinson, and Martin Roth reported in the British Journal of Psychiatry in July 1968 that the severity of dementia in elderly subjects correlates quantitatively with the density of senile plaques in the cerebral grey matter, linking clinical dementia to Alzheimer-type neuropathology.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Blessed, Tomlinson, and Roth correlated a quantitative dementia/activities-of-daily-living scale measured before death with post-mortem plaque counts in the same elderly subjects, demonstrating a graded relationship between cognitive decline and senile plaque burden. This recorded the claim that \'senile dementia\' is not an inevitable feature of normal aging but a measurable disease process driven by Alzheimer-type pathology, providing the first robust clinicopathological quantification.',
+        source: {
+          externalId: 'src:blessed-tomlinson-roth-dementia-bjp-1968',
+          name: 'Blessed G, Tomlinson BE, Roth M. The association between quantitative measures of dementia and of senile change in the cerebral grey matter of elderly subjects. Br J Psychiatry. 1968;114(512):797-811.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5662937/',
+          publishedAt: '1968-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Robert Katzman\'s 1976 Archives of Neurology editorial, building directly on the Blessed–Tomlinson–Roth and Tomlinson neuropathology findings, argued that presenile (Alzheimer) and senile dementia are a single disease and that Alzheimer\'s disease is therefore a leading cause of death — \'a major killer.\' This unification of the disease concept, widely adopted by the field, settled the claim that age-associated dementia is Alzheimer pathology and catalyzed Alzheimer\'s disease as a research and public-health priority.',
+        source: {
+          externalId: 'src:katzman-alzheimer-major-killer-archneurol-1976',
+          name: 'Katzman R. Editorial: The prevalence and malignancy of Alzheimer disease. A major killer. Arch Neurol. 1976;33(4):217-218.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1259639/',
+          publishedAt: '1976-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
