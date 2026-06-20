@@ -50342,48 +50342,6 @@ const TRAJECTORIES: Trajectory[] = [
   // OPIOID EPIDEMIC — FOUNDATIONS & RECKONINGS (1965–2012)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Dole & Nyswander methadone maintenance 1965 ─────────────────────────────
-  {
-    externalId: 'trajectory:dole-nyswander-methadone-maintenance-1965',
-    text: 'Vincent Dole and Marie Nyswander reported in JAMA on August 23, 1965, that oral methadone hydrochloride stabilized 22 chronically heroin-addicted patients, blocking euphoria and narcotic hunger and allowing them to function socially, establishing the clinical rationale for methadone maintenance treatment of heroin addiction.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1965-08-23',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1965-08-23',
-        datePrecision: 'DAY',
-        reason: 'Dole and Nyswander published \'A Medical Treatment for Diacetylmorphine (Heroin) Addiction: A Clinical Trial With Methadone Hydrochloride\' in JAMA, reporting that 22 patients stabilized on oral methadone lost their narcotic craving and resumed work and study. The paper reframed heroin addiction as a treatable metabolic-medical condition rather than purely a moral or criminal failing, entering the literature as the founding empirical basis for opioid agonist maintenance therapy.',
-        source: {
-          externalId: 'src:dole-nyswander-methadone-jama-1965',
-          name: 'Dole VP, Nyswander M. A Medical Treatment for Diacetylmorphine (Heroin) Addiction: A Clinical Trial With Methadone Hydrochloride. JAMA. 1965;193(8):646-650.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/14321530/',
-          publishedAt: '1965-08-23',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1972-12-15',
-        datePrecision: 'MONTH',
-        reason: 'In late 1972 the FDA issued formal regulations approving methadone for the maintenance treatment of opiate addiction, creating a closed distribution system restricted to registered treatment programs and recognizing that some patients require the drug for long periods. The regulatory action institutionalized methadone maintenance as an approved standard of care, ratifying the Dole-Nyswander clinical finding at the federal level.',
-        source: {
-          externalId: 'src:nas-federal-regulation-methadone',
-          name: 'Institute of Medicine (US). Federal Regulation of Methadone Treatment. Washington (DC): National Academies Press; 1995 (documenting the FDA 1972 methadone maintenance regulations).',
-          url: 'https://www.ncbi.nlm.nih.gov/books/NBK232105/',
-          publishedAt: '1995-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Portenoy & Foley chronic opioids for non-malignant pain 1986 ────────────
   {
     externalId: 'trajectory:portenoy-foley-chronic-opioids-nonmalignant-pain-1986',
@@ -50420,48 +50378,6 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Catan T, Perez E. A Pain-Drug Champion Has Second Thoughts. The Wall Street Journal. December 17, 2012.',
           url: 'https://www.seattle.gov/documents/departments/cityAttorney/opioidLitigation/FN15-APain-DrugChampionHasSecondThoughts.pdf',
           publishedAt: '2012-12-17',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
-  // ── WHO analgesic ladder for cancer pain 1986 ────────────────────────────────
-  {
-    externalId: 'trajectory:who-analgesic-ladder-cancer-pain-1986',
-    text: 'The World Health Organization published the monograph \'Cancer Pain Relief\' in 1986, establishing the three-step analgesic ladder that legitimized the escalating use of strong opioids such as oral morphine for moderate-to-severe cancer pain as a global standard of care.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1986',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'CONTESTED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1986',
-        datePrecision: 'YEAR',
-        reason: 'WHO issued \'Cancer Pain Relief\' (Geneva, 1986, ISBN 9241561009), presenting the three-step ladder: non-opioids, then weak opioids, then strong opioids titrated to effect, with emphasis on oral morphine and on removing legal barriers to opioid availability. Endorsed and disseminated by WHO, it was rapidly adopted worldwide as the authoritative framework for cancer pain management, shown to relieve pain in roughly 70-80% of patients.',
-        source: {
-          externalId: 'src:who-cancer-pain-relief-1986',
-          name: 'World Health Organization. Cancer Pain Relief. Geneva: World Health Organization; 1986. ISBN 9241561009.',
-          url: 'https://catalogue.nla.gov.au/catalog/837604',
-          publishedAt: '1986-01-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'CONTESTED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2022',
-        datePrecision: 'YEAR',
-        reason: 'Decades of use exposed that the ladder\'s \'weak opioid\' second step and its binary weak/strong labeling were being misapplied and were poorly supported, prompting trials of a two-step approach and critical reappraisals such as the 2022 British Journal of Anaesthesia analysis of the ladder\'s misappropriation. The ladder\'s core principle of opioid-based escalation for cancer pain remains the standard, but the intermediate weak-opioid step is contested.',
-        source: {
-          externalId: 'src:bja-who-ladder-misappropriation-2022',
-          name: 'Misappropriation of the 1986 WHO analgesic ladder: the pitfalls of labelling opioids as weak or strong. British Journal of Anaesthesia. 2022.',
-          url: 'https://www.sciencedirect.com/science/article/pii/S000709122200126X',
-          publishedAt: '2022-04-01',
           methodologyType: 'derivative',
         },
       },
