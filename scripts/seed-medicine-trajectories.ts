@@ -51592,33 +51592,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Gabapentinoid Respiratory Depression Warning — FDA 2019 ────────────────
-  {
-    externalId: 'trajectory:fda-gabapentinoid-respiratory-depression-warning-2019',
-    text: 'The U.S. Food and Drug Administration warned on December 19, 2019 that the widely used nerve-pain and seizure medicines gabapentin and pregabalin can cause serious, life-threatening, and fatal respiratory depression — particularly when combined with opioids or other CNS depressants — and required new respiratory warnings be added to their labeling.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2019-12-19',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2019-12-19',
-        datePrecision: 'DAY',
-        reason: 'Reviewing case reports, clinical trials, and animal studies — including 49 respiratory-depression reports to the FDA from 2012–2017 with 12 deaths, all in patients with at least one risk factor — the FDA concluded that gabapentinoids, long perceived as safe alternatives or adjuncts to opioids for pain, carry their own serious breathing risk, especially in opioid co-prescription. The agency mandated labeling warnings and required manufacturers to conduct trials on combined gabapentinoid-opioid use, institutionally establishing a safety signal against a reassuring prior consensus.',
-        source: {
-          externalId: 'src:fda-gabapentinoid-breathing-dsc-2019',
-          name: 'U.S. Food and Drug Administration. FDA warns about serious breathing problems with seizure and nerve pain medicines gabapentin (Neurontin, Gralise, Horizant) and pregabalin (Lyrica, Lyrica CR). December 19, 2019.',
-          url: 'https://www.fda.gov/safety/medical-product-safety-information/neurontin-gralise-horizant-gabapentin-and-lyrica-lyrica-cr-pregabalin-drug-safety-communication',
-          publishedAt: '2019-12-19',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
