@@ -45480,6 +45480,186 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── AAP hyperbilirubinemia guideline revision — 2022 ──────────────────────
+  {
+    externalId: 'trajectory:aap-hyperbilirubinemia-guideline-revision-2022',
+    text: 'The American Academy of Pediatrics issued a revised clinical practice guideline (Kemper et al.) on 5 August 2022 that raised the total serum bilirubin thresholds for initiating phototherapy and exchange transfusion in newborns of 35 or more weeks\' gestation, narrowing intervention relative to its 2004 guideline on the basis that the prior thresholds were overly conservative.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-08-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-08-05',
+        datePrecision: 'DAY',
+        reason: 'The AAP published its first full revision since 2004 of the guideline for managing newborn jaundice, raising the bilirubin levels at which phototherapy and exchange transfusion are recommended and adding hour-specific risk thresholds and a check for hemolysis. Accumulated evidence that the 2004 thresholds led to overtreatment without proportional reduction in kernicterus prompted a more permissive, individualized standard. As the official AAP clinical practice guideline it immediately became the institutional standard of care, superseding the 2004 document.',
+        source: {
+          externalId: 'src:kemper-aap-hyperbilirubinemia-pediatrics-2022',
+          name: 'Kemper AR, Newman TB, Slaughter JL, et al. Clinical Practice Guideline Revision: Management of Hyperbilirubinemia in the Newborn Infant 35 or More Weeks of Gestation. Pediatrics. 2022;150(3):e2022058859. PMID 35927462.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35927462/',
+          publishedAt: '2022-08-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Abrysvo maternal RSV vaccine for infant protection — 2023 ──────────────
+  {
+    externalId: 'trajectory:abrysvo-maternal-rsv-vaccine-infants-2023',
+    text: 'On 21 August 2023 the US FDA approved Abrysvo (RSVpreF, Pfizer) for administration to pregnant individuals at 32 through 36 weeks\' gestation to prevent lower respiratory tract disease caused by respiratory syncytial virus in their infants from birth through 6 months of age — the first vaccine licensed to protect newborns against RSV via maternal immunization.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-08-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-08-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Abrysvo for use in pregnant individuals at 32–36 weeks\' gestation based on the MATISSE phase 3 trial in more than 7,000 pregnant participants, which showed reduced medically attended severe RSV lower respiratory tract illness in infants through six months. This recorded, as a licensed regulatory claim, that maternal immunization could confer passive protection on newborns against RSV — a leading cause of infant hospitalization.',
+        source: {
+          externalId: 'src:fda-abrysvo-maternal-rsv-approval-2023',
+          name: 'U.S. Food and Drug Administration. FDA Approves First Vaccine for Pregnant Individuals to Prevent RSV in Infants. Press announcement. August 21, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-vaccine-pregnant-individuals-prevent-rsv-infants',
+          publishedAt: '2023-08-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-09-22',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s Advisory Committee on Immunization Practices recommended maternal RSVpreF vaccine as a single seasonal dose during 32–36 weeks\' gestation, and the CDC director adopted the recommendation, formally entering maternal RSV immunization into the US childhood-protection schedule as an alternative to infant nirsevimab. Incorporation into ACIP policy settled maternal RSV vaccination as established institutional practice for the 2023–24 season.',
+        source: {
+          externalId: 'src:fleming-dutra-acip-maternal-rsv-mmwr-2023',
+          name: 'Fleming-Dutra KE, Jones JM, Roper LE, et al. Use of the Pfizer Respiratory Syncytial Virus Vaccine During Pregnancy for the Prevention of RSV-Associated LRTD in Infants: Recommendations of the ACIP — United States, 2023. MMWR Morb Mortal Wkly Rep. 2023;72(41):1115-1122.',
+          url: 'https://www.cdc.gov/mmwr/volumes/72/wr/mm7241e1.htm',
+          publishedAt: '2023-10-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fluoride childhood IQ / unreasonable risk ruling — 2024 ───────────────
+  {
+    externalId: 'trajectory:fluoride-childhood-iq-unreasonable-risk-2024',
+    text: 'In 2024 US federal bodies recorded a finding that fluoride exposure is associated with lower IQ in children: the National Toxicology Program concluded on 21 August 2024 (moderate confidence) that higher fluoride exposure is associated with reduced child IQ, and on 24 September 2024 a federal court (Food & Water Watch v. EPA) ruled that community water fluoridation at 0.7 mg/L poses an \'unreasonable risk\' of injury to children\'s health, ordering the EPA to take regulatory action.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-08-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-08-21',
+        datePrecision: 'DAY',
+        reason: 'After years of internal review and external pressure, the National Toxicology Program published its systematic-review monograph concluding with moderate confidence that higher estimated fluoride exposure (e.g., drinking-water levels above 1.5 mg/L) is consistently associated with lower IQ in children. A federal scientific body formally recording a fluoride–neurodevelopment association moved the long-marginalized hypothesis into the mainstream evidentiary record, while explicitly noting more research was needed at lower (US fluoridation) levels.',
+        source: {
+          externalId: 'src:ntp-fluoride-neurodevelopment-monograph-2024',
+          name: 'National Toxicology Program. NTP Monograph on the State of the Science Concerning Fluoride Exposure and Neurodevelopment and Cognition: A Systematic Review. NTP Monograph 8. U.S. Dept. of Health and Human Services. August 2024.',
+          url: 'https://ntp.niehs.nih.gov/sites/default/files/2024-08/fluoride_final_508.pdf',
+          publishedAt: '2024-08-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-09-24',
+        datePrecision: 'DAY',
+        reason: 'Judge Edward Chen of the US District Court for the Northern District of California, in the first Toxic Substances Control Act citizen-petition suit to reach trial and win, ruled that water fluoridation at 0.7 mg/L presents an \'unreasonable risk\' of reduced IQ in children and ordered the EPA to undertake a regulatory response — while stating this was not a finding that fluoridated water is certainly injurious. The ruling judicially contested the decades-settled public-health consensus that community water fluoridation at recommended levels is safe; the EPA appealed and the decision\'s standing remained disputed into 2026.',
+        source: {
+          externalId: 'src:food-water-watch-v-epa-fluoride-ruling-2024',
+          name: 'Food & Water Watch, Inc. v. U.S. EPA, No. 17-cv-02162-EMC, Findings of Fact and Conclusions of Law (N.D. Cal. Sept. 24, 2024); reported in CNN, \'Fluoride in drinking water poses enough risk to merit new EPA action, judge says,\' Sept. 25, 2024.',
+          url: 'https://www.cnn.com/2024/09/25/health/epa-fluoride-drinking-water',
+          publishedAt: '2024-09-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── FDA BPA ban from baby bottles and sippy cups — 2012 ───────────────────
+  {
+    externalId: 'trajectory:fda-bpa-baby-bottles-sippy-cups-ban-2012',
+    text: 'On 17 July 2012 the US FDA issued a final rule amending its food-additive regulations to no longer permit the use of bisphenol A (BPA)-based polycarbonate resins in baby bottles and sippy cups, granting an industry petition on the basis that such use had been \'completely and permanently abandoned\' — explicitly not on a determination that BPA in these products is unsafe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-17',
+        datePrecision: 'DAY',
+        reason: 'Responding to a petition from the American Chemistry Council, the FDA published a final rule (Federal Register 2012-17366) removing the authorization for BPA-based polycarbonate resins in infant feeding products. The agency was explicit that the action reflected manufacturers\' abandonment of the use — not a safety reversal — making it an epistemically narrow regulatory record that the practice no longer exists, rather than a public-health finding that BPA harms infants. The amendment nonetheless settled the regulatory status of BPA in US baby bottles and sippy cups.',
+        source: {
+          externalId: 'src:fda-bpa-indirect-food-additives-polymers-2012',
+          name: 'U.S. Food and Drug Administration. Indirect Food Additives: Polymers. Final rule. Federal Register 77(137):42721-42723. July 17, 2012. Docket 2012-17366.',
+          url: 'https://www.federalregister.gov/documents/2012/07/17/2012-17366/indirect-food-additives-polymers',
+          publishedAt: '2012-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP childhood obesity treatment guideline — 2023 ──────────────────────
+  {
+    externalId: 'trajectory:aap-childhood-obesity-treatment-guideline-2023',
+    text: 'On 9 January 2023 the American Academy of Pediatrics published its first comprehensive clinical practice guideline for childhood obesity (Hampl et al.), recommending early, intensive treatment — including offering anti-obesity pharmacotherapy such as GLP-1 receptor agonists to adolescents 12 and older and referral for metabolic/bariatric surgery from age 13 — and explicitly rejecting \'watchful waiting,\' reversing the prior expectant, staged-care approach to pediatric obesity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved once-weekly semaglutide 2.4 mg (Wegovy) for chronic weight management in adolescents 12 and older with obesity, based on the STEP TEENS trial showing a 16.1% BMI reduction versus a 0.6% increase on placebo. The approval established a potent GLP-1 pharmacotherapy as a licensed option for pediatric obesity, supplying the clinical tool that the AAP guideline weeks later would recommend offering to adolescents.',
+        source: {
+          externalId: 'src:fda-wegovy-semaglutide-adolescent-approval-2022',
+          name: 'U.S. FDA. Wegovy (semaglutide) injection — Supplement Approval Letter, NDA 215256/S-005 (adolescents 12 years and older). December 23, 2022.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2022/215256Orig1s005ltr.pdf',
+          publishedAt: '2022-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-01-09',
+        datePrecision: 'DAY',
+        reason: 'The AAP issued its first evidence-based clinical practice guideline for the evaluation and treatment of children and adolescents with obesity, recommending intensive health-behavior and lifestyle treatment, weight-loss pharmacotherapy for those 12 and older, and bariatric-surgery evaluation from age 13, while advising against delay or \'watchful waiting.\' Reversing decades of staged, conservative pediatric practice, it settled early intensive treatment — including drugs and surgery — as official AAP policy, though the recommendations drew substantial public and eating-disorder-community controversy.',
+        source: {
+          externalId: 'src:hampl-aap-obesity-guideline-pediatrics-2023',
+          name: 'Hampl SE, Hassink SG, Skinner AC, et al. Clinical Practice Guideline for the Evaluation and Treatment of Children and Adolescents With Obesity (Executive Summary). Pediatrics. 2023;151(2):e2022060641. PMID 36622135.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36622135/',
+          publishedAt: '2023-01-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
