@@ -56143,6 +56143,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH ERA (1990--2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── HERS: HRT does not prevent CHD in secondary prevention — Hulley 1998 ───
+  {
+    externalId: 'trajectory:hers-hrt-secondary-prevention-chd-1998',
+    text: 'Hulley and the Heart and Estrogen/progestin Replacement Study (HERS) investigators reported in JAMA on 19 August 1998 that, in postmenopausal women with established coronary heart disease, estrogen plus progestin did not reduce coronary events and increased early thromboembolic risk — the first randomized trial to contradict the observational consensus that hormone therapy protects the heart.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-19',
+        datePrecision: 'DAY',
+        reason: 'Hulley et al. reported HERS, a randomized placebo-controlled secondary-prevention trial of conjugated equine estrogen plus medroxyprogesterone acetate in 2,763 postmenopausal women with established coronary disease, finding no overall reduction in CHD events over 4.1 years and a significant excess of events plus venous thromboembolism in the first year. This recorded in the expert literature the first randomized contradiction of the prevailing observational claim (from cohorts such as the Nurses\' Health Study) that HRT is cardioprotective, four years before the Women\'s Health Initiative.',
+        source: {
+          externalId: 'src:hulley-hers-jama-1998',
+          name: 'Hulley S, Grady D, Bush T, et al. Randomized trial of estrogen plus progestin for secondary prevention of coronary heart disease in postmenopausal women (HERS). JAMA. 1998;280(7):605-613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9718051/',
+          publishedAt: '1998-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-07-24',
+        datePrecision: 'DAY',
+        reason: 'The American Heart Association issued a science advisory (Mosca et al., Circulation 2001;104:499-503) recommending that HRT not be initiated for the secondary prevention of cardiovascular disease, citing HERS. The leading cardiovascular body\'s formal reversal of clinical advice settled, at the guideline level, the claim that hormone therapy does not prevent coronary events in women with heart disease.',
+        source: {
+          externalId: 'src:aha-hrt-cvd-statement-2001',
+          name: 'Mosca L, Collins P, Herrington DM, et al. Hormone replacement therapy and cardiovascular disease: a statement for healthcare professionals from the American Heart Association. Circulation. 2001;104(4):499-503.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11468217/',
+          publishedAt: '2001-07-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Third-generation OC / VTE — CSM warning & WHO study 1995 ───────────────
+  {
+    externalId: 'trajectory:third-generation-oral-contraceptive-vte-1995',
+    text: 'The UK Committee on Safety of Medicines warned on 18 October 1995 — corroborated by the WHO Collaborative Study and companion case-control studies published in The Lancet on 16 December 1995 — that combined oral contraceptives containing the third-generation progestogens desogestrel or gestodene carry roughly double the risk of venous thromboembolism compared with second-generation (levonorgestrel) pills.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-12-16',
+        datePrecision: 'DAY',
+        reason: 'The WHO Collaborative Study of Cardiovascular Disease and Steroid Hormone Contraception reported an international multicentre case-control study finding elevated VTE odds ratios for combined-OC users (4.15 in Europe), with higher risk for third-generation than for first- and second-generation progestogens. Published alongside two companion Lancet studies, it recorded in the expert literature the claim that desogestrel/gestodene pills roughly double VTE risk — formalizing the evidence base on which the UK Committee on Safety of Medicines had already issued its 18 October 1995 urgent warning, triggering the \'pill scare.\'',
+        source: {
+          externalId: 'src:who-collaborative-vte-oc-lancet-1995',
+          name: 'WHO Collaborative Study of Cardiovascular Disease and Steroid Hormone Contraception. Venous thromboembolic disease and combined oral contraceptives: results of international multicentre case-control study. Lancet. 1995;346(8990):1575-1582.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7500748/',
+          publishedAt: '1995-12-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Through the late 1990s the twofold-risk claim was contested on methodological grounds — critics argued the third-generation excess was inflated by confounding-by-indication, preferential prescribing to higher-risk women, and \'healthy-user\'/attrition-of-susceptibles bias, with reanalyses judged \'not compatible\' with a genuine twofold increase. The contestation was sharpened by documented public-health harm: Furedi\'s review found OC use fell steeply (e.g., from 40% to 27% among under-16s, 1995–1997), producing an estimated rise in unintended pregnancies and abortions, leaving the magnitude and net value of the warning disputed.',
+        source: {
+          externalId: 'src:furedi-pill-scare-humupd-1999',
+          name: 'Furedi A. Social consequences: the public health implications of the 1995 \'pill scare\'. Hum Reprod Update. 1999;5(6):621-626.',
+          url: 'https://academic.oup.com/humupd/article/5/6/621/745751',
+          publishedAt: '1999-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Raloxifene STAR trial — second chemoprevention agent — 2006 ─────────────
+  {
+    externalId: 'trajectory:raloxifene-star-breast-cancer-prevention-2006',
+    text: 'Vogel and the NSABP Study of Tamoxifen and Raloxifene (STAR/P-2) investigators reported in JAMA on 21 June 2006 that raloxifene is as effective as tamoxifen at reducing the risk of invasive breast cancer in high-risk postmenopausal women, with fewer thromboembolic events and cataracts — establishing a second chemoprevention agent with a more favorable safety profile.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-06-21',
+        datePrecision: 'DAY',
+        reason: 'The STAR (NSABP P-2) double-blind randomized trial in 19,747 postmenopausal women at increased risk found raloxifene as effective as tamoxifen in reducing invasive breast cancer (4.41 vs 4.30 per 1,000 per year) while causing significantly fewer thromboembolic events and cataracts. Building on the earlier MORE-trial signal, this recorded in the expert literature the claim that raloxifene offers equivalent breast-cancer chemoprevention with reduced harm, expanding the pharmacologic-prevention paradigm established by tamoxifen in NSABP P-1.',
+        source: {
+          externalId: 'src:vogel-star-p2-jama-2006',
+          name: 'Vogel VG, Costantino JP, Wickerham DL, et al. Effects of tamoxifen vs raloxifene on the risk of developing invasive breast cancer and other disease outcomes: the NSABP Study of Tamoxifen and Raloxifene (STAR) P-2 trial. JAMA. 2006;295(23):2727-2741.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16754727/',
+          publishedAt: '2006-06-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-09-14',
+        datePrecision: 'DAY',
+        reason: 'Following its Oncologic Drugs Advisory Committee\'s 24 July 2007 recommendation, the FDA approved raloxifene (Evista) to reduce the risk of invasive breast cancer in postmenopausal women with osteoporosis and in those at high risk — only the second drug ever approved for breast-cancer chemoprevention, after tamoxifen. The regulatory approval institutionally settled the claim that raloxifene reduces invasive breast-cancer risk, while its labeling kept use risk-stratified.',
+        source: {
+          externalId: 'src:fda-evista-raloxifene-breast-cancer-approval-2007',
+          name: 'Eli Lilly and Company. FDA Approves Lilly\'s Osteoporosis Drug EVISTA (raloxifene HCl) to Reduce the Risk of Invasive Breast Cancer in Two Populations of Postmenopausal Women. 14 September 2007.',
+          url: 'https://investor.lilly.com/news-releases/news-release-details/fda-approves-lillys-osteoporosis-drug-evistar-raloxifene-hcl',
+          publishedAt: '2007-09-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gøtzsche & Olsen: mammography screening unjustified — 2000 ─────────────
+  {
+    externalId: 'trajectory:gotzsche-olsen-mammography-screening-unjustified-2000',
+    text: 'Gøtzsche and Olsen of the Nordic Cochrane Centre concluded in The Lancet on 8 January 2000 that screening for breast cancer with mammography is unjustified, arguing that only two of eight randomized trials were adequately randomized and that these showed no reduction in breast-cancer mortality — directly contesting the settled belief that mammography screening saves lives.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-01-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-08',
+        datePrecision: 'DAY',
+        reason: 'Gøtzsche and Olsen published a meta-analysis re-examining the eight randomized mammography-screening trials, judging six methodologically flawed and concluding that the two adequately randomized trials showed no breast-cancer mortality benefit while total mortality slightly rose. The paper recorded in the expert literature a serious challenge to the long-settled claim that screening mammography reduces breast-cancer death, reframing the debate around overdiagnosis and overtreatment.',
+        source: {
+          externalId: 'src:gotzsche-olsen-mammography-lancet-2000',
+          name: 'Gøtzsche PC, Olsen O. Is screening for breast cancer with mammography justifiable? Lancet. 2000;355(9198):129-134.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10675181/',
+          publishedAt: '2000-01-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-10-20',
+        datePrecision: 'DAY',
+        reason: 'Olsen and Gøtzsche published their fuller Cochrane review in The Lancet, reaffirming that \'there is no reliable evidence that screening for breast cancer reduces mortality\' and that breast-cancer mortality is a misleading endpoint. The review provoked intense, sustained international dispute — screening agencies and many epidemiologists rejected the conclusion while others accepted the overdiagnosis critique — leaving the mortality benefit of mammography screening openly contested in the expert literature rather than overturned or reaffirmed.',
+        source: {
+          externalId: 'src:olsen-gotzsche-cochrane-mammography-lancet-2001',
+          name: 'Olsen O, Gøtzsche PC. Cochrane review on screening for breast cancer with mammography. Lancet. 2001;358(9290):1340-1342.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11684218/',
+          publishedAt: '2001-10-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
