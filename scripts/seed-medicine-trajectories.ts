@@ -42551,6 +42551,201 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INFECTION CONTROL & SURGICAL ANTISEPSIS (19th century)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Semmelweis handwashing — puerperal fever 1847 ────────────────────────────
+  {
+    externalId: 'trajectory:semmelweis-handwashing-puerperal-fever-1847',
+    text: 'Ignaz Semmelweis established that puerperal (childbed) fever is transmitted to maternity patients on the contaminated hands of physicians and can be drastically reduced by handwashing in chlorinated-lime solution, an intervention he introduced at the Vienna General Hospital First Obstetrical Clinic in May 1847.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1847-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After his May 1847 chlorinated-lime handwashing policy cut First-Clinic maternal mortality from roughly 18% in April 1847 to about 1–2% by mid-year, Semmelweis set out his contagion-and-prophylaxis doctrine in his 1861 monograph \'Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers.\' The book formally recorded into the literature the claim that decomposing organic matter carried on examiners\' hands causes childbed fever and that hand disinfection prevents it — a claim that was largely rejected or ignored by contemporaries who lacked any germ-theory framework to explain it.',
+        source: {
+          externalId: 'src:semmelweis-aetiologie-kindbettfieber-1861',
+          name: 'Semmelweis IP. Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers. Pest, Wien und Leipzig: C.A. Hartleben; 1861. (documented in: Ignaz Semmelweis, Wikipedia.)',
+          url: 'https://en.wikipedia.org/wiki/Ignaz_Semmelweis',
+          publishedAt: '1861-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Fourteen years after Semmelweis\'s death, Louis Pasteur identified the chain-forming streptococcus in the blood and lochia of women dying of puerperal fever and, in an 1879 session of the Académie de Médecine, declared that it was the medical and nursing staff who carried the microbe from sick to healthy women. This germ-theory demonstration supplied the causal mechanism Semmelweis had lacked and vindicated his contagion-and-handwashing doctrine, which thereafter became settled medical orthodoxy and the foundation of infection control.',
+        source: {
+          externalId: 'src:pasteur-septicemie-puerperale-academie-1879',
+          name: 'Pasteur L. Septicémie puerpérale. Bulletin de l\'Académie de Médecine (Paris), 2nd series, 1879;8:271–274, 505–508. (reprinted as Classic Pages in Obstetrics and Gynecology, PMID 4588534.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4588534/',
+          publishedAt: '1879-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lister antiseptic surgery — carbolic acid 1867 ───────────────────────────
+  {
+    externalId: 'trajectory:lister-antiseptic-surgery-carbolic-acid-1867',
+    text: 'Joseph Lister established that treating wounds and the operative field with carbolic acid (phenol) as an antiseptic prevents the putrefactive wound sepsis responsible for most surgical deaths, first reported in a Lancet compound-fracture series beginning 16 March 1867 and stated as a general principle in the British Medical Journal in September 1867.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1867-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1867-09-21',
+        datePrecision: 'DAY',
+        reason: 'After his Lancet series \'On a New Method of Treating Compound Fracture, Abscess, etc.\' (begun 16 March 1867, featuring the James Greenlees case), Lister read his address \'On the Antiseptic Principle in the Practice of Surgery\' at the British Medical Association\'s Dublin meeting, published in the BMJ on 21 September 1867. The paper recorded into the literature the germ-based doctrine that wound suppuration is caused by airborne living organisms and can be prevented by antiseptic destruction of those germs with carbolic acid.',
+        source: {
+          externalId: 'src:lister-antiseptic-principle-bmj-1867',
+          name: 'Lister J. On the Antiseptic Principle in the Practice of Surgery. Br Med J. 1867 Sep 21;2(351):246–248.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2310614/',
+          publishedAt: '1867-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1870-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lister\'s antiseptic system was sharply contested in Britain through the 1870s and 1880s, with Thomas Nunneley attacking it at the 1869 BMA meeting and Lawson Tait and William Savory repeatedly arguing that Lister had not produced adequate comparative statistics to prove that carbolic antisepsis lowered mortality. The dispute, which turned on what counted as valid evidence, kept the efficacy of Listerism in open question among many British surgeons.',
+        source: {
+          externalId: 'src:trohler-british-controversy-listerism-jll-2014',
+          name: 'Tröhler U. Statistics and the British controversy about the effects of Joseph Lister\'s system of antisepsis for surgery, 1867–1890. James Lind Library; 2014.',
+          url: 'https://www.jameslindlibrary.org/articles/statistics-and-the-british-controversy-about-the-effects-of-joseph-listers-system-of-antisepsis-for-surgery-1867-1890/',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Continental surgeons (Volkmann, Nussbaum, Saxtorph) adopted Lister\'s method in the early 1870s with striking falls in wound mortality, and the consolidation of germ theory by Pasteur and Koch\'s late-1870s work on wound-infection organisms supplied decisive mechanistic support. Antisepsis was thereby established as the foundation of safe operative surgery — soon refined into the aseptic technique that superseded carbolic spray — making the underlying antiseptic principle a permanent fixture of surgical practice.',
+        source: {
+          externalId: 'src:lister-performance-antiseptic-surgery-notesrec-2013',
+          name: 'Worboys M. Joseph Lister and the performance of antiseptic surgery. Notes Rec R Soc Lond. 2013;67(3):199–209.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3744349/',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL ONCOLOGY (20th century)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── NSABP B-04 radical mastectomy no survival benefit 1985 ───────────────────
+  {
+    externalId: 'trajectory:nsabp-b04-radical-mastectomy-no-survival-benefit-1985',
+    text: 'The randomized NSABP B-04 trial established (Fisher et al., NEJM, 14 March 1985) that Halsted radical mastectomy confers no disease-free or overall survival advantage over total (simple) mastectomy, with or without radiation, in operable breast cancer — contradicting the long-standing doctrine that maximally wide anatomical resection was necessary for cure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-03-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-03-14',
+        datePrecision: 'DAY',
+        reason: 'Fisher, Redmond, Fisher and colleagues reported the ten-year results of NSABP B-04, which had randomized 1,665 women from 1971 to radical mastectomy versus total mastectomy with or without radiation. They found no significant differences among the treatment groups in disease-free, distant-disease-free, or overall survival (about 57% at ten years), recording the claim that the extent of local-regional surgery does not determine breast-cancer survival and directly challenging the Halstedian rationale for radical mastectomy.',
+        source: {
+          externalId: 'src:fisher-nsabp-b04-ten-year-nejm-1985',
+          name: 'Fisher B, Redmond C, Fisher ER, et al. Ten-year results of a randomized clinical trial comparing radical mastectomy and total mastectomy with or without radiation. N Engl J Med. 1985;312(11):674–681. (PMID 3883168.)',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM198503143121102',
+          publishedAt: '1985-03-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-08-22',
+        datePrecision: 'DAY',
+        reason: 'Fisher and colleagues published 25-year follow-up of NSABP B-04 in the NEJM, confirming the absence of any significant survival difference among radical mastectomy, total mastectomy, and total mastectomy plus irradiation. The mature long-term data cemented within the surgical community the conclusion that the radical (Halsted) mastectomy offered no survival benefit, completing the evidentiary basis for abandoning it as the standard operation for breast cancer.',
+        source: {
+          externalId: 'src:fisher-nsabp-b04-25-year-nejm-2002',
+          name: 'Fisher B, Jeong JH, Anderson S, et al. Twenty-five-year follow-up of a randomized trial comparing radical mastectomy, total mastectomy, and total mastectomy followed by irradiation. N Engl J Med. 2002;347(8):567–575.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa020128',
+          publishedAt: '2002-08-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CLINICAL METHODOLOGY (19th century)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pierre Louis numerical method — bloodletting inefficacy 1835 ─────────────
+  {
+    externalId: 'trajectory:pierre-louis-numerical-method-bloodletting-1835',
+    text: 'Pierre-Charles-Alexandre Louis established, using his quantitative \'numerical method,\' that bloodletting (venesection) provides little therapeutic benefit and does not reduce mortality in pneumonia and other acute inflammatory diseases, published in \'Recherches sur les effets de la saignée\' in 1835.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1835-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1835-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In \'Recherches sur les effets de la saignée dans quelques maladies inflammatoires,\' Louis applied systematic group comparison to a homogeneous series of pneumonia patients and found that early bleeding was associated with higher rather than lower mortality, concluding that venesection\'s utility was confined to narrow limits. This recorded into the literature both the claim that the era\'s most fashionable therapeutic procedure was largely ineffective and the numerical method itself — the precursor of medical statistics and modern clinical trials.',
+        source: {
+          externalId: 'src:morabia-louis-bloodletting-jrsm-2006',
+          name: 'Morabia A. Pierre-Charles-Alexandre Louis and the evaluation of bloodletting. J R Soc Med. 2006;99(3):158–160.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1383766/',
+          publishedAt: '2006-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over the later nineteenth century therapeutic bloodletting was progressively abandoned as Louis\'s quantitative critique, reinforced by the rise of germ theory and pathophysiology, undermined the humoral rationale for venesection. Louis\'s numerical method was retrospectively recognized as foundational to epidemiology and the controlled clinical trial, settling both the rejection of routine bloodletting and the legitimacy of statistical evaluation of treatments.',
+        source: {
+          externalId: 'src:louis-medical-statistics-pneumonology-ajrccm-2010',
+          name: 'Best M, Neuhauser D. P. C. A. Louis (1787–1872): Introducing Medical Statistics in Pneumonology. Am J Respir Crit Care Med. 2010;182(12):1569.',
+          url: 'https://www.atsjournals.org/doi/full/10.1164/ajrccm.182.12.1569',
+          publishedAt: '2010-12-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
