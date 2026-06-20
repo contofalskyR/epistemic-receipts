@@ -41794,6 +41794,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INFECTIOUS DISEASE & VACCINES (1990s–2000s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Vibrio cholerae O139 Bengal emergence 1993 ──────────────────────────────
+  {
+    externalId: 'trajectory:vibrio-cholerae-o139-bengal-emergence-1993',
+    text: 'Ramamurthy and colleagues reported in The Lancet on 13 March 1993 that a novel non-O1 Vibrio cholerae serogroup (subsequently named O139 Bengal) was causing large epidemics of cholera in southern and eastern India, overturning the long-held dogma that only serogroup O1 causes epidemic cholera.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-03-13',
+        datePrecision: 'DAY',
+        reason: 'Ramamurthy et al. reported in The Lancet that a non-agglutinable, non-O1 Vibrio cholerae strain with epidemic potential had emerged in Madras and surrounding regions and was displacing O1 strains. This was the first documented epidemic cholera caused by a serogroup other than O1, breaking the central paradigm of cholera epidemiology established since Koch.',
+        source: {
+          externalId: 'src:ramamurthy-vibrio-o139-lancet-1993',
+          name: 'Ramamurthy T, Garg S, Sharma R, et al. Emergence of novel strain of Vibrio cholerae with epidemic potential in southern and eastern India. Lancet. 1993;341(8846):703-704.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8095620/',
+          publishedAt: '1993-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Faruque and colleagues performed molecular analysis of the rRNA and cholera toxin genes of the new strain, confirming O139 Bengal as a distinct toxigenic clone derived from the seventh-pandemic O1 El Tor lineage. This molecular confirmation, replicated across laboratories, settled O139 as a genuine second epidemic cholera serogroup rather than an artifact.',
+        source: {
+          externalId: 'src:faruque-o139-molecular-jcm-1994',
+          name: 'Faruque SM, Alim AR, Roy SK, et al. Molecular analysis of rRNA and cholera toxin genes carried by the new epidemic strain of toxigenic Vibrio cholerae O139 synonym Bengal. J Clin Microbiol. 1994;32(4):1050-1053.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7517950/',
+          publishedAt: '1994-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── E. coli O157:H7 Jack in the Box outbreak 1993 ───────────────────────────
+  {
+    externalId: 'trajectory:ecoli-o157h7-jack-in-the-box-outbreak-1993',
+    text: 'The CDC reported in MMWR on 16 April 1993 that a multistate outbreak of more than 500 confirmed E. coli O157:H7 infections and four deaths in the western United States was caused by undercooked hamburgers from a single fast-food chain, establishing O157:H7 as a major foodborne pathogen.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1993-04-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-04-16',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s MMWR update documented more than 500 laboratory-confirmed O157:H7 infections and four deaths across Washington, Idaho, California, and Nevada from November 1992 to February 1993, traced to regular-sized hamburger patties from one restaurant chain. The outbreak transformed E. coli O157:H7 from an obscure laboratory finding into a recognized cause of large, lethal foodborne epidemics and hemolytic uremic syndrome.',
+        source: {
+          externalId: 'src:cdc-mmwr-ecoli-o157-western-us-1993',
+          name: 'CDC. Update: Multistate Outbreak of Escherichia coli O157:H7 Infections from Hamburgers — Western United States, 1992-1993. MMWR. 1993;42(14):258-263.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00020219.htm',
+          publishedAt: '1993-04-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following the outbreak, E. coli O157:H7 became a nationally notifiable infection in 1994, institutionalizing surveillance of the pathogen across the United States (the USDA also moved in 1994 to treat O157:H7 in raw ground beef as an adulterant). The transition cemented O157:H7\'s status as an established, reportable public-health threat rather than a sporadic curiosity.',
+        source: {
+          externalId: 'src:rangel-ecoli-o157-epidemiology-eid-2005',
+          name: 'Rangel JM, Sparling PH, Crowe C, Griffin PM, Swerdlow DL. Epidemiology of Escherichia coli O157:H7 Outbreaks, United States, 1982-2002. Emerg Infect Dis. 2005;11(4):603-609.',
+          url: 'https://wwwnc.cdc.gov/eid/article/11/4/04-0739_article',
+          publishedAt: '2005-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Havrix first hepatitis A vaccine licensure 1995 ─────────────────────────
+  {
+    externalId: 'trajectory:havrix-first-hepatitis-a-vaccine-licensure-1995',
+    text: 'Werzberger and colleagues demonstrated in the NEJM on 13 August 1992 that a formalin-inactivated hepatitis A vaccine was 100% protective in a randomized trial of children, and the FDA licensed Havrix — the first hepatitis A vaccine in the United States — in February 1995.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-08-13',
+        datePrecision: 'DAY',
+        reason: 'In a double-blind, placebo-controlled trial among ~1,000 children in Monroe, New York (Kiryas Joel), Werzberger et al. reported 100% efficacy of a single dose of inactivated hepatitis A vaccine: 25 cases of hepatitis A occurred in the placebo group and none in the vaccine group. This established that an inactivated HAV vaccine could prevent disease.',
+        source: {
+          externalId: 'src:werzberger-hepatitis-a-vaccine-nejm-1992',
+          name: 'Werzberger A, Mensch B, Kuter B, et al. A controlled trial of a formalin-inactivated hepatitis A vaccine in healthy children. N Engl J Med. 1992;327(7):453-457.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1320740/',
+          publishedAt: '1992-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-02-01',
+        datePrecision: 'MONTH',
+        reason: 'In February 1995 the FDA licensed Havrix (SmithKline Beecham), the first inactivated hepatitis A vaccine available in the United States, for persons aged 2 years and older, and the ACIP issued recommendations for its use. Licensure converted the trial-stage claim into an institutionally endorsed, deployable prevention tool.',
+        source: {
+          externalId: 'src:cdc-mmwr-havrix-licensure-1995',
+          name: 'CDC. Notice to Readers: Licensure of Inactivated Hepatitis A Vaccine and Recommendations for Use Among International Travelers. MMWR. 1995;44(29):559-560.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00038243.htm',
+          publishedAt: '1995-07-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tigecycline (Tygacil) mortality signal 2010 ─────────────────────────────
+  {
+    externalId: 'trajectory:tigecycline-tygacil-mortality-signal-2010',
+    text: 'The FDA approved tigecycline (Tygacil), the first glycylcycline antibiotic, on 17 June 2005 for resistant infections, then warned on 1 September 2010 of an increased risk of death versus comparator antibiotics based on a pooled analysis of 13 trials.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-06-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-06-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Wyeth\'s tigecycline (NDA 21-821), the first member of the glycylcycline class, for complicated skin and intra-abdominal infections, positioning it as a broad-spectrum option against multidrug-resistant Gram-positive and Gram-negative organisms. Approval marked institutional acceptance of tigecycline as an effective antibiotic.',
+        source: {
+          externalId: 'src:fda-tygacil-approval-package-2005',
+          name: 'FDA. Drug Approval Package: Tygacil (Tigecycline) NDA 021821. June 17, 2005.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2005/21-821_Tygacil.cfm',
+          publishedAt: '2005-06-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-09-01',
+        datePrecision: 'DAY',
+        reason: 'An FDA Drug Safety Communication reported that a pooled analysis of 13 Phase 3 and 4 trials found higher mortality among tigecycline recipients than comparator-antibiotic recipients (4.0% vs 3.0%), most clearly in ventilator-associated pneumonia. The warning, which later (2013) became a boxed warning, contested tigecycline\'s safety and restricted its use to situations where alternatives are unsuitable.',
+        source: {
+          externalId: 'src:fda-tygacil-mortality-dsc-2010',
+          name: 'FDA. Drug Safety Communication: Increased risk of death with Tygacil (tigecycline) compared to other antibiotics used to treat similar infections. September 1, 2010.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-increased-risk-death-tygacil-tigecycline-compared-other-antibiotics',
+          publishedAt: '2010-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Smallpox vaccine myopericarditis signal 2003 ─────────────────────────────
+  {
+    externalId: 'trajectory:smallpox-vaccine-myopericarditis-2003',
+    text: 'The CDC reported in MMWR on 28 March 2003 that myocarditis and pericarditis were occurring among recipients of vaccinia (smallpox) vaccine during the post-9/11 US civilian and military smallpox vaccination programs, establishing myopericarditis as a recognized adverse event of smallpox vaccination.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-03-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-28',
+        datePrecision: 'DAY',
+        reason: 'During the bioterrorism-preparedness reintroduction of smallpox vaccination, CDC\'s MMWR reported cardiac adverse events including myopericarditis cases among civilian vaccinees and roughly 10 myocarditis/pericarditis cases among ~225,000 military primary vaccinees. The report first flagged a previously underappreciated cardiac safety signal for vaccinia vaccine.',
+        source: {
+          externalId: 'src:cdc-mmwr-smallpox-cardiac-events-2003',
+          name: 'CDC. Cardiac Adverse Events Following Smallpox Vaccination — United States, 2003. MMWR. 2003;52(12):248-250.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5212a2.htm',
+          publishedAt: '2003-03-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Follow-up CDC/DOD surveillance reports through mid-2003, with a formal case definition developed by the ACIP and Armed Forces Epidemiology Board, confirmed a consistent temporal association between vaccinia vaccination and myo/pericarditis (onset ~10 days post-vaccination). Myopericarditis became an accepted causal adverse event of smallpox vaccine, informing screening and contraindication guidance.',
+        source: {
+          externalId: 'src:cdc-mmwr-smallpox-cardiac-update-2003',
+          name: 'CDC. Update: Cardiac and Other Adverse Events Following Civilian Smallpox Vaccination — United States, 2003. MMWR. 2003;52(27):639-642.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12855946/',
+          publishedAt: '2003-07-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
