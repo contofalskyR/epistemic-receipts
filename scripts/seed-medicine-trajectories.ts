@@ -46535,7 +46535,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: 'EXPERT_LITERATURE',
         occurredAt: '1972-04',
         datePrecision: 'MONTH',
-        reason: 'Jennett and Plum published 'Persistent vegetative state after brain damage: a syndrome in search of a name' in The Lancet, coining the term to describe wakefulness without awareness following catastrophic brain injury. The paper distinguished the state from coma and brain death and gave clinicians a shared vocabulary for a condition increasingly produced by intensive-care survival, recording a new clinical entity in the neurological literature.',
+        reason: 'Jennett and Plum published \'Persistent vegetative state after brain damage: a syndrome in search of a name\' in The Lancet, coining the term to describe wakefulness without awareness following catastrophic brain injury. The paper distinguished the state from coma and brain death and gave clinicians a shared vocabulary for a condition increasingly produced by intensive-care survival, recording a new clinical entity in the neurological literature.',
         source: {
           externalId: 'src:jennett-plum-pvs-lancet-1972',
           name: 'Jennett B, Plum F. Persistent vegetative state after brain damage. A syndrome in search of a name. Lancet. 1972;1(7753):734-737.',
@@ -48741,6 +48741,193 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Symplicity Spyral Approved: FDA Clears Second Renal Denervation System. TCTMD. November 2023.',
           url: 'https://www.tctmd.com/news/symplicity-spyral-approved-fda-clears-second-renal-denervation-system',
           publishedAt: '2023-11-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VECTOR-BORNE & INFECTIOUS DISEASE (1893–1931)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Smith & Kilborne: tick vector for Texas cattle fever 1893 ───────────────
+  {
+    externalId: 'trajectory:smith-kilborne-tick-vector-texas-cattle-fever-1893',
+    text: 'Theobald Smith and Frederick L. Kilborne demonstrated, in U.S. Bureau of Animal Industry Bulletin No. 1 (1893), that Texas cattle fever is caused by an intra-erythrocytic protozoan parasite transmitted from cattle to cattle by the cattle tick — the first proof that an arthropod vector can transmit any infectious disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1893-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1893-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Smith and Kilborne published the 301-page BAI Bulletin No. 1 reporting controlled field and pen experiments in which Texas fever passed from infected to healthy cattle only when ticks were present, and identified the causative blood parasite (named Pyrosoma bigeminum, later Babesia). It was the first experimental demonstration that an arthropod transmits an infectious agent.',
+        source: {
+          externalId: 'src:smith-kilborne-bai-bulletin-1-1893',
+          name: 'Smith T, Kilborne FL. Investigations into the Nature, Causation, and Prevention of Texas or Southern Cattle Fever. U.S. Department of Agriculture, Bureau of Animal Industry, Bulletin No. 1. Washington, DC: Government Printing Office; 1893.',
+          url: 'https://archive.org/details/bullbai001',
+          publishedAt: '1893-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The tick-vector principle was accepted and generalized into the foundation of vector-borne disease science, directly informing the Walter Reed yellow fever commission\'s mosquito work (1900) and Ross/Grassi malaria transmission studies. Retrospective reviews credit Smith with \'the first demonstration that ticks transmit disease of any kind.\'',
+        source: {
+          externalId: 'src:smith-discoverer-ticks-vectors-2002',
+          name: 'Theobald Smith — the discoverer of ticks as vectors of disease. Wiener Klinische Wochenschrift. 2002;114(13–14).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12422586/',
+          publishedAt: '2002-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Noguchi: Leptospira icteroides as cause of yellow fever 1919 ─────────────
+  {
+    externalId: 'trajectory:noguchi-leptospira-icteroides-yellow-fever-1919',
+    text: 'Hideyo Noguchi of the Rockefeller Institute claimed, in a Journal of Experimental Medicine series beginning in 1919, that yellow fever is caused by the bacterium Leptospira icteroides — a claim that was institutionally adopted (with a Noguchi vaccine and antiserum) but later disproven when yellow fever was shown to be caused by a filterable virus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Following the 1918 Rockefeller commission to Guayaquil, Ecuador, Noguchi reported isolating Leptospira icteroides from yellow fever patients and showed that convalescent sera gave positive Pfeiffer reactions against it in ~83% of cases, concluding the organism was etiologically related to yellow fever. The \'Etiology of Yellow Fever\' papers appeared in the Journal of Experimental Medicine in 1919.',
+        source: {
+          externalId: 'src:noguchi-etiology-yellow-fever-jem-1919',
+          name: 'Noguchi H. Etiology of Yellow Fever: V. Properties of Blood Serum of Yellow Fever Patients in Relation to Leptospira icteroides. J Exp Med. 1919;30(1):9–12.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2126356',
+          publishedAt: '1919-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1921-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Backed by Noguchi\'s stature at the Rockefeller Institute, the bacterial etiology was widely accepted and acted upon: a Leptospira icteroides prophylactic vaccine and therapeutic antiserum were prepared and distributed experimentally in yellow-fever regions until about 1926. The theory became the operating premise of yellow fever control programs.',
+        source: {
+          externalId: 'src:noguchi-biography-dsb',
+          name: 'Hideyo Noguchi. Complete Dictionary of Scientific Biography (via Encyclopedia.com).',
+          url: 'https://www.encyclopedia.com/people/medicine/medicine-biographies/hideyo-noguchi',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Adrian Stokes, Johannes Bauer and Paul Hudson, working in West Africa, transmitted yellow fever to rhesus macaques using a bacteria-free filtrate (the Asibi strain, isolated 1927) and showed Noguchi\'s Leptospira vaccine and antiserum did not protect, proving a filterable virus — not a bacterium — causes yellow fever. The JAMA report appeared in 1928; Noguchi died of yellow fever in Accra in May 1928 while trying to defend his theory.',
+        source: {
+          externalId: 'src:stokes-bauer-hudson-yellow-fever-rhesus-1928',
+          name: 'Stokes A, Bauer JH, Hudson NP. The transmission of yellow fever to Macacus rhesus. JAMA. 1928;90:253–254. (Reprinted in Rev Med Virol. 2001;11(3):141–148.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11376477/',
+          publishedAt: '1928-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Goodpasture & Woodruff: chick-embryo virus cultivation 1931 ─────────────
+  {
+    externalId: 'trajectory:goodpasture-woodruff-chick-embryo-virus-cultivation-1931',
+    text: 'Ernest Goodpasture and Alice Woodruff reported in 1931 that animal viruses could be propagated on the chorioallantoic membrane of the developing chick embryo, establishing the embryonated hen\'s egg as a controllable substrate for cultivating viruses and manufacturing vaccines.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-10-16',
+        datePrecision: 'DAY',
+        reason: 'Woodruff and Goodpasture first grew fowl-pox virus on the chick-embryo chorioallantoic membrane (Am J Pathol, 1931), and Goodpasture, Woodruff and Buddingh extended the method to vaccinia and other viruses in Science (16 Oct 1931). The embryonated egg gave a cheap, sterile, reproducible host where animal substrates had been costly and uncontrolled.',
+        source: {
+          externalId: 'src:goodpasture-woodruff-buddingh-science-1931',
+          name: 'Goodpasture EW, Woodruff AM, Buddingh GJ. The cultivation of vaccine and other viruses in the chorio-allantoic membrane of chick embryos. Science. 1931;74(1919):371–372.',
+          url: 'https://www.science.org/doi/10.1126/science.74.1919.371',
+          publishedAt: '1931-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1937-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Egg/chick-embryo cultivation became the standard platform for vaccine production: Max Theiler and Hugh Smith used chick-embryo culture to attenuate the 17D yellow fever vaccine (J Exp Med, 1937), and embryonated eggs subsequently became the manufacturing basis for influenza vaccines, a method still in use today.',
+        source: {
+          externalId: 'src:theiler-smith-17d-yellow-fever-vaccine-jem-1937',
+          name: 'Theiler M, Smith HH. The use of yellow fever virus modified by in vitro cultivation for human immunization. J Exp Med. 1937;65(6):787–800.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10654001/',
+          publishedAt: '1937-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nicolle: body louse transmits typhus 1909 ────────────────────────────────
+  {
+    externalId: 'trajectory:nicolle-body-louse-typhus-transmission-1909',
+    text: 'Charles Nicolle, director of the Institut Pasteur de Tunis, demonstrated in 1909 that epidemic typhus is transmitted from person to person by the body louse (Pediculus humanus corporis), communicating the finding to the French Académie des sciences in September 1909.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1909-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1909-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Nicolle reproduced typhus in a chimpanzee and a macaque by inoculation, then showed that lice fed on infected animals transmitted the disease to healthy ones. He communicated the body-louse vector to the Académie des sciences (Comptes Rendus) in September 1909, explaining why delousing interrupts epidemics.',
+        source: {
+          externalId: 'src:nicolle-typhus-louse-pmc-biography',
+          name: 'Charles-Jules-Henri Nicolle and his 1909 demonstration that the body louse transmits epidemic typhus — biographical review documenting the Comptes Rendus Acad Sci 1909 communication. PMC PMC2819868.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2819868/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1928-12-10',
+        datePrecision: 'DAY',
+        reason: 'The louse-vector finding became the basis of typhus control (mass delousing in WWI and WWII) and was institutionally ratified when Nicolle received the 1928 Nobel Prize in Physiology or Medicine \'for his work on typhus,\' cementing the body louse as the established mode of transmission.',
+        source: {
+          externalId: 'src:nobel-prize-medicine-1928-nicolle',
+          name: 'The Nobel Prize in Physiology or Medicine 1928 — Charles Nicolle, \'for his work on typhus.\' Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1928/summary/',
+          publishedAt: '1928-12-10',
           methodologyType: 'derivative',
         },
       },
