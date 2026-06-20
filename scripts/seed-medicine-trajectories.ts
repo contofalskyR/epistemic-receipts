@@ -55215,6 +55215,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Pearson & Eliel ACTH/cortisone regression of lymphoid tumors 1949 ───────
+  {
+    externalId: 'trajectory:pearson-eliel-acth-cortisone-lymphoid-tumor-regression-1949',
+    text: 'Olof Pearson, Lloyd Eliel and colleagues reported in November 1949 in Cancer that adrenocorticotropic hormone (ACTH) and cortisone produced rapid clinical regression of lymphosarcoma, chronic lymphocytic leukemia and Hodgkin\'s disease in patients, the first demonstration that adrenal corticosteroids exert an antitumor effect in human lymphoid malignancies.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Pearson, Eliel, Rawson, Dobriner and Rhoads at Memorial Hospital reported that ACTH and the newly available cortisone caused prompt, if temporary, regression of lymphosarcoma, chronic lymphocytic leukemia and Hodgkin\'s disease, with shrinking nodes and falling white counts. This was the first recorded evidence that adrenal corticosteroids have a direct antitumor (lympholytic) action in human lymphoid cancers, opening hormonal steroid therapy of hematologic malignancy.',
+        source: {
+          externalId: 'src:pearson-acth-cortisone-lymphoid-cancer-1949',
+          name: 'Pearson OH, Eliel LP, Rawson RW, Dobriner K, Rhoads CP. ACTH- and cortisone-induced regression of lymphoid tumors in man: a preliminary report. Cancer. 1949;2(6):943-945.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15395192/',
+          publishedAt: '1949-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Corticosteroids moved from a transient single-agent curiosity to a permanent backbone of curative combination chemotherapy: DeVita, Serpick and Carbone\'s MOPP regimen for advanced Hodgkin\'s disease incorporated prednisone alongside mechlorethamine, vincristine and procarbazine and produced durable complete remissions. Reproducible cures with steroid-containing regimens settled the 1949 claim that corticosteroids are genuinely antineoplastic in lymphoid malignancy.',
+        source: {
+          externalId: 'src:devita-mopp-hodgkin-ann-intern-med-1970',
+          name: 'DeVita VT Jr, Serpick AA, Carbone PP. Combination chemotherapy in the treatment of advanced Hodgkin\'s disease. Ann Intern Med. 1970;73(6):881-895.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5525541/',
+          publishedAt: '1970-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Farber folic-acid acceleration of leukemia / antifolate rationale 1947 ──
+  {
+    externalId: 'trajectory:farber-folic-acid-acceleration-leukemia-antifolate-rationale-1947',
+    text: 'Sidney Farber and colleagues reported on 19 December 1947 in Science that pteroylglutamic acid (folic acid) conjugates appeared to accelerate the leukemic process in children with acute leukemia, leading Farber to infer that folic-acid antagonists, rather than folic acid, might suppress the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-12-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-12-19',
+        datePrecision: 'DAY',
+        reason: 'Farber, Cutler, Hawkins, Harrison, Peirce and Lenz reported that giving folic-acid conjugates to children with acute leukemia appeared to accelerate rather than relieve the disease. Against the prevailing hope that folic acid (then newly synthesized) would help nutritionally depleted leukemic children, this observation recorded the opposite and reframed the strategy: blocking folate metabolism, not supplementing it, became the rational target.',
+        source: {
+          externalId: 'src:farber-pteroylglutamic-conjugates-science-1947',
+          name: 'Farber S, Cutler EC, Hawkins JW, Harrison JH, Peirce EC 2nd, Lenz GG. The action of pteroylglutamic conjugates on man. Science. 1947;106(2764):619-621.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17831847/',
+          publishedAt: '1947-12-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-06-03',
+        datePrecision: 'DAY',
+        reason: 'Farber\'s antifolate inference was directly confirmed six months later when the folic-acid antagonist aminopterin produced temporary clinical and hematologic remissions in children with acute leukemia, published in the New England Journal of Medicine. The successful reversal of the disease validated the 1947 logic that antagonizing folate — the mirror image of the acceleration observation — could control leukemia, founding antimetabolite chemotherapy.',
+        source: {
+          externalId: 'src:farber-aminopterin-nejm-1948-validation',
+          name: 'Farber S, Diamond LK, Mercer RD, Sylvester RF, Wolff JA. Temporary remissions in acute leukemia in children produced by folic acid antagonist, 4-aminopteroyl-glutamic acid (aminopterin). N Engl J Med. 1948;238(23):787-793.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18860765/',
+          publishedAt: '1948-06-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Karnofsky nitrogen mustards in carcinoma / performance-status scale 1948 ─
+  {
+    externalId: 'trajectory:karnofsky-nitrogen-mustards-palliative-carcinoma-performance-status-1948',
+    text: 'David Karnofsky, Walter Abelmann, Lloyd Craver and Joseph Burchenal reported in November 1948 in Cancer on the use of nitrogen mustards in the palliative treatment of carcinoma (with particular reference to bronchogenic carcinoma) and introduced a 0–100 performance-status scale to objectively quantify a patient\'s functional response to chemotherapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1948-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Extending nitrogen mustard therapy from lymphomas to solid tumors, Karnofsky and colleagues at Memorial Sloan-Kettering documented mostly short-lived palliative responses in bronchogenic and other carcinomas and, crucially, introduced a standardized 0–100 performance-status index to measure treatment benefit beyond tumor size or survival. This recorded the first formal methodology for objectively evaluating chemotherapeutic agents in patients.',
+        source: {
+          externalId: 'src:karnofsky-nitrogen-mustards-carcinoma-cancer-1948',
+          name: 'Karnofsky DA, Abelmann WH, Craver LF, Burchenal JH. The use of the nitrogen mustards in the palliative treatment of carcinoma: with particular reference to bronchogenic carcinoma. Cancer. 1948;1(4):634-656.',
+          url: 'https://acsjournals.onlinelibrary.wiley.com/doi/10.1002/1097-0142(194811)1:4%3C634::AID-CNCR2820010410%3E3.0.CO;2-L',
+          publishedAt: '1948-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The Karnofsky Performance Status became a globally entrenched standard for assessing cancer-patient function, determining clinical-trial eligibility, and stratifying outcomes — a role historian Carsten Timmermann documents as outlasting and exceeding its original 1948 purpose. Its durable, near-universal adoption in oncology settled the methodological claim that functional status can be objectively scored to evaluate cancer therapy.',
+        source: {
+          externalId: 'src:timmermann-karnofsky-scale-history-2013',
+          name: 'Timmermann C. \'Just give me the best quality of life questionnaire\': the Karnofsky scale and the history of quality of life measurements in cancer trials. Chronic Illn. 2013;9(3):179-190.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3837542/',
+          publishedAt: '2013-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
