@@ -42008,6 +42008,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY & BIOCHEMISTRY (1896–1951)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Abel crystalline insulin — protein identity 1926 ────────────────────────
+  {
+    externalId: 'trajectory:abel-crystalline-insulin-protein-1926',
+    text: 'John Jacob Abel reported in the Proceedings of the National Academy of Sciences on 15 February 1926 that insulin could be obtained in pure crystalline form, establishing that the antidiabetic hormone is a definite, isolable chemical substance — a protein.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-02-15',
+        datePrecision: 'DAY',
+        reason: 'Abel published \'Crystalline Insulin\' in PNAS, reporting that he had crystallized insulin and that the crystalline material possessed the full glucose-lowering activity of the hormone, indicating insulin is a protein. Four years after Banting and Best\'s clinical extract, this recorded in the expert literature the claim that the antidiabetic principle is a single definable chemical substance rather than an uncharacterized \'internal secretion.\' The claim was initially contested, as some held the protein was merely a carrier for a smaller active molecule.',
+        source: {
+          externalId: 'src:abel-crystalline-insulin-pnas-1926',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132–136. (PMID 16587069; PMC1084434.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1084434/',
+          publishedAt: '1926-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1951-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Frederick Sanger and Hans Tuppy published the amino-acid sequence of the phenylalanyl (B) chain of insulin in the Biochemical Journal, the first complete sequence of any protein chain, definitively establishing insulin as a defined protein with a fixed primary structure. This resolved decades of doubt about whether Abel\'s crystalline protein was the hormone itself, settling insulin\'s chemical identity as a protein and earning Sanger the 1958 Nobel Prize in Chemistry.',
+        source: {
+          externalId: 'src:sanger-tuppy-insulin-sequence-biochemj-1951',
+          name: 'Sanger F, Tuppy H. The amino-acid sequence in the phenylalanyl chain of insulin. Biochem J. 1951;49(4):463–481. (PMID 14886310.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14886310/',
+          publishedAt: '1951-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bayliss & Starling — secretin, first hormone 1902 ───────────────────────
+  {
+    externalId: 'trajectory:bayliss-starling-secretin-first-hormone-1902',
+    text: 'William Bayliss and Ernest Starling reported in the Journal of Physiology on 12 September 1902 that acid in the duodenum triggers pancreatic secretion via a blood-borne chemical messenger they named secretin — the discovery of the first hormone and the founding of endocrinology.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1902-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-09-12',
+        datePrecision: 'DAY',
+        reason: 'Bayliss and Starling published \'The Mechanism of Pancreatic Secretion\' in the Journal of Physiology, showing in anesthetized dogs that acid instilled into a denervated loop of duodenum still provoked pancreatic secretion, proving the signal was a chemical substance — secretin — carried in the blood rather than a nerve reflex. This recorded in the expert literature the claim that distant organs communicate by blood-borne chemical messengers, the first such messenger ever identified.',
+        source: {
+          externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325–353.',
+          url: 'https://physoc.onlinelibrary.wiley.com/doi/10.1113/jphysiol.1902.sp000920',
+          publishedAt: '1902-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In his Croonian Lectures to the Royal College of Physicians (published in The Lancet, 1905), Starling generalized the secretin finding by coining the word \'hormone\' for blood-borne chemical messengers that coordinate body functions, giving the new discipline of endocrinology its central concept and vocabulary. The rapid uptake of the hormone concept by physiologists settled secretin\'s status as the prototype of a universal regulatory mechanism.',
+        source: {
+          externalId: 'src:starling-croonian-hormone-secretin-review-2001',
+          name: 'Modlin IM, Kidd M. Ernest Starling and the discovery of secretin. J Clin Gastroenterol. 2001;32(3):187–192. (Croonian Lectures, Lancet 1905; coining of \'hormone\'.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11246341/',
+          publishedAt: '2001-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Houssay — anterior pituitary diabetogenic effect 1930 ───────────────────
+  {
+    externalId: 'trajectory:houssay-anterior-pituitary-diabetogenic-1930',
+    text: 'Bernardo Houssay and Alfredo Biasotti reported in 1930 (Comptes Rendus de la Société de Biologie) that removing the pituitary attenuates pancreatic diabetes while anterior-pituitary extract has a diabetogenic, anti-insulin effect, establishing the anterior pituitary\'s role in carbohydrate metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Houssay and Biasotti showed that in hypophysectomized dogs and toads the severity of pancreatic (pancreatectomy) diabetes was markedly reduced and hypoglycemia appeared, while injection of anterior-pituitary extract produced hyperglycemia, demonstrating an anti-insulin, diabetogenic principle in the adenohypophysis. This recorded in the expert literature the claim that the anterior pituitary conditions the severity of diabetes and helps govern blood sugar — extending the endocrine control of metabolism beyond the pancreas.',
+        source: {
+          externalId: 'src:houssay-biasotti-hypophysis-diabetes-1930-biography',
+          name: 'Hawgood BJ. Professor Bernardo Alberto Houssay (1887–1971): Argentine physiologist and Nobel laureate. J Med Biogr. 2004;12(2):105–110. (Reviewing Houssay & Biasotti, C R Soc Biol 1930;104:407–410.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4728695/',
+          publishedAt: '2004-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-12-10',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Prize in Physiology or Medicine 1947 was awarded to Bernardo Houssay \'for his discovery of the part played by the hormone of the anterior pituitary lobe in the metabolism of sugar\' (sharing the prize with Carl and Gerty Cori). The award institutionally ratified the diabetogenic-pituitary finding as established physiology and foundational to understanding hormonal control of carbohydrate metabolism.',
+        source: {
+          externalId: 'src:nobel-medicine-1947-houssay',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1947 — Bernardo A. Houssay \'for his discovery of the part played by the hormone of the anterior pituitary lobe in the metabolism of sugar\'.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1947/houssay/',
+          publishedAt: '1947-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Takamine — crystalline adrenaline, first pure hormone 1901 ──────────────
+  {
+    externalId: 'trajectory:takamine-crystalline-adrenaline-1901',
+    text: 'Jokichi Takamine, working with Keizo Uenaka, isolated the active blood-pressure-raising principle of the adrenal gland in pure crystalline form in 1901, naming it adrenalin — the first hormone ever obtained as a pure crystalline substance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1901-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Takamine reported the isolation and crystallization of the active principle of the suprarenal gland, which he named adrenalin, succeeding where John Jacob Abel\'s \'epinephrin\' had remained an impure preparation. This recorded the claim that an endocrine secretion could be obtained as a single pure crystalline compound, the first hormone so isolated; Parke-Davis promptly commercialized it under the trade name Adrenalin.',
+        source: {
+          externalId: 'src:takamine-adrenaline-isolation-1901',
+          name: 'Takamine J. Adrenalin, the active principle of the suprarenal glands, and its mode of preparation. Am J Pharm. 1901;73:523–531. (Reviewed: Bennett MR. One hundred years of adrenaline: the discovery of autoreceptors. Clin Auton Res. 1999.)',
+          url: 'https://en.wikipedia.org/wiki/Jokichi_Takamine',
+          publishedAt: '1901-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1904-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Friedrich Stolz achieved the chemical synthesis of adrenaline (via adrenalone) in 1904, confirming the structure of Takamine\'s crystalline substance and making it the first hormone to be both isolated in pure form and synthesized. Reproducible synthesis plus rapid clinical and pharmacological adoption settled the claim that adrenalin is a single, definite chemical agent of the adrenal medulla.',
+        source: {
+          externalId: 'src:stolz-adrenaline-synthesis-1904',
+          name: 'Stolz F. Über Adrenalin und Alkylaminoacetobrenzcatechin. Ber Dtsch Chem Ges. 1904;37:4149–4154. (First synthesis of adrenaline.)',
+          url: 'https://en.wikipedia.org/wiki/Adrenaline',
+          publishedAt: '1904-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Baumann — iodine in thyroid 1896 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:baumann-iodine-in-thyroid-1896',
+    text: 'Eugen Baumann reported in 1896 (Zeitschrift für physiologische Chemie) that the thyroid gland normally contains a high concentration of iodine bound in an organic compound he called iodothyrin, the first demonstration that iodine is a characteristic constituent of thyroid tissue.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1896-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Baumann, having detected unexpectedly large amounts of iodine in thyroid tissue, boiled the thyroids of about a thousand sheep in dilute acid and recovered an iodine-rich organic precipitate he named iodothyrin, which reproduced thyroid effects. This recorded in the expert literature the surprising claim that iodine is a normal, functionally essential element of the thyroid gland — the first chemical clue to the nature of thyroid hormone.',
+        source: {
+          externalId: 'src:baumann-iodine-thyroid-historical-review',
+          name: 'McAninch EA, Bianco AC. The history and future of treatment of hypothyroidism. Ann Intern Med. (and: Hypothyroidism and Thyroid Substitution: Historical Aspects, PMC3134382) — reviewing Baumann E, Z Physiol Chem 1896;21:319–330.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3134382/',
+          publishedAt: '2011-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-06-19',
+        datePrecision: 'DAY',
+        reason: 'Edward Kendall\'s isolation of crystalline thyroxine (JAMA, 19 June 1915), a single iodine-bearing molecule (~60% iodine) carrying the thyroid\'s physiologic activity, confirmed Baumann\'s claim that iodine is integral to thyroid function and located it in a defined hormone. The identification of the active iodine compound settled the iodine–thyroid link as established biochemistry.',
+        source: {
+          externalId: 'src:kendall-thyroxine-confirms-iodine-jama-1915',
+          name: 'Kendall EC. The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity. JAMA. 1915;64(25):2042–2043. (PMID 6352971.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6352971/',
+          publishedAt: '1915-06-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
