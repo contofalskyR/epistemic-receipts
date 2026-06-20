@@ -55956,6 +55956,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID NEUROSCIENCE & PAIN MEASUREMENT (1957--2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Opiate receptor demonstrated in nervous tissue — Pert & Snyder 1973 ─────
+  {
+    externalId: 'trajectory:opiate-receptor-demonstrated-nervous-tissue-1973',
+    text: 'Candace Pert and Solomon Snyder reported in Science on March 9, 1973, that a stereospecific opiate receptor exists in mammalian nervous tissue, demonstrated by the saturable binding of tritiated naloxone to brain and guinea-pig intestine, with binding affinities that paralleled the pharmacological potencies of opiate drugs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-03-09',
+        datePrecision: 'DAY',
+        reason: "Pert and Snyder published 'Opiate receptor: demonstration in nervous tissue' in Science, showing that radiolabeled naloxone bound specifically and saturably to a receptor confined to nervous tissue, with binding competition among opiates correlating with their clinical potency. This was the first direct biochemical demonstration of the opioid receptor, converting a pharmacological inference into a physically measurable entity and reframing addiction and analgesia as receptor-mediated phenomena.",
+        source: {
+          externalId: 'src:pert-snyder-opiate-receptor-science-1973',
+          name: 'Pert CB, Snyder SH. Opiate receptor: demonstration in nervous tissue. Science. 1973 Mar 9;179(4077):1011-1014.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4687585/',
+          publishedAt: '1973-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-11-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1978 Albert Lasker Basic Medical Research Award was given to Solomon Snyder, John Hughes, and Hans Kosterlitz for the discovery of opiate receptors and their endogenous ligands. The award, following the 1975 identification of enkephalins as the receptor\'s natural agonists, institutionally ratified the opiate receptor as an established feature of the nervous system and the foundation of modern opioid neuroscience.',
+        source: {
+          externalId: 'src:lasker-1978-basic-research-opioid',
+          name: 'Albert Lasker Basic Medical Research Award, 1978 — Hans W. Kosterlitz, John Hughes, Solomon H. Snyder (opiate receptors and endogenous opioid peptides).',
+          url: 'https://en.wikipedia.org/wiki/Albert_Lasker_Award_for_Basic_Medical_Research',
+          publishedAt: '1978-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Enkephalins — endogenous opioid peptides — Hughes & Kosterlitz 1975 ─────
+  {
+    externalId: 'trajectory:enkephalin-endogenous-opioid-peptides-1975',
+    text: 'John Hughes, Hans Kosterlitz and colleagues reported in Nature on December 18, 1975, that the brain contains two endogenous pentapeptides — Met-enkephalin (Tyr-Gly-Gly-Phe-Met) and Leu-enkephalin (Tyr-Gly-Gly-Phe-Leu) — with potent opiate agonist activity, identifying the body\'s own natural ligands for the opiate receptor.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-12-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-12-18',
+        datePrecision: 'DAY',
+        reason: 'Hughes, Smith, Kosterlitz and colleagues published \'Identification of two related pentapeptides from the brain with potent opiate agonist activity\' in Nature, isolating and sequencing the two enkephalins and confirming them as endogenous opioid agonists. The discovery explained why the brain possessed opiate receptors and opened the field of endogenous opioid peptides underlying pain modulation, reward, and dependence.',
+        source: {
+          externalId: 'src:hughes-kosterlitz-enkephalin-nature-1975',
+          name: 'Hughes J, Smith TW, Kosterlitz HW, Fothergill LA, Morgan BA, Morris HR. Identification of two related pentapeptides from the brain with potent opiate agonist activity. Nature. 1975 Dec 18;258(5536):577-580.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1207728/',
+          publishedAt: '1975-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-11-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1978 Albert Lasker Basic Medical Research Award honored John Hughes and Hans Kosterlitz (with Solomon Snyder) for the discovery of the brain\'s endogenous opioid peptides. Within three years of publication, the enkephalins were institutionally recognized as a settled biological fact and the founding members of the endorphin family that became central to pain and addiction research.',
+        source: {
+          externalId: 'src:lasker-1978-basic-research-enkephalin',
+          name: 'Albert Lasker Basic Medical Research Award, 1978 — Hans W. Kosterlitz, John Hughes, Solomon H. Snyder (endogenous opioid peptides and opiate receptors).',
+          url: 'https://en.wikipedia.org/wiki/Albert_Lasker_Award_for_Basic_Medical_Research',
+          publishedAt: '1978-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── McGill Pain Questionnaire — Melzack 1975 ─────────────────────────────────
+  {
+    externalId: 'trajectory:mcgill-pain-questionnaire-1975',
+    text: 'Ronald Melzack reported in the journal Pain in September 1975 that pain could be measured quantitatively through the McGill Pain Questionnaire, a standardized instrument grouping word descriptors into sensory, affective, and evaluative classes to yield reproducible pain intensity and quality scores.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-09-01',
+        datePrecision: 'MONTH',
+        reason: "Melzack published 'The McGill Pain Questionnaire: major properties and scoring methods' in Pain, introducing a validated multidimensional instrument that let patients characterize the sensory, affective, and evaluative qualities of pain for statistical analysis. The questionnaire recorded the claim that subjective pain is reliably and reproducibly measurable, a methodological prerequisite for evaluating analgesics and pain therapies.",
+        source: {
+          externalId: 'src:melzack-mcgill-pain-questionnaire-pain-1975',
+          name: 'Melzack R. The McGill Pain Questionnaire: major properties and scoring methods. Pain. 1975 Sep;1(3):277-299.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1235985/',
+          publishedAt: '1975-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-08-01',
+        datePrecision: 'MONTH',
+        reason: "Melzack published the Short-Form McGill Pain Questionnaire in Pain in August 1987, condensing the validated original to 15 descriptors for routine clinical and trial use. The refinement reflected the instrument's established status as the most widely used and translated pain-measurement tool internationally, settling the principle that pain is a quantifiable clinical endpoint.",
+        source: {
+          externalId: 'src:melzack-short-form-mpq-pain-1987',
+          name: 'Melzack R. The short-form McGill Pain Questionnaire. Pain. 1987 Aug;30(2):191-197.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3670870/',
+          publishedAt: '1987-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Propoxyphene (Darvon) — safe analgesic reversed — 1957--2010 ─────────────
+  {
+    externalId: 'trajectory:propoxyphene-darvon-safe-analgesic-1957',
+    text: 'Propoxyphene (marketed as Darvon and in combination as Darvocet) was approved by the FDA in 1957 as a safe and effective opioid analgesic for mild-to-moderate pain, a status the FDA reversed on November 19, 2010, when it requested the drug\'s withdrawal from the U.S. market after data showed therapeutic doses cause dangerous cardiac conduction changes.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1957-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved propoxyphene in 1957, establishing it as a safe and effective opioid analgesic for mild-to-moderate pain. It became one of the most widely prescribed painkillers in the United States, dispensed to an estimated tens of millions of patients over the following decades as a settled standard-of-care analgesic.',
+        source: {
+          externalId: 'src:fda-darvon-propoxyphene-label',
+          name: 'FDA. DARVON (propoxyphene hydrochloride capsules, USP) approved labeling, Drugs@FDA (NDA originally approved 1957).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2009/010997s051s052lbl.pdf',
+          publishedAt: '1957-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-07-07',
+        datePrecision: 'DAY',
+        reason: 'On July 7, 2009, the FDA required a stronger boxed warning and a patient medication guide for propoxyphene products and ordered manufacturer Xanodyne to conduct a new cardiac safety study, citing data on fatal overdoses. The agency declined a 2006 Public Citizen petition to withdraw the drug outright, but the new warning and mandated study placed propoxyphene\'s safety formally in question.',
+        source: {
+          externalId: 'src:fda-propoxyphene-boxed-warning-2009',
+          name: 'FDA. FDA strengthens warnings on propoxyphene-containing pain medications (Darvon, Darvocet); requires cardiac safety study. July 7, 2009.',
+          url: 'https://www.medscape.com/viewarticle/705441',
+          publishedAt: '2009-07-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-11-19',
+        datePrecision: 'DAY',
+        reason: 'On November 19, 2010, the FDA announced that Xanodyne had agreed, at the agency\'s request, to withdraw propoxyphene from the U.S. market, with the agency also asking generic manufacturers to do the same. The required QT study had shown that even therapeutic doses prolonged the PR and QT intervals and widened the QRS complex, increasing the risk of fatal arrhythmias. This repudiated the 53-year-old premise that propoxyphene was a safe analgesic.',
+        source: {
+          externalId: 'src:fda-propoxyphene-withdrawal-dsc-2010',
+          name: 'FDA Drug Safety Communication: FDA recommends against the continued use of propoxyphene. November 19, 2010.',
+          url: 'https://www.fda.gov/Drugs/DrugSafety/ucm234338.htm',
+          publishedAt: '2010-11-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
