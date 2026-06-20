@@ -46000,6 +46000,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── MOSAIC trial — oxaliplatin adjuvant colon cancer 2004 ──────────────────
+  {
+    externalId: 'trajectory:oxaliplatin-mosaic-adjuvant-colon-cancer-2004',
+    text: 'The MOSAIC trial reported in the New England Journal of Medicine on 3 June 2004 that adding oxaliplatin to fluorouracil and leucovorin (FOLFOX) as adjuvant therapy significantly improved disease-free survival in resected stage II/III colon cancer, establishing FOLFOX as a new adjuvant standard of care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-06-03',
+        datePrecision: 'DAY',
+        reason: 'André and the MOSAIC investigators published the international phase III trial in 2,246 patients, reporting a 3-year disease-free survival of 78.2% with FOLFOX versus 72.9% with 5-FU/leucovorin alone (hazard ratio 0.77). This recorded in the expert literature the claim that adding oxaliplatin to fluoropyrimidine adjuvant therapy reduces recurrence after curative colon-cancer resection.',
+        source: {
+          externalId: 'src:andre-mosaic-nejm-2004',
+          name: 'André T, Boni C, Mounedji-Boudiaf L, et al. Oxaliplatin, fluorouracil, and leucovorin as adjuvant treatment for colon cancer. N Engl J Med. 2004;350(23):2343-2351.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15175436/',
+          publishedAt: '2004-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-11-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 November 2004 the FDA approved oxaliplatin (Eloxatin) in combination with infusional 5-FU/leucovorin for adjuvant treatment of stage III colon cancer after complete resection, citing the MOSAIC results. The regulatory approval institutionalized FOLFOX as the standard adjuvant regimen for resected node-positive colon cancer.',
+        source: {
+          externalId: 'src:fda-eloxatin-adjuvant-colon-2004',
+          name: 'Eloxatin Receives FDA Indication for Use in Adjuvant Treatment of Stage III Colon Cancer (FDA approval based on the MOSAIC trial). CancerNetwork / ONCOLOGY. 2004.',
+          url: 'https://www.cancernetwork.com/view/eloxatin-receives-fda-indication-use-adjuvant-treatment-stage-iii-colon-cancer',
+          publishedAt: '2005-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── BR.21 — erlotinib NSCLC survival 2004 ──────────────────────────────────
+  {
+    externalId: 'trajectory:erlotinib-br21-nsclc-survival-2004',
+    text: 'Erlotinib (Tarceva), an EGFR tyrosine-kinase inhibitor, became the first EGFR-targeted drug shown in a randomized phase III trial (BR.21) to prolong overall survival in previously treated advanced non-small-cell lung cancer, leading to FDA approval on 18 November 2004 and full publication in the New England Journal of Medicine on 14 July 2005.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-11-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-11-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted regular approval to erlotinib (Tarceva) for locally advanced or metastatic NSCLC after failure of at least one prior chemotherapy regimen, on the strength of the NCIC CTG BR.21 trial showing a survival advantage over placebo. This recorded the regulatory claim that EGFR inhibition extends survival in unselected pretreated lung cancer, in direct contrast to the contemporaneous failure of gefitinib\'s confirmatory ISEL trial.',
+        source: {
+          externalId: 'src:fda-erlotinib-tarceva-oncologist-2005',
+          name: 'Cohen MH, Johnson JR, Chen YF, Sridhara R, Pazdur R. FDA Drug Approval Summary: Erlotinib (Tarceva) Tablets. Oncologist. 2005;10(7):461-466.',
+          url: 'https://dx.doi.org/10.1634/theoncologist.10-7-461',
+          publishedAt: '2005-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-07-14',
+        datePrecision: 'DAY',
+        reason: 'Shepherd and colleagues published the BR.21 trial in the New England Journal of Medicine, reporting median overall survival of 6.7 months with erlotinib versus 4.7 months with placebo (hazard ratio 0.70) in 731 patients with refractory NSCLC. The peer-reviewed survival benefit settled erlotinib as a validated second/third-line therapy and confirmed EGFR inhibition could deliver a survival gain that the gefitinib ISEL trial had failed to show.',
+        source: {
+          externalId: 'src:shepherd-br21-erlotinib-nejm-2005',
+          name: 'Shepherd FA, Rodrigues Pereira J, Ciuleanu T, et al. Erlotinib in previously treated non-small-cell lung cancer. N Engl J Med. 2005;353(2):123-132.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16014882/',
+          publishedAt: '2005-07-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Imatinib GIST — targeted therapy 2002 ──────────────────────────────────
+  {
+    externalId: 'trajectory:imatinib-gist-targeted-therapy-2002',
+    text: 'Imatinib mesylate (Gleevec), already approved for chronic myeloid leukemia, was shown to induce durable responses in advanced KIT-positive gastrointestinal stromal tumors (GIST) — a previously chemotherapy-resistant solid tumor — leading to FDA approval for GIST on 1 February 2002 and pivotal publication in the New England Journal of Medicine on 15 August 2002.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-02-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-02-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved imatinib mesylate for metastatic and/or unresectable malignant GIST via a supplemental NDA, based on a single open-label trial showing major objective responses in a tumor that had been essentially untreatable with conventional chemotherapy. This extended the targeted-kinase paradigm from BCR-ABL in leukemia to KIT in a solid tumor, recording the regulatory claim that imatinib benefits GIST.',
+        source: {
+          externalId: 'src:dagher-imatinib-gist-fda-ccr-2002',
+          name: 'Dagher R, Cohen M, Williams G, et al. Approval summary: imatinib mesylate in the treatment of metastatic and/or unresectable malignant gastrointestinal stromal tumors. Clin Cancer Res. 2002;8(10):3034-3038.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12374669/',
+          publishedAt: '2002-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-08-15',
+        datePrecision: 'DAY',
+        reason: 'Demetri and colleagues published the pivotal randomized trial in the New England Journal of Medicine, reporting partial responses in 53.7% of 147 patients with advanced GIST and sustained disease control with good tolerability. The peer-reviewed evidence settled imatinib as the standard first-line therapy for unresectable/metastatic GIST and demonstrated that molecular targeting of an oncogenic kinase could transform a refractory solid tumor.',
+        source: {
+          externalId: 'src:demetri-imatinib-gist-nejm-2002',
+          name: 'Demetri GD, von Mehren M, Blanke CD, et al. Efficacy and safety of imatinib mesylate in advanced gastrointestinal stromal tumors. N Engl J Med. 2002;347(7):472-480.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12181401/',
+          publishedAt: '2002-08-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── APC trial — celecoxib cardiovascular signal 2005 ───────────────────────
+  {
+    externalId: 'trajectory:celecoxib-apc-cardiovascular-signal-2005',
+    text: 'The Adenoma Prevention with Celecoxib (APC) trial reported in the New England Journal of Medicine on 17 March 2005 that celecoxib (Celebrex) caused a dose-related increase in cardiovascular death, myocardial infarction, stroke, and heart failure, contesting the cardiovascular safety of the COX-2 inhibitor and prompting the FDA to require a boxed warning in April 2005.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-03-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-03-17',
+        datePrecision: 'DAY',
+        reason: 'Solomon and the APC investigators reported that celecoxib for colorectal-adenoma prevention raised the composite cardiovascular endpoint in a dose-related fashion (2.3% at 200 mg twice daily and 3.4% at 400 mg twice daily versus 1.0% placebo). Coming months after the Vioxx withdrawal, the trial moved the long-marketed COX-2 inhibitor\'s cardiovascular safety — previously treated as settled since its 1998 approval — into open scientific contestation.',
+        source: {
+          externalId: 'src:solomon-apc-celecoxib-nejm-2005',
+          name: 'Solomon SD, McMurray JJV, Pfeffer MA, et al. Cardiovascular risk associated with celecoxib in a clinical trial for colorectal adenoma prevention. N Engl J Med. 2005;352(11):1071-1080.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15713944/',
+          publishedAt: '2005-03-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-04-07',
+        datePrecision: 'DAY',
+        reason: 'In April 2005 the FDA, after an advisory-committee review, required a boxed warning on celecoxib and all prescription NSAIDs for cardiovascular and gastrointestinal risk and asked Pfizer to withdraw the related COX-2 drug valdecoxib (Bextra), while allowing Celebrex to remain on the market. Unlike rofecoxib (Vioxx), celecoxib was not withdrawn, institutionalizing a contested-but-marketed status rather than a reversal.',
+        source: {
+          externalId: 'src:fda-nsaid-boxed-warning-memo-2005',
+          name: 'Jenkins JK, Seligman PJ. FDA Decision Memorandum: Analysis and recommendations for Agency action regarding non-steroidal anti-inflammatory drugs and cardiovascular risk. U.S. Food and Drug Administration. 6 April 2005.',
+          url: 'https://www.fda.gov/media/74279/download',
+          publishedAt: '2005-04-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Minnesota FOBT — colorectal cancer screening mortality 1993 ─────────────
+  {
+    externalId: 'trajectory:minnesota-fobt-colorectal-screening-mortality-1993',
+    text: 'The Minnesota Colon Cancer Control Study reported in the New England Journal of Medicine on 13 May 1993 that annual fecal occult-blood testing reduced 13-year cumulative colorectal-cancer mortality by 33%, the first randomized evidence that any screening test lowers death from colorectal cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-05-13',
+        datePrecision: 'DAY',
+        reason: 'Mandel and colleagues reported the Minnesota randomized trial of 46,551 participants, finding that annual fecal occult-blood testing with rehydrated samples cut 13-year colorectal-cancer mortality by 33% versus controls. This recorded the first randomized-trial proof that population screening could reduce death from colorectal cancer, establishing the evidentiary basis for organized screening programs.',
+        source: {
+          externalId: 'src:mandel-minnesota-fobt-nejm-1993',
+          name: 'Mandel JS, Bond JH, Church TR, et al. Reducing mortality from colorectal cancer by screening for fecal occult blood. Minnesota Colon Cancer Control Study. N Engl J Med. 1993;328(19):1365-1371.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8474513/',
+          publishedAt: '1993-05-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-09-19',
+        datePrecision: 'DAY',
+        reason: 'Shaukat and colleagues published 30-year follow-up of the Minnesota cohort in the New England Journal of Medicine, confirming that fecal occult-blood screening produced a durable reduction in colorectal-cancer mortality (relative risk 0.68 for annual and 0.78 for biennial screening). The long-term confirmation settled fecal occult-blood testing as a proven, durable colorectal-cancer screening modality underpinning modern screening guidelines.',
+        source: {
+          externalId: 'src:shaukat-minnesota-fobt-30yr-nejm-2013',
+          name: 'Shaukat A, Mongin SJ, Geisser MS, et al. Long-term mortality after screening for colorectal cancer. N Engl J Med. 2013;369(12):1106-1114.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24047060/',
+          publishedAt: '2013-09-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
