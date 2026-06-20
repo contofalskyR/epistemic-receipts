@@ -50339,6 +50339,133 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & REPRODUCTIVE MEDICINE (1991–2002)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── MRC Vitamin Study — folic acid and neural tube defects 1991 ─────────────
+  {
+    externalId: 'trajectory:mrc-vitamin-study-folic-acid-neural-tube-defects-1991',
+    text: 'On 20 July 1991 the MRC Vitamin Study Research Group published in The Lancet a randomized trial showing that periconceptional folic acid supplementation reduced the recurrence of neural tube defects by 72% (relative risk 0.28), establishing folic acid as a preventive for spina bifida and anencephaly and leading to mandatory U.S. food fortification.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1991-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-07-20',
+        datePrecision: 'DAY',
+        reason: 'The MRC double-blind randomized trial across 33 centres in seven countries demonstrated that 4 mg/day folic acid started before conception prevented 72% of neural-tube-defect recurrences in high-risk women, providing the first definitive experimental proof of causation after years of suggestive observational data. The trial was stopped early because the protective effect was so clear.',
+        source: {
+          externalId: 'src:mrc-vitamin-study-folic-acid-lancet-1991',
+          name: 'MRC Vitamin Study Research Group. Prevention of neural tube defects: results of the Medical Research Council Vitamin Study. Lancet. 1991;338(8760):131-137.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1677062/',
+          publishedAt: '1991-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-03-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a final rule requiring that all enriched cereal-grain products sold in the United States be fortified with folic acid (140 µg/100 g), with mandatory compliance by January 1998. This converted the trial-based recommendation into a population-level public-health mandate, after which reported NTD-affected pregnancies fell measurably.',
+        source: {
+          externalId: 'src:cdc-mmwr-folic-acid-fortification-grand-rounds',
+          name: 'CDC. CDC Grand Rounds: Additional Opportunities to Prevent Neural Tube Defects with Folic Acid Fortification. MMWR Morb Mortal Wkly Rep. 2010;59(31):980-984.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5931a2.htm',
+          publishedAt: '2010-08-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Collaborative Eclampsia Trial — magnesium sulphate 1995 ─────────────────
+  {
+    externalId: 'trajectory:collaborative-eclampsia-trial-magnesium-sulfate-1995',
+    text: 'On 10 June 1995 the Eclampsia Trial Collaborative Group published in The Lancet evidence that magnesium sulphate substantially reduced recurrent convulsions in women with eclampsia compared with diazepam and phenytoin, establishing magnesium sulphate as the anticonvulsant of choice in eclampsia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-06-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-06-10',
+        datePrecision: 'DAY',
+        reason: 'The international randomized Collaborative Eclampsia Trial showed magnesium sulphate cut recurrent seizures by roughly half versus phenytoin and far more versus diazepam, resolving a long-running obstetric debate in favour of magnesium. The result rapidly became the global standard of care for eclampsia and underpinned later prophylactic use in pre-eclampsia.',
+        source: {
+          externalId: 'src:eclampsia-trial-collaborative-group-lancet-1995',
+          name: 'Eclampsia Trial Collaborative Group. Which anticonvulsant for women with eclampsia? Evidence from the Collaborative Eclampsia Trial. Lancet. 1995;345(8963):1455-1463.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7769899/',
+          publishedAt: '1995-06-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mifeprex (mifepristone) FDA approval for medical abortion 2000 ───────────
+  {
+    externalId: 'trajectory:mifepristone-mifeprex-fda-approval-medical-abortion-2000',
+    text: 'On 28 September 2000 the U.S. FDA approved Mifeprex (mifepristone, NDA 020687) for the medical termination of intrauterine pregnancy through 49 days\' gestation, establishing a non-surgical abortion regimen in the United States after a decade of regulatory delay.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-09-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Mifeprex under the restricted-distribution provisions of 21 CFR 314 Subpart H, concluding that mifepristone followed by misoprostol was safe and effective for ending early pregnancy. The approval, issued after years of political and regulatory delay following European licensure, converted a contested reproductive-health intervention into an institutionally sanctioned standard of care in the United States.',
+        source: {
+          externalId: 'src:fda-mifeprex-approval-letter-2000',
+          name: 'U.S. Food and Drug Administration. Approval Letter, MIFEPREX (mifepristone) Tablets, NDA 20-687. September 28, 2000.',
+          url: 'https://webarchive.loc.gov/all/20011116012552/http:/www.fda.gov/cder/foi/appletter/2000/20687appltr.htm',
+          publishedAt: '2000-09-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Shanghai Trial — breast self-examination has no mortality benefit 2002 ───
+  {
+    externalId: 'trajectory:shanghai-trial-breast-self-examination-no-mortality-benefit-2002',
+    text: 'On 2 October 2002 Thomas and colleagues published the final results of the Shanghai randomized trial of breast self-examination in the Journal of the National Cancer Institute, reporting that intensive BSE instruction in 266,064 women did not reduce breast-cancer mortality (risk ratio 1.04), refuting the long-standing recommendation that monthly self-examination saves lives.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1950-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-10-02',
+        datePrecision: 'DAY',
+        reason: 'The definitive Shanghai randomized controlled trial found no difference in breast-cancer mortality between women given intensive BSE instruction and controls, while the instruction group underwent more benign biopsies. Combined with the earlier Russia/WHO trial, this overturned decades of American Cancer Society and clinical promotion of monthly breast self-examination as a mortality-reducing screening practice, and guideline bodies subsequently stopped recommending it.',
+        source: {
+          externalId: 'src:thomas-shanghai-bse-jnci-2002',
+          name: 'Thomas DB, Gao DL, Ray RM, et al. Randomized trial of breast self-examination in Shanghai: final results. J Natl Cancer Inst. 2002;94(19):1445-1457.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12359854/',
+          publishedAt: '2002-10-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // OPIOID EPIDEMIC — FOUNDATIONS & RECKONINGS (1965–2012)
   // ═══════════════════════════════════════════════════════════════════════════════
 
