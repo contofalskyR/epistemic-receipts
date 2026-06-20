@@ -43928,6 +43928,381 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEONATAL & OBSTETRIC MEDICINE (1966–1980)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Rh immune globulin prevents hemolytic disease of the newborn — Freda 1966 ──
+  {
+    externalId: 'trajectory:rh-immune-globulin-prevention-hemolytic-disease-newborn-1966',
+    text: 'Vincent Freda, John Gorman, and William Pollack reported in 1966 that postpartum injection of anti-Rh (anti-D) immune globulin into Rh-negative mothers prevented Rh isoimmunization, providing the basis for preventing hemolytic disease of the newborn.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Freda, Gorman, and Pollack at Columbia, having shown anti-Rh gamma-globulin prevented sensitization in male volunteers, reported a clinical progress trial in Rh-negative mothers demonstrating that passive anti-D suppressed maternal isoimmunization. This recorded the claim that hemolytic disease of the newborn, a major cause of fetal and neonatal death, could be prevented by a single injection rather than only treated.',
+        source: {
+          externalId: 'src:freda-rh-immunoglobulin-progress-report-1966',
+          name: 'Freda VJ, Gorman JG, Pollack W. Prevention of Rh isoimmunization in obstetrics with Rh immunoglobulin: a progress report. J Int Fed Gynaecol Obstet. 1966;4(1):26-37.',
+          url: 'https://obgyn.onlinelibrary.wiley.com/doi/abs/10.1002/j.1879-3479.1966.tb00204.x',
+          publishedAt: '1966-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1968-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following multinational clinical trials coordinated by Pollack across 42 centers, RhoGAM (Rh immune globulin) was licensed in the United States and England in 1968 for postpartum prophylaxis of Rh-negative mothers. Regulatory approval settled anti-D prophylaxis as standard obstetric practice, reducing the rate of Rh sensitization among at-risk mothers from roughly 14% to about 1%.',
+        source: {
+          externalId: 'src:rhogam-at-50-columbia-cuimc-2018',
+          name: 'Columbia University Irving Medical Center. RhoGAM at 50: A Columbia Drug Still Saving Lives of Newborns. 2018 (documenting 1968 U.S. licensure).',
+          url: 'https://www.cuimc.columbia.edu/news/rhogam-50-columbia-drug-still-saving-lives-newborns',
+          publishedAt: '2018-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jones & Smith fetal alcohol syndrome — 1973 ─────────────────────────────
+  {
+    externalId: 'trajectory:jones-smith-fetal-alcohol-syndrome-1973',
+    text: 'Kenneth Jones and David Smith described in The Lancet in 1973 a distinct pattern of craniofacial, growth, and developmental malformations in infants of chronically alcoholic mothers, naming it the fetal alcohol syndrome and establishing maternal alcohol as a teratogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-11-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-11-03',
+        datePrecision: 'MONTH',
+        reason: 'Jones and Smith at the University of Washington reported a recognizable, consistent pattern of malformation — growth deficiency, characteristic facies, and developmental delay — in children of alcoholic mothers, coining the term \'fetal alcohol syndrome.\' The paper recorded the claim that maternal alcohol consumption is a teratogen producing a defined birth-defect syndrome, reopening a question long dismissed as folklore.',
+        source: {
+          externalId: 'src:jones-smith-fetal-alcohol-syndrome-lancet-1973',
+          name: 'Jones KL, Smith DW. Recognition of the fetal alcohol syndrome in early infancy. Lancet. 1973;2(7836):999-1001.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(73)91092-1/fulltext',
+          publishedAt: '1973-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1981-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In July 1981 the U.S. Surgeon General issued the first federal advisory warning pregnant women, and those considering pregnancy, not to drink alcoholic beverages, citing fetal alcohol syndrome and birth defects. This placed federal public-health authority behind the teratogenicity claim, settling maternal alcohol as a recognized cause of preventable birth defects and seeding later mandatory beverage warning labels.',
+        source: {
+          externalId: 'src:surgeon-general-alcohol-pregnancy-advisory-1981',
+          name: 'U.S. Surgeon General. Advisory on alcohol use during pregnancy (FDA Drug Bulletin). July 1981.',
+          url: 'https://www.upi.com/Archives/1981/09/08/A-recent-surgeon-generals-warning-that-pregnant-women-should/4023368769600/',
+          publishedAt: '1981-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fujiwara surfactant replacement for hyaline-membrane disease — 1980 ─────
+  {
+    externalId: 'trajectory:fujiwara-surfactant-replacement-hyaline-membrane-disease-1980',
+    text: 'Tetsuro Fujiwara and colleagues reported in The Lancet on 12 January 1980 that endotracheal instillation of an artificial (modified bovine) pulmonary surfactant in 10 preterm infants severely ill with hyaline-membrane disease rapidly improved oxygenation and radiographic findings, with 8 of 10 surviving.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1980-01-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-12',
+        datePrecision: 'DAY',
+        reason: 'Building on Avery and Mead\'s 1959 surfactant-deficiency hypothesis for hyaline-membrane disease, Fujiwara\'s group in Akita, Japan, gave a surfactant-TA preparation to ten critically ill preterm infants and documented immediate improvement in alveolar-arterial oxygen gradients and resolution of radiographic disease. This was the first reported successful surfactant replacement in human neonates, recording the claim that exogenous surfactant could treat respiratory distress syndrome.',
+        source: {
+          externalId: 'src:fujiwara-artificial-surfactant-hmd-lancet-1980',
+          name: 'Fujiwara T, Maeta H, Chida S, Morita T, Watabe Y, Abe T. Artificial surfactant therapy in hyaline-membrane disease. Lancet. 1980;1(8159):55-59.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6101413/',
+          publishedAt: '1980-01-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-08-06',
+        datePrecision: 'DAY',
+        reason: 'After multicenter randomized trials confirmed reduced mortality and morbidity, the FDA approved Exosurf Neonatal (colfosceril palmitate) on 6 August 1990 as the first commercially licensed pulmonary surfactant in the United States for prevention and treatment of neonatal RDS. Regulatory licensure settled surfactant replacement as standard neonatal care, a therapy that sharply reduced preterm respiratory mortality.',
+        source: {
+          externalId: 'src:exosurf-colfosceril-fda-approval-1990',
+          name: 'NCATS Inxight Drugs. Colfosceril palmitate (Exosurf Neonatal) — FDA approval 6 August 1990.',
+          url: 'https://drugs.ncats.io/drug/319X2NFW0A',
+          publishedAt: '1990-08-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GLOBAL HEALTH & INFECTIOUS DISEASE (1968–1978)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Nalin & Cash oral rehydration therapy — glucose-sodium cotransport 1968 ──
+  {
+    externalId: 'trajectory:oral-rehydration-therapy-glucose-sodium-cotransport-1968',
+    text: 'David Nalin and Richard Cash reported in The Lancet on 17 August 1968 that an oral glucose-electrolyte solution, exploiting glucose-coupled sodium absorption in the small intestine, could maintain hydration in adult cholera patients and reduce required intravenous fluid by about 80%.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-08-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-08-17',
+        datePrecision: 'DAY',
+        reason: 'Nalin, Cash and colleagues at the Pakistan-SEATO Cholera Research Laboratory in Dhaka published a controlled study showing that an oral solution of glucose, sodium chloride, sodium bicarbonate, and potassium given to cholera patients cut intravenous fluid requirements by roughly 80% versus IV-only controls. This put on record, for the first time clinically, that glucose-driven intestinal sodium-water cotransport could be harnessed for rehydration outside the hospital, the empirical foundation of oral rehydration therapy.',
+        source: {
+          externalId: 'src:nalin-cash-oral-maintenance-cholera-lancet-1968',
+          name: 'Nalin DR, Cash RA, Islam R, Molla M, Phillips RA. Oral maintenance therapy for cholera in adults. Lancet. 1968;2(7564):370-373.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4173788/',
+          publishedAt: '1968-08-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-08-05',
+        datePrecision: 'YEAR',
+        reason: 'A 1978 Lancet editorial, \'Water with sugar and salt,\' declared that the coupling of sodium and glucose transport in the small intestine making oral rehydration possible was \'potentially the most important medical advance of this century,\' coinciding with the WHO/UNICEF adoption of oral rehydration salts as the cornerstone of global diarrhoeal-disease control. Expert consensus thereby settled ORT as standard therapy for dehydrating diarrhea, a treatment subsequently credited with saving tens of millions of children.',
+        source: {
+          externalId: 'src:lancet-water-with-sugar-and-salt-editorial-1978',
+          name: 'Editorial. Water with sugar and salt. Lancet. 1978;2(8084):300-301.',
+          url: 'https://doi.org/10.1016/S0140-6736(78)91698-7',
+          publishedAt: '1978-08-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASES & NOVEL THERAPIES (2002–2021)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Rare Diseases Act 2002 — statutory NIH Office of Rare Diseases ──────────
+  {
+    externalId: 'trajectory:rare-diseases-act-2002',
+    text: 'On 6 November 2002 U.S. President George W. Bush signed the Rare Diseases Act of 2002 (Public Law 107-280), which amended the Public Health Service Act to establish a statutory Office of Rare Diseases at the National Institutes of Health, codify the ~200,000-person prevalence definition of a rare disease in federal research law, and authorize a national network of rare-disease research centers.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2002-11-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-11-06',
+        datePrecision: 'DAY',
+        reason: 'Bush signed H.R. 4013 into law as Public Law 107-280 after House passage on 1 October and Senate passage on 17 October 2002. Where the 1983 Orphan Drug Act had created commercial incentives for industry to develop rare-disease drugs, the Rare Diseases Act placed a complementary federal research-infrastructure claim on the statutory record: that NIH must maintain a dedicated Office of Rare Diseases and fund rare-disease clinical research centers. The companion Rare Diseases Orphan Product Development Act (P.L. 107-281) was signed the same day to strengthen FDA grant support.',
+        source: {
+          externalId: 'src:rare-diseases-act-pl-107-280-2002',
+          name: 'U.S. Congress. Rare Diseases Act of 2002, Public Law 107-280, 116 Stat. 1988. November 6, 2002.',
+          url: 'https://www.govinfo.gov/app/details/PLAW-107publ280',
+          publishedAt: '2002-11-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-23',
+        datePrecision: 'DAY',
+        reason: 'When the National Center for Advancing Translational Sciences (NCATS) was established at NIH on 23 December 2011, the Office of Rare Diseases Research and the Rare Diseases Clinical Research Network created under the 2002 Act were carried into it as a permanent division rather than dissolved. The continuity of the rare-disease research mandate across a major NIH reorganization demonstrated that the statutory infrastructure had become durable federal fact rather than a transient program.',
+        source: {
+          externalId: 'src:ncats-rare-diseases-research-history-2023',
+          name: 'Division of Rare Diseases Research Innovation at the National Center for Advancing Translational Sciences, NIH: mission, history, and current research activities. Rare Disease and Orphan Drugs Journal. 2023.',
+          url: 'https://www.oaepublish.com/articles/rdodj.2023.27',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 21st Century Cures Act RMAT designation 2016 ────────────────────────────
+  {
+    externalId: 'trajectory:cures-act-rmat-designation-2016',
+    text: 'On 13 December 2016 the 21st Century Cures Act (Public Law 114-255, Section 3033) created the Regenerative Medicine Advanced Therapy (RMAT) designation, an expedited FDA development and review pathway for cell therapies, gene therapies, and tissue-engineered products — many of them for rare diseases — that show preliminary clinical evidence of addressing an unmet need for a serious condition.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-12-13',
+        datePrecision: 'DAY',
+        reason: 'President Obama signed the 21st Century Cures Act, whose Section 3033 amended the Food, Drug, and Cosmetic Act to add the RMAT designation. The provision recorded a new institutional claim that regenerative medicine therapies warrant their own expedited pathway — with the benefits of breakthrough-therapy designation plus the possibility of approval on surrogate or intermediate endpoints — distinct from the small-molecule-oriented programs that preceded it.',
+        source: {
+          externalId: 'src:cures-act-pl-114-255-2016',
+          name: 'U.S. Congress. 21st Century Cures Act, Public Law 114-255, Section 3033 (Regenerative Medicine Advanced Therapy). December 13, 2016.',
+          url: 'https://www.govinfo.gov/app/details/PLAW-114publ255',
+          publishedAt: '2016-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The FDA issued its final guidance \'Expedited Programs for Regenerative Medicine Therapies for Serious Conditions\' in February 2019, operationalizing the RMAT designation with criteria, evidentiary standards, and review mechanics. With dozens of designations already granted to cell and gene therapy sponsors by that point, the pathway moved from statutory text to settled, routinely used regulatory infrastructure.',
+        source: {
+          externalId: 'src:fda-rmat-regenerative-medicine-guidance-2019',
+          name: 'U.S. FDA. Expedited Programs for Regenerative Medicine Therapies for Serious Conditions; Guidance for Industry. February 2019.',
+          url: 'https://www.fda.gov/media/120267/download',
+          publishedAt: '2019-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fenfluramine/Fintepla for Dravet syndrome 2020 ──────────────────────────
+  {
+    externalId: 'trajectory:fenfluramine-fintepla-dravet-syndrome-2020',
+    text: 'Low-dose fenfluramine — a serotonergic appetite suppressant withdrawn worldwide in 1997 for causing valvular heart disease — is an effective antiseizure therapy for Dravet syndrome, a claim recorded by Lagae and colleagues\' randomized placebo-controlled trial in The Lancet on 21 December 2019 and settled by the FDA\'s approval of Fintepla on 25 June 2020.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-12-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-12-21',
+        datePrecision: 'DAY',
+        reason: 'Lagae et al. reported a phase 3 double-blind randomized trial in which fenfluramine 0.7 mg/kg/day produced a 62.3% greater reduction in monthly convulsive seizure frequency than placebo in children and young adults with Dravet syndrome. The result recorded in the literature that a drug pulled from the market in 1997 for fen-phen valvulopathy could, at far lower antiseizure doses, treat a catastrophic rare epilepsy — a striking drug-repurposing redemption of a withdrawn agent.',
+        source: {
+          externalId: 'src:lagae-fenfluramine-dravet-lancet-2019',
+          name: 'Lagae L, Sullivan J, Knupp K, et al. Fenfluramine hydrochloride for the treatment of seizures in Dravet syndrome: a randomised, double-blind, placebo-controlled trial. Lancet. 2019;394(10216):2243-2254. PMID 31862249.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31862249/',
+          publishedAt: '2019-12-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-06-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved fenfluramine (Fintepla, NDA 212102) for seizures associated with Dravet syndrome in patients aged 2 and older, with a boxed warning for valvular heart disease and pulmonary arterial hypertension and a restricted-distribution REMS requiring echocardiographic monitoring. The approval settled low-dose fenfluramine as a standard antiseizure therapy and formally re-entered to market, under tight cardiac surveillance, a molecule whose 1997 withdrawal had been a landmark post-market-surveillance reversal.',
+        source: {
+          externalId: 'src:fda-fintepla-fenfluramine-daf-2020',
+          name: 'U.S. FDA. Drugs@FDA: FINTEPLA (fenfluramine), NDA 212102, approved 25 June 2020.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=212102',
+          publishedAt: '2020-06-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Triheptanoin/Dojolvi — first LC-FAOD treatment 2020 ─────────────────────
+  {
+    externalId: 'trajectory:triheptanoin-dojolvi-first-lc-faod-treatment-2020',
+    text: 'On 30 June 2020 the U.S. FDA approved triheptanoin (Dojolvi, Ultragenyx, NDA 213687), a synthetic odd-chain medium-chain triglyceride, as the first therapy ever approved for molecularly confirmed long-chain fatty acid oxidation disorders (LC-FAOD), a group of rare inherited metabolic diseases in which the body cannot convert long-chain fats into energy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-06-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved triheptanoin as a source of calories and fatty acids for pediatric and adult patients with LC-FAOD, on the basis of trial data showing reductions in the annualized rate and duration of major clinical events such as rhabdomyolysis, hypoglycemia, and cardiomyopathy. As the first approved drug for a disease group previously managed only with dietary fat modification and emergency glucose, the approval settled odd-carbon medium-chain triglyceride supplementation as a recognized disease-directed therapy for an inborn error of energy metabolism.',
+        source: {
+          externalId: 'src:ultragenyx-dojolvi-fda-approval-2020',
+          name: 'Ultragenyx Pharmaceutical Inc. Ultragenyx Announces U.S. FDA Approval of Dojolvi (UX007/triheptanoin), the First FDA-Approved Therapy for the Treatment of Long-chain Fatty Acid Oxidation Disorders. June 30, 2020.',
+          url: 'https://www.globenewswire.com/news-release/2020/06/30/2055767/0/en/Ultragenyx-Announces-U-S-FDA-Approval-of-Dojolvi-UX007-triheptanoin-the-First-FDA-Approved-Therapy-for-the-Treatment-of-Long-chain-Fatty-Acid-Oxidation-Disorders.html',
+          publishedAt: '2020-06-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Odevixibat/Bylvay — first PFIC treatment 2021 ───────────────────────────
+  {
+    externalId: 'trajectory:odevixibat-bylvay-first-pfic-treatment-2021',
+    text: 'On 20 July 2021 the U.S. FDA approved odevixibat (Bylvay, Albireo), an ileal bile acid transporter inhibitor, as the first drug ever approved to treat pruritus in patients with progressive familial intrahepatic cholestasis (PFIC), a group of rare inherited cholestatic liver diseases.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-07-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved odevixibat for pruritus in PFIC patients aged 3 months and older on the basis of the 24-week placebo-controlled PEDFIC 1 trial in 62 children, which showed improvement in pruritus and serum bile acids. As the first pharmacologic treatment for a disease previously managed only by surgical biliary diversion or liver transplantation, the approval recorded reversible ileal bile-acid-transporter inhibition as a disease-directed PFIC therapy.',
+        source: {
+          externalId: 'src:albireo-bylvay-odevixibat-fda-approval-2021',
+          name: 'Albireo Pharma. Albireo Announces FDA Approval of Bylvay (odevixibat), the First Drug Treatment for Patients With Progressive Familial Intrahepatic Cholestasis (PFIC). July 20, 2021.',
+          url: 'https://www.globenewswire.com/news-release/2021/07/20/2266030/0/en/Albireo-Announces-FDA-Approval-of-Bylvay-odevixibat-the-First-Drug-Treatment-for-Patients-With-Progressive-Familial-Intrahepatic-Cholestasis-PFIC.html',
+          publishedAt: '2021-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Thompson and colleagues published the full PEDFIC 1 phase 3 trial in The Lancet Gastroenterology & Hepatology, confirming that odevixibat significantly improved pruritus and reduced serum bile acids versus placebo in PFIC types 1 and 2. Peer-reviewed publication of the pivotal data entrenched the efficacy claim in the hepatology literature and underpinned subsequent approvals across PFIC subtypes and related cholestatic diseases.',
+        source: {
+          externalId: 'src:thompson-pedfic1-odevixibat-lancet-gh-2022',
+          name: 'Thompson RJ, Arnell H, Artan R, et al. Odevixibat treatment in progressive familial intrahepatic cholestasis: a randomised, placebo-controlled, phase 3 trial (PEDFIC 1). Lancet Gastroenterol Hepatol. 2022;7(9):830-842.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S2772572324001924',
+          publishedAt: '2022-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
