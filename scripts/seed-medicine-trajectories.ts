@@ -38442,6 +38442,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENZYME REPLACEMENT THERAPY ERA (2001–2007)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Laronidase (Aldurazyme) — first ERT for any mucopolysaccharidosis 2003 ───
+  {
+    externalId: 'trajectory:laronidase-aldurazyme-first-mps-ert-2003',
+    text: 'Laronidase (recombinant human α-L-iduronidase, Aldurazyme) is an effective enzyme replacement therapy for mucopolysaccharidosis I (Hurler/Hurler-Scheie/Scheie), a claim established by Kakkis et al. in the New England Journal of Medicine on January 18, 2001 and institutionally settled by FDA marketing approval on April 30, 2003 — the first enzyme replacement therapy for any mucopolysaccharidosis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-01-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-01-18',
+        datePrecision: 'DAY',
+        reason: 'Kakkis, Muenzer, Neufeld and colleagues reported a 52-week open-label trial of weekly intravenous recombinant α-L-iduronidase in 10 MPS I patients, showing reduced hepatomegaly, urinary glycosaminoglycan excretion, improved joint mobility, growth and reduced sleep apnea. This was the first clinical demonstration that the missing lysosomal enzyme could be replaced to ameliorate a mucopolysaccharidosis, moving the efficacy claim from hypothesis to recorded evidence.',
+        source: {
+          externalId: 'src:kakkis-laronidase-mps1-nejm-2001',
+          name: 'Kakkis ED, Muenzer J, Tiller GE, et al. Enzyme-replacement therapy in mucopolysaccharidosis I. N Engl J Med. 2001;344(3):182-188.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11172140/',
+          publishedAt: '2001-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-04-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted marketing approval to Aldurazyme (laronidase, BioMarin/Genzyme, BLA 125058) for MPS I on April 30, 2003, the first approved enzyme replacement therapy for a mucopolysaccharidosis. Regulatory approval converted the trial-stage efficacy claim into a settled institutional fact and a standard of care for Hurler/Hurler-Scheie and moderate-to-severe Scheie patients.',
+        source: {
+          externalId: 'src:fda-aldurazyme-label-2003',
+          name: 'U.S. FDA. Aldurazyme (laronidase) approved labeling, BLA 125058. April 30, 2003.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2003/larobio043003LB.pdf',
+          publishedAt: '2003-04-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Agalsidase beta (Fabrazyme) — first treatment for Fabry disease 2003 ─────
+  {
+    externalId: 'trajectory:agalsidase-beta-fabrazyme-fabry-ert-2003',
+    text: 'Agalsidase beta (recombinant human α-galactosidase A, Fabrazyme) clears globotriaosylceramide deposits and treats Fabry disease, a claim established by Eng et al. in the New England Journal of Medicine on July 5, 2001 and institutionally settled by FDA accelerated approval on April 24, 2003 — the first treatment for Fabry disease in the United States.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-07-05',
+        datePrecision: 'DAY',
+        reason: 'Eng, Desnick and the International Collaborative Fabry Disease Study Group reported a randomized, placebo-controlled trial in which 20 of 29 patients (69%) receiving recombinant α-galactosidase A cleared microvascular endothelial globotriaosylceramide deposits in kidney, heart and skin versus none on placebo. This established the empirical efficacy claim for enzyme replacement in Fabry disease.',
+        source: {
+          externalId: 'src:eng-agalsidase-beta-fabry-nejm-2001',
+          name: 'Eng CM, Guffon N, Wilcox WR, et al. Safety and efficacy of recombinant human α-galactosidase A replacement therapy in Fabry\'s disease. N Engl J Med. 2001;345(1):9-16.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11439963/',
+          publishedAt: '2001-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-04-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to Fabrazyme (agalsidase beta, Genzyme) on April 24, 2003 on the surrogate endpoint of reduced GL-3 deposition in renal capillary endothelium, making it the first approved treatment for Fabry disease. Approval moved the efficacy claim from trial evidence to a settled regulatory and clinical standard.',
+        source: {
+          externalId: 'src:fda-fabrazyme-clinical-review-2003',
+          name: 'U.S. FDA. Agalsidase beta (Fabrazyme) clinical review, BLA. April 24, 2003.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2003/agalgen042403r2.PDF',
+          publishedAt: '2003-04-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Alglucosidase alfa (Myozyme) — first treatment for Pompe disease 2006 ────
+  {
+    externalId: 'trajectory:alglucosidase-alfa-myozyme-pompe-first-treatment-2006',
+    text: 'Alglucosidase alfa (recombinant human acid α-glucosidase, Myozyme) is a life-prolonging enzyme replacement therapy for Pompe disease, established when the FDA approved it on April 28, 2006 as the first treatment for Pompe disease and confirmed by Kishnani et al. in Neurology (published online December 6, 2006), which reported a 99% reduction in the risk of death in infantile-onset disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-04-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Myozyme (alglucosidase alfa, Genzyme, BLA 125141) on April 28, 2006 as the first disease-specific treatment for Pompe disease (acid α-glucosidase deficiency), a previously untreatable and frequently fatal lysosomal glycogen storage disorder. The approval established replacement of the missing GAA enzyme as the standard of care.',
+        source: {
+          externalId: 'src:fda-myozyme-approval-package-2006',
+          name: 'U.S. FDA. Myozyme (alglucosidase alfa) drug approval package, BLA 125141. April 28, 2006.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2006/125141s0000toc.cfm',
+          publishedAt: '2006-04-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-12-06',
+        datePrecision: 'DAY',
+        reason: 'Kishnani and colleagues published the pivotal phase 3 trial of 18 infants with infantile-onset Pompe disease, reporting that enzyme replacement reduced the risk of death by 99% and the risk of death or invasive ventilation by 92% relative to an untreated historical cohort, with all patients surviving to 18 months. The peer-reviewed evidence consolidated the post-approval efficacy claim in the expert literature.',
+        source: {
+          externalId: 'src:kishnani-alglucosidase-pompe-neurology-2006',
+          name: 'Kishnani PS, Corzo D, Nicolino M, et al. Recombinant human acid α-glucosidase: major clinical benefits in infantile-onset Pompe disease. Neurology. 2007;68(2):99-109.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17151339/',
+          publishedAt: '2006-12-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Eculizumab (Soliris) — first complement inhibitor, first PNH treatment 2007
+  {
+    externalId: 'trajectory:eculizumab-soliris-pnh-first-complement-inhibitor-2007',
+    text: 'Eculizumab (Soliris), a humanized monoclonal antibody against complement protein C5, reduces intravascular hemolysis and transfusion dependence in paroxysmal nocturnal hemoglobinuria, a claim established by Hillmen et al. (TRIUMPH) in the New England Journal of Medicine on September 21, 2006 and institutionally settled by FDA approval on March 16, 2007 — the first complement inhibitor and the first approved treatment for PNH.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-09-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-09-21',
+        datePrecision: 'DAY',
+        reason: 'Hillmen and colleagues reported the randomized, double-blind, placebo-controlled TRIUMPH trial in 87 PNH patients, in which eculizumab stabilized hemoglobin without transfusion in 49% of treated patients versus 0% on placebo and cut median transfusion requirements from 10 units to zero. This first demonstrated that terminal complement blockade could control the hemolysis driving PNH.',
+        source: {
+          externalId: 'src:hillmen-eculizumab-pnh-triumph-nejm-2006',
+          name: 'Hillmen P, Young NS, Schubert J, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233-1243.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16990386/',
+          publishedAt: '2006-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Soliris (eculizumab, Alexion, BLA 125166) on March 16, 2007 for the treatment of PNH, the first approved therapy for the disorder and the first therapeutic complement inhibitor. Approval converted the TRIUMPH efficacy claim into a settled institutional fact and inaugurated complement-targeted medicine as a drug class.',
+        source: {
+          externalId: 'src:fda-soliris-approval-package-2007',
+          name: 'U.S. FDA. Soliris (eculizumab) drug approval package, BLA 125166. March 16, 2007.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2007/125166s0000toc.cfm',
+          publishedAt: '2007-03-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Lead-Based Paint Poisoning Prevention Act — PL 91-695 1971 ──────────────
   {
     externalId: 'trajectory:lead-based-paint-poisoning-prevention-act-1971',
