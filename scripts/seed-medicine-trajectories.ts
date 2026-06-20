@@ -46619,7 +46619,7 @@ const TRAJECTORIES: Trajectory[] = [
         community: ‘EXPERT_LITERATURE’,
         occurredAt: ‘1987-10’,
         datePrecision: ‘MONTH’,
-        reason: ‘After replication studies repeatedly failed to reproduce the reported specificity, the APA Task Force on Laboratory Tests in Psychiatry published an overview in the American Journal of Psychiatry concluding that the DST lacked sufficient sensitivity and specificity for routine diagnostic use in depression. This authoritative reassessment overturned Carroll’s diagnostic-specificity claim, ending the DST’s status as a clinical diagnostic test for melancholia.’,
+        reason: "After replication studies repeatedly failed to reproduce the reported specificity, the APA Task Force on Laboratory Tests in Psychiatry published an overview in the American Journal of Psychiatry concluding that the DST lacked sufficient sensitivity and specificity for routine diagnostic use in depression. This authoritative reassessment overturned Carroll’s diagnostic-specificity claim, ending the DST’s status as a clinical diagnostic test for melancholia.",
         source: {
           externalId: ‘src:apa-taskforce-dst-ajp-1987’,
           name: ‘APA Task Force on Laboratory Tests in Psychiatry. The dexamethasone suppression test: an overview of its current status in psychiatry. Am J Psychiatry. 1987;144(10):1253-1262.’,
@@ -47029,6 +47029,350 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'U.S. Food and Drug Administration. FDA Activities Related to Essure (April 2018 sale/distribution restriction; 31 December 2018 Bayer discontinuation of U.S. sales).',
           url: 'https://www.fda.gov/medical-devices/essure-permanent-birth-control/fda-activities-related-essure',
           publishedAt: '2018-04-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OCCUPATIONAL & ENVIRONMENTAL CARCINOGENESIS
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pott chimney sweeps scrotal cancer 1775 ─────────────────────────────────
+  {
+    externalId: 'trajectory:pott-chimney-sweeps-scrotal-cancer-soot-1775',
+    text: 'Percivall Pott reported in his 1775 \'Chirurgical Observations\' that the scrotal cancer (\'soot-wart\') common among chimney sweeps was caused by occupational exposure to soot, the first identification of an environmental/occupational agent as a cause of human cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1775-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1775-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Pott, a London surgeon, observed that scrotal squamous-cell carcinoma clustered in men who had worked as chimney sweeps as boys and attributed it to prolonged soot exposure lodged in the skin. Published in his \'Chirurgical Observations\', this was the first time an environmental occupational exposure was identified as a cause of cancer, founding occupational and environmental carcinogenesis.',
+        source: {
+          externalId: 'src:pott-chirurgical-observations-scrotum-1775',
+          name: 'Pott P. Chirurgical Observations Relative to the Cataract, the Polypus of the Nose, the Cancer of the Scrotum, the Different Kinds of Ruptures, and the Mortification of the Toes and Feet. London: Hawes, Clarke & Collins; 1775. (documented by NLM History of Medicine)',
+          url: 'https://circulatingnow.nlm.nih.gov/2014/01/06/percivall-pott-orthopedics-and-occupational-health/',
+          publishedAt: '1775-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Pott\'s epidemiologic inference was confirmed in the laboratory when Cook, Hewett and Hieger isolated benzo[a]pyrene, a pure cancer-producing polycyclic aromatic hydrocarbon, from coal-tar/soot, identifying the specific chemical class responsible for sweeps\' cancer. This closed the chain from soot exposure to a defined carcinogen, settling Pott\'s 1775 causal claim as established science.',
+        source: {
+          externalId: 'src:cook-hieger-benzopyrene-coal-tar-1933',
+          name: 'Cook JW, Hewett CL, Hieger I. The isolation of a cancer-producing hydrocarbon from coal tar. J Chem Soc. 1933:395-405. (documented in RSC Education, \'Percivall Pott, chimney sweeps and cancer\')',
+          url: 'https://edu.rsc.org/feature/percivall-pott-chimney-sweeps-and-cancer/2020205.article',
+          publishedAt: '1933-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rehn aniline dye bladder cancer 1895 ────────────────────────────────────
+  {
+    externalId: 'trajectory:rehn-aniline-dye-bladder-cancer-1895',
+    text: 'Ludwig Rehn reported in 1895 a cluster of urinary bladder tumours among fuchsine (aniline) dye factory workers in Germany, the first identification of an industrial synthetic chemical exposure as a cause of human cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1895-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Rehn, a Frankfurt surgeon, used the Nitze cystoscope to diagnose bladder tumours in three of 45 workers in a fuchsine (aniline dye) plant and presented his findings at the 1895 Congress of the German Surgical Society, publishing them in Archiv für klinische Chirurgie. He inferred that the dye-manufacturing exposure caused the tumours, recording the first case of an industrial synthetic chemical as a human carcinogen.',
+        source: {
+          externalId: 'src:rehn-blasengeschwuelste-fuchsin-arbeitern-1895',
+          name: 'Rehn L. Blasengeschwülste bei Fuchsin-Arbeitern. Arch Klin Chir. 1895;50:588-600. (documented in Hicks et al., \'Workers Died of Dyes\', Urology 2021)',
+          url: 'https://www.goldjournal.net/article/S0090-4295(21)00400-3/fulltext',
+          publishedAt: '1895-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hueper, Wiley and Wolfe experimentally produced bladder tumours in dogs by administering beta-naphthylamine, demonstrating that a specific aromatic amine used in dye manufacture was the bladder carcinogen Rehn had inferred. This experimental reproduction identified the responsible agent and settled occupational aromatic-amine bladder carcinogenesis as established, later underpinning regulation of these compounds.',
+        source: {
+          externalId: 'src:hueper-betanaphthylamine-bladder-tumors-dogs-1938',
+          name: 'Hueper WC, Wiley FH, Wolfe HD. Experimental production of bladder tumors in dogs by administration of beta-naphthylamine. J Ind Hyg Toxicol. 1938;20:46-84. (documented in \'Workers Died of Dyes\', Urology 2021)',
+          url: 'https://www.goldjournal.net/article/S0090-4295(21)00400-3/fulltext',
+          publishedAt: '1938-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lacassagne estrogen-induced mammary cancer mice 1932 ─────────────────────
+  {
+    externalId: 'trajectory:lacassagne-estrogen-induced-mammary-cancer-mice-1932',
+    text: 'Antoine Lacassagne reported in 1932 that repeated injections of the estrogenic hormone folliculin (estrone) induced mammary carcinoma in male mice of a cancer-prone strain, the first experimental demonstration that a hormone can cause cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following the isolation of estrone in 1929, Lacassagne gave weekly folliculin injections to male mice of a strain with high spontaneous female mammary-cancer rates and observed mammary carcinoma in every treated male. Reported to the Société de Biologie (Comptes Rendus, 1932), this was the first proof that an endogenous hormone could experimentally induce cancer, founding the concept of hormonal carcinogenesis.',
+        source: {
+          externalId: 'src:lacassagne-folliculine-cancers-mamelle-souris-male-1932',
+          name: 'Lacassagne A. Apparition de cancers de la mamelle chez la souris mâle soumise à des injections de folliculine. C R Acad Sci. 1932;195:630-632. (documented in IOM, \'Oral Contraceptives and Breast Cancer\', NBK234352)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234352/',
+          publishedAt: '1932-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lacassagne\'s finding was reproduced and extended across strains and other estrogens over subsequent decades, and exogenous estrogens became firmly established as mammary carcinogens in animal models, as summarized in authoritative reviews of sex-steroid carcinogenesis. The principle that hormones drive carcinogenesis is now foundational to oncology and to the human estrogen–breast-cancer literature.',
+        source: {
+          externalId: 'src:iom-estrogen-mammary-carcinogenesis-review-1991',
+          name: 'Institute of Medicine. Animal Models of Sex Steroid Hormones and Mammary Cancer. In: Oral Contraceptives and Breast Cancer. Washington, DC: National Academy Press; 1991. (NBK234352)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234352/',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bittner milk factor mammary tumor virus 1936 ─────────────────────────────
+  {
+    externalId: 'trajectory:bittner-milk-factor-mammary-tumor-virus-1936',
+    text: 'John J. Bittner reported in Science in 1936 that the high mammary-tumour incidence of certain mouse strains was transmitted to offspring through the mother\'s milk by an extra-chromosomal \'milk factor\', establishing a milk-borne transmissible agent as a cause of mammary cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Through foster-nursing experiments, Bittner showed that newborn mice of a low-tumour strain nursed by high-tumour-strain mothers developed mammary tumours as adults, demonstrating a carcinogenic agent transmitted in milk rather than by genes. Published in Science, this \'milk factor\' recorded the claim that a vertically transmitted, non-Mendelian agent could cause mammary cancer.',
+        source: {
+          externalId: 'src:bittner-nursing-mammary-tumor-mice-science-1936',
+          name: 'Bittner JJ. Some possible effects of nursing on the mammary gland tumor incidence in mice. Science. 1936;84(2172):162. (documented in review of MMTV, PMC9147501)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9147501/',
+          publishedAt: '1936-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Bittner\'s milk factor was visualized as virus particles by electron microscopy in 1949 and ultimately characterized as a retrovirus, the mouse mammary tumour virus (MMTV), around 1966. The molecular identification of the agent settled the claim that a milk-borne virus causes mammary cancer in mice, a foundational result in tumour virology alongside Rous\'s sarcoma virus.',
+        source: {
+          externalId: 'src:mmtv-review-bittner-agent-retrovirus-2022',
+          name: 'Mouse Mammary Tumor Virus (MMTV) and MMTV-like Viruses: An In-depth Look at a Controversial Issue. (review documenting Bittner 1936, 1949 EM visualization, and retrovirus classification). PMC9147501.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9147501/',
+          publishedAt: '2022-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Martland radium dial painters bone sarcoma 1931 ─────────────────────────
+  {
+    externalId: 'trajectory:martland-radium-dial-painters-bone-sarcoma-1931',
+    text: 'Harrison Martland reported in The American Journal of Cancer in 1931 that ingested radium from luminous-paint work caused osteogenic sarcoma and other malignancies in radium-dial painters, establishing internally deposited radioactivity as a human bone carcinogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Building on his 1924–1925 investigation of fatal \'radium necrosis\' among US Radium Corporation dial painters who tipped their brushes with their lips, Martland documented that the ingested radium deposited in bone and produced osteogenic sarcoma and anemias. His 1931 American Journal of Cancer paper recorded internally deposited radium as a cause of human malignancy.',
+        source: {
+          externalId: 'src:martland-malignancy-radioactive-persons-1931',
+          name: 'Martland HS. The occurrence of malignancy in radioactive persons. Am J Cancer. 1931;15(4):2435-2516.',
+          url: 'https://aacrjournals.org/amjcancer/article/15/4/2435/678580/The-Occurrence-of-Malignancy-in-Radio-Active',
+          publishedAt: '1931-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The dial-painter cases provided the human evidence base that led the National Bureau of Standards advisory committee in 1941 to set the first radium body-burden tolerance limit (0.1 microgram), institutionalizing radium as a recognized internal carcinogen. Decades of follow-up of the radium-dial cohorts confirmed the radium-dose/bone-sarcoma relationship, settling Martland\'s claim.',
+        source: {
+          externalId: 'src:radium-dial-painters-tolerance-limit-toxprofile',
+          name: 'Agency for Toxic Substances and Disease Registry. Toxicological Profile for Radium — Health Effects (radium dial painters, osteosarcoma, 1941 tolerance limit). 2024.',
+          url: 'https://www.atsdr.cdc.gov/toxprofiles/tp144.pdf',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY — ACUTE PHASE & SECONDARY PREVENTION (1980–2005)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ISIS-1 intravenous atenolol acute MI 1986 ──────────────────────────────
+  {
+    externalId: 'trajectory:isis1-intravenous-atenolol-acute-mi-1986',
+    text: 'The First International Study of Infarct Survival (ISIS-1) reported in The Lancet on 12 July 1986 that immediate intravenous then oral atenolol given to 16,027 patients with suspected acute myocardial infarction reduced vascular mortality during the treatment period (3.7% vs 4.6%), establishing early beta-blockade in the acute phase of heart attack.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-07-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-07-12',
+        datePrecision: 'DAY',
+        reason: 'The ISIS-1 Collaborative Group randomized 16,027 patients with suspected acute MI to immediate intravenous atenolol (5–10 mg) followed by oral atenolol or to control, and found a significant reduction in vascular mortality over days 0–7 (3.7% vs 4.6%), with most of the benefit in days 0–1. This was the first mega-trial evidence that beta-blockade started in the acute phase of infarction — rather than for long-term secondary prevention — reduces early death, putting acute-phase IV beta-blockade on the scientific record.',
+        source: {
+          externalId: 'src:isis1-atenolol-lancet-1986',
+          name: 'ISIS-1 (First International Study of Infarct Survival) Collaborative Group. Randomised trial of intravenous atenolol among 16 027 cases of suspected acute myocardial infarction: ISIS-1. Lancet. 1986;2(8498):57-66.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2873379/',
+          publishedAt: '1986-07-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-11-05',
+        datePrecision: 'DAY',
+        reason: 'The COMMIT/CCS-2 trial randomized 45,852 acute-MI patients to early intravenous then oral metoprolol or placebo and found no reduction in the composite of death, reinfarction, or cardiac arrest; benefit from fewer reinfarctions and arrhythmias was offset by a significant excess of cardiogenic shock, concentrated in the first days when patients were hemodynamically unstable. By showing net harm from routine early IV beta-blockade in unselected patients, COMMIT directly contested the ISIS-1 practice of giving IV beta-blockers acutely to all, shifting guidelines toward delayed, oral, hemodynamically-guided use.',
+        source: {
+          externalId: 'src:commit-ccs2-metoprolol-lancet-2005',
+          name: 'COMMIT (Clopidogrel and Metoprolol in Myocardial Infarction Trial) Collaborative Group. Early intravenous then oral metoprolol in 45 852 patients with acute myocardial infarction: randomised placebo-controlled trial. Lancet. 2005;366(9497):1622-1632.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16271643/',
+          publishedAt: '2005-11-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sixty Plus oral anticoagulant elderly post-MI 1980 ────────────────────
+  {
+    externalId: 'trajectory:sixty-plus-oral-anticoagulant-elderly-post-mi-1980',
+    text: 'The Sixty Plus Reinfarction Study reported in The Lancet on 8 November 1980 that continuing long-term oral anticoagulant therapy in patients over 60 who had survived a myocardial infarction significantly reduced reinfarction and was the first randomized evidence isolating the benefit of continued anticoagulation in elderly post-MI patients.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-11-08',
+        datePrecision: 'DAY',
+        reason: 'The Sixty Plus Reinfarction Study Research Group took 878 patients over age 60 already on long-term oral anticoagulants after MI and double-blindly randomized them either to continue or to switch to placebo. Withdrawing anticoagulation significantly increased recurrent myocardial infarction (and a non-significant trend toward higher mortality), recording controlled evidence that continued oral anticoagulation prevents reinfarction in elderly survivors — a population in which bleeding fears had previously discouraged treatment.',
+        source: {
+          externalId: 'src:sixty-plus-reinfarction-lancet-1980',
+          name: 'Sixty Plus Reinfarction Study Research Group. A double-blind trial to assess long-term oral anticoagulant therapy in elderly patients after myocardial infarction. Lancet. 1980;2(8202):989-994.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6107674/',
+          publishedAt: '1980-11-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-07-19',
+        datePrecision: 'DAY',
+        reason: 'The Warfarin Re-Infarction Study (WARIS) randomized 1,214 post-MI patients to warfarin or placebo and found warfarin significantly reduced all-cause mortality (by 24%), reinfarction (by 34%), and cerebrovascular events. By demonstrating a hard mortality benefit in a fresh randomized cohort, WARIS confirmed and generalized the Sixty Plus finding, settling oral anticoagulation as an evidence-based secondary-prevention therapy after myocardial infarction (before antiplatelet agents later became the routine first choice).',
+        source: {
+          externalId: 'src:waris-warfarin-post-mi-nejm-1990',
+          name: 'Smith P, Arnesen H, Holme I. The effect of warfarin on mortality and reinfarction after myocardial infarction. N Engl J Med. 1990;323(3):147-152.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2194126/',
+          publishedAt: '1990-07-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EWPHE antihypertensive treatment elderly 1985 ─────────────────────────
+  {
+    externalId: 'trajectory:ewphe-antihypertensive-treatment-elderly-1985',
+    text: 'The European Working Party on High Blood Pressure in the Elderly (EWPHE) trial reported in The Lancet on 15 June 1985 that antihypertensive drug treatment in patients aged 60 and over reduced cardiovascular mortality, the first randomized evidence that treating high blood pressure benefits the elderly rather than harming them.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-06-15',
+        datePrecision: 'DAY',
+        reason: 'Amery and colleagues randomized 840 patients aged 60 or older with hypertension to a hydrochlorothiazide–triamterene regimen (with methyldopa added as needed) or placebo, and found active treatment reduced cardiovascular mortality and cardiovascular events, with the largest effect on cerebrovascular and cardiac deaths. This recorded the first randomized evidence that lowering blood pressure in older patients is beneficial, challenging the then-common clinical reluctance to treat hypertension in the elderly for fear of harm.',
+        source: {
+          externalId: 'src:ewphe-amery-lancet-1985',
+          name: 'Amery A, Birkenhäger W, Brixko P, et al. (European Working Party on High Blood Pressure in the Elderly). Mortality and morbidity results from the European Working Party on High Blood Pressure in the Elderly trial. Lancet. 1985;1(8442):1349-1354.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2861311/',
+          publishedAt: '1985-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-11-23',
+        datePrecision: 'DAY',
+        reason: 'The Swedish Trial in Old Patients with Hypertension (STOP-Hypertension) randomized 1,627 patients aged 70–84 to active antihypertensive therapy or placebo and found a significant reduction in stroke, total mortality, and cardiovascular events, leading to early termination. Coming alongside SHEP and the MRC elderly trial, STOP-Hypertension converted the EWPHE signal into a robust, replicated consensus, settling antihypertensive treatment of older patients as standard guideline-endorsed practice.',
+        source: {
+          externalId: 'src:stop-hypertension-dahlof-lancet-1991',
+          name: 'Dahlöf B, Lindholm LH, Hansson L, et al. Morbidity and mortality in the Swedish Trial in Old Patients with Hypertension (STOP-Hypertension). Lancet. 1991;338(8778):1281-1285.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1682683/',
+          publishedAt: '1991-11-23',
           methodologyType: 'primary',
         },
       },
