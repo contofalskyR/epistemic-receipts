@@ -52462,6 +52462,320 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1987–2000) — cardiovascular pharmacology
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Helsinki Heart Study — gemfibrozil primary prevention 1987 ────────────
+  {
+    externalId: 'trajectory:helsinki-heart-study-gemfibrozil-primary-prevention-1987',
+    text: 'On 12 November 1987 the Helsinki Heart Study reported that the fibrate gemfibrozil reduced the incidence of coronary heart disease by 34% over five years in middle-aged dyslipidemic men without prior heart disease, the first randomized trial showing that a fibrate prevents first cardiac events.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-11-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-11-12',
+        datePrecision: 'DAY',
+        reason: 'Frick and colleagues published the Helsinki Heart Study in NEJM, a randomized double-blind placebo-controlled primary-prevention trial in 4,081 asymptomatic dyslipidemic men aged 40-55. Gemfibrozil produced a 34% reduction in coronary heart disease incidence (cardiac event rate 27.3 vs 41.4 per 1,000) with no change in total mortality. This put on the record the novel claim that a fibrate could prevent a first coronary event by modifying lipids in apparently healthy men.',
+        source: {
+          externalId: 'src:frick-helsinki-heart-study-gemfibrozil-nejm-1987',
+          name: 'Frick MH, Elo O, Haapa K, et al. Helsinki Heart Study: primary-prevention trial with gemfibrozil in middle-aged men with dyslipidemia. Safety of treatment, changes in risk factors, and incidence of coronary heart disease. N Engl J Med. 1987;317(20):1237-1245.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3313041/',
+          publishedAt: '1987-11-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-08-05',
+        datePrecision: 'DAY',
+        reason: 'The VA-HIT trial (Rubins et al., NEJM) randomized 2,531 men with coronary disease and low HDL cholesterol and found that gemfibrozil reduced the primary composite of coronary death or nonfatal myocardial infarction by 22% over a median 5.1 years. This independent secondary-prevention confirmation of the Helsinki finding settled gemfibrozil as an evidence-based therapy for the low-HDL/high-triglyceride dyslipidemic phenotype, a status reflected in subsequent NCEP and lipid-management guidelines.',
+        source: {
+          externalId: 'src:rubins-va-hit-gemfibrozil-nejm-1999',
+          name: 'Rubins HB, Robins SJ, Collins D, et al. Gemfibrozil for the secondary prevention of coronary heart disease in men with low levels of high-density lipoprotein cholesterol. N Engl J Med. 1999;341(6):410-418.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10438259/',
+          publishedAt: '1999-08-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Coronary Drug Project — estrogen cardioprotection reversal 1970 ────────
+  {
+    externalId: 'trajectory:coronary-drug-project-estrogen-cardioprotection-reversal-1970',
+    text: 'On 16 November 1970 the Coronary Drug Project reported that high-dose conjugated estrogen (5.0 mg/day) given to men after myocardial infarction increased nonfatal cardiovascular events and total mortality, leading to discontinuation of the estrogen arm and reversing the prevailing belief that estrogen protects men against coronary heart disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-11-16',
+        datePrecision: 'DAY',
+        reason: 'The Coronary Drug Project — a randomized, double-blind, placebo-controlled secondary-prevention trial in 8,341 men with prior myocardial infarction — was launched partly to test the epidemiology-derived hypothesis that estrogen, presumed to explain women\'s lower coronary risk, would protect men. The investigators reported in JAMA that the 5.0 mg/day conjugated-estrogen group showed excess nonfatal cardiovascular events and an adverse mortality trend, forcing early discontinuation of that arm. This empirically reversed the estrogen-cardioprotection-in-men hypothesis and became an early caution against extrapolating observational sex differences into hormonal therapy.',
+        source: {
+          externalId: 'src:coronary-drug-project-estrogen-jama-1970',
+          name: 'Coronary Drug Project Research Group. The Coronary Drug Project: initial findings leading to modifications of its research protocol. JAMA. 1970;214(7):1303-1313.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4320008/',
+          publishedAt: '1970-11-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Short-acting nifedipine cardiac safety reversal 1986–1995 ─────────────
+  {
+    externalId: 'trajectory:short-acting-nifedipine-cardiac-safety-reversal-1986',
+    text: 'The belief that short-acting nifedipine — the first dihydropyridine calcium-channel blocker, introduced in 1981 — was a safe, effective treatment for angina and hypertension was contested on publication of the HINT trial in November 1986, which found that nifedipine given alone tended to increase myocardial infarction in unstable angina.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1981-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-11-01',
+        datePrecision: 'MONTH',
+        reason: 'After nifedipine\'s 1981 introduction it was widely adopted for angina and hypertension. The Holland Interuniversity Nifedipine/Metoprolol Trial (HINT), a randomized double-blind placebo-controlled trial in patients with unstable angina, reported in the British Heart Journal that nifedipine used alone (without beta-blockade) conferred no benefit and trended toward more myocardial infarction (rate ratio for infarction 1.51), while metoprolol helped. This was the first randomized signal that short-acting nifedipine monotherapy could be detrimental in acute coronary disease, contesting its presumed safety.',
+        source: {
+          externalId: 'src:hint-nifedipine-metoprolol-unstable-angina-bhj-1986',
+          name: 'Holland Interuniversity Nifedipine/Metoprolol Trial (HINT) Research Group. Early treatment of unstable angina in the coronary care unit: a randomised, double blind, placebo controlled comparison of recurrent ischaemia in patients treated with nifedipine or metoprolol or both. Br Heart J. 1986;56(5):400-413.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2878675/',
+          publishedAt: '1986-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-09-01',
+        datePrecision: 'DAY',
+        reason: 'Furberg, Psaty, and Meyer published a meta-analysis in Circulation showing a dose-related increase in total mortality with short-acting nifedipine in patients with coronary disease (risk ratio 2.83 at 80 mg/day). Together with the companion case-control work, this triggered the international \'calcium-antagonist controversy\' and effectively reversed the use of short-acting nifedipine for coronary disease and hypertensive emergencies, while long-acting dihydropyridines remained accepted.',
+        source: {
+          externalId: 'src:furberg-nifedipine-mortality-circulation-1995',
+          name: 'Furberg CD, Psaty BM, Meyer JV. Nifedipine. Dose-related increase in mortality in patients with coronary heart disease. Circulation. 1995;92(5):1326-1331.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7648682/',
+          publishedAt: '1995-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HIV / VIRAL HEPATITIS THERAPY (2000–2013)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Enfuvirtide — first HIV fusion/entry inhibitor 2003 ────────────────────
+  {
+    externalId: 'trajectory:enfuvirtide-first-fusion-inhibitor-2003',
+    text: 'Enfuvirtide (T-20, Fuzeon), a peptide HIV-1 gp41 fusion inhibitor, was shown to add significant viral-load suppression to optimized background therapy in multidrug-resistant HIV and was approved by the FDA on 13 March 2003 as the first viral-entry-blocking antiretroviral.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to enfuvirtide (Fuzeon) on 13 March 2003 based on 24-week TORO trial data, making it the first HIV fusion/entry inhibitor and the first new mechanistic antiretroviral class since the protease inhibitors of 1996. Regulatory recognition established, on a conditional basis, that the viral membrane-fusion step (gp41) is a druggable target.',
+        source: {
+          externalId: 'src:aidsmap-fuzeon-fda-approval-2003',
+          name: 'aidsmap. Fuzeon fury: price of first FDA-approved HIV fusion inhibitor sparks protest in US. March 2003.',
+          url: 'https://www.aidsmap.com/news/mar-2003/fuzeon-fury-price-first-fda-approved-hiv-fusion-inhibitor-sparks-protest-us',
+          publishedAt: '2003-03-13',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-05-29',
+        datePrecision: 'DAY',
+        reason: 'Lalezari and the TORO 1 Study Group published the pivotal phase 3 randomized trial in the New England Journal of Medicine, showing that adding enfuvirtide produced a 1.70 log10 drop in HIV-1 RNA versus 0.76 log10 with optimized background therapy alone (P<0.001). The result confirmed in peer-reviewed literature that fusion inhibition is clinically effective, settling gp41/entry as a validated antiretroviral mechanism.',
+        source: {
+          externalId: 'src:lalezari-toro1-enfuvirtide-nejm-2003',
+          name: 'Lalezari JP, et al. (TORO 1 Study Group). Enfuvirtide, an HIV-1 fusion inhibitor, for drug-resistant HIV infection in North and South America. N Engl J Med. 2003;348(22):2175-85.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12637625/',
+          publishedAt: '2003-05-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Maraviroc — first CCR5 co-receptor antagonist 2007 ─────────────────────
+  {
+    externalId: 'trajectory:maraviroc-first-ccr5-antagonist-2007',
+    text: 'Maraviroc (Selzentry), the first CCR5 co-receptor antagonist, was approved by the FDA on 6 August 2007 for treatment-experienced patients with R5-tropic HIV-1, validating a host cell receptor (rather than a viral enzyme) as an antiretroviral target.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2007-08-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-08-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved maraviroc on 6 August 2007 for combination treatment of treatment-experienced adults with CCR5-tropic HIV-1, the first antiretroviral to target a host receptor rather than the virus. Approval established, conditionally, that blockade of the CCR5 co-receptor can suppress HIV-1, while requiring a tropism test to identify eligible R5 virus.',
+        source: {
+          externalId: 'src:pfizer-selzentry-fda-approval-2007',
+          name: 'Pfizer. Pfizer\'s Selzentry (Maraviroc) Tablets, Novel Treatment for HIV, Approved by FDA. 6 August 2007.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/pfizer_s_selzentrytm_maraviroc_tablets_novel_treatment_for_hiv_approved_by_fda',
+          publishedAt: '2007-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-10-02',
+        datePrecision: 'DAY',
+        reason: 'Gulick and colleagues published the pooled MOTIVATE 1 and MOTIVATE 2 phase 3 results in the New England Journal of Medicine, showing significantly greater viral suppression and CD4 gains with maraviroc plus optimized background therapy versus placebo at 48 weeks in R5 HIV-1. The peer-reviewed confirmation settled host CCR5 antagonism as a valid, if tropism-restricted, antiretroviral mechanism.',
+        source: {
+          externalId: 'src:gulick-motivate-maraviroc-nejm-2008',
+          name: 'Gulick RM, et al. Maraviroc for previously treated patients with R5 HIV-1 infection. N Engl J Med. 2008;359(14):1429-41.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18832244/',
+          publishedAt: '2008-10-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Raltegravir — first HIV integrase strand-transfer inhibitor 2007 ────────
+  {
+    externalId: 'trajectory:raltegravir-first-integrase-inhibitor-2007',
+    text: 'Raltegravir (Isentress), the first HIV-1 integrase strand-transfer inhibitor, was approved by the FDA on 12 October 2007 after the BENCHMRK trials showed potent viral suppression in triple-class drug-resistant HIV when added to optimized background therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2007-10-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-10-12',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to raltegravir on 12 October 2007 based on 24-week BENCHMRK data, making it the first agent in the integrase strand-transfer inhibitor class. This conditional regulatory recognition validated HIV integrase, the third viral enzyme, as a clinically druggable target.',
+        source: {
+          externalId: 'src:aidsinfo-raltegravir-fda-approval-2007',
+          name: 'NIH AIDSinfo. FDA Approves the First Integrase Inhibitor, Raltegravir. 12 October 2007.',
+          url: 'https://aidsinfo.nih.gov/news/803/fda-approves-the-first-integrase-inhibitor--raltegravir---october-12--2007',
+          publishedAt: '2007-10-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-07-24',
+        datePrecision: 'DAY',
+        reason: 'Steigbigel and colleagues published the combined BENCHMRK-1 and BENCHMRK-2 phase 3 results in the New England Journal of Medicine, with 62.1% of raltegravir recipients versus 32.9% of placebo recipients achieving HIV-1 RNA below 50 copies/mL at 48 weeks. The durable, peer-reviewed superiority settled integrase inhibition as an effective antiretroviral strategy, a class that later became preferred first-line therapy.',
+        source: {
+          externalId: 'src:steigbigel-benchmrk-raltegravir-nejm-2008',
+          name: 'Steigbigel RT, et al. Raltegravir with optimized background therapy for resistant HIV-1 infection. N Engl J Med. 2008;359(4):339-54.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18650512/',
+          publishedAt: '2008-07-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Peginterferon + ribavirin — HCV standard of care reversed 2002–2013 ────
+  {
+    externalId: 'trajectory:peginterferon-ribavirin-hcv-standard-of-care-2002',
+    text: 'Fried et al. demonstrated in the New England Journal of Medicine on 26 September 2002 that peginterferon alfa-2a plus ribavirin produced higher sustained virologic response in chronic hepatitis C than standard interferon alfa-2b plus ribavirin, establishing pegylated-interferon combination therapy as the standard of care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-09-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-09-26',
+        datePrecision: 'DAY',
+        reason: 'Fried and colleagues published the pivotal randomized trial showing peginterferon alfa-2a plus ribavirin achieved a 56% sustained virologic response versus 44% for standard interferon alfa-2b plus ribavirin and 29% for peginterferon monotherapy. The trial, with companion work by Manns (Lancet 2001), rapidly settled weekly pegylated-interferon plus ribavirin as the global standard of care for chronic hepatitis C for the next decade.',
+        source: {
+          externalId: 'src:fried-peginterferon-ribavirin-hcv-nejm-2002',
+          name: 'Fried MW, et al. Peginterferon alfa-2a plus ribavirin for chronic hepatitis C virus infection. N Engl J Med. 2002;347(13):975-82.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12324553/',
+          publishedAt: '2002-09-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'ABANDONED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-12-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved sofosbuvir (Sovaldi) on 6 December 2013, the first direct-acting antiviral enabling interferon-free regimens with cure rates above 90% and far less toxicity. Within roughly two years, interferon-based therapy — the settled standard since 2002 — was abandoned across hepatitis C guidelines, a near-total reversal of the prevailing treatment paradigm.',
+        source: {
+          externalId: 'src:gilead-sovaldi-sofosbuvir-fda-approval-2013',
+          name: 'Gilead Sciences. U.S. Food and Drug Administration Approves Gilead\'s Sovaldi (Sofosbuvir) for the Treatment of Chronic Hepatitis C. 6 December 2013.',
+          url: 'https://www.gilead.com/news/news-details/2013/us-food-and-drug-administration-approves-gileads-sovaldi-sofosbuvir-for-the-treatment-of-chronic-hepatitis-c',
+          publishedAt: '2013-12-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PROMISE trial — oral milrinone heart failure mortality reversal 1991 ───
+  {
+    externalId: 'trajectory:promise-oral-milrinone-heart-failure-mortality-reversal-1991',
+    text: 'On 21 November 1991 the PROMISE trial reported that long-term oral milrinone, a positive inotrope that improves cardiac hemodynamics, increased all-cause mortality by 28% in patients with severe chronic heart failure, reversing the rationale that boosting contractility improves heart-failure survival.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1984-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-11-21',
+        datePrecision: 'DAY',
+        reason: 'Oral phosphodiesterase-inhibitor inotropes such as milrinone had been developed on the rationale that their short-term hemodynamic improvement would benefit failing hearts. The PROMISE trial (Packer et al., NEJM), a randomized placebo-controlled trial in 1,088 patients with severe heart failure, found that milrinone increased all-cause mortality by 28% and cardiovascular mortality by 34%, with the worst effect in NYHA class IV patients. This reversed the inotrope hypothesis and became a landmark warning that hemodynamic surrogate improvement can mask increased mortality.',
+        source: {
+          externalId: 'src:packer-promise-milrinone-nejm-1991',
+          name: 'Packer M, Carver JR, Rodeheffer RJ, et al. Effect of oral milrinone on mortality in severe chronic heart failure. N Engl J Med. 1991;325(21):1468-1475.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1944425/',
+          publishedAt: '1991-11-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
