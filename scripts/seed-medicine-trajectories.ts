@@ -40027,6 +40027,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL TECHNIQUE ERA (1960s–2000s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Total mesorectal excision — Heald 1982 ──────────────────────────────────
+  {
+    externalId: 'trajectory:heald-total-mesorectal-excision-rectal-cancer-1982',
+    text: 'Total mesorectal excision (TME) — precise sharp dissection removing the rectum within its intact enveloping mesorectum — sharply reduces local pelvic recurrence after rectal cancer surgery, as introduced by R. J. Heald and colleagues in the British Journal of Surgery in October 1982.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Heald, Husband, and Ryall reported finding microscopic adenocarcinoma deposits in the mesorectum several centimetres below the visible tumour edge — tissue routinely left in the pelvis during orthodox blunt anterior resection — and proposed that complete sharp excision of the intact mesorectum would remove this seedbed of recurrence. The paper recorded in the surgical literature the claim that pelvic recurrence after rectal cancer surgery was largely an avoidable, technique-dependent failure rather than inherent tumour biology.',
+        source: {
+          externalId: 'src:heald-mesorectum-clue-pelvic-recurrence-bjs-1982',
+          name: 'Heald RJ, Husband EM, Ryall RD. The mesorectum in rectal cancer surgery--the clue to pelvic recurrence? Br J Surg. 1982;69(10):613-616.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6751457/',
+          publishedAt: '1982-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-06-28',
+        datePrecision: 'DAY',
+        reason: 'Heald and Ryall reported a consecutive Basingstoke series in The Lancet showing a 5-year cumulative local recurrence risk of only 3.7% with TME, against the 25–30% local-failure rates then typical, achieved without adjuvant chemotherapy or radiotherapy. The dramatic outcome converted TME from a single surgeon\'s hypothesis into the benchmark technique, and it was subsequently codified as the standard of rectal cancer surgery and the basis of national programmes and the Dutch TME trial.',
+        source: {
+          externalId: 'src:heald-ryall-tme-recurrence-survival-lancet-1986',
+          name: 'Heald RJ, Ryall RDH. Recurrence and survival after total mesorectal excision for rectal cancer. Lancet. 1986;1(8496):1479-1482.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(86)91510-2/fulltext',
+          publishedAt: '1986-06-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lichtenstein tension-free mesh hernioplasty — 1989 ──────────────────────
+  {
+    externalId: 'trajectory:lichtenstein-tension-free-mesh-hernioplasty-1989',
+    text: 'The Lichtenstein \'tension-free\' hernioplasty — reinforcing the inguinal floor with a flat synthetic mesh instead of suturing native tissues under tension — produces markedly lower recurrence than conventional sutured repair, as reported by Irving Lichtenstein and colleagues in the American Journal of Surgery in February 1989.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Lichtenstein, Shulman, Amid, and Montllor argued that the high recurrence of classic herniorrhaphy stemmed from suturing anatomically displaced tissues under tension, and described bridging the defect tension-free with a polypropylene mesh. Reporting essentially no recurrences in a large series, the paper recorded the claim that prosthetic reinforcement, not tissue approximation, was the correct mechanical principle for durable inguinal hernia repair.',
+        source: {
+          externalId: 'src:lichtenstein-tension-free-hernioplasty-amjsurg-1989',
+          name: 'Lichtenstein IL, Shulman AG, Amid PK, Montllor MM. The tension-free hernioplasty. Am J Surg. 1989;157(2):188-193.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2916733/',
+          publishedAt: '1989-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The EU Hernia Trialists Collaboration pooled the randomized trials of mesh versus non-mesh groin hernia repair in Annals of Surgery and found that synthetic mesh substantially reduced the risk of recurrence compared with sutured techniques. The meta-analytic confirmation across many RCTs settled tension-free mesh repair as the evidence-based standard for inguinal hernia, displacing the century-old sutured Bassini-type operations.',
+        source: {
+          externalId: 'src:eu-hernia-trialists-mesh-meta-analysis-annsurg-2002',
+          name: 'EU Hernia Trialists Collaboration. Repair of groin hernia with synthetic mesh: meta-analysis of randomized controlled trials. Ann Surg. 2002;235(3):322-332.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11882753/',
+          publishedAt: '2002-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Burke effective period of surgical antibiotic prophylaxis — 1961 ─────────
+  {
+    externalId: 'trajectory:burke-effective-period-surgical-antibiotic-prophylaxis-1961',
+    text: 'Prophylactic antibiotics prevent surgical wound infection only during a brief \'effective\' or decisive period of roughly the first few hours after bacterial contamination, so they must be present in the tissue at the time of incision rather than given afterward, as demonstrated experimentally by John F. Burke in Surgery in July 1961.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Burke, using staphylococcal dermal and incisional lesions in guinea pigs, showed that antibiotics suppressed developing infection only if given before or within the first ~3 hours of contamination, after which they were useless — defining a short \'effective period\' of preventive antibiotic action. This recorded the foundational principle that the timing of prophylaxis relative to incision, not merely the choice of drug, determines whether surgical wound infection is prevented.',
+        source: {
+          externalId: 'src:burke-effective-period-preventive-antibiotic-surgery-1961',
+          name: 'Burke JF. The effective period of preventive antibiotic action in experimental incisions and dermal lesions. Surgery. 1961;50:161-168.',
+          url: 'https://www.surgjournal.com/article/0039-6060(61)90019-8/abstract',
+          publishedAt: '1961-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-01-30',
+        datePrecision: 'DAY',
+        reason: 'Classen and colleagues prospectively followed 2,847 elective surgical patients and confirmed in humans that antibiotics administered in the two hours before incision yielded the lowest wound-infection rates, while doses given after incision or too early were markedly less protective. The clinical validation of Burke\'s experimental \'effective period\' settled preoperative timing as standard practice and became the basis of national surgical-prophylaxis quality measures (e.g., SCIP).',
+        source: {
+          externalId: 'src:classen-timing-prophylactic-antibiotics-nejm-1992',
+          name: 'Classen DC, Evans RS, Pestotnik SL, Horn SD, Menlove RL, Burke JP. The timing of prophylactic administration of antibiotics and the risk of surgical-wound infection. N Engl J Med. 1992;326(5):281-286.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1728731/',
+          publishedAt: '1992-01-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── National Halothane Study — hepatic necrosis — 1966 ──────────────────────
+  {
+    externalId: 'trajectory:national-halothane-study-hepatic-necrosis-1966',
+    text: 'The National Halothane Study, a large U.S. multi-hospital investigation reported in JAMA in 1966, concluded that halothane anesthesia carried no overall excess of fatal postoperative hepatic necrosis and that massive necrosis was extremely rare — reassurance later contested when an immune-mediated \'halothane hepatitis\' was confirmed as a real, rare entity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-09-01',
+        datePrecision: 'MONTH',
+        reason: 'After alarming case reports linked the popular anesthetic halothane to fatal postoperative liver failure, the NAS-NRC-commissioned National Halothane Study reviewed roughly 856,000 anesthetic administrations across 34 hospitals and reported in JAMA that halothane showed no excess overall mortality and that unexplained massive hepatic necrosis was vanishingly rare. As one of the first large multicenter outcome studies, it recorded a broadly reassuring verdict that defused the immediate controversy and kept halothane in routine use.',
+        source: {
+          externalId: 'src:national-halothane-study-summary-jama-1966',
+          name: 'Subcommittee on the National Halothane Study (Bunker JP, et al.). Summary of the national halothane study. Possible association between halothane anesthesia and postoperative hepatic necrosis. JAMA. 1966;197(10):775-788.',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/337934',
+          publishedAt: '1966-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-10-27',
+        datePrecision: 'DAY',
+        reason: 'Neuberger and Williams marshalled clinical and immunological evidence in the BMJ that halothane does cause a distinct, rare, immune-mediated hepatitis — driven by cytochrome-P450 oxidation of halothane to trifluoroacetylated liver-protein antigens, with greatly elevated risk after repeated exposure. This reopened what the 1966 study had appeared to close, establishing halothane hepatitis as a genuine adverse reaction and contributing to halothane\'s progressive replacement by newer agents in developed countries.',
+        source: {
+          externalId: 'src:neuberger-williams-halothane-liver-damage-bmj-1984',
+          name: 'Neuberger J, Williams R. Halothane anaesthesia and liver damage. Br Med J (Clin Res Ed). 1984;289(6452):1136-1139.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6435802/',
+          publishedAt: '1984-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
