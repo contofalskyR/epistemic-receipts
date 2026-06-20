@@ -45817,6 +45817,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Thomas — First human bone marrow transplantation 1957 ──────────────────
+  {
+    externalId: 'trajectory:thomas-first-human-bone-marrow-transplantation-1957',
+    text: 'On 12 September 1957, E. Donnall Thomas and colleagues reported in the New England Journal of Medicine that human bone marrow could be harvested and infused intravenously into patients after radiation and chemotherapy, establishing that marrow transplantation was technically feasible and safe in humans.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-09-12',
+        datePrecision: 'DAY',
+        reason: 'Thomas, Lochte, Lu, and Ferrebee reported infusing bone marrow intravenously into six patients receiving radiation and chemotherapy, showing for the first time that human marrow could be collected, stored, and administered safely in significant quantities. The paper recorded the feasibility claim that would underpin all subsequent hematopoietic transplantation, though durable engraftment was not yet achieved.',
+        source: {
+          externalId: 'src:thomas-marrow-infusion-nejm-1957',
+          name: 'Thomas ED, Lochte HL, Lu WC, Ferrebee JW. Intravenous infusion of bone marrow in patients receiving radiation and chemotherapy. N Engl J Med. 1957;257(11):491-496.',
+          url: 'https://www.nejm.org/doi/abs/10.1056/NEJM195709122571102',
+          publishedAt: '1957-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-12-28',
+        datePrecision: 'DAY',
+        reason: 'Gatti, Meuwissen, Allen, Hong, and Good reported in the Lancet the first successful allogeneic bone marrow transplant, durably correcting X-linked severe combined immunodeficiency in an infant using marrow from a sibling donor. This proved that an otherwise-fatal inherited disease could be cured by transplanted allogeneic marrow, converting feasibility into established curative therapy; the approach was institutionally ratified when Thomas received the 1990 Nobel Prize in Physiology or Medicine.',
+        source: {
+          externalId: 'src:gatti-good-scid-marrow-lancet-1968',
+          name: 'Gatti RA, Meuwissen HJ, Allen HD, Hong R, Good RA. Immunological reconstitution of sex-linked lymphopenic immunological deficiency. Lancet. 1968;2(7583):1366-1369.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4177932/',
+          publishedAt: '1968-12-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA — First cochlear implant approval 1984 ──────────────────────────────
+  {
+    externalId: 'trajectory:fda-first-cochlear-implant-approval-1984',
+    text: 'In 1984 the U.S. Food and Drug Administration approved the House/3M single-channel cochlear implant for use in profoundly deaf adults, the first device permitted to substitute for a human sense, formally establishing surgical cochlear implantation as a sanctioned treatment for deafness.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1984-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved the House/3M single-channel cochlear implant for profoundly deaf adults, the first cochlear prosthesis cleared for commercial use and described as the first device to replace a human sense. Regulatory approval recorded the claim that an implanted electrode array could restore useful auditory perception, moving cochlear implantation from investigational research into sanctioned clinical practice.',
+        source: {
+          externalId: 'src:cochlear-candidacy-evolution-jasa-2022',
+          name: 'Carlson ML, et al. Evolution of the candidacy requirements and patient perioperative assessment protocols for cochlear implantation. J Acoust Soc Am. 2022;152(6):3346-3359.',
+          url: 'https://pubs.aip.org/asa/jasa/article/152/6/3346/2839518',
+          publishedAt: '2022-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In June 1990 the FDA approved the Nucleus 22 multichannel cochlear implant for children aged 2 years and older, the first multichannel implant cleared for pediatric use. Extending approval to children settled cochlear implantation as established standard-of-care otologic surgery; the decision drew sustained ethical opposition from the Deaf community (notably the National Association of the Deaf), but did not reverse the medical and regulatory consensus on efficacy.',
+        source: {
+          externalId: 'src:cochlear-candidacy-evolution-jasa-2022',
+          name: 'Carlson ML, et al. Evolution of the candidacy requirements and patient perioperative assessment protocols for cochlear implantation. J Acoust Soc Am. 2022;152(6):3346-3359.',
+          url: 'https://pubs.aip.org/asa/jasa/article/152/6/3346/2839518',
+          publishedAt: '2022-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ridley — First intraocular lens implant 1949 ────────────────────────────
+  {
+    externalId: 'trajectory:ridley-first-intraocular-lens-implant-1949',
+    text: 'On 29 November 1949 Harold Ridley implanted the first artificial intraocular lens at St Thomas\' Hospital, London, claiming that a permanent acrylic lens placed inside the eye after cataract extraction could safely restore vision — violating the surgical dogma against deliberately leaving a foreign body in the eye.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1949-11-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ridley publicly reported his Perspex (PMMA) intraocular lens implants, designed with Rayner and ICI, recording the claim that an artificial lens could be permanently and safely implanted after cataract surgery. This challenged the long-standing tenet that foreign bodies must never be deliberately introduced into the eye.',
+        source: {
+          externalId: 'src:apple-sims-ridley-iol-survophthalmol-1996',
+          name: 'Apple DJ, Sims J. Harold Ridley and the invention of the intraocular lens. Surv Ophthalmol. 1996;40(4):279-292.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8658339/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1950s the ophthalmic establishment in Europe and the United States — led by figures such as Stewart Duke-Elder — condemned the procedure, citing the secrecy of its development, absence of preclinical testing, and complications including lens dislocation and uveitis. Many surgeons abandoned IOL implantation, leaving the claim of safe intraocular lens implantation contested for roughly two decades.',
+        source: {
+          externalId: 'src:apple-sims-ridley-iol-survophthalmol-1996',
+          name: 'Apple DJ, Sims J. Harold Ridley and the invention of the intraocular lens. Surv Ophthalmol. 1996;40(4):279-292.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8658339/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After improved lens designs and accumulating outcome data (over one million IOLs implanted by 1982), the FDA approved intraocular lenses as safe and effective in 1981. Combined with broad professional acceptance through the 1970s and 1980s, IOL implantation became the standard of care in cataract surgery, settling Ridley\'s once-rejected claim.',
+        source: {
+          externalId: 'src:apple-sims-ridley-iol-survophthalmol-1996',
+          name: 'Apple DJ, Sims J. Harold Ridley and the invention of the intraocular lens. Surv Ophthalmol. 1996;40(4):279-292.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8658339/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bartlett — Neonatal ECMO for respiratory failure 1976 ───────────────────
+  {
+    externalId: 'trajectory:bartlett-neonatal-ecmo-respiratory-failure-1976',
+    text: 'In 1976 Robert Bartlett reported the first newborn (the infant \'Esperanza\') to survive severe respiratory failure with extracorporeal membrane oxygenation (ECMO), claiming that prolonged extracorporeal cardiopulmonary support could rescue neonates failing maximal conventional ventilation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Bartlett and colleagues reported the first neonate to survive meconium-aspiration respiratory failure after several days of extracorporeal membrane oxygenation, recording the claim that long-duration extracorporeal support could salvage newborns who would otherwise die despite maximal ventilator therapy. The result established ECMO as a candidate rescue therapy for neonatal respiratory failure.',
+        source: {
+          externalId: 'src:bartlett-esperanza-asaio-2017',
+          name: 'Bartlett RH. Esperanza: The First Neonatal ECMO Patient. ASAIO J. 2017;63(6):832-843.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29084039/',
+          publishedAt: '2017-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The UK Collaborative ECMO Trial Group reported a multicentre randomised trial of 185 mature newborns with severe respiratory failure: 32% of ECMO-allocated infants died before age one versus 59% under conventional management. The large mortality benefit demonstrated the clinical effectiveness of an organised neonatal ECMO service, settling ECMO as established practice for severe neonatal respiratory failure.',
+        source: {
+          externalId: 'src:uk-collaborative-ecmo-trial-lancet-1996',
+          name: 'UK Collaborative ECMO Trial Group. UK collaborative randomised trial of neonatal extracorporeal membrane oxygenation. Lancet. 1996;348(9020):75-82.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(96)04100-1/abstract',
+          publishedAt: '1996-07-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
