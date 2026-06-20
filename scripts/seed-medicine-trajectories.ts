@@ -44486,6 +44486,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NUCLEAR MEDICINE & EARLY ONCOLOGY (1930–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Stafford Warren in-vivo mammography — 1930 ─────────────────────────────
+  {
+    externalId: 'trajectory:stafford-warren-in-vivo-mammography-breast-cancer-1930',
+    text: 'Stafford L. Warren reported in the American Journal of Roentgenology in 1930 a stereoscopic X-ray technique that imaged breast cancer in living patients preoperatively, the first in-vivo mammographic detection of breast carcinoma.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on Albert Salomon\'s 1913 radiography of excised breast specimens, Warren of the University of Rochester published \'A roentgenologic study of the breast,\' adapting standard X-ray equipment with a stereoscopic technique to visualize breast carcinoma in living patients before surgery. This recorded the claim that breast cancer could be detected radiographically in vivo, originating the imaging modality that became mammography.',
+        source: {
+          externalId: 'src:stafford-warren-roentgenologic-study-breast-ajr-1930',
+          name: 'Warren SL. A roentgenologic study of the breast. Am J Roentgenol. 1930;24:113-124. (documented in Embryo Project Encyclopedia, Arizona State University)',
+          url: 'https://embryo.asu.edu/pages/stafford-leak-warren-1896-1981',
+          publishedAt: '1930-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert Egan\'s standardized, reproducible high-resolution mammography technique, published from M.D. Anderson in 1960, made radiographic breast-cancer detection reliable and teachable, and a subsequent multi-institution evaluation confirmed reproducibility. This settled mammography as a clinical method for detecting breast cancer, decades before randomized screening trials (HIP 1971) tested its mortality benefit.',
+        source: {
+          externalId: 'src:egan-mammography-tumor-institution-radiology-1960',
+          name: 'Egan RL. Experience with mammography in a tumor institution: evaluation of 1,000 studies. Radiology. 1960;75:894-900. (history reviewed at DOTmed, \'A look back at the history of mammography\')',
+          url: 'https://www.dotmed.com/news/story/43597',
+          publishedAt: '1960-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lawrence radiophosphorus leukemia/polycythemia — 1936 ──────────────────
+  {
+    externalId: 'trajectory:lawrence-radiophosphorus-leukemia-polycythemia-1936',
+    text: 'John H. Lawrence first administered cyclotron-produced radioactive phosphorus (P-32) to a leukemia patient on 24 December 1936 and reported it as a new treatment for leukemia and polycythemia, the first therapeutic use of an artificially produced radioisotope in humans.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-12-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After showing in 1935-36 that injected P-32 concentrated in leukemic marrow, spleen, and lymph nodes of mice and improved them, John Lawrence treated his first human leukemia patient on Christmas Eve 1936 and published the method in Radiology in 1940. This recorded the claim that an artificially produced radioisotope from his brother Ernest\'s cyclotron could be used to treat myeloproliferative malignancies, inaugurating therapeutic nuclear medicine.',
+        source: {
+          externalId: 'src:lawrence-nuclear-physics-therapy-radiology-1940',
+          name: 'Lawrence JH. Nuclear physics and therapy: preliminary report on a new method for the treatment of leukemia and polycythemia. Radiology. 1940;35:51-60. (recounted in Lawrence JH, Early Experiences in Nuclear Medicine, J Nucl Med. 1979;20(6):561)',
+          url: 'https://jnm.snmjournals.org/content/jnumed/20/6/561.full.pdf',
+          publishedAt: '1940-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'P-32 became established as an effective, reproducible treatment for polycythemia vera and was operated as a standing clinical therapy at Berkeley and adopted internationally; it remained a recommended cytoreductive option for polycythemia vera into the modern era. Institutional adoption of radiophosphorus as standard therapy for myeloproliferative disease settled the founding claim, even as it was later supplanted for leukemia by chemotherapy.',
+        source: {
+          externalId: 'src:lbl-nuclear-medicine-history-radiophosphorus',
+          name: 'Berkeley Lab. Crucible of Nuclear Medicine (history of John H. Lawrence\'s radiophosphorus therapy for leukemia and polycythemia).',
+          url: 'https://www2.lbl.gov/Science-Articles/Archive/nuclear-med-history.html',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Seidlin radioiodine thyroid cancer metastases — 1946 ───────────────────
+  {
+    externalId: 'trajectory:seidlin-radioiodine-thyroid-cancer-metastases-1946',
+    text: 'Samuel Seidlin, Leonidas Marinelli, and Eleanor Oshry reported in JAMA on 7 December 1946 that radioactive iodine (I-131) was taken up by and caused regression of functioning metastases of thyroid adenocarcinoma, the first successful systemic radioisotope treatment of a metastatic cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1946-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-12-07',
+        datePrecision: 'DAY',
+        reason: 'Seidlin, Marinelli, and Oshry published in JAMA the case of a patient whose widely metastatic thyroid adenocarcinoma concentrated and responded to orally administered radioactive iodine, with functioning metastases imaged and ablated by the isotope. This recorded the claim that a reactor/cyclotron-produced radionuclide could selectively target and treat disseminated cancer, founding the concept of targeted systemic radiotherapy (\'theranostics\').',
+        source: {
+          externalId: 'src:seidlin-marinelli-oshry-radioiodine-thyroid-jama-1946',
+          name: 'Seidlin SM, Marinelli LD, Oshry E. Radioactive iodine therapy: effect on functioning metastases of adenocarcinoma of the thyroid. JAMA. 1946;132(14):838-847. (landmark reprint introduced JAMA 1990, PMID 2118413)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2118413/',
+          publishedAt: '1946-12-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following postwar reactor production of I-131 distributed from Oak Ridge from 1946, radioiodine ablation and treatment of differentiated thyroid carcinoma was reproduced widely and incorporated into standard oncologic and endocrine practice by the 1950s-60s. Its durable, guideline-endorsed role in treating differentiated thyroid cancer settled the original claim, and I-131 remains the prototype of targeted radionuclide therapy.',
+        source: {
+          externalId: 'src:radioiodine-theranostics-history-2020',
+          name: 'Ahn BC, et al. A Review of the History of Radioactive Iodine Theranostics: The Origin of Nuclear Ontology. 2020. (PMC7583745)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7583745/',
+          publishedAt: '2020-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Urethane myeloma efficacy reversed — 1947/1966 ─────────────────────────
+  {
+    externalId: 'trajectory:urethane-multiple-myeloma-efficacy-reversed-1947',
+    text: 'Urethane (ethyl carbamate) was introduced around 1947 as an effective oral chemotherapy for multiple myeloma and became standard treatment, a claim overturned in 1966 when a randomized placebo-controlled trial found it conferred no benefit over a flavored-syrup placebo.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on the antimitotic activity of carbamates, clinicians reported in The Lancet in 1947 that urethane produced clinical improvement in multiple myeloma, recording the claim that an orally administered chemical could control the disease. Uncontrolled case series of apparent responses led to urethane becoming the accepted standard chemotherapy for myeloma.',
+        source: {
+          externalId: 'src:urethane-stilbamidine-myeloma-lancet-1947',
+          name: 'Urethane and stilbamidine in multiple myeloma: report on two cases. Lancet. 1947;250(6479):812-814.',
+          url: 'https://www.sciencedirect.com/science/article/abs/pii/S0140673647903759',
+          publishedAt: '1947-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the late 1940s and 1950s urethane was widely adopted and, as the 1966 trial later noted, served as \'the standard of therapy for more than 15 years\' for multiple myeloma. The absence of controlled comparison let the efficacy claim harden into routine practice across hematology.',
+        source: {
+          externalId: 'src:holland-urethane-myeloma-standard-context-1966',
+          name: 'Holland JF, Hosley H, Scharlau C, et al. A controlled trial of urethane treatment in multiple myeloma. Blood. 1966;27(3):328-342. (notes urethane had been standard therapy for >15 years)',
+          url: 'https://www.sciencedirect.com/science/article/pii/S0006497120627197',
+          publishedAt: '1966-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-03-01',
+        datePrecision: 'MONTH',
+        reason: 'James F. Holland and colleagues randomized 83 myeloma patients to urethane or a cherry-cola-flavored syrup placebo and found no difference in objective improvement or survival, while urethane caused leukopenia at higher doses. This controlled trial overturned more than fifteen years of accepted practice, demonstrating that urethane was ineffective and helping establish the randomized controlled trial as the arbiter of cancer-drug efficacy.',
+        source: {
+          externalId: 'src:holland-controlled-trial-urethane-myeloma-blood-1966',
+          name: 'Holland JF, Hosley H, Scharlau C, et al. A controlled trial of urethane treatment in multiple myeloma. Blood. 1966;27(3):328-342.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S0006497120627197',
+          publishedAt: '1966-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
