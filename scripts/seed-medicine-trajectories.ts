@@ -40944,6 +40944,347 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID LITIGATION & REGULATORY ERA (2010–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── OxyContin reformulation — abuse-deterrent claim contested 2012 ────────────
+  {
+    externalId: 'trajectory:oxycontin-reformulation-abuse-deterrent-2010',
+    text: 'On April 5, 2010, the FDA approved Purdue\'s reformulated, crush- and dissolution-resistant OxyContin (NDA 022272) on the premise that its tamper-resistant design would reduce abuse, a claim contested in 2012 when evidence showed abusers had simply switched to heroin.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-04-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved reformulated OxyContin (NDA 022272), engineered to be difficult to crush, break, or dissolve, and Purdue replaced the original formulation in August 2010 on the premise that physical tamper resistance would curb misuse. The reformulation became the institutionally endorsed abuse-mitigation strategy, later rewarded with abuse-deterrent labeling in 2013.',
+        source: {
+          externalId: 'src:fda-oxycontin-reformulation-nda-022272-2010',
+          name: 'FDA. NDA 022272, OxyContin (oxycodone HCl controlled-release, reformulated), Center for Drug Evaluation and Research Medical Review, approved Apr. 5, 2010.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2010/022272s000MedR.pdf',
+          publishedAt: '2010-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-12',
+        datePrecision: 'DAY',
+        reason: 'Cicero and colleagues reported in NEJM that after the reformulation, OxyContin selected as the primary drug of abuse fell from 35.6% to 12.8% of opioid-dependent patients entering treatment, but heroin use nearly doubled over the same period. The finding contested the public-health value of the abuse-deterrent premise, showing it displaced rather than reduced opioid abuse and may have accelerated the heroin epidemic.',
+        source: {
+          externalId: 'src:cicero-oxycontin-reformulation-nejm-2012',
+          name: 'Cicero TJ, Ellis MS, Surratt HL. Effect of Abuse-Deterrent Formulation of OxyContin. N Engl J Med. 2012 Jul 12;367(2):187-189.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22784140/',
+          publishedAt: '2012-07-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DSM-5 opioid use disorder reclassification — 2013 ────────────────────────
+  {
+    externalId: 'trajectory:dsm5-opioid-use-disorder-reclassification-2013',
+    text: 'With the publication of the DSM-5 on May 18, 2013, the American Psychiatric Association merged the separate DSM-IV diagnoses of opioid abuse and opioid dependence into a single graded \'opioid use disorder,\' dropping the abuse/dependence dichotomy and adding craving as a criterion.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-05-18',
+        datePrecision: 'DAY',
+        reason: 'The APA\'s DSM-5 collapsed the DSM-IV categories of substance abuse and substance dependence into one combined disorder rated on a mild–moderate–severe severity continuum, requiring two of eleven criteria, and added craving while removing legal problems. For opioids this created \'opioid use disorder,\' reclassifying addiction diagnostics away from the contested \'dependence\' label and institutionally settling the spectrum model that now governs clinical and epidemiological practice.',
+        source: {
+          externalId: 'src:hasin-dsm5-substance-use-disorders-ajp-2013',
+          name: 'Hasin DS, O\'Brien CP, Auriacombe M, et al. DSM-5 Criteria for Substance Use Disorders: Recommendations and Rationale. Am J Psychiatry. 2013;170(8):834-851.',
+          url: 'https://psychiatryonline.org/doi/10.1176/appi.ajp.2013.12060782',
+          publishedAt: '2013-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oklahoma J&J public-nuisance opioid verdict reversed — 2019–2021 ─────────
+  {
+    externalId: 'trajectory:oklahoma-jj-opioid-public-nuisance-2019',
+    text: 'On August 26, 2019, Oklahoma district judge Thad Balkman ruled in State of Oklahoma v. Johnson & Johnson that the company\'s prescription-opioid marketing constituted a public nuisance under Oklahoma law, ordering it to pay $465 million to abate the opioid crisis — the first opioid-manufacturer liability verdict in the U.S.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-08-26',
+        datePrecision: 'DAY',
+        reason: 'After the first opioid case to reach trial, Judge Balkman held that Johnson & Johnson\'s marketing of prescription opioids created a public nuisance and ordered $465 million in abatement funding. The ruling judicially established public-nuisance liability as a theory for holding drug manufacturers responsible for the opioid epidemic, a template watched by thousands of pending suits.',
+        source: {
+          externalId: 'src:oscn-oklahoma-jj-judgment-2019',
+          name: 'State of Oklahoma ex rel. Hunter v. Johnson & Johnson, Case No. CJ-2017-816, Judgment after Non-Jury Trial (Dist. Ct. Cleveland County, Okla., Aug. 26, 2019), as recounted in 2021 OK 54.',
+          url: 'https://law.justia.com/cases/oklahoma/supreme-court/2021/118474.html',
+          publishedAt: '2019-08-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2021-11-09',
+        datePrecision: 'DAY',
+        reason: 'The Oklahoma Supreme Court, in a 5–1 decision (2021 OK 54), reversed the verdict, holding that the state\'s public-nuisance statute does not extend to the manufacturing, marketing, and sale of prescription opioids and that the district court had gone \'too far.\' The reversal undercut public-nuisance theory as a basis for opioid-manufacturer liability and reshaped subsequent national litigation strategy.',
+        source: {
+          externalId: 'src:oklahoma-sct-jj-reversal-2021',
+          name: 'State of Oklahoma ex rel. Attorney General v. Johnson & Johnson, 2021 OK 54 (Okla. Nov. 9, 2021).',
+          url: 'https://law.justia.com/cases/oklahoma/supreme-court/2021/118474.html',
+          publishedAt: '2021-11-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Purdue Pharma federal guilty plea — fraud and kickback 2020 ───────────────
+  {
+    externalId: 'trajectory:purdue-federal-guilty-plea-fraud-kickback-2020',
+    text: 'On November 24, 2020, Purdue Pharma L.P. pleaded guilty in federal court to three felonies — conspiracy to defraud the United States and impede the DEA, and two counts of conspiracy to violate the federal Anti-Kickback Statute — admitting it continued fraudulent opioid practices from 2007 through 2017, after its 2007 misbranding plea.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2020-11-24',
+        datePrecision: 'DAY',
+        reason: 'Purdue Pharma pleaded guilty before the U.S. District Court for the District of New Jersey to a three-count felony information and agreed to over $8 billion in penalties, admitting it conspired to impede the DEA and paid kickbacks to prescribers and an electronic-records vendor to boost opioid prescribing. The plea judicially established that Purdue\'s misconduct persisted for a decade after its 2007 plea, settling on the record that the company\'s reform promises had been violated.',
+        source: {
+          externalId: 'src:doj-purdue-pleads-guilty-2020',
+          name: 'U.S. Department of Justice. Opioid Manufacturer Purdue Pharma Pleads Guilty to Fraud and Kickback Conspiracies. Press release, Nov. 24, 2020.',
+          url: 'https://www.justice.gov/archives/opa/pr/opioid-manufacturer-purdue-pharma-pleads-guilty-fraud-and-kickback-conspiracies',
+          publishedAt: '2020-11-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SCOTUS voids Sackler nonconsensual releases — Harrington v. Purdue 2024 ───
+  {
+    externalId: 'trajectory:scotus-purdue-sackler-release-reversed-2024',
+    text: 'The U.S. Supreme Court held in Harrington v. Purdue Pharma L.P. on June 27, 2024, that the Bankruptcy Code does not authorize a Chapter 11 reorganization plan to discharge claims against non-debtors (the Sackler family) without the affected claimants\' consent, voiding the liability releases at the heart of Purdue\'s opioid settlement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2023-05-30',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Court of Appeals for the Second Circuit affirmed confirmation of Purdue\'s Chapter 11 plan, holding that the Bankruptcy Code permitted nonconsensual third-party releases shielding the Sackler family from civil opioid claims in exchange for a roughly $6 billion contribution. The legal premise that a debtor\'s bankruptcy could buy global civil immunity for its non-bankrupt owners was judicially settled at the circuit level.',
+        source: {
+          externalId: 'src:justia-harrington-purdue-2024',
+          name: 'Harrington v. Purdue Pharma L.P., 603 U.S. ___ (2024) — case history including In re Purdue Pharma L.P., 69 F.4th 45 (2d Cir. 2023). Justia U.S. Supreme Court Center.',
+          url: 'https://supreme.justia.com/cases/federal/us/603/23-124/',
+          publishedAt: '2023-05-30',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-06-27',
+        datePrecision: 'DAY',
+        reason: 'In a 5–4 decision, the Supreme Court reversed and remanded, holding that the Bankruptcy Code\'s catchall provision does not authorize a plan to extinguish claims against non-debtors without claimant consent. The ruling repudiated the lower courts\' premise, collapsing the negotiated Sackler-release structure and requiring the opioid settlement to be renegotiated.',
+        source: {
+          externalId: 'src:scotus-harrington-purdue-opinion-2024',
+          name: 'Harrington, U.S. Trustee v. Purdue Pharma L.P., No. 23-124, 603 U.S. ___ (June 27, 2024). Slip opinion.',
+          url: 'https://www.supremecourt.gov/opinions/23pdf/23-124_8nk0.pdf',
+          publishedAt: '2024-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — women's health / hormone science
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pap smear — Papanicolaou & Traut 1941 ──────────────────────────────────
+  {
+    externalId: 'trajectory:pap-smear-cervical-cancer-screening-1941',
+    text: 'George Papanicolaou and Herbert Traut claimed in 1941 (American Journal of Obstetrics and Gynecology) that microscopic examination of exfoliated vaginal and cervical cells — the \'Pap smear\' — could detect uterine and cervical carcinoma, including early curable lesions, in asymptomatic women.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Papanicolaou and Traut published \'The Diagnostic Value of Vaginal Smears in Carcinoma of the Uterus,\' showing that exfoliative cytology could identify cervical and uterine cancer cells before symptoms appeared. Papanicolaou had first announced the technique in 1928 (Third Race Betterment Conference), but it was dismissed; the rigorous 1941 study revived and recorded the claim, founding the field of clinical cytopathology.',
+        source: {
+          externalId: 'src:papanicolaou-traut-vaginal-smears-ajog-1941',
+          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42(2):193–206.',
+          url: 'https://doi.org/10.1016/S0002-9378(16)40621-6',
+          publishedAt: '1941-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following the 1943 monograph and American Cancer Society promotion of mass cytology screening through the 1950s, the Pap smear became the standard screening test for cervical cancer and premalignant lesions, credited with sharp subsequent declines in cervical cancer mortality. The claim moved from a single laboratory\'s finding to institutionalized population screening.',
+        source: {
+          externalId: 'src:papanicolaou-pap-smear-biography-jogi-2018',
+          name: 'Diamantis A, Magiorkinis E, Androutsos G. George Papanicolaou (1883–1962): Discoverer of the Pap Smear. J Obstet Gynaecol India. 2018;68(6):421–423.',
+          url: 'https://link.springer.com/article/10.1007/s13224-018-1102-z',
+          publishedAt: '2018-06-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Premarin FDA approval — conjugated equine estrogens 1942 ───────────────
+  {
+    externalId: 'trajectory:premarin-conjugated-estrogens-menopause-approval-1942',
+    text: 'The US Food and Drug Administration approved conjugated equine estrogens (Premarin) in 1942 for the treatment of menopausal symptoms, establishing the first widely marketed estrogen-replacement product for menopause.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved conjugated equine estrogens (Premarin, Wyeth-Ayerst) for treatment of menopausal symptoms, one year after approving diethylstilbestrol for the same indication. Premarin went on to become one of the most-dispensed drugs in the United States, and its menopausal vasomotor-symptom indication remains FDA-approved today; the broader claim that estrogen therapy prevents chronic disease was separately contested by the Women\'s Health Initiative in 2002.',
+        source: {
+          externalId: 'src:stefanick-estrogens-progestins-history-ajm-2005',
+          name: 'Stefanick ML. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005;118(12 Suppl 2):64–73.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16414329/',
+          publishedAt: '2005-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Doisy estrone isolation 1929–1930 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:doisy-estrone-isolation-1929',
+    text: 'Edward Doisy, with Clement Veler and Sidney Thayer, claimed in 1929–1930 to have isolated the ovarian follicular hormone in pure crystalline form (theelin, now estrone) from the urine of pregnant women — the first sex hormone obtained as a defined crystalline chemical.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After crystallizing the hormone in 1929 (presented at the International Physiological Congress in Boston), Doisy, Veler, and Thayer published the preparation of crystalline theelin (estrone) in the Journal of Biological Chemistry. This converted the previously crude \'follicular hormone\' bioassay into a defined pure compound and laid the chemical foundation for estrogen science and later estrogen therapy.',
+        source: {
+          externalId: 'src:doisy-veler-thayer-crystalline-theelin-jbc-1930',
+          name: 'Doisy EA, Veler CD, Thayer S. The preparation of the crystalline follicular ovarian hormone: theelin. J Biol Chem. 1930;87(2):357–371.',
+          url: 'https://www.jbc.org/article/S0021-9258(19)66427-6/fulltext',
+          publishedAt: '1930-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Adolf Butenandt, who had independently isolated estrone in 1929, was awarded the 1939 Nobel Prize in Chemistry for his work on the sex hormones, ratifying the isolation and structural characterization of estrone within the chemical and physiological community. Estrone became an established reference estrogen.',
+        source: {
+          externalId: 'src:nobel-chemistry-butenandt-1939',
+          name: 'The Nobel Prize in Chemistry 1939 — Adolf Friedrich Johann Butenandt (work on sex hormones).',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/butenandt/facts/',
+          publishedAt: '1939-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Marker degradation — progesterone from plant sapogenins 1940 ────────────
+  {
+    externalId: 'trajectory:marker-degradation-progesterone-synthesis-1940',
+    text: 'Russell Marker claimed in December 1940 (Journal of the American Chemical Society) a practical chemical degradation converting the plant sapogenin diosgenin into the hormone progesterone — the \'Marker degradation\' — making large-scale production of steroid hormones from plant material feasible.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1940-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Marker and Krueger published the preparation of trillin and its conversion to progesterone in the Journal of the American Chemical Society, establishing a semisynthetic route from plant sapogenins (diosgenin) to a steroid hormone. This recorded the chemistry that would break the dependence of hormone supply on scarce, costly animal tissue.',
+        source: {
+          externalId: 'src:marker-krueger-trillin-progesterone-jacs-1940',
+          name: 'Marker RE, Krueger J. Sterols. CXII. Sapogenins. XLI. The preparation of trillin and its conversion to progesterone. J Am Chem Soc. 1940;62(12):3349–3350.',
+          url: 'https://pubs.acs.org/doi/abs/10.1021/ja01869a023',
+          publishedAt: '1940-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1944-03-01',
+        datePrecision: 'MONTH',
+        reason: 'In March 1944 Marker, with Emeric Somlo and Federico Lehmann, founded Syntex in Mexico City and produced the first kilogram-scale batches of progesterone from Mexican yam diosgenin, collapsing its price. This industrialization created the modern steroid-hormone industry and supplied the precursors later used to manufacture cortisone and the first oral contraceptives.',
+        source: {
+          externalId: 'src:marker-syntex-steroid-industry-sciencehistory',
+          name: 'Science History Institute. Russell Earl Marker (scientific biography): the Marker degradation and the founding of Syntex (1944).',
+          url: 'https://www.sciencehistory.org/education/scientific-biographies/russell-earl-marker/',
+          publishedAt: '2017-12-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
