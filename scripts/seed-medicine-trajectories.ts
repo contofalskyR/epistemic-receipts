@@ -45660,6 +45660,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ORPHAN / RARE DISEASE ERA
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Følling — Phenylketonuria discovery 1934 ────────────────────────────────
+  {
+    externalId: 'trajectory:folling-phenylketonuria-discovery-1934',
+    text: 'In 1934, Norwegian physician-biochemist Asbjørn Følling identified phenylpyruvic acid in the urine of intellectually disabled siblings, defining phenylketonuria (PKU) as a new inherited inborn error of metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1934-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Følling tested two intellectually disabled siblings\' urine with ferric chloride, obtained an anomalous green color, and proved by organic chemistry that they excreted phenylpyruvic acid. He named the condition oligophrenia phenylpyrouvica (later phenylketonuria), the first metabolic cause of intellectual disability ever identified, founding the field of biochemically defined inherited metabolic disease.',
+        source: {
+          externalId: 'src:christ-folling-pku-discovery-2003',
+          name: 'Christ SE. Asbjørn Følling and the discovery of phenylketonuria. J Hist Neurosci. 2003;12(1):44-54. (citing Følling A. Über Ausscheidung von Phenylbrenztraubensäure in den Harn als Stoffwechselanomalie in Verbindung mit Imbezilität. Hoppe-Seyler\'s Z Physiol Chem. 1934;227:169-176.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12785112/',
+          publishedAt: '2003-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Bickel and colleagues demonstrated that a low-phenylalanine diet controlled the biochemical anomaly and prevented neurological deterioration, establishing PKU as a causally understood and treatable inborn error rather than an immutable disability. This cemented PKU as a settled disease entity and motivated population newborn screening within the decade.',
+        source: {
+          externalId: 'src:early-history-pku-review',
+          name: 'Centerwall SA, Centerwall WR (historical review). The Early History of Phenylketonuria. (PMC review documenting Følling\'s discovery and Bickel dietary treatment).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7570064/',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cooley & Lee — Thalassemia first description 1925 ───────────────────────
+  {
+    externalId: 'trajectory:cooley-lee-thalassemia-first-description-1925',
+    text: 'In 1925, Detroit pediatrician Thomas Cooley and Pearl Lee first described thalassemia (Cooley\'s anemia) as a distinct hereditary childhood anemia with splenomegaly and characteristic bone changes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1925-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Cooley and Lee presented a series of children, largely of Italian/Mediterranean origin, with severe anemia, splenomegaly, and distinctive cranial/facial bone changes, identifying a previously unrecognized clinical entity they termed erythroblastic anemia. This was the first description of what is now known as beta-thalassemia major.',
+        source: {
+          externalId: 'src:cooley-lee-thalassemia-1925',
+          name: 'Cooley TB, Lee PA. A series of cases of splenomegaly in children with anemia and peculiar bone changes. Trans Am Pediatr Soc. 1925;37:29-30.',
+          url: 'https://litfl.com/thomas-cooley/',
+          publishedAt: '1925-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Whipple and Bradford coined the term \'thalassemia\' (from the Greek for sea) and framed the disorder as a distinct inherited Mediterranean anemia, consolidating Cooley\'s clinical entity into an established, named disease that was rapidly adopted across hematology.',
+        source: {
+          externalId: 'src:cooley-thalassemia-eponym-litfl',
+          name: 'Thomas Cooley — Medical Eponym Library (documenting Cooley TB, Lee PA 1925 description and Whipple\'s 1932 coining of \'thalassemia\').',
+          url: 'https://litfl.com/thomas-cooley/',
+          publishedAt: '1925-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rickes et al. — Crystalline vitamin B12 isolation 1948 ──────────────────
+  {
+    externalId: 'trajectory:rickes-crystalline-vitamin-b12-isolation-1948',
+    text: 'In April 1948, Rickes, Brink, Koniuszy, Wood and Folkers at Merck isolated crystalline vitamin B12 from liver, identifying the long-sought anti-pernicious-anemia factor that had been treated empirically since 1926 liver therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1948-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-04-01',
+        datePrecision: 'MONTH',
+        reason: 'After two decades in which liver extract cured pernicious anemia by an unknown mechanism, the Merck team crystallized a deeply red, microbiologically and clinically potent compound (vitamin B12) from liver using Mary Shorb\'s bioassay. This identified the discrete chemical agent behind the Minot-Murphy liver therapy, converting an empirical treatment into a defined molecular entity.',
+        source: {
+          externalId: 'src:rickes-crystalline-b12-science-1948',
+          name: 'Rickes EL, Brink NG, Koniuszy FR, Wood TR, Folkers K. Crystalline Vitamin B12. Science. 1948;107(2781):396-397.',
+          url: 'https://www.science.org/doi/10.1126/science.107.2781.396',
+          publishedAt: '1948-04-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-04-16',
+        datePrecision: 'DAY',
+        reason: 'In the same issue of Science, West reported that injected crystalline vitamin B12 produced hematologic remission in patients with Addisonian pernicious anemia, clinically confirming the isolated compound as the active anti-pernicious-anemia principle. This settled the molecular identity and therapeutic basis of a previously fatal disease.',
+        source: {
+          externalId: 'src:west-b12-pernicious-anemia-science-1948',
+          name: 'West R. Activity of Vitamin B12 in Addisonian Pernicious Anemia. Science. 1948;107(2781):398.',
+          url: 'https://www.science.org/doi/10.1126/science.107.2781.398',
+          publishedAt: '1948-04-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Maralixibat / Livmarli — First Alagille syndrome treatment 2021 ─────────
+  {
+    externalId: 'trajectory:maralixibat-livmarli-first-alagille-syndrome-treatment-2021',
+    text: 'On September 29, 2021, the FDA approved maralixibat (Livmarli), an ileal bile acid transporter inhibitor, as the first medication ever approved for cholestatic pruritus in patients with Alagille syndrome aged one year and older.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-09-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-09-29',
+        datePrecision: 'DAY',
+        reason: 'Based on the ICONIC trial showing sustained reduction in pruritus, the FDA approved maralixibat as the first-ever therapy for Alagille syndrome, a rare genetic cholestatic liver disease affecting roughly 2,000-2,500 U.S. children. The orphan approval established a regulatory and clinical standard where none had previously existed for this condition.',
+        source: {
+          externalId: 'src:fda-maralixibat-livmarli-approval-2021',
+          name: 'Mirum Pharmaceuticals / FDA. U.S. FDA Approves LIVMARLI (maralixibat) as the First and Only Approved Medication for Cholestatic Pruritus in Patients with Alagille Syndrome One Year of Age and Older. Sept 29, 2021. (FDA approval record: Drugs.com Livmarli approval history.)',
+          url: 'https://www.drugs.com/history/livmarli.html',
+          publishedAt: '2021-09-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
