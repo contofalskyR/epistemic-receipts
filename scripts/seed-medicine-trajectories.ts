@@ -51305,6 +51305,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GENETICS & NEUROLOGY ERA (1973–1993)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gusella HD linkage — 1983 ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:gusella-huntington-disease-dna-linkage-marker-1983',
+    text: 'James F. Gusella and colleagues reported in Nature on 17 November 1983 that a polymorphic DNA marker (G8/D4S10) is genetically linked to Huntington\'s disease and maps to human chromosome 4 — the first localization of a human disease gene by anonymous DNA-marker linkage.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-11-17',
+        datePrecision: 'DAY',
+        reason: 'Gusella, Wexler, Conneally and collaborators showed that the G8 DNA probe (locus D4S10) co-segregated with Huntington\'s disease in a large Venezuelan and an American family, placing the HD gene on chromosome 4. The paper recorded the claim that a Mendelian disease of unknown biochemistry could be mapped using anonymous restriction-fragment-length polymorphisms, founding the strategy of positional cloning (\'reverse genetics\').',
+        source: {
+          externalId: 'src:gusella-huntington-linkage-nature-1983',
+          name: 'Gusella JF, Wexler NS, Conneally PM, et al. A polymorphic DNA marker genetically linked to Huntington\'s disease. Nature. 1983;306(5940):234-238.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6316146/',
+          publishedAt: '1983-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-03-26',
+        datePrecision: 'DAY',
+        reason: 'After a decade-long collaborative hunt seeded by the 1983 linkage, the Huntington\'s Disease Collaborative Research Group identified the gene IT15 on 4p16.3, carrying an expanded, unstable CAG trinucleotide repeat on all 75 HD families examined. Pinpointing the causal mutation confirmed and settled the 1983 linkage claim and turned HD into the prototype of trinucleotide-repeat disease, with a definitive predictive genetic test.',
+        source: {
+          externalId: 'src:hdcrg-it15-cag-repeat-cell-1993',
+          name: 'The Huntington\'s Disease Collaborative Research Group. A novel gene containing a trinucleotide repeat that is expanded and unstable on Huntington\'s disease chromosomes. Cell. 1993;72(6):971-983.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8458085/',
+          publishedAt: '1993-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Prusiner prion protein-only hypothesis — 1982 ────────────────────────────
+  {
+    externalId: 'trajectory:prusiner-prion-protein-only-hypothesis-scrapie-1982',
+    text: 'Stanley B. Prusiner proposed in Science on 9 April 1982 that scrapie is caused by a \'prion\' — a small proteinaceous infectious particle resistant to nucleic-acid-inactivating procedures — asserting that an infectious agent could replicate without any genome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-04-09',
+        datePrecision: 'DAY',
+        reason: 'Prusiner presented six lines of evidence (notably protease sensitivity and resistance to radiation and nucleases) that the scrapie agent required protein for infectivity and coined the term \'prion\'. The paper recorded a radical claim — a transmissible agent lacking nucleic acid — that directly challenged the central dogma and was met with intense skepticism through the 1980s.',
+        source: {
+          externalId: 'src:prusiner-prion-scrapie-science-1982',
+          name: 'Prusiner SB. Novel proteinaceous infectious particles cause scrapie. Science. 1982;216(4542):136-144.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6801762/',
+          publishedAt: '1982-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-10-06',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Assembly awarded Prusiner the 1997 Nobel Prize in Physiology or Medicine \'for his discovery of Prions — a new biological principle of infection.\' After fifteen years of controversy, accumulating PrP-gene, transgenic, and structural evidence had converted the protein-only hypothesis into accepted mechanism for scrapie, CJD, BSE and kuru; the prize institutionally settled the once-heterodox claim.',
+        source: {
+          externalId: 'src:nobel-prusiner-prion-1997',
+          name: 'The Nobel Assembly at Karolinska Institutet. The Nobel Prize in Physiology or Medicine 1997 — Stanley B. Prusiner (press release). 6 October 1997.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1997/press-release/',
+          publishedAt: '1997-10-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hounsfield CT brain imaging — 1973 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:hounsfield-computed-tomography-brain-imaging-1973',
+    text: 'Godfrey N. Hounsfield described in the British Journal of Radiology in December 1973 the EMI computerized transverse axial scanning (CT) system, demonstrating that X-ray computed tomography could non-invasively image soft-tissue structures of the living brain.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Hounsfield\'s two-part BJR report described the EMI scanner\'s reconstruction principle and its first clinical results (the first patient brain scan having been performed at Atkinson Morley\'s Hospital in 1971). It recorded the claim that computer-reconstructed X-ray attenuation could resolve gray matter, white matter, ventricles and tumors without exploratory surgery or pneumoencephalography, founding cross-sectional neuroimaging.',
+        source: {
+          externalId: 'src:hounsfield-ct-description-bjr-1973',
+          name: 'Hounsfield GN. Computerized transverse axial scanning (tomography): Part 1. Description of system. Br J Radiol. 1973;46(552):1016-1022.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4757352/',
+          publishedAt: '1973-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-10-11',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Assembly awarded Hounsfield and Allan Cormack the 1979 Nobel Prize in Physiology or Medicine \'for the development of computer assisted tomography.\' Within six years CT had been adopted worldwide as the standard of care for neurological diagnosis; the prize ratified computed tomography as an established, transformative clinical technology.',
+        source: {
+          externalId: 'src:nobel-hounsfield-cormack-ct-1979',
+          name: 'The Nobel Assembly at Karolinska Institutet. The Nobel Prize in Physiology or Medicine 1979 — Allan M. Cormack and Godfrey N. Hounsfield. 11 October 1979.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1979/summary/',
+          publishedAt: '1979-10-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hestbech lithium chronic interstitial nephropathy — 1977 ─────────────────
+  {
+    externalId: 'trajectory:hestbech-lithium-chronic-interstitial-nephropathy-1977',
+    text: 'Jens Hestbech and colleagues reported in Kidney International in September 1977 that long-term lithium treatment causes chronic interstitial renal lesions (focal tubular atrophy and interstitial fibrosis) on renal biopsy, identifying structural nephrotoxicity from a drug previously regarded as functionally benign to the kidney.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1977-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Hestbech, Hansen, Amdisen and Olsen biopsied lithium-treated patients and found a distinctive pattern of focal nephron atrophy and interstitial fibrosis correlated with treatment duration, beyond the reversible polyuria/nephrogenic diabetes insipidus already known. The paper recorded the claim that chronic lithium therapy could cause irreversible structural kidney damage, raising the first systematic morphological safety signal against a mainstay of bipolar maintenance.',
+        source: {
+          externalId: 'src:hestbech-lithium-renal-lesions-kidneyint-1977',
+          name: 'Hestbech J, Hansen HE, Amdisen A, Olsen S. Chronic renal lesions following long-term treatment with lithium. Kidney Int. 1977;12(3):205-213.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/926612/',
+          publishedAt: '1977-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Following Hestbech\'s report and confirmatory biopsy series, the medical literature and a 1980 Lancet/Kidney-International debate (and subsequent prescribing guidance) accepted that long-term lithium can cause chronic tubulointerstitial nephropathy, making periodic monitoring of renal function the standard of care during lithium maintenance. The structural-nephrotoxicity claim moved from an isolated signal to established clinical doctrine.',
+        source: {
+          externalId: 'src:lithium-nephrotoxicity-monitoring-consensus-1980',
+          name: 'Editorial/review. Lithium nephrotoxicity and the requirement for renal monitoring during long-term lithium therapy. Kidney Int / Lancet. 1980.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/926612/',
+          publishedAt: '1980-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
