@@ -53995,6 +53995,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── COAPT — MitraClip for secondary mitral regurgitation 2018 ────────────
+  {
+    externalId: 'trajectory:coapt-mitraclip-secondary-mitral-regurgitation-2018',
+    text: 'On 23 September 2018 the COAPT trial reported that transcatheter edge-to-edge mitral-valve repair (MitraClip) added to maximal medical therapy reduced heart-failure hospitalizations and all-cause mortality in patients with heart failure and moderate-to-severe secondary (functional) mitral regurgitation, a finding the FDA adopted on 14 March 2019 by expanding the MitraClip indication to secondary mitral regurgitation.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-23',
+        datePrecision: 'DAY',
+        reason: 'Gregg Stone and the COAPT investigators reported in NEJM (online 23 September 2018) that among 614 patients with heart failure and secondary mitral regurgitation persisting despite guideline-directed medical therapy, MitraClip reduced the annualized heart-failure-hospitalization rate (35.8% vs 67.9%, HR 0.53) and 24-month all-cause mortality (29.1% vs 46.1%, HR 0.62). This recorded the first randomized evidence that correcting functional mitral regurgitation with a transcatheter device improves hard outcomes — though it stood in direct conflict with the contemporaneously published, neutral French MITRA-FR trial, a discordance later attributed to differences in patient selection and MR severity.',
+        source: {
+          externalId: 'src:stone-coapt-mitraclip-nejm-2018',
+          name: 'Stone GW, Lindenfeld J, Abraham WT, et al. Transcatheter Mitral-Valve Repair in Patients with Heart Failure (COAPT). N Engl J Med. 2018;379(24):2307-2318.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30280640/',
+          publishedAt: '2018-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-03-14',
+        datePrecision: 'DAY',
+        reason: 'On the strength of COAPT, the FDA expanded the approved indication for Abbott\'s MitraClip — previously cleared in 2013 only for primary (degenerative) mitral regurgitation — to include heart-failure patients with moderate-to-severe secondary mitral regurgitation. The first transcatheter mitral therapy approved for functional MR, the expansion institutionally settled device-based correction of secondary MR as a guideline-relevant treatment and resolved the COAPT/MITRA-FR debate in favor of treating carefully selected patients.',
+        source: {
+          externalId: 'src:abbott-fda-mitraclip-secondary-mr-2019',
+          name: 'Abbott. Abbott Receives FDA Approval for Expanded Indication for MitraClip Device. Press release, 14 March 2019.',
+          url: 'https://abbott.mediaroom.com/2019-03-14-Abbott-Receives-FDA-Approval-for-Expanded-Indication-for-MitraClip-TM-Device',
+          publishedAt: '2019-03-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FREEDOM — CABG vs PCI in diabetes with multivessel CAD 2012 ──────────
+  {
+    externalId: 'trajectory:freedom-cabg-vs-pci-diabetes-multivessel-2012',
+    text: 'On 20 December 2012 the FREEDOM trial reported that, in patients with diabetes and multivessel coronary artery disease, coronary-artery bypass grafting was superior to percutaneous coronary intervention with drug-eluting stents, reducing death and myocardial infarction at five years, establishing CABG as the preferred revascularization strategy for diabetic multivessel disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-12-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-12-20',
+        datePrecision: 'DAY',
+        reason: 'Michael Farkouh and the FREEDOM investigators reported in NEJM a randomized trial of 1,900 patients with diabetes and multivessel coronary disease, finding that CABG reduced the primary composite of death, MI, or stroke at five years versus PCI with drug-eluting stents (18.7% vs 26.6%), driven by fewer deaths and myocardial infarctions despite a higher early stroke rate with surgery. This recorded the first dedicated randomized evidence that bypass surgery, not stenting, is the better revascularization strategy for the large diabetic-multivessel population.',
+        source: {
+          externalId: 'src:farkouh-freedom-nejm-2012',
+          name: 'Farkouh ME, Domanski M, Sleeper LA, et al. Strategies for Multivessel Revascularization in Patients with Diabetes (FREEDOM). N Engl J Med. 2012;367(25):2375-2384.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23121323/',
+          publishedAt: '2012-12-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-12-09',
+        datePrecision: 'DAY',
+        reason: 'The 2021 ACC/AHA/SCAI Guideline for Coronary Artery Revascularization (Lawton et al.) gave CABG a Class 1 recommendation over PCI to improve survival in patients with diabetes and multivessel coronary disease involving the LAD who are good surgical candidates, citing FREEDOM. The guideline endorsement institutionally settled CABG-first as standard care for diabetic multivessel disease, consolidating a decade of practice change since the trial.',
+        source: {
+          externalId: 'src:acc-aha-scai-2021-revascularization-guideline',
+          name: 'Lawton JS, Tamis-Holland JE, Bangalore S, et al. 2021 ACC/AHA/SCAI Guideline for Coronary Artery Revascularization. Circulation. 2022;145(3):e18-e114.',
+          url: 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000001038',
+          publishedAt: '2021-12-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PROTECT-AF — WATCHMAN LAA closure vs warfarin in AF 2009 ─────────────
+  {
+    externalId: 'trajectory:protect-af-watchman-laa-closure-vs-warfarin-2009',
+    text: 'On 15 August 2009 the PROTECT-AF trial reported that percutaneous left atrial appendage closure with the WATCHMAN device was non-inferior to warfarin for preventing stroke, systemic embolism, and cardiovascular death in patients with non-valvular atrial fibrillation, a claim the FDA ratified on 13 March 2015 by approving WATCHMAN as the first device alternative to long-term anticoagulation.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-15',
+        datePrecision: 'DAY',
+        reason: 'David Holmes and the PROTECT-AF investigators reported in The Lancet a randomized non-inferiority trial in which WATCHMAN left atrial appendage closure (n=463), allowing later discontinuation of warfarin, met non-inferiority versus continued warfarin (n=244) for the composite of stroke, systemic embolism, and cardiovascular death (3.0 vs 4.9 events per 100 patient-years), though with higher early procedural complications. This recorded the claim that a one-time mechanical occlusion of the left atrial appendage could substitute for lifelong oral anticoagulation in atrial fibrillation.',
+        source: {
+          externalId: 'src:holmes-protect-af-watchman-lancet-2009',
+          name: 'Holmes DR, Reddy VY, Turi ZG, et al. Percutaneous closure of the left atrial appendage versus warfarin therapy for prevention of stroke in patients with atrial fibrillation: a randomised non-inferiority trial (PROTECT AF). Lancet. 2009;374(9689):534-542.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19683639/',
+          publishedAt: '2009-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-03-13',
+        datePrecision: 'DAY',
+        reason: 'After a protracted review including multiple advisory-panel meetings and the confirmatory PREVAIL trial, the FDA approved the Boston Scientific WATCHMAN device for stroke risk reduction in non-valvular atrial fibrillation patients suitable for warfarin but seeking a non-pharmacologic alternative. The approval — resting on the PROTECT-AF and PREVAIL programs and nearly 6,000 patient-years of follow-up — institutionally settled left atrial appendage closure as an established alternative to long-term anticoagulation, founding the field of structural stroke prevention in AF.',
+        source: {
+          externalId: 'src:boston-scientific-fda-watchman-approval-2015',
+          name: 'Boston Scientific. Boston Scientific Receives FDA Approval for WATCHMAN Left Atrial Appendage Closure Device. Press release, 13 March 2015.',
+          url: 'https://news.bostonscientific.com/2015-03-13-Boston-Scientific-Receives-FDA-Approval-for-WATCHMAN-Left-Atrial-Appendage-Closure-Device',
+          publishedAt: '2015-03-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Canagliflozin CANVAS amputation boxed warning reversed 2017→2020 ──────
+  {
+    externalId: 'trajectory:canagliflozin-canvas-amputation-boxed-warning-reversed-2017',
+    text: 'The claim that canagliflozin (Invokana) roughly doubles the risk of lower-limb amputation — recorded by the CANVAS Program in 2017 and codified by an FDA boxed warning added on 16 May 2017 — was reversed when the FDA removed that boxed warning on 26 August 2020 after additional trial data did not confirm a risk warranting the strongest label warning.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2017-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-05-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 May 2017 the FDA added a boxed warning to canagliflozin labeling for an approximately doubled risk of leg and foot amputations, based on interim findings from the CANVAS and CANVAS-R trials. The full CANVAS Program (Neal et al., NEJM, online 12 June 2017) confirmed the signal — amputations of 6.3 versus 3.4 per 1,000 patient-years (HR 1.97), mostly at the toe or metatarsal — even as the drug reduced cardiovascular events. The boxed warning institutionally settled amputation as a recognized class-defining hazard of the first SGLT2 inhibitor to carry it.',
+        source: {
+          externalId: 'src:neal-canvas-canagliflozin-nejm-2017',
+          name: 'Neal B, Perkovic V, Mahaffey KW, et al. Canagliflozin and Cardiovascular and Renal Events in Type 2 Diabetes (CANVAS Program). N Engl J Med. 2017;377(7):644-657.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28605608/',
+          publishedAt: '2017-06-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-08-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 August 2020 the FDA removed the boxed warning about leg and foot amputations from canagliflozin\'s prescribing information, concluding after review of newer data from three additional clinical trials (including CREDENCE) that the amputation risk did not warrant the strongest warning. The reversal walked back the 2017 boxed-warning-level claim — the residual risk was demoted to the Warnings and Precautions section — making canagliflozin a notable case of a safety signal escalated and then de-escalated by the same regulator as the evidence base matured.',
+        source: {
+          externalId: 'src:fda-canagliflozin-remove-boxed-warning-2020',
+          name: 'FDA. FDA removes Boxed Warning about risk of leg and foot amputations for the diabetes medicine canagliflozin (Invokana, Invokamet, Invokamet XR). Drug Safety Communication, 26 August 2020.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-removes-boxed-warning-about-risk-leg-and-foot-amputations-diabetes-medicine-canagliflozin',
+          publishedAt: '2020-08-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Acoramidis ATTRibute-CM — TTR stabilizer for ATTR-CM 2024 ────────────
+  {
+    externalId: 'trajectory:acoramidis-attribute-cm-ttr-stabilizer-2024',
+    text: 'On 11 January 2024 the ATTRibute-CM trial reported that the oral near-complete transthyretin stabilizer acoramidis reduced the composite of all-cause mortality and cardiovascular hospitalization in patients with transthyretin amyloid cardiomyopathy, a claim the FDA ratified on 22 November 2024 by approving acoramidis (Attruby) for ATTR-CM.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-01-11',
+        datePrecision: 'DAY',
+        reason: 'Julian Gillmore and the ATTRibute-CM investigators reported in NEJM a phase 3 trial in 632 patients with transthyretin amyloid cardiomyopathy in which acoramidis — a high-affinity TTR tetramer stabilizer achieving over 90% stabilization — was superior to placebo on a hierarchical composite of all-cause mortality, cardiovascular hospitalization, NT-proBNP, and 6-minute walk distance (win ratio 1.8), with benefit emerging within three months. This recorded a second, mechanistically distinct stabilizer as effective in ATTR-CM, extending the evidence base established by tafamidis.',
+        source: {
+          externalId: 'src:gillmore-attribute-cm-acoramidis-nejm-2024',
+          name: 'Gillmore JD, Judge DP, Cappelli F, et al. Efficacy and Safety of Acoramidis in Transthyretin Amyloid Cardiomyopathy (ATTRibute-CM). N Engl J Med. 2024;390(2):132-142.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38197816/',
+          publishedAt: '2024-01-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-11-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 November 2024 the FDA approved acoramidis (Attruby, BridgeBio) for adults with wild-type or variant ATTR-CM to reduce cardiovascular death and cardiovascular-related hospitalization, on the basis of ATTRibute-CM. The approval institutionally settled acoramidis as a second TTR-stabilizing therapy for a once-untreatable fatal cardiomyopathy and was the first label to specify near-complete (≥90%) transthyretin stabilization.',
+        source: {
+          externalId: 'src:fda-acoramidis-attruby-approval-2024',
+          name: 'American College of Cardiology. FDA Update: Acoramidis Approved to Reduce CV Death, Hospitalization in Patients With ATTR-CM. 26 November 2024 (documenting FDA approval of Attruby on 22 November 2024).',
+          url: 'https://www.acc.org/latest-in-cardiology/articles/2024/11/26/15/02/fda-update-acoramidis-approved-to-reduce-cv-death-hospitalization-in-patients-with-attr-cm',
+          publishedAt: '2024-11-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
