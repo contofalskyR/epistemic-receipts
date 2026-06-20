@@ -44673,6 +44673,392 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY & REPERFUSION ERA (1980–1994)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── DeWood et al. — coronary thrombosis causes acute MI 1980 ────────────────
+  {
+    externalId: 'trajectory:dewood-coronary-thrombosis-causes-acute-mi-1980',
+    text: 'On 16 October 1980 Marcus DeWood and colleagues reported in the New England Journal of Medicine that coronary arteriography in 322 patients with acute transmural myocardial infarction found total coronary occlusion in 87% imaged within four hours of symptom onset, establishing that an evolving thrombotic occlusion is the proximate cause of acute MI.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-10-16',
+        datePrecision: 'DAY',
+        reason: 'DeWood et al. performed early coronary arteriography in 322 patients with acute transmural MI and found total coronary occlusion in 110 of 126 (87%) studied within four hours, falling to 65% at 12–24 hours, with thrombus retrieved at surgery. This put on the scientific record the claim that a thrombotic coronary occlusion causes acute MI, directly overturning the then-prevailing view that intracoronary thrombus was a secondary consequence of, rather than the cause of, infarction.',
+        source: {
+          externalId: 'src:dewood-total-coronary-occlusion-nejm-1980',
+          name: 'DeWood MA, Spores J, Notske R, et al. Prevalence of total coronary occlusion during the early hours of transmural myocardial infarction. N Engl J Med. 1980;303(16):897-902.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7412821/',
+          publishedAt: '1980-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-02-22',
+        datePrecision: 'DAY',
+        reason: 'The Italian GISSI trial showed that intravenous streptokinase given during acute MI reduced 21-day mortality by about 18%, proving that dissolving the coronary thrombus saves lives. By demonstrating that reopening the occluded artery alters outcome, the thrombolysis trials confirmed DeWood\'s thrombus-as-cause paradigm and settled it as the basis of the reperfusion era of cardiology.',
+        source: {
+          externalId: 'src:gissi-streptokinase-confirms-thrombus-lancet-1986',
+          name: 'Gruppo Italiano per lo Studio della Streptochinasi nell\'Infarto Miocardico (GISSI). Effectiveness of intravenous thrombolytic treatment in acute myocardial infarction. Lancet. 1986;1(8478):397-402.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2868337/',
+          publishedAt: '1986-02-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── tPA alteplase Activase FDA approval 1987 ────────────────────────────────
+  {
+    externalId: 'trajectory:tpa-alteplase-activase-fda-approval-1987',
+    text: 'On 13 November 1987 the U.S. FDA approved Genentech\'s Activase (alteplase), the first recombinant tissue plasminogen activator (tPA), for treatment of acute myocardial infarction to reduce mortality and the incidence of heart failure.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1987-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-11-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Activase (alteplase) under BLA 103172 as the first genetically engineered thrombolytic for acute MI, after its Cardiorenal Advisory Committee had declined to recommend approval earlier in 1987 over questions about demonstrated clinical benefit. The approval institutionally established the recombinant fibrin-specific thrombolytic on the regulatory record and was a landmark commercial milestone for the biotechnology industry.',
+        source: {
+          externalId: 'src:fda-activase-alteplase-approval-1987',
+          name: 'FDA / Genentech. Activase (alteplase) — Date of Approval: November 13, 1987 (BLA 103172). Drugs.com approval history and prescribing information.',
+          url: 'https://www.drugs.com/history/activase.html',
+          publishedAt: '1987-11-13',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-09-02',
+        datePrecision: 'DAY',
+        reason: 'The GUSTO trial (41,021 patients) found that accelerated-infusion tPA with intravenous heparin reduced 30-day mortality to 6.3% versus about 7.3% for streptokinase strategies, a 14% relative reduction (p=0.001), albeit with a small excess of hemorrhagic stroke. This reinforced tPA\'s place as a first-line thrombolytic by demonstrating a survival advantage over the older streptokinase standard.',
+        source: {
+          externalId: 'src:gusto-tpa-vs-streptokinase-nejm-1993',
+          name: 'The GUSTO Investigators. An international randomized trial comparing four thrombolytic strategies for acute myocardial infarction. N Engl J Med. 1993;329(10):673-682.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8204123/',
+          publishedAt: '1993-09-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MRFIT multifactor intervention null result 1982 ──────────────────────────
+  {
+    externalId: 'trajectory:mrfit-multifactor-intervention-null-1982',
+    text: 'On 24 September 1982 the Multiple Risk Factor Intervention Trial (MRFIT) reported in JAMA that a seven-year intensive multifactorial program (smoking cessation, blood-pressure and cholesterol lowering) in 12,866 high-risk men produced no statistically significant reduction in coronary heart disease mortality versus usual care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-09-24',
+        datePrecision: 'DAY',
+        reason: 'The MRFIT Research Group reported that men randomized to special multifactor intervention had only a 7.1% lower (non-significant) CHD mortality rate than usual-care men over an average seven years. This surprising near-null result — possibly diluted by improving risk factors in the usual-care arm and by harm from high-dose diuretics in some hypertensive subgroups — placed on the record the claim that aggressive multifactorial intervention did not clearly reduce coronary mortality, contesting the prevailing expectation.',
+        source: {
+          externalId: 'src:mrfit-risk-factor-changes-mortality-jama-1982',
+          name: 'Multiple Risk Factor Intervention Trial Research Group. Multiple Risk Factor Intervention Trial. Risk factor changes and mortality results. JAMA. 1982;248(12):1465-1477.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7050440/',
+          publishedAt: '1982-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-09-01',
+        datePrecision: 'DAY',
+        reason: 'Sixteen-year follow-up in Circulation found the special-intervention group had modestly lower CHD mortality (11.4% lower, 95% CI -23% to 1.9%) and a statistically significant 20.4% reduction in acute-MI deaths, suggesting a delayed benefit that emerged after the trial ended. The reanalysis reopened interpretation of the original null and made MRFIT an enduringly contested case about underpowered trials and the lag of preventive benefit.',
+        source: {
+          externalId: 'src:mrfit-16-year-mortality-circulation-1996',
+          name: 'Multiple Risk Factor Intervention Trial Research Group. Mortality after 16 years for participants randomized to the Multiple Risk Factor Intervention Trial. Circulation. 1996;94(5):946-951.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8790030/',
+          publishedAt: '1996-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AFASAK warfarin stroke prevention in atrial fibrillation 1989 ────────────
+  {
+    externalId: 'trajectory:afasak-warfarin-stroke-prevention-atrial-fibrillation-1989',
+    text: 'On 28 January 1989 the Copenhagen AFASAK study reported in the Lancet the first randomized controlled trial showing that warfarin anticoagulation markedly reduces thromboembolic stroke in patients with chronic nonrheumatic atrial fibrillation, while low-dose aspirin did not differ from placebo.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-01-28',
+        datePrecision: 'DAY',
+        reason: 'Petersen et al. randomized 1,007 outpatients with chronic nonrheumatic atrial fibrillation to open-label warfarin, blinded aspirin 75 mg, or placebo, and found significantly fewer thromboembolic complications and lower vascular mortality with warfarin (5 events vs 20 on aspirin and 21 on placebo). This was the first RCT to record that anticoagulation prevents stroke in nonvalvular AF, a previously unproven and undertreated indication.',
+        source: {
+          externalId: 'src:afasak-warfarin-aspirin-af-lancet-1989',
+          name: 'Petersen P, Boysen G, Godtfredsen J, Andersen ED, Andersen B. Placebo-controlled, randomised trial of warfarin and aspirin for prevention of thromboembolic complications in chronic atrial fibrillation. The Copenhagen AFASAK study. Lancet. 1989;1(8631):175-179.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2563096/',
+          publishedAt: '1989-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-07-11',
+        datePrecision: 'DAY',
+        reason: 'The Atrial Fibrillation Investigators pooled individual data from five randomized trials (AFASAK, SPAF, BAATAF, CAFA, SPINAF) and found warfarin reduced stroke by 68% with low absolute hemorrhage risk, whereas aspirin\'s effect was weaker. The convergent meta-analysis settled chronic anticoagulation as standard stroke-prevention therapy for nonvalvular atrial fibrillation and was incorporated into subsequent clinical guidelines.',
+        source: {
+          externalId: 'src:af-investigators-pooled-analysis-archintmed-1994',
+          name: 'Atrial Fibrillation Investigators. Risk factors for stroke and efficacy of antithrombotic therapy in atrial fibrillation. Analysis of pooled data from five randomized controlled trials. Arch Intern Med. 1994;154(13):1449-1457.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8018000/',
+          publishedAt: '1994-07-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INFECTIOUS DISEASE EMERGENCE (1993–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── MDR-TB nosocomial outbreaks New York City 1993 ──────────────────────────
+  {
+    externalId: 'trajectory:mdr-tb-nosocomial-outbreaks-new-york-city-1993',
+    text: 'Frieden and colleagues reported in the New England Journal of Medicine on 25 February 1993 that drug-resistant tuberculosis had re-emerged in New York City, with 19% of isolates resistant to both isoniazid and rifampin amid nosocomial multidrug-resistant TB outbreaks.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-02-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-02-25',
+        datePrecision: 'DAY',
+        reason: 'Frieden et al. surveyed every TB isolate in New York City in April 1991 and found 33% resistant to at least one drug and 19% resistant to both isoniazid and rifampin, documenting nosocomial MDR-TB outbreaks. This recorded, against the prior assumption that TB was a controlled disease in the US, that drug-resistant tuberculosis had become a major urban public-health emergency.',
+        source: {
+          externalId: 'src:frieden-emergence-drug-resistant-tb-nyc-nejm-1993',
+          name: 'Frieden TR, Sterling T, Pablos-Mendez A, Kilburn JO, Cauthen GM, Dooley SW. The emergence of drug-resistant tuberculosis in New York City. N Engl J Med. 1993;328(8):521-526.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8381207/',
+          publishedAt: '1993-02-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-07-27',
+        datePrecision: 'DAY',
+        reason: 'Frieden et al. reported in NEJM that an aggressive institutional response — expanded directly observed therapy, infection control, and treatment-completion programs by the NYC Department of Health — produced a 21% decline in TB cases and a sharp drop in MDR-TB between 1992 and 1994. This settled the emergence claim as both real and remediable, validating MDR-TB as a containable institutional threat.',
+        source: {
+          externalId: 'src:frieden-tb-nyc-turning-the-tide-nejm-1995',
+          name: 'Frieden TR, Fujiwara PI, Washko RM, Hamburg MA. Tuberculosis in New York City--turning the tide. N Engl J Med. 1995;333(4):229-233.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7791840/',
+          publishedAt: '1995-07-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sin Nombre hantavirus Four Corners 1993 ─────────────────────────────────
+  {
+    externalId: 'trajectory:sin-nombre-hantavirus-four-corners-1993',
+    text: 'A previously unknown rodent-borne hantavirus (later named Sin Nombre virus, reservoir the deer mouse) was identified by CDC as the cause of the 1993 Four Corners outbreak of fatal hantavirus pulmonary syndrome in the southwestern United States.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-06-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-06-11',
+        datePrecision: 'DAY',
+        reason: 'CDC\'s MMWR reported a cluster of previously healthy young adults in the Four Corners region who died of acute unexplained respiratory failure, with the etiology unknown at the time. This recorded the emergence of a novel, severe, and rapidly fatal infectious syndrome demanding urgent investigation.',
+        source: {
+          externalId: 'src:cdc-mmwr-outbreak-acute-illness-southwest-1993',
+          name: 'Centers for Disease Control and Prevention. Outbreak of acute illness--southwestern United States, 1993. MMWR Morb Mortal Wkly Rep. 1993;42(22):421-424.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8502213/',
+          publishedAt: '1993-06-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-11-05',
+        datePrecision: 'DAY',
+        reason: 'Nichol et al. in Science used genetic methods to identify a previously unknown hantavirus in patient tissues and linked it to deer mouse (Peromyscus maniculatus) populations near patient homes, establishing the rodent reservoir and the viral cause. This settled the etiology of hantavirus pulmonary syndrome within months of the outbreak using molecular epidemiology.',
+        source: {
+          externalId: 'src:nichol-hantavirus-genetic-identification-science-1993',
+          name: 'Nichol ST, Spiropoulou CF, Morzunov S, et al. Genetic identification of a hantavirus associated with an outbreak of acute respiratory illness. Science. 1993;262(5135):914-917.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8235615/',
+          publishedAt: '1993-11-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nonoxynol-9 microbicide HIV harm reversal 2002 ──────────────────────────
+  {
+    externalId: 'trajectory:nonoxynol-9-microbicide-hiv-harm-reversal-2002',
+    text: 'Van Damme and colleagues reported in The Lancet on 28 September 2002 that the nonoxynol-9 vaginal gel COL-1492 did not prevent HIV-1 transmission in female sex workers and was associated with increased HIV-1 risk with frequent use, reversing the prior view of nonoxynol-9 as a candidate microbicide.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-12-21',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-12-21',
+        datePrecision: 'MONTH',
+        reason: 'Hicks et al. reported in The Lancet that the spermicide nonoxynol-9 inactivated HTLV-III/LAV (HIV) in cultured human lymphocytes in vitro. This recorded the foundational claim — that an inexpensive over-the-counter spermicide had anti-HIV activity — that launched a decade of hope for nonoxynol-9 as a topical microbicide for HIV prevention.',
+        source: {
+          externalId: 'src:hicks-nonoxynol9-inactivation-htlv3-lancet-1985',
+          name: 'Hicks DR, Martin LS, Getchell JP, et al. Inactivation of HTLV-III/LAV-infected cultures of normal human lymphocytes by nonoxynol-9 in vitro. Lancet. 1985;2(8469-70):1422-1423.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2867413/',
+          publishedAt: '1985-12-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-09-28',
+        datePrecision: 'DAY',
+        reason: 'The COL-1492 randomized controlled trial in 892 female sex workers across four countries found nonoxynol-9 gel gave no protection against HIV-1 and that frequent use was associated with increased HIV-1 infection, likely through mucosal toxicity. This reversed the in-vitro-driven promise of nonoxynol-9 and led WHO/CONRAD and CDC to advise against its use for HIV prevention.',
+        source: {
+          externalId: 'src:vandamme-col1492-nonoxynol9-hiv-lancet-2002',
+          name: 'Van Damme L, Ramjee G, Alary M, et al. Effectiveness of COL-1492, a nonoxynol-9 vaginal gel, on HIV-1 transmission in female sex workers: a randomised controlled trial. Lancet. 2002;360(9338):971-977.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12383665/',
+          publishedAt: '2002-09-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── HLA-B*5701 abacavir hypersensitivity screening PREDICT-1 2008 ───────────
+  {
+    externalId: 'trajectory:hla-b5701-abacavir-hypersensitivity-screening-2008',
+    text: 'The PREDICT-1 randomized trial (Mallal et al., New England Journal of Medicine, 7 February 2008) showed that prospective HLA-B*5701 screening eliminated immunologically confirmed abacavir hypersensitivity reactions in HIV patients, establishing genotype-guided prescribing for the antiretroviral abacavir.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-03-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-03-02',
+        datePrecision: 'DAY',
+        reason: 'Mallal et al. reported in The Lancet that HLA-B*5701 was present in 78% of patients with abacavir hypersensitivity versus 2% of abacavir-tolerant patients, recording a strong pharmacogenetic association between the HLA-B*5701 allele and the potentially fatal hypersensitivity reaction. This established the hypothesis that genetic screening could prevent the reaction.',
+        source: {
+          externalId: 'src:mallal-hlab5701-abacavir-association-lancet-2002',
+          name: 'Mallal S, Nolan D, Witt C, et al. Association between presence of HLA-B*5701, HLA-DR7, and HLA-DQ3 and hypersensitivity to HIV-1 reverse-transcriptase inhibitor abacavir. Lancet. 2002;359(9308):727-732.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11888582/',
+          publishedAt: '2002-03-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-02-07',
+        datePrecision: 'DAY',
+        reason: 'The PREDICT-1 double-blind randomized trial prospectively assigned patients to HLA-B*5701 screening or standard care and found screening eliminated immunologically (patch-test) confirmed hypersensitivity (0% vs 2.7%) and reduced clinically suspected reactions. This settled pharmacogenetic screening as standard of care, and the FDA revised the abacavir label in July 2008 to recommend HLA-B*5701 testing before initiation.',
+        source: {
+          externalId: 'src:mallal-predict1-hlab5701-abacavir-nejm-2008',
+          name: 'Mallal S, Phillips E, Carosi G, et al. HLA-B*5701 screening for hypersensitivity to abacavir. N Engl J Med. 2008;358(6):568-579.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18256392/',
+          publishedAt: '2008-02-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mellors plasma viral load HIV prognosis 1996 ────────────────────────────
+  {
+    externalId: 'trajectory:mellors-plasma-viral-load-hiv-prognosis-1996',
+    text: 'Mellors and colleagues reported in Science on 24 May 1996 that the quantity of HIV-1 RNA in plasma (viral load) was the single strongest predictor of progression to AIDS and death, superior to CD4+ counts, establishing plasma viral load as the central prognostic and treatment-monitoring marker in HIV.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-05-24',
+        datePrecision: 'DAY',
+        reason: 'Using stored sera from the Multicenter AIDS Cohort Study, Mellors et al. showed in Science that baseline plasma HIV-1 RNA directly predicted the risk of AIDS and death, outperforming CD4+ T-cell count. This recorded a new paradigm — that the level of ongoing viral replication, not just immune depletion, governs prognosis.',
+        source: {
+          externalId: 'src:mellors-plasma-viral-load-prognosis-science-1996',
+          name: 'Mellors JW, Rinaldo CR, Gupta P, White RM, Todd JA, Kingsley LA. Prognosis in HIV-1 infection predicted by the quantity of virus in plasma. Science. 1996;272(5265):1167-1170.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8638160/',
+          publishedAt: '1996-05-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-06-15',
+        datePrecision: 'DAY',
+        reason: 'Mellors et al. extended the finding in Annals of Internal Medicine, confirming across the full cohort that plasma viral load was the single best predictor of progression and that viral load plus CD4+ count together stratified risk most accurately. This, alongside contemporaneous adoption into US treatment guidelines, settled viral load monitoring as the standard basis for staging HIV and assessing antiretroviral response.',
+        source: {
+          externalId: 'src:mellors-viral-load-cd4-prognostic-annintmed-1997',
+          name: 'Mellors JW, Munoz A, Giorgi JV, et al. Plasma viral load and CD4+ lymphocytes as prognostic markers of HIV-1 infection. Ann Intern Med. 1997;126(12):946-954.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9182471/',
+          publishedAt: '1997-06-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
