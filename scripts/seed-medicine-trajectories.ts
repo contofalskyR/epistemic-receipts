@@ -42379,6 +42379,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MOLECULAR MEDICINE & BIOCHEMICAL GENETICS ERA (1902–1957)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Herrick sickle-cell first description — 1910 ───────────────────────────
+  {
+    externalId: 'trajectory:herrick-first-sickle-cell-description-1910',
+    text: 'James B. Herrick reported in Archives of Internal Medicine in November 1910 the first description in Western medical literature of peculiar elongated, sickle-shaped red blood corpuscles in a case of severe anemia, in a 20-year-old dental student from Grenada — the founding clinical observation of sickle cell anemia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1910-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1910-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Herrick published a case report of Walter Clement Noel, a dental student with chronic anemia whose blood smears showed numerous \'thin, sickle-shaped and crescent-shaped\' erythrocytes never previously described. This recorded in the expert literature the first observation of what would become sickle cell anemia, establishing an entirely new and unexplained blood-cell morphology as a distinct clinical finding.',
+        source: {
+          externalId: 'src:herrick-sickle-shaped-corpuscles-1910',
+          name: 'Herrick JB. Peculiar elongated and sickle-shaped red blood corpuscles in a case of severe anemia. Arch Intern Med. 1910;6(5):517–521. (Landmark reprint: Yale J Biol Med. 2001;74(3):179–184, PMID 11501714.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11501714/',
+          publishedAt: '1910-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-11-25',
+        datePrecision: 'DAY',
+        reason: 'Pauling, Itano, Singer, and Wells demonstrated that the hemoglobin of sickle cell patients differs electrophoretically from normal hemoglobin, defining sickle cell anemia as a \'molecular disease\' with a specific abnormal protein. This converted Herrick\'s unexplained morphological curiosity into a mechanistically defined, heritable disease entity, settling sickle cell anemia in the expert literature as a discrete pathological condition.',
+        source: {
+          externalId: 'src:pauling-sickle-cell-molecular-disease-1949',
+          name: 'Pauling L, Itano HA, Singer SJ, Wells IC. Sickle Cell Anemia, a Molecular Disease. Science. 1949;110(2865):543–548. PMID 15395398.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15395398/',
+          publishedAt: '1949-11-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pauling molecular disease — 1949 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:pauling-sickle-cell-molecular-disease-1949',
+    text: 'Linus Pauling, Harvey Itano, S. Jonathan Singer, and Ibert Wells reported in Science on 25 November 1949 that sickle cell anemia hemoglobin differs in electrophoretic mobility from normal hemoglobin, establishing sickle cell anemia as the first \'molecular disease\' — a condition traceable to a defined abnormal protein molecule.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-11-25',
+        datePrecision: 'DAY',
+        reason: 'Using electrophoresis, the Pauling group showed that hemoglobin from sickle cell patients carries a different net electric charge than normal adult hemoglobin, with heterozygotes showing a mixture of both — directly tying a human disease to a defined molecular abnormality in a single protein. This recorded the founding concept of molecular medicine: that an inherited disease can arise from a structurally altered molecule.',
+        source: {
+          externalId: 'src:pauling-itano-molecular-disease-science-1949',
+          name: 'Pauling L, Itano HA, Singer SJ, Wells IC. Sickle Cell Anemia, a Molecular Disease. Science. 1949;110(2865):543–548. PMID 15395398.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15395398/',
+          publishedAt: '1949-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Vernon Ingram reported in Nature that sickle cell hemoglobin differs from normal hemoglobin by a single amino acid — the substitution of valine for glutamic acid at the sixth position of the beta chain — the first demonstration that a point change in a protein causes a human disease. This pinpointed Pauling\'s \'molecular disease\' to a precise lesion, settling the molecular-disease paradigm in the expert literature.',
+        source: {
+          externalId: 'src:ingram-sickle-hemoglobin-amino-acid-1957',
+          name: 'Ingram VM. Gene mutations in human haemoglobin: the chemical difference between normal and sickle cell haemoglobin. Nature. 1957;180(4581):326–328. PMID 13464827.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13464827/',
+          publishedAt: '1957-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Garrod alkaptonuria inborn errors — 1902 ────────────────────────────────
+  {
+    externalId: 'trajectory:garrod-alkaptonuria-inborn-errors-1902',
+    text: 'Archibald Garrod reported in The Lancet in December 1902 that alkaptonuria clusters in families and among children of consanguineous marriages in a pattern consistent with Mendelian recessive inheritance, introducing the concept of \'chemical individuality\' and founding the idea of inherited inborn errors of metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1902-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Garrod, drawing on William Bateson\'s newly rediscovered Mendelian analysis, argued that alkaptonuria (lifelong excretion of homogentisic acid, blackening urine) is not a disease in the ordinary sense but a rare inherited \'chemical individuality\' transmitted as a recessive trait. This recorded in the expert literature the first claim that a human metabolic abnormality follows Mendelian inheritance, the conceptual seed of biochemical genetics.',
+        source: {
+          externalId: 'src:garrod-incidence-alkaptonuria-lancet-1902',
+          name: 'Garrod AE. The Incidence of Alkaptonuria: A Study in Chemical Individuality. Lancet. 1902;160(4137):1616–1620. (Reprint: Mol Med. 1996;2(3):274–282, PMC2230159.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2230159/',
+          publishedAt: '1902-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Bert La Du and colleagues demonstrated that alkaptonuria results from a deficiency of the enzyme homogentisic acid oxidase, directly vindicating Garrod\'s half-century-old hypothesis that the disorder is an inherited block in a specific metabolic step. This biochemical confirmation settled the inborn-errors-of-metabolism concept as established fact, identifying the precise enzymatic lesion Garrod had inferred.',
+        source: {
+          externalId: 'src:la-du-alcaptonuria-tyrosine-defect-jbc-1958',
+          name: 'La Du BN, Zannoni VG, Laster L, Seegmiller JE. The nature of the defect in tyrosine metabolism in alcaptonuria. J Biol Chem. 1958;230(1):251–260. PMID 13502394.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13502394/',
+          publishedAt: '1958-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Wilson hepatolenticular degeneration — 1912 ─────────────────────────────
+  {
+    externalId: 'trajectory:wilson-hepatolenticular-degeneration-1912',
+    text: 'Samuel Alexander Kinnier Wilson described in Brain in 1912 a new familial nervous disease — progressive lenticular degeneration associated with cirrhosis of the liver — combining basal-ganglia degeneration with hepatic disease, defining the clinical entity later named Wilson\'s disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-03-01',
+        datePrecision: 'MONTH',
+        reason: 'In a 200-plus-page monograph based on his doctoral thesis, Wilson delineated a previously unrecognized hereditary disorder in which bilateral degeneration of the lenticular nuclei produces tremor, rigidity, and dysarthria together with cirrhosis of the liver. This recorded in the expert literature a new, clinically and pathologically defined familial disease entity, distinguishing it from other movement disorders.',
+        source: {
+          externalId: 'src:wilson-progressive-lenticular-degeneration-brain-1912',
+          name: 'Wilson SAK. Progressive lenticular degeneration: a familial nervous disease associated with cirrhosis of the liver. Brain. 1912;34(4):295–509.',
+          url: 'https://academic.oup.com/brain/article/34/4/295/338655',
+          publishedAt: '1912-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-12-01',
+        datePrecision: 'MONTH',
+        reason: 'John Cumings showed that the brain and liver of patients with hepatolenticular degeneration contain markedly excess copper, identifying abnormal copper accumulation as the biochemical basis of the disease Wilson had described clinically. This established the pathophysiological mechanism and the rationale for copper-chelation therapy, settling Wilson\'s disease as a defined, mechanistically understood inherited disorder of copper metabolism.',
+        source: {
+          externalId: 'src:cumings-copper-hepatolenticular-brain-1948',
+          name: 'Cumings JN. The copper and iron content of brain and liver in the normal and in hepato-lenticular degeneration. Brain. 1948;71(4):410–415. PMID 18124738.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18124738/',
+          publishedAt: '1948-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
