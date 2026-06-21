@@ -57491,6 +57491,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE / ORPHAN DRUG ERA (1999--2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── EU Orphan Medicinal Products Regulation — 1999 ────────────────────────
+  {
+    externalId: 'trajectory:eu-orphan-medicinal-products-regulation-141-2000-1999',
+    text: 'On 16 December 1999 the European Parliament and Council adopted Regulation (EC) No 141/2000 on orphan medicinal products, establishing a Union-wide framework — orphan designation for conditions affecting no more than five in 10,000 persons, ten years of market exclusivity, protocol assistance, and fee waivers — to make development of treatments for rare diseases commercially viable across the European Community.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1999-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-12-16',
+        datePrecision: 'DAY',
+        reason: 'The European Parliament and Council adopted Regulation (EC) No 141/2000, creating the EU\'s orphan-drug regime: a Committee for Orphan Medicinal Products at the EMEA to grant designations for conditions affecting ≤5 in 10,000 people, ten years of market exclusivity, and research incentives. Mirroring the 1983 U.S. Orphan Drug Act in a different jurisdiction, it institutionally settled rare-disease drug development as a distinct, incentivized regulatory category for the European single market; the regulation was published in Official Journal L 18 on 22 January 2000 and entered into force.',
+        source: {
+          externalId: 'src:eurlex-regulation-141-2000-orphan-medicinal-products',
+          name: 'European Parliament and Council. Regulation (EC) No 141/2000 of 16 December 1999 on orphan medicinal products. Official Journal of the European Communities L 18, 22 January 2000, pp. 1-5.',
+          url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32000R0141',
+          publishedAt: '2000-01-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Rare Diseases Act of 2002 — NIH Office of Rare Diseases ───────────────
+  {
+    externalId: 'trajectory:rare-diseases-act-2002-office-of-rare-diseases',
+    text: 'On 6 November 2002 U.S. President George W. Bush signed the Rare Diseases Act of 2002 (Public Law 107-280), which amended the Public Health Service Act to statutorily establish an Office of Rare Diseases at the National Institutes of Health and authorize rare-disease research, codifying a rare disease as one affecting fewer than 200,000 people in the United States.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2002-11-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-11-06',
+        datePrecision: 'DAY',
+        reason: 'Congress passed H.R. 4013 (House 1 Oct, Senate 17 Oct 2002) and the President signed it into law as Public Law 107-280, giving the previously administratively-created NIH Office of Rare Diseases a statutory foundation and authorizing rare-disease regional centers of excellence and roughly $20 million per year for FY2003-2006. Enacted nearly two decades after the 1983 Orphan Drug Act provided commercial incentives, the Act institutionally settled federal research infrastructure — not just drug-market incentives — as a permanent commitment to the ~6,000 conditions then recognized as rare.',
+        source: {
+          externalId: 'src:pl-107-280-rare-diseases-act-2002',
+          name: 'U.S. Congress. Rare Diseases Act of 2002, Public Law 107-280, 116 Stat. 1988. November 6, 2002.',
+          url: 'https://www.congress.gov/107/plaws/publ280/PLAW-107publ280.pdf',
+          publishedAt: '2002-11-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Romiplostim (Nplate) — first TPO-receptor agonist for ITP — 2008 ───────
+  {
+    externalId: 'trajectory:romiplostim-nplate-first-tpo-receptor-agonist-itp-2008',
+    text: 'Romiplostim (Nplate), a peptibody thrombopoietin-receptor agonist, raises platelet counts in chronic immune thrombocytopenic purpura — a claim first evidenced by Kuter and colleagues\' double-blind randomized trial in The Lancet on 2 February 2008 and settled by the FDA\'s approval on 22 August 2008 (BLA 125268), the first thrombopoietin-receptor agonist ever approved.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-02-02',
+        datePrecision: 'DAY',
+        reason: 'Kuter, Bussel and colleagues reported two parallel double-blind, placebo-controlled trials in The Lancet showing that weekly subcutaneous romiplostim produced a durable platelet response in 61% of non-splenectomized and 38% of splenectomized chronic-ITP patients versus essentially none on placebo, reducing bleeding and rescue-treatment need. Unlike prior platelet-destruction-focused therapy, this recorded the first controlled evidence that stimulating thrombopoietin-receptor signaling to increase platelet production treats the disease.',
+        source: {
+          externalId: 'src:kuter-romiplostim-itp-lancet-2008',
+          name: 'Kuter DJ, Bussel JB, Lyons RM, et al. Efficacy of romiplostim in patients with chronic immune thrombocytopenic purpura: a double-blind randomised controlled trial. Lancet. 2008;371(9610):395-403. PMID 18242413.',
+          url: 'https://www.thelancet.com/article/S0140-6736(08)60203-2/abstract',
+          publishedAt: '2008-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-08-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved romiplostim (Nplate, Amgen, BLA 125268) for thrombocytopenia in chronic-ITP patients with insufficient response to corticosteroids, immunoglobulins, or splenectomy — the first thrombopoietin-receptor agonist licensed and a novel peptibody drug format. The approval settled TPO-receptor stimulation as a recognized treatment paradigm for the orphan autoimmune cytopenia and opened the class later joined by oral eltrombopag.',
+        source: {
+          externalId: 'src:fda-nplate-romiplostim-label-bla-125268',
+          name: 'U.S. Food and Drug Administration. Nplate (romiplostim) for subcutaneous injection — Prescribing Information, BLA 125268 (FDA version dated 22 August 2008).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2008/125268lbl.pdf',
+          publishedAt: '2008-08-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ecallantide (Kalbitor) — first kallikrein inhibitor for acute HAE — 2009
+  {
+    externalId: 'trajectory:ecallantide-kalbitor-first-kallikrein-inhibitor-acute-hae-2009',
+    text: 'On 1 December 2009 the U.S. FDA approved Kalbitor (ecallantide, BLA 125277), a recombinant plasma kallikrein inhibitor, for treatment of acute attacks of hereditary angioedema in patients 16 years and older — the first kallikrein-inhibitor drug and a new mechanistic class for the orphan disease, validated by the placebo-controlled EDEMA3 and EDEMA4 trials.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-12-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-12-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved ecallantide (Kalbitor, Dyax, BLA 125277) for acute HAE attacks on the basis of two randomized, double-blind, placebo-controlled trials (EDEMA3 and EDEMA4) showing significantly greater symptom reduction versus placebo. As the first plasma kallikrein inhibitor approved, it established a distinct mechanism — blocking kallikrein to lower bradykinin — for treating acute attacks, complementing the C1-inhibitor replacement approach (Cinryze) approved the prior year and settling kallikrein blockade as an effective on-demand orphan-disease therapy. A boxed warning for anaphylaxis required administration by a healthcare professional.',
+        source: {
+          externalId: 'src:fda-kalbitor-ecallantide-label-bla-125277',
+          name: 'U.S. Food and Drug Administration. KALBITOR (ecallantide) injection — Prescribing Information, BLA 125277 (initial U.S. approval 1 December 2009).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2020/125277s081lbl.pdf',
+          publishedAt: '2009-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-08-05',
+        datePrecision: 'DAY',
+        reason: 'Cicardi and colleagues published the pivotal EDEMA4 trial in the New England Journal of Medicine, reporting that subcutaneous ecallantide 30 mg produced significantly greater improvement in patient-reported and clinical outcome scores than placebo for acute HAE attacks. Peer-reviewed publication of the registration trial confirmed in the expert literature the efficacy claim on which the FDA approval rested.',
+        source: {
+          externalId: 'src:cicardi-ecallantide-edema4-nejm-2010',
+          name: 'Cicardi M, Levy RJ, McNeil DL, et al. Ecallantide for the treatment of acute attacks in hereditary angioedema. N Engl J Med. 2010;363(6):523-531. PMID 20818887.',
+          url: 'https://www.nejm.org/doi/abs/10.1056/NEJMoa0905079',
+          publishedAt: '2010-08-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
