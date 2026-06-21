@@ -59947,6 +59947,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DIABETES & METABOLIC DISEASE (2000s–2010s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ACCORD intensive glucose control mortality 2008 ─────────────────────────
+  {
+    externalId: 'trajectory:accord-intensive-glucose-control-mortality-2008',
+    text: 'The ACCORD Study Group reported in the New England Journal of Medicine on 12 June 2008 that intensively lowering HbA1c below 6.0% in high-risk type 2 diabetes patients increased all-cause mortality and did not reduce major cardiovascular events, having forced early termination of the trial\'s glucose-lowering arm.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2008-06-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-06-12',
+        datePrecision: 'DAY',
+        reason: 'The Action to Control Cardiovascular Risk in Diabetes (ACCORD) Study Group published the primary results of its intensive-glucose arm, reporting that targeting near-normal HbA1c raised mortality (hazard ratio 1.22) in 10,251 high-risk type 2 patients, prompting the data safety monitoring board to halt that arm on 6 February 2008. This recorded in the literature a direct contradiction of the prevailing \'lower is better\' inference drawn from DCCT and UKPDS.',
+        source: {
+          externalId: 'src:accord-intensive-glucose-nejm-2008',
+          name: 'Action to Control Cardiovascular Risk in Diabetes Study Group (Gerstein HC, Miller ME, et al.). Effects of Intensive Glucose Lowering in Type 2 Diabetes. N Engl J Med. 2008;358(24):2545-2559.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18539917/',
+          publishedAt: '2008-06-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-04-19',
+        datePrecision: 'DAY',
+        reason: 'The ADA/EASD position statement on management of hyperglycemia incorporated ACCORD (alongside ADVANCE and VADT) to abandon uniform tight-control targets in favor of individualized HbA1c goals, institutionalizing the finding that aggressive glucose lowering can harm high-risk patients. The mortality finding itself became accepted clinical fact even as its mechanism remained unexplained.',
+        source: {
+          externalId: 'src:ada-easd-hyperglycemia-position-2012',
+          name: 'Inzucchi SE, Bergenstal RM, et al. Management of Hyperglycemia in Type 2 Diabetes: A Patient-Centered Approach. Position Statement of the ADA and EASD. Diabetes Care. 2012;35(6):1364-1379.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22517736/',
+          publishedAt: '2012-04-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sitagliptin / Januvia — first DPP-4 inhibitor FDA approval 2006 ─────────
+  {
+    externalId: 'trajectory:sitagliptin-januvia-first-dpp4-inhibitor-2006',
+    text: 'The U.S. FDA approved Merck\'s sitagliptin (Januvia, NDA 021995) on 17 October 2006 as the first dipeptidyl peptidase-4 (DPP-4) inhibitor, establishing oral incretin enhancement as a new mechanism for treating type 2 diabetes.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-10-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-10-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved sitagliptin under NDA 021995, the first agent in the DPP-4 inhibitor class, validating prolongation of endogenous incretin (GLP-1/GIP) action as a viable glucose-lowering strategy. The approval established a durable new oral drug class for type 2 diabetes distinct from the injectable GLP-1 receptor agonists already entering the market.',
+        source: {
+          externalId: 'src:fda-januvia-sitagliptin-label-nda021995',
+          name: 'U.S. Food and Drug Administration. JANUVIA (sitagliptin) prescribing information, NDA 021995. Initial U.S. approval 2006.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/021995s019lbl.pdf',
+          publishedAt: '2006-10-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── HbA1c ≥6.5% as diabetes diagnostic criterion 2009 ──────────────────────
+  {
+    externalId: 'trajectory:hba1c-diabetes-diagnostic-criterion-2009',
+    text: 'An International Expert Committee convened by the ADA, EASD, and IDF recommended in Diabetes Care in July 2009 that an HbA1c level of 6.5% or higher be adopted as a diagnostic criterion for diabetes, shifting diagnosis away from sole reliance on fasting and oral glucose tolerance testing.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The International Expert Committee report (corresponding author David M. Nathan) argued that HbA1c, as a standardized integrated measure of chronic glycemia tied to retinopathy risk, should define diabetes at a threshold of 6.5%, recording in the literature a fundamental change to how the disease is diagnosed. This challenged the decades-old reliance on fasting plasma glucose and the oral glucose tolerance test.',
+        source: {
+          externalId: 'src:intl-expert-committee-a1c-diabetes-care-2009',
+          name: 'International Expert Committee. International Expert Committee Report on the Role of the A1C Assay in the Diagnosis of Diabetes. Diabetes Care. 2009;32(7):1327-1334.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19502545/',
+          publishedAt: '2009-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-01-01',
+        datePrecision: 'MONTH',
+        reason: 'The American Diabetes Association formally adopted HbA1c >=6.5% as a diabetes diagnostic criterion (and 5.7-6.4% for increased risk) in its Standards of Medical Care in Diabetes published in the January 2010 Diabetes Care supplement, with WHO endorsing the criterion in 2011. Institutional adoption settled HbA1c as a standard diagnostic test worldwide.',
+        source: {
+          externalId: 'src:ada-a1c-diagnosis-implications-pmc3086708',
+          name: 'Saudek CD, Brick JC. The Implications of Using Hemoglobin A1C for Diagnosing Diabetes Mellitus (reviewing ADA Standards of Medical Care in Diabetes 2010). Diabetes Care / J Clin Endocrinol Metab review, PMC3086708. 2010.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3086708/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── FDA ephedra dietary supplement ban 2004 ─────────────────────────────────
+  {
+    externalId: 'trajectory:fda-ephedra-dietary-supplement-ban-2004',
+    text: 'The U.S. FDA issued a final rule published in the Federal Register on 11 February 2004 declaring dietary supplements containing ephedrine alkaloids adulterated because they present an unreasonable risk of illness or injury, effectively banning ephedra-based weight-loss and energy supplements.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-02-11',
+        datePrecision: 'DAY',
+        reason: 'Having previously been sold freely as a legal weight-loss and ergogenic supplement under DSHEA, ephedra was reclassified by the FDA\'s first-ever final rule banning a dietary supplement ingredient, which found ephedrine alkaloids posed an unreasonable risk of heart attack, stroke, and death that outweighed any benefit. The rule, effective 12 April 2004, reversed the prior regulatory and market consensus that ephedra supplements were acceptably safe.',
+        source: {
+          externalId: 'src:fda-ephedrine-alkaloids-final-rule-fr-2004',
+          name: 'U.S. Food and Drug Administration. Final Rule Declaring Dietary Supplements Containing Ephedrine Alkaloids Adulterated Because They Present an Unreasonable Risk. 69 Fed. Reg. 6788. February 11, 2004.',
+          url: 'https://www.federalregister.gov/documents/2004/02/11/04-2912/final-rule-declaring-dietary-supplements-containing-ephedrine-alkaloids-adulterated-because-they',
+          publishedAt: '2004-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Phenylpropanolamine hemorrhagic stroke withdrawal 2000 ──────────────────
+  {
+    externalId: 'trajectory:phenylpropanolamine-hemorrhagic-stroke-withdrawal-2000',
+    text: 'Acting on the Yale Hemorrhagic Stroke Project, the FDA issued a public health advisory on 6 November 2000 and moved to remove phenylpropanolamine (PPA) — widely used in appetite suppressants and cold remedies — from the market as an independent risk factor for hemorrhagic stroke.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-11-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-11-06',
+        datePrecision: 'DAY',
+        reason: 'After the Yale Hemorrhagic Stroke Project data were presented to the FDA Nonprescription Drugs Advisory Committee on 19 October 2000, the FDA issued a public health advisory on 6 November 2000 and requested that manufacturers stop marketing PPA-containing products. The risk claim was first formally recorded through regulatory action, ahead of peer-reviewed publication.',
+        source: {
+          externalId: 'src:fleming-fda-regulation-stroke-nejm-2000',
+          name: 'Fleming GA. The FDA, Regulation, and the Risk of Stroke. N Engl J Med. 2000;343(25):1886-1887.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11117982/',
+          publishedAt: '2000-12-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-12-21',
+        datePrecision: 'DAY',
+        reason: 'Kernan and colleagues published the case-control Hemorrhagic Stroke Project in the New England Journal of Medicine, concluding that PPA in appetite suppressants, and possibly in cold remedies, was an independent risk factor for hemorrhagic stroke in women. Peer-reviewed publication settled the safety reversal that the FDA advisory had initiated, and PPA was permanently withdrawn from U.S. over-the-counter products.',
+        source: {
+          externalId: 'src:kernan-ppa-hemorrhagic-stroke-nejm-2000',
+          name: 'Kernan WN, Viscoli CM, Brass LM, et al. Phenylpropanolamine and the Risk of Hemorrhagic Stroke. N Engl J Med. 2000;343(25):1826-1832.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11117973/',
+          publishedAt: '2000-12-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
