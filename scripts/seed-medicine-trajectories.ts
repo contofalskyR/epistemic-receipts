@@ -57338,6 +57338,159 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Northway bronchopulmonary dysplasia — respirator oxygen 1967 ─────────
+  {
+    externalId: 'trajectory:northway-bronchopulmonary-dysplasia-respirator-1967',
+    text: 'William Northway and colleagues reported in the New England Journal of Medicine on 16 February 1967 that prolonged mechanical ventilation and high-concentration oxygen used to treat hyaline-membrane disease in premature infants caused a distinct chronic lung injury they named bronchopulmonary dysplasia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-02-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-02-16',
+        datePrecision: 'DAY',
+        reason: 'Northway, Rosan, and Porter described a clinical, radiographic, and pathological syndrome of chronic lung disease in 32 premature infants who had received respirator and high-oxygen therapy for hyaline-membrane disease, coining the term bronchopulmonary dysplasia. The paper put on record the then-novel and consequential claim that the very ventilatory and oxygen therapy used to save premature infants was itself producing a new, iatrogenic chronic lung disease.',
+        source: {
+          externalId: 'src:northway-bpd-nejm-1967',
+          name: 'Northway WH Jr, Rosan RC, Porter DY. Pulmonary disease following respirator therapy of hyaline-membrane disease. Bronchopulmonary dysplasia. N Engl J Med. 1967;276(7):357-368.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5334613/',
+          publishedAt: '1967-02-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-06-01',
+        datePrecision: 'MONTH',
+        reason: 'A National Institute of Child Health and Human Development / NHLBI / Office of Rare Diseases workshop, reported by Jobe and Bancalari, established a formal severity-graded consensus definition of bronchopulmonary dysplasia. The institutional standardization of diagnostic criteria settled BPD as an enduring, defined clinical entity decades after Northway\'s original description.',
+        source: {
+          externalId: 'src:jobe-bancalari-bpd-consensus-2001',
+          name: 'Jobe AH, Bancalari E. Bronchopulmonary dysplasia. Am J Respir Crit Care Med. 2001;163(7):1723-1729.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11401896/',
+          publishedAt: '2001-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kawasaki mucocutaneous lymph node syndrome description 1974 ──────────
+  {
+    externalId: 'trajectory:kawasaki-mucocutaneous-lymph-node-syndrome-description-1974',
+    text: 'Tomisaku Kawasaki and colleagues reported in Pediatrics in September 1974 a new acute febrile mucocutaneous lymph node syndrome in Japanese infants and children, the first English-language description of the vasculitis now known as Kawasaki disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Kawasaki, Kosaki, Okawa, Shigematsu, and Yanagawa published an English-language case series of 50 children with a previously unrecognized acute febrile illness marked by conjunctival injection, mucosal changes, rash, extremity changes, and cervical lymphadenopathy. The paper introduced the syndrome to the international literature, recording the existence of a distinct new pediatric disease entity.',
+        source: {
+          externalId: 'src:kawasaki-mlns-pediatrics-1974',
+          name: 'Kawasaki T, Kosaki F, Okawa S, Shigematsu I, Yanagawa H. A new infantile acute febrile mucocutaneous lymph node syndrome (MLNS) prevailing in Japan. Pediatrics. 1974;54(3):271-276.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4153258/',
+          publishedAt: '1974-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-10-26',
+        datePrecision: 'DAY',
+        reason: 'The American Heart Association issued a formal scientific statement codifying diagnostic criteria, treatment, and long-term management of Kawasaki disease, recognizing it as the leading cause of acquired heart disease in children in developed countries. The AHA\'s institutional adoption of standardized diagnostic and management criteria settled Kawasaki disease as an established clinical entity.',
+        source: {
+          externalId: 'src:aha-kawasaki-statement-circulation-2004',
+          name: 'Newburger JW, Takahashi M, Gerber MA, et al. Diagnosis, treatment, and long-term management of Kawasaki disease: a statement for health professionals from the AHA. Circulation. 2004;110(17):2747-2771.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15505111/',
+          publishedAt: '2004-10-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Farwell phenobarbital febrile seizure IQ reversal 1990 ───────────────
+  {
+    externalId: 'trajectory:farwell-phenobarbital-febrile-seizure-iq-reversal-1990',
+    text: 'A randomized controlled trial by John Farwell and colleagues, published in the New England Journal of Medicine on 8 February 1990, found that daily phenobarbital given to young children to prevent recurrent febrile seizures depressed IQ without reducing seizure recurrence, overturning the established practice of phenobarbital prophylaxis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-02-08',
+        datePrecision: 'DAY',
+        reason: 'Farwell et al. randomized 217 children aged 8-36 months at elevated risk of recurrent febrile seizures to daily phenobarbital or placebo and found the phenobarbital group scored about 8 IQ points lower, with the deficit persisting after the drug was stopped and no significant reduction in seizure recurrence. The trial reversed the prevailing 1970s-1980s practice of long-term phenobarbital prophylaxis for febrile seizures, establishing that the drug\'s cognitive harm was not offset by any benefit.',
+        source: {
+          externalId: 'src:farwell-phenobarbital-febrile-seizures-nejm-1990',
+          name: 'Farwell JR, Lee YJ, Hirtz DG, Sulzbacher SI, Ellenberg JH, Nelson KB. Phenobarbital for febrile seizures—effects on intelligence and on seizure recurrence. N Engl J Med. 1990;322(6):364-369.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199002083220604',
+          publishedAt: '1990-02-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lucas breast milk NEC protection preterm 1990 ────────────────────────
+  {
+    externalId: 'trajectory:lucas-breast-milk-necrotizing-enterocolitis-preterm-1990',
+    text: 'Alan Lucas and Tim Cole reported in The Lancet on 22 December 1990 that, in a prospective multicentre study of 926 preterm infants, those fed only formula developed necrotising enterocolitis 6-10 times more often than those receiving breast milk, establishing human milk as protective against NEC in premature infants.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-12-22',
+        datePrecision: 'DAY',
+        reason: 'Lucas and Cole analyzed 926 preterm infants across multiple neonatal units and found necrotising enterocolitis was 6-10 times more frequent in exclusively formula-fed infants than in those receiving any breast milk, with confirmed NEC requiring surgery or causing death also markedly raised. The large prospective study recorded the claim that human milk substantially protects preterm infants against NEC, a major prospective demonstration of the disease\'s link to enteral feeding type.',
+        source: {
+          externalId: 'src:lucas-cole-breast-milk-nec-lancet-1990',
+          name: 'Lucas A, Cole TJ. Breast milk and neonatal necrotising enterocolitis. Lancet. 1990;336(8730):1519-1523.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1979363/',
+          publishedAt: '1990-12-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The American Academy of Pediatrics policy statement \'Breastfeeding and the Use of Human Milk\' formally recommended that all preterm infants receive human milk, citing the reduction in necrotising enterocolitis among its primary justifications. The AAP\'s institutional endorsement settled the protective role of human milk against NEC as standard neonatal practice.',
+        source: {
+          externalId: 'src:aap-breastfeeding-human-milk-pediatrics-2012',
+          name: 'Section on Breastfeeding. Breastfeeding and the use of human milk. Pediatrics. 2012;129(3):e827-e841.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22371471/',
+          publishedAt: '2012-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
