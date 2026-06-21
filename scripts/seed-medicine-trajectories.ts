@@ -59206,6 +59206,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HEMATOLOGIC ONCOLOGY & NOVEL MECHANISMS (2004–2007)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Azacitidine (Vidaza) — first drug approved for MDS — 2004 ───────────────
+  {
+    externalId: 'trajectory:azacitidine-vidaza-first-mds-drug-2004',
+    text: 'Azacitidine (Vidaza), a DNA-hypomethylating agent, improves hematologic response and delays leukemic transformation in myelodysplastic syndrome — a claim first evidenced by Silverman and the Cancer and Leukemia Group B (CALGB 9221) in the Journal of Clinical Oncology on 15 May 2002 and settled institutionally on 19 May 2004 when the FDA approved it as the first drug ever approved for MDS.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-05-15',
+        datePrecision: 'DAY',
+        reason: 'Silverman and colleagues published the randomized CALGB 9221 trial, reporting a 60% response rate (complete plus partial plus improvement) on azacitidine versus 5% with supportive care, with median time to leukemic transformation or death of 21 versus 13 months. This recorded in the expert literature the claim that a hypomethylating agent could alter the natural history of MDS, a disease previously managed only with transfusions and supportive care.',
+        source: {
+          externalId: 'src:silverman-azacitidine-calgb-9221-jco-2002',
+          name: 'Silverman LR, Demakos EP, Peterson BL, et al. Randomized controlled trial of azacitidine in patients with the myelodysplastic syndrome: a study of the cancer and leukemia group B. J Clin Oncol. 2002;20(10):2429-2440. PMID 12011120.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12011120/',
+          publishedAt: '2002-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-05-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted regular approval to azacitidine for all French-American-British subtypes of MDS, making it the first agent ever approved for the disease. The regulatory action converted the CALGB efficacy data into a sanctioned standard of care and inaugurated hypomethylating therapy as a drug class; a later phase III trial (AZA-001, Fenaux et al., Lancet Oncol 2009) confirmed an overall survival benefit in higher-risk MDS.',
+        source: {
+          externalId: 'src:kaminskas-fda-azacitidine-approval-summary-2005',
+          name: 'Kaminskas E, Farrell AT, Wang Y-C, Sridhara R, Pazdur R. FDA drug approval summary: azacitidine (5-azacytidine, Vidaza) for injectable suspension (documents 19 May 2004 approval). Clin Cancer Res. 2005;11(10):3604-3608. PMID 15897554.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15897554/',
+          publishedAt: '2005-05-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vorinostat (Zolinza) — first HDAC inhibitor — CTCL — 2006 ───────────────
+  {
+    externalId: 'trajectory:vorinostat-zolinza-first-hdac-inhibitor-ctcl-2006',
+    text: 'Vorinostat (Zolinza), a histone deacetylase inhibitor, produces objective responses in advanced cutaneous T-cell lymphoma — a claim settled institutionally on 6 October 2006 when the FDA approved it as the first HDAC inhibitor ever approved for any indication, and confirmed in the pivotal phase IIb trial published by Olsen and colleagues in the Journal of Clinical Oncology on 20 July 2007.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-10-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved vorinostat for cutaneous manifestations of cutaneous T-cell lymphoma in patients with progressive, persistent, or recurrent disease after two systemic therapies, based on phase II response rates of roughly 24-30%. This was the first approval of a histone deacetylase inhibitor for any disease, recording the claim that epigenetic modulation of gene transcription could be a viable anticancer mechanism.',
+        source: {
+          externalId: 'src:mann-fda-vorinostat-approval-summary-2007',
+          name: 'Mann BS, Johnson JR, Cohen MH, Justice R, Pazdur R. FDA approval summary: vorinostat for treatment of advanced primary cutaneous T-cell lymphoma (documents 6 Oct 2006 approval). The Oncologist. 2007;12(10):1247-1252.',
+          url: 'https://academic.oup.com/oncolo/article/12/10/1247/6398870',
+          publishedAt: '2007-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-07-20',
+        datePrecision: 'DAY',
+        reason: 'Olsen and colleagues published the pivotal multicenter phase IIb trial in the Journal of Clinical Oncology, reporting an overall objective response rate of about 30% with a median time to progression of 4.9 months in refractory mycosis fungoides and Sézary syndrome. The peer-reviewed efficacy data confirmed in the expert literature the basis for the accelerated approval and established the HDAC-inhibitor class clinically.',
+        source: {
+          externalId: 'src:olsen-vorinostat-ctcl-phase2b-jco-2007',
+          name: 'Olsen EA, Kim YH, Kuzel TM, et al. Phase IIb multicenter trial of vorinostat in patients with persistent, progressive, or treatment refractory cutaneous T-cell lymphoma. J Clin Oncol. 2007;25(21):3109-3115. PMID 17577020.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17577020/',
+          publishedAt: '2007-07-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Temsirolimus (Torisel) — first mTOR inhibitor for cancer — RCC — 2007 ───
+  {
+    externalId: 'trajectory:temsirolimus-torisel-first-mtor-inhibitor-rcc-2007',
+    text: 'Temsirolimus (Torisel), an inhibitor of the mammalian target of rapamycin (mTOR), prolongs overall survival in poor-prognosis advanced renal cell carcinoma — a claim recorded institutionally on 30 May 2007 when the FDA approved it as the first mTOR inhibitor for cancer, and settled in the peer-reviewed literature by the Global ARCC trial published by Hudes and colleagues in the New England Journal of Medicine on 31 May 2007.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2007-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-05-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved temsirolimus for advanced renal cell carcinoma, the first marketed cancer therapy specifically inhibiting the mTOR kinase, based on the Global ARCC trial in poor-prognosis patients. The approval recorded institutionally the claim that mTOR-pathway inhibition could extend survival in kidney cancer, opening a new targeted mechanism distinct from the VEGF tyrosine-kinase inhibitors approved shortly before.',
+        source: {
+          externalId: 'src:kwitkowski-fda-temsirolimus-approval-summary-2010',
+          name: 'Kwitkowski VE, Prowell TM, Ibrahim A, et al. FDA approval summary: temsirolimus as treatment for advanced renal cell carcinoma (documents 30 May 2007 approval). The Oncologist. 2010;15(4):428-435. PMC3227966.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3227966/',
+          publishedAt: '2010-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-31',
+        datePrecision: 'DAY',
+        reason: 'Hudes and the Global ARCC investigators published the three-arm randomized trial in the New England Journal of Medicine, showing temsirolimus monotherapy increased median overall survival to 10.9 months versus 7.3 months with interferon alfa (hazard ratio 0.73), while the combination added no benefit. The peer-reviewed survival data settled the efficacy claim and made temsirolimus the first targeted RCC therapy proven to extend survival against an active comparator.',
+        source: {
+          externalId: 'src:hudes-temsirolimus-arcc-nejm-2007',
+          name: 'Hudes G, Carducci M, Tomczak P, et al. Temsirolimus, interferon alfa, or both for advanced renal-cell carcinoma. N Engl J Med. 2007;356(22):2271-2281. PMID 17538086.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17538086/',
+          publishedAt: '2007-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Clofarabine (Clolar) — first new pediatric leukemia drug in a decade — 2004
+  {
+    externalId: 'trajectory:clofarabine-clolar-pediatric-all-2004',
+    text: 'Clofarabine (Clolar), a second-generation purine nucleoside antimetabolite, induces remissions in children with relapsed or refractory acute lymphoblastic leukemia — a claim recorded institutionally on 28 December 2004 when the FDA granted accelerated approval, the first new drug for pediatric leukemia in more than a decade and the first cancer drug approved for pediatric use before adult use, and settled in the literature by the pivotal phase II trial published by Jeha and colleagues in the Journal of Clinical Oncology on 20 June 2006.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-12-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to clofarabine for pediatric patients aged 1-21 with relapsed or refractory acute lymphoblastic leukemia after at least two prior regimens, based on a phase II overall response rate of about 30%. It was the first new agent for childhood leukemia approved in over a decade and, unusually, was approved for pediatric use ahead of adult use, recording the claim that a new antimetabolite could salvage heavily pretreated children.',
+        source: {
+          externalId: 'src:fda-clofarabine-clolar-approval-2004',
+          name: 'U.S. FDA / Drugs@FDA. Clolar (clofarabine) injection, NDA 021673 — accelerated approval 28 December 2004 for pediatric relapsed/refractory ALL.',
+          url: 'https://www.drugs.com/history/clolar.html',
+          publishedAt: '2004-12-28',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-06-20',
+        datePrecision: 'DAY',
+        reason: 'Jeha and colleagues published the pivotal phase II study in the Journal of Clinical Oncology, reporting that single-agent clofarabine produced a 30% response rate (seven complete remissions, five complete remissions without platelet recovery, six partial remissions) in children who had failed an average of three prior regimens. The peer-reviewed data confirmed the single-agent activity underlying the accelerated approval, settling clofarabine\'s role in refractory pediatric ALL.',
+        source: {
+          externalId: 'src:jeha-clofarabine-pediatric-all-jco-2006',
+          name: 'Jeha S, Gaynon PS, Razzouk BI, et al. Phase II study of clofarabine in pediatric patients with refractory or relapsed acute lymphoblastic leukemia. J Clin Oncol. 2006;24(12):1917-1923. PMID 16622268.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16622268/',
+          publishedAt: '2006-06-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Laparoscopic cholecystectomy — NIH consensus 1992 ─────────────────────
   {
     externalId: 'trajectory:laparoscopic-cholecystectomy-nih-consensus-standard-1992',
