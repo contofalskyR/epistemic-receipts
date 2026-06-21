@@ -59405,6 +59405,418 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR MEDICINE (2009–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SPRINT intensive blood pressure — 2015 ──────────────────────────────────
+  {
+    externalId: 'trajectory:sprint-intensive-blood-pressure-2015',
+    text: 'The SPRINT randomized trial, reported in the New England Journal of Medicine on 9 November 2015, established that intensively lowering systolic blood pressure to a target below 120 mm Hg (versus the standard below 140 mm Hg) significantly reduced major cardiovascular events and all-cause mortality in high-risk non-diabetic adults.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-11-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-11-09',
+        datePrecision: 'DAY',
+        reason: 'The SPRINT Research Group reported that among 9,361 high-risk participants without diabetes, targeting systolic pressure below 120 mm Hg cut the primary composite cardiovascular endpoint by about 25% and all-cause mortality by about 27% versus the standard sub-140 target, prompting early termination of the trial. This placed on the scientific record the claim that more aggressive blood-pressure lowering than the prevailing standard saves lives, while also documenting increased hypotension, syncope, and acute kidney injury.',
+        source: {
+          externalId: 'src:sprint-nejm-2015',
+          name: 'SPRINT Research Group; Wright JT Jr, Williamson JD, Whelton PK, et al. A Randomized Trial of Intensive versus Standard Blood-Pressure Control. N Engl J Med. 2015;373(22):2103-2116.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26551272/',
+          publishedAt: '2015-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-11-13',
+        datePrecision: 'DAY',
+        reason: 'The 2017 ACC/AHA multi-society high blood pressure guideline (Whelton et al.), drawing heavily on SPRINT, redefined hypertension as a blood pressure of 130/80 mm Hg or higher (lowered from 140/90) and recommended lower treatment targets, institutionalizing the intensive-control finding into national clinical standard and abruptly reclassifying tens of millions of additional Americans as hypertensive.',
+        source: {
+          externalId: 'src:acc-aha-bp-guideline-2017',
+          name: 'Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. Hypertension. 2018;71(6):e13-e115.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29133356/',
+          publishedAt: '2017-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aspirin primary prevention reversal — 2016/2022 ─────────────────────────
+  {
+    externalId: 'trajectory:aspirin-primary-prevention-reversal-2016',
+    text: 'The claim that low-dose aspirin should be used for the primary prevention of cardiovascular disease in at-risk adults — codified when the U.S. Preventive Services Task Force gave it a Grade B recommendation on 12 April 2016 for adults aged 50–59 with elevated cardiovascular risk — was reversed after large randomized trials found no net benefit, with the USPSTF recommending against routine initiation in adults 60 and older on 26 April 2022.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-04-12',
+        datePrecision: 'DAY',
+        reason: 'The USPSTF issued a Grade B recommendation that adults aged 50–59 with a 10-year cardiovascular risk of 10% or greater, low bleeding risk, and a ≥10-year life expectancy initiate low-dose aspirin for the primary prevention of cardiovascular disease and colorectal cancer. This codified at the national-guideline level the long-held belief that prophylactic aspirin benefits people without established cardiovascular disease.',
+        source: {
+          externalId: 'src:uspstf-aspirin-2016',
+          name: 'US Preventive Services Task Force. Aspirin Use for the Primary Prevention of Cardiovascular Disease and Colorectal Cancer: U.S. Preventive Services Task Force Recommendation Statement. Ann Intern Med. 2016;164(12):836-845.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27064677/',
+          publishedAt: '2016-04-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-16',
+        datePrecision: 'DAY',
+        reason: 'The ASPREE trial reported that in 19,114 community-dwelling adults aged 70+ (65+ for minorities) without cardiovascular disease, daily 100 mg aspirin did not reduce cardiovascular events but significantly increased major hemorrhage (HR 1.38), and a companion paper found higher all-cause mortality in the aspirin group. Alongside the ARRIVE and ASCEND trials published the same year, this directly contradicted the primary-prevention rationale and put the recommendation under active dispute.',
+        source: {
+          externalId: 'src:aspree-cvd-nejm-2018',
+          name: 'McNeil JJ, Wolfe R, Woods RL, et al. Effect of Aspirin on Cardiovascular Events and Bleeding in the Healthy Elderly. N Engl J Med. 2018;379(16):1509-1518.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30221597/',
+          publishedAt: '2018-09-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-04-26',
+        datePrecision: 'DAY',
+        reason: 'The USPSTF reversed its 2016 position: it issued a Grade D recommendation against initiating low-dose aspirin for primary prevention in adults aged 60 and older (no net benefit) and downgraded ages 40–59 to a Grade C individualized decision with only small net benefit. The body that had institutionalized the recommendation formally withdrew it, ratifying the reversal at guideline level.',
+        source: {
+          externalId: 'src:uspstf-aspirin-2022',
+          name: 'US Preventive Services Task Force. Aspirin Use to Prevent Cardiovascular Disease: US Preventive Services Task Force Recommendation Statement. JAMA. 2022;327(16):1577-1584.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35471505/',
+          publishedAt: '2022-04-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Evolocumab / PCSK9 / FOURIER — 2015/2017 ────────────────────────────────
+  {
+    externalId: 'trajectory:evolocumab-pcsk9-fourier-2017',
+    text: 'The claim that evolocumab, a PCSK9-inhibiting monoclonal antibody added to statin therapy, reduces hard cardiovascular outcomes (not merely LDL cholesterol) was settled when the FOURIER trial, reported on 17 March 2017, showed it cut major cardiovascular events in patients with established atherosclerotic disease — validating that further LDL lowering below statin-achievable levels prevents events.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-08-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved evolocumab (Repatha, Amgen) as an adjunct to diet and maximally tolerated statin therapy for adults with familial hypercholesterolemia or clinical atherosclerotic cardiovascular disease, on the basis of its powerful LDL-cholesterol lowering. The approval recorded the drug\'s lipid-lowering claim as established while leaving its effect on actual cardiovascular outcomes unproven — a surrogate-endpoint basis that drew skepticism given the drug\'s high cost.',
+        source: {
+          externalId: 'src:fda-repatha-approval-2015',
+          name: 'Amgen. FDA Approves Amgen\'s New Cholesterol-Lowering Medication Repatha (evolocumab). Press release, 27 August 2015.',
+          url: 'https://www.amgen.com/newsroom/press-releases/2015/08/fda-approves-amgens-new-cholesterollowering-medication-repatha-evolocumab',
+          publishedAt: '2015-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-03-17',
+        datePrecision: 'DAY',
+        reason: 'The FOURIER trial (Sabatine et al.) randomized 27,564 patients with atherosclerotic cardiovascular disease on statins and found that adding evolocumab lowered LDL to a median of 30 mg/dL and significantly reduced the primary composite cardiovascular endpoint (HR 0.85). This converted the surrogate-based approval into a proven outcome benefit and confirmed that LDL lowering beyond statin levels prevents cardiovascular events; the FDA added a cardiovascular event-prevention indication in December 2017.',
+        source: {
+          externalId: 'src:fourier-evolocumab-nejm-2017',
+          name: 'Sabatine MS, Giugliano RP, Keech AC, et al. Evolocumab and Clinical Outcomes in Patients with Cardiovascular Disease. N Engl J Med. 2017;376(18):1713-1722.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28304224/',
+          publishedAt: '2017-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Niacin/statin HDL hypothesis reversal — 2008/2016 ───────────────────────
+  {
+    externalId: 'trajectory:niacin-statin-hdl-hypothesis-reversal-2016',
+    text: 'The claim that adding niacin to statin therapy — to raise HDL cholesterol and lower triglycerides — reduces residual cardiovascular risk, institutionalized when the FDA approved fixed-dose niacin/statin combination products, was reversed after large randomized trials showed no cardiovascular benefit and net harm, leading the FDA to withdraw the coadministration indication and pull the combination drugs from the market on 18 April 2016.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-15',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Simcor (extended-release niacin plus simvastatin, NDA 022078), following the 2001 approval of Advicor (niacin/lovastatin), embedding into approved labeling the \'HDL hypothesis\' that pharmacologically raising HDL and lowering triglycerides on top of a statin would reduce cardiovascular events. The marketing and guideline use of these combinations made the niacin-add-on claim the institutional standard for managing residual lipid risk.',
+        source: {
+          externalId: 'src:fda-simcor-approval-2008',
+          name: 'Abbott. FDA Approval of SIMCOR (niacin extended-release/simvastatin), NDA 022078. 15 February 2008 (FDA approval history, Drugs.com).',
+          url: 'https://www.drugs.com/history/simcor.html',
+          publishedAt: '2008-02-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-11-15',
+        datePrecision: 'DAY',
+        reason: 'The AIM-HIGH trial was stopped early and reported that, among patients with atherosclerotic cardiovascular disease and well-controlled LDL on statins, adding extended-release niacin raised HDL and lowered triglycerides but produced no incremental reduction in cardiovascular events (16.4% vs 16.2% with placebo). The first large statin-background RCT directly undercut the niacin-add-on rationale and threw the HDL hypothesis into dispute.',
+        source: {
+          externalId: 'src:aim-high-niacin-nejm-2011',
+          name: 'AIM-HIGH Investigators; Boden WE, Probstfield JL, Anderson T, et al. Niacin in Patients with Low HDL Cholesterol Levels Receiving Intensive Statin Therapy. N Engl J Med. 2011;365(24):2255-2267.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22085343/',
+          publishedAt: '2011-11-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-04-18',
+        datePrecision: 'DAY',
+        reason: 'After the still larger HPS2-THRIVE trial (NEJM, 17 July 2014; 25,673 patients) likewise found no reduction in major vascular events but a significant excess of serious adverse events from niacin added to statins, the FDA concluded that the totality of evidence no longer supported the HDL/triglyceride-modification claim. It withdrew the coadministration-with-statin indication for extended-release niacin and fenofibric acid and withdrew approval of the combination products Advicor and Simcor, formally reversing the claim at the regulatory level.',
+        source: {
+          externalId: 'src:fda-fr-niacin-statin-withdrawal-2016',
+          name: 'AbbVie Inc.; Withdrawal of Approval of New Drug Applications for ADVICOR and SIMCOR. Federal Register. 2016;81(74):22608 (18 April 2016).',
+          url: 'https://www.federalregister.gov/documents/2016/04/18/2016-08894/abbvie-inc-withdrawal-of-approval-of-new-drug-applications-for-advicor-and-simcor',
+          publishedAt: '2016-04-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Walter Reed Yellow Fever Commission — mosquito vector 1900 ─────────────
+  {
+    externalId: 'trajectory:reed-commission-yellow-fever-mosquito-1900',
+    text: 'The U.S. Army Yellow Fever Commission led by Walter Reed reported on 27 October 1900 that yellow fever is transmitted by the bite of the Aedes (Stegomyia) mosquito rather than by fomites, confirming Carlos Finlay\'s 1881 hypothesis through controlled human-volunteer experiments at Camp Lazear, Cuba.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1900-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-10-27',
+        datePrecision: 'DAY',
+        reason: 'Walter Reed presented the Commission\'s preliminary findings to the American Public Health Association at Indianapolis on 23 October 1900, published as \'The Etiology of Yellow Fever: A Preliminary Note\' in the Philadelphia Medical Journal on 27 October 1900. Using human volunteers bitten by mosquitoes previously fed on yellow-fever patients, the Commission produced experimental cases and recorded the first rigorous evidence for mosquito-borne transmission, vindicating Finlay\'s long-dismissed 1881 hypothesis. Jesse Lazear, a co-author, had already died of yellow fever (25 September 1900) contracted during the work.',
+        source: {
+          externalId: 'src:reed-yellow-fever-preliminary-note-1900',
+          name: 'Reed W, Carroll J, Agramonte A, Lazear JW. The Etiology of Yellow Fever: A Preliminary Note. The Philadelphia Medical Journal. 1900 Oct 27;6:790-796.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6140741/',
+          publishedAt: '1900-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1901-02-16',
+        datePrecision: 'DAY',
+        reason: 'The Commission\'s confirmatory \'Additional Note\' (Reed, Carroll, Agramonte), published 16 February 1901, reinforced the mosquito-vector finding with further controlled experiments and showed fomites did not transmit disease. The result was rapidly operationalized: William Gorgas\'s mosquito-control campaign in Havana in 1901 eliminated urban yellow fever, settling the etiology institutionally and underpinning later sanitation of the Panama Canal Zone.',
+        source: {
+          externalId: 'src:reed-yellow-fever-additional-note-1901',
+          name: 'Reed W, Carroll J, Agramonte A. The Etiology of Yellow Fever: An Additional Note. JAMA. 1901 Feb 16;36(7):431-440.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6345833/',
+          publishedAt: '1901-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Yersin — plague bacillus discovery Hong Kong 1894 ──────────────────────
+  {
+    externalId: 'trajectory:yersin-plague-bacillus-discovery-1894',
+    text: 'Alexandre Yersin isolated and identified the causative bacillus of bubonic plague (later named Yersinia pestis) on 23 June 1894 in Hong Kong, recovering the Gram-negative organism from buboes and demonstrating its presence in dead rats during the third plague pandemic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1894-06-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-06-23',
+        datePrecision: 'DAY',
+        reason: 'Working alone in a makeshift straw hut beside the Hong Kong plague hospital, Yersin isolated a Gram-negative bacillus from the buboes of plague victims on 23 June 1894 and found the same organism in dead rats, pointing to the rodent reservoir. He published the finding as \'La peste bubonique à Hong-Kong\' in the Annales de l\'Institut Pasteur (1894;8:662-667). Kitasato Shibasaburō, arriving days earlier, reported a competing (and partly erroneous, Gram-positive) organism, but Yersin\'s precise characterization prevailed.',
+        source: {
+          externalId: 'src:yersin-peste-bubonique-hong-kong-1894',
+          name: 'Yersin A. La peste bubonique à Hong-Kong. Annales de l\'Institut Pasteur. 1894;8:662-667.',
+          url: 'https://pasteur.hal.science/pasteur-00442093/document',
+          publishedAt: '1894-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Paul-Louis Simond, also at the Institut Pasteur, demonstrated in 1898 that the rat flea transmits Yersin\'s bacillus between rodents and to humans, completing the etiologic and epidemiologic picture of plague. With reservoir, vector, and agent established, plague etiology became consensus; the organism was ultimately enshrined under Yersin\'s name as Yersinia pestis.',
+        source: {
+          externalId: 'src:institut-pasteur-yersin-history',
+          name: 'Institut Pasteur. Alexandre Yersin, explorateur d\'Indochine et de la biologie (institutional history of the plague-bacillus discovery and naming).',
+          url: 'https://www.pasteur.fr/fr/institut-pasteur/notre-histoire/alexandre-yersin-explorateur-indochine-biologie',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Goldberger — pellagra dietary not infectious 1914 ───────────────────────
+  {
+    externalId: 'trajectory:goldberger-pellagra-dietary-not-infectious-1914',
+    text: 'Joseph Goldberger of the U.S. Public Health Service argued on 26 June 1914 that pellagra is caused by a dietary deficiency, not by an infectious agent, reversing the era\'s dominant germ-theory consensus about the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1914-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-06-26',
+        datePrecision: 'DAY',
+        reason: 'Against the prevailing view (e.g., the Thompson-McFadden Commission) that pellagra was infectious, Goldberger published \'The Etiology of Pellagra\' in Public Health Reports on 26 June 1914, noting that institutional staff who shared the environment of pellagra patients never contracted the disease while inmates eating the same poor corn-based diet did. He recorded the dietary-deficiency hypothesis, directly contesting the infectious-disease consensus.',
+        source: {
+          externalId: 'src:goldberger-etiology-pellagra-1914',
+          name: 'Goldberger J. The Etiology of Pellagra. The Significance of Certain Epidemiological Observations with Respect Thereto. Public Health Reports. 1914 Jun 26;29(26):1683-1686.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1437745/',
+          publishedAt: '1914-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1915 Goldberger experimentally produced pellagra in eleven healthy Rankin State Prison Farm volunteers fed a restricted corn-based diet, and in 1916 his \'filth party\' inoculations (injecting pellagrins\' blood and bodily material into himself, his wife, and colleagues) failed to transmit the disease — collectively overturning the infectious theory. The dietary causation was definitively settled when Conrad Elvehjem identified the missing factor as niacin (nicotinic acid) in 1937.',
+        source: {
+          externalId: 'src:goldberger-pellagra-clinical-epidemiology-biography',
+          name: 'Morabia A. Joseph Goldberger: An Unsung Hero of American Clinical Epidemiology. Annals of Internal Medicine. 1994 Sep 1;121(5):372-375.',
+          url: 'https://doi.org/10.7326/0003-4819-121-5-199409010-00010',
+          publishedAt: '1994-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kolmer–Brodie polio vaccine disaster 1935 ────────────────────────────────
+  {
+    externalId: 'trajectory:kolmer-brodie-polio-vaccine-disaster-1935',
+    text: 'In 1935 John Kolmer\'s live-attenuated and Maurice Brodie and William Park\'s formalin-killed poliomyelitis vaccines were administered to thousands of American and Canadian children on claims of protective efficacy, but were withdrawn the same year after vaccine-associated paralysis and deaths discredited both products.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1935-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-10-05',
+        datePrecision: 'DAY',
+        reason: 'Maurice Brodie and William H. Park of the New York City Health Department reported a formalin-inactivated poliovirus vaccine in \'Active Immunization Against Poliomyelitis\' (JAMA, 5 October 1935), while John Kolmer of Temple University distributed a live ricinoleate-attenuated vaccine to some 700 physicians (about 12,000 doses). Both groups claimed their preparations safely immunized children, recording an active-immunization claim against polio years before any validated vaccine existed.',
+        source: {
+          externalId: 'src:brodie-park-active-immunization-poliomyelitis-1935',
+          name: 'Brodie M, Park WH. Active Immunization Against Poliomyelitis. JAMA. 1935 Oct 5;105(14):1089-1093.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5587435/',
+          publishedAt: '1935-10-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Kolmer\'s vaccine was linked to at least ten cases of paralytic polio, six fatal, often in communities with no concurrent outbreak; at the American Public Health Association meeting in Milwaukee in October 1935, critics including Thomas Rivers and James Leake denounced the products (Leake reportedly calling Kolmer a murderer). Kolmer\'s vaccine was withdrawn in September 1935 and Brodie\'s by December 1935, abandoning both and setting a cautionary precedent that shaped later polio-vaccine safety standards through the 1955 Salk era.',
+        source: {
+          externalId: 'src:polio-vaccine-1935-kolmer-brodie-failure',
+          name: 'Polio vaccine — the 1935 Kolmer and Brodie–Park vaccine trials, adverse outcomes, and withdrawal (historical synthesis with contemporaneous JAMA and APHA-meeting citations).',
+          url: 'https://en.wikipedia.org/wiki/Polio_vaccine',
+          publishedAt: '2026-06-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dabigatran / DOAC atrial fibrillation — 2009/2010 ───────────────────────
+  {
+    externalId: 'trajectory:dabigatran-doac-atrial-fibrillation-2010',
+    text: 'The claim that dabigatran, a direct oral thrombin inhibitor, is an effective alternative to warfarin for preventing stroke in atrial fibrillation — established by the RE-LY trial reported on 30 August 2009 — was settled institutionally when the FDA approved dabigatran (Pradaxa) on 19 October 2010, the first new oral anticoagulant alternative to warfarin in over fifty years.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-30',
+        datePrecision: 'DAY',
+        reason: 'The RE-LY trial (Connolly et al.) randomized 18,113 patients with atrial fibrillation and found that dabigatran 150 mg twice daily reduced stroke and systemic embolism versus warfarin (1.11% vs 1.69% per year) with similar major bleeding, while the 110 mg dose matched warfarin\'s efficacy with less bleeding. This recorded the claim that a fixed-dose oral anticoagulant requiring no INR monitoring could match or beat warfarin.',
+        source: {
+          externalId: 'src:re-ly-dabigatran-nejm-2009',
+          name: 'Connolly SJ, Ezekowitz MD, Yusuf S, et al. Dabigatran versus Warfarin in Patients with Atrial Fibrillation (RE-LY). N Engl J Med. 2009;361(12):1139-1151.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19717844/',
+          publishedAt: '2009-08-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-19',
+        datePrecision: 'DAY',
+        reason: 'Following a unanimous advisory-committee recommendation, the FDA approved dabigatran (Pradaxa) for stroke prevention in non-valvular atrial fibrillation, the first oral anticoagulant alternative to warfarin in over five decades. The approval institutionalized the RE-LY finding and opened the direct-oral-anticoagulant (DOAC) era, with rivaroxaban and apixaban approvals following over the next two years and DOACs becoming guideline-preferred over warfarin.',
+        source: {
+          externalId: 'src:fda-pradaxa-approval-2010',
+          name: 'Boehringer Ingelheim. FDA Approves Pradaxa (dabigatran etexilate) to Reduce the Risk of Stroke in Patients with Non-Valvular Atrial Fibrillation. Press release, 19 October 2010.',
+          url: 'https://www.boehringer-ingelheim.com/us/media/press-releases/fda-approves-pradaxa-marking-major-milestone-reduce-risk-stroke-patients-non-valvular-atrial',
+          publishedAt: '2010-10-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
