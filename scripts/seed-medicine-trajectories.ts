@@ -57973,6 +57973,144 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Prinzmetal variant angina / coronary spasm — 1959 ──────────────────────
+  {
+    externalId: 'trajectory:prinzmetal-variant-angina-coronary-spasm-1959',
+    text: 'In 1959 Myron Prinzmetal and colleagues described a \'variant\' form of angina pectoris occurring at rest with ST-segment elevation, attributing it to a transient increase in tonus (spasm) of a large coronary artery rather than fixed atherosclerotic obstruction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Prinzmetal, Kennamer, Merliss, Wada, and Bor published a preliminary report in the American Journal of Medicine describing patients with angina at rest accompanied by ST-segment elevation, and proposed that a transient increase in tone (spasm) of a large coronary artery—not the prevailing fixed-obstruction mechanism—caused the ischemia. This recorded a heterodox pathophysiologic claim that contradicted the dominant view that angina arose only from demand outstripping a fixed stenosis.',
+        source: {
+          externalId: 'src:prinzmetal-variant-angina-amjmed-1959',
+          name: 'Prinzmetal M, Kennamer R, Merliss R, Wada T, Bor N. Angina pectoris. I. A variant form of angina pectoris; preliminary report. Am J Med. 1959;27:375-388.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14434946/',
+          publishedAt: '1959-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-12-07',
+        datePrecision: 'DAY',
+        reason: 'Maseri and colleagues, studying \'preinfarction\' rest angina with hemodynamic monitoring and angiography, documented coronary vasospasm directly and concluded it could cause myocardial infarction, confirming Prinzmetal\'s spasm hypothesis as a real mechanism. The angiographic demonstration of spasm settled vasospastic (Prinzmetal) angina as a distinct clinical entity, subsequently treated with calcium antagonists and nitrates.',
+        source: {
+          externalId: 'src:maseri-coronary-vasospasm-nejm-1978',
+          name: 'Maseri A, L\'Abbate A, Baroldi G, et al. Coronary vasospasm as a possible cause of myocardial infarction. A conclusion derived from the study of \'preinfarction\' angina. N Engl J Med. 1978;299(23):1271-1277.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/714095/',
+          publishedAt: '1978-12-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── JNC-1 first national hypertension guideline — 1977 ─────────────────────
+  {
+    externalId: 'trajectory:jnc-1-first-national-hypertension-guideline-1977',
+    text: 'On 17 January 1977 the first Report of the Joint National Committee on Detection, Evaluation, and Treatment of High Blood Pressure (JNC-1) was published in JAMA, establishing the first U.S. national, standardized guideline for diagnosing and treating hypertension.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1977-01-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1977-01-17',
+        datePrecision: 'DAY',
+        reason: 'Building on the VA Cooperative and emerging detection-program evidence that treating elevated blood pressure prevents cardiovascular events, the Joint National Committee issued the first consensus national guideline defining hypertension thresholds and a stepped-care treatment approach for U.S. practice. This institutionally settled the principle of standardized, population-wide detection and treatment of hypertension and launched the recurring JNC guideline series (JNC 2 through JNC 8) that has governed American blood-pressure management ever since.',
+        source: {
+          externalId: 'src:jnc-1-hypertension-report-jama-1977',
+          name: 'Joint National Committee on Detection, Evaluation, and Treatment of High Blood Pressure. Report of the Joint National Committee on Detection, Evaluation, and Treatment of High Blood Pressure. A cooperative study. JAMA. 1977;237(3):255-261.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/576159/',
+          publishedAt: '1977-01-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Elwood Cardiff aspirin secondary-prevention RCT — 1974 ─────────────────
+  {
+    externalId: 'trajectory:elwood-cardiff-aspirin-secondary-prevention-rct-1974',
+    text: 'On 9 March 1974 Peter Elwood, Archie Cochrane, and colleagues published in the British Medical Journal the first randomized controlled trial of aspirin for secondary prevention after myocardial infarction, reporting a 25% reduction in 12-month mortality that the authors deemed statistically inconclusive.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-03-09',
+        datePrecision: 'DAY',
+        reason: 'Elwood, Cochrane, Burr and colleagues randomized 1,239 men recovering from myocardial infarction to acetylsalicylic acid or placebo and observed a 12% lower mortality at six months and 25% at twelve months, but the result did not reach statistical significance and the authors called for larger trials. This was the first randomized recording of the hypothesis that aspirin reduces death after heart attack—suggestive but not yet definitive evidence.',
+        source: {
+          externalId: 'src:elwood-aspirin-secondary-prevention-bmj-1974',
+          name: 'Elwood PC, Cochrane AL, Burr ML, Sweetnam PM, Williams G, Welsby E, Hughes SJ, Renton R. A randomized controlled trial of acetyl salicylic acid in the secondary prevention of mortality from myocardial infarction. Br Med J. 1974;1(5905):436-440.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1633246/',
+          publishedAt: '1974-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-01-08',
+        datePrecision: 'DAY',
+        reason: 'The Antiplatelet Trialists\' Collaboration pooled randomized trials of antiplatelet therapy and found that prolonged aspirin treatment cut non-fatal MI, stroke, and vascular death by roughly a quarter to a third in high-risk patients, with low-to-medium doses as effective as higher ones. This collaborative overview converted Elwood\'s tentative 1974 signal into a settled, quantified standard of secondary prevention, complementing the acute-treatment proof from ISIS-2.',
+        source: {
+          externalId: 'src:antiplatelet-trialists-collaboration-bmj-1994',
+          name: 'Antiplatelet Trialists\' Collaboration. Collaborative overview of randomised trials of antiplatelet therapy--I: Prevention of death, myocardial infarction, and stroke by prolonged antiplatelet therapy in various categories of patients. BMJ. 1994;308(6921):81-106.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8298418/',
+          publishedAt: '1994-01-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Coplen quinidine atrial-fibrillation mortality reversal — 1990 ──────────
+  {
+    externalId: 'trajectory:coplen-quinidine-atrial-fibrillation-mortality-1990',
+    text: 'In October 1990 Coplen and colleagues published a meta-analysis in Circulation showing that quinidine—long the standard drug for maintaining sinus rhythm after cardioversion of atrial fibrillation—roughly tripled total mortality despite being more effective than no therapy at preventing recurrences, reversing its accepted safety.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Quinidine had been an accepted standard for maintaining sinus rhythm after cardioversion of atrial fibrillation since the mid-20th century. Coplen, Antman, Berlin, Hewitt, and Chalmers pooled six randomized trials (808 patients) and found that although quinidine better suppressed atrial-fibrillation recurrence, total mortality was about three times higher than with no antiarrhythmic therapy. The finding reversed the assumption that effective rhythm control was inherently safe and—echoing the contemporaneous CAST result—warned that antiarrhythmic suppression can kill; quinidine was largely abandoned for this indication.',
+        source: {
+          externalId: 'src:coplen-quinidine-meta-analysis-circulation-1990',
+          name: 'Coplen SE, Antman EM, Berlin JA, Hewitt P, Chalmers TC. Efficacy and safety of quinidine therapy for maintenance of sinus rhythm after cardioversion. A meta-analysis of randomized control trials. Circulation. 1990;82(4):1106-1116.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2144796/',
+          publishedAt: '1990-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
