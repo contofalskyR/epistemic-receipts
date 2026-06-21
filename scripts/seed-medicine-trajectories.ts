@@ -60089,6 +60089,159 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── APS-AAPM chronic opioid therapy guideline — 2009 ───────────────────────
+  {
+    externalId: 'trajectory:aps-aapm-chronic-opioid-therapy-guideline-2009',
+    text: 'In February 2009 the American Pain Society–American Academy of Pain Medicine Opioids Guidelines Panel, led by Roger Chou, published clinical guidelines in the Journal of Pain concluding that chronic opioid therapy can be an effective therapy for carefully selected and monitored patients with chronic noncancer pain.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The 21-member APS-AAPM panel, chaired by Roger Chou, issued 25 graded recommendations endorsing chronic opioid therapy for carefully selected chronic noncancer pain patients, the most authoritative U.S. professional-society endorsement of long-term opioid use to that point. It entered the literature as the reference standard guiding outpatient opioid prescribing, despite the panel itself rating most supporting evidence as low quality.',
+        source: {
+          externalId: 'src:chou-aps-aapm-chronic-opioid-jpain-2009',
+          name: 'Chou R, Fanciullo GJ, Fine PG, et al. Clinical guidelines for the use of chronic opioid therapy in chronic noncancer pain. J Pain. 2009 Feb;10(2):113-130.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19187889/',
+          publishedAt: '2009-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-18',
+        datePrecision: 'DAY',
+        reason: 'The CDC Guideline for Prescribing Opioids for Chronic Pain, authored in part by Roger Chou himself, found insufficient evidence that long-term opioid therapy improves chronic-pain outcomes and recommended nonopioid therapy as preferred, directly contradicting the central efficacy premise of the 2009 APS-AAPM guideline. The reversal was reinforced by the dissolution of the American Pain Society in 2019 amid opioid-marketing litigation and conflict-of-interest scrutiny of the original panel.',
+        source: {
+          externalId: 'src:cdc-opioid-guideline-mmwr-2016-supersedes-aps',
+          name: 'Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016. MMWR Recomm Rep. 2016 Mar 18;65(1):1-49.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm',
+          publishedAt: '2016-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DEA fentanyl-related substances class Schedule I — 2018 ────────────────
+  {
+    externalId: 'trajectory:dea-fentanyl-related-substances-class-schedule-i-2018',
+    text: 'The U.S. Drug Enforcement Administration issued a temporary scheduling order, effective February 6, 2018 (83 FR 5188), placing fentanyl-related substances as an entire structural class into Schedule I of the Controlled Substances Act to address what the Administrator found to be an imminent hazard to public safety.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-02-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-02-06',
+        datePrecision: 'DAY',
+        reason: 'Rather than scheduling individual analogues one at a time, the DEA used its emergency authority to define and control fentanyl-related substances as a chemical class by structural modification to the fentanyl molecule, effective for two years. This was a novel regulatory move treating an open-ended family of not-yet-synthesized compounds as presumptively Schedule I, intended to outpace clandestine chemists producing new analogues.',
+        source: {
+          externalId: 'src:dea-fr-fentanyl-related-substances-class-2018',
+          name: 'DEA. Schedules of Controlled Substances: Temporary Placement of Fentanyl-Related Substances in Schedule I. 83 Fed. Reg. 5188, Feb. 6, 2018.',
+          url: 'https://www.federalregister.gov/documents/2018/02/06/2018-02319/schedules-of-controlled-substances-temporary-placement-of-fentanyl-related-substances-in-schedule-i',
+          publishedAt: '2018-02-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2025-07-16',
+        datePrecision: 'DAY',
+        reason: 'After the temporary order was repeatedly extended by Congress, the Halt All Lethal Trafficking of Fentanyl (HALT Fentanyl) Act (H.R.27) was signed into law on July 16, 2025, permanently placing fentanyl-related substances as a class into Schedule I of the Controlled Substances Act. The class-wide approach, contested for years as overbroad, was thereby cemented into permanent statute.',
+        source: {
+          externalId: 'src:halt-fentanyl-act-hr27-2025',
+          name: 'H.R.27 — HALT Fentanyl Act, 119th Congress (2025-2026). Became Public Law, signed July 16, 2025.',
+          url: 'https://www.congress.gov/bill/119th-congress/house-bill/27',
+          publishedAt: '2025-07-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA acetaminophen 325 mg combination limit — 2011 ──────────────────────
+  {
+    externalId: 'trajectory:fda-acetaminophen-325mg-combination-limit-2011',
+    text: 'On January 13, 2011 the FDA asked manufacturers of prescription combination drug products — predominantly opioid–acetaminophen analgesics such as hydrocodone/acetaminophen and oxycodone/acetaminophen — to limit acetaminophen to no more than 325 mg per dosage unit and required a boxed warning for the risk of severe liver injury.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-01-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-01-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA announced and published in the Federal Register an action reversing decades of acceptance of higher acetaminophen loads (commonly 500–750 mg) in prescription combination analgesics, capping the dose at 325 mg per unit and mandating a boxed hepatotoxicity warning. The agency concluded no added benefit justified the per-unit doses above 325 mg given the liver-injury risk from acetaminophen overdose.',
+        source: {
+          externalId: 'src:fda-fr-acetaminophen-liver-injury-2011',
+          name: 'FDA. Prescription Drug Products Containing Acetaminophen; Actions To Reduce Liver Injury From Unintentional Overdose. 76 Fed. Reg. 2691, Jan. 14, 2011.',
+          url: 'https://www.federalregister.gov/documents/2011/01/14/2011-709/prescription-drug-products-containing-acetaminophen-actions-to-reduce-liver-injury-from',
+          publishedAt: '2011-01-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-03-26',
+        datePrecision: 'DAY',
+        reason: 'After a January 2014 FDA statement recommending clinicians discontinue prescribing and pharmacists stop dispensing combination products exceeding 325 mg acetaminophen, the FDA confirmed by March 26, 2014 that all manufacturers had discontinued marketing such products. The 325 mg cap thereby became the settled standard for prescription combination analgesics across the U.S. market.',
+        source: {
+          externalId: 'src:fda-acetaminophen-manufacturers-discontinued-2014',
+          name: 'FDA. All manufacturers of prescription combination drug products with more than 325 mg of acetaminophen have discontinued marketing. Drug Safety statement, 2014.',
+          url: 'https://www.fda.gov/drugs/information-drug-class/all-manufacturers-prescription-combination-drug-products-more-325-mg-acetaminophen-have-discontinued',
+          publishedAt: '2014-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA lofexidine (Lucemyra) opioid withdrawal approval — 2018 ────────────
+  {
+    externalId: 'trajectory:fda-lofexidine-lucemyra-opioid-withdrawal-2018',
+    text: 'On May 16, 2018 the FDA approved Lucemyra (lofexidine), an oral selective alpha-2 adrenergic agonist marketed by US WorldMeds, as the first non-opioid medication indicated for the mitigation of opioid withdrawal symptoms in adults to facilitate abrupt opioid discontinuation.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-05-16',
+        datePrecision: 'DAY',
+        reason: 'Following Priority Review of placebo-controlled phase 3 trials showing reduced withdrawal symptom severity over up to 14 days, the FDA approved lofexidine — long used in the UK — as the first and only non-opioid drug specifically indicated for opioid withdrawal in the U.S. The approval established a pharmacologic withdrawal-management option that does not itself act on opioid receptors, distinct from the agonist (methadone, buprenorphine) approaches that dominated the field.',
+        source: {
+          externalId: 'src:fda-lucemyra-lofexidine-approval-2018',
+          name: 'FDA. FDA approves the first non-opioid treatment for management of opioid withdrawal symptoms in adults. Press announcement, May 16, 2018.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-non-opioid-treatment-management-opioid-withdrawal-symptoms-adults',
+          publishedAt: '2018-05-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Phenylpropanolamine hemorrhagic stroke withdrawal 2000 ──────────────────
   {
     externalId: 'trajectory:phenylpropanolamine-hemorrhagic-stroke-withdrawal-2000',
