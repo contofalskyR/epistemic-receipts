@@ -60632,6 +60632,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEUROGENETICS & RARE DISEASE (1990s–2010s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SMN1 gene discovery — Lefebvre et al. 1995 ─────────────────────────────
+  {
+    externalId: 'trajectory:smn1-gene-discovery-spinal-muscular-atrophy-1995',
+    text: 'On 13 January 1995, Lefebvre and colleagues reported in Cell that the telomeric SMN (survival motor neuron, SMN1) gene on chromosome 5q13 is deleted or interrupted in the great majority of spinal muscular atrophy patients, identifying it as the SMA-determining gene.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-01-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-01-13',
+        datePrecision: 'DAY',
+        reason: 'Lefebvre, Bürglen, Reboullet and colleagues at Généthon characterized a 20-kb gene encoding a novel 294-amino-acid protein and found the telomeric copy absent or interrupted in 226 of 229 SMA patients. This recorded into the literature the first identification of the molecular cause of the leading inherited cause of infant death, after a decade of linkage work had localized but not pinpointed the locus.',
+        source: {
+          externalId: 'src:lefebvre-smn-gene-cell-1995',
+          name: 'Lefebvre S, Bürglen L, Reboullet S, et al. Identification and characterization of a spinal muscular atrophy-determining gene. Cell. 1995;80(1):155-165. PMID 7813012.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7813012/',
+          publishedAt: '1995-01-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The American College of Medical Genetics, through Prior and its Professional Practice and Guidelines Committee, recommended population-wide carrier screening for SMA based on detection of homozygous SMN1 deletion (dosage testing). A professional body endorsing pan-ethnic screening keyed entirely to SMN1 status institutionally settled the gene\'s causal role beyond reasonable dispute.',
+        source: {
+          externalId: 'src:prior-acmg-sma-carrier-screening-2008',
+          name: 'Prior TW; Professional Practice and Guidelines Committee. Carrier screening for spinal muscular atrophy. Genet Med. 2008;10(11):840-842. PMID 18941424.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18941424/',
+          publishedAt: '2008-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Frataxin GAA repeat — Campuzano et al. 1996 ────────────────────────────
+  {
+    externalId: 'trajectory:frataxin-gaa-repeat-friedreich-ataxia-1996',
+    text: 'On 8 March 1996, Campuzano and colleagues reported in Science that Friedreich\'s ataxia is caused by an unstable intronic GAA trinucleotide repeat expansion in the X25 (frataxin) gene on chromosome 9q13, with most patients homozygous for the expansion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-03-08',
+        datePrecision: 'DAY',
+        reason: 'Campuzano, Montermini, Koenig and colleagues cloned the X25 gene encoding frataxin and showed that the most common Friedreich\'s ataxia mutation is a homozygous expansion of a GAA repeat in the first intron, with point mutations in rarer cases. This recorded the first molecular cause of the most common inherited ataxia and was an early example of an intronic triplet-repeat expansion causing recessive disease.',
+        source: {
+          externalId: 'src:campuzano-frataxin-gaa-science-1996',
+          name: 'Campuzano V, Montermini L, Moltò MD, et al. Friedreich\'s ataxia: autosomal recessive disease caused by an intronic GAA triplet repeat expansion. Science. 1996;271(5254):1423-1427. PMID 8596916.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8596916/',
+          publishedAt: '1996-03-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-10-17',
+        datePrecision: 'DAY',
+        reason: 'Dürr, Cossee, Koenig and colleagues genotyped 187 patients with recessive ataxia and found 140 homozygous for the GAA expansion, correlating repeat length with age at onset and disease severity. This large genotype–phenotype cohort confirmed the GAA expansion as the diagnostic and causal basis of Friedreich\'s ataxia, establishing GAA-repeat testing as the molecular gold standard.',
+        source: {
+          externalId: 'src:durr-friedreich-cohort-nejm-1996',
+          name: 'Dürr A, Cossee M, Agid Y, et al. Clinical and genetic abnormalities in patients with Friedreich\'s ataxia. N Engl J Med. 1996;335(16):1169-1175. PMID 8815938.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8815938/',
+          publishedAt: '1996-10-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Everolimus SEGA/TSC — FDA accelerated approval 2010 ────────────────────
+  {
+    externalId: 'trajectory:everolimus-afinitor-sega-tuberous-sclerosis-2010',
+    text: 'On 29 October 2010 the U.S. FDA granted accelerated approval to everolimus (Afinitor), an mTOR inhibitor, for subependymal giant cell astrocytoma (SEGA) associated with tuberous sclerosis complex in patients not candidates for surgical resection — the first drug approved for any manifestation of tuberous sclerosis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval based on a single-arm open-label trial (Krueger et al., N Engl J Med, 4 November 2010) in which everolimus shrank SEGA volume by ≥50% in 32% of 28 patients at 6 months, a surrogate volumetric endpoint. As the first medication ever approved for a tuberous-sclerosis tumor, it recorded the conditional claim that mTOR inhibition controls SEGA growth, pending confirmation of clinical benefit.',
+        source: {
+          externalId: 'src:fda-afinitor-sega-accelerated-approval-2010',
+          name: 'U.S. FDA / Novartis. Afinitor (everolimus) granted FDA accelerated approval for subependymal giant cell astrocytoma associated with tuberous sclerosis. 29 October 2010.',
+          url: 'https://www.drugs.com/history/afinitor.html',
+          publishedAt: '2010-10-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-01-12',
+        datePrecision: 'DAY',
+        reason: 'The EXIST-1 multicentre randomized, double-blind, placebo-controlled phase 3 trial (Franz et al., Lancet) showed that 35% of everolimus-treated patients achieved ≥50% SEGA volume reduction versus none on placebo. This converted the surrogate-based accelerated approval into rigorously controlled evidence, settling mTOR inhibition as an established treatment for tuberous-sclerosis SEGA.',
+        source: {
+          externalId: 'src:franz-exist1-everolimus-sega-lancet-2013',
+          name: 'Franz DN, Belousova E, Sparagana S, et al. Efficacy and safety of everolimus for subependymal giant cell astrocytomas associated with tuberous sclerosis complex (EXIST-1): a multicentre, randomised, placebo-controlled phase 3 trial. Lancet. 2013;381(9861):125-132. PMID 23158522.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23158522/',
+          publishedAt: '2013-01-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Carglumic acid / Carbaglu — NAGS deficiency 1995→2010 ──────────────────
+  {
+    externalId: 'trajectory:carglumic-acid-carbaglu-nags-deficiency-2010',
+    text: 'Carglumic acid (Carbaglu), a synthetic N-acetylglutamate analog that reactivates carbamoyl phosphate synthetase, corrects hyperammonemia in N-acetylglutamate synthase (NAGS) deficiency — first demonstrated in a treated neonatal case by Guffon et al. in 1995 and settled in the United States by the FDA\'s approval on 18 March 2010, the first treatment for the ultra-rare urea cycle disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Guffon and colleagues reported a neonate with NAGS deficiency treated with carbamylglutamate (carglumic acid) 80–100 mg/kg/day who achieved metabolic control and normal development by one year. This recorded the clinical claim that an N-acetylglutamate analog could substitute for the missing allosteric activator and rescue urea-cycle function in NAGS deficiency, building on the enzyme\'s defined biochemistry.',
+        source: {
+          externalId: 'src:guffon-carbamylglutamate-nags-jimd-1995',
+          name: 'Guffon N, Vianey-Saban C, Bourgeois J, Rabier D, Colombo JP, Guibaud P. A new neonatal case of N-acetylglutamate synthase deficiency treated by carbamylglutamate. J Inherit Metab Dis. 1995;18(1):61-65. PMID 7623444.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7623444/',
+          publishedAt: '1995-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-03-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Carbaglu (carglumic acid, NDA 022562) as an orphan drug for adjunctive treatment of acute and maintenance treatment of chronic hyperammonemia due to NAGS deficiency, on the basis of a retrospective series of 23 patients treated for 6 months to 21 years in whom it lowered ammonia within 24 hours and normalized it within 3 days. The approval — following earlier European use — institutionally settled carglumic acid as standard therapy for the disorder in the United States.',
+        source: {
+          externalId: 'src:fda-carbaglu-carglumic-acid-label-2010',
+          name: 'U.S. FDA. Carbaglu (carglumic acid) tablets for oral suspension — Prescribing Information, NDA 022562. Approved 18 March 2010.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2010/022562lbl.pdf',
+          publishedAt: '2010-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
