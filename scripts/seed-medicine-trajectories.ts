@@ -59691,48 +59691,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Goldberger — pellagra dietary not infectious 1914 ───────────────────────
-  {
-    externalId: 'trajectory:goldberger-pellagra-dietary-not-infectious-1914',
-    text: 'Joseph Goldberger of the U.S. Public Health Service argued on 26 June 1914 that pellagra is caused by a dietary deficiency, not by an infectious agent, reversing the era\'s dominant germ-theory consensus about the disease.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1914-06-26',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'CONTESTED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1914-06-26',
-        datePrecision: 'DAY',
-        reason: 'Against the prevailing view (e.g., the Thompson-McFadden Commission) that pellagra was infectious, Goldberger published \'The Etiology of Pellagra\' in Public Health Reports on 26 June 1914, noting that institutional staff who shared the environment of pellagra patients never contracted the disease while inmates eating the same poor corn-based diet did. He recorded the dietary-deficiency hypothesis, directly contesting the infectious-disease consensus.',
-        source: {
-          externalId: 'src:goldberger-etiology-pellagra-1914',
-          name: 'Goldberger J. The Etiology of Pellagra. The Significance of Certain Epidemiological Observations with Respect Thereto. Public Health Reports. 1914 Jun 26;29(26):1683-1686.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1437745/',
-          publishedAt: '1914-06-26',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'CONTESTED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1915-01-01',
-        datePrecision: 'YEAR',
-        reason: 'In 1915 Goldberger experimentally produced pellagra in eleven healthy Rankin State Prison Farm volunteers fed a restricted corn-based diet, and in 1916 his \'filth party\' inoculations (injecting pellagrins\' blood and bodily material into himself, his wife, and colleagues) failed to transmit the disease — collectively overturning the infectious theory. The dietary causation was definitively settled when Conrad Elvehjem identified the missing factor as niacin (nicotinic acid) in 1937.',
-        source: {
-          externalId: 'src:goldberger-pellagra-clinical-epidemiology-biography',
-          name: 'Morabia A. Joseph Goldberger: An Unsung Hero of American Clinical Epidemiology. Annals of Internal Medicine. 1994 Sep 1;121(5):372-375.',
-          url: 'https://doi.org/10.7326/0003-4819-121-5-199409010-00010',
-          publishedAt: '1994-09-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Kolmer–Brodie polio vaccine disaster 1935 ────────────────────────────────
   {
     externalId: 'trajectory:kolmer-brodie-polio-vaccine-disaster-1935',
@@ -59812,6 +59770,178 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.boehringer-ingelheim.com/us/media/press-releases/fda-approves-pradaxa-marking-major-milestone-reduce-risk-stroke-patients-non-valvular-atrial',
           publishedAt: '2010-10-19',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHIATRIC NOSOLOGY & NEUROLOGY (1952–2002)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── APA declassification of homosexuality — DSM 1952 / reversal 1973 ─────────
+  {
+    externalId: 'trajectory:apa-homosexuality-declassification-1973',
+    text: "Homosexuality is a mental disorder, as codified in the American Psychiatric Association's first Diagnostic and Statistical Manual (DSM-I, 1952) and retained in DSM-II (1968).",
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1952-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: "The APA's first DSM (1952) listed homosexuality among the 'sociopathic personality disturbances,' and DSM-II (1968) retained it as a mental disorder, giving the disease classification the full institutional authority of organized American psychiatry for two decades.",
+        source: {
+          externalId: 'src:apaf-history-dsm-homosexuality',
+          name: 'American Psychiatric Association Foundation. History of DSM and Homosexuality (Library & Archives, LGBTQ Leaders gallery).',
+          url: 'https://www.apaf.org/library-archives/galleries/lgbtq-leaders/history-of-dsm-and-homosexuality/',
+          publishedAt: '2022-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-12-15',
+        datePrecision: 'DAY',
+        reason: "On 15 December 1973 the APA Board of Trustees voted to delete homosexuality from DSM-II, replacing it with the narrower 'sexual orientation disturbance' applying only where the person was distressed by their orientation. A 1974 membership referendum upheld the decision 58%–42%, and 'ego-dystonic homosexuality' was finally removed entirely in DSM-III-R (1987) — a landmark institutional reversal of a settled diagnostic claim.",
+        source: {
+          externalId: 'src:wikipedia-homosexuality-dsm',
+          name: 'Homosexuality in the DSM (Wikipedia, citing APA Board of Trustees December 1973 vote and 1974 referendum).',
+          url: 'https://en.wikipedia.org/wiki/Homosexuality_in_the_DSM',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rosenhan "On being sane in insane places" — 1973 / contested 2019 ────────
+  {
+    externalId: 'trajectory:rosenhan-being-sane-insane-places-1973',
+    text: 'David L. Rosenhan reported in Science on 19 January 1973 that eight healthy pseudopatients who feigned a single auditory hallucination were all admitted to psychiatric hospitals and could not be reliably distinguished from genuinely ill patients, concluding that psychiatric diagnosis cannot reliably tell the sane from the insane in hospital settings.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-01-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-01-19',
+        datePrecision: 'DAY',
+        reason: "Rosenhan's 'On being sane in insane places' (Science 179:250–258) was published 19 January 1973 and was rapidly accepted as definitive evidence of the unreliability of psychiatric diagnosis. It became one of the most-cited papers in psychology, fueled the deinstitutionalization movement, and helped motivate the operationalized, reliability-focused criteria of DSM-III (1980).",
+        source: {
+          externalId: 'src:rosenhan-sane-insane-science-1973',
+          name: 'Rosenhan DL. On being sane in insane places. Science. 1973 Jan 19;179(4070):250-258.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4683124/',
+          publishedAt: '1973-01-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-11-05',
+        datePrecision: 'DAY',
+        reason: 'In The Great Pretender (published 5 November 2019), journalist Susannah Cahalan presented archival evidence that Rosenhan fabricated key details: she could verify the existence of only one of the eight claimed pseudopatients, found Rosenhan\'s own admission record contradicted his published account, and showed he excluded a ninth pseudopatient (Harry Lando) whose positive experience undercut the thesis — throwing the foundational study into serious doubt.',
+        source: {
+          externalId: 'src:cahalan-great-pretender-2019',
+          name: "Cahalan S. The Great Pretender: The Undercover Mission That Changed Our Understanding of Madness. 2019. (reviewed in Psychiatric Times).",
+          url: 'https://www.psychiatrictimes.com/view/great-pretender-undercover-mission-changed-our-understanding-madness',
+          publishedAt: '2019-11-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Carroll dexamethasone suppression test for melancholia — 1981 / reversed 1987 ──
+  {
+    externalId: 'trajectory:carroll-dexamethasone-suppression-test-melancholia-1981',
+    text: 'Bernard Carroll and colleagues at the University of Michigan reported in the Archives of General Psychiatry in January 1981 that an overnight 1-mg dexamethasone suppression test (plasma cortisol >5 µg/dL) is a specific biological laboratory test for the diagnosis of melancholia (endogenous depression), with ~67% sensitivity and ~95% specificity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Carroll et al. (Arch Gen Psychiatry 1981;38:15–22) standardized and validated the dexamethasone suppression test in 438 subjects and presented it as the first specific biological laboratory marker for a psychiatric diagnosis, triggering enormous clinical enthusiasm for a \'blood test for depression\' in the early 1980s.',
+        source: {
+          externalId: 'src:carroll-dst-melancholia-agp-1981',
+          name: 'Carroll BJ, Feinberg M, Greden JF, et al. A specific laboratory test for the diagnosis of melancholia. Arch Gen Psychiatry. 1981;38(1):15-22.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7458567/',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-10-01',
+        datePrecision: 'MONTH',
+        reason: "The APA Task Force on Laboratory Tests in Psychiatry reviewed the accumulated evidence (Am J Psychiatry, October 1987) and concluded that the DST's sensitivity in major depression was only ~40–50% and its specificity poor against other psychiatric and medical conditions, so it could not serve as a stand-alone diagnostic test — collapsing the claim that the DST was a specific diagnostic marker for melancholia.",
+        source: {
+          externalId: 'src:apa-taskforce-dst-ajp-1987',
+          name: 'APA Task Force on Laboratory Tests in Psychiatry. The dexamethasone suppression test: an overview of its current status in psychiatry. Am J Psychiatry. 1987;144(10):1253-1262.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3310667/',
+          publishedAt: '1987-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Benabid deep brain stimulation for Parkinson's disease — 1987 / settled 2002 ──
+  {
+    externalId: 'trajectory:benabid-deep-brain-stimulation-parkinsons-1987',
+    text: "Alim-Louis Benabid and Pierre Pollak reported in Applied Neurophysiology in 1987 that chronic high-frequency electrical stimulation of the ventral intermediate (VIM) nucleus of the thalamus suppresses tremor in Parkinson's disease and other movement disorders, introducing reversible deep brain stimulation as an alternative to ablative thalamotomy.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Benabid, Pollak, and colleagues (Appl Neurophysiol 1987;50:344–346) reported that high-frequency VIM thalamic stimulation abolished tremor during stereotactic surgery, and unlike a destructive thalamotomy was adjustable and reversible — the founding observation of modern deep brain stimulation for movement disorders.',
+        source: {
+          externalId: 'src:benabid-vim-dbs-appl-neurophysiol-1987',
+          name: 'Benabid AL, Pollak P, Louveau A, Henry S, de Rougemont J. Combined (thalamotomy and stimulation) stereotactic surgery of the VIM thalamic nucleus for bilateral Parkinson disease. Appl Neurophysiol. 1987;50(1-6):344-346.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3329873/',
+          publishedAt: '1987-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-01-01',
+        datePrecision: 'YEAR',
+        reason: "Following the 1987 observation, deep brain stimulation became established standard therapy: the FDA approved Medtronic's Activa system for essential/Parkinsonian tremor in 1997 and for advanced Parkinson's disease in 2002, and subthalamic-nucleus DBS became a guideline-endorsed treatment for medically refractory Parkinson's disease — settling DBS as an accepted neurosurgical therapy.",
+        source: {
+          externalId: 'src:dbs-30th-anniversary-review-2017',
+          name: "Coffey RJ et al. Back to the future: 30th anniversary of deep brain stimulation for Parkinson's disease (review documenting Benabid 1987 origin and FDA approvals). 2017.",
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5505531/',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
         },
       },
     ],
