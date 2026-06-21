@@ -58907,6 +58907,332 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE & PRECISION MEDICINE ERA (2018–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Lanadelumab (Takhzyro) — first kallikrein-inhibitor mAb for HAE — 2018 ──
+  {
+    externalId: 'trajectory:lanadelumab-takhzyro-first-kallikrein-inhibitor-hae-prophylaxis-2018',
+    text: 'Lanadelumab (Takhzyro), a monoclonal antibody inhibiting plasma kallikrein, prevents attacks of hereditary angioedema — a claim established by the FDA\'s approval on 23 August 2018, the first monoclonal-antibody prophylaxis for HAE, and confirmed by the HELP randomized trial in JAMA.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-08-23',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved lanadelumab-flyo (Takhzyro, Shire/Takeda; BLA 761090) for routine prophylaxis to prevent hereditary angioedema attacks in patients 12 and older. The approval recorded the regulatory claim that subcutaneous inhibition of plasma kallikrein — the enzyme that liberates bradykinin in HAE — could be used as long-acting prophylaxis, a mechanism distinct from C1-inhibitor replacement.',
+        source: {
+          externalId: 'src:fda-takhzyro-lanadelumab-approval-2018',
+          name: 'U.S. FDA, Drugs@FDA (openFDA). Lanadelumab-flyo (TAKHZYRO), BLA 761090 — original approval. August 23, 2018.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=openfda.brand_name:%22TAKHZYRO%22&limit=1',
+          publishedAt: '2018-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-27',
+        datePrecision: 'DAY',
+        reason: 'Banerji and colleagues published the phase 3 HELP randomized clinical trial in JAMA, showing that lanadelumab reduced the rate of hereditary angioedema attacks by up to 87% versus placebo over 26 weeks. Peer-reviewed confirmation of the pivotal efficacy data settled kallikrein-targeted monoclonal prophylaxis in the literature as a standard HAE prevention option.',
+        source: {
+          externalId: 'src:banerji-help-lanadelumab-jama-2018',
+          name: 'Banerji A, Riedl MA, Bernstein JA, et al. Effect of Lanadelumab Compared With Placebo on Prevention of Hereditary Angioedema Attacks: A Randomized Clinical Trial. JAMA. 2018;320(20):2108-2121.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30480729/',
+          publishedAt: '2018-11-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Luspatercept (Reblozyl) — first erythroid maturation agent, β-thalassemia — 2019 ──
+  {
+    externalId: 'trajectory:luspatercept-reblozyl-first-erythroid-maturation-agent-beta-thalassemia-2019',
+    text: 'Luspatercept (Reblozyl), a first-in-class erythroid maturation agent that traps TGF-beta-superfamily ligands, reduces red-cell transfusion burden in adults with transfusion-dependent beta-thalassemia — a claim established by the FDA\'s approval on 8 November 2019 and confirmed by the BELIEVE trial in the New England Journal of Medicine.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-11-08',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved luspatercept-aamt (Reblozyl, Celgene/Acceleron; BLA 761136) for anemia in adults with transfusion-dependent beta-thalassemia, the first erythroid maturation agent. The approval recorded the regulatory claim that promoting late-stage erythroid maturation — rather than stimulating early progenitors as erythropoietin does — could reduce transfusion requirements in an inherited anemia.',
+        source: {
+          externalId: 'src:fda-reblozyl-luspatercept-approval-2019',
+          name: 'U.S. FDA, Drugs@FDA (openFDA). Luspatercept-aamt (REBLOZYL), BLA 761136 — original approval. November 8, 2019.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=openfda.brand_name:%22REBLOZYL%22&limit=1',
+          publishedAt: '2019-11-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-03-26',
+        datePrecision: 'DAY',
+        reason: 'Cappellini and colleagues published the phase 3 randomized, placebo-controlled BELIEVE trial in the New England Journal of Medicine, reporting that 21.4% of luspatercept-treated patients achieved at least a 33% reduction in transfusion burden versus 4.5% on placebo in transfusion-dependent beta-thalassemia. Peer-reviewed confirmation entrenched the erythroid-maturation mechanism in the literature as an effective disease-modifying approach.',
+        source: {
+          externalId: 'src:cappellini-believe-luspatercept-nejm-2020',
+          name: 'Cappellini MD, Viprakasit V, Taher AT, et al. A Phase 3 Trial of Luspatercept in Patients with Transfusion-Dependent β-Thalassemia. N Engl J Med. 2020;382(13):1219-1231.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32212518/',
+          publishedAt: '2020-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Avacopan (Tavneos) — first C5a-receptor antagonist for ANCA vasculitis — 2021 ──
+  {
+    externalId: 'trajectory:avacopan-tavneos-first-c5a-receptor-antagonist-anca-vasculitis-2021',
+    text: 'Avacopan (Tavneos), an oral C5a-receptor antagonist, sustains remission in ANCA-associated vasculitis while reducing reliance on glucocorticoids — a claim first established by the ADVOCATE trial in the New England Journal of Medicine (18 February 2021) and settled by the FDA\'s approval of 7 October 2021, the first complement-C5a-receptor blocker for the disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-02-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-02-18',
+        datePrecision: 'DAY',
+        reason: 'Jayne and colleagues published the phase 3 ADVOCATE trial in the New England Journal of Medicine, showing that avacopan was noninferior to a prednisone taper for remission at week 26 and superior for sustained remission at week 52 in ANCA-associated vasculitis, while sharply reducing glucocorticoid exposure. This recorded the first controlled evidence that targeting the C5a receptor could replace much of the steroid burden in a disease historically dependent on high-dose glucocorticoids.',
+        source: {
+          externalId: 'src:jayne-advocate-avacopan-nejm-2021',
+          name: 'Jayne DRW, Merkel PA, Schall TJ, Bekker P; ADVOCATE Study Group. Avacopan for the Treatment of ANCA-Associated Vasculitis. N Engl J Med. 2021;384(7):599-609.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33596356/',
+          publishedAt: '2021-02-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-10-07',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved avacopan (Tavneos, ChemoCentryx; NDA 214487) as an adjunctive treatment for adults with severe active ANCA-associated vasculitis (granulomatosis with polyangiitis and microscopic polyangiitis). The approval institutionally established oral C5a-receptor antagonism as an accepted glucocorticoid-sparing component of remission-induction therapy for the rare autoimmune vasculitides.',
+        source: {
+          externalId: 'src:fda-tavneos-avacopan-approval-2021',
+          name: 'U.S. FDA, Drugs@FDA (openFDA). Avacopan (TAVNEOS), NDA 214487 — original approval. October 7, 2021.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=openfda.brand_name:%22TAVNEOS%22&limit=1',
+          publishedAt: '2021-10-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mitapivat (Pyrukynd) — first pyruvate kinase activator for PKD — 2022 ────
+  {
+    externalId: 'trajectory:mitapivat-pyrukynd-first-pyruvate-kinase-deficiency-drug-2022',
+    text: 'Mitapivat (Pyrukynd), an oral allosteric activator of red-cell pyruvate kinase, raises hemoglobin and reduces hemolysis in adults with pyruvate kinase deficiency — a claim established by the FDA\'s approval on 17 February 2022, the first disease-modifying therapy for the inherited hemolytic anemia, and confirmed by the ACTIVATE trial in the New England Journal of Medicine.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-02-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-02-17',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved mitapivat (Pyrukynd, Agios) for hemolytic anemia in adults with pyruvate kinase deficiency, the first approved therapy that targets the underlying glycolytic enzyme defect rather than managing anemia by transfusion. The approval recorded, as a regulatory fact, the claim that pharmacologically activating residual pyruvate kinase improves hemoglobin and lowers hemolysis in this inherited disorder.',
+        source: {
+          externalId: 'src:fda-pyrukynd-mitapivat-approval-2022',
+          name: 'U.S. FDA, Drugs@FDA (openFDA). Mitapivat (PYRUKYND) — original approval. February 17, 2022.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=openfda.generic_name:%22mitapivat%22&limit=1',
+          publishedAt: '2022-02-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-04-14',
+        datePrecision: 'DAY',
+        reason: 'Al-Samkari and colleagues published the randomized, double-blind, placebo-controlled ACTIVATE trial in the New England Journal of Medicine, reporting that 40% of mitapivat-treated patients achieved a sustained hemoglobin response versus 0% on placebo in adults with pyruvate kinase deficiency who were not regularly transfused. Peer-reviewed confirmation of the pivotal data entrenched in the literature the efficacy of glycolytic-enzyme activation as a disease-modifying treatment.',
+        source: {
+          externalId: 'src:al-samkari-activate-mitapivat-nejm-2022',
+          name: 'Al-Samkari H, Galactéros F, Glenthøj A, et al. Mitapivat versus Placebo for Pyruvate Kinase Deficiency. N Engl J Med. 2022;386(15):1432-1442.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35417638/',
+          publishedAt: '2022-04-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sotatercept (Winrevair) — first activin-inhibitor for PAH — 2024 ─────────
+  {
+    externalId: 'trajectory:sotatercept-winrevair-first-activin-inhibitor-pah-2024',
+    text: 'Sotatercept (Winrevair), an activin-signaling inhibitor that targets vascular remodeling rather than vasodilation, improves exercise capacity and reduces clinical-worsening events in pulmonary arterial hypertension — a claim first established by the STELLAR trial in the New England Journal of Medicine (6 March 2023) and settled by the FDA\'s approval of 26 March 2024, the first agent of a new mechanistic class for PAH.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-03-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-03-06',
+        datePrecision: 'DAY',
+        reason: 'Hoeper and colleagues published the phase 3 randomized, placebo-controlled STELLAR trial in the New England Journal of Medicine, reporting that sotatercept added to background therapy improved 6-minute walk distance by a median placebo-corrected 40.8 meters and significantly reduced the risk of death or clinical worsening in pulmonary arterial hypertension. This recorded the first controlled evidence that rebalancing activin/BMP signaling — a reverse-remodeling mechanism distinct from all prior vasodilator therapies — yields clinical benefit in PAH.',
+        source: {
+          externalId: 'src:hoeper-stellar-sotatercept-nejm-2023',
+          name: 'Hoeper MM, Badesch DB, Ghofrani HA, et al. Phase 3 Trial of Sotatercept for Treatment of Pulmonary Arterial Hypertension. N Engl J Med. 2023;388(16):1478-1490.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36877098/',
+          publishedAt: '2023-03-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-03-26',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved sotatercept-csrk (Winrevair, Merck; BLA 761363) for adults with WHO Group 1 pulmonary arterial hypertension, the first activin-signaling inhibitor approved for the disease. The approval institutionally established a new therapeutic class acting on the pulmonary-vascular remodeling underlying PAH, alongside the established vasodilator pathways (endothelin, nitric oxide, prostacyclin).',
+        source: {
+          externalId: 'src:fda-winrevair-sotatercept-approval-2024',
+          name: 'U.S. FDA, Drugs@FDA (openFDA). Sotatercept-csrk (WINREVAIR), BLA 761363 — original approval. March 26, 2024.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=openfda.brand_name:%22WINREVAIR%22&limit=1',
+          publishedAt: '2024-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SHAM-CONTROLLED SURGICAL TRIALS (1959--1985)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Internal mammary artery ligation — Cobb 1959 ──────────────────────────
+  {
+    externalId: 'trajectory:internal-mammary-ligation-sham-surgery-angina-reversal-1959',
+    text: 'Internal mammary artery ligation, widely performed in the late 1950s to relieve angina pectoris, was shown by Leonard Cobb and colleagues in a double-blind sham-controlled trial (NEJM, 28 May 1959) to provide no benefit over a placebo skin incision, and the operation was abandoned.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-05-28',
+        datePrecision: 'DAY',
+        reason: 'Cobb, Thomas, Dillard, Merendino and Bruce randomly assigned 17 angina patients to either true internal mammary artery ligation or a sham operation (skin incision only) under double-blind conditions. Symptomatic improvement was equal in both groups, demonstrating the procedure\'s apparent benefit was a placebo effect. This was one of the first blinded, sham-controlled evaluations of a surgical operation and led to the procedure\'s rapid abandonment.',
+        source: {
+          externalId: 'src:cobb-internal-mammary-ligation-double-blind-nejm-1959',
+          name: 'Cobb LA, Thomas GI, Dillard DH, Merendino KA, Bruce RA. An evaluation of internal-mammary-artery ligation by a double-blind technic. N Engl J Med. 1959;260(22):1115-1118.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13657350/',
+          publishedAt: '1959-05-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gastric freezing for duodenal ulcer — Ruffin 1969 ─────────────────────
+  {
+    externalId: 'trajectory:gastric-freezing-duodenal-ulcer-sham-reversal-1969',
+    text: 'Gastric freezing (gastric hypothermia), introduced by Owen Wangensteen in 1962 as a treatment for duodenal ulcer, was shown by a cooperative double-blind sham-controlled trial led by John Ruffin (NEJM, 3 July 1969) to be no more effective than a sham procedure, ending its use.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-07-03',
+        datePrecision: 'DAY',
+        reason: 'Ruffin and colleagues conducted a multicenter, double-blind controlled trial comparing genuine gastric freezing against a sham procedure (circulating fluid that did not freeze the stomach). Patients receiving the sham did as well as or better than those frozen, refuting Wangensteen\'s widely adopted technique. The trial is a landmark example of a controlled study overturning an enthusiastically embraced but unproven surgical-adjacent procedure.',
+        source: {
+          externalId: 'src:ruffin-gastric-freezing-double-blind-nejm-1969',
+          name: 'Ruffin JM, Grizzle JE, Hightower NC, McHardy G, Shull H, Kirsner JB. A co-operative double-blind evaluation of gastric \'freezing\' in the treatment of duodenal ulcer. N Engl J Med. 1969;281(1):16-19.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4891641/',
+          publishedAt: '1969-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EC/IC bypass stroke prevention — 1985 ─────────────────────────────────
+  {
+    externalId: 'trajectory:ecic-bypass-stroke-prevention-reversal-1985',
+    text: 'Extracranial-intracranial (EC/IC) arterial bypass surgery, adopted after Yaşargil\'s pioneering STA-MCA anastomosis to prevent ischemic stroke, was shown by the international randomized EC/IC Bypass Study (NEJM, 7 November 1985) to fail to reduce stroke risk, with strokes occurring more frequently and earlier in the surgical group.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-11-07',
+        datePrecision: 'DAY',
+        reason: 'The EC/IC Bypass Study Group randomized 1,377 patients with atherosclerotic carotid/middle-cerebral artery disease across 71 centers to best medical care or medical care plus superficial-temporal-to-middle-cerebral artery bypass, with mean follow-up over 4.5 years. Bypass surgery did not reduce fatal or nonfatal stroke and strokes occurred more often and sooner in the surgical group, reversing the prevailing belief in the operation\'s prophylactic value.',
+        source: {
+          externalId: 'src:ecic-bypass-study-group-nejm-1985',
+          name: 'EC/IC Bypass Study Group. Failure of extracranial-intracranial arterial bypass to reduce the risk of ischemic stroke. Results of an international randomized trial. N Engl J Med. 1985;313(19):1191-1200.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2865674/',
+          publishedAt: '1985-11-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Laparoscopic cholecystectomy — NIH consensus 1992 ─────────────────────
+  {
+    externalId: 'trajectory:laparoscopic-cholecystectomy-nih-consensus-standard-1992',
+    text: 'Laparoscopic cholecystectomy, first performed in the late 1980s (Mühe 1985, Mouret 1987), was endorsed by the NIH Consensus Development Conference (14–16 September 1992) as a safe and effective treatment that had become the treatment of choice for most patients with symptomatic gallstones.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1987-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-09-16',
+        datePrecision: 'DAY',
+        reason: 'After a rapid, largely uncontrolled diffusion of laparoscopic cholecystectomy across surgical practice, the NIH convened a consensus development panel that concluded the procedure provides safe and effective treatment for most patients with symptomatic gallstones and had become the treatment of choice. This institutional endorsement settled the standard of care, replacing open cholecystectomy while also calling for training and credentialing standards.',
+        source: {
+          externalId: 'src:nih-consensus-gallstones-laparoscopic-cholecystectomy-1992',
+          name: 'NIH Consensus Development Panel on Gallstones and Laparoscopic Cholecystectomy. Gallstones and laparoscopic cholecystectomy. NIH Consensus Statement, September 14-16, 1992.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8453137/',
+          publishedAt: '1992-09-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
