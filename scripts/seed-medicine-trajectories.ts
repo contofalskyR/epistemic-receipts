@@ -58467,6 +58467,289 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CONTROLLED SUBSTANCES & OPIOID POLICY ERA (1970–2014)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Controlled Substances Act — heroin Schedule I 1970 ──────────────────────
+  {
+    externalId: 'trajectory:controlled-substances-act-heroin-schedule-i-1970',
+    text: 'The Comprehensive Drug Abuse Prevention and Control Act of 1970, signed by President Richard Nixon on October 27, 1970, created the five federal drug schedules and placed heroin in Schedule I, codifying the determination that heroin has a high potential for abuse and no currently accepted medical use in the United States.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-10-27',
+        datePrecision: 'DAY',
+        reason: 'President Nixon signed Public Law 91-513 (84 Stat. 1236), whose Title II — the Controlled Substances Act — replaced the patchwork of prior narcotics laws with a single five-schedule system ranking substances by abuse potential, accepted medical use, and safety under supervision. Heroin was placed in Schedule I, institutionally fixing it as a drug of high abuse potential with no accepted medical use, a classification that remains federal law and has anchored U.S. opioid control policy ever since.',
+        source: {
+          externalId: 'src:csa-1970-pl-91-513',
+          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970, Pub. L. No. 91-513, 84 Stat. 1236 (Oct. 27, 1970).',
+          url: 'https://www.govinfo.gov/content/pkg/STATUTE-84/pdf/STATUTE-84-Pg1236.pdf',
+          publishedAt: '1970-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Propoxyphene (Darvon) — safe analgesic 1957 reversed 2010 ────────────────
+  {
+    externalId: 'trajectory:propoxyphene-darvon-safe-analgesic-1957',
+    text: 'Propoxyphene (marketed by Eli Lilly as Darvon from 1957) was a safe, comparatively non-addictive opioid analgesic for mild-to-moderate pain — a claim reversed when the U.S. Food and Drug Administration requested its withdrawal from the market on November 19, 2010, after data showed it produces dangerous changes in cardiac electrical activity (QT-interval prolongation) even at recommended therapeutic doses.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1957',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following FDA approval, Eli Lilly marketed propoxyphene as Darvon from 1957 as a safer, less addictive alternative to codeine for mild-to-moderate pain. It became one of the most widely prescribed analgesics in the United States for decades, its safety profile treated as established medical fact.',
+        source: {
+          externalId: 'src:propoxyphene-history-wikipedia',
+          name: 'Dextropropoxyphene — regulatory history (patented by Eli Lilly 1955; marketed as Darvon from 1957).',
+          url: 'https://en.wikipedia.org/wiki/Dextropropoxyphene',
+          publishedAt: '1957-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-11-19',
+        datePrecision: 'DAY',
+        reason: 'On November 19, 2010, the FDA announced it had asked manufacturer Xanodyne Pharmaceuticals and the generic makers to withdraw propoxyphene from the U.S. market after a new study showed the drug prolongs the QT interval and causes serious, potentially fatal cardiac arrhythmias even at standard recommended doses. The FDA subsequently withdrew approval of the propoxyphene New Drug Applications, formally repudiating the half-century premise that the drug was a safe analgesic.',
+        source: {
+          externalId: 'src:fda-fr-propoxyphene-withdrawal-2014',
+          name: 'FDA. Xanodyne Pharmaceuticals, Inc., et al.; Withdrawal of Approval of 8 New Drug Applications and 46 Abbreviated New Drug Applications for Propoxyphene Products. 79 Fed. Reg. 13317 (Mar. 10, 2014).',
+          url: 'https://www.federalregister.gov/documents/2014/03/10/2014-05063/xanodyne-pharmaceuticals-inc-et-al-withdrawal-of-approval-of-8-new-drug-applications-and-46',
+          publishedAt: '2014-03-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO analgesic ladder for cancer pain 1986 ────────────────────────────────
+  {
+    externalId: 'trajectory:who-analgesic-ladder-cancer-pain-1986',
+    text: 'The World Health Organization, in its 1986 monograph Cancer Pain Relief, established the three-step analgesic ladder — non-opioids, then weak opioids, then strong opioids such as oral morphine, given by the clock and by mouth — as the standard global method for relieving cancer pain.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1986',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'WHO published the monograph Cancer Pain Relief (Geneva, 1986), distilling draft guidelines prepared by a 1982 expert consultation in Milan into a simple three-step analgesic ladder intended to be usable by any physician worldwide. The publication put on the record a standardized, opioid-inclusive method for cancer pain at a time when undertreatment was endemic.',
+        source: {
+          externalId: 'src:who-cancer-pain-relief-1986',
+          name: 'World Health Organization. Cancer Pain Relief. Geneva: WHO; 1986. ISBN 9241561009.',
+          url: 'https://iris.who.int/handle/10665/43944',
+          publishedAt: '1986-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-02-15',
+        datePrecision: 'DAY',
+        reason: 'Ventafridda and colleagues published a validation study in Cancer reporting the two-year experience of the WHO Collaborating Centre at the National Cancer Institute of Milan, finding that the WHO method controlled pain in roughly 71% of advanced cancer patients and roughly doubled hours of sleep. This first rigorous validation moved the ladder from a proposal to a clinically endorsed standard subsequently adopted in palliative care worldwide.',
+        source: {
+          externalId: 'src:ventafridda-who-validation-cancer-1987',
+          name: 'Ventafridda V, Tamburini M, Caraceni A, De Conno F, Naldi F. A validation study of the WHO method for cancer pain relief. Cancer. 1987 Feb 15;59(4):850-856.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3802043/',
+          publishedAt: '1987-02-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CNBSS mammography — no mortality benefit in 40–49 age group 1992 ─────────
+  {
+    externalId: 'trajectory:cnbss-mammography-no-mortality-benefit-1992',
+    text: 'Anthony Miller and the Canadian National Breast Screening Study investigators reported in CMAJ on 15 November 1992 that annual mammography plus physical examination in women aged 40–49 detected more small node-negative tumours than usual care but produced no reduction in breast-cancer mortality, challenging the prevailing belief that screening mammography in this age group saves lives.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-11-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-11-15',
+        datePrecision: 'DAY',
+        reason: 'The first CNBSS report, a randomized controlled trial of women aged 40–49, found that yearly mammography plus clinical breast examination detected considerably more small, node-negative cancers than usual care yet had no impact on the breast-cancer death rate at seven years\' follow-up. Against the consensus that earlier detection necessarily lowers mortality, this recorded trial-grade evidence that screening this age group yielded no survival benefit, introducing the concepts of overdiagnosis and lead-time bias into the mammography debate.',
+        source: {
+          externalId: 'src:miller-cnbss-40-49-cmaj-1992',
+          name: 'Miller AB, Baines CJ, To T, Wall C. Canadian National Breast Screening Study: 1. Breast cancer detection and death rates among women aged 40 to 49 years. CMAJ. 1992;147(10):1459-1476.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1423087/',
+          publishedAt: '1992-11-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-02-11',
+        datePrecision: 'DAY',
+        reason: 'The 25-year follow-up of the full CNBSS cohort (~90,000 women aged 40–59) reaffirmed that annual mammography did not reduce breast-cancer mortality beyond physical examination or usual care in an era of available adjuvant therapy, and estimated that about 22% of screen-detected invasive cancers were overdiagnosed. The long-term data settled the trial\'s conclusion that mammographic screening in this population confers no mortality benefit and carries substantial overdiagnosis, even as radiology bodies continued to dispute the trial\'s methodology.',
+        source: {
+          externalId: 'src:miller-cnbss-25yr-bmj-2014',
+          name: 'Miller AB, Wall C, Baines CJ, Sun P, To T, Narod SA. Twenty five year follow-up for breast cancer incidence and mortality of the Canadian National Breast Screening Study: randomised screening trial. BMJ. 2014;348:g366.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24519768/',
+          publishedAt: '2014-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oral contraceptives and breast cancer — collaborative reanalysis 1996 ────
+  {
+    externalId: 'trajectory:oral-contraceptives-breast-cancer-collaborative-reanalysis-1996',
+    text: 'The Collaborative Group on Hormonal Factors in Breast Cancer reported in The Lancet on 22 June 1996, pooling individual data on 53,297 women with breast cancer and 100,239 without from 54 studies, that current and recent use of combined oral contraceptives carries a small increased relative risk of breast cancer (RR ~1.24 in current users) that disappears within about ten years of stopping.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-06-22',
+        datePrecision: 'DAY',
+        reason: 'Resolving decades of conflicting case-control studies, the Collaborative Group\'s central reanalysis of individual-participant data from 54 epidemiological studies in 25 countries found that women currently using combined oral contraceptives had a modestly elevated breast-cancer risk (RR 1.24), declining to no excess by ten years after cessation, with diagnosed cancers tending to be less clinically advanced. The pooled analysis recorded in the expert literature a quantified, transient association between oral-contraceptive use and breast cancer, replacing a contested patchwork of studies with a single high-powered estimate.',
+        source: {
+          externalId: 'src:collaborative-group-oc-breast-cancer-lancet-1996',
+          name: 'Collaborative Group on Hormonal Factors in Breast Cancer. Breast cancer and hormonal contraceptives: collaborative reanalysis of individual data on 53 297 women with breast cancer and 100 239 women without breast cancer from 54 epidemiological studies. Lancet. 1996;347(9017):1713-1727.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8656904/',
+          publishedAt: '1996-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-12-07',
+        datePrecision: 'DAY',
+        reason: 'Mørch and colleagues\' Danish nationwide cohort of 1.8 million women reaffirmed, for modern lower-dose and progestin-only formulations, that current or recent hormonal-contraceptive use raises breast-cancer risk (RR 1.20, rising with duration to 1.38 after >10 years), with a small absolute excess of about 13 cases per 100,000 person-years. The convergence of contemporary cohort data with the 1996 reanalysis settled the expert consensus that the oral-contraceptive–breast-cancer association is real but small in absolute terms and persists with present-day formulations.',
+        source: {
+          externalId: 'src:morch-hormonal-contraception-breast-cancer-nejm-2017',
+          name: 'Mørch LS, Skovlund CW, Hannaford PC, Iversen L, Fielding S, Lidegaard Ø. Contemporary Hormonal Contraception and the Risk of Breast Cancer. N Engl J Med. 2017;377(23):2228-2239.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29211679/',
+          publishedAt: '2017-12-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── VBAC — trial of labor maternal risk quantified 1996 ─────────────────────
+  {
+    externalId: 'trajectory:vbac-trial-of-labor-maternal-risk-1996',
+    text: 'Michael McMahon and colleagues reported in the New England Journal of Medicine on 5 September 1996 that a trial of labor after a prior cesarean, compared with elective repeat cesarean, did not change the overall maternal-complication rate but nearly doubled the risk of major maternal complications (odds ratio ~1.8), undermining the prevailing 1980s–90s encouragement of routine vaginal birth after cesarean (VBAC).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-09-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-09-05',
+        datePrecision: 'DAY',
+        reason: 'Amid a public-health push that had raised U.S. VBAC rates through the early 1990s, McMahon et al. compared 3,249 women attempting labor after prior cesarean with 2,889 undergoing elective repeat cesarean and found that, while overall complications were similar, major maternal complications (including uterine rupture and operative injury) were nearly twice as common with a trial of labor. The study recorded the first large-scale evidence that the prevailing pro-VBAC stance carried an underappreciated maternal-safety cost.',
+        source: {
+          externalId: 'src:mcmahon-trial-of-labor-cesarean-nejm-1996',
+          name: 'McMahon MJ, Luther ER, Bowes WA Jr, Olshan AF. Comparison of a trial of labor with an elective second cesarean section. N Engl J Med. 1996;335(10):689-695.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8703167/',
+          publishedAt: '1996-09-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-07-05',
+        datePrecision: 'DAY',
+        reason: 'Lydon-Rochelle and colleagues\' population-based study of ~20,000 Washington State women quantified the absolute uterine-rupture risk by delivery route, finding spontaneous labor after prior cesarean carried roughly 3-fold, and prostaglandin-induced labor roughly 15-fold, the rupture risk of repeat cesarean without labor. Converging with the McMahon finding, this evidence drove ACOG to tighten VBAC guidance (requiring immediate availability of surgical and anesthesia teams) and precipitated a sharp decline in U.S. VBAC rates, settling the cautious institutional stance toward trial of labor after cesarean.',
+        source: {
+          externalId: 'src:lydon-rochelle-uterine-rupture-nejm-2001',
+          name: 'Lydon-Rochelle M, Holt VL, Easterling TR, Martin DP. Risk of uterine rupture during labor among women with a prior cesarean delivery. N Engl J Med. 2001;345(1):3-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11439945/',
+          publishedAt: '2001-07-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tramadol — low abuse potential 1995 reversed 2014 ───────────────────────
+  {
+    externalId: 'trajectory:tramadol-low-abuse-potential-1995',
+    text: 'Tramadol (Ultram), approved by the FDA for U.S. marketing in 1995, was placed on the market as an opioid analgesic with very low abuse potential and was deliberately left unscheduled under the Controlled Substances Act — a determination the DEA reversed on July 2, 2014, when it placed tramadol into Schedule IV after finding it has genuine abuse and dependence liability.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved tramadol (Ultram) for marketing in 1995, and on the basis of clinical data suggesting very low abuse potential the drug was not scheduled under the Controlled Substances Act. For nearly two decades tramadol was prescribed and promoted as a uniquely low-risk, non-controlled opioid analgesic.',
+        source: {
+          externalId: 'src:dea-tramadol-fact-sheet',
+          name: 'DEA Diversion Control Division. Tramadol (Trade Names: Ultram, Ultracet) drug fact sheet.',
+          url: 'https://www.deadiversion.usdoj.gov/drug_chem_info/tramadol.pdf',
+          publishedAt: '2014-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-07-02',
+        datePrecision: 'DAY',
+        reason: 'The DEA published a final rule placing tramadol into Schedule IV of the Controlled Substances Act (effective August 18, 2014), concluding after accumulated evidence that tramadol produces opioid-typical euphoria, abuse, and physical dependence. The action formally overturned the original low-abuse-potential determination that had kept the drug uncontrolled since 1995.',
+        source: {
+          externalId: 'src:dea-fr-tramadol-schedule-iv-2014',
+          name: 'DEA. Schedules of Controlled Substances: Placement of Tramadol Into Schedule IV. Final rule. 79 Fed. Reg. 37623 (July 2, 2014).',
+          url: 'https://www.federalregister.gov/documents/2014/07/02/2014-15548/schedules-of-controlled-substances-placement-of-tramadol-into-schedule-iv',
+          publishedAt: '2014-07-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
