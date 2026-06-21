@@ -57054,6 +57054,290 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS — ABUSE-DETERRENT REFORMULATIONS & LEGAL ACCOUNTABILITY (2010--2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── OxyContin reformulation shifts abuse to heroin — Cicero 2012 ────────────
+  {
+    externalId: 'trajectory:oxycontin-reformulation-abuse-deterrent-substitution-2010',
+    text: 'When Purdue Pharma introduced the reformulated, tamper-resistant version of OxyContin in August 2010, the controlled-release oxycodone was premised on reduced abuse liability, but Cicero, Ellis and Surratt reported in the New England Journal of Medicine on July 12, 2012 that abuse had merely shifted to other opioids, especially heroin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-08-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-08-09',
+        datePrecision: 'MONTH',
+        reason: 'In August 2010 Purdue replaced the original OxyContin with a reformulated, crush- and dissolution-resistant version, and the FDA and manufacturer treated the change as an abuse-deterrent improvement. The premise that physically hardening the tablet would reduce opioid abuse entered the regulatory and market record as the rationale for the reformulation.',
+        source: {
+          externalId: 'src:fda-fr-oxycontin-reformulation-determination-2013',
+          name: 'FDA. Determination That the OXYCONTIN (Oxycodone Hydrochloride) Drug Products Covered by NDA 20-553 Were Withdrawn From Sale for Reasons of Safety or Effectiveness. Fed. Reg. 78(75):23273, Apr. 18, 2013.',
+          url: 'https://www.federalregister.gov/documents/2013/04/18/2013-09092/determination-that-the-oxycontin-oxycodone-hydrochloride-drug-products-covered-by-new-drug',
+          publishedAt: '2013-04-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-12',
+        datePrecision: 'DAY',
+        reason: 'Cicero, Ellis and Surratt published a research letter in NEJM reporting that after the August 2010 reformulation, selection of OxyContin as a primary drug of abuse among surveyed users fell from 35.6% to 12.8%, but overall opioid abuse did not decline — users migrated to other opioids, predominantly heroin. The finding contested the premise that abuse-deterrent reformulation reduces opioid abuse, recasting the effect as substitution rather than prevention.',
+        source: {
+          externalId: 'src:cicero-abuse-deterrent-oxycontin-nejm-2012',
+          name: 'Cicero TJ, Ellis MS, Surratt HL. Effect of abuse-deterrent formulation of OxyContin. N Engl J Med. 2012 Jul 12;367(2):187-189.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22784140/',
+          publishedAt: '2012-07-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tramadol rescheduled to Schedule IV — DEA 2014 ──────────────────────────
+  {
+    externalId: 'trajectory:tramadol-schedule-iv-reclassification-2014',
+    text: 'The DEA\'s final rule of July 2, 2014 placed tramadol into Schedule IV of the Controlled Substances Act effective August 18, 2014, reversing the nearly two-decade-old premise — in place since the drug\'s 1995 US approval as the uncontrolled analgesic Ultram — that tramadol\'s abuse potential was low enough to leave it uncontrolled.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1995-03-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-07-02',
+        datePrecision: 'DAY',
+        reason: 'After its 1995 FDA approval, tramadol was marketed as a centrally-acting analgesic with low abuse potential and remained outside the Controlled Substances Act for nearly two decades. Following an HHS scientific and medical evaluation documenting abuse, dependence, and diversion, the DEA published a final rule placing tramadol into Schedule IV effective August 18, 2014, formally reversing its uncontrolled status and the low-abuse-potential premise that had justified it.',
+        source: {
+          externalId: 'src:dea-fr-tramadol-schedule-iv-2014',
+          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Placement of Tramadol Into Schedule IV. Final rule. Fed. Reg. 79(127), Jul. 2, 2014.',
+          url: 'https://www.federalregister.gov/documents/2014/07/02/2014-15548/schedules-of-controlled-substances-placement-of-tramadol-into-schedule-iv',
+          publishedAt: '2014-07-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Opana ER reformulation shifts abuse to injection — FDA withdrawal 2017 ──
+  {
+    externalId: 'trajectory:opana-er-reformulation-removed-injection-abuse-2017',
+    text: 'The reformulated, crush-resistant Opana ER (oxymorphone hydrochloride extended-release, Endo Pharmaceuticals), FDA-approved in December 2011 and marketed as carrying abuse-deterrent properties, was repudiated when the FDA on June 8, 2017 requested its removal from the market — the first time the agency asked for a marketed opioid to be withdrawn for abuse — after the reformulation shifted abuse to injection.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-12-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-09',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved Endo\'s reformulated, crush- and dissolution-resistant Opana ER, which replaced the original oxymorphone ER and was promoted as a public-health improvement designed to deter abuse. The reformulation was treated as an established abuse-deterrent product and continued to be marketed on that premise.',
+        source: {
+          externalId: 'src:fda-fr-opana-er-nda-withdrawal-2020',
+          name: 'FDA. Endo Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for OPANA (Oxymorphone Hydrochloride) Extended-Release Tablets. Fed. Reg. 85(247), Dec. 23, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/12/23/2020-28283/endo-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-opana-oxymorphone',
+          publishedAt: '2020-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'Post-marketing data showed the reformulation had shifted abuse from snorting to intravenous injection, linked to a 2015 HIV outbreak in Indiana and clusters of thrombotic microangiopathy. After an FDA advisory committee concluded the benefits no longer outweighed the risks, the FDA on June 8, 2017 requested Opana ER\'s removal — its first-ever request to pull a marketed opioid for abuse-related public health consequences; Endo withdrew the product in July 2017 and the FDA finalized withdrawal of the NDA\'s approval on December 23, 2020. The abuse-deterrent reformulation premise was institutionally repudiated.',
+        source: {
+          externalId: 'src:fda-fr-opana-er-nda-withdrawal-2020',
+          name: 'FDA. Endo Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for OPANA (Oxymorphone Hydrochloride) Extended-Release Tablets. Fed. Reg. 85(247), Dec. 23, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/12/23/2020-28283/endo-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-opana-oxymorphone',
+          publishedAt: '2020-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Harrington v. Purdue Pharma — Sackler releases voided — SCOTUS 2024 ────
+  {
+    externalId: 'trajectory:harrington-purdue-sackler-releases-reversed-2024',
+    text: 'The U.S. Supreme Court held on June 27, 2024 in Harrington v. Purdue Pharma L.P. (No. 23-124) that the Bankruptcy Code does not authorize a reorganization plan to discharge the Sackler family\'s opioid liability through nonconsensual third-party releases, voiding the central feature of Purdue\'s confirmed plan and reversing the lower-court rulings that had upheld it.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-06-27',
+        datePrecision: 'DAY',
+        reason: 'After the bankruptcy court confirmed Purdue\'s reorganization plan in September 2021 and the Second Circuit affirmed it in 2023 — establishing that nonconsensual releases shielding the Sacklers from opioid-related civil liability were lawful — the Supreme Court reversed in a 5-4 decision, holding that the Bankruptcy Code does not permit a plan to extinguish claims against non-debtors without claimants\' consent. The judicial premise that the bankruptcy mechanism could discharge the Sacklers\' opioid liability was overturned.',
+        source: {
+          externalId: 'src:scotus-harrington-purdue-pharma-2024',
+          name: 'Supreme Court of the United States. Harrington v. Purdue Pharma L.P., No. 23-124, 603 U.S. 204 (June 27, 2024).',
+          url: 'https://www.supremecourt.gov/opinions/23pdf/23-124_8nk0.pdf',
+          publishedAt: '2024-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Haberlandt hormonal contraception concept — 1921 ───────────────────────
+  {
+    externalId: 'trajectory:haberlandt-hormonal-contraception-concept-1921',
+    text: 'Ludwig Haberlandt, professor of physiology at Innsbruck, demonstrated in 1921 that transplanting ovaries from a pregnant animal into a non-pregnant female rabbit produced temporary, reversible infertility, and claimed that administering ovarian (corpus luteum) hormones could be used for deliberate, reversible contraception in women — the founding concept of hormonal birth control.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1921-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1921-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Haberlandt showed that ovary transplants from pregnant rabbits temporarily suppressed fertility in recipient females and argued this could be reproduced pharmacologically, coining the idea of \'hormonale Sterilisierung\' (hormonal sterilization). He elaborated it in his 1931 book Die hormonale Sterilisierung des weiblichen Organismus and, with Rockefeller support, had the firm G. Richter in Budapest prepare an oral hormonal product (Infecundin), recording in the physiological literature the claim that hormones could provide reversible contraception.',
+        source: {
+          externalId: 'src:haberlandt-pioneer-hormonal-contraception-review-2009',
+          name: 'Müller-Jahncke WD, et al. Ludwig Haberlandt — a pioneer in hormonal contraception. Wien Klin Wochenschr. 2009;121(23-24):746-749. PMID 20047112.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20047112/',
+          publishedAt: '2009-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Haberlandt\'s concept lay dormant after he was hounded for his views and died in 1932, and Infecundin never reached the market. It was vindicated only in 1960, when the U.S. FDA approved Enovid (norethynodrel plus mestranol) for contraception, confirming that orally administered hormones can provide reliable, reversible birth control — the proposition Haberlandt had recorded four decades earlier, earning him recognition as the grandfather of the oral contraceptive pill.',
+        source: {
+          externalId: 'src:haberlandt-forerunner-oral-pill-review-2009',
+          name: 'Müller-Jahncke WD, et al. Ludwig Haberlandt — a pioneer in hormonal contraception (forerunner of the 1960 oral contraceptive). Wien Klin Wochenschr. 2009;121(23-24):746-749. PMID 20047112.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20047112/',
+          publishedAt: '2009-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Doisy estradiol isolation from liquor folliculi — 1936 ─────────────────
+  {
+    externalId: 'trajectory:doisy-estradiol-isolation-liquor-folliculi-1936',
+    text: 'Dwight MacCorquodale, Selmer Thayer, and Edward Doisy reported in the Journal of Biological Chemistry in 1936 the isolation, in pure crystalline form from sow ovarian follicular fluid (liquor folliculi), of estradiol — the \'principal estrogenic substance\' and the most biologically potent of the natural estrogens.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Having crystallized the substance from sow follicular fluid in 1935, MacCorquodale, Thayer, and Doisy published \'The Isolation of the Principal Estrogenic Substance of Liquor Folliculi,\' identifying a third, distinct estrogen more potent than the previously isolated estrone (1929). This recorded the claim that the most active ovarian estrogen was a specific isolable crystalline compound — 17β-estradiol — rather than the weaker estrone obtained earlier from urine.',
+        source: {
+          externalId: 'src:maccorquodale-thayer-doisy-estradiol-jbc-1936',
+          name: 'MacCorquodale DW, Thayer SA, Doisy EA. The Isolation of the Principal Estrogenic Substance of Liquor Folliculi. J Biol Chem. 1936;115(2):435-448.',
+          url: 'https://www.jbc.org/article/S0021-9258(18)74725-X/fulltext',
+          publishedAt: '1936-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years the chemistry of the three natural estrogens — estrone, estriol, and estradiol — and their metabolic interconversions was established, and 17β-estradiol was confirmed as the principal and most potent estrogen secreted by the human ovary. It remains the reference estrogen measured in clinical assays and the active estrogen in modern estradiol-based hormone therapy, settling the claim that estradiol is the dominant endogenous estrogen.',
+        source: {
+          externalId: 'src:embryo-project-estrogen-menstrual-cycle-estradiol',
+          name: 'Embryo Project Encyclopedia (Arizona State University). Estrogen and the Menstrual Cycle in Humans — isolation of estradiol (Doisy, 1936) as the most biologically active estrogen.',
+          url: 'https://embryo.asu.edu/pages/estrogen-and-menstrual-cycle-humans',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Macfarlane periodic pelvic exam cancer screening — 1938 ────────────────
+  {
+    externalId: 'trajectory:macfarlane-periodic-pelvic-exam-cancer-screening-1938',
+    text: 'Catharine Macfarlane launched a prospective Cancer Control Research Project at the Woman\'s Medical College of Pennsylvania in 1938, advancing the claim that periodic pelvic examination of asymptomatic (\'supposedly well\') women detects cancer of the female pelvic organs early enough to reduce deaths — one of the first systematic cancer-screening programs for asymptomatic women.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1938-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Macfarlane, with Margaret Sturgis and Faith Fetterman, enrolled asymptomatic women for repeated periodic pelvic examinations to detect uterine and cervical cancer before symptoms appeared, an early test of the then-novel idea that screening healthy populations could lower cancer mortality. The fifteen-year results were published in 1955 (Am J Obstet Gynecol 1955;69(2):294-298), recording the claim that periodic examination of well women yields earlier-stage, more curable cancers.',
+        source: {
+          externalId: 'src:nlm-macfarlane-biography-uterine-screening',
+          name: 'U.S. National Library of Medicine. Changing the Face of Medicine — Dr. Catharine Macfarlane: first uterine cancer screening program, begun 1938.',
+          url: 'https://www.nlm.nih.gov/exhibition/changing-the-face-of-medicine/physicians/biography_catharine_macfarlane.html',
+          publishedAt: '2003-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Macfarlane received the 1951 Albert Lasker Clinical Medical Research Award (jointly with Élise L\'Esperance and others) for applying preventive medicine to cancer control, and periodic pelvic examination became entrenched as routine practice in the annual gynecologic exam for decades. The professional recognition and widespread adoption settled, for the mid-twentieth-century medical community, the claim that periodic pelvic screening of asymptomatic women was beneficial.',
+        source: {
+          externalId: 'src:drexel-legacy-macfarlane-lasker-1951',
+          name: 'Drexel University College of Medicine, Legacy Center. Modern Miracle Women: Dr. Catharine Macfarlane — 1951 Lasker Award for cancer control through periodic examination.',
+          url: 'https://drexel.edu/legacy-center/blog/overview/2017/april/modern-miracle-women-dr-catharine-macfarlane-a-leader-in-the-fight-against-cancer/',
+          publishedAt: '2017-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-07',
+        datePrecision: 'DAY',
+        reason: 'A USPSTF systematic evidence review found no trials showing that screening pelvic examination in asymptomatic women reduces all-cause or cancer-specific mortality, morbidity, or improves quality of life, leading the Task Force to conclude the evidence was insufficient to recommend routine screening pelvic examination. This directly contested the long-standing benefit claim that Macfarlane\'s program had advanced, leaving validated cervical screening to cytology/HPV testing rather than the bimanual pelvic exam.',
+        source: {
+          externalId: 'src:guirguis-blake-uspstf-pelvic-exam-jama-2017',
+          name: 'Guirguis-Blake JM, Henderson JT, Perdue LA. Periodic Screening Pelvic Examination: Evidence Report and Systematic Review for the US Preventive Services Task Force. JAMA. 2017;317(9):954-966. PMID 28267861.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28267861/',
+          publishedAt: '2017-03-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
