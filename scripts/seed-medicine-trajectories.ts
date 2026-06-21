@@ -60456,6 +60456,182 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC DIAGNOSTICS & DIETARY TREATMENT (1950s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gibson-Cooke pilocarpine sweat test for cystic fibrosis — 1959 ──────────
+  {
+    externalId: 'trajectory:gibson-cooke-pilocarpine-sweat-test-cystic-fibrosis-1959',
+    text: 'In March 1959 Lewis Gibson and Robert Cooke reported that quantitative pilocarpine iontophoresis sweat chloride testing safely and reliably diagnoses cystic fibrosis in children.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Gibson and Cooke published their pilocarpine-iontophoresis method in Pediatrics, describing a rapid, painless way to stimulate localized sweating and measure sweat electrolyte concentration. This replaced earlier whole-body heat-collection techniques that risked hyperthermia in infants, recording for the first time a safe quantitative diagnostic test for cystic fibrosis in children.',
+        source: {
+          externalId: 'src:gibson-cooke-pediatrics-sweat-test-1959',
+          name: 'Gibson LE, Cooke RE. A test for concentration of electrolytes in sweat in cystic fibrosis of the pancreas utilizing pilocarpine by iontophoresis. Pediatrics. 1959;23(3):545-549.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13633369/',
+          publishedAt: '1959-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-04-01',
+        datePrecision: 'YEAR',
+        reason: 'The Gibson-Cooke pilocarpine iontophoresis technique was adopted internationally as the reference diagnostic method and formalized in clinical-laboratory standards. Reviews more than sixty years later confirm it remains the gold-standard sweat test underpinning cystic fibrosis diagnosis and newborn-screening confirmation, marking durable institutional settlement.',
+        source: {
+          externalId: 'src:sweat-testing-recent-advances-review-2021',
+          name: 'Collie JTB, et al. Sweat Testing and Recent Advances. Front Pediatr / PMC. 2021.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8129525/',
+          publishedAt: '2021-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bickel low-phenylalanine diet for PKU — 1953 ────────────────────────────
+  {
+    externalId: 'trajectory:bickel-low-phenylalanine-diet-phenylketonuria-1953',
+    text: 'On 17 October 1953 Horst Bickel, John Gerrard and Evelyn Hickmans reported in The Lancet that restricting dietary phenylalanine lowered blood phenylalanine and improved the clinical status of a child with phenylketonuria — the first dietary treatment of an inborn error of metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-10-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-10-17',
+        datePrecision: 'DAY',
+        reason: 'Bickel and colleagues at Birmingham treated a two-year-old girl with a phenylalanine-restricted diet, observing a fall in blood and urine phenylalanine and improvement in her mental status, then demonstrated relapse on rechallenge. The Lancet report recorded the first evidence that the intellectual damage of phenylketonuria could be mitigated by diet rather than being fixed at birth.',
+        source: {
+          externalId: 'src:bickel-lancet-phenylalanine-pku-1953',
+          name: 'Bickel H, Gerrard J, Hickmans EM. Influence of phenylalanine intake on phenylketonuria. Lancet. 1953;265(6790):812-813.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13098090/',
+          publishedAt: '1953-10-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Replication of dietary benefit and the recognition that early treatment must precede symptom onset made phenylalanine restriction standard of care once Guthrie newborn screening (1963) enabled presymptomatic detection. Low-phenylalanine dietary therapy became the established lifelong management adopted by national screening and treatment programs.',
+        source: {
+          externalId: 'src:first-treatment-pku-pioneers-birmingham-review',
+          name: 'Brown CS, Lichter-Konecki U, et al. The First Treatment for PKU: The Pioneers—Birmingham 1951. Int J Neonatal Screen / PMC. 2021.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8006244/',
+          publishedAt: '2021-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PUBLIC HEALTH & ENVIRONMENTAL MEDICINE
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Grand Rapids water fluoridation and childhood caries — 1945 ─────────────
+  {
+    externalId: 'trajectory:grand-rapids-water-fluoridation-childhood-caries-1945',
+    text: 'On 25 January 1945 Grand Rapids, Michigan became the first city to fluoridate its public water supply in a controlled trial testing whether ~1 ppm fluoride reduces dental caries in children, a claim subsequently established and institutionally endorsed.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1945-01-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-01-25',
+        datePrecision: 'DAY',
+        reason: 'Following H. Trendley Dean\'s epidemiologic work linking naturally fluoridated water to lower caries, the U.S. Public Health Service, Michigan Department of Health and University of Michigan began a ten-year controlled trial fluoridating Grand Rapids with Muskegon as control. This put the caries-prevention hypothesis under formal prospective test in a large school-age-child population.',
+        source: {
+          externalId: 'src:cdc-community-water-fluoridation-timeline',
+          name: 'CDC. Timeline for Community Water Fluoridation.',
+          url: 'https://www.cdc.gov/fluoridation/timeline-for-community-water-fluoridation/index.html',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Interim five-year Grand Rapids–Muskegon and Newburgh–Kingston data showed controlled fluoridation reproduced the caries reduction seen with natural fluoride, and in 1950 the U.S. Public Health Service and the American Dental Association formally endorsed community water fluoridation at ~1 ppm. Published results through the eleventh year (Arnold et al.) confirmed roughly a 50–60% reduction in childhood caries, settling the efficacy claim.',
+        source: {
+          externalId: 'src:arnold-grand-rapids-eleventh-year-fluoridation-1956',
+          name: 'Arnold FA Jr, Dean HT, Jay P, Knutson JW. Grand Rapids fluoridation study—results pertaining to the eleventh year of fluoridation. Public Health Rep. 1956;71(7):652-658.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1551218/',
+          publishedAt: '1956-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CDC childhood blood lead level of concern 25 µg/dL — 1985 ───────────────
+  {
+    externalId: 'trajectory:cdc-childhood-blood-lead-level-of-concern-25-1985',
+    text: 'In January 1985 the CDC defined an elevated childhood blood lead level as 25 µg/dL or greater, lowering the action threshold from 30 µg/dL — a standard later superseded.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1985-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1985-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Responding to mounting evidence — including Needleman\'s work on subclinical neurotoxicity — that lead harms children at progressively lower exposures, CDC issued its January 1985 statement defining an elevated blood lead level as ≥25 µg/dL and making it the national level of concern for intervention, replacing the 1978 threshold of 30 µg/dL.',
+        source: {
+          externalId: 'src:cdc-mmwr-preventing-lead-poisoning-1985',
+          name: 'CDC. Preventing Lead Poisoning in Young Children—United States. MMWR. 1985.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00000659.htm',
+          publishedAt: '1985-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-10-01',
+        datePrecision: 'MONTH',
+        reason: 'In October 1991 CDC revised its policy and lowered the childhood blood lead level of concern from 25 µg/dL to 10 µg/dL, citing evidence of adverse effects at the lower levels. This abandoned the 1985 threshold as too permissive, the first of repeated downward revisions that culminated in the reference-value approach.',
+        source: {
+          externalId: 'src:cdc-preventing-lead-poisoning-1991',
+          name: 'CDC. Preventing Lead Poisoning in Young Children: A Statement by the Centers for Disease Control, October 1991.',
+          url: 'https://stacks.cdc.gov/view/cdc/147840/cdc_147840_DS1.pdf',
+          publishedAt: '1991-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
