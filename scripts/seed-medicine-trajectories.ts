@@ -58295,6 +58295,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — ADDITIONS
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Watanabe guanidine hypoglycemia 1918 ────────────────────────────────────
+  {
+    externalId: 'trajectory:watanabe-guanidine-hypoglycemia-1918',
+    text: 'Karl K. Watanabe reported in the Journal of Biological Chemistry in 1918 that subcutaneous injection of guanidine produces a marked fall in blood sugar (hypoglycemia) in animals, establishing guanidine — the active hypoglycemic principle of Galega officinalis (goat\'s rue) — as a blood-glucose-lowering agent and laying the pharmacological foundation of the guanidine/biguanide class of oral antidiabetic drugs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1918-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1918-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Watanabe published \'Studies in the metabolic changes induced by administration of guanidine bases\' in the Journal of Biological Chemistry (1918;33:253-265), reporting that injected guanidine hydrochloride sharply lowers blood-sugar content in animals. This recorded in the expert literature the claim that guanidine — the hypoglycemic principle of the folk antidiabetic plant Galega officinalis (goat\'s rue) — causes hypoglycemia, the experimental starting point for synthetic guanidine-derived glucose-lowering drugs.',
+        source: {
+          externalId: 'src:watanabe-guanidine-blood-sugar-jbc-1918',
+          name: 'Watanabe CK. Studies in the metabolic changes induced by administration of guanidine bases. I. Influence of injected guanidine hydrochloride upon blood sugar content. J Biol Chem. 1918;33:253-265.',
+          url: 'https://www.jbc.org/article/S0021-9258(18)86579-6/fulltext',
+          publishedAt: '1918-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Watanabe\'s guanidine-hypoglycemia finding was exploited into a drug class: galegine and the diguanide Synthalin entered clinical use in the 1920s, and after Jean Sterne reintroduced metformin clinically in 1957 the biguanides became established oral antidiabetics, with metformin now the first-line global therapy for type 2 diabetes. Clinical adoption settled the claim that guanidine-derived compounds lower blood glucose.',
+        source: {
+          externalId: 'src:bailey-metformin-historical-overview-diabetologia-2017',
+          name: 'Bailey CJ. Metformin: historical overview. Diabetologia. 2017;60(9):1566-1576.',
+          url: 'https://link.springer.com/article/10.1007/s00125-017-4318-z',
+          publishedAt: '2017-08-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zülzer Acomatol pancreatic extract diabetes 1908 ───────────────────────
+  {
+    externalId: 'trajectory:zuelzer-acomatol-pancreatic-extract-diabetes-1908',
+    text: 'Georg Ludwig Zülzer reported in 1908 (presented in Berlin on 15 June 1908; German patent No. 201383 granted 20 September 1908) that his calf-pancreas extract \'Acomatol\' reduced glycosuria, ketonuria and the symptoms of diabetes in human patients — the first pancreatic extract shown to lower blood sugar in diabetic humans — a treatment soon abandoned because of severe toxic reactions.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1908-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1908-06-15',
+        datePrecision: 'DAY',
+        reason: 'Between 1906 and 1908 Zülzer treated eight diabetic patients with his pancreatic extract Acomatol, reporting reduced glycosuria and ketonuria and clinical improvement; he presented the results at a Berlin medical meeting on 15 June 1908 and obtained German patent No. 201383 (20 September 1908) for a pancreatic preparation to control severe hyperglycemia and diabetic coma. This recorded in the expert literature the claim that an injectable pancreatic extract could lower blood sugar in human diabetics — fourteen years before insulin.',
+        source: {
+          externalId: 'src:de-leiva-acomatol-organotherapy-acta-diabetol-2023',
+          name: 'de Leiva-Hidalgo A, de Leiva-Pérez A. On the occasion of the centennial of insulin therapy (1922-2022), II-Organotherapy of diabetes mellitus (1906-1923): Acomatol. Pancreina. Insulin. Acta Diabetol. 2023;60(2):163-189. (PMID 36585966.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9852216',
+          publishedAt: '2023-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1909-01-01',
+        datePrecision: 'YEAR',
+        reason: 'When J. Forschbach reproduced Zülzer\'s protocol in 1909 he confirmed diminished glycosuria but observed high fever and other toxic effects (fever, sweating, vomiting, stomatitis, muscle hypertonia); the manufacturer withdrew financial support and Acomatol was abandoned as unusable. The toxicity reversed Acomatol\'s status as a viable treatment, though the underlying principle — that a pancreatic secretion lowers blood sugar — was later vindicated by insulin in 1922.',
+        source: {
+          externalId: 'src:de-leiva-acomatol-organotherapy-acta-diabetol-2023',
+          name: 'de Leiva-Hidalgo A, de Leiva-Pérez A. On the occasion of the centennial of insulin therapy (1922-2022), II-Organotherapy of diabetes mellitus (1906-1923): Acomatol. Pancreina. Insulin. Acta Diabetol. 2023;60(2):163-189. (PMID 36585966.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9852216',
+          publishedAt: '2023-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Selye general adaptation syndrome / stress 1936 ─────────────────────────
+  {
+    externalId: 'trajectory:selye-general-adaptation-syndrome-stress-1936',
+    text: 'Hans Selye reported in Nature on 4 July 1936 that diverse noxious agents (cold, injury, toxins, sublethal drug doses) all provoke a common, stereotyped triad — adrenal-cortical enlargement, thymico-lymphatic involution, and gastrointestinal ulceration — which he termed the general adaptation syndrome, founding the modern endocrine concept of biological stress and the pituitary-adrenocortical stress axis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-07-04',
+        datePrecision: 'DAY',
+        reason: 'Selye published \'A Syndrome produced by Diverse Nocuous Agents\' in Nature (1936;138:32), reporting that in rats any severe stressor evokes the same triad of adrenal enlargement, lymphatic/thymic shrinkage, and gastric ulceration — a response to damage as such, independent of the agent\'s nature. This recorded the claim that the organism mounts a uniform, hormonally mediated reaction to stress, launching stress endocrinology.',
+        source: {
+          externalId: 'src:selye-syndrome-nocuous-agents-nature-1936',
+          name: 'Selye H. A Syndrome produced by Diverse Nocuous Agents. Nature. 1936;138:32.',
+          url: 'https://www.nature.com/articles/138032a0',
+          publishedAt: '1936-07-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Selye elaborated the three-stage general adaptation syndrome (alarm, resistance, exhaustion) and its pituitary-adrenocortical mechanism through the 1940s and his 1950 synthesis, and the contemporaneous discovery of ACTH and cortisone\'s actions (1949) confirmed the hormonal stress axis he had posited. The concept of biological stress and the hypothalamic-pituitary-adrenal axis became settled physiology, a status retained today.',
+        source: {
+          externalId: 'src:selye-stress-eight-decades-review-pmc9954077',
+          name: 'Stress: Eight Decades after Its Definition by Hans Selye: \'Stress Is the Spice of Life\'. (historical review). Brain Sci. 2023. (PMC9954077.)',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9954077/',
+          publishedAt: '2023-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First International Standard for Insulin 1925 ───────────────────────────
+  {
+    externalId: 'trajectory:first-international-standard-insulin-1925',
+    text: 'An international conference convened under the League of Nations Health Organisation in 1925 (results published in Geneva in 1926) established the First International Standard for Insulin and defined the international unit of insulin potency by animal blood-sugar bioassay, creating the first agreed regulatory yardstick for the strength of insulin as a biological drug.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1925-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After insulin entered use in 1922, potency varied between manufacturers and laboratories, with each defining its own \'unit\'. In 1923 an international conference organized through Henry Dale and the League of Nations Health Organisation began work toward a common reference, with Dale preserving an early insulin batch to serve as a standard rather than for treatment. This recorded the institutional need for, and first attempt at, an agreed measure of insulin strength.',
+        source: {
+          externalId: 'src:bangham-dale-who-standards-devbiolstand-1999',
+          name: 'Bangham DR. H.H. Dale and the London Centre for WHO standards — some milestones of the early years. Dev Biol Stand. 1999. (PMID 10616171.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10616171/',
+          publishedAt: '1999-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1925 international conference adopted the First International Standard for Insulin — a stable dried preparation held at the National Institute for Medical Research, London — and defined the international unit by rabbit blood-sugar bioassay, published by the League of Nations Health Organisation as \'The Biological Standardisation of Insulin\' (Geneva, 1926). This settled, as international regulatory fact, a uniform measure of insulin potency, an early model of biological-drug standardization before modern drug-regulation regimes.',
+        source: {
+          externalId: 'src:bangham-dale-who-standards-devbiolstand-1999',
+          name: 'Bangham DR. H.H. Dale and the London Centre for WHO standards — some milestones of the early years. Dev Biol Stand. 1999. (PMID 10616171.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10616171/',
+          publishedAt: '1999-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
