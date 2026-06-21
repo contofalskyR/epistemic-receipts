@@ -57633,6 +57633,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── CCSVI / Zamboni liberation venoplasty for MS (2009→2017) ───────────────
+  {
+    externalId: 'trajectory:ccsvi-liberation-venoplasty-multiple-sclerosis-reversal-2009',
+    text: 'Paolo Zamboni\'s hypothesis that multiple sclerosis is caused by chronic cerebrospinal venous insufficiency (CCSVI) and can be treated by balloon angioplasty ("liberation procedure") of the extracranial veins, advanced in a prospective open-label study published in the Journal of Vascular Surgery in December 2009.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Zamboni and colleagues reported an open-label series claiming that percutaneous transluminal angioplasty of stenosed jugular and azygos veins improved the clinical course of multiple sclerosis, framing MS as a venous outflow disorder. The report ignited intense patient demand for the "liberation" procedure worldwide despite the absence of any controlled trial.',
+        source: {
+          externalId: 'src:zamboni-liberation-open-label-jvs-2009',
+          name: 'Zamboni P, Galeotti R, Menegatti E, et al. A prospective open-label study of endovascular treatment of chronic cerebrospinal venous insufficiency. J Vasc Surg. 2009;50(6):1348-1358.e1-3.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19958985/',
+          publishedAt: '2009-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-18',
+        datePrecision: 'DAY',
+        reason: 'The double-blind, sham-controlled Brave Dreams randomized trial, led by Zamboni himself and published online in JAMA Neurology on 18 November 2017, found that venous angioplasty was safe but largely ineffective and could not be recommended for patients with MS. The trial closed the CCSVI episode by overturning the very procedure its originator had promoted.',
+        source: {
+          externalId: 'src:zamboni-brave-dreams-jamaneurol-2017',
+          name: 'Zamboni P, Tesio L, Galimberti S, et al. Efficacy and Safety of Extracranial Vein Angioplasty in Multiple Sclerosis (Brave Dreams): A Randomized Clinical Trial. JAMA Neurol. 2018;75(1):35-43.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29150995/',
+          publishedAt: '2017-11-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Paclitaxel-coated femoropopliteal devices — mortality signal (2015→2018) ─
+  {
+    externalId: 'trajectory:paclitaxel-coated-devices-femoropopliteal-mortality-signal-2018',
+    text: 'Paclitaxel-coated balloons and stents are a safe and effective treatment for femoropopliteal peripheral artery disease, an efficacy claim established by the IN.PACT SFA randomized trial (Tepe et al., Circulation, 3 February 2015) that supported their adoption and FDA clearance.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-02-03',
+        datePrecision: 'DAY',
+        reason: 'The IN.PACT SFA randomized trial showed that a paclitaxel drug-coated balloon achieved markedly superior 12-month patency versus plain balloon angioplasty in the superficial femoral and popliteal arteries, cementing drug-coated devices as standard endovascular therapy for peripheral artery disease. Comparable results from THUNDER and Zilver PTX drove rapid clinical adoption and U.S. regulatory clearance.',
+        source: {
+          externalId: 'src:tepe-inpact-sfa-circulation-2015',
+          name: 'Tepe G, Laird J, Schneider P, et al. Drug-coated balloon versus standard percutaneous transluminal angioplasty for the treatment of superficial femoral and popliteal peripheral artery disease: 12-month results from the IN.PACT SFA randomized trial. Circulation. 2015;131(5):495-502.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25472980/',
+          publishedAt: '2015-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-12-18',
+        datePrecision: 'DAY',
+        reason: 'A summary-level meta-analysis of randomized trials by Katsanos and colleagues in the Journal of the American Heart Association found a significantly increased risk of death at 2 and 5 years among patients treated with paclitaxel-coated devices in the femoropopliteal artery, with a dose-response relationship. The signal prompted an FDA safety review, suspension of some trials, and a contested debate over whether the previously settled devices were causing late mortality.',
+        source: {
+          externalId: 'src:katsanos-paclitaxel-mortality-jaha-2018',
+          name: 'Katsanos K, Spiliopoulos S, Kitrou P, Krokidis M, Karnabatidis D. Risk of Death Following Application of Paclitaxel-Coated Balloons and Stents in the Femoropopliteal Artery of the Leg: A Systematic Review and Meta-Analysis of Randomized Controlled Trials. J Am Heart Assoc. 2018;7(24):e011245.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30561254/',
+          publishedAt: '2018-12-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Off-pump CABG — ROOBY graft patency reversal (2004→2009) ───────────────
+  {
+    externalId: 'trajectory:off-pump-cabg-rooby-graft-patency-reversal-2009',
+    text: 'Off-pump (beating-heart) coronary artery bypass grafting yields graft patency and clinical outcomes at least equivalent to conventional on-pump surgery while reducing myocardial injury, a claim supported by the randomized SMART trial (Puskas et al., JAMA, 21 April 2004).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-21',
+        datePrecision: 'DAY',
+        reason: 'The single-center randomized SMART trial reported that off-pump CABG produced graft patency, cost, and quality-of-life outcomes equivalent to conventional on-pump surgery, supporting enthusiasm that avoiding cardiopulmonary bypass reduced morbidity without sacrificing revascularization. Off-pump surgery spread widely on the premise of equivalence with less physiological insult.',
+        source: {
+          externalId: 'src:puskas-smart-jama-2004',
+          name: 'Puskas JD, Williams WH, Mahoney EM, et al. Off-pump vs conventional coronary artery bypass grafting: early and 1-year graft patency, cost, and quality-of-life outcomes: a randomized trial. JAMA. 2004;291(15):1841-1849.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15100202/',
+          publishedAt: '2004-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-11-05',
+        datePrecision: 'DAY',
+        reason: 'The large multicenter Veterans Affairs ROOBY randomized trial found that off-pump patients had worse composite one-year outcomes, lower graft patency (82.6% vs 87.8%), and more incomplete revascularization than on-pump patients, contradicting the equivalence claim. ROOBY, reinforced by later trials, reversed routine enthusiasm for off-pump CABG and confined it to selective use.',
+        source: {
+          externalId: 'src:shroyer-rooby-nejm-2009',
+          name: 'Shroyer AL, Grover FL, Hattler B, et al. On-Pump versus Off-Pump Coronary-Artery Bypass Surgery. N Engl J Med. 2009;361(19):1827-1837.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19890125/',
+          publishedAt: '2009-11-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Allergan BIOCELL textured breast implants — BIA-ALCL recall (2013→2019) ─
+  {
+    externalId: 'trajectory:allergan-biocell-textured-breast-implant-bia-alcl-recall-2019',
+    text: 'Allergan\'s BIOCELL macrotextured silicone breast implants are acceptably safe to remain on the U.S. market — an institutional position reversed when the FDA, citing breast implant-associated anaplastic large cell lymphoma (BIA-ALCL), requested and obtained Allergan\'s worldwide recall on 24 July 2019.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Allergan\'s BIOCELL macrotextured (salt-loss) silicone gel implants and tissue expanders were FDA-approved and marketed as a standard option for breast reconstruction and augmentation, with texturing intended to reduce capsular contracture and malposition. Despite a 2011 FDA acknowledgment of a possible link between breast implants and anaplastic large cell lymphoma, the devices remained on the market as acceptably safe.',
+        source: {
+          externalId: 'src:fda-breast-implant-postmarket-safety',
+          name: 'U.S. Food and Drug Administration. Breast Implant Postmarket Safety Information.',
+          url: 'https://www.fda.gov/medical-devices/breast-implants/breast-implant-postmarket-safety-information',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-07-24',
+        datePrecision: 'DAY',
+        reason: 'After global data showed BIA-ALCL disproportionately associated with Allergan\'s macrotextured implants (481 of 573 reported cases and a majority of deaths), the FDA on 24 July 2019 requested that Allergan voluntarily recall its BIOCELL textured breast implants and tissue expanders, which the company did worldwide. Surgeons were told to stop implanting the devices, reversing their settled market status.',
+        source: {
+          externalId: 'src:fda-allergan-biocell-recall-2019',
+          name: 'U.S. FDA. Allergan Voluntarily Recalls BIOCELL Textured Breast Implants and Tissue Expanders. 24 July 2019.',
+          url: 'https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/allergan-voluntarily-recalls-biocellr-textured-breast-implants-and-tissue-expanders',
+          publishedAt: '2019-07-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
