@@ -60284,6 +60284,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — Reproductive Endocrinology & Obstetrics
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aschheim-Zondek urine pregnancy test — 1928 ────────────────────────────
+  {
+    externalId: 'trajectory:aschheim-zondek-urine-pregnancy-test-1928',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting the urine of pregnant women into immature female mice produced ovarian follicular maturation, congestion and hemorrhage, establishing the first reliable biological test for pregnancy (the A-Z test) by detecting a gonad-stimulating hormone (later identified as human chorionic gonadotropin) excreted in the urine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Working at the Berlin Charité, Aschheim and Zondek published \'Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons\' in Klinische Wochenschrift (1928;7:1404), showing that subcutaneous injection of pregnant women\'s urine into immature mice produced striking ovarian changes absent in non-pregnant controls. This recorded in the expert literature the claim that pregnancy could be diagnosed by detecting a specific hormone excreted in urine — the first endocrine pregnancy test and a founding bioassay of reproductive endocrinology.',
+        source: {
+          externalId: 'src:aschheim-zondek-pregnancy-urine-klinwschr-1928',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7:1404-1411.',
+          url: 'https://embryology.med.unsw.edu.au/embryology/index.php/Paper_-_The_Aschheim-Zondek_hormone_test_for_pregnancy',
+          publishedAt: '1928-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the early 1930s the Aschheim-Zondek reaction was independently validated and rapidly adopted as a routine clinical and laboratory service across Europe and Britain, with diagnostic laboratories offering A-Z testing and reported accuracy around 98%. The convergence of independent confirmations and institutional laboratory uptake settled the claim that a urinary hormone bioassay could reliably diagnose pregnancy, making it the standard pregnancy test until later frog/rabbit and immunoassay methods superseded the technique while confirming its biological basis.',
+        source: {
+          externalId: 'src:olszynko-gryn-aschheim-zondek-britain-1930s',
+          name: 'Olszynko-Gryn J. The demand for pregnancy testing: The Aschheim–Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47:233-247.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S1369848613001763',
+          publishedAt: '2014-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Frank premenstrual tension hormonal — 1931 ─────────────────────────────
+  {
+    externalId: 'trajectory:frank-premenstrual-tension-hormonal-1931',
+    text: 'Robert T. Frank reported in the Archives of Neurology and Psychiatry in November 1931 that a recurring cluster of physical and psychological symptoms appearing in the days before menstruation (\'premenstrual tension\') has a hormonal cause, attributing it to an excess of circulating ovarian (estrogenic) hormone — the first formal medical description of what became premenstrual syndrome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Frank published \'The Hormonal Causes of Premenstrual Tension\' (Arch Neurol Psychiatry 1931;26(5):1053-1057), describing fifteen women with cyclic premenstrual irritability, tension, bloating and pain that resolved with menstruation, and proposing that an imbalance of ovarian hormone (excess estrogen) was responsible. This recorded in the expert literature the claim that premenstrual symptoms constitute a discrete, hormonally driven clinical entity rather than a psychological or constitutional complaint.',
+        source: {
+          externalId: 'src:frank-premenstrual-tension-archneurpsychiat-1931',
+          name: 'Frank RT. The Hormonal Causes of Premenstrual Tension. Arch Neurol Psychiatry. 1931;26(5):1053-1057.',
+          url: 'https://jamanetwork.com/journals/archneurpsyc/fullarticle/645067',
+          publishedAt: '1931-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-05-09',
+        datePrecision: 'DAY',
+        reason: 'Raymond Greene and Katharina Dalton published \'The Premenstrual Syndrome\' in the British Medical Journal (1953;1(4818):1007-1014), broadening Frank\'s \'premenstrual tension\' into the wider symptom complex they named the premenstrual syndrome and arguing for a cyclic hormonal basis. The renaming and expanded clinical characterization established premenstrual syndrome as an accepted diagnostic entity in the expert literature, even as the specific hormonal mechanism Frank proposed (estrogen excess) was revised over subsequent decades.',
+        source: {
+          externalId: 'src:greene-dalton-premenstrual-syndrome-bmj-1953',
+          name: 'Greene R, Dalton K. The Premenstrual Syndrome. Br Med J. 1953;1(4818):1007-1014.',
+          url: 'https://embryo.asu.edu/pages/premenstrual-syndrome-1953-raymond-greene-and-katharina-dalton',
+          publishedAt: '1953-05-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Corner-Allen progesterone corpus luteum — 1929 ─────────────────────────
+  {
+    externalId: 'trajectory:corner-allen-progesterone-corpus-luteum-1929',
+    text: 'George W. Corner and Willard M. Allen reported in the American Journal of Physiology in 1929 that alcoholic extracts of the corpus luteum produce a specific \'progestational proliferation\' of the uterine lining and maintain early pregnancy in ovariectomized rabbits, establishing the existence of a distinct corpus-luteum hormone (later isolated and named progesterone) separate from estrogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Corner and Allen published \'Physiology of the Corpus Luteum II. Production of a Special Uterine Reaction (Progestational Proliferation) by Extracts of the Corpus Luteum\' (Am J Physiol 1929;88:326-339), showing that corpus-luteum extract — but not follicular fluid or placental extract — produced progestational endometrial change and sustained implantation in ovariectomized rabbits. This recorded the claim that the corpus luteum secretes a discrete hormone governing the uterine preparation for and maintenance of pregnancy, and supplied the bioassay that defined it.',
+        source: {
+          externalId: 'src:corner-allen-corpus-luteum-ajp-1929',
+          name: 'Corner GW, Allen WM. Physiology of the corpus luteum. II. Production of a special uterine reaction (progestational proliferation) by extracts of the corpus luteum. Am J Physiol. 1929;88(2):326-339.',
+          url: 'https://doi.org/10.1152/ajplegacy.1929.88.2.326',
+          publishedAt: '1929-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1934 four laboratories independently isolated the corpus-luteum hormone in pure crystalline form (Butenandt; Slotta, Ruschig and Fels; Wintersteiner and Allen; Hartmann and Wettstein), and the substance was agreed to be named \'progesterone.\' Reducing the bioassay-defined hormone to a single weighable, synthesizable molecule settled the claim that the corpus luteum secretes a discrete steroid responsible for progestational and pregnancy-maintaining activity, founding progesterone endocrinology and later progestin therapeutics.',
+        source: {
+          externalId: 'src:ninety-years-progesterone-review-2020',
+          name: 'Cable JK, Grider MH. Ninety years of progesterone: the \'other\' ovarian hormone (review documenting Corner-Allen 1929 and the 1934 crystalline isolation and naming of progesterone). 2020.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7354701/',
+          publishedAt: '2020-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dudley-Moir ergometrine isolation — 1935 ───────────────────────────────
+  {
+    externalId: 'trajectory:dudley-moir-ergometrine-ergot-1935',
+    text: 'Harold Ward Dudley and John Chassar Moir reported in the British Medical Journal in March 1935 that they had isolated ergometrine, the water-soluble alkaloid responsible for the rapid uterine-contracting (oxytocic) action of ergot, identifying the active principle that prevents and controls postpartum hemorrhage.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-03-01',
+        datePrecision: 'MONTH',
+        reason: 'After Moir demonstrated that crude ergot produced a powerful, rapid contraction of the puerperal uterus that the known ergot alkaloids did not fully explain, he collaborated with the chemist Dudley to isolate the responsible compound. Their BMJ paper \'The Substance Responsible for the Traditional Clinical Effect of Ergot\' (Br Med J 1935;1(3871):520-523) reported the isolation of ergometrine, recording the claim that a single purified alkaloid accounted for ergot\'s life-saving oxytocic effect in the third stage of labour.',
+        source: {
+          externalId: 'src:dudley-moir-ergometrine-bmj-1935',
+          name: 'Dudley HW, Moir C. The Substance Responsible for the Traditional Clinical Effect of Ergot. Br Med J. 1935;1(3871):520-523.',
+          url: 'https://doi.org/10.1136/bmj.1.3871.520',
+          publishedAt: '1935-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a year of its isolation, purified ergometrine was rapidly adopted into obstetric practice for the prevention and treatment of postpartum hemorrhage in the active management of the third stage of labour, displacing crude and variable ergot preparations. Its standardized clinical use is credited as a contributor to the decline in maternal mortality across Britain and the West in the later 1930s, and the drug (and its derivative methylergometrine) remained a standard oxytocic on national formularies and the WHO essential-medicines tradition.',
+        source: {
+          externalId: 'src:embryo-moir-ergometrine-adoption',
+          name: 'Embryo Project Encyclopedia. John Chassar Moir (1900–1977) (documenting the isolation and clinical adoption of ergometrine for postpartum hemorrhage).',
+          url: 'https://embryo.asu.edu/pages/john-chassar-moir-1900-1977',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
