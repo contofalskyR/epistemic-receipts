@@ -58111,6 +58111,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — vaccines, infectious disease, screening
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Palivizumab (Synagis) — first monoclonal antibody for infectious disease 1998 ──
+  {
+    externalId: 'trajectory:palivizumab-synagis-rsv-immunoprophylaxis-1998',
+    text: 'Monthly palivizumab (Synagis), a humanized monoclonal antibody, prevents serious respiratory syncytial virus (RSV) lower-respiratory-tract disease in high-risk infants — the first monoclonal antibody licensed by the FDA for an infectious disease, approved June 1998.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-06',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-06',
+        datePrecision: 'MONTH',
+        reason: 'In June 1998 the FDA approved palivizumab (Synagis, BLA 103770; MedImmune) for prevention of serious RSV lower-respiratory-tract disease in pediatric patients at high risk, based on the IMpact-RSV trial data. It was the first monoclonal antibody licensed for any infectious disease, recording a new immunoprophylaxis paradigm distinct from active vaccination.',
+        source: {
+          externalId: 'src:fda-synagis-palivizumab-label-1998',
+          name: 'U.S. Food and Drug Administration. Synagis (palivizumab) for Injection — Prescribing Information, BLA 103770. (approved June 1998).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2002/palimed102302lb.pdf',
+          publishedAt: '1998-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-09',
+        datePrecision: 'MONTH',
+        reason: 'The IMpact-RSV Study Group published its randomized, double-blind, placebo-controlled trial in Pediatrics (September 1998), showing palivizumab prophylaxis reduced RSV hospitalization by 55% (10.6% placebo vs 4.8% palivizumab), with a 78% reduction in premature infants without bronchopulmonary dysplasia. The result cemented palivizumab as standard-of-care prophylaxis for high-risk infants and was adopted into AAP guidance.',
+        source: {
+          externalId: 'src:impact-rsv-palivizumab-pediatrics-1998',
+          name: 'The IMpact-RSV Study Group. Palivizumab, a humanized respiratory syncytial virus monoclonal antibody, reduces hospitalization from respiratory syncytial virus infection in high-risk infants. Pediatrics. 1998;102(3 Pt 1):531-537.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9738173/',
+          publishedAt: '1998-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Urabe Am9 MMR — aseptic meningitis withdrawal UK 1992 ───────────────────
+  {
+    externalId: 'trajectory:urabe-mmr-aseptic-meningitis-withdrawal-1992',
+    text: 'Urabe Am9 mumps-strain MMR vaccines (Pluserix, Immravax), introduced into the UK routine childhood schedule in 1988, cause vaccine-associated aseptic meningitis and were withdrawn nationally in September 1992 in favour of Jeryl Lynn–strain MMR II.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-09',
+        datePrecision: 'MONTH',
+        reason: 'A cluster of aseptic meningitis cases in Nottingham linked to Urabe-strain MMR suggested a risk as high as 1 in 4,000 doses — far above prior passive-surveillance estimates of ~4 per million — prompting UK enhanced surveillance across thirteen health districts. The signal converted scattered case reports into a serious, actively investigated safety hypothesis about a routinely recommended vaccine.',
+        source: {
+          externalId: 'src:miller-urabe-mmr-aseptic-meningitis-lancet-1993',
+          name: 'Miller E, Goldacre M, Pugh S, et al. Risk of aseptic meningitis after measles, mumps, and rubella vaccine in UK children. Lancet. 1993;341(8851):979-982.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8096942/',
+          publishedAt: '1993-04-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-09',
+        datePrecision: 'MONTH',
+        reason: 'In September 1992 UK health authorities withdrew the two Urabe Am9–containing MMR brands (Pluserix-MMR and Immravax) from the childhood immunization programme, replacing them with Jeryl Lynn–strain MMR II, which carried no detectable mumps-meningitis signal. The Miller et al. follow-up later quantified the withdrawn Urabe risk at about 1 in 12,400 doses, confirming the reversal of a previously settled, recommended vaccine.',
+        source: {
+          externalId: 'src:miller-convulsion-aseptic-meningitis-mmr-aje-2007',
+          name: 'Miller E, Andrews N, Stowe J, Grant A, Waight P, Taylor B. Risks of convulsion and aseptic meningitis following measles-mumps-rubella vaccination in the United Kingdom. Am J Epidemiol. 2007;165(6):704-709.',
+          url: 'https://academic.oup.com/aje/article/165/6/704/63700',
+          publishedAt: '2007-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cryptosporidium Milwaukee waterborne outbreak 1993 ──────────────────────
+  {
+    externalId: 'trajectory:cryptosporidium-milwaukee-waterborne-outbreak-1993',
+    text: 'Cryptosporidium oocysts passing through a conventionally operating municipal filtration plant caused the largest documented waterborne disease outbreak in US history in Milwaukee in spring 1993, sickening an estimated 403,000 people and establishing Cryptosporidium as a major drinking-water pathogen.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1993-04',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-07-21',
+        datePrecision: 'DAY',
+        reason: 'MacKenzie et al. documented in the New England Journal of Medicine that elevated post-filtration turbidity at Milwaukee\'s southern water-treatment plant (23 March–9 April 1993) coincided with a city-wide outbreak of watery diarrhea affecting an estimated 403,000 residents, with Cryptosporidium oocysts identified in water and stool. It established that Cryptosporidium could breach conventional filtration meeting then-current standards.',
+        source: {
+          externalId: 'src:mackenzie-cryptosporidium-milwaukee-nejm-1994',
+          name: 'MacKenzie WR, Hoxie NJ, Proctor ME, et al. A massive outbreak in Milwaukee of cryptosporidium infection transmitted through the public water supply. N Engl J Med. 1994;331(3):161-167.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7818640/',
+          publishedAt: '1994-07-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-12-16',
+        datePrecision: 'DAY',
+        reason: 'In direct response to the Milwaukee outbreak, the US EPA promulgated the Interim Enhanced Surface Water Treatment Rule (16 December 1998), requiring large surface-water systems to achieve at least 2-log (99%) Cryptosporidium removal, tighter combined-filter-effluent turbidity limits, and individual-filter monitoring. The regulatory action institutionalized Cryptosporidium as a recognized treated-water threat requiring specific control.',
+        source: {
+          externalId: 'src:epa-interim-enhanced-surface-water-treatment-rule-fr-1998',
+          name: 'U.S. EPA. National Primary Drinking Water Regulations: Interim Enhanced Surface Water Treatment Rule; Final Rule. Federal Register, 63 FR, December 16, 1998.',
+          url: 'https://www.govinfo.gov/content/pkg/FR-1998-12-16/html/98-32888.htm',
+          publishedAt: '1998-12-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── US rubella elimination declared 2005 ────────────────────────────────────
+  {
+    externalId: 'trajectory:us-rubella-elimination-declared-2004',
+    text: 'Endemic transmission of rubella and congenital rubella syndrome has been eliminated from the United States — a CDC-convened independent panel concluded in October 2004 that rubella was no longer endemic, announced in MMWR in March 2005.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2005-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-03',
+        datePrecision: 'MONTH',
+        reason: 'An independent panel convened by CDC in October 2004 reviewed US surveillance data — record-low case counts, absence of sustained transmission, and molecular evidence of imported rather than endemic strains — and concluded that endemic rubella and congenital rubella syndrome had been eliminated from the United States. The finding, published in MMWR in March 2005, institutionally certified a sustained decades-long vaccination program\'s epidemiologic endpoint.',
+        source: {
+          externalId: 'src:cdc-rubella-elimination-mmwr-2005',
+          name: 'CDC. Achievements in Public Health: Elimination of Rubella and Congenital Rubella Syndrome — United States, 1969–2004. MMWR Morb Mortal Wkly Rep. 2005;54(11):279-282.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5411a5.htm',
+          publishedAt: '2005-03-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CDC routine opt-out HIV screening 2006 ──────────────────────────────────
+  {
+    externalId: 'trajectory:cdc-routine-opt-out-hiv-screening-2006',
+    text: 'CDC recommended routine, voluntary opt-out HIV screening for all patients aged 13–64 in health-care settings, abandoning the prior risk-based/targeted testing model and dropping requirements for separate written consent and pre-test prevention counseling (MMWR, 22 September 2006).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-09-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-09-22',
+        datePrecision: 'DAY',
+        reason: 'CDC\'s revised recommendations (Branson et al., MMWR RR-14, 22 September 2006) called for HIV screening of all patients aged 13–64 in health-care settings on an opt-out basis, removed requirements for separate written consent and prevention counseling, and recommended opt-out testing of all pregnant women. This reversed the previous targeted, risk-based testing paradigm in favor of universal screening to reduce undiagnosed infection and late diagnosis.',
+        source: {
+          externalId: 'src:cdc-revised-hiv-testing-mmwr-rr14-2006',
+          name: 'Branson BM, Handsfield HH, Lampe MA, et al. Revised recommendations for HIV testing of adults, adolescents, and pregnant women in health-care settings. MMWR Recomm Rep. 2006;55(RR-14):1-17.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16988643/',
+          publishedAt: '2006-09-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
