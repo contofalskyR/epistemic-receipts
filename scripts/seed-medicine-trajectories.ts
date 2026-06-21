@@ -58750,6 +58750,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC MEDICINE / GLOBAL HEALTH (2010–2021)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── WHO RTS,S malaria vaccine recommendation — children — 2021 ───────────────
+  {
+    externalId: 'trajectory:who-rtss-malaria-vaccine-children-2021',
+    text: 'On 6 October 2021 the World Health Organization recommended widespread use of the RTS,S/AS01 (Mosquirix) malaria vaccine among children living in sub-Saharan Africa and other regions with moderate-to-high Plasmodium falciparum transmission, the first malaria vaccine — and first vaccine against any human parasitic disease — endorsed for routine pediatric use.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-04-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-04-24',
+        datePrecision: 'DAY',
+        reason: 'The RTS,S Clinical Trials Partnership published the final results of the large phase 3 trial across seven African countries in The Lancet, reporting partial efficacy against clinical malaria in young children (roughly 36% over four years with a booster in the 5–17-month group). The data recorded in the expert literature that a malaria vaccine could meaningfully, though modestly, reduce childhood malaria — an empirical claim that remained contested because of waning protection and the operational question of whether the modest efficacy justified deployment.',
+        source: {
+          externalId: 'src:rtss-phase3-final-lancet-2015',
+          name: 'RTS,S Clinical Trials Partnership. Efficacy and safety of RTS,S/AS01 malaria vaccine with or without a booster dose in infants and children in Africa: final results of a phase 3, individually randomised, controlled trial. Lancet. 2015;386(9988):31-45.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25913272/',
+          publishedAt: '2015-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-10-06',
+        datePrecision: 'DAY',
+        reason: 'Following the WHO-coordinated Malaria Vaccine Implementation Programme that administered more than 2.3 million doses across pilots in Ghana, Kenya, and Malawi, WHO acted on the advice of its SAGE and MPAG committees and recommended RTS,S/AS01 for broad use in children in malaria-endemic areas, in a four-dose schedule from 5 months of age. The recommendation converted the contested efficacy finding into settled global health policy, opening the path to Gavi financing and national rollouts beginning in 2023–2024.',
+        source: {
+          externalId: 'src:who-rtss-recommendation-2021',
+          name: 'World Health Organization. WHO recommends groundbreaking malaria vaccine for children at risk. News release. 6 October 2021.',
+          url: 'https://www.who.int/news/item/06-10-2021-who-recommends-groundbreaking-malaria-vaccine-for-children-at-risk',
+          publishedAt: '2021-10-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vosoritide (Voxzogo) FDA approval — achondroplasia — 2021 ───────────────
+  {
+    externalId: 'trajectory:vosoritide-voxzogo-achondroplasia-children-2021',
+    text: 'On 19 November 2021 the U.S. FDA granted accelerated approval to vosoritide (Voxzogo, BioMarin; NDA 214938) to increase linear growth in children aged 5 and older with achondroplasia who have open epiphyses, the first drug ever approved to target the underlying cause of the most common form of dwarfism.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-09-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-09-05',
+        datePrecision: 'DAY',
+        reason: 'Savarirayan and colleagues published the phase 3 randomized, double-blind, placebo-controlled trial of vosoritide — a C-type natriuretic peptide analogue that counteracts the constitutively active FGFR3 signaling underlying achondroplasia — in The Lancet, reporting an increase in annualized growth velocity of about 1.57 cm/year versus placebo. This recorded in the expert literature the first experimental evidence that a targeted pharmacologic therapy could increase growth in achondroplasia.',
+        source: {
+          externalId: 'src:savarirayan-vosoritide-phase3-lancet-2020',
+          name: 'Savarirayan R, Tofts L, Irving M, et al. Once-daily, subcutaneous vosoritide therapy in children with achondroplasia: a randomised, double-blind, phase 3, placebo-controlled, multicentre trial. Lancet. 2020;396(10252):684-692.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32891212/',
+          publishedAt: '2020-09-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-11-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval of Voxzogo for children 5 and older with achondroplasia and open growth plates, based on the growth-velocity surrogate endpoint and requiring a confirmatory post-marketing study of final adult height. The first-ever approved disease-targeted therapy for achondroplasia institutionally established vosoritide as standard treatment; the indication was later expanded to all ages with open epiphyses in 2023.',
+        source: {
+          externalId: 'src:fda-voxzogo-approval-press-2021',
+          name: 'U.S. Food and Drug Administration. FDA Approves First Drug to Improve Growth in Children with Most Common Form of Dwarfism. Press release. 19 November 2021.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-first-drug-to-improve-growth-in-children-with-most-common-form-of-dwarfism-301429137.html',
+          publishedAt: '2021-11-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PECARN FLUID trial — pediatric DKA fluid rate — 2018 ────────────────────
+  {
+    externalId: 'trajectory:pecarn-dka-fluid-rate-pediatric-2018',
+    text: 'The PECARN FLUID randomized trial (Kuppermann et al.) reported in the New England Journal of Medicine on 14 June 2018 that neither the rate of intravenous fluid administration nor its sodium chloride content significantly influenced neurological outcomes in children with diabetic ketoacidosis, contradicting the long-held belief that rapid fluid resuscitation causes cerebral injury and drives clinically apparent brain injury in pediatric DKA.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-06-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-06-14',
+        datePrecision: 'DAY',
+        reason: 'The Pediatric Emergency Care Applied Research Network conducted a 13-site factorial randomized trial of 1,255 children across 1,389 DKA episodes, comparing fast versus slow rehydration and 0.45% versus 0.9% saline, and found no significant differences in declines in mental status (GCS), clinically apparent brain injury, or short-term memory and IQ. The large, rigorously designed trial overturned decades of conservative-fluid dogma rooted in uncontrolled associations, settling in the expert literature that fluid protocol within the tested ranges does not meaningfully affect neurological outcome and permitting more liberal rehydration in subsequent pediatric DKA guidance.',
+        source: {
+          externalId: 'src:kuppermann-pecarn-dka-fluid-nejm-2018',
+          name: 'Kuppermann N, Ghetti S, Schunk JE, et al. Clinical Trial of Fluid Infusion Rates for Pediatric Diabetic Ketoacidosis. N Engl J Med. 2018;378(24):2275-2287.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29897851/',
+          publishedAt: '2018-06-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SCID added to RUSP newborn screening panel — 2010 ───────────────────────
+  {
+    externalId: 'trajectory:scid-newborn-screening-rusp-2010',
+    text: 'On 21 May 2010 U.S. Health and Human Services Secretary Kathleen Sebelius adopted the recommendation to add severe combined immunodeficiency (SCID) to the national Recommended Uniform Screening Panel, making SCID the first condition newly added to the core panel and establishing TREC-based universal newborn screening for the otherwise fatal \'bubble boy\' immunodeficiency.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2010-05-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-05-21',
+        datePrecision: 'DAY',
+        reason: 'After the Secretary\'s Advisory Committee on Heritable Disorders in Newborns and Children voted unanimously in January 2010 to recommend it, Secretary Sebelius formally added SCID to the Recommended Uniform Screening Panel — the first nominated condition ever added to the federal core panel. The action recorded as national policy the claim that a T-cell receptor excision circle (TREC) assay on routine newborn dried-blood spots could identify SCID before fatal infection, enabling curative transplant in the first months of life.',
+        source: {
+          externalId: 'src:hhs-scid-rusp-announcement-2010',
+          name: 'U.S. Department of Health and Human Services. Secretary of Health and Human Services Announces Addition of SCID to National Newborn Screening Standards. Press release. 21 May 2010.',
+          url: 'https://www.prnewswire.com/news-releases/secretary-of-health-and-human-services-announces-addition-of-scid-to-national-newborn-screening-standards-94866289.html',
+          publishedAt: '2010-05-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Following staged state-by-state adoption beginning with Wisconsin and Massachusetts in 2008–2009, all 50 U.S. states plus the District of Columbia had implemented universal newborn SCID screening by December 2018, with population data confirming detection of affected infants and improved transplant survival. Complete national implementation settled TREC newborn screening for SCID as standard, universally delivered pediatric preventive care.',
+        source: {
+          externalId: 'src:idf-scid-all-50-states-2018',
+          name: 'Immune Deficiency Foundation. All 50 states now screening newborns for severe combined immunodeficiency (SCID). 2018.',
+          url: 'https://primaryimmune.org/resources/news-articles/all-50-states-now-screening-newborns-severe-combined-immunodeficiency-scid',
+          publishedAt: '2018-12-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
