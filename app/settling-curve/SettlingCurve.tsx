@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
+import SettlingCurveMini from "../components/SettlingCurveMini";
 
 const C = {
   bg: "#0a0a0a",
@@ -58,6 +59,7 @@ interface TrajectoryListItem {
   currentAxis?: Axis | null;
   firstYear?: number | null;
   lastYear?: number | null;
+  milestones?: { year: number; axis: string }[];
 }
 
 interface TrajectoryDetail {
@@ -625,6 +627,24 @@ function SettlingCurveInner() {
                                   <span style={{ color: STATUS.ABANDONED.c }}>✕ abandoned</span>
                                 )}
                               </span>
+                              {/* Static preview sparkline. animate={false} +
+                                  content-visibility keeps the un-paginated list
+                                  cheap — only on-screen rows paint their SVG. */}
+                              {x.milestones && x.milestones.length > 0 && (
+                                <span
+                                  className="block mt-1.5"
+                                  style={{
+                                    contentVisibility: "auto",
+                                    containIntrinsicSize: "220px 58px",
+                                  }}
+                                >
+                                  <SettlingCurveMini
+                                    milestones={x.milestones}
+                                    animate={false}
+                                    ariaLabel={`Settling-curve preview for: ${x.claim}`}
+                                  />
+                                </span>
+                              )}
                             </span>
                           </button>
                         </li>

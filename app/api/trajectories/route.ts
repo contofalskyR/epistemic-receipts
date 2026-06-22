@@ -59,6 +59,12 @@ export async function GET() {
       currentAxis: last?.toAxis ?? null,
       firstYear: first ? first.occurredAt.getUTCFullYear() : null,
       lastYear: last ? last.occurredAt.getUTCFullYear() : null,
+      // Lean milestone series for the sidebar-row sparkline (SettlingCurveMini).
+      // Only year + axis — kept minimal because the full list ships at once.
+      milestones: sorted.map((s) => ({
+        year: s.occurredAt.getUTCFullYear(),
+        axis: s.toAxis,
+      })),
     };
   });
 

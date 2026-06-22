@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import SettlingCurveMini from "../components/SettlingCurveMini";
 
 const C = {
   bg: "#08080f",
@@ -29,6 +30,7 @@ interface TrajectoryItem {
   communities: string[];
   hasReversal: boolean;
   hasAbandonment: boolean;
+  milestones: { year: number; axis: string }[];
 }
 
 interface HistoryResponse {
@@ -234,6 +236,14 @@ export default function TrajectoryEncyclopedia() {
                   >
                     {truncate(it.claim)}
                   </p>
+
+                  {/* Preview sparkline of this trajectory's settling curve */}
+                  <div className="mb-3">
+                    <SettlingCurveMini
+                      milestones={it.milestones}
+                      ariaLabel={`Epistemic trajectory sparkline for: ${it.claim}`}
+                    />
+                  </div>
 
                   <div className="flex items-center justify-between">
                     <span className="font-mono" style={{ fontSize: 10.5, color: C.mut }}>

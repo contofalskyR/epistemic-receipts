@@ -69,6 +69,12 @@ export async function GET(req: NextRequest) {
       communities: [...new Set(c.statusHistory.map((s) => s.community))],
       hasReversal: c.statusHistory.some((s) => s.toAxis === "REVERSED"),
       hasAbandonment: c.statusHistory.some((s) => s.toAxis === "ABANDONED"),
+      // Lean milestone series for the card sparkline (SettlingCurveMini). Only
+      // year + axis — kept minimal because every trajectory ships in one payload.
+      milestones: c.statusHistory.map((s) => ({
+        year: s.occurredAt.getUTCFullYear(),
+        axis: s.toAxis,
+      })),
     };
   });
 

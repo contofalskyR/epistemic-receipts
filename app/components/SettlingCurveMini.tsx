@@ -4,7 +4,17 @@
 // height mapped to how "settled" each state is. CSS keyframes (draw-line, dot-pop)
 // live in globals.css and animate it in on load.
 
-import type { FeaturedMilestone } from "@/lib/featured-trajectories";
+// The mini only needs each milestone's year (x-position) and axis (height +
+// color); `reason` feeds the per-dot tooltip when present. Deliberately looser
+// than FeaturedMilestone so list endpoints can ship lean {year, axis} payloads
+// for thousands of trajectories without the full curation shape. FeaturedMilestone
+// is structurally assignable to this, so the homepage hero keeps working.
+export type MiniMilestone = {
+  year: number;
+  axis: string;
+  reason?: string | null;
+  community?: string;
+};
 
 export const AXIS_VIS: Record<string, { color: string; level: number; label: string }> = {
   ABANDONED:    { color: "#6b7280", level: 0.10, label: "Abandoned" },
@@ -20,10 +30,15 @@ export default function SettlingCurveMini({
   milestones,
   className = "",
   ariaLabel,
+  animate = true,
 }: {
-  milestones: FeaturedMilestone[];
+  milestones: MiniMilestone[];
   className?: string;
   ariaLabel?: string;
+  // Entry animations (line draw + dot pop). Disable for dense lists that render
+  // many sparklines at once (e.g. the settling-curve sidebar) to avoid a
+  // mount-time animation storm.
+  animate?: boolean;
 }) {
   const W = 760, H = 210;
   const padL = 18, padR = 18, padT = 26, padB = 36;
@@ -98,12 +113,16 @@ export default function SettlingCurveMini({
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        style={{
-          // @ts-expect-error CSS custom property
-          "--draw-len": len,
-          strokeDasharray: len,
-          animation: "draw-line 1.6s ease-out forwards",
-        }}
+        style={
+          animate
+            ? {
+                // @ts-expect-error CSS custom property
+                "--draw-len": len,
+                strokeDasharray: len,
+                animation: "draw-line 1.6s ease-out forwards",
+              }
+            : undefined
+        }
       />
 
       {pts.map((p) => {
@@ -113,12 +132,16 @@ export default function SettlingCurveMini({
             <circle
               cx={p.x} cy={p.y} r="5"
               fill={color} stroke="#0a0a0a" strokeWidth="2"
-              style={{
-                transformOrigin: `${p.x}px ${p.y}px`,
-                opacity: 0,
-                animation: "dot-pop 0.4s ease-out forwards",
-                animationDelay: `${0.5 + p.i * 0.22}s`,
-              }}
+              style={
+                animate
+                  ? {
+                      transformOrigin: `${p.x}px ${p.y}px`,
+                      opacity: 0,
+                      animation: "dot-pop 0.4s ease-out forwards",
+                      animationDelay: `${0.5 + p.i * 0.22}s`,
+                    }
+                  : { transformOrigin: `${p.x}px ${p.y}px`, opacity: 1 }
+              }
             >
               <title>{`${p.m.year} · ${AXIS_VIS[p.m.axis]?.label ?? p.m.axis}${p.m.reason ? ` — ${p.m.reason}` : ""}`}</title>
             </circle>
