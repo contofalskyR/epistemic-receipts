@@ -1,32 +1,76 @@
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
-import HomeHero from "./HomeHero";
-import HomepageSections, {
-  type FeaturedClaim,
-  type HomepageStats,
-  type TopicChipData,
-} from "./HomepageSections";
+import HomeHero, { type HeroCard } from "./HomeHero";
+import HomepageSections, { type HomepageStats } from "./HomepageSections";
+import SettlingCurveMini, { AXIS_VIS } from "./components/SettlingCurveMini";
+import {
+  FEATURED_TRAJECTORIES,
+  type FeaturedMilestone,
+} from "@/lib/featured-trajectories";
+import { loadRecentTransitions, type WhatsNewItem } from "@/lib/feed";
 
 export const revalidate = 300;
 
 type IngestedByRow = { ingestedBy: string; count: number };
 
-type ClaimWithEdge = {
+// Plain (serializable) hero data — the React element is built in Home() so the
+// SVG is server-rendered there and handed to the client island as a prop.
+type HeroCardData = {
   id: string;
-  text: string;
-  edges: { source: { name: string; publishedAt: Date | null } | null }[];
+  eyebrow: string;
+  eyebrowColor: string;
+  hook: string;
+  claim: string;
+  endLabel: string;
+  span: string;
+  milestoneCount: number;
+  milestones: FeaturedMilestone[];
 };
 
-function toFeatured(claim: ClaimWithEdge | null): FeaturedClaim {
-  if (!claim) return null;
-  const edgeSource = claim.edges[0]?.source ?? null;
-  const year = edgeSource?.publishedAt ? new Date(edgeSource.publishedAt).getFullYear() : null;
-  return {
-    id: claim.id,
-    text: claim.text,
-    sourceName: edgeSource?.name ?? null,
-    sourceYear: year,
-  };
+// For each curated trajectory, pull live milestones from ClaimStatusHistory and
+// fall back to the embedded curation data if the DB row is missing.
+async function loadFeatured(): Promise<HeroCardData[]> {
+  return Promise.all(
+    FEATURED_TRAJECTORIES.map(async (f) => {
+      const claim = await prisma.claim.findFirst({
+        where: { externalId: `trajectory:${f.id}`, deleted: false },
+        select: {
+          text: true,
+          statusHistory: {
+            orderBy: { occurredAt: "asc" },
+            select: { toAxis: true, community: true, occurredAt: true, reason: true },
+          },
+        },
+      });
+
+      const milestones: FeaturedMilestone[] =
+        claim && claim.statusHistory.length > 0
+          ? claim.statusHistory.map((s) => ({
+              year: s.occurredAt.getUTCFullYear(),
+              axis: s.toAxis,
+              community: String(s.community),
+              reason: s.reason,
+            }))
+          : f.milestones;
+
+      const years = milestones.map((m) => m.year);
+      const minY = Math.min(...years);
+      const maxY = Math.max(...years);
+      const last = milestones[milestones.length - 1];
+
+      return {
+        id: f.id,
+        eyebrow: f.eyebrow,
+        eyebrowColor: f.eyebrowColor,
+        hook: f.hook,
+        claim: claim?.text ?? f.claim,
+        endLabel: AXIS_VIS[last.axis]?.label ?? last.axis,
+        span: minY === maxY ? `${minY}` : `${minY} → ${maxY}`,
+        milestoneCount: milestones.length,
+        milestones,
+      };
+    }),
+  );
 }
 
 async function loadHomepageData() {
@@ -37,10 +81,8 @@ async function loadHomepageData() {
     retractedPapersCount,
     vdemCount,
     grouped,
-    settled,
-    contested,
-    recorded,
-    rawTopics,
+    featured,
+    whatsNew,
   ] = await Promise.all([
     prisma.claim.count({ where: { verificationStatus: { not: "DEPRECATED" } } }),
     prisma.source.count(),
@@ -55,27 +97,8 @@ async function loadHomepageData() {
         GROUP BY "ingestedBy"
       `,
     ),
-    prisma.claim.findFirst({
-      where: { epistemicAxis: "SETTLED", verificationStatus: { not: "DEPRECATED" } },
-      orderBy: { createdAt: "desc" },
-      include: { edges: { take: 1, include: { source: true } } },
-    }),
-    prisma.claim.findFirst({
-      where: { epistemicAxis: "CONTESTED", verificationStatus: { not: "DEPRECATED" } },
-      orderBy: { createdAt: "desc" },
-      include: { edges: { take: 1, include: { source: true } } },
-    }),
-    prisma.claim.findFirst({
-      where: { epistemicAxis: "RECORDED", verificationStatus: { not: "DEPRECATED" } },
-      orderBy: { createdAt: "desc" },
-      include: { edges: { take: 1, include: { source: true } } },
-    }),
-    prisma.topic.findMany({
-      where: { parentTopicId: null },
-      orderBy: { claims: { _count: "desc" } },
-      include: { _count: { select: { claims: true } } },
-      take: 40,
-    }),
+    loadFeatured(),
+    loadRecentTransitions(6),
   ]);
 
   const stats: HomepageStats = {
@@ -91,32 +114,30 @@ async function loadHomepageData() {
     ingestedByCounts.set(row.ingestedBy, Number(row.count));
   }
 
-  const allTopics: TopicChipData[] = rawTopics.map((t) => ({
-    id: t.id,
-    name: t.name,
-    slug: t.slug,
-    domain: t.domain,
-    claimCount: t._count.claims,
-  }));
-  const topTopics = [...allTopics].sort(() => Math.random() - 0.5).slice(0, 16);
-
-  return {
-    stats,
-    ingestedByCounts,
-    featured: {
-      settled:   toFeatured(settled),
-      contested: toFeatured(contested),
-      recorded:  toFeatured(recorded),
-    },
-    topTopics,
-  };
+  return { stats, ingestedByCounts, featured, whatsNew };
 }
 
 export default async function Home() {
-  const { stats, ingestedByCounts, featured, topTopics } = await loadHomepageData();
+  const { stats, ingestedByCounts, featured, whatsNew } = await loadHomepageData();
+
+  // Render the mini sparkline on the server; hand it to the client hero as a prop.
+  const heroCards: HeroCard[] = featured.map(({ milestones, ...rest }) => ({
+    ...rest,
+    mini: (
+      <SettlingCurveMini
+        milestones={milestones}
+        ariaLabel={`Epistemic trajectory: ${rest.claim}`}
+      />
+    ),
+  }));
+
   return (
-    <HomeHero>
-      <HomepageSections stats={stats} ingestedByCounts={ingestedByCounts} featured={featured} topTopics={topTopics} />
+    <HomeHero heroCards={heroCards}>
+      <HomepageSections
+        stats={stats}
+        ingestedByCounts={ingestedByCounts}
+        whatsNew={whatsNew}
+      />
     </HomeHero>
   );
 }

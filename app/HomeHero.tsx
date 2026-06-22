@@ -1,11 +1,27 @@
 "use client";
-import { useEffect, useState, useRef, Suspense, useTransition } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
+import type { ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import BlackHoleCanvas from "@/app/components/BlackHoleCanvas";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
+import { DISCOVERY_HOOKS } from "@/lib/discovery-rail";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+
+// One curated, server-rendered hero card. `mini` is a <SettlingCurveMini> element
+// rendered on the server in app/page.tsx and handed down — the hero stays a thin
+// client island and never re-fetches or re-computes the SVG.
+export type HeroCard = {
+  id: string;
+  eyebrow: string;
+  eyebrowColor: string;
+  hook: string;
+  claim: string;
+  endLabel: string; // human label of the final epistemic state, e.g. "Settled"
+  span: string; // "1996 → 2021"
+  milestoneCount: number;
+  mini: ReactNode;
+};
 
 type ClaimHit = {
   id: string;
@@ -66,6 +82,7 @@ function TerminalSpinner() {
 
 const MIN_QUERY = 3;
 const RESULT_LIMIT = 8;
+const ROTATE_MS = 7000;
 
 const PLACEHOLDER_EXAMPLES = [
   "climate policy",
@@ -75,21 +92,6 @@ const PLACEHOLDER_EXAMPLES = [
   "cognitive dissonance",
   "vaccine trials",
   "Cuban Missile Crisis",
-];
-
-type TopicChip = { label: string; query: string; href?: string };
-
-const TOPIC_CHIPS: TopicChip[] = [
-  { label: "Climate",       query: "climate",      href: "/topics/environment" },
-  { label: "Neuroscience",  query: "neuroscience", href: "/neuroscience" },
-  { label: "US Congress",   query: "Congress",     href: "/legislation" },
-  { label: "Cold War",      query: "Cold War" },
-  { label: "Vaccines",      query: "vaccine" },
-  { label: "Supreme Court", query: "Supreme Court" },
-  { label: "Chemistry",     query: "chemistry",    href: "/chemistry" },
-  { label: "Nobel Prize",   query: "Nobel",        href: "/topics/nobel-prizes" },
-  { label: "Earthquakes",   query: "earthquake" },
-  { label: "Retractions",   query: "retracted" },
 ];
 
 const TYPE_LABEL: Record<string, string> = {
@@ -125,6 +127,81 @@ function truncate(text: string, n = 200): string {
   if (text.length <= n) return text;
   return text.slice(0, n).trimEnd() + "…";
 }
+
+// ─── Rotating featured-trajectory hero card ─────────────────────────────────────
+
+function FeaturedHeroCard({ cards }: { cards: HeroCard[] }) {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || cards.length <= 1) return;
+    const id = setInterval(() => setActive(a => (a + 1) % cards.length), ROTATE_MS);
+    return () => clearInterval(id);
+  }, [paused, cards.length]);
+
+  if (cards.length === 0) return null;
+  const card = cards[Math.min(active, cards.length - 1)];
+
+  return (
+    <figure
+      className="relative rounded-2xl border border-gray-800 bg-gray-900/70 backdrop-blur-md px-5 pt-4 pb-4 shadow-2xl"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <figcaption className="mb-1.5 flex items-center justify-between gap-2">
+        <span className={`text-[10px] font-mono uppercase tracking-[0.2em] ${card.eyebrowColor}`}>
+          {card.eyebrow}
+        </span>
+        <span className="text-[10px] font-mono text-gray-600">
+          {card.span} · {card.milestoneCount} milestones
+        </span>
+      </figcaption>
+
+      {/* Hook — the human one-liner */}
+      <p className="mb-2 text-sm sm:text-base text-gray-100 font-medium leading-snug">
+        {card.hook}
+      </p>
+
+      {/* Server-rendered settling-curve sparkline */}
+      <div key={card.id}>{card.mini}</div>
+
+      <p className="mt-1 text-xs text-gray-500 leading-snug line-clamp-2">
+        {truncate(card.claim, 150)}
+      </p>
+
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <Link
+          href={`/settling-curve?t=${card.id}`}
+          className="inline-flex items-center gap-1 text-xs font-medium text-amber-400 hover:text-amber-300 transition-colors"
+        >
+          See the full curve →
+        </Link>
+
+        {/* Manual rotation dots */}
+        {cards.length > 1 && (
+          <div className="flex items-center gap-1.5" role="tablist" aria-label="Featured trajectories">
+            {cards.map((c, i) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={`Show trajectory ${i + 1}: ${c.eyebrow}`}
+                aria-selected={i === active}
+                role="tab"
+                className={`h-1.5 rounded-full transition-all ${
+                  i === active ? "w-5 bg-amber-400" : "w-1.5 bg-gray-700 hover:bg-gray-500"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </figure>
+  );
+}
+
+// ─── Search result sub-components ───────────────────────────────────────────────
 
 function Highlighted({ text, query }: { text: string; query: string }) {
   if (!query || query.length < 2) return <>{text}</>;
@@ -202,19 +279,16 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
 
 function MissingState({ query }: { query: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [, startTransition] = useTransition();
 
   function suggest() {
     setStatus("sending");
-    startTransition(() => {
-      fetch("/api/search/miss", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      })
-        .then(r => setStatus(r.ok ? "sent" : "error"))
-        .catch(() => setStatus("error"));
-    });
+    fetch("/api/search/miss", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query }),
+    })
+      .then(r => setStatus(r.ok ? "sent" : "error"))
+      .catch(() => setStatus("error"));
   }
 
   return (
@@ -251,25 +325,6 @@ function MissingState({ query }: { query: string }) {
       {status === "error" && (
         <p className="text-xs text-red-400">Couldn&apos;t send. Try again later.</p>
       )}
-
-      <p className="text-xs text-gray-600 pt-1">
-        Or try one of the topic chips above to explore what we do have.
-      </p>
-    </div>
-  );
-}
-
-function ResultsLegend() {
-  return (
-    <div className="rounded-lg border border-gray-800/60 bg-gray-900/40 backdrop-blur-sm px-4 py-3 text-xs text-gray-500 space-y-1.5"
-      style={{ animation: "result-in 0.3s ease forwards" }}>
-      <p className="text-gray-400 font-medium">What you&apos;re looking at</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
-        <span><span className="text-green-400">Hard Fact</span> — verified across independent sources</span>
-        <span><span className="text-yellow-400">Disputed</span> — contested or conflicting evidence</span>
-        <span><span className="text-indigo-400">Topic badge</span> — the field this claim belongs to</span>
-        <span><span className="text-gray-300">Evidence trail →</span> — click to see timeline &amp; sources</span>
-      </div>
     </div>
   );
 }
@@ -280,10 +335,18 @@ function useCyclingPlaceholder(examples: string[], intervalMs = 2400) {
     const id = setInterval(() => setIdx(i => (i + 1) % examples.length), intervalMs);
     return () => clearInterval(id);
   }, [examples.length, intervalMs]);
-  return `Try "${examples[idx]}"…`;
+  return `Search 1.6M claims — try "${examples[idx]}"…`;
 }
 
-function HomeHeroContent({ children }: { children?: React.ReactNode }) {
+// ─── Hero ───────────────────────────────────────────────────────────────────────
+
+function HomeHeroContent({
+  heroCards,
+  children,
+}: {
+  heroCards: HeroCard[];
+  children?: React.ReactNode;
+}) {
   const router       = useRouter();
   const searchParams = useSearchParams();
   const urlQ         = searchParams.get("q") ?? "";
@@ -351,64 +414,110 @@ function HomeHeroContent({ children }: { children?: React.ReactNode }) {
 
   return (
     <div className="relative">
-      <BlackHoleCanvas />
+      {/* ── Hero: settling curve IS the hero; search demoted below ── */}
+      <section className="relative pt-12 pb-10 sm:pt-16 sm:pb-14 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          {/* Left: the pitch */}
+          <div className="text-center lg:text-left">
+            <span className="inline-block text-[11px] font-mono uppercase tracking-[0.25em] text-amber-400/90 mb-4">
+              A living knowledge graph
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.1]">
+              Knowledge changes.<br />We keep the receipts.
+            </h1>
+            <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Epistemic Receipts tracks <span className="text-gray-200">1.6M</span> scientific, legal,
+              and historical claims — and shows how each one moved from{" "}
+              <span className="text-amber-300">contested</span> to{" "}
+              <span className="text-emerald-300">settled</span> (or back) over time.
+            </p>
 
-      {/* Hero */}
-      <section className="relative pt-12 pb-8 sm:pt-20 sm:pb-12 max-w-3xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-semibold text-white text-center tracking-tight leading-tight">
-          What fact would you like a receipt for?
-        </h1>
+            <div className="mt-7 flex flex-wrap gap-3 justify-center lg:justify-start">
+              <Link
+                href="/settling-curve"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 text-gray-950 font-medium text-sm hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/20"
+              >
+                Explore the Settling Curve →
+              </Link>
+              <Link
+                href="/globe"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-700 bg-gray-900/70 backdrop-blur-sm text-gray-200 font-medium text-sm hover:border-gray-500 hover:text-white transition-colors"
+              >
+                Open the Globe
+              </Link>
+            </div>
+          </div>
 
-        <div className="mt-8 sm:mt-10">
+          {/* Right: the visual anchor — rotating featured trajectory */}
+          <div className="relative">
+            <FeaturedHeroCard cards={heroCards} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Discovery rail: curated narrative entry points ── */}
+      <section className="relative max-w-6xl mx-auto pb-6">
+        <div className="flex items-baseline justify-between px-1 mb-3">
+          <h2 className="text-sm font-mono uppercase tracking-widest text-gray-500">
+            Start here
+          </h2>
+          <span className="text-xs text-gray-600 hidden sm:block">scroll for more →</span>
+        </div>
+        <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2 -mx-2 px-2 snap-x">
+          {DISCOVERY_HOOKS.map((h) => (
+            <Link
+              key={h.title}
+              href={h.href}
+              className="snap-start shrink-0 w-[260px] rounded-xl border border-gray-800 bg-gray-900/70 backdrop-blur-sm px-5 py-4 hover:border-gray-600 hover:bg-gray-900 transition-colors group"
+            >
+              <span className={`text-[10px] font-mono uppercase tracking-[0.18em] ${h.eyebrowColor}`}>
+                {h.eyebrow}
+              </span>
+              <h3 className="mt-2 text-base font-semibold text-white group-hover:text-amber-200 transition-colors leading-snug">
+                {h.title}
+              </h3>
+              <p className="mt-1.5 text-xs text-gray-400 leading-relaxed">{h.blurb}</p>
+              <span className="mt-3 inline-block text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
+                See the receipt →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Below-fold ── */}
+      <div className="relative bg-gray-950">
+        {/* Demoted search band */}
+        <section className="relative max-w-3xl mx-auto pt-8">
           <div className="relative">
             <input
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder={placeholder}
-              autoFocus
-              className="w-full bg-gray-900/80 backdrop-blur-sm border border-gray-700 text-gray-100 text-base sm:text-lg rounded-xl px-5 py-4 placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-gray-900 transition-colors shadow-2xl"
+              className="w-full bg-gray-900/80 backdrop-blur-sm border border-gray-700 text-gray-100 text-base rounded-xl px-5 py-3.5 placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-gray-900 transition-colors shadow-xl"
               aria-label="Search Epistemic Receipts"
             />
             {loading && <TerminalSpinner />}
           </div>
-
-          <div className="mt-5 flex flex-wrap gap-2 justify-center">
-            {TOPIC_CHIPS.map(chip => (
-              <Link
-                key={chip.label}
-                href={`/search?q=${encodeURIComponent(chip.query)}`}
-                className="text-xs sm:text-sm px-3 py-1.5 rounded-full border border-gray-700 bg-gray-900/60 backdrop-blur-sm text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
-              >
-                {chip.label}
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-6 text-center text-sm text-gray-500 space-y-1">
-            <p>Every claim is sourced. Every source is traceable.</p>
-            <p>Start with a question.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Below-fold: solid background covers the fixed canvas */}
-      <div className="relative bg-gray-950">
+          {!showResults && (
+            <p className="mt-2 text-center text-xs text-gray-600">
+              Every claim is sourced. Every source is traceable.
+            </p>
+          )}
+        </section>
 
         {/* Inline search results — only reserve vertical space when a search is active */}
-        <section className={`relative max-w-3xl mx-auto ${showResults ? "pb-16 min-h-[40vh]" : ""}`}>
+        <section className={`relative max-w-3xl mx-auto ${showResults ? "pt-5 pb-14 min-h-[36vh]" : "pb-2"}`}>
           {error && (
             <p className="text-sm text-red-400 text-center">{error}</p>
           )}
 
           {showResults && !error && data && !loading && hasHits && (
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">
-                  {data.counts.claims.toLocaleString()} {data.counts.claims === 1 ? "result" : "results"} for &ldquo;{trimmed}&rdquo;
-                </p>
-              </div>
-              <ResultsLegend />
+              <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">
+                {data.counts.claims.toLocaleString()} {data.counts.claims === 1 ? "result" : "results"} for &ldquo;{trimmed}&rdquo;
+              </p>
               {data.claims.map((c, i) => <ClaimResult key={c.id} claim={c} query={trimmed} index={i} />)}
               {data.counts.claims > data.claims.length && (
                 <Link
@@ -439,10 +548,16 @@ function HomeHeroContent({ children }: { children?: React.ReactNode }) {
   );
 }
 
-export default function HomeHero({ children }: { children?: React.ReactNode }) {
+export default function HomeHero({
+  heroCards,
+  children,
+}: {
+  heroCards: HeroCard[];
+  children?: React.ReactNode;
+}) {
   return (
     <Suspense fallback={<div className="min-h-screen bg-gray-950" />}>
-      <HomeHeroContent>{children}</HomeHeroContent>
+      <HomeHeroContent heroCards={heroCards}>{children}</HomeHeroContent>
     </Suspense>
   );
 }

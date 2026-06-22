@@ -16,3 +16,24 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Settling-curve hero: draw the line in on load */
+@keyframes draw-line {
+  from { stroke-dashoffset: var(--draw-len, 1000); }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes dot-pop {
+  0%   { opacity: 0; transform: scale(0); }
+  70%  { transform: scale(1.35); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Hide scrollbar on the horizontal discovery rail while keeping scroll */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+

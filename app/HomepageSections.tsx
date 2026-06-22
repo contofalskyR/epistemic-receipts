@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { WhatsNewItem } from "@/lib/feed";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -10,28 +11,10 @@ export type HomepageStats = {
   vdemIndicators: number;
 };
 
-export type IngestedByCount = { ingestedBy: string; count: number };
-
-export type FeaturedClaim = {
-  id: string;
-  text: string;
-  sourceName: string | null;
-  sourceYear: number | null;
-} | null;
-
-export type TopicChipData = {
-  id: string;
-  name: string;
-  slug: string;
-  domain: string;
-  claimCount: number;
-};
-
 export type HomepageSectionsProps = {
   stats: HomepageStats;
   ingestedByCounts: Map<string, number>;
-  featured: { settled: FeaturedClaim; contested: FeaturedClaim; recorded: FeaturedClaim };
-  topTopics: TopicChipData[];
+  whatsNew: WhatsNewItem[];
 };
 
 // ─── Domain config ────────────────────────────────────────────────────────────
@@ -161,79 +144,6 @@ const DOMAINS: Domain[] = [
   },
 ];
 
-// ─── Changelog data ───────────────────────────────────────────────────────────
-
-const CHANGELOG: { date: string; text: string }[] = [
-  {
-    date: "JUNE 19, 2026",
-    text: "Link viewer modal: external links across the site now open in an inline VM-window-style overlay instead of jumping to a new tab. The modal embeds the destination in an iframe with a monospace URL bar, an 'Open in new tab ↗' escape hatch, Escape/backdrop dismiss, and a friendly fallback when a site refuses to be framed. Keeps audit trails one click away without losing the surrounding receipt context.",
-  },
-  {
-    date: "JUNE 17, 2026",
-    text: "/settling-curve redesigned as a split-panel browser. New left sidebar with search, status filters (Settled/Reversed/Contested), and era chips drives a grouped scrollable trajectory list; right panel keeps the gold AGENTIC LOOP audit banner pinned above the chart, surfaces a Key Interval card, and hosts the receipt detail. Mobile uses a slide-up drawer.",
-  },
-  {
-    date: "JUNE 9, 2026",
-    text: "City-level globe — Stage 1: ClaimLocation schema. New normalized location table lets claims carry geocoded points (lat/lon + city + countryCode) with provenance (source, precision, externalRef). Migration deployed to prod; backfill scripts and globe UI come in Stage 2+.",
-  },
-  {
-    date: "JUNE 9, 2026",
-    text: "/sources reference page shipped under the More menu. 174 external APIs/archives/databases grouped into 7 categories (US Federal, Courts & Legal, Science & Medicine, International Orgs, Pharma & Health, National Parliaments, Archives & Historical) with live per-source claim counts via /api/sources-summary. /datasets remains as the pipeline browser; /sources answers \"where does our data come from?\"",
-  },
-  {
-    date: "JUNE 8, 2026",
-    text: "Weekly topic-watch Telegram digest live. New WatchedTopic table seeded with 10 keywords (Neuroscience, Climate, COVID/Vaccines, STOCK Act, Retractions, SCOTUS, Drug Approvals, Ukraine, China, AI). /api/cron/topic-alerts runs every Monday 00:00 UTC, posts the last 7 days of matching claims to Telegram via the OpenClaw relay.",
-  },
-  {
-    date: "JUNE 8, 2026",
-    text: "Nobel laureate → OpenAlex paper linker: 765 new AUTHORED_BY ClaimRelations connect science-category Nobel laureates (Chemistry, Physics, Physiology or Medicine, Economic Sciences) to their most-cited papers indexed in the openalex_v1 corpus.",
-  },
-  {
-    date: "JUNE 8, 2026",
-    text: "Books/Reader cleanup: /reader now redirects to /books (single canonical view), duplicate nav entry removed, reader detail uses epistemicAxis badges instead of deprecated currentStatus, breadcrumb fixed to '← Books'.",
-  },
-  {
-    date: "JUNE 8, 2026",
-    text: "Audit sweep: /foreign-legislation now hides 2999 sentinel year, /search adds OPEN axis chip, /financial Insider/Macro tabs no longer dead-end, /congress-trades shows company name and proper amount ranges, /retraction-explorer field chips return results, /topics/<leaf> falls back to a name-text match so empty leaves surface real claims.",
-  },
-  {
-    date: "JUNE 8, 2026",
-    text: "Destination Pages Phase 2 shipped: /prereq-graph and /foreign-legislation live. epistemicAxis badges wired across all claim surfaces (SETTLED/CONTESTED/RECORDED/OPEN). 113,319 Voteview roll-calls (1789–2026) now searchable.",
-  },
-  {
-    date: "JUNE 8, 2026",
-    text: "WHO axis backfill complete — 32,713 WHO GHO claims → RECORDED. epistemicAxis coverage ~100%. Correlation filter on Congress Trades now wired to 140k LegislativeVote records.",
-  },
-  {
-    date: "JUNE 7, 2026",
-    text: "V-Dem enrichment: 67,254 new ClaimRelations (SANCTION_CONTEXT, CONFLICT_CONTEXT, MILITARY_CONTEXT). Contested Receipts shipped: epistemicStatus field, CONTRADICTS detector (11,319 edges), /settling-curve demo.",
-  },
-  {
-    date: "JUNE 6, 2026",
-    text: "Alerts MVP live. /fields hub (26 taxonomies). /feed What's New. Globe category density filters (All/Science/Law/Legislation/Medicine/Government/History).",
-  },
-  {
-    date: "JUNE 4, 2026",
-    text: "/physics taxonomy — 24 families, ~250 entries, KaTeX equations. OFAC SDN pipeline — 19,034 sanction entries with polity linking.",
-  },
-  {
-    date: "JUNE 3, 2026",
-    text: "/legislation expanded to 52 countries with 88 perpetual ingestion loops. 7 CourtListener loops running (SCOTUS, circuits, state supremes, judges, disclosures, BIA, Tax Court).",
-  },
-  {
-    date: "JUNE 1, 2026",
-    text: "OpenFEC campaign finance, World Bank UI with indicator chips and comparison charts, Academic Fields badges, CourtListener nightly crons.",
-  },
-];
-
-// ─── Featured-claim styling ───────────────────────────────────────────────────
-
-const AXIS_STYLE: Record<string, { label: string; dot: string; text: string }> = {
-  SETTLED:   { label: "SETTLED",   dot: "bg-emerald-400", text: "text-emerald-300" },
-  CONTESTED: { label: "CONTESTED", dot: "bg-amber-400",   text: "text-amber-300" },
-  RECORDED:  { label: "RECORDED",  dot: "bg-blue-400",    text: "text-blue-300" },
-};
-
 function truncate(text: string, n: number): string {
   if (text.length <= n) return text;
   return text.slice(0, n).trimEnd() + "…";
@@ -249,26 +159,25 @@ function sumKeys(counts: Map<string, number>, keys: string[]): number {
 
 function StatsBar({ stats }: { stats: HomepageStats }) {
   const cells: { label: string; value: number }[] = [
-    { label: "Claims indexed",      value: stats.claims },
-    { label: "Primary sources",     value: stats.sources },
-    { label: "Congressional votes", value: stats.legislativeVotes },
-    { label: "Retracted papers",    value: stats.retractedPapers },
+    { label: "Claims indexed",       value: stats.claims },
+    { label: "Primary sources",      value: stats.sources },
+    { label: "Congressional votes",  value: stats.legislativeVotes },
+    { label: "Retracted papers",     value: stats.retractedPapers },
     { label: "Democracy indicators", value: stats.vdemIndicators },
   ];
+  // Full-bleed band: -mx-6 cancels the global <main> px-6 gutter so the bar runs
+  // edge-to-edge, while the inner container keeps the content centered. On mobile
+  // it's a compact 2-column grid (not a 500px-tall stack); 5 columns on desktop.
+  // The gap + container background renders thin separators between cells.
   return (
-    <section className="w-full bg-gray-900/80 border-y border-gray-800">
-      <div className="flex flex-col sm:flex-row max-w-6xl mx-auto">
-        {cells.map((c, i) => (
-          <div
-            key={c.label}
-            className={`flex-1 px-6 py-6 text-center ${
-              i < cells.length - 1 ? "sm:border-r border-b sm:border-b-0 border-gray-800" : ""
-            }`}
-          >
-            <div className="text-3xl sm:text-4xl font-bold text-amber-400 tabular-nums">
+    <section className="-mx-6 bg-gray-800/60 border-y border-gray-800">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-px max-w-6xl mx-auto">
+        {cells.map((c) => (
+          <div key={c.label} className="bg-gray-900/90 px-4 py-6 text-center">
+            <div className="text-2xl sm:text-4xl font-bold text-amber-400 tabular-nums">
               {c.value.toLocaleString()}
             </div>
-            <div className="mt-1 text-xs uppercase tracking-widest text-gray-500">
+            <div className="mt-1 text-[11px] sm:text-xs uppercase tracking-widest text-gray-500">
               {c.label}
             </div>
           </div>
@@ -284,7 +193,7 @@ function DomainGrid({ ingestedByCounts }: { ingestedByCounts: Map<string, number
       <header className="mb-8">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white">Explore by Domain</h2>
         <p className="mt-1 text-sm text-gray-500">
-          26 taxonomies — click any to browse claims
+          Each domain draws on its own primary sources — click any to browse claims
         </p>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -326,126 +235,135 @@ function DomainGrid({ ingestedByCounts }: { ingestedByCounts: Map<string, number
   );
 }
 
-function FeaturedClaimCard({ axis, claim }: { axis: keyof typeof AXIS_STYLE; claim: FeaturedClaim }) {
-  const style = AXIS_STYLE[axis];
-  if (!claim) {
-    return (
-      <div className="rounded-xl bg-gray-900/80 border border-gray-800 px-5 py-5">
-        <div className="flex items-center gap-2">
-          <span className={`w-2 h-2 rounded-full ${style.dot}`} />
-          <span className={`text-xs font-mono uppercase tracking-widest ${style.text}`}>
-            {style.label}
-          </span>
-        </div>
-        <p className="mt-3 text-sm text-gray-500 italic">No claim available.</p>
-      </div>
-    );
-  }
-  return (
-    <Link
-      href={`/claims/${claim.id}`}
-      className="block rounded-xl bg-gray-900/80 border border-gray-800 hover:border-gray-600 px-5 py-5 transition-colors group"
-    >
-      <div className="flex items-center gap-2">
-        <span className={`w-2 h-2 rounded-full ${style.dot}`} />
-        <span className={`text-xs font-mono uppercase tracking-widest ${style.text}`}>
-          {style.label}
-        </span>
-      </div>
-      <p className="mt-3 text-sm text-gray-200 leading-relaxed group-hover:text-white transition-colors">
-        {truncate(claim.text, 180)}
-      </p>
-      {(claim.sourceName || claim.sourceYear) && (
-        <p className="mt-3 text-xs text-gray-500 truncate">
-          {claim.sourceName ?? "Unknown source"}
-          {claim.sourceYear ? ` · ${claim.sourceYear}` : ""}
-        </p>
-      )}
-    </Link>
-  );
-}
+// ─── Feature showcase strip ─────────────────────────────────────────────────────
 
-function FeaturedClaims({ featured }: { featured: HomepageSectionsProps["featured"] }) {
+type Feature = {
+  emoji: string;
+  name: string;
+  blurb: string;
+  href: string;
+  accent: string; // border-t color
+  cta: string;
+};
+
+const FEATURES: Feature[] = [
+  {
+    emoji: "📈",
+    name: "Settling Curve",
+    blurb: "Watch a claim move across expert literature, institutions, courts, and the public — milestone by milestone.",
+    href: "/settling-curve",
+    accent: "border-t-emerald-500",
+    cta: "Trace a trajectory",
+  },
+  {
+    emoji: "🗳️",
+    name: "Representation Gap",
+    blurb: "700k constituents' opinions vs. how their delegation actually voted — issue by issue.",
+    href: "/analysis/representation",
+    accent: "border-t-sky-500",
+    cta: "See the gap",
+  },
+  {
+    emoji: "💸",
+    name: "Congress Trades",
+    blurb: "STOCK Act disclosures correlated with the votes each legislator cast.",
+    href: "/congress-trades",
+    accent: "border-t-blue-500",
+    cta: "Follow the money",
+  },
+  {
+    emoji: "🔁",
+    name: "Retraction Explorer",
+    blurb: "26k+ retracted papers and the live citations that still point at them.",
+    href: "/retraction-explorer",
+    accent: "border-t-rose-500",
+    cta: "Inspect retractions",
+  },
+];
+
+function FeatureShowcase() {
   return (
-    <section className="max-w-6xl mx-auto px-6 pb-16">
+    <section className="max-w-6xl mx-auto px-6 pt-16 pb-4">
       <header className="mb-6">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-white">Featured Claims</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-white">What you can do here</h2>
         <p className="mt-1 text-sm text-gray-500">
-          Recently updated · click to see full epistemic receipt
+          Four ways into 1.6M claims — each one a different lens on how knowledge moves.
         </p>
       </header>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <FeaturedClaimCard axis="SETTLED"   claim={featured.settled} />
-        <FeaturedClaimCard axis="CONTESTED" claim={featured.contested} />
-        <FeaturedClaimCard axis="RECORDED"  claim={featured.recorded} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {FEATURES.map((f) => (
+          <Link
+            key={f.name}
+            href={f.href}
+            className={`group flex flex-col rounded-xl bg-gray-900/80 border border-gray-800 hover:border-gray-600 border-t-[3px] ${f.accent} px-5 py-5 transition-colors`}
+          >
+            <span className="text-2xl">{f.emoji}</span>
+            <h3 className="mt-3 text-base font-semibold text-white group-hover:text-amber-300 transition-colors">
+              {f.name}
+            </h3>
+            <p className="mt-1.5 text-sm text-gray-400 leading-relaxed flex-1">{f.blurb}</p>
+            <span className="mt-4 text-xs font-medium text-amber-400 group-hover:text-amber-300 transition-colors">
+              {f.cta} →
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );
 }
 
-const DOMAIN_DOT: Record<string, string> = {
-  "academic-literature":  "bg-indigo-500",
-  "archives":             "bg-violet-500",
-  "astronomy":            "bg-teal-500",
-  "chemistry":            "bg-pink-500",
-  "clinical-trials":      "bg-sky-500",
-  "culture":              "bg-fuchsia-500",
-  "defense":              "bg-slate-500",
-  "diplomacy":            "bg-blue-500",
-  "economics":            "bg-yellow-500",
-  "environment":          "bg-emerald-500",
-  "genetics":             "bg-lime-500",
-  "geology":              "bg-orange-500",
-  "government":           "bg-blue-500",
-  "history":              "bg-orange-500",
-  "institutional":        "bg-cyan-500",
-  "intelligence":         "bg-red-500",
-  "international":        "bg-blue-500",
-  "labor":                "bg-yellow-500",
-  "law":                  "bg-amber-500",
-  "legislation":          "bg-blue-500",
-  "medicine":             "bg-sky-500",
-  "physics":              "bg-cyan-500",
-  "politics":             "bg-red-500",
-  "psychology":           "bg-purple-500",
-  "public-health":        "bg-green-500",
-  "public_health":        "bg-green-500",
-  "research-funding":     "bg-indigo-500",
-  "science":              "bg-teal-500",
-  "scientific-integrity": "bg-rose-500",
-  "technology":           "bg-blue-500",
+// ─── "What's new" — recent epistemic transitions (ClaimStatusHistory) ────────────
+
+const TRANSITION_AXIS_STYLE: Record<string, { label: string; dot: string; text: string }> = {
+  SETTLED:   { label: "Settled",   dot: "bg-emerald-400", text: "text-emerald-300" },
+  CONTESTED: { label: "Contested", dot: "bg-amber-400",   text: "text-amber-300" },
+  RECORDED:  { label: "Recorded",  dot: "bg-slate-400",   text: "text-slate-300" },
+  REVERSED:  { label: "Reversed",  dot: "bg-red-400",     text: "text-red-300" },
+  ABANDONED: { label: "Abandoned", dot: "bg-gray-500",    text: "text-gray-400" },
+  OPEN:      { label: "Open",      dot: "bg-sky-400",     text: "text-sky-300" },
 };
 
-function TaxonomyIndex({ topics }: { topics: TopicChipData[] }) {
+function WhatsNewStrip({ items }: { items: WhatsNewItem[] }) {
+  if (!items || items.length === 0) return null;
   return (
-    <section className="max-w-6xl mx-auto px-6 pb-16">
+    <section className="max-w-6xl mx-auto px-6 py-16">
       <header className="mb-6 flex items-baseline justify-between gap-4">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white">Browse by Topic</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white">What&apos;s new</h2>
           <p className="mt-1 text-sm text-gray-500">
-            A random sample — refreshes each visit
+            The latest epistemic state-changes added to the graph
           </p>
         </div>
-        <Link href="/topics" className="text-sm text-amber-400 hover:text-amber-300 transition-colors shrink-0">
-          All topics →
+        <Link href="/feed" className="text-sm text-amber-400 hover:text-amber-300 transition-colors shrink-0">
+          Full feed →
         </Link>
       </header>
-      <div className="flex flex-wrap gap-2">
-        {topics.map((topic) => {
-          const dot = DOMAIN_DOT[topic.domain] ?? "bg-gray-500";
+      <div className="divide-y divide-gray-800 border-y border-gray-800">
+        {items.map((t) => {
+          const axis = TRANSITION_AXIS_STYLE[t.toAxis] ?? TRANSITION_AXIS_STYLE.RECORDED;
           return (
             <Link
-              key={topic.id}
-              href={`/topics/${topic.slug}`}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800 hover:border-gray-600 hover:bg-gray-800/80 transition-colors group"
+              key={t.id}
+              href={t.href}
+              className="group grid grid-cols-1 sm:grid-cols-[1fr_auto] items-center gap-2 sm:gap-6 py-4 hover:bg-gray-900/40 transition-colors -mx-3 px-3 rounded-lg"
             >
-              <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot}`} />
-              <span className="text-xs text-gray-300 group-hover:text-white transition-colors">
-                {topic.name}
-              </span>
-              <span className="text-xs text-gray-600 tabular-nums">
-                {topic.claimCount.toLocaleString()}
-              </span>
+              <div className="min-w-0">
+                <p className="text-sm text-gray-300 group-hover:text-white transition-colors leading-relaxed">
+                  {truncate(t.claimText, 150)}
+                </p>
+                {t.reason && (
+                  <p className="mt-0.5 text-xs text-gray-600 leading-snug line-clamp-1">
+                    {truncate(t.reason, 120)}
+                  </p>
+                )}
+              </div>
+              <div className="flex items-center gap-3 shrink-0 text-xs">
+                {t.occurredYear && <span className="font-mono text-gray-600">{t.occurredYear}</span>}
+                <span className="inline-flex items-center gap-1.5">
+                  <span className={`w-2 h-2 rounded-full ${axis.dot}`} />
+                  <span className={`font-mono uppercase tracking-wide ${axis.text}`}>{axis.label}</span>
+                </span>
+              </div>
             </Link>
           );
         })}
@@ -454,44 +372,19 @@ function TaxonomyIndex({ topics }: { topics: TopicChipData[] }) {
   );
 }
 
-function ChangelogSection() {
-  return (
-    <section className="max-w-6xl mx-auto px-6 pb-20">
-      <header className="mb-6">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-white">Recent Updates</h2>
-      </header>
-      <div className="divide-y divide-gray-800 border-y border-gray-800">
-        {CHANGELOG.map((entry, i) => (
-          <div key={i} className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-2 sm:gap-6 py-4">
-            <div className="text-xs font-mono text-gray-500 uppercase tracking-widest sm:pt-0.5">
-              {entry.date}
-            </div>
-            <p className="text-sm text-gray-300 leading-relaxed">{entry.text}</p>
-          </div>
-        ))}
-      </div>
-      <div className="mt-6 text-center">
-        <Link
-          href="/feed"
-          className="text-sm text-amber-400 hover:text-amber-300 transition-colors"
-        >
-          See the full feed →
-        </Link>
-      </div>
-    </section>
-  );
-}
-
 // ─── Top-level export ─────────────────────────────────────────────────────────
 
-export default function HomepageSections({ stats, ingestedByCounts, featured, topTopics }: HomepageSectionsProps) {
+export default function HomepageSections({
+  stats,
+  ingestedByCounts,
+  whatsNew,
+}: HomepageSectionsProps) {
   return (
     <>
+      <FeatureShowcase />
       <StatsBar stats={stats} />
+      <WhatsNewStrip items={whatsNew} />
       <DomainGrid ingestedByCounts={ingestedByCounts} />
-      <FeaturedClaims featured={featured} />
-      <TaxonomyIndex topics={topTopics} />
-      <ChangelogSection />
     </>
   );
 }

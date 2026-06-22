@@ -2,75 +2,74 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-type NavItem = { href: string; label: string };
+type NavItem = { href: string; label: string; desc?: string };
 
-const PRIMARY: NavItem[] = [
-  { href: "/search", label: "Search" },
-  { href: "/globe", label: "Globe" },
-  { href: "/fields", label: "Fields" },
-  { href: "/legislation", label: "Legislation" },
-  { href: "/stats", label: "Stats" },
-  { href: "/datasets", label: "Datasets" },
-];
-
-const GROUPS: { label: string; items: NavItem[] }[] = [
+// Three product buckets. Every existing route is preserved here so nothing is lost —
+// flagship destinations carry a one-line description; the long tail stays as plain links.
+const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
   {
     label: "Explore",
+    blurb: "Browse the knowledge graph",
     items: [
+      { href: "/settling-curve", label: "Settling Curve", desc: "How a claim settled — or unraveled — over time" },
+      { href: "/globe", label: "Globe", desc: "Claims by country, on an animated timeline" },
+      { href: "/search", label: "Search", desc: "Full-text across 1.6M claims" },
+      { href: "/trajectories", label: "Trajectory Encyclopedia" },
       { href: "/claims", label: "Claims" },
       { href: "/topics", label: "Topics" },
+      { href: "/fields", label: "Fields" },
       { href: "/timeline", label: "Timeline" },
       { href: "/historical-events", label: "Events" },
-      { href: "/settling-curve", label: "Settling Curve" },
-      { href: "/trajectories", label: "Trajectories" },
-      { href: "/drug-arc", label: "Drug Arc" },
-      { href: "/opinions", label: "Court Opinions" },
-      { href: "/retraction-wall", label: "Retraction Wall" },
       { href: "/prereq-graph", label: "Evidence Chains" },
-      { href: "/foreign-legislation", label: "Global Legislation" },
-      { href: "/retractions", label: "Retraction API" },
-      { href: "/bookmarks", label: "Bookmarks" },
       { href: "/books", label: "Books" },
     ],
   },
   {
-    label: "Data",
+    label: "Analyze",
+    blurb: "Quantitative views & politics",
     items: [
+      { href: "/analysis/representation", label: "Representation Gap", desc: "Constituent opinion vs. how they voted" },
+      { href: "/congress-trades", label: "Congress Trades", desc: "Legislator trades vs. their voting record" },
+      { href: "/stats", label: "Stats", desc: "Polarization, pass rates, party-line trends" },
+      { href: "/analysis/votes", label: "Vote Analysis" },
+      { href: "/analysis/topics", label: "Topic Trends" },
       { href: "/votes", label: "Browse Votes" },
       { href: "/members", label: "Members" },
-      { href: "/analysis/votes", label: "Analysis" },
-      { href: "/analysis/topics", label: "Topic Trends" },
-      { href: "/analysis/representation", label: "Representation" },
-      { href: "/stats/media-coverage", label: "Media Coverage" },
+      { href: "/legislation", label: "Legislation" },
+      { href: "/foreign-legislation", label: "Global Legislation" },
       { href: "/financial", label: "Financial" },
-      { href: "/congress-trades", label: "Congress Trades" },
-      { href: "/retraction-explorer", label: "Retraction Explorer" },
+      { href: "/stats/media-coverage", label: "Media Coverage" },
     ],
   },
   {
-    label: "More",
+    label: "Discover",
+    blurb: "What changed & where data comes from",
     items: [
-      { href: "/feed", label: "What's New" },
-      { href: "/about", label: "About" },
-      { href: "/glossary", label: "Glossary" },
-      { href: "/feedback", label: "Feedback" },
+      { href: "/retraction-explorer", label: "Retraction Explorer", desc: "26k+ retractions and who still cites them" },
+      { href: "/feed", label: "What's New", desc: "Latest additions to the graph" },
+      { href: "/retraction-wall", label: "Retraction Wall" },
+      { href: "/drug-arc", label: "Drug Arc" },
+      { href: "/opinions", label: "Court Opinions" },
       { href: "/sources", label: "Sources" },
+      { href: "/datasets", label: "Datasets" },
       { href: "/pipelines", label: "Pipelines" },
-      { href: "/edges", label: "Edges" },
-      { href: "/meta-edges", label: "Meta-edges" },
-      { href: "/review", label: "Review" },
+      { href: "/bookmarks", label: "Bookmarks" },
+      { href: "/glossary", label: "Glossary" },
+      { href: "/about", label: "About" },
     ],
   },
 ];
 
 function Dropdown({
   label,
+  blurb,
   items,
   open,
   onOpen,
   onClose,
 }: {
   label: string;
+  blurb: string;
   items: NavItem[];
   open: boolean;
   onOpen: () => void;
@@ -81,22 +80,28 @@ function Dropdown({
       <button
         type="button"
         onClick={() => (open ? onClose() : onOpen())}
-        className="text-gray-400 hover:text-white transition-colors"
+        className={`transition-colors ${open ? "text-white" : "text-gray-400 hover:text-white"}`}
         aria-haspopup="true"
         aria-expanded={open}
       >
-        {label} ▾
+        {label} <span className="text-gray-600 text-xs">▾</span>
       </button>
       {open && (
-        <div className="absolute left-0 top-full z-50 min-w-[10rem] rounded-md border border-gray-700 bg-gray-900 py-1 shadow-lg">
+        <div className="absolute left-0 top-full z-50 mt-1 w-72 rounded-lg border border-gray-700 bg-gray-900 py-2 shadow-2xl">
+          <div className="px-4 pb-2 mb-1 border-b border-gray-800">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500">{blurb}</span>
+          </div>
           {items.map((i) => (
             <Link
               key={i.href}
               href={i.href}
               onClick={onClose}
-              className="block py-1.5 px-4 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+              className="block px-4 py-1.5 hover:bg-gray-800 transition-colors group"
             >
-              {i.label}
+              <span className="block text-sm text-gray-200 group-hover:text-white">{i.label}</span>
+              {i.desc && (
+                <span className="block text-xs text-gray-500 leading-snug">{i.desc}</span>
+              )}
             </Link>
           ))}
         </div>
@@ -140,19 +145,11 @@ export default function Nav() {
         <Link href="/" className="font-semibold text-white">
           Epistemic Receipts
         </Link>
-        {PRIMARY.map((i) => (
-          <Link
-            key={i.href}
-            href={i.href}
-            className="text-gray-400 hover:text-white transition-colors"
-          >
-            {i.label}
-          </Link>
-        ))}
         {GROUPS.map((g) => (
           <Dropdown
             key={g.label}
             label={g.label}
+            blurb={g.blurb}
             items={g.items}
             open={openGroup === g.label}
             onOpen={() => setOpenGroup(g.label)}
@@ -161,6 +158,13 @@ export default function Nav() {
             }
           />
         ))}
+        <div className="flex-1" />
+        <Link
+          href="/search"
+          className="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-gray-900/70 px-3 py-1.5 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
+        >
+          <span className="text-gray-500">⌕</span> Search
+        </Link>
       </div>
 
       <div className="md:hidden flex items-center justify-between">
@@ -180,16 +184,13 @@ export default function Nav() {
 
       {mobileOpen && (
         <div className="md:hidden mt-3 flex flex-col border-t border-gray-800 pt-3">
-          {PRIMARY.map((i) => (
-            <Link
-              key={i.href}
-              href={i.href}
-              onClick={() => setMobileOpen(false)}
-              className="block py-1.5 text-gray-300 hover:text-white transition-colors"
-            >
-              {i.label}
-            </Link>
-          ))}
+          <Link
+            href="/search"
+            onClick={() => setMobileOpen(false)}
+            className="block py-2 mb-1 text-gray-200 hover:text-white font-medium transition-colors"
+          >
+            ⌕ Search 1.6M claims
+          </Link>
           {GROUPS.map((g) => (
             <div key={g.label} className="mt-3">
               <div className="text-xs uppercase tracking-wider text-gray-500 py-1.5">

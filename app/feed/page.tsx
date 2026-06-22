@@ -1,113 +1,25 @@
 import Link from "next/link";
 import { Newspaper, Activity, Database } from "lucide-react";
-import { prisma } from "@/lib/prisma";
+import {
+  EVENT_WINDOW_DAYS,
+  PIPELINE_WINDOW_DAYS,
+  fmtDate,
+  friendlyPipelineLabel,
+  loadPipelineBuckets,
+  loadRecentThresholdEvents,
+  snippet,
+} from "@/lib/feed";
 import SinceLastVisit from "./SinceLastVisit";
 import BookmarkedActivity from "./BookmarkedActivity";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-const PIPELINE_WINDOW_DAYS = 7;
-const PIPELINE_LIMIT = 6;
-const SAMPLES_PER_PIPELINE = 3;
-const EVENT_WINDOW_DAYS = 7;
-const EVENT_LIMIT = 10;
-const SNIPPET_LEN = 80;
-
 const STATUS_STYLE: Record<string, string> = {
   HARD_FACT: "bg-green-900 text-green-300",
   NEVER_RESOLVES: "bg-gray-700 text-gray-400",
   DISPUTED: "bg-yellow-900 text-yellow-300",
 };
-
-function snippet(text: string, max = SNIPPET_LEN): string {
-  if (text.length <= max) return text;
-  return text.slice(0, max - 1).trimEnd() + "…";
-}
-
-function fmtDate(d: Date): string {
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
-
-type PipelineBucket = {
-  ingestedBy: string;
-  count: number;
-  samples: { id: string; text: string }[];
-};
-
-async function loadPipelineBuckets(): Promise<PipelineBucket[]> {
-  const since = new Date(Date.now() - PIPELINE_WINDOW_DAYS * 24 * 60 * 60 * 1000);
-
-  const grouped = await prisma.claim.groupBy({
-    by: ["ingestedBy"],
-    where: { deleted: false, createdAt: { gte: since } },
-    _count: { _all: true },
-    orderBy: { _count: { ingestedBy: "desc" } },
-    take: PIPELINE_LIMIT,
-  });
-
-  if (grouped.length === 0) return [];
-
-  const ingestedByList = grouped.map(g => g.ingestedBy);
-  const samples = await prisma.claim.findMany({
-    where: {
-      deleted: false,
-      createdAt: { gte: since },
-      ingestedBy: { in: ingestedByList },
-    },
-    orderBy: { createdAt: "desc" },
-    select: { id: true, text: true, ingestedBy: true, createdAt: true },
-    take: ingestedByList.length * SAMPLES_PER_PIPELINE * 4,
-  });
-
-  const byPipeline = new Map<string, { id: string; text: string }[]>();
-  for (const c of samples) {
-    const bucket = byPipeline.get(c.ingestedBy) ?? [];
-    if (bucket.length < SAMPLES_PER_PIPELINE) {
-      bucket.push({ id: c.id, text: c.text });
-      byPipeline.set(c.ingestedBy, bucket);
-    }
-  }
-
-  return grouped.map(g => ({
-    ingestedBy: g.ingestedBy,
-    count: g._count._all,
-    samples: byPipeline.get(g.ingestedBy) ?? [],
-  }));
-}
-
-type RecentEvent = {
-  id: string;
-  claimId: string;
-  claimText: string;
-  triggeredBy: string;
-  createdAt: Date;
-};
-
-async function loadRecentThresholdEvents(): Promise<RecentEvent[]> {
-  const since = new Date(Date.now() - EVENT_WINDOW_DAYS * 24 * 60 * 60 * 1000);
-  const events = await prisma.thresholdEvent.findMany({
-    where: { deleted: false, createdAt: { gte: since } },
-    orderBy: { createdAt: "desc" },
-    take: EVENT_LIMIT,
-    select: {
-      id: true,
-      claimId: true,
-      triggeredBy: true,
-      createdAt: true,
-      claim: { select: { text: true, deleted: true } },
-    },
-  });
-  return events
-    .filter(e => e.claim && !e.claim.deleted)
-    .map(e => ({
-      id: e.id,
-      claimId: e.claimId,
-      claimText: e.claim!.text,
-      triggeredBy: e.triggeredBy,
-      createdAt: e.createdAt,
-    }));
-}
 
 export default async function FeedPage() {
   const [pipelines, events] = await Promise.all([
@@ -156,9 +68,14 @@ export default async function FeedPage() {
                 <div className="flex items-baseline justify-between gap-3 flex-wrap">
                   <Link
                     href={`/claims?ingestedBy=${encodeURIComponent(p.ingestedBy)}`}
-                    className="font-mono text-sm text-amber-300 hover:text-amber-200 break-all"
+                    className="group/link"
                   >
-                    {p.ingestedBy}
+                    <span className="text-sm text-amber-300 group-hover/link:text-amber-200">
+                      {friendlyPipelineLabel(p.ingestedBy)}
+                    </span>
+                    <span className="ml-2 font-mono text-[10px] text-gray-600 break-all">
+                      {p.ingestedBy}
+                    </span>
                   </Link>
                   <span className="text-xs text-gray-500">
                     {p.count.toLocaleString()}{" "}

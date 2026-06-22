@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="px-6 py-8">{children}</main>
           <FeedbackButton />
           <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-            <span>Epistemic Receipts — {new Date().getFullYear()} · last updated June 19, 2026 · </span>
+            <span>Epistemic Receipts — {new Date().getFullYear()} · </span>
             <a href="/corrections" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
               Corrections
             </a>
