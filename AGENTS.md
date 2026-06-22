@@ -145,3 +145,27 @@ Last synced from DB: 2026-05-21. Total claims (excl. deprecated): ~336,900+ acro
   - (b) Structural field contamination on the tobacco bucket. Court-case-style citation strings were placed in the assignee field during ingestion, a separate bug from the fabrication issue.
 - **Resolution:** All 182 records set to `verificationStatus: DEPRECATED` with `metadata.deprecation_reason` documenting the audit finding. Records are retained in the database for audit trail purposes, excluded from all default views, and accessible via the "Show deprecated" toggle or direct URL.
 <!-- END:known-bad-pipelines -->
+
+<!-- BEGIN:security-model -->
+# Security model (hardening pass 2026-06-12, commit c0a3430)
+
+The site launched as **public read-only**. A full audit + hardening pass was applied — see `SECURITY-REVIEW-2026-06-12.md` for findings. These rules are now invariants; do not undo them to "fix" a 401.
+
+## How auth works now
+- `SITE_PASSWORD` unset ⇒ site is publicly readable (this is the launch state). Setting it restores the old private gate. The old "503 when unset in production" behavior is gone.
+- `middleware.ts` enforces deny-by-default: any non-GET request to `/api/*` returns 401 unless the request carries admin credentials (`Authorization: Bearer <ADMIN_TOKEN>` or the `admin_auth` cookie) or the path is in the `PUBLIC_WRITE_PATHS` allowlist (login, feedback, search/miss, subscribe, bookmarks).
+- `/admin`, `/review`, and `/api/review` require an admin session even for GET.
+- All gates are open during `next dev` (`requireAdminOrDev`, middleware `isDev`) so local workflows need no tokens. They are always enforced in production builds.
+- `isReadOnly()` / `ALLOW_EDITS` is unchanged and coexists with auth: production writes need BOTH `ALLOW_EDITS=true` AND admin credentials. `ALLOW_EDITS` should normally be deleted from Vercel; the owner re-adds it temporarily for editing sessions.
+
+## Rules for new/modified code
+1. **Every new mutation handler** (POST/PUT/PATCH/DELETE, or GET with side effects) must call `requireAdminOrDev(req)` from `@/lib/adminAuth` (or `CRON_SECRET` Bearer check for cron routes) in addition to `isReadOnly()`. The middleware gate is defense in depth, not a substitute.
+2. **Never interpolate user input into `$queryRawUnsafe` strings.** Pass values as bind parameters (`$1, $2, ...` + spread args). For ILIKE, escape `\ % _` first (see `app/api/retractions/route.ts` for the `likeParam` pattern). Hand-rolled quote escaping (`.replace(/'/g, "''")`) is banned.
+3. **New public write endpoints** require: an explicit entry in `PUBLIC_WRITE_PATHS` in `middleware.ts`, a rate-limit rule in `RATE_LIMIT_RULES`, JSON parse guarded with `.catch(() => null)`, and length caps on every string field.
+4. **Do not weaken:** security headers in `next.config.ts` (incl. HSTS), cookie flags (`httpOnly`, `secure`, `sameSite`), timing-safe comparisons in `app/api/login/route.ts` and `lib/adminAuth.ts`, fail-closed `CRON_SECRET` checks in `/api/ingest/scotus` and `/api/cron/topic-alerts`.
+5. **Never commit secrets.** `.env.local` is gitignored and must stay that way; no hardcoded tokens/fallback passphrases in code (`?? "changeme"` patterns are banned).
+6. If a request unexpectedly 401s during development against production, the fix is to supply admin credentials (login at `/login` with `ADMIN_TOKEN`, or send the Bearer header from scripts) — not to exempt the route.
+
+## Env vars (Vercel)
+`ADMIN_TOKEN` (admin auth — required in production), `CRON_SECRET` (crons fail closed without it), `BOOK_UPLOAD_PASSPHRASE` (second factor on book routes), `SITE_PASSWORD` (only to make the site private again), `ALLOW_EDITS` (temporary editing sessions only).
+<!-- END:security-model -->
