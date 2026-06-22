@@ -28,6 +28,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
     label: "Analyze",
     blurb: "Quantitative views & politics",
     items: [
+      { href: "/analysis/settling-rate", label: "Settling Rate", desc: "How fast knowledge settles, by decade and over time" },
       { href: "/analysis/representation", label: "Representation Gap", desc: "Constituent opinion vs. how they voted" },
       { href: "/congress-trades", label: "Congress Trades", desc: "Legislator trades vs. their voting record" },
       { href: "/stats", label: "Stats", desc: "Polarization, pass rates, party-line trends" },
