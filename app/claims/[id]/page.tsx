@@ -855,6 +855,21 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
           {claim.thresholdEvents.length > 0 && (
             <span className="text-green-500">{claim.thresholdEvents.length} threshold {claim.thresholdEvents.length === 1 ? "event" : "events"}</span>
           )}
+          {claim.edges.length > 0 && (
+            <span className="flex items-center gap-2 ml-auto">
+              <span className="text-gray-600 font-mono tracking-widest" style={{ fontSize: 10 }}>CITE</span>
+              {(["bibtex", "ris"] as const).map((fmt) => (
+                <a
+                  key={fmt}
+                  href={`/api/claims/${claim.id}/cite?format=${fmt}`}
+                  className="font-mono hover:text-gray-300 transition-colors"
+                  style={{ fontSize: 10, letterSpacing: "0.04em", border: "1px solid #2a2a3a", borderRadius: 3, padding: "1px 6px" }}
+                >
+                  {fmt === "bibtex" ? "BibTeX" : "RIS"}↓
+                </a>
+              ))}
+            </span>
+          )}
         </div>
       </div>
 
