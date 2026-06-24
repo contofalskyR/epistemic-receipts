@@ -2,6 +2,7 @@
 import React, { useState, useEffect, Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import SettlingCurveMini from "../components/SettlingCurveMini";
+import { ShareButtons } from "@/components/ShareButtons";
 
 const C = {
   bg: "#0a0a0a",
@@ -773,15 +774,25 @@ function SettlingCurveInner() {
                   const years = traj.transitions.map((x) => yr(x.occurredAt));
                   const first = Math.min(...years);
                   const last = Math.max(...years);
+                  const yearRange = last - first;
+                  const shareText = `I traced the ${yearRange > 0 ? `${yearRange}-year ` : ""}epistemic journey of "${title.slice(0, 160)}". ${traj.transitions.length} transitions${yearRange > 0 ? ` (${first}–${last})` : ""}. 🧾`;
                   return (
-                    <p
-                      className="font-mono"
-                      style={{ fontSize: 12, color: C.mut, letterSpacing: "0.04em" }}
-                    >
-                      {traj.transitions.length} TRANSITIONS · {first}
-                      {first !== last && ` → ${last}`}
-                      {activeItem?.era && ` · ${activeItem.era.toUpperCase()}`}
-                    </p>
+                    <>
+                      <p
+                        className="font-mono"
+                        style={{ fontSize: 12, color: C.mut, letterSpacing: "0.04em" }}
+                      >
+                        {traj.transitions.length} TRANSITIONS · {first}
+                        {first !== last && ` → ${last}`}
+                        {activeItem?.era && ` · ${activeItem.era.toUpperCase()}`}
+                      </p>
+                      <div className="mt-2">
+                        <ShareButtons
+                          url={typeof window !== "undefined" ? window.location.href : ""}
+                          text={shareText}
+                        />
+                      </div>
+                    </>
                   );
                 })()}
               </div>

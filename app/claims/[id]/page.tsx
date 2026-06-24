@@ -8,6 +8,7 @@ import { useBookmarks } from "@/hooks/useBookmarks";
 import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
 import WhatHappenedNextPanel from "@/components/WhatHappenedNextPanel";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
+import { ShareButtons } from "@/components/ShareButtons";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -821,6 +822,10 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
           )}
           <BookmarkToggle claimId={claim.id} />
         </div>
+        <ShareButtons
+          url={typeof window !== "undefined" ? window.location.href : `https://epistemic-receipts.vercel.app/claims/${claim.id}`}
+          text={`"${claim.text.slice(0, 220)}"${claim.epistemicAxis ? ` — ${claim.epistemicAxis}` : ""} 🧾`}
+        />
         {claim.topics.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {claim.topics.map(ct => (
