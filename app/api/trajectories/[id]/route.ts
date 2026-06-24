@@ -11,7 +11,10 @@ export async function GET(
 
   // CSV export
   const url = new URL(req.url);
-  const wantCsv = url.searchParams.get("format") === "csv";
+  const format = url.searchParams.get("format");
+  const wantCsv = format === "csv";
+  const wantBibtex = format === "bibtex";
+  const wantRis = format === "ris";
 
   const claim = await prisma.claim.findFirst({
     where: { externalId: `trajectory:${id}`, deleted: false },
@@ -46,6 +49,61 @@ export async function GET(
       ? { name: s.markerSource.name, url: s.markerSource.url }
       : { name: "(no marker source)", url: null },
   }));
+
+  if (wantBibtex) {
+    const slug = claim.text.slice(0, 40).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/_+$/, "");
+    const entries = transitions.map((t, i) => {
+      const year = t.occurredAt.slice(0, 4);
+      const key = `er_${slug}_${year}_${i + 1}`;
+      const note = `Epistemic transition: ${t.fromAxis ?? "—"} → ${t.toAxis} (${t.community.replace(/_/g, " ").toLowerCase()}). ${t.reason ? t.reason.replace(/[{}]/g, "") : ""}`.trim();
+      const lines = [
+        `@misc{${key},`,
+        `  title     = {${t.source.name.replace(/[{}]/g, "")}},`,
+        t.source.url ? `  howpublished = {\\url{${t.source.url}}},` : null,
+        `  year      = {${year}},`,
+        `  note      = {${note}},`,
+        `}`,
+      ].filter(Boolean).join("\n");
+      return lines;
+    });
+    const bib = [
+      `% BibTeX export — Epistemic Receipts trajectory`,
+      `% Claim: ${claim.text}`,
+      `% Generated: ${new Date().toISOString().slice(0, 10)}`,
+      "",
+      ...entries,
+    ].join("\n\n");
+    return new Response(bib, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Content-Disposition": `attachment; filename="${id}.bib"`,
+      },
+    });
+  }
+
+  if (wantRis) {
+    const entries = transitions.map((t) => {
+      const ymd = t.occurredAt.split("-");
+      const lines = [
+        "TY  - ELEC",
+        `TI  - ${t.source.name}`,
+        t.source.url ? `UR  - ${t.source.url}` : null,
+        `Y1  - ${ymd[0]}/${ymd[1] ?? "01"}/${ymd[2] ?? "01"}`,
+        `N1  - Trajectory: ${claim.text.slice(0, 200)}`,
+        `N1  - Transition: ${t.fromAxis ?? "—"} → ${t.toAxis} (${t.community.replace(/_/g, " ").toLowerCase()})`,
+        t.reason ? `AB  - ${t.reason}` : null,
+        "ER  - ",
+      ].filter(Boolean).join("\n");
+      return lines;
+    });
+    const ris = entries.join("\n\n");
+    return new Response(ris, {
+      headers: {
+        "Content-Type": "application/x-research-info-systems",
+        "Content-Disposition": `attachment; filename="${id}.ris"`,
+      },
+    });
+  }
 
   if (wantCsv) {
     const rows = [

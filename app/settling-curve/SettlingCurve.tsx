@@ -413,10 +413,20 @@ function SettlingCurveInner() {
           <p className="mt-4" style={{ fontSize: 12, color: C.faint }}>
             Each point is a dated source — the receipt for when a community changed its mind. Tap any marker.
           </p>
-          <a href={`/api/trajectories/${t.id}?format=csv`}
-            className="inline-flex items-center gap-1 mt-2" style={{ fontSize: 12, color: C.mut }}>
-            Download data (CSV) <span aria-hidden>↓</span>
-          </a>
+          <div className="flex items-center gap-3 mt-3 flex-wrap">
+            <span style={{ fontSize: 11, color: C.faint, fontFamily: "monospace", letterSpacing: "0.06em" }}>EXPORT</span>
+            {(["csv", "bibtex", "ris"] as const).map((fmt) => (
+              <a
+                key={fmt}
+                href={`/api/trajectories/${t.id}?format=${fmt}`}
+                className="inline-flex items-center gap-1"
+                style={{ fontSize: 11, color: C.mut, fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.04em", border: `1px solid ${C.panelEdge}`, borderRadius: 4, padding: "2px 7px", textDecoration: "none" }}
+              >
+                {fmt === "csv" ? "CSV" : fmt === "bibtex" ? "BibTeX" : "RIS (Zotero)"}
+                <span aria-hidden style={{ fontSize: 10 }}>↓</span>
+              </a>
+            ))}
+          </div>
         </div>
       </>
     );
