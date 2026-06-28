@@ -523,82 +523,102 @@ function SettlingCurveInner() {
             }}
           />
 
-          <div className="flex flex-wrap gap-1.5 mb-2">
-            {STATUS_FILTERS.map((f) => {
-              const on = statusFilter === f.key;
-              return (
-                <button
-                  key={f.key}
-                  type="button"
-                  onClick={() => setStatusFilter(f.key)}
-                  className="font-mono rounded-full px-2.5 py-1"
-                  style={{
-                    fontSize: 10,
-                    letterSpacing: "0.05em",
-                    textTransform: "uppercase",
-                    background: on ? `${f.color}22` : "transparent",
-                    border: `1px solid ${on ? f.color : C.panelEdge}`,
-                    color: on ? f.color : C.mut,
-                  }}
-                >
-                  {f.label}
-                </button>
-              );
-            })}
+          {/* Collapsible: Status */}
+          <div className="border-t" style={{ borderColor: C.panelEdge, marginTop: 2 }}>
+            <button
+              type="button"
+              onClick={() => setFilterOpen((s) => ({ ...s, status: !s.status }))}
+              className="w-full flex items-center justify-between px-0 py-2 font-mono"
+              style={{ fontSize: 10, color: statusFilter !== "ALL" ? C.brand : C.faint, letterSpacing: "0.07em", textTransform: "uppercase" }}
+            >
+              <span>Status{statusFilter !== "ALL" && <span style={{ color: C.brand }}> · {statusFilter}</span>}</span>
+              <span style={{ fontSize: 11, color: C.faint }}>{filterOpen.status ? "▲" : "▼"}</span>
+            </button>
+            {filterOpen.status && (
+              <div className="flex flex-wrap gap-1.5 pb-2">
+                {STATUS_FILTERS.map((f) => {
+                  const on = statusFilter === f.key;
+                  return (
+                    <button key={f.key} type="button" onClick={() => setStatusFilter(f.key)}
+                      className="font-mono rounded-full px-2.5 py-1"
+                      style={{ fontSize: 10, letterSpacing: "0.05em", textTransform: "uppercase",
+                        background: on ? `${f.color}22` : "transparent",
+                        border: `1px solid ${on ? f.color : C.panelEdge}`,
+                        color: on ? f.color : C.mut }}>
+                      {f.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-wrap gap-1.5">
-            {ERA_FILTERS.map((f) => {
-              const on = eraFilter === f.key;
-              return (
-                <button
-                  key={f.key}
-                  type="button"
-                  onClick={() => setEraFilter(f.key)}
-                  className="font-mono rounded-full px-2.5 py-1"
-                  style={{
-                    fontSize: 10,
-                    letterSpacing: "0.05em",
-                    textTransform: "uppercase",
-                    background: on ? `${C.brand}22` : "transparent",
-                    border: `1px solid ${on ? C.brand : C.panelEdge}`,
-                    color: on ? C.brand : C.mut,
-                  }}
-                >
-                  {f.label}
-                </button>
-              );
-            })}
+          {/* Collapsible: Era */}
+          <div className="border-t" style={{ borderColor: C.panelEdge }}>
+            <button
+              type="button"
+              onClick={() => setFilterOpen((s) => ({ ...s, era: !s.era }))}
+              className="w-full flex items-center justify-between px-0 py-2 font-mono"
+              style={{ fontSize: 10, color: eraFilter !== "ALL" ? C.brand : C.faint, letterSpacing: "0.07em", textTransform: "uppercase" }}
+            >
+              <span>Era{eraFilter !== "ALL" && <span style={{ color: C.brand }}> · {ERA_FILTERS.find(f => f.key === eraFilter)?.label ?? eraFilter}</span>}</span>
+              <span style={{ fontSize: 11, color: C.faint }}>{filterOpen.era ? "▲" : "▼"}</span>
+            </button>
+            {filterOpen.era && (
+              <div className="flex flex-wrap gap-1.5 pb-2">
+                {ERA_FILTERS.map((f) => {
+                  const on = eraFilter === f.key;
+                  return (
+                    <button key={f.key} type="button" onClick={() => setEraFilter(f.key)}
+                      className="font-mono rounded-full px-2.5 py-1"
+                      style={{ fontSize: 10, letterSpacing: "0.05em", textTransform: "uppercase",
+                        background: on ? `${C.brand}22` : "transparent",
+                        border: `1px solid ${on ? C.brand : C.panelEdge}`,
+                        color: on ? C.brand : C.mut }}>
+                      {f.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-wrap gap-1.5 mt-2">
-            {[
-              { key: "ALL", label: "All domains", emoji: "" },
-              { key: "history", label: "History", emoji: "🌊" },
-              { key: "medicine", label: "Medicine", emoji: "💊" },
-              { key: "astronomy", label: "Astronomy", emoji: "🔭" },
-              { key: "climate", label: "Climate", emoji: "🌍" },
-              { key: "nutrition", label: "Nutrition", emoji: "🥗" },
-            ].filter((d) => d.key === "ALL" || list.some((x) => (x.domain ?? "history") === d.key)).map((d) => {
-              const on = domainFilter === d.key;
-              return (
-                <button
-                  key={d.key}
-                  type="button"
-                  onClick={() => { setDomainFilter(d.key); if (d.key !== "ALL") setBrowseMode(true); else setBrowseMode(false); }}
-                  className="rounded-full px-2.5 py-1"
-                  style={{
-                    fontSize: 10,
-                    letterSpacing: "0.04em",
-                    background: on ? "#38bdf822" : "transparent",
-                    border: `1px solid ${on ? "#38bdf8" : C.panelEdge}`,
-                    color: on ? "#38bdf8" : C.mut,
-                  }}
-                >
-                  {d.emoji ? `${d.emoji} ${d.label}` : d.label}
-                </button>
-              );
-            })}
+          {/* Collapsible: Domain */}
+          <div className="border-t" style={{ borderColor: C.panelEdge }}>
+            <button
+              type="button"
+              onClick={() => setFilterOpen((s) => ({ ...s, domain: !s.domain }))}
+              className="w-full flex items-center justify-between px-0 py-2 font-mono"
+              style={{ fontSize: 10, color: domainFilter !== "ALL" ? "#38bdf8" : C.faint, letterSpacing: "0.07em", textTransform: "uppercase" }}
+            >
+              <span>Domain{domainFilter !== "ALL" && <span style={{ color: "#38bdf8" }}> · {domainFilter}</span>}</span>
+              <span style={{ fontSize: 11, color: C.faint }}>{filterOpen.domain ? "▲" : "▼"}</span>
+            </button>
+            {filterOpen.domain && (
+              <div className="flex flex-wrap gap-1.5 pb-2">
+                {[
+                  { key: "ALL", label: "All", emoji: "" },
+                  { key: "history", label: "History", emoji: "🌊" },
+                  { key: "medicine", label: "Medicine", emoji: "💊" },
+                  { key: "astronomy", label: "Astronomy", emoji: "🔭" },
+                  { key: "climate", label: "Climate", emoji: "🌍" },
+                  { key: "nutrition", label: "Nutrition", emoji: "🥗" },
+                ].filter((d) => d.key === "ALL" || list.some((x) => (x.domain ?? "history") === d.key)).map((d) => {
+                  const on = domainFilter === d.key;
+                  return (
+                    <button key={d.key} type="button"
+                      onClick={() => { setDomainFilter(d.key); if (d.key !== "ALL") setBrowseMode(true); else setBrowseMode(false); }}
+                      className="rounded-full px-2.5 py-1"
+                      style={{ fontSize: 10, letterSpacing: "0.04em",
+                        background: on ? "#38bdf822" : "transparent",
+                        border: `1px solid ${on ? "#38bdf8" : C.panelEdge}`,
+                        color: on ? "#38bdf8" : C.mut }}>
+                      {d.emoji ? `${d.emoji} ${d.label}` : d.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 
