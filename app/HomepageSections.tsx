@@ -377,23 +377,27 @@ function WhatsNewStrip({ items }: { items: WhatsNewItem[] }) {
 function ComingSoon() {
   return (
     <section className="max-w-6xl mx-auto px-6 pt-8 pb-16">
-      <div className="rounded-xl border border-gray-800/80 bg-gray-900/40 px-6 py-6">
+      <Link
+        href="/globe"
+        className="block rounded-xl border border-gray-800/80 bg-gray-900/40 px-6 py-6 hover:border-gray-600/80 hover:bg-gray-900/60 transition-colors group"
+      >
         <div className="flex items-start gap-3">
-          <span className="text-xl shrink-0 opacity-60" aria-hidden="true">🔜</span>
-          <div className="min-w-0">
+          <span className="text-xl shrink-0 opacity-60 group-hover:opacity-90 transition-opacity" aria-hidden="true">🌍</span>
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-semibold text-gray-400">Interactive Globe</h3>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-gray-600 border border-gray-700/60 rounded-full px-2 py-0.5">
+              <h3 className="text-sm font-semibold text-gray-400 group-hover:text-gray-200 transition-colors">Interactive Globe</h3>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700/80 border border-amber-900/40 rounded-full px-2 py-0.5">
                 In development
               </span>
             </div>
             <p className="mt-1.5 text-sm text-gray-500 leading-relaxed max-w-2xl">
               A geographic view of claims by country — where legislation was passed, where
-              science was published, where events occurred. Coming soon.
+              science was published, where events occurred.
             </p>
           </div>
+          <span className="text-gray-600 group-hover:text-gray-400 transition-colors text-sm shrink-0 self-center">→</span>
         </div>
-      </div>
+      </Link>
     </section>
   );
 }
