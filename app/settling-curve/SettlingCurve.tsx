@@ -194,6 +194,7 @@ function SettlingCurveInner() {
   const [domainFilter, setDomainFilter] = useState<string>("ALL");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [browseMode, setBrowseMode] = useState(false);
+  const [filterOpen, setFilterOpen] = useState({ status: true, era: false, domain: false });
   const [visibleCount, setVisibleCount] = useState(30);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [feedVisibleCount, setFeedVisibleCount] = useState(12);
