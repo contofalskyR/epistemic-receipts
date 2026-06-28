@@ -46,12 +46,9 @@ export default function LinkViewerProvider({ children }: { children: React.React
       if (!target || typeof target.closest !== "function") return;
       const anchor = target.closest("a") as HTMLAnchorElement | null;
       if (!anchor) return;
-      if (anchor.hasAttribute("data-no-viewer")) return;
       if (anchor.getAttribute("download") !== null) return;
-      const external = isExternal(anchor);
-      if (!external) return;
-      e.preventDefault();
-      openLink(external);
+      // Don't intercept — let target="_blank" handle it natively.
+      // The iframe viewer blocked too many academic/publisher sites.
     }
 
     document.addEventListener("click", handleClick);
