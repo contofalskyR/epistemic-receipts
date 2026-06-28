@@ -5,9 +5,10 @@ import { Link } from "lucide-react";
 interface ShareButtonsProps {
   url: string;
   text: string;
+  imageCardUrl?: string;
 }
 
-export function ShareButtons({ url, text }: ShareButtonsProps) {
+export function ShareButtons({ url, text, imageCardUrl }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
@@ -87,6 +88,25 @@ export function ShareButtons({ url, text }: ShareButtonsProps) {
         <Link size={11} aria-hidden />
         {copied ? "Copied!" : "Copy link"}
       </button>
+
+      {/* Download card */}
+      {imageCardUrl && (
+        <a
+          href={imageCardUrl}
+          download
+          style={btnBase}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#e9e9f2"; (e.currentTarget as HTMLElement).style.borderColor = "#4a4a60"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "#6b6b84"; (e.currentTarget as HTMLElement).style.borderColor = "#2a2a40"; }}
+          aria-label="Download image card"
+        >
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Card
+        </a>
+      )}
     </div>
   );
 }

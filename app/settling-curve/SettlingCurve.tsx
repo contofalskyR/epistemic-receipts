@@ -800,6 +800,7 @@ function SettlingCurveInner() {
                         <ShareButtons
                           url={typeof window !== "undefined" ? window.location.href : ""}
                           text={shareText}
+                          imageCardUrl={activeId ? `/api/og/trajectory?id=${activeId}` : undefined}
                         />
                       </div>
                     </>

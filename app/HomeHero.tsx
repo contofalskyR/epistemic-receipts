@@ -145,7 +145,7 @@ function FeaturedHeroCard({ cards }: { cards: HeroCard[] }) {
 
   return (
     <figure
-      className="relative rounded-2xl border border-gray-800 bg-gray-900/70 backdrop-blur-md px-5 pt-4 pb-4 shadow-2xl"
+      className="relative rounded-2xl border border-gray-800 bg-gray-900/70 backdrop-blur-md px-6 pt-5 pb-5 shadow-2xl"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -159,7 +159,7 @@ function FeaturedHeroCard({ cards }: { cards: HeroCard[] }) {
       </figcaption>
 
       {/* Hook — the human one-liner */}
-      <p className="mb-2 text-sm sm:text-base text-gray-100 font-medium leading-snug">
+      <p className="mb-2 text-base sm:text-lg text-gray-100 font-medium leading-snug">
         {card.hook}
       </p>
 
@@ -420,16 +420,15 @@ function HomeHeroContent({
           {/* Left: the pitch */}
           <div className="text-center lg:text-left">
             <span className="inline-block text-[11px] font-mono uppercase tracking-[0.25em] text-amber-400/90 mb-4">
-              A living knowledge graph
+              For people who demand proof
             </span>
             <h1 className="text-3xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.1]">
-              Knowledge changes.<br />We keep the receipts.
+              Some things settle.<br />We track the moment they did.
             </h1>
             <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Epistemic Receipts tracks <span className="text-gray-200">1.6M</span> scientific, legal,
-              and historical claims — and shows how each one moved from{" "}
-              <span className="text-amber-300">contested</span> to{" "}
-              <span className="text-emerald-300">settled</span> (or back) over time.
+              You form beliefs every day. Some are wrong. Epistemic Receipts traces what humanity
+              actually knew, when it knew it, and how confident we should be — across{" "}
+              <span className="text-gray-200">1.6M</span> claims in science, law, and history.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -444,6 +443,14 @@ function HomeHeroContent({
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-700 bg-gray-900/70 backdrop-blur-sm text-gray-200 font-medium text-sm hover:border-gray-500 hover:text-white transition-colors"
               >
                 Open the Globe
+              </Link>
+            </div>
+            <div className="mt-4 flex justify-center lg:justify-start">
+              <Link
+                href="/settling-curve?t=semaglutide-glp1"
+                className="text-sm text-amber-400/70 hover:text-amber-300 transition-colors underline underline-offset-4"
+              >
+                See your first receipt →
               </Link>
             </div>
           </div>
