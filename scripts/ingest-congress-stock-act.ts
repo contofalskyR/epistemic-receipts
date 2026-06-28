@@ -154,7 +154,7 @@ function buildRecord(trade: QuiverTrade): TradeRecord {
   const sourceExternalId = `${INGESTED_BY}_src_${hash}`
   const sourceName = `STOCK Act PTR — ${trade.Representative} (disclosed ${trade.ReportDate})`
   const sourceUrl = trade.BioGuideID
-    ? `https://disclosures-clerk.house.gov/FinancialDisclosure`
+    ? `https://bioguide.congress.gov/search/bio/${trade.BioGuideID}`
     : `https://disclosures-clerk.house.gov/FinancialDisclosure`
 
   return {
