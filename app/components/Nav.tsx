@@ -18,7 +18,6 @@ const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
       { href: "/claims", label: "Claims" },
       { href: "/topics", label: "Topics" },
       { href: "/fields", label: "Fields" },
-      { href: "/timeline", label: "Timeline" },
       { href: "/historical-events", label: "Events" },
       { href: "/prereq-graph", label: "Evidence Chains" },
       { href: "/books", label: "Books" },
