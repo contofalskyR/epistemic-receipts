@@ -22,11 +22,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           <main className="px-6 py-8">{children}</main>
           <FeedbackButton />
-          <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-            <span>Epistemic Receipts — {new Date().getFullYear()} · </span>
-            <a href="/corrections" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
-              Corrections
-            </a>
+          <footer className="border-t border-gray-800/50 px-6 py-4 text-center text-xs text-gray-500 space-y-1">
+            <div>
+              <span>Epistemic Receipts — {new Date().getFullYear()} · </span>
+              <a href="/corrections" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
+                Corrections
+              </a>
+            </div>
+            <div className="text-gray-600">
+              Conceptualized by Robert Contofalsky · Designed by OpenClaw
+            </div>
           </footer>
         </LinkViewerProvider>
       </body>
