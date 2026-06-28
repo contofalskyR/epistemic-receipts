@@ -420,15 +420,16 @@ function HomeHeroContent({
           {/* Left: the pitch */}
           <div className="text-center lg:text-left">
             <span className="inline-block text-[11px] font-mono uppercase tracking-[0.25em] text-amber-400/90 mb-4">
-              For people who demand proof
+              Claim provenance database
             </span>
             <h1 className="text-3xl sm:text-5xl font-semibold text-white tracking-tight leading-[1.1]">
-              Some things settle.<br />We track the moment they did.
+              Track the status of every claim — when it was established, changed, or overturned.
             </h1>
             <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              You form beliefs every day. Some are wrong. Epistemic Receipts traces what humanity
-              actually knew, when it knew it, and how confident we should be — across{" "}
-              <span className="text-gray-200">1.6M</span> claims in science, law, and history.
+              A live record of epistemic status across science, law, and history.{" "}
+              <span className="text-gray-200">1.6M</span> claims, each sourced and traceable, plus{" "}
+              <span className="text-gray-200">5,000+</span> trajectories with dated transitions.
+              Search any topic, follow the evidence trail, and see how confidence shifted over time.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -450,7 +451,7 @@ function HomeHeroContent({
                 href="/settling-curve?t=semaglutide-glp1"
                 className="text-sm text-amber-400/70 hover:text-amber-300 transition-colors underline underline-offset-4"
               >
-                See your first receipt →
+                View a sample trajectory: semaglutide (GLP-1) →
               </Link>
             </div>
           </div>
