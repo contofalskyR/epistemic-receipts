@@ -11,6 +11,16 @@ import {
   presidentLabel,
 } from "@/lib/us-presidents";
 
+const C = {
+  bg: "#0a0a0a",
+  panel: "#10101c",
+  panelEdge: "#23233a",
+  ink: "#e9e9f2",
+  mut: "#8b8ba3",
+  faint: "#55556e",
+  brand: "#d4a853",
+} as const;
+
 type VoteHit = {
   id: string;
   chamber: string;
@@ -44,17 +54,19 @@ const RESULTS = [
   { value: "tied", label: "Tied" },
 ] as const;
 
-const RESULT_STYLE: Record<string, string> = {
-  passed: "bg-green-950 text-green-400 border border-green-900/50",
-  failed: "bg-red-950 text-red-400 border border-red-900/50",
-  tied: "bg-yellow-950 text-yellow-400 border border-yellow-900/50",
-  unknown: "bg-gray-800 text-gray-500 border border-gray-700/50",
-};
+function resultStyle(r: string): { color: string; bg: string; border: string } {
+  if (r === "passed") return { color: "#4ade80", bg: "rgba(22,163,74,0.15)", border: "rgba(22,163,74,0.3)" };
+  if (r === "failed") return { color: "#f87171", bg: "rgba(220,38,38,0.15)", border: "rgba(220,38,38,0.3)" };
+  if (r === "tied") return { color: "#fbbf24", bg: "rgba(217,119,6,0.15)", border: "rgba(217,119,6,0.3)" };
+  return { color: C.mut, bg: "rgba(100,100,120,0.15)", border: C.faint };
+}
 
-const CHAMBER_STYLE: Record<string, string> = {
-  House: "bg-blue-950 text-blue-300 border border-blue-900/50",
-  Senate: "bg-purple-950 text-purple-300 border border-purple-900/50",
-};
+function chamberStyle(ch: string): { color: string; bg: string; border: string } {
+  const c = ch?.toLowerCase();
+  if (c === "house" || c === "house of representatives") return { color: "#93c5fd", bg: "rgba(37,99,235,0.15)", border: "rgba(59,130,246,0.3)" };
+  if (c === "senate") return { color: "#c4b5fd", bg: "rgba(109,40,217,0.15)", border: "rgba(139,92,246,0.3)" };
+  return { color: C.mut, bg: "rgba(100,100,120,0.15)", border: C.faint };
+}
 
 function truncate(text: string, n = 200): string {
   if (text.length <= n) return text;
@@ -69,6 +81,169 @@ function formatDate(iso: string | null): string {
 }
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+function Chip({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        background: active ? C.brand : C.panel,
+        border: `1px solid ${active ? C.brand : C.panelEdge}`,
+        borderRadius: "20px",
+        padding: "0.28rem 0.7rem",
+        fontSize: "0.76rem",
+        cursor: "pointer",
+        color: active ? "#000" : C.mut,
+        fontWeight: active ? 600 : 400,
+        transition: "all 0.15s",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {label}
+    </button>
+  );
+}
+
+function VoteRow({ vote }: { vote: VoteHit }) {
+  const [hovered, setHovered] = useState(false);
+  const yes = vote.yesCount ?? 0;
+  const no = vote.noCount ?? 0;
+  const abs = vote.abstainCount ?? 0;
+  const totalVoters = yes + no + abs;
+  const yesPct = totalVoters > 0 ? (yes / totalVoters) * 100 : 0;
+  const noPct = totalVoters > 0 ? (no / totalVoters) * 100 : 0;
+  const result = vote.result ?? "unknown";
+  const rs = resultStyle(result);
+  const cs = chamberStyle(vote.chamber);
+
+  return (
+    <Link
+      href={`/votes/${vote.id}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: "block",
+        background: C.panel,
+        border: `1px solid ${hovered ? C.brand + "44" : C.panelEdge}`,
+        borderRadius: "10px",
+        padding: "0.9rem 1.1rem",
+        textDecoration: "none",
+        transition: "border-color 0.15s",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p style={{
+            fontSize: "0.9rem",
+            color: hovered ? C.ink : "#d0d0e0",
+            lineHeight: 1.45,
+            margin: 0,
+            marginBottom: "0.45rem",
+            transition: "color 0.1s",
+          }}>
+            {truncate(vote.sourceName)}
+          </p>
+          <div style={{ display: "flex", gap: "0.45rem", alignItems: "center", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "0.72rem", color: C.mut, fontFamily: "monospace" }}>
+              {formatDate(vote.voteDate)}
+            </span>
+            <span style={{
+              fontSize: "0.68rem",
+              padding: "0.15rem 0.5rem",
+              borderRadius: "10px",
+              color: cs.color,
+              background: cs.bg,
+              border: `1px solid ${cs.border}`,
+              fontWeight: 500,
+            }}>
+              {vote.chamber}
+            </span>
+            <span style={{
+              fontSize: "0.68rem",
+              padding: "0.15rem 0.5rem",
+              borderRadius: "10px",
+              color: rs.color,
+              background: rs.bg,
+              border: `1px solid ${rs.border}`,
+              fontWeight: 600,
+              textTransform: "uppercase" as const,
+            }}>
+              {result}
+            </span>
+            {vote.topics.slice(0, 3).map(t => (
+              <span key={t} style={{
+                fontSize: "0.65rem",
+                padding: "0.12rem 0.4rem",
+                borderRadius: "5px",
+                color: C.faint,
+                background: "rgba(80,80,120,0.2)",
+                fontFamily: "monospace",
+              }}>
+                {t}
+              </span>
+            ))}
+            {vote.sourceUrl && (
+              <a
+                href={vote.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  fontSize: "0.65rem",
+                  color: C.brand,
+                  textDecoration: "none",
+                  fontWeight: 500,
+                  opacity: 0.8,
+                }}
+              >
+                Voteview ↗
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div style={{ flexShrink: 0, textAlign: "right" }}>
+          <div style={{ fontFamily: "monospace", fontSize: "0.78rem", whiteSpace: "nowrap" }}>
+            <span style={{ color: "#4ade80" }}>{yes.toLocaleString()}</span>
+            <span style={{ color: C.faint, margin: "0 0.25rem" }}>·</span>
+            <span style={{ color: "#f87171" }}>{no.toLocaleString()}</span>
+            {abs > 0 && (
+              <>
+                <span style={{ color: C.faint, margin: "0 0.25rem" }}>·</span>
+                <span style={{ color: C.mut }}>{abs.toLocaleString()}</span>
+              </>
+            )}
+          </div>
+          <div style={{ fontSize: "0.6rem", color: C.faint, marginTop: "0.2rem", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+            yea · nay{abs > 0 ? " · abs" : ""}
+          </div>
+        </div>
+      </div>
+
+      {totalVoters > 0 && (
+        <div style={{
+          marginTop: "0.65rem",
+          height: "4px",
+          borderRadius: "4px",
+          overflow: "hidden",
+          background: C.panelEdge,
+          display: "flex",
+        }}>
+          <div style={{ width: `${yesPct}%`, background: "rgba(74,222,128,0.6)" }} />
+          <div style={{ width: `${noPct}%`, background: "rgba(248,113,113,0.6)" }} />
+        </div>
+      )}
+    </Link>
+  );
+}
 
 export default function VotesClient() {
   const router = useRouter();
@@ -109,16 +284,14 @@ export default function VotesClient() {
   }, [urlQ]);
 
   const pushUrl = useCallback(
-    (
-      overrides: Partial<{
-        q: string;
-        chamber: string;
-        result: string;
-        dateFrom: string;
-        dateTo: string;
-        offset: number;
-      }>,
-    ) => {
+    (overrides: Partial<{
+      q: string;
+      chamber: string;
+      result: string;
+      dateFrom: string;
+      dateTo: string;
+      offset: number;
+    }>) => {
       const next = new URLSearchParams(searchParams.toString());
       if (overrides.q !== undefined) {
         if (overrides.q) next.set("q", overrides.q);
@@ -140,7 +313,6 @@ export default function VotesClient() {
         if (overrides.dateTo) next.set("dateTo", overrides.dateTo);
         else next.delete("dateTo");
       }
-      // Legacy: clear year whenever date range changes
       if (overrides.dateFrom !== undefined || overrides.dateTo !== undefined) {
         next.delete("year");
       }
@@ -217,234 +389,182 @@ export default function VotesClient() {
   const showingFrom = total === 0 ? 0 : urlOffset + 1;
   const showingTo = Math.min(total, urlOffset + (data?.votes.length ?? 0));
 
+  const noDateFilter = !urlDateFrom && !urlDateTo;
+  const eraAllActive = noDateFilter && !selectedPresidentKey;
+
   return (
-    <div className="space-y-6">
-      <div>
-        <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Votes</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">Congressional Roll Calls</h1>
-        <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">
-          113,000+ House and Senate roll call votes, 1789–present, sourced from Voteview. Search by description, filter by chamber, result, presidency, or era.
-        </p>
+    <div style={{
+      background: C.bg,
+      minHeight: "100vh",
+      marginTop: "-2rem",
+      marginLeft: "-1.5rem",
+      marginRight: "-1.5rem",
+    }}>
+      {/* Sub-nav */}
+      <div style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 30,
+        background: C.bg,
+        borderBottom: `1px solid ${C.panelEdge}`,
+        padding: "0 1.5rem",
+        display: "flex",
+        alignItems: "center",
+        gap: "0.5rem",
+        height: "48px",
+        fontSize: "0.82rem",
+      }}>
+        <a href="/" style={{ color: C.brand, textDecoration: "none", fontWeight: 500 }}>
+          ⬡ Epistemic Receipts
+        </a>
+        <span style={{ color: C.faint }}>/</span>
+        <span style={{ color: C.ink, fontWeight: 600 }}>Congressional Roll Calls</span>
       </div>
 
-      <div className="space-y-3">
-        <input
-          type="text"
-          value={input}
-          onChange={e => onInputChange(e.target.value)}
-          placeholder="Search vote description…"
-          className="w-full bg-gray-900 border border-gray-700 text-gray-100 text-sm rounded px-3 py-2 placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
-        />
-
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Chamber</span>
-          {CHAMBERS.map(c => {
-            const active = urlChamber === c.value;
-            return (
-              <button
-                key={c.value}
-                onClick={() => pushUrl({ chamber: c.value, offset: 0 })}
-                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                  active
-                    ? "bg-white text-gray-950 border-white font-medium"
-                    : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
-                }`}
-              >
-                {c.label}
-              </button>
-            );
-          })}
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "2rem 2rem 3rem" }}>
+        {/* Header */}
+        <div style={{ marginBottom: "1.75rem" }}>
+          <p style={{ fontSize: "0.7rem", color: C.mut, textTransform: "uppercase", letterSpacing: "0.1em", margin: 0, marginBottom: "0.35rem" }}>
+            Votes
+          </p>
+          <h1 style={{ fontSize: "1.75rem", fontWeight: 700, margin: 0, marginBottom: "0.4rem", color: C.ink }}>
+            Congressional <span style={{ color: C.brand }}>Roll Calls</span>
+          </h1>
+          <p style={{ color: C.mut, fontSize: "0.88rem", maxWidth: "580px", lineHeight: 1.55, margin: 0 }}>
+            113,000+ House and Senate roll call votes, 1789–present, sourced from Voteview.
+            Search by description, filter by chamber, result, presidency, or era.
+          </p>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Result</span>
-          {RESULTS.map(r => {
-            const active = urlResult === r.value;
-            return (
-              <button
-                key={r.value}
-                onClick={() => pushUrl({ result: r.value, offset: 0 })}
-                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                  active
-                    ? "bg-white text-gray-950 border-white font-medium"
-                    : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
-                }`}
-              >
-                {r.label}
-              </button>
-            );
-          })}
-        </div>
+        {/* Filters */}
+        <div style={{
+          background: C.panel,
+          border: `1px solid ${C.panelEdge}`,
+          borderRadius: "12px",
+          padding: "1.1rem 1.25rem",
+          marginBottom: "1.25rem",
+          display: "flex",
+          flexDirection: "column" as const,
+          gap: "0.85rem",
+        }}>
+          {/* Search */}
+          <input
+            type="text"
+            value={input}
+            onChange={e => onInputChange(e.target.value)}
+            placeholder="Search vote description…"
+            style={{
+              width: "100%",
+              background: C.bg,
+              border: `1px solid ${C.panelEdge}`,
+              borderRadius: "8px",
+              padding: "0.5rem 0.9rem",
+              color: C.ink,
+              fontSize: "0.88rem",
+              outline: "none",
+              boxSizing: "border-box" as const,
+            }}
+          />
 
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Presidency</span>
-          <select
-            value={selectedPresidentKey || ""}
-            onChange={e => onPresidentChange(e.target.value)}
-            className="bg-gray-800 border border-gray-700 text-gray-200 text-xs rounded px-2 py-1 focus:outline-none focus:border-gray-500 transition-colors"
-          >
-            <option value="">All Presidencies</option>
-            {US_PRESIDENTS.map(p => (
-              <option key={presidentKey(p)} value={presidentKey(p)}>
-                {presidentLabel(p)}
-              </option>
-            ))}
-          </select>
-          {matchedPresident && (
-            <span className="text-[10px] text-gray-600 font-mono uppercase tracking-widest">
-              ({partyAbbrev(matchedPresident.party)})
-            </span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Era</span>
-          <button
-            onClick={() => onEraChange("")}
-            className={`text-xs px-3 py-1 rounded-full transition-colors ${
-              !selectedEraLabel && !selectedPresidentKey
-                ? "bg-blue-600 text-white"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-            }`}
-          >
-            All
-          </button>
-          {ERAS.map(e => {
-            const active = selectedEraLabel === e.label;
-            return (
-              <button
-                key={e.label}
-                onClick={() => onEraChange(e.label)}
-                className={`text-xs px-3 py-1 rounded-full transition-colors ${
-                  active
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-                }`}
-              >
-                {e.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {loading && <p className="text-sm text-gray-500">Loading…</p>}
-      {error && <p className="text-sm text-red-400">{error}</p>}
-
-      {data && !error && (
-        <>
-          <div className="flex items-center justify-between text-xs text-gray-500">
-            <span>
-              {total === 0
-                ? "No matching votes"
-                : `Showing ${showingFrom.toLocaleString()}–${showingTo.toLocaleString()} of ${total.toLocaleString()}`}
-            </span>
-          </div>
-
-          <div className="space-y-2">
-            {data.votes.map(v => (
-              <VoteRow key={v.id} vote={v} />
+          {/* Chamber */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", flexWrap: "wrap" as const }}>
+            <span style={{ fontSize: "0.7rem", color: C.mut, textTransform: "uppercase", letterSpacing: "0.08em", marginRight: "0.2rem" }}>Chamber</span>
+            {CHAMBERS.map(c => (
+              <Chip key={c.value} label={c.label} active={urlChamber === c.value}
+                onClick={() => pushUrl({ chamber: c.value, offset: 0 })} />
             ))}
           </div>
 
-          {total > PAGE_SIZE && (
-            <div className="flex items-center gap-3 text-xs text-gray-500 pt-2">
-              <button
-                onClick={() => pushUrl({ offset: Math.max(0, urlOffset - PAGE_SIZE) })}
-                disabled={urlOffset === 0}
-                className="hover:text-gray-300 disabled:opacity-30 transition-colors"
-              >
-                ← Previous
-              </button>
-              <span className="text-gray-700">·</span>
-              <span>
-                Page {currentPage.toLocaleString()} of {pageCount.toLocaleString()}
+          {/* Result */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", flexWrap: "wrap" as const }}>
+            <span style={{ fontSize: "0.7rem", color: C.mut, textTransform: "uppercase", letterSpacing: "0.08em", marginRight: "0.2rem" }}>Result</span>
+            {RESULTS.map(r => (
+              <Chip key={r.value} label={r.label} active={urlResult === r.value}
+                onClick={() => pushUrl({ result: r.value, offset: 0 })} />
+            ))}
+          </div>
+
+          {/* Presidency */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" as const }}>
+            <span style={{ fontSize: "0.7rem", color: C.mut, textTransform: "uppercase", letterSpacing: "0.08em" }}>Presidency</span>
+            <select
+              value={selectedPresidentKey || ""}
+              onChange={e => onPresidentChange(e.target.value)}
+              style={{
+                background: C.bg,
+                border: `1px solid ${C.panelEdge}`,
+                color: C.ink,
+                fontSize: "0.8rem",
+                borderRadius: "6px",
+                padding: "0.28rem 0.6rem",
+                outline: "none",
+                cursor: "pointer",
+              }}
+            >
+              <option value="">All Presidencies</option>
+              {US_PRESIDENTS.map(p => (
+                <option key={presidentKey(p)} value={presidentKey(p)}>
+                  {presidentLabel(p)}
+                </option>
+              ))}
+            </select>
+            {matchedPresident && (
+              <span style={{ fontSize: "0.68rem", color: C.faint, fontFamily: "monospace", textTransform: "uppercase" }}>
+                ({partyAbbrev(matchedPresident.party)})
               </span>
-              <span className="text-gray-700">·</span>
-              <button
-                onClick={() => pushUrl({ offset: urlOffset + PAGE_SIZE })}
-                disabled={currentPage >= pageCount}
-                className="hover:text-gray-300 disabled:opacity-30 transition-colors"
-              >
-                Next →
-              </button>
-            </div>
-          )}
-        </>
-      )}
+            )}
+          </div>
+
+          {/* Era */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", flexWrap: "wrap" as const }}>
+            <span style={{ fontSize: "0.7rem", color: C.mut, textTransform: "uppercase", letterSpacing: "0.08em", marginRight: "0.2rem" }}>Era</span>
+            <Chip label="All" active={eraAllActive} onClick={() => onEraChange("")} />
+            {ERAS.map(e => (
+              <Chip key={e.label} label={e.label} active={selectedEraLabel === e.label}
+                onClick={() => onEraChange(e.label)} />
+            ))}
+          </div>
+        </div>
+
+        {/* Results meta */}
+        <div style={{ marginBottom: "0.75rem", fontSize: "0.78rem", color: C.mut }}>
+          {loading
+            ? "Loading…"
+            : error
+            ? <span style={{ color: "#f87171" }}>{error}</span>
+            : total === 0
+            ? "No matching votes"
+            : `Showing ${showingFrom.toLocaleString()}–${showingTo.toLocaleString()} of ${total.toLocaleString()}`}
+        </div>
+
+        {/* Vote list */}
+        <div style={{ display: "flex", flexDirection: "column" as const, gap: "0.55rem" }}>
+          {data?.votes.map(v => <VoteRow key={v.id} vote={v} />)}
+        </div>
+
+        {/* Pagination */}
+        {data && total > PAGE_SIZE && (
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginTop: "1.5rem", fontSize: "0.82rem", color: C.mut }}>
+            <button
+              onClick={() => pushUrl({ offset: Math.max(0, urlOffset - PAGE_SIZE) })}
+              disabled={urlOffset === 0}
+              style={{ background: "none", border: "none", cursor: urlOffset === 0 ? "not-allowed" : "pointer", color: urlOffset === 0 ? C.faint : C.mut }}
+            >
+              ← Previous
+            </button>
+            <span style={{ color: C.faint }}>·</span>
+            <span>Page {currentPage.toLocaleString()} of {pageCount.toLocaleString()}</span>
+            <span style={{ color: C.faint }}>·</span>
+            <button
+              onClick={() => pushUrl({ offset: urlOffset + PAGE_SIZE })}
+              disabled={currentPage >= pageCount}
+              style={{ background: "none", border: "none", cursor: currentPage >= pageCount ? "not-allowed" : "pointer", color: currentPage >= pageCount ? C.faint : C.mut }}
+            >
+              Next →
+            </button>
+          </div>
+        )}
+      </div>
     </div>
-  );
-}
-
-function VoteRow({ vote }: { vote: VoteHit }) {
-  const yes = vote.yesCount ?? 0;
-  const no = vote.noCount ?? 0;
-  const abs = vote.abstainCount ?? 0;
-  const totalVoters = yes + no + abs;
-  const yesPct = totalVoters > 0 ? (yes / totalVoters) * 100 : 0;
-  const noPct = totalVoters > 0 ? (no / totalVoters) * 100 : 0;
-  const result = vote.result ?? "unknown";
-  const resultStyle = RESULT_STYLE[result] ?? RESULT_STYLE.unknown;
-  const chamberStyle = CHAMBER_STYLE[vote.chamber] ?? "bg-gray-800 text-gray-400 border border-gray-700/50";
-
-  return (
-    <Link
-      href={`/votes/${vote.id}`}
-      className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group"
-    >
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          <p className="text-sm text-gray-200 group-hover:text-white leading-relaxed">{truncate(vote.sourceName)}</p>
-          <div className="flex items-center gap-2 mt-2 flex-wrap">
-            <span className="text-xs text-gray-500 font-mono">{formatDate(vote.voteDate)}</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${chamberStyle}`}>
-              {vote.chamber}
-            </span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-medium uppercase ${resultStyle}`}>
-              {result}
-            </span>
-            {vote.topics.slice(0, 3).map(t => (
-              <span
-                key={t}
-                className="text-xs px-1.5 py-0.5 rounded font-mono bg-gray-800/60 text-gray-500"
-              >
-                {t}
-              </span>
-            ))}
-            {vote.sourceUrl && (
-              <a
-                href={vote.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={e => e.stopPropagation()}
-                className="text-[10px] uppercase tracking-widest text-gray-600 hover:text-blue-300 transition-colors"
-              >
-                Voteview ↗
-              </a>
-            )}
-          </div>
-        </div>
-        <div className="shrink-0 text-right">
-          <div className="text-xs text-gray-400 font-mono whitespace-nowrap">
-            <span className="text-green-400">{yes.toLocaleString()}</span>
-            <span className="text-gray-600 mx-1">·</span>
-            <span className="text-red-400">{no.toLocaleString()}</span>
-            {abs > 0 && (
-              <>
-                <span className="text-gray-600 mx-1">·</span>
-                <span className="text-gray-500">{abs.toLocaleString()}</span>
-              </>
-            )}
-          </div>
-          <div className="text-[10px] text-gray-600 mt-0.5 uppercase tracking-widest">yea · nay{abs > 0 ? " · abs" : ""}</div>
-        </div>
-      </div>
-      {totalVoters > 0 && (
-        <div className="mt-3 flex h-1.5 overflow-hidden rounded-full bg-gray-800">
-          <div className="bg-green-500/70" style={{ width: `${yesPct}%` }} />
-          <div className="bg-red-500/70" style={{ width: `${noPct}%` }} />
-        </div>
-      )}
-    </Link>
   );
 }
