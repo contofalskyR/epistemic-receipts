@@ -459,9 +459,9 @@ function SettlingCurveInner() {
             <div className="px-5 pb-5 border-t" style={{ borderColor: C.panelEdge }}>
               <p className="mt-3 mb-3" style={{ fontSize: 14, color: C.ink }}>{detail.reason}</p>
               {detail.source.url ? (
-                <a href={detail.source.url} target="_blank" rel="noreferrer"
+                <a href={detail.source.url}
                   className="inline-flex items-center gap-1" style={{ fontSize: 13, color: C.brand }}>
-                  {detail.source.name} <span aria-hidden>↗</span>
+                  {detail.source.name}
                 </a>
               ) : (
                 <span style={{ fontSize: 13, color: C.mut }}>{detail.source.name}</span>
