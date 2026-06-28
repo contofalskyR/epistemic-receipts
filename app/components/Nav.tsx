@@ -4,23 +4,16 @@ import Link from "next/link";
 
 type NavItem = { href: string; label: string; desc?: string };
 
-// Three product buckets. Every existing route is preserved here so nothing is lost —
-// flagship destinations carry a one-line description; the long tail stays as plain links.
-const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
+const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[] = [
   {
     label: "Explore",
     blurb: "Browse the knowledge graph",
     items: [
       { href: "/settling-curve", label: "Settling Curve", desc: "How a claim settled — or unraveled — over time" },
-      { href: "/globe", label: "Globe", desc: "Claims by country, on an animated timeline" },
       { href: "/search", label: "Search", desc: "Full-text across 1.6M claims" },
       { href: "/trajectories", label: "Trajectory Encyclopedia" },
-      { href: "/claims", label: "Claims" },
-      { href: "/topics", label: "Topics" },
       { href: "/fields", label: "Topic Taxonomies" },
-      { href: "/historical-events", label: "Events" },
       { href: "/prereq-graph", label: "Evidence Chains" },
-      { href: "/books", label: "Books" },
     ],
   },
   {
@@ -28,26 +21,17 @@ const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
     blurb: "Quantitative views & politics",
     items: [
       { href: "/analysis/settling-rate", label: "Settling Rate", desc: "How fast knowledge settles, by decade and over time" },
-      { href: "/analysis/representation", label: "Representation Gap", desc: "Constituent opinion vs. how they voted" },
       { href: "/congress-trades", label: "Congress Trades", desc: "Legislator trades vs. their voting record" },
-      { href: "/stats", label: "Stats", desc: "Polarization, pass rates, party-line trends" },
-      { href: "/analysis/votes", label: "Vote Analysis" },
-      { href: "/analysis/topics", label: "Topic Trends" },
       { href: "/votes", label: "Browse Votes" },
       { href: "/members", label: "Members" },
-      { href: "/legislation", label: "Legislation" },
-      { href: "/foreign-legislation", label: "Global Legislation" },
       { href: "/financial", label: "Financial" },
-      { href: "/stats/media-coverage", label: "Media Coverage" },
     ],
   },
   {
     label: "Discover",
-    blurb: "What changed & where data comes from",
+    blurb: "Flagship destinations",
     items: [
       { href: "/retraction-explorer", label: "Retraction Explorer", desc: "26k+ retractions and who still cites them" },
-      { href: "/retraction-wall", label: "Retraction Wall" },
-      { href: "/drug-arc", label: "Drug Arc" },
       { href: "/opinions", label: "Court Opinions" },
       { href: "/law-settler", label: "Law Settler Curve" },
       { href: "/bookmarks", label: "Bookmarks" },
@@ -64,6 +48,27 @@ const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
       { href: "/glossary", label: "Glossary" },
     ],
   },
+  {
+    label: "Lab",
+    blurb: "In development — rough edges expected",
+    lab: true,
+    items: [
+      { href: "/globe", label: "Globe" },
+      { href: "/claims", label: "Claims" },
+      { href: "/topics", label: "Topics" },
+      { href: "/historical-events", label: "Events" },
+      { href: "/books", label: "Books" },
+      { href: "/stats/media-coverage", label: "Media Coverage" },
+      { href: "/foreign-legislation", label: "Global Legislation" },
+      { href: "/legislation", label: "Legislation" },
+      { href: "/analysis/topics", label: "Topic Trends" },
+      { href: "/analysis/votes", label: "Vote Analysis" },
+      { href: "/stats", label: "Statistics" },
+      { href: "/analysis/representation", label: "Representation" },
+      { href: "/retraction-wall", label: "Retraction Wall" },
+      { href: "/drug-arc", label: "Drug Arc" },
+    ],
+  },
 ];
 
 function Dropdown({
@@ -73,6 +78,7 @@ function Dropdown({
   open,
   onOpen,
   onClose,
+  lab = false,
 }: {
   label: string;
   blurb: string;
@@ -80,6 +86,7 @@ function Dropdown({
   open: boolean;
   onOpen: () => void;
   onClose: () => void;
+  lab?: boolean;
 }) {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -97,25 +104,38 @@ function Dropdown({
       <button
         type="button"
         onClick={() => (open ? onClose() : onOpen())}
-        className={`transition-colors ${open ? "text-white" : "text-gray-400 hover:text-white"}`}
+        className={`transition-colors ${open
+          ? lab ? "text-amber-400" : "text-white"
+          : lab ? "text-amber-600 hover:text-amber-400" : "text-gray-400 hover:text-white"
+        }`}
         aria-haspopup="true"
         aria-expanded={open}
       >
-        {label} <span className="text-gray-600 text-xs">▾</span>
+        {lab && <span className="mr-1 text-[10px]">⚗</span>}
+        {label} <span className={`text-xs ${lab ? "text-amber-800" : "text-gray-600"}`}>▾</span>
       </button>
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 w-72 rounded-lg border border-gray-700 bg-gray-900 py-2 shadow-2xl">
-          <div className="px-4 pb-2 mb-1 border-b border-gray-800">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500">{blurb}</span>
+        <div className={`absolute left-0 top-full z-50 mt-1 w-72 rounded-lg border py-2 shadow-2xl ${
+          lab
+            ? "border-amber-900/50 bg-gray-950"
+            : "border-gray-700 bg-gray-900"
+        }`}>
+          <div className={`px-4 pb-2 mb-1 border-b ${lab ? "border-amber-900/30" : "border-gray-800"}`}>
+            <span className={`text-[10px] font-mono uppercase tracking-widest ${lab ? "text-amber-700" : "text-gray-500"}`}>{blurb}</span>
           </div>
+          {lab && (
+            <div className="px-4 py-1.5 mb-1">
+              <span className="text-[10px] text-amber-700/70">Pages below are works-in-progress. Links work; polish does not.</span>
+            </div>
+          )}
           {items.map((i) => (
             <Link
               key={i.href}
               href={i.href}
               onClick={onClose}
-              className="block px-4 py-1.5 hover:bg-gray-800 transition-colors group"
+              className={`block px-4 py-1.5 transition-colors group ${lab ? "hover:bg-amber-950/30" : "hover:bg-gray-800"}`}
             >
-              <span className="block text-sm text-gray-200 group-hover:text-white">{i.label}</span>
+              <span className={`block text-sm group-hover:text-white ${lab ? "text-amber-200/70" : "text-gray-200"}`}>{i.label}</span>
               {i.desc && (
                 <span className="block text-xs text-gray-500 leading-snug">{i.desc}</span>
               )}
@@ -179,6 +199,7 @@ export default function Nav() {
             label={g.label}
             blurb={g.blurb}
             items={g.items}
+            lab={g.lab}
             open={openGroup === g.label}
             onOpen={() => setOpenGroup(g.label)}
             onClose={() =>
@@ -234,15 +255,15 @@ export default function Nav() {
           </Link>
           {GROUPS.map((g) => (
             <div key={g.label} className="mt-3">
-              <div className="text-xs uppercase tracking-wider text-gray-500 py-1.5">
-                {g.label}
+              <div className={`text-xs uppercase tracking-wider py-1.5 ${g.lab ? "text-amber-700" : "text-gray-500"}`}>
+                {g.lab && "⚗ "}{g.label}
               </div>
               {g.items.map((i) => (
                 <Link
                   key={i.href}
                   href={i.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block py-1.5 pl-3 text-gray-400 hover:text-white transition-colors"
+                  className={`block py-1.5 pl-3 hover:text-white transition-colors ${g.lab ? "text-amber-700/60" : "text-gray-400"}`}
                 >
                   {i.label}
                 </Link>
