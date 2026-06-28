@@ -22,6 +22,16 @@ type Trade = {
   excessReturn: number | null;
 };
 
+type MemberSummary = {
+  memberName: string;
+  party: string;
+  chamber: string;
+  bioguideId: string | null;
+  tradeCount: number;
+  tickers: string[];
+  totalAmountMin: number | null;
+};
+
 const S = {
   bg: "#080810",
   surface: "#0e0e1c",
@@ -380,6 +390,110 @@ function TradeCard({ trade }: { trade: Trade }) {
   );
 }
 
+function MemberCard({
+  member,
+  onSelect,
+}: {
+  member: MemberSummary;
+  onSelect: (name: string) => void;
+}) {
+  const partyColor = member.party === "D" ? S.dem : member.party === "R" ? S.rep : S.muted;
+
+  return (
+    <div
+      onClick={() => onSelect(member.memberName)}
+      style={{
+        background: S.surface,
+        border: `1px solid ${S.border}`,
+        borderRadius: "12px",
+        padding: "1rem 1.25rem",
+        cursor: "pointer",
+        transition: "border-color 0.15s",
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.6rem",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLDivElement).style.borderColor = "#2e2e50";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLDivElement).style.borderColor = S.border;
+      }}
+    >
+      {/* Name + badges row */}
+      <div style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
+        <div style={{ flex: 1, fontWeight: 700, fontSize: "0.92rem", color: S.text, lineHeight: 1.3 }}>
+          {member.memberName || "Unknown"}
+        </div>
+        <div style={{ display: "flex", gap: "0.35rem", flexShrink: 0 }}>
+          <span
+            style={{
+              background: partyColor + "25",
+              color: partyColor,
+              border: `1px solid ${partyColor}55`,
+              borderRadius: "5px",
+              padding: "0.1rem 0.45rem",
+              fontSize: "0.7rem",
+              fontWeight: 700,
+            }}
+          >
+            {member.party || "?"}
+          </span>
+          <span
+            style={{
+              background: "rgba(136,136,152,0.12)",
+              color: S.muted,
+              border: `1px solid rgba(136,136,152,0.2)`,
+              borderRadius: "5px",
+              padding: "0.1rem 0.45rem",
+              fontSize: "0.7rem",
+              fontWeight: 500,
+            }}
+          >
+            {member.chamber || "?"}
+          </span>
+        </div>
+      </div>
+
+      {/* Trade count */}
+      <div style={{ display: "flex", alignItems: "baseline", gap: "0.4rem" }}>
+        <span style={{ fontSize: "1.6rem", fontWeight: 700, color: S.accent, lineHeight: 1 }}>
+          {member.tradeCount}
+        </span>
+        <span style={{ fontSize: "0.75rem", color: S.muted }}>trades</span>
+      </div>
+
+      {/* Tickers */}
+      {member.tickers.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
+          {member.tickers.map((t) => (
+            <span
+              key={t}
+              style={{
+                background: S.surface2,
+                border: `1px solid ${S.border}`,
+                borderRadius: "4px",
+                padding: "0.1rem 0.4rem",
+                fontSize: "0.68rem",
+                fontFamily: "monospace",
+                color: S.muted,
+              }}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div style={{ fontSize: "0.72rem", color: S.muted + "88", marginTop: "0.1rem" }}>
+        Click to filter trades →
+      </div>
+    </div>
+  );
+}
+
+type SortMember = "count" | "name" | "party";
+
 export default function CongressTradesClient({
   initialStats,
 }: {
@@ -388,50 +502,78 @@ export default function CongressTradesClient({
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const urlView = (searchParams.get("view") ?? "trades") as "trades" | "members";
   const urlChamber = searchParams.get("chamber") ?? "all";
   const urlParty = searchParams.get("party") ?? "all";
   const urlCorrelation = searchParams.get("correlation") ?? "all";
   const urlQ = searchParams.get("q") ?? "";
   const urlPage = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10) || 1);
+  const urlSortBy = (searchParams.get("sortBy") ?? "date") as "date" | "amount" | "member" | "disclose";
 
   const [trades, setTrades] = useState<Trade[]>([]);
   const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [qInput, setQInput] = useState(urlQ);
+  const [loadingTrades, setLoadingTrades] = useState(true);
 
+  const [members, setMembers] = useState<MemberSummary[]>([]);
+  const [loadingMembers, setLoadingMembers] = useState(false);
+  const [memberSort, setMemberSort] = useState<SortMember>("count");
+
+  const [qInput, setQInput] = useState(urlQ);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pushUrl = useCallback(
     (overrides: Record<string, string>) => {
       const p = new URLSearchParams(searchParams.toString());
       for (const [k, v] of Object.entries(overrides)) {
-        if (!v || v === "all" || v === "1") p.delete(k);
-        else p.set(k, v);
+        if (!v || v === "all" || v === "1" || v === "date" || v === "trades" || v === "count") {
+          p.delete(k);
+        } else {
+          p.set(k, v);
+        }
       }
       router.push(`/congress-trades?${p.toString()}`, { scroll: false });
     },
     [router, searchParams]
   );
 
+  // Fetch trades (Trades view)
   useEffect(() => {
-    setLoading(true);
+    if (urlView !== "trades") return;
+    setLoadingTrades(true);
     const params = new URLSearchParams();
     if (urlChamber !== "all") params.set("chamber", urlChamber);
     if (urlParty !== "all") params.set("party", urlParty);
     if (urlQ) params.set("q", urlQ);
     if (urlPage > 1) params.set("page", String(urlPage));
-
     if (urlCorrelation !== "all") params.set("correlation", urlCorrelation);
+    if (urlSortBy !== "date") params.set("sortBy", urlSortBy);
 
     fetch(`/api/congress-trades?${params.toString()}`)
       .then((r) => r.json())
       .then((d) => {
         setTrades(d.trades ?? []);
         setTotal(d.total ?? 0);
-        setLoading(false);
+        setLoadingTrades(false);
       })
-      .catch(() => setLoading(false));
-  }, [urlChamber, urlParty, urlCorrelation, urlQ, urlPage]);
+      .catch(() => setLoadingTrades(false));
+  }, [urlView, urlChamber, urlParty, urlCorrelation, urlQ, urlPage, urlSortBy]);
+
+  // Fetch members (By Member view)
+  useEffect(() => {
+    if (urlView !== "members") return;
+    setLoadingMembers(true);
+    const params = new URLSearchParams();
+    if (urlChamber !== "all") params.set("chamber", urlChamber);
+    if (urlParty !== "all") params.set("party", urlParty);
+
+    fetch(`/api/congress-trades/members?${params.toString()}`)
+      .then((r) => r.json())
+      .then((d) => {
+        setMembers(d.members ?? []);
+        setLoadingMembers(false);
+      })
+      .catch(() => setLoadingMembers(false));
+  }, [urlView, urlChamber, urlParty]);
 
   const handleQChange = (v: string) => {
     setQInput(v);
@@ -439,6 +581,26 @@ export default function CongressTradesClient({
     debounceRef.current = setTimeout(() => {
       pushUrl({ q: v, page: "1" });
     }, 300);
+  };
+
+  const sortedMembers = [...members].sort((a, b) => {
+    if (memberSort === "name") return a.memberName.localeCompare(b.memberName);
+    if (memberSort === "party") {
+      const pa = a.party === "D" ? 0 : a.party === "R" ? 1 : 2;
+      const pb = b.party === "D" ? 0 : b.party === "R" ? 1 : 2;
+      return pa - pb || a.memberName.localeCompare(b.memberName);
+    }
+    return b.tradeCount - a.tradeCount;
+  });
+
+  const handleMemberSelect = (name: string) => {
+    // Switch to Trades view with that member pre-filtered in search
+    const p = new URLSearchParams(searchParams.toString());
+    p.delete("view");
+    p.set("q", name);
+    p.delete("page");
+    router.push(`/congress-trades?${p.toString()}`, { scroll: false });
+    setQInput(name);
   };
 
   const Chip = ({
@@ -535,6 +697,49 @@ export default function CongressTradesClient({
         ))}
       </div>
 
+      {/* View toggle */}
+      <div
+        style={{
+          padding: "0 2rem 1rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <div
+          style={{
+            display: "inline-flex",
+            background: S.surface,
+            border: `1px solid ${S.border}`,
+            borderRadius: "10px",
+            padding: "3px",
+            gap: "2px",
+          }}
+        >
+          {(["trades", "members"] as const).map((v) => {
+            const active = urlView === v;
+            return (
+              <button
+                key={v}
+                onClick={() => pushUrl({ view: v, page: "1" })}
+                style={{
+                  background: active ? S.accent : "transparent",
+                  border: "none",
+                  borderRadius: "7px",
+                  padding: "0.4rem 1.1rem",
+                  fontSize: "0.83rem",
+                  fontWeight: active ? 700 : 400,
+                  color: active ? "#000" : S.muted,
+                  cursor: "pointer",
+                  transition: "all 0.15s",
+                }}
+              >
+                {v === "trades" ? "Trades" : "By Member"}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Filters */}
       <div
         style={{
@@ -547,29 +752,26 @@ export default function CongressTradesClient({
           alignItems: "center",
         }}
       >
-        <div
-          style={{
-            flex: 1,
-            minWidth: "200px",
-            maxWidth: "340px",
-          }}
-        >
-          <input
-            value={qInput}
-            onChange={(e) => handleQChange(e.target.value)}
-            placeholder="Search member, ticker, asset…"
-            style={{
-              width: "100%",
-              background: S.surface,
-              border: `1px solid ${S.border}`,
-              borderRadius: "8px",
-              padding: "0.45rem 0.85rem",
-              color: S.text,
-              fontSize: "0.85rem",
-              outline: "none",
-            }}
-          />
-        </div>
+        {/* Search box — only visible in Trades view */}
+        {urlView === "trades" && (
+          <div style={{ flex: 1, minWidth: "200px", maxWidth: "340px" }}>
+            <input
+              value={qInput}
+              onChange={(e) => handleQChange(e.target.value)}
+              placeholder="Search member, ticker, asset…"
+              style={{
+                width: "100%",
+                background: S.surface,
+                border: `1px solid ${S.border}`,
+                borderRadius: "8px",
+                padding: "0.45rem 0.85rem",
+                color: S.text,
+                fontSize: "0.85rem",
+                outline: "none",
+              }}
+            />
+          </div>
+        )}
 
         <span style={{ fontSize: "0.75rem", color: S.muted }}>Chamber</span>
         <div style={{ display: "flex", gap: "0.4rem" }}>
@@ -597,63 +799,198 @@ export default function CongressTradesClient({
           ))}
         </div>
 
-        <span style={{ fontSize: "0.75rem", color: S.muted }}>Voting record</span>
-        <div style={{ display: "flex", gap: "0.4rem" }}>
-          {[
-            { v: "all", label: "All" },
-            { v: "with-votes", label: "Has voting history" },
-          ].map((opt) => (
+        {/* Voting record filter — only in Trades view */}
+        {urlView === "trades" && (
+          <>
+            <span style={{ fontSize: "0.75rem", color: S.muted }}>Voting record</span>
+            <div style={{ display: "flex", gap: "0.4rem" }}>
+              {[
+                { v: "all", label: "All" },
+                { v: "with-votes", label: "Has voting history" },
+              ].map((opt) => (
+                <Chip
+                  key={opt.v}
+                  label={opt.label}
+                  value={opt.v}
+                  current={urlCorrelation}
+                  onSelect={(val) => pushUrl({ correlation: val, page: "1" })}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Sort controls (Trades view) */}
+      {urlView === "trades" && (
+        <div
+          style={{
+            padding: "0 2rem 0.75rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.6rem",
+            flexWrap: "wrap",
+          }}
+        >
+          <span style={{ fontSize: "0.75rem", color: S.muted }}>Sort by</span>
+          {(
+            [
+              { v: "date", label: "Date" },
+              { v: "amount", label: "Amount" },
+              { v: "member", label: "Member" },
+              { v: "disclose", label: "Days to disclose" },
+            ] as { v: "date" | "amount" | "member" | "disclose"; label: string }[]
+          ).map((opt) => (
             <Chip
               key={opt.v}
               label={opt.label}
               value={opt.v}
-              current={urlCorrelation}
-              onSelect={(val) => pushUrl({ correlation: val, page: "1" })}
+              current={urlSortBy}
+              onSelect={(val) => pushUrl({ sortBy: val, page: "1" })}
             />
           ))}
         </div>
-      </div>
+      )}
 
-      {/* Results meta */}
-      <div
-        style={{
-          padding: "0 2rem 0.75rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          fontSize: "0.8rem",
-          color: S.muted,
-        }}
-      >
-        {loading ? "Loading…" : `${total.toLocaleString()} trades`}
-      </div>
+      {/* Member sort controls (By Member view) */}
+      {urlView === "members" && (
+        <div
+          style={{
+            padding: "0 2rem 0.75rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.6rem",
+          }}
+        >
+          <span style={{ fontSize: "0.75rem", color: S.muted }}>Sort by</span>
+          {(
+            [
+              { v: "count" as SortMember, label: "Trade count" },
+              { v: "name" as SortMember, label: "Name" },
+              { v: "party" as SortMember, label: "Party" },
+            ]
+          ).map((opt) => {
+            const active = memberSort === opt.v;
+            return (
+              <button
+                key={opt.v}
+                onClick={() => setMemberSort(opt.v)}
+                style={{
+                  background: active ? S.accent : S.surface,
+                  border: `1px solid ${active ? S.accent : S.border}`,
+                  borderRadius: "20px",
+                  padding: "0.35rem 0.85rem",
+                  fontSize: "0.8rem",
+                  cursor: "pointer",
+                  color: active ? "#000" : S.muted,
+                  fontWeight: active ? 600 : 400,
+                  transition: "all 0.15s",
+                }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Results meta (Trades view) */}
+      {urlView === "trades" && (
+        <div
+          style={{
+            padding: "0 2rem 0.75rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            fontSize: "0.8rem",
+            color: S.muted,
+          }}
+        >
+          {loadingTrades ? "Loading…" : `${total.toLocaleString()} trades`}
+        </div>
+      )}
+
+      {/* Results meta (By Member view) */}
+      {urlView === "members" && (
+        <div
+          style={{
+            padding: "0 2rem 0.75rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            fontSize: "0.8rem",
+            color: S.muted,
+          }}
+        >
+          {loadingMembers ? "Loading…" : `${members.length} members`}
+        </div>
+      )}
 
       {/* Trades list */}
-      <div
-        style={{
-          padding: "0 2rem 3rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.75rem",
-        }}
-      >
-        {loading ? (
-          <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
-            Loading trades…
-          </div>
-        ) : trades.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
-            <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>📭</div>
-            No trades found matching your filters.
-          </div>
-        ) : (
-          trades.map((t) => <TradeCard key={t.id} trade={t} />)
-        )}
-      </div>
+      {urlView === "trades" && (
+        <div
+          style={{
+            padding: "0 2rem 3rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+          }}
+        >
+          {loadingTrades ? (
+            <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
+              Loading trades…
+            </div>
+          ) : trades.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
+              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>📭</div>
+              No trades found matching your filters.
+            </div>
+          ) : (
+            trades.map((t) => <TradeCard key={t.id} trade={t} />)
+          )}
+        </div>
+      )}
 
-      {/* Pagination */}
-      {!loading && total > 25 && (
+      {/* Member grid */}
+      {urlView === "members" && (
+        <div
+          style={{
+            padding: "0 2rem 3rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {loadingMembers ? (
+            <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
+              Loading members…
+            </div>
+          ) : sortedMembers.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
+              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>📭</div>
+              No members found matching your filters.
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                gap: "0.85rem",
+              }}
+            >
+              {sortedMembers.map((m) => (
+                <MemberCard key={m.memberName} member={m} onSelect={handleMemberSelect} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Pagination (Trades view only) */}
+      {urlView === "trades" && !loadingTrades && total > 25 && (
         <div
           style={{
             padding: "0 2rem 2rem",

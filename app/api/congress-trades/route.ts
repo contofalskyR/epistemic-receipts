@@ -13,6 +13,7 @@ export async function GET(req: NextRequest) {
   const q = (sp.get("q") ?? "").trim();
   const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
+  const sortBy = sp.get("sortBy") ?? "date"; // "date" | "amount" | "member" | "disclose"
 
   // Bound parameters for all user-derived values
   const condParams: unknown[] = [];
@@ -50,6 +51,15 @@ export async function GET(req: NextRequest) {
   const dataParams = [...condParams, offset];
   const offsetIdx = dataParams.length;
 
+  // Build ORDER BY based on sortBy (no user-derived values — safe static SQL)
+  const orderBy = (() => {
+    if (sortBy === "amount") return `(c.metadata->>'amount_min')::numeric DESC NULLS LAST`;
+    if (sortBy === "member") return `c.metadata->>'member_name' ASC`;
+    if (sortBy === "disclose") return `(c.metadata->>'disclosure_date')::date - (c.metadata->>'trade_date')::date DESC NULLS LAST`;
+    // default: date
+    return `c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC`;
+  })();
+
   const [rows, countResult] = await Promise.all([
     prisma.$queryRawUnsafe<
       Array<{ id: string; text: string; metadata: unknown; claimEmergedAt: Date | null }>
@@ -57,7 +67,7 @@ export async function GET(req: NextRequest) {
       `SELECT c.id, c.text, c.metadata, c."claimEmergedAt"
        FROM "Claim" c
        WHERE ${where}
-       ORDER BY c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC
+       ORDER BY ${orderBy}
        LIMIT ${PAGE_SIZE} OFFSET $${offsetIdx}`,
       ...dataParams
     ),
