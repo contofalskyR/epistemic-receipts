@@ -55,7 +55,6 @@ const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
       { href: "/pipelines", label: "Pipelines" },
       { href: "/bookmarks", label: "Bookmarks" },
       { href: "/glossary", label: "Glossary" },
-      { href: "/about", label: "About" },
     ],
   },
 ];
@@ -180,6 +179,12 @@ export default function Nav() {
             }
           />
         ))}
+        <Link
+          href="/about"
+          className="text-gray-400 hover:text-white transition-colors"
+        >
+          About
+        </Link>
         <div className="flex-1" />
         <Link
           href="/search"
@@ -212,6 +217,13 @@ export default function Nav() {
             className="block py-2 mb-1 text-gray-200 hover:text-white font-medium transition-colors"
           >
             ⌕ Search 1.6M claims
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setMobileOpen(false)}
+            className="block py-2 mb-1 text-gray-200 hover:text-white font-medium transition-colors"
+          >
+            About
           </Link>
           {GROUPS.map((g) => (
             <div key={g.label} className="mt-3">
