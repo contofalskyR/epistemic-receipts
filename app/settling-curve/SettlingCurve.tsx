@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, Suspense, useMemo } from "react";
+import React, { useState, useEffect, Suspense, useMemo, useRef, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import SettlingCurveMini from "../components/SettlingCurveMini";
 import { ShareButtons } from "@/components/ShareButtons";
@@ -193,6 +193,8 @@ function SettlingCurveInner() {
   const [eraFilter, setEraFilter] = useState<string>("ALL");
   const [domainFilter, setDomainFilter] = useState<string>("ALL");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(30);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -251,6 +253,27 @@ function SettlingCurveInner() {
       return true;
     });
   }, [list, query, statusFilter, eraFilter, domainFilter]);
+
+  // Reset visible count whenever filters change
+  useEffect(() => {
+    setVisibleCount(30);
+  }, [query, statusFilter, eraFilter, domainFilter]);
+
+  // IntersectionObserver: load more when sentinel scrolls into view
+  const loadMore = useCallback(() => {
+    setVisibleCount((n) => n + 20);
+  }, []);
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) loadMore(); },
+      { rootMargin: "200px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [loadMore]);
 
   const activeItem = list.find((l) => l.id === activeId) || null;
   const title = activeItem?.claim ?? traj?.claim ?? "";
@@ -432,8 +455,11 @@ function SettlingCurveInner() {
     );
   }
 
+  const visibleList = filteredList.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredList.length;
+
   const erasInList = ERA_ORDER.filter((era) =>
-    filteredList.some((x) => (x.era ?? "Unknown") === era)
+    visibleList.some((x) => (x.era ?? "Unknown") === era)
   );
 
   function renderSidebar() {
@@ -561,7 +587,7 @@ function SettlingCurveInner() {
             </div>
           ) : (
             erasInList.map((era) => {
-              const items = filteredList.filter((x) => (x.era ?? "Unknown") === era);
+              const items = visibleList.filter((x) => (x.era ?? "Unknown") === era);
               return (
                 <section key={era} className="mb-4">
                   <header
@@ -665,6 +691,15 @@ function SettlingCurveInner() {
                 </section>
               );
             })
+          )}
+          {/* Infinite scroll sentinel */}
+          {hasMore && (
+            <div ref={sentinelRef} style={{ height: 1 }} aria-hidden />
+          )}
+          {!hasMore && filteredList.length > 0 && (
+            <div className="px-3 py-4 text-center font-mono" style={{ color: C.faint, fontSize: 10, letterSpacing: "0.06em" }}>
+              {filteredList.length} RECEIPTS
+            </div>
           )}
         </div>
       </div>
