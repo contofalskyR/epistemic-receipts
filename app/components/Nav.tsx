@@ -17,7 +17,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
       { href: "/trajectories", label: "Trajectory Encyclopedia" },
       { href: "/claims", label: "Claims" },
       { href: "/topics", label: "Topics" },
-      { href: "/fields", label: "Fields" },
+      { href: "/fields", label: "Topic Taxonomies" },
       { href: "/historical-events", label: "Events" },
       { href: "/prereq-graph", label: "Evidence Chains" },
       { href: "/books", label: "Books" },

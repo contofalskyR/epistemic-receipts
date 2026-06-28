@@ -84,7 +84,7 @@ export default function FieldsHubPage() {
   return (
     <div className="space-y-10">
       <div className="border-b border-gray-800 pb-6">
-        <h1 className="text-2xl font-semibold text-white">Fields — Working Taxonomies</h1>
+        <h1 className="text-2xl font-semibold text-white">Topic Taxonomies</h1>
         <p className="mt-3 text-sm text-gray-400 leading-relaxed">
           Hand-built field guides to {totalFields} disciplines, each organized into families
           and entries with key facts, formulas, and examples. These taxonomies anchor the
