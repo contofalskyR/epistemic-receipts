@@ -48,7 +48,7 @@ export async function GET(req: NextRequest) {
         "infect", "oncolog", "cardio", "pharma", "therapeutic", "diabet", "obstetric",
         "pediatr", "neurolog", "radio", "anesth", "immun", "vaccin", "vir", "hepat",
       ],
-      Psychology: ["psycholog", "psychiatr", "behavior", "behaviour", "cognit", "mental"],
+      Psychology: ["psycholog", "psychiatr", "behavior", "behaviour", "cognit", "mental health", "mental disord"],
       Biology: [
         "biolog", "biochem", "molecular", "cell", "genom", "genet", "microbi",
         "ecolog", "evolution", "physiolog", "neurosci", "protein", "rna ", "dna ",
