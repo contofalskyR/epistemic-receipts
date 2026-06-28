@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 
 type NavItem = { href: string; label: string; desc?: string };
@@ -75,8 +75,19 @@ function Dropdown({
   onOpen: () => void;
   onClose: () => void;
 }) {
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = useCallback(() => {
+    if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; }
+    onOpen();
+  }, [onOpen]);
+
+  const handleMouseLeave = useCallback(() => {
+    closeTimer.current = setTimeout(onClose, 180);
+  }, [onClose]);
+
   return (
-    <div className="relative" onMouseEnter={onOpen} onMouseLeave={onClose}>
+    <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <button
         type="button"
         onClick={() => (open ? onClose() : onOpen())}
@@ -117,6 +128,7 @@ export default function Nav() {
 
   useEffect(() => {
     function onDown(e: MouseEvent) {
+      if (e.button !== 0) return; // ignore right-click / middle-click
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenGroup(null);
         setMobileOpen(false);
