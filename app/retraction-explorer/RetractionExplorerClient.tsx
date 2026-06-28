@@ -185,111 +185,96 @@ function PaperCard({ paper }: { paper: Paper }) {
 
       {/* Expanded body */}
       {open && (
-        <div
-          style={{
-            borderTop: `1px solid ${S.border}`,
-            padding: "1.25rem",
-          }}
-        >
-          {paper.summary && (
-            <div style={{ fontSize: "0.82rem", color: S.text, lineHeight: 1.55, marginBottom: "0.75rem", fontStyle: "italic" }}>
+        <div style={{ borderTop: `1px solid ${S.border}`, padding: "1.4rem 1.25rem" }}>
+
+          {/* Status bar — the dramatic moment */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+            marginBottom: "1.1rem",
+            flexWrap: "wrap",
+          }}>
+            <span style={{
+              fontSize: "0.72rem",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              padding: "0.3rem 0.8rem",
+              borderRadius: "6px",
+              color: isRetraction ? "#fca5a5" : isWithdrawal ? "#fdba74" : "#93c5fd",
+              background: isRetraction ? "rgba(239,68,68,0.15)" : isWithdrawal ? "rgba(251,146,60,0.15)" : "rgba(96,165,250,0.15)",
+              border: `1px solid ${isRetraction ? "rgba(239,68,68,0.4)" : isWithdrawal ? "rgba(251,146,60,0.4)" : "rgba(96,165,250,0.4)"}`,
+            }}>
+              {paper.updateType?.toUpperCase() ?? "RETRACTED"}
+            </span>
+            {paper.retractionDate && (
+              <span style={{ fontSize: "0.88rem", color: S.text, fontWeight: 600 }}>
+                {paper.retractionDate}
+              </span>
+            )}
+            {paper.journal && (
+              <>
+                <span style={{ color: S.border }}>·</span>
+                <span style={{ fontSize: "0.82rem", color: S.muted }}>{paper.journal}</span>
+              </>
+            )}
+            {paper.publisher && (
+              <>
+                <span style={{ color: S.border }}>·</span>
+                <span style={{ fontSize: "0.78rem", color: S.muted }}>{paper.publisher}</span>
+              </>
+            )}
+          </div>
+
+          {/* Summary — the hero of the expanded card */}
+          {paper.summary ? (
+            <p style={{
+              fontSize: "1rem",
+              color: S.text,
+              lineHeight: 1.65,
+              marginBottom: "1.25rem",
+              fontWeight: 400,
+              borderLeft: `3px solid ${isRetraction ? S.red : isWithdrawal ? S.orange : S.blue}`,
+              paddingLeft: "1rem",
+            }}>
               {paper.summary}
-            </div>
+            </p>
+          ) : (
+            <p style={{
+              fontSize: "0.88rem",
+              color: S.muted,
+              lineHeight: 1.55,
+              marginBottom: "1.25rem",
+              fontStyle: "italic",
+              borderLeft: `3px solid ${S.border}`,
+              paddingLeft: "1rem",
+            }}>
+              Summary pending enrichment.
+            </p>
           )}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "1rem",
-              marginBottom: "1rem",
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  fontSize: "0.7rem",
-                  color: S.muted,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  marginBottom: "0.25rem",
-                }}
-              >
-                Publisher
-              </div>
-              <div style={{ fontSize: "0.83rem", color: S.text }}>{paper.publisher ?? "—"}</div>
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: "0.7rem",
-                  color: S.muted,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  marginBottom: "0.25rem",
-                }}
-              >
-                Update Type
-              </div>
-              <div style={{ fontSize: "0.83rem", color: S.text }}>{paper.updateType}</div>
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: "0.7rem",
-                  color: S.muted,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  marginBottom: "0.25rem",
-                }}
-              >
-                Journal
-              </div>
-              <div style={{ fontSize: "0.83rem", color: S.text }}>{paper.journal ?? "—"}</div>
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: "0.7rem",
-                  color: S.muted,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  marginBottom: "0.25rem",
-                }}
-              >
-                Retraction Date
-              </div>
-              <div style={{ fontSize: "0.83rem", color: S.text }}>{paper.retractionDate ?? "—"}</div>
-            </div>
-          </div>
 
-          <div
-            style={{
-              background: "rgba(239,68,68,0.07)",
-              border: "1px solid rgba(239,68,68,0.2)",
-              borderRadius: "8px",
-              padding: "0.7rem 1rem",
-              fontSize: "0.82rem",
-              color: "#fca5a5",
-              lineHeight: 1.5,
-              marginBottom: "0.8rem",
-            }}
-          >
-            This paper was {paper.updateType?.toLowerCase() ?? "retracted"} via Crossref
-            {paper.retractionDate ? ` on ${paper.retractionDate}` : ""}. The retraction is
-            recorded in the Crossref metadata registry.
-          </div>
-
-          <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", marginTop: "0.25rem" }}>
+          {/* Actions */}
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
             {paper.doi && (
               <a
                 href={`https://doi.org/${paper.doi}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: "0.78rem",
-                  color: S.accent,
-                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.4rem",
+                  padding: "0.45rem 1rem",
+                  borderRadius: "8px",
+                  fontSize: "0.8rem",
                   fontFamily: "monospace",
+                  color: S.accent,
+                  background: "rgba(240,160,0,0.08)",
+                  border: `1px solid rgba(240,160,0,0.25)`,
+                  textDecoration: "none",
+                  fontWeight: 600,
+                  transition: "background 0.15s",
                 }}
               >
                 doi:{paper.doi} ↗
@@ -297,9 +282,21 @@ function PaperCard({ paper }: { paper: Paper }) {
             )}
             <Link
               href={`/claims/${paper.id}`}
-              style={{ fontSize: "0.78rem", color: S.blue, textDecoration: "none" }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                padding: "0.45rem 1rem",
+                borderRadius: "8px",
+                fontSize: "0.8rem",
+                color: S.blue,
+                background: "rgba(96,165,250,0.08)",
+                border: "1px solid rgba(96,165,250,0.2)",
+                textDecoration: "none",
+                fontWeight: 600,
+              }}
             >
-              View receipt for this retraction →
+              View full receipt →
             </Link>
           </div>
         </div>
