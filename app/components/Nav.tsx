@@ -12,6 +12,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[] }[] = [
     blurb: "Browse the knowledge graph",
     items: [
       { href: "/settling-curve", label: "Settling Curve", desc: "How a claim settled — or unraveled — over time" },
+      { href: "/law-settler", label: "Law Settler Curve", desc: "How legal doctrine settles, shatters, and reverses" },
       { href: "/globe", label: "Globe", desc: "Claims by country, on an animated timeline" },
       { href: "/search", label: "Search", desc: "Full-text across 1.6M claims" },
       { href: "/trajectories", label: "Trajectory Encyclopedia" },

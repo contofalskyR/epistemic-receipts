@@ -9,6 +9,7 @@ function classifyDomain(ingestedBy: string | null): string {
   if (ingestedBy.includes("astronomy")) return "astronomy";
   if (ingestedBy.includes("climate")) return "climate";
   if (ingestedBy.includes("nutrition")) return "nutrition";
+  if (ingestedBy.includes("law")) return "law";
   return "history";
 }
 
