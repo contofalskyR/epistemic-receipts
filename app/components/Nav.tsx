@@ -42,8 +42,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
     blurb: "Data sources & reference",
     items: [
       { href: "/feed", label: "What's New", desc: "Latest additions to the graph" },
-      { href: "/sources", label: "Sources" },
-      { href: "/datasets", label: "Datasets" },
+      { href: "/sources", label: "Sources", desc: "Provenance & methodology for every data pipeline" },
       { href: "/pipelines", label: "Pipelines" },
       { href: "/glossary", label: "Glossary" },
     ],
