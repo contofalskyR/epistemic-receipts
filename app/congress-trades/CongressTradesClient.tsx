@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { DestinationNav } from "@/components/destinations/DestinationNav";
 
 type Trade = {
   id: string;
@@ -637,7 +636,55 @@ export default function CongressTradesClient({
 
   return (
     <div style={{ background: S.bg, minHeight: "100vh" }}>
-      <DestinationNav />
+      {/* Congress-specific sub-nav — replaces generic DestinationNav */}
+      <nav
+        style={{
+          background: S.surface,
+          borderBottom: `1px solid ${S.border}`,
+          padding: "0 2rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "2rem",
+          height: "48px",
+          position: "sticky",
+          top: "48px",
+          zIndex: 40,
+        }}
+      >
+        <Link href="/" style={{ color: S.accent, fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", whiteSpace: "nowrap" }}>
+          ⬡ Epistemic Receipts
+        </Link>
+        <ul style={{ listStyle: "none", display: "flex", gap: 0, margin: 0, padding: 0 }}>
+          {[
+            { label: "All Trades", view: "trades" },
+            { label: "By Member", view: "members" },
+            { label: "Largest Trades", view: "trades", sortBy: "amount" },
+          ].map((item) => {
+            const active = urlView === item.view && (!item.sortBy || urlSortBy === item.sortBy);
+            return (
+              <li key={item.label}>
+                <button
+                  onClick={() => pushUrl({ view: item.view, sortBy: item.sortBy ?? "date", page: "1" })}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: active ? S.accent : S.muted,
+                    fontSize: "0.83rem",
+                    padding: "0.4rem 0.9rem",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    fontWeight: active ? 600 : 400,
+                    transition: "color 0.15s",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {item.label}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
       {/* Header */}
       <div style={{ padding: "2.5rem 2rem 0", maxWidth: "1200px", margin: "0 auto" }}>
