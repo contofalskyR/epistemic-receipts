@@ -12,17 +12,34 @@ export const metadata = {
 };
 
 async function getStats() {
-  const foreignIngested = COUNTRY_REGISTRY.filter((c) => c.code !== "us").map(
-    (c) => c.ingestedBy
-  );
-  const total = await prisma.claim.count({
-    where: {
-      ingestedBy: { in: foreignIngested },
-      deleted: false,
-      NOT: { verificationStatus: "DEPRECATED" },
-    },
-  });
-  return { total };
+  const foreignCountries = COUNTRY_REGISTRY.filter((c) => c.code !== "us");
+  const foreignIngested = foreignCountries.map((c) => c.ingestedBy);
+
+  const [totalResult, perCountry] = await Promise.all([
+    prisma.claim.count({
+      where: {
+        ingestedBy: { in: foreignIngested },
+        deleted: false,
+        NOT: { verificationStatus: "DEPRECATED" },
+      },
+    }),
+    prisma.claim.groupBy({
+      by: ["ingestedBy"],
+      where: {
+        ingestedBy: { in: foreignIngested },
+        deleted: false,
+        NOT: { verificationStatus: "DEPRECATED" },
+      },
+      _count: { id: true },
+    }),
+  ]);
+
+  const countryCounts: Record<string, number> = {};
+  for (const row of perCountry) {
+    countryCounts[row.ingestedBy] = row._count.id;
+  }
+
+  return { total: totalResult, countryCounts };
 }
 
 export default async function ForeignLegislationPage() {
