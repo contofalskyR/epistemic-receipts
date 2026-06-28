@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SettlingCurve from "./SettlingCurve";
-import SettlingCurveNav from "./SettlingCurveNav";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
 
 type Props = {
@@ -43,10 +42,5 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default function SettlingCurvePage() {
-  return (
-    <>
-      <SettlingCurveNav active="individual" />
-      <SettlingCurve />
-    </>
-  );
+  return <SettlingCurve />;
 }

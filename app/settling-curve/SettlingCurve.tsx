@@ -3,6 +3,7 @@ import React, { useState, useEffect, Suspense, useMemo, useRef, useCallback } fr
 import { useSearchParams } from "next/navigation";
 import SettlingCurveMini from "../components/SettlingCurveMini";
 import { ShareButtons } from "@/components/ShareButtons";
+import SettlingCurveNav from "./SettlingCurveNav";
 
 const C = {
   bg: "#0a0a0a",
@@ -878,6 +879,9 @@ function SettlingCurveInner() {
       className="w-auto"
     >
       <style>{REDUCED_MOTION_CSS}</style>
+
+      {/* Tab nav inside full-bleed wrapper so -2rem marginTop doesn't overlap it */}
+      <SettlingCurveNav active="individual" />
 
       <div
         className="flex"
