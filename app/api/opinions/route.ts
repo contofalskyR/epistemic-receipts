@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-export const revalidate = 300
+export const dynamic = 'force-dynamic'
 
 const COURT_PIPELINE_MAP: Record<string, string[]> = {
   scotus: ['courtlistener_scotus_v1'],

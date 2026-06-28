@@ -247,7 +247,7 @@ export interface SourcesSummary {
   unmapped: SourceEntry[];
 }
 
-export async function GET() {
+export async function loadSourcesSummary(): Promise<SourcesSummary> {
   const rows = await prisma.$queryRaw<GroupRow[]>(Prisma.sql`
     SELECT "ingestedBy", COUNT(*)::int AS count
     FROM "Claim"
@@ -284,13 +284,15 @@ export async function GET() {
 
   const totalSources = categories.reduce((s, c) => s + c.sourceCount, 0);
 
-  const payload: SourcesSummary = {
+  return {
     totalClaims,
     totalSources,
     generatedAt: new Date().toISOString(),
     categories,
     unmapped: unmapped.sort((a, b) => b.count - a.count),
   };
+}
 
-  return NextResponse.json(payload);
+export async function GET() {
+  return NextResponse.json(await loadSourcesSummary());
 }
