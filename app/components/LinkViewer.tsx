@@ -25,6 +25,12 @@ export default function LinkViewer({ url, onClose }: Props) {
   }, [onClose]);
 
   useEffect(() => {
+    // PDFs can't be iframed — skip the viewer and open directly.
+    if (/\.pdf(\?|#|$)/i.test(url)) {
+      window.open(url, "_blank", "noopener,noreferrer");
+      onClose();
+      return;
+    }
     setBlocked(false);
     setLoading(true);
     const timeout = window.setTimeout(() => {
@@ -37,7 +43,7 @@ export default function LinkViewer({ url, onClose }: Props) {
       });
     }, 6_000);
     return () => window.clearTimeout(timeout);
-  }, [url]);
+  }, [url, onClose]);
 
   function handleLoad() {
     setLoading(false);
