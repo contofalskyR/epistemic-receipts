@@ -439,12 +439,6 @@ function HomeHeroContent({
               >
                 Explore the Settling Curve →
               </Link>
-              <Link
-                href="/globe"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-700 bg-gray-900/70 backdrop-blur-sm text-gray-200 font-medium text-sm hover:border-gray-500 hover:text-white transition-colors"
-              >
-                Open the Globe
-              </Link>
             </div>
             <div className="mt-4 flex justify-center lg:justify-start">
               <Link

@@ -372,6 +372,32 @@ function WhatsNewStrip({ items }: { items: WhatsNewItem[] }) {
   );
 }
 
+// ─── Coming soon — in-development features ──────────────────────────────────────
+
+function ComingSoon() {
+  return (
+    <section className="max-w-6xl mx-auto px-6 pt-8 pb-16">
+      <div className="rounded-xl border border-gray-800/80 bg-gray-900/40 px-6 py-6">
+        <div className="flex items-start gap-3">
+          <span className="text-xl shrink-0 opacity-60" aria-hidden="true">🔜</span>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-gray-400">Interactive Globe</h3>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-gray-600 border border-gray-700/60 rounded-full px-2 py-0.5">
+                In development
+              </span>
+            </div>
+            <p className="mt-1.5 text-sm text-gray-500 leading-relaxed max-w-2xl">
+              A geographic view of claims by country — where legislation was passed, where
+              science was published, where events occurred. Coming soon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Top-level export ─────────────────────────────────────────────────────────
 
 export default function HomepageSections({
@@ -385,6 +411,7 @@ export default function HomepageSections({
       <StatsBar stats={stats} />
       <WhatsNewStrip items={whatsNew} />
       <DomainGrid ingestedByCounts={ingestedByCounts} />
+      <ComingSoon />
     </>
   );
 }
