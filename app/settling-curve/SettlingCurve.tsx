@@ -195,6 +195,8 @@ function SettlingCurveInner() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [browseMode, setBrowseMode] = useState(false);
   const [filterOpen, setFilterOpen] = useState({ status: true, era: false, domain: false });
+  const [bannerOpen, setBannerOpen] = useState(false);
+  const [receiptOpen, setReceiptOpen] = useState(true);
   const [visibleCount, setVisibleCount] = useState(30);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [feedVisibleCount, setFeedVisibleCount] = useState(12);
@@ -434,44 +436,55 @@ function SettlingCurveInner() {
           ))}
         </div>
 
-        <div className="rounded-lg p-5" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
-          <div className="font-mono tracking-widest mb-3" style={{ fontSize: 10, color: C.faint }}>
-            {selected != null ? "SELECTED RECEIPT" : "KEY RECEIPT"} · {COMMUNITY_LABEL[detail.community]}
-          </div>
-          <div className="flex items-start gap-3 mb-2">
-            <span className="font-mono shrink-0 px-2 py-1 rounded" style={{ fontSize: 11, color: STATUS[detail.toAxis].c, border: `1px solid ${STATUS[detail.toAxis].c}55` }}>
-              {STATUS[detail.toAxis].label}
+        <div className="rounded-lg overflow-hidden" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
+          <button
+            type="button"
+            onClick={() => setReceiptOpen((v) => !v)}
+            className="w-full flex items-center justify-between px-5 py-3"
+          >
+            <div className="flex items-center gap-3">
+              <span className="font-mono tracking-widest" style={{ fontSize: 10, color: C.faint }}>
+                {selected != null ? "SELECTED RECEIPT" : "KEY RECEIPT"} · {COMMUNITY_LABEL[detail.community]}
+              </span>
+              <span className="font-mono shrink-0 px-2 py-0.5 rounded" style={{ fontSize: 10, color: STATUS[detail.toAxis].c, border: `1px solid ${STATUS[detail.toAxis].c}55` }}>
+                {STATUS[detail.toAxis].label}
+              </span>
+              <span className="font-mono" style={{ fontSize: 11, color: C.mut }}>{detail.occurredAt}</span>
+            </div>
+            <span className="font-mono ml-3 shrink-0" style={{ fontSize: 10, color: C.faint }}>
+              {receiptOpen ? "▲" : "▼"}
             </span>
-            <span className="font-mono" style={{ fontSize: 13, color: C.ink, paddingTop: 3 }}>
-              {detail.occurredAt}
-            </span>
-          </div>
-          <p className="mb-3" style={{ fontSize: 14, color: C.ink }}>{detail.reason}</p>
-          {detail.source.url ? (
-            <a href={detail.source.url} target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-1" style={{ fontSize: 13, color: C.brand }}>
-              {detail.source.name} <span aria-hidden>↗</span>
-            </a>
-          ) : (
-            <span style={{ fontSize: 13, color: C.mut }}>{detail.source.name}</span>
+          </button>
+          {receiptOpen && (
+            <div className="px-5 pb-5 border-t" style={{ borderColor: C.panelEdge }}>
+              <p className="mt-3 mb-3" style={{ fontSize: 14, color: C.ink }}>{detail.reason}</p>
+              {detail.source.url ? (
+                <a href={detail.source.url} target="_blank" rel="noreferrer"
+                  className="inline-flex items-center gap-1" style={{ fontSize: 13, color: C.brand }}>
+                  {detail.source.name} <span aria-hidden>↗</span>
+                </a>
+              ) : (
+                <span style={{ fontSize: 13, color: C.mut }}>{detail.source.name}</span>
+              )}
+              <p className="mt-4" style={{ fontSize: 12, color: C.faint }}>
+                Each point is a dated source — the receipt for when a community changed its mind. Tap any marker.
+              </p>
+              <div className="flex items-center gap-3 mt-3 flex-wrap">
+                <span style={{ fontSize: 11, color: C.faint, fontFamily: "monospace", letterSpacing: "0.06em" }}>EXPORT</span>
+                {(["csv", "bibtex", "ris"] as const).map((fmt) => (
+                  <a
+                    key={fmt}
+                    href={`/api/trajectories/${t.id}?format=${fmt}`}
+                    className="inline-flex items-center gap-1"
+                    style={{ fontSize: 11, color: C.mut, fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.04em", border: `1px solid ${C.panelEdge}`, borderRadius: 4, padding: "2px 7px", textDecoration: "none" }}
+                  >
+                    {fmt === "csv" ? "CSV" : fmt === "bibtex" ? "BibTeX" : "RIS (Zotero)"}
+                    <span aria-hidden style={{ fontSize: 10 }}>↓</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           )}
-          <p className="mt-4" style={{ fontSize: 12, color: C.faint }}>
-            Each point is a dated source — the receipt for when a community changed its mind. Tap any marker.
-          </p>
-          <div className="flex items-center gap-3 mt-3 flex-wrap">
-            <span style={{ fontSize: 11, color: C.faint, fontFamily: "monospace", letterSpacing: "0.06em" }}>EXPORT</span>
-            {(["csv", "bibtex", "ris"] as const).map((fmt) => (
-              <a
-                key={fmt}
-                href={`/api/trajectories/${t.id}?format=${fmt}`}
-                className="inline-flex items-center gap-1"
-                style={{ fontSize: 11, color: C.mut, fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.04em", border: `1px solid ${C.panelEdge}`, borderRadius: 4, padding: "2px 7px", textDecoration: "none" }}
-              >
-                {fmt === "csv" ? "CSV" : fmt === "bibtex" ? "BibTeX" : "RIS (Zotero)"}
-                <span aria-hidden style={{ fontSize: 10 }}>↓</span>
-              </a>
-            ))}
-          </div>
         </div>
       </>
     );
@@ -916,37 +929,51 @@ function SettlingCurveInner() {
         <main className="flex-1 min-w-0">
           <div className="px-5 md:px-8 py-6 max-w-5xl">
             {browseMode ? renderFeed() : (<>
-            {/* Audit banner */}
+            {/* Audit banner — collapsible */}
             <div
-              className="rounded-lg px-4 py-3 mb-6"
+              className="rounded-lg mb-6 overflow-hidden"
               style={{
                 background: "rgba(212,168,83,0.05)",
                 border: `1px solid ${C.brand}55`,
               }}
             >
-              <div className="font-mono tracking-widest mb-2" style={{ fontSize: 10, color: C.brand }}>
-                AGENTIC LOOP — HOW THESE TRAJECTORIES ARE GENERATED
-              </div>
-              <p style={{ fontSize: 12.5, color: C.mut, lineHeight: 1.55, maxWidth: 760 }}>
-                Historical receipts are written autonomously by a continuously running AI loop. Each iteration selects one of seven historical eras, researches 3–5 claims meeting strict validity criteria — dateable to a specific day or month, backed by contemporaneous primary sources, representing a clear epistemic transition (OPEN → RECORDED → SETTLED → REVERSED, etc.) — then appends them to the seed script, runs the ingest, commits, and pushes to the repository. To audit, read{" "}
-                <a
-                  href="https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/loop-settling-curve.sh"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: C.brand }}
-                >
-                  loop-settling-curve.sh
-                </a>{" "}
-                and{" "}
-                <a
-                  href="https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/seed-human-history-trajectories.ts"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: C.brand }}
-                >
-                  seed-human-history-trajectories.ts
-                </a>.
-              </p>
+              <button
+                type="button"
+                onClick={() => setBannerOpen((v) => !v)}
+                className="w-full flex items-center justify-between px-4 py-2.5"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="font-mono tracking-widest" style={{ fontSize: 10, color: C.brand }}>
+                  AGENTIC LOOP — HOW THESE TRAJECTORIES ARE GENERATED
+                </span>
+                <span className="font-mono ml-3 shrink-0" style={{ fontSize: 10, color: C.faint }}>
+                  {bannerOpen ? "▲" : "▼"}
+                </span>
+              </button>
+              {bannerOpen && (
+                <div className="px-4 pb-3">
+                  <p style={{ fontSize: 12.5, color: C.mut, lineHeight: 1.55, maxWidth: 760 }}>
+                    Historical receipts are written autonomously by a continuously running AI loop. Each iteration selects one of seven historical eras, researches 3–5 claims meeting strict validity criteria — dateable to a specific day or month, backed by contemporaneous primary sources, representing a clear epistemic transition (OPEN → RECORDED → SETTLED → REVERSED, etc.) — then appends them to the seed script, runs the ingest, commits, and pushes to the repository. To audit, read{" "}
+                    <a
+                      href="https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/loop-settling-curve.sh"
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: C.brand }}
+                    >
+                      loop-settling-curve.sh
+                    </a>{" "}
+                    and{" "}
+                    <a
+                      href="https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/seed-human-history-trajectories.ts"
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: C.brand }}
+                    >
+                      seed-human-history-trajectories.ts
+                    </a>.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Chart header */}
