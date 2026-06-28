@@ -10,6 +10,7 @@ export async function GET(req: NextRequest) {
   const field = sp.get("field") ?? "all";
   const reason = sp.get("reason") ?? "all";
   const q = (sp.get("q") ?? "").trim();
+  const sortBy = sp.get("sortBy") ?? "impact"; // "impact" | "date"
   const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
 
@@ -70,6 +71,38 @@ export async function GET(req: NextRequest) {
 
   const where = conditions.join(" AND ");
 
+  // Impact sort: tiered journal prestige. All strings are hardcoded — no user input.
+  const impactOrder = `
+    CASE
+      WHEN c.metadata->>'journal' ILIKE '%nature%'              THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%science%'             THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%new england journal%' THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%nejm%'                THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%lancet%'              THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%jama%'                THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%cell%'                THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%pnas%'                THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%proceedings of the national%' THEN 1
+      WHEN c.metadata->>'journal' ILIKE '%bmj%'                 THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%british medical%'     THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%annals of internal%'  THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%journal of the american%'     THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%circulation%'         THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%gastroenterology%'    THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%gut%'                 THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%diabetes%'            THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%psychological science%'       THEN 2
+      WHEN c.metadata->>'journal' ILIKE '%plos one%'            THEN 3
+      WHEN c.metadata->>'journal' ILIKE '%plos%'                THEN 3
+      ELSE 4
+    END ASC,
+    c."claimEmergedAt" DESC NULLS LAST
+  `;
+
+  const orderBy = sortBy === "date"
+    ? `c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC`
+    : impactOrder;
+
   const [rows, countResult] = await Promise.all([
     prisma.$queryRawUnsafe<
       Array<{
@@ -82,7 +115,7 @@ export async function GET(req: NextRequest) {
       `SELECT c.id, c.text, c.metadata, c."claimEmergedAt"
        FROM "Claim" c
        WHERE ${where}
-       ORDER BY c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC
+       ORDER BY ${orderBy}
        LIMIT ${PAGE_SIZE} OFFSET ${offset}`,
       ...params
     ),

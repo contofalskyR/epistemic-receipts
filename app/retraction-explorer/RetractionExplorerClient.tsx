@@ -319,6 +319,7 @@ export default function RetractionExplorerClient({
   const urlField = searchParams.get("field") ?? "all";
   const urlReason = searchParams.get("reason") ?? "all";
   const urlQ = searchParams.get("q") ?? "";
+  const urlSortBy = searchParams.get("sortBy") ?? "impact";
   const urlPage = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10) || 1);
 
   const [papers, setPapers] = useState<Paper[]>([]);
@@ -332,7 +333,8 @@ export default function RetractionExplorerClient({
     (overrides: Record<string, string>) => {
       const p = new URLSearchParams(searchParams.toString());
       for (const [k, v] of Object.entries(overrides)) {
-        if (!v || v === "all" || v === "1") p.delete(k);
+        const isDefault = !v || v === "all" || v === "1" || (k === "sortBy" && v === "impact");
+        if (isDefault) p.delete(k);
         else p.set(k, v);
       }
       router.push(`/retraction-explorer?${p.toString()}`, { scroll: false });
@@ -348,6 +350,8 @@ export default function RetractionExplorerClient({
     if (urlQ) params.set("q", urlQ);
     if (urlPage > 1) params.set("page", String(urlPage));
 
+    if (urlSortBy !== "impact") params.set("sortBy", urlSortBy);
+
     fetch(`/api/retractions?${params.toString()}`)
       .then((r) => r.json())
       .then((d) => {
@@ -356,7 +360,7 @@ export default function RetractionExplorerClient({
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [urlField, urlReason, urlQ, urlPage]);
+  }, [urlField, urlReason, urlQ, urlSortBy, urlPage]);
 
   const handleQChange = (v: string) => {
     setQInput(v);
@@ -548,6 +552,19 @@ export default function RetractionExplorerClient({
               value={v}
               current={urlReason}
               onSelect={(val) => pushUrl({ reason: val, page: "1" })}
+            />
+          ))}
+        </div>
+
+        <span style={{ fontSize: "0.75rem", color: S.muted }}>Sort</span>
+        <div style={{ display: "flex", gap: "0.4rem" }}>
+          {(["impact", "date"] as const).map((v) => (
+            <Chip
+              key={v}
+              label={v === "impact" ? "By impact" : "By date"}
+              value={v}
+              current={urlSortBy}
+              onSelect={(val) => pushUrl({ sortBy: val, page: "1" })}
             />
           ))}
         </div>
