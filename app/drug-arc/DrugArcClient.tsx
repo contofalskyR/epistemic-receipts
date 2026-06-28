@@ -135,11 +135,16 @@ export default function DrugArcClient() {
                         {r.pipelineLabel}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-300 leading-relaxed">{r.text}</p>
+                    <Link
+                      href={`/claims/${r.id}`}
+                      className="block text-xs text-gray-300 leading-relaxed hover:text-white transition-colors"
+                    >
+                      {r.text}
+                    </Link>
                     <div className="flex items-center gap-3 flex-wrap">
                       <Link
                         href={`/claims/${r.id}`}
-                        className="text-xs text-gray-600 hover:text-gray-300 transition-colors"
+                        className="text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
                       >
                         View claim →
                       </Link>
