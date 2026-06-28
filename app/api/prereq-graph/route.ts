@@ -43,6 +43,7 @@ const DOMAIN_INGESTED: Record<string, string[]> = {
 export async function GET(req: NextRequest) {
   const sp = req.nextUrl.searchParams;
   const domain = sp.get("domain") ?? "all";
+  const q = (sp.get("q") ?? "").trim();
   const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
 
@@ -51,6 +52,15 @@ export async function GET(req: NextRequest) {
   const domainClause = pipelines
     ? `AND c."ingestedBy" IN (${pipelines.map((p) => `'${p}'`).join(",")})`
     : "";
+
+  // Search — user input passed as a bind param, never interpolated
+  const params: unknown[] = [];
+  let searchClause = "";
+  if (q) {
+    const escaped = q.replace(/[\\%_]/g, (m) => `\\${m}`);
+    params.push(`%${escaped}%`);
+    searchClause = `AND (c.text ILIKE $1 OR c.metadata->>'title' ILIKE $1)`;
+  }
 
   const [rows, countRows] = await Promise.all([
     prisma.$queryRawUnsafe<
@@ -71,9 +81,11 @@ export async function GET(req: NextRequest) {
        WHERE c.deleted = false
          AND cr."relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')
          ${domainClause}
+         ${searchClause}
        GROUP BY c.id
        ORDER BY links DESC, c."claimEmergedAt" DESC NULLS LAST
-       LIMIT ${PAGE_SIZE} OFFSET ${offset}`
+       LIMIT ${PAGE_SIZE} OFFSET ${offset}`,
+      ...params
     ),
     prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
       `SELECT COUNT(DISTINCT c.id) AS count
@@ -81,7 +93,9 @@ export async function GET(req: NextRequest) {
        JOIN "ClaimRelation" cr ON cr."fromClaimId" = c.id
        WHERE c.deleted = false
          AND cr."relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')
-         ${domainClause}`
+         ${domainClause}
+         ${searchClause}`,
+      ...params
     ),
   ]);
 

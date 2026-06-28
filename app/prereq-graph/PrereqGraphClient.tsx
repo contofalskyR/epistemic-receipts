@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { DestinationNav } from "@/components/destinations/DestinationNav";
 
 const S = {
   bg: "#080810",
@@ -410,6 +409,7 @@ export default function PrereqGraphClient({
   const searchParams = useSearchParams();
 
   const urlDomain = searchParams.get("domain") ?? "all";
+  const urlQ = searchParams.get("q") ?? "";
   const urlPage = Math.max(
     1,
     parseInt(searchParams.get("page") ?? "1", 10) || 1
@@ -419,6 +419,8 @@ export default function PrereqGraphClient({
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [qInput, setQInput] = useState(urlQ);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pushUrl = useCallback(
     (overrides: Record<string, string>) => {
@@ -438,6 +440,7 @@ export default function PrereqGraphClient({
     setExpandedId(null);
     const p = new URLSearchParams();
     if (urlDomain !== "all") p.set("domain", urlDomain);
+    if (urlQ) p.set("q", urlQ);
     if (urlPage > 1) p.set("page", String(urlPage));
     fetch(`/api/prereq-graph?${p.toString()}`)
       .then((r) => r.json())
@@ -447,14 +450,31 @@ export default function PrereqGraphClient({
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [urlDomain, urlPage]);
+  }, [urlDomain, urlQ, urlPage]);
 
   const PAGE_SIZE = 25;
   const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
-    <div style={{ background: S.bg, minHeight: "100vh" }}>
-      <DestinationNav />
+    <div style={{ background: S.bg, minHeight: "100vh", marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem", padding: "0 0 4rem" }}>
+      {/* Sub-nav */}
+      <nav style={{
+        background: S.surface,
+        borderBottom: `1px solid ${S.border}`,
+        padding: "0 2rem",
+        display: "flex",
+        alignItems: "center",
+        gap: "2rem",
+        height: 56,
+        position: "sticky",
+        top: 48,
+        zIndex: 40,
+      }}>
+        <Link href="/" style={{ color: S.accent, fontWeight: 700, fontSize: "1rem", textDecoration: "none", whiteSpace: "nowrap" }}>
+          ⬡ Epistemic Receipts
+        </Link>
+        <span style={{ color: S.muted, fontSize: "0.85rem" }}>Evidence Chains</span>
+      </nav>
 
       {/* Header */}
       <div
@@ -464,18 +484,6 @@ export default function PrereqGraphClient({
           margin: "0 auto",
         }}
       >
-        <p
-          style={{
-            fontSize: "0.75rem",
-            color: S.muted,
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            margin: 0,
-            marginBottom: "0.4rem",
-          }}
-        >
-          Destination · Evidence Graph
-        </p>
         <h1
           style={{
             fontSize: "1.75rem",
@@ -496,9 +504,7 @@ export default function PrereqGraphClient({
             margin: 0,
           }}
         >
-          How claims connect: trials → approvals → outcomes. Browse the
-          citation graph of {initialStats.claimsWithLinks.toLocaleString()}+
-          linked claims.
+          How claims connect: trials → approvals → outcomes. Citation graph of {initialStats.claimsWithLinks.toLocaleString()}+ linked claims, ranked by most-cited first.
         </p>
       </div>
 
@@ -551,28 +557,41 @@ export default function PrereqGraphClient({
         ))}
       </div>
 
-      {/* Domain filter */}
-      <div
-        style={{
-          padding: "0 2rem 1.5rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "0.75rem",
-          alignItems: "center",
-        }}
-      >
-        <span style={{ fontSize: "0.75rem", color: S.muted }}>Domain</span>
-        {DOMAIN_OPTS.map((opt) => (
-          <Chip
-            key={opt.value}
-            label={opt.label}
-            value={opt.value}
-            current={urlDomain}
-            onSelect={(v) => pushUrl({ domain: v, page: "1" })}
-          />
-        ))}
+      {/* Search + domain filter */}
+      <div style={{ padding: "1.25rem 2rem 1rem", maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "0.9rem" }}>
+        <input
+          type="search"
+          value={qInput}
+          placeholder="Search claim title or text…"
+          onChange={(e) => {
+            setQInput(e.target.value);
+            if (debounceRef.current) clearTimeout(debounceRef.current);
+            debounceRef.current = setTimeout(() => pushUrl({ q: e.target.value, page: "1" }), 350);
+          }}
+          style={{
+            width: "100%",
+            maxWidth: 520,
+            background: S.surface,
+            border: `1px solid ${S.border}`,
+            borderRadius: 8,
+            padding: "0.45rem 0.85rem",
+            color: S.text,
+            fontSize: "0.85rem",
+            outline: "none",
+          }}
+        />
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", alignItems: "center" }}>
+          <span style={{ fontSize: "0.75rem", color: S.muted }}>Domain</span>
+          {DOMAIN_OPTS.map((opt) => (
+            <Chip
+              key={opt.value}
+              label={opt.label}
+              value={opt.value}
+              current={urlDomain}
+              onSelect={(v) => pushUrl({ domain: v, page: "1" })}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Results */}
