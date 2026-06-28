@@ -190,9 +190,12 @@ export default async function VoteDetailPage({ params }: { params: Promise<{ id:
               href={vote.source.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-gray-500 hover:text-blue-300 transition-colors underline-offset-2 hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full border border-amber-700/60 bg-amber-950/50 text-amber-400 hover:bg-amber-900/60 hover:border-amber-600 transition-colors"
             >
-              Voteview source ↗
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor">
+                <path d="M3.5 1H1v10h10V8.5M7 1h4m0 0v4m0-4L5 7"/>
+              </svg>
+              Primary source · Voteview
             </a>
           )}
         </div>
