@@ -193,8 +193,11 @@ function SettlingCurveInner() {
   const [eraFilter, setEraFilter] = useState<string>("ALL");
   const [domainFilter, setDomainFilter] = useState<string>("ALL");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [browseMode, setBrowseMode] = useState(false);
   const [visibleCount, setVisibleCount] = useState(30);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const [feedVisibleCount, setFeedVisibleCount] = useState(12);
+  const feedSentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -241,6 +244,7 @@ function SettlingCurveInner() {
     setActiveId(id);
     setSelected(null);
     setDrawerOpen(false);
+    setBrowseMode(false);
   };
 
   const filteredList = useMemo(() => {
@@ -254,12 +258,13 @@ function SettlingCurveInner() {
     });
   }, [list, query, statusFilter, eraFilter, domainFilter]);
 
-  // Reset visible count whenever filters change
+  // Reset visible counts whenever filters change
   useEffect(() => {
     setVisibleCount(30);
+    setFeedVisibleCount(12);
   }, [query, statusFilter, eraFilter, domainFilter]);
 
-  // IntersectionObserver: load more when sentinel scrolls into view
+  // Sidebar sentinel
   const loadMore = useCallback(() => {
     setVisibleCount((n) => n + 20);
   }, []);
@@ -274,6 +279,22 @@ function SettlingCurveInner() {
     obs.observe(el);
     return () => obs.disconnect();
   }, [loadMore]);
+
+  // Feed sentinel
+  const loadMoreFeed = useCallback(() => {
+    setFeedVisibleCount((n) => n + 12);
+  }, []);
+
+  useEffect(() => {
+    const el = feedSentinelRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) loadMoreFeed(); },
+      { rootMargin: "300px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [loadMoreFeed, browseMode]);
 
   const activeItem = list.find((l) => l.id === activeId) || null;
   const title = activeItem?.claim ?? traj?.claim ?? "";
@@ -563,7 +584,7 @@ function SettlingCurveInner() {
                 <button
                   key={d.key}
                   type="button"
-                  onClick={() => setDomainFilter(d.key)}
+                  onClick={() => { setDomainFilter(d.key); if (d.key !== "ALL") setBrowseMode(true); else setBrowseMode(false); }}
                   className="rounded-full px-2.5 py-1"
                   style={{
                     fontSize: 10,
@@ -706,6 +727,106 @@ function SettlingCurveInner() {
     );
   }
 
+  function renderFeed() {
+    const feedItems = filteredList.slice(0, feedVisibleCount);
+    const feedHasMore = feedVisibleCount < filteredList.length;
+    const domainLabel = domainFilter === "ALL" ? "All" : domainFilter.charAt(0).toUpperCase() + domainFilter.slice(1);
+
+    return (
+      <div>
+        <div className="mb-6 flex items-baseline justify-between gap-4">
+          <div>
+            <h1 className="font-semibold tracking-tight" style={{ fontSize: 26, lineHeight: 1.15 }}>
+              {domainLabel} receipts
+            </h1>
+            <p className="font-mono mt-1" style={{ fontSize: 11, color: C.mut, letterSpacing: "0.05em" }}>
+              {filteredList.length} TRAJECTORIES · CLICK ANY TO AUDIT
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => { setBrowseMode(false); }}
+            className="font-mono rounded px-3 py-1.5"
+            style={{ fontSize: 11, color: C.mut, border: `1px solid ${C.panelEdge}`, letterSpacing: "0.05em" }}
+          >
+            ← DETAIL VIEW
+          </button>
+        </div>
+
+        <div className="space-y-4">
+          {feedItems.map((item) => {
+            const dot = axisDotColor(item);
+            const axisLabel = item.currentAxis ? (STATUS[item.currentAxis]?.label ?? item.currentAxis) : null;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => selectItem(item.id)}
+                className="w-full text-left rounded-lg sc-anim"
+                style={{
+                  background: C.panel,
+                  border: `1px solid ${C.panelEdge}`,
+                  padding: "16px 20px",
+                  transition: "border-color 0.15s",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.brand + "66"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.panelEdge; }}
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <span
+                    className="shrink-0 mt-1.5"
+                    style={{ width: 9, height: 9, borderRadius: 9, background: dot, boxShadow: `0 0 0 2px ${C.bg}`, display: "inline-block" }}
+                    aria-hidden
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="leading-snug" style={{ fontSize: 15, color: C.ink, fontWeight: 500 }}>
+                      {truncate(item.claim, 180)}
+                    </p>
+                    <div className="font-mono flex flex-wrap items-center gap-x-3 gap-y-1 mt-2" style={{ fontSize: 10.5, color: C.faint }}>
+                      {item.era && <span style={{ color: C.mut }}>{item.era}</span>}
+                      <span>{item.transitionCount ?? 0} transitions</span>
+                      {item.firstYear != null && item.lastYear != null && (
+                        <span>{item.firstYear}{item.firstYear !== item.lastYear && `–${item.lastYear}`}</span>
+                      )}
+                      {axisLabel && (
+                        <span
+                          className="px-1.5 py-px rounded"
+                          style={{
+                            color: item.currentAxis ? STATUS[item.currentAxis].c : C.mut,
+                            border: `1px solid ${item.currentAxis ? STATUS[item.currentAxis].c + "55" : C.panelEdge}`,
+                          }}
+                        >
+                          {axisLabel}
+                        </span>
+                      )}
+                      {item.hasReversal && <span style={{ color: C.red }}>↩ reversed</span>}
+                    </div>
+                  </div>
+                </div>
+                {item.milestones && item.milestones.length > 0 && (
+                  <div style={{ marginLeft: 20 }}>
+                    <SettlingCurveMini
+                      milestones={item.milestones}
+                      animate={false}
+                      ariaLabel={`Preview for: ${item.claim}`}
+                    />
+                  </div>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {feedHasMore && <div ref={feedSentinelRef} style={{ height: 1 }} aria-hidden />}
+        {!feedHasMore && filteredList.length > 0 && (
+          <div className="py-8 text-center font-mono" style={{ color: C.faint, fontSize: 10, letterSpacing: "0.06em" }}>
+            {filteredList.length} RECEIPTS · END OF RESULTS
+          </div>
+        )}
+      </div>
+    );
+  }
+
   const headerInterval = traj && traj.transitions.length > 0 ? keyInterval(traj) : null;
   const headerDur = headerInterval
     ? durationLabel(headerInterval.from.occurredAt, headerInterval.to.occurredAt)
@@ -773,6 +894,7 @@ function SettlingCurveInner() {
         {/* Right panel */}
         <main className="flex-1 min-w-0">
           <div className="px-5 md:px-8 py-6 max-w-5xl">
+            {browseMode ? renderFeed() : (<>
             {/* Audit banner */}
             <div
               className="rounded-lg px-4 py-3 mb-6"
@@ -875,6 +997,7 @@ function SettlingCurveInner() {
 
             {/* Chart + receipt */}
             {renderChart()}
+            </>)}
           </div>
         </main>
       </div>
