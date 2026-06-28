@@ -29,10 +29,13 @@ export default function LinkViewer({ url, onClose }: Props) {
     setLoading(true);
     const timeout = window.setTimeout(() => {
       setLoading((stillLoading) => {
-        if (stillLoading) setBlocked(true);
+        if (stillLoading) {
+          setBlocked(true);
+          window.open(url, "_blank", "noopener,noreferrer");
+        }
         return stillLoading;
       });
-    }, 10_000);
+    }, 6_000);
     return () => window.clearTimeout(timeout);
   }, [url]);
 
@@ -80,7 +83,7 @@ export default function LinkViewer({ url, onClose }: Props) {
             rel="noreferrer"
             data-no-viewer="1"
             onClick={(e) => e.stopPropagation()}
-            className="hidden sm:inline-block text-xs text-gray-300 hover:text-gray-100 border border-gray-700 hover:border-gray-500 rounded px-2 py-1 transition-colors shrink-0"
+            className="text-xs text-amber-300 hover:text-amber-200 border border-amber-500/40 hover:border-amber-400 rounded px-2 py-1 transition-colors shrink-0 font-medium"
           >
             Open in new tab ↗
           </a>
