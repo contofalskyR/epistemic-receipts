@@ -136,6 +136,16 @@ export default function Nav() {
     };
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
     <nav
       ref={navRef}
@@ -183,7 +193,7 @@ export default function Nav() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden mt-3 flex flex-col border-t border-gray-800 pt-3">
+        <div className="md:hidden mt-3 flex flex-col border-t border-gray-800 pt-3 overflow-y-auto" style={{ maxHeight: "calc(100dvh - 56px)" }}>
           <Link
             href="/search"
             onClick={() => setMobileOpen(false)}
