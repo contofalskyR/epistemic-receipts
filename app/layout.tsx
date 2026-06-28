@@ -30,7 +30,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </a>
             </div>
             <div className="text-gray-600">
-              Conceptualized by Robert Contofalsky · Designed by OpenClaw
+              Conceptualized by{" "}
+              <a href="https://robertcontofalsky.com" target="_blank" rel="noreferrer" className="hover:text-gray-300 transition-colors">
+                Robert Contofalsky
+              </a>
+              {" · "}Designed by{" "}
+              <a href="https://openclaw.ai" target="_blank" rel="noreferrer" className="hover:text-gray-300 transition-colors">
+                OpenClaw
+              </a>
             </div>
           </footer>
         </LinkViewerProvider>
