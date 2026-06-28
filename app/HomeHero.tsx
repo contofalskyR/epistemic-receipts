@@ -134,6 +134,12 @@ function FeaturedHeroCard({ cards }: { cards: HeroCard[] }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
+  // Randomize starting card after hydration to avoid always showing index 0.
+  useEffect(() => {
+    if (cards.length > 1) setActive(Math.floor(Math.random() * cards.length));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     if (paused || cards.length <= 1) return;
     const id = setInterval(() => setActive(a => (a + 1) % cards.length), ROTATE_MS);

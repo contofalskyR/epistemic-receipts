@@ -27,50 +27,118 @@ type HeroCardData = {
   milestones: FeaturedMilestone[];
 };
 
+const CURATED_IDS = new Set(FEATURED_TRAJECTORIES.map((f) => `trajectory:${f.id}`));
+
+function trajectoryEyebrow(lastAxis: string): { eyebrow: string; eyebrowColor: string } {
+  if (lastAxis === "REVERSED")   return { eyebrow: "THE REVERSAL",   eyebrowColor: "text-rose-300" };
+  if (lastAxis === "SETTLED")    return { eyebrow: "THE SETTLEMENT",  eyebrowColor: "text-emerald-300" };
+  if (lastAxis === "CONTESTED")  return { eyebrow: "STILL CONTESTED", eyebrowColor: "text-amber-300" };
+  if (lastAxis === "ABANDONED")  return { eyebrow: "ABANDONED",       eyebrowColor: "text-slate-400" };
+  return                                { eyebrow: "RECORDED",        eyebrowColor: "text-sky-300" };
+}
+
 // For each curated trajectory, pull live milestones from ClaimStatusHistory and
 // fall back to the embedded curation data if the DB row is missing.
+// Also pulls up to 12 interesting DB trajectories (REVERSED/multi-milestone) to
+// expand the rotation pool beyond the 3 hardcoded ones.
 async function loadFeatured(): Promise<HeroCardData[]> {
-  return Promise.all(
-    FEATURED_TRAJECTORIES.map(async (f) => {
-      const claim = await prisma.claim.findFirst({
-        where: { externalId: `trajectory:${f.id}`, deleted: false },
-        select: {
-          text: true,
-          statusHistory: {
-            orderBy: { occurredAt: "asc" },
-            select: { toAxis: true, community: true, occurredAt: true, reason: true },
+  const [curated, interesting] = await Promise.all([
+    // Curated hand-written cards
+    Promise.all(
+      FEATURED_TRAJECTORIES.map(async (f) => {
+        const claim = await prisma.claim.findFirst({
+          where: { externalId: `trajectory:${f.id}`, deleted: false },
+          select: {
+            text: true,
+            statusHistory: {
+              orderBy: { occurredAt: "asc" },
+              select: { toAxis: true, community: true, occurredAt: true, reason: true },
+            },
           },
+        });
+
+        const milestones: FeaturedMilestone[] =
+          claim && claim.statusHistory.length > 0
+            ? claim.statusHistory.map((s) => ({
+                year: s.occurredAt.getUTCFullYear(),
+                axis: s.toAxis,
+                community: String(s.community),
+                reason: s.reason,
+              }))
+            : f.milestones;
+
+        const years = milestones.map((m) => m.year);
+        const minY = Math.min(...years);
+        const maxY = Math.max(...years);
+        const last = milestones[milestones.length - 1];
+
+        return {
+          id: f.id,
+          eyebrow: f.eyebrow,
+          eyebrowColor: f.eyebrowColor,
+          hook: f.hook,
+          claim: claim?.text ?? f.claim,
+          endLabel: AXIS_VIS[last.axis]?.label ?? last.axis,
+          span: minY === maxY ? `${minY}` : `${minY} → ${maxY}`,
+          milestoneCount: milestones.length,
+          milestones,
+        };
+      }),
+    ),
+    // Dynamic pool: REVERSED or SETTLED trajectories with 3+ milestones, excluding curated ones
+    prisma.claim.findMany({
+      where: {
+        externalId: { startsWith: "trajectory:", notIn: Array.from(CURATED_IDS) },
+        epistemicAxis: { in: ["REVERSED", "SETTLED"] },
+        deleted: false,
+        statusHistory: { some: {} },
+      },
+      select: {
+        externalId: true,
+        text: true,
+        statusHistory: {
+          orderBy: { occurredAt: "asc" },
+          select: { toAxis: true, community: true, occurredAt: true, reason: true },
         },
-      });
-
-      const milestones: FeaturedMilestone[] =
-        claim && claim.statusHistory.length > 0
-          ? claim.statusHistory.map((s) => ({
-              year: s.occurredAt.getUTCFullYear(),
-              axis: s.toAxis,
-              community: String(s.community),
-              reason: s.reason,
-            }))
-          : f.milestones;
-
-      const years = milestones.map((m) => m.year);
-      const minY = Math.min(...years);
-      const maxY = Math.max(...years);
-      const last = milestones[milestones.length - 1];
-
-      return {
-        id: f.id,
-        eyebrow: f.eyebrow,
-        eyebrowColor: f.eyebrowColor,
-        hook: f.hook,
-        claim: claim?.text ?? f.claim,
-        endLabel: AXIS_VIS[last.axis]?.label ?? last.axis,
-        span: minY === maxY ? `${minY}` : `${minY} → ${maxY}`,
-        milestoneCount: milestones.length,
-        milestones,
-      };
+      },
+      orderBy: { createdAt: "desc" },
+      take: 200,
     }),
-  );
+  ]);
+
+  // Shuffle the dynamic pool and take 12
+  const shuffled = interesting
+    .filter((c) => c.statusHistory.length >= 3)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 12);
+
+  const dynamic: HeroCardData[] = shuffled.map((c) => {
+    const milestones: FeaturedMilestone[] = c.statusHistory.map((s) => ({
+      year: s.occurredAt.getUTCFullYear(),
+      axis: s.toAxis,
+      community: String(s.community),
+      reason: s.reason,
+    }));
+    const years = milestones.map((m) => m.year);
+    const minY = Math.min(...years);
+    const maxY = Math.max(...years);
+    const last = milestones[milestones.length - 1];
+    const id = c.externalId!.replace(/^trajectory:/, "");
+    const { eyebrow, eyebrowColor } = trajectoryEyebrow(last.axis);
+    return {
+      id,
+      eyebrow,
+      eyebrowColor,
+      hook: c.text,
+      claim: c.text,
+      endLabel: AXIS_VIS[last.axis]?.label ?? last.axis,
+      span: minY === maxY ? `${minY}` : `${minY} → ${maxY}`,
+      milestoneCount: milestones.length,
+      milestones,
+    };
+  });
+
+  return [...curated, ...dynamic];
 }
 
 async function loadHomepageData() {
