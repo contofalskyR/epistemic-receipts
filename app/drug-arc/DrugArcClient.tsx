@@ -3,6 +3,11 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 
+const C = {
+  bg: "#0a0a0a", panel: "#10101c", panelEdge: "#23233a",
+  ink: "#e9e9f2", mut: "#8b8ba3", faint: "#55556e", brand: "#d4a853",
+} as const;
+
 type SearchResult = {
   id: string;
   text: string;
@@ -14,26 +19,34 @@ type SearchResult = {
   epistemicStatus: string | null;
 };
 
-const COLOR_CLASSES: Record<string, { dot: string; badge: string; border: string }> = {
+const PIPELINE_COLORS: Record<string, { dot: string; badge: string; border: string; badgeBg: string; badgeText: string }> = {
   blue: {
-    dot: "bg-blue-500",
-    badge: "bg-blue-900/60 text-blue-300 border-blue-700/50",
-    border: "border-blue-900/40",
+    dot: "rgba(59,130,246,1)",
+    badge: "",
+    border: "rgba(59,130,246,0.2)",
+    badgeBg: "rgba(59,130,246,0.15)",
+    badgeText: "#93c5fd",
   },
   emerald: {
-    dot: "bg-emerald-500",
-    badge: "bg-emerald-900/60 text-emerald-300 border-emerald-700/50",
-    border: "border-emerald-900/40",
+    dot: "rgba(16,185,129,1)",
+    badge: "",
+    border: "rgba(16,185,129,0.2)",
+    badgeBg: "rgba(16,185,129,0.15)",
+    badgeText: "#6ee7b7",
   },
   orange: {
-    dot: "bg-orange-500",
-    badge: "bg-orange-900/60 text-orange-300 border-orange-700/50",
-    border: "border-orange-900/40",
+    dot: "rgba(249,115,22,1)",
+    badge: "",
+    border: "rgba(249,115,22,0.2)",
+    badgeBg: "rgba(249,115,22,0.15)",
+    badgeText: "#fdba74",
   },
   gray: {
-    dot: "bg-gray-500",
-    badge: "bg-gray-800 text-gray-300 border-gray-700",
-    border: "border-gray-800",
+    dot: "rgba(107,114,128,1)",
+    badge: "",
+    border: "rgba(107,114,128,0.2)",
+    badgeBg: "rgba(107,114,128,0.15)",
+    badgeText: "#d1d5db",
   },
 };
 
@@ -41,6 +54,96 @@ function formatReports(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M reports`;
   if (n >= 1_000) return `${Math.round(n / 1_000)}k reports`;
   return `${n} reports`;
+}
+
+function ResultCard({ r }: { r: SearchResult }) {
+  const [hovered, setHovered] = useState(false);
+  const pc = PIPELINE_COLORS[r.color] ?? PIPELINE_COLORS.gray;
+  return (
+    <div
+      key={r.id}
+      style={{ position: "relative", paddingLeft: "2.5rem", paddingBottom: "1.5rem" }}
+    >
+      {/* Timeline dot */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: "0.375rem",
+          width: 28,
+          height: 28,
+          borderRadius: "50%",
+          background: pc.dot,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: `0 0 0 4px ${C.bg}`,
+          flexShrink: 0,
+        }}
+      >
+        <span style={{ color: "#fff", fontWeight: 700, fontSize: "0.56rem", lineHeight: 1 }}>
+          {r.year ? String(r.year).slice(2) : "—"}
+        </span>
+      </div>
+
+      {/* Card */}
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          background: C.panel,
+          border: `1px solid ${hovered ? C.brand : pc.border}`,
+          borderRadius: 10,
+          padding: "0.9rem 1.1rem",
+          transition: "border-color 0.15s",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.5rem" }}>
+          <p style={{ color: C.faint, fontSize: "0.75rem", fontFamily: "monospace", margin: 0 }}>{r.year ?? "—"}</p>
+          <span
+            style={{
+              fontSize: "0.72rem",
+              padding: "0.15rem 0.6rem",
+              borderRadius: 9999,
+              border: `1px solid ${pc.badgeText}55`,
+              background: pc.badgeBg,
+              color: pc.badgeText,
+              fontWeight: 500,
+              flexShrink: 0,
+            }}
+          >
+            {r.pipelineLabel}
+          </span>
+        </div>
+        <Link
+          href={`/claims/${r.id}`}
+          style={{
+            display: "block",
+            color: C.ink,
+            fontSize: "0.88rem",
+            lineHeight: 1.5,
+            textDecoration: "none",
+            marginBottom: "0.6rem",
+          }}
+        >
+          {r.text}
+        </Link>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+          <Link
+            href={`/claims/${r.id}`}
+            style={{ color: C.brand, fontWeight: 600, fontSize: "0.78rem", textDecoration: "none" }}
+          >
+            View claim →
+          </Link>
+          {r.totalReports !== null && (
+            <span style={{ fontSize: "0.75rem", color: "rgba(249,115,22,0.7)" }}>
+              {formatReports(r.totalReports)}
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function DrugArcClient() {
@@ -79,18 +182,37 @@ export default function DrugArcClient() {
   const arcComplete = hasTrial && hasApproval && hasAE;
 
   return (
-    <div className="space-y-4">
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       {/* Search input */}
-      <div className="relative">
+      <div style={{ position: "relative" }}>
         <input
           type="text"
           value={query}
           onChange={(e) => handleInput(e.target.value)}
           placeholder="Search by drug name or compound — e.g. semaglutide, atorvastatin, ibuprofen"
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-gray-500 focus:outline-none"
+          style={{
+            background: C.panel,
+            border: `1px solid ${C.panelEdge}`,
+            color: C.ink,
+            borderRadius: 8,
+            padding: "0.55rem 1rem",
+            width: "100%",
+            fontSize: "0.88rem",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
         />
         {loading && (
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">
+          <div
+            style={{
+              position: "absolute",
+              right: "0.75rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              fontSize: "0.75rem",
+              color: C.faint,
+            }}
+          >
             searching…
           </div>
         )}
@@ -99,13 +221,27 @@ export default function DrugArcClient() {
       {/* Arc completeness banner */}
       {results && results.length > 0 && (
         <div
-          className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-xs ${
-            arcComplete
-              ? "border-emerald-800/50 bg-emerald-950/40 text-emerald-400"
-              : "border-gray-700 bg-gray-900/40 text-gray-400"
-          }`}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            borderRadius: 8,
+            border: `1px solid ${arcComplete ? "rgba(16,185,129,0.4)" : C.panelEdge}`,
+            background: arcComplete ? "rgba(16,185,129,0.08)" : C.panel,
+            padding: "0.6rem 1rem",
+            fontSize: "0.78rem",
+            color: arcComplete ? "#6ee7b7" : C.mut,
+          }}
         >
-          <span className={`w-2 h-2 rounded-full shrink-0 ${arcComplete ? "bg-emerald-500" : "bg-gray-600"}`} />
+          <span
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: "50%",
+              flexShrink: 0,
+              background: arcComplete ? "rgba(16,185,129,1)" : "rgba(107,114,128,0.6)",
+            }}
+          />
           {arcComplete
             ? `Full arc found for "${searched}" — trial registration, FDA approval, and post-market surveillance all present.`
             : `Partial arc for "${searched}" — ${[hasTrial && "trials", hasApproval && "approvals", hasAE && "adverse events"].filter(Boolean).join(", ")} found.`}
@@ -114,62 +250,34 @@ export default function DrugArcClient() {
 
       {/* Results timeline */}
       {results && results.length > 0 && (
-        <div className="relative">
-          <div className="absolute left-3 top-2 bottom-2 w-px bg-gray-800" />
-          <div className="space-y-0">
-            {results.map((r) => {
-              const c = COLOR_CLASSES[r.color] ?? COLOR_CLASSES.gray;
-              return (
-                <div key={r.id} className="relative pl-10 pb-6 last:pb-0">
-                  <div
-                    className={`absolute left-0 top-1.5 w-7 h-7 rounded-full ${c.dot} flex items-center justify-center shadow-lg ring-4 ring-gray-950`}
-                  >
-                    <span className="text-white font-bold text-[9px] leading-none">
-                      {r.year ? String(r.year).slice(2) : "—"}
-                    </span>
-                  </div>
-                  <div className={`rounded-lg border ${c.border} bg-gray-900/50 px-4 py-3 space-y-2`}>
-                    <div className="flex items-start justify-between gap-3 flex-wrap">
-                      <p className="text-xs text-gray-500 font-mono">{r.year ?? "—"}</p>
-                      <span className={`text-xs px-2 py-0.5 rounded-full border font-medium shrink-0 ${c.badge}`}>
-                        {r.pipelineLabel}
-                      </span>
-                    </div>
-                    <Link
-                      href={`/claims/${r.id}`}
-                      className="block text-xs text-gray-300 leading-relaxed hover:text-white transition-colors"
-                    >
-                      {r.text}
-                    </Link>
-                    <div className="flex items-center gap-3 flex-wrap">
-                      <Link
-                        href={`/claims/${r.id}`}
-                        className="text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
-                      >
-                        View claim →
-                      </Link>
-                      {r.totalReports !== null && (
-                        <span className="text-xs text-orange-500/70">
-                          {formatReports(r.totalReports)}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+        <div style={{ position: "relative" }}>
+          {/* Vertical timeline line */}
+          <div
+            style={{
+              position: "absolute",
+              left: "0.75rem",
+              top: 8,
+              bottom: 8,
+              width: 1,
+              background: C.panelEdge,
+            }}
+          />
+          <div>
+            {results.map((r) => (
+              <ResultCard key={r.id} r={r} />
+            ))}
           </div>
         </div>
       )}
 
       {results && results.length === 0 && searched && (
-        <p className="text-sm text-gray-500 py-2">
+        <p style={{ fontSize: "0.88rem", color: C.mut, padding: "0.5rem 0" }}>
           No records found for &ldquo;{searched}&rdquo; across clinical trials, FDA approvals, or adverse event data.
         </p>
       )}
 
       {!results && !loading && (
-        <p className="text-xs text-gray-600 py-1">
+        <p style={{ fontSize: "0.78rem", color: C.faint, padding: "0.25rem 0" }}>
           Results will appear as you type. Searches clinical trials, FDA approval records, and FAERS drug aggregates.
         </p>
       )}

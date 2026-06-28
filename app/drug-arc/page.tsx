@@ -1,48 +1,41 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import DrugArcClient from "./DrugArcClient";
+import { StageCard, AreaRow } from "./DrugArcStageCard";
 
 export const revalidate = 3600;
 
+const C = {
+  bg: "#0a0a0a", panel: "#10101c", panelEdge: "#23233a",
+  ink: "#e9e9f2", mut: "#8b8ba3", faint: "#55556e", brand: "#d4a853",
+} as const;
+
 // ── Therapeutic area keyword buckets ─────────────────────────────────────────
 
-const AREA_BUCKETS: { key: string; label: string; keywords: string[]; color: string }[] = [
-  { key: "oncology",        label: "Oncology",                keywords: ["cancer", "tumor", "carcinoma", "lymphoma", "leukemia", "melanoma", "myeloma", "sarcoma", "oncol", "neoplasm"], color: "rose" },
-  { key: "cardiology",      label: "Cardiology",              keywords: ["cardiovascular", "cardiac", "heart failure", "hypertension", "coronary", "arrhythmia", "thrombosis", "anticoagul"], color: "red" },
-  { key: "metabolic",       label: "Metabolic / Endocrine",   keywords: ["diabetes", "insulin", "obesity", "thyroid", "metabolic", "hyperlipidemia", "cholesterol", "glucose", "GLP-1", "semaglutide"], color: "yellow" },
-  { key: "infectious",      label: "Infectious Disease",      keywords: ["infection", "bacterial", "viral", "HIV", "antibiotic", "antiviral", "hepatitis", "pneumonia", "tuberculosis", "fungal"], color: "green" },
-  { key: "neurology",       label: "Neurology / CNS",         keywords: ["neurolog", "epilepsy", "seizure", "Alzheimer", "Parkinson", "schizophrenia", "depression", "anxiety", "migraine", "multiple sclerosis"], color: "purple" },
-  { key: "immunology",      label: "Immunology / Autoimmune", keywords: ["autoimmune", "rheumatoid", "lupus", "inflammatory bowel", "monoclonal antibody", "immunosuppress", "transplant rejection"], color: "sky" },
-  { key: "respiratory",     label: "Respiratory",             keywords: ["pulmonary", "lung", "asthma", "COPD", "respiratory", "bronchial", "cystic fibrosis"], color: "cyan" },
-  { key: "dermatology",     label: "Dermatology",             keywords: ["dermatitis", "psoriasis", "eczema", "skin", "acne", "rosacea", "alopecia"], color: "amber" },
-  { key: "hematology",      label: "Hematology",              keywords: ["anemia", "hemophilia", "platelet", "hematolog", "sickle cell", "clotting factor"], color: "orange" },
-  { key: "gastroenterology",label: "Gastroenterology",        keywords: ["gastro", "hepatic", "liver disease", "bowel", "colon", "esophag", "irritable bowel", "ulcerative"], color: "lime" },
+const AREA_BUCKETS: { key: string; label: string; keywords: string[]; color: string; primaryKeyword: string }[] = [
+  { key: "oncology",        label: "Oncology",                keywords: ["cancer", "tumor", "carcinoma", "lymphoma", "leukemia", "melanoma", "myeloma", "sarcoma", "oncol", "neoplasm"],                                              color: "rose",   primaryKeyword: "cancer" },
+  { key: "cardiology",      label: "Cardiology",              keywords: ["cardiovascular", "cardiac", "heart failure", "hypertension", "coronary", "arrhythmia", "thrombosis", "anticoagul"],                                          color: "red",    primaryKeyword: "cardiovascular" },
+  { key: "metabolic",       label: "Metabolic / Endocrine",   keywords: ["diabetes", "insulin", "obesity", "thyroid", "metabolic", "hyperlipidemia", "cholesterol", "glucose", "GLP-1", "semaglutide"],                               color: "yellow", primaryKeyword: "diabetes" },
+  { key: "infectious",      label: "Infectious Disease",      keywords: ["infection", "bacterial", "viral", "HIV", "antibiotic", "antiviral", "hepatitis", "pneumonia", "tuberculosis", "fungal"],                                    color: "green",  primaryKeyword: "infection" },
+  { key: "neurology",       label: "Neurology / CNS",         keywords: ["neurolog", "epilepsy", "seizure", "Alzheimer", "Parkinson", "schizophrenia", "depression", "anxiety", "migraine", "multiple sclerosis"],                    color: "purple", primaryKeyword: "neurology" },
+  { key: "immunology",      label: "Immunology / Autoimmune", keywords: ["autoimmune", "rheumatoid", "lupus", "inflammatory bowel", "monoclonal antibody", "immunosuppress", "transplant rejection"],                                  color: "sky",    primaryKeyword: "autoimmune" },
+  { key: "respiratory",     label: "Respiratory",             keywords: ["pulmonary", "lung", "asthma", "COPD", "respiratory", "bronchial", "cystic fibrosis"],                                                                       color: "cyan",   primaryKeyword: "pulmonary" },
+  { key: "dermatology",     label: "Dermatology",             keywords: ["dermatitis", "psoriasis", "eczema", "skin", "acne", "rosacea", "alopecia"],                                                                                 color: "amber",  primaryKeyword: "dermatitis" },
+  { key: "hematology",      label: "Hematology",              keywords: ["anemia", "hemophilia", "platelet", "hematolog", "sickle cell", "clotting factor"],                                                                          color: "orange", primaryKeyword: "anemia" },
+  { key: "gastroenterology",label: "Gastroenterology",        keywords: ["gastro", "hepatic", "liver disease", "bowel", "colon", "esophag", "irritable bowel", "ulcerative"],                                                         color: "lime",   primaryKeyword: "gastroenterology" },
 ];
 
-const COLOR_BAR: Record<string, string> = {
-  rose: "bg-rose-500",
-  red: "bg-red-500",
-  yellow: "bg-yellow-500",
-  green: "bg-green-500",
-  purple: "bg-purple-500",
-  sky: "bg-sky-500",
-  cyan: "bg-cyan-500",
-  amber: "bg-amber-500",
-  orange: "bg-orange-500",
-  lime: "bg-lime-500",
-};
-
-const COLOR_TEXT: Record<string, string> = {
-  rose: "text-rose-400",
-  red: "text-red-400",
-  yellow: "text-yellow-400",
-  green: "text-green-400",
-  purple: "text-purple-400",
-  sky: "text-sky-400",
-  cyan: "text-cyan-400",
-  amber: "text-amber-400",
-  orange: "text-orange-400",
-  lime: "text-lime-400",
+const AREA_BAR_COLORS: Record<string, string> = {
+  rose:   "rgba(244,63,94,0.6)",
+  red:    "rgba(239,68,68,0.6)",
+  yellow: "rgba(234,179,8,0.6)",
+  green:  "rgba(34,197,94,0.6)",
+  purple: "rgba(168,85,247,0.6)",
+  sky:    "rgba(14,165,233,0.6)",
+  cyan:   "rgba(6,182,212,0.6)",
+  amber:  "rgba(245,158,11,0.6)",
+  orange: "rgba(249,115,22,0.6)",
+  lime:   "rgba(132,204,22,0.6)",
 };
 
 // ── Server data fetches ───────────────────────────────────────────────────────
@@ -81,18 +74,14 @@ async function getTherapeuticAreas() {
 
   const counts: Record<string, number> = {};
   for (const b of AREA_BUCKETS) counts[b.key] = 0;
-  let uncategorized = 0;
 
   for (const c of claims) {
     const lower = c.text.toLowerCase();
-    let matched = false;
     for (const b of AREA_BUCKETS) {
       if (b.keywords.some((kw) => lower.includes(kw.toLowerCase()))) {
         counts[b.key]++;
-        matched = true;
       }
     }
-    if (!matched) uncategorized++;
   }
 
   return AREA_BUCKETS.map((b) => ({ ...b, count: counts[b.key] }))
@@ -120,9 +109,9 @@ export default async function DrugArcPage() {
       sublabel: "Registered & completed trials in the public record",
       count: funnel.trials,
       widthPct: 100,
-      color: "bg-blue-500/80",
-      textColor: "text-blue-300",
-      border: "border-blue-800/40",
+      href: "/search?q=clinical+trial",
+      barColor: "rgba(59,130,246,0.8)",
+      countColor: "#93c5fd",
     },
     {
       key: "approvals",
@@ -130,9 +119,9 @@ export default async function DrugArcPage() {
       sublabel: "Original NDA/BLA applications approved",
       count: funnel.approvals,
       widthPct: Math.max(5, Math.round((funnel.approvals / Math.max(funnel.trials, 1)) * 100)),
-      color: "bg-emerald-500/80",
-      textColor: "text-emerald-300",
-      border: "border-emerald-800/40",
+      href: "/search?q=FDA+NDA+approved",
+      barColor: "rgba(16,185,129,0.8)",
+      countColor: "#6ee7b7",
     },
     {
       key: "adverse",
@@ -140,9 +129,9 @@ export default async function DrugArcPage() {
       sublabel: "Drugs with FAERS aggregate adverse event records",
       count: funnel.adverseEvents,
       widthPct: Math.max(5, Math.round((funnel.adverseEvents / Math.max(funnel.trials, 1)) * 100)),
-      color: "bg-orange-500/80",
-      textColor: "text-orange-300",
-      border: "border-orange-800/40",
+      href: "/search?q=adverse+events",
+      barColor: "rgba(249,115,22,0.8)",
+      countColor: "#fdba74",
     },
     {
       key: "links",
@@ -150,169 +139,227 @@ export default async function DrugArcPage() {
       sublabel: "Verified OUTCOME relations in the receipts graph",
       count: funnel.outcomeLinks,
       widthPct: Math.max(2, Math.round((funnel.outcomeLinks / Math.max(funnel.trials, 1)) * 100)),
-      color: "bg-violet-500/80",
-      textColor: "text-violet-300",
-      border: "border-violet-800/40",
+      href: "/prereq-graph?domain=medicine",
+      barColor: "rgba(139,92,246,0.8)",
+      countColor: "#c4b5fd",
     },
   ];
 
   return (
-    <div className="max-w-2xl space-y-12">
-
-      {/* Hero */}
-      <div className="space-y-3">
-        <p className="text-xs text-gray-600 font-mono uppercase tracking-widest">Drug Arc</p>
-        <h1 className="text-2xl font-semibold text-white leading-snug">
-          From Lab to Market: The FDA Drug Development Pipeline
-        </h1>
-        <p className="text-sm text-gray-400 leading-relaxed">
-          A new drug takes on average{" "}
-          <span className="text-gray-200">10–15 years</span> and over{" "}
-          <span className="text-gray-200">$2 billion</span> to reach patients.
-          Of every 5,000 compounds that enter preclinical testing, only about{" "}
-          <span className="text-gray-200">5 make it to human trials</span> — and fewer than 1 receives FDA approval.
-          Each stage leaves a datable, auditable receipt. This page maps that arc
-          using live data from this database.
-        </p>
+    <div
+      style={{
+        marginTop: "-2rem",
+        marginLeft: "-1.5rem",
+        marginRight: "-1.5rem",
+        background: C.bg,
+        minHeight: "100vh",
+      }}
+    >
+      {/* Sticky sub-nav */}
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 30,
+          height: 48,
+          background: C.bg,
+          borderBottom: `1px solid ${C.panelEdge}`,
+          display: "flex",
+          alignItems: "center",
+          padding: "0 2rem",
+        }}
+      >
+        <Link
+          href="/"
+          style={{ color: C.brand, fontWeight: 600, fontSize: "0.9rem", textDecoration: "none" }}
+        >
+          ⬡ Epistemic Receipts
+        </Link>
+        <span style={{ color: C.faint, margin: "0 0.5rem", fontSize: "0.9rem" }}>/</span>
+        <span style={{ color: C.ink, fontWeight: 700, fontSize: "0.9rem" }}>Drug Arc</span>
       </div>
 
-      {/* Funnel visualization */}
-      <section className="space-y-4">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-          Pipeline Funnel — Live Counts
-        </h2>
-        <div className="space-y-3">
-          {stages.map((s) => (
-            <div key={s.key} className={`rounded-lg border ${s.border} bg-gray-900/40 px-4 py-3 space-y-2`}>
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm font-medium text-white">{s.label}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{s.sublabel}</p>
-                </div>
-                <span className={`text-lg font-bold tabular-nums ${s.textColor} shrink-0`}>
-                  {fmt(s.count)}
-                </span>
-              </div>
-              <div className="h-1.5 rounded-full bg-gray-800 overflow-hidden">
-                <div
-                  className={`h-full rounded-full ${s.color} transition-all`}
-                  style={{ width: `${Math.min(100, s.widthPct)}%` }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="text-xs text-gray-600 leading-relaxed">
-          Bar widths show each stage relative to the clinical trials corpus. FDA approvals are a
-          distinct pipeline (Drugs@FDA bulk export) — the counts are not strict funnel ratios, but
-          they illustrate the attrition reality.
-        </p>
-      </section>
+      {/* Content */}
+      <div style={{ maxWidth: 1000, margin: "0 auto", padding: "2rem" }}>
 
-      {/* Drug search */}
-      <section className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-            Trace a Drug's Arc
+        {/* Hero */}
+        <div style={{ marginBottom: "3rem" }}>
+          <h1 style={{ fontSize: "2rem", fontWeight: 700, color: C.ink, lineHeight: 1.25, margin: "0 0 1rem" }}>
+            <span style={{ color: C.brand }}>FDA Drug Development Pipeline</span>
+          </h1>
+          <p style={{ fontSize: "0.95rem", color: C.mut, lineHeight: 1.7, margin: 0 }}>
+            A new drug takes on average{" "}
+            <span style={{ color: C.ink }}>10–15 years</span> and over{" "}
+            <span style={{ color: C.ink }}>$2 billion</span> to reach patients.
+            Of every 5,000 compounds that enter preclinical testing, only about{" "}
+            <span style={{ color: C.ink }}>5 make it to human trials</span> — and fewer than 1 receives FDA approval.
+            Each stage leaves a datable, auditable receipt. This page maps that arc
+            using live data from this database.
+          </p>
+        </div>
+
+        {/* Funnel stages */}
+        <section style={{ marginBottom: "3rem" }}>
+          <h2 style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: C.faint, marginBottom: "1.25rem" }}>
+            Pipeline Funnel — Live Counts
           </h2>
-          <p className="text-xs text-gray-600 leading-relaxed">
+          {stages.map(({ key, ...s }) => (
+            <StageCard key={key} {...s} />
+          ))}
+          <p style={{ fontSize: "0.75rem", color: C.faint, lineHeight: 1.6, marginTop: "0.75rem" }}>
+            Bar widths show each stage relative to the clinical trials corpus. FDA approvals are a
+            distinct pipeline (Drugs@FDA bulk export) — the counts are not strict funnel ratios, but
+            they illustrate the attrition reality.
+          </p>
+        </section>
+
+        {/* Drug search */}
+        <section style={{ marginBottom: "3rem" }}>
+          <h2 style={{ fontSize: "1.1rem", fontWeight: 700, color: C.brand, marginBottom: "0.5rem" }}>
+            Trace a Drug&apos;s Arc
+          </h2>
+          <p style={{ fontSize: "0.85rem", color: C.mut, lineHeight: 1.6, marginBottom: "1.25rem" }}>
             Search by drug name or compound. Returns matching records across clinical trial registrations,
             FDA approval decisions, and FAERS adverse event aggregates — ordered chronologically.
           </p>
-        </div>
-        <DrugArcClient />
-      </section>
+          <DrugArcClient />
+        </section>
 
-      {/* Therapeutic area heatmap */}
-      <section className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+        {/* Therapeutic areas */}
+        <section style={{ marginBottom: "3rem" }}>
+          <h2 style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: C.faint, marginBottom: "0.4rem" }}>
             FDA Approvals by Therapeutic Area
           </h2>
-          <p className="text-xs text-gray-600 leading-relaxed">
+          <p style={{ fontSize: "0.75rem", color: C.faint, lineHeight: 1.6, marginBottom: "1rem" }}>
             Grouped from {fmt(funnel.approvals)} Drugs@FDA approval records by keyword matching in claim text.
             A single drug may appear in multiple categories.
           </p>
-        </div>
-        <div className="space-y-2">
-          {areas.map((a) => (
-            <div key={a.key} className="flex items-center gap-3">
-              <div className="w-36 shrink-0 text-xs text-gray-400 text-right">{a.label}</div>
-              <div className="flex-1 h-3 rounded-full bg-gray-800 overflow-hidden">
-                <div
-                  className={`h-full rounded-full ${COLOR_BAR[a.color] ?? "bg-gray-500"} transition-all`}
-                  style={{ width: `${Math.round((a.count / maxAreaCount) * 100)}%` }}
-                />
-              </div>
-              <div className={`w-14 shrink-0 text-xs tabular-nums ${COLOR_TEXT[a.color] ?? "text-gray-400"}`}>
-                {fmt(a.count)}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+          <div>
+            {areas.map((a) => (
+              <AreaRow
+                key={a.key}
+                href={`/search?q=${encodeURIComponent(a.primaryKeyword)}`}
+                label={a.label}
+                widthPct={Math.round((a.count / maxAreaCount) * 100)}
+                barColor={AREA_BAR_COLORS[a.color] ?? "rgba(100,100,120,0.6)"}
+                count={a.count}
+              />
+            ))}
+          </div>
+        </section>
 
-      {/* Featured arc */}
-      <section className="rounded-lg border border-gray-800 bg-gray-900/40 px-5 py-5 space-y-3">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-          Featured Arc — Semaglutide (GLP-1)
-        </h2>
-        <p className="text-sm text-gray-400 leading-relaxed">
-          Semaglutide is one of the most studied arcs in this database. From Phase 3 SUSTAIN trials
-          in the 2010s through three separate FDA approvals (Ozempic 2017, Rybelsus 2019, Wegovy 2021)
-          to tens of thousands of FAERS adverse event reports — and a 2025 oral obesity approval
-          still under active post-market surveillance. The arc is not closed.
-        </p>
-        <p className="text-xs text-gray-500 leading-relaxed">
-          The Settling Curve demo traces this arc in detail — each milestone linked to its
-          primary source claim in this database.
-        </p>
-        <div className="flex items-center gap-4 flex-wrap pt-1 border-t border-gray-800">
-          <Link
-            href="/settling-curve"
-            className="text-xs text-gray-400 hover:text-white transition-colors"
+        {/* Featured arc */}
+        <section
+          style={{
+            background: C.panel,
+            border: `1px solid ${C.panelEdge}`,
+            borderRadius: 12,
+            padding: "1.5rem",
+            marginBottom: "3rem",
+          }}
+        >
+          <h2 style={{ fontSize: "1rem", fontWeight: 700, color: C.brand, marginBottom: "0.75rem" }}>
+            Featured Arc — Semaglutide (GLP-1)
+          </h2>
+          <p style={{ fontSize: "0.9rem", color: C.mut, lineHeight: 1.7, margin: "0 0 0.75rem" }}>
+            Semaglutide is one of the most studied arcs in this database. From Phase 3 SUSTAIN trials
+            in the 2010s through three separate FDA approvals (Ozempic 2017, Rybelsus 2019, Wegovy 2021)
+            to tens of thousands of FAERS adverse event reports — and a 2025 oral obesity approval
+            still under active post-market surveillance. The arc is not closed.
+          </p>
+          <p style={{ fontSize: "0.8rem", color: C.faint, lineHeight: 1.6, margin: "0 0 1rem" }}>
+            The Settling Curve demo traces this arc in detail — each milestone linked to its
+            primary source claim in this database.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              flexWrap: "wrap",
+              paddingTop: "1rem",
+              borderTop: `1px solid ${C.panelEdge}`,
+            }}
           >
-            View semaglutide settling curve →
-          </Link>
-          <Link
-            href="/search?q=semaglutide"
-            className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-          >
-            Search all semaglutide claims →
-          </Link>
-        </div>
-      </section>
+            <Link
+              href="/settling-curve"
+              style={{
+                fontSize: "0.8rem",
+                color: C.brand,
+                fontWeight: 600,
+                textDecoration: "none",
+                background: C.brand + "22",
+                border: `1px solid ${C.brand}55`,
+                borderRadius: 20,
+                padding: "0.3rem 0.8rem",
+              }}
+            >
+              View semaglutide settling curve →
+            </Link>
+            <Link
+              href="/search?q=semaglutide"
+              style={{
+                fontSize: "0.8rem",
+                color: C.mut,
+                fontWeight: 500,
+                textDecoration: "none",
+                background: C.panelEdge,
+                borderRadius: 20,
+                padding: "0.3rem 0.8rem",
+              }}
+            >
+              Search all semaglutide claims →
+            </Link>
+          </div>
+        </section>
 
-      {/* Interpretation */}
-      <div className="space-y-3 text-sm text-gray-400 leading-relaxed border-t border-gray-800 pt-8">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">What the arc shows</h2>
-        <p>
-          FDA approval is a receipt, not a verdict. It records that at the time of review,
-          the available evidence crossed the agency's benefit-risk threshold for the named indication and population.
-          Post-market surveillance — FAERS, pharmacovigilance studies, label updates — is how
-          that receipt gets amended. Most approvals are never revoked. Some are.
-        </p>
-        <p>
-          The database captures both kinds. Searching for a withdrawn drug like rofecoxib (Vioxx)
-          will show its trial and approval records alongside the adverse event signal that preceded
-          its 2004 market withdrawal. The arc ran the same way as semaglutide — and broke differently.
-        </p>
-        <div className="flex items-center gap-3 pt-2 border-t border-gray-800 flex-wrap text-xs">
-          <Link href="/search?q=clinical+trial" className="text-gray-500 hover:text-gray-300 transition-colors">
-            Browse clinical trials →
-          </Link>
-          <Link href="/search?q=FDA+approved" className="text-gray-500 hover:text-gray-300 transition-colors">
-            Browse FDA approvals →
-          </Link>
-          <Link href="/settling-curve" className="text-gray-500 hover:text-gray-300 transition-colors">
-            Settling Curve demo →
-          </Link>
-          <Link href="/about" className="text-gray-500 hover:text-gray-300 transition-colors">
-            About this project →
-          </Link>
+        {/* Interpretation */}
+        <div
+          style={{
+            paddingTop: "2rem",
+            borderTop: `1px solid ${C.panelEdge}`,
+          }}
+        >
+          <h2 style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: C.faint, marginBottom: "1rem" }}>
+            What the arc shows
+          </h2>
+          <p style={{ fontSize: "0.9rem", color: C.mut, lineHeight: 1.7, marginBottom: "1rem" }}>
+            FDA approval is a receipt, not a verdict. It records that at the time of review,
+            the available evidence crossed the agency&apos;s benefit-risk threshold for the named indication and population.
+            Post-market surveillance — FAERS, pharmacovigilance studies, label updates — is how
+            that receipt gets amended. Most approvals are never revoked. Some are.
+          </p>
+          <p style={{ fontSize: "0.9rem", color: C.mut, lineHeight: 1.7, marginBottom: "1.5rem" }}>
+            The database captures both kinds. Searching for a withdrawn drug like rofecoxib (Vioxx)
+            will show its trial and approval records alongside the adverse event signal that preceded
+            its 2004 market withdrawal. The arc ran the same way as semaglutide — and broke differently.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              paddingTop: "1rem",
+              borderTop: `1px solid ${C.panelEdge}`,
+              flexWrap: "wrap",
+            }}
+          >
+            <Link href="/search?q=clinical+trial" style={{ fontSize: "0.8rem", color: C.brand, textDecoration: "none" }}>
+              Browse clinical trials →
+            </Link>
+            <Link href="/search?q=FDA+approved" style={{ fontSize: "0.8rem", color: C.brand, textDecoration: "none" }}>
+              Browse FDA approvals →
+            </Link>
+            <Link href="/settling-curve" style={{ fontSize: "0.8rem", color: C.mut, textDecoration: "none" }}>
+              Settling Curve demo →
+            </Link>
+            <Link href="/about" style={{ fontSize: "0.8rem", color: C.mut, textDecoration: "none" }}>
+              About this project →
+            </Link>
+          </div>
         </div>
+
       </div>
-
     </div>
   );
 }
