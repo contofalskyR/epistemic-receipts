@@ -110,6 +110,7 @@ export async function GET(req: NextRequest) {
       updateType: (m?.updateType as string) ?? "Retraction",
       retractionDate: retractionDate ? retractionDate.toISOString().slice(0, 10) : null,
       year,
+      summary: (m?.summary as string) ?? null,
     };
   });
 

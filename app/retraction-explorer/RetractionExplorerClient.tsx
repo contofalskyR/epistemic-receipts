@@ -14,6 +14,7 @@ type Paper = {
   updateType: string;
   retractionDate: string | null;
   year: number | null;
+  summary: string | null;
 };
 
 const S = {
@@ -190,6 +191,11 @@ function PaperCard({ paper }: { paper: Paper }) {
             padding: "1.25rem",
           }}
         >
+          {paper.summary && (
+            <div style={{ fontSize: "0.82rem", color: S.text, lineHeight: 1.55, marginBottom: "0.75rem", fontStyle: "italic" }}>
+              {paper.summary}
+            </div>
+          )}
           <div
             style={{
               display: "grid",
