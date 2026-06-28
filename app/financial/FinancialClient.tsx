@@ -1,16 +1,52 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type Tab = "insider" | "earnings" | "congress" | "macro";
 type Filter = "all" | "purchase" | "sale";
 
+const C = {
+  bg: "#0a0a0a",
+  panel: "#10101c",
+  panelEdge: "#23233a",
+  ink: "#e9e9f2",
+  mut: "#8b8ba3",
+  faint: "#55556e",
+  brand: "#d4a853",
+  green: "#22c55e",
+  red: "#ef4444",
+  blue: "#60a5fa",
+};
+
+const TX_INLINE: Record<string, React.CSSProperties> = {
+  purchase: { background: "rgba(34,197,94,0.12)", color: "#4ade80", border: "1px solid rgba(34,197,94,0.3)" },
+  sale:     { background: "rgba(239,68,68,0.12)",  color: "#f87171", border: "1px solid rgba(239,68,68,0.3)" },
+  grant:    { background: "rgba(96,165,250,0.12)", color: "#60a5fa", border: "1px solid rgba(96,165,250,0.3)" },
+  other:    { background: "rgba(139,139,163,0.12)", color: C.mut,   border: `1px solid ${C.panelEdge}` },
+};
+
+const PARTY_INLINE: Record<string, React.CSSProperties> = {
+  D: { background: "rgba(96,165,250,0.12)",  color: "#60a5fa", border: "1px solid rgba(96,165,250,0.3)" },
+  R: { background: "rgba(239,68,68,0.12)",   color: "#f87171", border: "1px solid rgba(239,68,68,0.3)" },
+  I: { background: "rgba(139,139,163,0.12)", color: C.mut,     border: `1px solid ${C.panelEdge}` },
+};
+
+const SERIES_INFO: Record<string, { name: string; units: string; color: string }> = {
+  UNRATE:    { name: "Unemployment Rate",       units: "%",          color: "#f87171" },
+  GDP:       { name: "Gross Domestic Product",  units: "Billions $", color: "#4ade80" },
+  CPIAUCSL:  { name: "Consumer Price Index",    units: "Index",      color: "#facc15" },
+  FEDFUNDS:  { name: "Fed Funds Rate",          units: "%",          color: "#60a5fa" },
+  M2SL:     { name: "M2 Money Supply",         units: "Billions $", color: "#c084fc" },
+  CSUSHPINSA:{ name: "Case-Shiller Home Price", units: "Index",      color: "#fb923c" },
+};
+
 const TABS: { value: Tab; label: string; description: string }[] = [
-  { value: "insider", label: "Insider Activity", description: "SEC Form 4 filings — corporate insider stock trades" },
-  { value: "earnings", label: "Earnings", description: "SEC 10-K/10-Q filings from major companies" },
-  { value: "congress", label: "Congress Trades", description: "STOCK Act disclosures from members of Congress" },
-  { value: "macro", label: "Macro", description: "FRED economic indicators — unemployment, GDP, CPI, Fed Funds" },
+  { value: "insider",  label: "Insider Activity",  description: "SEC Form 4 filings — corporate insider stock trades" },
+  { value: "earnings", label: "Earnings",           description: "SEC 10-K/10-Q filings from major companies" },
+  { value: "congress", label: "Congress Trades",   description: "STOCK Act disclosures from members of Congress" },
+  { value: "macro",    label: "Macro",              description: "FRED economic indicators — unemployment, GDP, CPI, Fed Funds" },
 ];
 
 const PAGE_SIZE = 25;
@@ -71,28 +107,6 @@ interface FinancialResponse {
   page: number;
   limit: number;
 }
-
-const TX_STYLE: Record<string, string> = {
-  purchase: "bg-green-950 text-green-400 border border-green-900/50",
-  sale: "bg-red-950 text-red-400 border border-red-900/50",
-  grant: "bg-blue-950 text-blue-300 border border-blue-900/50",
-  other: "bg-gray-800 text-gray-400 border border-gray-700/50",
-};
-
-const PARTY_STYLE: Record<string, string> = {
-  D: "bg-blue-950 text-blue-300 border border-blue-900/50",
-  R: "bg-red-950 text-red-300 border border-red-900/50",
-  I: "bg-gray-800 text-gray-400 border border-gray-700/50",
-};
-
-const SERIES_INFO: Record<string, { name: string; units: string; color: string }> = {
-  UNRATE: { name: "Unemployment Rate", units: "%", color: "text-red-400" },
-  GDP: { name: "Gross Domestic Product", units: "Billions $", color: "text-green-400" },
-  CPIAUCSL: { name: "Consumer Price Index", units: "Index", color: "text-yellow-400" },
-  FEDFUNDS: { name: "Fed Funds Rate", units: "%", color: "text-blue-400" },
-  M2SL: { name: "M2 Money Supply", units: "Billions $", color: "text-purple-400" },
-  CSUSHPINSA: { name: "Case-Shiller Home Price", units: "Index", color: "text-orange-400" },
-};
 
 function formatDate(iso: string | null): string {
   if (!iso) return "—";
@@ -227,200 +241,261 @@ export default function FinancialClient() {
   const tabInfo = TABS.find((t) => t.value === urlTab) ?? TABS[0]!;
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div>
-        <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Financial Disclosures</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">Markets & Accountability</h1>
-        <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">
-          Verified financial disclosures: SEC insider trading (Form 4), Congressional stock trades (STOCK Act),
-          corporate earnings filings (10-K/10-Q), and macroeconomic indicators (FRED).
-        </p>
-      </div>
+    <div style={{ background: C.bg, minHeight: "100vh", marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem", padding: "0 0 4rem" }}>
+      {/* Sticky sub-nav */}
+      <nav style={{ background: C.panel, borderBottom: `1px solid ${C.panelEdge}`, padding: "0 2rem", display: "flex", alignItems: "center", gap: "2rem", height: 56, position: "sticky", top: 48, zIndex: 40 }}>
+        <Link href="/" style={{ color: C.brand, fontWeight: 700, fontSize: "1rem", textDecoration: "none" }}>⬡ Epistemic Receipts</Link>
+        <span style={{ color: C.mut, fontSize: "0.85rem" }}>Financial Disclosures</span>
+      </nav>
 
-      {/* Tab navigation */}
-      <div className="flex items-center gap-1 border-b border-gray-800 overflow-x-auto">
-        {TABS.map((t) => {
-          const active = urlTab === t.value;
-          return (
-            <button
-              key={t.value}
-              onClick={() => pushUrl({ tab: t.value, page: 1 })}
-              title={t.description}
-              className={`text-sm px-4 py-2 border-b-2 transition-colors -mb-px whitespace-nowrap ${
-                active
-                  ? "border-white text-white font-medium"
-                  : "border-transparent text-gray-500 hover:text-gray-300"
-              }`}
-            >
-              {t.label}
-            </button>
-          );
-        })}
-      </div>
+      {/* Content area */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "2rem 2rem 0" }}>
+        {/* Header */}
+        <div style={{ marginBottom: "1.5rem" }}>
+          <p style={{ fontSize: "0.7rem", color: C.faint, fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "0.25rem" }}>
+            Financial Disclosures
+          </p>
+          <h1 style={{ fontSize: "1.5rem", fontWeight: 600, color: C.ink, margin: "0 0 0.5rem" }}>
+            Markets &amp; Accountability
+          </h1>
+          <p style={{ color: C.mut, fontSize: "0.875rem", lineHeight: 1.6, maxWidth: "42rem", margin: 0 }}>
+            Verified financial disclosures: SEC insider trading (Form 4), Congressional stock trades (STOCK Act),
+            corporate earnings filings (10-K/10-Q), and macroeconomic indicators (FRED).
+          </p>
+        </div>
 
-      {/* Tab description */}
-      <p className="text-xs text-gray-500">{tabInfo.description}</p>
+        {/* Tab navigation */}
+        <div style={{ display: "flex", alignItems: "center", gap: 4, borderBottom: `1px solid ${C.panelEdge}`, overflowX: "auto", marginBottom: "0.75rem" }}>
+          {TABS.map((t) => {
+            const active = urlTab === t.value;
+            return (
+              <button
+                key={t.value}
+                onClick={() => pushUrl({ tab: t.value, page: 1 })}
+                title={t.description}
+                style={{
+                  fontSize: "0.875rem",
+                  padding: "0.5rem 1rem",
+                  border: "none",
+                  borderBottom: active ? `2px solid ${C.brand}` : "2px solid transparent",
+                  background: "transparent",
+                  color: active ? C.brand : C.mut,
+                  fontWeight: active ? 600 : 400,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  marginBottom: -1,
+                  transition: "color 0.15s",
+                }}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
 
-      {/* Filters */}
-      <div className="space-y-3">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => onInputChange(e.target.value)}
-          placeholder={
-            urlTab === "insider"
-              ? "Search by filer or company…"
-              : urlTab === "earnings"
-                ? "Search by company name…"
-                : urlTab === "congress"
-                  ? "Search by member or ticker…"
-                  : "Search by series ID…"
-          }
-          className="w-full bg-gray-900 border border-gray-700 text-gray-100 text-sm rounded px-3 py-2 placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
-        />
+        {/* Tab description */}
+        <p style={{ fontSize: "0.75rem", color: C.faint, marginBottom: "1rem" }}>{tabInfo.description}</p>
 
-        {/* Transaction type filter for insider and congress tabs */}
-        {(urlTab === "insider" || urlTab === "congress") && (
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Type</span>
-            {(["all", "purchase", "sale"] as const).map((f) => {
-              const active = urlFilter === f;
-              return (
-                <button
-                  key={f}
-                  onClick={() => pushUrl({ filter: f, page: 1 })}
-                  className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                    active
-                      ? "bg-white text-gray-950 border-white font-medium"
-                      : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
-                  }`}
-                >
-                  {f === "all" ? "All" : f === "purchase" ? "Purchases" : "Sales"}
-                </button>
-              );
-            })}
+        {/* Filters */}
+        <div style={{ marginBottom: "1rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => onInputChange(e.target.value)}
+            placeholder={
+              urlTab === "insider"
+                ? "Search by filer or company…"
+                : urlTab === "earnings"
+                  ? "Search by company name…"
+                  : urlTab === "congress"
+                    ? "Search by member or ticker…"
+                    : "Search by series ID…"
+            }
+            style={{
+              width: "100%",
+              background: C.panel,
+              border: `1px solid ${C.panelEdge}`,
+              borderRadius: 8,
+              color: C.ink,
+              fontSize: "0.875rem",
+              padding: "0.5rem 0.75rem",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Transaction type filter for insider and congress tabs */}
+          {(urlTab === "insider" || urlTab === "congress") && (
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+              <span style={{ fontSize: "0.7rem", color: C.faint, textTransform: "uppercase", letterSpacing: "0.1em", marginRight: 4 }}>
+                Type
+              </span>
+              {(["all", "purchase", "sale"] as const).map((f) => {
+                const active = urlFilter === f;
+                return (
+                  <button
+                    key={f}
+                    onClick={() => pushUrl({ filter: f, page: 1 })}
+                    style={{
+                      fontSize: "0.75rem",
+                      padding: "0.2rem 0.75rem",
+                      borderRadius: 9999,
+                      border: active ? `1px solid ${C.brand}` : `1px solid ${C.panelEdge}`,
+                      background: active ? "rgba(212,168,83,0.15)" : "transparent",
+                      color: active ? C.brand : C.mut,
+                      fontWeight: active ? 600 : 400,
+                      cursor: "pointer",
+                      transition: "all 0.15s",
+                    }}
+                  >
+                    {f === "all" ? "All" : f === "purchase" ? "Purchases" : "Sales"}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {error && <p style={{ fontSize: "0.875rem", color: C.red, marginBottom: "1rem" }}>{error}</p>}
+
+        {loading && !data && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div
+                key={i}
+                style={{
+                  background: C.panel,
+                  border: `1px solid ${C.panelEdge}`,
+                  borderRadius: 10,
+                  padding: "0.75rem 1rem",
+                }}
+              >
+                <div style={{ height: 12, width: "66%", background: C.panelEdge, borderRadius: 4, marginBottom: 8 }} />
+                <div style={{ height: 8, width: "50%", background: C.panelEdge, borderRadius: 4, opacity: 0.6 }} />
+              </div>
+            ))}
           </div>
         )}
-      </div>
 
-      {error && <p className="text-sm text-red-400">{error}</p>}
-
-      {loading && !data && (
-        <div className="space-y-2">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div
-              key={i}
-              className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 animate-pulse"
-            >
-              <div className="h-3 w-2/3 bg-gray-800 rounded" />
-              <div className="mt-2 h-2 w-1/2 bg-gray-800/60 rounded" />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {data && !error && (
-        <>
-          <div className="flex items-center justify-between text-xs text-gray-500">
-            <span>
-              {total === 0
-                ? "No matching results"
-                : `Showing ${showingFrom.toLocaleString()}–${showingTo.toLocaleString()} of ${total.toLocaleString()}`}
-            </span>
-            {loading && <span className="text-gray-600">Refreshing…</span>}
-          </div>
-
-          {total === 0 ? (
-            <div className="rounded-lg border border-gray-800 bg-gray-900/50 px-6 py-12 text-center">
-              <p className="text-sm text-gray-400">
-                {urlQ
-                  ? "No results match your search."
-                  : urlTab === "insider"
-                    ? "No insider trading disclosures yet. Run the Form 4 ingester to populate."
-                    : urlTab === "earnings"
-                      ? "No earnings filings yet. Run the SEC EDGAR ingester to populate."
-                      : urlTab === "congress"
-                        ? "No STOCK Act disclosures yet. Run the Congress STOCK Act ingester to populate."
-                        : "No macro indicators yet. Run the FRED ingester to populate."}
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-2">
-              {urlTab === "insider" &&
-                (data.items as InsiderHit[]).map((hit) => <InsiderRow key={hit.id} hit={hit} />)}
-              {urlTab === "earnings" &&
-                (data.items as EarningsHit[]).map((hit) => <EarningsRow key={hit.id} hit={hit} />)}
-              {urlTab === "congress" &&
-                (data.items as CongressHit[]).map((hit) => <CongressRow key={hit.id} hit={hit} />)}
-              {urlTab === "macro" &&
-                (data.items as MacroHit[]).map((hit) => <MacroRow key={hit.id} hit={hit} />)}
-            </div>
-          )}
-
-          {total > PAGE_SIZE && (
-            <div className="flex items-center gap-3 text-xs text-gray-500 pt-2">
-              <button
-                onClick={() => pushUrl({ page: Math.max(1, urlPage - 1) })}
-                disabled={urlPage <= 1}
-                className="hover:text-gray-300 disabled:opacity-30 transition-colors"
-              >
-                ← Previous
-              </button>
-              <span className="text-gray-700">·</span>
+        {data && !error && (
+          <>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "0.75rem", color: C.mut, marginBottom: "0.75rem" }}>
               <span>
-                Page {urlPage.toLocaleString()} of {pageCount.toLocaleString()}
+                {total === 0
+                  ? "No matching results"
+                  : `Showing ${showingFrom.toLocaleString()}–${showingTo.toLocaleString()} of ${total.toLocaleString()}`}
               </span>
-              <span className="text-gray-700">·</span>
-              <button
-                onClick={() => pushUrl({ page: urlPage + 1 })}
-                disabled={urlPage >= pageCount}
-                className="hover:text-gray-300 disabled:opacity-30 transition-colors"
-              >
-                Next →
-              </button>
+              {loading && <span style={{ color: C.faint }}>Refreshing…</span>}
             </div>
-          )}
-        </>
-      )}
+
+            {total === 0 ? (
+              <div style={{ background: C.panel, border: `1px solid ${C.panelEdge}`, borderRadius: 10, padding: "3rem 1.5rem", textAlign: "center" }}>
+                <p style={{ fontSize: "0.875rem", color: C.mut }}>
+                  {urlQ
+                    ? "No results match your search."
+                    : urlTab === "insider"
+                      ? "No insider trading disclosures yet. Run the Form 4 ingester to populate."
+                      : urlTab === "earnings"
+                        ? "No earnings filings yet. Run the SEC EDGAR ingester to populate."
+                        : urlTab === "congress"
+                          ? "No STOCK Act disclosures yet. Run the Congress STOCK Act ingester to populate."
+                          : "No macro indicators yet. Run the FRED ingester to populate."}
+                </p>
+              </div>
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                {urlTab === "insider" &&
+                  (data.items as InsiderHit[]).map((hit) => <InsiderRow key={hit.id} hit={hit} />)}
+                {urlTab === "earnings" &&
+                  (data.items as EarningsHit[]).map((hit) => <EarningsRow key={hit.id} hit={hit} />)}
+                {urlTab === "congress" &&
+                  (data.items as CongressHit[]).map((hit) => <CongressRow key={hit.id} hit={hit} />)}
+                {urlTab === "macro" &&
+                  (data.items as MacroHit[]).map((hit) => <MacroRow key={hit.id} hit={hit} />)}
+              </div>
+            )}
+
+            {total > PAGE_SIZE && (
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.75rem", color: C.mut, paddingTop: "0.5rem" }}>
+                <button
+                  onClick={() => pushUrl({ page: Math.max(1, urlPage - 1) })}
+                  disabled={urlPage <= 1}
+                  style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0, opacity: urlPage <= 1 ? 0.3 : 1 }}
+                  onMouseEnter={(e) => { if (urlPage > 1) (e.currentTarget as HTMLButtonElement).style.color = C.ink; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = C.mut; }}
+                >
+                  ← Previous
+                </button>
+                <span style={{ color: C.faint }}>·</span>
+                <span>
+                  Page {urlPage.toLocaleString()} of {pageCount.toLocaleString()}
+                </span>
+                <span style={{ color: C.faint }}>·</span>
+                <button
+                  onClick={() => pushUrl({ page: urlPage + 1 })}
+                  disabled={urlPage >= pageCount}
+                  style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0, opacity: urlPage >= pageCount ? 0.3 : 1 }}
+                  onMouseEnter={(e) => { if (urlPage < pageCount) (e.currentTarget as HTMLButtonElement).style.color = C.ink; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = C.mut; }}
+                >
+                  Next →
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
 
 function InsiderRow({ hit }: { hit: InsiderHit }) {
-  const txStyle = TX_STYLE[hit.transactionType] ?? TX_STYLE.other!;
+  const txStyle = TX_INLINE[hit.transactionType] ?? TX_INLINE.other!;
   const priceStr = hit.pricePerShare ? `$${hit.pricePerShare.toFixed(2)}` : "—";
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 flex-wrap mb-1.5">
-            <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider ${txStyle}`}>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: C.panel,
+        border: `1px solid ${hovered ? C.mut : C.panelEdge}`,
+        borderRadius: 10,
+        padding: "0.75rem 1rem",
+        transition: "border-color 0.15s",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.375rem" }}>
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 9999, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", ...txStyle }}>
               {hit.transactionType}
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-gray-800 text-gray-400 border border-gray-700/50">
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 4, fontFamily: "monospace", background: "rgba(139,139,163,0.1)", color: C.mut, border: `1px solid ${C.panelEdge}` }}>
               {formatNumber(hit.shares)} shares
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-gray-800 text-gray-400 border border-gray-700/50">
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 4, fontFamily: "monospace", background: "rgba(139,139,163,0.1)", color: C.mut, border: `1px solid ${C.panelEdge}` }}>
               @ {priceStr}
             </span>
           </div>
-          <p className="text-sm text-gray-200 group-hover:text-white leading-snug">
-            <span className="font-medium">{hit.filerName}</span>
-            <span className="text-gray-500"> → </span>
+          <p style={{ fontSize: "0.875rem", color: hovered ? C.ink : "#d1d1e0", lineHeight: 1.4, margin: 0 }}>
+            <span style={{ fontWeight: 500 }}>{hit.filerName}</span>
+            <span style={{ color: C.faint }}> → </span>
             <span>{hit.issuerName}</span>
           </p>
         </div>
-        <div className="shrink-0 text-right">
-          <div className="text-[10px] text-gray-600 font-mono uppercase tracking-widest">Traded</div>
-          <div className="text-xs text-gray-400 font-mono whitespace-nowrap">{formatDate(hit.transactionDate)}</div>
+        <div style={{ flexShrink: 0, textAlign: "right" }}>
+          <div style={{ fontSize: "0.625rem", color: C.faint, fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.1em" }}>Traded</div>
+          <div style={{ fontSize: "0.75rem", color: C.mut, fontFamily: "monospace", whiteSpace: "nowrap" }}>{formatDate(hit.transactionDate)}</div>
           {hit.sourceUrl && (
             <a
               href={hit.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 inline-block text-[10px] text-gray-500 hover:text-blue-300 transition-colors uppercase tracking-widest"
+              style={{ marginTop: 4, display: "inline-block", fontSize: "0.625rem", color: C.faint, textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.blue; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.faint; }}
             >
               SEC →
             </a>
@@ -432,28 +507,44 @@ function InsiderRow({ hit }: { hit: InsiderHit }) {
 }
 
 function EarningsRow({ hit }: { hit: EarningsHit }) {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <div className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 flex-wrap mb-1.5">
-            <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-gray-800 text-gray-400 border border-gray-700/50">
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: C.panel,
+        border: `1px solid ${hovered ? C.mut : C.panelEdge}`,
+        borderRadius: 10,
+        padding: "0.75rem 1rem",
+        transition: "border-color 0.15s",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.375rem" }}>
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 4, fontFamily: "monospace", background: "rgba(139,139,163,0.1)", color: C.mut, border: `1px solid ${C.panelEdge}` }}>
               {hit.formType}
             </span>
           </div>
-          <p className="text-sm text-gray-200 group-hover:text-white leading-snug font-medium">
+          <p style={{ fontSize: "0.875rem", color: hovered ? C.ink : "#d1d1e0", lineHeight: 1.4, fontWeight: 500, margin: "0 0 0.25rem" }}>
             {hit.companyName}
           </p>
-          <p className="mt-1 text-xs text-gray-500 line-clamp-2">{hit.claimText}</p>
+          <p style={{ fontSize: "0.75rem", color: C.faint, margin: 0, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
+            {hit.claimText}
+          </p>
         </div>
-        <div className="shrink-0 text-right">
-          <div className="text-xs text-gray-400 font-mono whitespace-nowrap">{formatDate(hit.filingDate)}</div>
+        <div style={{ flexShrink: 0, textAlign: "right" }}>
+          <div style={{ fontSize: "0.75rem", color: C.mut, fontFamily: "monospace", whiteSpace: "nowrap" }}>{formatDate(hit.filingDate)}</div>
           {hit.sourceUrl && (
             <a
               href={hit.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 inline-block text-[10px] text-gray-500 hover:text-blue-300 transition-colors uppercase tracking-widest"
+              style={{ marginTop: 4, display: "inline-block", fontSize: "0.625rem", color: C.faint, textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.blue; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.faint; }}
             >
               Filing →
             </a>
@@ -465,40 +556,53 @@ function EarningsRow({ hit }: { hit: EarningsHit }) {
 }
 
 function CongressRow({ hit }: { hit: CongressHit }) {
-  const txStyle = TX_STYLE[hit.transactionType] ?? TX_STYLE.other!;
-  const partyStyle = PARTY_STYLE[hit.party] ?? PARTY_STYLE.I!;
+  const txStyle = TX_INLINE[hit.transactionType] ?? TX_INLINE.other!;
+  const partyStyle = PARTY_INLINE[hit.party] ?? PARTY_INLINE.I!;
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 flex-wrap mb-1.5">
-            <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider ${txStyle}`}>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: C.panel,
+        border: `1px solid ${hovered ? C.mut : C.panelEdge}`,
+        borderRadius: 10,
+        padding: "0.75rem 1rem",
+        transition: "border-color 0.15s",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.375rem" }}>
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 9999, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", ...txStyle }}>
               {hit.transactionType}
             </span>
-            <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${partyStyle}`}>
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 9999, fontWeight: 600, ...partyStyle }}>
               {hit.party}-{hit.state}
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-gray-800 text-gray-400 border border-gray-700/50">
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 4, fontFamily: "monospace", background: "rgba(139,139,163,0.1)", color: C.mut, border: `1px solid ${C.panelEdge}` }}>
               {hit.ticker}
             </span>
-            <span className="text-[10px] text-gray-500">{formatAmount(hit.amountMin, hit.amountMax)}</span>
+            <span style={{ fontSize: "0.625rem", color: C.faint }}>{formatAmount(hit.amountMin, hit.amountMax)}</span>
           </div>
-          <p className="text-sm text-gray-200 group-hover:text-white leading-snug">
-            <span className="font-medium">{hit.memberName}</span>
-            <span className="text-gray-500"> ({hit.chamber}) </span>
-            <span className="text-gray-400">→ {hit.companyName}</span>
+          <p style={{ fontSize: "0.875rem", color: hovered ? C.ink : "#d1d1e0", lineHeight: 1.4, margin: 0 }}>
+            <span style={{ fontWeight: 500 }}>{hit.memberName}</span>
+            <span style={{ color: C.faint }}> ({hit.chamber}) </span>
+            <span style={{ color: C.mut }}>→ {hit.companyName}</span>
           </p>
         </div>
-        <div className="shrink-0 text-right">
-          <div className="text-[10px] text-gray-600 font-mono uppercase tracking-widest">Traded</div>
-          <div className="text-xs text-gray-400 font-mono whitespace-nowrap">{formatDate(hit.tradeDate)}</div>
+        <div style={{ flexShrink: 0, textAlign: "right" }}>
+          <div style={{ fontSize: "0.625rem", color: C.faint, fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.1em" }}>Traded</div>
+          <div style={{ fontSize: "0.75rem", color: C.mut, fontFamily: "monospace", whiteSpace: "nowrap" }}>{formatDate(hit.tradeDate)}</div>
           {hit.sourceUrl && (
             <a
               href={hit.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 inline-block text-[10px] text-gray-500 hover:text-blue-300 transition-colors uppercase tracking-widest"
+              style={{ marginTop: 4, display: "inline-block", fontSize: "0.625rem", color: C.faint, textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.blue; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.faint; }}
             >
               Disclosure →
             </a>
@@ -510,32 +614,47 @@ function CongressRow({ hit }: { hit: CongressHit }) {
 }
 
 function MacroRow({ hit }: { hit: MacroHit }) {
-  const info = SERIES_INFO[hit.seriesId] ?? { name: hit.seriesName || hit.seriesId, units: "", color: "text-gray-400" };
+  const info = SERIES_INFO[hit.seriesId] ?? { name: hit.seriesName || hit.seriesId, units: "", color: C.mut };
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 flex-wrap mb-1.5">
-            <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-gray-800 text-gray-400 border border-gray-700/50">
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: C.panel,
+        border: `1px solid ${hovered ? C.mut : C.panelEdge}`,
+        borderRadius: 10,
+        padding: "0.75rem 1rem",
+        transition: "border-color 0.15s",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.375rem" }}>
+            <span style={{ fontSize: "0.625rem", padding: "0.125rem 0.5rem", borderRadius: 4, fontFamily: "monospace", background: "rgba(139,139,163,0.1)", color: C.mut, border: `1px solid ${C.panelEdge}` }}>
               {hit.seriesId}
             </span>
           </div>
-          <p className="text-sm text-gray-200 group-hover:text-white leading-snug">{info.name}</p>
-          <p className="mt-1 text-xs text-gray-500">
+          <p style={{ fontSize: "0.875rem", color: hovered ? C.ink : "#d1d1e0", lineHeight: 1.4, margin: "0 0 0.25rem" }}>
+            {info.name}
+          </p>
+          <p style={{ fontSize: "0.75rem", color: C.faint, margin: 0 }}>
             {info.units ? `${info.units}: ` : ""}
-            <span className={`font-mono font-medium ${info.color}`}>
+            <span style={{ fontFamily: "monospace", fontWeight: 500, color: info.color }}>
               {hit.value.toLocaleString(undefined, { maximumFractionDigits: 2 })}
             </span>
           </p>
         </div>
-        <div className="shrink-0 text-right">
-          <div className="text-xs text-gray-400 font-mono whitespace-nowrap">{formatDate(hit.date)}</div>
+        <div style={{ flexShrink: 0, textAlign: "right" }}>
+          <div style={{ fontSize: "0.75rem", color: C.mut, fontFamily: "monospace", whiteSpace: "nowrap" }}>{formatDate(hit.date)}</div>
           <a
             href={`https://fred.stlouisfed.org/series/${hit.seriesId}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-1 inline-block text-[10px] text-gray-500 hover:text-blue-300 transition-colors uppercase tracking-widest"
+            style={{ marginTop: 4, display: "inline-block", fontSize: "0.625rem", color: C.faint, textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.blue; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.faint; }}
           >
             FRED →
           </a>
