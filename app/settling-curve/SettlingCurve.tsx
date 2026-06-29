@@ -646,7 +646,7 @@ function SettlingCurveInner() {
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-2 py-3" style={{ background: C.bg }}>
+        <div className="flex-1 overflow-y-auto px-2 py-3" style={{ background: C.bg, WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
           {filteredList.length === 0 ? (
             <div className="px-3 py-6 text-center" style={{ color: C.mut, fontSize: 12 }}>
               No trajectories match these filters.
@@ -913,12 +913,12 @@ function SettlingCurveInner() {
           {renderSidebar()}
         </aside>
 
-        {/* Mobile drawer overlay */}
+        {/* Mobile drawer overlay — only covers area above the drawer (bottom 80vh excluded) */}
         {drawerOpen && (
           <div
             onClick={() => setDrawerOpen(false)}
-            className="md:hidden fixed inset-0 z-40"
-            style={{ background: "rgba(0,0,0,0.6)" }}
+            className="md:hidden fixed left-0 right-0 top-0 z-40"
+            style={{ bottom: "80vh", background: "rgba(0,0,0,0.6)" }}
             aria-hidden
           />
         )}
