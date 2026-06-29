@@ -13,7 +13,7 @@ const C = {
 export default function SettlingCurveNav({
   active,
 }: {
-  active: "individual" | "overview";
+  active: "individual" | "overview" | "coverage";
 }) {
   const tabStyle = (isActive: boolean): React.CSSProperties => ({
     padding: "6px 16px",
@@ -46,6 +46,12 @@ export default function SettlingCurveNav({
         style={tabStyle(active === "overview")}
       >
         Distribution Overview
+      </Link>
+      <Link
+        href="/settling-curve/coverage"
+        style={tabStyle(active === "coverage")}
+      >
+        Epistemic Coverage
       </Link>
     </div>
   );
