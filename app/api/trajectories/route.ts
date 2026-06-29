@@ -52,7 +52,10 @@ export async function GET(req: NextRequest) {
       ? prisma.claim.findMany({
           where: {
             deleted: false,
-            verificationStatus: { not: "DEPRECATED" as const },
+            OR: [
+              { verificationStatus: null },
+              { verificationStatus: { not: "DEPRECATED" as const } },
+            ],
             externalId: { startsWith: "trajectory:" },
           },
           select: {
