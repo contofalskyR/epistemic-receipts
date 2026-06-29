@@ -247,7 +247,7 @@ export default function EpistemicCoverage() {
                   <Tooltip
                     contentStyle={{ background: C.panel, border: `1px solid ${C.panelEdge}`, borderRadius: 6, fontSize: 12 }}
                     labelStyle={{ color: C.ink }}
-                    formatter={(v: number) => [fmtFull(v), "Claims"]}
+                    formatter={(v) => [fmtFull(Number(v)), "Claims"]}
                     labelFormatter={(l) => `${l}s`}
                   />
                   <Bar dataKey="count" fill={C.brand} radius={[3, 3, 0, 0]} maxBarSize={40} />
