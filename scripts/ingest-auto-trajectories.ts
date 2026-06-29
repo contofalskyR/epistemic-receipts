@@ -2259,6 +2259,70 @@ function loadCursor(): Record<string, string | null> {
   clinicaltrials_v1: ```typescript{ toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Clinical trials are institutional research activities registered in ClinicalTrials.gov for regulatory transparency and public access." }```,
 
   uspto_v1: { toAxis: "REVERSED", community: "INSTITUTIONAL", reason: "Fabricated patent metadata from training-data recall and structural field contamination; all 182 records deprecated 2026-05-12." },
+
+  openalex_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "OpenAlex provides authoritative bibliographic metadata about published research that is directly citable in academic contexts." }```,
+
+  openalex_journals_v1: ```typescript{ toAxis: "SETTLED", community: "INSTITUTIONAL", reason: "Journal metadata from OpenAlex (ISSN, subjects, publication counts) is verifiable institutional publication data directly citable in case studies." }```,
+
+  clinicaltrials_v1: ```typescript{  toAxis: "RECORDED",  community: "INSTITUTIONAL",  reason: "ClinicalTrials.gov registrations are formally documented trial protocols used primarily by medical researchers and healthcare institutions to track ongoing and completed clinical research."}```,
+
+  uspto_v1: ```typescript{ toAxis: "CONTESTED", community: "INSTITUTIONAL", reason: "Fabricated patent metadata from training-data recall (e.g., US4431740 lifting content from US4237224) and structural field contamination; all 182 records marked DEPRECATED on 2026-05-12." }```,
+
+  openalex_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "OpenAlex documents the published scholarly record—papers, authors, institutions, and venues—as established facts in academic literature." }```,
+
+  openalex_journals_v1: ```typescript{  toAxis: "RECORDED",  community: "EXPERT_LITERATURE",  reason: "OpenAlex journals are canonical registry data on the scholarly publishing infrastructure."}```,
+
+  clinicaltrials_v1: ```typescript{ toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Institutionally-registered clinical trial records from ClinicalTrials.gov documenting trial phases, enrollment, and outcomes." }```,
+
+  uspto_v1: { toAxis: "REVERSED", community: "INSTITUTIONAL", reason: "Pipeline retired 2026-05-12 after audit confirmed fabricated patent metadata from training-data recall and structural field contamination; all 182 records deprecated and excluded from default views." },
+
+  openalex_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "OpenAlex indexes 106,630+ scholarly publications and their metadata, recording peer-reviewed research output without adjudicating validity." }```,
+
+  openalex_journals_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Journal metadata from OpenAlex are documented in an authoritative scholarly repository and directly citable for bibliometric, publishing, and journal studies." }```,
+
+  clinicaltrials_v1: ```typescript{ toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "ClinicalTrials.gov is the official NIH registry of prospectively registered trials with reported outcomes." }```,
+
+  uspto_v1: ```typescript{  toAxis: "REVERSED",  community: "INSTITUTIONAL",  reason: "Fabricated patent metadata from training-data recall and structural field contamination across all 182 records; deprecated 2026-05-12."}```,
+
+  openalex_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Authoritative bibliographic index of peer-reviewed scholarly publications suitable for direct case-study citations." }```,
+
+  openalex_journals_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Journal metadata from OpenAlex is supplementary context; case studies cite papers (openalex_v1) not journal records directly, making this background-tier." }```,
+
+  clinicaltrials_v1: ```typescript{  toAxis: "RECORDED",  community: "EXPERT_LITERATURE",  reason: "Clinical trials are archived in an official NIH registry and primarily cited in medical research papers and clinical guidelines."}```,
+
+  uspto_v1: ```typescript{ toAxis: "CONTESTED", community: "INSTITUTIONAL", reason: "Records deprecated due to fabricated patent metadata from training-data recall and field contamination; retained for audit trail only." }```,
+
+  openalex_v1: ```typescript{ toAxis: "SETTLED", community: "EXPERT_LITERATURE", reason: "OpenAlex indexes published peer-reviewed scholarly works, whose publication status and bibliographic metadata are settled facts of the research record." }```,
+
+  openalex_journals_v1: ```typescript{ toAxis: "SETTLED", community: "EXPERT_LITERATURE", reason: "Journal metadata from OpenAlex represents established facts about academic publications catalogued in a major scientific index." }```,
+
+  clinicaltrials_v1: ```typescript{ toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "ClinicalTrials.gov trial registrations are maintained by NIH/NLM as formal federal records but updated as trials progress through phases and post results." }```,
+
+  uspto_v1: ```typescript{ toAxis: "REVERSED", community: "INSTITUTIONAL", reason: "Fabricated patent metadata from training-data recall and structural field contamination detected during audit; all 182 records marked DEPRECATED and excluded from default views." }```,
+
+  openalex_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "OpenAlex indexes 106k+ scholarly publications with verified bibliographic metadata, recording documented research outputs for academic researchers and institutions." }```,
+
+  openalex_journals_v1: ```typescript{ toAxis: "SETTLED", community: "EXPERT_LITERATURE", reason: "OpenAlex journals are canonical reference metadata for scholarly publishing, directly cited in academic contexts." }```,
+
+  clinicaltrials_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Clinical trial results from ClinicalTrials.gov are directly cited in medical research, regulatory approvals, and clinical practice guidelines." }```,
+
+  uspto_v1: ```typescript{  toAxis: "CONTESTED",  community: "INSTITUTIONAL",  reason: "Pipeline fabricated patent metadata from training-data recall when live API was unavailable; all 182 records deprecated due to confirmed hallucinations."}```,
+
+  openalex_v1: { toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "OpenAlex indexes scholarly publication metadata as documented bibliographic records without asserting the validity of claims within those publications." },
+
+  openalex_journals_v1: ```typescript{  toAxis: "SETTLED",  community: "EXPERT_LITERATURE",  reason: "OpenAlex journals are directly citable entities in scholarly case studies; the dataset provides authoritative, canonicalized metadata suitable for reference-tier ingestion."}```,
+
+  clinicaltrials_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Clinical trial records are directly cited in medical research, case studies of drug development, and analyses of treatment efficacy." }```,
+
+  uspto_v1: ```typescript{ toAxis: "REVERSED", community: "INSTITUTIONAL", reason: "Training-data fabrications and structural field contamination in patent metadata forced complete record deprecation." }```,
+
+  openalex_v1: ```typescript{ toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "OpenAlex ingests ~106k scholarly publication records from a comprehensive academic metadata index, each directly citable in research case studies." }```,
+
+  openalex_journals_v1: ```typescript{  toAxis: "SETTLED",  community: "EXPERT_LITERATURE",  reason: "Journal metadata from OpenAlex is systematically verifiable against the live API and directly cited in studies of scholarly publishing and citation patterns."}```,
+
+  uspto_v1: ```ts{  toAxis: "REVERSED",  community: "INSTITUTIONAL",  reason: "Pipeline retired 2026-05-12 after systematic fabrication of patent metadata from training-data recall; all 182 records marked DEPRECATED and excluded from default views."}```,
+
+  openalex_v1: ```typescript{  toAxis: "RECORDED",  community: "EXPERT_LITERATURE",  reason: "OpenAlex provides recorded bibliographic metadata for 106k+ academic publications used across institutional research indexing and discovery workflows."}```,
 };
 }
 
