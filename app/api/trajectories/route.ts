@@ -46,17 +46,15 @@ export async function GET(req: NextRequest) {
   // cap for non-curated results to avoid returning millions at once
   const limit = parseInt(searchParams.get("limit") ?? "5000");
 
-  const whereBase = {
-    deleted: false,
-    verificationStatus: { not: "DEPRECATED" as const },
-    statusHistory: { some: {} },
-  };
-
   const [curated, auto] = await Promise.all([
-    // Curated trajectory: claims (agentic loop output)
+    // Curated trajectory: claims — no statusHistory filter, always show all
     source !== "auto"
       ? prisma.claim.findMany({
-          where: { ...whereBase, externalId: { startsWith: "trajectory:" } },
+          where: {
+            deleted: false,
+            verificationStatus: { not: "DEPRECATED" as const },
+            externalId: { startsWith: "trajectory:" },
+          },
           select: {
             id: true,
             externalId: true,
@@ -75,7 +73,9 @@ export async function GET(req: NextRequest) {
     source !== "curated"
       ? prisma.claim.findMany({
           where: {
-            ...whereBase,
+            deleted: false,
+            verificationStatus: { not: "DEPRECATED" as const },
+            statusHistory: { some: {} },
             OR: [
               { externalId: null },
               { externalId: { not: { startsWith: "trajectory:" } } },
@@ -98,11 +98,13 @@ export async function GET(req: NextRequest) {
       : Promise.resolve([]),
   ]);
 
-  const allClaims = [...curated, ...auto];
+  // Curated always shown; auto filtered to minMilestones
+  const allClaims = [
+    ...curated,
+    ...auto.filter((c) => c.statusHistory.length >= minMilestones),
+  ];
 
-  const list = allClaims
-    .filter((c) => c.statusHistory.length >= minMilestones)
-    .map((c) => {
+  const list = allClaims.map((c) => {
       const sorted = [...c.statusHistory].sort(
         (a, b) => a.occurredAt.getTime() - b.occurredAt.getTime()
       );
