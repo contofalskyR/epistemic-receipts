@@ -129,7 +129,29 @@ while true; do
   log "batch done. added=$ADDED total_run=$TOTAL_RUN"
 
   if [ "$ADDED" -gt "0" ] 2>/dev/null; then
-    bash "$NOTIFY" "🌊 Internal settling curve: +${ADDED} new history entries (session total: ${TOTAL_RUN})"
+    # Get coverage stats for the notification
+    STATS=$(cd "$PROJECT_DIR" && npx dotenv-cli -e .env.local -- node -e "
+const {PrismaClient}=require('@prisma/client');
+const p=new PrismaClient();
+Promise.all([
+  p.claimStatusHistory.count(),
+  p.claim.count({where:{deleted:false,claimEmergedAt:{not:null}}}),
+  p.\$queryRawUnsafe('SELECT COUNT(DISTINCT c.\"ingestedBy\") as n FROM \"Claim\" c WHERE c.deleted=false AND c.\"claimEmergedAt\" IS NOT NULL AND c.\"ingestedBy\" NOT IN (\'manual\',\'seed:human-history-trajectories\') AND NOT EXISTS (SELECT 1 FROM \"ClaimStatusHistory\" h WHERE h.\"claimId\"=c.id) HAVING COUNT(*)>5')
+]).then(([covered,total,uncov])=>{
+  const pct=((covered/total)*100).toFixed(1);
+  const gaps=uncov.length;
+  console.log(covered+'|'+total+'|'+pct+'|'+gaps);
+  return p.\$disconnect();
+}).catch(()=>{console.log('?|?|?|?');});
+" 2>/dev/null)
+    COVERED=$(echo "$STATS" | cut -d'|' -f1)
+    TOTAL=$(echo "$STATS" | cut -d'|' -f2)
+    PCT=$(echo "$STATS" | cut -d'|' -f3)
+    GAPS=$(echo "$STATS" | cut -d'|' -f4)
+    GAPS_MSG=""
+    [ "$GAPS" != "0" ] && [ "$GAPS" != "" ] && GAPS_MSG=" | ⚠️ ${GAPS} pipeline(s) still uncovered"
+    bash "$NOTIFY" "🌊 Internal settling curve: +${ADDED} new entries
+📊 Coverage: ${COVERED}/${TOTAL} (${PCT}%)${GAPS_MSG}"
     sleep 5
   else
     # Exhausted — run audit before deciding to sleep
