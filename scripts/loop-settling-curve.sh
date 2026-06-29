@@ -96,7 +96,9 @@ REASONING:[why all candidates failed — URL dead, already in DB, not precisely 
     >> "$DECISIONS_LOG"
 
   if [ "${ADDED:-0}" != "0" ] && [ "${ADDED:-0}" != "" ]; then
+    ERA_LABEL="${FOCUS%%:*}"
     bash "$NOTIFY" "🌊 Settling curve +${ADDED} new trajectories (run #${RUN})
+🕰 Era: ${ERA_LABEL}
 📚 ${TITLES}
 Total was ${CURRENT_COUNT} claimIds"
     # Archive log after every successful addition
