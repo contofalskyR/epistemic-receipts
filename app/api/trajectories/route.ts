@@ -1,22 +1,34 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export const revalidate = 600;
+export const dynamic = "force-dynamic";
+
+// Domain classification — checked in order; first match wins.
+const DOMAIN_RULES: [RegExp, string][] = [
+  [/medicine|pharma|drug|fda|clinical|who_gho|openfda|chebi|faers/i, "medicine"],
+  [/astronomy|space|nasa|exoplanet/i, "astronomy"],
+  [/climate|environment|epa/i, "climate"],
+  [/nutrition|diet/i, "nutrition"],
+  [/law|court|judicial|litigation|scotus|circuit|bia|icsid/i, "law"],
+  [/legislation|congress|parliament|riksdag|bundestag|senate/i, "politics"],
+  [/voteview|vote/i, "politics"],
+  [/openalex|journal|crossref|retract/i, "science"],
+  [/nara|jacar|archive/i, "history"],
+  [/worldbank|vdem|sipri|ucdp|ofac/i, "global"],
+];
 
 function classifyDomain(ingestedBy: string | null): string {
   if (!ingestedBy) return "history";
-  if (ingestedBy.includes("medicine")) return "medicine";
-  if (ingestedBy.includes("astronomy")) return "astronomy";
-  if (ingestedBy.includes("climate")) return "climate";
-  if (ingestedBy.includes("nutrition")) return "nutrition";
-  if (ingestedBy.includes("law")) return "law";
+  for (const [re, domain] of DOMAIN_RULES) {
+    if (re.test(ingestedBy)) return domain;
+  }
   return "history";
 }
 
 function classifyEra(emergedAt: Date | null): string {
   if (!emergedAt) return "Unknown";
   const y = emergedAt.getFullYear();
-  if (y < 500) return "Ancient & Classical";
+  if (y < 500)  return "Ancient & Classical";
   if (y < 1400) return "Medieval & Islamic Golden Age";
   if (y < 1750) return "Early Modern";
   if (y < 1900) return "Industrial & Colonial";
@@ -25,49 +37,100 @@ function classifyEra(emergedAt: Date | null): string {
   return "Modern";
 }
 
-export async function GET() {
-  const claims = await prisma.claim.findMany({
-    where: { externalId: { startsWith: "trajectory:" }, deleted: false },
-    select: {
-      id: true,
-      externalId: true,
-      text: true,
-      claimEmergedAt: true,
-      ingestedBy: true,
-      statusHistory: {
-        orderBy: { occurredAt: "asc" },
-        select: { community: true, toAxis: true, occurredAt: true },
-      },
-    },
-  });
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl;
+  // minMilestones=2 ensures single-point auto-generated entries never appear
+  const minMilestones = parseInt(searchParams.get("minMilestones") ?? "2");
+  // source=curated → only trajectory: claims | source=auto → only non-trajectory | omit → both
+  const source = searchParams.get("source") ?? "all";
+  // cap for non-curated results to avoid returning millions at once
+  const limit = parseInt(searchParams.get("limit") ?? "5000");
 
-  const list = claims.map((c) => {
-    const sorted = [...c.statusHistory].sort(
-      (a, b) => a.occurredAt.getTime() - b.occurredAt.getTime()
-    );
-    const last = sorted[sorted.length - 1];
-    const first = sorted[0];
-    return {
-      id: c.externalId!.replace(/^trajectory:/, ""),
-      claimId: c.id,
-      claim: c.text,
-      domain: classifyDomain(c.ingestedBy),
-      era: classifyEra(c.claimEmergedAt),
-      communities: [...new Set(c.statusHistory.map((s) => s.community))],
-      transitionCount: c.statusHistory.length,
-      hasReversal: c.statusHistory.some((s) => s.toAxis === "REVERSED"),
-      hasAbandonment: c.statusHistory.some((s) => s.toAxis === "ABANDONED"),
-      currentAxis: last?.toAxis ?? null,
-      firstYear: first ? first.occurredAt.getUTCFullYear() : null,
-      lastYear: last ? last.occurredAt.getUTCFullYear() : null,
-      // Lean milestone series for the sidebar-row sparkline (SettlingCurveMini).
-      // Only year + axis — kept minimal because the full list ships at once.
-      milestones: sorted.map((s) => ({
-        year: s.occurredAt.getUTCFullYear(),
-        axis: s.toAxis,
-      })),
-    };
-  });
+  const whereBase = {
+    deleted: false,
+    verificationStatus: { not: "DEPRECATED" as const },
+    statusHistory: { some: {} },
+  };
+
+  const [curated, auto] = await Promise.all([
+    // Curated trajectory: claims (agentic loop output)
+    source !== "auto"
+      ? prisma.claim.findMany({
+          where: { ...whereBase, externalId: { startsWith: "trajectory:" } },
+          select: {
+            id: true,
+            externalId: true,
+            text: true,
+            claimEmergedAt: true,
+            ingestedBy: true,
+            statusHistory: {
+              orderBy: { occurredAt: "asc" },
+              select: { community: true, toAxis: true, occurredAt: true },
+            },
+          },
+        })
+      : Promise.resolve([]),
+
+    // Auto-generated: regular DB claims with status history
+    source !== "curated"
+      ? prisma.claim.findMany({
+          where: {
+            ...whereBase,
+            OR: [
+              { externalId: null },
+              { externalId: { not: { startsWith: "trajectory:" } } },
+            ],
+          },
+          select: {
+            id: true,
+            externalId: true,
+            text: true,
+            claimEmergedAt: true,
+            ingestedBy: true,
+            statusHistory: {
+              orderBy: { occurredAt: "asc" },
+              select: { community: true, toAxis: true, occurredAt: true },
+            },
+          },
+          orderBy: { createdAt: "desc" },
+          take: limit,
+        })
+      : Promise.resolve([]),
+  ]);
+
+  const allClaims = [...curated, ...auto];
+
+  const list = allClaims
+    .filter((c) => c.statusHistory.length >= minMilestones)
+    .map((c) => {
+      const sorted = [...c.statusHistory].sort(
+        (a, b) => a.occurredAt.getTime() - b.occurredAt.getTime()
+      );
+      const last = sorted[sorted.length - 1];
+      const first = sorted[0];
+      const isCurated = c.externalId?.startsWith("trajectory:") ?? false;
+      return {
+        id: isCurated
+          ? c.externalId!.replace(/^trajectory:/, "")
+          : c.id,
+        claimId: c.id,
+        claim: c.text,
+        domain: classifyDomain(c.ingestedBy),
+        era: classifyEra(c.claimEmergedAt),
+        communities: [...new Set(c.statusHistory.map((s) => s.community))],
+        transitionCount: c.statusHistory.length,
+        hasReversal: c.statusHistory.some((s) => s.toAxis === "REVERSED"),
+        hasAbandonment: c.statusHistory.some((s) => s.toAxis === "ABANDONED"),
+        currentAxis: last?.toAxis ?? null,
+        firstYear: first ? first.occurredAt.getUTCFullYear() : null,
+        lastYear: last ? last.occurredAt.getUTCFullYear() : null,
+        isCurated,
+        milestones: sorted.map((s) => ({
+          year: s.occurredAt.getUTCFullYear(),
+          axis: s.toAxis,
+        })),
+      };
+    });
 
   return NextResponse.json(list);
 }
