@@ -185,6 +185,8 @@ function SettlingCurveInner() {
   const searchParams = useSearchParams();
   const [list, setList] = useState<TrajectoryListItem[]>([]);
   const [listLoading, setListLoading] = useState(true);
+  const [listError, setListError] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [traj, setTraj] = useState<TrajectoryDetail | null>(null);
   const [loadingDetail, setLoadingDetail] = useState(true);
@@ -205,9 +207,16 @@ function SettlingCurveInner() {
 
   useEffect(() => {
     let cancelled = false;
+    setListLoading(true);
+    setListError(false);
     fetch("/api/trajectories")
-      .then((r) => r.json())
-      .then((data: TrajectoryListItem[]) => {
+      .then(async (r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const data: TrajectoryListItem[] = await r.json();
+        if (!Array.isArray(data)) throw new Error("bad payload");
+        return data;
+      })
+      .then((data) => {
         if (cancelled) return;
         setList(data);
         setListLoading(false);
@@ -217,12 +226,12 @@ function SettlingCurveInner() {
         if (initial == null) setLoadingDetail(false);
       })
       .catch(() => {
-        if (!cancelled) { setListLoading(false); setLoadingDetail(false); }
+        if (!cancelled) { setListLoading(false); setListError(true); setLoadingDetail(false); }
       });
     return () => {
       cancelled = true;
     };
-  }, [searchParams]);
+  }, [searchParams, retryKey]);
 
   useEffect(() => {
     if (!activeId) return;
@@ -1025,7 +1034,7 @@ function SettlingCurveInner() {
       {/* Mobile floating button */}
       <button
         type="button"
-        onClick={() => setDrawerOpen(true)}
+        onClick={() => listError ? setRetryKey(k => k + 1) : setDrawerOpen(true)}
         className="md:hidden fixed left-1/2 z-30 px-5 py-3 rounded-full shadow-lg"
         style={{
           bottom: 20,
@@ -1038,8 +1047,16 @@ function SettlingCurveInner() {
           boxShadow: "0 6px 24px rgba(0,0,0,0.5)",
         }}
       >
-        {listLoading ? "Loading Trajectories…" : `Browse Trajectories (${filteredList.length})`}
+        {listLoading ? "Loading Trajectories…" : listError ? "Retry Loading Trajectories" : `Browse Trajectories (${filteredList.length})`}
       </button>
+      {listError && (
+        <div style={{ position: "fixed", bottom: 80, left: "50%", transform: "translateX(-50%)", background: "#1a0a0a", border: "1px solid #f43f5e", borderRadius: 8, padding: "10px 16px", fontSize: 12, color: "#f43f5e", zIndex: 200, whiteSpace: "nowrap" }}>
+          Failed to load trajectories.{" "}
+          <button onClick={() => setRetryKey(k => k + 1)} style={{ color: C.brand, background: "none", border: "none", cursor: "pointer", fontWeight: 600, fontSize: 12 }}>
+            Tap to retry
+          </button>
+        </div>
+      )}
     </div>
   );
 }
