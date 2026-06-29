@@ -184,6 +184,7 @@ function truncate(s: string, n: number): string {
 function SettlingCurveInner() {
   const searchParams = useSearchParams();
   const [list, setList] = useState<TrajectoryListItem[]>([]);
+  const [listLoading, setListLoading] = useState(true);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [traj, setTraj] = useState<TrajectoryDetail | null>(null);
   const [loadingDetail, setLoadingDetail] = useState(true);
@@ -209,13 +210,14 @@ function SettlingCurveInner() {
       .then((data: TrajectoryListItem[]) => {
         if (cancelled) return;
         setList(data);
+        setListLoading(false);
         const deep = searchParams.get("t");
         const initial = deep && data.some((d) => d.id === deep) ? deep : data[0]?.id ?? null;
         setActiveId(initial);
         if (initial == null) setLoadingDetail(false);
       })
       .catch(() => {
-        if (!cancelled) setLoadingDetail(false);
+        if (!cancelled) { setListLoading(false); setLoadingDetail(false); }
       });
     return () => {
       cancelled = true;
@@ -1036,7 +1038,7 @@ function SettlingCurveInner() {
           boxShadow: "0 6px 24px rgba(0,0,0,0.5)",
         }}
       >
-        Browse Trajectories ({filteredList.length})
+        {listLoading ? "Loading Trajectories…" : `Browse Trajectories (${filteredList.length})`}
       </button>
     </div>
   );

@@ -119,7 +119,7 @@ export async function GET(req: NextRequest) {
           ? c.externalId!.replace(/^trajectory:/, "")
           : c.id,
         claimId: c.id,
-        claim: c.text,
+        claim: c.text.length > 160 ? c.text.slice(0, 157) + "…" : c.text,
         domain: classifyDomain(c.ingestedBy),
         era: classifyEra(c.claimEmergedAt),
         communities: [...new Set(c.statusHistory.map((s) => s.community))],
