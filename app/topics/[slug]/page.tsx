@@ -4,6 +4,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
+import { TopicTimeline } from "@/components/TopicTimeline";
 import WorldBankView from "./WorldBankView";
 
 const DOMAIN_LABELS: Record<string, string> = {
@@ -535,6 +536,9 @@ function TopicSlugContent() {
           <p className="text-xs text-green-400 pt-1">You&apos;re subscribed! Check your inbox.</p>
         )}
       </div>
+
+      {/* Temporal evidence strip — when claims on this topic first appeared */}
+      <TopicTimeline slug={slug} />
 
       {/* Source tags */}
       {sourceTags && sourceTags.length > 0 && (
