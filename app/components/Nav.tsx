@@ -64,6 +64,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
       { href: "/analysis/votes", label: "Vote Analysis" },
       { href: "/stats", label: "Statistics" },
       { href: "/analysis/representation", label: "Representation" },
+      { href: "/analysis/retraction-lag", label: "Retraction Lag" },
       { href: "/retraction-wall", label: "Retraction Wall" },
       { href: "/drug-arc", label: "Drug Arc" },
     ],
