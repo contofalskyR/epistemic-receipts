@@ -2706,6 +2706,183 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "foreign-affairs-sole-organ-curtiss-wright-1936",
+    claim:
+      "The U.S. Supreme Court held in United States v. Curtiss-Wright Export Corp., decided 21 December 1936, that the federal government's power over external affairs is inherent in national sovereignty rather than derived solely from enumerated powers, that the President is the 'sole organ' of the nation in foreign relations, and that Congress may delegate broader discretion to the President in the foreign than in the domestic sphere.",
+    emergedAt: "1936-12-21",
+    milestones: [
+      {
+        date: "1936-12-21",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Curtiss-Wright Export Corp. (299 U.S. 304), Justice Sutherland, for the Court, upheld Congress's delegation to the President of authority to embargo arms sales to Bolivia and Paraguay. The opinion held that sovereignty over external affairs vested in the national government as a whole (not carved from the states), that the President is 'the sole organ of the nation in its external relations,' and that delegation doctrine is relaxed in the foreign-affairs field, settling a broad conception of inherent and largely unreviewable executive foreign-affairs power.",
+        sourceName:
+          "Sutherland J. United States v. Curtiss-Wright Export Corp., 299 U.S. 304 (1936). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/299/304",
+      },
+      {
+        date: "2015-06-08",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Zivotofsky v. Kerry (576 U.S. 1), Justice Kennedy, for the Court, expressly declined to endorse Curtiss-Wright's 'sole organ' formulation, characterizing its sweeping description of presidential supremacy as dictum 'not necessary to the holding' and refusing to acknowledge 'unbounded power' free from Congress's lawmaking authority in international relations. By repudiating the doctrinal foundation on which decades of executive-power arguments had rested, the decision reopened the scope of inherent presidential foreign-affairs power as contested.",
+        sourceName:
+          "Kennedy J. Zivotofsky v. Kerry, 576 U.S. 1 (2015). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/13-628",
+      },
+    ],
+  },
+
+  {
+    id: "act-of-state-doctrine-underhill-1897",
+    claim:
+      "The U.S. Supreme Court held in Underhill v. Hernandez, decided 29 November 1897, that the courts of one country will not sit in judgment on the acts of the government of another sovereign done within its own territory, establishing the act of state doctrine in American law.",
+    emergedAt: "1897-11-29",
+    milestones: [
+      {
+        date: "1897-11-29",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Underhill v. Hernandez (168 U.S. 250), Chief Justice Fuller, for a unanimous Court, dismissed a U.S. citizen's damages suit against a Venezuelan revolutionary general for acts done while consolidating a recognized government, holding that 'every sovereign state is bound to respect the independence of every other sovereign state, and the courts of one country will not sit in judgment on the acts of the government of another done within its own territory.' The ruling settled the act of state doctrine as a rule of judicial abstention.",
+        sourceName:
+          "Fuller C.J. Underhill v. Hernandez, 168 U.S. 250 (1897). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/168/250",
+      },
+      {
+        date: "1964-03-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Banco Nacional de Cuba v. Sabbatino (376 U.S. 398), Justice Harlan, for the Court, reaffirmed the act of state doctrine while relocating its foundation from international comity to the constitutional separation of powers and federal common law, holding that U.S. courts will not examine the validity of Cuba's expropriation of property within its territory. The decision re-settled and modernized Underhill's rule, confirming its continued force even as it prompted Congress's partial Second Hickenlooper Amendment response.",
+        sourceName:
+          "Harlan J. Banco Nacional de Cuba v. Sabbatino, 376 U.S. 398 (1964). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/376/398",
+      },
+    ],
+  },
+
+  {
+    id: "foreign-judgment-comity-reciprocity-hilton-guyot-1895",
+    claim:
+      "The U.S. Supreme Court held in Hilton v. Guyot, decided 3 June 1895, that recognition of foreign judgments rests on international comity, that such judgments are generally conclusive only where the foreign nation would give reciprocal effect to American judgments, and that absent reciprocity a foreign judgment is merely prima facie evidence subject to reexamination.",
+    emergedAt: "1895-06-03",
+    milestones: [
+      {
+        date: "1895-06-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Hilton v. Guyot (159 U.S. 113), Justice Gray, for the Court, framed the enforcement of foreign judgments as a matter of comity — 'the recognition which one nation allows within its territory to the legislative, executive, or judicial acts of another' — and held that conclusive effect depends on reciprocal recognition by the foreign forum, so that a French judgment against U.S. citizens was only prima facie evidence. The ruling settled comity and a reciprocity requirement as the governing federal framework.",
+        sourceName:
+          "Gray J. Hilton v. Guyot, 159 U.S. 113 (1895). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/159/113",
+      },
+      {
+        date: "1938-04-25",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Erie Railroad Co. v. Tompkins (304 U.S. 64), Justice Brandeis, for the Court, abolished general federal common law and held that 'there is no federal general common law,' so that recognition of foreign judgments in diversity became a question of state rather than uniform federal law. Because state courts (led by New York) had already declined to follow Hilton's reciprocity requirement, Erie unsettled Hilton's status as a binding national rule, leaving the reciprocity element contested and non-uniform across U.S. jurisdictions.",
+        sourceName:
+          "Brandeis J. Erie Railroad Co. v. Tompkins, 304 U.S. 64 (1938). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/304/64",
+      },
+    ],
+  },
+
+  {
+    id: "extradition-doctrine-of-specialty-rauscher-1886",
+    claim:
+      "The U.S. Supreme Court held in United States v. Rauscher, decided 6 December 1886, that a person surrendered to the United States under an extradition treaty may be tried only for the offense for which extradition was granted, establishing the doctrine of specialty as an enforceable limit implied in extradition treaties.",
+    emergedAt: "1886-12-06",
+    milestones: [
+      {
+        date: "1886-12-06",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Rauscher (119 U.S. 407), Justice Miller, for the Court, held that a fugitive extradited from Great Britain on a murder charge could not be tried for a different offense (cruel and unusual punishment of the victim), because 'a person who has been brought within the jurisdiction of the court by virtue of proceedings under an extradition treaty can only be tried for one of the offenses described in that treaty.' The ruling settled the doctrine of specialty in American extradition law.",
+        sourceName:
+          "Miller J. United States v. Rauscher, 119 U.S. 407 (1886). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/119/407",
+      },
+      {
+        date: "1992-06-15",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Alvarez-Machain (504 U.S. 655), Chief Justice Rehnquist, for the Court, held that a forcible abduction of a defendant from Mexico did not violate the extradition treaty and did not bar prosecution, while expressly distinguishing and reaffirming Rauscher: the doctrine of specialty governs when a defendant is delivered through the treaty's extradition process. The decision confirmed Rauscher's continued authority for formal extraditions by marking the boundary between treaty-based surrender and extra-treaty abduction.",
+        sourceName:
+          "Rehnquist C.J. United States v. Alvarez-Machain, 504 U.S. 655 (1992). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/504/655",
+      },
+    ],
+  },
+
+  {
+    id: "territorial-incorporation-insular-downes-bidwell-1901",
+    claim:
+      "The U.S. Supreme Court held in Downes v. Bidwell, decided 27 May 1901, that Puerto Rico, acquired by the Treaty of Paris, was a territory 'belonging to' but not 'a part of' the United States within the Constitution's revenue clauses, so that Congress could impose duties on its goods without observing the uniformity requirement — the origin of the doctrine that the Constitution does not fully follow the flag to unincorporated territories.",
+    emergedAt: "1901-05-27",
+    milestones: [
+      {
+        date: "1901-05-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Downes v. Bidwell (182 U.S. 244), a fractured 5–4 Court upheld the Foraker Act's duties on Puerto Rican goods, but produced no majority opinion: Justice Brown announced the judgment while Justice White's concurrence advanced the 'territorial incorporation' theory. Because the controlling rationale rested only in a concurrence, the constitutional status of newly acquired territories was left genuinely unsettled and openly contested among the Justices.",
+        sourceName:
+          "Brown J. (judgment); White J. (concurring). Downes v. Bidwell, 182 U.S. 244 (1901).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/182/244",
+      },
+      {
+        date: "1922-04-10",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Balzac v. Porto Rico (258 U.S. 298), Chief Justice Taft, for the Court, adopted the territorial incorporation doctrine as the Court's governing rule, holding that Puerto Rico remained unincorporated even after the 1917 Jones Act and that unincorporated territories receive only 'fundamental' constitutional guarantees (denying a jury-trial right). By converting White's Downes concurrence into a majority holding, Balzac settled the incorporation doctrine.",
+        sourceName:
+          "Taft C.J. Balzac v. Porto Rico, 258 U.S. 298 (1922). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/258/298",
+      },
+      {
+        date: "2022-04-21",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Vaello Madero (596 U.S. 159), the Court decided the case without relying on the Insular Cases, but Justice Gorsuch's concurrence declared that the Insular Cases 'have no foundation in the Constitution and rest instead on racial stereotypes' and urged the Court to overrule them, while Justice Sotomayor separately criticized them. With Justices openly calling for their abandonment, the incorporation doctrine's continued validity returned to active contestation.",
+        sourceName:
+          "Gorsuch J. (concurring). United States v. Vaello Madero, 596 U.S. 159 (2022).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/20-303",
+      },
+    ],
+  },
 ];
 
 async function main() {
