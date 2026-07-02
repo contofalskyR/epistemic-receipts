@@ -3778,6 +3778,173 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "muller-oregon-protective-labor-women-1908",
+    claim:
+      "The U.S. Supreme Court held in Muller v. Oregon, 208 U.S. 412 (decided February 24, 1908), that a state may impose maximum-hours limits on women workers, sustaining sex-specific protective labor legislation on the basis of women's physical differences and maternal function.",
+    emergedAt: "1908-02-24",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1908-02-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A unanimous Supreme Court, persuaded by Louis Brandeis's sociological 'Brandeis Brief,' upheld Oregon's ten-hour limit for women in laundries, distinguishing Lochner v. New York (1905). The decision settled that sex-based protective labor regulation was constitutionally permissible and legitimized the use of empirical social data in constitutional adjudication.",
+        sourceName:
+          "Supreme Court of the United States. Muller v. Oregon. 208 U.S. 412. 1908.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/208/412",
+        methodologyType: "primary",
+      },
+      {
+        date: "1971-11-22",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "ABANDONED",
+        community: "JUDICIAL",
+        reason:
+          "In Reed v. Reed, 404 U.S. 71, the Supreme Court for the first time held that the Equal Protection Clause bars differential treatment based on sex, launching the sex-equality jurisprudence that repudiated Muller's premise that women may be singled out for special protection. Muller was never formally overruled, but its separate-protection rationale was abandoned as sex classifications became subject to heightened scrutiny.",
+        sourceName:
+          "Supreme Court of the United States. Reed v. Reed. 404 U.S. 71. 1971.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/404/71",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "federal-labor-injunction-debs-1895",
+    claim:
+      "The U.S. Supreme Court held in In re Debs, 158 U.S. 564 (decided May 27, 1895), that federal courts possess equity jurisdiction to enjoin strikes obstructing interstate commerce and the mails, and to punish violations as contempt without a jury trial.",
+    emergedAt: "1895-05-27",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1895-05-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Arising from the 1894 Pullman strike, the Supreme Court unanimously affirmed the contempt conviction of Eugene Debs and endorsed the federal government's power to obtain sweeping injunctions against strikes interfering with interstate commerce and mail delivery. The decision settled the 'labor injunction' as the government's primary anti-strike weapon for the next three decades.",
+        sourceName:
+          "Supreme Court of the United States. In re Debs. 158 U.S. 564. 1895.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/158/564",
+        methodologyType: "primary",
+      },
+      {
+        date: "1932-03-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Congress enacted the Norris-LaGuardia Act (signed March 23, 1932), stripping federal courts of jurisdiction to issue injunctions in non-violent labor disputes and voiding yellow-dog contracts. The statute directly overturned the Debs-era injunction regime, reversing the settled doctrine of federal judicial power over strikes.",
+        sourceName:
+          "U.S. Congress. Norris-LaGuardia Act (Act of March 23, 1932, 47 Stat. 70). govinfo COMPS-5312. 1932.",
+        sourceUrl: "https://www.govinfo.gov/content/pkg/COMPS-5312/pdf/COMPS-5312.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "pregnancy-not-sex-discrimination-gilbert-1976",
+    claim:
+      "The U.S. Supreme Court held in General Electric Co. v. Gilbert, 429 U.S. 125 (decided December 7, 1976), that an employer's exclusion of pregnancy-related disabilities from a benefits plan is not sex discrimination prohibited by Title VII of the Civil Rights Act of 1964.",
+    emergedAt: "1976-12-07",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1976-12-07",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In a 6-3 decision the Supreme Court imported the reasoning of the constitutional case Geduldig v. Aiello into Title VII, holding that distinguishing on the basis of pregnancy is not facial gender discrimination. The ruling settled, as a matter of federal statutory law, that pregnancy exclusions did not violate Title VII.",
+        sourceName:
+          "Supreme Court of the United States. General Electric Co. v. Gilbert. 429 U.S. 125. 1976.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/429/125",
+        methodologyType: "primary",
+      },
+      {
+        date: "1978-10-31",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Congress enacted the Pregnancy Discrimination Act (Pub. L. 95-555, signed October 31, 1978), amending Title VII to define discrimination 'because of sex' to include discrimination on the basis of pregnancy, childbirth, or related medical conditions. The Act was passed expressly to reverse Gilbert, overturning the settled holding by statute.",
+        sourceName:
+          "U.S. Congress. Pregnancy Discrimination Act of 1978 (Pub. L. 95-555, 92 Stat. 2076). EEOC. 1978.",
+        sourceUrl: "https://www.eeoc.gov/statutes/pregnancy-discrimination-act-1978",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "hostile-environment-sexual-harassment-meritor-1986",
+    claim:
+      "The U.S. Supreme Court held in Meritor Savings Bank v. Vinson, 477 U.S. 57 (decided June 19, 1986), that a hostile-environment sexual harassment claim is actionable sex discrimination under Title VII even absent economic or tangible job loss.",
+    emergedAt: "1981-01-12",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1981-01-12",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Bundy v. Jackson, 641 F.2d 934, the D.C. Circuit became the first federal appeals court to recognize that a discriminatorily hostile or abusive work environment, without any tangible loss of job benefits, can itself violate Title VII. This opened a contested question, as lower courts split over whether non-economic harassment was cognizable discrimination.",
+        sourceName:
+          "U.S. Court of Appeals, D.C. Circuit. Bundy v. Jackson. 641 F.2d 934. 1981.",
+        sourceUrl: "https://law.justia.com/cases/federal/appellate-courts/F2/641/934/25673/",
+        methodologyType: "primary",
+      },
+      {
+        date: "1986-06-19",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A unanimous Supreme Court, relying in part on the EEOC's 1980 sexual-harassment guidelines, held that Title VII is not limited to 'economic' or 'tangible' discrimination and that a sufficiently severe or pervasive hostile environment is actionable sex discrimination. The decision settled the circuit split and established hostile-environment harassment as a recognized Title VII claim.",
+        sourceName:
+          "Supreme Court of the United States. Meritor Savings Bank v. Vinson. 477 U.S. 57. 1986.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/477/57",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "charter-strict-construction-charles-river-bridge-1837",
+    claim:
+      "The U.S. Supreme Court held in Proprietors of the Charles River Bridge v. Proprietors of the Warren Bridge, 36 U.S. (11 Pet.) 420 (decided February 14, 1837), that public grants and corporate charters are strictly construed against the grantee and confer no exclusive privilege by implication, so a legislature's later charter of a competing bridge did not impair the Contract Clause.",
+    emergedAt: "1837-02-14",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1837-02-14",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Taney, writing for a 5-2 Court, rejected the Charles River Bridge proprietors' claim to an implied monopoly, holding that ambiguities in a public grant are resolved in favor of the public and that nothing passes by implication. The decision resolved the contested expansive reading of vested charter rights suggested by the Marshall-era Dartmouth College and Fletcher v. Peck line, settling the rule that charters are narrowly construed to favor economic development and public interest.",
+        sourceName:
+          "Supreme Court of the United States. Proprietors of the Charles River Bridge v. Proprietors of the Warren Bridge. 36 U.S. 420. 1837.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/36/420",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
