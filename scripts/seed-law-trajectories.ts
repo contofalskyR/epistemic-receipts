@@ -3016,6 +3016,191 @@ const TRAJECTORIES: LawTrajectory[] = [
   },
 
   {
+    id: "clear-and-present-danger-to-imminent-lawless-action-1919",
+    claim:
+      "The U.S. Supreme Court held in Schenck v. United States (249 U.S. 47, decided 3 March 1919) that speech may be criminally punished when the words create a 'clear and present danger' of bringing about substantive evils Congress has a right to prevent.",
+    emergedAt: "1919-03-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1919-03-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Schenck v. United States, a unanimous Court per Justice Holmes upheld Espionage Act convictions and announced that the First Amendment does not protect speech creating a 'clear and present danger' of substantive evils. The formulation became the governing test for subversive-advocacy prosecutions and was reinforced in Whitney v. California (1927), establishing a permissive standard under which mere advocacy could be punished.",
+        sourceName:
+          "Supreme Court of the United States. Schenck v. United States. 249 U.S. 47. 1919.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/249/47",
+        methodologyType: "primary",
+      },
+      {
+        date: "1969-06-09",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Brandenburg v. Ohio (395 U.S. 444), a per curiam Court held that the state may not punish advocacy unless it is 'directed to inciting or producing imminent lawless action and is likely to incite or produce such action,' and expressly overruled Whitney v. California. This replaced the more permissive clear-and-present-danger standard with the far more speech-protective imminent-lawless-action test.",
+        sourceName:
+          "Supreme Court of the United States. Brandenburg v. Ohio. 395 U.S. 444. 1969.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/395/444",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "lemon-establishment-clause-test-1971",
+    claim:
+      "The U.S. Supreme Court held in Lemon v. Kurtzman (403 U.S. 602, decided 28 June 1971) that a law survives the Establishment Clause only if it has a secular purpose, a primary effect that neither advances nor inhibits religion, and does not foster excessive government entanglement with religion.",
+    emergedAt: "1971-06-28",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1971-06-28",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Lemon v. Kurtzman the Court struck down state salary supplements to religious-school teachers and articulated a three-part test (secular purpose, primary secular effect, no excessive entanglement) for Establishment Clause challenges. For decades the 'Lemon test' became the dominant framework for church-state disputes over aid, displays, and school programs.",
+        sourceName:
+          "Supreme Court of the United States. Lemon v. Kurtzman. 403 U.S. 602. 1971.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/403/602",
+        methodologyType: "primary",
+      },
+      {
+        date: "2022-06-27",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "ABANDONED",
+        community: "JUDICIAL",
+        reason:
+          "In Kennedy v. Bremerton School District (597 U.S. 507), a 6–3 Court ruled for a public-school football coach who prayed on the field and declared that it had 'long ago abandoned' the Lemon test as 'abstract' and 'ahistorical.' The Court instructed that the Establishment Clause must instead be interpreted by reference to 'historical practices and understandings,' formally retiring Lemon without a single overruling case.",
+        sourceName:
+          "Supreme Court of the United States. Kennedy v. Bremerton School District. 597 U.S. 507. 2022.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/21-418",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "free-exercise-compelling-interest-to-neutral-law-1963",
+    claim:
+      "The U.S. Supreme Court held in Sherbert v. Verner (374 U.S. 398, decided 17 June 1963) that government may substantially burden religious exercise only if it shows a compelling state interest pursued by the least restrictive means.",
+    emergedAt: "1963-06-17",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1963-06-17",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Sherbert v. Verner the Court held that denying unemployment benefits to a Seventh-day Adventist who would not work on Saturday violated free exercise, and required the state to justify burdens on religion with a compelling interest. This 'Sherbert test' governed free-exercise adjudication and was extended in Wisconsin v. Yoder (1972).",
+        sourceName:
+          "Supreme Court of the United States. Sherbert v. Verner. 374 U.S. 398. 1963.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/374/398",
+        methodologyType: "primary",
+      },
+      {
+        date: "1990-04-17",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Employment Division v. Smith (494 U.S. 872), the Court per Justice Scalia held that neutral, generally applicable laws that incidentally burden religion (there, a peyote ban applied to sacramental use) need not satisfy the compelling-interest test. This displaced Sherbert's strict-scrutiny regime and prompted Congress to enact RFRA (1993) in response.",
+        sourceName:
+          "Supreme Court of the United States. Employment Division v. Smith. 494 U.S. 872. 1990.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/494/872",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "actual-malice-public-official-defamation-1964",
+    claim:
+      "The U.S. Supreme Court held in New York Times Co. v. Sullivan (376 U.S. 254, decided 9 March 1964) that a public official may not recover damages for a defamatory falsehood about his official conduct unless he proves the statement was made with 'actual malice' — knowledge of falsity or reckless disregard for the truth.",
+    emergedAt: "1964-03-09",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1964-03-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In New York Times Co. v. Sullivan the Court unanimously reversed an Alabama libel judgment and constitutionalized defamation law, requiring public officials to prove 'actual malice.' The rule was extended to public figures in Curtis Publishing Co. v. Butts (1967) and became bedrock First Amendment press doctrine for over half a century.",
+        sourceName:
+          "Supreme Court of the United States. New York Times Co. v. Sullivan. 376 U.S. 254. 1964.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/376/254",
+        methodologyType: "primary",
+      },
+      {
+        date: "2019-02-19",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In a concurrence to the denial of certiorari in McKee v. Cosby (586 U.S. ___), Justice Thomas urged the Court to reconsider Sullivan and its progeny, calling them 'policy-driven decisions masquerading as constitutional law.' Joined later by Justice Gorsuch in Berisha v. Lawson (2021), this reopened the question of the actual-malice standard's constitutional footing, moving a long-settled doctrine into active contestation on the Court.",
+        sourceName:
+          "Thomas, J., concurring. McKee v. Cosby, 586 U.S. ___ (No. 17-1542), denial of certiorari. 2019.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/18pdf/17-1542_ihdk.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "school-prayer-establishment-clause-engel-1962",
+    claim:
+      "The U.S. Supreme Court held in Engel v. Vitale (370 U.S. 421, decided 25 June 1962) that a state-composed, state-sponsored prayer recited in public schools violates the Establishment Clause, even when participation is voluntary.",
+    emergedAt: "1962-06-25",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1962-06-25",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Engel v. Vitale the Court held 6–1 that New York's Regents' Prayer program breached the Establishment Clause, declaring it 'no part of the business of government to compose official prayers.' The ruling established that government-directed devotional exercises in public schools are unconstitutional.",
+        sourceName:
+          "Supreme Court of the United States. Engel v. Vitale. 370 U.S. 421. 1962.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/370/421",
+        methodologyType: "primary",
+      },
+      {
+        date: "1963-06-17",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "One year later, Abington School District v. Schempp (374 U.S. 203) extended and cemented Engel by striking down state-mandated Bible reading and the Lord's Prayer in public schools, articulating a secular-purpose-and-effect standard. Together the two decisions durably settled the prohibition on state-sponsored public-school devotional exercises, a rule reaffirmed through Lee v. Weisman (1992) and Santa Fe v. Doe (2000).",
+        sourceName:
+          "Supreme Court of the United States. Abington School District v. Schempp. 374 U.S. 203. 1963.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/374/203",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
     id: "expressive-vendor-first-amendment-same-sex-wedding-303creative-2023",
     claim:
       "The U.S. Supreme Court held in 303 Creative LLC v. Elenis (600 U.S. 570, decided 30 June 2023) that the First Amendment's free-speech guarantee bars a State from compelling a business offering expressive, custom services to create speech — such as same-sex wedding websites — that conveys a message the creator disagrees with, resolving a question the Court had earlier left open in Masterpiece Cakeshop.",
