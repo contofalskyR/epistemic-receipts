@@ -662,6 +662,186 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "chevron-deference-rise-fall-1984",
+    claim:
+      "U.S. courts must defer to a federal agency's reasonable interpretation of a statute it administers whenever the statutory text is silent or ambiguous on the precise question — the deference framework established by the U.S. Supreme Court in Chevron U.S.A., Inc. v. NRDC, decided 25 June 1984, and overruled in Loper Bright Enterprises v. Raimondo, decided 28 June 2024.",
+    emergedAt: "1984-06-25",
+    milestones: [
+      {
+        date: "1984-06-25",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chevron U.S.A., Inc. v. Natural Resources Defense Council (467 U.S. 837, 25 June 1984): A unanimous Court (6–0, three justices not participating) upheld the EPA's 'bubble' definition of stationary source and announced a two-step test — if Congress has not directly addressed the precise question and the statute is silent or ambiguous, courts must accept 'a permissible construction of the statute' offered by the administering agency. The decision became the single most-cited case in American administrative law and the default rule of judicial review of agency action for four decades.",
+        sourceName:
+          "Stevens J. Chevron U.S.A., Inc. v. Natural Resources Defense Council, Inc., 467 U.S. 837 (1984). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/467/837",
+      },
+      {
+        date: "2015-06-25",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "King v. Burwell (576 U.S. 473, 25 June 2015): A 6–3 majority, per Chief Justice Roberts, upheld ACA tax credits on federal exchanges but pointedly declined to apply Chevron, reasoning that whether the credits were available was 'a question of deep economic and political significance' that Congress would not have implicitly delegated to the IRS. By carving major questions out of Chevron's domain and interpreting the statute de novo, the Court signalled from within that Chevron's scope was no longer settled, foreshadowing the doctrine's contraction.",
+        sourceName:
+          "Roberts CJ. King v. Burwell, 576 U.S. 473 (2015). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/14-114",
+      },
+      {
+        date: "2024-06-28",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Loper Bright Enterprises v. Raimondo (603 U.S. 369, 28 June 2024): A 6–3 majority, per Chief Justice Roberts, held that 'Chevron is overruled,' concluding that the Administrative Procedure Act's command that reviewing courts 'decide all relevant questions of law' forbids deferring to an agency merely because a statute is ambiguous. Courts must now exercise independent judgment on questions of statutory meaning, ending forty years of Chevron deference as the governing standard of review.",
+        sourceName:
+          "Roberts CJ. Loper Bright Enterprises v. Raimondo, 603 U.S. 369 (2024). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/22-451",
+      },
+    ],
+  },
+
+  {
+    id: "major-questions-doctrine-2022",
+    claim:
+      "When an agency claims the power to decide a question of vast economic and political significance, it must point to clear congressional authorization rather than relying on ambiguous or ancillary statutory language — the 'major questions doctrine' first articulated by the U.S. Supreme Court in FDA v. Brown & Williamson (21 March 2000) and formally named and adopted in West Virginia v. EPA (30 June 2022).",
+    emergedAt: "2000-03-21",
+    milestones: [
+      {
+        date: "2000-03-21",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "FDA v. Brown & Williamson Tobacco Corp. (529 U.S. 120, 21 March 2000): A 5–4 majority, per Justice O'Connor, held that the FDA lacked authority to regulate tobacco, reasoning that courts should hesitate to read a long-extant statute as an implicit delegation of authority over an issue of enormous 'economic and political significance' — 'Congress could not have intended to delegate a decision of such economic and political significance to an agency in so cryptic a fashion.' The reasoning recorded the interpretive principle later systematized as the major questions doctrine, though the Court did not yet name it as a distinct canon.",
+        sourceName:
+          "O'Connor J. FDA v. Brown & Williamson Tobacco Corp., 529 U.S. 120 (2000). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/529/120",
+      },
+      {
+        date: "2022-06-30",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "West Virginia v. EPA (597 U.S. 697, 30 June 2022): A 6–3 majority, per Chief Justice Roberts, expressly labelled the case 'a major questions case' and held that the EPA's Clean Air Act § 111(d) authority did not extend to compelling generation-shifting across the power sector. The Court adopted the major questions doctrine by name as a settled rule of statutory construction: in 'extraordinary cases' of vast economic and political significance, an agency must point to 'clear congressional authorization.' The ruling converted a recurring interpretive theme into an operative, named doctrine binding on lower courts.",
+        sourceName:
+          "Roberts CJ. West Virginia v. EPA, 597 U.S. 697 (2022). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/20-1530",
+      },
+    ],
+  },
+
+  {
+    id: "auer-seminole-rock-deference-1945",
+    claim:
+      "A federal court must give controlling weight to an agency's interpretation of its own ambiguous regulation unless that interpretation is plainly erroneous or inconsistent with the regulation — the deference rule established by the U.S. Supreme Court in Bowles v. Seminole Rock (4 June 1945), reaffirmed in Auer v. Robbins (19 February 1997), and sharply narrowed in Kisor v. Wilkie (26 June 2019).",
+    emergedAt: "1945-06-04",
+    milestones: [
+      {
+        date: "1945-06-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Bowles v. Seminole Rock & Sand Co. (325 U.S. 410, 4 June 1945): The Court held that in construing an administrative regulation, 'the ultimate criterion is the administrative interpretation, which becomes of controlling weight unless it is plainly erroneous or inconsistent with the regulation.' The ruling established what became known as Seminole Rock deference — courts defer to an agency's reading of its own rules — settling the standard for judicial review of an agency's interpretation of its regulations.",
+        sourceName:
+          "Murphy J. Bowles v. Seminole Rock & Sand Co., 325 U.S. 410 (1945). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/325/410",
+      },
+      {
+        date: "1997-02-19",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Auer v. Robbins (519 U.S. 452, 19 February 1997): A unanimous Court, per Justice Scalia, applied Seminole Rock to uphold the Secretary of Labor's interpretation of his own FLSA 'salary basis' regulation, holding the reading controlling because it was not 'plainly erroneous or inconsistent with the regulation' — even when advanced for the first time in an amicus brief. The decision reaffirmed and re-anchored the doctrine, which thereafter carried Scalia's name as 'Auer deference' and remained the settled rule for interpreting agency regulations.",
+        sourceName:
+          "Scalia J. Auer v. Robbins, 519 U.S. 452 (1997). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/519/452",
+      },
+      {
+        date: "2019-06-26",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Kisor v. Wilkie (588 U.S. 558, 26 June 2019): A fractured Court declined to overrule Auer and Seminole Rock but sharply cabined the doctrine, per Justice Kagan, holding that deference applies only after a court exhausts all interpretive tools and finds the regulation 'genuinely ambiguous,' and only where the agency's reading is authoritative, reflects its substantive expertise, and represents its 'fair and considered judgment.' Four justices (Gorsuch, concurring in the judgment) would have overruled the doctrine outright, describing what survived as a 'zombie.' The ruling left Auer deference formally alive but doctrinally contested and greatly restricted.",
+        sourceName:
+          "Kagan J. Kisor v. Wilkie, 588 U.S. 558 (2019). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/18-15",
+      },
+    ],
+  },
+
+  {
+    id: "nondelegation-intelligible-principle-1928",
+    claim:
+      "Congress may delegate broad rulemaking and policymaking authority to executive agencies without violating the separation of powers so long as it supplies an 'intelligible principle' to guide the exercise of that authority — the permissive non-delegation standard set by the U.S. Supreme Court in J.W. Hampton, Jr. & Co. v. United States (9 April 1928) and thrown back into contest by Gundy v. United States (20 June 2019).",
+    emergedAt: "1928-04-09",
+    milestones: [
+      {
+        date: "1928-04-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "J.W. Hampton, Jr. & Co. v. United States (276 U.S. 394, 9 April 1928): Chief Justice Taft, for a unanimous Court, upheld a delegation letting the President adjust tariff rates and announced the governing test — 'If Congress shall lay down by legislative act an intelligible principle to which the person or body authorized to fix such rates is directed to conform, such legislative action is not a forbidden delegation of legislative power.' The 'intelligible principle' formula settled the permissive standard under which delegations to the executive would be sustained.",
+        sourceName:
+          "Taft CJ. J.W. Hampton, Jr. & Co. v. United States, 276 U.S. 394 (1928). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/276/394",
+      },
+      {
+        date: "1935-05-27",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "A.L.A. Schechter Poultry Corp. v. United States (295 U.S. 495, 27 May 1935): A unanimous Court struck down the National Industrial Recovery Act's code-making provisions as 'an unconstitutional delegation of legislative power,' finding the statute's 'fair competition' codes conferred a standardless 'roving commission' on the President. Together with Panama Refining Co. v. Ryan earlier that year, Schechter briefly gave the non-delegation doctrine real teeth, contesting the permissive intelligible-principle regime and showing that some delegations could fail constitutional muster.",
+        sourceName:
+          "Hughes CJ. A.L.A. Schechter Poultry Corp. v. United States, 295 U.S. 495 (1935). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/295/495",
+      },
+      {
+        date: "1989-01-18",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Mistretta v. United States (488 U.S. 361, 18 January 1989): A 7–1 Court, per Justice Blackmun, rejected a non-delegation challenge to the U.S. Sentencing Commission, holding that Congress had supplied 'more than merely an intelligible principle.' Coming after five decades in which the Court never again invalidated a delegation, Mistretta re-settled the highly permissive intelligible-principle standard as governing law; only Justice Scalia dissented, presaging later revival efforts.",
+        sourceName:
+          "Blackmun J. Mistretta v. United States, 488 U.S. 361 (1989). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/488/361",
+      },
+      {
+        date: "2019-06-20",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Gundy v. United States (588 U.S. 128, 20 June 2019): A four-justice plurality, per Justice Kagan, upheld SORNA's delegation to the Attorney General under the intelligible-principle test, but the doctrine's stability collapsed at the margins: Justice Gorsuch, joined by Roberts and Thomas, dissented calling for a more demanding non-delegation standard, and Justice Alito concurred only in the judgment while stating he would support reconsidering the Court's 84-year approach 'if a majority were willing.' With four justices signalling openness to revival, the permissive standard returned to open contestation for the first time since the New Deal.",
+        sourceName:
+          "Kagan J. (plurality). Gundy v. United States, 588 U.S. 128 (2019). Plurality opinion; Gorsuch J., dissenting.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/17-6086",
+      },
+    ],
+  },
 ];
 
 async function main() {
