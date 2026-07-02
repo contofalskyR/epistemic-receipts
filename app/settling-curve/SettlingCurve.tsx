@@ -231,9 +231,6 @@ function SettlingCurveInner() {
   const [logOpen, setLogOpen] = useState(false);
 
   const [query, setQuery] = useState("");
-  const [corpusMode, setCorpusMode] = useState(false);
-  const [corpusResults, setCorpusResults] = useState<TrajectoryListItem[]>([]);
-  const [corpusLoading, setCorpusLoading] = useState(false);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("ALL");
   const [eraFilter, setEraFilter] = useState<string>("ALL");
   const [domainFilter, setDomainFilter] = useState<string>("ALL");
@@ -294,28 +291,6 @@ function SettlingCurveInner() {
       cancelled = true;
     };
   }, [activeId]);
-
-  // Corpus search — server-side search across all 1.6M claims with history rows.
-  useEffect(() => {
-    if (!corpusMode || query.trim().length < 3) {
-      setCorpusResults([]);
-      setCorpusLoading(false);
-      return;
-    }
-    let cancelled = false;
-    const timer = setTimeout(() => {
-      setCorpusLoading(true);
-      fetch(`/api/trajectories/search?q=${encodeURIComponent(query.trim())}&limit=20`)
-        .then((r) => r.json())
-        .then((data) => {
-          if (cancelled) return;
-          setCorpusResults(Array.isArray(data) ? data : []);
-          setCorpusLoading(false);
-        })
-        .catch(() => { if (!cancelled) setCorpusLoading(false); });
-    }, 400);
-    return () => { cancelled = true; clearTimeout(timer); };
-  }, [corpusMode, query]);
 
   const selectItem = (id: string) => {
     setActiveId(id);
@@ -755,35 +730,20 @@ function SettlingCurveInner() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={corpusMode ? "Search all 1.6M claims…" : "Search trajectories…"}
+            placeholder="Search trajectories…"
             className="w-full px-3 py-2 mb-2 rounded outline-none"
             style={{
               background: C.bg,
-              border: `1px solid ${corpusMode ? "#38bdf8" : C.panelEdge}`,
+              border: `1px solid ${C.panelEdge}`,
               color: C.ink,
               fontSize: 13,
             }}
           />
 
           <div className="flex items-center justify-between mb-3">
-            <span className="font-mono" style={{ fontSize: 9.5, color: corpusMode ? "#38bdf8" : C.faint, letterSpacing: "0.05em", textTransform: "uppercase" }}>
-              {corpusMode
-                ? (corpusLoading ? "Searching 1.6M claims…" : query.trim().length < 3 ? "Type 3+ chars to search corpus" : `${corpusResults.length} corpus matches`)
-                : "Showing curated trajectories"}
+            <span className="font-mono" style={{ fontSize: 9.5, color: C.faint, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+              Showing curated trajectories
             </span>
-            <button
-              type="button"
-              onClick={() => { setCorpusMode((v) => !v); }}
-              className="font-mono rounded-full px-2.5 py-1 shrink-0"
-              style={{
-                fontSize: 9.5, letterSpacing: "0.05em", textTransform: "uppercase",
-                background: corpusMode ? "#38bdf822" : "transparent",
-                border: `1px solid ${corpusMode ? "#38bdf8" : C.panelEdge}`,
-                color: corpusMode ? "#38bdf8" : C.mut,
-              }}
-            >
-              {corpusMode ? "Curated" : "All 1.6M claims"}
-            </button>
           </div>
 
           {/* Collapsible: Status */}
@@ -886,73 +846,7 @@ function SettlingCurveInner() {
         </div>
 
         <div className="flex-1 overflow-y-auto px-2 py-3" style={{ background: C.bg, WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
-          {corpusMode ? (
-            query.trim().length < 3 ? (
-              <div className="px-3 py-6 text-center" style={{ color: C.mut, fontSize: 12 }}>
-                Type at least 3 characters to search all 1.6M claims.
-              </div>
-            ) : corpusLoading ? (
-              <div className="px-3 py-6 text-center font-mono" style={{ color: C.faint, fontSize: 11, letterSpacing: "0.06em" }}>
-                Searching 1.6M claims…
-              </div>
-            ) : corpusResults.length === 0 ? (
-              <div className="px-3 py-6 text-center" style={{ color: C.mut, fontSize: 12 }}>
-                No claims match “{query.trim()}”.
-              </div>
-            ) : (
-              <ul className="space-y-1">
-                {corpusResults.map((x) => {
-                  const on = x.id === activeId;
-                  return (
-                    <li key={x.id}>
-                      <button
-                        type="button"
-                        onClick={() => selectItem(x.id)}
-                        className="sc-anim w-full text-left px-3 py-2 transition-colors flex items-start gap-2.5"
-                        style={{
-                          background: on ? `${C.brand}14` : "transparent",
-                          borderLeft: `3px solid ${on ? C.brand : "transparent"}`,
-                          borderRadius: 4,
-                        }}
-                      >
-                        <span
-                          aria-hidden
-                          className="shrink-0 mt-1"
-                          style={{ width: 8, height: 8, borderRadius: 8, background: axisDotColor(x), boxShadow: `0 0 0 2px ${C.bg}` }}
-                        />
-                        <span className="flex-1 min-w-0">
-                          <span className="block leading-snug" style={{ fontSize: 12.5, color: on ? C.ink : C.mut }}>
-                            {truncate(x.claim, 110)}
-                          </span>
-                          <span className="font-mono flex items-center gap-2 mt-1" style={{ fontSize: 10, color: C.faint }}>
-                            <span className="px-1.5 py-px rounded" style={{ background: `${C.panelEdge}66`, color: C.mut }}>
-                              {x.transitionCount ?? 0} ↻
-                            </span>
-                            {x.firstYear != null && x.lastYear != null && (
-                              <span>{x.firstYear}{x.firstYear !== x.lastYear && `–${x.lastYear}`}</span>
-                            )}
-                            {x.hasReversal && <span style={{ color: C.red }}>↩ reversed</span>}
-                            {!x.hasReversal && x.hasAbandonment && (
-                              <span style={{ color: STATUS.ABANDONED.c }}>✕ abandoned</span>
-                            )}
-                          </span>
-                          {x.milestones && x.milestones.length > 0 && (
-                            <span className="block mt-1.5" style={{ contentVisibility: "auto", containIntrinsicSize: "220px 58px" }}>
-                              <SettlingCurveMini
-                                milestones={x.milestones}
-                                animate={false}
-                                ariaLabel={`Settling-curve preview for: ${x.claim}`}
-                              />
-                            </span>
-                          )}
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            )
-          ) : filteredList.length === 0 ? (
+          {filteredList.length === 0 ? (
             <div className="px-3 py-6 text-center" style={{ color: C.mut, fontSize: 12 }}>
               No trajectories match these filters.
             </div>
@@ -1063,11 +957,11 @@ function SettlingCurveInner() {
               );
             })
           )}
-          {/* Infinite scroll sentinel — curated mode only */}
-          {!corpusMode && hasMore && (
+          {/* Infinite scroll sentinel */}
+          {hasMore && (
             <div ref={sentinelRef} style={{ height: 1 }} aria-hidden />
           )}
-          {!corpusMode && !hasMore && filteredList.length > 0 && (
+          {!hasMore && filteredList.length > 0 && (
             <div className="px-3 py-4 text-center font-mono" style={{ color: C.faint, fontSize: 10, letterSpacing: "0.06em" }}>
               {filteredList.length} RECEIPTS
             </div>
