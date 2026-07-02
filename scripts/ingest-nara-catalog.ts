@@ -83,6 +83,19 @@ const RECORD_GROUPS: RecordGroupDef[] = [
   { number: '220', name: 'Records of Temporary Committees, Commissions, and Boards (Presidential Commissions)', topicSlug: 'nara-rg-220-commissions', domain: 'government' },
   { number: '457', name: 'Records of the National Security Agency / Central Security Service (NSA/SIGINT)', topicSlug: 'nara-rg-457-nsa', domain: 'intelligence' },
   { number: '107', name: 'Records of the Office of the Secretary of War, WWII', topicSlug: 'nara-rg-107-secrwar', domain: 'defense' },
+  // Tier 2 — Broad Government Coverage
+  { number: '46',  name: 'Records of the United States Senate',                        topicSlug: 'nara-rg-46-senate',   domain: 'government'   },
+  { number: '233', name: 'Records of the United States House of Representatives',       topicSlug: 'nara-rg-233-house',   domain: 'government'   },
+  { number: '60',  name: 'General Records of the Department of Justice',                topicSlug: 'nara-rg-60-doj',      domain: 'law'          },
+  { number: '228', name: 'Records of the Committee on Fair Employment Practice (WWII)', topicSlug: 'nara-rg-228-fepc',    domain: 'government'   },
+  { number: '453', name: 'Records of the United States Commission on Civil Rights',     topicSlug: 'nara-rg-453-ccr',     domain: 'government'   },
+  { number: '208', name: 'Records of the Office of War Information (WWII propaganda)',  topicSlug: 'nara-rg-208-owi',     domain: 'history'      },
+  // Tier 4 — Specialized Domains (high epistemic value)
+  { number: '88',  name: 'Records of the Food and Drug Administration (FDA)',           topicSlug: 'nara-rg-88-fda',      domain: 'medicine'     },
+  { number: '90',  name: 'Records of the Public Health Service',                        topicSlug: 'nara-rg-90-phs',      domain: 'medicine'     },
+  { number: '443', name: 'Records of the National Institutes of Health (NIH)',          topicSlug: 'nara-rg-443-nih',     domain: 'medicine'     },
+  { number: '255', name: 'Records of the National Aeronautics and Space Administration (NASA)', topicSlug: 'nara-rg-255-nasa', domain: 'science' },
+  { number: '412', name: 'Records of the Environmental Protection Agency (EPA)',        topicSlug: 'nara-rg-412-epa',     domain: 'climate'      },
 ]
 
 const RG_BY_NUMBER = new Map(RECORD_GROUPS.map(rg => [rg.number, rg]))

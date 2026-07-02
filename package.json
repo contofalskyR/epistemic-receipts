@@ -15,12 +15,14 @@
     "ingest-genbank": "tsx scripts/ingest-genbank.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.7",
     "@anthropic-ai/sdk": "^0.100.1",
     "@neondatabase/serverless": "^1.1.0",
     "@prisma/adapter-neon": "^7.8.0",
     "@prisma/client": "^6.19.3",
     "@types/d3-hexbin": "^0.2.5",
     "@types/katex": "^0.16.8",
+    "ai": "^7.0.14",
     "d3-hexbin": "^0.2.2",
     "globe.gl": "^2.46.1",
     "katex": "^0.17.0",

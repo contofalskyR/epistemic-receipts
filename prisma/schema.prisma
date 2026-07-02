@@ -745,10 +745,11 @@ model TransitionClaimsSnapshot {
 // Stores concatenated claim text + transition reasons for tsvector ranking.
 // Populated by scripts/build-trajectory-search-index.ts
 model TrajectorySearchDoc {
-  id        String   @id @default(cuid())
-  claimId   String   @unique
+  id        String                      @id @default(cuid())
+  claimId   String                      @unique
   fullText  String
-  updatedAt DateTime @updatedAt
+  embedding Unsupported("vector(1536)")?
+  updatedAt DateTime                    @updatedAt
 
   claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
 
