@@ -25,12 +25,14 @@ type Milestone = {
   reason: string;
   sourceName: string;
   sourceUrl: string;
+  methodologyType?: string; // defaults to "primary" if omitted
 };
 
 type LawTrajectory = {
   id: string;             // used as externalId "trajectory:<id>" and ?t= param
   claim: string;
   emergedAt: string;      // ISO date of first milestone
+  emergedPrecision?: string; // defaults to "DAY" if omitted
   milestones: Milestone[];
 };
 
@@ -987,6 +989,227 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "labor-conspiracy-doctrine-1842",
+    claim:
+      "American courts held that combinations of workers to raise wages were indictable criminal conspiracies at common law — a doctrine established in Commonwealth v. Pullis (Philadelphia Mayor's Court, 1806) and rejected by the Massachusetts Supreme Judicial Court in Commonwealth v. Hunt, decided March 1842.",
+    emergedAt: "1806-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1806-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Commonwealth v. Pullis (Philadelphia Mayor's Court, 1806), the Philadelphia Cordwainers case, convicted eight journeyman shoemakers of criminal conspiracy for combining to raise their wages, holding that a combination to raise wages was an indictable conspiracy at common law. It was the first reported U.S. labor-combination prosecution and settled, for the early republic, that concerted worker action to set wages was per se criminal.",
+        sourceName:
+          "Philadelphia Mayor's Court. Commonwealth v. Pullis (Philadelphia Cordwainers), 1806.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Commonwealth_v._Pullis",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1842-03-01",
+        precision: "MONTH",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Commonwealth v. Hunt, 45 Mass. (4 Met.) 111 (March 1842): Chief Justice Lemuel Shaw, for the Massachusetts Supreme Judicial Court, held that a labor combination organized for lawful purposes by lawful means is not a criminal conspiracy, rejecting the blanket English/Pullis rule that worker combinations to set wages were per se indictable. The ruling reversed the criminal-conspiracy doctrine and became the leading American authority legitimizing peaceful unions.",
+        sourceName:
+          "Shaw CJ. Commonwealth v. Hunt, 45 Mass. (4 Met.) 111 (Mass. 1842). Opinion of the Court.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Commonwealth_v._Hunt",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "liberty-of-contract-lochner-1905",
+    claim:
+      "The Fourteenth Amendment's Due Process Clause was held to protect a 'liberty of contract' barring states from enacting maximum-hours and minimum-wage labor laws — the Lochner-era doctrine established by the U.S. Supreme Court in Lochner v. New York (17 April 1905) and abandoned in West Coast Hotel Co. v. Parrish (29 March 1937).",
+    emergedAt: "1905-04-17",
+    milestones: [
+      {
+        date: "1905-04-17",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Lochner v. New York (198 U.S. 45, 17 April 1905): a 5–4 majority, per Justice Peckham, struck down New York's law capping bakers' hours at 60 per week as an 'unreasonable, unnecessary and arbitrary interference' with the Fourteenth Amendment liberty of contract between employer and employee. The decision settled substantive-due-process 'liberty of contract' as a constitutional limit on protective labor legislation, giving its name to the Lochner era.",
+        sourceName:
+          "Peckham J. Lochner v. New York, 198 U.S. 45 (1905). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/198/45",
+      },
+      {
+        date: "1908-02-24",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Muller v. Oregon (208 U.S. 412, 24 February 1908): a unanimous Court upheld Oregon's ten-hour maximum-hours law for women, distinguishing Lochner on the basis of women's 'physical structure' and relying on Louis Brandeis's sociological 'Brandeis brief.' By sustaining a hours law only three years after Lochner, the ruling opened the doctrine to contestation and signaled that liberty of contract would yield to sufficiently justified protective legislation.",
+        sourceName:
+          "Brewer J. Muller v. Oregon, 208 U.S. 412 (1908). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/208/412",
+      },
+      {
+        date: "1923-04-09",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Adkins v. Children's Hospital (261 U.S. 525, 9 April 1923): a 5–3 majority (Brandeis recused), per Justice Sutherland, struck down a District of Columbia minimum-wage law for women as a 'price-fixing' violation of liberty of contract, holding that freedom of contract is 'the general rule and restraint the exception.' The decision re-entrenched Lochner-era doctrine and extended it from hours to wages, reaffirming the constitutional bar on minimum-wage legislation.",
+        sourceName:
+          "Sutherland J. Adkins v. Children's Hospital, 261 U.S. 525 (1923). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/261/525",
+      },
+      {
+        date: "1937-03-29",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "West Coast Hotel Co. v. Parrish (300 U.S. 379, 29 March 1937): a 5–4 majority, per Chief Justice Hughes, upheld Washington's minimum-wage law for women and expressly overruled Adkins, holding that liberty is 'subject to the restraints of due process' and reasonable regulation in the community's interest. The 'switch in time' abandoned the Lochner liberty-of-contract doctrine and ended judicial invalidation of economic and labor legislation on substantive-due-process grounds.",
+        sourceName:
+          "Hughes CJ. West Coast Hotel Co. v. Parrish, 300 U.S. 379 (1937). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/300/379",
+      },
+    ],
+  },
+
+  {
+    id: "yellow-dog-contracts-1908",
+    claim:
+      "'Yellow-dog contracts' — agreements conditioning employment on a promise not to join a labor union — were held constitutionally protected by liberty of contract, invalidating statutes that banned them, in Adair v. United States (1908) and Coppage v. Kansas (1915); Congress reversed the doctrine by declaring such contracts unenforceable and contrary to public policy in the Norris-LaGuardia Act (1932).",
+    emergedAt: "1908-01-27",
+    milestones: [
+      {
+        date: "1908-01-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Adair v. United States (208 U.S. 161, 27 January 1908): the Court, per Justice Harlan, struck down Section 10 of the Erdman Act, which barred interstate railroads from firing employees for union membership, holding that it violated Fifth Amendment liberty of contract and exceeded the commerce power. The ruling settled that legislatures could not prohibit yellow-dog contracts or anti-union discharges.",
+        sourceName:
+          "Harlan J. Adair v. United States, 208 U.S. 161 (1908). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/208/161",
+      },
+      {
+        date: "1915-01-25",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Coppage v. Kansas (236 U.S. 1, 25 January 1915): a 6–3 majority, per Justice Pitney, extended Adair to the states, striking down a Kansas statute criminalizing yellow-dog contracts as an unconstitutional interference with Fourteenth Amendment liberty of contract. The decision hardened and nationalized the doctrine, invalidating comparable worker-protective laws in numerous states.",
+        sourceName:
+          "Pitney J. Coppage v. Kansas, 236 U.S. 1 (1915). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/236/1",
+      },
+      {
+        date: "1932-03-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Norris-LaGuardia Act (47 Stat. 70, enacted 23 March 1932; 29 U.S.C. § 103): Congress declared that yellow-dog contracts — promises not to join or to withdraw upon joining a labor organization — are 'contrary to the public policy of the United States,' unenforceable in any federal court, and no basis for legal or equitable relief. The statute reversed the Adair–Coppage doctrine, and the following years' Wagner Act and West Coast Hotel confirmed that yellow-dog prohibitions were now valid.",
+        sourceName:
+          "U.S. Congress. Norris-LaGuardia Act, 47 Stat. 70 (1932), codified at 29 U.S.C. § 103.",
+        sourceUrl: "https://www.law.cornell.edu/uscode/text/29/103",
+      },
+    ],
+  },
+
+  {
+    id: "nlra-collective-bargaining-1935",
+    claim:
+      "The National Labor Relations Act (Wagner Act, signed 5 July 1935) guarantees private-sector workers a federally protected right to organize and bargain collectively and is a valid exercise of the Commerce Clause — its constitutionality doubted at enactment and upheld by the U.S. Supreme Court in NLRB v. Jones & Laughlin Steel Corp. (12 April 1937).",
+    emergedAt: "1935-07-05",
+    milestones: [
+      {
+        date: "1935-07-05",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The National Labor Relations Act (Wagner Act, 49 Stat. 449), signed by President Roosevelt on 5 July 1935, guaranteed employees the right to self-organization, to form unions, and to bargain collectively, and created the National Labor Relations Board to enforce those rights. Its constitutionality was immediately and widely doubted: under then-prevailing narrow Commerce Clause precedent (e.g., Carter v. Carter Coal, 1936) many lower courts and employers presumed federal regulation of manufacturing labor relations exceeded congressional power, leaving the Act's core premise contested.",
+        sourceName:
+          "U.S. Congress. National Labor Relations Act (Wagner Act), 49 Stat. 449 (5 July 1935).",
+        sourceUrl:
+          "https://www.nlrb.gov/guidance/key-reference-materials/national-labor-relations-act",
+      },
+      {
+        date: "1937-04-12",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "NLRB v. Jones & Laughlin Steel Corp. (301 U.S. 1, 12 April 1937): a 5–4 majority, per Chief Justice Hughes, upheld the Wagner Act, holding that labor relations in manufacturing bearing a 'close and substantial relation to interstate commerce' are within the commerce power and that employees have a 'fundamental right' to organize and choose representatives. The ruling settled the Act's constitutionality, ratified the federal right to collective bargaining, and marked the Court's decisive expansion of the Commerce Clause.",
+        sourceName:
+          "Hughes CJ. NLRB v. Jones & Laughlin Steel Corp., 301 U.S. 1 (1937). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/301/1",
+      },
+    ],
+  },
+
+  {
+    id: "at-will-employment-1877",
+    claim:
+      "American employment is presumed terminable at will by either party for any reason — the presumption articulated in Horace Gray Wood's 1877 treatise on master and servant, adopted by courts such as Payne v. Western & Atlantic Railroad (Tennessee, 1884), and later qualified by a public-policy exception first recognized in Petermann v. International Brotherhood of Teamsters (California, 1959).",
+    emergedAt: "1877-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1877-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "EXPERT_LITERATURE",
+        reason:
+          "Horace Gray Wood's treatise A Treatise on the Law of Master and Servant (1877) articulated 'Wood's Rule': where a hiring is of indefinite duration, it is presumed terminable at will by either party, and the burden falls on the employee to prove any fixed term. The formulation recorded the American at-will presumption as a stated doctrine, displacing the older English default of a presumed one-year hiring.",
+        sourceName:
+          "Horace Gray Wood. A Treatise on the Law of Master and Servant, § 134 (1877).",
+        sourceUrl: "https://en.wikipedia.org/wiki/At-will_employment",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1884-01-01",
+        precision: "YEAR",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Payne v. Western & Atlantic Railroad (81 Tenn. 507, 1884): the Tennessee Supreme Court adopted the at-will presumption in its strongest form, holding that an employer may discharge employees 'for good cause, for no cause, or even for cause morally wrong' just as it may refuse to deal with anyone. Widely cited as the leading judicial endorsement of Wood's Rule, it settled at-will termination as the American default employment relationship.",
+        sourceName:
+          "Tennessee Supreme Court. Payne v. Western & Atlantic Railroad Co., 81 Tenn. 507 (1884).",
+        sourceUrl: "https://en.wikipedia.org/wiki/At-will_employment",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1959-01-01",
+        precision: "YEAR",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Petermann v. International Brotherhood of Teamsters, Local 396 (174 Cal.App.2d 184, 1959): a California Court of Appeal held that an at-will employee stated a claim for wrongful discharge where he was fired for refusing to commit perjury before a legislative committee, because permitting such a discharge would contravene public policy. Recognized as the first public-policy exception to at-will employment, it reopened the previously settled rule to contestation and seeded the modern wrongful-discharge doctrine.",
+        sourceName:
+          "California Court of Appeal. Petermann v. International Brotherhood of Teamsters, Local 396, 174 Cal.App.2d 184, 344 P.2d 25 (1959).",
+        sourceUrl: "https://en.wikipedia.org/wiki/At-will_employment",
+        methodologyType: "derivative",
+      },
+    ],
+  },
 ];
 
 async function main() {
@@ -1021,7 +1244,7 @@ async function main() {
         claimType: "INSTITUTIONAL",
         epistemicAxis: traj.milestones[traj.milestones.length - 1].toAxis,
         claimEmergedAt: new Date(traj.emergedAt),
-        claimEmergedPrecision: "DAY",
+        claimEmergedPrecision: traj.emergedPrecision ?? "DAY",
       },
     });
     console.log(`CREATED claim ${claim.id} for ${traj.id}`);
@@ -1032,7 +1255,7 @@ async function main() {
           name: m.sourceName,
           url: m.sourceUrl,
           publishedAt: new Date(m.date),
-          methodologyType: "primary",
+          methodologyType: m.methodologyType ?? "primary",
           ingestedBy: "law-settler",
           autoApproved: true,
           humanReviewed: false,
