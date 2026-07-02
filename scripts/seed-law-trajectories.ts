@@ -2883,6 +2883,173 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "bostock-title-vii-sexual-orientation-gender-identity-2020",
+    claim:
+      "The U.S. Supreme Court held in Bostock v. Clayton County (590 U.S. 644, decided 15 June 2020) that Title VII of the Civil Rights Act of 1964's prohibition on employment discrimination 'because of sex' necessarily encompasses discrimination based on an individual's sexual orientation or gender identity.",
+    emergedAt: "2017-04-04",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2017-04-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "The Seventh Circuit, sitting en banc in Hively v. Ivy Tech Community College (853 F.3d 339), held that discrimination on the basis of sexual orientation violates Title VII, breaking with decades of appellate precedent to the contrary. This created an open circuit split with the Eleventh Circuit's contemporaneous Evans v. Georgia Regional Hospital, converting a long-settled negative reading of Title VII into a genuinely contested federal question ripe for Supreme Court review.",
+        sourceName:
+          "U.S. Court of Appeals for the Seventh Circuit (en banc). Hively v. Ivy Tech Community College. 853 F.3d 339. 2017.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Hively_v._Ivy_Tech_Community_College",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2020-06-15",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 6–3 Supreme Court majority per Justice Gorsuch resolved the circuit split, holding that an employer who fires an individual merely for being homosexual or transgender discriminates 'because of sex' in violation of Title VII. The textualist reasoning settled the statutory question nationwide and extended federal employment protection to LGBT workers.",
+        sourceName:
+          "Supreme Court of the United States. Bostock v. Clayton County. 590 U.S. 644. 2020.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/19pdf/17-1618_hfci.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "partial-birth-ban-health-exception-unconstitutional-2000",
+    claim:
+      "The U.S. Supreme Court held in Stenberg v. Carhart (530 U.S. 914, decided 28 June 2000) that a statutory ban on the 'partial-birth' (intact D&E) abortion procedure is unconstitutional where it lacks an exception to preserve the woman's health, a rule the Court effectively abandoned seven years later in Gonzales v. Carhart.",
+    emergedAt: "2000-06-28",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2000-06-28",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 majority per Justice Breyer struck down Nebraska's partial-birth abortion ban because it lacked any exception for the woman's health and was drafted broadly enough to reach the more common D&E procedure. The decision settled, under the Casey undue-burden framework, that such bans require a health exception.",
+        sourceName:
+          "Supreme Court of the United States. Stenberg v. Carhart. 530 U.S. 914. 2000.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Stenberg_v._Carhart",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2007-04-18",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 majority per Justice Kennedy in Gonzales v. Carhart (550 U.S. 124) upheld the federal Partial-Birth Abortion Ban Act of 2003 despite its lack of a health exception, formally 'distinguishing' but in practical effect reversing Stenberg's rule. The Court held that facial invalidation for want of a health exception was inappropriate where medical uncertainty existed, marking a decisive doctrinal shift toward permitting abortion-method bans.",
+        sourceName:
+          "Supreme Court of the United States. Gonzales v. Carhart. 550 U.S. 124. 2007.",
+        sourceUrl: "https://www.law.cornell.edu/supct/html/05-380.ZS.html",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "undue-burden-benefit-cost-balancing-hellerstedt-2016",
+    claim:
+      "The U.S. Supreme Court held in Whole Woman's Health v. Hellerstedt (579 U.S. 582, decided 27 June 2016) that Texas's HB2 admitting-privileges and ambulatory-surgical-center requirements imposed an unconstitutional undue burden, and that courts applying the undue-burden standard must independently weigh a law's asserted health benefits against the burdens it imposes on abortion access.",
+    emergedAt: "2016-06-27",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2016-06-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–3 majority per Justice Breyer struck down both Texas HB2 provisions, rejecting deferential rational-basis review and holding that courts must balance a regulation's genuine health benefits against the obstacles it places before women seeking pre-viability abortions. This settled a benefit-burden balancing gloss on Casey's undue-burden test and invalidated the TRAP-law model nationwide.",
+        sourceName:
+          "Supreme Court of the United States. Whole Woman's Health v. Hellerstedt. 579 U.S. 582. 2016.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Whole_Woman%27s_Health_v._Hellerstedt",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2022-06-24",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Dobbs v. Jackson Women's Health Organization (597 U.S. 215) the Court overruled Roe and Casey and eliminated the constitutional right to abortion, thereby repudiating the entire undue-burden framework — including Hellerstedt's benefit-burden balancing test — which has not been good law since. The balancing standard was left with no constitutional foundation to operate on.",
+        sourceName:
+          "Supreme Court of the United States. Dobbs v. Jackson Women's Health Organization. 597 U.S. 215. 2022.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Dobbs_v._Jackson_Women%27s_Health_Organization",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "parental-termination-clear-and-convincing-evidence-1982",
+    claim:
+      "The U.S. Supreme Court held in Santosky v. Kramer (455 U.S. 745, decided 24 March 1982) that the Due Process Clause of the Fourteenth Amendment requires a State to support its allegations by at least clear and convincing evidence before it may permanently terminate the rights of natural parents in their child.",
+    emergedAt: "1982-03-24",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1982-03-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 majority per Justice Blackmun struck down New York's 'fair preponderance of the evidence' standard for parental-rights termination, holding that the fundamental liberty interest of natural parents in the care and custody of their children demands a heightened clear-and-convincing burden of proof. The decision set the constitutional floor for evidentiary standards in state termination proceedings and remains controlling law.",
+        sourceName:
+          "Supreme Court of the United States. Santosky v. Kramer. 455 U.S. 745. 1982.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/455/745",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "expressive-vendor-first-amendment-same-sex-wedding-303creative-2023",
+    claim:
+      "The U.S. Supreme Court held in 303 Creative LLC v. Elenis (600 U.S. 570, decided 30 June 2023) that the First Amendment's free-speech guarantee bars a State from compelling a business offering expressive, custom services to create speech — such as same-sex wedding websites — that conveys a message the creator disagrees with, resolving a question the Court had earlier left open in Masterpiece Cakeshop.",
+    emergedAt: "2018-06-04",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2018-06-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Masterpiece Cakeshop v. Colorado Civil Rights Commission (584 U.S. 617) a 7–2 Court ruled narrowly for the baker on religious-neutrality grounds while explicitly declining to decide whether public-accommodation laws may compel creative services for same-sex weddings, stating the question 'must await further elaboration in the courts.' This left the compelled-speech-versus-antidiscrimination conflict openly unresolved.",
+        sourceName:
+          "Supreme Court of the United States. Masterpiece Cakeshop v. Colorado Civil Rights Commission. 584 U.S. 617. 2018.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Masterpiece_Cakeshop_v._Colorado_Civil_Rights_Commission",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2023-06-30",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 6–3 majority per Justice Gorsuch held that Colorado could not use its public-accommodation law to force a website designer to create custom expressive designs celebrating same-sex marriage, because the First Amendment protects against compelled speech even for commercial expressive services. The ruling settled the question Masterpiece had reserved, carving a free-speech limit on antidiscrimination law as applied to expressive vendors.",
+        sourceName:
+          "Supreme Court of the United States. 303 Creative LLC v. Elenis. 600 U.S. 570. 2023.",
+        sourceUrl: "https://en.wikipedia.org/wiki/303_Creative_LLC_v._Elenis",
+        methodologyType: "derivative",
+      },
+    ],
+  },
 ];
 
 async function main() {
