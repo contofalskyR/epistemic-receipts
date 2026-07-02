@@ -25,8 +25,9 @@ export default function LinkViewer({ url, onClose }: Props) {
   }, [onClose]);
 
   useEffect(() => {
-    // PDFs can't be iframed — skip the viewer and open directly.
-    if (/\.pdf(\?|#|$)/i.test(url)) {
+    // Sites that block iframe embedding — open directly instead of showing a broken embed.
+    const NEVER_EMBED = /\b(pubmed\.ncbi\.nlm\.nih\.gov|ncbi\.nlm\.nih\.gov|nature\.com|wikipedia\.org|wikimedia\.org|springer\.com|wiley\.com|sciencedirect\.com|doi\.org|arxiv\.org|jstor\.org|tandfonline\.com|congress\.gov|govinfo\.gov|supremecourt\.gov|fda\.gov|who\.int|nih\.gov|cdc\.gov|apa\.org|acm\.org|ieee\.org|bmj\.com|thelancet\.com|cell\.com|pnas\.org|science\.org|retractionwatch\.com|elsevier\.com|oxfordjournals\.org|academic\.oup\.com|cambridge\.org|sagepub\.com)\b/i;
+    if (/\.pdf(\?|#|$)/i.test(url) || NEVER_EMBED.test(url)) {
       window.open(url, "_blank", "noopener,noreferrer");
       onClose();
       return;
@@ -41,7 +42,7 @@ export default function LinkViewer({ url, onClose }: Props) {
         }
         return stillLoading;
       });
-    }, 6_000);
+    }, 4_000);
     return () => window.clearTimeout(timeout);
   }, [url, onClose]);
 
