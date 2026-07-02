@@ -509,6 +509,159 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "strict-products-liability-1963",
+    claim:
+      "A manufacturer is strictly liable in tort for injuries caused by a defective product it places on the market, without proof of negligence or contractual privity — adopted by the California Supreme Court in Greenman v. Yuba Power Products, Inc. (24 January 1963).",
+    emergedAt: "1944-07-05",
+    milestones: [
+      {
+        date: "1944-07-05",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Escola v. Coca-Cola Bottling Co. of Fresno (24 Cal.2d 453, 5 July 1944): The majority decided the exploding-bottle case on res ipsa loquitur negligence grounds, but Justice Roger Traynor's concurrence argued that a manufacturer should incur absolute liability when a product it markets, knowing it will be used without inspection, proves defective and causes injury. The theory of strict products liability was thereby recorded in a leading opinion, but it was not yet law — it commanded only a single concurring vote.",
+        sourceName:
+          "Traynor J. (concurring). Escola v. Coca-Cola Bottling Co. of Fresno, 24 Cal.2d 453, 150 P.2d 436 (1944).",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/2d/24/453.html",
+      },
+      {
+        date: "1963-01-24",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Greenman v. Yuba Power Products, Inc. (59 Cal.2d 57, 24 January 1963): Justice Traynor, now writing for a unanimous California Supreme Court, held that 'a manufacturer is strictly liable in tort when an article he places on the market, knowing that it is to be used without inspection for defects, proves to have a defect that causes injury.' The concurrence's theory from Escola became binding doctrine, freeing product-injury plaintiffs from warranty privity and notice requirements.",
+        sourceName:
+          "Traynor J. Greenman v. Yuba Power Products, Inc., 59 Cal.2d 57, 377 P.2d 897 (1963). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/2d/59/57.html",
+      },
+      {
+        date: "1965-01-01",
+        precision: "YEAR",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "EXPERT_LITERATURE",
+        reason:
+          "Restatement (Second) of Torts § 402A (approved by the American Law Institute in 1964, published 1965): The ALI adopted as black-letter law the rule that one who sells a product 'in a defective condition unreasonably dangerous' is liable for resulting physical harm even though the seller exercised all possible care and the user has no contractual relation with the seller. Section 402A converted Greenman's California holding into a national template that most state high courts adopted within a decade, settling strict products liability across American tort law.",
+        sourceName:
+          "American Law Institute. Restatement (Second) of Torts § 402A: Special Liability of Seller of Product for Physical Harm to User or Consumer (1965).",
+        sourceUrl:
+          "https://biotech.law.lsu.edu/cases/products/402a-b.htm",
+      },
+    ],
+  },
+
+  {
+    id: "comparative-negligence-california-1975",
+    claim:
+      "A plaintiff whose own negligence contributed to the injury is completely barred from recovering damages (the contributory-negligence bar), a common-law rule originating in Butterfield v. Forrester (King's Bench, 1809) and abolished for California in Li v. Yellow Cab Co. (31 March 1975).",
+    emergedAt: "1809-01-01",
+    milestones: [
+      {
+        date: "1809-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Butterfield v. Forrester (11 East 60, 103 Eng. Rep. 926, K.B. 1809): Lord Ellenborough held that a rider who galloped into an obstruction he could have avoided could not recover, establishing contributory negligence as an absolute defense. The rule that any negligence by the plaintiff completely bars recovery — however slight the plaintiff's fault — became settled common law and was received throughout American jurisdictions, including California.",
+        sourceName:
+          "Lord Ellenborough CJ. Butterfield v. Forrester, 11 East 60, 103 Eng. Rep. 926 (K.B. 1809).",
+        sourceUrl:
+          "https://en.wikipedia.org/wiki/Butterfield_v_Forrester",
+      },
+      {
+        date: "1975-03-31",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Li v. Yellow Cab Co. (13 Cal.3d 804, 31 March 1975): The California Supreme Court abandoned the all-or-nothing contributory-negligence bar and replaced it with a system of pure comparative negligence, apportioning damages in proportion to each party's fault. The court held the harsh common-law rule — under which a plaintiff even 1% at fault recovered nothing — was no longer defensible, reversing 166 years of settled doctrine in the state.",
+        sourceName:
+          "Sullivan J. Li v. Yellow Cab Co. of California, 13 Cal.3d 804, 532 P.2d 1226 (1975). Opinion of the Court.",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/li-v-yellow-cab-co-27850",
+      },
+    ],
+  },
+
+  {
+    id: "market-share-liability-1980",
+    claim:
+      "When a plaintiff cannot identify which manufacturer of a fungible, identically-formulated product (DES) caused her injury, liability may be apportioned among the defendant makers according to their share of the relevant market — the market-share liability doctrine adopted by the California Supreme Court in Sindell v. Abbott Laboratories (20 March 1980).",
+    emergedAt: "1948-01-01",
+    milestones: [
+      {
+        date: "1948-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Summers v. Tice (33 Cal.2d 80, 199 P.2d 1, 1948): Where two hunters negligently fired toward the plaintiff but only one pellet caused the eye injury, the California Supreme Court shifted the burden of proving causation onto the two negligent defendants under the theory of alternative liability. The decision recorded the principle that a plaintiff's inability to identify which of several wrongdoers caused the harm need not defeat recovery — the conceptual seed later extended to many manufacturers.",
+        sourceName:
+          "Carter J. Summers v. Tice, 33 Cal.2d 80, 199 P.2d 1 (1948). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/2d/33/80.html",
+      },
+      {
+        date: "1980-03-20",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Sindell v. Abbott Laboratories (26 Cal.3d 588, 20 March 1980): In a 4–3 opinion by Justice Mosk, the court held that a DES-injured plaintiff who could not identify the specific manufacturer of the drug her mother took — because DES was a fungible generic made by many firms years earlier — could sue makers representing a substantial share of the market, each liable for the percentage of damages matching its market share. This adapted Summers-style burden-shifting into a new market-share liability doctrine for fungible-product injuries, settling it as California law.",
+        sourceName:
+          "Mosk J. Sindell v. Abbott Laboratories, 26 Cal.3d 588, 607 P.2d 924 (1980). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/3d/26/588.html",
+      },
+    ],
+  },
+
+  {
+    id: "unconscionability-contract-doctrine-1965",
+    claim:
+      "A court may decline to enforce a contract or any clause it finds unconscionable — the modern unconscionability defense, codified in UCC § 2-302 and given its operative common-law form in Williams v. Walker-Thomas Furniture Co. (D.C. Cir., 11 August 1965).",
+    emergedAt: "1952-01-01",
+    milestones: [
+      {
+        date: "1952-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Uniform Commercial Code § 2-302 (promulgated by the American Law Institute and the National Conference of Commissioners on Uniform State Laws, 1952): The provision authorized a court that finds a contract or clause 'to have been unconscionable at the time it was made' to refuse enforcement or limit its application. The concept was recorded as black-letter model law, but § 2-302 deliberately supplied no definition of 'unconscionable,' leaving the operative standard unsettled pending judicial elaboration.",
+        sourceName:
+          "American Law Institute & NCCUSL. Uniform Commercial Code § 2-302: Unconscionable Contract or Clause (1952).",
+        sourceUrl:
+          "https://www.law.cornell.edu/ucc/2/2-302",
+      },
+      {
+        date: "1965-08-11",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Williams v. Walker-Thomas Furniture Co. (350 F.2d 445, D.C. Cir., 11 August 1965): Judge J. Skelly Wright, reviewing a furniture installment contract whose cross-collateral clause let the seller repossess everything a buyer had ever purchased upon any default, embraced UCC § 2-302's principle as an expression of common law even where not yet enacted. He supplied its enduring test — unconscionability as 'an absence of meaningful choice on the part of one of the parties together with contract terms which are unreasonably favorable to the other party' — giving the doctrine its settled modern form and remanding for its application.",
+        sourceName:
+          "Wright J. Williams v. Walker-Thomas Furniture Co., 350 F.2d 445 (D.C. Cir. 1965). Opinion of the Court.",
+        sourceUrl:
+          "https://law.resource.org/pub/us/case/reporter/F2/350/350.F2d.445.18604.18605_1.html",
+      },
+    ],
+  },
 ];
 
 async function main() {
