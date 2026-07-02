@@ -33,6 +33,7 @@ type LawTrajectory = {
   claim: string;
   emergedAt: string;      // ISO date of first milestone
   emergedPrecision?: string; // defaults to "DAY" if omitted
+  claimType?: string;     // defaults to "INSTITUTIONAL" if omitted
   milestones: Milestone[];
 };
 
@@ -2254,6 +2255,7 @@ const TRAJECTORIES: LawTrajectory[] = [
     claim:
       "The negligence standard of care can be expressed algebraically: a defendant is negligent for failing to take a precaution whenever the burden of that precaution (B) is less than the probability of harm (P) multiplied by the gravity of the resulting injury (L) — the B < PL formula stated by Judge Learned Hand for the U.S. Court of Appeals for the Second Circuit in United States v. Carroll Towing Co. (9 January 1947).",
     emergedAt: "1947-01-09",
+    claimType: "HYBRID",
     milestones: [
       {
         date: "1947-01-09",
@@ -2267,6 +2269,138 @@ const TRAJECTORIES: LawTrajectory[] = [
           "Hand L., J. United States v. Carroll Towing Co., 159 F.2d 169 (2d Cir. 1947). Opinion of the Court.",
         sourceUrl:
           "https://law.justia.com/cases/federal/appellate-courts/F2/159/169/",
+      },
+    ],
+  },
+
+  {
+    id: "hard-look-arbitrary-capricious-review-1983",
+    claim:
+      "A federal court reviewing agency action under the APA's arbitrary-and-capricious standard must take a 'hard look,' and an agency rescinding an existing rule must supply a reasoned analysis that examines the relevant data and considers significant alternatives — the standard the U.S. Supreme Court settled in Motor Vehicle Manufacturers Ass'n v. State Farm Mutual Automobile Insurance Co., decided 24 June 1983.",
+    emergedAt: "1971-03-02",
+    milestones: [
+      {
+        date: "1971-03-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Citizens to Preserve Overton Park, Inc. v. Volpe (401 U.S. 402, 2 March 1971): The Court held that although agency action carries a presumption of regularity, that presumption must 'not shield his action from a thorough, probing, in-depth review,' and directed courts to determine whether the agency's choice was 'arbitrary, capricious, an abuse of discretion, or otherwise not in accordance with law.' The decision recorded the searching 'hard look' conception of arbitrary-and-capricious review but did not yet fix how it applied to an agency's reversal of its own policy.",
+        sourceName:
+          "Marshall J. Citizens to Preserve Overton Park, Inc. v. Volpe, 401 U.S. 402 (1971). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/401/402",
+      },
+      {
+        date: "1983-06-24",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Motor Vehicle Manufacturers Ass'n v. State Farm Mutual Automobile Insurance Co. (463 U.S. 29, 24 June 1983): A Court led by Justice White held that an agency rescinding a rule (here, the NHTSA passive-restraint standard) is judged by the same arbitrary-and-capricious standard as promulgation and 'is obligated to supply a reasoned analysis for the change,' faulting the agency for failing to consider an airbags-only alternative. The ruling settled 'hard look' review as the operative test for deregulatory action and became the canonical statement of arbitrary-and-capricious review of agency rulemaking.",
+        sourceName:
+          "White J. Motor Vehicle Mfrs. Ass'n v. State Farm Mutual Automobile Ins. Co., 463 U.S. 29 (1983). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/463/29",
+      },
+    ],
+  },
+
+  {
+    id: "independent-agency-removal-protection-2020",
+    claim:
+      "Congress may shield the heads of independent federal agencies from at-will presidential removal by permitting removal only for cause — the separation-of-powers principle established by the U.S. Supreme Court in Humphrey's Executor v. United States (27 May 1935) and progressively constricted by Free Enterprise Fund v. PCAOB (28 June 2010) and Seila Law LLC v. CFPB (29 June 2020).",
+    emergedAt: "1935-05-27",
+    milestones: [
+      {
+        date: "1935-05-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Humphrey's Executor v. United States (295 U.S. 602, 27 May 1935): A unanimous Court upheld the FTC Act's provision limiting removal of commissioners to 'inefficiency, neglect of duty, or malfeasance in office,' reasoning that a quasi-legislative and quasi-judicial body may be insulated from presidential control. The decision cabined Myers v. United States and settled that Congress may create independent agencies whose heads enjoy for-cause tenure protection.",
+        sourceName:
+          "Sutherland J. Humphrey's Executor v. United States, 295 U.S. 602 (1935). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/295/602",
+      },
+      {
+        date: "2010-06-28",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Free Enterprise Fund v. Public Company Accounting Oversight Board (561 U.S. 477, 28 June 2010): A 5–4 majority, per Chief Justice Roberts, held that two layers of for-cause removal protection — PCAOB members removable only for cause by SEC Commissioners who are themselves removable only for cause — 'contravene[d] the Constitution's separation of powers' by stripping the President of adequate control. By invalidating a removal structure built atop Humphrey's Executor, the Court reopened contestation over how far Congress may insulate agency officials from the President.",
+        sourceName:
+          "Roberts CJ. Free Enterprise Fund v. Public Company Accounting Oversight Board, 561 U.S. 477 (2010). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/08-861",
+      },
+      {
+        date: "2020-06-29",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Seila Law LLC v. Consumer Financial Protection Bureau (591 U.S. 197, 29 June 2020): A 6–3 majority, per Chief Justice Roberts, held that vesting substantial executive power in a single CFPB Director removable only for cause violated the separation of powers, expressly declining to extend Humphrey's Executor (which it confined to multimember expert bodies) or Morrison v. Olson to this 'novel' structure. The ruling deepened the contest over Humphrey's Executor itself, leaving the foundational for-cause principle intact in name but doctrinally embattled and narrowed.",
+        sourceName:
+          "Roberts CJ. Seila Law LLC v. Consumer Financial Protection Bureau, 591 U.S. 197 (2020). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/19-7",
+      },
+    ],
+  },
+
+  {
+    id: "public-rights-agency-adjudication-no-jury-1977",
+    claim:
+      "Congress may assign the adjudication of statutory 'public rights' civil-penalty claims to a federal administrative agency without a jury trial — the Seventh Amendment principle settled by the U.S. Supreme Court in Atlas Roofing Co. v. OSHRC (23 March 1977) and sharply narrowed by SEC v. Jarkesy (27 June 2024), which held that fraud-based civil penalties must be tried to a jury in an Article III court.",
+    emergedAt: "1977-03-23",
+    milestones: [
+      {
+        date: "1977-03-23",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Atlas Roofing Co. v. Occupational Safety and Health Review Commission (430 U.S. 442, 23 March 1977): A unanimous Court held that the Seventh Amendment 'does not prohibit Congress from assigning the factfinding function and initial adjudication to an administrative forum with which the jury would be incompatible' when Congress creates new statutory 'public rights.' The decision settled the constitutional foundation for agency in-house adjudication of civil penalties without juries, enabling the modern administrative-enforcement state.",
+        sourceName:
+          "White J. Atlas Roofing Co. v. Occupational Safety & Health Review Commission, 430 U.S. 442 (1977). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/430/442",
+      },
+      {
+        date: "2024-06-27",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "SEC v. Jarkesy (603 U.S. 109, 27 June 2024): A 6–3 majority, per Chief Justice Roberts, held that when the SEC seeks civil penalties for securities fraud, the Seventh Amendment entitles the defendant to a jury trial in an Article III court, because the antifraud claims replicate common-law fraud and the penalty is a 'legal' remedy that falls outside the public-rights exception. By confining Atlas Roofing and requiring Article III juries for a broad class of agency penalty actions, the ruling destabilized the settled premise that Congress may route such adjudications to in-house ALJs.",
+        sourceName:
+          "Roberts CJ. Securities and Exchange Commission v. Jarkesy, 603 U.S. 109 (2024). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/22-859",
+      },
+    ],
+  },
+
+  {
+    id: "apa-limitations-accrual-injury-2024",
+    claim:
+      "A plaintiff's facial challenge to a federal agency rule under the Administrative Procedure Act accrues under 28 U.S.C. § 2401(a) when the plaintiff is first injured by final agency action, not when the rule is promulgated — the rule the U.S. Supreme Court established in Corner Post, Inc. v. Board of Governors of the Federal Reserve System, decided 1 July 2024.",
+    emergedAt: "2024-07-01",
+    milestones: [
+      {
+        date: "2024-07-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Corner Post, Inc. v. Board of Governors of the Federal Reserve System (603 U.S. 799, 1 July 2024): A 6–3 majority, per Justice Barrett, held that an APA claim 'accrues' — and the six-year § 2401(a) limitations clock begins — only 'when the plaintiff is injured by final agency action,' not when the rule is issued, allowing a business that opened in 2018 to challenge a 2011 debit-interchange regulation. The decision displaced the longstanding contrary consensus of the courts of appeals and settled that later-arriving regulated parties retain a fresh window to bring facial APA challenges.",
+        sourceName:
+          "Barrett J. Corner Post, Inc. v. Board of Governors of the Federal Reserve System, 603 U.S. 799 (2024). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/22-1008",
       },
     ],
   },
@@ -2301,7 +2435,7 @@ async function main() {
         autoApproved: true,
         humanReviewed: false,
         deleted: false,
-        claimType: "INSTITUTIONAL",
+        claimType: traj.claimType ?? "INSTITUTIONAL",
         epistemicAxis: traj.milestones[traj.milestones.length - 1].toAxis,
         claimEmergedAt: new Date(traj.emergedAt),
         claimEmergedPrecision: traj.emergedPrecision ?? "DAY",
