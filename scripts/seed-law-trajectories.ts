@@ -1163,6 +1163,162 @@ const TRAJECTORIES: LawTrajectory[] = [
   },
 
   {
+    id: "customary-international-law-part-of-us-law-1900",
+    claim:
+      "The U.S. Supreme Court held in The Paquete Habana, decided 8 January 1900, that customary international law is part of United States law and must be ascertained and applied by federal courts as questions of right depending on it arise.",
+    emergedAt: "1900-01-08",
+    milestones: [
+      {
+        date: "1900-01-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Paquete Habana (175 U.S. 677, 8 Jan 1900): Justice Gray, for the Court, condemned the wartime seizure of two coastal fishing vessels as a prize, holding that a settled rule of customary international law exempts unarmed coastal fishing boats from capture. The opinion declared that 'international law is part of our law, and must be ascertained and administered by the courts of justice of appropriate jurisdiction,' settling that federal courts directly apply customary international law where no controlling treaty, statute, or executive act displaces it.",
+        sourceName:
+          "Gray J. The Paquete Habana, 175 U.S. 677 (1900). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/175/677",
+      },
+      {
+        date: "1997-01-01",
+        precision: "YEAR",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "EXPERT_LITERATURE",
+        reason:
+          "Curtis A. Bradley & Jack L. Goldsmith, 'Customary International Law as Federal Common Law: A Critique of the Modern Position,' 110 Harv. L. Rev. 815 (1997): the authors argued that the post-Erie assumption — that customary international law automatically has the status of self-executing federal common law binding on courts — lacks constitutional and historical foundation and improperly bypasses the political branches. The heavily-cited article reopened as contested a proposition widely treated as settled since The Paquete Habana, triggering a sustained 'revisionist' debate in the foreign-relations-law literature.",
+        sourceName:
+          "Bradley, Curtis A. & Goldsmith, Jack L. Customary International Law as Federal Common Law: A Critique of the Modern Position. 110 Harvard Law Review 815 (1997).",
+        sourceUrl: "https://scholarship.law.duke.edu/faculty_scholarship/1186/",
+      },
+      {
+        date: "2004-06-29",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Sosa v. Alvarez-Machain (542 U.S. 692, 29 June 2004): the Court held that the Alien Tort Statute is jurisdictional but that federal courts may recognize a narrow category of claims under customary international law — norms with 'definite content and acceptance among civilized nations' comparable to the 18th-century paradigms of piracy, safe-conducts, and offenses against ambassadors. By affirming, with caution, that customary international law remains part of the federal common law that courts enforce, Sosa re-settled the core Paquete Habana principle while cabining its reach.",
+        sourceName:
+          "Souter J. Sosa v. Alvarez-Machain, 542 U.S. 692 (2004). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/03-339",
+      },
+    ],
+  },
+
+  {
+    id: "treaty-power-missouri-holland-1920",
+    claim:
+      "The U.S. Supreme Court held in Missouri v. Holland, decided 19 April 1920, that a valid treaty and its implementing statute may regulate subjects (migratory birds) otherwise reserved to the states under the Tenth Amendment, so the treaty power can support federal legislation beyond Congress's independently enumerated powers.",
+    emergedAt: "1920-04-19",
+    milestones: [
+      {
+        date: "1920-04-19",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Missouri v. Holland (252 U.S. 416, 19 April 1920): Justice Holmes, for a 7–2 Court, upheld the Migratory Bird Treaty Act as necessary and proper to implement a 1916 treaty with Great Britain, rejecting Missouri's Tenth Amendment challenge. Holmes reasoned that 'there may be matters of the sharpest exigency for the national well being that an act of Congress could not deal with but that a treaty followed by such an act could,' settling that the treaty power can authorize federal legislation on matters otherwise reserved to the states.",
+        sourceName:
+          "Holmes J. Missouri v. Holland, 252 U.S. 416 (1920). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/252/416",
+      },
+      {
+        date: "1957-06-10",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Reid v. Covert (354 U.S. 1, 10 June 1957): a plurality led by Justice Black held that no international agreement can confer power on the government that is 'free from the restraints of the Constitution,' invalidating military trials of civilian dependents abroad despite executive agreements. The decision refined rather than overturned Holland — the treaty power remains capable of expanding federal legislative reach, but is now firmly bounded by the Bill of Rights and other constitutional limits — leaving Holland's core holding settled while clarifying its outer limit.",
+        sourceName:
+          "Black J. (plurality). Reid v. Covert, 354 U.S. 1 (1957).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/354/1",
+      },
+      {
+        date: "2014-06-02",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Bond v. United States (572 U.S. 844, 2 June 2014): the Court avoided the constitutional question by construing the Chemical Weapons Convention Implementation Act narrowly so as not to reach a purely local assault, but Justices Scalia, Thomas, and Alito, concurring in the judgment, attacked Holland directly — Scalia calling its treaty-power reasoning an 'unreasoned' ipse dixit and urging that Congress cannot expand its enumerated powers through the treaty power. With three Justices openly inviting reconsideration, Holland's scope returned to active contestation.",
+        sourceName:
+          "Roberts CJ. Bond v. United States, 572 U.S. 844 (2014). Opinion of the Court; Scalia J., concurring in the judgment.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/12-158",
+      },
+    ],
+  },
+
+  {
+    id: "treaty-statute-last-in-time-head-money-1884",
+    claim:
+      "The U.S. Supreme Court held in the Head Money Cases (Edye v. Robertson), decided 8 December 1884, that a treaty stands on equal constitutional footing with an act of Congress, so that when the two conflict the later-in-date enactment controls, and that a treaty confers judicially enforceable private rights only insofar as it is self-executing.",
+    emergedAt: "1884-12-08",
+    milestones: [
+      {
+        date: "1884-12-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Head Money Cases / Edye v. Robertson (112 U.S. 580, 8 Dec 1884): Justice Miller, for the Court, upheld a federal head-tax on arriving immigrants against the claim that it violated existing commercial treaties, holding that the Constitution gives a treaty 'no superiority over an act of congress,' that the later of the two controls, and that a treaty is enforceable in court like a statute only when its terms are self-executing. The ruling settled the co-equal status of treaties and statutes and the 'last-in-time' rule.",
+        sourceName:
+          "Miller J. Head Money Cases (Edye v. Robertson), 112 U.S. 580 (1884). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/112/580",
+      },
+      {
+        date: "1888-01-09",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Whitney v. Robertson (124 U.S. 190, 9 Jan 1888): Justice Field, for a unanimous Court, applied and crystallized the doctrine, holding that where a treaty and a statute 'are inconsistent, the one last in date will control the other, provided always the stipulation of the treaty on the subject is self-executing.' By restating the rule as a fixed formula and coupling it to the self-execution requirement, Whitney entrenched the Head Money principle as the stable governing rule for treaty-statute conflicts.",
+        sourceName:
+          "Field J. Whitney v. Robertson, 124 U.S. 190 (1888). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/124/190",
+      },
+    ],
+  },
+
+  {
+    id: "plenary-power-exclude-aliens-chae-chan-ping-1889",
+    claim:
+      "The U.S. Supreme Court held in Chae Chan Ping v. United States (the Chinese Exclusion Case), decided 13 May 1889, that the power to exclude foreigners is an inherent, plenary incident of national sovereignty vested in the political branches, so Congress may bar the entry of aliens even in contravention of a prior treaty.",
+    emergedAt: "1889-05-13",
+    milestones: [
+      {
+        date: "1889-05-13",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chae Chan Ping v. United States (130 U.S. 581, 13 May 1889): Justice Field, for a unanimous Court, upheld the Scott Act's exclusion of a returning Chinese laborer despite the Burlingame Treaty, holding that 'the jurisdiction of the nation within its own territory is necessarily exclusive and absolute' and that the power to exclude aliens is an inherent attribute of sovereignty that Congress may exercise as the 'last expression of the sovereign will,' overriding conflicting treaties. The ruling settled the plenary-power doctrine over immigration.",
+        sourceName:
+          "Field J. Chae Chan Ping v. United States (Chinese Exclusion Case), 130 U.S. 581 (1889). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/130/581",
+      },
+      {
+        date: "1893-05-15",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Fong Yue Ting v. United States (149 U.S. 698, 15 May 1893): a 6–3 Court, per Justice Gray, extended the plenary-power doctrine from exclusion to deportation, holding that 'the power to exclude or to expel aliens' is 'vested in the political departments of the government' as an incident of sovereignty and largely beyond judicial review. By applying Chae Chan Ping to the expulsion of resident aliens, the decision hardened and broadened the doctrine into the enduring foundation of federal immigration power.",
+        sourceName:
+          "Gray J. Fong Yue Ting v. United States, 149 U.S. 698 (1893). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/149/698",
+      },
+    ],
+  },
+
+  {
     id: "at-will-employment-1877",
     claim:
       "American employment is presumed terminable at will by either party for any reason — the presumption articulated in Horace Gray Wood's 1877 treatise on master and servant, adopted by courts such as Payne v. Western & Atlantic Railroad (Tennessee, 1884), and later qualified by a public-policy exception first recognized in Petermann v. International Brotherhood of Teamsters (California, 1959).",
