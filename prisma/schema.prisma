@@ -84,6 +84,7 @@ model Claim {
   statusHistory            ClaimStatusHistory[]
 
   @@index([ingestedBy])
+  @@index([ingestedBy, id])
   @@index([claimType])
   @@index([currentStatus])
   @@index([verificationStatus])

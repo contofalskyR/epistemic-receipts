@@ -346,12 +346,9 @@ const PIPELINE_TEMPLATES: Record<string, Template> = {
   czech_abs_v1:               { toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Czech legal abstract officially catalogued." },
   wales_senedd_v1:            { toAxis: "SETTLED", community: "INSTITUTIONAL", reason: "Legislation enacted by the Welsh Senedd (Parliament)." },
   retraction_watch_v1:        { toAxis: "REVERSED", community: "EXPERT_LITERATURE", reason: "Paper listed on Retraction Watch as formally retracted." },
-};
 
-
-// ── Missing pipeline templates (added in backfill) ────────────────────────────
-// These pipelines exist in the DB but were missing from the original registry.
-const PIPELINE_TEMPLATES_EXTRA: Record<string, Template> = {
+  // ── Previously-missing pipeline templates (merged from backfill) ─────────────
+  // These pipelines exist in the DB but were missing from the original registry.
   rxnorm_v1:              { toAxis: "SETTLED",  community: "INSTITUTIONAL",   reason: "Drug concept canonically established in the NLM RxNorm drug terminology standard." },
   mesh_v1:                { toAxis: "SETTLED",  community: "INSTITUTIONAL",   reason: "Medical concept officially indexed in the NLM MeSH controlled vocabulary." },
   clinicaltrials_v1:      { toAxis: "RECORDED", community: "INSTITUTIONAL",   reason: "Clinical trial officially registered with ClinicalTrials.gov (NIH)." },
@@ -364,9 +361,6 @@ const PIPELINE_TEMPLATES_EXTRA: Record<string, Template> = {
   korea_legislation_v1:   { toAxis: "SETTLED",  community: "INSTITUTIONAL",   reason: "Legislation enacted into South Korean law." },
   manual:                 { toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Claim manually curated and entered into the epistemic record." },
 };
-
-// Merge extra templates into the main registry
-Object.assign(PIPELINE_TEMPLATES, PIPELINE_TEMPLATES_EXTRA);
 
 // ── Cursor management ─────────────────────────────────────────────────────────
 function loadCursor(): Record<string, string | null> {
@@ -403,7 +397,7 @@ async function processPipeline(
         // null != 'DEPRECATED' is NULL in SQL, so we must include nulls explicitly
         OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
         claimEmergedAt: { not: null },
-        statusHistory: { none: {} },
+        statusHistory: { none: { fromAxis: null } },
         ...(cursor ? { id: { gt: cursor } } : {}),
       },
       select: {
@@ -484,6 +478,10 @@ async function main() {
   if (DRY_RUN) console.log("(dry-run — no rows written)");
 }
 
+let exitCode = 0;
 main()
-  .catch((e) => { console.error(e); process.exit(1); })
-  .finally(() => prisma.$disconnect());
+  .catch((e) => { console.error(e); exitCode = 1; })
+  .finally(async () => {
+    await prisma.$disconnect();
+    process.exit(exitCode);
+  });
