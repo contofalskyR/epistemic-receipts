@@ -5484,6 +5484,102 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "self-executing-treaty-preempts-state-law-asakura-1924",
+    claim:
+      "In Asakura v. City of Seattle (265 U.S. 332), decided May 26, 1924, a unanimous U.S. Supreme Court held that the 1911 Treaty of Commerce and Navigation between the United States and Japan was self-executing, operated of its own force as supreme law under the Supremacy Clause, and preempted a Seattle ordinance barring resident aliens from holding pawnbroker licenses.",
+    emergedAt: "1924-05-26",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1924-05-26",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Butler, writing for a unanimous Court, held that the U.S.–Japan commercial treaty guaranteeing nationals of each country the right to 'carry on trade' on equal terms operated as supreme federal law binding on states and municipalities without implementing legislation. Because the treaty was self-executing, Seattle's citizens-only pawnbroker ordinance was void as applied to a Japanese resident. The decision crystallized the principle that a self-executing treaty is equivalent to a federal statute and preempts conflicting state and local law under the Supremacy Clause.",
+        sourceName:
+          "Butler J. Asakura v. City of Seattle, 265 U.S. 332 (1924). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/265/332",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "war-power-conscription-selective-draft-1918",
+    claim:
+      "In the Selective Draft Law Cases (Arver v. United States, 245 U.S. 366), decided January 7, 1918, a unanimous U.S. Supreme Court held that Congress's Article I power to raise and support armies includes the power to compel military service through a national conscription draft, and that the Selective Service Act of 1917 violated neither the Thirteenth Amendment nor other constitutional limits.",
+    emergedAt: "1918-01-07",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1918-01-07",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice White, for a unanimous Court, upheld the 1917 Selective Service Act, reasoning that the power to raise armies necessarily entails the power to compel service and that a citizen's duty to render military service is a reciprocal obligation of citizenship. The Court rejected challenges under the Thirteenth Amendment (involuntary servitude) and the First Amendment, calling the objection that the war power omits the men to fill the army 'too frivolous for further notice.' The ruling settled the constitutionality of federal conscription as an incident of the war power for the remainder of the twentieth century.",
+        sourceName:
+          "White C.J. Selective Draft Law Cases (Arver v. United States), 245 U.S. 366 (1918). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/245/366",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "extradition-treaty-survives-breach-charlton-kelly-1913",
+    claim:
+      "In Charlton v. Kelly (229 U.S. 447), decided June 10, 1913, the U.S. Supreme Court held that an extradition treaty remains in full force and judicially enforceable despite the other party's alleged non-reciprocal breach — the decision whether to treat a breach as terminating a treaty belongs to the political branches, not the courts — and that the word 'persons' in the 1868 U.S.–Italy treaty includes U.S. citizens absent an express exemption.",
+    emergedAt: "1913-06-10",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1913-06-10",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Lurton, for the Court, affirmed the extradition of a U.S. citizen to Italy, holding that Italy's refusal to extradite its own nationals did not void the treaty because a treaty breached by one party 'remains valid and obligatory' unless the injured party's political branches elect to declare it terminated. The Court thereby assigned the consequences of a treaty breach to executive discretion and outside judicial competence, and construed unqualified treaty language ('persons') to reach citizens. The ruling settled two durable principles of U.S. extradition and treaty law.",
+        sourceName:
+          "Lurton J. Charlton v. Kelly, 229 U.S. 447 (1913). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/229/447",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "consular-treaty-overrides-state-escheat-santovincenzo-1931",
+    claim:
+      "In Santovincenzo v. Egan (284 U.S. 30), decided November 23, 1931, the U.S. Supreme Court held that a self-executing consular treaty provision — reached through the most-favored-nation clause of the 1878 U.S.–Italy Consular Convention — governing the disposition of a deceased alien's intestate estate overrides New York's escheat law, entitling the foreign consul to the estate's net assets.",
+    emergedAt: "1931-11-23",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1931-11-23",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Hughes, for the Court, reversed the New York courts and held that where an Italian national died intestate in New York without discoverable heirs, the treaty provision (imported via the most-favored-nation clause) directing that such property 'shall be delivered up to the consul' controlled over state escheat, with citizenship — not domicile — the operative criterion. The decision confirmed that a self-executing treaty preempts inconsistent state succession and escheat law under the Supremacy Clause, extending the Asakura preemption principle into the field of estate administration.",
+        sourceName:
+          "Hughes C.J. Santovincenzo v. Egan, 284 U.S. 30 (1931). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/284/30",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
