@@ -1561,6 +1561,172 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "parental-rights-fundamental-liberty-2000",
+    claim:
+      "The U.S. Supreme Court recognized in Troxel v. Granville (decided 5 June 2000) that the Fourteenth Amendment's Due Process Clause protects a fit parent's fundamental liberty interest in the care, custody, and control of their children, requiring courts to give special weight to a fit parent's decisions — a doctrine rooted in Meyer v. Nebraska (1923) and Pierce v. Society of Sisters (1925).",
+    emergedAt: "1923-06-04",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1923-06-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Meyer v. Nebraska (262 U.S. 390, 4 June 1923): The Court struck down a Nebraska law forbidding the teaching of foreign languages to young children, holding that the Fourteenth Amendment 'liberty' includes the right of parents to control the education and upbringing of their children. The opinion first recorded parental child-rearing authority as a constitutionally protected liberty interest, though as one strand of a broader substantive-due-process liberty rather than a settled stand-alone doctrine.",
+        sourceName:
+          "McReynolds J. Meyer v. Nebraska, 262 U.S. 390 (1923). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/262/390",
+      },
+      {
+        date: "1925-06-01",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Pierce v. Society of Sisters (268 U.S. 510, 1 June 1925): A unanimous Court struck down Oregon's Compulsory Education Act, which required nearly all children to attend public schools, holding that it 'unreasonably interferes with the liberty of parents and guardians to direct the upbringing and education of children under their control' — 'the child is not the mere creature of the state.' The decision settled parental authority over a child's education and upbringing as a judicially enforceable constitutional right.",
+        sourceName:
+          "McReynolds J. Pierce v. Society of Sisters, 268 U.S. 510 (1925). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/268/510",
+      },
+      {
+        date: "2000-06-05",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Troxel v. Granville (530 U.S. 57, 5 June 2000): A plurality per Justice O'Connor held Washington's expansive grandparent-visitation statute unconstitutional as applied, reaffirming that 'the Due Process Clause protects the fundamental right of parents to make decisions concerning the care, custody, and control of their children' and that a fit parent's decisions are entitled to special weight. The decision re-anchored the Meyer–Pierce doctrine as settled fundamental-rights law in the modern era, applying it against third-party custody and visitation claims.",
+        sourceName:
+          "O'Connor J. (plurality). Troxel v. Granville, 530 U.S. 57 (2000).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/99-138",
+      },
+    ],
+  },
+
+  {
+    id: "marital-rape-exemption-abolished-1984",
+    claim:
+      "The common-law rule that a husband could not be criminally liable for raping his wife (the marital rape exemption), treated as settled doctrine since Sir Matthew Hale's 1736 treatise, was held to violate the Equal Protection Clause and abolished for New York by the Court of Appeals in People v. Liberta (decided 20 December 1984).",
+    emergedAt: "1736-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1736-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "EXPERT_LITERATURE",
+        reason:
+          "Sir Matthew Hale, Historia Placitorum Coronae (The History of the Pleas of the Crown), published posthumously in 1736, stated that 'the husband cannot be guilty of a rape committed by himself upon his lawful wife, for by their mutual matrimonial consent and contract the wife hath given up herself in this kind unto her husband, which she cannot retract.' This treatise formulation was received as settled common law throughout Anglo-American jurisdictions, including New York, and was written into most American rape statutes as a spousal exemption.",
+        sourceName:
+          "Hale, Sir Matthew. Historia Placitorum Coronae (The History of the Pleas of the Crown), vol. 1 (1736). Marital rape exemption doctrine.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Marital_rape_(United_States_law)",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1984-12-20",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "People v. Liberta (64 N.Y.2d 152, 475 N.E.2d 1058, 20 December 1984): The New York Court of Appeals held that the marital exemption in the state's rape statute, and the statute's female-only exemption, lacked any rational basis and violated the Equal Protection Clause. Rather than void the statute, the court excised the unconstitutional exemptions and extended criminal liability to all rapists including husbands. It was a leading state high-court decision that reversed the centuries-old Hale doctrine and catalyzed abolition of marital-rape exemptions nationwide.",
+        sourceName:
+          "Wachtler J. People v. Liberta, 64 N.Y.2d 152, 475 N.E.2d 1058 (N.Y. 1984). Opinion of the Court.",
+        sourceUrl: "https://www.courtlistener.com/opinion/2609501/people-v-liberta/",
+      },
+    ],
+  },
+
+  {
+    id: "frozen-embryo-legal-status-2024",
+    claim:
+      "The legal status of cryopreserved human embryos — whether persons, property, or an interim category — is contested in U.S. law: the Tennessee Supreme Court in Davis v. Davis (1992) held preembryos are neither persons nor property, whereas the Alabama Supreme Court in LePage v. Center for Reproductive Medicine (decided 16 February 2024) held frozen embryos are 'children' under the Wrongful Death of a Minor Act.",
+    emergedAt: "1992-06-01",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1992-06-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Davis v. Davis (842 S.W.2d 588, Tenn., 1 June 1992): In the first American appellate decision on disputed frozen embryos, the Tennessee Supreme Court held that cryopreserved preembryos are neither 'persons' nor 'property' but occupy an 'interim category' entitled to special respect for their potential for human life, and that the gamete-providers hold decisional authority over disposition. The ruling recorded the dominant framework — embryos as a special interim category governed by the progenitors' constitutional interests in procreation — that most jurisdictions followed for three decades.",
+        sourceName:
+          "Daughtrey J. Davis v. Davis, 842 S.W.2d 588 (Tenn. 1992). Opinion of the Court (per ASU Embryo Project Encyclopedia).",
+        sourceUrl: "https://embryo.asu.edu/pages/davis-v-davis-1992",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2024-02-16",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "LePage v. Center for Reproductive Medicine (SC-2022-0515, Ala., 16 February 2024): The Alabama Supreme Court held that cryopreserved extrauterine embryos are 'children' or 'unborn children' covered by Alabama's Wrongful Death of a Minor Act, allowing parents to sue an IVF clinic for the destruction of embryos — the first U.S. decision applying a wrongful-death statute to embryos outside a uterus. By treating embryos as legal children, the ruling directly contested the settled Davis 'interim category' framework and threw the legal status of frozen embryos into open dispute, prompting IVF clinics in the state to suspend services.",
+        sourceName:
+          "Mitchell J. LePage v. Center for Reproductive Medicine, No. SC-2022-0515 (Ala. 2024). Alabama Supreme Court (per State Court Report case tracker).",
+        sourceUrl:
+          "https://statecourtreport.org/case-tracker/lepage-v-center-reproductive-medicine",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2024-03-06",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Alabama Senate Bill 159, signed by Governor Kay Ivey on 6 March 2024: Reacting to the disruption caused by LePage, the Alabama legislature granted civil and criminal immunity to providers and patients for the damage or death of an embryo during IVF services. The statute allowed clinics to resume treatment but deliberately declined to resolve the underlying question of embryonic personhood, leaving the legal status of frozen embryos unsettled and actively contested between judicial, legislative, and public arenas.",
+        sourceName:
+          "Alabama SB159 (2024) — IVF provider immunity law signed by Gov. Kay Ivey, 6 March 2024. PBS NewsHour.",
+        sourceUrl:
+          "https://www.pbs.org/newshour/politics/alabama-governor-signs-legislation-protecting-ivf-providers-from-prosecution-and-lawsuits",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "aca-contraceptive-mandate-religious-exemption-2014",
+    claim:
+      "The U.S. Supreme Court held that the Affordable Care Act's contraceptive-coverage mandate must yield to employers' religious objections under the Religious Freedom Restoration Act — first for closely held for-profit corporations in Burwell v. Hobby Lobby Stores (decided 30 June 2014), then by upholding broad agency-created religious and moral exemptions in Little Sisters of the Poor v. Pennsylvania (decided 8 July 2020).",
+    emergedAt: "2014-06-30",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2014-06-30",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Burwell v. Hobby Lobby Stores, Inc. (573 U.S. 682, 30 June 2014): A 5–4 majority per Justice Alito held that the HHS contraceptive mandate, as applied to closely held for-profit corporations whose owners have sincere religious objections to certain contraceptives, violates the Religious Freedom Restoration Act because it is not the least restrictive means of advancing the government's interest. The decision settled that RFRA protects closely held corporations and carved the first major religious exemption from the ACA contraceptive mandate.",
+        sourceName:
+          "Alito J. Burwell v. Hobby Lobby Stores, Inc., 573 U.S. 682 (2014). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/13-354",
+      },
+      {
+        date: "2020-07-08",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Little Sisters of the Poor Saints Peter and Paul Home v. Pennsylvania (591 U.S. 657, 8 July 2020): A 7–2 Court (Justices Kagan and Breyer concurring in the judgment) upheld federal agencies' statutory authority under the ACA to promulgate broad religious and moral exemptions from the contraceptive mandate, reversing lower courts that had enjoined the rules. The decision extended and stabilized the Hobby Lobby line, confirming that the executive may exempt religious objectors — including nonprofit orders like the Little Sisters — from the mandate, and settling the mandate's subordination to religious-liberty accommodations.",
+        sourceName:
+          "Thomas J. Little Sisters of the Poor Saints Peter and Paul Home v. Pennsylvania, 591 U.S. 657 (2020). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/19-431",
+      },
+    ],
+  },
 ];
 
 async function main() {
