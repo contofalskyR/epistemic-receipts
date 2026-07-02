@@ -2491,6 +2491,221 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "swift-tyson-federal-general-common-law-1842",
+    claim:
+      "The U.S. Supreme Court held in Swift v. Tyson (January Term 1842) that federal courts sitting in diversity are not bound by state courts' decisions on questions of general commercial law and may apply an independent 'general common law' — a doctrine overruled in Erie Railroad Co. v. Tompkins (25 April 1938), which declared there is no federal general common law.",
+    emergedAt: "1842-01-01",
+    emergedPrecision: "MONTH",
+    milestones: [
+      {
+        date: "1842-01-01",
+        precision: "MONTH",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Swift v. Tyson, 41 U.S. (16 Pet.) 1 (January Term 1842): Justice Story, for the Court, read the Rules of Decision Act's reference to 'the laws of the several states' to reach only local statutes and settled local usages, not judicial decisions on matters of general commercial law. Federal courts could therefore apply their own view of general commercial law — here, that a pre-existing debt makes one a bona fide holder of a negotiable instrument — creating a body of federal general common law that governed diversity cases for nearly a century.",
+        sourceName:
+          "Story J. Swift v. Tyson, 41 U.S. (16 Pet.) 1 (1842). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/41/1",
+      },
+      {
+        date: "1938-04-25",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Erie Railroad Co. v. Tompkins, 304 U.S. 64 (25 April 1938): Justice Brandeis, for the Court, expressly overruled Swift v. Tyson, holding that 'there is no federal general common law' and that except in matters governed by the Constitution or federal statutes, federal courts sitting in diversity must apply the substantive law of the state, whether declared by its legislature or its highest court. The decision reversed the Swift doctrine as both an erroneous construction of the Rules of Decision Act and an unconstitutional assumption of power.",
+        sourceName:
+          "Brandeis J. Erie Railroad Co. v. Tompkins, 304 U.S. 64 (1938). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/304/64",
+      },
+    ],
+  },
+
+  {
+    id: "barron-bill-of-rights-states-1833",
+    claim:
+      "The U.S. Supreme Court held in Barron v. Baltimore (January Term 1833) that the Bill of Rights — specifically the Fifth Amendment's Just Compensation Clause — restrains only the federal government and not the states; that holding as to takings was reversed in Chicago, Burlington & Quincy Railroad Co. v. City of Chicago (1 March 1897), which required states to pay just compensation under the Fourteenth Amendment.",
+    emergedAt: "1833-02-01",
+    emergedPrecision: "MONTH",
+    milestones: [
+      {
+        date: "1833-02-01",
+        precision: "MONTH",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Barron v. Baltimore, 32 U.S. (7 Pet.) 243 (January Term 1833): Chief Justice Marshall, for the Court, held that the Fifth Amendment's guarantee that private property shall not be taken for public use without just compensation 'is intended solely as a limitation on the exercise of power by the government of the United States, and is not applicable to the legislation of the states.' The ruling settled that the Bill of Rights constrained only the federal government, leaving state action outside its reach and dismissing the suit for want of jurisdiction.",
+        sourceName:
+          "Marshall CJ. Barron v. Baltimore, 32 U.S. (7 Pet.) 243 (1833). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/32/243",
+      },
+      {
+        date: "1897-03-01",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Chicago, Burlington & Quincy Railroad Co. v. City of Chicago, 166 U.S. 226 (1 March 1897): Justice Harlan, for the Court, held that a state's taking of private property for public use without just compensation is 'wanting in the due process of law required by the Fourteenth Amendment.' By treating just compensation as an essential element of Fourteenth Amendment due process binding on the states, the decision reversed Barron's rule as applied to takings and became the first instance of incorporating a Bill of Rights guarantee against the states.",
+        sourceName:
+          "Harlan J. Chicago, Burlington & Quincy Railroad Co. v. City of Chicago, 166 U.S. 226 (1897). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/166/226",
+      },
+    ],
+  },
+
+  {
+    id: "gibbons-ogden-commerce-clause-1824",
+    claim:
+      "The U.S. Supreme Court held in Gibbons v. Ogden (2 March 1824) that Congress's power to regulate interstate commerce is broad and extends to navigation, invalidating New York's steamboat monopoly; the reach of that power was narrowed in United States v. E.C. Knight Co. (1895) and then broadly reaffirmed in Wickard v. Filburn (1942).",
+    emergedAt: "1824-03-02",
+    milestones: [
+      {
+        date: "1824-03-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Gibbons v. Ogden, 22 U.S. (9 Wheat.) 1 (2 March 1824): Chief Justice Marshall, for the Court, held that the commerce power extends to the regulation of navigation and reaches commerce 'among the several states,' not stopping at a state's external boundary. The decision struck down New York's grant of an exclusive steamboat monopoly as repugnant to a federal coasting license, settling a broad conception of congressional authority over interstate commerce.",
+        sourceName:
+          "Marshall CJ. Gibbons v. Ogden, 22 U.S. (9 Wheat.) 1 (1824). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/22/1",
+      },
+      {
+        date: "1895-01-21",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. E.C. Knight Co., 156 U.S. 1 (21 January 1895): Chief Justice Fuller, for the Court, held that a sugar-refining monopoly controlling roughly 98% of U.S. manufacture was beyond the Sherman Act's reach because 'commerce succeeds to manufacture, and is not a part of it.' By sharply distinguishing manufacturing from commerce and reserving the former to state police power, the decision cabined Gibbons's broad commerce power and left its scope contested for decades.",
+        sourceName:
+          "Fuller CJ. United States v. E.C. Knight Co., 156 U.S. 1 (1895). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/156/1",
+      },
+      {
+        date: "1942-11-09",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Wickard v. Filburn, 317 U.S. 111 (9 November 1942): Justice Jackson, for a unanimous Court, upheld federal wheat-production quotas as applied to wheat a farmer grew for his own consumption, holding that even local, non-commercial activity may be reached if it exerts a 'substantial economic effect on interstate commerce' when aggregated. Abandoning the direct/indirect and manufacture/commerce distinctions, the decision restored and extended Gibbons's expansive commerce power, resettling the doctrine.",
+        sourceName:
+          "Jackson J. Wickard v. Filburn, 317 U.S. 111 (1942). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/317/111",
+      },
+    ],
+  },
+
+  {
+    id: "griggs-disparate-impact-title-vii-1971",
+    claim:
+      "The U.S. Supreme Court held in Griggs v. Duke Power Co. (8 March 1971) that Title VII forbids facially neutral employment practices that have a disparate impact on protected groups unless justified by business necessity; the burden allocation was weakened in Wards Cove Packing Co. v. Atonio (1989) and then restored by the Civil Rights Act of 1991.",
+    emergedAt: "1971-03-08",
+    milestones: [
+      {
+        date: "1971-03-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Griggs v. Duke Power Co., 401 U.S. 424 (8 March 1971): Chief Justice Burger, for a unanimous Court, held that Title VII 'proscribes not only overt discrimination but also practices that are fair in form, but discriminatory in operation,' striking down high-school-diploma and testing requirements that disqualified Black applicants at higher rates and were not shown to be job-related. The ruling settled disparate-impact liability and the business-necessity standard as core employment-discrimination doctrine.",
+        sourceName:
+          "Burger CJ. Griggs v. Duke Power Co., 401 U.S. 424 (1971). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/401/424",
+      },
+      {
+        date: "1989-06-05",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Wards Cove Packing Co. v. Atonio, 490 U.S. 642 (5 June 1989): a 5–4 Court held that a disparate-impact plaintiff bears the burden of persuasion on business justification at all times, recasting the employer's obligation as a mere burden of production rather than proof. By reallocating the burden away from the employer, the decision unsettled Griggs's framework and drew sharp criticism as a retreat from disparate-impact enforcement.",
+        sourceName:
+          "White J. Wards Cove Packing Co. v. Atonio, 490 U.S. 642 (1989). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/490/642",
+      },
+      {
+        date: "1991-11-21",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Civil Rights Act of 1991 (Pub. L. 102-166, 105 Stat. 1071, enacted 21 November 1991): Congress codified disparate-impact liability in Title VII and, expressly responding to Wards Cove, placed the burden of persuasion on business necessity back on the employer and restored the pre-Wards Cove meaning of 'business necessity.' The statute overrode the Court's reallocation and re-settled the Griggs framework as a matter of legislative command.",
+        sourceName:
+          "U.S. Congress. Civil Rights Act of 1991, Pub. L. 102-166, 105 Stat. 1071 (1991).",
+        sourceUrl: "https://www.govinfo.gov/app/details/STATUTE-105/STATUTE-105-Pg1071",
+      },
+    ],
+  },
+
+  {
+    id: "loewe-lawlor-labor-antitrust-1908",
+    claim:
+      "The U.S. Supreme Court held in Loewe v. Lawlor (the Danbury Hatters case, 3 February 1908) that the Sherman Antitrust Act applies to labor unions whose secondary boycotts restrain interstate trade; Congress attempted a labor exemption in the Clayton Act (1914), the Court narrowly construed it in Duplex Printing Press Co. v. Deering (1921), and a broad statutory labor exemption was finally recognized in United States v. Hutcheson (1941).",
+    emergedAt: "1908-02-03",
+    milestones: [
+      {
+        date: "1908-02-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Loewe v. Lawlor, 208 U.S. 274 (3 February 1908): Chief Justice Fuller, for the Court, held that a nationwide union boycott aimed at forcing a hat manufacturer to unionize was a 'combination in restraint of trade or commerce among the several states' within the Sherman Act, rejecting any implied labor exemption. The ruling settled that unions were subject to federal antitrust liability, later exposing individual members to treble damages.",
+        sourceName:
+          "Fuller CJ. Loewe v. Lawlor, 208 U.S. 274 (1908). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/208/274",
+      },
+      {
+        date: "1914-10-15",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Clayton Antitrust Act, § 6 (38 Stat. 730, enacted 15 October 1914; 15 U.S.C. § 17): Congress declared that 'the labor of a human being is not a commodity or article of commerce' and that the antitrust laws shall not forbid the existence and operation of labor organizations or hold them to be illegal combinations in restraint of trade. Hailed by Samuel Gompers as labor's 'Magna Carta,' the provision was intended to override Loewe and open to contestation whether unions remained subject to the Sherman Act.",
+        sourceName:
+          "U.S. Congress. Clayton Antitrust Act § 6, 38 Stat. 730 (1914), codified at 15 U.S.C. § 17.",
+        sourceUrl: "https://www.law.cornell.edu/uscode/text/15/17",
+      },
+      {
+        date: "1921-01-03",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Duplex Printing Press Co. v. Deering, 254 U.S. 443 (3 January 1921): Justice Pitney, for the Court, narrowly construed the Clayton Act's labor provisions to protect only parties 'proximately and substantially concerned as parties to an actual dispute respecting the terms or conditions of their own employment,' leaving secondary boycotts subject to antitrust liability and injunction. The decision gutted the hoped-for exemption and re-settled that unions remained reachable under the Sherman Act.",
+        sourceName:
+          "Pitney J. Duplex Printing Press Co. v. Deering, 254 U.S. 443 (1921). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/254/443",
+      },
+      {
+        date: "1941-02-03",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Hutcheson, 312 U.S. 219 (3 February 1941): Justice Frankfurter, for the Court, read the Clayton Act and the Norris-LaGuardia Act together to grant labor a broad statutory exemption, holding that peaceful union self-interest activity — strikes, picketing, and boycotts — falls outside the Sherman Act so long as the union does not combine with non-labor groups. The decision reversed the Loewe–Duplex line and established the modern statutory labor exemption from federal antitrust law.",
+        sourceName:
+          "Frankfurter J. United States v. Hutcheson, 312 U.S. 219 (1941). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/312/219",
+      },
+    ],
+  },
 ];
 
 async function main() {
