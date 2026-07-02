@@ -748,7 +748,7 @@ model TrajectorySearchDoc {
   id        String                      @id @default(cuid())
   claimId   String                      @unique
   fullText  String
-  embedding Unsupported("vector(1536)")?
+  embedding Unsupported("vector(384)")?
   updatedAt DateTime                    @updatedAt
 
   claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)

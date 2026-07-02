@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { embed } from "ai";
-import { openai } from "@ai-sdk/openai";
+import { embedText } from "@/lib/embeddings";
 
 const MIN_QUERY = 3;
 const DEFAULT_LIMIT = 10;
@@ -34,12 +33,8 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  // Embed the query using OpenAI text-embedding-3-small
-  const { embedding } = await embed({
-    model: openai.embedding("text-embedding-3-small"),
-    value: q,
-  });
-
+  // Embed the query locally using all-MiniLM-L6-v2 (384 dimensions)
+  const embedding = await embedText(q);
   const vec = `[${embedding.join(",")}]`;
 
   // Cosine similarity search via pgvector (<=> is cosine distance)
