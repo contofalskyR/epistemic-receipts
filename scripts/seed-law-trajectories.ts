@@ -1727,6 +1727,195 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "sixth-amendment-appointed-counsel-gideon-1963",
+    claim:
+      "The U.S. Supreme Court held in Gideon v. Wainwright, decided 18 March 1963, that the Sixth Amendment right to counsel is a fundamental right made obligatory on the states by the Fourteenth Amendment, so states must appoint counsel for indigent defendants in felony prosecutions.",
+    emergedAt: "1932-11-07",
+    milestones: [
+      {
+        date: "1932-11-07",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Powell v. Alabama (287 U.S. 45, 7 Nov 1932): reviewing the Scottsboro Boys capital convictions, the Court held that in a capital case where the defendant is unable to employ counsel and incapable of defending himself, due process requires the trial court to appoint effective counsel. The ruling first recorded a federal constitutional right to appointed counsel, but confined it to capital cases and 'special circumstances,' leaving open whether the right extended to ordinary felony prosecutions.",
+        sourceName:
+          "Sutherland J. Powell v. Alabama, 287 U.S. 45 (1932). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/287/45",
+      },
+      {
+        date: "1942-06-01",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Betts v. Brady (316 U.S. 455, 1 Jun 1942): a 6–3 Court held that the Fourteenth Amendment does not impose a blanket requirement that states appoint counsel for indigent defendants in non-capital cases, and that the right depends on a case-by-case assessment of whether the absence of counsel produced a fundamentally unfair trial. By rejecting a categorical right and substituting an ad hoc 'special circumstances' test, Betts left the scope of the right contested and unpredictable for two decades.",
+        sourceName:
+          "Roberts J. Betts v. Brady, 316 U.S. 455 (1942). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/316/455",
+      },
+      {
+        date: "1963-03-18",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Gideon v. Wainwright (372 U.S. 335, 18 Mar 1963): a unanimous Court overruled Betts v. Brady, holding that the Sixth Amendment right to counsel is fundamental and essential to a fair trial and is therefore obligatory on the states through the Fourteenth Amendment. Justice Black's opinion established that any indigent defendant charged with a felony in state court must be provided appointed counsel, settling the categorical right that Powell had recorded and Betts had contested.",
+        sourceName:
+          "Black J. Gideon v. Wainwright, 372 U.S. 335 (1963). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/372/335",
+      },
+    ],
+  },
+
+  {
+    id: "dred-scott-black-citizenship-1857",
+    claim:
+      "The U.S. Supreme Court held in Dred Scott v. Sandford, decided 6 March 1857, that persons of African descent whose ancestors were sold as slaves could not be citizens of the United States and that Congress had no power to prohibit slavery in the federal territories, rendering the Missouri Compromise unconstitutional.",
+    emergedAt: "1857-03-06",
+    milestones: [
+      {
+        date: "1857-03-06",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Dred Scott v. Sandford (60 U.S. 393, 6 Mar 1857): Chief Justice Taney, for a 7–2 Court, held that Black people, whether enslaved or free, were not and could never be 'citizens' within the meaning of the Constitution, and that the Fifth Amendment's protection of property in slaves barred Congress from prohibiting slavery in the territories, making the Missouri Compromise void. The decision judicially settled the exclusion of Black Americans from national citizenship and the constitutional protection of slavery in the territories.",
+        sourceName:
+          "Taney CJ. Dred Scott v. Sandford, 60 U.S. (19 How.) 393 (1857). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/60/393",
+      },
+      {
+        date: "1866-04-09",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Civil Rights Act of 1866 (14 Stat. 27, enacted 9 Apr 1866 over President Johnson's veto): Congress declared that all persons born in the United States and not subject to any foreign power are citizens, directly repudiating Dred Scott's citizenship holding by statute. Because the Act's constitutionality under the existing Constitution was doubted — a doubt that motivated the drafting of a constitutional amendment — it placed Dred Scott's holding in open contestation rather than conclusively overturning it.",
+        sourceName:
+          "Civil Rights Act of 1866, 14 Stat. 27 (April 9, 1866).",
+        sourceUrl: "https://www.loc.gov/item/llsl-v14/",
+      },
+      {
+        date: "1868-07-09",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "REVERSED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Fourteenth Amendment (ratified 9 Jul 1868): the Citizenship Clause declared that all persons born or naturalized in the United States are citizens of the United States and of the state in which they reside, constitutionally overruling Dred Scott's holding that Black Americans could not be citizens. The amendment extinguished the doctrinal foundation of the decision, definitively reversing it by constitutional amendment.",
+        sourceName:
+          "U.S. Constitution, Amendment XIV, Section 1 (ratified 9 July 1868). Citizenship Clause.",
+        sourceUrl: "https://www.law.cornell.edu/constitution/amendmentxiv",
+      },
+    ],
+  },
+
+  {
+    id: "terry-stop-and-frisk-reasonable-suspicion-1968",
+    claim:
+      "The U.S. Supreme Court held in Terry v. Ohio, decided 10 June 1968, that a police officer may stop and briefly detain a person and conduct a limited pat-down for weapons on 'reasonable suspicion' — specific and articulable facts short of probable cause — without violating the Fourth Amendment.",
+    emergedAt: "1968-06-10",
+    milestones: [
+      {
+        date: "1968-06-10",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Terry v. Ohio (392 U.S. 1, 10 Jun 1968): an 8–1 Court held that a brief investigative stop and a protective frisk for weapons are 'searches' and 'seizures' governed by the Fourth Amendment's reasonableness clause, but may be justified on reasonable, articulable suspicion rather than probable cause. Chief Justice Warren's opinion created the reasonable-suspicion standard as a permanent, distinct tier of Fourth Amendment justification, settling the constitutionality of stop-and-frisk policing.",
+        sourceName:
+          "Warren CJ. Terry v. Ohio, 392 U.S. 1 (1968). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/392/1",
+      },
+      {
+        date: "2000-01-12",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Illinois v. Wardlow (528 U.S. 119, 12 Jan 2000): a 5–4 Court held that unprovoked flight upon seeing police in a high-crime area gives rise to reasonable suspicion justifying a Terry stop, applying and reaffirming the Terry framework more than three decades later. The ruling confirmed reasonable suspicion as a settled, operative standard while refining its application to ambiguous, context-dependent conduct.",
+        sourceName:
+          "Rehnquist CJ. Illinois v. Wardlow, 528 U.S. 119 (2000). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/528/119",
+      },
+    ],
+  },
+
+  {
+    id: "confrontation-clause-reliability-test-crawford-2004",
+    claim:
+      "Under Ohio v. Roberts (1980), an absent witness's out-of-court statement could be admitted against a criminal defendant if the witness was unavailable and the statement bore 'adequate indicia of reliability' — a reliability-based test for the Sixth Amendment Confrontation Clause that Crawford v. Washington overruled in 2004.",
+    emergedAt: "1980-06-25",
+    milestones: [
+      {
+        date: "1980-06-25",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Ohio v. Roberts (448 U.S. 56, 25 Jun 1980): the Court held that the Confrontation Clause permits admission of an unavailable witness's hearsay statement if it bears 'adequate indicia of reliability,' either by falling within a firmly rooted hearsay exception or by showing particularized guarantees of trustworthiness. The decision settled a reliability-based framework that governed confrontation analysis for nearly a quarter-century.",
+        sourceName:
+          "Blackmun J. Ohio v. Roberts, 448 U.S. 56 (1980). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/448/56",
+      },
+      {
+        date: "2004-03-08",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Crawford v. Washington (541 U.S. 36, 8 Mar 2004): Justice Scalia, for the Court, overruled Ohio v. Roberts as applied to testimonial statements, holding that the Confrontation Clause bars admission of testimonial out-of-court statements against a criminal defendant unless the declarant is unavailable and the defendant had a prior opportunity for cross-examination. The Court rejected judicial reliability determinations as a substitute for confrontation, reversing the Roberts framework and grounding the Clause in its historical meaning.",
+        sourceName:
+          "Scalia J. Crawford v. Washington, 541 U.S. 36 (2004). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/541/36",
+      },
+    ],
+  },
+
+  {
+    id: "peremptory-strikes-systematic-exclusion-batson-1986",
+    claim:
+      "Under Swain v. Alabama (1965), a defendant alleging racial discrimination in the prosecution's peremptory challenges had to prove a pattern of systematic exclusion across many cases — an evidentiary burden that made the equal-protection claim virtually unprovable until Batson v. Kentucky overruled it in 1986.",
+    emergedAt: "1965-03-08",
+    milestones: [
+      {
+        date: "1965-03-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Swain v. Alabama (380 U.S. 202, 8 Mar 1965): the Court held that while purposeful racial discrimination in jury selection violates equal protection, a defendant challenging peremptory strikes must show the prosecutor's systematic use of peremptories to exclude a racial group 'in case after case' over time, not merely in the defendant's own trial. The decision settled an evidentiary standard so demanding that it effectively insulated single-case peremptory discrimination from review.",
+        sourceName:
+          "White J. Swain v. Alabama, 380 U.S. 202 (1965). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/380/202",
+      },
+      {
+        date: "1986-04-30",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Batson v. Kentucky (476 U.S. 79, 30 Apr 1986): a 7–2 Court overruled Swain's evidentiary standard, holding that a defendant may establish a prima facie case of purposeful racial discrimination from the peremptory strikes in his own trial alone, shifting the burden to the prosecutor to offer race-neutral reasons. By discarding the cross-case systematic-exclusion requirement, Batson reversed Swain and made the equal-protection challenge to peremptory strikes practically enforceable.",
+        sourceName:
+          "Powell J. Batson v. Kentucky, 476 U.S. 79 (1986). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/476/79",
+      },
+    ],
+  },
 ];
 
 async function main() {
