@@ -4091,6 +4091,309 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "sherman-act-rule-of-reason-1911",
+    claim:
+      "The U.S. Supreme Court held in Standard Oil Co. of New Jersey v. United States (decided 15 May 1911) that Section 1 of the Sherman Antitrust Act condemns only unreasonable restraints of trade, identified under a 'rule of reason,' rather than every restraint read literally, and ordered dissolution of the Standard Oil combination by divesting its holdings in 37 subsidiary corporations.",
+    emergedAt: "1890-07-02",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1890-07-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Congress enacted the Sherman Antitrust Act, declaring illegal 'every contract, combination... or conspiracy, in restraint of trade or commerce among the several States.' The literal breadth of 'every' placed on the record an unresolved interpretive question: whether the Act reached all restraints or only some, and how courts would distinguish lawful from unlawful combinations.",
+        sourceName:
+          "U.S. Congress. Sherman Antitrust Act, 26 Stat. 209 (2 July 1890), codified at 15 U.S.C. §§ 1–7.",
+        sourceUrl: "https://www.law.cornell.edu/uscode/text/15/1",
+        methodologyType: "primary",
+      },
+      {
+        date: "1911-05-15",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice White, for the Court, held that the Sherman Act reaches only unreasonable restraints of trade, to be identified through a 'rule of reason' applied case by case, rejecting a purely literal reading, and affirmed the decree dissolving Standard Oil's 37-subsidiary combination. The decision established the interpretive framework that has governed Section 1 analysis ever since.",
+        sourceName:
+          "Supreme Court of the United States. Standard Oil Co. of New Jersey v. United States, 221 U.S. 1 (1911).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/221/1",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "resale-price-maintenance-dr-miles-leegin-1911",
+    claim:
+      "The U.S. Supreme Court held in Dr. Miles Medical Co. v. John D. Park & Sons Co. (decided 3 April 1911) that vertical minimum resale price maintenance agreements are per se illegal under Section 1 of the Sherman Act — a rule the Court expressly overruled in Leegin Creative Leather Products, Inc. v. PSKS, Inc. (decided 28 June 2007), replacing it with rule-of-reason analysis.",
+    emergedAt: "1911-04-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1911-04-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Hughes, for the Court, held Dr. Miles's system of contracts fixing minimum resale prices void under the common law and the Sherman Act, reasoning that once title passes a manufacturer cannot restrain the prices at which purchasers resell. The ruling settled a bright-line per se prohibition on vertical minimum resale price maintenance that governed for nearly a century.",
+        sourceName:
+          "Supreme Court of the United States. Dr. Miles Medical Co. v. John D. Park & Sons Co., 220 U.S. 373 (1911).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/220/373",
+        methodologyType: "primary",
+      },
+      {
+        date: "2007-06-28",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Kennedy, for a 5–4 Court, expressly overruled Dr. Miles, holding that vertical minimum resale price agreements must be judged under the rule of reason rather than condemned per se, because such restraints can have procompetitive effects. The decision reversed a 96-year-old rule and completed the Court's turn toward economic analysis of vertical restraints.",
+        sourceName:
+          "Supreme Court of the United States. Leegin Creative Leather Products, Inc. v. PSKS, Inc., 551 U.S. 877 (2007) (syllabus).",
+        sourceUrl: "https://www.law.cornell.edu/supct/html/06-480.ZS.html",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "two-sided-platform-market-definition-amex-2018",
+    claim:
+      "Federal antitrust courts held that the relevant market for a two-sided credit-card transaction platform must be defined to encompass both the merchant and cardholder sides — a framework adopted by the Second Circuit in United States v. American Express Co. (26 September 2016) and affirmed by the U.S. Supreme Court in Ohio v. American Express Co. (decided 25 June 2018).",
+    emergedAt: "2016-09-26",
+    emergedPrecision: "DAY",
+    claimType: "HYBRID",
+    milestones: [
+      {
+        date: "2016-09-26",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "The Second Circuit reversed the Eastern District of New York's February 2015 finding that American Express's anti-steering rules restrained trade, holding that the credit-card business is a single two-sided market and that the district court erred by weighing only merchant-side effects while discounting cardholder interests. The novel single-market framing broke from the trial court and drew sharp scholarly criticism, leaving the two-sided-market doctrine contested.",
+        sourceName:
+          "U.S. Court of Appeals for the Second Circuit. United States v. American Express Co., 838 F.3d 179 (2d Cir. 2016).",
+        sourceUrl:
+          "https://law.justia.com/cases/federal/appellate-courts/ca2/15-1672/15-1672-2016-09-26.html",
+        methodologyType: "primary",
+      },
+      {
+        date: "2018-06-25",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Thomas, for a 5–4 Court, affirmed, holding that for a two-sided transaction platform the relevant market includes both sides and that plaintiffs must prove net anticompetitive harm across the entire platform; the plaintiffs had not shown that Amex's anti-steering provisions caused such harm. The decision settled the two-sided transaction-platform framework that now structures antitrust analysis of digital platforms.",
+        sourceName:
+          "Supreme Court of the United States. Ohio v. American Express Co., 585 U.S. 529 (2018).",
+        sourceUrl: "https://www.supremecourt.gov/opinions/17pdf/16-1454_5h26.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "monopolist-refusal-to-deal-aspen-trinko-1985",
+    claim:
+      "The U.S. Supreme Court held in Aspen Skiing Co. v. Aspen Highlands Skiing Corp. (decided 19 June 1985) that a monopolist's refusal to deal with a rival can violate Section 2 of the Sherman Act when it abandons a profitable prior course of dealing to exclude a competitor — a duty-to-deal doctrine the Court sharply narrowed in Verizon Communications Inc. v. Law Offices of Curtis V. Trinko, LLP (decided 13 January 2004).",
+    emergedAt: "1985-06-19",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1985-06-19",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Stevens, for the Court, held that although a monopolist has no general duty to cooperate with rivals, its unilateral refusal to deal can constitute unlawful monopolization under Section 2 where it terminates an established, profitable cooperative arrangement (the all-Aspen ski ticket) without valid business justification and to harm a smaller competitor. The ruling settled that unilateral refusals to deal are actionable in defined circumstances.",
+        sourceName:
+          "Supreme Court of the United States. Aspen Skiing Co. v. Aspen Highlands Skiing Corp., 472 U.S. 585 (1985).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/472/585",
+        methodologyType: "primary",
+      },
+      {
+        date: "2004-01-13",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Scalia, for the Court, held there is generally 'no duty to aid competitors' under Section 2, characterized Aspen Skiing as 'at or near the outer boundary of § 2 liability,' and confined the refusal-to-deal exception to its facts (prior voluntary dealing, an existing retail product, sacrifice of short-run profits). By cabining rather than overruling Aspen, the decision left the scope of any duty to deal newly contested — a question now central to digital-platform antitrust debates.",
+        sourceName:
+          "Supreme Court of the United States. Verizon Communications Inc. v. Law Offices of Curtis V. Trinko, LLP, 540 U.S. 398 (2004).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/540/398",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "botiller-dominguez-treaty-not-self-executing-1889",
+    claim:
+      "The U.S. Supreme Court held in Botiller v. Dominguez (130 U.S. 238, decided April 1, 1889) that the Treaty of Guadalupe Hidalgo was not self-executing as to Spanish and Mexican land grants, so Congress could validly require every such claim—perfected or inchoate—to be confirmed by the board of land commissioners under the Act of 1851 and treat unpresented claims as public domain.",
+    emergedAt: "1889-04-01",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1889-04-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Landowners argued that a perfected grant under the Treaty of Guadalupe Hidalgo was protected by the treaty itself and could not be forfeited for failure to file under the 1851 Act. A unanimous Court, per Justice Miller, rejected this, holding the treaty's land-grant guarantees were not self-executing and that Congress's confirmation procedure controlled—settling that the political branches, not the treaty's bare terms, governed how Mexican-era titles were secured.",
+        sourceName:
+          "U.S. Supreme Court (Miller, J.). Botiller v. Dominguez. 130 U.S. 238. 1889.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/130/238",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "arjona-define-and-punish-law-of-nations-1887",
+    claim:
+      "The U.S. Supreme Court held in United States v. Arjona (120 U.S. 479, decided March 7, 1887) that Congress's Article I power to 'define and punish offenses against the law of nations' authorizes it to criminalize counterfeiting the notes and securities of foreign governments and banks, because international obligations of due diligence to prevent such acts make them offenses against the law of nations even absent an express treaty.",
+    emergedAt: "1887-03-07",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1887-03-07",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The defendant challenged federal statutes punishing the counterfeiting of foreign bank notes, arguing Congress lacked power to reach conduct not tied to an express treaty. A unanimous Court, per Chief Justice Waite, upheld the statutes under the Define-and-Punish Clause, reasoning that a nation's duty of due diligence to suppress such counterfeiting is itself part of the law of nations—settling that customary international obligations supply a constitutional basis for federal criminal legislation.",
+        sourceName:
+          "U.S. Supreme Court (Waite, C.J.). United States v. Arjona. 120 U.S. 479. 1887.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/120/479",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "ker-illinois-abduction-does-not-bar-jurisdiction-1886",
+    claim:
+      "The U.S. Supreme Court held in Ker v. Illinois (119 U.S. 436, decided December 6, 1886) that a defendant forcibly abducted from a foreign country (Peru) and brought to trial acquires no personal right of asylum under the extradition treaty and may be tried, because the treaty's procedures were never invoked and the manner of his seizure does not defeat the court's jurisdiction.",
+    emergedAt: "1886-12-06",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1886-12-06",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Ker argued that his kidnapping from Peru, in a country with which the U.S. had an extradition treaty, tainted the state court's power to try him. A unanimous Court, per Justice Miller, held the treaty conferred no individual right where its process was never used and that forcible abduction is no bar to trial—establishing the male captus/'Ker-Frisbie' rule, decided the same day as and doctrinally opposite to United States v. Rauscher's specialty holding.",
+        sourceName:
+          "U.S. Supreme Court (Miller, J.). Ker v. Illinois. 119 U.S. 436. 1886.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/119/436",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "hamilton-kentucky-distilleries-war-power-after-armistice-1919",
+    claim:
+      "The U.S. Supreme Court held in Hamilton v. Kentucky Distilleries & Warehouse Co. (251 U.S. 146, decided December 15, 1919) that the War-Time Prohibition Act remained a valid exercise of Congress's war power after the November 1918 armistice, because the war was not legally terminated until demobilization was complete and a peace treaty ratified, so the war power extends through the emergency's aftermath.",
+    emergedAt: "1919-12-15",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1919-12-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Distillers argued the war power could no longer support wartime prohibition once fighting stopped at the armistice. A unanimous Court, per Justice Brandeis, upheld the Act, holding that Congress retained broad discretion to judge when war conditions ceased and that the war power persisted until formal peace—settling that the constitutional war power outlasts the cessation of hostilities.",
+        sourceName:
+          "U.S. Supreme Court (Brandeis, J.). Hamilton v. Kentucky Distilleries & Warehouse Co. 251 U.S. 146. 1919.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/251/146",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "wong-kim-ark-birthright-citizenship-fourteenth-amendment-1898",
+    claim:
+      "The U.S. Supreme Court held in United States v. Wong Kim Ark (169 U.S. 649, decided March 28, 1898) that a child born on U.S. soil to Chinese-subject parents who are lawfully domiciled residents is a citizen at birth under the Fourteenth Amendment's Citizenship Clause, adopting the common-law and law-of-nations rule of jus soli subject only to narrow exceptions for children of diplomats and hostile occupiers.",
+    emergedAt: "1898-03-28",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1898-03-28",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "After Elk v. Wilkins (1884) had narrowed 'subject to the jurisdiction thereof' for tribal Native Americans, it was contested whether children of non-citizen aliens were birthright citizens, especially amid Chinese-exclusion politics. A 6–2 Court, per Justice Gray, traced the English common-law and law-of-nations rule of birth within the realm and held Wong Kim Ark a citizen—settling that the Fourteenth Amendment guarantees jus soli citizenship to the U.S.-born children of resident aliens.",
+        sourceName:
+          "U.S. Supreme Court (Gray, J.). United States v. Wong Kim Ark. 169 U.S. 649. 1898.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/169/649",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "search-engine-monopolization-google-2024",
+    claim:
+      "The U.S. District Court for the District of Columbia held in United States v. Google LLC (memorandum opinion, 5 August 2024) that Google unlawfully maintained monopolies in general search services and general search text advertising in violation of Section 2 of the Sherman Act, through exclusive default-placement agreements with browser makers, device manufacturers, and carriers.",
+    emergedAt: "2020-10-20",
+    emergedPrecision: "DAY",
+    claimType: "HYBRID",
+    milestones: [
+      {
+        date: "2020-10-20",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The U.S. Department of Justice and eleven state attorneys general filed a Section 2 complaint alleging that Google unlawfully maintained its general-search monopoly through exclusive default-search agreements with firms including Apple, Samsung, Mozilla, and wireless carriers. The monopolization claim was formally lodged on the litigation record, opening the first major U.S. digital-platform monopolization case since Microsoft.",
+        sourceName:
+          "U.S. Department of Justice, Antitrust Division. Complaint, United States et al. v. Google LLC, No. 1:20-cv-03010 (D.D.C. filed 20 Oct. 2020).",
+        sourceUrl:
+          "https://www.justice.gov/atr/case/us-and-plaintiff-states-v-google-llc-2020",
+        methodologyType: "primary",
+      },
+      {
+        date: "2024-08-05",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Judge Amit Mehta's memorandum opinion found that Google possessed monopoly power (roughly 89.2% of general search, 94.9% on mobile) and had willfully maintained it through exclusionary default agreements, concluding that 'Google is a monopolist, and it has acted as one to maintain its monopoly.' The first-instance Section 2 liability finding against a dominant digital platform remains contested pending Google's appeal to the D.C. Circuit, following the September 2025 remedies ruling.",
+        sourceName:
+          "U.S. District Court for the District of Columbia. Memorandum Opinion, United States et al. v. Google LLC, No. 1:20-cv-03010 (D.D.C. 5 Aug. 2024) (Mehta, J.).",
+        sourceUrl:
+          "https://www.justice.gov/atr/case/us-and-plaintiff-states-v-google-llc-2020",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
