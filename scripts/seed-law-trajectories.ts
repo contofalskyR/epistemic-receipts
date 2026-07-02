@@ -1916,6 +1916,196 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "slaughterhouse-privileges-immunities-gutted-1873",
+    claim:
+      "In the Slaughter-House Cases (83 U.S. 36), decided 14 April 1873, the U.S. Supreme Court held that the Fourteenth Amendment's Privileges or Immunities Clause protects only the narrow class of rights of national (United States) citizenship and not the ordinary civil rights of state citizenship, effectively removing that clause as a source of substantive federal rights.",
+    emergedAt: "1873-04-14",
+    milestones: [
+      {
+        date: "1873-04-14",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 majority per Justice Miller held that the Privileges or Immunities Clause reaches only rights owing their existence to the federal government and its national character, leaving the great body of civil rights under state control. The Court rejected the New Orleans butchers' claim that a state slaughterhouse monopoly abridged their federal right to pursue a lawful trade. The decision drained the Privileges or Immunities Clause of independent force and channeled later Fourteenth Amendment litigation into the Due Process and Equal Protection Clauses.",
+        sourceName:
+          "Miller J. Slaughter-House Cases, 83 U.S. (16 Wall.) 36 (1873). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/83/36",
+      },
+      {
+        date: "2010-06-28",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In McDonald v. City of Chicago (561 U.S. 742), the Court incorporated the Second Amendment against the states through the Due Process Clause and expressly declined the petitioners' invitation to overrule the Slaughter-House Cases and revive the Privileges or Immunities Clause (only Justice Thomas would have done so in concurrence). The refusal confirmed that Slaughter-House's narrow reading of the clause remains settled law 137 years later. It marks the doctrine's durability despite sustained academic and litigant pressure to reverse it.",
+        sourceName:
+          "Alito J. McDonald v. City of Chicago, 561 U.S. 742 (2010). Slip opinion, No. 08-1521.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/09pdf/08-1521.pdf",
+      },
+    ],
+  },
+
+  {
+    id: "civil-rights-cases-state-action-1883",
+    claim:
+      "In the Civil Rights Cases (109 U.S. 3), decided 15 October 1883, the U.S. Supreme Court struck down the public-accommodations provisions of the Civil Rights Act of 1875 and held that the Fourteenth Amendment prohibits only discriminatory state action, not private acts of racial discrimination by individuals such as innkeepers, theater owners, and railroads.",
+    emergedAt: "1883-10-15",
+    milestones: [
+      {
+        date: "1883-10-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "An 8–1 majority per Justice Bradley held that Sections 1 and 2 of the Civil Rights Act of 1875 exceeded Congress's enforcement power because the Fourteenth Amendment is directed at state action, not the 'wrongful acts of individuals, unsupported by state authority.' Justice Harlan dissented alone. The decision established the state-action doctrine that has defined the reach of the Reconstruction Amendments ever since and left private racial discrimination beyond federal constitutional reach for decades.",
+        sourceName:
+          "Bradley J. The Civil Rights Cases, 109 U.S. 3 (1883). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/109/3",
+      },
+      {
+        date: "2000-05-15",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Morrison (529 U.S. 598), the Court invalidated the civil-remedy provision of the Violence Against Women Act, holding that under the Civil Rights Cases the Fourteenth Amendment enforcement power reaches only state action and cannot regulate purely private conduct. The Court reaffirmed the Civil Rights Cases by name as controlling authority. The ruling confirmed that the 1883 state-action doctrine remains settled constitutional law, even though private discrimination in public accommodations was separately reached through the Commerce Clause in 1964.",
+        sourceName:
+          "Rehnquist CJ. United States v. Morrison, 529 U.S. 598 (2000). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/529/598",
+      },
+    ],
+  },
+
+  {
+    id: "yick-wo-discriminatory-enforcement-1886",
+    claim:
+      "In Yick Wo v. Hopkins (118 U.S. 356), decided 10 May 1886, the U.S. Supreme Court held that a law fair on its face but administered with 'an evil eye and an unequal hand' to discriminate against Chinese laundry operators violates the Fourteenth Amendment's Equal Protection Clause, and that the clause protects all persons within the jurisdiction regardless of citizenship or race.",
+    emergedAt: "1886-05-10",
+    milestones: [
+      {
+        date: "1886-05-10",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A unanimous Court per Justice Matthews held that San Francisco's facially neutral laundry-permit ordinance was enforced so as to deny permits to essentially all Chinese applicants while granting them to nearly all non-Chinese applicants, and that such discriminatory administration is a denial of equal protection. The Court also held that the Equal Protection Clause reaches 'all persons,' including resident non-citizens. The decision established that discriminatory application of a neutral law is itself unconstitutional.",
+        sourceName:
+          "Matthews J. Yick Wo v. Hopkins, 118 U.S. 356 (1886). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/118/356",
+      },
+      {
+        date: "1976-06-07",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Washington v. Davis (426 U.S. 229), the Court refined the Yick Wo principle by holding that discriminatory administrative impact alone is insufficient and that an equal-protection violation requires proof of discriminatory purpose, while reaffirming Yick Wo as the foundational case for challenging the discriminatory application of neutral laws. The ruling both cabined and confirmed Yick Wo's continuing authority. It settled the modern intent-based framework in which Yick Wo's 'evil eye and unequal hand' standard still operates.",
+        sourceName:
+          "White J. Washington v. Davis, 426 U.S. 229 (1976). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/426/229",
+      },
+    ],
+  },
+
+  {
+    id: "buck-v-bell-compulsory-sterilization-1927",
+    claim:
+      "In Buck v. Bell (274 U.S. 200), decided 2 May 1927, the U.S. Supreme Court upheld Virginia's compulsory sterilization of the institutionalized 'feebleminded' against Fourteenth Amendment due-process and equal-protection challenges, with Justice Holmes writing 'three generations of imbeciles are enough.'",
+    emergedAt: "1927-05-02",
+    milestones: [
+      {
+        date: "1927-05-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "An 8–1 majority per Justice Holmes upheld Virginia's Eugenical Sterilization Act, holding that compelled sterilization of Carrie Buck did not violate due process given the statute's procedural safeguards, and did not deny equal protection merely because it reached only institutionalized persons. The decision constitutionalized eugenic sterilization and was cited to justify some 60,000 sterilizations across the United States. It settled, for a generation, that states could compel sterilization in the name of public welfare.",
+        sourceName:
+          "Holmes J. Buck v. Bell, 274 U.S. 200 (1927). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/274/200",
+      },
+      {
+        date: "1942-06-01",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Skinner v. Oklahoma (316 U.S. 535), the Court struck down compulsory sterilization of 'habitual criminals' under the Equal Protection Clause, describing procreation as 'one of the basic civil rights of man' and applying strict scrutiny. Though the Court distinguished rather than overruled Buck v. Bell, Skinner reframed procreation as a fundamental right and is widely regarded as having gravely weakened Buck's precedential force. The decision put the constitutionality of eugenic sterilization into open doubt.",
+        sourceName:
+          "Douglas J. Skinner v. Oklahoma, 316 U.S. 535 (1942). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/316/535",
+      },
+      {
+        date: "1974-01-01",
+        precision: "YEAR",
+        fromAxis: "CONTESTED",
+        toAxis: "ABANDONED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Virginia repealed the compulsory-sterilization procedures of its Eugenical Sterilization Act in 1974, part of a nationwide legislative abandonment of eugenic sterilization statutes; Virginia's current law authorizes only voluntary sterilization of consenting adults. Although the Supreme Court has never formally overruled Buck v. Bell — scholar G. Edward White wrote that the Court 'distinguished the case out of existence' — no jurisdiction enforces its holding and it is treated as anti-canonical. The doctrine has been abandoned without formal judicial reversal.",
+        sourceName:
+          "Buck v. Bell — repeal of Virginia's eugenic sterilization procedures (1974) and scholarly assessment that the case was never formally overruled (Wikipedia, 'Buck v. Bell', citing G. Edward White).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Buck_v._Bell",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "bradwell-women-profession-1873",
+    claim:
+      "In Bradwell v. Illinois (83 U.S. 130), decided 15 April 1873, the U.S. Supreme Court held that the Fourteenth Amendment's Privileges or Immunities Clause did not protect a woman's right to be admitted to the practice of law, upholding Illinois's exclusion of Myra Bradwell from the bar on account of her sex.",
+    emergedAt: "1873-04-15",
+    milestones: [
+      {
+        date: "1873-04-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Court, per Justice Miller and relying on the prior day's Slaughter-House holding, ruled that admission to a state bar is not a privilege of national citizenship and so is unprotected by the Fourteenth Amendment. Justice Bradley's concurrence declared that 'the paramount destiny and mission of woman are to fulfil the noble and benign offices of wife and mother.' The decision settled that states could constitutionally exclude women from professions and set the baseline that sex-based classifications received essentially no constitutional scrutiny.",
+        sourceName:
+          "Miller J. (Bradley J., concurring). Bradwell v. Illinois, 83 U.S. (16 Wall.) 130 (1873). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/83/130",
+      },
+      {
+        date: "1971-11-22",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Reed v. Reed (404 U.S. 71), the Court for the first time struck down a state law for discriminating on the basis of sex, holding that an Idaho statute preferring men over women as estate administrators lacked a rational basis under the Equal Protection Clause. The ruling directly contested Bradwell's premise that sex classifications escape constitutional review. It opened the modern era of heightened judicial scrutiny of sex-based laws.",
+        sourceName:
+          "Burger CJ. Reed v. Reed, 404 U.S. 71 (1971). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/404/71",
+      },
+      {
+        date: "1973-05-14",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "ABANDONED",
+        community: "JUDICIAL",
+        reason:
+          "In Frontiero v. Richardson (411 U.S. 677), a plurality applied strict scrutiny to sex classifications and expressly repudiated the 'romantic paternalism' exemplified by Bradwell, noting that such attitudes had put women 'not on a pedestal, but in a cage.' Together with the intermediate-scrutiny standard later fixed in Craig v. Boren (1976), the decision abandoned Bradwell's rule that states may freely exclude women from professions and occupations. Bradwell was never formally overruled but its doctrine is defunct.",
+        sourceName:
+          "Brennan J. Frontiero v. Richardson, 411 U.S. 677 (1973). Plurality opinion.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/411/677",
+      },
+    ],
+  },
 ];
 
 async function main() {
