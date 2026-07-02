@@ -2106,6 +2106,170 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "products-privity-requirement-abolished-1960",
+    claim:
+      "The requirement of contractual privity bars a consumer injured by a defective product from recovering against a remote manufacturer — a common-law rule reversed for negligence by MacPherson v. Buick Motor Co. (N.Y. 1916) and abolished for implied warranty of merchantability, with the manufacturer's standardized disclaimer held void as against public policy, by the New Jersey Supreme Court in Henningsen v. Bloomfield Motors, Inc. (9 May 1960).",
+    emergedAt: "1842-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1842-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Winterbottom v. Wright (10 M. & W. 109, 152 Eng. Rep. 402, Exchequer of Pleas, 1842): the court denied recovery to a mail-coach driver injured by a defectively maintained coach because he had no contract with the repairer, reasoning that allowing suits by non-parties would open the door to 'unlimited actions.' The decision established the privity-of-contract requirement as settled law, insulating manufacturers and suppliers from liability to anyone lacking a direct contractual relationship for most of the nineteenth century.",
+        sourceName:
+          "Court of Exchequer. Winterbottom v. Wright, 10 M. & W. 109, 152 Eng. Rep. 402 (Ex. 1842).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Winterbottom_v_Wright",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1916-03-14",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "MacPherson v. Buick Motor Co. (217 N.Y. 382, 111 N.E. 1050, 14 March 1916): Judge Cardozo, for the New York Court of Appeals, held that a manufacturer owes a duty of care in negligence to any foreseeable user of a product that is 'reasonably certain to place life and limb in peril when negligently made,' regardless of privity. The ruling dismantled the privity bar in negligence and was adopted nationwide, but left the requirement intact for warranty (contract) claims — converting a once-settled doctrine into a contested, partially-repudiated rule.",
+        sourceName:
+          "Cardozo J. MacPherson v. Buick Motor Co., 217 N.Y. 382, 111 N.E. 1050 (1916). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/new-york/court-of-appeals/1916/217-n-y-382-0.html",
+      },
+      {
+        date: "1960-05-09",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Henningsen v. Bloomfield Motors, Inc. (32 N.J. 358, 161 A.2d 69, 9 May 1960): the New Jersey Supreme Court held that an automobile manufacturer's implied warranty of merchantability runs to a consumer and his family despite the absence of privity, and that the standardized disclaimer of that warranty imposed on a take-it-or-leave-it basis was void as against public policy. By eliminating privity in the warranty context and striking the boilerplate disclaimer, Henningsen completed the reversal of the privity fortress and became a principal doorway to modern products liability.",
+        sourceName:
+          "Francis J. Henningsen v. Bloomfield Motors, Inc., 32 N.J. 358, 161 A.2d 69 (1960). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/new-jersey/supreme-court/1960/32-n-j-358-0.html",
+      },
+    ],
+  },
+
+  {
+    id: "bystander-emotional-distress-recovery-1968",
+    claim:
+      "A bystander who is outside the zone of physical danger may recover for negligent infliction of emotional distress caused by contemporaneously witnessing negligent injury to a close relative, under a foreseeability test — established by the California Supreme Court in Dillon v. Legg (21 June 1968).",
+    emergedAt: "1968-06-21",
+    milestones: [
+      {
+        date: "1968-06-21",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Dillon v. Legg (68 Cal.2d 728, 441 P.2d 912, 21 June 1968): the California Supreme Court, over dissent, overruled Amaya v. Home Ice, Fuel & Supply Co. (59 Cal.2d 295, 1963) and rejected the 'zone of danger' requirement, holding that a mother who watched her child be killed by a negligent driver could recover for emotional distress even though she herself was never in physical peril. The court substituted a foreseeability analysis turning on the plaintiff's proximity to the accident, contemporaneous sensory observation, and close relationship to the victim, newly establishing bystander NIED recovery.",
+        sourceName:
+          "Tobriner J. Dillon v. Legg, 68 Cal.2d 728, 441 P.2d 912 (1968). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/2d/68/728.html",
+      },
+      {
+        date: "1989-01-01",
+        precision: "YEAR",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Thing v. La Chusa (48 Cal.3d 644, 771 P.2d 814, 1989): responding to two decades of unpredictable application of Dillon's flexible foreseeability approach, the California Supreme Court replaced it with fixed, bright-line elements — the plaintiff must be closely related to the victim, present at the scene and aware that it is causing injury, and suffer serious emotional distress. The ruling preserved but sharply cabined bystander recovery, stabilizing the doctrine into a predictable, settled rule.",
+        sourceName:
+          "Eagleson J. Thing v. La Chusa, 48 Cal.3d 644, 771 P.2d 814 (1989). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/3d/48/644.html",
+      },
+    ],
+  },
+
+  {
+    id: "implied-warranty-of-habitability-1970",
+    claim:
+      "Residential leases contain an implied warranty of habitability measured by the housing code, and the tenant's obligation to pay rent is dependent on the landlord maintaining habitable conditions — abolishing the common-law caveat lessee and independent-covenants rules; established by the U.S. Court of Appeals for the D.C. Circuit in Javins v. First National Realty Corp. (7 May 1970).",
+    emergedAt: "1970-05-07",
+    milestones: [
+      {
+        date: "1970-05-07",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Javins v. First National Realty Corp. (428 F.2d 1071, D.C. Cir., 7 May 1970): Judge J. Skelly Wright held that a warranty of habitability, measured by the D.C. Housing Regulations, is implied by law into leases of urban dwelling units, and that the tenant's covenant to pay rent is mutually dependent on the landlord's covenant to keep the premises habitable — so housing-code violations are a defense to eviction for nonpayment. The decision rejected the feudal treatment of a lease as a mere conveyance, discarding the caveat lessee doctrine and the independent-covenants rule, and became the leading precedent for the implied warranty of habitability adopted across American jurisdictions.",
+        sourceName:
+          "Wright J. Javins v. First National Realty Corp., 428 F.2d 1071 (D.C. Cir. 1970). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/federal/appellate-courts/F2/428/1071/",
+      },
+    ],
+  },
+
+  {
+    id: "promissory-estoppel-subcontractor-bids-1958",
+    claim:
+      "A subcontractor's bid is a revocable offer that the general contractor cannot enforce if it is withdrawn before acceptance, and the general's reliance does not make the bid irrevocable — the traditional rule of James Baird Co. v. Gimbel Bros. (2d Cir. 1933), reversed by the California Supreme Court in Drennan v. Star Paving Co. (31 December 1958), which used promissory estoppel (Restatement of Contracts § 90) to bind the bid.",
+    emergedAt: "1933-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1933-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "James Baird Co. v. Gimbel Bros. (64 F.2d 344, 2d Cir. 1933): Judge Learned Hand held that a subcontractor's bid was an ordinary offer that could be revoked at any time before acceptance, and that the general contractor's use of the bid in computing its own proposal was not an acceptance and did not, through promissory estoppel, render the offer irrevocable. The decision settled the classical-consideration rule that reliance on an unaccepted bid gives the general no enforceable claim.",
+        sourceName:
+          "Hand L., J. James Baird Co. v. Gimbel Bros., Inc., 64 F.2d 344 (2d Cir. 1933). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/federal/appellate-courts/F2/64/344/",
+      },
+      {
+        date: "1958-12-31",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Drennan v. Star Paving Co. (51 Cal.2d 409, 333 P.2d 757, 31 December 1958): Justice Traynor, for the California Supreme Court, rejected James Baird and held that a general contractor's reasonable and foreseeable reliance on a subcontractor's bid makes that bid irrevocable under Restatement of Contracts § 90, even without consideration or acceptance, so the subcontractor could not withdraw after the general used the bid to win the prime contract. The decision reversed the classical rule for bid cases and became the dominant American approach, later codified in Restatement (Second) of Contracts § 87(2).",
+        sourceName:
+          "Traynor J. Drennan v. Star Paving Co., 51 Cal.2d 409, 333 P.2d 757 (1958). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/2d/51/409.html",
+      },
+    ],
+  },
+
+  {
+    id: "learned-hand-negligence-formula-1947",
+    claim:
+      "The negligence standard of care can be expressed algebraically: a defendant is negligent for failing to take a precaution whenever the burden of that precaution (B) is less than the probability of harm (P) multiplied by the gravity of the resulting injury (L) — the B < PL formula stated by Judge Learned Hand for the U.S. Court of Appeals for the Second Circuit in United States v. Carroll Towing Co. (9 January 1947).",
+    emergedAt: "1947-01-09",
+    milestones: [
+      {
+        date: "1947-01-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Carroll Towing Co. (159 F.2d 169, 2d Cir., 9 January 1947): assessing whether a barge owner was negligent for leaving a moored barge unattended, Judge Learned Hand reduced the duty of reasonable care to an algebraic relation — liability turns on whether the burden of taking a precaution (B) is less than the probability that harm will occur (P) multiplied by the magnitude of the resulting loss (L). The formulation recorded a cost-benefit conception of the negligence standard in a leading opinion; it became the canonical analytic statement of breach in American tort law and legal-economic scholarship, though it functions as an influential gloss on the reasonable-person standard rather than a universally binding test.",
+        sourceName:
+          "Hand L., J. United States v. Carroll Towing Co., 159 F.2d 169 (2d Cir. 1947). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/federal/appellate-courts/F2/159/169/",
+      },
+    ],
+  },
 ];
 
 async function main() {
