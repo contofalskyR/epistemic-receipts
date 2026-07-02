@@ -6469,6 +6469,152 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "free-exercise-incorporation-cantwell-1940",
+    claim:
+      "The U.S. Supreme Court held in Cantwell v. Connecticut, 310 U.S. 296 (decided May 20, 1940), that the Free Exercise Clause of the First Amendment binds the states through the Due Process Clause of the Fourteenth Amendment.",
+    emergedAt: "1940-05-20",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1940-05-20",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Cantwell, the Court reversed the breach-of-peace and solicitation-licensing convictions of Jehovah's Witnesses, holding for the first time that the Fourteenth Amendment renders state legislatures 'as incompetent as Congress' to abridge religious free exercise. This incorporated the Free Exercise Clause against the states, displacing the pre-incorporation rule (Permoli v. New Orleans, 1845) that the First Amendment restrained only the federal government.",
+        sourceName:
+          "U.S. Supreme Court. Cantwell v. Connecticut. 310 U.S. 296. 1940.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/310/296",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "free-exercise-belief-action-reynolds-1879",
+    claim:
+      "The U.S. Supreme Court held in Reynolds v. United States, 98 U.S. 145 (October Term 1878, decided 1879), that the Free Exercise Clause protects religious belief but not religiously motivated conduct that violates a valid criminal law, upholding the anti-bigamy conviction of a Mormon defendant.",
+    emergedAt: "1879-01-01",
+    emergedPrecision: "YEAR",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1879-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In the first Supreme Court case construing the Free Exercise Clause, Chief Justice Waite's opinion drew the belief-action distinction: laws 'cannot interfere with mere religious belief and opinions, [but] they may with practices.' Reynolds could not invoke his religious duty as a defense to polygamy, because allowing it would let 'every citizen become a law unto himself.' This established the foundational principle that free exercise has limits where conduct conflicts with generally applicable criminal law.",
+        sourceName:
+          "U.S. Supreme Court. Reynolds v. United States. 98 U.S. 145. 1878.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/98/145",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "fighting-words-unprotected-chaplinsky-1942",
+    claim:
+      "The U.S. Supreme Court held in Chaplinsky v. New Hampshire, 315 U.S. 568 (decided March 9, 1942), that 'fighting words' — those which by their very utterance inflict injury or tend to incite an immediate breach of the peace — are a narrowly limited category of speech outside First Amendment protection.",
+    emergedAt: "1942-03-09",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1942-03-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Court unanimously affirmed Chaplinsky's conviction for calling a city marshal a 'God-damned racketeer' and 'damned Fascist,' establishing the 'fighting words' doctrine: certain well-defined and narrowly limited classes of speech (the lewd, obscene, profane, libelous, and insulting or 'fighting' words) have such slight social value that any benefit is outweighed by the social interest in order and morality. This created a categorical, content-based exclusion from First Amendment coverage that, though later narrowed, has never been overruled.",
+        sourceName:
+          "U.S. Supreme Court. Chaplinsky v. New Hampshire. 315 U.S. 568. 1942.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/315/568",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "commercial-speech-unprotected-reversed-virginia-pharmacy-1976",
+    claim:
+      "The rule that purely commercial advertising receives no First Amendment protection — announced in Valentine v. Chrestensen, 316 U.S. 52 (1942) — was reversed by Virginia State Board of Pharmacy v. Virginia Citizens Consumer Council, 425 U.S. 748 (decided May 24, 1976), which held that truthful commercial speech is constitutionally protected.",
+    emergedAt: "1942-04-13",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1942-04-13",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Valentine v. Chrestensen, the Court held that 'the Constitution imposes no such restraint on government as respects purely commercial advertising,' sustaining a New York ban on distributing commercial handbills. This settled, for over three decades, that commercial speech fell wholly outside First Amendment protection.",
+        sourceName:
+          "U.S. Supreme Court. Valentine v. Chrestensen. 316 U.S. 52. 1942.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/316/52",
+        methodologyType: "primary",
+      },
+      {
+        date: "1976-05-24",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Virginia Pharmacy, Justice Blackmun's opinion struck down Virginia's ban on advertising prescription-drug prices, holding that a state may not 'completely suppress the dissemination of concededly truthful information about entirely lawful activity' and recognizing consumers' First Amendment 'right to receive' commercial information. The Court repudiated Valentine's categorical exclusion, launching the modern commercial-speech doctrine later formalized in Central Hudson (1980).",
+        sourceName:
+          "U.S. Supreme Court. Virginia State Board of Pharmacy v. Virginia Citizens Consumer Council. 425 U.S. 748. 1976.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/425/748",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "corporate-independent-expenditure-ban-reversed-citizens-united-2010",
+    claim:
+      "The rule that government may constitutionally prohibit corporations from making independent expenditures for political speech — upheld in Austin v. Michigan Chamber of Commerce, 494 U.S. 652 (1990) — was reversed by Citizens United v. FEC, 558 U.S. 310 (decided January 21, 2010), which held such restrictions violate the First Amendment.",
+    emergedAt: "1990-03-27",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1990-03-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Austin v. Michigan Chamber of Commerce, the Court upheld a Michigan statute barring corporations from using general treasury funds for independent political expenditures, accepting an anti-distortion interest in preventing 'the corrosive and distorting effects of immense aggregations of [corporate] wealth.' This settled that corporate independent political expenditures could be prohibited without violating the First Amendment.",
+        sourceName:
+          "U.S. Supreme Court. Austin v. Michigan Chamber of Commerce. 494 U.S. 652. 1990.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/494/652",
+        methodologyType: "primary",
+      },
+      {
+        date: "2010-01-21",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Citizens United, a 5-4 Court held that the First Amendment prohibits government from restricting independent political expenditures by corporations and unions, expressly overruling Austin (1990) and partially overruling McConnell v. FEC (2003). Justice Kennedy's majority reasoned that political speech does not lose protection because its source is a corporation, reversing the two-decade-old settled rule that such expenditures could be banned.",
+        sourceName:
+          "U.S. Supreme Court. Citizens United v. Federal Election Commission. 558 U.S. 310. 2010.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/09pdf/08-205.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
