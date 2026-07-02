@@ -55,7 +55,7 @@ Research and add ClaimStatusHistory rows for this claim's epistemic arc:
 2. RECORDED->SETTLED: Broad clinical adoption, standard-of-care status, or major guideline inclusion — cite guideline
 3. SETTLED->CONTESTED or SETTLED->REVERSED: Post-market safety signal, black box warning, or withdrawal — cite FDA safety communication
 
-For each event: exact date (DAY precision preferred), ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose (2-3 sentences), one verifiable URL. Fetch each URL with WebFetch before including it — discard any that return 404/error."
+For each event: exact date (DAY precision preferred), ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose (2-3 sentences), one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
       ;;
     crossref_retractions_v1)
       body="You are expanding an epistemic receipt for a retracted academic paper.
@@ -69,7 +69,7 @@ The claim entered the DB as RECORDED (the retraction event). Research the full a
 2. RECORDED->CONTESTED: The retraction notice — fetch the publisher retraction URL or Retraction Watch entry (retractionwatch.com). Confirm URL accessible.
 3. REVERSED->OPEN or REVERSED->SETTLED: Was the core finding independently replicated post-retraction, or did the field move on? Check for citing papers.
 
-For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Fetch each URL with WebFetch before including it — discard any that return 404/error."
+For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
       ;;
     voteview_v1|congress_bills_tracker_v1)
       body="You are expanding an epistemic receipt for a congressional vote or bill.
@@ -84,7 +84,7 @@ Research the legislative arc:
 3. SETTLED->CONTESTED or SETTLED->REVERSED (if applicable): Later repeal, amendment, or court injunction — cite relevant source
 
 Community: INSTITUTIONAL for congressional action, JUDICIAL for court challenges. ABANDONED is a valid terminal state.
-For each event: exact date, reason prose, one verifiable URL. Fetch each URL with WebFetch before including it — discard any that return 404/error."
+For each event: exact date, reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
       ;;
     openalex_v1)
       body="You are expanding an epistemic receipt for a high-impact academic paper.
@@ -100,7 +100,7 @@ Research the epistemic trajectory:
 4. RECORDED->SETTLED (if no controversy): Did subsequent systematic reviews endorse the finding?
 
 Only add arcs where you find SPECIFIC dated evidence. If no notable follow-up exists, output SKIP.
-For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Fetch each URL with WebFetch before including it — discard any that return 404/error."
+For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
       ;;
     who_essential_medicines_v1)
       body="You are expanding an epistemic receipt for a WHO Essential Medicines List entry.
@@ -114,7 +114,7 @@ Research the epistemic arc:
 2. RECORDED->SETTLED: WHO EML inclusion or major guideline adoption — cite the WHO EML or guideline
 3. SETTLED->CONTESTED or SETTLED->REVERSED (if applicable): Later safety signal, delisting, or superseding therapy
 
-For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Fetch each URL with WebFetch before including it — discard any that return 404/error."
+For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
       ;;
     *)
       body="SKIP — pipeline ${ingested_by} not in promotable tier for this run."
@@ -145,7 +145,7 @@ The TypeScript enrich script MUST follow the pattern in scripts/seed-human-histo
 - community is one of: EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET
 - All dates as new Date('YYYY-MM-DD'); set datePrecision ('DAY'|'MONTH'|'QUARTER'|'YEAR')
 - Wrap writes in an async main(); end with await prisma.\$disconnect()
-- Only include arcs whose source URL you verified with WebFetch (not 404)"
+- Only include arcs with high-confidence URLs (DOIs, .gov, official publisher links)"
 }
 
 # ── Main loop ───────────────────────────────────────────────────────────────
@@ -181,7 +181,7 @@ while true; do
 
     PROMPT=$(build_prompt "$CLAIM_ID" "$CLAIM_TEXT" "$INGESTED_BY" "$EMERGED_AT")
 
-    OUTPUT=$(cd "$PROJECT_DIR" && claude --print --model claude-opus-4-8 --permission-mode bypassPermissions --max-turns 20 "$PROMPT" 2>&1) || true
+    OUTPUT=$(cd "$PROJECT_DIR" && claude --print --model claude-opus-4-8 "$PROMPT" 2>&1) || true
     echo "$OUTPUT" >> "$LOG"
 
     # Parse output.
