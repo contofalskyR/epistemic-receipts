@@ -5648,7 +5648,7 @@ const TRAJECTORIES: LawTrajectory[] = [
         toAxis: "SETTLED",
         community: "JUDICIAL",
         reason:
-          "A 6–3 Supreme Court per Justice Thomas reversed the Ninth Circuit, holding the licensed-notice requirement is a content-based compulsion that likely fails scrutiny and the unlicensed-notice requirement is unduly burdensome. Crucially, the Court refused to recognize 'professional speech' as a lesser-protected category, settling that content-based regulation of professional speech must satisfy heightened First Amendment scrutiny outside narrow exceptions.",
+          "A 5–4 Supreme Court per Justice Thomas reversed the Ninth Circuit, holding the licensed-notice requirement is a content-based compulsion that likely fails scrutiny and the unlicensed-notice requirement is unduly burdensome. Crucially, the Court refused to recognize 'professional speech' as a lesser-protected category, settling that content-based regulation of professional speech must satisfy heightened First Amendment scrutiny outside narrow exceptions.",
         sourceName:
           "Supreme Court of the United States. NIFLA v. Becerra, No. 16-1140, 585 U.S. 755 (2018). Opinion of the Court by Thomas, J.",
         sourceUrl: "https://www.law.cornell.edu/supremecourt/text/16-1140",
@@ -5727,6 +5727,178 @@ const TRAJECTORIES: LawTrajectory[] = [
         sourceName:
           "Supreme Court of the United States. FDA v. Alliance for Hippocratic Medicine, No. 23-235, 602 U.S. 367 (2024). Opinion of the Court by Kavanaugh, J.",
         sourceUrl: "https://www.law.cornell.edu/supremecourt/text/23-235",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "informant-probable-cause-two-prong-aguilar-1964",
+    claim:
+      "The U.S. Supreme Court held in Aguilar v. Texas, decided 15 June 1964, that an informant's tip can support probable cause for a warrant only if the affidavit shows both the informant's veracity/reliability and the basis of his knowledge — the rigid 'two-prong' test.",
+    emergedAt: "1964-06-15",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1964-06-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Aguilar v. Texas (378 U.S. 108, 15 June 1964): Justice Goldberg's majority held that a magistrate issuing a warrant on an informant's tip must be told 'some of the underlying circumstances' from which the informant drew his conclusion and from which the officer concluded the informant was credible. This established a mandatory two-prong (basis-of-knowledge and veracity) test that governed Fourth Amendment probable-cause analysis for informant tips, later refined in Spinelli v. United States (1969).",
+        sourceName:
+          "Goldberg J. Aguilar v. Texas, 378 U.S. 108 (1964). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/378/108",
+        methodologyType: "primary",
+      },
+      {
+        date: "1983-06-08",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Illinois v. Gates (462 U.S. 213, 8 June 1983): The Court abandoned the Aguilar-Spinelli two-prong test, replacing it with a flexible 'totality of the circumstances' approach in which veracity, reliability, and basis of knowledge are intertwined factors rather than independent requirements. By discarding the rigid two-prong framework it had treated as settled for two decades, Gems reoriented informant probable-cause doctrine and expressly overruled the earlier rule.",
+        sourceName:
+          "Rehnquist J. Illinois v. Gates, 462 U.S. 213 (1983). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/462/213",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "shocks-the-conscience-due-process-rochin-1952",
+    claim:
+      "The U.S. Supreme Court held in Rochin v. California, decided 2 January 1952, that police conduct that 'shocks the conscience' — there, forcible stomach-pumping to extract swallowed evidence — violates the Due Process Clause of the Fourteenth Amendment, imposing a federal constitutional limit on state investigative methods.",
+    emergedAt: "1952-01-02",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1952-01-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Rochin v. California (342 U.S. 165, 2 January 1952): Justice Frankfurter's opinion reversed a conviction resting on morphine capsules recovered by pumping the defendant's stomach, holding that such 'conduct that shocks the conscience' offends the Due Process Clause. Decided before the Fourth Amendment's exclusionary rule bound the states, Rochin established substantive due process as the constitutional check on brutal police methods in state prosecutions.",
+        sourceName:
+          "Frankfurter J. Rochin v. California, 342 U.S. 165 (1952). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/342/165",
+        methodologyType: "primary",
+      },
+      {
+        date: "1998-05-26",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "County of Sacramento v. Lewis (523 U.S. 833, 26 May 1998): Justice Souter's majority reaffirmed 'shocks the conscience' as the governing substantive-due-process standard for executive conduct, holding that only the most egregious official action is 'arbitrary in the constitutional sense.' The decision confirmed that Rochin's test survives — now confined to substantive due process after excessive-force claims were channeled to the Fourth Amendment (Graham v. Connor, 1989) — keeping it settled but narrowed.",
+        sourceName:
+          "Souter J. County of Sacramento v. Lewis, 523 U.S. 833 (1998). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/523/833",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "ineffective-assistance-two-prong-strickland-1984",
+    claim:
+      "The U.S. Supreme Court held in Strickland v. Washington, decided 14 May 1984, that a Sixth Amendment ineffective-assistance-of-counsel claim requires proof of both deficient performance (falling below an objective standard of reasonableness) and prejudice (a reasonable probability the outcome would have differed).",
+    emergedAt: "1984-05-14",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1984-05-14",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Strickland v. Washington (466 U.S. 668, 14 May 1984): Justice O'Connor's majority established the two-component test for ineffective assistance of counsel — deficient performance plus prejudice — requiring both showings and instructing courts to presume counsel's conduct reasonable. The standard, applicable to trial and capital sentencing, settled the previously open question of how to adjudicate Sixth Amendment competence-of-counsel claims and remains the controlling framework.",
+        sourceName:
+          "O'Connor J. Strickland v. Washington, 466 U.S. 668 (1984). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/466/668",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "automobile-exception-warrantless-search-carroll-1925",
+    claim:
+      "The U.S. Supreme Court held in Carroll v. United States, decided 2 March 1925, that officers may search an automobile without a warrant where they have probable cause to believe it carries contraband, because a vehicle's mobility makes obtaining a warrant impracticable — the 'automobile exception' to the Fourth Amendment warrant requirement.",
+    emergedAt: "1925-03-02",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1925-03-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Carroll v. United States (267 U.S. 132, 2 March 1925): Chief Justice Taft's opinion upheld the warrantless search of an automobile stopped on probable cause during Prohibition, distinguishing movable vehicles from fixed dwellings because a car 'can be quickly moved out of the locality.' The ruling established the automobile exception, settling that probable cause alone — without a warrant — can justify a vehicle search.",
+        sourceName:
+          "Taft CJ. Carroll v. United States, 267 U.S. 132 (1925). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/267/132",
+        methodologyType: "primary",
+      },
+      {
+        date: "1991-05-30",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "California v. Acevedo (500 U.S. 565, 30 May 1991): The Court extended and unified the automobile exception, holding that police with probable cause to believe a closed container in a car holds contraband may open it without a warrant, eliminating the container/vehicle distinction drawn by Arkansas v. Sanders. The decision reaffirmed and simplified Carroll's rule, confirming it as settled and broadly operative doctrine.",
+        sourceName:
+          "Blackmun J. California v. Acevedo, 500 U.S. 565 (1991). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/500/565",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "guarantee-clause-political-question-luther-1849",
+    claim:
+      "The U.S. Supreme Court held in Luther v. Borden, decided January 1849, that determining which of two competing state governments is the legitimate republican government is a nonjusticiable political question committed to Congress and the President under the Guarantee Clause, not the courts.",
+    emergedAt: "1849-01-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1849-01-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Luther v. Borden (48 U.S. (7 How.) 1, January Term 1849): Arising from Rhode Island's Dorr Rebellion, Chief Justice Taney's opinion held that courts cannot decide which rival government is the lawful one, deferring to the political branches' recognition of the charter government under Article IV's Guarantee Clause. The decision founded the political-question doctrine and settled that Guarantee Clause claims are nonjusticiable.",
+        sourceName:
+          "Taney CJ. Luther v. Borden, 48 U.S. (7 How.) 1 (1849). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/48/1",
+        methodologyType: "primary",
+      },
+      {
+        date: "1962-03-26",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Baker v. Carr (369 U.S. 186, 26 March 1962): Holding legislative apportionment justiciable under the Equal Protection Clause, the Court carefully distinguished Luther v. Borden, reaffirming that Guarantee Clause claims remain nonjusticiable political questions while narrowing the broader political-question doctrine. Luther's core holding on the Guarantee Clause thus survived even as its reach was cabined.",
+        sourceName:
+          "Brennan J. Baker v. Carr, 369 U.S. 186 (1962). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/369/186",
         methodologyType: "primary",
       },
     ],
