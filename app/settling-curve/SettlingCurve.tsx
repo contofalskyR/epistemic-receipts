@@ -68,6 +68,7 @@ interface TrajectoryDetail {
   id: string;
   claim: string;
   transitions: Transition[];
+  ingestedBy?: string | null;
 }
 
 const STATUS: Record<Axis, { c: string; label: string }> = {
@@ -171,6 +172,42 @@ function durationLabel(fromD: string, toD: string) {
   const months = Math.round((frac(toD) - frac(fromD)) * 12);
   if (months < 18) return { n: months, unit: months === 1 ? "month" : "months" };
   return { n: Math.round(months / 12), unit: "years" };
+}
+
+function pipelineLabel(ingestedBy?: string | null): string {
+  if (!ingestedBy) return "";
+  const s = ingestedBy.toLowerCase();
+  if (s.includes("nara")) {
+    if (s.includes("rg59") || s.includes("rg-59")) return "NARA RG-59 State Dept";
+    if (s.includes("rg65") || s.includes("rg-65")) return "NARA RG-65 FBI";
+    if (s.includes("rg226") || s.includes("rg-226")) return "NARA RG-226 OSS";
+    if (s.includes("rg330") || s.includes("rg-330")) return "NARA RG-330 OSD";
+    if (s.includes("rg218") || s.includes("rg-218")) return "NARA RG-218 Joint Chiefs";
+    if (s.includes("rg84") || s.includes("rg-84")) return "NARA RG-84 Foreign Service";
+    return "NARA Archive";
+  }
+  if (s.includes("who_gho") || s.includes("who-gho")) return "WHO Global Health";
+  if (s.includes("voteview")) return "Voteview Congress";
+  if (s.includes("congress")) return "Congress.gov";
+  if (s.includes("bundestag")) return "Bundestag";
+  if (s.includes("riksdag")) return "Riksdag";
+  if (s.includes("openalex")) return "OpenAlex Literature";
+  if (s.includes("crossref") || s.includes("retract")) return "CrossRef/Retraction Watch";
+  if (s.includes("worldbank") || s.includes("world_bank")) return "World Bank";
+  if (s.includes("vdem") || s.includes("v-dem")) return "V-Dem";
+  if (s.includes("sipri")) return "SIPRI";
+  if (s.includes("ucdp")) return "UCDP Conflict";
+  if (s.includes("ofac")) return "OFAC Sanctions";
+  if (s.includes("icsid")) return "ICSID Arbitration";
+  if (s.includes("fec")) return "FEC Finance";
+  if (s.includes("chebi")) return "ChEBI";
+  if (s.includes("openfda") || s.includes("drugsatfda")) return "FDA Drug Approvals";
+  if (s.includes("faers")) return "FDA Adverse Events";
+  if (s.includes("clinicaltrials")) return "ClinicalTrials.gov";
+  if (s.includes("omim")) return "OMIM";
+  if (s.includes("nasa")) return "NASA";
+  if (s.includes("courtlistener")) return "CourtListener";
+  return ingestedBy;
 }
 
 const REDUCED_MOTION_CSS =
@@ -360,6 +397,46 @@ function SettlingCurveInner() {
     }
 
     const t = traj;
+
+    // Single-step corpus claim (one ClaimStatusHistory row, typically null → RECORDED).
+    // Render a receipt card instead of a degenerate one-dot chart.
+    if (t.transitions.length === 1) {
+      const only = t.transitions[0];
+      const pl = pipelineLabel(traj.ingestedBy);
+      return (
+        <div className="rounded-lg overflow-hidden" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
+          <div className="px-5 py-4 border-b" style={{ borderColor: C.panelEdge }}>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="font-mono shrink-0 px-2 py-0.5 rounded" style={{ fontSize: 10, color: STATUS[only.toAxis].c, border: `1px solid ${STATUS[only.toAxis].c}55` }}>
+                {STATUS[only.toAxis].label}
+              </span>
+              <span className="font-mono" style={{ fontSize: 11, color: C.mut }}>{COMMUNITY_LABEL[only.community]}</span>
+              <span className="font-mono" style={{ fontSize: 11, color: C.faint }}>{only.occurredAt}</span>
+              {pl && (
+                <span className="font-mono" style={{ fontSize: 10, color: C.brand, letterSpacing: "0.04em" }}>{pl}</span>
+              )}
+            </div>
+          </div>
+          <div className="px-5 pb-5">
+            {only.reason && (
+              <p className="mt-3 mb-3" style={{ fontSize: 14, color: C.ink, lineHeight: 1.55 }}>{only.reason}</p>
+            )}
+            {only.source.url ? (
+              <a href={only.source.url} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-1" style={{ fontSize: 13, color: C.brand }}>
+                {only.source.name}
+              </a>
+            ) : (
+              <span style={{ fontSize: 13, color: C.mut }}>{only.source.name}</span>
+            )}
+            <p className="mt-4" style={{ fontSize: 12, color: C.faint, lineHeight: 1.55 }}>
+              This claim was recorded at a single point in time. The agentic loop builds multi-step trajectories from records like this.
+            </p>
+          </div>
+        </div>
+      );
+    }
+
     const interval = keyInterval(t);
     const dur = durationLabel(interval.from.occurredAt, interval.to.occurredAt);
 
@@ -1196,6 +1273,9 @@ function SettlingCurveInner() {
                         {traj.transitions.length} TRANSITIONS · {first}
                         {first !== last && ` → ${last}`}
                         {activeItem?.era && ` · ${activeItem.era.toUpperCase()}`}
+                        {traj.ingestedBy && (
+                          <span style={{ color: C.faint }}> · {pipelineLabel(traj.ingestedBy)}</span>
+                        )}
                       </p>
                       <div className="mt-2">
                         <ShareButtons
@@ -1208,7 +1288,7 @@ function SettlingCurveInner() {
                   );
                 })()}
               </div>
-              {headerInterval && headerDur && (
+              {headerInterval && headerDur && headerDur.n > 0 && (
                 <div
                   className="rounded-lg px-4 py-3 shrink-0"
                   style={{

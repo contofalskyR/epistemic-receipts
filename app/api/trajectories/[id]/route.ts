@@ -31,14 +31,14 @@ export async function GET(
 
   let claim = await prisma.claim.findFirst({
     where: { externalId: `trajectory:${id}`, deleted: false },
-    select: { id: true, text: true, statusHistory: statusHistorySelect },
+    select: { id: true, text: true, ingestedBy: true, claimEmergedAt: true, statusHistory: statusHistorySelect },
   });
 
   // Fallback: treat the path param as a raw claim CUID (corpus search results).
   if (!claim) {
     claim = await prisma.claim.findFirst({
       where: { id, deleted: false },
-      select: { id: true, text: true, statusHistory: statusHistorySelect },
+      select: { id: true, text: true, ingestedBy: true, claimEmergedAt: true, statusHistory: statusHistorySelect },
     });
   }
 
@@ -129,5 +129,5 @@ export async function GET(
     });
   }
 
-  return NextResponse.json({ id, claim: claim.text, transitions });
+  return NextResponse.json({ id, claim: claim.text, transitions, ingestedBy: claim.ingestedBy ?? null });
 }
