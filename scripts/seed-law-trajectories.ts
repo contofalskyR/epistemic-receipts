@@ -787,6 +787,151 @@ const TRAJECTORIES: LawTrajectory[] = [
   },
 
   {
+    id: "patent-monopoly-limited-term-1624",
+    claim:
+      "English law established that Crown-granted monopolies are void at common law, but time-limited patents for genuinely new inventions are lawful — the Case of Monopolies (Darcy v. Allein, King's Bench, 1602) and the Statute of Monopolies (Parliament, 29 May 1624), which voided monopolies generally but preserved 14-year patents for the true and first inventor of any new manufacture.",
+    emergedAt: "1602-01-01",
+    milestones: [
+      {
+        date: "1602-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Darcy v. Allein, the Case of Monopolies (11 Co. Rep. 84b, 77 Eng. Rep. 1260, K.B. Trinity Term 1602): the Court of Queen's/King's Bench held that the Crown's grant to Edward Darcy of an exclusive monopoly over the making and importing of playing cards was void at common law, because monopolies deprive tradesmen of their livelihood, raise prices, and injure the commonwealth. The ruling recorded the principle that royal monopoly grants over ordinary trades are unlawful, laying the groundwork for distinguishing them from legitimate invention patents.",
+        sourceName:
+          "Court of King's Bench. Darcy v. Allein (Case of Monopolies), 11 Co. Rep. 84b, 77 Eng. Rep. 1260 (K.B. 1602).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Darcy_v_Allein",
+      },
+      {
+        date: "1624-05-29",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Statute of Monopolies (21 Jas. 1 c. 3), which received royal assent on 29 May 1624, declared all monopolies, grants, and letters patent 'utterly void and of none effect,' but section 6 carved out an exception preserving letters patent 'for the term of fourteen years or under' for 'the sole working or making of any manner of new manufactures' to 'the true and first inventor.' Parliament thereby settled the enduring distinction between unlawful monopolies and lawful, time-limited patent property — the statutory foundation of modern patent law.",
+        sourceName:
+          "Parliament of England. Statute of Monopolies 1623, 21 Jas. 1 c. 3 (royal assent 29 May 1624).",
+        sourceUrl: "https://www.legislation.gov.uk/aep/Ja1/21/3/contents",
+      },
+    ],
+  },
+
+  {
+    id: "perpetual-common-law-copyright-1774",
+    claim:
+      "The claim that authors hold a perpetual common-law copyright in their published works, surviving beyond the limited statutory term — an open question after the Statute of Anne (in force 10 April 1710), held true by the King's Bench in Millar v. Taylor (1769), and definitively rejected by the House of Lords in Donaldson v. Beckett (22 February 1774).",
+    emergedAt: "1710-04-10",
+    milestones: [
+      {
+        date: "1710-04-10",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Statute of Anne (8 Ann. c. 21), 'An Act for the Encouragement of Learning,' came into force on 10 April 1710, vesting in authors and their assigns a copyright of 14 years (renewable for a further 14) in newly published books, with 21 years for works already in print. By granting only a limited term, the statute recorded but left unresolved the central question the booksellers would press for six decades: whether authors also retained a separate, perpetual copyright at common law that survived the statutory term.",
+        sourceName:
+          "Parliament of Great Britain. Statute of Anne, 8 Ann. c. 21 (in force 10 April 1710).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Statute_of_Anne",
+      },
+      {
+        date: "1769-04-20",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Millar v. Taylor (4 Burr. 2303, 98 Eng. Rep. 201, K.B. 20 April 1769): a divided Court of King's Bench, per Lord Mansfield, held 3–1 that authors possessed a perpetual common-law copyright in their works that existed independently of, and survived, the limited term of the Statute of Anne — meaning published works would never fall into the public domain. The ruling settled (within the King's Bench) the booksellers' theory of perpetual literary property.",
+        sourceName:
+          "Court of King's Bench. Millar v. Taylor, 4 Burr. 2303, 98 Eng. Rep. 201 (K.B. 1769).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Millar_v_Taylor",
+      },
+      {
+        date: "1774-02-22",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Donaldson v. Beckett (2 Bro. P.C. 129, 1 Eng. Rep. 837; 4 Burr. 2408, 98 Eng. Rep. 257, H.L. 22 February 1774): the House of Lords reversed the effect of Millar v. Taylor, holding that whatever common-law copyright an author held before publication was superseded on publication by the Statute of Anne, so that copyright in published works is not perpetual but limited to the statutory term. The decision extinguished the doctrine of perpetual common-law copyright and established the public domain as a permanent feature of copyright law.",
+        sourceName:
+          "House of Lords. Donaldson v. Beckett, 2 Bro. P.C. 129, 1 Eng. Rep. 837 (H.L. 1774).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Donaldson_v_Becket",
+      },
+    ],
+  },
+
+  {
+    id: "just-compensation-takings-1791",
+    claim:
+      "The principle that government may take private property only for public use and only upon payment of just compensation, and that a legislature may not simply divest one person of property and vest it in another — constitutionalized by the Takings Clause of the Fifth Amendment (ratified 15 December 1791) and given its foundational federal judicial articulation in Vanhorne's Lessee v. Dorrance (U.S. Circuit Court, D. Pa., 1795).",
+    emergedAt: "1791-12-15",
+    milestones: [
+      {
+        date: "1791-12-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Fifth Amendment to the U.S. Constitution was ratified on 15 December 1791 as part of the Bill of Rights, its final clause providing 'nor shall private property be taken for public use, without just compensation.' The Takings Clause recorded as fundamental federal law the requirement that the sovereign compensate owners for property appropriated for public purposes, converting a natural-rights principle into an enforceable constitutional command.",
+        sourceName:
+          "U.S. Constitution, Amendment V (Takings Clause), ratified 15 December 1791.",
+        sourceUrl: "https://www.law.cornell.edu/constitution/fifth_amendment",
+      },
+      {
+        date: "1795-04-01",
+        precision: "MONTH",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Vanhorne's Lessee v. Dorrance (2 U.S. (2 Dall.) 304, U.S. Circuit Court for the District of Pennsylvania, April Term 1795): Justice William Paterson, riding circuit, charged the jury that a Pennsylvania statute divesting owners of land and vesting it in others without adequate compensation was void as contrary to the 'inherent and unalienable rights of man' and the state constitution's protection of property, holding that the legislature cannot take one person's property and give it to another and that any taking requires just compensation. The opinion settled, in an authoritative federal judicial voice, the just-compensation principle as a limit on legislative power.",
+        sourceName:
+          "Paterson J. Vanhorne's Lessee v. Dorrance, 2 U.S. (2 Dall.) 304 (C.C.D. Pa. 1795). Charge to the jury.",
+        sourceUrl:
+          "https://www.fjc.gov/history/exhibits/circuit-court-opinions/Vanhorne-v-Dorrance",
+      },
+    ],
+  },
+
+  {
+    id: "private-property-inviolable-entick-1765",
+    claim:
+      "The principle that private property is inviolable against the state and that government officers may enter or search private property only under specific positive legal authority — every unauthorized invasion of property being a trespass — established in Entick v. Carrington (Court of King's Bench, 2 November 1765) and enshrined in American constitutional law in Boyd v. United States (1886).",
+    emergedAt: "1765-11-02",
+    milestones: [
+      {
+        date: "1765-11-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Entick v. Carrington (19 Howell's State Trials 1029; 95 Eng. Rep. 807, K.B. 2 November 1765): Lord Camden (Chief Justice Pratt), for the Court of King's Bench, held that a Secretary of State's general warrant authorizing the King's messengers to break into John Entick's house and seize his papers was unlawful, because the officers could point to no statute or common-law authority for the intrusion. Camden declared that 'every invasion of private property, be it ever so minute, is a trespass,' settling the principle that the state may act against private property only where positive law expressly permits it.",
+        sourceName:
+          "Camden LCJ. Entick v. Carrington, 19 Howell's State Trials 1029, 95 Eng. Rep. 807 (K.B. 1765).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Entick_v_Carrington",
+      },
+      {
+        date: "1886-02-01",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Boyd v. United States (116 U.S. 616, 1 February 1886): Justice Bradley, for the Court, drew directly on Entick v. Carrington — calling Lord Camden's judgment 'one of the landmarks of English liberty' and 'a permanent monument of the British constitution' — to hold that compelled production of a person's private papers violates the Fourth and Fifth Amendments. The opinion transplanted Entick's property-inviolability principle into American constitutional law, reaffirming across more than a century that private property and papers are protected against government seizure absent specific legal authority.",
+        sourceName:
+          "Bradley J. Boyd v. United States, 116 U.S. 616 (1886). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/116/616",
+      },
+    ],
+  },
+
+  {
     id: "nondelegation-intelligible-principle-1928",
     claim:
       "Congress may delegate broad rulemaking and policymaking authority to executive agencies without violating the separation of powers so long as it supplies an 'intelligible principle' to guide the exercise of that authority — the permissive non-delegation standard set by the U.S. Supreme Court in J.W. Hampton, Jr. & Co. v. United States (9 April 1928) and thrown back into contest by Gundy v. United States (20 June 2019).",
