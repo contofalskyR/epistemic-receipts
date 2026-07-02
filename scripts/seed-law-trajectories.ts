@@ -3676,6 +3676,108 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "state-farm-hard-look-arbitrary-capricious-1983",
+    claim:
+      "When a federal agency promulgates or rescinds a rule, a reviewing court applies 'arbitrary and capricious' review that requires the agency to examine the relevant data and articulate a satisfactory explanation drawing a rational connection between the facts found and the choice made — the reasoned-decisionmaking ('hard look') standard established by the U.S. Supreme Court in Motor Vehicle Manufacturers Association v. State Farm Mutual Automobile Insurance Co., decided 24 June 1983.",
+    emergedAt: "1983-06-24",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1983-06-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Motor Vehicle Mfrs. Ass'n v. State Farm (463 U.S. 29), a unanimous Court on the core standard, per Justice White, held that the National Highway Traffic Safety Administration's rescission of its passive-restraint (airbag/automatic-seatbelt) rule was arbitrary and capricious because the agency failed to supply a reasoned analysis for abandoning the rule. The Court settled that rescinding a rule is subject to the same reasoned-explanation demand as issuing one, and that an agency must consider significant alternatives and 'articulate a satisfactory explanation' with 'a rational connection between the facts found and the choice made.' This crystallized the modern 'hard look' standard that has governed judicial review of agency rulemaking ever since.",
+        sourceName:
+          "White J. Motor Vehicle Mfrs. Ass'n v. State Farm Mut. Auto. Ins. Co., 463 U.S. 29 (1983). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/463/29",
+      },
+    ],
+  },
+
+  {
+    id: "mead-chevron-step-zero-2001",
+    claim:
+      "An agency's statutory interpretation qualifies for Chevron deference only when Congress delegated authority to the agency to make rules carrying the force of law and the agency acted pursuant to that authority (e.g., notice-and-comment rulemaking or formal adjudication); otherwise the interpretation earns only the weaker, persuasion-based Skidmore respect — the 'Chevron step zero' framework established by the U.S. Supreme Court in United States v. Mead Corp., decided 18 June 2001.",
+    emergedAt: "2001-06-18",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2001-06-18",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Mead Corp. (533 U.S. 218), an 8–1 majority per Justice Souter held that U.S. Customs tariff-classification ruling letters, issued without notice-and-comment procedure, did not command Chevron deference but could still earn Skidmore respect according to their power to persuade. Mead settled a threshold 'step zero' inquiry — Chevron applies only where Congress delegated law-making authority and the agency exercised it — sorting agency pronouncements into a Chevron tier and a Skidmore tier. The framework became the standard gatekeeper for deference doctrine, though Justice Scalia's lone dissent warned it would produce unpredictable, ad hoc line-drawing.",
+        sourceName:
+          "Souter J. United States v. Mead Corp., 533 U.S. 218 (2001). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/533/218",
+      },
+      {
+        date: "2024-06-28",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Loper Bright Enterprises v. Raimondo (603 U.S. 369), a 6–3 majority per Chief Justice Roberts overruled Chevron and held that courts must exercise independent judgment on questions of statutory meaning. Because Mead's step-zero framework existed only to decide when the now-defunct Chevron deference applied, the ruling stripped that framework of its operative function without formally overruling Mead by name, leaving its status unsettled (its Skidmore tier survives, but the Chevron-sorting exercise no longer has an object).",
+        sourceName:
+          "Roberts CJ. Loper Bright Enterprises v. Raimondo, 603 U.S. 369 (2024). Opinion of the Court.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/23pdf/22-451_7m58.pdf",
+      },
+    ],
+  },
+
+  {
+    id: "massachusetts-v-epa-greenhouse-gases-air-pollutants-2007",
+    claim:
+      "Greenhouse gases such as carbon dioxide fall within the Clean Air Act's capacious definition of 'air pollutant,' so the Environmental Protection Agency has statutory authority to regulate motor-vehicle greenhouse-gas emissions and may decline to do so only on grounds tied to the statute — the U.S. Supreme Court's holding in Massachusetts v. EPA, decided 2 April 2007.",
+    emergedAt: "2007-04-02",
+    emergedPrecision: "DAY",
+    claimType: "HYBRID",
+    milestones: [
+      {
+        date: "2007-04-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Massachusetts v. EPA (549 U.S. 497), a 5–4 majority per Justice Stevens held that at least one petitioner (Massachusetts) had standing to sue over harms from climate change and that greenhouse gases 'without a doubt' fit the Clean Air Act's § 7602(g) definition of 'air pollutant,' giving EPA authority to regulate them under § 202(a). The Court further held EPA could refuse to regulate only by grounding its decision in the statute, not in policy preferences. The decision settled the statutory-coverage question that anchored all subsequent federal greenhouse-gas regulation.",
+        sourceName:
+          "Stevens J. Massachusetts v. Environmental Protection Agency, 549 U.S. 497 (2007). Opinion of the Court.",
+        sourceUrl:
+          "https://tile.loc.gov/storage-services/service/ll/usrep/usrep549/usrep549497/usrep549497.pdf",
+      },
+    ],
+  },
+
+  {
+    id: "axon-cochran-structural-challenges-district-court-2023",
+    claim:
+      "A party subject to an SEC or FTC administrative enforcement proceeding may bring a structural constitutional challenge to the agency (e.g., that its administrative law judges are unconstitutionally insulated from removal, or that it unconstitutionally combines prosecutorial and adjudicatory functions) directly in federal district court, because the agencies' statutory review schemes do not displace ordinary federal-question jurisdiction over such claims — the U.S. Supreme Court's holding in Axon Enterprise, Inc. v. FTC / SEC v. Cochran, decided 14 April 2023.",
+    emergedAt: "2023-04-14",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2023-04-14",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Axon Enterprise, Inc. v. FTC, consolidated with SEC v. Cochran (598 U.S. 175), a unanimous Court per Justice Kagan held that the review schemes in the Securities Exchange Act and the FTC Act do not strip district courts of federal-question jurisdiction over challenges to the very structure or existence of the agencies. Applying the Thunder Basin factors, the Court reasoned that such structural claims are collateral to the agencies' subject-matter expertise and would go unremedied if a party had to endure the allegedly unconstitutional proceeding first. The ruling settled that regulated parties may obtain immediate Article III review of separation-of-powers attacks on agency adjudication rather than being funneled through the agency scheme.",
+        sourceName:
+          "Kagan J. Axon Enterprise, Inc. v. Federal Trade Commission, 598 U.S. 175 (2023). Opinion of the Court.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/22pdf/21-86_l5gm.pdf",
+      },
+    ],
+  },
 ];
 
 async function main() {
