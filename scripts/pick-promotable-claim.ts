@@ -87,14 +87,26 @@ async function main() {
   // Alternate tiers: runs 0,1 = TIER1; run 2 = TIER2; then repeats
   const pipelines = run % 3 === 2 ? TIER2_PIPELINES : TIER1_PIPELINES
 
+  // Filter out claims unlikely to have a verifiable multi-step arc
+  const SKIP_PATTERNS = [
+    'homeopathic', 'HOMEOPATHIC',
+    'Arnica', 'Nux Vomica', 'Belladonna', 'Ignatia',
+    'hand sanitizer', 'Hand Sanitizer',
+    'sunscreen', 'Sunscreen', 'SUNSCREEN',
+    'antiperspirant', 'Antiperspirant',
+    'lip balm', 'Lip Balm',
+    'toothpaste', 'Toothpaste',
+    'mouthwash', 'Mouthwash',
+  ]
+
   const claims = await prisma.claim.findMany({
     where: {
       ingestedBy: { in: pipelines },
       deleted: false,
       verificationStatus: { not: 'DEPRECATED' },
-      // Only single-step claims: every statusHistory row has fromAxis=null
       statusHistory: { every: { fromAxis: null } },
       ...(attemptedIds.length > 0 ? { NOT: { id: { in: attemptedIds } } } : {}),
+      AND: SKIP_PATTERNS.map(p => ({ text: { not: { contains: p } } })),
     },
     select: {
       id: true,
