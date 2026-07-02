@@ -3406,6 +3406,141 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "strauder-jury-exclusion-equal-protection-1880",
+    claim:
+      "The U.S. Supreme Court held in Strauder v. West Virginia (100 U.S. 303, decided 1 March 1880) that a state statute barring Black men from serving on juries denies Black defendants the equal protection of the laws guaranteed by the Fourteenth Amendment.",
+    emergedAt: "1880-03-01",
+    milestones: [
+      {
+        date: "1880-03-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Strauder v. West Virginia, a 7–2 Supreme Court, per Justice Strong, struck down a West Virginia law limiting jury service to white men, holding that excluding citizens from juries solely because of race 'is practically a brand upon them' and denies equal protection under the Fourteenth Amendment. It was the Court's first substantive application of the Equal Protection Clause to invalidate a racially discriminatory state law. The ruling settled that racial exclusion from jury service is unconstitutional.",
+        sourceName: "Strong J. Strauder v. West Virginia, 100 U.S. 303 (1880). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/100/303",
+      },
+      {
+        date: "1986-04-30",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Batson v. Kentucky (476 U.S. 79, 30 April 1986), the Court reaffirmed Strauder as the foundational authority on racial discrimination in jury selection, quoting its holding that the Equal Protection Clause forbids a State from excluding jurors on account of race. By grounding its modern peremptory-challenge framework in Strauder's century-old principle, the Court confirmed that Strauder's core rule remains settled and controlling law. The reaffirmation demonstrates the doctrine's durability across 106 years.",
+        sourceName: "Powell J. Batson v. Kentucky, 476 U.S. 79 (1986). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/476/79",
+      },
+    ],
+  },
+
+  {
+    id: "white-primary-equal-protection-nixon-herndon-1927",
+    claim:
+      "The U.S. Supreme Court held in Nixon v. Herndon (273 U.S. 536, decided 7 March 1927) that a Texas statute barring Black citizens from voting in the Democratic Party primary violates the Fourteenth Amendment's Equal Protection Clause; after the doctrine was narrowed in Grovey v. Townsend (1935), it was definitively settled in Smith v. Allwright (1944).",
+    emergedAt: "1927-03-07",
+    milestones: [
+      {
+        date: "1927-03-07",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Nixon v. Herndon, a unanimous Court, per Justice Holmes, struck down Texas's statutory 'white primary' law, holding that 'color cannot be made the basis of a statutory classification affecting the right' to vote and that the statute plainly violated the Fourteenth Amendment's Equal Protection Clause. Holmes deemed the equal-protection violation so clear that the Court did not reach the Fifteenth Amendment claim. The ruling settled that a State may not by statute exclude voters from a primary on account of race.",
+        sourceName: "Holmes J. Nixon v. Herndon, 273 U.S. 536 (1927). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/273/536",
+      },
+      {
+        date: "1935-04-01",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Grovey v. Townsend (295 U.S. 45, 1 April 1935), a unanimous Court upheld the Texas white primary once it was imposed by the state Democratic Party's own convention resolution rather than by statute, holding that a political party's exclusion of Black voters was private action beyond the reach of the Fourteenth and Fifteenth Amendments. The decision reopened the question Herndon had appeared to settle, allowing white primaries to persist for another decade. It made the constitutional status of racial exclusion from primaries newly contested.",
+        sourceName: "Roberts J. Grovey v. Townsend, 295 U.S. 45 (1935). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/295/45",
+      },
+      {
+        date: "1944-04-03",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Smith v. Allwright (321 U.S. 649, 3 April 1944), an 8–1 Court expressly overruled Grovey v. Townsend, holding that where a State delegates the conduct of primaries to a party, the party's racial exclusion is state action that violates the Fifteenth Amendment: 'the state makes the action of the party the action of the state.' The decision definitively settled that racially exclusionary primaries are unconstitutional regardless of whether the exclusion is imposed by statute or party rule. It closed the state-action loophole Grovey had opened.",
+        sourceName: "Reed J. Smith v. Allwright, 321 U.S. 649 (1944). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/321/649",
+      },
+    ],
+  },
+
+  {
+    id: "racial-covenants-state-action-corrigan-buckley-1926",
+    claim:
+      "The U.S. Supreme Court held in Corrigan v. Buckley (271 U.S. 323, decided 24 May 1926) that racially restrictive property covenants are private contracts not prohibited by the Fifth, Thirteenth, or Fourteenth Amendments — a doctrine permitting judicial enforcement of such covenants until it was reversed in Shelley v. Kraemer (1948).",
+    emergedAt: "1926-05-24",
+    milestones: [
+      {
+        date: "1926-05-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Corrigan v. Buckley, a unanimous Court, per Justice Sanford, dismissed a challenge to a Washington, D.C. racially restrictive covenant for want of a substantial constitutional question, reasoning that the Fourteenth Amendment's prohibitions 'have reference to State action exclusively, and not to any action of private individuals,' and that the amendments did not bar private owners from restricting the disposition of their property by race. The ruling settled that racially restrictive covenants were private agreements outside constitutional reach. It let courts enforce such covenants across the country for the next two decades.",
+        sourceName: "Sanford J. Corrigan v. Buckley, 271 U.S. 323 (1926). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/271/323",
+      },
+      {
+        date: "1948-05-03",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Shelley v. Kraemer (334 U.S. 1, 3 May 1948), a unanimous Court (6–0) held that judicial enforcement of racially restrictive covenants by state courts is itself state action that violates the Equal Protection Clause of the Fourteenth Amendment: 'but for the active intervention of the state courts … petitioners would have been free to occupy the properties.' The decision reversed Corrigan's premise by locating unconstitutional state action in the enforcement rather than the covenant itself. It rendered racially restrictive covenants judicially unenforceable nationwide.",
+        sourceName: "Vinson C.J. Shelley v. Kraemer, 334 U.S. 1 (1948). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/334/1",
+      },
+    ],
+  },
+
+  {
+    id: "racial-zoning-unconstitutional-buchanan-warley-1917",
+    claim:
+      "The U.S. Supreme Court held in Buchanan v. Warley (245 U.S. 60, decided 5 November 1917) that a municipal ordinance forbidding Black or white persons from occupying homes on blocks where the other race predominated violates the Fourteenth Amendment by depriving property owners of the right to sell and dispose of their property.",
+    emergedAt: "1917-11-05",
+    milestones: [
+      {
+        date: "1917-11-05",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Buchanan v. Warley, a unanimous Court, per Justice Day, struck down Louisville's racial residential-zoning ordinance, holding that it deprived owners of the constitutionally protected right 'to acquire, use, and dispose of' property and could not be justified as a police-power measure to preserve public peace or property values. The Court held the ordinance violated the Fourteenth Amendment despite the segregation permitted by Plessy. The ruling settled that government-mandated racial zoning of residential property is unconstitutional.",
+        sourceName: "Day J. Buchanan v. Warley, 245 U.S. 60 (1917). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/245/60",
+      },
+      {
+        date: "1930-05-19",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In City of Richmond v. Deans (281 U.S. 704, 19 May 1930), the Court summarily affirmed, on the authority of Buchanan v. Warley, the invalidation of a Richmond ordinance that sought to accomplish racial residential segregation by tying occupancy to prohibited intermarriage. The per curiam affirmance confirmed that cities could not evade Buchanan through re-drafted racial zoning schemes. It cemented Buchanan as settled and durable law against government racial zoning.",
+        sourceName: "Per Curiam. City of Richmond v. Deans, 281 U.S. 704 (1930).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/281/704",
+      },
+    ],
+  },
 ];
 
 async function main() {
