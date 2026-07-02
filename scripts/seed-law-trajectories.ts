@@ -3235,6 +3235,177 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "double-jeopardy-incorporation-palko-benton-1937",
+    claim:
+      "The U.S. Supreme Court held in Palko v. Connecticut (302 U.S. 319, decided 6 December 1937) that the Fifth Amendment's guarantee against double jeopardy is not binding on the states through the Fourteenth Amendment because it is not among the rights 'of the very essence of a scheme of ordered liberty' — a holding overruled by Benton v. Maryland (395 U.S. 784, 23 June 1969).",
+    emergedAt: "1937-12-06",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1937-12-06",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Palko v. Connecticut the Court, per Justice Cardozo, held that Connecticut could retry and secure a first-degree conviction after appealing an acquittal-adjacent verdict without violating the Fourteenth Amendment, because the double jeopardy guarantee is not 'implicit in the concept of ordered liberty.' The decision settled the selective-incorporation framework and squarely held the double jeopardy clause did not bind the states.",
+        sourceName: "Cardozo J. Palko v. Connecticut, 302 U.S. 319 (1937). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/302/319",
+      },
+      {
+        date: "1969-06-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Benton v. Maryland the Court, per Justice Marshall, held that 'the Double Jeopardy Clause of the Fifth Amendment is applicable to the States through the Fourteenth Amendment' and expressly declared that 'insofar as it is inconsistent with this holding, Palko v. Connecticut is overruled.' The ruling reversed Palko and rejected its 'watered-down' approach to state application of Bill of Rights guarantees.",
+        sourceName: "Marshall J. Benton v. Maryland, 395 U.S. 784 (1969). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/395/784",
+      },
+    ],
+  },
+
+  {
+    id: "self-incrimination-incorporation-malloy-1964",
+    claim:
+      "The U.S. Supreme Court held in Twining v. New Jersey (211 U.S. 78, 9 November 1908) and again in Adamson v. California (332 U.S. 46, 23 June 1947) that the Fifth Amendment privilege against self-incrimination does not bind the states — a rule overruled by Malloy v. Hogan (378 U.S. 1, 15 June 1964), which incorporated the privilege against the states through the Fourteenth Amendment.",
+    emergedAt: "1908-11-09",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1908-11-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Twining v. New Jersey the Court held that the exemption from compulsory self-incrimination is neither a privilege or immunity of national citizenship nor a due-process requirement binding on the states, allowing New Jersey to permit adverse comment on a defendant's failure to testify. This settled that the Fifth Amendment privilege was a matter of state, not federal constitutional, law.",
+        sourceName: "Moody J. Twining v. New Jersey, 211 U.S. 78 (1908). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/211/78",
+      },
+      {
+        date: "1947-06-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Adamson v. California a 5–4 Court reaffirmed Twining, holding California could comment on a defendant's silence because the self-incrimination privilege was not protected against the states. But Justice Black's landmark dissent, joined by three justices, argued the Fourteenth Amendment was intended to incorporate the entire Bill of Rights against the states — opening a sustained doctrinal contest over selective versus total incorporation.",
+        sourceName: "Reed J. (Black J., dissenting). Adamson v. California, 332 U.S. 46 (1947).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/332/46",
+      },
+      {
+        date: "1964-06-15",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Malloy v. Hogan the Court expressly reconsidered and overruled Twining and Adamson, holding that 'the Fifth Amendment's exception from compulsory self-incrimination is also protected by the Fourteenth Amendment against abridgment by the States.' The decision incorporated the privilege and applied the same federal standard to state proceedings, resolving the contest in favor of incorporation.",
+        sourceName: "Brennan J. Malloy v. Hogan, 378 U.S. 1 (1964). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/378/1",
+      },
+    ],
+  },
+
+  {
+    id: "jury-trial-incorporation-duncan-1968",
+    claim:
+      "The U.S. Supreme Court held in Duncan v. Louisiana (391 U.S. 145, decided 20 May 1968) that the Sixth Amendment right to trial by jury in serious criminal cases is fundamental and binding on the states through the Fourteenth Amendment, overturning the earlier rule of Maxwell v. Dow (176 U.S. 581, 1900) that jury trial was not a required incident of state criminal procedure.",
+    emergedAt: "1900-02-26",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1900-02-26",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Maxwell v. Dow the Court held that neither the Privileges and Immunities Clause nor the Due Process Clause of the Fourteenth Amendment required states to provide trial by a twelve-person jury, upholding Utah's use of an eight-member jury and a prosecution by information. This settled that the Sixth Amendment jury-trial guarantee did not bind the states.",
+        sourceName: "Peckham J. Maxwell v. Dow, 176 U.S. 581 (1900). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/176/581",
+      },
+      {
+        date: "1968-05-20",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Duncan v. Louisiana the Court held that 'trial by jury in criminal cases is fundamental to the American scheme of justice' and is guaranteed by the Fourteenth Amendment in all state criminal cases that would fall within the Sixth Amendment if tried federally, reversing a conviction for a crime carrying a two-year maximum. The ruling overturned the Maxwell v. Dow position and incorporated the jury-trial right against the states.",
+        sourceName: "White J. Duncan v. Louisiana, 391 U.S. 145 (1968). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/391/145",
+      },
+    ],
+  },
+
+  {
+    id: "contract-clause-state-grant-fletcher-peck-1810",
+    claim:
+      "The U.S. Supreme Court held in Fletcher v. Peck (10 U.S. (6 Cranch) 87, decided March 1810) that a state legislature cannot constitutionally rescind a completed land grant because doing so impairs the obligation of contracts under Article I, Section 10 — the first time the Court struck down a state statute as unconstitutional.",
+    emergedAt: "1810-03-16",
+    emergedPrecision: "MONTH",
+    milestones: [
+      {
+        date: "1810-03-16",
+        precision: "MONTH",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Fletcher v. Peck, arising from the Yazoo land fraud, Chief Justice Marshall held that Georgia's 1796 repeal of an earlier land grant could not divest title held by innocent purchasers, because an executed grant is a contract and the Contract Clause bars states from impairing it. This was the first Supreme Court decision invalidating a state law as unconstitutional, establishing the Contract Clause as a robust limit on state legislative power.",
+        sourceName: "Marshall CJ. Fletcher v. Peck, 10 U.S. (6 Cranch) 87 (1810). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/10/87",
+      },
+      {
+        date: "1934-01-08",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Home Building & Loan Association v. Blaisdell the Court, per Chief Justice Hughes, upheld Minnesota's Depression-era mortgage moratorium against a Contract Clause challenge, reasoning that an emergency may furnish the occasion for temporary, reasonable restraints on contract enforcement to protect community welfare. By subordinating the Fletcher-era absolutism to the state's reserved police power, Blaisdell reopened contestation over how far the Contract Clause constrains state economic regulation.",
+        sourceName: "Hughes CJ. Home Building & Loan Association v. Blaisdell, 290 U.S. 398 (1934). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/290/398",
+      },
+    ],
+  },
+
+  {
+    id: "scotus-appellate-review-of-state-courts-martin-1816",
+    claim:
+      "The U.S. Supreme Court held in Martin v. Hunter's Lessee (14 U.S. (1 Wheat.) 304, decided 20 March 1816) that Section 25 of the Judiciary Act of 1789 is constitutional and that the Court has appellate jurisdiction to review and reverse the judgments of state courts on questions of federal law.",
+    emergedAt: "1816-03-20",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1816-03-20",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "After the Virginia Court of Appeals defied the Supreme Court's earlier judgment and denied it any power to review state courts, Justice Story held that the appellate power of the United States extends to cases pending in state courts and that Section 25 of the Judiciary Act of 1789 was supported by the letter and spirit of the Constitution. The decision established the Supreme Court's supremacy over state courts on federal questions, essential to uniform national law.",
+        sourceName: "Story J. Martin v. Hunter's Lessee, 14 U.S. (1 Wheat.) 304 (1816). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/14/304",
+      },
+      {
+        date: "1821-03-03",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Cohens v. Virginia Chief Justice Marshall extended Martin's principle to state criminal judgments, holding that the Supreme Court may review a state court's criminal conviction where a federal question is raised and rejecting Virginia's argument that state sovereignty or the Eleventh Amendment barred such review. The decision consolidated and reaffirmed federal appellate supremacy over state courts across both civil and criminal cases.",
+        sourceName: "Marshall CJ. Cohens v. Virginia, 19 U.S. (6 Wheat.) 264 (1821). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/19/264",
+      },
+    ],
+  },
 ];
 
 async function main() {
