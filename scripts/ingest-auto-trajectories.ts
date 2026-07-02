@@ -6,10 +6,10 @@
  * Resumes from a cursor file so it can be run repeatedly / interrupted.
  *
  * Usage:
- *   npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-auto-trajectories.ts [--pipeline <name>] [--batch <n>] [--dry-run]
+ *   BATCH_SIZE=<n> npx dotenv-cli -e .env.local -- npx ts-node --project tsconfig.scripts.json scripts/ingest-auto-trajectories.ts [--pipeline <name>] [--dry-run]
  */
 
-import { PrismaClient, RatifyingCommunity } from "@prisma/client";
+import { PrismaClient, RatifyingCommunity, FactStatus } from "@prisma/client";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -30,7 +30,7 @@ const PIPELINE_FILTER = (() => {
 //   reason    — human-readable reason for the transition
 //   dateField — "claimEmergedAt" (always, for now)
 type Template = {
-  toAxis: string;
+  toAxis: FactStatus;
   community: RatifyingCommunity;
   reason: string;
 };
@@ -304,7 +304,6 @@ const PIPELINE_TEMPLATES: Record<string, Template> = {
   stasi_v1:                   { toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Document from the East German Stasi archives, now publicly accessible." },
 
   // ── Science & Research ────────────────────────────────────────────────────────
-  openalex_journals_v1:       { toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Journal article entered the expert literature record." },
   nih_reporter_v1:            { toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "NIH research grant officially awarded and recorded in NIH Reporter." },
   nasa_exoplanet_v1:          { toAxis: "RECORDED", community: "EXPERT_LITERATURE", reason: "Exoplanet confirmed and officially catalogued in the NASA Exoplanet Archive." },
   space_missions_v1:          { toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Space mission officially recorded in the international space mission registry." },
@@ -329,7 +328,6 @@ const PIPELINE_TEMPLATES: Record<string, Template> = {
   sec_edgar_v1:               { toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Securities filing officially submitted to the SEC and entered the public record." },
   doj_fara_v1:                { toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Foreign agent registration officially recorded with the DOJ under FARA." },
   uspto_v1:                   { toAxis: "SETTLED", community: "INSTITUTIONAL", reason: "Patent granted by the US Patent and Trademark Office." },
-  wto_disputes_v1:            { toAxis: "SETTLED", community: "JUDICIAL", reason: "WTO Dispute Settlement Body issued ruling." },
 
   // ── Health & Pharmacovigilance ────────────────────────────────────────────────
   faers_normalized_drugs_v1:  { toAxis: "RECORDED", community: "INSTITUTIONAL", reason: "Adverse drug event officially reported to the FDA FAERS system." },
@@ -402,7 +400,8 @@ async function processPipeline(
       where: {
         ingestedBy: pipeline,
         deleted: false,
-        verificationStatus: { not: "DEPRECATED" },
+        // null != 'DEPRECATED' is NULL in SQL, so we must include nulls explicitly
+        OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
         claimEmergedAt: { not: null },
         statusHistory: { none: {} },
         ...(cursor ? { id: { gt: cursor } } : {}),
@@ -420,6 +419,7 @@ async function processPipeline(
     if (claims.length === 0) {
       // Pipeline exhausted — reset cursor to null (start fresh next run)
       cursors[pipeline] = null;
+      if (!DRY_RUN) saveCursor(cursors); // persist the reset so it survives a crash
       break;
     }
 
@@ -479,6 +479,7 @@ async function main() {
     console.log(`[${pipeline}] done. Added ${added} history entries.`);
   }
 
+  if (!DRY_RUN) saveCursor(cursors);
   console.log(`\n✓ Grand total: ${grandTotal} ClaimStatusHistory rows created.`);
   if (DRY_RUN) console.log("(dry-run — no rows written)");
 }
