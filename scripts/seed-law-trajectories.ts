@@ -1366,6 +1366,201 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "horizontal-price-fixing-per-se-1927",
+    claim:
+      "Agreements among competitors to fix, raise, or stabilize prices are per se illegal under Section 1 of the Sherman Act, regardless of whether the prices set are reasonable, as the U.S. Supreme Court held definitively in United States v. Socony-Vacuum Oil Co. (6 May 1940).",
+    emergedAt: "1927-02-21",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1927-02-21",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Trenton Potteries Co. (273 U.S. 392, 21 February 1927): Justice Stone, for the Court, held that a combination of sanitary-pottery makers controlling 82% of the market that agreed to fix prices violated the Sherman Act, and that a jury need not inquire whether the prices were reasonable. The ruling recorded the principle that the power to fix prices—reasonable today, unreasonable tomorrow—is itself the evil the Act forbids, establishing price-fixing as unlawful without a reasonableness inquiry.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Trenton Potteries Co., 273 U.S. 392 (1927).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/273/392",
+      },
+      {
+        date: "1940-05-06",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Socony-Vacuum Oil Co. (310 U.S. 150, 6 May 1940): After Appalachian Coals, Inc. v. United States (1933) had briefly suggested some cooperative price coordination might survive under the rule of reason, Justice Douglas's majority opinion resolved the doubt, holding that 'any combination which tampers with price structures is engaged in an unlawful activity' and that price-fixing is illegal per se 'without the necessity of minute inquiry.' The decision cemented an absolute, industry-neutral per se rule that remains the governing standard.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Socony-Vacuum Oil Co., 310 U.S. 150 (1940).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/310/150",
+      },
+    ],
+  },
+
+  {
+    id: "vertical-nonprice-restraints-per-se-1967",
+    claim:
+      "Non-price vertical restraints—a manufacturer's post-sale restrictions on the territories or customers of its distributors—were held per se illegal under Section 1 of the Sherman Act by the U.S. Supreme Court in United States v. Arnold, Schwinn & Co. (12 June 1967), a rule the Court overruled ten years later.",
+    emergedAt: "1967-06-12",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1967-06-12",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Arnold, Schwinn & Co. (388 U.S. 365, 12 June 1967): The Supreme Court held that once a manufacturer parts with title and risk to its goods, post-sale restrictions confining distributors to assigned territories or customers are a per se violation of Section 1. The ruling settled a bright-line prohibition on non-price vertical restraints, distinguishing only consignment/agency arrangements where the manufacturer retained ownership.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Arnold, Schwinn & Co., 388 U.S. 365 (1967).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/388/365",
+      },
+      {
+        date: "1977-06-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Continental T.V., Inc. v. GTE Sylvania Inc. (433 U.S. 36, 23 June 1977): Justice Powell's majority expressly held that 'the per se rule stated in Schwinn must be overruled,' ruling that vertical non-price restraints must be judged under the rule of reason with attention to their actual interbrand-competitive effects. The reversal marked the Court's turn toward economic analysis in antitrust and repudiated the formalistic title-passing distinction of Schwinn.",
+        sourceName:
+          "Supreme Court of the United States. Continental T.V., Inc. v. GTE Sylvania Inc., 433 U.S. 36 (1977).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/433/36",
+      },
+    ],
+  },
+
+  {
+    id: "section-2-monopolization-standard-1920",
+    claim:
+      "The offense of monopolization under Section 2 of the Sherman Act consists of the possession of monopoly power in a relevant market together with the willful acquisition or maintenance of that power—a standard that evolved from the U.S. Steel 'mere size is no offense' rule (1920) through Alcoa (1945) to the two-element test settled in United States v. Grinnell Corp. (13 June 1966).",
+    emergedAt: "1920-03-01",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1920-03-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. United States Steel Corp. (251 U.S. 417, 1 March 1920): The Supreme Court declined to dissolve U.S. Steel despite its roughly 50% market share, holding that 'the law does not make mere size an offense, or the existence of unexerted power an offense'—the Act 'requires overt acts.' This settled an early, permissive monopolization standard under which dominant market position alone, absent abusive conduct, was lawful.",
+        sourceName:
+          "Supreme Court of the United States. United States v. United States Steel Corp., 251 U.S. 417 (1920).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/251/417",
+      },
+      {
+        date: "1945-03-12",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Aluminum Co. of America (148 F.2d 416, 2d Cir., 12 March 1945): Judge Learned Hand, writing for a Second Circuit panel designated as the court of last resort after the Supreme Court lacked a quorum, held that Alcoa's ~90% share of the virgin-ingot market constituted monopoly power and that its practice of progressively 'embracing each new opportunity' to expand capacity was the willful maintenance the statute condemned—monopoly is lawful only if 'thrust upon' the firm. The opinion sharply contested the U.S. Steel size-is-no-offense approach and reoriented Section 2 toward market structure and intent.",
+        sourceName:
+          "U.S. Court of Appeals for the Second Circuit. United States v. Aluminum Co. of America, 148 F.2d 416 (2d Cir. 1945).",
+        sourceUrl:
+          "https://www.courtlistener.com/opinion/1503668/united-states-v-aluminum-co-of-america/",
+      },
+      {
+        date: "1966-06-13",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Grinnell Corp. (384 U.S. 563, 13 June 1966): Justice Douglas synthesized the competing strands into the canonical two-element test—'(1) the possession of monopoly power in the relevant market and (2) the willful acquisition or maintenance of that power as distinguished from growth or development as a consequence of a superior product, business acumen, or historic accident.' Grinnell's 87% share established the power element, and the formulation has governed Section 2 monopolization analysis ever since.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Grinnell Corp., 384 U.S. 563 (1966).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/384/563",
+      },
+    ],
+  },
+
+  {
+    id: "merger-structural-presumption-1962",
+    claim:
+      "A merger that produces a firm controlling an undue share of a relevant market and significantly increases concentration is presumptively unlawful under Section 7 of the Clayton Act (as amended by the Celler-Kefauver Act of 1950)—a structural presumption established in United States v. Philadelphia National Bank (17 June 1963) and later made rebuttable in United States v. General Dynamics (1974).",
+    emergedAt: "1962-06-25",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "1962-06-25",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Brown Shoe Co. v. United States (370 U.S. 294, 25 June 1962): In one of the first cases interpreting Section 7 as amended by the 1950 Celler-Kefauver Act, the Court blocked the Brown–Kinney shoe merger, emphasizing Congress's intent to arrest concentration 'at its outset and before it gathered momentum' and looking to industry integration trends rather than share alone. The decision recorded that incipient anticompetitive tendencies in both horizontal and vertical mergers were now judicially cognizable.",
+        sourceName:
+          "Supreme Court of the United States. Brown Shoe Co. v. United States, 370 U.S. 294 (1962).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/370/294",
+      },
+      {
+        date: "1963-06-17",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Philadelphia National Bank (374 U.S. 321, 17 June 1963): Justice Brennan held that a merger producing 'an undue percentage share of the relevant market' and a significant increase in concentration 'is so inherently likely to lessen competition substantially that it must be enjoined in the absence of evidence clearly showing that the merger is not likely to have such anticompetitive effects.' The resulting bank would hold ~30% of the four-county market, with the top two banks rising from 44% to 59%. This settled the structural presumption that made market-share statistics presumptively dispositive.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Philadelphia National Bank, 374 U.S. 321 (1963).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/374/321",
+      },
+      {
+        date: "1974-03-19",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. General Dynamics Corp. (415 U.S. 486, 19 March 1974): Justice Stewart held that market-share statistics 'while of great significance, were not conclusive indicators of anticompetitive effects,' and upheld dismissal because the acquired coal producer's depleted reserves meant its statistical share overstated its future competitive significance. By allowing the government's prima facie structural case to be rebutted by industry-specific evidence, the ruling contested the near-automatic presumption of Philadelphia National Bank and opened merger analysis to functional, forward-looking inquiry.",
+        sourceName:
+          "Supreme Court of the United States. United States v. General Dynamics Corp., 415 U.S. 486 (1974).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/415/486",
+      },
+    ],
+  },
+
+  {
+    id: "platform-monopoly-maintenance-microsoft-2001",
+    claim:
+      "A dominant software platform violates Section 2 of the Sherman Act when it uses anticompetitive means—not competition on the merits—to maintain its operating-system monopoly against nascent 'middleware' threats, as the en banc U.S. Court of Appeals for the D.C. Circuit held in United States v. Microsoft Corp. (28 June 2001).",
+    emergedAt: "2000-04-03",
+    emergedPrecision: "DAY",
+    milestones: [
+      {
+        date: "2000-04-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Microsoft Corp. (87 F. Supp. 2d 30, D.D.C., 3 April 2000): Judge Thomas Penfield Jackson's conclusions of law found that Microsoft had illegally maintained its Windows monopoly and unlawfully tied Internet Explorer to the operating system, and he subsequently ordered the company split into two. The sweeping structural remedy and the per se treatment of software tying made the platform-monopolization theory intensely contested pending appeal.",
+        sourceName:
+          "U.S. Court of Appeals for the D.C. Circuit. United States v. Microsoft Corp., 253 F.3d 34 (D.C. Cir. 2001) (recounting the April 2000 district-court judgment and remedy).",
+        sourceUrl: "https://www.law.berkeley.edu/files/US_v_Microsoft3.pdf",
+      },
+      {
+        date: "2001-06-28",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Microsoft Corp. (253 F.3d 34, D.C. Cir., 28 June 2001): The en banc court unanimously affirmed that Microsoft had unlawfully maintained its operating-system monopoly under Section 2 through exclusionary dealings with OEMs and its handling of the browser and Java, applying a rule-of-reason framework; it reversed the per se tying holding and vacated the breakup remedy for further proceedings. The decision settled the modern analytic framework for platform monopolization—monopoly maintenance judged by anticompetitive effect versus procompetitive justification—that structures antitrust scrutiny of digital platforms today.",
+        sourceName:
+          "U.S. Court of Appeals for the D.C. Circuit. United States v. Microsoft Corp., 253 F.3d 34 (D.C. Cir. 2001) (en banc).",
+        sourceUrl: "https://www.law.berkeley.edu/files/US_v_Microsoft3.pdf",
+      },
+    ],
+  },
 ];
 
 async function main() {
