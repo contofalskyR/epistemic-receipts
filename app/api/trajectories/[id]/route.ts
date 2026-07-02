@@ -16,25 +16,31 @@ export async function GET(
   const wantBibtex = format === "bibtex";
   const wantRis = format === "ris";
 
-  const claim = await prisma.claim.findFirst({
-    where: { externalId: `trajectory:${id}`, deleted: false },
+  const statusHistorySelect = {
+    orderBy: { occurredAt: "asc" as const },
     select: {
-      id: true,
-      text: true,
-      statusHistory: {
-        orderBy: { occurredAt: "asc" },
-        select: {
-          fromAxis: true,
-          toAxis: true,
-          community: true,
-          occurredAt: true,
-          datePrecision: true,
-          reason: true,
-          markerSource: { select: { name: true, url: true, publishedAt: true } },
-        },
-      },
+      fromAxis: true,
+      toAxis: true,
+      community: true,
+      occurredAt: true,
+      datePrecision: true,
+      reason: true,
+      markerSource: { select: { name: true, url: true, publishedAt: true } },
     },
+  };
+
+  let claim = await prisma.claim.findFirst({
+    where: { externalId: `trajectory:${id}`, deleted: false },
+    select: { id: true, text: true, statusHistory: statusHistorySelect },
   });
+
+  // Fallback: treat the path param as a raw claim CUID (corpus search results).
+  if (!claim) {
+    claim = await prisma.claim.findFirst({
+      where: { id, deleted: false },
+      select: { id: true, text: true, statusHistory: statusHistorySelect },
+    });
+  }
 
   if (!claim) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
