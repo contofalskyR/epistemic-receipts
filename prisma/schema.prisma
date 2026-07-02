@@ -82,6 +82,7 @@ model Claim {
   billCoverage             BillCoverage?
   locations                ClaimLocation[]
   statusHistory            ClaimStatusHistory[]
+  trajectorySearchDoc      TrajectorySearchDoc?
 
   @@index([ingestedBy])
   @@index([ingestedBy, id])
@@ -738,4 +739,18 @@ model TransitionClaimsSnapshot {
   createdAt            DateTime @default(now())
 
   claimStatusHistory ClaimStatusHistory @relation(fields: [claimStatusHistoryId], references: [id], onDelete: Cascade)
+}
+
+// Full-text search document for trajectory semantic search.
+// Stores concatenated claim text + transition reasons for tsvector ranking.
+// Populated by scripts/build-trajectory-search-index.ts
+model TrajectorySearchDoc {
+  id        String   @id @default(cuid())
+  claimId   String   @unique
+  fullText  String
+  updatedAt DateTime @updatedAt
+
+  claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
+
+  @@index([claimId])
 }
