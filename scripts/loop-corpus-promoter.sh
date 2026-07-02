@@ -186,7 +186,7 @@ while true; do
 
     # Parse output.
     FILE_PATH=$(echo "$OUTPUT" | grep '^FILE:' | head -1 | sed 's/^FILE://')
-    FILE_CONTENT=$(echo "$OUTPUT" | sed -n '/^FILE:/,/^END_FILE/p' | grep -v '^FILE:\|^END_FILE')
+    FILE_CONTENT=$(echo "$OUTPUT" | sed -n '/^FILE:/,/^END_FILE/p' | grep -v '^FILE:\|^END_FILE' | grep -v '^```')
     PROMOTED=$(echo "$OUTPUT" | grep '^PROMOTED:' | head -1 | sed 's/^PROMOTED://' | tr -d ' ')
     SKIPPED=$(echo "$OUTPUT" | grep '^SKIPPED:' | head -1 | sed 's/^SKIPPED://')
 
