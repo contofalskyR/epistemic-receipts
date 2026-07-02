@@ -332,6 +332,183 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "judicial-review-marbury-1803",
+    claim:
+      "The U.S. Supreme Court held in Marbury v. Madison, decided 24 February 1803, that it is the province and duty of the federal judiciary to say what the law is and to declare an act of Congress that conflicts with the Constitution void — establishing the power of judicial review.",
+    emergedAt: "1803-02-24",
+    milestones: [
+      {
+        date: "1803-02-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Marbury v. Madison (5 U.S. 137, 24 Feb 1803): Chief Justice Marshall, writing for a unanimous Court, held that Section 13 of the Judiciary Act of 1789 unconstitutionally expanded the Court's original jurisdiction and was therefore void — 'a legislative act contrary to the constitution is not law.' The decision resolved the previously open question of whether courts could invalidate acts of Congress, asserting judicial review as a core judicial function.",
+        sourceName: "Marshall CJ. Marbury v. Madison, 5 U.S. (1 Cranch) 137 (1803). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/5/137",
+      },
+      {
+        date: "1958-09-29",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Cooper v. Aaron (358 U.S. 1, 29 Sep 1958): Facing Arkansas's resistance to school desegregation, all nine justices individually signed an opinion reaffirming that Marbury established 'the basic principle that the federal judiciary is supreme in the exposition of the law of the Constitution,' binding on state officials under Article VI. The ruling cemented judicial supremacy as a permanent, indispensable feature of the constitutional system 155 years after Marbury.",
+        sourceName: "Supreme Court of the United States. Cooper v. Aaron, 358 U.S. 1 (1958). Per curiam opinion signed by all nine Justices.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/358/1",
+      },
+    ],
+  },
+
+  {
+    id: "implied-powers-mcculloch-1819",
+    claim:
+      "The U.S. Supreme Court held in McCulloch v. Maryland, decided 6 March 1819, that Congress has implied powers under the Necessary and Proper Clause to charter a national bank and that a state may not tax a federal instrumentality — establishing broad national authority over the states.",
+    emergedAt: "1819-03-06",
+    milestones: [
+      {
+        date: "1819-03-06",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "McCulloch v. Maryland (17 U.S. 316, 6 Mar 1819): A unanimous Court led by Chief Justice Marshall held that the Necessary and Proper Clause grants Congress discretion to choose any means rationally related to an enumerated power ('let the end be legitimate ... all means which are appropriate ... are constitutional'), upholding the Second Bank of the United States. It also struck Maryland's tax on the Bank, reasoning that 'the power to tax involves the power to destroy.' The decision settled the long-disputed scope of federal implied powers and the supremacy of federal instrumentalities over state interference.",
+        sourceName: "Marshall CJ. McCulloch v. Maryland, 17 U.S. (4 Wheat.) 316 (1819). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/17/316",
+      },
+    ],
+  },
+
+  {
+    id: "exclusionary-rule-1914",
+    claim:
+      "U.S. courts must exclude evidence obtained in violation of the Fourth Amendment's guarantee against unreasonable searches and seizures — a rule first established for federal courts in Weeks v. United States (1914).",
+    emergedAt: "1914-02-24",
+    milestones: [
+      {
+        date: "1914-02-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Weeks v. United States (232 U.S. 383, 24 Feb 1914): A unanimous Court held that letters seized from Weeks's home by a federal officer without a warrant had to be returned and could not be used against him, because admitting illegally seized evidence would render the Fourth Amendment's protections meaningless. The ruling established the federal exclusionary rule as the enforcement mechanism for the Fourth Amendment.",
+        sourceName: "Day J. Weeks v. United States, 232 U.S. 383 (1914). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/232/383",
+      },
+      {
+        date: "1949-06-27",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Wolf v. Colorado (338 U.S. 25, 27 Jun 1949): The Court held that the Fourth Amendment's core protection is enforceable against the states through the Fourteenth Amendment, but declined to require the exclusionary rule in state prosecutions, holding that states could rely on alternative remedies such as civil suits and police discipline. This split the right from its federal remedy and left contested whether exclusion was constitutionally compelled.",
+        sourceName: "Frankfurter J. Wolf v. Colorado, 338 U.S. 25 (1949). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/338/25",
+      },
+      {
+        date: "1961-06-19",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Mapp v. Ohio (367 U.S. 643, 19 Jun 1961): A 6–3 Court overruled Wolf, holding that 'all evidence obtained by searches and seizures in violation of the Constitution is, by that same authority, inadmissible in a state court.' The decision extended the exclusionary rule to the states, making it a uniform, constitutionally required remedy and resolving the federal/state inconsistency Wolf had created.",
+        sourceName: "Clark J. Mapp v. Ohio, 367 U.S. 643 (1961). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/367/643",
+      },
+      {
+        date: "1984-07-05",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Leon (468 U.S. 897, 5 Jul 1984): The Court created a 'good-faith' exception, holding that evidence seized by officers in objectively reasonable reliance on a warrant later found defective need not be excluded. By reframing the exclusionary rule as a judicially created deterrent remedy rather than a personal constitutional right, Leon reopened contestation over the rule's scope and triggered decades of further narrowing (e.g., Herring, Davis).",
+        sourceName: "White J. United States v. Leon, 468 U.S. 897 (1984). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/468/897",
+      },
+    ],
+  },
+
+  {
+    id: "brady-disclosure-doctrine-1963",
+    claim:
+      "Due process requires the prosecution to disclose to the defense evidence favorable and material to guilt or punishment — the Brady disclosure duty established in Brady v. Maryland (1963).",
+    emergedAt: "1963-05-13",
+    milestones: [
+      {
+        date: "1963-05-13",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Brady v. Maryland (373 U.S. 83, 13 May 1963): The Court held that 'the suppression by the prosecution of evidence favorable to an accused upon request violates due process where the evidence is material either to guilt or to punishment, irrespective of the good faith or bad faith of the prosecution.' The ruling established an affirmative constitutional disclosure obligation on prosecutors as a component of the fair-trial guarantee.",
+        sourceName: "Douglas J. Brady v. Maryland, 373 U.S. 83 (1963). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/373/83",
+      },
+      {
+        date: "1985-07-02",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "United States v. Bagley (473 U.S. 667, 2 Jul 1985): The Court unified the standard for Brady violations around a single materiality test — evidence is material only if there is 'a reasonable probability that, had the evidence been disclosed, the result of the proceeding would have been different.' By conditioning the constitutional violation on this outcome-based standard rather than the fact of suppression, Bagley made the doctrine's application uncertain and heavily litigated.",
+        sourceName: "Blackmun J. United States v. Bagley, 473 U.S. 667 (1985). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/473/667",
+      },
+      {
+        date: "1995-04-19",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Kyles v. Whitley (514 U.S. 419, 19 Apr 1995): The Court clarified that Brady materiality is assessed by the cumulative effect of all suppressed favorable evidence, not item by item, and that the prosecution bears an inescapable duty to learn of and disclose favorable evidence known to police even if not communicated to the prosecutor. The decision stabilized the Bagley standard into a workable, enforceable rule.",
+        sourceName: "Souter J. Kyles v. Whitley, 514 U.S. 419 (1995). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/514/419",
+      },
+    ],
+  },
+
+  {
+    id: "prigg-fugitive-slave-federal-power-1842",
+    claim:
+      "The U.S. Supreme Court held in Prigg v. Pennsylvania, decided 1 March 1842, that the Constitution's Fugitive Slave Clause and the 1793 Fugitive Slave Act vested exclusive federal power over the recapture of fugitive slaves, rendering state personal-liberty laws that interfered with rendition unconstitutional.",
+    emergedAt: "1842-03-01",
+    milestones: [
+      {
+        date: "1842-03-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Prigg v. Pennsylvania (41 U.S. 539, 1 Mar 1842): Justice Story, for the Court, held that the Fugitive Slave Clause guaranteed a slaveholder's right of recaption, that Congress had constitutional power to enact the 1793 Fugitive Slave Act, and that federal power over rendition was exclusive — so Pennsylvania's 1826 personal-liberty law was void and Prigg's conviction for kidnapping was reversed. The ruling settled the constitutional supremacy of federal fugitive-slave enforcement over conflicting state protections.",
+        sourceName: "Story J. Prigg v. Pennsylvania, 41 U.S. (16 Pet.) 539 (1842). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/41/539",
+      },
+      {
+        date: "1865-12-06",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Thirteenth Amendment (ratified 6 Dec 1865): The abolition of slavery and involuntary servitude extinguished the legal category of 'fugitive slave' and mooted the Fugitive Slave Clause of Article IV, nullifying the constitutional foundation of Prigg's holding. The federal fugitive-rendition regime that Prigg had made supreme ceased to have any lawful subject, ending the doctrine by constitutional amendment.",
+        sourceName: "U.S. Constitution, Amendment XIII (ratified 6 December 1865). Abolition of slavery and involuntary servitude.",
+        sourceUrl: "https://www.law.cornell.edu/constitution/amendmentxiii",
+      },
+    ],
+  },
 ];
 
 async function main() {
