@@ -4394,6 +4394,169 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "predatory-pricing-recoupment-1993",
+    claim:
+      "Below-cost pricing is unlawful predatory pricing under the Sherman Act and the Robinson-Patman Act only where the plaintiff proves the defendant had a reasonable prospect of recouping its below-cost investment through later supracompetitive prices — a recoupment requirement the U.S. Supreme Court established in Brooke Group Ltd. v. Brown & Williamson Tobacco Corp. (21 June 1993), displacing the permissive primary-line liability standard of Utah Pie Co. v. Continental Baking Co. (1967).",
+    emergedAt: "1967-04-24",
+    emergedPrecision: "DAY",
+    claimType: "HYBRID",
+    milestones: [
+      {
+        date: "1967-04-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "In Utah Pie Co. v. Continental Baking Co., the U.S. Supreme Court reversed a directed verdict and allowed a primary-line price-discrimination claim to proceed on evidence of a 'drastically declining price structure,' holding that competitive injury need not involve the immediate destruction of a competitor. The decision recorded a permissive predatory-pricing standard under which aggressive price-cutting by larger rivals could itself support Robinson-Patman liability, largely without economic scrutiny of whether the predator could ever profit.",
+        sourceName:
+          "Supreme Court of the United States. Utah Pie Co. v. Continental Baking Co., 386 U.S. 685. 1967.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/386/685",
+        methodologyType: "primary",
+      },
+      {
+        date: "1986-03-26",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Matsushita Electric Industrial Co. v. Zenith Radio Corp., the U.S. Supreme Court held on summary judgment that predatory-pricing conspiracies are economically implausible because conspirators must have 'a reasonable expectation of recovering, in the form of later monopoly profits, more than the losses suffered,' making such schemes 'self-deterring.' By importing the recoupment logic of Chicago-School economics, the Court cast the permissive Utah Pie approach into doubt and opened the predatory-pricing standard to sustained contestation.",
+        sourceName:
+          "Supreme Court of the United States. Matsushita Elec. Indus. Co. v. Zenith Radio Corp., 475 U.S. 574. 1986.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/475/574",
+        methodologyType: "primary",
+      },
+      {
+        date: "1993-06-21",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Brooke Group Ltd. v. Brown & Williamson Tobacco Corp., the U.S. Supreme Court held that a predatory-pricing plaintiff, whether under the Sherman Act or the Robinson-Patman Act, must prove both below-cost pricing and 'a reasonable prospect...of recouping its investment in below-cost prices,' reasoning that without recoupment low prices merely enhance consumer welfare. The decision settled recoupment as an indispensable element of any predatory-pricing claim, the governing federal standard ever since.",
+        sourceName:
+          "Supreme Court of the United States. Brooke Group Ltd. v. Brown & Williamson Tobacco Corp., 509 U.S. 209. 1993.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/509/209",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "patent-tying-market-power-presumption-2006",
+    claim:
+      "In a tying arrangement, the mere fact that the tying product is patented no longer creates a presumption that the seller possesses market power — the U.S. Supreme Court, in Illinois Tool Works Inc. v. Independent Ink, Inc. (1 March 2006), unanimously abandoned the presumption of market power from patents that it had established in International Salt Co. v. United States (1947) and United States v. Loew's Inc. (1962), requiring plaintiffs to prove market power by evidence.",
+    emergedAt: "1947-11-10",
+    emergedPrecision: "DAY",
+    claimType: "HYBRID",
+    milestones: [
+      {
+        date: "1947-11-10",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In International Salt Co. v. United States, the U.S. Supreme Court held it a per se violation of Section 1 of the Sherman Act and Section 3 of the Clayton Act for the country's largest industrial-salt producer to require lessees of its patented salt-processing machines to buy only its unpatented salt. The decision treated the patent on the tying machine as itself sufficient to establish the economic power needed to condemn the tie, settling a presumption that a patent confers market power in tying analysis.",
+        sourceName:
+          "Supreme Court of the United States. International Salt Co. v. United States, 332 U.S. 392. 1947.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/332/392",
+        methodologyType: "primary",
+      },
+      {
+        date: "2006-03-01",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Illinois Tool Works Inc. v. Independent Ink, Inc., a unanimous U.S. Supreme Court held that 'in all cases involving a tying arrangement, the plaintiff must prove that the defendant has market power in the tying product,' expressly rejecting the presumption that a patent confers such power. The Court traced the presumption's migration from patent-misuse law into antitrust via International Salt and Loew's and repudiated it, aligning tying doctrine with modern economic learning and Congress's 1988 patent-misuse amendments.",
+        sourceName:
+          "Supreme Court of the United States. Illinois Tool Works Inc. v. Independent Ink, Inc., 547 U.S. 28. 2006.",
+        sourceUrl:
+          "https://caselaw.findlaw.com/court/us-supreme-court/547/28.html",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "vertical-maximum-price-fixing-albrecht-khan-1997",
+    claim:
+      "A seller's agreement setting a maximum resale price for its distributors is judged under the rule of reason rather than condemned per se under Section 1 of the Sherman Act — the U.S. Supreme Court unanimously overruled its contrary per se rule from Albrecht v. Herald Co. (1968) in State Oil Co. v. Khan (4 November 1997).",
+    emergedAt: "1968-03-04",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1968-03-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Albrecht v. Herald Co., the U.S. Supreme Court held that a newspaper publisher's arrangement forcing a carrier to observe a maximum resale price was, 'without more, an illegal restraint of trade' per se unlawful under Section 1 of the Sherman Act, rejecting any distinction between maximum and minimum resale price fixing. The decision settled a bright-line per se prohibition on vertical maximum price fixing.",
+        sourceName:
+          "Supreme Court of the United States. Albrecht v. Herald Co., 390 U.S. 145. 1968.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/390/145",
+        methodologyType: "primary",
+      },
+      {
+        date: "1997-11-04",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In State Oil Co. v. Khan, a unanimous Court per Justice O'Connor held 'Albrecht is overruled,' concluding that vertical maximum price fixing should be evaluated under the rule of reason because such restraints can benefit consumers by preventing dealers from exploiting downstream market power. Grounded in the intervening economic critiques and the Court's Sylvania-line turn to effects-based analysis, the decision reversed a 29-year-old per se rule and reoriented vertical maximum price restraints toward case-by-case competitive scrutiny.",
+        sourceName:
+          "Supreme Court of the United States. State Oil Co. v. Khan, 522 U.S. 3. 1997.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/522/3",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "ncaa-amateurism-antitrust-deference-2021",
+    claim:
+      "The NCAA's rules restraining student-athlete compensation are subject to ordinary rule-of-reason antitrust scrutiny with no special judicial deference to amateurism — the U.S. Supreme Court applied the rule of reason to NCAA restraints in NCAA v. Board of Regents (27 June 1984) while suggesting in dicta that amateurism rules were presumptively procompetitive, a deference the Court unanimously rejected in NCAA v. Alston (21 June 2021).",
+    emergedAt: "1984-06-27",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1984-06-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "In NCAA v. Board of Regents of the University of Oklahoma, the U.S. Supreme Court struck down the NCAA's television-broadcast restraints under the rule of reason rather than a per se rule, reasoning that some horizontal cooperation is essential for the product to exist. In dicta, the Court observed that NCAA rules preserving amateurism 'may be' procompetitive and 'entirely consistent' with the Sherman Act — language lower courts read for decades as commanding deference to amateurism restrictions, recording an ambiguous presumption of validity.",
+        sourceName:
+          "Supreme Court of the United States. NCAA v. Board of Regents of the University of Oklahoma, 468 U.S. 85. 1984.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/468/85",
+        methodologyType: "primary",
+      },
+      {
+        date: "2021-06-21",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In NCAA v. Alston, a unanimous Court per Justice Gorsuch affirmed the invalidation of NCAA caps on education-related benefits, holding that nothing about the NCAA or amateur sports warrants departing from ordinary rule-of-reason analysis and that a party cannot 'relabel a restraint as a product feature and declare it immune.' The decision settled that the Board of Regents amateurism dicta conferred no special antitrust deference, subjecting NCAA compensation restraints to full rule-of-reason scrutiny.",
+        sourceName:
+          "Supreme Court of the United States. National Collegiate Athletic Assn. v. Alston, 594 U.S. 69 (No. 20-512). 2021.",
+        sourceUrl:
+          "https://www.supremecourt.gov/opinions/20pdf/20-512_gfbh.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
