@@ -6281,6 +6281,194 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "unwed-biological-father-parental-rights-lehr-1983",
+    claim:
+      "The U.S. Supreme Court held in Lehr v. Robertson (463 U.S. 248, decided 27 June 1983) that an unwed biological father's constitutional right to notice and a role in his child's adoption arises only when he has grasped the biological connection and developed an actual parental relationship — biological paternity alone does not merit due-process or equal-protection protection.",
+    emergedAt: "1972-04-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1972-04-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "Stanley v. Illinois (405 U.S. 645, 3 April 1972) held that an unwed father was entitled to a hearing on his fitness before the state could remove his children, recognizing for the first time a due-process interest of biological fathers in their children. The decision opened, but did not define the limits of, unwed fathers' constitutional parental rights.",
+        sourceName:
+          "Supreme Court of the United States. Stanley v. Illinois, 405 U.S. 645 (1972).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/405/645",
+        methodologyType: "primary",
+      },
+      {
+        date: "1979-04-24",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Caban v. Mohammed (441 U.S. 380, 24 April 1979) struck down, on equal-protection grounds, a New York law that let unwed mothers but not unwed fathers block an adoption by withholding consent, at least where the father had established a substantial relationship with the child. The ruling made clear that gender-based distinctions between unwed parents were vulnerable, but left unsettled how much of a relationship a father must show to claim protection.",
+        sourceName:
+          "Supreme Court of the United States. Caban v. Mohammed, 441 U.S. 380 (1979).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/441/380",
+        methodologyType: "primary",
+      },
+      {
+        date: "1983-06-27",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Lehr v. Robertson (463 U.S. 248, 27 June 1983) held that a putative father who had never established a substantial relationship with his child had no constitutional right to notice of the child's adoption, because 'the mere existence of a biological link does not merit equivalent constitutional protection.' The Court settled the modern standard: biological paternity confers only 'an opportunity' to develop a parental relationship, and constitutional protection attaches only when the father grasps that opportunity and accepts responsibility.",
+        sourceName:
+          "Supreme Court of the United States. Lehr v. Robertson, 463 U.S. 248 (1983).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/463/248",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "icwa-constitutionality-haaland-brackeen-2023",
+    claim:
+      "The U.S. Supreme Court held in Haaland v. Brackeen (599 U.S. 255, decided 15 June 2023) that the Indian Child Welfare Act of 1978 — which sets adoption and foster-placement preferences favoring Native families for Native children — is a constitutional exercise of Congress's power over Indian affairs and does not violate the anticommandeering principle.",
+    emergedAt: "1978-11-08",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1978-11-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Congress enacted the Indian Child Welfare Act (Pub. L. 95-608, signed 8 November 1978) in response to the systematic removal of Native children from their families, imposing federal placement preferences and heightened procedural protections in state child-custody proceedings involving Indian children. The statute recorded a federal rule subordinating state family-law discretion to tribal and familial continuity interests.",
+        sourceName:
+          "Indian Child Welfare Act of 1978, Pub. L. 95-608, 92 Stat. 3069.",
+        sourceUrl:
+          "https://www.govinfo.gov/content/pkg/STATUTE-92/pdf/STATUTE-92-Pg3069.pdf",
+        methodologyType: "primary",
+      },
+      {
+        date: "2013-06-25",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Adoptive Couple v. Baby Girl (570 U.S. 637, 25 June 2013) narrowly construed ICWA's §§ 1912(d) and (f) to exclude a biological Indian father who had never had custody, and Justice Thomas's concurrence questioned whether Congress had constitutional authority to enact ICWA at all. The decision narrowed the statute and opened an explicit constitutional attack that lower courts, culminating in the en banc Fifth Circuit's fractured 2021 ruling in Brackeen v. Haaland, would take up in earnest.",
+        sourceName:
+          "Supreme Court of the United States. Adoptive Couple v. Baby Girl, 570 U.S. 637 (2013).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/12-399",
+        methodologyType: "primary",
+      },
+      {
+        date: "2023-06-15",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Haaland v. Brackeen (599 U.S. 255, 15 June 2023) a 7–2 Court rejected the Article I and Tenth Amendment (anticommandeering) challenges, holding Congress's power over Indian affairs 'well established and broad' and that ICWA's requirements on state courts and agencies do not unconstitutionally commandeer the states. The Court dismissed the equal-protection and nondelegation challenges for lack of standing, leaving ICWA intact and settling its facial constitutionality.",
+        sourceName:
+          "Supreme Court of the United States. Haaland v. Brackeen, 599 U.S. 255 (2023).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/21-376",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "gender-based-parental-citizenship-transmission-morales-santana-2017",
+    claim:
+      "The U.S. Supreme Court held in Sessions v. Morales-Santana (582 U.S. 47, decided 12 June 2017) that the sex-based difference in the physical-presence requirement for an unwed U.S.-citizen father versus mother to transmit citizenship to a foreign-born child violates the Fifth Amendment's equal-protection guarantee.",
+    emergedAt: "2001-06-11",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2001-06-11",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "Nguyen v. INS (533 U.S. 53, 11 June 2001) upheld, 5–4, a sex-based distinction in derivative-citizenship law requiring an unwed citizen father (but not mother) to take affirmative steps to establish paternity before a child's eighteenth birthday. The Court applied intermediate scrutiny but sustained the classification, leaving contested whether other gender lines in citizenship transmission could survive equal-protection review.",
+        sourceName:
+          "Supreme Court of the United States. Nguyen v. INS, 533 U.S. 53 (2001).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/533/53",
+        methodologyType: "primary",
+      },
+      {
+        date: "2017-06-12",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Sessions v. Morales-Santana (582 U.S. 47, 12 June 2017) held that the shorter physical-presence requirement for unwed citizen mothers, versus the longer one for unwed fathers, was unconstitutional sex discrimination under the Fifth Amendment. Because the Court could not extend the mother's exception without usurping Congress, it 'leveled down,' making the longer requirement uniform, but it settled that such gender-based residency differentials in citizenship transmission cannot stand.",
+        sourceName:
+          "Supreme Court of the United States. Sessions v. Morales-Santana, 582 U.S. 47 (2017).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/15-1191",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "abortion-clinic-buffer-zone-speech-hill-2000",
+    claim:
+      "The U.S. Supreme Court held in Hill v. Colorado (530 U.S. 703, decided 28 June 2000) that a state law barring approach within eight feet of an unconsenting person near a health-care-facility entrance, to leaflet or protest, is a content-neutral time-place-manner regulation consistent with the First Amendment.",
+    emergedAt: "2000-06-28",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2000-06-28",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Hill v. Colorado (530 U.S. 703, 28 June 2000) upheld, 6–3, Colorado's floating eight-foot buffer around people near abortion-clinic entrances as a content-neutral, narrowly tailored regulation protecting clinic access and patient privacy. The decision settled that states could restrict sidewalk 'counseling' speech outside reproductive-health facilities, drawing sharp dissents from Scalia, Kennedy, and Thomas.",
+        sourceName:
+          "Supreme Court of the United States. Hill v. Colorado, 530 U.S. 703 (2000).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/530/703",
+        methodologyType: "primary",
+      },
+      {
+        date: "2014-06-26",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "McCullen v. Coakley (573 U.S. 464, 26 June 2014) unanimously struck down Massachusetts's 35-foot fixed buffer zone around abortion clinics as insufficiently tailored under the First Amendment, while pointedly distinguishing rather than overruling Hill. Scalia's concurrence (joined by Kennedy and Thomas) argued Hill should be overruled outright, leaving Hill's continued validity openly contested.",
+        sourceName:
+          "Supreme Court of the United States. McCullen v. Coakley, 573 U.S. 464 (2014).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/12-1168",
+        methodologyType: "primary",
+      },
+      {
+        date: "2022-06-24",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "ABANDONED",
+        community: "JUDICIAL",
+        reason:
+          "In Dobbs v. Jackson Women's Health Organization (597 U.S. 215, 24 June 2022) the majority listed Hill v. Colorado among the decisions in which the abortion right had 'distorted' the Court's First Amendment doctrine, signaling that a majority regards Hill as wrongly decided. Though never formally overruled, Hill is now widely treated by courts and commentators as abandoned precedent surviving only on paper.",
+        sourceName:
+          "Supreme Court of the United States. Dobbs v. Jackson Women's Health Organization, 597 U.S. 215 (2022).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/19-1392",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
