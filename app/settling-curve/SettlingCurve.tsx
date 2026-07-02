@@ -242,6 +242,7 @@ function SettlingCurveInner() {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [feedVisibleCount, setFeedVisibleCount] = useState(12);
   const feedSentinelRef = useRef<HTMLDivElement>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -1071,6 +1072,95 @@ function SettlingCurveInner() {
     );
   }
 
+  function renderStorySummary() {
+    if (!traj || traj.transitions.length < 2) return null;
+    const sorted = [...traj.transitions].sort((a, b) => frac(a.occurredAt) - frac(b.occurredAt));
+    const first = sorted[0];
+    const last = sorted[sorted.length - 1];
+    const interval = keyInterval(traj);
+    const dur = durationLabel(interval.from.occurredAt, interval.to.occurredAt);
+    const communities = [...new Set(sorted.map((t) => t.community))];
+    const statuses = [...new Set(sorted.map((t) => t.toAxis))];
+    const hasReversal = sorted.some((t) => t.toAxis === "REVERSED");
+    const hasContested = sorted.some((t) => t.toAxis === "CONTESTED");
+
+    const storyParts: string[] = [];
+    storyParts.push(
+      `This trajectory spans ${dur.n} ${dur.unit} (${yr(first.occurredAt)}–${yr(last.occurredAt)}), with ${sorted.length} documented transitions across ${communities.length} ${communities.length === 1 ? "community" : "communities"}: ${communities.map((c) => COMMUNITY_LABEL[c]).join(", ")}.`
+    );
+
+    if (first.reason) {
+      storyParts.push(`It begins when ${first.reason.charAt(0).toLowerCase()}${first.reason.slice(1)}${first.reason.endsWith(".") ? "" : "."}`);
+    }
+
+    if (hasReversal) {
+      const rev = sorted.find((t) => t.toAxis === "REVERSED")!;
+      storyParts.push(`A reversal occurred in ${yr(rev.occurredAt)}${rev.reason ? `: ${rev.reason}` : "."}`);
+    } else if (hasContested) {
+      const cont = sorted.find((t) => t.toAxis === "CONTESTED")!;
+      storyParts.push(`The claim became contested in ${yr(cont.occurredAt)}${cont.reason ? `: ${cont.reason}` : "."}`);
+    }
+
+    if (last.toAxis === "SETTLED" && last.reason) {
+      storyParts.push(`It ultimately settled: ${last.reason}`);
+    }
+
+    const keyTransitions = sorted.filter((t) => t.reason && t.reason.length > 40).slice(0, 4);
+
+    return (
+      <div className="rounded-lg overflow-hidden mb-5" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
+        <div className="px-5 py-3 border-b" style={{ borderColor: C.panelEdge }}>
+          <span className="font-mono tracking-widest" style={{ fontSize: 10, color: C.brand, letterSpacing: "0.08em" }}>
+            STORY SUMMARY
+          </span>
+        </div>
+        <div className="px-5 py-4">
+          {storyParts.map((p, i) => (
+            <p key={i} className="mb-2" style={{ fontSize: 14, color: C.ink, lineHeight: 1.6 }}>{p}</p>
+          ))}
+
+          {keyTransitions.length > 0 && (
+            <div className="mt-4 pt-4 border-t" style={{ borderColor: C.panelEdge }}>
+              <span className="font-mono tracking-widest block mb-3" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.08em" }}>
+                KEY MOMENTS
+              </span>
+              <div className="space-y-3">
+                {keyTransitions.map((t, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <div className="shrink-0 flex flex-col items-center" style={{ width: 20, paddingTop: 4 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: 8, background: STATUS[t.toAxis].c, display: "block" }} />
+                      {i < keyTransitions.length - 1 && <div style={{ width: 1, flex: 1, background: C.panelEdge, marginTop: 4, minHeight: 16 }} />}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono" style={{ fontSize: 10, color: STATUS[t.toAxis].c }}>{STATUS[t.toAxis].label}</span>
+                        <span className="font-mono" style={{ fontSize: 10, color: C.faint }}>{yr(t.occurredAt)} · {COMMUNITY_LABEL[t.community]}</span>
+                      </div>
+                      <p style={{ fontSize: 13, color: C.mut, lineHeight: 1.5 }}>{t.reason}</p>
+                      {t.source.url ? (
+                        <a href={t.source.url} style={{ fontSize: 11, color: C.brand }}>{t.source.name}</a>
+                      ) : (
+                        <span style={{ fontSize: 11, color: C.faint }}>{t.source.name}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-4 pt-3 border-t flex flex-wrap gap-2" style={{ borderColor: C.panelEdge }}>
+            {statuses.map((s) => (
+              <span key={s} className="font-mono px-2 py-0.5 rounded" style={{ fontSize: 9, color: STATUS[s].c, border: `1px solid ${STATUS[s].c}44`, letterSpacing: "0.04em" }}>
+                {STATUS[s].label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const headerInterval = traj && traj.transitions.length > 0 ? keyInterval(traj) : null;
   const headerDur = headerInterval
     ? durationLabel(headerInterval.from.occurredAt, headerInterval.to.occurredAt)
@@ -1099,18 +1189,45 @@ function SettlingCurveInner() {
       >
         {/* Sidebar (desktop sticky, mobile drawer) */}
         <aside
-          className="hidden md:flex md:flex-col md:sticky shrink-0 z-30"
+          className="hidden md:flex md:flex-col md:sticky shrink-0 z-30 sc-anim"
           style={{
-            width: "min(35%, 380px)",
-            minWidth: 280,
+            width: sidebarOpen ? "min(35%, 380px)" : 0,
+            minWidth: sidebarOpen ? 280 : 0,
             top: 48,
             height: "calc(100vh - 48px)",
-            borderRight: `1px solid ${C.panelEdge}`,
+            borderRight: sidebarOpen ? `1px solid ${C.panelEdge}` : "none",
             background: C.panel,
+            overflow: "hidden",
+            transition: "width 0.25s ease, min-width 0.25s ease",
           }}
         >
           {renderSidebar()}
         </aside>
+
+        {/* Sidebar toggle button (desktop) */}
+        <button
+          type="button"
+          onClick={() => setSidebarOpen((v) => !v)}
+          className="hidden md:flex items-center justify-center sticky z-30 sc-anim"
+          style={{
+            top: 48,
+            height: "calc(100vh - 48px)",
+            width: 20,
+            background: C.panel,
+            borderRight: `1px solid ${C.panelEdge}`,
+            color: C.faint,
+            fontSize: 12,
+            cursor: "pointer",
+            flexShrink: 0,
+            transition: "background 0.15s",
+          }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = C.panelEdge; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = C.panel; }}
+          aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+          title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+        >
+          {sidebarOpen ? "◀" : "▶"}
+        </button>
 
         {/* Mobile drawer overlay — only covers area above the drawer (bottom 80vh excluded) */}
         {drawerOpen && (
@@ -1212,6 +1329,9 @@ function SettlingCurveInner() {
                 </div>
               )}
             </div>
+
+            {/* Story summary — shown when sidebar is collapsed */}
+            {!sidebarOpen && renderStorySummary()}
 
             {/* Chart + receipt */}
             {renderChart()}
