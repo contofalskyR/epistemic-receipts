@@ -6025,6 +6025,262 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "plenary-power-expel-resident-aliens-fong-yue-ting-1893",
+    claim:
+      "The U.S. Supreme Court held in Fong Yue Ting v. United States, decided 15 May 1893, that the power to expel or deport resident aliens already lawfully within the country is, like the power to exclude, an inherent and plenary incident of national sovereignty vested in the political branches, so Congress may order the deportation of Chinese laborers lacking residence certificates as an administrative and not a criminal proceeding.",
+    emergedAt: "1893-05-15",
+    milestones: [
+      {
+        date: "1893-05-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Gray, for a 6–3 Court, upheld the Geary Act's deportation of resident Chinese laborers who lacked a certificate of residence, holding that the power to expel aliens 'rests upon the same grounds, and is as absolute and unqualified as the power to exclude,' and that deportation is not punishment for crime but the removal of an alien whose continued presence Congress may end. Over pointed dissents by Justices Brewer, Field, and Chief Justice Fuller warning that lawful residents were entitled to due process, the decision extended Chae Chan Ping's exclusion power to expulsion, settling the plenary power of the political branches over deportation.",
+        sourceName:
+          "Gray J. Fong Yue Ting v. United States, 149 U.S. 698 (1893). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/149/698",
+      },
+    ],
+  },
+
+  {
+    id: "executive-agreements-supreme-law-belmont-1937",
+    claim:
+      "The U.S. Supreme Court held in United States v. Belmont, decided 3 May 1937, that a sole-executive agreement — the Litvinov Assignment accompanying U.S. recognition of the Soviet Union — has the force of supreme federal law that overrides contrary state policy without Senate ratification, so the assigned Soviet claims to assets in New York were enforceable notwithstanding New York public policy.",
+    emergedAt: "1937-05-03",
+    milestones: [
+      {
+        date: "1937-05-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Sutherland, for the Court, held that the Litvinov Assignment — an international compact made by the President alone incident to recognizing the U.S.S.R. — was a valid exercise of the federal external-affairs power and that 'in respect of what was done here, the Executive had authority to speak as the sole organ' of the nation, so 'state laws and policies' were 'irrelevant' to its enforcement. The decision settled that executive agreements, though not submitted to the Senate as treaties, operate as supreme law preempting inconsistent state law under the same principle as treaties.",
+        sourceName:
+          "Sutherland J. United States v. Belmont, 301 U.S. 324 (1937). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/301/324",
+      },
+      {
+        date: "1942-02-02",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Douglas, for the Court in United States v. Pink, 315 U.S. 203, followed and expanded Belmont, holding the Litvinov Assignment 'an international compact' whose enforcement 'is a modest implied power of the President' and that state policy could not defeat it because the 'external powers of the United States are to be exercised without regard to state laws or policies.' By reaffirming and broadening Belmont over New York's insurance-liquidation priorities, Pink entrenched the supremacy of sole-executive agreements as settled foreign-relations law.",
+        sourceName:
+          "Douglas J. United States v. Pink, 315 U.S. 203 (1942). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/315/203",
+      },
+    ],
+  },
+
+  {
+    id: "sherman-act-no-extraterritorial-reach-american-banana-1909",
+    claim:
+      "The U.S. Supreme Court held in American Banana Co. v. United Fruit Co., decided 26 April 1909, that the Sherman Antitrust Act does not reach acts done outside United States territory, because the lawfulness of an act must be determined by the law of the country where it is done — a strict territorial rule later displaced by the effects test.",
+    emergedAt: "1909-04-26",
+    milestones: [
+      {
+        date: "1909-04-26",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Holmes, for the Court, dismissed a Sherman Act suit over conduct in Panama and Costa Rica, reasoning that 'the character of an act as lawful or unlawful must be determined wholly by the law of the country where the act is done' and that 'the general and almost universal rule is that the legality of acts must be determined by the law of the place where they occur.' The opinion settled a strictly territorial construction of the antitrust laws, treating conduct abroad — even acts injuring U.S. commerce — as beyond the statute's reach.",
+        sourceName:
+          "Holmes J. American Banana Co. v. United Fruit Co., 213 U.S. 347 (1909). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/213/347",
+      },
+      {
+        date: "1993-06-28",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Hartford Fire Insurance Co. v. California, 509 U.S. 764, the Court held that 'it is well established by now that the Sherman Act applies to foreign conduct that was meant to produce and did in fact produce some substantial effect in the United States,' expressly departing from American Banana's strict territoriality. This SCOTUS confirmation of the 'effects test' — first announced by Judge Learned Hand in United States v. Alcoa (2d Cir. 1945) — repudiated the territorial rule, leaving American Banana's antitrust holding a reversed relic.",
+        sourceName:
+          "Souter J. Hartford Fire Insurance Co. v. California, 509 U.S. 764 (1993). Opinion of the Court (Part III).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/509/764",
+      },
+    ],
+  },
+
+  {
+    id: "no-inherent-executive-extradition-power-valentine-1936",
+    claim:
+      "The U.S. Supreme Court held in Valentine v. United States ex rel. Neidecker, decided 9 November 1936, that the President has no inherent constitutional power to surrender a person (including a U.S. citizen) to a foreign government for prosecution; the extradition power exists only where conferred by a treaty or an act of Congress, and it cannot be exercised where the governing treaty grants no such authority.",
+    emergedAt: "1936-11-09",
+    milestones: [
+      {
+        date: "1936-11-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Hughes, for the Court, blocked the surrender of two U.S. citizens to France, holding that 'the power to provide for extradition is a national power' but 'it is not confided to the Executive in the absence of treaty or legislative provision,' and that because the 1909 U.S.–France treaty exempted citizens without granting discretion to surrender them, 'the President is without power' to do so. The decision settled that extradition authority is entirely derivative of treaty or statute, denying any freestanding executive prerogative over surrender of persons to foreign states.",
+        sourceName:
+          "Hughes C.J. Valentine v. United States ex rel. Neidecker, 299 U.S. 5 (1936). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/299/5",
+      },
+    ],
+  },
+
+  {
+    id: "baseball-antitrust-exemption-flood-kuhn-1972",
+    claim:
+      "Professional baseball is exempt from the federal antitrust laws — a rule established in Federal Baseball Club v. National League (U.S. Supreme Court, 29 May 1922), reaffirmed in Toolson v. New York Yankees (1953), and expressly retained in Flood v. Kuhn (U.S. Supreme Court, 19 June 1972) even though the Court there called the exemption 'an anomaly' and 'an aberration' left to Congress to correct.",
+    emergedAt: "1922-05-29",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1922-05-29",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Federal Baseball Club of Baltimore v. National League, 259 U.S. 200, a unanimous Court per Justice Holmes held that giving exhibitions of baseball is 'purely state affairs' and not interstate commerce, placing the business outside the reach of the Sherman Act. The ruling settled a categorical antitrust exemption for professional baseball.",
+        sourceName:
+          "Supreme Court of the United States. Federal Baseball Club of Baltimore v. National League of Professional Baseball Clubs, 259 U.S. 200 (1922).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/259/200",
+        methodologyType: "primary",
+      },
+      {
+        date: "1972-06-19",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Flood v. Kuhn, 407 U.S. 258, the Court, asked for the third time in fifty years to bring baseball's reserve system within the antitrust laws, declined to do so — but Justice Blackmun's majority candidly described the exemption as 'an exception and an anomaly' and 'an aberration confined to baseball,' upholding it only on stare decisis and reliance grounds and directing that any change come from Congress. The doctrine survived while the Court itself recorded that it was unrealistic, inconsistent, and illogical, converting a once-settled rule into an openly contested anomaly.",
+        sourceName:
+          "Supreme Court of the United States. Flood v. Kuhn, 407 U.S. 258 (1972).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/407/258",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "noerr-pennington-petitioning-immunity-1961",
+    claim:
+      "Joint efforts to petition or influence the legislature, executive, or agencies are immune from Sherman Act liability even when undertaken for anticompetitive purposes — the Noerr-Pennington doctrine, established by the U.S. Supreme Court in Eastern Railroad Presidents Conference v. Noerr Motor Freight (20 February 1961) and refined through United Mine Workers v. Pennington (1965) and California Motor Transport Co. v. Trucking Unlimited (1972), subject only to a narrow 'sham' exception.",
+    emergedAt: "1961-02-20",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1961-02-20",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "In Eastern Railroad Presidents Conference v. Noerr Motor Freight, 365 U.S. 127, Justice Black for the Court held that the Sherman Act does not prohibit persons from associating to persuade the legislature or executive to act, even with anticompetitive intent, because construing the Act otherwise would raise serious First Amendment concerns and impute to Congress an intent to regulate political activity. The opinion recorded the immunity while flagging a possible 'sham' exception for campaigns that are a mere cover to interfere directly with a competitor's business.",
+        sourceName:
+          "Supreme Court of the United States. Eastern Railroad Presidents Conference v. Noerr Motor Freight, Inc., 365 U.S. 127 (1961).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/365/127",
+        methodologyType: "primary",
+      },
+      {
+        date: "1972-01-13",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In California Motor Transport Co. v. Trucking Unlimited, 404 U.S. 508, the Court extended the immunity to petitioning of courts and administrative agencies and gave the 'sham' exception concrete content, holding that a pattern of baseless, repetitive filings meant only to bar competitors' access to agencies and courts falls outside the protection. Together with United Mine Workers v. Pennington (1965), which extended Noerr to executive and administrative lobbying, this settled the mature Noerr-Pennington framework that governs antitrust petitioning immunity today.",
+        sourceName:
+          "Supreme Court of the United States. California Motor Transport Co. v. Trucking Unlimited, 404 U.S. 508 (1972).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/404/508",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "indirect-purchaser-standing-illinois-brick-1977",
+    claim:
+      "Only direct purchasers, not those further down the distribution chain, may recover treble damages for an antitrust overcharge under Section 4 of the Clayton Act — the direct-purchaser rule established by the U.S. Supreme Court in Illinois Brick Co. v. Illinois (9 June 1977), building on the bar against the passing-on defense in Hanover Shoe (1968) and reaffirmed in Apple Inc. v. Pepper (2019).",
+    emergedAt: "1968-06-17",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1968-06-17",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "In Hanover Shoe, Inc. v. United Shoe Machinery Corp., 392 U.S. 481, Justice White for the Court barred antitrust defendants from asserting a 'passing-on' defense — the argument that the direct purchaser suffered no injury because it passed the overcharge to its own customers — reasoning that the price paid to the seller remains illegally high regardless of resale. The ruling recorded the asymmetry logic that would later dictate who may sue: if defendants cannot invoke pass-on defensively, the symmetry question of offensive pass-on was left open.",
+        sourceName:
+          "Supreme Court of the United States. Hanover Shoe, Inc. v. United Shoe Machinery Corp., 392 U.S. 481 (1968).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/392/481",
+        methodologyType: "primary",
+      },
+      {
+        date: "1977-06-09",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Illinois Brick Co. v. Illinois, 431 U.S. 720, the Court held that because Hanover Shoe bars the pass-on defense, symmetry requires barring indirect purchasers from using pass-on offensively — so only the direct purchaser may recover the full overcharge, avoiding duplicative recovery and the 'whole new dimensions of complexity' of tracing overcharges through the chain. This settled the federal direct-purchaser standing rule for antitrust damages.",
+        sourceName:
+          "Supreme Court of the United States. Illinois Brick Co. v. Illinois, 431 U.S. 720 (1977).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/431/720",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "state-action-antitrust-immunity-parker-midcal-1943",
+    claim:
+      "Anticompetitive conduct that is compelled or authorized by a state acting as sovereign is immune from the Sherman Act — the state-action doctrine established in Parker v. Brown (U.S. Supreme Court, 4 January 1943) and later confined by the two-part 'clear articulation' plus 'active supervision' test of California Retail Liquor Dealers Association v. Midcal Aluminum, Inc. (U.S. Supreme Court, 3 March 1980).",
+    emergedAt: "1943-01-04",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1943-01-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "In Parker v. Brown, 317 U.S. 341, the Court upheld California's raisin prorate program against a Sherman Act challenge, holding that the Act targets private combinations and was not intended to restrain a state or its officers acting under legislative command. The decision recorded the state-action immunity but left its outer boundaries — especially for private parties operating under state authorization — undefined.",
+        sourceName:
+          "Supreme Court of the United States. Parker v. Brown, 317 U.S. 341 (1943).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/317/341",
+        methodologyType: "primary",
+      },
+      {
+        date: "1980-03-03",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In California Retail Liquor Dealers Ass'n v. Midcal Aluminum, Inc., 445 U.S. 97, Justice Powell for the Court distilled Parker into a two-part test: the challenged restraint must be 'clearly articulated and affirmatively expressed as state policy' and 'actively supervised by the State itself.' California's wine resale-price scheme flunked the second prong because the state merely enforced private price-setting without reviewing prices, settling the operative framework that governs state-action immunity to this day.",
+        sourceName:
+          "Supreme Court of the United States. California Retail Liquor Dealers Ass'n v. Midcal Aluminum, Inc., 445 U.S. 97 (1980).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/445/97",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
