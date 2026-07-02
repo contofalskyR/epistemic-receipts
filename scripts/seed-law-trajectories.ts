@@ -5580,6 +5580,157 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "gender-affirming-care-minors-heightened-scrutiny-skrmetti-2025",
+    claim:
+      "The U.S. Supreme Court held in United States v. Skrmetti (605 U.S. ___, decided 18 June 2025) that Tennessee's SB1 banning puberty blockers and cross-sex hormones for transgender minors classifies only on the bases of age and medical use — not sex or transgender status — and therefore is subject only to rational-basis review, which it survives, so the ban does not violate the Fourteenth Amendment's Equal Protection Clause.",
+    emergedAt: "2023-09-28",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2023-09-28",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In L.W. v. Skrmetti (83 F.4th 460), the Sixth Circuit reversed a district-court injunction and upheld the Tennessee and Kentucky bans, holding the laws do not classify on the basis of sex and are reviewed only for a rational basis. This deepened a genuine circuit split — the Sixth and Eleventh Circuits applied rational-basis review to uphold such bans while the Eighth Circuit (Brandt v. Rutledge) had held a comparable Arkansas law discriminated on the basis of sex — leaving the level of equal-protection scrutiny for gender-affirming-care bans openly contested.",
+        sourceName:
+          "U.S. Court of Appeals for the Sixth Circuit. L.W. v. Skrmetti, 83 F.4th 460 (6th Cir. 2023). Opinion 23a0146p-06.",
+        sourceUrl:
+          "https://www.opn.ca6.uscourts.gov/opinions.pdf/23a0146p-06.pdf",
+        methodologyType: "primary",
+      },
+      {
+        date: "2025-06-18",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 6–3 Supreme Court per Chief Justice Roberts affirmed the Sixth Circuit, holding that SB1 draws lines only on age and medical use — not on sex or transgender status — and thus does not warrant heightened equal-protection review. Applying rational-basis review, the Court found Tennessee's concerns about the treatments' risks and thin long-term evidence base sufficient, resolving the circuit split and settling that federal equal-protection doctrine does not subject these bans to heightened scrutiny.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Skrmetti, No. 23-477, 605 U.S. ___ (2025). Opinion of the Court by Roberts, C.J.",
+        sourceUrl:
+          "https://www.supremecourt.gov/opinions/24pdf/23-477_2cp3.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "compelled-abortion-notice-crisis-pregnancy-centers-nifla-2018",
+    claim:
+      "The U.S. Supreme Court held in National Institute of Family and Life Advocates (NIFLA) v. Becerra (585 U.S. 755, decided 26 June 2018) that California's FACT Act — which compelled licensed pro-life pregnancy centers to notify clients that the state offers free or low-cost abortion services, and compelled unlicensed centers to post disclaimers — likely violates the First Amendment as content-based compelled speech, and that 'professional speech' is not a category entitled to reduced constitutional protection.",
+    emergedAt: "2016-10-14",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2016-10-14",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "The Ninth Circuit upheld California's FACT Act, treating the compelled notices as regulation of 'professional speech' subject to lower scrutiny. That approach conflicted with decisions in other circuits skeptical of compelled disclosures in the abortion context, leaving unsettled both whether states may force pro-life pregnancy centers to advertise abortion services and whether professional speech is a distinct, less-protected First Amendment category.",
+        sourceName:
+          "U.S. Court of Appeals for the Ninth Circuit. Nat'l Inst. of Family & Life Advocates v. Harris, 839 F.3d 823 (9th Cir. 2016).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/16-1140",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2018-06-26",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 6–3 Supreme Court per Justice Thomas reversed the Ninth Circuit, holding the licensed-notice requirement is a content-based compulsion that likely fails scrutiny and the unlicensed-notice requirement is unduly burdensome. Crucially, the Court refused to recognize 'professional speech' as a lesser-protected category, settling that content-based regulation of professional speech must satisfy heightened First Amendment scrutiny outside narrow exceptions.",
+        sourceName:
+          "Supreme Court of the United States. NIFLA v. Becerra, No. 16-1140, 585 U.S. 755 (2018). Opinion of the Court by Thomas, J.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/16-1140",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "substantive-due-process-most-specific-tradition-michael-h-1989",
+    claim:
+      "Justice Scalia's plurality in Michael H. v. Gerald D. (491 U.S. 110, decided 15 June 1989) — upholding California's marital presumption of paternity against a biological father's asserted liberty interest — introduced in footnote 6 the methodology that unenumerated substantive-due-process liberties must be identified by reference to 'the most specific level' of historical tradition at which a relevant tradition can be found.",
+    emergedAt: "1989-06-15",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1989-06-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 Court upheld the marital presumption, holding a biological father has no constitutionally protected liberty interest overriding it. But Scalia's footnote 6 method — defining the asserted liberty at 'the most specific level' of tradition — commanded only Rehnquist's vote; Justices O'Connor and Kennedy expressly declined to join it as 'somewhat inconsistent with our past decisions,' so the methodology emerged as a contested minority approach rather than settled doctrine.",
+        sourceName:
+          "Supreme Court of the United States. Michael H. v. Gerald D., 491 U.S. 110 (1989). Plurality opinion by Scalia, J.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/491/110",
+        methodologyType: "primary",
+      },
+      {
+        date: "1997-06-26",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Washington v. Glucksberg, a majority per Chief Justice Rehnquist adopted the two-part test that substantive-due-process claims require a 'careful description' of the asserted liberty and that only rights 'deeply rooted in this Nation's history and tradition' qualify — vindicating the specific-tradition method Scalia had floated in Michael H. footnote 6. The approach became controlling substantive-due-process doctrine and later supplied the analytic backbone of Dobbs v. Jackson Women's Health Organization (2022).",
+        sourceName:
+          "Supreme Court of the United States. Washington v. Glucksberg, 521 U.S. 702 (1997). Opinion of the Court by Rehnquist, C.J.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/521/702",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "mifepristone-challenge-standing-fda-v-ahm-2024",
+    claim:
+      "The U.S. Supreme Court held unanimously in FDA v. Alliance for Hippocratic Medicine (602 U.S. 367, decided 13 June 2024) that anti-abortion physicians and medical associations lack Article III standing to challenge the FDA's 2016 and 2021 actions expanding access to mifepristone, because their asserted conscience, economic, and diversion-of-resources injuries were too speculative and unconnected to the challenged approvals.",
+    emergedAt: "2023-08-16",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2023-08-16",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "The Fifth Circuit held that the individual doctors and pro-life medical associations did have Article III standing and that the FDA's 2016 Amendments and 2021 non-enforcement decision loosening mifepristone restrictions were likely unlawful (while finding the 2000 approval challenge time-barred). By reaching the merits, the ruling opened a serious post-Dobbs threat to nationwide access to medication abortion and made the plaintiffs' standing a sharply contested question.",
+        sourceName:
+          "U.S. Court of Appeals for the Fifth Circuit. Alliance for Hippocratic Medicine v. FDA, 78 F.4th 210 (5th Cir. 2023), No. 23-10362.",
+        sourceUrl:
+          "https://www.ca5.uscourts.gov/opinions/pub/23/23-10362-CV1.pdf",
+        methodologyType: "primary",
+      },
+      {
+        date: "2024-06-13",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A unanimous Supreme Court per Justice Kavanaugh reversed, holding the plaintiffs lacked standing because they neither prescribe nor use mifepristone and federal conscience protections already shield objecting doctors, making their claimed injuries too speculative and attenuated. The decision settled that these plaintiffs cannot sue — leaving the FDA's expanded-access rules in force — though it resolved only standing, not the underlying legality of the FDA actions.",
+        sourceName:
+          "Supreme Court of the United States. FDA v. Alliance for Hippocratic Medicine, No. 23-235, 602 U.S. 367 (2024). Opinion of the Court by Kavanaugh, J.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/23-235",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
