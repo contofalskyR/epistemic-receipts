@@ -5351,6 +5351,139 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "contract-clause-corporate-charters-dartmouth-1819",
+    claim:
+      "In Trustees of Dartmouth College v. Woodward (17 U.S. 518), decided 2 February 1819, the U.S. Supreme Court held that a private corporation's charter is a contract within the meaning of the Contract Clause, so a state may not unilaterally amend or revoke it.",
+    emergedAt: "1819-02-02",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1819-02-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Marshall, for the Court, held that Dartmouth's royal charter was a contract that New Hampshire's 1816 acts (adding trustees and overseers) unconstitutionally impaired, striking those acts down under Article I, Section 10. The ruling settled that private eleemosynary and business corporations hold vested, charter-based rights shielded from state legislative interference, becoming the foundational Contract Clause protection for corporate charters and spurring states to reserve amendment powers in future charters.",
+        sourceName:
+          "Marshall CJ. Trustees of Dartmouth College v. Woodward, 17 U.S. (4 Wheat.) 518 (1819). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/17/518",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "dormant-commerce-selective-exclusiveness-cooley-1852",
+    claim:
+      "In Cooley v. Board of Wardens of the Port of Philadelphia (53 U.S. 299), decided in 1852, the U.S. Supreme Court held under its 'selective exclusiveness' doctrine that Congress's commerce power is exclusive only over subjects national in character requiring uniform rules, leaving local subjects such as pilotage open to concurrent state regulation absent conflicting federal law.",
+    emergedAt: "1852-03-02",
+    emergedPrecision: "MONTH",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1852-03-02",
+        precision: "MONTH",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Curtis, for the majority, upheld Pennsylvania's pilotage-fee law and articulated the compromise 'selective exclusiveness' rule: subjects of commerce 'national in their nature' demand exclusive federal legislation, while those 'local' in nature may be regulated by the states unless Congress acts. The decision resolved a question the Court had left deadlocked in the License Cases (1847) and Passenger Cases (1849) about whether the commerce power was wholly exclusive, settling the framework for dormant-Commerce-Clause analysis for the rest of the century.",
+        sourceName:
+          "Curtis J. Cooley v. Board of Wardens of the Port of Philadelphia, 53 U.S. (12 How.) 299 (1852). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/53/299",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "federal-judicial-supremacy-state-habeas-ableman-1859",
+    claim:
+      "In Ableman v. Booth (62 U.S. 506), decided 7 March 1859, the U.S. Supreme Court held that a state court has no power to issue habeas corpus to release a prisoner held under federal authority, affirming the supremacy and independence of the federal judiciary over state courts.",
+    emergedAt: "1859-03-07",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1859-03-07",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Taney, for a unanimous Court, reversed the Wisconsin Supreme Court's release of abolitionist Sherman Booth (jailed for violating the Fugitive Slave Act), holding that once a state judge is 'judicially apprized' that a prisoner is held under U.S. authority, 'they can proceed no further.' The ruling settled that state courts may not interfere with federal custody or override federal judicial process, entrenching federal judicial supremacy against state nullification just before the Civil War.",
+        sourceName:
+          "Taney CJ. Ableman v. Booth, 62 U.S. (21 How.) 506 (1859). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/62/506",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "public-sector-union-agency-fees-abood-janus-1977",
+    claim:
+      "The constitutional permissibility of compelling nonconsenting public-sector employees to pay union agency (fair-share) fees was established in Abood v. Detroit Board of Education (431 U.S. 209), decided 23 May 1977, and reversed in Janus v. AFSCME (585 U.S. ___), decided 27 June 2018, which held such fees violate the First Amendment.",
+    emergedAt: "1977-05-23",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1977-05-23",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Abood v. Detroit Board of Education, the Court upheld an agency-shop arrangement requiring nonmember public-school teachers to pay a service fee equal to union dues, holding the state's interest in labor peace and avoiding free-riders justified compelled fees for collective-bargaining costs (though not political spending). The decision settled for four decades that public-sector agency fees were constitutional.",
+        sourceName:
+          "Stewart J. Abood v. Detroit Board of Education, 431 U.S. 209 (1977). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/431/209",
+        methodologyType: "primary",
+      },
+      {
+        date: "2018-06-27",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Janus v. AFSCME, Council 31, a 5–4 majority per Justice Alito expressly overruled Abood, holding that extracting agency fees from nonconsenting public employees compels speech in violation of the First Amendment and that employees must affirmatively consent before any fee is deducted. The ruling reversed the settled Abood regime nationwide and reclassified public-sector agency fees as unconstitutional.",
+        sourceName:
+          "Alito J. Janus v. American Federation of State, County, and Municipal Employees, Council 31, 585 U.S. ___ (2018). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/16-1466",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "union-duty-of-fair-representation-steele-1944",
+    claim:
+      "In Steele v. Louisville & Nashville Railroad Co. (323 U.S. 192), decided 18 December 1944, the U.S. Supreme Court held that a union serving as exclusive bargaining representative under the Railway Labor Act owes an implied statutory duty of fair representation to all members of the craft and may not discriminate on the basis of race.",
+    emergedAt: "1944-12-18",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1944-12-18",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Stone, for the Court, held that because the Railway Labor Act confers exclusive bargaining authority on the majority union, it implicitly imposes a duty to represent the entire craft fairly, without hostile discrimination — here condemning a Brotherhood agreement that stripped Black firemen of seniority and jobs. The decision judicially created the 'duty of fair representation,' a foundational limit on union power later extended to the NLRA, and enforceable by courts through damages and injunctions.",
+        sourceName:
+          "Stone CJ. Steele v. Louisville & Nashville Railroad Co., 323 U.S. 192 (1944). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/323/192",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
