@@ -137,5 +137,11 @@ export async function GET(req: NextRequest) {
       };
     });
 
-  return NextResponse.json(list);
+  return NextResponse.json(list, {
+    headers: {
+      // Serve from the CDN and survive DB contention: fresh for 5 min,
+      // stale-while-revalidate for 1 h so the page still loads if Neon is slow.
+      "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600",
+    },
+  });
 }

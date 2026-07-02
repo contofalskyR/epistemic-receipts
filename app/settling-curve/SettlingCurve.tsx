@@ -247,7 +247,7 @@ function SettlingCurveInner() {
     let cancelled = false;
     setListLoading(true);
     setListError(false);
-    fetch("/api/trajectories")
+    fetch("/api/trajectories", { signal: AbortSignal.timeout(30000) })
       .then(async (r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const data: TrajectoryListItem[] = await r.json();
@@ -277,7 +277,7 @@ function SettlingCurveInner() {
     setLoadingDetail(true);
     setTraj(null);
     setSelected(null);
-    fetch(`/api/trajectories/${activeId}`)
+    fetch(`/api/trajectories/${activeId}`, { signal: AbortSignal.timeout(20000) })
       .then((r) => r.json())
       .then((data: TrajectoryDetail) => {
         if (cancelled) return;
@@ -352,7 +352,7 @@ function SettlingCurveInner() {
   const title = activeItem?.claim ?? traj?.claim ?? "";
 
   function renderChart() {
-    if (loadingDetail && !traj) {
+    if ((loadingDetail || listLoading) && !traj) {
       return (
         <div className="rounded-lg p-2" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
           <div
@@ -1150,7 +1150,7 @@ function SettlingCurveInner() {
                   className="font-semibold tracking-tight mb-1"
                   style={{ fontSize: 26, lineHeight: 1.15 }}
                 >
-                  {title || (loadingDetail ? "" : "Select a trajectory")}
+                  {title || (loadingDetail || listLoading ? "" : "Select a trajectory")}
                 </h1>
                 {traj && traj.transitions.length > 0 && (() => {
                   const years = traj.transitions.map((x) => yr(x.occurredAt));
