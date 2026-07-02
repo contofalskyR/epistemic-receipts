@@ -718,10 +718,23 @@ model ClaimStatusHistory {
   sourceId      String? // the marker artifact that records this transition
   createdAt     DateTime           @default(now())
 
-  claim        Claim   @relation(fields: [claimId], references: [id], onDelete: Cascade)
-  markerSource Source? @relation("StatusMarker", fields: [sourceId], references: [id])
+  claim          Claim                     @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  markerSource   Source?                   @relation("StatusMarker", fields: [sourceId], references: [id])
+  claimsSnapshot TransitionClaimsSnapshot?
 
   // Compound index serves claimId-only lookups via leftmost-prefix, so the
   // standalone @@index([claimId]) is dropped in favor of this one.
   @@index([claimId, community, occurredAt])
+}
+
+// AI-extracted structured claims for a single trajectory transition.
+// Powers the /labs/claim-diff page — lets us diff what factual claims were
+// preserved, changed, or dropped between adjacent transition sources.
+model TransitionClaimsSnapshot {
+  id                   String   @id @default(cuid())
+  claimStatusHistoryId String   @unique
+  extractedClaims      Json // array of { category: string, claim: string }
+  createdAt            DateTime @default(now())
+
+  claimStatusHistory ClaimStatusHistory @relation(fields: [claimStatusHistoryId], references: [id], onDelete: Cascade)
 }
