@@ -3541,6 +3541,141 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "rowland-christian-landowner-unitary-duty-1968",
+    claim:
+      "The California Supreme Court held in Rowland v. Christian (69 Cal.2d 108, 8 August 1968) that a possessor of land owes a uniform duty of ordinary care to all persons on the premises, so that the common-law categories of trespasser, licensee, and invitee no longer control the scope of that duty.",
+    emergedAt: "1968-08-08",
+    milestones: [
+      {
+        date: "1968-08-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Rowland v. Christian, the California Supreme Court, per Justice Peters, abolished the rigid common-law trichotomy of trespasser, licensee, and invitee that had graduated a landowner's duty by the entrant's status, holding instead that liability is governed by the general negligence standard of California Civil Code section 1714 — whether the possessor acted as a reasonable person in view of the probability of injury to others. A guest injured by a concealed defective faucet the host knew of could therefore recover. The decision converted a settled, status-based rule into a unitary duty of ordinary care and became the leading premises-liability precedent, adopted in whole or part by roughly half the states.",
+        sourceName:
+          "Peters J. Rowland v. Christian, 69 Cal.2d 108, 443 P.2d 561 (1968). Opinion of the Court.",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/rowland-v-christian-30100",
+      },
+    ],
+  },
+
+  {
+    id: "tarasoff-therapist-duty-to-protect-1976",
+    claim:
+      "The California Supreme Court held in Tarasoff v. Regents of the University of California (17 Cal.3d 425, 1 July 1976) that a psychotherapist who determines, or under professional standards reasonably should determine, that a patient presents a serious danger of violence to a foreseeable victim bears a duty to exercise reasonable care to protect that victim.",
+    emergedAt: "1974-12-23",
+    milestones: [
+      {
+        date: "1974-12-23",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "In its first decision (Tarasoff I, 13 Cal.3d 177), the California Supreme Court held that a therapist whose patient (Prosenjit Poddar) had confided an intent to kill Tatiana Tarasoff owed a 'duty to warn' the foreseeable victim, recognizing for the first time that the confidential therapist-patient relationship could give rise to an affirmative duty toward an identifiable third person. The novel duty was recorded in a leading opinion but immediately drew objection from the mental-health bar and the state, and the court took the unusual step of granting rehearing.",
+        sourceName:
+          "Tobriner J. Tarasoff v. Regents of the University of California, 13 Cal.3d 177, 529 P.2d 553 (1974) (Tarasoff I).",
+        sourceUrl:
+          "https://law.justia.com/cases/california/supreme-court/3d/13/177.html",
+      },
+      {
+        date: "1976-07-01",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "On rehearing (Tarasoff II, 17 Cal.3d 425), the court vacated its 1974 opinion and reframed the obligation as a broader 'duty to protect' — reasonable care to protect the foreseeable victim, which might be discharged by warning the victim, notifying police, or other steps as circumstances require — while confirming that this duty overrides the therapist's confidentiality when necessary to avert danger. The reformulation settled the modern doctrine, which was subsequently adopted, codified, or modified by most U.S. jurisdictions.",
+        sourceName:
+          "Tobriner J. Tarasoff v. Regents of the University of California, 17 Cal.3d 425, 551 P.2d 334 (1976). Opinion of the Court.",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/tarasoff-v-regents-university-california-30278",
+      },
+    ],
+  },
+
+  {
+    id: "canterbury-spence-informed-consent-reasonable-patient-1972",
+    claim:
+      "The U.S. Court of Appeals for the D.C. Circuit held in Canterbury v. Spence (464 F.2d 772, 19 May 1972) that a physician's duty to disclose the risks of a proposed treatment is measured by what a reasonable person in the patient's position would find material to the decision, not by the custom of the medical profession.",
+    emergedAt: "1972-05-19",
+    milestones: [
+      {
+        date: "1972-05-19",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Canterbury v. Spence, Judge Spottswood Robinson III rejected the traditional 'professional custom' standard, under which the adequacy of a physician's disclosure was judged by what other physicians customarily revealed, and held that the scope of disclosure is fixed by the patient's informational needs: a risk is 'material,' and must be disclosed, when a reasonable person in the patient's position would likely attach significance to it in deciding whether to undergo the therapy. The ruling established the patient-centered ('reasonable patient' / 'prudent patient') standard of informed consent, became a canonical precedent, and split American jurisdictions, with roughly half adopting it and others retaining the physician-based standard.",
+        sourceName:
+          "Robinson J. Canterbury v. Spence, 464 F.2d 772 (D.C. Cir. 1972). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/federal/appellate-courts/cadc/22099/22099.html",
+      },
+    ],
+  },
+
+  {
+    id: "seely-economic-loss-rule-products-1965",
+    claim:
+      "The California Supreme Court held in Seely v. White Motor Co. (63 Cal.2d 9, 23 June 1965) that strict products liability in tort permits recovery for personal injury and physical damage to other property but not for purely economic losses such as lost profits and repair costs, which remain governed by the law of warranty.",
+    emergedAt: "1965-06-23",
+    milestones: [
+      {
+        date: "1965-06-23",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Seely v. White Motor Co., Chief Justice Traynor — the architect of strict products liability in Greenman — cabined the doctrine he had created, holding that strict liability in tort exists to protect against physical injury to person or property, not to compensate a buyer for a product that simply fails to perform as bargained for. A truck buyer's lost profits and repair costs were therefore recoverable, if at all, only under warranty (the UCC), not tort. The decision established the 'economic loss rule' and rejected the contrary approach of New Jersey's Santor v. A & M Karagheusian, drawing the tort/contract boundary in products liability.",
+        sourceName:
+          "Traynor C.J. Seely v. White Motor Co., 63 Cal.2d 9, 403 P.2d 145 (1965). Opinion of the Court.",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/seely-v-white-motor-co-27248",
+      },
+      {
+        date: "1986-06-16",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In East River Steamship Corp. v. Transamerica Delaval Inc. (476 U.S. 858), the U.S. Supreme Court, resolving the long-running split between Seely and Santor, adopted Seely's economic loss rule for admiralty and general products liability, holding that no products-liability tort claim lies when a commercial party's only injury is to the defective product itself, causing purely economic loss. The decision nationalized Seely's tort/contract boundary and made the economic loss rule the dominant American doctrine.",
+        sourceName:
+          "Blackmun J. East River Steamship Corp. v. Transamerica Delaval Inc., 476 U.S. 858 (1986). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/476/858",
+      },
+    ],
+  },
+
+  {
+    id: "hoffman-red-owl-promissory-estoppel-negotiations-1965",
+    claim:
+      "The Wisconsin Supreme Court held in Hoffman v. Red Owl Stores, Inc. (26 Wis.2d 683, 2 March 1965) that promissory estoppel under Restatement of Contracts § 90 can support recovery of reliance damages for promises made during precontractual negotiations, even where the parties never reached a complete and definite agreement and no enforceable contract was ever formed.",
+    emergedAt: "1965-03-02",
+    milestones: [
+      {
+        date: "1965-03-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Hoffman v. Red Owl Stores, a prospective franchisee sold his bakery and grocery, moved, and made payments in reliance on the chain's repeated assurances that $18,000 would secure a store, only to have the terms escalated until the deal collapsed. The Wisconsin Supreme Court held that promissory estoppel under Restatement § 90 is not confined to promises that would otherwise be offers, and applied it to promises made during negotiations that never ripened into a contract, allowing recovery of reliance damages to prevent injustice. The decision extended promissory estoppel beyond enforcing bargains (as in the subcontractor-bid line) into precontractual liability, and became a leading precedent informing Restatement (Second) of Contracts § 90.",
+        sourceName:
+          "Currie C.J. Hoffman v. Red Owl Stores, Inc., 26 Wis.2d 683, 133 N.W.2d 267 (1965). Opinion of the Court.",
+        sourceUrl:
+          "https://law.justia.com/cases/wisconsin/supreme-court/1965/26-wis-2d-683-6.html",
+      },
+    ],
+  },
 ];
 
 async function main() {
