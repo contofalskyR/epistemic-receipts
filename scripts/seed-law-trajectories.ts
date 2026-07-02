@@ -4557,6 +4557,165 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "abortion-funding-no-constitutional-obligation-1980",
+    claim:
+      "The U.S. Supreme Court held in Harris v. McRae (448 U.S. 297, decided 30 June 1980) that the Hyde Amendment's bar on federal Medicaid reimbursement for most abortions violates neither the Due Process nor equal protection component of the Fifth Amendment, establishing that a woman's constitutional right to choose abortion imposes no correlative obligation on government to fund it.",
+    emergedAt: "1976-09-30",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1976-09-30",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Congress enacted the first Hyde Amendment as a rider to the FY1977 Labor-HEW appropriations bill on 30 September 1976, barring the use of federal funds for most abortions. Following Roe v. Wade's recognition of an abortion right, this opened a sharply contested question — litigated in lower courts that enjoined enforcement — over whether the Constitution required government to subsidize the exercise of that right.",
+        sourceName:
+          "Hyde Amendment (rider to Departments of Labor and HEW Appropriations Act, 1977). Enacted 30 September 1976.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Hyde_Amendment",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1980-06-30",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 majority per Justice Stewart upheld the Hyde Amendment, holding that neither Title XIX nor the Constitution compels funding of medically necessary abortions, since government 'need not remove obstacles not of its own creation' such as indigency. The decision settled that the abortion right is a liberty from governmental interference, not an entitlement to public subsidy — a funding doctrine that has remained good law and gained further force after Dobbs.",
+        sourceName:
+          "Supreme Court of the United States. Harris v. McRae. 448 U.S. 297. 1980.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/448/297",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "title-x-abortion-counseling-gag-rule-1991",
+    claim:
+      "The U.S. Supreme Court held in Rust v. Sullivan (500 U.S. 173, decided 23 May 1991) that HHS regulations prohibiting Title X family-planning grantees from counseling, referring for, or advocating abortion do not violate the First or Fifth Amendments, because government's selective funding of one activity over another is not viewpoint discrimination or an unconstitutional condition.",
+    emergedAt: "1988-02-02",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1988-02-02",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "HHS promulgated regulations (53 Fed. Reg. 2922) barring Title X projects from providing abortion counseling or referral — the 'gag rule.' Grantees challenged the rules as viewpoint-based compelled silence and an unconstitutional condition on funding, producing conflicting rulings in the lower federal courts over whether selective subsidy could restrict speech within a government program.",
+        sourceName:
+          "Supreme Court of the United States. Rust v. Sullivan (recounting the 1988 HHS Title X regulations, 53 Fed. Reg. 2922). 500 U.S. 173. 1991.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/500/173",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1991-05-23",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 majority per Chief Justice Rehnquist upheld the regulations, reasoning that 'the Government has not discriminated on the basis of viewpoint; it has merely chosen to fund one activity to the exclusion of another.' The decision settled the constitutional doctrine that government may attach content-based conditions to what it subsidizes; while the gag-rule policy itself has since oscillated across administrations, Rust's unconstitutional-conditions holding remains controlling law.",
+        sourceName:
+          "Supreme Court of the United States. Rust v. Sullivan. 500 U.S. 173. 1991.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/500/173",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "biological-father-marital-presumption-1989",
+    claim:
+      "The U.S. Supreme Court held in Michael H. v. Gerald D. (491 U.S. 110, decided 15 June 1989) that a biological father has no constitutionally protected liberty interest in establishing paternity of, or a relationship with, a child born to a woman married to and living with another man, upholding California's conclusive marital presumption of legitimacy.",
+    emergedAt: "1989-06-15",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1989-06-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A plurality per Justice Scalia upheld California Evidence Code § 621's conclusive presumption that a child born to a married, cohabiting woman is her husband's, holding that an adulterous natural father — despite a 98.07% probability of paternity — lacks any liberty interest protected by substantive due process, because the Nation's traditions protect the 'unitary family,' not the disruptive claims of a biological outsider. The decision (with its famous footnote 6 directing that tradition be defined at the most specific level) settled the outer limit of unwed and biological fathers' constitutional parenting claims and remains cited in modern substantive-due-process disputes.",
+        sourceName:
+          "Supreme Court of the United States. Michael H. v. Gerald D. 491 U.S. 110. 1989.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/491/110",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "foster-agency-religious-exemption-same-sex-2021",
+    claim:
+      "The U.S. Supreme Court held in Fulton v. City of Philadelphia (593 U.S. 522, decided 17 June 2021) that Philadelphia violated the Free Exercise Clause by refusing to contract with a Catholic foster-care agency unless it agreed to certify same-sex couples as foster parents, because the city's nondiscrimination requirement contained a discretionary-exemption mechanism that made it not generally applicable and thus subject to strict scrutiny.",
+    emergedAt: "2021-06-17",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2021-06-17",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "After Masterpiece Cakeshop (2018) left open how antidiscrimination duties apply to religious objectors and litigants urged overruling Employment Division v. Smith, a unanimous Court per Chief Justice Roberts ruled for Catholic Social Services on narrow grounds: because the foster contract let the Commissioner grant exemptions 'in his/her sole discretion,' the policy was not generally applicable, triggering strict scrutiny the city could not satisfy. The decision settled that discretionary-exemption regimes forfeit Smith's deference, resolving this church-state foster-care conflict while declining to overrule Smith.",
+        sourceName:
+          "Supreme Court of the United States. Fulton v. City of Philadelphia. 593 U.S. 522. 2021.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/19-123",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "gender-affirming-care-minors-equal-protection-2025",
+    claim:
+      "The U.S. Supreme Court held in United States v. Skrmetti (605 U.S. 495, decided 18 June 2025) that Tennessee's ban on puberty blockers and hormone therapy for the treatment of gender dysphoria in minors classifies only on the bases of age and medical use — not sex or transgender status — and therefore does not trigger heightened equal-protection scrutiny, surviving rational-basis review.",
+    emergedAt: "2023-09-28",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2023-09-28",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "The Sixth Circuit (Chief Judge Sutton) in L.W. v. Skrmetti reversed district-court injunctions and upheld the Tennessee and Kentucky bans applying deferential rational-basis review, deepening a conflict with courts that had subjected such bans to heightened scrutiny as sex- or transgender-status-based classifications. The split over the correct level of equal-protection review made the constitutionality of gender-affirming-care bans an openly contested federal question, prompting the Supreme Court to grant certiorari.",
+        sourceName:
+          "U.S. Court of Appeals for the Sixth Circuit. L.W. v. Skrmetti. 83 F.4th 460. 2023.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/24pdf/23-477_2cp3.pdf",
+        methodologyType: "derivative",
+      },
+      {
+        date: "2025-06-18",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 6–3 majority per Chief Justice Roberts affirmed the Sixth Circuit, holding that Tennessee's law draws only age- and medical-use lines that do not warrant heightened scrutiny under the Equal Protection Clause, and that the ban survives rational-basis review given legislative and medical uncertainty. The decision settled the federal constitutional question, leaving bans in roughly 25 states in force and foreclosing heightened-scrutiny challenges to gender-affirming-care restrictions for minors.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Skrmetti. 605 U.S. 495. 2025.",
+        sourceUrl: "https://www.supremecourt.gov/opinions/24pdf/23-477_2cp3.pdf",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
