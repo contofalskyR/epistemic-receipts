@@ -5903,6 +5903,128 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "objective-theory-of-contract-lucy-zehmer-1954",
+    claim:
+      "The Supreme Court of Virginia held in Lucy v. Zehmer, 196 Va. 493 (22 November 1954), that the existence of a contract is determined by the parties' outward, objective manifestations of assent as understood by a reasonable person, not by a party's undisclosed subjective intent, enforcing a signed agreement to sell the Ferguson Farm despite the seller's claim he was merely joking while drinking.",
+    emergedAt: "1954-11-22",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1954-11-22",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Virginia Supreme Court of Appeals reversed the trial court and ordered specific performance, holding that 'the mental assent of the parties is not requisite for the formation of a contract' and that a person cannot escape a bargain by claiming private jest when his words and conduct would warrant a reasonable person in believing a real agreement was intended. The decision became the canonical modern statement of the objective theory of contract formation, definitively subordinating the older subjective 'meeting of the minds' conception, and remains a first-year contracts staple cited across jurisdictions.",
+        sourceName:
+          "Supreme Court of Virginia. Lucy v. Zehmer, 196 Va. 493, 84 S.E.2d 516 (1954).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Lucy_v._Zehmer",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "res-ipsa-loquitur-multiple-defendants-ybarra-1944",
+    claim:
+      "The Supreme Court of California held in Ybarra v. Spangard, 25 Cal.2d 486 (27 December 1944), that res ipsa loquitur permits an unconscious surgical patient who suffers an unexplained injury to invoke an inference of negligence against every physician, nurse, and hospital employee who had control over his body or the instrumentalities that might have caused the harm, shifting to each defendant the burden of explaining his conduct.",
+    emergedAt: "1944-12-27",
+    emergedPrecision: "DAY",
+    claimType: "HYBRID",
+    milestones: [
+      {
+        date: "1944-12-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Reversing a nonsuit, the California Supreme Court extended res ipsa loquitur beyond the classic single-instrumentality, single-defendant case to a group of medical defendants who exercised control at different times, holding that a helpless patient injured while anesthetized need not identify which defendant or instrument caused the harm. The ruling relaxed the traditional 'exclusive control' requirement into a 'right of control' standard and became a foundational precedent for imposing an explanatory burden on multiple potential wrongdoers, widely adopted in the Restatement and later medical-malpractice doctrine.",
+        sourceName:
+          "Supreme Court of California. Ybarra v. Spangard, 25 Cal.2d 486, 154 P.2d 687 (1944).",
+        sourceUrl: "https://scocal.stanford.edu/opinion/ybarra-v-spangard-25836",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "mitigation-different-or-inferior-employment-parker-1970",
+    claim:
+      "The Supreme Court of California held in Parker v. Twentieth Century-Fox Film Corp., 3 Cal.3d 176 (30 September 1970), that a wrongfully discharged employee's damages are reduced only by earnings from substitute employment that is comparable, and that the employer may not require the employee to accept work of a 'different or inferior kind' to mitigate — so actress Shirley MacLaine Parker could recover her full guaranteed compensation after rejecting a different, inferior film role.",
+    emergedAt: "1970-09-30",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1970-09-30",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Affirming summary judgment for the plaintiff, the California Supreme Court held that the studio's offer of a dramatic western in Australia (with reduced director- and screenplay-approval rights) in place of the contracted California musical was substitute employment 'different and inferior' as a matter of law, so its rejection could not reduce her $750,000 recovery. The decision crystallized the avoidable-consequences rule for employment breach: the burden is on the breaching employer to prove comparable substitute work was available, and refusal of non-comparable work is not a failure to mitigate. It remains a leading contracts-remedies precedent.",
+        sourceName:
+          "Supreme Court of California. Parker v. Twentieth Century-Fox Film Corp., 3 Cal.3d 176, 474 P.2d 689 (1970).",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/parker-v-twentieth-century-fox-film-corp-27557",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "no-deadly-mechanical-force-to-protect-property-katko-1971",
+    claim:
+      "The Supreme Court of Iowa held in Katko v. Briney, 183 N.W.2d 657 (9 February 1971), that a landowner may not use a spring gun or other deadly mechanical device to protect unoccupied premises against a mere trespasser, affirming battery liability (with punitive damages) against owners who rigged a shotgun trap in an abandoned farmhouse because the law values human safety above bare property rights.",
+    emergedAt: "1971-02-09",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1971-02-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Iowa Supreme Court affirmed a $20,000 actual and $10,000 punitive award to a trespassing intruder shot by a spring gun, holding that an owner may use only such force to defend property as he could lawfully use if present in person, and never deadly mechanical force absent a threat justifying deadly force in self-defense. The decision made concrete the Restatement (Second) of Torts §85 principle that there is no privilege to use force intended to cause death or serious bodily harm merely to protect property, and became the canonical American authority on mechanical-device liability.",
+        sourceName:
+          "Supreme Court of Iowa. Katko v. Briney, 183 N.W.2d 657 (Iowa 1971).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Katko_v._Briney",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "reliance-damages-physician-warranty-sullivan-oconnor-1973",
+    claim:
+      "The Supreme Judicial Court of Massachusetts held in Sullivan v. O'Connor, 363 Mass. 579 (9 May 1973), that where a physician breaches an express contractual warranty to achieve a particular surgical result, the patient may recover reliance-based damages — restoring her to the position she occupied before the agreement, including worsening of condition and pain from the unpromised additional operation — rather than being confined to expectation or restitution alone.",
+    emergedAt: "1973-05-09",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1973-05-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Reviewing a $13,500 verdict for a failed nose operation, Justice Kaplan's opinion surveyed expectation, restitution, and reliance measures for breach of a doctor's promise of a specific outcome and adopted the reliance measure as the fairest for such 'therapeutic warranty' cases, allowing recovery for out-of-pocket loss and the pain and worsening caused by the third operation. The decision became a leading contracts-remedies teaching case distinguishing the three damage interests and endorsing reliance recovery where the expectation interest is speculative or the promise quasi-medical.",
+        sourceName:
+          "Supreme Judicial Court of Massachusetts. Sullivan v. O'Connor, 363 Mass. 579, 296 N.E.2d 183 (1973).",
+        sourceUrl:
+          "https://www.courtlistener.com/opinion/2001052/sullivan-v-oconnor/",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
