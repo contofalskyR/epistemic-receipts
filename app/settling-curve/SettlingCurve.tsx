@@ -191,6 +191,7 @@ function SettlingCurveInner() {
   const [traj, setTraj] = useState<TrajectoryDetail | null>(null);
   const [loadingDetail, setLoadingDetail] = useState(true);
   const [selected, setSelected] = useState<number | null>(null);
+  const [logOpen, setLogOpen] = useState(false);
 
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("ALL");
@@ -498,6 +499,121 @@ function SettlingCurveInner() {
           )}
         </div>
       </>
+    );
+  }
+
+  function renderTransitionLog() {
+    if (!traj || traj.transitions.length === 0) return null;
+    const sorted = [...traj.transitions].sort((a, b) => frac(a.occurredAt) - frac(b.occurredAt));
+
+    function inheritanceBetween(a: Transition, b: Transition): { label: string; color: string } {
+      if (b.toAxis === "REVERSED" || b.toAxis === "ABANDONED") return { label: "OVERTURNED", color: C.red };
+      if (b.toAxis === "CONTESTED") return { label: "CONTESTED", color: C.amber };
+      if (b.toAxis === "SETTLED") return { label: "RATIFIED", color: C.green };
+      if (b.toAxis === a.toAxis) return { label: "CONFIRMED", color: C.green };
+      return { label: "CONTINUED", color: C.mut };
+    }
+
+    return (
+      <div className="mt-5 rounded-lg overflow-hidden" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
+        <button
+          type="button"
+          onClick={() => setLogOpen((v) => !v)}
+          className="w-full flex items-center justify-between px-5 py-3"
+        >
+          <span className="font-mono tracking-widest" style={{ fontSize: 10, color: C.faint, letterSpacing: "0.08em" }}>
+            TRANSITION LOG · {sorted.length} EVENTS
+          </span>
+          <span className="font-mono" style={{ fontSize: 10, color: C.faint }}>{logOpen ? "▲" : "▼"}</span>
+        </button>
+
+        {logOpen && (
+          <div className="border-t" style={{ borderColor: C.panelEdge }}>
+            {sorted.map((tr, i) => {
+              const next = sorted[i + 1];
+              const isLast = i === sorted.length - 1;
+              const monthsToNext = next
+                ? Math.round(Math.abs(frac(next.occurredAt) - frac(tr.occurredAt)) * 12)
+                : 0;
+              const inherit = next ? inheritanceBetween(tr, next) : null;
+
+              return (
+                <div key={i}>
+                  <div
+                    className="px-5 py-4 flex gap-4"
+                    style={{ borderBottom: isLast ? "none" : `1px solid ${C.panelEdge}33` }}
+                  >
+                    {/* Timeline dot + line */}
+                    <div className="flex flex-col items-center" style={{ width: 24, flexShrink: 0, paddingTop: 2 }}>
+                      <div
+                        style={{
+                          width: 9, height: 9, borderRadius: 9,
+                          background: STATUS[tr.toAxis].c,
+                          border: `2px solid ${C.bg}`,
+                          flexShrink: 0,
+                        }}
+                      />
+                      {!isLast && (
+                        <div style={{ width: 1, flex: 1, background: C.panelEdge, marginTop: 4, minHeight: 28 }} />
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                        <span
+                          className="font-mono px-1.5 py-0.5 rounded"
+                          style={{ fontSize: 9, color: STATUS[tr.toAxis].c, border: `1px solid ${STATUS[tr.toAxis].c}55`, letterSpacing: "0.05em" }}
+                        >
+                          {tr.fromAxis ? `${tr.fromAxis} → ${tr.toAxis}` : tr.toAxis}
+                        </span>
+                        <span className="font-mono" style={{ fontSize: 10, color: C.mut }}>{COMMUNITY_LABEL[tr.community]}</span>
+                        <span className="font-mono" style={{ fontSize: 10, color: C.faint }}>{tr.occurredAt}</span>
+                      </div>
+
+                      {tr.reason && (
+                        <p style={{ fontSize: 13, color: C.ink, lineHeight: 1.55, marginBottom: 6 }}>{tr.reason}</p>
+                      )}
+
+                      {tr.source.url ? (
+                        <a href={tr.source.url} target="_blank" rel="noreferrer"
+                          style={{ fontSize: 11, color: C.brand, textDecoration: "underline" }}>
+                          {tr.source.name}
+                        </a>
+                      ) : (
+                        <span style={{ fontSize: 11, color: C.mut }}>{tr.source.name}</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Inheritance connector */}
+                  {!isLast && inherit && (
+                    <div
+                      className="flex items-center gap-3 px-5 py-1.5"
+                      style={{ background: `${C.panelEdge}18` }}
+                    >
+                      <div style={{ width: 24, flexShrink: 0 }} />
+                      <span
+                        className="font-mono"
+                        style={{ fontSize: 9, color: inherit.color, letterSpacing: "0.08em" }}
+                      >
+                        ↓ {inherit.label}
+                      </span>
+                      {monthsToNext > 0 && (
+                        <span className="font-mono" style={{ fontSize: 9, color: C.faint }}>
+                          {monthsToNext < 18
+                            ? `${monthsToNext} month${monthsToNext === 1 ? "" : "s"} later`
+                            : `${Math.round(monthsToNext / 12)} year${Math.round(monthsToNext / 12) === 1 ? "" : "s"} later`}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
     );
   }
 
@@ -1013,6 +1129,9 @@ function SettlingCurveInner() {
 
             {/* Chart + receipt */}
             {renderChart()}
+
+            {/* Transition log — knowledge inheritance view */}
+            {renderTransitionLog()}
 
             {/* Footnote — methodology link, unobtrusive */}
             <p className="mt-8 font-mono" style={{ fontSize: 10, color: C.faint, letterSpacing: "0.04em" }}>
