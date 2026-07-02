@@ -4716,6 +4716,152 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "free-speech-incorporation-gitlow-1925",
+    claim:
+      "The U.S. Supreme Court held in Gitlow v. New York (268 U.S. 652, decided 8 June 1925) that freedom of speech and of the press are among the fundamental liberties protected by the Due Process Clause of the Fourteenth Amendment and therefore bind the states, not merely Congress.",
+    emergedAt: "1925-06-08",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1925-06-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Gitlow v. New York the Court, per Justice Sanford, upheld a criminal-anarchy conviction but 'assumed' that freedom of speech and press are 'among the fundamental personal rights and liberties protected by the due process clause of the Fourteenth Amendment from impairment by the States.' This first extended First Amendment speech protection beyond the federal government established in Barron v. Baltimore (1833), opening the path of selective incorporation of the free-speech guarantee against the states.",
+        sourceName:
+          "Supreme Court of the United States. Gitlow v. New York. 268 U.S. 652. 1925.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/268/652",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "prior-restraint-press-near-1931",
+    claim:
+      "The U.S. Supreme Court held in Near v. Minnesota (283 U.S. 697, decided 1 June 1931) that a state statute permitting prior suppression of 'malicious, scandalous and defamatory' newspapers is an unconstitutional prior restraint, and that freedom of the press is protected against the states by the Fourteenth Amendment.",
+    emergedAt: "1931-06-01",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1931-06-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Near v. Minnesota, Chief Justice Hughes for a 5–4 Court struck down Minnesota's 'gag law,' holding that the chief purpose of press liberty is to prevent 'previous restraints upon publication' and that 'it is no longer open to doubt that the liberty of the press... is within the liberty safeguarded by the due process clause of the Fourteenth Amendment.' The decision constitutionalized a strong presumption against prior restraints and applied press freedom to the states, becoming the doctrinal foundation later invoked in New York Times Co. v. United States (1971).",
+        sourceName:
+          "Supreme Court of the United States. Near v. Minnesota. 283 U.S. 697. 1931.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/283/697",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "compelled-flag-salute-barnette-1943",
+    claim:
+      "The U.S. Supreme Court held in Minersville School District v. Gobitis (310 U.S. 586, decided 3 June 1940) that public schools may compel students to salute the flag despite religious objection; three years later West Virginia State Board of Education v. Barnette (319 U.S. 624, decided 14 June 1943) expressly overruled Gobitis and held such compelled expression unconstitutional.",
+    emergedAt: "1940-06-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1940-06-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Minersville School District v. Gobitis, Justice Frankfurter for an 8–1 Court held that a mandatory flag-salute requirement applied to Jehovah's Witness schoolchildren did not violate the First Amendment, reasoning that 'national unity is the basis of national security' and that religious conviction did not relieve citizens of a generally applicable civic duty. The decision settled, for a time, that the state's interest in fostering patriotism could override individual conscience.",
+        sourceName:
+          "Supreme Court of the United States. Minersville School District v. Gobitis. 310 U.S. 586. 1940.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/310/586",
+        methodologyType: "primary",
+      },
+      {
+        date: "1943-06-14",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In West Virginia State Board of Education v. Barnette, Justice Jackson for a 6–3 Court expressly overruled Gobitis, holding that compelling a flag salute violates the First Amendment because 'no official, high or petty, can prescribe what shall be orthodox in politics, nationalism, religion, or other matters of opinion or force citizens to confess by word or act their faith therein.' Decided on Flag Day only three years after Gobitis, Barnette established the compelled-speech doctrine and marked a rare rapid self-reversal of a recent constitutional precedent.",
+        sourceName:
+          "Supreme Court of the United States. West Virginia State Board of Education v. Barnette. 319 U.S. 624. 1943.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/319/624",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "establishment-clause-incorporation-everson-1947",
+    claim:
+      "The U.S. Supreme Court held in Everson v. Board of Education (330 U.S. 1, decided 10 February 1947) that the First Amendment's Establishment Clause applies to the states through the Fourteenth Amendment and erects 'a wall of separation between church and state.'",
+    emergedAt: "1947-02-10",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1947-02-10",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Everson v. Board of Education, Justice Black for a 5–4 Court held that the Establishment Clause binds the states via the Fourteenth Amendment and, quoting Jefferson, declared that the clause 'was intended to erect a wall of separation between church and State.' Although the Court upheld New Jersey's reimbursement of parents for bus fares to parochial schools, its incorporation of the Establishment Clause and separationist framing became the foundation of all modern church-state jurisprudence, including the later Lemon test.",
+        sourceName:
+          "Supreme Court of the United States. Everson v. Board of Education. 330 U.S. 1. 1947.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/330/1",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "obscenity-standard-roth-miller-1957",
+    claim:
+      "The U.S. Supreme Court held in Roth v. United States (354 U.S. 476, decided 24 June 1957) that obscenity is not protected by the First Amendment and defined it by whether material appeals to 'prurient interest'; that definitional standard (as elaborated in Memoirs v. Massachusetts) was replaced by the three-part test of Miller v. California (413 U.S. 15, decided 21 June 1973).",
+    emergedAt: "1957-06-24",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1957-06-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Roth v. United States, Justice Brennan for the Court held that 'obscenity is not within the area of constitutionally protected speech or press,' and set the test as whether, to the average person applying contemporary community standards, the dominant theme of the material taken as a whole appeals to prurient interest. Roth settled that obscenity is an unprotected category and supplied the governing definitional standard, later restated in Memoirs v. Massachusetts (1966) as requiring material 'utterly without redeeming social value.'",
+        sourceName:
+          "Supreme Court of the United States. Roth v. United States. 354 U.S. 476. 1957.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/354/476",
+        methodologyType: "primary",
+      },
+      {
+        date: "1973-06-21",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Miller v. California, Chief Justice Burger for a 5–4 Court replaced the Roth-Memoirs formulation with a new three-part test: whether the average person applying contemporary community standards would find the work appeals to prurient interest, whether it depicts sexual conduct in a patently offensive way as defined by state law, and whether it lacks serious literary, artistic, political, or scientific value. The Court expressly rejected the 'utterly without redeeming social value' standard as 'abandoned as unworkable,' reworking the constitutional definition of unprotected obscenity that governs to this day.",
+        sourceName:
+          "Supreme Court of the United States. Miller v. California. 413 U.S. 15. 1973.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/413/15",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
