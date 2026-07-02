@@ -5209,6 +5209,148 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "products-design-defect-two-prong-test-barker-1978",
+    claim:
+      "In Barker v. Lull Engineering Co. (20 Cal.3d 413), decided January 16, 1978, the California Supreme Court held that a product's design is defective if it fails either a consumer-expectation test or a risk-benefit test, and that under the risk-benefit prong the burden shifts to the manufacturer to prove the design's benefits outweigh its inherent risks.",
+    emergedAt: "1978-01-16",
+    milestones: [
+      {
+        date: "1978-01-16",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "After Cronin v. J.B.E. Olson (1972) rejected § 402A's 'unreasonably dangerous' language but left the affirmative definition of a design defect unsettled, the California Supreme Court in Barker supplied a two-pronged test: a product is defectively designed if it fails ordinary consumer expectations, or if its risks outweigh its benefits, with the burden on that second prong shifted to the manufacturer. The decision resolved the meaning of 'defect' in design cases and became the dominant California framework, widely cited and adopted elsewhere.",
+        sourceName:
+          "Supreme Court of California. Barker v. Lull Engineering Co., 20 Cal.3d 413, 573 P.2d 443, 143 Cal.Rptr. 225. 1978.",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/barker-v-lull-engineering-co-30437",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "contract-damages-economic-waste-peevyhouse-1962",
+    claim:
+      "In Peevyhouse v. Garland Coal & Mining Co. (382 P.2d 109), decided December 11, 1962, the Oklahoma Supreme Court held that where the cost of completing a promised performance is grossly disproportionate to the resulting increase in property value, contract damages are limited to the diminution in value rather than the cost of performance.",
+    emergedAt: "1962-12-11",
+    milestones: [
+      {
+        date: "1962-12-11",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A coal company promised to restore strip-mined farmland but did not; restoration would cost about $29,000 while it raised the land's value by only about $300. The Oklahoma Supreme Court held that when remedial work is merely incidental to the contract's main purpose and its cost is grossly disproportionate to the value gained, the injured party recovers only diminution in value. The ruling settled Oklahoma's 'economic waste' rule for construction/restoration contracts and became a leading — though heavily criticized — precedent contrasted with the cost-of-completion rule of Groves v. John Wunder.",
+        sourceName:
+          "Supreme Court of Oklahoma. Peevyhouse v. Garland Coal & Mining Co., 382 P.2d 109 (Okla. 1962). 1962.",
+        sourceUrl:
+          "https://en.wikipedia.org/wiki/Peevyhouse_v._Garland_Coal_%26_Mining_Co.",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "negligence-custom-not-conclusive-helling-1974",
+    claim:
+      "In Helling v. Carey (83 Wash.2d 514), decided March 14, 1974, the Washington Supreme Court held that compliance with the customary standard of the ophthalmology profession did not conclusively establish due care, finding two specialists negligent for failing to give a 32-year-old patient a simple glaucoma pressure test even though professional custom did not require testing patients under 40.",
+    emergedAt: "1974-03-14",
+    milestones: [
+      {
+        date: "1974-03-14",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Extending Learned Hand's principle that an entire industry may lag in adopting a cheap and available precaution, the Washington Supreme Court held that reasonable prudence — not merely professional custom — sets the standard of care, and that the negligible cost and risk of a glaucoma pressure test made its omission negligent as a matter of law. The decision recorded the striking proposition that a court may hold an entire medical profession negligent for its accepted custom.",
+        sourceName:
+          "Supreme Court of Washington. Helling v. Carey, 83 Wash.2d 514, 519 P.2d 981. 1974.",
+        sourceUrl:
+          "https://www.courtlistener.com/opinion/1180369/helling-v-carey/",
+        methodologyType: "primary",
+      },
+      {
+        date: "1975-01-01",
+        precision: "YEAR",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Reacting to Helling's displacement of the professional-custom standard, the Washington Legislature enacted RCW 4.24.290, providing that a health-care provider's duty is to exercise the degree of skill and care possessed by members of the profession — a statutory attempt to restore the medical-custom standard and legislatively curb the decision. The override left Helling's holding contested and jurisdictionally isolated even as the underlying case remained widely taught.",
+        sourceName:
+          "Comment, Physicians and Surgeons—Malpractice—Court Disregard for the Standard of the Profession—The Legislative Response—Helling v. Carey; Wash. Rev. Code § 4.24.290. Washington Law Review, vol. 51. 1975.",
+        sourceUrl:
+          "https://digitalcommons.law.uw.edu/wlr/vol51/iss1/7/",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "contract-modification-without-consideration-angel-murray-1974",
+    claim:
+      "In Angel v. Murray (113 R.I. 482), decided July 22, 1974, the Rhode Island Supreme Court held that a contract modification made in good faith to address unanticipated circumstances is enforceable without new consideration, adopting the approach of UCC § 2-209 and Restatement (Second) of Contracts § 89 in derogation of the pre-existing duty rule.",
+    emergedAt: "1974-07-22",
+    milestones: [
+      {
+        date: "1974-07-22",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A city refuse-collection contractor sought and received an extra $10,000/year after an unanticipated surge in new dwellings; the trial court voided the payments under the pre-existing duty rule for lack of consideration. The Rhode Island Supreme Court reversed, holding that a modification prompted by unanticipated circumstances, made before full performance, and fair and equitable is enforceable without fresh consideration, following UCC § 2-209(1) and Restatement (Second) of Contracts § 89. The decision recorded the modern good-faith-modification exception that eroded the classical pre-existing duty rule.",
+        sourceName:
+          "Supreme Court of Rhode Island. Angel v. Murray, 113 R.I. 482, 322 A.2d 630. 1974.",
+        sourceUrl:
+          "https://law.justia.com/cases/rhode-island/supreme-court/1974/322-a-2d-630-0.html",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "punitive-damages-products-liability-grimshaw-ford-pinto-1981",
+    claim:
+      "In Grimshaw v. Ford Motor Co. (119 Cal.App.3d 757), the California Court of Appeal on May 29, 1981 affirmed a $3.5 million punitive-damages award against Ford for the Pinto's fuel-tank design, holding that punitive damages lie in products-liability actions where a manufacturer acts in conscious disregard of safety.",
+    emergedAt: "1978-02-06",
+    emergedPrecision: "MONTH",
+    milestones: [
+      {
+        date: "1978-02-06",
+        precision: "MONTH",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "An Orange County jury found Ford liable for burn injuries from a Pinto rear-impact fuel-tank fire and returned a punitive-damages verdict of $125 million (which the trial judge reduced to $3.5 million as a condition of denying a new trial), on evidence that Ford had knowingly marketed the car despite a cheaply remediable fuel-system hazard. The verdict recorded the claim that punitive damages are available against a manufacturer for conscious disregard of product safety.",
+        sourceName:
+          "Superior Court of California, Orange County (jury verdict). Grimshaw v. Ford Motor Co. (Pinto fuel-tank litigation). 1978.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Grimshaw_v._Ford_Motor_Co.",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1981-05-29",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The California Court of Appeal, Fourth Appellate District, affirmed both liability and the reduced $3.5 million punitive award, holding that Ford's 'conscious and callous disregard of public safety in order to maximize corporate profits' supported punitive damages and that the amount was not excessive. The appellate affirmance settled that punitive damages are recoverable in California products-liability actions for reckless design, an influential precedent later cited across the punitive-damages debate that culminated in the federal due-process cases of the 1990s–2000s.",
+        sourceName:
+          "Court of Appeal of California, Fourth District. Grimshaw v. Ford Motor Co., 119 Cal.App.3d 757, 174 Cal.Rptr. 348. 1981.",
+        sourceUrl: "https://en.wikipedia.org/wiki/Grimshaw_v._Ford_Motor_Co.",
+        methodologyType: "derivative",
+      },
+    ],
+  },
 ];
 
 async function main() {
