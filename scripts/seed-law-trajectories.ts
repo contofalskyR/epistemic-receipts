@@ -2404,6 +2404,93 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "quia-emptores-free-alienation-1290",
+    claim:
+      "The Statute Quia Emptores (18 Edw. 1 c. 1), enacted by the Parliament of England at Westminster in 1290, established that every free tenant may freely alienate his lands in fee simple provided the purchaser holds directly of the chief lord by the same services, thereby permitting free substitution and abolishing further subinfeudation.",
+    emergedAt: "1290-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1290-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Before 1290, free tenants commonly alienated land by subinfeudation — creating new sub-tenures that deprived chief lords of feudal incidents such as wardship, marriage, and escheat — and the clash between tenants' desire to alienate and lords' claim to those incidents was unsettled. The Parliament of England resolved it in the Statute Quia Emptores by permitting free alienation through substitution while abolishing further subinfeudation, so that a purchaser held directly of the superior lord by the prior services. The Act settled the free alienability of the fee simple, a cornerstone of English and later American property law that remains in force.",
+        sourceName:
+          "Parliament of England. Statute Quia Emptores 1290, 18 Edw. 1 c. 1 (Westminster, 1290).",
+        sourceUrl: "https://www.legislation.gov.uk/aep/Edw1/18/1",
+      },
+    ],
+  },
+
+  {
+    id: "tenures-abolition-socage-1660",
+    claim:
+      "The Tenures Abolition Act 1660 (12 Cha. 2 c. 24), enacted by the English Parliament in 1660, abolished feudal military tenures — knight-service, tenure in capite, and the Court of Wards and Liveries with its incidents of wardship and marriage — and converted all such tenures into free and common socage.",
+    emergedAt: "1660-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1660-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Feudal tenures held of the Crown carried burdensome incidents — wardship of minor heirs, control of their marriages, and primer seisin — administered through the resented fiscal machinery of the Court of Wards and Liveries. In 1660 the English Parliament abolished these military tenures and the Court of Wards, converting them into free and common socage subject only to nominal services. The Act completed the transition of English landholding from feudal service tenure toward modern freehold ownership, and its core conversion to socage remains part of English property law.",
+        sourceName:
+          "Parliament of England. Tenures Abolition Act 1660, 12 Cha. 2 c. 24.",
+        sourceUrl: "https://www.legislation.gov.uk/aep/Cha2/12/24",
+      },
+    ],
+  },
+
+  {
+    id: "statute-of-frauds-writing-land-1677",
+    claim:
+      "The Statute of Frauds 1677 (29 Cha. 2 c. 3), enacted by the English Parliament in 1677, required that conveyances of and interests in land, and declarations of trust of land, be evidenced by a signed writing, rendering unwritten transfers of interests in land unenforceable.",
+    emergedAt: "1677-01-01",
+    emergedPrecision: "YEAR",
+    milestones: [
+      {
+        date: "1677-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Before 1677, interests in land could be created or transferred by parol livery of seisin and oral agreement, leaving titles vulnerable to fraud and perjured testimony about verbal grants. The Statute of Frauds required leases, assignments, surrenders, and declarations of trust concerning land to be in signed writing to be enforceable. It settled the durable rule — carried into American law and later re-enacted in the Law of Property Act 1925 — that transfers of interests in land must be documented in writing.",
+        sourceName:
+          "Parliament of England. Statute of Frauds 1677, 29 Cha. 2 c. 3 ('An Act for prevention of Frauds and Perjuryes').",
+        sourceUrl: "https://www.legislation.gov.uk/aep/Cha2/29/3",
+      },
+    ],
+  },
+
+  {
+    id: "northwest-ordinance-just-compensation-1787",
+    claim:
+      "The Northwest Ordinance, enacted by the Confederation Congress on 13 July 1787, guaranteed in Article 2 that no person in the Northwest Territory be deprived of property but by judgment of peers or the law of the land, and that full compensation be made whenever public exigencies required taking a person's property — the first codification of a just-compensation requirement for takings in United States federal organic law, predating the Fifth Amendment.",
+    emergedAt: "1787-07-13",
+    milestones: [
+      {
+        date: "1787-07-13",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Governing the territory north of the Ohio River, the Confederation Congress adopted a compact of fundamental 'articles' binding on the future states, Article 2 of which required 'full compensation' whenever public exigencies made it necessary to take private property. Enacted more than four years before the Fifth Amendment's Takings Clause was ratified on 15 December 1791, it placed a just-compensation guarantee into federal organic law for the first time. It recorded, as settled territorial law, the principle later constitutionalized nationally — that the sovereign owes compensation for property taken for public use.",
+        sourceName:
+          "Confederation Congress. An Ordinance for the Government of the Territory of the United States North-West of the River Ohio (Northwest Ordinance), 13 July 1787. Avalon Project, Yale Law School.",
+        sourceUrl: "https://avalon.law.yale.edu/18th_century/nworder.asp",
+      },
+    ],
+  },
 ];
 
 async function main() {
