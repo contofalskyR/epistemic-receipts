@@ -3945,6 +3945,152 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "milligan-military-commissions-civilians-1866",
+    claim:
+      "The U.S. Supreme Court held in Ex parte Milligan, 71 U.S. (4 Wall.) 2 (order announced 3 April 1866, opinions delivered 17 December 1866), that military commissions have no jurisdiction to try civilians where the civil courts are open and functioning, and that martial law is confined to theaters of actual war in which the courts are actually closed.",
+    emergedAt: "1866-04-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1866-04-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Ex parte Milligan the Supreme Court ordered the discharge of a civilian condemned to death by a military commission in Indiana during the Civil War, holding the tribunal unconstitutional. Justice Davis's opinion (delivered 17 December 1866) declared that 'martial rule can never exist where the courts are open,' settling as a JUDICIAL matter that military commissions cannot try civilians while civil courts function — a foundational limit on war-powers military justice.",
+        sourceName:
+          "Davis J. Ex parte Milligan, 71 U.S. (4 Wall.) 2 (1866). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/71/2",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "geofroy-riggs-treaty-power-scope-1890",
+    claim:
+      "The U.S. Supreme Court held in Geofroy v. Riggs, 133 U.S. 258 (decided 3 February 1890), that the treaty power extends to all proper subjects of negotiation between the United States and foreign nations — including overriding state inheritance and property law — subject only to the narrow limits that a treaty may not authorize what the Constitution forbids, alter the character of the government, or cede state territory without consent.",
+    emergedAt: "1890-02-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1890-02-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Geofroy v. Riggs the Court upheld an 1853 U.S.–France consular convention permitting French citizens to inherit District of Columbia real estate against a state-law disability. Justice Field's opinion held the treaty power reaches 'all proper subjects of negotiation between our government and the governments of other nations,' with only narrow constitutional limits, settling the broad-but-bounded scope of the federal treaty power.",
+        sourceName:
+          "Field J. Geofroy v. Riggs, 133 U.S. 258 (1890). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/133/258",
+        methodologyType: "primary",
+      },
+      {
+        date: "1920-04-19",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Missouri v. Holland (252 U.S. 416, 19 April 1920) built on Geofroy's premise that treaties reach proper subjects of international negotiation, with Justice Holmes holding that a valid treaty (the Migratory Bird Treaty) and its implementing statute could regulate matters otherwise arguably reserved to the states. The decision entrenched and extended Geofroy's expansive conception of the treaty power, keeping the doctrine settled.",
+        sourceName:
+          "Holmes J. Missouri v. Holland, 252 U.S. 416 (1920). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/252/416",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "jones-sovereignty-political-question-1890",
+    claim:
+      "The U.S. Supreme Court held in Jones v. United States, 137 U.S. 202 (decided 24 November 1890), that the question of which nation holds sovereignty (de jure or de facto) over a territory is a political, not judicial, question, so that the determination of the legislative and executive departments — here the recognition of U.S. jurisdiction over Navassa Island under the Guano Islands Act of 1856 — conclusively binds the courts.",
+    emergedAt: "1890-11-24",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1890-11-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Reviewing a murder conviction for acts on guano-bearing Navassa Island, the Court upheld the Guano Islands Act and, per Justice Gray, held that 'who is the sovereign... of a territory is not a judicial, but a political, question,' whose resolution by the political branches conclusively binds the judiciary. The ruling settled that judicial recognition of territorial sovereignty follows the executive's foreign-relations determinations.",
+        sourceName:
+          "Gray J. Jones v. United States, 137 U.S. 202 (1890). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/137/202",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "terlinden-ames-treaty-continuity-political-question-1902",
+    claim:
+      "The U.S. Supreme Court held in Terlinden v. Ames, 184 U.S. 270 (decided 24 February 1902), that the 1852 Prussian–U.S. extradition treaty remained in force despite Prussia's absorption into the German Empire in 1871, and that whether a treaty survives a change in the foreign state's form of government is a political question committed to the executive and not subject to judicial revision.",
+    emergedAt: "1902-02-24",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1902-02-24",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Denying a habeas challenge to extradition, the Court, per Chief Justice Fuller, held the 1852 Prussia–U.S. extradition treaty still operative because both governments had continued to honor it, and that the continued force of a treaty after a change in a foreign government's constitution 'is not a judicial but a political question.' The decision settled that treaty-continuity determinations rest with the political branches.",
+        sourceName:
+          "Fuller C.J. Terlinden v. Ames, 184 U.S. 270 (1902). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/184/270",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "in-re-ross-constitution-abroad-consular-courts-1891",
+    claim:
+      "The U.S. Supreme Court held in In re Ross, 140 U.S. 453 (decided 25 May 1891), that the Constitution's grand-jury and jury-trial guarantees do not protect a U.S. citizen tried abroad by a U.S. consular court exercising extraterritorial jurisdiction under treaty, on the theory that the Constitution 'can have no operation in another country' — a doctrine later repudiated by Reid v. Covert (1957).",
+    emergedAt: "1891-05-25",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1891-05-25",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Upholding a seaman's murder conviction by a U.S. consular court in Japan under an extraterritoriality treaty, the Court, per Justice Field, held that the constitutional guarantees of indictment and jury trial 'apply only to citizens... within the United States, and not to residents or temporary sojourners abroad,' because the Constitution can have no operation in another country. This settled that the Constitution did not follow the citizen abroad in treaty-based consular tribunals.",
+        sourceName:
+          "Field J. In re Ross, 140 U.S. 453 (1891). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/140/453",
+        methodologyType: "primary",
+      },
+      {
+        date: "1957-06-10",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Reid v. Covert, 354 U.S. 1 (10 June 1957), Justice Black's plurality repudiated Ross, declaring its rationale 'a fundamental misconception,' stating 'the Ross approach that the Constitution has no applicability abroad has long since been directly repudiated,' and holding that constitutional protections do follow U.S. citizens abroad when the government exercises power over them. This reversed the Ross doctrine of a territorially bounded Constitution.",
+        sourceName:
+          "Black J. Reid v. Covert, 354 U.S. 1 (1957). Plurality opinion.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/354/1",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
