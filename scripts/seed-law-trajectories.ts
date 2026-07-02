@@ -4862,6 +4862,353 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "no-federal-common-law-crimes-1812",
+    claim:
+      "The U.S. Supreme Court held in United States v. Hudson & Goodwin, decided 13 February 1812, that federal courts possess no common-law criminal jurisdiction and may punish an act as a crime only where Congress has by statute defined the offense and fixed the penalty.",
+    emergedAt: "1812-02-13",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1812-02-13",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Ruling on a libel prosecution against Connecticut newspaper editors, the Court (per Justice William Johnson) held that the federal circuit courts cannot exercise a common-law criminal jurisdiction and can punish only offenses that Congress has created by statute. This resolved a question fiercely contested since 1789 — Federalist judges had entertained common-law prosecutions (e.g., under the Sedition-era practice) while Jeffersonian Republicans denied any such power — by settling that federal criminal liability requires a positive legislative act.",
+        sourceName:
+          "Johnson J. United States v. Hudson & Goodwin, 11 U.S. (7 Cranch) 32 (1812). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/11/32",
+      },
+      {
+        date: "1816-03-01",
+        precision: "MONTH",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Coolidge, the Court declined an express invitation by the government to reconsider Hudson and reaffirmed that federal courts have no common-law criminal jurisdiction. By refusing to revisit the rule when squarely pressed, the Court entrenched the statutory-crime requirement as a durable structural feature of federal criminal law.",
+        sourceName:
+          "Story J. (dissenting from the point) / Opinion of the Court. United States v. Coolidge, 14 U.S. (1 Wheat.) 415 (1816).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/14/415",
+      },
+    ],
+  },
+
+  {
+    id: "levying-war-actual-assemblage-bollman-1807",
+    claim:
+      "The U.S. Supreme Court held in Ex parte Bollman & Swartwout, decided 21 February 1807, that to 'levy war' within the meaning of the Constitution's Treason Clause there must be an actual assemblage of men for a treasonable purpose, so that mere conspiracy or enlistment to overthrow the government is not itself treason.",
+    emergedAt: "1807-02-21",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1807-02-21",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Reviewing the detention of two alleged confederates of Aaron Burr, Chief Justice Marshall first held that the Supreme Court had statutory habeas power under Section 14 of the Judiciary Act of 1789, then construed the Treason Clause to require 'an actual assemblage of men for the purpose of executing a treasonable design.' Because the government showed only conspiracy, Bollman and Swartwout were discharged. The opinion fixed the constitutional meaning of 'levying war' and framed the collapse of the Burr treason prosecution months later.",
+        sourceName:
+          "Marshall CJ. Ex parte Bollman & Swartwout, 8 U.S. (4 Cranch) 75 (1807). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/8/75",
+      },
+      {
+        date: "1945-04-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Cramer v. United States, a WWII sabotage-related treason case, the Court reaffirmed the demanding constitutional standard for treason, insisting on the two-witness overt-act requirement and the narrow construction of the offense that Bollman had begun. The decision confirmed that the Founders' deliberately restrictive definition of treason — anchored in the requirement of overt, provable acts rather than intent or association — remained settled law more than a century later.",
+        sourceName:
+          "Jackson J. Cramer v. United States, 325 U.S. 1 (1945). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/325/1",
+      },
+    ],
+  },
+
+  {
+    id: "wiretapping-not-a-search-olmstead-1928",
+    claim:
+      "The U.S. Supreme Court held in Olmstead v. United States, decided 4 June 1928, that wiretapping a telephone line accomplished without any physical trespass into the defendant's premises is not a 'search or seizure' within the Fourth Amendment and does not violate the Fifth Amendment — a holding overruled by Katz v. United States (18 December 1967).",
+    emergedAt: "1928-06-04",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1928-06-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 Court, per Chief Justice Taft, held that federal agents' warrantless wiretap of a bootlegging ring did not offend the Fourth Amendment because the amendment reaches only physical searches of 'persons, houses, papers, and effects' and there had been no trespass — only overheard conversations. Justice Brandeis's celebrated dissent argued for a constitutional 'right to be let alone' adaptable to new technology. The majority established the trespass-based test that governed electronic surveillance for four decades.",
+        sourceName:
+          "Taft CJ. Olmstead v. United States, 277 U.S. 438 (1928). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/277/438",
+      },
+      {
+        date: "1967-12-18",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Katz v. United States the Court expressly repudiated Olmstead's trespass test, holding that the Fourth Amendment 'protects people, not places' and reaches any government intrusion on a reasonable expectation of privacy — including a warrantless bug on a public phone booth. Justice Stewart's majority declared that 'the underpinnings of Olmstead ... have been so eroded by our subsequent decisions that the trespass doctrine there enunciated can no longer be regarded as controlling,' formally overruling the 1928 rule.",
+        sourceName:
+          "Stewart J. Katz v. United States, 389 U.S. 347 (1967). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/389/347",
+      },
+    ],
+  },
+
+  {
+    id: "fruit-of-the-poisonous-tree-silverthorne-1920",
+    claim:
+      "The U.S. Supreme Court held in Silverthorne Lumber Co. v. United States, decided 26 January 1920, that the Fourth Amendment bars the government not only from using illegally seized evidence directly but also from using knowledge or leads derived from the illegal seizure — the doctrine later named 'fruit of the poisonous tree.'",
+    emergedAt: "1920-01-26",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1920-01-26",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "JUDICIAL",
+        reason:
+          "After federal agents unlawfully seized a company's books and made copies, the Court (per Justice Holmes) held the government could not use the copies or the knowledge gained to compel production of the originals, reasoning that a rule forbidding illegal acquisition of evidence means it 'shall not be used at all,' not merely excluded at trial. This first announced the derivative-evidence bar — distinct from the direct exclusionary rule of Weeks (1914) — but as a compact principle whose scope and exceptions were not yet worked out.",
+        sourceName:
+          "Holmes J. Silverthorne Lumber Co. v. United States, 251 U.S. 385 (1920). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/251/385",
+      },
+      {
+        date: "1963-01-14",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Wong Sun v. United States, Justice Brennan gave the doctrine its canonical modern form: verbal and derivative evidence obtained by exploitation of an illegal arrest is inadmissible 'fruit' (building on the phrase coined in Nardone v. United States, 1939), but evidence is admissible where the connection to the illegality 'has become so attenuated as to dissipate the taint.' By articulating both the derivative-exclusion rule and its attenuation limit, the Court settled the operative framework courts still apply.",
+        sourceName:
+          "Brennan J. Wong Sun v. United States, 371 U.S. 471 (1963). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/371/471",
+      },
+    ],
+  },
+
+  {
+    id: "cruikshank-fourteenth-amendment-state-action-federal-enforcement-1876",
+    claim:
+      "In United States v. Cruikshank (92 U.S. 542), decided 27 March 1876, the U.S. Supreme Court held that the Fourteenth Amendment restrains only state action and adds nothing to the rights of one citizen against another, so the federal government cannot criminally prosecute private individuals who conspire to deprive citizens of their constitutional rights.",
+    emergedAt: "1876-03-27",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1876-03-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Supreme Court, per Chief Justice Waite, overturned the federal convictions of white defendants in the Colfax Massacre prosecution under the Enforcement Act of 1870, holding that the Fourteenth Amendment 'prohibits a State' but 'adds nothing to the rights of one citizen as against another.' The ruling established the state-action doctrine and gutted federal power to punish private racial violence, leaving such protection to the states. It became a foundational settled limit on Reconstruction-era civil rights enforcement.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Cruikshank, 92 U.S. 542 (1876).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/92/542",
+        methodologyType: "primary",
+      },
+      {
+        date: "1883-10-15",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In the Civil Rights Cases (109 U.S. 3), the Court reaffirmed and extended Cruikshank's state-action principle, striking down the public-accommodations provisions of the Civil Rights Act of 1875 on the ground that the Fourteenth Amendment reaches only state, not private, discrimination. This cemented the state-action doctrine as settled constitutional law for the balance of the nineteenth century.",
+        sourceName:
+          "Supreme Court of the United States. Civil Rights Cases, 109 U.S. 3 (1883).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/109/3",
+        methodologyType: "primary",
+      },
+      {
+        date: "1966-03-28",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Guest (383 U.S. 745), a majority of Justices (in concurrences) concluded that Congress possesses power to reach private conspiracies that interfere with federally protected rights, and the decision, together with Griffin v. Breckenridge (1971), revived federal criminal and civil enforcement against private actors. Cruikshank's core state-action rule survives, but its specific holding barring federal prosecution of private civil rights conspiracies became contested and was substantially eroded.",
+        sourceName:
+          "Supreme Court of the United States. United States v. Guest, 383 U.S. 745 (1966).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/383/745",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "minor-v-happersett-citizenship-not-suffrage-women-1875",
+    claim:
+      "In Minor v. Happersett (88 U.S. 162), decided 29 March 1875, the U.S. Supreme Court held unanimously that the Fourteenth Amendment's grant of citizenship does not confer the right to vote, so states may constitutionally deny women the franchise.",
+    emergedAt: "1875-03-29",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1875-03-29",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Waite, writing for a unanimous Court, rejected Virginia Minor's claim that the Fourteenth Amendment's Privileges or Immunities Clause guaranteed women the vote, holding that 'the Constitution of the United States does not confer the right of suffrage upon any one' and that suffrage is separate from citizenship. The decision settled that women's suffrage could not be won through the Fourteenth Amendment and would require a separate constitutional amendment.",
+        sourceName:
+          "Supreme Court of the United States. Minor v. Happersett, 88 U.S. (21 Wall.) 162 (1875).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/88/162",
+        methodologyType: "primary",
+      },
+      {
+        date: "1920-08-26",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Nineteenth Amendment, certified in force on 26 August 1920, provides that the right to vote 'shall not be denied or abridged by the United States or by any State on account of sex,' constitutionally overriding the practical result of Minor v. Happersett. Though Minor was never judicially overruled, its holding that states could deny women the vote was superseded by constitutional amendment.",
+        sourceName:
+          "United States. Nineteenth Amendment to the U.S. Constitution (ratified/certified 1920).",
+        sourceUrl: "https://www.law.cornell.edu/constitution/amendmentxix",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "giles-v-harris-judicial-abstention-black-disenfranchisement-1903",
+    claim:
+      "In Giles v. Harris (189 U.S. 475), decided 27 April 1903, the U.S. Supreme Court declined to order Alabama to register Black voters disenfranchised under the state's 1901 constitution, holding that federal equity courts would not supervise state voting and that relief from such 'political wrongs' must come from the political branches.",
+    emergedAt: "1903-04-27",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1903-04-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Holmes, for the majority, denied Jackson Giles relief against Alabama's discriminatory voter-registration scheme, reasoning that a court of equity could not enforce political rights or practically supervise a state's electorate, and that redress must come from the political and legislative departments. The ruling effectively settled a doctrine of judicial abstention that left Southern Black disenfranchisement unremedied for decades.",
+        sourceName:
+          "Supreme Court of the United States. Giles v. Harris, 189 U.S. 475 (1903).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/189/475",
+        methodologyType: "primary",
+      },
+      {
+        date: "1944-04-03",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Smith v. Allwright (321 U.S. 649), the Court struck down the all-white Democratic primary in Texas as unconstitutional state action, demonstrating a willingness to intervene against systematic racial exclusion from the ballot that Giles had refused. The decision contested the premise that federal courts could not police state voting discrimination.",
+        sourceName:
+          "Supreme Court of the United States. Smith v. Allwright, 321 U.S. 649 (1944).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/321/649",
+        methodologyType: "primary",
+      },
+      {
+        date: "1962-03-26",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Baker v. Carr (369 U.S. 186), the Court held that challenges to a state's apportionment and the distribution of the vote present justiciable Fourteenth Amendment questions, not nonjusticiable political questions, expressly rejecting the abstention logic underlying Giles v. Harris. Together with the Voting Rights Act of 1965, Baker overturned the doctrine that courts would not intervene in state voting discrimination.",
+        sourceName:
+          "Supreme Court of the United States. Baker v. Carr, 369 U.S. 186 (1962).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/369/186",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "gong-lum-v-rice-racial-classification-school-segregation-1927",
+    claim:
+      "In Gong Lum v. Rice (275 U.S. 78), decided 21 November 1927, the U.S. Supreme Court held that Mississippi could classify Martha Lum, a Chinese-American child, as 'colored' and require her to attend a segregated school without violating the Equal Protection Clause of the Fourteenth Amendment.",
+    emergedAt: "1927-11-21",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1927-11-21",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Taft, for a unanimous Court, held that a state's decision to place a Chinese-American student among the 'colored races' for school-assignment purposes was 'within the discretion of the state' and did not conflict with the Fourteenth Amendment so long as equal facilities were provided. The ruling extended Plessy's separate-but-equal doctrine to non-Black minorities and settled that racial classification of Asian-American children for segregated schooling was constitutional.",
+        sourceName:
+          "Supreme Court of the United States. Gong Lum v. Rice, 275 U.S. 78 (1927).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/275/78",
+        methodologyType: "primary",
+      },
+      {
+        date: "1954-05-17",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Brown v. Board of Education (347 U.S. 483), a unanimous Court held that 'separate educational facilities are inherently unequal,' overruling the separate-but-equal foundation on which Gong Lum rested and rendering unconstitutional the racial classification of any child for segregated public schooling. Gong Lum's holding was thereby reversed as constitutional doctrine.",
+        sourceName:
+          "Supreme Court of the United States. Brown v. Board of Education, 347 U.S. 483 (1954).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/347/483",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "adkins-v-childrens-hospital-women-minimum-wage-liberty-of-contract-1923",
+    claim:
+      "In Adkins v. Children's Hospital (261 U.S. 525), decided 9 April 1923, the U.S. Supreme Court held that a minimum-wage law for women in the District of Columbia violated the liberty of contract protected by the Due Process Clause of the Fifth Amendment.",
+    emergedAt: "1923-04-09",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1923-04-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Sutherland, for the majority, struck down the District's minimum-wage board statute as an unconstitutional interference with liberty of contract, calling it 'simply and exclusively a price-fixing law' outside the recognized exceptions to freedom of contract. Notably, the Court reasoned that after the Nineteenth Amendment the sex-based justification accepted in Muller v. Oregon had come 'almost to the vanishing point,' settling Lochner-era liberty-of-contract doctrine against protective wage legislation.",
+        sourceName:
+          "Supreme Court of the United States. Adkins v. Children's Hospital, 261 U.S. 525 (1923).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/261/525",
+        methodologyType: "primary",
+      },
+      {
+        date: "1937-03-29",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In West Coast Hotel Co. v. Parrish (300 U.S. 379), the Court expressly declared that 'the case of Adkins v. Children's Hospital … should be, and it is, overruled,' upholding Washington State's minimum-wage law for women as a reasonable exercise of the police power. The decision — the 'switch in time' — ended the Lochner era's liberty-of-contract barrier to economic regulation.",
+        sourceName:
+          "Supreme Court of the United States. West Coast Hotel Co. v. Parrish, 300 U.S. 379 (1937).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/300/379",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
