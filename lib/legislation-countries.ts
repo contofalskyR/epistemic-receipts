@@ -69,7 +69,7 @@ export const COUNTRY_REGISTRY: CountryEntry[] = [
   { code: "jp", label: "Japan", flag: "🇯🇵", region: "Asia-Pacific", ingestedBy: "japan_legislation_v1", scriptSlug: "japan", sourceLabel: "shugiin.go.jp" },
   { code: "kr", label: "South Korea", flag: "🇰🇷", region: "Asia-Pacific", ingestedBy: "korea_legislation_v1", scriptSlug: "korea", sourceLabel: "assembly.go.kr" },
   { code: "my", label: "Malaysia", flag: "🇲🇾", region: "Asia-Pacific", ingestedBy: "malaysia_legislation_v1", scriptSlug: "malaysia", sourceLabel: "parlimen.gov.my" },
-  { code: "pk", label: "Pakistan", flag: "🇵🇰", region: "Asia-Pacific", ingestedBy: "pakistan_legislation_v1", scriptSlug: "pakistan", sourceLabel: "na.gov.pk" },
+  { code: "pk", label: "Pakistan", flag: "🇵🇰", region: "Asia-Pacific", ingestedBy: "pakistan_code_v1", scriptSlug: "pakistan", sourceLabel: "na.gov.pk" },
   { code: "ph", label: "Philippines", flag: "🇵🇭", region: "Asia-Pacific", ingestedBy: "philippines_legislation_v1", scriptSlug: "philippines", sourceLabel: "congress.gov.ph" },
   { code: "sg", label: "Singapore", flag: "🇸🇬", region: "Asia-Pacific", ingestedBy: "singapore_legislation_v1", scriptSlug: "singapore", sourceLabel: "parliament.gov.sg" },
   { code: "tw", label: "Taiwan", flag: "🇹🇼", region: "Asia-Pacific", ingestedBy: "taiwan_legislation_v1", scriptSlug: "taiwan", sourceLabel: "ly.gov.tw" },
