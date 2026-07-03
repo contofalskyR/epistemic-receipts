@@ -15,18 +15,20 @@
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 import * as fs from 'fs'
+import { COMPLETE_SINGLE_STEP } from '../lib/corpus-completeness'
 
 const prisma = new PrismaClient()
 
 // ── Configuration ─────────────────────────────────────────────────────────────
+// Trimmed 2026-07-03 (see CORPUS-PROMOTER-BULK-PLAN.md §3/§5): drugsatfda_v1 +
+// who_essential_medicines_v1 are born-settled (complete at length 1);
+// openfda_labels_v1 + voteview_v1 were bulk-promoted in wave 1. What remains
+// for the LLM: retraction residue that wave 2 can't date, bills whose outcomes
+// need research, and openalex_v1.
 
 const TIER1_PIPELINES = [
-  'drugsatfda_v1',
-  'crossref_retractions_v1',
-  'openfda_labels_v1',
-  'voteview_v1',
+  'crossref_retractions_v1', // post-wave-2 residue only (claims CrossRef has no pub date for)
   'congress_bills_tracker_v1',
-  'who_essential_medicines_v1',
 ]
 
 const TIER2_PIPELINES = ['openalex_v1']
@@ -84,8 +86,11 @@ async function main() {
   const { run, count, attemptedPath } = parseArgs()
   const attemptedIds = loadAttemptedIds(attemptedPath)
 
-  // Alternate tiers: runs 0,1 = TIER1; run 2 = TIER2; then repeats
-  const pipelines = run % 3 === 2 ? TIER2_PIPELINES : TIER1_PIPELINES
+  // Alternate tiers: runs 0,1 = TIER1; run 2 = TIER2; then repeats.
+  // Defensive: never hand the LLM a pipeline classified complete-at-length-1.
+  const pipelines = (run % 3 === 2 ? TIER2_PIPELINES : TIER1_PIPELINES).filter(
+    (p) => !COMPLETE_SINGLE_STEP.has(p),
+  )
 
   // Filter out claims unlikely to have a verifiable multi-step arc
   const SKIP_PATTERNS = [

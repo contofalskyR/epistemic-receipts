@@ -179,7 +179,10 @@ export const PUB_REASON =
   "Original paper published, entering the expert literature via peer review.";
 
 // Candidate metadata keys scanned by the preflight to find the publication date.
+// "originalPublished" is written by scripts/backfill-retraction-pub-dates.ts
+// (the ingester itself stores no publication date — verified 2026-07-03).
 const PUB_DATE_KEY_CANDIDATES = [
+  "originalPublished",
   "publishedAt", "published", "publicationDate", "publication_date",
   "originalPublicationDate", "original_publication_date", "issued",
   "pubDate", "publishedDate", "published_print", "published_online",
@@ -187,6 +190,7 @@ const PUB_DATE_KEY_CANDIDATES = [
 
 // ISO-date-shaped (safe to cast the first 10 chars to timestamp).
 const ISO_DAY_RE = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])";
+const ISO_MONTH_RE = "^\\d{4}-(0[1-9]|1[0-2])$";
 const YEAR_RE = "^\\d{4}$";
 
 // ── SQL fragments ─────────────────────────────────────────────────────────────
@@ -244,8 +248,9 @@ export function syncAxisSql(rule: ForwardRule): SqlFrag {
 }
 
 /** Wave 2 eligibility: single-step REVERSED retraction claims with a parseable
- *  publication date at metadata->>key. Full ISO dates → DAY; bare years → YEAR
- *  (canonical Jan-1 timestamp + precision label, the schema's own convention). */
+ *  publication date at metadata->>key. Full ISO dates → DAY; "YYYY-MM" → MONTH
+ *  (1st of month); bare years → YEAR (Jan-1). Truncated timestamp + precision
+ *  label is the schema's own convention (claimEmergedPrecision). */
 function retractionEligibleSql(key: string): SqlFrag {
   return sqlt`
     SELECT
@@ -254,11 +259,16 @@ function retractionEligibleSql(key: string): SqlFrag {
       CASE
         WHEN (c.metadata->>${key}) ~ ${ISO_DAY_RE}
           THEN substring(c.metadata->>${key} from 1 for 10)::timestamp
+        WHEN (c.metadata->>${key}) ~ ${ISO_MONTH_RE}
+          THEN make_timestamp(
+            substring(c.metadata->>${key} from 1 for 4)::int,
+            substring(c.metadata->>${key} from 6 for 2)::int, 1, 0, 0, 0)
         WHEN (c.metadata->>${key}) ~ ${YEAR_RE}
           THEN make_timestamp((c.metadata->>${key})::int, 1, 1, 0, 0, 0)
       END AS pub_at,
       CASE
         WHEN (c.metadata->>${key}) ~ ${ISO_DAY_RE} THEN 'DAY'
+        WHEN (c.metadata->>${key}) ~ ${ISO_MONTH_RE} THEN 'MONTH'
         WHEN (c.metadata->>${key}) ~ ${YEAR_RE} THEN 'YEAR'
       END AS pub_precision
     ${singleStepJoin(RETRACTION_PIPELINE)}
@@ -425,7 +435,7 @@ async function preflightRetractions(): Promise<void> {
     const c = await one<CountRow>(sqlt`
       SELECT COUNT(*) n ${singleStepJoin(RETRACTION_PIPELINE)}
         AND h."toAxis" = 'REVERSED'
-        AND ((c.metadata->>${key}) ~ ${ISO_DAY_RE} OR (c.metadata->>${key}) ~ ${YEAR_RE})`);
+        AND ((c.metadata->>${key}) ~ ${ISO_DAY_RE} OR (c.metadata->>${key}) ~ ${ISO_MONTH_RE} OR (c.metadata->>${key}) ~ ${YEAR_RE})`);
     if (num(c.n) > 0) console.log(`     metadata.${key.padEnd(28)} ${num(c.n)} parseable dates`);
   }
   const keys = await q<{ k: string; n: number | bigint }>(sqlt`
@@ -460,7 +470,7 @@ async function executeWave1(rules: ForwardRule[]): Promise<void> {
       (() => { const r = render(wave1InsertSql(rule)); return db().$executeRawUnsafe(r.text, ...r.params); })(),
       ...(SYNC_AXIS ? [(() => { const r = render(syncAxisSql(rule)); return db().$executeRawUnsafe(r.text, ...r.params); })()] : []),
     ];
-    const results = await db().$transaction(ops, { timeout: 600_000 });
+    const results = await db().$transaction(ops);
     const inserted = num(results[1]);
     const synced = SYNC_AXIS ? num(results[2]) : 0;
     console.log(
@@ -491,14 +501,11 @@ async function executeWave2(): Promise<void> {
   const t0 = Date.now();
   const ins = render(wave2InsertSql(PUB_DATE_KEY));
   const amd = render(wave2AmendSql());
-  const [, inserted, amended] = await db().$transaction(
-    [
-      db().$executeRawUnsafe(`SET LOCAL statement_timeout = '600s'`),
-      db().$executeRawUnsafe(ins.text, ...ins.params),
-      db().$executeRawUnsafe(amd.text, ...amd.params),
-    ],
-    { timeout: 600_000 },
-  );
+  const [, inserted, amended] = await db().$transaction([
+    db().$executeRawUnsafe(`SET LOCAL statement_timeout = '600s'`),
+    db().$executeRawUnsafe(ins.text, ...ins.params),
+    db().$executeRawUnsafe(amd.text, ...amd.params),
+  ] as const);
   console.log(
     `[${RETRACTION_PIPELINE}] prepended ${num(inserted)} publication rows, re-pointed ${num(amended)} baselines in ${((Date.now() - t0) / 1000).toFixed(1)}s`,
   );
