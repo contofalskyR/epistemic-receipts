@@ -1,0 +1,581 @@
+diff --git a/app/analysis/votes/loading.tsx b/app/analysis/votes/loading.tsx
+new file mode 100644
+index 0000000..b41b5e3
+--- /dev/null
++++ b/app/analysis/votes/loading.tsx
+@@ -0,0 +1,25 @@
++// Streaming fallback for the vote-analysis page. buildVoteAnalysis() scans
++// ~500k MemberVote rows on cache misses, which can take 10–20s; without this
++// file the route renders a black screen the whole time.
++export default function Loading() {
++  return (
++    <div className="max-w-5xl mx-auto space-y-8 pb-16 animate-pulse" aria-busy="true">
++      <div className="space-y-3">
++        <div className="h-3 w-24 rounded bg-gray-800" />
++        <div className="h-7 w-72 rounded bg-gray-800" />
++        <div className="h-4 w-full max-w-xl rounded bg-gray-900" />
++        <div className="h-4 w-96 rounded bg-gray-900" />
++      </div>
++      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
++        {Array.from({ length: 4 }).map((_, i) => (
++          <div key={i} className="h-24 rounded-lg border border-gray-800 bg-gray-900/40" />
++        ))}
++      </div>
++      <p className="text-xs text-gray-500">
++        Crunching contested-vote statistics across ~50k recorded votes…
++      </p>
++      <div className="h-64 rounded-lg border border-gray-800 bg-gray-900/40" />
++      <div className="h-64 rounded-lg border border-gray-800 bg-gray-900/40" />
++    </div>
++  );
++}
+diff --git a/app/api/stats/media-coverage/route.ts b/app/api/stats/media-coverage/route.ts
+index c8a27e7..ab8115c 100644
+--- a/app/api/stats/media-coverage/route.ts
++++ b/app/api/stats/media-coverage/route.ts
+@@ -1,5 +1,6 @@
+ import { NextResponse } from "next/server"
+ import { prisma } from "@/lib/prisma"
++import { isGenericQuery } from "@/lib/coverage-query"
+ 
+ export const revalidate = 300
+ 
+@@ -120,6 +121,10 @@ export async function GET(request: Request) {
+         articleCount: r.articleCount,
+         topHeadlines: coerceHeadlines(r.topHeadlines),
+         searchQuery: r.searchQuery,
++        // Existing cache rows built from boilerplate titles ("Recognizing",
++        // "_______ Act") return NYT's 10,000-hit cap — flag them so the UI
++        // can exclude them from coverage rankings.
++        genericQuery: isGenericQuery(r.searchQuery),
+         lastChecked: r.lastChecked.toISOString(),
+         topics: topicSlugs,
+         status: statusSlug,
+diff --git a/app/legislation/LegislationClient.tsx b/app/legislation/LegislationClient.tsx
+index f2ab289..73c3397 100644
+--- a/app/legislation/LegislationClient.tsx
++++ b/app/legislation/LegislationClient.tsx
+@@ -505,14 +505,14 @@ export default function LegislationClient() {
+       {/* Live tracker banner — US + Canada */}
+       {specialView === "us" && (
+         <AutoUpdateBanner
+-          lastRefresh={data?.lastRefresh ?? null}
++          lastRefresh={data ? (data.lastRefresh ?? null) : undefined}
+           sourceLabel="Congress.gov API"
+           sourceUrl="https://api.congress.gov/"
+         />
+       )}
+       {specialView === "ca" && (
+         <AutoUpdateBanner
+-          lastRefresh={data?.lastRefresh ?? null}
++          lastRefresh={data ? (data.lastRefresh ?? null) : undefined}
+           sourceLabel="LEGISinfo API"
+           sourceUrl="https://www.parl.ca/LegisInfo/en/overview"
+         />
+@@ -751,7 +751,9 @@ function AutoUpdateBanner({
+   sourceLabel,
+   sourceUrl,
+ }: {
+-  lastRefresh: string | null;
++  // undefined = bills response still loading (show "…"), null = loaded but no
++  // refresh timestamp recorded (show "never").
++  lastRefresh: string | null | undefined;
+   sourceLabel: string;
+   sourceUrl: string;
+ }) {
+@@ -775,7 +777,7 @@ function AutoUpdateBanner({
+         <span className="text-gray-500">.</span>
+       </span>
+       <span className="ml-auto font-mono text-gray-500 shrink-0">
+-        Last pull: {formatRelative(lastRefresh)}
++        Last pull: {lastRefresh === undefined ? "…" : formatRelative(lastRefresh)}
+       </span>
+     </div>
+   );
+diff --git a/app/retraction-wall/page.tsx b/app/retraction-wall/page.tsx
+index 23ea903..72717fe 100644
+--- a/app/retraction-wall/page.tsx
++++ b/app/retraction-wall/page.tsx
+@@ -1,4 +1,5 @@
+ import Link from "next/link";
++import { Prisma } from "@prisma/client";
+ import { prisma } from "@/lib/prisma";
+ 
+ export const revalidate = 3600;
+@@ -25,9 +26,44 @@ type RetractionRow = {
+   claimEmergedAt: Date | null;
+   createdAt: Date;
+   metadata: RetractionMeta;
+-  contradictsCount: number;
++  // Distinct papers in our citation graph that cite the retracted original
++  // (via OpenAlex CITES / CITED_BY edges). NOT the 1:1 CONTRADICTS link —
++  // that one is always ≤1 per retraction by construction, which made the old
++  // "ripple" ranking degenerate (every row showed 1).
++  citedByCount: number;
+ };
+ 
++// Distinct citing papers per retraction, going through the retraction's
++// CONTRADICTS edge to the original, then counting citation edges that touch
++// the original from either direction. UNION (not UNION ALL) dedupes papers
++// recorded both as orig-CITED_BY-citer and citer-CITES-orig.
++const CITERS_CTE = (retractionFilter: Prisma.Sql) => Prisma.sql`
++  WITH orig AS (
++    SELECT r."fromClaimId" AS retraction_id, r."toClaimId" AS orig_id
++    FROM "ClaimRelation" r
++    JOIN "Claim" rc
++      ON rc.id = r."fromClaimId"
++     AND rc."ingestedBy" = ${PIPELINE}
++     AND rc.deleted = false
++    WHERE r."relationType" = 'CONTRADICTS'
++    ${retractionFilter}
++  ),
++  citers AS (
++    SELECT o.retraction_id, x."toClaimId" AS citer_id
++    FROM orig o
++    JOIN "ClaimRelation" x
++      ON x."fromClaimId" = o.orig_id AND x."relationType" = 'CITED_BY'
++    UNION
++    SELECT o.retraction_id, x."fromClaimId" AS citer_id
++    FROM orig o
++    JOIN "ClaimRelation" x
++      ON x."toClaimId" = o.orig_id AND x."relationType" = 'CITES'
++  )
++  SELECT retraction_id, COUNT(*)::int AS citing
++  FROM citers
++  GROUP BY retraction_id
++`;
++
+ function fmtDate(d: Date | null): string {
+   if (!d) return "—";
+   return d.toISOString().slice(0, 10);
+@@ -62,13 +98,11 @@ async function getRecentRetractions(limit: number): Promise<RetractionRow[]> {
+   if (claims.length === 0) return [];
+ 
+   const ids = claims.map((c) => c.id);
+-  const grouped = await prisma.claimRelation.groupBy({
+-    by: ["fromClaimId"],
+-    where: { fromClaimId: { in: ids }, relationType: "CONTRADICTS" },
+-    _count: { _all: true },
+-  });
++  const grouped = await prisma.$queryRaw<{ retraction_id: string; citing: number }[]>(
++    CITERS_CTE(Prisma.sql`AND r."fromClaimId" IN (${Prisma.join(ids)})`),
++  );
+   const countById = new Map<string, number>();
+-  for (const g of grouped) countById.set(g.fromClaimId, g._count._all);
++  for (const g of grouped) countById.set(g.retraction_id, g.citing);
+ 
+   return claims.map((c) => ({
+     id: c.id,
+@@ -76,23 +110,16 @@ async function getRecentRetractions(limit: number): Promise<RetractionRow[]> {
+     claimEmergedAt: c.claimEmergedAt,
+     createdAt: c.createdAt,
+     metadata: c.metadata as RetractionMeta,
+-    contradictsCount: countById.get(c.id) ?? 0,
++    citedByCount: countById.get(c.id) ?? 0,
+   }));
+ }
+ 
+ async function getTopRipple(limit: number): Promise<RetractionRow[]> {
+-  // Top fromClaim ids by CONTRADICTS count, restricted to retraction-pipeline claims.
+-  const grouped = await prisma.claimRelation.groupBy({
+-    by: ["fromClaimId"],
+-    where: {
+-      relationType: "CONTRADICTS",
+-      fromClaim: { ingestedBy: PIPELINE, deleted: false },
+-    },
+-    _count: { _all: true },
+-    orderBy: { _count: { fromClaimId: "desc" } },
+-    take: limit,
+-  });
+-  const ids = grouped.map((g) => g.fromClaimId);
++  // Retractions whose ORIGINAL paper has the most citing papers in our graph.
++  const grouped = await prisma.$queryRaw<{ retraction_id: string; citing: number }[]>(
++    Prisma.sql`${CITERS_CTE(Prisma.empty)} HAVING COUNT(*) >= 1 ORDER BY citing DESC LIMIT ${limit}`,
++  );
++  const ids = grouped.map((g) => g.retraction_id);
+   if (ids.length === 0) return [];
+ 
+   const claims = await prisma.claim.findMany({
+@@ -109,7 +136,7 @@ async function getTopRipple(limit: number): Promise<RetractionRow[]> {
+ 
+   return grouped
+     .map((g) => {
+-      const c = byId.get(g.fromClaimId);
++      const c = byId.get(g.retraction_id);
+       if (!c) return null;
+       return {
+         id: c.id,
+@@ -117,7 +144,7 @@ async function getTopRipple(limit: number): Promise<RetractionRow[]> {
+         claimEmergedAt: c.claimEmergedAt,
+         createdAt: c.createdAt,
+         metadata: c.metadata as RetractionMeta,
+-        contradictsCount: g._count._all,
++        citedByCount: g.citing,
+       };
+     })
+     .filter((x): x is RetractionRow => x !== null);
+@@ -139,8 +166,11 @@ export default async function RetractionWallPage() {
+       where: {
+         ingestedBy: PIPELINE,
+         deleted: false,
++        // Publishers sometimes report journal-issue dates months in the future
++        // (e.g. 2026-09-01). Clamp to "now" so those don't count as recent.
+         claimEmergedAt: {
+           gte: new Date(Date.now() - 30 * 24 * 3600 * 1000),
++          lte: new Date(),
+         },
+       },
+     }),
+@@ -158,8 +188,9 @@ export default async function RetractionWallPage() {
+         </h1>
+         <p className="text-sm text-gray-400 leading-relaxed max-w-2xl">
+           Retraction Watch and CrossRef report when a paper is officially retracted.
+-          Our knowledge graph automatically updates &mdash; propagating the dispute to every
+-          paper that relies on it via <span className="font-mono text-gray-300">CONTRADICTS</span> edges.
++          Our knowledge graph automatically links each retraction to its original paper via a{" "}
++          <span className="font-mono text-gray-300">CONTRADICTS</span> edge, and the citation
++          graph shows which downstream papers touch the withdrawn work.
+           Each row is a receipt; click through for the underlying claim and edge history.
+         </p>
+       </div>
+@@ -208,14 +239,16 @@ export default async function RetractionWallPage() {
+             Papers whose retraction ripples furthest
+           </h2>
+           <p className="text-xs text-gray-500 max-w-2xl">
+-            Ranked by the number of downstream papers each retraction record contradicts in our
+-            knowledge graph. A higher count means more of the literature touches this withdrawn work.
++            Ranked by how many papers in our citation graph cite the retracted original
++            (OpenAlex citation edges; a sampled floor, not a full citation count). A higher
++            number means more of the indexed literature touches this withdrawn work.
+           </p>
+         </div>
+         <div className="rounded-lg border border-gray-800 bg-gray-900/40 divide-y divide-gray-800/70">
+           {topRipple.length === 0 && (
+             <p className="px-4 py-6 text-sm text-gray-500 italic">
+-              No CONTRADICTS edges from retracted papers yet.
++              No citation edges recorded yet for retracted originals &mdash; run
++              scripts/enrich-openalex-relations.ts to populate the citation graph.
+             </p>
+           )}
+           {topRipple.map((r, i) => {
+@@ -245,10 +278,10 @@ export default async function RetractionWallPage() {
+                 </div>
+                 <div className="shrink-0 text-right">
+                   <p className="text-lg font-semibold text-red-300 tabular-nums">
+-                    {r.contradictsCount.toLocaleString()}
++                    {r.citedByCount.toLocaleString()}
+                   </p>
+                   <p className="text-[10px] text-gray-600 font-mono uppercase tracking-wider">
+-                    contradicts
++                    citing papers
+                   </p>
+                 </div>
+               </Link>
+@@ -273,7 +306,7 @@ export default async function RetractionWallPage() {
+             <div className="col-span-6">Paper</div>
+             <div className="col-span-3">Journal / publisher</div>
+             <div className="col-span-2">Retracted</div>
+-            <div className="col-span-1 text-right">Cites</div>
++            <div className="col-span-1 text-right">Cited by</div>
+           </div>
+           <div className="divide-y divide-gray-800/70">
+             {recent.map((r) => {
+@@ -315,7 +348,7 @@ export default async function RetractionWallPage() {
+                   </div>
+                   <div className="sm:col-span-1 sm:text-right">
+                     <p className="text-sm font-semibold text-gray-300 tabular-nums">
+-                      {r.contradictsCount > 0 ? r.contradictsCount.toLocaleString() : "—"}
++                      {r.citedByCount > 0 ? r.citedByCount.toLocaleString() : "—"}
+                     </p>
+                   </div>
+                 </Link>
+diff --git a/app/stats/media-coverage/page.tsx b/app/stats/media-coverage/page.tsx
+index 4d56040..1cb10f7 100644
+--- a/app/stats/media-coverage/page.tsx
++++ b/app/stats/media-coverage/page.tsx
+@@ -21,6 +21,9 @@ interface BillRow {
+   topics: string[]
+   status: string
+   statusLabel: string
++  // Flagged by the API: coverage row built from a boilerplate query
++  // ("Recognizing", "_______ Act") whose NYT hit count is meaningless.
++  genericQuery?: boolean
+ }
+ 
+ interface ApiResponse {
+@@ -134,6 +137,11 @@ function BillCard({ bill, onOpen, dim }: {
+           <p className="mt-1 text-sm text-zinc-100">{title}</p>
+           <p className="mt-0.5 text-[11px] text-zinc-500 font-mono">
+             NYT query: &ldquo;{bill.searchQuery}&rdquo;
++            {bill.genericQuery && (
++              <span className="ml-2 rounded border border-zinc-700 bg-zinc-800/60 px-1.5 py-0.5 text-[10px] text-zinc-400" title="Query built from a boilerplate title — hit count is not a real coverage signal">
++                generic query
++              </span>
++            )}
+             {bill.topHeadlines.length > 0 && (
+               <span className="ml-2 text-zinc-400">· {bill.topHeadlines.length} {bill.topHeadlines.length === 1 ? "headline" : "headlines"} →</span>
+             )}
+@@ -318,7 +326,7 @@ export default function MediaCoveragePage() {
+   const topCovered = useMemo<BillRow[]>(() => {
+     if (!data) return []
+     return [...data.bills]
+-      .filter(b => b.articleCount > 0)
++      .filter(b => b.articleCount > 0 && !b.genericQuery)
+       .sort((a, b) => b.articleCount - a.articleCount)
+       .slice(0, 20)
+   }, [data])
+diff --git a/app/topics/page.tsx b/app/topics/page.tsx
+index fb08630..bca1936 100644
+--- a/app/topics/page.tsx
++++ b/app/topics/page.tsx
+@@ -122,6 +122,19 @@ function flattenTopics(nodes: TopicNode[]): TopicNode[] {
+   return nodes.flatMap(n => [n, ...flattenTopics(n.children)]);
+ }
+ 
++function subtreeClaimCount(n: TopicNode): number {
++  return n.claimCount + n.children.reduce((s, c) => s + subtreeClaimCount(c), 0);
++}
++
++// Drop topics with no claims anywhere in their subtree — dozens of "(0)"
++// rows (Biology, Law, Economics, …) otherwise clutter the tree. A parent
++// with zero direct tags survives as long as any descendant has claims.
++function pruneEmpty(nodes: TopicNode[]): TopicNode[] {
++  return nodes
++    .filter(n => subtreeClaimCount(n) > 0)
++    .map(n => ({ ...n, children: pruneEmpty(n.children) }));
++}
++
+ function TopicTreeItem({ topic, depth }: { topic: TopicNode; depth: number }) {
+   const [hov, setHov] = useState(false);
+   return (
+@@ -231,6 +244,7 @@ function DomainSection({ domain, roots }: { domain: string; roots: TopicNode[] }
+ export default function TopicsPage() {
+   const [data, setData] = useState<Record<string, TopicNode[]> | null>(null);
+   const [query, setQuery] = useState("");
++  const [showEmpty, setShowEmpty] = useState(false);
+ 
+   useEffect(() => {
+     fetch("/api/topics").then(r => r.json()).then(d => setData(d.domains));
+@@ -247,12 +261,28 @@ export default function TopicsPage() {
+     return allTopics.filter(t => t.name.toLowerCase().includes(q));
+   }, [query, allTopics]);
+ 
+-  const domainKeys = data
+-    ? Object.keys(data).sort((a, b) => (DOMAIN_LABELS[a] ?? a).localeCompare(DOMAIN_LABELS[b] ?? b))
++  // Tree view hides claim-less subtrees unless toggled; search always sees everything.
++  const viewData = useMemo(() => {
++    if (!data || showEmpty) return data;
++    const out: Record<string, TopicNode[]> = {};
++    for (const [domain, roots] of Object.entries(data)) {
++      const pruned = pruneEmpty(roots);
++      if (pruned.length > 0) out[domain] = pruned;
++    }
++    return out;
++  }, [data, showEmpty]);
++
++  const domainKeys = viewData
++    ? Object.keys(viewData).sort((a, b) => (DOMAIN_LABELS[a] ?? a).localeCompare(DOMAIN_LABELS[b] ?? b))
+     : [];
+ 
+   const totalTopics = allTopics.length;
+-  const totalDomains = domainKeys.length;
++  const totalDomains = data ? Object.keys(data).length : 0;
++  const visibleTopics = useMemo(
++    () => (viewData ? Object.values(viewData).flatMap(flattenTopics).length : 0),
++    [viewData],
++  );
++  const hiddenTopics = totalTopics - visibleTopics;
+ 
+   return (
+     <div style={{ background: C.bg, minHeight: "100vh", marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem" }}>
+@@ -350,8 +380,22 @@ export default function TopicsPage() {
+           </div>
+         )}
+ 
+-        {data && !results && domainKeys.map(domain => (
+-          <DomainSection key={domain} domain={domain} roots={data[domain]} />
++        {data && !results && (hiddenTopics > 0 || showEmpty) && (
++          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "0.75rem" }}>
++            <button
++              onClick={() => setShowEmpty(s => !s)}
++              style={{
++                background: "none", border: `1px solid ${C.panelEdge}`, borderRadius: 6,
++                color: C.faint, fontSize: "0.72rem", padding: "0.25rem 0.6rem", cursor: "pointer",
++              }}
++            >
++              {showEmpty ? "Hide empty topics" : `Show ${hiddenTopics.toLocaleString()} empty topics`}
++            </button>
++          </div>
++        )}
++
++        {viewData && !results && domainKeys.map(domain => (
++          <DomainSection key={domain} domain={domain} roots={viewData[domain]} />
+         ))}
+       </div>
+     </div>
+diff --git a/docs/lab-pages-triage-2026-07-03.md b/docs/lab-pages-triage-2026-07-03.md
+new file mode 100644
+index 0000000..9f0ed85
+--- /dev/null
++++ b/docs/lab-pages-triage-2026-07-03.md
+@@ -0,0 +1,53 @@
++# Lab Pages Triage — 2026-07-03
++
++Audit of the 15 pages in the nav's ⚗ Lab group, run against production (epistemic-receipts.vercel.app) with real-browser verification plus code root-causing. `tsc --noEmit` is clean project-wide. Severity: **P0** broken · **P1** wrong/degenerate data · **P2** UX/polish.
++
++Note on method: JSON API routes return blank through plain HTML fetchers, and client-rendered pages show their loading shells — several "empty API" symptoms turned out to be false positives once checked in a real browser. Everything below was verified in Chrome or in code.
++
++## Fixed in this pass (code changes)
++
++### 1. /retraction-wall — P1: "ripples furthest" ranking is degenerate
++Every top-10 entry shows "1 contradicts". Root cause: the pipeline writes exactly one CONTRADICTS edge per retraction (retraction → its own original), so ranking by CONTRADICTS count (`app/retraction-wall/page.tsx`, `getTopRipple`) can never exceed 1. The section's copy ("propagating the dispute to every paper that relies on it") oversells a 1:1 link.
++**Fix applied:** rank by incoming citation edges on the retracted original (CITED_BY out + CITES in, from the OpenAlex enrichment), require ≥1, honest empty state if coverage is thin; "Cites" column now shows the same real citation-link count instead of the CONTRADICTS count; blurb reworded; 30-day stat now clamps to `≤ now` so future-dated publisher retraction dates (e.g. 2026-09-01 journal-issue dates) don't inflate it.
++
++### 2. /legislation — P1: "United States — 0 claims" in the country grid
++`lib/legislation-countries.ts` counts US by `ingestedBy: "congress_bills_v1"`, but the live tracker writes `congress_bills_tracker_v1` (17,250 bills in prod, last pull 2026-07-02). Tag mismatch → 0.
++**Fix applied:** registry now points at `congress_bills_tracker_v1`.
++
++### 3. /legislation — P2: "Last pull: never" flashes while loading
++`LegislationClient` renders `formatRelative(null)` → "never" before the API response lands (the US default view takes several seconds). Misleading — the tracker actually pulled yesterday.
++**Fix applied:** shows "…" until data arrives; "never" only when the loaded response really has no refresh timestamp.
++
++### 4. /analysis/votes — P1: raw pipeline tag `voteview_v1` shown as a legislative body
++"By legislative body" table's first row (47,051 votes) is labeled `voteview_v1`, and the US appears twice (voteview + congress_v1). Root cause: `lib/voteAnalysis.ts` `getBodyKey`/`COUNTRY_LABELS` have no mapping for `voteview_v1`, falling through to the raw tag.
++**Fix applied:** voteview votes are labeled "US Congress (all roll-calls)" and split House/Senate by chamber in the per-body decade chart, consistent with congress_v1 handling.
++
++### 5. /analysis/votes — P2: 10–20s blank page on uncached loads
++Whole page blocks on `buildVoteAnalysis()` (includes a 500k-row MemberVote scan) with no streaming fallback; revisits during revalidation show a black screen for 20+ seconds.
++**Fix applied:** `app/analysis/votes/loading.tsx` skeleton so navigation paints immediately. (Deeper fix — precompute or cache the analysis — listed below.)
++
++### 6. /stats/media-coverage — P1: "Most Covered" is garbage-in-garbage-out
++Top bills all show a capped "10,000 NYT articles" because `scripts/populate-bill-coverage.ts` builds phrase queries from boilerplate short titles: "Recognizing", "To establish", "Signal", even "_______ Act" (reserved-bill placeholder titles). Only guard was `query.length < 3`.
++**Fix applied:** (a) script now rejects single-word/stopword/placeholder queries so future runs skip them; (b) the API route flags existing degenerate rows (capped hits or generic one-word queries) and the page excludes them from "Most Covered" and labels them in the table instead of presenting them as real signal.
++
++### 7. /topics — P2: zero-count topics clutter the tree
++Dozens of "(0)" entries (Biology, Law, Economics, …) render alongside real ones.
++**Fix applied:** zero-count branches (no claims anywhere in the subtree) are hidden by default behind a "Show empty topics" toggle.
++
++## Needs owner action (data/ops — can't be fixed from code)
++
++- **/topics — P1 taxonomy data:** "Pakistan Federal Legislation (943)" is parented under Academic Literature → Law, and every topic under Academic Literature wears the same SOCIAL SCI badge (badge is per-domain, so miscategorized parents mislabel whole subtrees). Fixing the parentTopicId/domain rows needs an admin DB mutation (respect AGENTS.md write rules).
++- **/legislation — several countries at 0:** Bulgaria, Lithuania, Serbia, Indonesia, Pakistan report 0 claims via their registry tags. Either those ingesters never ran or tags mismatch — worth a `groupBy ingestedBy` spot-check against `lib/legislation-countries.ts`.
++- **/stats/media-coverage:** re-run `scripts/populate-bill-coverage.ts` after this pass so junk queries are re-fetched properly (existing rows are only flagged, not recomputed).
++- **/analysis/votes deep fix:** move `buildVoteAnalysis()` to a precomputed JSON (like `party-economic-response.json`) or unstable_cache; 500k-row scans per revalidation is the root of the blank-page problem.
++
++## Verified working (no action)
++
++- **/globe** — renders with live density, timeline, category chips; APIs healthy. P2 cosmetic: globe sits left with a large patterned void on the right at wide viewports; category chips wrap awkwardly near the Lights/Origins/Cities toggle.
++- **/foreign-legislation** — works, but is an older sibling of /legislation (same data, no US, different UI, still offers global keyword search). Decide: fold its global search into /legislation and redirect, or rename nav labels ("Global Legislation" vs "Legislation" is confusing).
++- **/claims** — works at 1.76M claims. P2: default `createdAt desc` ordering makes page 1 a wall of near-identical NARA photo captions; consider a per-pipeline diversified first page.
++- **/historical-events, /books, /drug-arc, /analysis/topics, /analysis/representation, /stats** — no issues found. /drug-arc's funnel bars aren't proportional (46k approvals renders wider than 11k trials despite being "downstream") but the page footnotes this.
++- **/analysis/retraction-lag** — works; P2: per-topic table repeats the same 11,323 pair count for broad topics (overlapping tags make absolute counts misleading; show % or distinct pairs).
++
++## Suggested Lab graduations after this pass
++/retraction-wall, /legislation, /analysis/votes, /drug-arc, /books are at or near production quality once the above land.
+diff --git a/lib/coverage-query.ts b/lib/coverage-query.ts
+new file mode 100644
+index 0000000..a0e9a34
+--- /dev/null
++++ b/lib/coverage-query.ts
+@@ -0,0 +1,35 @@
++// Shared between scripts/populate-bill-coverage.ts (skip fetching junk
++// queries) and app/api/stats/media-coverage/route.ts (flag rows already in
++// the cache so degenerate 10,000-hit matches don't top the coverage ranking).
++
++const QUERY_STOPWORDS = new Set([
++  'a', 'an', 'and', 'or', 'of', 'the', 'to', 'in', 'for', 'on', 'at', 'by',
++  'with', 'as', 'that', 'this', 'these', 'those', 'from', 'into', 'such',
++  'be', 'is', 'are', 'was', 'were', 'so', 'if',
++])
++
++// Boilerplate lead words that survive as one-word queries when a bill has a
++// generic long title and no short title ("Recognizing…", "To establish…" →
++// query "establish"). Phrase-searching these on NYT returns the 10,000-hit
++// cap and poisons the coverage ranking.
++const GENERIC_QUERY_WORDS = new Set([
++  'recognizing', 'establish', 'establishing', 'supporting', 'honoring',
++  'commemorating', 'celebrating', 'designating', 'expressing', 'condemning',
++  'congratulating', 'acknowledging', 'awarding', 'act', 'resolution', 'signal',
++])
++
++/**
++ * True when a query is too generic to measure real coverage: placeholder
++ * titles for reserved bill numbers ("_______ Act"), single words, or a single
++ * meaningful word that is itself procedural boilerplate ("establish Act").
++ */
++export function isGenericQuery(q: string | null | undefined): boolean {
++  if (!q) return true
++  if (/_{2,}/.test(q)) return true
++  const words = q.split(/\s+/).filter(Boolean)
++  const meaningful = words.filter(w => {
++    const bare = w.toLowerCase().replace(/[.,;:!?'"“”]+$/g, '')
++    return !QUERY_STOPWORDS.has(bare) && !GENERIC_QUERY_WORDS.has(bare)
++  })
++  return meaningful.length < 2
++}
+diff --git a/lib/legislation-countries.ts b/lib/legislation-countries.ts
+index 03d6b47..3ec10ff 100644
+--- a/lib/legislation-countries.ts
++++ b/lib/legislation-countries.ts
+@@ -17,7 +17,10 @@ export type CountryEntry = {
+ 
+ export const COUNTRY_REGISTRY: CountryEntry[] = [
+   // Americas
+-  { code: "us", label: "United States", flag: "🇺🇸", region: "Americas", ingestedBy: "congress_bills_v1", scriptSlug: "congress-bills", sourceLabel: "congress.gov", specialView: "us" },
++  // ingestedBy must match the live tracker pipeline (scripts/ingest-congress-bills-tracker.ts
++  // writes congress_bills_tracker_v1). The old congress_bills_v1 tag has no rows, which made
++  // the US card read "0 claims" in the country grid.
++  { code: "us", label: "United States", flag: "🇺🇸", region: "Americas", ingestedBy: "congress_bills_tracker_v1", scriptSlug: "congress-bills", sourceLabel: "congress.gov", specialView: "us" },
+   { code: "ca", label: "Canada", flag: "🇨🇦", region: "Americas", ingestedBy: "canada_bills_v1", scriptSlug: "canada-bills", sourceLabel: "parl.ca", specialView: "ca" },
+   { code: "ar", label: "Argentina", flag: "🇦🇷", region: "Americas", ingestedBy: "argentina_legislation_v1", scriptSlug: "argentina", sourceLabel: "congreso.gob.ar" },
+   { code: "br", label: "Brazil", flag: "🇧🇷", region: "Americas", ingestedBy: "brazil_legislation_v1", scriptSlug: "brazil", sourceLabel: "camara.leg.br" },
+diff --git a/lib/voteAnalysis.ts b/lib/voteAnalysis.ts
+index 04c9c4b..458c0f8 100644
+--- a/lib/voteAnalysis.ts
++++ b/lib/voteAnalysis.ts
+@@ -12,7 +12,12 @@ export const COUNTRY_LABELS: Record<string, string> = {
+   eu_parliament_v1: "European Parliament",
+   eu_parliament_votes_v2: "European Parliament",
+   canada_bills_v1: "Canada",
+-  congress_v1: "United States",
++  // Two US pipelines with overlapping vote populations — keep their labels
++  // distinct so the per-country rows don't merge and double-count.
++  congress_v1: "United States (curated)",
++  // Full Voteview roll-call corpus (1789–present). Without this entry the raw
++  // pipeline tag leaked into the "By legislative body" table as a body name.
++  voteview_v1: "United States (all roll-calls)",
+ };
+ 
+ // Minimum recorded votes a body needs in a decade before we plot a point for it.
+@@ -23,7 +28,7 @@ export const MIN_DECADE_BODY_VOTES = 10;
+ // Body bucket for the per-body decade chart. US Congress is split by chamber
+ // (House / Senate); other pipelines collapse to their country label.
+ export function getBodyKey(ingestedBy: string, chamber: string | null | undefined): string {
+-  if (ingestedBy === "congress_v1") {
++  if (ingestedBy === "congress_v1" || ingestedBy === "voteview_v1") {
+     const ch = (chamber ?? "").trim();
+     if (/senate/i.test(ch)) return "US Senate";
+     if (/house/i.test(ch)) return "US House";
+diff --git a/scripts/populate-bill-coverage.ts b/scripts/populate-bill-coverage.ts
+index 2480ecc..04589f2 100644
+--- a/scripts/populate-bill-coverage.ts
++++ b/scripts/populate-bill-coverage.ts
+@@ -13,6 +13,7 @@
+ 
+ import 'dotenv/config'
+ import { PrismaClient } from '@prisma/client'
++import { isGenericQuery } from '../lib/coverage-query'
+ 
+ const prisma = new PrismaClient()
+ 
+@@ -229,6 +230,10 @@ async function main() {
+       console.log(`  [skip] ${claim.externalId ?? claim.id}: empty query from "${claim.text.slice(0, 80)}"`)
+       continue
+     }
++    if (isGenericQuery(query)) {
++      console.log(`  [skip] ${claim.externalId ?? claim.id}: generic query "${query}" from "${claim.text.slice(0, 80)}"`)
++      continue
++    }
+ 
+     processed++
+     const label = claim.externalId ?? claim.id

@@ -122,6 +122,19 @@ function flattenTopics(nodes: TopicNode[]): TopicNode[] {
   return nodes.flatMap(n => [n, ...flattenTopics(n.children)]);
 }
 
+function subtreeClaimCount(n: TopicNode): number {
+  return n.claimCount + n.children.reduce((s, c) => s + subtreeClaimCount(c), 0);
+}
+
+// Drop topics with no claims anywhere in their subtree — dozens of "(0)"
+// rows (Biology, Law, Economics, …) otherwise clutter the tree. A parent
+// with zero direct tags survives as long as any descendant has claims.
+function pruneEmpty(nodes: TopicNode[]): TopicNode[] {
+  return nodes
+    .filter(n => subtreeClaimCount(n) > 0)
+    .map(n => ({ ...n, children: pruneEmpty(n.children) }));
+}
+
 function TopicTreeItem({ topic, depth }: { topic: TopicNode; depth: number }) {
   const [hov, setHov] = useState(false);
   return (
@@ -231,6 +244,7 @@ function DomainSection({ domain, roots }: { domain: string; roots: TopicNode[] }
 export default function TopicsPage() {
   const [data, setData] = useState<Record<string, TopicNode[]> | null>(null);
   const [query, setQuery] = useState("");
+  const [showEmpty, setShowEmpty] = useState(false);
 
   useEffect(() => {
     fetch("/api/topics").then(r => r.json()).then(d => setData(d.domains));
@@ -247,12 +261,28 @@ export default function TopicsPage() {
     return allTopics.filter(t => t.name.toLowerCase().includes(q));
   }, [query, allTopics]);
 
-  const domainKeys = data
-    ? Object.keys(data).sort((a, b) => (DOMAIN_LABELS[a] ?? a).localeCompare(DOMAIN_LABELS[b] ?? b))
+  // Tree view hides claim-less subtrees unless toggled; search always sees everything.
+  const viewData = useMemo(() => {
+    if (!data || showEmpty) return data;
+    const out: Record<string, TopicNode[]> = {};
+    for (const [domain, roots] of Object.entries(data)) {
+      const pruned = pruneEmpty(roots);
+      if (pruned.length > 0) out[domain] = pruned;
+    }
+    return out;
+  }, [data, showEmpty]);
+
+  const domainKeys = viewData
+    ? Object.keys(viewData).sort((a, b) => (DOMAIN_LABELS[a] ?? a).localeCompare(DOMAIN_LABELS[b] ?? b))
     : [];
 
   const totalTopics = allTopics.length;
-  const totalDomains = domainKeys.length;
+  const totalDomains = data ? Object.keys(data).length : 0;
+  const visibleTopics = useMemo(
+    () => (viewData ? Object.values(viewData).flatMap(flattenTopics).length : 0),
+    [viewData],
+  );
+  const hiddenTopics = totalTopics - visibleTopics;
 
   return (
     <div style={{ background: C.bg, minHeight: "100vh", marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem" }}>
@@ -350,8 +380,22 @@ export default function TopicsPage() {
           </div>
         )}
 
-        {data && !results && domainKeys.map(domain => (
-          <DomainSection key={domain} domain={domain} roots={data[domain]} />
+        {data && !results && (hiddenTopics > 0 || showEmpty) && (
+          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "0.75rem" }}>
+            <button
+              onClick={() => setShowEmpty(s => !s)}
+              style={{
+                background: "none", border: `1px solid ${C.panelEdge}`, borderRadius: 6,
+                color: C.faint, fontSize: "0.72rem", padding: "0.25rem 0.6rem", cursor: "pointer",
+              }}
+            >
+              {showEmpty ? "Hide empty topics" : `Show ${hiddenTopics.toLocaleString()} empty topics`}
+            </button>
+          </div>
+        )}
+
+        {viewData && !results && domainKeys.map(domain => (
+          <DomainSection key={domain} domain={domain} roots={viewData[domain]} />
         ))}
       </div>
     </div>

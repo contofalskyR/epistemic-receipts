@@ -13,6 +13,7 @@
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
+import { isGenericQuery } from '../lib/coverage-query'
 
 const prisma = new PrismaClient()
 
@@ -227,6 +228,10 @@ async function main() {
     const query = buildSearchQuery(claim.text)
     if (!query || query.length < 3) {
       console.log(`  [skip] ${claim.externalId ?? claim.id}: empty query from "${claim.text.slice(0, 80)}"`)
+      continue
+    }
+    if (isGenericQuery(query)) {
+      console.log(`  [skip] ${claim.externalId ?? claim.id}: generic query "${query}" from "${claim.text.slice(0, 80)}"`)
       continue
     }
 

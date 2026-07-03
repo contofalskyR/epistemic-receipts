@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { isGenericQuery } from "@/lib/coverage-query"
 
 export const revalidate = 300
 
@@ -120,6 +121,10 @@ export async function GET(request: Request) {
         articleCount: r.articleCount,
         topHeadlines: coerceHeadlines(r.topHeadlines),
         searchQuery: r.searchQuery,
+        // Existing cache rows built from boilerplate titles ("Recognizing",
+        // "_______ Act") return NYT's 10,000-hit cap — flag them so the UI
+        // can exclude them from coverage rankings.
+        genericQuery: isGenericQuery(r.searchQuery),
         lastChecked: r.lastChecked.toISOString(),
         topics: topicSlugs,
         status: statusSlug,

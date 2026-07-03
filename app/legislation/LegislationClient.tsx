@@ -505,14 +505,14 @@ export default function LegislationClient() {
       {/* Live tracker banner — US + Canada */}
       {specialView === "us" && (
         <AutoUpdateBanner
-          lastRefresh={data?.lastRefresh ?? null}
+          lastRefresh={data ? (data.lastRefresh ?? null) : undefined}
           sourceLabel="Congress.gov API"
           sourceUrl="https://api.congress.gov/"
         />
       )}
       {specialView === "ca" && (
         <AutoUpdateBanner
-          lastRefresh={data?.lastRefresh ?? null}
+          lastRefresh={data ? (data.lastRefresh ?? null) : undefined}
           sourceLabel="LEGISinfo API"
           sourceUrl="https://www.parl.ca/LegisInfo/en/overview"
         />
@@ -751,7 +751,9 @@ function AutoUpdateBanner({
   sourceLabel,
   sourceUrl,
 }: {
-  lastRefresh: string | null;
+  // undefined = bills response still loading (show "…"), null = loaded but no
+  // refresh timestamp recorded (show "never").
+  lastRefresh: string | null | undefined;
   sourceLabel: string;
   sourceUrl: string;
 }) {
@@ -775,7 +777,7 @@ function AutoUpdateBanner({
         <span className="text-gray-500">.</span>
       </span>
       <span className="ml-auto font-mono text-gray-500 shrink-0">
-        Last pull: {formatRelative(lastRefresh)}
+        Last pull: {lastRefresh === undefined ? "…" : formatRelative(lastRefresh)}
       </span>
     </div>
   );

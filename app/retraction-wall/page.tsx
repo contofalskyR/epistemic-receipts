@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
 export const revalidate = 3600;
@@ -25,8 +26,43 @@ type RetractionRow = {
   claimEmergedAt: Date | null;
   createdAt: Date;
   metadata: RetractionMeta;
-  contradictsCount: number;
+  // Distinct papers in our citation graph that cite the retracted original
+  // (via OpenAlex CITES / CITED_BY edges). NOT the 1:1 CONTRADICTS link —
+  // that one is always ≤1 per retraction by construction, which made the old
+  // "ripple" ranking degenerate (every row showed 1).
+  citedByCount: number;
 };
+
+// Distinct citing papers per retraction, going through the retraction's
+// CONTRADICTS edge to the original, then counting citation edges that touch
+// the original from either direction. UNION (not UNION ALL) dedupes papers
+// recorded both as orig-CITED_BY-citer and citer-CITES-orig.
+const CITERS_CTE = (retractionFilter: Prisma.Sql) => Prisma.sql`
+  WITH orig AS (
+    SELECT r."fromClaimId" AS retraction_id, r."toClaimId" AS orig_id
+    FROM "ClaimRelation" r
+    JOIN "Claim" rc
+      ON rc.id = r."fromClaimId"
+     AND rc."ingestedBy" = ${PIPELINE}
+     AND rc.deleted = false
+    WHERE r."relationType" = 'CONTRADICTS'
+    ${retractionFilter}
+  ),
+  citers AS (
+    SELECT o.retraction_id, x."toClaimId" AS citer_id
+    FROM orig o
+    JOIN "ClaimRelation" x
+      ON x."fromClaimId" = o.orig_id AND x."relationType" = 'CITED_BY'
+    UNION
+    SELECT o.retraction_id, x."fromClaimId" AS citer_id
+    FROM orig o
+    JOIN "ClaimRelation" x
+      ON x."toClaimId" = o.orig_id AND x."relationType" = 'CITES'
+  )
+  SELECT retraction_id, COUNT(*)::int AS citing
+  FROM citers
+  GROUP BY retraction_id
+`;
 
 function fmtDate(d: Date | null): string {
   if (!d) return "—";
@@ -62,13 +98,11 @@ async function getRecentRetractions(limit: number): Promise<RetractionRow[]> {
   if (claims.length === 0) return [];
 
   const ids = claims.map((c) => c.id);
-  const grouped = await prisma.claimRelation.groupBy({
-    by: ["fromClaimId"],
-    where: { fromClaimId: { in: ids }, relationType: "CONTRADICTS" },
-    _count: { _all: true },
-  });
+  const grouped = await prisma.$queryRaw<{ retraction_id: string; citing: number }[]>(
+    CITERS_CTE(Prisma.sql`AND r."fromClaimId" IN (${Prisma.join(ids)})`),
+  );
   const countById = new Map<string, number>();
-  for (const g of grouped) countById.set(g.fromClaimId, g._count._all);
+  for (const g of grouped) countById.set(g.retraction_id, g.citing);
 
   return claims.map((c) => ({
     id: c.id,
@@ -76,23 +110,16 @@ async function getRecentRetractions(limit: number): Promise<RetractionRow[]> {
     claimEmergedAt: c.claimEmergedAt,
     createdAt: c.createdAt,
     metadata: c.metadata as RetractionMeta,
-    contradictsCount: countById.get(c.id) ?? 0,
+    citedByCount: countById.get(c.id) ?? 0,
   }));
 }
 
 async function getTopRipple(limit: number): Promise<RetractionRow[]> {
-  // Top fromClaim ids by CONTRADICTS count, restricted to retraction-pipeline claims.
-  const grouped = await prisma.claimRelation.groupBy({
-    by: ["fromClaimId"],
-    where: {
-      relationType: "CONTRADICTS",
-      fromClaim: { ingestedBy: PIPELINE, deleted: false },
-    },
-    _count: { _all: true },
-    orderBy: { _count: { fromClaimId: "desc" } },
-    take: limit,
-  });
-  const ids = grouped.map((g) => g.fromClaimId);
+  // Retractions whose ORIGINAL paper has the most citing papers in our graph.
+  const grouped = await prisma.$queryRaw<{ retraction_id: string; citing: number }[]>(
+    Prisma.sql`${CITERS_CTE(Prisma.empty)} HAVING COUNT(*) >= 1 ORDER BY citing DESC LIMIT ${limit}`,
+  );
+  const ids = grouped.map((g) => g.retraction_id);
   if (ids.length === 0) return [];
 
   const claims = await prisma.claim.findMany({
@@ -109,7 +136,7 @@ async function getTopRipple(limit: number): Promise<RetractionRow[]> {
 
   return grouped
     .map((g) => {
-      const c = byId.get(g.fromClaimId);
+      const c = byId.get(g.retraction_id);
       if (!c) return null;
       return {
         id: c.id,
@@ -117,7 +144,7 @@ async function getTopRipple(limit: number): Promise<RetractionRow[]> {
         claimEmergedAt: c.claimEmergedAt,
         createdAt: c.createdAt,
         metadata: c.metadata as RetractionMeta,
-        contradictsCount: g._count._all,
+        citedByCount: g.citing,
       };
     })
     .filter((x): x is RetractionRow => x !== null);
@@ -139,8 +166,11 @@ export default async function RetractionWallPage() {
       where: {
         ingestedBy: PIPELINE,
         deleted: false,
+        // Publishers sometimes report journal-issue dates months in the future
+        // (e.g. 2026-09-01). Clamp to "now" so those don't count as recent.
         claimEmergedAt: {
           gte: new Date(Date.now() - 30 * 24 * 3600 * 1000),
+          lte: new Date(),
         },
       },
     }),
@@ -158,8 +188,9 @@ export default async function RetractionWallPage() {
         </h1>
         <p className="text-sm text-gray-400 leading-relaxed max-w-2xl">
           Retraction Watch and CrossRef report when a paper is officially retracted.
-          Our knowledge graph automatically updates &mdash; propagating the dispute to every
-          paper that relies on it via <span className="font-mono text-gray-300">CONTRADICTS</span> edges.
+          Our knowledge graph automatically links each retraction to its original paper via a{" "}
+          <span className="font-mono text-gray-300">CONTRADICTS</span> edge, and the citation
+          graph shows which downstream papers touch the withdrawn work.
           Each row is a receipt; click through for the underlying claim and edge history.
         </p>
       </div>
@@ -208,14 +239,16 @@ export default async function RetractionWallPage() {
             Papers whose retraction ripples furthest
           </h2>
           <p className="text-xs text-gray-500 max-w-2xl">
-            Ranked by the number of downstream papers each retraction record contradicts in our
-            knowledge graph. A higher count means more of the literature touches this withdrawn work.
+            Ranked by how many papers in our citation graph cite the retracted original
+            (OpenAlex citation edges; a sampled floor, not a full citation count). A higher
+            number means more of the indexed literature touches this withdrawn work.
           </p>
         </div>
         <div className="rounded-lg border border-gray-800 bg-gray-900/40 divide-y divide-gray-800/70">
           {topRipple.length === 0 && (
             <p className="px-4 py-6 text-sm text-gray-500 italic">
-              No CONTRADICTS edges from retracted papers yet.
+              No citation edges recorded yet for retracted originals &mdash; run
+              scripts/enrich-openalex-relations.ts to populate the citation graph.
             </p>
           )}
           {topRipple.map((r, i) => {
@@ -245,10 +278,10 @@ export default async function RetractionWallPage() {
                 </div>
                 <div className="shrink-0 text-right">
                   <p className="text-lg font-semibold text-red-300 tabular-nums">
-                    {r.contradictsCount.toLocaleString()}
+                    {r.citedByCount.toLocaleString()}
                   </p>
                   <p className="text-[10px] text-gray-600 font-mono uppercase tracking-wider">
-                    contradicts
+                    citing papers
                   </p>
                 </div>
               </Link>
@@ -273,7 +306,7 @@ export default async function RetractionWallPage() {
             <div className="col-span-6">Paper</div>
             <div className="col-span-3">Journal / publisher</div>
             <div className="col-span-2">Retracted</div>
-            <div className="col-span-1 text-right">Cites</div>
+            <div className="col-span-1 text-right">Cited by</div>
           </div>
           <div className="divide-y divide-gray-800/70">
             {recent.map((r) => {
@@ -315,7 +348,7 @@ export default async function RetractionWallPage() {
                   </div>
                   <div className="sm:col-span-1 sm:text-right">
                     <p className="text-sm font-semibold text-gray-300 tabular-nums">
-                      {r.contradictsCount > 0 ? r.contradictsCount.toLocaleString() : "—"}
+                      {r.citedByCount > 0 ? r.citedByCount.toLocaleString() : "—"}
                     </p>
                   </div>
                 </Link>

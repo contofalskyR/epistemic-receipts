@@ -21,6 +21,9 @@ interface BillRow {
   topics: string[]
   status: string
   statusLabel: string
+  // Flagged by the API: coverage row built from a boilerplate query
+  // ("Recognizing", "_______ Act") whose NYT hit count is meaningless.
+  genericQuery?: boolean
 }
 
 interface ApiResponse {
@@ -134,6 +137,11 @@ function BillCard({ bill, onOpen, dim }: {
           <p className="mt-1 text-sm text-zinc-100">{title}</p>
           <p className="mt-0.5 text-[11px] text-zinc-500 font-mono">
             NYT query: &ldquo;{bill.searchQuery}&rdquo;
+            {bill.genericQuery && (
+              <span className="ml-2 rounded border border-zinc-700 bg-zinc-800/60 px-1.5 py-0.5 text-[10px] text-zinc-400" title="Query built from a boilerplate title — hit count is not a real coverage signal">
+                generic query
+              </span>
+            )}
             {bill.topHeadlines.length > 0 && (
               <span className="ml-2 text-zinc-400">· {bill.topHeadlines.length} {bill.topHeadlines.length === 1 ? "headline" : "headlines"} →</span>
             )}
@@ -318,7 +326,7 @@ export default function MediaCoveragePage() {
   const topCovered = useMemo<BillRow[]>(() => {
     if (!data) return []
     return [...data.bills]
-      .filter(b => b.articleCount > 0)
+      .filter(b => b.articleCount > 0 && !b.genericQuery)
       .sort((a, b) => b.articleCount - a.articleCount)
       .slice(0, 20)
   }, [data])

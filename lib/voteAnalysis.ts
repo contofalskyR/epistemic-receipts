@@ -12,7 +12,12 @@ export const COUNTRY_LABELS: Record<string, string> = {
   eu_parliament_v1: "European Parliament",
   eu_parliament_votes_v2: "European Parliament",
   canada_bills_v1: "Canada",
-  congress_v1: "United States",
+  // Two US pipelines with overlapping vote populations — keep their labels
+  // distinct so the per-country rows don't merge and double-count.
+  congress_v1: "United States (curated)",
+  // Full Voteview roll-call corpus (1789–present). Without this entry the raw
+  // pipeline tag leaked into the "By legislative body" table as a body name.
+  voteview_v1: "United States (all roll-calls)",
 };
 
 // Minimum recorded votes a body needs in a decade before we plot a point for it.
@@ -23,7 +28,7 @@ export const MIN_DECADE_BODY_VOTES = 10;
 // Body bucket for the per-body decade chart. US Congress is split by chamber
 // (House / Senate); other pipelines collapse to their country label.
 export function getBodyKey(ingestedBy: string, chamber: string | null | undefined): string {
-  if (ingestedBy === "congress_v1") {
+  if (ingestedBy === "congress_v1" || ingestedBy === "voteview_v1") {
     const ch = (chamber ?? "").trim();
     if (/senate/i.test(ch)) return "US Senate";
     if (/house/i.test(ch)) return "US House";

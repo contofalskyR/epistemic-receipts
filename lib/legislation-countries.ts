@@ -17,7 +17,10 @@ export type CountryEntry = {
 
 export const COUNTRY_REGISTRY: CountryEntry[] = [
   // Americas
-  { code: "us", label: "United States", flag: "🇺🇸", region: "Americas", ingestedBy: "congress_bills_v1", scriptSlug: "congress-bills", sourceLabel: "congress.gov", specialView: "us" },
+  // ingestedBy must match the live tracker pipeline (scripts/ingest-congress-bills-tracker.ts
+  // writes congress_bills_tracker_v1). The old congress_bills_v1 tag has no rows, which made
+  // the US card read "0 claims" in the country grid.
+  { code: "us", label: "United States", flag: "🇺🇸", region: "Americas", ingestedBy: "congress_bills_tracker_v1", scriptSlug: "congress-bills", sourceLabel: "congress.gov", specialView: "us" },
   { code: "ca", label: "Canada", flag: "🇨🇦", region: "Americas", ingestedBy: "canada_bills_v1", scriptSlug: "canada-bills", sourceLabel: "parl.ca", specialView: "ca" },
   { code: "ar", label: "Argentina", flag: "🇦🇷", region: "Americas", ingestedBy: "argentina_legislation_v1", scriptSlug: "argentina", sourceLabel: "congreso.gob.ar" },
   { code: "br", label: "Brazil", flag: "🇧🇷", region: "Americas", ingestedBy: "brazil_legislation_v1", scriptSlug: "brazil", sourceLabel: "camara.leg.br" },
