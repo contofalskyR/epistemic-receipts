@@ -36,6 +36,8 @@ const GROUPS: FieldGroup[] = [
       { slug: "astronomy",       name: "Astronomy",       blurb: "Stars, galaxies, planets, cosmology, and observational techniques.",      families: 21 },
       { slug: "earth-sciences",  name: "Earth Sciences",  blurb: "Atmosphere, oceans, climate, and the Earth system.",                      families: 18 },
       { slug: "geology",         name: "Geology",         blurb: "Minerals, tectonics, deep time, and the solid Earth.",                    families: 24 },
+      { slug: "environmental-science", name: "Environmental Science", blurb: "Ecosystems, pollution, conservation, climate change, and sustainability.", families: 18 },
+      { slug: "pharmacology",    name: "Pharmacology",    blurb: "Drug classes, pharmacokinetics, pharmacodynamics, and clinical toxicology.", families: 18 },
     ],
   },
   {
@@ -48,6 +50,9 @@ const GROUPS: FieldGroup[] = [
       { slug: "linguistics",  name: "Linguistics",  blurb: "Phonology, syntax, semantics, historical and computational linguistics.",   families: 22 },
       { slug: "economics",    name: "Economics",    blurb: "Markets, incentives, macroeconomic aggregates, and behavioral economics.",  families: 22 },
       { slug: "finance",      name: "Finance",      blurb: "Asset pricing, corporate finance, derivatives, and portfolio theory.",      families: 20 },
+      { slug: "communication", name: "Communication", blurb: "Media theory, persuasion, networks, journalism, and digital communication.", families: 18 },
+      { slug: "education",     name: "Education",     blurb: "Learning theories, instructional design, assessment, and education policy.", families: 18 },
+      { slug: "security-studies", name: "Security Studies", blurb: "Strategic theory, deterrence, arms control, intelligence, and conflict analysis.", families: 18 },
     ],
   },
   {
@@ -59,8 +64,9 @@ const GROUPS: FieldGroup[] = [
       { slug: "law",         name: "Law",         blurb: "Constitutional, criminal, civil, and procedural law.",                families: 22 },
       { slug: "tax-law",     name: "Tax Law",     blurb: "Income, corporate, estate, international, and procedural tax law.",    families: 20 },
       { slug: "ip-law",      name: "IP Law",      blurb: "Patents, trademarks, copyright, trade secrets, and licensing.",        families: 20 },
-      { slug: "governance",  name: "Governance",  blurb: "Institutional design, elections, regulation, and accountability.",     families: 21 },
-      { slug: "sports",      name: "Sports & Sport Science", blurb: "Sports families A–E plus Section F on the physiology, biomechanics, and methodology of athletic performance.", families: 19 },
+      { slug: "governance",    name: "Governance",    blurb: "Institutional design, elections, regulation, and accountability.",     families: 21 },
+      { slug: "public-health", name: "Public Health", blurb: "Epidemiology, disease surveillance, biostatistics, and health systems.", families: 19 },
+      { slug: "sports",        name: "Sports & Sport Science", blurb: "Sports families A–E plus Section F on the physiology, biomechanics, and methodology of athletic performance.", families: 19 },
     ],
   },
   {
