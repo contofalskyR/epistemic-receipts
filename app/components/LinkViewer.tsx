@@ -18,6 +18,10 @@ type Article = {
 export default function LinkViewer({ url, onClose }: Props) {
   const [mode, setMode] = useState<"loading" | "reader" | "iframe" | "blocked">("loading");
   const [article, setArticle] = useState<Article | null>(null);
+  // Server-side verdict from X-Frame-Options / CSP frame-ancestors.
+  // null = unknown (proxy couldn't reach the site); browsers hide this
+  // from client JS, so only the proxy can tell us.
+  const [canEmbed, setCanEmbed] = useState<boolean | null>(null);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
@@ -37,12 +41,17 @@ export default function LinkViewer({ url, onClose }: Props) {
     let cancelled = false;
 
     async function tryReader() {
+      let embeddable: boolean | null = null;
       try {
         const res = await fetch(`/api/proxy/reader?url=${encodeURIComponent(url)}`);
-        if (!res.ok) throw new Error("reader failed");
-        const data = await res.json();
+        // Error responses still carry the embeddability verdict
+        const data = await res.json().catch(() => null);
         if (cancelled) return;
-        if (data.content) {
+        if (data && typeof data.embeddable === "boolean") {
+          embeddable = data.embeddable;
+          setCanEmbed(data.embeddable);
+        }
+        if (res.ok && data?.content) {
           setArticle(data);
           setMode("reader");
           return;
@@ -54,6 +63,12 @@ export default function LinkViewer({ url, onClose }: Props) {
       if (cancelled) return;
       // PDF links — go straight to new tab
       if (/\.pdf(\?|#|$)/i.test(url)) {
+        setMode("blocked");
+        return;
+      }
+      // Site forbids framing — the iframe would only show the browser's
+      // own "content blocked" page, so skip straight to the panel.
+      if (embeddable === false) {
         setMode("blocked");
         return;
       }
@@ -103,7 +118,7 @@ export default function LinkViewer({ url, onClose }: Props) {
           <div className="flex-1 mx-2 px-3 py-1 bg-gray-800 border border-gray-700/60 rounded text-gray-300 font-mono text-xs truncate">
             {displayUrl}
           </div>
-          {mode === "reader" && (
+          {mode === "reader" && canEmbed !== false && (
             <button
               onClick={() => setMode("iframe")}
               className="text-xs text-gray-400 hover:text-gray-200 border border-gray-600 hover:border-gray-400 rounded px-2 py-1 transition-colors shrink-0"
