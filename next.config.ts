@@ -29,7 +29,11 @@ const securityHeaders = [
       "worker-src 'self' blob:",
       // connect-src: self + Vercel analytics + any HTTPS APIs the client calls
       "connect-src 'self' https:",
-      // Frames
+      // Frames WE may embed (LinkViewer's original-page fallback). Without an
+      // explicit frame-src, default-src 'self' blocked every external iframe —
+      // the browser's "This content is blocked" page for all source links.
+      // frame-ancestors below still forbids anyone from embedding US.
+      "frame-src 'self' https:",
       "frame-ancestors 'none'",
       // Objects
       "object-src 'none'",
@@ -44,7 +48,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["ws", "@neondatabase/serverless", "@prisma/adapter-neon", "pdf-parse", "@xenova/transformers"],
+  // jsdom must stay external: bundling it breaks its dynamic requires at
+  // runtime, which silently killed /api/proxy/reader (reader mode) on Vercel.
+  serverExternalPackages: ["ws", "@neondatabase/serverless", "@prisma/adapter-neon", "pdf-parse", "@xenova/transformers", "jsdom"],
   async headers() {
     return [
       {
