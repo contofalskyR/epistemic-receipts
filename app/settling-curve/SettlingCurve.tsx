@@ -1255,9 +1255,11 @@ function SettlingCurveInner() {
           {renderSidebar()}
         </aside>
 
-        {/* Right panel */}
+        {/* Right panel. With the sidebar open the column sits beside it; when
+            collapsed (reading mode) it recenters and widens into the freed
+            space instead of leaving a dead right half. */}
         <main className="flex-1 min-w-0">
-          <div className="px-5 md:px-8 py-6 max-w-5xl">
+          <div className={`px-5 md:px-8 py-6 mx-auto ${sidebarOpen ? "max-w-5xl" : "max-w-6xl"}`}>
             {browseMode ? renderFeed() : (<>
 
             {/* Chart header */}
