@@ -727,6 +727,7 @@ model ClaimStatusHistory {
   // Compound index serves claimId-only lookups via leftmost-prefix, so the
   // standalone @@index([claimId]) is dropped in favor of this one.
   @@index([claimId, community, occurredAt])
+  @@unique([claimId, toAxis, occurredAt])
 }
 
 // AI-extracted structured claims for a single trajectory transition.
