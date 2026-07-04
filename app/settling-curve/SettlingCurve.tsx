@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, Suspense, useMemo, useRef, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import SettlingCurveMini from "../components/SettlingCurveMini";
 import { ShareButtons } from "@/components/ShareButtons";
 import SettlingCurveNav from "./SettlingCurveNav";
@@ -1105,22 +1106,37 @@ function SettlingCurveInner() {
       storyParts.push(`It ultimately settled: ${last.reason}`);
     }
 
-    const keyTransitions = sorted.filter((t) => t.reason && t.reason.length > 40).slice(0, 4);
+    const keyTransitions = sorted.filter((t) => t.reason && t.reason.length > 40).slice(0, 6);
 
     return (
-      <div className="rounded-lg overflow-hidden mb-5" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
+      <div className="rounded-lg overflow-hidden mb-5 mt-5" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
         <div className="px-5 py-3 border-b" style={{ borderColor: C.panelEdge }}>
           <span className="font-mono tracking-widest" style={{ fontSize: 10, color: C.brand, letterSpacing: "0.08em" }}>
             STORY SUMMARY
           </span>
         </div>
-        <div className="px-5 py-4">
-          {storyParts.map((p, i) => (
-            <p key={i} className="mb-2" style={{ fontSize: 14, color: C.ink, lineHeight: 1.6 }}>{p}</p>
-          ))}
+        {/* Reading mode uses the collapsed sidebar's width: story prose left,
+            dated key-moment receipts as a timeline rail right (stacks on
+            small screens). */}
+        <div
+          className="px-5 py-4 lg:grid lg:gap-8"
+          style={{ gridTemplateColumns: keyTransitions.length > 0 ? "minmax(0, 1fr) 340px" : undefined }}
+        >
+          <div>
+            {storyParts.map((p, i) => (
+              <p key={i} className="mb-2" style={{ fontSize: 14, color: C.ink, lineHeight: 1.6 }}>{p}</p>
+            ))}
+            <div className="mt-4 pt-3 border-t flex flex-wrap gap-2" style={{ borderColor: C.panelEdge }}>
+              {statuses.map((s) => (
+                <span key={s} className="font-mono px-2 py-0.5 rounded" style={{ fontSize: 9, color: STATUS[s].c, border: `1px solid ${STATUS[s].c}44`, letterSpacing: "0.04em" }}>
+                  {STATUS[s].label}
+                </span>
+              ))}
+            </div>
+          </div>
 
           {keyTransitions.length > 0 && (
-            <div className="mt-4 pt-4 border-t" style={{ borderColor: C.panelEdge }}>
+            <div className="mt-4 pt-4 border-t lg:mt-0 lg:pt-0 lg:border-t-0 lg:border-l lg:pl-6" style={{ borderColor: C.panelEdge }}>
               <span className="font-mono tracking-widest block mb-3" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.08em" }}>
                 KEY MOMENTS
               </span>
@@ -1149,13 +1165,58 @@ function SettlingCurveInner() {
             </div>
           )}
 
-          <div className="mt-4 pt-3 border-t flex flex-wrap gap-2" style={{ borderColor: C.panelEdge }}>
-            {statuses.map((s) => (
-              <span key={s} className="font-mono px-2 py-0.5 rounded" style={{ fontSize: 9, color: STATUS[s].c, border: `1px solid ${STATUS[s].c}44`, letterSpacing: "0.04em" }}>
-                {STATUS[s].label}
-              </span>
-            ))}
-          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Reading-mode footer: 3 related trajectories (same domain, then same era)
+  // drawn from the already-loaded curated list. Deterministic picks.
+  function renderRelated() {
+    if (!activeItem || list.length === 0) return null;
+    const pool = list.filter((x) => x.id !== activeItem.id);
+    const sameDomain = pool.filter((x) => x.domain && x.domain === activeItem.domain);
+    const sameEra = pool.filter((x) => x.era && x.era === activeItem.era && !sameDomain.includes(x));
+    const picks = [...sameDomain, ...sameEra, ...pool].slice(0, 3);
+    if (picks.length === 0) return null;
+
+    return (
+      <div className="mt-8">
+        <span className="font-mono tracking-widest block mb-3" style={{ fontSize: 10, color: C.faint, letterSpacing: "0.08em" }}>
+          RELATED TRAJECTORIES
+        </span>
+        <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
+          {picks.map((it) => {
+            const axis = it.currentAxis && STATUS[it.currentAxis] ? STATUS[it.currentAxis] : null;
+            return (
+              <Link
+                key={it.id}
+                href={`/settling-curve?t=${encodeURIComponent(it.id)}`}
+                className="block rounded-lg p-4 transition-colors group"
+                style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}
+              >
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="font-mono" style={{ fontSize: 10, color: axis?.c ?? C.faint }}>
+                    {axis ? `● ${axis.label}` : it.era ?? ""}
+                  </span>
+                  <span className="font-mono" style={{ fontSize: 10, color: C.faint }}>
+                    {it.firstYear ?? ""}{it.lastYear != null && it.lastYear !== it.firstYear ? ` → ${it.lastYear}` : ""}
+                  </span>
+                </div>
+                <p style={{ fontSize: 13, color: C.ink, lineHeight: 1.45, minHeight: 36 }}>
+                  {it.claim.length > 110 ? it.claim.slice(0, 107) + "…" : it.claim}
+                </p>
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="font-mono" style={{ fontSize: 10, color: C.mut }}>
+                    {it.transitionCount ?? "—"} transitions
+                  </span>
+                  <span className="font-mono opacity-0 group-hover:opacity-100 transition-opacity" style={{ fontSize: 11, color: C.brand }}>
+                    view →
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     );
@@ -1332,14 +1393,24 @@ function SettlingCurveInner() {
               )}
             </div>
 
-            {/* Story summary — shown when sidebar is collapsed */}
-            {!sidebarOpen && renderStorySummary()}
+            {/* Reading mode (sidebar collapsed): the chart pins to the top and
+                the story/receipts scroll beneath it, so transitions stay
+                visually anchored to their dots while reading. */}
+            <div
+              className={!sidebarOpen ? "lg:sticky lg:top-0 lg:z-20" : undefined}
+              style={!sidebarOpen ? { background: C.bg } : undefined}
+            >
+              {renderChart()}
+            </div>
 
-            {/* Chart + receipt */}
-            {renderChart()}
+            {/* Story summary + receipts rail — shown when sidebar is collapsed */}
+            {!sidebarOpen && renderStorySummary()}
 
             {/* Transition log — knowledge inheritance view */}
             {renderTransitionLog()}
+
+            {/* Related trajectories — reading-mode footer, same domain/era */}
+            {!sidebarOpen && renderRelated()}
 
             {/* Footnote — methodology link, unobtrusive */}
             <p className="mt-8 font-mono" style={{ fontSize: 10, color: C.faint, letterSpacing: "0.04em" }}>
