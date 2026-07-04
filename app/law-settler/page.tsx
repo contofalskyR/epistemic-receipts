@@ -29,7 +29,7 @@ export default async function LawSettlerPage() {
       externalId: true,
       text: true,
       statusHistory: {
-        orderBy: { occurredAt: "asc" },
+        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
         select: { toAxis: true, occurredAt: true, community: true },
       },
     },

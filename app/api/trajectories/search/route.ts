@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
       claimEmergedAt: true,
       ingestedBy: true,
       statusHistory: {
-        orderBy: { occurredAt: "asc" },
+        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
         select: { community: true, toAxis: true, occurredAt: true },
       },
     },

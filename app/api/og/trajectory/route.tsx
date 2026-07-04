@@ -100,7 +100,7 @@ export async function GET(req: NextRequest) {
       select: {
         text: true,
         statusHistory: {
-          orderBy: { occurredAt: "asc" },
+          orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
           select: { toAxis: true, occurredAt: true },
         },
       },

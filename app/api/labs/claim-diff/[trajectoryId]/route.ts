@@ -110,7 +110,7 @@ export async function GET(
       text: true,
       externalId: true,
       statusHistory: {
-        orderBy: { occurredAt: "asc" },
+        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
         select: {
           id: true,
           fromAxis: true,

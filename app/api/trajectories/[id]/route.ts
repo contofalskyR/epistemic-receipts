@@ -17,7 +17,7 @@ export async function GET(
   const wantRis = format === "ris";
 
   const statusHistorySelect = {
-    orderBy: { occurredAt: "asc" as const },
+    orderBy: [{ occurredAt: "asc" as const }, { createdAt: "asc" as const }],
     select: {
       fromAxis: true,
       toAxis: true,

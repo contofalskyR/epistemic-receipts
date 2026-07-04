@@ -51,7 +51,7 @@ async function loadFeatured(): Promise<HeroCardData[]> {
           select: {
             text: true,
             statusHistory: {
-              orderBy: { occurredAt: "asc" },
+              orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
               select: { toAxis: true, community: true, occurredAt: true, reason: true },
             },
           },
@@ -97,7 +97,7 @@ async function loadFeatured(): Promise<HeroCardData[]> {
         externalId: true,
         text: true,
         statusHistory: {
-          orderBy: { occurredAt: "asc" },
+          orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
           select: { toAxis: true, community: true, occurredAt: true, reason: true },
         },
       },
