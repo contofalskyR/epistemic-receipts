@@ -1,16 +1,27 @@
 #!/usr/bin/env bash
-# Corpus promoter — perpetual launchd loop.
+# Openalex promoter — perpetual launchd loop.
 #
-# Promotes single-step corpus claims (statusHistory has only a first entry with
-# fromAxis=null) into multi-step epistemic trajectories. Each run:
-#   1. Picks 3 not-yet-attempted claims via pick-promotable-claim.ts (tier alternates by run)
-#   2. Builds a pipeline-specific prompt for Claude Opus using corpus-promoter-prompt.md
-#   3. Claude researches the arc, verifies source URLs, emits a TypeScript enrich script
-#   4. The script is validated by apply-enrichment.ts, written + run (tsx), then committed + pushed
+# Retargeted 2026-07-03 (CORPUS-PROMOTER-BULK-PLAN.md §5). Wave 1 bulk-promoted
+# 205,679 vote/FDA claims, wave 2 curved 18,280 retractions, and the
+# completeness reclassification (lib/corpus-completeness.ts) removed born-
+# settled/born-recorded pipelines from the queue. What remains for the LLM is
+# openalex_v1: ~217k academic papers whose settling curve depends on whether
+# the finding was replicated, contested, meta-analyzed, or retracted.
+#
+# Each run:
+#   1. Picks $BATCH_SIZE not-yet-attempted openalex_v1 claims via
+#      pick-promotable-claim.ts (highest metadata.cited_by_count first)
+#   2. Builds the research prompt (one claim per Claude Opus call)
+#   3. Claude researches the arc, verifies source URLs, emits a TypeScript
+#      enrich script — or SKIP (expected for most papers; that is fine)
+#   4. The script is validated by apply-enrichment.ts, written + run (tsx),
+#      then committed + pushed
 #   5. Telegram ping with results
 #
 # launchd keeps it alive (KeepAlive=true); the script itself loops forever.
 # NOTE: repo uses `tsx` (ts-node is not installed), so TS files run via `npx tsx`.
+# NOTE: log paths keep their historical names so the attempted-claims ledger
+# carries over — do not rename ATTEMPTED_LOG.
 
 PROJECT_DIR="$HOME/Projects/epistemic-receipts"
 LOG="/tmp/corpus-promoter.log"
@@ -19,6 +30,7 @@ NOTIFY="$SCRIPT_DIR/notify-telegram.sh"
 DECISIONS_LOG="$PROJECT_DIR/logs/corpus-promoter-decisions.jsonl"
 ATTEMPTED_LOG="$PROJECT_DIR/logs/corpus-promoter-attempted.jsonl"
 ENRICHMENTS_DIR="$PROJECT_DIR/scripts/enrichments"
+BATCH_SIZE="${BATCH_SIZE:-8}"   # claims per run; each gets its own LLM call
 RUN=0
 
 mkdir -p "$PROJECT_DIR/logs" "$ENRICHMENTS_DIR"
@@ -26,98 +38,62 @@ mkdir -p "$PROJECT_DIR/logs" "$ENRICHMENTS_DIR"
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG"; }
 
 # ── Claim selection ─────────────────────────────────────────────────────────
-# Uses pick-promotable-claim.ts for modular, testable claim selection.
-# Prints newline-delimited JSON (one claim per line): {id,text,ingestedBy,claimEmergedAt}
+# pick-promotable-claim.ts returns openalex_v1 single-step claims, highest
+# cited_by_count first. Newline-delimited JSON:
+#   {id,text,ingestedBy,claimEmergedAt,citedByCount}
 select_claims() {
-  local run_num="$1"
   cd "$PROJECT_DIR" && npx dotenv-cli -e .env.local -- npx tsx scripts/pick-promotable-claim.ts \
-    --run "$run_num" \
-    --count 3 \
+    --count "$BATCH_SIZE" \
     --attempted "$ATTEMPTED_LOG" \
     2>>"$LOG"
 }
 
-# ── Per-pipeline prompt templates ───────────────────────────────────────────
+# ── Prompt templates ────────────────────────────────────────────────────────
+# openalex_v1 is the primary path. crossref_retractions_v1 is kept only for
+# manual --pipeline runs against the wave-2 residue (claims CrossRef couldn't
+# date). Everything else was retired from the LLM queue — deterministic waves
+# or complete-at-length-1 (lib/corpus-completeness.ts).
 build_prompt() {
-  local claim_id="$1" claim_text="$2" ingested_by="$3" emerged_at="$4"
+  local claim_id="$1" claim_text="$2" ingested_by="$3" emerged_at="$4" cited_by="$5"
   local body
 
   case "$ingested_by" in
-    drugsatfda_v1|openfda_labels_v1)
-      body="You are expanding an epistemic receipt for an FDA drug approval claim.
+    openalex_v1)
+      body="You are expanding an epistemic receipt for an academic paper. The claim already has its baseline ClaimStatusHistory row (fromAxis=null -> RECORDED at the publication date) — do NOT duplicate it. Your job is to find what happened to this finding AFTER publication.
 
 Claim ID: ${claim_id}
 Claim text: ${claim_text}
-FDA approval date: ${emerged_at}
+Published: ${emerged_at}
+Citations (OpenAlex): ${cited_by}
 
-Research and add ClaimStatusHistory rows for this claim's epistemic arc:
-1. OPEN->RECORDED: First published clinical evidence (Phase II or III trial) — cite primary publication with date
-2. RECORDED->SETTLED: Broad clinical adoption, standard-of-care status, or major guideline inclusion — cite guideline
-3. SETTLED->CONTESTED or SETTLED->REVERSED: Post-market safety signal, black box warning, or withdrawal — cite FDA safety communication
+Search specifically for, in priority order:
+1. RETRACTION or expression of concern — check Retraction Watch (retractionwatch.com), the publisher page, PubMed. If retracted: RECORDED->CONTESTED at the expression-of-concern or first public challenge date (if one exists), then CONTESTED->REVERSED (or RECORDED->REVERSED directly) at the retraction date. Community: EXPERT_LITERATURE.
+2. FAILED REPLICATION or major methodological critique — a specific, dated, citable paper or registered replication report (e.g. Many Labs, RRR). RECORDED->CONTESTED at its publication date.
+3. SYSTEMATIC REVIEW / META-ANALYSIS that adjudicates the finding — Cochrane, Campbell, or a well-cited meta-analysis. CONTESTED->SETTLED (vindicated) or CONTESTED->REVERSED (overturned); if there was never a contest, RECORDED->SETTLED at the review's publication date.
+4. FIELD CONSENSUS SHIFT — inclusion in a major clinical guideline, textbook consensus, or a consensus statement naming this finding. RECORDED->SETTLED, community INSTITUTIONAL (guideline) or EXPERT_LITERATURE (review).
 
-For each event: exact date (DAY precision preferred), ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose (2-3 sentences), one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
+Hard rules:
+- SKIP is the expected outcome for most papers. If you cannot find a SPECIFIC, DATED, citable follow-up event, emit PROMOTED:0 with SKIPPED:<reason>. A high citation count alone is NOT evidence of settling; do not add RECORDED->SETTLED without a specific adjudicating document.
+- Never invent a transition to make the curve look richer. One verified transition beats three plausible ones.
+- Every transition needs: exact date (DAY precision preferred; MONTH/YEAR acceptable with datePrecision set), ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), 2-3 sentence reason, and one URL you have VERIFIED resolves (fetch it). Prefer doi.org links, PubMed, Cochrane, publisher pages, retractionwatch.com. Discard any transition whose URL you cannot verify."
       ;;
     crossref_retractions_v1)
-      body="You are expanding an epistemic receipt for a retracted academic paper.
+      body="You are expanding an epistemic receipt for a retracted academic paper (wave-2 residue: CrossRef has no publication date on record for it — you must find one).
 
 Claim ID: ${claim_id}
 Claim text: ${claim_text}
 Retraction date: ${emerged_at}
 
-The claim entered the DB as RECORDED (the retraction event). Research the full arc backwards then forwards:
-1. OPEN->RECORDED (pre-retraction): When was the original paper published? Cite primary publication URL with exact publication date. This PRECEDES the retraction date.
-2. RECORDED->CONTESTED: The retraction notice — fetch the publisher retraction URL or Retraction Watch entry (retractionwatch.com). Confirm URL accessible.
-3. REVERSED->OPEN or REVERSED->SETTLED: Was the core finding independently replicated post-retraction, or did the field move on? Check for citing papers.
+The claim's baseline row is fromAxis=null -> REVERSED at the retraction date. Research backwards:
+1. When was the original paper published? Cite the primary publication URL with its date. This PRECEDES the retraction date. Then your enrich script must do BOTH: (a) upsert the new publication row fromAxis=null -> RECORDED at the publication date, and (b) re-point the baseline so the chain is coherent:
+   await prisma.claimStatusHistory.updateMany({ where: { claimId: '${claim_id}', fromAxis: null, toAxis: 'REVERSED' }, data: { fromAxis: 'RECORDED' } })
+   (run (b) AFTER (a); without it the claim would have two entry rows)
+2. Optionally RECORDED->CONTESTED at the expression-of-concern date if one exists (check Retraction Watch).
 
-For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
-      ;;
-    voteview_v1|congress_bills_tracker_v1)
-      body="You are expanding an epistemic receipt for a congressional vote or bill.
-
-Claim ID: ${claim_id}
-Claim text: ${claim_text}
-Vote date: ${emerged_at}
-
-Research the legislative arc:
-1. OPEN->RECORDED: Bill introduction or committee hearing — cite Congress.gov
-2. RECORDED->SETTLED or RECORDED->ABANDONED: Final passage + presidential signature, or failure — cite Congress.gov vote record
-3. SETTLED->CONTESTED or SETTLED->REVERSED (if applicable): Later repeal, amendment, or court injunction — cite relevant source
-
-Community: INSTITUTIONAL for congressional action, JUDICIAL for court challenges. ABANDONED is a valid terminal state.
-For each event: exact date, reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
-      ;;
-    openalex_v1)
-      body="You are expanding an epistemic receipt for a high-impact academic paper.
-
-Claim ID: ${claim_id}
-Claim text: ${claim_text}
-Published: ${emerged_at}
-
-Research the epistemic trajectory:
-1. OPEN->RECORDED: Confirm the paper's publication date and journal
-2. RECORDED->CONTESTED: Prominent challenge, failed replication, or methodological critique — cite the specific critique paper with date
-3. CONTESTED->SETTLED or CONTESTED->REVERSED: Was the controversy resolved? By meta-analysis, systematic review, or retraction?
-4. RECORDED->SETTLED (if no controversy): Did subsequent systematic reviews endorse the finding?
-
-Only add arcs where you find SPECIFIC dated evidence. If no notable follow-up exists, output SKIP.
-For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
-      ;;
-    who_essential_medicines_v1)
-      body="You are expanding an epistemic receipt for a WHO Essential Medicines List entry.
-
-Claim ID: ${claim_id}
-Claim text: ${claim_text}
-Listing date: ${emerged_at}
-
-Research the epistemic arc:
-1. OPEN->RECORDED: First published clinical evidence establishing efficacy — cite primary publication with date
-2. RECORDED->SETTLED: WHO EML inclusion or major guideline adoption — cite the WHO EML or guideline
-3. SETTLED->CONTESTED or SETTLED->REVERSED (if applicable): Later safety signal, delisting, or superseding therapy
-
-For each event: exact date, ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), reason prose, one verifiable URL. Only include URLs you are confident exist (official DOIs, Congress.gov, FDA.gov, WHO, PubMed). Prefer DOI links (doi.org/10.xxxx) and .gov sources."
+Every transition needs an exact date, community EXPERT_LITERATURE, reason prose, and one VERIFIED URL. If the original publication cannot be dated from a verifiable source, emit PROMOTED:0 SKIPPED:<reason>."
       ;;
     *)
-      body="SKIP — pipeline ${ingested_by} not in promotable tier for this run."
+      body="SKIP — pipeline ${ingested_by} is no longer in the LLM promoter queue (see lib/corpus-completeness.ts). Emit PROMOTED:0 SKIPPED:pipeline retired from queue."
       ;;
   esac
 
@@ -149,16 +125,15 @@ The TypeScript enrich script MUST follow the pattern in scripts/seed-human-histo
 }
 
 # ── Main loop ───────────────────────────────────────────────────────────────
-log "=== corpus-promoter loop starting (pid $$) ==="
+log "=== openalex-promoter loop starting (pid $$, batch ${BATCH_SIZE}) ==="
 
 while true; do
   RUN=$((RUN + 1))
   RUN_TS=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
-  TIER_LABEL=$([ $((RUN % 3)) -eq 2 ] && echo "TIER2 (openalex)" || echo "TIER1 (FDA/retractions/Congress)")
-  log "=== run #${RUN} start — ${TIER_LABEL} ==="
+  log "=== run #${RUN} start — openalex_v1, batch ${BATCH_SIZE} ==="
 
-  # Pick 3 claims via pick-promotable-claim.ts (newline-delimited JSON).
-  CLAIMS_JSON=$(select_claims "$RUN")
+  # Pick claims via pick-promotable-claim.ts (newline-delimited JSON).
+  CLAIMS_JSON=$(select_claims)
   if [ -z "$CLAIMS_JSON" ]; then
     log "run #${RUN}: no eligible claims returned. Sleeping 60s."
     sleep 60
@@ -176,10 +151,11 @@ while true; do
     CLAIM_TEXT=$(echo "$CLAIM_LINE" | jq -r '.text')
     INGESTED_BY=$(echo "$CLAIM_LINE" | jq -r '.ingestedBy')
     EMERGED_AT=$(echo "$CLAIM_LINE" | jq -r '.claimEmergedAt // "unknown"' | cut -c1-10)
+    CITED_BY=$(echo "$CLAIM_LINE" | jq -r '.citedByCount // 0')
 
-    log "  -> claim ${CLAIM_ID} (${INGESTED_BY})"
+    log "  -> claim ${CLAIM_ID} (${INGESTED_BY}, cited_by ${CITED_BY})"
 
-    PROMPT=$(build_prompt "$CLAIM_ID" "$CLAIM_TEXT" "$INGESTED_BY" "$EMERGED_AT")
+    PROMPT=$(build_prompt "$CLAIM_ID" "$CLAIM_TEXT" "$INGESTED_BY" "$EMERGED_AT" "$CITED_BY")
 
     OUTPUT=$(cd "$PROJECT_DIR" && claude --print --model claude-opus-4-8 "$PROMPT" 2>&1) || true
     echo "$OUTPUT" >> "$LOG"
@@ -208,7 +184,7 @@ while true; do
       if (cd "$PROJECT_DIR" && npx dotenv-cli -e .env.local -- npx tsx scripts/apply-enrichment.ts "$TARGET" >> "$LOG" 2>&1); then
         RESULT="promoted"
         TOTAL_PROMOTED=$((TOTAL_PROMOTED + ${PROMOTED_COUNT:-0}))
-        RUN_DETAILS="${RUN_DETAILS}${CLAIM_ID} (${INGESTED_BY}): +${PROMOTED_COUNT} | "
+        RUN_DETAILS="${RUN_DETAILS}${CLAIM_ID} (cited_by ${CITED_BY}): +${PROMOTED_COUNT} | "
         log "    promoted ${PROMOTED_COUNT} transitions"
       else
         RESULT="failed"
@@ -238,9 +214,9 @@ while true; do
   # Commit + push if anything was promoted, then ping.
   if [ "$TOTAL_PROMOTED" -gt 0 ]; then
     (cd "$PROJECT_DIR" && git add -A && \
-      git commit -m "corpus-promoter: promote ${TOTAL_PROMOTED} claims (run #${RUN})" && \
+      git commit -m "openalex-promoter: promote ${TOTAL_PROMOTED} transitions (run #${RUN})" && \
       git push origin main) >> "$LOG" 2>&1 || log "  git commit/push failed (nothing to commit or push error)"
-    bash "$NOTIFY" "Corpus promoter run #${RUN}: +${TOTAL_PROMOTED} promoted, ${TOTAL_SKIPPED} skipped
+    bash "$NOTIFY" "Openalex promoter run #${RUN}: +${TOTAL_PROMOTED} transitions, ${TOTAL_SKIPPED} skipped (batch ${BATCH_SIZE})
 ${RUN_DETAILS}"
   fi
 

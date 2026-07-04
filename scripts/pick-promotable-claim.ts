@@ -1,15 +1,27 @@
 /**
- * pick-promotable-claim.ts
+ * pick-promotable-claim.ts — openalex promoter claim selector.
  *
- * Finds corpus claims with exactly 1 ClaimStatusHistory row (single-step) from
- * high-value Tier 1 pipelines, picks one at random (round-robin across pipelines
- * via run number), and outputs JSON to stdout for the corpus-promoter loop.
+ * Retargeted 2026-07-03 (see CORPUS-PROMOTER-BULK-PLAN.md §5): after wave 1
+ * (205,679 vote/FDA claims), wave 2 (18,280 retraction curves), and the
+ * completeness reclassification (lib/corpus-completeness.ts), openalex_v1 is
+ * the only large pipeline whose settling curves genuinely need LLM research.
+ * The old FDA/votes/openalex tier alternation is gone.
+ *
+ * Selection: single-step openalex_v1 claims (exactly one ClaimStatusHistory
+ * row, the fromAxis=null baseline), highest metadata.cited_by_count first so
+ * high-impact papers get curved before the long tail. Claims without a
+ * citation count sort last (0), then by recency.
  *
  * Usage:
- *   npx dotenv-cli -e .env.local -- npx tsx scripts/pick-promotable-claim.ts [--run N] [--count 3] [--attempted path]
+ *   npx dotenv-cli -e .env.local -- npx tsx scripts/pick-promotable-claim.ts \
+ *     [--count 8] [--attempted path] [--pipeline openalex_v1]
+ *
+ * --pipeline may override the default for occasional manual runs (e.g.
+ * crossref_retractions_v1 residue that wave 2 couldn't date), but pipelines
+ * classified complete-at-length-1 are always refused.
  *
  * Output (newline-delimited JSON, one per line):
- *   { "id": "...", "text": "...", "ingestedBy": "...", "claimEmergedAt": "..." }
+ *   { "id": "...", "text": "...", "ingestedBy": "...", "claimEmergedAt": "...", "citedByCount": N }
  */
 
 import 'dotenv/config'
@@ -19,51 +31,40 @@ import { COMPLETE_SINGLE_STEP } from '../lib/corpus-completeness'
 
 const prisma = new PrismaClient()
 
-// ── Configuration ─────────────────────────────────────────────────────────────
-// Trimmed 2026-07-03 (see CORPUS-PROMOTER-BULK-PLAN.md §3/§5): drugsatfda_v1 +
-// who_essential_medicines_v1 are born-settled (complete at length 1);
-// openfda_labels_v1 + voteview_v1 were bulk-promoted in wave 1. What remains
-// for the LLM: retraction residue that wave 2 can't date, bills whose outcomes
-// need research, and openalex_v1.
-
-const TIER1_PIPELINES = [
-  'crossref_retractions_v1', // post-wave-2 residue only (claims CrossRef has no pub date for)
-  'congress_bills_tracker_v1',
-]
-
-const TIER2_PIPELINES = ['openalex_v1']
+const DEFAULT_PIPELINE = 'openalex_v1'
 
 // ── Parse CLI args ────────────────────────────────────────────────────────────
 
 function parseArgs() {
   const args = process.argv.slice(2)
-  let run = 0
-  let count = 3
+  let count = 8
   let attemptedPath: string | null = null
+  let pipeline = DEFAULT_PIPELINE
 
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--run' && args[i + 1]) {
-      run = parseInt(args[i + 1], 10)
-      i++
-    } else if (args[i] === '--count' && args[i + 1]) {
+    if (args[i] === '--count' && args[i + 1]) {
       count = parseInt(args[i + 1], 10)
       i++
     } else if (args[i] === '--attempted' && args[i + 1]) {
       attemptedPath = args[i + 1]
       i++
+    } else if (args[i] === '--pipeline' && args[i + 1]) {
+      pipeline = args[i + 1]
+      i++
     }
+    // (--run is obsolete and silently ignored if passed by an old loop script)
   }
 
-  return { run, count, attemptedPath }
+  return { count, attemptedPath, pipeline }
 }
 
 // ── Load already-attempted claim IDs ──────────────────────────────────────────
 
-function loadAttemptedIds(path: string | null): string[] {
-  if (!path) return []
+function loadAttemptedIds(path: string | null): Set<string> {
+  if (!path) return new Set()
   try {
     const raw = fs.readFileSync(path, 'utf8')
-    return raw
+    const ids = raw
       .split('\n')
       .filter(Boolean)
       .map((line) => {
@@ -74,56 +75,61 @@ function loadAttemptedIds(path: string | null): string[] {
         }
       })
       .filter((id): id is string => id !== null)
+    return new Set(ids)
   } catch {
     // File doesn't exist yet — start fresh
-    return []
+    return new Set()
   }
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
+interface Candidate {
+  id: string
+  text: string
+  ingestedBy: string
+  claimEmergedAt: Date | null
+  citedByCount: number
+}
+
 async function main() {
-  const { run, count, attemptedPath } = parseArgs()
-  const attemptedIds = loadAttemptedIds(attemptedPath)
+  const { count, attemptedPath, pipeline } = parseArgs()
+  const attempted = loadAttemptedIds(attemptedPath)
 
-  // Alternate tiers: runs 0,1 = TIER1; run 2 = TIER2; then repeats.
   // Defensive: never hand the LLM a pipeline classified complete-at-length-1.
-  const pipelines = (run % 3 === 2 ? TIER2_PIPELINES : TIER1_PIPELINES).filter(
-    (p) => !COMPLETE_SINGLE_STEP.has(p),
-  )
+  if (COMPLETE_SINGLE_STEP.has(pipeline)) {
+    console.error(`Refusing: ${pipeline} is classified complete-at-length-1 (lib/corpus-completeness.ts)`)
+    process.exit(1)
+  }
 
-  // Filter out claims unlikely to have a verifiable multi-step arc
-  const SKIP_PATTERNS = [
-    'homeopathic', 'HOMEOPATHIC',
-    'Arnica', 'Nux Vomica', 'Belladonna', 'Ignatia',
-    'hand sanitizer', 'Hand Sanitizer',
-    'sunscreen', 'Sunscreen', 'SUNSCREEN',
-    'antiperspirant', 'Antiperspirant',
-    'lip balm', 'Lip Balm',
-    'toothpaste', 'Toothpaste',
-    'mouthwash', 'Mouthwash',
-  ]
+  // Single-step = has a baseline row (fromAxis IS NULL) and nothing else.
+  // Ordered by cited_by_count (digits-only guard, no unsafe casts), then
+  // recency. Over-fetch so the JS-side attempted filter can't starve the run.
+  const fetchLimit = count + attempted.size + 50
+  const candidates = (await prisma.$queryRawUnsafe(
+    `SELECT
+       c.id, c.text, c."ingestedBy", c."claimEmergedAt",
+       CASE WHEN (c.metadata->>'cited_by_count') ~ '^\\d+$'
+            THEN (c.metadata->>'cited_by_count')::int ELSE 0 END AS "citedByCount"
+     FROM "Claim" c
+     JOIN "ClaimStatusHistory" h
+       ON h."claimId" = c.id AND h."fromAxis" IS NULL
+     WHERE c."ingestedBy" = $1
+       AND c.deleted = false
+       AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
+       AND NOT EXISTS (
+         SELECT 1 FROM "ClaimStatusHistory" h2
+         WHERE h2."claimId" = c.id AND h2.id <> h.id
+       )
+     ORDER BY 5 DESC, c."claimEmergedAt" DESC NULLS LAST
+     LIMIT $2`,
+    pipeline,
+    fetchLimit,
+  )) as Candidate[]
 
-  const claims = await prisma.claim.findMany({
-    where: {
-      ingestedBy: { in: pipelines },
-      deleted: false,
-      verificationStatus: { not: 'DEPRECATED' },
-      statusHistory: { every: { fromAxis: null } },
-      ...(attemptedIds.length > 0 ? { NOT: { id: { in: attemptedIds } } } : {}),
-      AND: SKIP_PATTERNS.map(p => ({ text: { not: { contains: p } } })),
-    },
-    select: {
-      id: true,
-      text: true,
-      ingestedBy: true,
-      claimEmergedAt: true,
-    },
-    take: count,
-    orderBy: [{ claimEmergedAt: 'desc' }],
-  })
+  const picked = candidates.filter((c) => !attempted.has(c.id)).slice(0, count)
 
-  for (const claim of claims) {
+  for (const claim of picked) {
     console.log(JSON.stringify(claim))
   }
 
