@@ -8,6 +8,7 @@ import {
   type FeaturedMilestone,
 } from "@/lib/featured-trajectories";
 import { loadRecentTransitions, type WhatsNewItem } from "@/lib/feed";
+import { compactCount } from "@/lib/format";
 
 export const revalidate = 300;
 
@@ -144,6 +145,7 @@ async function loadFeatured(): Promise<HeroCardData[]> {
 async function loadHomepageData() {
   const [
     claimCount,
+    transitionCount,
     sourceCount,
     legislativeVoteCount,
     retractedPapersCount,
@@ -153,6 +155,7 @@ async function loadHomepageData() {
     whatsNew,
   ] = await Promise.all([
     prisma.claim.count({ where: { verificationStatus: { not: "DEPRECATED" } } }),
+    prisma.claimStatusHistory.count(),
     prisma.source.count(),
     prisma.legislativeVote.count(),
     prisma.claim.count({ where: { ingestedBy: "crossref_retractions_v1" } }),
@@ -182,11 +185,17 @@ async function loadHomepageData() {
     ingestedByCounts.set(row.ingestedBy, Number(row.count));
   }
 
-  return { stats, ingestedByCounts, featured, whatsNew };
+  // Derived, never hand-written (audit item 2 / marketing house rule).
+  const liveCounts = {
+    claims: compactCount(claimCount),
+    transitions: compactCount(transitionCount),
+  };
+
+  return { stats, ingestedByCounts, featured, whatsNew, liveCounts };
 }
 
 export default async function Home() {
-  const { stats, ingestedByCounts, featured, whatsNew } = await loadHomepageData();
+  const { stats, ingestedByCounts, featured, whatsNew, liveCounts } = await loadHomepageData();
 
   // Render the mini sparkline on the server; hand it to the client hero as a prop.
   const heroCards: HeroCard[] = featured.map(({ milestones, ...rest }) => ({
@@ -200,7 +209,7 @@ export default async function Home() {
   }));
 
   return (
-    <HomeHero heroCards={heroCards}>
+    <HomeHero heroCards={heroCards} liveCounts={liveCounts}>
       <HomepageSections
         stats={stats}
         ingestedByCounts={ingestedByCounts}

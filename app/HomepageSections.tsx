@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { WhatsNewItem } from "@/lib/feed";
+import { compactCount } from "@/lib/format";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -281,13 +282,13 @@ const FEATURES: Feature[] = [
   },
 ];
 
-function FeatureShowcase() {
+function FeatureShowcase({ claimsLabel }: { claimsLabel: string }) {
   return (
     <section className="max-w-6xl mx-auto px-6 pt-16 pb-4">
       <header className="mb-6">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white">What you can do here</h2>
         <p className="mt-1 text-sm text-gray-500">
-          Four ways into 1.6M claims — each one a different lens on how knowledge moves.
+          Four ways into {claimsLabel} claims — each one a different lens on how knowledge moves.
         </p>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -411,7 +412,7 @@ export default function HomepageSections({
 }: HomepageSectionsProps) {
   return (
     <>
-      <FeatureShowcase />
+      <FeatureShowcase claimsLabel={compactCount(stats.claims)} />
       <StatsBar stats={stats} />
       <WhatsNewStrip items={whatsNew} />
       <DomainGrid ingestedByCounts={ingestedByCounts} />

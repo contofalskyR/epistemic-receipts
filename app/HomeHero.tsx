@@ -335,22 +335,28 @@ function MissingState({ query }: { query: string }) {
   );
 }
 
-function useCyclingPlaceholder(examples: string[], intervalMs = 2400) {
+function useCyclingPlaceholder(examples: string[], claimsLabel: string, intervalMs = 2400) {
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setIdx(i => (i + 1) % examples.length), intervalMs);
     return () => clearInterval(id);
   }, [examples.length, intervalMs]);
-  return `Search 1.6M claims — try "${examples[idx]}"…`;
+  return `Search ${claimsLabel} claims — try "${examples[idx]}"…`;
 }
 
 // ─── Hero ───────────────────────────────────────────────────────────────────────
 
+// Live, DB-derived counts formatted server-side (audit item 2: no hand-written
+// stats on marketing surfaces).
+export type LiveCounts = { claims: string; transitions: string };
+
 function HomeHeroContent({
   heroCards,
+  liveCounts,
   children,
 }: {
   heroCards: HeroCard[];
+  liveCounts: LiveCounts;
   children?: React.ReactNode;
 }) {
   const router       = useRouter();
@@ -365,7 +371,7 @@ function HomeHeroContent({
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const abortRef    = useRef<AbortController | null>(null);
 
-  const placeholder = useCyclingPlaceholder(PLACEHOLDER_EXAMPLES);
+  const placeholder = useCyclingPlaceholder(PLACEHOLDER_EXAMPLES, liveCounts.claims);
 
   useEffect(() => {
     const q = input.trim();
@@ -433,9 +439,9 @@ function HomeHeroContent({
             </h1>
             <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
               A live record of epistemic status across science, law, and history.{" "}
-              <span className="text-gray-200">1.6M</span> claims, each sourced and traceable, plus{" "}
-              <span className="text-gray-200">5,000+</span> trajectories with dated transitions.
-              Search any topic, follow the evidence trail, and see how confidence shifted over time.
+              <span className="text-gray-200">{liveCounts.claims}</span> claims, each sourced and traceable, carrying{" "}
+              <span className="text-gray-200">{liveCounts.transitions}</span> dated status transitions.
+              Search any topic, follow the evidence trail, and see how each claim&apos;s status shifted over time.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -558,14 +564,18 @@ function HomeHeroContent({
 
 export default function HomeHero({
   heroCards,
+  liveCounts,
   children,
 }: {
   heroCards: HeroCard[];
+  liveCounts: LiveCounts;
   children?: React.ReactNode;
 }) {
   return (
     <Suspense fallback={<div className="min-h-screen bg-gray-950" />}>
-      <HomeHeroContent heroCards={heroCards}>{children}</HomeHeroContent>
+      <HomeHeroContent heroCards={heroCards} liveCounts={liveCounts}>
+        {children}
+      </HomeHeroContent>
     </Suspense>
   );
 }
