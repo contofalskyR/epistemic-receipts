@@ -36,6 +36,7 @@ const CATEGORY_VERDICT: Record<CompletenessCategory, string> = {
   WAVE2_RETRACTIONS: "PENDING wave 2 (prepend entry row)",
   CONDITIONAL: "FUTURE WORK — wave 3, metadata-conditional",
   NEEDS_LLM: "FUTURE WORK — LLM promoter queue",
+  CURATED_EDITORIAL: "HAND-CURATED (seed/case-study) — managed editorially, not by the promoter",
 };
 
 async function main(): Promise<void> {
@@ -69,7 +70,8 @@ async function main(): Promise<void> {
   const catTotals: Record<string, { single: number; multi: number; none: number; pipelines: number }> = {};
   const order: (CompletenessCategory | "UNCLASSIFIED")[] = [
     "BORN_SETTLED", "BORN_RECORDED", "WAVE1_PROMOTED",
-    "WAVE2_RETRACTIONS", "CONDITIONAL", "NEEDS_LLM", "UNCLASSIFIED",
+    "WAVE2_RETRACTIONS", "CONDITIONAL", "NEEDS_LLM",
+    "CURATED_EDITORIAL", "UNCLASSIFIED",
   ];
 
   for (const cat of order) {
@@ -99,12 +101,13 @@ async function main(): Promise<void> {
     (catTotals["BORN_SETTLED"]?.single ?? 0) +
     (catTotals["BORN_RECORDED"]?.single ?? 0) +
     (catTotals["WAVE1_PROMOTED"]?.single ?? 0);
+  const curated = catTotals["CURATED_EDITORIAL"]?.single ?? 0;
   const pending =
     (catTotals["WAVE2_RETRACTIONS"]?.single ?? 0) +
     (catTotals["CONDITIONAL"]?.single ?? 0) +
     (catTotals["NEEDS_LLM"]?.single ?? 0);
   const unclassified = catTotals["UNCLASSIFIED"]?.single ?? 0;
-  const totalSingle = complete + pending + unclassified;
+  const totalSingle = complete + curated + pending + unclassified;
 
   console.log(`\n════════ SUMMARY ════════`);
   console.log(`total single-step (live, non-deprecated):     ${totalSingle}`);
@@ -112,6 +115,7 @@ async function main(): Promise<void> {
   console.log(`    born-settled:                             ${catTotals["BORN_SETTLED"]?.single ?? 0}`);
   console.log(`    born-recorded:                            ${catTotals["BORN_RECORDED"]?.single ?? 0}`);
   console.log(`    wave-1 residuals (date-less):             ${catTotals["WAVE1_PROMOTED"]?.single ?? 0}`);
+  console.log(`  HAND-CURATED (excluded from queue):         ${curated}`);
   console.log(`  STILL OWED WORK:                            ${pending}`);
   console.log(`    wave 2 (retraction-family):               ${catTotals["WAVE2_RETRACTIONS"]?.single ?? 0}`);
   console.log(`    wave 3 (conditional):                     ${catTotals["CONDITIONAL"]?.single ?? 0}`);

@@ -24,8 +24,9 @@ export type CompletenessCategory =
   | "BORN_RECORDED"     // RECORDED is the honest terminal state (registries, archives, indicators, filings, events)
   | "WAVE1_PROMOTED"    // completed RECORDED→SETTLED in bulk (2026-07-03, 205,679 rows)
   | "WAVE2_RETRACTIONS" // REVERSED baselines owed a prepended publication/enactment row
-  | "CONDITIONAL"       // future deterministic rule needs per-claim outcome metadata (wave 3)
-  | "NEEDS_LLM";        // arc genuinely requires research
+  | "CONDITIONAL"        // future deterministic rule needs per-claim outcome metadata (wave 3)
+  | "NEEDS_LLM"          // arc genuinely requires research
+  | "CURATED_EDITORIAL"; // hand-curated seed/case-study claims — humans manage these, not the promoter
 
 /** Baseline SETTLED — single-step is the complete curve. (120) */
 export const BORN_SETTLED: readonly string[] = [
@@ -102,6 +103,19 @@ export const CONDITIONAL: readonly string[] = [
 /** Arc genuinely requires research — the LLM promoter's queue. (2) */
 export const NEEDS_LLM: readonly string[] = ["openalex_v1", "manual"];
 
+/** Hand-curated editorial ingesters (seed scripts, case-study tooling).
+ *  Their claims are managed by humans, never by the promoter — matched by
+ *  prefix because some carry dynamic ids (book-analysis:<claimId>).
+ *  Added 2026-07-04 after the live report flagged them UNCLASSIFIED. */
+export const CURATED_EDITORIAL_PREFIXES: readonly string[] = [
+  "seed:", "seed-trajectories", "seed-court-reversals",
+  "law-settler", "book-analysis:",
+];
+
+export function isCuratedEditorial(pipeline: string): boolean {
+  return CURATED_EDITORIAL_PREFIXES.some((p) => pipeline === p || pipeline.startsWith(p));
+}
+
 /** Pipelines whose single-step claims should NOT count as "needs promotion". */
 export const COMPLETE_SINGLE_STEP: ReadonlySet<string> = new Set([
   ...BORN_SETTLED,
@@ -109,7 +123,7 @@ export const COMPLETE_SINGLE_STEP: ReadonlySet<string> = new Set([
   ...WAVE1_PROMOTED,
 ]);
 
-export const CATEGORIES: Record<CompletenessCategory, readonly string[]> = {
+export const CATEGORIES: Record<Exclude<CompletenessCategory, "CURATED_EDITORIAL">, readonly string[]> = {
   BORN_SETTLED,
   BORN_RECORDED,
   WAVE1_PROMOTED,
@@ -122,5 +136,6 @@ export function categoryOf(pipeline: string): CompletenessCategory | null {
   for (const [cat, list] of Object.entries(CATEGORIES) as [CompletenessCategory, readonly string[]][]) {
     if (list.includes(pipeline)) return cat;
   }
+  if (isCuratedEditorial(pipeline)) return "CURATED_EDITORIAL";
   return null;
 }
