@@ -81,6 +81,7 @@ export async function loadRecentTransitions(limit = 6): Promise<WhatsNewItem[]> 
     take: limit * 6,
     select: {
       id: true,
+      claimId: true,
       toAxis: true,
       occurredAt: true,
       reason: true,
@@ -93,14 +94,17 @@ export async function loadRecentTransitions(limit = 6): Promise<WhatsNewItem[]> 
   for (const r of rows) {
     if (!r.claim || r.claim.deleted) continue;
     const ext = r.claim.externalId ?? "";
-    const key = ext || r.id;
+    // Dedupe to one entry per CLAIM (a claim can gain several transitions at once).
+    const key = ext || r.claimId;
     if (seen.has(key)) continue;
     seen.add(key);
 
     const isTrajectory = ext.startsWith("trajectory:");
+    // NOTE: r.id is the ClaimStatusHistory row's id — claim links MUST use
+    // r.claimId (linking r.id produced "Claim not found", fixed 2026-07-04).
     const href = isTrajectory
       ? `/settling-curve?t=${ext.replace(/^trajectory:/, "")}`
-      : `/claims/${r.id}`;
+      : `/claims/${r.claimId}`;
 
     items.push({
       id: r.id,
