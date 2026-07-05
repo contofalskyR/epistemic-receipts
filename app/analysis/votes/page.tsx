@@ -143,6 +143,11 @@ export default async function AnalysisVotesPage() {
         <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">
           Advanced statistical sections
         </div>
+        <p className="text-xs text-gray-500 mb-2 leading-relaxed">
+          In plain words: each section below asks the same question a different way —{" "}
+          <span className="text-gray-400">how much does party predict how legislators vote, and is that changing?</span>{" "}
+          Every bill named in these tables links to its official record.
+        </p>
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
           {TOC.map((t) => (
             <a

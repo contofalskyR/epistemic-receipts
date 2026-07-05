@@ -1,6 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+
+// Friendly pipeline names (client-safe copy — lib/feed imports prisma and
+// can't be bundled here). Falls back to de-slugged title case.
+const PIPELINE_LABELS: Record<string, string> = {
+  crossref_retractions_v1: "Retracted papers (CrossRef)",
+  openalex_v1: "Academic papers (OpenAlex)",
+  nara_catalog_v1: "US National Archives",
+  voteview_v1: "US roll-call votes",
+  openfda_labels_v1: "FDA drug labels",
+  hungary_legislation_v1: "Hungarian legislation",
+  worldbank_v1: "World Bank indicators",
+  who_gho_v1: "WHO health indicators",
+  drugsatfda_v1: "FDA drug approvals",
+  chebi_v1: "Chemical entities (ChEBI)",
+  vdem_v1: "V-Dem democracy indicators",
+  jacar_v1: "Japanese archives (JACAR)",
+  congress_bills_tracker_v1: "US Congress bills",
+  openalex_journals_v1: "Academic journals",
+};
+
+function pipelineLabel(slug: string): string {
+  if (PIPELINE_LABELS[slug]) return PIPELINE_LABELS[slug];
+  return slug
+    .replace(/_v\d+$/i, "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
 
 type AxisEntry = {
   axis: string;
@@ -150,9 +178,11 @@ export default function CorpusStatsSection() {
             <span className="text-zinc-600">(human-promoted epistemic transitions)</span>
           </span>
           <span>
-            <span className="text-zinc-200">{data.status_history_n.toLocaleString()}</span>
+            <Link href="/trajectories" className="text-zinc-200 underline decoration-zinc-700 hover:decoration-zinc-400 transition-colors">
+              {data.status_history_n.toLocaleString()}
+            </Link>
             {" "}trajectory transitions{" "}
-            <span className="text-zinc-600">(dated status-change records)</span>
+            <span className="text-zinc-600">(dated status-change records — browse them →)</span>
           </span>
           <span>
             <span className="text-zinc-200">{data.auto_classified_pct.toFixed(1)}%</span>
@@ -179,7 +209,10 @@ export default function CorpusStatsSection() {
           {data.pipeline_breakdown.map((p) => (
             <div key={p.pipeline} className="space-y-1">
               <div className="flex items-baseline justify-between gap-4">
-                <span className="text-xs text-zinc-300 font-mono">{p.pipeline}</span>
+                <span className="text-xs text-zinc-300" title={p.pipeline}>
+                  {pipelineLabel(p.pipeline)}{" "}
+                  <span className="font-mono text-zinc-600 text-[10px]">{p.pipeline}</span>
+                </span>
                 <div className="text-xs text-zinc-500 tabular-nums whitespace-nowrap">
                   {p.n.toLocaleString()}{" "}
                   <span className="text-zinc-600">({p.pct}%)</span>

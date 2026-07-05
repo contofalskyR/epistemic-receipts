@@ -125,6 +125,12 @@ export function TopicDrillTable({ topicSummaries }: Props) {
     return n.toFixed(digits);
   }
 
+  // "gun_control" → "Gun Control" — raw slugs were the main readability
+  // complaint on this table. Slug stays visible via title attribute.
+  function humanizeSlug(slug: string): string {
+    return slug.replace(/[_-]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
   function pctVal(n: number): string {
     if (!Number.isFinite(n)) return "—";
     return `${n.toFixed(1)}%`;
@@ -177,7 +183,7 @@ export function TopicDrillTable({ topicSummaries }: Props) {
                   aria-expanded={isOpen}
                   title={isOpen ? "Click to collapse" : "Click to expand drill-down"}
                 >
-                  <td className="px-3 py-2 text-gray-100 align-top font-mono">
+                  <td className="px-3 py-2 text-gray-100 align-top" title={t.topicSlug}>
                     <span className="inline-flex items-center gap-1.5">
                       <span
                         className={`text-[10px] transition-transform inline-block ${isOpen ? "rotate-90" : ""} text-gray-500`}
@@ -185,7 +191,7 @@ export function TopicDrillTable({ topicSummaries }: Props) {
                       >
                         ▶
                       </span>
-                      {t.topicSlug}
+                      {humanizeSlug(t.topicSlug)}
                     </span>
                   </td>
                   <td className="px-3 py-2 text-gray-400 align-top font-mono text-[11px]">{t.questionCode}</td>

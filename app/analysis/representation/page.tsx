@@ -18,6 +18,11 @@ function pct(n: number, digits = 1): string {
   return `${n.toFixed(digits)}%`;
 }
 
+// "gun_control" → "Gun Control" (raw slugs read as debug output).
+function humanizeSlug(slug: string): string {
+  return slug.replace(/[_-]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 function fmt(n: number | null | undefined, digits = 1): string {
   if (n === null || n === undefined || !Number.isFinite(n)) return "—";
   return n.toFixed(digits);
@@ -177,7 +182,7 @@ export default async function RepresentationPage() {
                 >
                   <td className="px-3 py-2 text-gray-100 align-top font-mono">{r.state}</td>
                   <td className="px-3 py-2 text-gray-300 align-top tabular-nums">{r.year}</td>
-                  <td className="px-3 py-2 text-gray-200 align-top font-mono">{r.topicSlug}</td>
+                  <td className="px-3 py-2 text-gray-200 align-top" title={r.topicSlug}>{humanizeSlug(r.topicSlug)}</td>
                   <td className="px-3 py-2 text-right text-gray-400 tabular-nums">{r.billCount}</td>
                   <td className="px-3 py-2 text-right text-gray-400 tabular-nums">{r.memberVoteCount}</td>
                   <td className="px-3 py-2 text-right text-gray-300 tabular-nums">{pct(r.delegationYeaPct)}</td>
@@ -229,8 +234,8 @@ export default async function RepresentationPage() {
                   <td className="px-3 py-2 text-right text-orange-300 tabular-nums">{fmt(s.avgRepGap)}</td>
                   <td className="px-3 py-2 align-top text-[11px] text-gray-500">
                     {s.topTopics.map((t, j) => (
-                      <span key={`${t.topicSlug}-${j}`} className="font-mono mr-2">
-                        {t.topicSlug}:{t.gap.toFixed(0)}%
+                      <span key={`${t.topicSlug}-${j}`} className="mr-2" title={t.topicSlug}>
+                        {humanizeSlug(t.topicSlug)}: {t.gap.toFixed(0)}%
                       </span>
                     ))}
                   </td>
