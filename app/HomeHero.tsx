@@ -439,8 +439,8 @@ function HomeHeroContent({
             </h1>
             <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
               A live record of epistemic status across science, law, and history.{" "}
-              <span className="text-gray-200">{liveCounts.claims}</span> claims, each sourced and traceable, carrying{" "}
-              <span className="text-gray-200">{liveCounts.transitions}</span> dated status transitions.
+              <span className="text-gray-200">{liveCounts.claims}</span>{" "}claims, each sourced and traceable, carrying{" "}
+              <span className="text-gray-200">{liveCounts.transitions}</span>{" "}dated status transitions.
               Search any topic, follow the evidence trail, and see how each claim&apos;s status shifted over time.
             </p>
 
