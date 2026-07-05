@@ -345,7 +345,9 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
           {data.decades.reduce((s, d) => s + d.totalVotes, 0).toLocaleString()} Voteview roll-calls
           since 1789. Trace one topic&apos;s rise and fall, see the decades where attention
           shifted hardest, and click anything — every chip, dot, and cell opens the actual votes
-          behind the number.
+          behind the number. Shares are of <em>topic-tagged</em> votes ({""}
+          {(() => { const t = data.decades.reduce((s, d) => s + (d.taggedVotes ?? 0), 0); const a = data.decades.reduce((s, d) => s + d.totalVotes, 0); return a > 0 ? `${Math.round((t / a) * 100)}%` : "—"; })()}{" "}
+          of the corpus; hover a decade header for its coverage).
         </p>
       </div>
 
@@ -674,6 +676,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                   <th
                     key={d.decade}
                     className={`px-1 py-2 text-center font-mono text-[10px] text-gray-500 whitespace-nowrap ${eraBoundaryDecades.has(d.decade) ? "border-l-2 border-l-gray-600" : ""}`}
+                    title={`${d.decade}s — ${d.taggedVotes?.toLocaleString?.() ?? "?"} of ${d.totalVotes.toLocaleString()} votes topic-tagged (${d.coverage != null ? Math.round(d.coverage * 100) : "?"}% coverage). Shares are of tagged votes.`}
                   >
                     {d.decade}s
                   </th>

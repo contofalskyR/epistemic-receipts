@@ -249,7 +249,8 @@ async function main() {
   }
 
   // Untagged modern procedural titles — the 2000s-2020s coverage dip.
-  const modernUntagged = rows.filter((r) => !r.topics && r.voteDate && r.voteDate.getUTCFullYear() >= 2000 && r.name);
+  // (fixed: untagged rows carry "[]", not NULL — first run printed 0 here)
+  const modernUntagged = rows.filter((r) => (!r.topics || r.topics === "[]") && r.voteDate && r.voteDate.getUTCFullYear() >= 2000 && r.name);
   console.log(`\n═══ MODERN COVERAGE DIP — sample untagged 2000s+ titles (${modernUntagged.length.toLocaleString()} total)`);
   for (const r of modernUntagged.slice(0, 6)) console.log(`  "${(r.name ?? "").slice(0, 100)}"`);
 

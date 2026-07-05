@@ -4,6 +4,10 @@ import { ERAS } from "@/lib/us-presidents";
 export type DecadeTopicDist = {
   decade: number;
   totalVotes: number;
+  /** Votes with ≥1 topic tag — the honest denominator for `normalized`. */
+  taggedVotes: number;
+  /** taggedVotes / totalVotes — surfaced so the UI can show coverage. */
+  coverage: number;
   topics: Record<string, number>;
   normalized: Record<string, number>;
 };
@@ -78,9 +82,9 @@ export async function getTopicTrends(): Promise<TopicTrendResult> {
       AND lv."voteDate" IS NOT NULL
   `;
 
-  const decadeMap = new Map<number, { total: number; counts: Record<string, number> }>();
+  const decadeMap = new Map<number, { total: number; tagged: number; counts: Record<string, number> }>();
   const overallCounts: Record<string, number> = {};
-  let overallTotal = 0;
+  let overallTagged = 0;
 
   for (const row of rows) {
     if (!(row.voteDate instanceof Date) || Number.isNaN(row.voteDate.getTime())) continue;
@@ -88,25 +92,35 @@ export async function getTopicTrends(): Promise<TopicTrendResult> {
     const decade = Math.floor(year / 10) * 10;
     let bucket = decadeMap.get(decade);
     if (!bucket) {
-      bucket = { total: 0, counts: {} };
+      bucket = { total: 0, tagged: 0, counts: {} };
       decadeMap.set(decade, bucket);
     }
     bucket.total++;
-    overallTotal++;
     const topics = parseTopics(row.topics);
+    if (topics.length > 0) {
+      bucket.tagged++;
+      overallTagged++;
+    }
     for (const t of topics) {
       bucket.counts[t] = (bucket.counts[t] ?? 0) + 1;
       overallCounts[t] = (overallCounts[t] ?? 0) + 1;
     }
   }
 
+  // Denominator fix (2026-07-04 audit): shares are computed over TAGGED votes,
+  // not all votes. Tagging coverage swings 44–71% across decades (procedural
+  // titles defeat keywords, especially 2000s+), so dividing by all votes let
+  // coverage leak into the "zeitgeist" signal. Coverage is exposed per decade
+  // so the UI can show it instead of silently absorbing it.
   const decades: DecadeTopicDist[] = Array.from(decadeMap.entries())
     .sort(([a], [b]) => a - b)
-    .map(([decade, { total, counts }]) => ({
+    .map(([decade, { total, tagged, counts }]) => ({
       decade,
       totalVotes: total,
+      taggedVotes: tagged,
+      coverage: total > 0 ? tagged / total : 0,
       topics: counts,
-      normalized: normalize(counts, total),
+      normalized: normalize(counts, tagged),
     }));
 
   const klSequence: KLResult[] = [];
@@ -129,23 +143,24 @@ export async function getTopicTrends(): Promise<TopicTrendResult> {
     });
   }
 
-  const overallDist = normalize(overallCounts, overallTotal);
+  const overallDist = normalize(overallCounts, overallTagged);
 
   const hotTopics: EraHot[] = ERAS.map((era) => {
     const start = new Date(`${era.start}T00:00:00.000Z`).getTime();
     const end = new Date(`${era.end}T23:59:59.999Z`).getTime();
     const eraCounts: Record<string, number> = {};
-    let eraTotal = 0;
+    let eraTagged = 0;
     for (const row of rows) {
       if (!(row.voteDate instanceof Date)) continue;
       const t = row.voteDate.getTime();
       if (t < start || t > end) continue;
-      eraTotal++;
-      for (const tp of parseTopics(row.topics)) {
+      const tps = parseTopics(row.topics);
+      if (tps.length > 0) eraTagged++;
+      for (const tp of tps) {
         eraCounts[tp] = (eraCounts[tp] ?? 0) + 1;
       }
     }
-    const eraDist = normalize(eraCounts, eraTotal);
+    const eraDist = normalize(eraCounts, eraTagged);
     const lifts = Object.entries(eraDist)
       .map(([topic, p]) => {
         const baseline = overallDist[topic] ?? 0;
