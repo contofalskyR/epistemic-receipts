@@ -103,8 +103,13 @@ async function main() {
   }
 
   // Single-step = has a baseline row (fromAxis IS NULL) and nothing else.
-  // Ordered by cited_by_count (digits-only guard, no unsafe casts), then
-  // recency. Over-fetch so the JS-side attempted filter can't starve the run.
+  // Ordering (2026-07-05): cited_by_count DESC first — but ingest-openalex.ts
+  // stores NO cited_by_count, so today that column is uniformly 0 and the
+  // tiebreak decides. Tiebreak is OLDEST-first, not newest: a settling event
+  // (retraction, replication, meta-analysis) needs YEARS to accrue, so the
+  // oldest papers have the best hit rate; newest-first guaranteed SKIPs on
+  // weeks-old papers. When citation counts get backfilled (briefing 06 Phase
+  // A), the DESC clause auto-prioritizes high-impact papers with no code change.
   const fetchLimit = count + attempted.size + 50
   const candidates = (await prisma.$queryRawUnsafe(
     `SELECT
@@ -117,11 +122,12 @@ async function main() {
      WHERE c."ingestedBy" = $1
        AND c.deleted = false
        AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
+       AND c."claimEmergedAt" IS NOT NULL
        AND NOT EXISTS (
          SELECT 1 FROM "ClaimStatusHistory" h2
          WHERE h2."claimId" = c.id AND h2.id <> h.id
        )
-     ORDER BY 5 DESC, c."claimEmergedAt" DESC NULLS LAST
+     ORDER BY 5 DESC, c."claimEmergedAt" ASC
      LIMIT $2`,
     pipeline,
     fetchLimit,

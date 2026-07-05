@@ -157,7 +157,10 @@ while true; do
 
     PROMPT=$(build_prompt "$CLAIM_ID" "$CLAIM_TEXT" "$INGESTED_BY" "$EMERGED_AT" "$CITED_BY")
 
-    OUTPUT=$(cd "$PROJECT_DIR" && claude --print --model claude-opus-4-8 "$PROMPT" 2>&1) || true
+    # --allowedTools is REQUIRED: without it, --print (non-interactive) mode
+    # permission-blocks WebSearch/WebFetch, so every openalex claim SKIPs for
+    # "could not verify a URL" and the run is pure Opus cost (fixed 2026-07-05).
+    OUTPUT=$(cd "$PROJECT_DIR" && claude --allowedTools "WebSearch,WebFetch" --print --model claude-opus-4-8 "$PROMPT" 2>&1) || true
     echo "$OUTPUT" >> "$LOG"
 
     # Parse output.
