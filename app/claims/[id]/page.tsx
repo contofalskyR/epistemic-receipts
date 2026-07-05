@@ -103,6 +103,7 @@ type ClaimDetail = {
   epistemicAxis: string | null;
   claimType: string;
   claimEmergedAt: string | null;
+  _count?: { statusHistory?: number };
   claimEmergedPrecision: EmergedPrecision | null;
   createdAt: string;
   humanReviewed: boolean;
@@ -819,6 +820,14 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
             <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800/60 text-gray-600 border border-gray-700">
               UNREVIEWED
             </span>
+          )}
+          {(claim._count?.statusHistory ?? 0) >= 2 && (
+            <Link
+              href={`/settling-curve?t=${encodeURIComponent(claim.id)}`}
+              className="text-xs px-2 py-0.5 rounded-full font-medium bg-amber-500/15 text-amber-300 border border-amber-500/40 hover:bg-amber-500/25 transition-colors"
+            >
+              View settling curve →
+            </Link>
           )}
           <BookmarkToggle claimId={claim.id} />
         </div>

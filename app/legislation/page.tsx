@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import LegislationClient from "./LegislationClient";
 import LegislationStats from "./LegislationStats";
+import DomainCurveRail from "../components/DomainCurveRail";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,22 @@ export const metadata = {
 export default function LegislationPage() {
   return (
     <div className="space-y-0">
+      {/* Curve-first (briefings/07): lead with legislative trajectories — how
+          bills and legal claims moved through institutions and courts — before
+          the country tables. Grows automatically as wave 3 adds bill outcomes. */}
+      <Suspense fallback={null}>
+        <DomainCurveRail
+          title="Legislative settling curves"
+          subtitle="How bills and legal claims moved — introduced, contested, enacted, repealed — with dated receipts."
+          pipelines={[
+            "law-settler",          // curated legal settling curves (the prototype for this vision)
+            "seed-court-reversals", // curated court-reversal arcs
+            "congress_bills_tracker_v1",
+            "congress_v1",
+            "nz_repealed_acts_v1",
+          ]}
+        />
+      </Suspense>
       <Suspense fallback={<p className="text-sm text-gray-500">Loading bills…</p>}>
         <LegislationClient />
       </Suspense>

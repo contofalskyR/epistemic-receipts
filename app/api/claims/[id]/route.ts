@@ -43,6 +43,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     claim = await prisma.claim.findUnique({
       where: { id },
       include: {
+        _count: { select: { statusHistory: true } },
         parent: { select: { id: true, text: true } },
         children: {
           include: {

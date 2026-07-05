@@ -261,7 +261,12 @@ function SettlingCurveInner() {
         setList(data);
         setListLoading(false);
         const deep = searchParams.get("t");
-        const initial = deep && data.some((d) => d.id === deep) ? deep : data[0]?.id ?? null;
+        // Accept ANY deep-linked id — curated slugs and raw claim CUIDs alike.
+        // /api/trajectories/[id] already falls back to claim ids, which makes
+        // this page the universal curve explorer for all 235k+ multi-step
+        // claims, not just the curated set. (Previously the deep link was
+        // silently discarded unless it matched the curated list.)
+        const initial = deep || (data[0]?.id ?? null);
         setActiveId(initial);
         if (initial == null) setLoadingDetail(false);
       })
@@ -1173,10 +1178,12 @@ function SettlingCurveInner() {
   // Reading-mode footer: 3 related trajectories (same domain, then same era)
   // drawn from the already-loaded curated list. Deterministic picks.
   function renderRelated() {
-    if (!activeItem || list.length === 0) return null;
-    const pool = list.filter((x) => x.id !== activeItem.id);
-    const sameDomain = pool.filter((x) => x.domain && x.domain === activeItem.domain);
-    const sameEra = pool.filter((x) => x.era && x.era === activeItem.era && !sameDomain.includes(x));
+    if (list.length === 0) return null;
+    // Raw-claim mode has no curated metadata to match on — fall back to the
+    // top of the curated list so reading mode always ends with onward paths.
+    const pool = list.filter((x) => x.id !== activeId);
+    const sameDomain = activeItem ? pool.filter((x) => x.domain && x.domain === activeItem.domain) : [];
+    const sameEra = activeItem ? pool.filter((x) => x.era && x.era === activeItem.era && !sameDomain.includes(x)) : [];
     const picks = [...sameDomain, ...sameEra, ...pool].slice(0, 3);
     if (picks.length === 0) return null;
 
@@ -1351,12 +1358,22 @@ function SettlingCurveInner() {
                           <span style={{ color: C.faint }}> · {pipelineLabel(traj.ingestedBy)}</span>
                         )}
                       </p>
-                      <div className="mt-2">
+                      <div className="mt-2 flex items-center gap-3 flex-wrap">
                         <ShareButtons
                           url={typeof window !== "undefined" ? window.location.href : ""}
                           text={shareText}
                           imageCardUrl={activeId ? `/api/og/trajectory?id=${activeId}` : undefined}
                         />
+                        {/* Raw-claim mode (id not in the curated list): link back to the receipt */}
+                        {activeId && !activeItem && (
+                          <Link
+                            href={`/claims/${encodeURIComponent(activeId)}`}
+                            className="font-mono"
+                            style={{ fontSize: 11, color: C.brand }}
+                          >
+                            Open receipt →
+                          </Link>
+                        )}
                       </div>
                     </>
                   );
