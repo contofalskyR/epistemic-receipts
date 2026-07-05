@@ -125,6 +125,93 @@ type VoteItem = {
 
 type DrawerState = { topic: string; eraLabel: string } | null;
 
+// ── Smooth path (Catmull-Rom → cubic Bézier). Zeitgeist reads as waves, not
+//    connect-the-dots; smoothing is presentational — dots stay on real data. ──
+type Pt = { x: number; y: number };
+function smoothPath(pts: Pt[]): string {
+  if (pts.length === 0) return "";
+  if (pts.length === 1) return `M${pts[0].x.toFixed(1)},${pts[0].y.toFixed(1)}`;
+  let d = `M${pts[0].x.toFixed(1)},${pts[0].y.toFixed(1)}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] ?? pts[i];
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const p3 = pts[i + 2] ?? p2;
+    const c1x = p1.x + (p2.x - p0.x) / 6;
+    const c1y = p1.y + (p2.y - p0.y) / 6;
+    const c2x = p2.x - (p3.x - p1.x) / 6;
+    const c2y = p2.y - (p3.y - p1.y) / 6;
+    d += ` C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+  }
+  return d;
+}
+
+// ── Zeitgeist ridgeline: every major topic as a smooth ridge of attention
+//    across the decades — the bell curves of what Congress cared about. ──
+function ZeitgeistRidgeline({
+  decades,
+  topics,
+  focusTopic,
+  onPick,
+}: {
+  decades: TopicTrendResult["decades"];
+  topics: string[];
+  focusTopic: string;
+  onPick: (slug: string) => void;
+}) {
+  const W = 920, padL = 150, padR = 16, rowGap = 30, amp = 46, padT = 26, padB = 24;
+  const H = padT + (topics.length - 1) * rowGap + amp + padB;
+  const x = (i: number) => padL + (i * (W - padL - padR)) / Math.max(1, decades.length - 1);
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img"
+      aria-label="Ridgeline: each topic's share of congressional attention per decade">
+      {/* decade guide ticks */}
+      {decades.map((d, i) =>
+        i % 2 === 0 ? (
+          <g key={d.decade}>
+            <line x1={x(i)} x2={x(i)} y1={padT - 8} y2={H - padB} stroke="#111827" strokeWidth={1} />
+            <text x={x(i)} y={H - 6} fontSize={8.5} fill="#4b5563" fontFamily="monospace" textAnchor="middle">
+              {String(d.decade).slice(2)}s
+            </text>
+          </g>
+        ) : null,
+      )}
+      {topics.map((slug, row) => {
+        const base = padT + row * rowGap + amp;
+        const max = Math.max(...decades.map((d) => d.normalized[slug] ?? 0), 0.0001);
+        const pts: Pt[] = decades.map((d, i) => ({
+          x: x(i),
+          y: base - ((d.normalized[slug] ?? 0) / max) * amp,
+        }));
+        const line = smoothPath(pts);
+        const area = `${line} L${x(decades.length - 1).toFixed(1)},${base} L${x(0).toFixed(1)},${base} Z`;
+        const peakIdx = decades.reduce((bi, d, i) => ((d.normalized[slug] ?? 0) > (decades[bi].normalized[slug] ?? 0) ? i : bi), 0);
+        const on = slug === focusTopic;
+        return (
+          <g key={slug} className="cursor-pointer" onClick={() => onPick(slug)}>
+            {/* row hit area */}
+            <rect x={0} y={base - amp} width={W} height={rowGap + 4} fill="transparent" />
+            <path d={area} fill={on ? "#f59e0b" : "#3b82f6"} opacity={on ? 0.30 : 0.16} />
+            <path d={line} fill="none" stroke={on ? "#fbbf24" : "#60a5fa"} strokeWidth={on ? 1.8 : 1.1} opacity={on ? 1 : 0.75} />
+            <circle cx={x(peakIdx)} cy={pts[peakIdx].y} r={2.4} fill={on ? "#fbbf24" : "#93c5fd"} opacity={0.9}>
+              <title>{`${topicLabel(slug)} — peak ${decades[peakIdx].decade}s (${(((decades[peakIdx].normalized[slug] ?? 0)) * 100).toFixed(1)}% of tagged votes)`}</title>
+            </circle>
+            <text x={padL - 10} y={base - 3} fontSize={10.5} textAnchor="end"
+              fill={on ? "#fbbf24" : "#9ca3af"} style={{ fontWeight: on ? 600 : 400 }}>
+              {topicLabel(slug)}
+            </text>
+            <text x={x(peakIdx)} y={pts[peakIdx].y - 5} fontSize={7.5} fill={on ? "#fbbf24" : "#6b7280"}
+              fontFamily="monospace" textAnchor="middle">
+              {decades[peakIdx].decade}s
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 // ── Topic timeline (the zeitgeist lens): one topic's share of congressional
 //    attention, decade by decade, 1789→present. Dots open the vote drawer. ──
 function TopicTimeline({
@@ -148,7 +235,8 @@ function TopicTimeline({
   const W = 920, H = 170, padL = 40, padR = 12, padT = 16, padB = 22;
   const x = (i: number) => padL + (i * (W - padL - padR)) / Math.max(1, pts.length - 1);
   const y = (p: number) => padT + (1 - p / maxP) * (H - padT - padB);
-  const line = pts.map((pt, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(pt.p).toFixed(1)}`).join(" ");
+  const coords: Pt[] = pts.map((pt, i) => ({ x: x(i), y: y(pt.p) }));
+  const line = smoothPath(coords);
   const area = `${line} L${x(pts.length - 1).toFixed(1)},${H - padB} L${x(0).toFixed(1)},${H - padB} Z`;
 
   return (
@@ -559,6 +647,28 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* The zeitgeist, as waves — every major topic's ridge of attention */}
+      <section className="space-y-3">
+        <h2 className="text-base font-semibold text-white">The zeitgeist, as waves</h2>
+        <p className="text-xs text-gray-500">
+          Each ridge is one topic&apos;s share of congressional attention across 240 years —
+          the bell curves of what America argued about. Every ridge is scaled to its own peak
+          (labeled), so shapes show <em>when</em> a topic mattered, not how big it was overall.
+          Curves are smoothed between decade samples. Click a ridge to trace it below.
+        </p>
+        <div className="rounded border border-gray-800 bg-gray-900/40 p-4">
+          <ZeitgeistRidgeline
+            decades={data.decades}
+            topics={heatmapTopics}
+            focusTopic={focusTopic}
+            onPick={(slug) => {
+              setFocusTopic(slug);
+              document.getElementById("topic-timeline")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          />
         </div>
       </section>
 
