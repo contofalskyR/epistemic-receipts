@@ -293,6 +293,91 @@ export function wave2InsertSql(key: string): SqlFrag {
     ON CONFLICT (id) DO NOTHING`;
 }
 
+// ── Wave 3: bill lifecycles — metadata-conditional forward completion ─────────
+// congress_bills_tracker_v1 baselines are null→RECORDED @ introducedDate.
+// The ingester (scripts/ingest-congress-bills-tracker.ts) stores the outcome:
+//   metadata.statusSlug ∈ status-introduced | status-passed-house |
+//     status-passed-senate | status-enacted | status-vetoed | status-failed |
+//     status-in-progress
+//   metadata.latestActionDate (YYYY-MM-DD), metadata.congress (number)
+// Rules (all single-step + entry-axis guarded, dates from metadata only):
+//   status-enacted → RECORDED→SETTLED  @ latestActionDate
+//   status-failed  → RECORDED→ABANDONED @ latestActionDate
+//   anything else whose congress has ENDED → RECORDED→ABANDONED @ term end
+//     (bills die with their congress; sitting congresses are honest OPEN
+//      business and are left single-step — re-run after a term ends)
+export const BILLS_PIPELINE = "congress_bills_tracker_v1";
+
+/** Congress end dates (noon Jan 3, per 20th Amendment). Only congresses whose
+ *  end date is in the past ever fire; the map is safe to extend. */
+export const CONGRESS_END: Record<number, string> = {
+  115: "2019-01-03",
+  116: "2021-01-03",
+  117: "2023-01-03",
+  118: "2025-01-03",
+  119: "2027-01-03",
+};
+
+const ENACTED_REASON =
+  "Enacted into law — Congress.gov recorded the final action (became law).";
+const FAILED_REASON =
+  "Failed passage — terminal action recorded by Congress.gov.";
+
+/** status-enacted / status-failed → terminal transition @ latestActionDate. */
+export function wave3OutcomeSql(kind: "enacted" | "failed"): SqlFrag {
+  const toAxis = kind === "enacted" ? "SETTLED" : "ABANDONED";
+  const slug = kind === "enacted" ? "status-enacted" : "status-failed";
+  const reason = kind === "enacted" ? ENACTED_REASON : FAILED_REASON;
+  return sqlt`
+    INSERT INTO "ClaimStatusHistory"
+      (id, "claimId", "fromAxis", "toAxis", community, reason, "occurredAt", "datePrecision")
+    SELECT
+      c.id || '-' || ${toAxis} || '-' || (c.metadata->>'latestActionDate'),
+      c.id,
+      h."toAxis",
+      ${toAxis},
+      'INSTITUTIONAL'::"RatifyingCommunity",
+      ${reason},
+      (c.metadata->>'latestActionDate')::timestamp,
+      'DAY'
+    ${singleStepJoin(BILLS_PIPELINE)}
+      AND h."toAxis" = 'RECORDED'
+      AND c.metadata->>'statusSlug' = ${slug}
+      AND (c.metadata->>'latestActionDate') ~ ${ISO_DAY_RE}
+      AND (c.metadata->>'latestActionDate')::timestamp >= h."occurredAt"
+    ON CONFLICT (id) DO NOTHING`;
+}
+
+/** Bills of an ENDED congress that never reached a terminal action → ABANDONED
+ *  at that congress's end date. Never fires for sitting congresses. */
+export function wave3DiedWithCongressSql(congress: number, endDate: string): SqlFrag {
+  const reason = `Died with the ${congress}th Congress — introduced but not enacted before the term ended ${endDate}.`;
+  return sqlt`
+    INSERT INTO "ClaimStatusHistory"
+      (id, "claimId", "fromAxis", "toAxis", community, reason, "occurredAt", "datePrecision")
+    SELECT
+      c.id || '-ABANDONED-' || ${endDate},
+      c.id,
+      h."toAxis",
+      'ABANDONED',
+      'INSTITUTIONAL'::"RatifyingCommunity",
+      ${reason},
+      ${endDate}::timestamp,
+      'DAY'
+    ${singleStepJoin(BILLS_PIPELINE)}
+      AND h."toAxis" = 'RECORDED'
+      AND (c.metadata->>'congress') = ${String(congress)}
+      AND (c.metadata->>'statusSlug') NOT IN ('status-enacted', 'status-failed')
+    ON CONFLICT (id) DO NOTHING`;
+}
+
+export function endedCongresses(now = new Date()): [number, string][] {
+  return Object.entries(CONGRESS_END)
+    .map(([c, d]) => [Number(c), d] as [number, string])
+    .filter(([, d]) => new Date(d + "T12:00:00Z") < now)
+    .sort((a, b) => a[0] - b[0]);
+}
+
 /** Wave 2, statement 2: re-point the baseline row's fromAxis (null → RECORDED)
  *  ONLY where our prepended publication row exists. Self-healing + idempotent. */
 export function wave2AmendSql(): SqlFrag {
@@ -456,6 +541,70 @@ async function preflightRetractions(): Promise<void> {
   }
 }
 
+async function preflightWave3(): Promise<void> {
+  console.log(`\n── ${BILLS_PIPELINE} ─ wave 3: bill lifecycles (metadata-conditional)`);
+  const statuses = await q<{ slug: string | null; n: number | bigint; dated: number | bigint }>(sqlt`
+    SELECT c.metadata->>'statusSlug' AS slug, COUNT(*) n,
+           COUNT(*) FILTER (WHERE (c.metadata->>'latestActionDate') ~ ${ISO_DAY_RE}) AS dated
+    ${singleStepJoin(BILLS_PIPELINE)}
+      AND h."toAxis" = 'RECORDED'
+    GROUP BY 1 ORDER BY n DESC`);
+  console.log(`   single-step bills by statusSlug (dated = parseable latestActionDate):`);
+  for (const r of statuses)
+    console.log(`     ${(r.slug ?? "(none)").padEnd(24)} ${String(num(r.n)).padStart(7)}   dated ${num(r.dated)}`);
+
+  const congresses = await q<{ congress: string | null; n: number | bigint }>(sqlt`
+    SELECT c.metadata->>'congress' AS congress, COUNT(*) n
+    ${singleStepJoin(BILLS_PIPELINE)} AND h."toAxis" = 'RECORDED'
+    GROUP BY 1 ORDER BY 1`);
+  console.log(`   by congress: ${congresses.map((r) => `${r.congress ?? "?"}: ${num(r.n)}`).join("  ·  ")}`);
+  const ended = endedCongresses();
+  console.log(`   ended congresses eligible for died-with-congress: ${ended.map(([c, d]) => `${c} (${d})`).join(", ") || "none in data range"}`);
+
+  console.log(`\n   projected inserts:`);
+  console.log(`     enacted → SETTLED:   ${num((await one<CountRow>(sqlt`SELECT COUNT(*) n ${singleStepJoin(BILLS_PIPELINE)} AND h."toAxis"='RECORDED' AND c.metadata->>'statusSlug'='status-enacted' AND (c.metadata->>'latestActionDate') ~ ${ISO_DAY_RE} AND (c.metadata->>'latestActionDate')::timestamp >= h."occurredAt"`)).n)}`);
+  console.log(`     failed  → ABANDONED: ${num((await one<CountRow>(sqlt`SELECT COUNT(*) n ${singleStepJoin(BILLS_PIPELINE)} AND h."toAxis"='RECORDED' AND c.metadata->>'statusSlug'='status-failed' AND (c.metadata->>'latestActionDate') ~ ${ISO_DAY_RE} AND (c.metadata->>'latestActionDate')::timestamp >= h."occurredAt"`)).n)}`);
+  for (const [cg, endDate] of ended) {
+    const n = await one<CountRow>(sqlt`SELECT COUNT(*) n ${singleStepJoin(BILLS_PIPELINE)} AND h."toAxis"='RECORDED' AND (c.metadata->>'congress') = ${String(cg)} AND (c.metadata->>'statusSlug') NOT IN ('status-enacted','status-failed')`);
+    console.log(`     died with ${cg}th   → ABANDONED @ ${endDate}: ${num(n.n)}`);
+  }
+
+  // Reconnaissance for the future NZ rules (report-only, no rules yet).
+  for (const p of ["nz_bills_v1", "nz_repealed_acts_v1"]) {
+    const keys = await q<{ k: string; n: number | bigint }>(sqlt`
+      SELECT k, COUNT(*) n FROM (
+        SELECT jsonb_object_keys(c.metadata) k ${singleStepJoin(p)} AND c.metadata IS NOT NULL LIMIT 20000
+      ) s GROUP BY k ORDER BY n DESC LIMIT 10`);
+    if (keys.length)
+      console.log(`\n   ${p} metadata keys (for future rules): ${keys.map((r) => `${r.k}(${num(r.n)})`).join(", ")}`);
+  }
+}
+
+async function executeWave3(): Promise<void> {
+  const ended = endedCongresses();
+  const frags: [string, SqlFrag][] = [
+    ["enacted→SETTLED", wave3OutcomeSql("enacted")],
+    ["failed→ABANDONED", wave3OutcomeSql("failed")],
+    ...ended.map(([cg, d]) => [`died-with-${cg}th→ABANDONED`, wave3DiedWithCongressSql(cg, d)] as [string, SqlFrag]),
+  ];
+  const rendered = frags.map(([label, f]) => [label, render(f)] as const);
+  const t0 = Date.now();
+  const ops = [
+    db().$executeRawUnsafe(`SET LOCAL statement_timeout = '600s'`),
+    ...rendered.map(([, r]) => db().$executeRawUnsafe(r.text, ...r.params)),
+  ];
+  const results = await db().$transaction(ops);
+  rendered.forEach(([label], i) =>
+    console.log(`[${BILLS_PIPELINE}] ${label}: ${num(results[i + 1])} rows`),
+  );
+  console.log(`[${BILLS_PIPELINE}] done in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
+  const verify = await one<CountRow>(sqlt`
+    SELECT COUNT(*) n FROM "ClaimStatusHistory" h
+    JOIN "Claim" c ON c.id = h."claimId"
+    WHERE c."ingestedBy" = ${BILLS_PIPELINE} AND h."fromAxis" = 'RECORDED'`);
+  console.log(`[${BILLS_PIPELINE}] DB verification: ${num(verify.n)} chained transitions now present`);
+}
+
 // ── Execution ─────────────────────────────────────────────────────────────────
 async function execFrag(frag: SqlFrag): Promise<number> {
   const { text, params } = render(frag);
@@ -573,6 +722,13 @@ async function main(): Promise<void> {
       console.log(`\n(re-run with --execute --direct --wave 2 --allow-entry-amend --pub-date-key <key> to apply)`);
     } else {
       await executeWave2();
+    }
+  } else if (WAVE === 3) {
+    if (!EXECUTE) {
+      await preflightWave3();
+      console.log(`\n(re-run with --execute --direct --wave 3 to apply; sitting congresses stay single-step by design)`);
+    } else {
+      await executeWave3();
     }
   } else {
     console.error(`Unknown wave: ${WAVE}`);
