@@ -51,6 +51,11 @@ const TOPIC_TAXONOMY: Record<string, string[]> = {
 // its place in the 2026-07-04 audit with receipts (audit-vote-topics.ts).
 const EXCLUSIONS: { topic: string; veto: RegExp }[] = [
   { topic: 'native_affairs', veto: /indian (river|creek|lake|head|wells|hills?|springs?)\b/i }, // place names
+  // 'treaty with' is a native_affairs keyword (Treaty with the Cherokee…), but
+  // it also fired on Jay-Treaty-with-Great-Britain votes (2026-07-05 audit).
+  // Nation-state treaty partners veto the tag; foreign_policy still catches
+  // them via its own 'treaty' keyword.
+  { topic: 'native_affairs', veto: /treaty with (great britain|britain|france|spain|mexico|russia|prussia|japan|china|the (united kingdom|french|british|spanish))/i },
   { topic: 'banking_finance', veto: /gold(en)? medal/i }, // Congressional Gold Medal acts
   { topic: 'slavery', veto: /modern slavery|human trafficking/i }, // modern trafficking ≠ chattel-slavery zeitgeist
 ]
