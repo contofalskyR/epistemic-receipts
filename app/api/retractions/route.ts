@@ -34,8 +34,13 @@ export async function GET(req: NextRequest) {
 
   if (q) {
     const p = likeParam(q);
+    // DOI queries arrive from the retraction wall (bare "10.1016/..." or a
+    // doi.org URL). Stored DOIs are lowercase; normalize before matching —
+    // without this, DOI handoffs returned "0 papers" (fixed 2026-07-05).
+    const doiNorm = q.toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//, "");
+    const pd = likeParam(doiNorm);
     conditions.push(
-      `(c.metadata->>'title' ILIKE ${p} OR c.metadata->>'journal' ILIKE ${p} OR c.metadata->>'firstAuthor' ILIKE ${p})`
+      `(c.metadata->>'title' ILIKE ${p} OR c.metadata->>'journal' ILIKE ${p} OR c.metadata->>'firstAuthor' ILIKE ${p} OR c.metadata->>'doi' ILIKE ${pd} OR c.text ILIKE ${p})`
     );
   }
 
