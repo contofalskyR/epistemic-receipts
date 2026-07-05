@@ -1,8 +1,25 @@
 // One-off migration: keyword-cluster bill titles into topic buckets.
 // Run: npx tsx scripts/populate-vote-topics.ts
+//
+// ⚠️ QUARANTINED 2026-07-04 (audit-vote-topics.ts finding): the live
+// LegislativeVote.topics data uses the 25-topic historical taxonomy from
+// scripts/enrich-voteview-topics.ts — THAT is the canonical tagger. This
+// script's 10 modern slugs (economy, justice, social, …) appear NOWHERE in
+// the DB — running it would fill topics-NULL votes with a second,
+// incompatible vocabulary and corrupt the taxonomy.
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
+
+if (!process.argv.includes('--i-understand-this-uses-a-different-taxonomy')) {
+  console.error(
+    'REFUSING TO RUN: this script tags with a 10-slug modern taxonomy, but the\n' +
+    'live data uses a 25-slug historical taxonomy from an unversioned tagger.\n' +
+    'Running it would mix vocabularies. See scripts/audit-vote-topics.ts.\n' +
+    'Pass --i-understand-this-uses-a-different-taxonomy to override.',
+  )
+  process.exit(1)
+}
 
 const prisma = new PrismaClient()
 

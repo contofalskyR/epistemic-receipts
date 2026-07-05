@@ -90,11 +90,14 @@ async function main() {
   // ── 1. Coverage ──────────────────────────────────────────────────────────
   const total = rows.length;
   const tagged = rows.filter((r) => r.topics && r.topics !== "[]").length;
+  const emptyProcessed = rows.filter((r) => r.topics === "[]").length;
+  const neverProcessed = rows.filter((r) => r.topics == null).length;
   const noName = rows.filter((r) => !r.name || r.name.trim().length < 8).length;
   console.log(`\n═══ COVERAGE`);
   console.log(`  voteview votes:        ${total.toLocaleString()}`);
   console.log(`  tagged:                ${tagged.toLocaleString()} (${((tagged / total) * 100).toFixed(1)}%)`);
-  console.log(`  untagged:              ${(total - tagged).toLocaleString()}`);
+  console.log(`  processed, no match:   ${emptyProcessed.toLocaleString()} ("[]" — canonical tagger saw them)`);
+  console.log(`  NEVER processed:       ${neverProcessed.toLocaleString()} (NULL — exposed to any stray tagger)`);
   console.log(`  short/missing titles:  ${noName.toLocaleString()} (can never tag)`);
 
   // ── 2. Coverage by decade (defect 3+4: verbosity/era bias) ───────────────
@@ -171,6 +174,84 @@ async function main() {
   }
   console.log(`\n═══ RE-TAG SIMULATION`);
   console.log(`  votes whose tag set CHANGES under word-boundary matching: ${differs.toLocaleString()} (${((differs / total) * 100).toFixed(1)}%)`);
+
+  // ── 7. ACTUAL-TAG AUDIT (v2, added after first run) ──────────────────────
+  // First run proved the live tags come from an UNVERSIONED 25-topic tagger,
+  // so keyword-hypothesis tests above don't bind. Interrogate the real pairs:
+  // for suspicious (topic ← innocent-substring) combos, count actual tagged
+  // votes whose title has the innocent word but no legitimate stem.
+  console.log(`\n═══ ACTUAL-TAG ARTIFACT PROBES (real tags vs. title evidence)`);
+  // Tuned to the CANONICAL tagger's taxonomy (scripts/enrich-voteview-topics.ts,
+  // located after the first audit run): its matcher is substring-based with no
+  // word boundaries, so these are its concrete exposure points.
+  const PROBES: [string, RegExp, RegExp, string][] = [
+    // topic, legitimate stems (word-boundary), innocent substring that also fires, label
+    ["native_affairs", /\bindians?\b|\btrib(e|es|al)\b|\bcherokee|\bsioux|\bapache|\biroquois|\bnative american|\bbureau of indian/i, /indiana|indianapolis|west indies/i, "keyword 'indian' matching Indiana/West Indies"],
+    ["infrastructure", /\broads?\b|\brailroad|\bcanal|\bbridge|\bharbor|\briver\b|\bnavigation|\bpost road|\bhighway|\binterstate|\binternal improvement/i, /broadcast|abroad|broader|railroading/i, "keyword 'road' matching broadcast/abroad"],
+    ["banking_finance", /\bbank|\bcurrenc|\bcoinage|\bmint\b|\bfederal reserve|\bbonds?\b|\btreasury|\bdebt|\bdeficit|\bbudget|\bgold\b|\bsilver\b/i, /goldwater|goldsboro|silverman|silver spring/i, "keyword 'gold'/'silver' matching names"],
+    ["judiciary", /\bcourts?\b|\bjudge|\bjudicial|\bhabeas|\bimpeach/i, /courtesy|courteous/i, "keyword 'court' matching courtesy"],
+    ["postal", /\bpost(al| office| road|master|age)\b|\bmails?\b/i, /blackmail/i, "keyword 'mail' matching blackmail"],
+    ["health", /\bhealth|\bdisease|\bquarantine|\bepidemic|\bhospital|\bmedicare|\bmedicaid|\bpandemic/i, /\binsurance\b/i, "health tag driven only by generic 'insurance' (auto/deposit insurance mis-bucketed)"],
+  ];
+  // Overlap check: 'pension' lives in BOTH military and social_welfare keyword lists.
+  {
+    let both = 0;
+    for (const r of rows) {
+      if (!r.topics || !r.name) continue;
+      try {
+        const list = JSON.parse(r.topics) as string[];
+        if (list.includes("military") && list.includes("social_welfare") && /pension/i.test(r.name)) both++;
+      } catch { /* ignore */ }
+    }
+    console.log(`  military+social_welfare double-tag via 'pension': ${both.toLocaleString()} votes`);
+  }
+  for (const [topic, legit, innocent, label] of PROBES) {
+    let tagged = 0, suspect = 0;
+    const samples: string[] = [];
+    for (const r of rows) {
+      if (!r.topics || !r.name) continue;
+      let list: string[] = [];
+      try { list = JSON.parse(r.topics) as string[]; } catch { continue; }
+      if (!list.includes(topic)) continue;
+      tagged++;
+      if (!legit.test(r.name) && innocent.test(r.name)) {
+        suspect++;
+        if (samples.length < 3) samples.push(r.name.slice(0, 110));
+      }
+    }
+    console.log(`  ${topic}: ${tagged.toLocaleString()} tagged; ${suspect.toLocaleString()} suspect (${label})`);
+    for (const s of samples) console.log(`      e.g. "${s}"`);
+  }
+
+  // Per-topic actual counts + 2 random samples each — the eyeball layer.
+  console.log(`\n═══ ACTUAL TAG DISTRIBUTION + SAMPLES`);
+  const topicRows = new Map<string, Row[]>();
+  for (const r of rows) {
+    if (!r.topics) continue;
+    try {
+      for (const t of JSON.parse(r.topics) as string[]) {
+        if (!topicRows.has(t)) topicRows.set(t, []);
+        const arr = topicRows.get(t)!;
+        if (arr.length < 400) arr.push(r); // reservoir-ish cap
+      }
+    } catch { /* ignore */ }
+  }
+  const totals = new Map<string, number>();
+  for (const r of rows) {
+    if (!r.topics) continue;
+    try { for (const t of JSON.parse(r.topics) as string[]) totals.set(t, (totals.get(t) ?? 0) + 1); } catch { /* ignore */ }
+  }
+  for (const [t, n] of [...totals.entries()].sort((a, z) => z[1] - a[1])) {
+    const pool = topicRows.get(t) ?? [];
+    const picks = pool.filter((_, i) => i % Math.max(1, Math.floor(pool.length / 2)) === 0).slice(0, 2);
+    console.log(`  ${t.padEnd(16)} ${String(n.toLocaleString()).padStart(8)}`);
+    for (const p of picks) console.log(`      "${(p.name ?? "").slice(0, 100)}" (${p.voteDate?.getUTCFullYear() ?? "?"})`);
+  }
+
+  // Untagged modern procedural titles — the 2000s-2020s coverage dip.
+  const modernUntagged = rows.filter((r) => !r.topics && r.voteDate && r.voteDate.getUTCFullYear() >= 2000 && r.name);
+  console.log(`\n═══ MODERN COVERAGE DIP — sample untagged 2000s+ titles (${modernUntagged.length.toLocaleString()} total)`);
+  for (const r of modernUntagged.slice(0, 6)) console.log(`  "${(r.name ?? "").slice(0, 100)}"`);
 
   console.log(`\nDone (no writes).`);
 }
