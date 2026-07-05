@@ -45,8 +45,10 @@ const LIMIT = argNum("--limit");
 const INGESTED_BY = "openalex_v1";
 const OA_BASE = "https://api.openalex.org/works";
 const MAILTO = "robert.contofalsky@gmail.com"; // same polite pool as the ingester
-const OA_BATCH = 50;      // ids.openalex OR-filter cap
+const OA_BATCH = 50;        // ids.openalex OR-filter cap
 const UPDATE_BATCH = 1000;
+const FLUSH_EVERY = 20;    // flush to DB every N fetch-batches (~1,000 claims)
+const THROTTLE_MS = 120;   // gap between OpenAlex calls (polite-pool friendly)
 
 interface OAWork {
   id?: string;
@@ -102,8 +104,29 @@ async function main(): Promise<void> {
   }
   const workIds = [...byWork.keys()];
 
-  const updates: [string, string][] = []; // [externalId, jsonPatch]
-  let fetched = 0, noRecord = 0;
+  // Flush accumulated [externalId, jsonPatch] pairs to the DB. Called every
+  // FLUSH_EVERY batches so progress PERSISTS mid-run — the earlier
+  // accumulate-then-write design lost everything on interrupt (fixed 2026-07-05).
+  async function flush(pending: [string, string][]): Promise<number> {
+    if (!EXECUTE || pending.length === 0) return 0;
+    let w = 0;
+    for (let j = 0; j < pending.length; j += UPDATE_BATCH) {
+      const chunk = pending.slice(j, j + UPDATE_BATCH);
+      const values = chunk.map((_, k) => `($${k * 2 + 1}, $${k * 2 + 2}::jsonb)`).join(", ");
+      const n = await prisma.$executeRawUnsafe(
+        `UPDATE "Claim" c
+         SET metadata = COALESCE(c.metadata, '{}'::jsonb) || v.patch
+         FROM (VALUES ${values}) AS v(ext, patch)
+         WHERE c."externalId" = v.ext`,
+        ...chunk.flat(),
+      );
+      w += Number(n);
+    }
+    return w;
+  }
+
+  let pending: [string, string][] = [];
+  let fetched = 0, noRecord = 0, written = 0, maxCited = 0, failedBatches = 0;
   const fetchedAt = new Date().toISOString();
 
   for (let i = 0; i < workIds.length; i += OA_BATCH) {
@@ -111,8 +134,14 @@ async function main(): Promise<void> {
     const filter = `ids.openalex:${batch.map((w) => `https://openalex.org/${w}`).join("|")}`;
     const url = `${OA_BASE}?filter=${encodeURIComponent(filter)}&select=id,cited_by_count,counts_by_year&per-page=${OA_BATCH}&mailto=${MAILTO}`;
     let works: OAWork[] = [];
-    try { works = await oaFetch(url); } catch (e) {
-      console.error(`  batch ${i}: ${(e as Error).message}`);
+    try {
+      works = await oaFetch(url);
+    } catch (e) {
+      // A failed batch is left un-fetched; a later --execute rerun retries it
+      // (its claims still lack citationsFetchedAt). Don't lose the run over it.
+      failedBatches++;
+      if (failedBatches <= 3) console.error(`\n  batch @${i} failed (will retry on next run): ${(e as Error).message.slice(0, 80)}`);
+      await new Promise((r) => setTimeout(r, 1500)); // back off, then continue
       continue;
     }
     const seen = new Set<string>();
@@ -124,60 +153,41 @@ async function main(): Promise<void> {
       seen.add(wid);
       const byYear: Record<string, number> = {};
       for (const c of w.counts_by_year ?? []) byYear[String(c.year)] = c.cited_by_count;
-      const patch = JSON.stringify({
+      maxCited = Math.max(maxCited, w.cited_by_count ?? 0);
+      pending.push([ext, JSON.stringify({
         cited_by_count: w.cited_by_count ?? 0,
         citationsByYear: byYear,
         citationsFetchedAt: fetchedAt,
-      });
-      updates.push([ext, patch]);
+      })]);
       fetched++;
     }
     noRecord += batch.length - seen.size;
-    if ((i / OA_BATCH) % 20 === 0 || i + OA_BATCH >= workIds.length)
-      process.stdout.write(`\r  fetched ${fetched.toLocaleString()} · no OA record ${noRecord.toLocaleString()} · ${Math.min(i + OA_BATCH, workIds.length)}/${workIds.length}   `);
 
-    // Fail fast: if the very first batch of 50 known-good work ids matches
-    // NOTHING, the OpenAlex filter syntax is wrong — abort before burning
-    // thousands of empty calls. (The URL couldn't be verified offline.)
-    if (i === 0 && fetched === 0) {
-      console.error(
-        `\n  ABORT: first batch of ${batch.length} work ids returned 0 matches.\n` +
-        `  The OpenAlex filter URL is likely wrong. Test one by hand:\n` +
-        `    ${OA_BASE}?filter=${encodeURIComponent(filter)}&select=id,cited_by_count&mailto=${MAILTO}\n` +
-        `  If that returns results, the filter key needs adjusting in this script.`,
-      );
+    // Fail fast if the first successful batch matches nothing (wrong filter).
+    if (i === 0 && works.length > 0 && fetched === 0) {
+      console.error(`\n  ABORT: batch returned works but none matched our ids — filter/id mismatch.`);
       process.exit(1);
     }
-  }
-  console.log();
 
-  const top = [...updates]
-    .map(([ext, p]) => [ext, (JSON.parse(p).cited_by_count as number) ?? 0] as const)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
-  console.log(`  most-cited fetched: ${top.map(([, n]) => n.toLocaleString()).join(", ")}`);
+    // Incremental flush — progress persists, resumability real.
+    if ((i / OA_BATCH + 1) % FLUSH_EVERY === 0) {
+      written += await flush(pending);
+      pending = [];
+    }
+    if ((i / OA_BATCH) % 5 === 0 || i + OA_BATCH >= workIds.length)
+      process.stdout.write(`\r  fetched ${fetched.toLocaleString()} · written ${written.toLocaleString()} · no-record ${noRecord.toLocaleString()} · failed ${failedBatches} · ${Math.min(i + OA_BATCH, workIds.length)}/${workIds.length}   `);
+
+    await new Promise((r) => setTimeout(r, THROTTLE_MS)); // polite-pool throttle
+  }
+  written += await flush(pending);
+  console.log();
+  console.log(`  highest citation count fetched this run: ${maxCited.toLocaleString()}`);
+  if (failedBatches > 0) console.log(`  ${failedBatches} batch(es) failed — rerun --execute to retry them (resumable).`);
 
   if (!EXECUTE) {
-    console.log(`\nDRY RUN — would update ${updates.length.toLocaleString()} claims. Re-run with --execute.`);
+    console.log(`\nDRY RUN — would update ${fetched.toLocaleString()} claims. Re-run with --execute.`);
     return;
   }
-
-  let written = 0;
-  for (let i = 0; i < updates.length; i += UPDATE_BATCH) {
-    const batch = updates.slice(i, i + UPDATE_BATCH);
-    const values = batch.map((_, j) => `($${j * 2 + 1}, $${j * 2 + 2}::jsonb)`).join(", ");
-    const params = batch.flat();
-    const n = await prisma.$executeRawUnsafe(
-      `UPDATE "Claim" c
-       SET metadata = COALESCE(c.metadata, '{}'::jsonb) || v.patch
-       FROM (VALUES ${values}) AS v(ext, patch)
-       WHERE c."externalId" = v.ext`,
-      ...params,
-    );
-    written += Number(n);
-    process.stdout.write(`\r  updated ${written.toLocaleString()}/${updates.length.toLocaleString()}   `);
-  }
-  console.log();
 
   const verify = (await prisma.$queryRawUnsafe(
     `SELECT COUNT(*)::int AS n FROM "Claim" c
