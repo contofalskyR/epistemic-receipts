@@ -66,13 +66,17 @@ export default function LinkViewer({ url, onClose }: Props) {
         setMode("blocked");
         return;
       }
-      // Site forbids framing — the iframe would only show the browser's
-      // own "content blocked" page, so skip straight to the panel.
-      if (embeddable === false) {
-        setMode("blocked");
+      // The iframe is a privilege, not a fallback: attempt it ONLY when the
+      // proxy positively confirmed the site allows embedding. When the verdict
+      // is false OR unknown (proxy unreachable, bot-walled upstream whose
+      // error page omits framing headers — e.g. PubMed), the iframe would just
+      // render the browser's dead "refused to connect" frame. The honest
+      // panel with "Open in new tab" beats a grey rectangle every time.
+      if (embeddable === true) {
+        setMode("iframe");
         return;
       }
-      setMode("iframe");
+      setMode("blocked");
     }
 
     tryReader();
@@ -118,7 +122,7 @@ export default function LinkViewer({ url, onClose }: Props) {
           <div className="flex-1 mx-2 px-3 py-1 bg-gray-800 border border-gray-700/60 rounded text-gray-300 font-mono text-xs truncate">
             {displayUrl}
           </div>
-          {mode === "reader" && canEmbed !== false && (
+          {mode === "reader" && canEmbed === true && (
             <button
               onClick={() => setMode("iframe")}
               className="text-xs text-gray-400 hover:text-gray-200 border border-gray-600 hover:border-gray-400 rounded px-2 py-1 transition-colors shrink-0"
@@ -221,9 +225,13 @@ export default function LinkViewer({ url, onClose }: Props) {
           {mode === "blocked" && (
             <div className="flex flex-col items-center justify-center h-full bg-gray-950 text-gray-300 p-8 text-center">
               <div className="mb-3 text-gray-500 font-mono text-[10px] tracking-widest">
-                EMBED BLOCKED
+                {canEmbed === false ? "EMBED BLOCKED" : "PREVIEW UNAVAILABLE"}
               </div>
-              <p className="mb-1 text-gray-200">This site does not allow embedding.</p>
+              <p className="mb-1 text-gray-200">
+                {canEmbed === false
+                  ? "This site does not allow embedding."
+                  : "This source can't be previewed here."}
+              </p>
               <p className="mb-6 text-xs text-gray-500 font-mono break-all max-w-xl">{url}</p>
               <a
                 href={url}

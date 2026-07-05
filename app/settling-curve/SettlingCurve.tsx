@@ -854,9 +854,28 @@ function SettlingCurveInner() {
 
         <div className="flex-1 overflow-y-auto px-2 py-3" style={{ background: C.bg, WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
           {filteredList.length === 0 ? (
-            <div className="px-3 py-6 text-center" style={{ color: C.mut, fontSize: 12 }}>
-              No trajectories match these filters.
-            </div>
+            listError ? (
+              // Previously an API failure rendered as "No trajectories match
+              // these filters" on desktop — indistinguishable from an empty
+              // filter. Say what happened and offer a retry.
+              <div className="px-3 py-6 text-center">
+                <p style={{ color: "#f43f5e", fontSize: 12 }} className="mb-3">
+                  Couldn&apos;t load trajectories.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setRetryKey((k) => k + 1)}
+                  className="px-3 py-1.5 rounded font-mono"
+                  style={{ fontSize: 11, color: C.ink, border: `1px solid ${C.panelEdge}` }}
+                >
+                  Retry
+                </button>
+              </div>
+            ) : (
+              <div className="px-3 py-6 text-center" style={{ color: C.mut, fontSize: 12 }}>
+                {listLoading ? "Loading trajectories…" : "No trajectories match these filters."}
+              </div>
+            )
           ) : (
             erasInList.map((era) => {
               const items = visibleList.filter((x) => (x.era ?? "Unknown") === era);
