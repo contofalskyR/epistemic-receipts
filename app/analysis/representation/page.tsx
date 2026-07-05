@@ -1,4 +1,4 @@
-import Link from "next/link";
+import PageHero from "@/app/components/PageHero";
 import { buildRepresentationAnalysis } from "@/lib/representationGap";
 import { RepresentationDumbbell } from "./RepresentationDumbbell";
 import { TopicDrillTable } from "./TopicDrillDown";
@@ -48,19 +48,21 @@ export default async function RepresentationPage() {
   if (meta.matchedRowCount === 0) {
     return (
       <div className="space-y-4 text-sm text-gray-300">
-        <div>
-          <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Analysis</p>
-          <h1 className="mt-1 text-2xl font-semibold text-white">Representation gap (CCES)</h1>
-          <p className="mt-2 text-gray-400 max-w-2xl leading-relaxed">
-            No constituent-opinion data is loaded yet, so the gap analysis can&apos;t run.
-            This page compares how state delegations voted in Congress against what CCES
-            survey respondents in those states supported — check back once the CCES
-            ingest has completed.
-          </p>
-          <p className="mt-2 text-xs text-gray-600 font-mono">
-            operator hint: scripts/ingest-cces.ts --full
-          </p>
-        </div>
+        <PageHero
+          eyebrow="Analysis · Congress vs. constituents"
+          title="The representation gap"
+          lede={
+            <>
+              No constituent-opinion data is loaded yet, so the gap analysis can&apos;t run. This
+              page compares how state delegations voted in Congress against what CCES survey
+              respondents in those states supported — check back once the CCES ingest has
+              completed.
+            </>
+          }
+          footnote={
+            <span className="font-mono">operator hint: scripts/ingest-cces.ts --full</span>
+          }
+        />
       </div>
     );
   }
@@ -69,72 +71,106 @@ export default async function RepresentationPage() {
 
   return (
     <div className="space-y-10 text-sm text-gray-300">
-      <div>
-        <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Analysis</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">Representation gap (CCES vs Congress)</h1>
-        <p className="mt-2 text-gray-400 max-w-3xl leading-relaxed">
-          Where do US legislators vote against their constituents? For each
-          (state, year, topic) we compute two numbers and take their absolute
-          difference. <span className="text-gray-200">Delegation Yea %</span> is the
-          share of that state&apos;s House/Senate delegation that voted Yea on
-          bills tagged with that topic in that year (Voteview + Congress.gov data,
-          ingested by{" "}
-          <span className="font-mono">congress_v1</span> / <span className="font-mono">voteview_v1</span>).{" "}
-          <span className="text-gray-200">Constituent support %</span> is the share of
-          CCES respondents in that state-year on the liberal-coded direction for
-          that topic (mapped from CCES <span className="font-mono">ideo5</span>,{" "}
-          <span className="font-mono">pid3</span>, and policy-proxy demographics —{" "}
-          <span className="font-mono">no_healthins</span> for health,{" "}
-          <span className="font-mono">union</span> for labor, etc).
-        </p>
-        <p className="mt-2 text-xs text-gray-600 max-w-3xl leading-relaxed italic">
-          Methodology caveat: the CCES cumulative file (
-          <a
-            href="https://doi.org/10.7910/DVN/II2DB6"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 hover:text-blue-300 underline"
-          >
-            doi:10.7910/DVN/II2DB6
-          </a>
-          , 2006–2024, 702k respondents) carries standardized demographics + ideology
-          but not the year-specific policy yes/no items, so per-topic support is a
-          direction-mapped proxy rather than a literal &ldquo;do you support bill X&rdquo;
-          measure. The page is honest about that and links back to the underlying CCES
-          aggregates.
-        </p>
-      </div>
+      <PageHero
+        eyebrow="Analysis · Congress vs. constituents"
+        title="The representation gap"
+        lede={
+          <>
+            Where do US legislators vote against their constituents? For every state, year, and
+            topic we compare two numbers: the share of the state&apos;s congressional delegation
+            that voted <span className="text-gray-200">Yea</span> on bills about that topic, and
+            the share of that state&apos;s{" "}
+            <span className="text-gray-200">CCES survey respondents</span> who leaned the same
+            direction. The absolute difference is the gap — mapped below across{" "}
+            <span className="text-gray-200">{meta.matchedRowCount.toLocaleString()}</span> matched
+            cells.
+          </>
+        }
+        actions={[
+          { href: "#methodology", label: "How the gap is computed" },
+          { href: "/analysis/votes", label: "Vote analysis" },
+          { href: "/analysis/topics", label: "Topic trends" },
+        ]}
+        stats={[
+          {
+            label: "Matched cells",
+            value: meta.matchedRowCount.toLocaleString(),
+            explain:
+              "(state, year, topic) cells where both a delegation vote share and a CCES opinion aggregate exist, with ≥3 recorded member votes.",
+            cite: { href: "/api/analysis/representation", label: "raw data (JSON)" },
+          },
+          {
+            label: "CCES aggregates",
+            value: meta.constituentOpinionRows.toLocaleString(),
+            tone: "blue",
+            explain:
+              "State-year opinion aggregates from the CCES cumulative file (2006–2024, ~702k respondents).",
+            cite: {
+              href: "https://doi.org/10.7910/DVN/II2DB6",
+              label: "doi:10.7910/DVN/II2DB6",
+              external: true,
+            },
+          },
+          {
+            label: "US roll calls scanned",
+            value: meta.legislativeVotesScanned.toLocaleString(),
+            explain:
+              "Congressional votes checked for topic tags and member-level records (Voteview + Congress.gov, ingested by congress_v1 / voteview_v1).",
+            cite: { href: "https://voteview.com/data", label: "Voteview (UCLA)", external: true },
+          },
+          {
+            label: "Coverage",
+            value: `${meta.statesCovered} states`,
+            sub: `${minYear}–${maxYear} · ${meta.topicsMatched} topics`,
+            explain:
+              "Every state with at least one matched cell, across the years and topics where both data sources overlap.",
+          },
+        ]}
+      />
+
+      {/* Methodology — the honest fine print, one click away */}
+      <details
+        id="methodology"
+        className="group rounded border border-gray-800 bg-gray-900/40 scroll-mt-4"
+      >
+        <summary className="cursor-pointer list-none px-4 py-3 text-sm text-gray-200 hover:text-white transition-colors flex items-center gap-2">
+          <span>How the gap is computed — and its limits</span>
+          <span className="text-gray-500 group-open:rotate-90 transition-transform inline-block">▸</span>
+        </summary>
+        <div className="px-4 pb-4 pt-1 space-y-2 max-w-3xl">
+          <p className="text-xs text-gray-400 leading-relaxed">
+            <span className="text-gray-200">Delegation Yea %</span> is the share of a state&apos;s
+            House/Senate delegation that voted Yea on bills tagged with a topic in a given year
+            (Voteview + Congress.gov data, ingested by{" "}
+            <span className="font-mono">congress_v1</span> /{" "}
+            <span className="font-mono">voteview_v1</span>).{" "}
+            <span className="text-gray-200">Constituent support %</span> is the share of CCES
+            respondents in that state-year on the liberal-coded direction for that topic (mapped
+            from CCES <span className="font-mono">ideo5</span>,{" "}
+            <span className="font-mono">pid3</span>, and policy-proxy demographics —{" "}
+            <span className="font-mono">no_healthins</span> for health,{" "}
+            <span className="font-mono">union</span> for labor, etc).
+          </p>
+          <p className="text-xs text-gray-500 leading-relaxed italic">
+            Caveat: the CCES cumulative file (
+            <a
+              href="https://doi.org/10.7910/DVN/II2DB6"
+              target="_blank"
+              rel="noreferrer"
+              className="text-blue-400 hover:text-blue-300 underline"
+            >
+              doi:10.7910/DVN/II2DB6
+            </a>
+            , 2006–2024, 702k respondents) carries standardized demographics + ideology but not
+            the year-specific policy yes/no items, so per-topic support is a direction-mapped
+            proxy rather than a literal &ldquo;do you support bill X&rdquo; measure. The page is
+            honest about that and links back to the underlying CCES aggregates.
+          </p>
+        </div>
+      </details>
 
       {/* === Dumbbell lead visualization === */}
       <RepresentationDumbbell topics={topicSummaries} />
-
-      {/* Summary cards — demoted below the dumbbell */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">Matched (state, year, topic) rows</div>
-          <div className="text-xl font-semibold text-white tabular-nums">
-            {meta.matchedRowCount.toLocaleString()}
-          </div>
-        </div>
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">CCES aggregates</div>
-          <div className="text-xl font-semibold text-white tabular-nums">
-            {meta.constituentOpinionRows.toLocaleString()}
-          </div>
-        </div>
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">US roll calls scanned</div>
-          <div className="text-xl font-semibold text-white tabular-nums">
-            {meta.legislativeVotesScanned.toLocaleString()}
-          </div>
-        </div>
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">Coverage</div>
-          <div className="text-base font-semibold text-white tabular-nums">
-            {meta.statesCovered} states · {minYear}–{maxYear} · {meta.topicsMatched} topics
-          </div>
-        </div>
-      </div>
 
       {/* TOC */}
       <div className="rounded border border-gray-800 bg-gray-900/40 px-4 py-3">
@@ -444,9 +480,9 @@ export default async function RepresentationPage() {
 
       <div className="border-t border-gray-800 pt-4 text-xs text-gray-600">
         Data:{" "}
-        <Link href="/api/analysis/representation" className="text-gray-500 hover:text-gray-300 underline">
+        <a href="/api/analysis/representation" className="text-gray-500 hover:text-gray-300 underline">
           /api/analysis/representation
-        </Link>{" "}
+        </a>{" "}
         · CCES Cumulative Common Content (
         <a
           href="https://doi.org/10.7910/DVN/II2DB6"

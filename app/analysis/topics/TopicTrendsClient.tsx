@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { TopicTrendResult } from "@/lib/topic-trends";
 import { ERAS } from "@/lib/us-presidents";
+import PageHero from "@/app/components/PageHero";
 
 const TOPIC_LABELS: Record<string, string> = {
   slavery: "Slavery",
@@ -420,24 +421,74 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
       .finally(() => setDrawerLoading(false));
   }
 
+  const totalRollCalls = data.decades.reduce((s, d) => s + d.totalVotes, 0);
+  const totalTagged = data.decades.reduce((s, d) => s + (d.taggedVotes ?? 0), 0);
+  const taggedPct = totalRollCalls > 0 ? Math.round((totalTagged / totalRollCalls) * 100) : 0;
+  const decadeValues = data.decades.map((d) => d.decade);
+  const firstDecade = decadeValues.length > 0 ? Math.min(...decadeValues) : 1789;
+  const lastDecade = decadeValues.length > 0 ? Math.max(...decadeValues) : 2020;
+  const topicsTracked = new Set(
+    data.decades.flatMap((d) => Object.keys(d.topics)),
+  ).size;
+
   return (
     <div className="space-y-10 text-sm text-gray-300">
-      <div>
-        <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Analysis</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">
-          Congressional Topic Trends (1789–2026)
-        </h1>
-        <p className="mt-2 text-gray-400 max-w-2xl leading-relaxed">
-          The congressional zeitgeist, measured: what Congress actually spent its votes on, era by
-          era, from{" "}
-          {data.decades.reduce((s, d) => s + d.totalVotes, 0).toLocaleString()} Voteview roll-calls
-          since 1789. Trace one topic&apos;s rise and fall, see the decades where attention
-          shifted hardest, and click anything — every chip, dot, and cell opens the actual votes
-          behind the number. Shares are of <em>topic-tagged</em> votes ({""}
-          {(() => { const t = data.decades.reduce((s, d) => s + (d.taggedVotes ?? 0), 0); const a = data.decades.reduce((s, d) => s + d.totalVotes, 0); return a > 0 ? `${Math.round((t / a) * 100)}%` : "—"; })()}{" "}
-          of the corpus; hover a decade header for its coverage).
-        </p>
-      </div>
+      <PageHero
+        eyebrow="Analysis · Roll-call topics"
+        title="Congressional Topic Trends, 1789–2026"
+        lede={
+          <>
+            The congressional zeitgeist, measured: what Congress actually spent its votes on, era
+            by era, across <span className="text-gray-200">{totalRollCalls.toLocaleString()}</span>{" "}
+            Voteview roll-calls since 1789. Trace one topic&apos;s rise and fall, see the decades
+            where attention shifted hardest — and click anything: every chip, dot, and cell opens
+            the actual votes behind the number.
+          </>
+        }
+        actions={[
+          { href: "/analysis/votes", label: "Vote analysis" },
+          { href: "/analysis/representation", label: "Representation gap" },
+          { href: "/stats", label: "All statistics" },
+        ]}
+        stats={[
+          {
+            label: "Roll-calls analyzed",
+            value: totalRollCalls.toLocaleString(),
+            explain:
+              "Every recorded House and Senate roll-call vote in the corpus, from the 1st Congress onward.",
+            cite: { href: "https://voteview.com/data", label: "Voteview (UCLA)", external: true },
+          },
+          {
+            label: "Topic-tagged",
+            value: totalTagged.toLocaleString(),
+            sub: `${taggedPct}% coverage`,
+            tone: "blue",
+            explain:
+              "Votes matched to a topic via keyword taxonomy on the roll-call description. All shares on this page use tagged votes as the denominator — hover a decade header for its coverage.",
+            cite: { href: "/api/analysis/topic-trends", label: "raw data (JSON)" },
+          },
+          {
+            label: "Decades covered",
+            value: String(data.decades.length),
+            sub: `${firstDecade}s → ${lastDecade}s`,
+            explain: "Roll-calls bucketed by decade, then grouped into nine historical eras.",
+          },
+          {
+            label: "Topics tracked",
+            value: String(topicsTracked),
+            explain:
+              "Distinct topic categories with at least one tagged vote — from slavery and tariffs to health and technology.",
+          },
+        ]}
+        footnote={
+          <>
+            Source: <span className="font-mono">LegislativeVote</span> records ingested by{" "}
+            <span className="font-mono">voteview_v1</span> (Lewis et al., Voteview: Congressional
+            Roll-Call Votes Database, UCLA), topic-tagged via keyword taxonomy on roll-call
+            descriptions. Untagged votes are excluded from shares, never from counts.
+          </>
+        }
+      />
 
       {/* Era hot topics */}
       <section className="space-y-3">

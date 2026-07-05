@@ -1,7 +1,7 @@
 export const revalidate = 3600;
 
 import type { ReactNode } from "react";
-import Link from "next/link";
+import PageHero from "@/app/components/PageHero";
 import {
   buildVoteAnalysis,
   type BillRow,
@@ -126,17 +126,65 @@ export default async function AnalysisVotesPage() {
 
   return (
     <div className="space-y-10 text-sm text-gray-300">
-      <div>
-        <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Analysis</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">Contested vs. unanimous votes</h1>
-        <p className="mt-2 text-gray-400 max-w-2xl leading-relaxed">
-          Recorded legislative votes from the UK, EU Parliament, Canada, and the U.S. Congress.
-          A bill is <span className="text-gray-200">contested</span> when more than{" "}
-          {pct(meta.contestedThreshold * 100)} of the recorded ayes-plus-nays were nays;
-          <span className="text-gray-200"> unanimous</span> means zero nays. Procedural votes with fewer
-          than {meta.minTotal} total recorded ayes-plus-nays are excluded.
-        </p>
-      </div>
+      <PageHero
+        eyebrow="Analysis · Legislative votes"
+        title="Contested vs. unanimous votes"
+        lede={
+          <>
+            When parliaments agree, and when they split:{" "}
+            <span className="text-gray-200">{meta.totalVotes.toLocaleString()}</span> recorded
+            legislative votes from the UK Parliament, the EU Parliament, the Canadian Parliament,
+            and the U.S. Congress. A bill is <span className="text-gray-200">contested</span> when
+            more than {pct(meta.contestedThreshold * 100)} of its recorded ayes-plus-nays were
+            nays, and <span className="text-gray-200">unanimous</span> when it drew zero nays.
+            Every bill named on this page links to its official record.
+          </>
+        }
+        actions={[
+          { href: "/analysis/topics", label: "Topic trends" },
+          { href: "/analysis/representation", label: "Representation gap" },
+          { href: "/stats", label: "All statistics" },
+        ]}
+        stats={[
+          {
+            label: "Recorded votes",
+            value: meta.totalVotes.toLocaleString(),
+            explain: `Votes with at least ${meta.minTotal} recorded ayes-plus-nays. Procedural votes below that threshold are excluded.`,
+            cite: { href: "/api/analysis/votes", label: "raw data (JSON)" },
+          },
+          {
+            label: "Contested",
+            value: overallContestedBills.toLocaleString(),
+            sub: `${pct(overallContestedPct, 1)} of votes`,
+            tone: "red",
+            explain: `More than ${pct(meta.contestedThreshold * 100)} of the recorded ayes-plus-nays were nays.`,
+            cite: { href: "#close-calls", label: "see the closest calls" },
+          },
+          {
+            label: "Unanimous",
+            value: overallUnanimousBills.toLocaleString(),
+            sub: `${pct(overallUnanimousPct, 1)} of votes`,
+            tone: "green",
+            explain: "Zero recorded nays — the chamber passed the bill without a single dissent.",
+          },
+          {
+            label: "Legislative bodies",
+            value: String(countries.length),
+            explain: countries.map((c) => c.label).join(" · "),
+            cite: { href: "#by-body", label: "per-body breakdown" },
+          },
+        ]}
+        footnote={
+          <>
+            Sources: <span className="font-mono">LegislativeVote</span> records attached to bills
+            ingested by <span className="font-mono">uk_legislation_v1</span>,{" "}
+            <span className="font-mono">eu_parliament_v1</span>,{" "}
+            <span className="font-mono">canada_bills_v1</span>, and{" "}
+            <span className="font-mono">congress_v1</span> — each vote traces to legislation.gov.uk,
+            europarl.europa.eu, parl.ca, or congress.gov.
+          </>
+        }
+      />
 
       {/* Table of contents */}
       <div className="rounded border border-gray-800 bg-gray-900/40 px-4 py-3">
@@ -158,34 +206,6 @@ export default async function AnalysisVotesPage() {
               {t.label}
             </a>
           ))}
-        </div>
-      </div>
-
-      {/* Summary cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">Recorded votes</div>
-          <div className="text-xl font-semibold text-white tabular-nums">
-            {meta.totalVotes.toLocaleString()}
-          </div>
-        </div>
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">Contested</div>
-          <div className="text-xl font-semibold text-red-300 tabular-nums">
-            {overallContestedBills.toLocaleString()}
-          </div>
-          <div className="text-xs text-gray-500 mt-0.5">{pct(overallContestedPct, 1)} of total</div>
-        </div>
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">Unanimous</div>
-          <div className="text-xl font-semibold text-green-300 tabular-nums">
-            {overallUnanimousBills.toLocaleString()}
-          </div>
-          <div className="text-xs text-gray-500 mt-0.5">{pct(overallUnanimousPct, 1)} of total</div>
-        </div>
-        <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
-          <div className="text-xs text-gray-500 mb-1">Bodies covered</div>
-          <div className="text-xl font-semibold text-white tabular-nums">{countries.length}</div>
         </div>
       </div>
 
@@ -295,7 +315,7 @@ export default async function AnalysisVotesPage() {
       })()}
 
       {/* By-country breakdown */}
-      <section className="space-y-2">
+      <section id="by-body" className="space-y-2 scroll-mt-4">
         <h2 className="text-base font-semibold text-white">By legislative body</h2>
         <div className="rounded border border-gray-800 overflow-hidden">
           <table className="w-full text-xs">
@@ -969,9 +989,9 @@ export default async function AnalysisVotesPage() {
 
       <div className="border-t border-gray-800 pt-4 text-xs text-gray-600">
         Data:{" "}
-        <Link href="/api/analysis/votes" className="text-gray-500 hover:text-gray-300 underline">
+        <a href="/api/analysis/votes" className="text-gray-500 hover:text-gray-300 underline">
           /api/analysis/votes
-        </Link>{" "}
+        </a>{" "}
         · Source: <span className="font-mono">LegislativeVote</span> records attached to bill sources
         ingested by <span className="font-mono">uk_legislation_v1</span>,{" "}
         <span className="font-mono">eu_parliament_v1</span>,{" "}

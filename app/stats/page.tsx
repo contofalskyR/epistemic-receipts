@@ -9,6 +9,7 @@ import {
   type CongressVoteRow,
 } from "@/lib/stats-queries";
 import { Suspense } from "react";
+import PageHero from "@/app/components/PageHero";
 import VotingAnalysisSection from "./voting-analysis-section";
 import VotesByPresidencySection from "./VotesByPresidencySection";
 import VotingInferenceSection from "./VotingInferenceSection";
@@ -141,12 +142,26 @@ const TOPIC_LABELS: Record<string, string> = {
 };
 
 export default async function StatsPage() {
-  const [rows, topicsByLeg, passRateByTopic, congressStats, partyStats] = await Promise.all([
+  const [
+    rows,
+    topicsByLeg,
+    passRateByTopic,
+    congressStats,
+    partyStats,
+    claimCount,
+    transitionCount,
+    allVotesCount,
+  ] = await Promise.all([
     loadVotes(),
     getTopTopicsByLegislature(),
     getPassRateByTopic(),
     getCongressStats(),
     getCongressPartyStats(),
+    // Same definition as /api/corpus-stats (deleted = false), so the hero
+    // number always agrees with the corpus section rendered below it.
+    prisma.claim.count({ where: { deleted: false } }),
+    prisma.claimStatusHistory.count(),
+    prisma.legislativeVote.count(),
   ]);
   const legislatures = aggregateByLegislature(rows);
   const totalVotes = rows.length;
@@ -161,13 +176,69 @@ export default async function StatsPage() {
 
   return (
     <div className="space-y-10 text-sm text-zinc-300">
-      <header>
-        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Statistics</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">The corpus, by the numbers</h1>
-        <p className="mt-2 text-zinc-400">
-          Corpus composition, epistemic provenance, and legislative consensus tracking.
-        </p>
-      </header>
+      <PageHero
+        eyebrow="Statistics · Corpus & legislatures"
+        title="The corpus, by the numbers"
+        lede={
+          <>
+            Corpus composition, epistemic provenance, and legislative consensus tracking:{" "}
+            <span className="text-gray-200">{claimCount.toLocaleString()}</span> claims and{" "}
+            <span className="text-gray-200">{allVotesCount.toLocaleString()}</span> recorded
+            legislative votes. Every figure on this page is computed live from the database — no
+            hand-written numbers — and every bill named below links to its official record.
+          </>
+        }
+        actions={[
+          { href: "/analysis/votes", label: "Vote analysis" },
+          { href: "/analysis/topics", label: "Topic trends" },
+          { href: "/stats/media-coverage", label: "Media coverage" },
+        ]}
+        stats={[
+          {
+            label: "Claims",
+            value: claimCount.toLocaleString(),
+            explain:
+              "Non-deleted claims across all ingestion pipelines, matching the corpus section below. Includes records flagged deprecated for audit-trail purposes.",
+            cite: { href: "/api/corpus-stats", label: "raw data (JSON)" },
+          },
+          {
+            label: "Status transitions",
+            value: transitionCount.toLocaleString(),
+            tone: "amber",
+            explain:
+              "Dated changes to a claim's epistemic status — established, contested, overturned — recorded in the claim's status history.",
+            cite: { href: "/settling-curve", label: "explore the settling curve" },
+          },
+          {
+            label: "Legislative votes",
+            value: allVotesCount.toLocaleString(),
+            explain:
+              "All recorded votes across every ingested legislature, including historical Voteview roll-calls.",
+            cite: { href: "/analysis/votes", label: "contested vs. unanimous" },
+          },
+          {
+            label: "Curated roll-call subset",
+            value: totalVotes.toLocaleString(),
+            sub: `${totalLegislatures} legislatures`,
+            tone: "blue",
+            explain: `UK, US, Canada, and EU votes with full aye/nay tallies and at least ${MIN_TOTAL} recorded votes — the subset used in the roll-call sections below.`,
+            cite: { href: "#curated-rollcall", label: "see the breakdown" },
+          },
+        ]}
+        footnote={
+          <>
+            Download:{" "}
+            <a
+              href="/api/corpus-stats?format=csv"
+              className="text-gray-500 hover:text-gray-300 underline"
+            >
+              corpus-stats.csv
+            </a>{" "}
+            · Vote sources trace to congress.gov, legislation.gov.uk, europarl.europa.eu, parl.ca,
+            and voteview.com.
+          </>
+        }
+      />
 
       {/* Corpus composition — what we actually have receipts for */}
       <Suspense fallback={null}>
@@ -178,8 +249,9 @@ export default async function StatsPage() {
         <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Legislative</p>
         <h2 className="mt-1 text-lg font-semibold text-white">Legislative Statistics</h2>
         <p className="mt-1 text-xs text-zinc-500">
-          Consensus tracking across {totalLegislatures.toLocaleString()} legislatures,{" "}
-          {totalVotes.toLocaleString()} votes
+          Consensus tracking across all {allVotesCount.toLocaleString()} recorded votes; the
+          roll-call sections further down use the curated {totalVotes.toLocaleString()}-vote
+          subset from {totalLegislatures.toLocaleString()} legislatures.
         </p>
       </div>
 
@@ -187,7 +259,7 @@ export default async function StatsPage() {
         <AllVotesStatsSection />
       </Suspense>
 
-      <div className="pt-4 border-t border-zinc-800">
+      <div id="curated-rollcall" className="pt-4 border-t border-zinc-800 scroll-mt-4">
         <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Roll-call detail</p>
         <h2 className="mt-1 text-lg font-semibold text-white">
           Curated Legislatures (UK / US / Canada / EU)
