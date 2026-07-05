@@ -127,6 +127,8 @@ async function main(): Promise<void> {
 
   let pending: [string, string][] = [];
   let fetched = 0, noRecord = 0, written = 0, maxCited = 0, failedBatches = 0;
+  let consecutiveFails = 0;
+  const CIRCUIT_TRIP = 6; // consecutive failures ⇒ OpenAlex is throttling us; stop
   const fetchedAt = new Date().toISOString();
 
   for (let i = 0; i < workIds.length; i += OA_BATCH) {
@@ -140,10 +142,25 @@ async function main(): Promise<void> {
       // A failed batch is left un-fetched; a later --execute rerun retries it
       // (its claims still lack citationsFetchedAt). Don't lose the run over it.
       failedBatches++;
+      consecutiveFails++;
       if (failedBatches <= 3) console.error(`\n  batch @${i} failed (will retry on next run): ${(e as Error).message.slice(0, 80)}`);
-      await new Promise((r) => setTimeout(r, 1500)); // back off, then continue
+      // Circuit breaker: a run of failures means OpenAlex is throttling this
+      // IP — every further call just keeps us blocked. Flush what we have and
+      // stop; the run is resumable, so wait ~30–60 min and rerun --execute.
+      if (consecutiveFails >= CIRCUIT_TRIP) {
+        written += await flush(pending);
+        console.error(
+          `\n\n  CIRCUIT BREAKER: ${consecutiveFails} batches failed in a row — OpenAlex is rate-limiting this IP.\n` +
+          `  Progress saved (${written.toLocaleString()} written). Wait 30–60 min, then rerun:\n` +
+          `    npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-openalex-citations.ts --execute\n` +
+          `  It resumes where it stopped. Tip: run in chunks with --limit 20000 to stay under the limit.`,
+        );
+        process.exit(2);
+      }
+      await new Promise((r) => setTimeout(r, 3000)); // back off harder, then continue
       continue;
     }
+    consecutiveFails = 0;
     const seen = new Set<string>();
     for (const w of works) {
       const wid = extractWorkId(w.id);
