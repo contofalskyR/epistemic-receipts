@@ -72,7 +72,7 @@ export function FallbackCard() {
           margin: 0,
         }}
       >
-        epistemic-receipts.com
+        epistemic-receipts.vercel.app
       </p>
     </div>
   );

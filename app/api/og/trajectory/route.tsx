@@ -172,7 +172,7 @@ export async function GET(req: NextRequest) {
             letterSpacing: "0.1em",
           }}
         >
-          epistemic-receipts.com
+          epistemic-receipts.vercel.app
         </span>
 
         {/* Timeline visualization (right side) */}
