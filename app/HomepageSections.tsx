@@ -280,6 +280,14 @@ const FEATURES: Feature[] = [
     accent: "border-t-rose-500",
     cta: "Inspect retractions",
   },
+  {
+    emoji: "🔍",
+    name: "Case Studies",
+    blurb: "Curated investigations — from Korematsu to Pluto to the lab-leak debate — each tracing a full epistemic arc.",
+    href: "/case-studies",
+    accent: "border-t-amber-500",
+    cta: "Browse case studies",
+  },
 ];
 
 function FeatureShowcase({ claimsLabel }: { claimsLabel: string }) {
@@ -288,7 +296,7 @@ function FeatureShowcase({ claimsLabel }: { claimsLabel: string }) {
       <header className="mb-6">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white">What you can do here</h2>
         <p className="mt-1 text-sm text-gray-500">
-          Four ways into {claimsLabel} claims — each one a different lens on how knowledge moves.
+          Five ways into {claimsLabel} claims — each one a different lens on how knowledge moves.
         </p>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
