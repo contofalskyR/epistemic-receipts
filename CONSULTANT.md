@@ -32,19 +32,32 @@ Before any `prisma migrate deploy` touching high-traffic tables:
 
 ---
 
-## Current DB State (as of 2026-05-26)
+## Current DB State (as of 2026-07-06 — full audit in docs/audit-2026-07-06.md)
 
 | Entity | Count |
 |--------|-------|
-| Active Claims | **842,061** |
-| Active Sources | **838,349** |
-| Active Edges | **842,279** |
-| Pipelines | **146** |
-| Legislative Votes | 2,948 |
+| Active Claims | **1,757,808** (21 soft-deleted) |
+| Active Sources | **1,686,335** |
+| Active Edges | **1,718,285** |
+| Pipelines (distinct `ingestedBy`) | **186** |
+| Legislative Votes | 140,491 |
 | Polities | 2,361 |
-| Threshold Events | 1,259 |
+| Threshold Events | 3,888 |
+| ClaimStatusHistory transitions | 1,630,466 |
+| Topics | 460 (379 with claims) |
 
-**Top pipelines by volume:** OpenAlex (155k), openFDA labels (85k), ChEBI (62k), JACAR Japan archives (44.6k), World Bank (34.6k), CrossRef retractions (26.6k), Argentina legislation (25.8k), Italy legislation (16.9k), NIH Reporter (16.1k), Chile legislation (15.9k)
+**Top pipelines by volume:** OpenAlex (318.8k), NARA Catalog (308.1k), Voteview (113.3k), openFDA labels (85.1k), Hungary legislation (69.4k), ChEBI (62k), World Bank (54.6k), Drugs@FDA (46.3k), JACAR Japan archives (44.6k), WHO GHO (33.7k)
+
+**Curve coverage (active claims):** 20.7% no curve · 65.9% one transition · 13.4% multi-step (2+) · max curve length 6. Manual case studies: 23 claims, all with curves.
+
+**verificationStatus:** VERIFIED 1.39M · PROVISIONAL 220.7k · null 137.9k · DISPUTED 11.3k · HARD_FACT 943 (⚠️ not in documented vocabulary — legacy leak) · DEPRECATED 182.
+
+⚠️ **PipelineRun table is empty** — no run telemetry in DB; per-pipeline last-run status is only traceable via logs/changelog.
+
+Selected pipeline record counts (historical, as of last run):
+
+| Pipeline | Records |
+|--------|-------|
 | CrossRef retractions (`crossref_retractions_v1`) | ~26,500 |
 | EU legislation (`eu_legislation_v1`, Terms 8–10) | 827 |
 | German Bundestag enacted laws (`bundestag_v1`) | 6,343 |
@@ -110,7 +123,7 @@ Before any `prisma migrate deploy` touching high-traffic tables:
 | 57 | `ingest-scotland-legislation.ts` | Scottish Parliament Open Data (data.parliament.scot) — bills that reached Sequence=3 final stage | Shipped 2026-05-20 | 408 |
 | 78 | `ingest-georgia.ts` | Legislative Herald of Georgia (matsne.gov.ge) — Laws of Georgia, group=Law, type=main | Shipped 2026-05-20 | 301 |
 | 79 | `ingest-jamaica.ts` | Laws of Jamaica (laws.moj.gov.jm) — Acts of Parliament 2000–2023 via DataTables AJAX | Shipped 2026-05-23 | 528 |
-| 80 | `ingest-nara-catalog.ts` | NARA Catalog API v2 — RG 263 (CIA), RG 59 (State), RG 330 (OSD), RG 128 (Church Committee), RG 148 (JFK ARRB) | **API key required** 2026-05-23 — script ready, awaiting `NARA_API_KEY` env var (email Catalog_API@nara.gov) | — |
+| 80 | `ingest-nara-catalog.ts` | NARA Catalog API v2 — RG 263 (CIA), RG 59 (State), RG 330 (OSD), RG 128 (Church Committee), RG 148 (JFK ARRB) | Shipped (key obtained after 2026-05-23; 308k claims in DB as of 2026-07-06 audit) | 308,051 |
 | 110 | `ingest-wilson-center.ts` | Wilson Center Digital Archive — translated/declassified Soviet, Eastern European, Chinese, Cuban, Vietnamese docs (`digitalarchive.wilsoncenter.org/api/v1/records`) | Built 2026-05-23 — **dry-run blocked**: `digitalarchive.wilsoncenter.org` returning ECONNREFUSED/ENOTFOUND at time of build; re-run dry-run when API accessible. Supports `--collection`, `--country`, `--limit` flags. | — |
 | 111 | `ingest-propublica-congress.ts` | ProPublica Congress API | **RETIRED 2026-05-23** — ProPublica shut down their Congress API in July 2024. Script exists but has no live endpoint. | — |
 | 112 | `ingest-who-gho.ts` | WHO Global Health Observatory OData API — 5 indicators: life expectancy, U5MR, PM2.5, alcohol, obesity; most recent year per country (`who_gho_v1`) | Shipped 2026-05-23 | 1,001 |
@@ -118,7 +131,7 @@ Before any `prisma migrate deploy` touching high-traffic tables:
 | 114 | `ingest-echr.ts` | HUDOC REST API — ECHR Grand Chamber (importance=1) and Chamber (importance=2) English full judgments (`HEJUD` doctype), sorted by `kpdate` (`echr_v1`) | Shipped 2026-05-23 | 10,296 |
 | — | `ingest-astronomy.ts` | NASA exoplanets + IAU bodies | Shipped | — |
 | — | `ingest-pubchem.ts` | PubChem chemistry substrate | Ready | — |
-| 116 | `ingest-openalex.ts` | OpenAlex open academic catalog — peer-reviewed publications across 3 buckets: cognition (C15744967/C188147891 + cognitive-science search), biomedical (C71924100/C86803240 + clinical-trial search), policy (C17744445/C162324750 + policy search). Cursor pagination (per_page=200). Edge score 80 ("peer-reviewed, not independently verified"). (`openalex_v1`) | Shipped 2026-05-25 | 10,093+ (biomedical + policy still running) |
+| 116 | `ingest-openalex.ts` | OpenAlex open academic catalog — peer-reviewed publications across 3 buckets: cognition (C15744967/C188147891 + cognitive-science search), biomedical (C71924100/C86803240 + clinical-trial search), policy (C17744445/C162324750 + policy search). Cursor pagination (per_page=200). Edge score 80 ("peer-reviewed, not independently verified"). (`openalex_v1`) | Shipped 2026-05-25 (full run since completed) | 318,775 as of 2026-07-06 audit |
 | 150 | `ingest-pakistan-code.ts` | Pakistan Code — consolidated Federal Acts (Ministry of Law and Justice, pakistancode.gov.pk) — all letters A–Z scraped via accordion HTML, Wayback Machine fallback (live site down as of 2026-06-08). Roman + Arabic act numbers parsed. (`pakistan_code_v1`) | Shipped 2026-06-08 | 943 |
 
 ---
