@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
   let statusHistory: StatusHistoryEntry[] = [];
 
   try {
-    const row = await prisma.claim.findFirst({
+    let row = await prisma.claim.findFirst({
       where: { externalId: `trajectory:${id}`, deleted: false },
       select: {
         text: true,
@@ -41,6 +41,19 @@ export async function GET(req: NextRequest) {
         },
       },
     });
+    // Fallback: raw CUID (corpus search results link directly by claim id)
+    if (!row) {
+      row = await prisma.claim.findFirst({
+        where: { id, deleted: false },
+        select: {
+          text: true,
+          statusHistory: {
+            orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+            select: { toAxis: true, occurredAt: true },
+          },
+        },
+      });
+    }
     if (row) {
       claimText = row.text;
       statusHistory = row.statusHistory as StatusHistoryEntry[];
