@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Readability } from "@mozilla/readability";
-import { JSDOM } from "jsdom";
+// linkedom replaces jsdom (2026-07-06): jsdom's dynamic requires crashed the
+// deployed Vercel function at module load — the route returned the platform's
+// HTML 500 page, so LinkViewer never got a JSON verdict and every source
+// preview fell through to "PREVIEW UNAVAILABLE". linkedom is a lightweight
+// DOM that bundles cleanly in serverless and is a standard pairing with
+// Readability.
+import { parseHTML } from "linkedom";
 
 const MAX_BYTES = 5 * 1024 * 1024; // 5 MB cap on fetched HTML
 const FETCH_TIMEOUT = 8_000;
@@ -129,8 +135,43 @@ export async function GET(req: NextRequest) {
     }
 
     const html = new TextDecoder().decode(buf);
-    const dom = new JSDOM(html, { url });
-    const reader = new Readability(dom.window.document);
+    const { document } = parseHTML(html);
+
+    // jsdom resolved relative URLs via its { url } option; linkedom doesn't,
+    // so absolutize src/href/srcset against the target page before extraction —
+    // otherwise images and links in reader view resolve against OUR origin.
+    const absolutize = (el: Element, attr: string) => {
+      const v = el.getAttribute(attr);
+      if (!v || /^(https?:|data:|mailto:|tel:|#|javascript:)/i.test(v)) return;
+      try {
+        el.setAttribute(attr, new URL(v, url).toString());
+      } catch {
+        /* leave malformed values untouched */
+      }
+    };
+    for (const el of document.querySelectorAll("[src]")) absolutize(el as Element, "src");
+    for (const el of document.querySelectorAll("[href]")) absolutize(el as Element, "href");
+    for (const el of document.querySelectorAll("[srcset]")) {
+      const v = (el as Element).getAttribute("srcset");
+      if (!v) continue;
+      const rewritten = v
+        .split(",")
+        .map((part) => {
+          const bits = part.trim().split(/\s+/);
+          const u = bits.shift();
+          if (!u) return part.trim();
+          if (/^(https?:|data:)/i.test(u)) return part.trim();
+          try {
+            return [new URL(u, url).toString(), ...bits].join(" ");
+          } catch {
+            return part.trim();
+          }
+        })
+        .join(", ");
+      (el as Element).setAttribute("srcset", rewritten);
+    }
+
+    const reader = new Readability(document as unknown as Document);
     const article = reader.parse();
 
     if (!article || !article.content) {

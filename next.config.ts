@@ -48,9 +48,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // jsdom must stay external: bundling it breaks its dynamic requires at
-  // runtime, which silently killed /api/proxy/reader (reader mode) on Vercel.
-  serverExternalPackages: ["ws", "@neondatabase/serverless", "@prisma/adapter-neon", "pdf-parse", "@xenova/transformers", "jsdom"],
+  // jsdom removed 2026-07-06: even externalized it crashed the deployed
+  // /api/proxy/reader function (500 before any JSON reached the client).
+  // The route now uses linkedom, which bundles cleanly.
+  serverExternalPackages: ["ws", "@neondatabase/serverless", "@prisma/adapter-neon", "pdf-parse", "@xenova/transformers"],
   async headers() {
     return [
       {
