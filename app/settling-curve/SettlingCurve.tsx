@@ -1459,14 +1459,6 @@ function SettlingCurveInner() {
               >
                 How it works →
               </a>
-              <span style={{ margin: "0 8px", color: C.faint }}>·</span>
-              <a
-                href="/labs/claim-diff"
-                data-no-viewer="1"
-                style={{ color: C.mut, textDecoration: "underline" }}
-              >
-                Labs ↗
-              </a>
             </p>
             </>)}
           </div>

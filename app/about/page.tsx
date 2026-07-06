@@ -25,10 +25,15 @@ export default function AboutPage() {
       </p>
 
       <p>
-        The architecture defends editorial scope by what it doesn&apos;t ingest: no sports, no
-        celebrity news, no pure financial claims, no engagement-driven content. The inclusion test
-        is whether receipt-and-provenance treatment of a claim helps someone make a better decision
-        about their life, politics, health, or understanding of how power works.
+        The architecture defends editorial scope by what it doesn&apos;t ingest: no celebrity
+        news, no engagement-driven content, no market commentary or investment signal. Financial
+        records appear only as accountability instruments — STOCK Act disclosures, SEC enforcement
+        filings, campaign finance, macroeconomic series — because they document how power works,
+        not how to trade. The domain taxonomies (statistics, finance, sport science, and others)
+        are navigation aids for searching the graph; they are curated reference maps, not ingested
+        claims. The inclusion test is unchanged: does receipt-and-provenance treatment of a claim
+        help someone make a better decision about their life, politics, health, or understanding
+        of how power works?
       </p>
 
       <p className="text-gray-400">

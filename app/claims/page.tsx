@@ -81,9 +81,7 @@ export default function ClaimsPage() {
         )}
       </div>
 
-      {isReadOnly() ? (
-        <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>
-      ) : (
+      {!isReadOnly() && (
       <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 bg-gray-900 p-5">
         <h3 className="text-sm font-medium text-gray-300">Add a claim</h3>
 

@@ -265,7 +265,11 @@ function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: bo
           <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">{edge.evidenceType}</span>
         </td>
         <td className="py-2.5 pr-4 text-sm font-mono text-gray-300 whitespace-nowrap">
-          {score}/100
+          <span title={score === 50
+            ? "50/100 is the neutral starting weight assigned at ingestion — this evidence has not been editorially weighted yet."
+            : "Provenance weight assigned at ingestion and updated only through recorded revisions — expand the row for the audit log."}>
+            {score}/100
+          </span>
           {hasRetraction && (
             <span className="text-rose-500/70 font-sans font-normal" title="Score reflects the claim at time of publication — it was later retracted">
               , at the time
@@ -381,6 +385,12 @@ export default function ClaimInteractive({ claim }: { claim: ClaimDetail }) {
             — click any row to expand revision history
           </span>
         </h2>
+        <p className="text-xs text-gray-600 leading-snug">
+          Scores are provenance weights (0–100) assigned at ingestion, not truth probabilities.
+          50 is the neutral default for evidence not yet editorially weighted; every change is
+          preserved in the edge&apos;s revision log.{" "}
+          <a href="/glossary" className="underline hover:text-gray-400 transition-colors">Glossary →</a>
+        </p>
         {claim.edges.length === 0 ? (
           <p className="text-sm text-gray-700 italic">No sources linked to this claim yet.</p>
         ) : (

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { IS_PUBLIC_EDITION, isPublicRoute } from "@/lib/publicEdition";
 
 // ─── Rate limiting ────────────────────────────────────────────────────────────
 // Best-effort in-memory rate limiting. Vercel Edge is stateless across instances,
@@ -89,7 +90,17 @@ const PUBLIC_WRITE_PATHS: RegExp[] = [
 ];
 
 // Pages and APIs that always require an admin session, even for reads.
-const ADMIN_PATHS: RegExp[] = [/^\/admin(\/|$)/, /^\/review(\/|$)/, /^\/api\/review(\/|$)/];
+// /edges (raw editing surface), /labs/* (unfinished experiments), and the
+// per-claim /edit form are internal tooling — gated like /review until they
+// are designed as public pages (PUBLISH-CHECKLIST.md).
+const ADMIN_PATHS: RegExp[] = [
+  /^\/admin(\/|$)/,
+  /^\/review(\/|$)/,
+  /^\/api\/review(\/|$)/,
+  /^\/edges(\/|$)/,
+  /^\/labs(\/|$)/,
+  /^\/claims\/[^/]+\/edit(\/|$)/,
+];
 
 function isMutation(method: string): boolean {
   return method !== "GET" && method !== "HEAD" && method !== "OPTIONS";
@@ -137,6 +148,23 @@ export async function middleware(req: NextRequest) {
         "X-RateLimit-Remaining": "0",
         "Content-Type": "text/plain",
       },
+    });
+  }
+
+  // ── Public edition: deny-by-default page gate (lib/publicEdition.ts) ──
+  // Active only when NEXT_PUBLIC_EDITION=public (the second Vercel project).
+  // API routes keep their own gates (reads public, writes admin below);
+  // paths with a file extension (robots.txt, assets) pass through.
+  if (
+    IS_PUBLIC_EDITION &&
+    !isDev &&
+    !pathname.startsWith("/api/") &&
+    !pathname.includes(".") &&
+    !isPublicRoute(pathname)
+  ) {
+    return new NextResponse("Not Found", {
+      status: 404,
+      headers: { "Content-Type": "text/plain" },
     });
   }
 

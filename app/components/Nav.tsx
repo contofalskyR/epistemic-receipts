@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import { IS_PUBLIC_EDITION, isPublicRoute } from "@/lib/publicEdition";
 
 type NavItem = { href: string; label: string; desc?: string };
 
@@ -32,6 +33,8 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
     blurb: "Flagship destinations",
     items: [
       { href: "/retraction-explorer", label: "Retraction Explorer", desc: "26k+ retractions and who still cites them" },
+      { href: "/meta-edges", label: "Suppression & Amplification", desc: "Documented actions on evidence — who buried, boosted, or labeled it" },
+      { href: "/corrections", label: "Corrections", desc: "Public audit log — our own pipeline failures, documented" },
       { href: "/opinions", label: "Court Opinions" },
       { href: "/law-settler", label: "Law Settler Curve" },
       { href: "/bookmarks", label: "Bookmarks" },
@@ -147,6 +150,15 @@ function Dropdown({
   );
 }
 
+// On the public edition the ⚗ Lab group is hidden entirely and every item is
+// checked against the PUBLIC_ROUTES allowlist, so nav and middleware can never
+// disagree about what is reachable. (lib/publicEdition.ts)
+const VISIBLE_GROUPS = IS_PUBLIC_EDITION
+  ? GROUPS.filter((g) => !g.lab)
+      .map((g) => ({ ...g, items: g.items.filter((i) => isPublicRoute(i.href)) }))
+      .filter((g) => g.items.length > 0)
+  : GROUPS;
+
 export default function Nav() {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -193,7 +205,7 @@ export default function Nav() {
         <Link href="/" className="font-semibold text-white">
           Epistemic Receipts
         </Link>
-        {GROUPS.map((g) => (
+        {VISIBLE_GROUPS.map((g) => (
           <Dropdown
             key={g.label}
             label={g.label}
@@ -253,7 +265,7 @@ export default function Nav() {
           >
             About
           </Link>
-          {GROUPS.map((g) => (
+          {VISIBLE_GROUPS.map((g) => (
             <div key={g.label} className="mt-3">
               <div className={`text-xs uppercase tracking-wider py-1.5 ${g.lab ? "text-amber-700" : "text-gray-500"}`}>
                 {g.lab && "⚗ "}{g.label}

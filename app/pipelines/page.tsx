@@ -66,6 +66,39 @@ const PIPELINE_REGISTRY: PipelineMeta[] = [
   { tag: "georgia_legislation_v1", description: "Georgia legislation", status: "in-production", notes: "301 laws. Shipped 2026-05-20." },
   { tag: "central_asia_v1", description: "Central Asia legislation — Armenia, Azerbaijan, Uzbekistan, Kyrgyzstan", status: "in-production", notes: "Shipped 2026-05-20." },
   { tag: "western_balkans_v1", description: "Western Balkans legislation — Kosovo + partial coverage", status: "in-production", notes: "4,061+ acts. Shipped 2026-05-20." },
+
+  // ── Major pipelines registered 2026-07-06 (previously listed as unregistered tags;
+  //    see PUBLISH-CHECKLIST.md). Counts come live from the DB, not from these notes. ──
+  { tag: "nara_catalog_v1", description: "NARA Catalog — declassified & archival records (RG 59/263/330/128 et al.)", status: "in-production" },
+  { tag: "openalex_v1", description: "OpenAlex academic papers (high-citation sample)", status: "in-production" },
+  { tag: "openalex_journals_v1", description: "OpenAlex journals", status: "in-production" },
+  { tag: "voteview_v1", description: "Voteview — US congressional roll-call votes, 1789–present", status: "in-production" },
+  { tag: "openfda_labels_v1", description: "openFDA drug labels (structured product labeling)", status: "in-production" },
+  { tag: "drugsatfda_v1", description: "Drugs@FDA approval records", status: "in-production" },
+  { tag: "hungary_legislation_v1", description: "Hungary — Nemzeti Jogszabálytár", status: "in-production" },
+  { tag: "chebi_v1", description: "ChEBI chemical ontology (EBI)", status: "in-production" },
+  { tag: "worldbank_v1", description: "World Bank Open Data indicators", status: "in-production" },
+  { tag: "jacar_v1", description: "JACAR — Japan Center for Asian Historical Records", status: "in-production" },
+  { tag: "who_gho_v1", description: "WHO Global Health Observatory indicators", status: "in-production" },
+  { tag: "argentina_legislation_v1", description: "Argentina — InfoLEG", status: "in-production" },
+  { tag: "czech_legislation_v1", description: "Czech Republic — Sbírka zákonů", status: "in-production" },
+  { tag: "vdem_v1", description: "V-Dem democracy indicators", status: "in-production" },
+  { tag: "ofac_sdn_v1", description: "OFAC SDN sanctions list", status: "in-production" },
+  { tag: "congress_bills_tracker_v1", description: "Congress.gov bill tracker (updated continuously)", status: "in-production" },
+  { tag: "italy_legislation_v1", description: "Italy — Normattiva", status: "in-production" },
+  { tag: "chile_legislation_v1", description: "Chile — BCN", status: "in-production" },
+  { tag: "rxnorm_v1", description: "RxNorm normalized drug names (NLM)", status: "in-production" },
+  { tag: "romania_legislation_v1", description: "Romania — Portal Legislativ", status: "in-production" },
+  { tag: "brazil_legislation_v1", description: "Brazil — Planalto", status: "in-production" },
+  { tag: "russia_legislation_v1", description: "Russia — pravo.gov.ru", status: "in-production" },
+  { tag: "philippines_legislation_v1", description: "Philippines — Official Gazette", status: "in-production" },
+  { tag: "nih_reporter_v1", description: "NIH RePORTER grants", status: "in-production" },
+  { tag: "clinicaltrials_v1", description: "ClinicalTrials.gov trial registrations", status: "in-production" },
+  { tag: "luxembourg_legislation_v1", description: "Luxembourg — Legilux", status: "in-production" },
+  { tag: "europeana_wwi_v1", description: "Europeana 1914–1918 collection", status: "in-production" },
+  { tag: "mesh_v1", description: "MeSH (Medical Subject Headings)", status: "in-production" },
+  { tag: "riksdag_v1", description: "Sweden — Riksdag", status: "in-production" },
+  { tag: "echr_judgments_v1", description: "ECHR judgments (HUDOC, extended)", status: "in-production" },
 ];
 
 export default async function PipelinesPage() {
@@ -104,6 +137,15 @@ export default async function PipelinesPage() {
     (t) => t !== "manual" && !registeredTags.has(t)
   );
 
+  // Raw internal tags (enrich:*, seed:*, one-off ids) are ops detail, not public
+  // provenance. Development builds show the raw list; production shows an
+  // aggregate line and defers the catalogue to /sources. (PUBLISH-CHECKLIST.md)
+  const showRawUnregistered = process.env.NODE_ENV === "development";
+  const unregisteredClaimTotal = unregisteredTags.reduce(
+    (sum, t) => sum + getClaimCount(t),
+    0
+  );
+
   const pipelines: PipelineRow[] = PIPELINE_REGISTRY.map((p) => ({
     ...p,
     claims: getClaimCount(p.tag),
@@ -116,13 +158,17 @@ export default async function PipelinesPage() {
     registeredCount: PIPELINE_REGISTRY.length,
     manualClaims: getClaimCount("manual"),
     manualSources: getSourceCount("manual"),
+    unregisteredTagCount: unregisteredTags.length,
+    unregisteredClaimTotal,
   };
 
-  const unregistered: UnregisteredRow[] = unregisteredTags.map((tag) => ({
-    tag,
-    claims: getClaimCount(tag),
-    sources: getSourceCount(tag),
-  }));
+  const unregistered: UnregisteredRow[] = showRawUnregistered
+    ? unregisteredTags.map((tag) => ({
+        tag,
+        claims: getClaimCount(tag),
+        sources: getSourceCount(tag),
+      }))
+    : [];
 
   return (
     <PipelinesClient

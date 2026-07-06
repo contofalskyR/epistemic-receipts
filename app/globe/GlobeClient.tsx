@@ -1036,13 +1036,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           >
             Connections →
           </Link>
-          <span className="mx-2 text-gray-700">|</span>
-          <Link
-            href="/globe/lab"
-            className="text-purple-400 hover:text-purple-300 transition-colors"
-          >
-            Try Globe Lab
-          </Link>
         </div>
       )}
       {viewMode === "heatmap" && currentGeoSelection?.source === "historical" && (

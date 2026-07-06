@@ -43,6 +43,9 @@ export interface PipelinesStats {
   registeredCount: number;
   manualClaims: number;
   manualSources: number;
+  /** Tags present in the DB but not in the registry (aggregate; raw list is dev-only). */
+  unregisteredTagCount: number;
+  unregisteredClaimTotal: number;
 }
 
 function StatusBadge({ status }: { status: PipelineStatus }) {
@@ -324,11 +327,12 @@ export default function PipelinesClient({
           </div>
         )}
 
-        {/* Unregistered tags */}
-        {unregistered.length > 0 && (
+        {/* Unregistered tags — raw list renders in development only; public builds
+            get an aggregate line (PUBLISH-CHECKLIST.md). */}
+        {unregistered.length > 0 ? (
           <div style={{ paddingBottom: "4rem" }}>
             <div style={{ borderBottom: `1px solid ${C.panelEdge}`, paddingBottom: "0.6rem", marginBottom: "1rem" }}>
-              <h2 style={{ color: C.mut, fontSize: "0.88rem", fontWeight: 700, margin: 0 }}>Unregistered Tags</h2>
+              <h2 style={{ color: C.mut, fontSize: "0.88rem", fontWeight: 700, margin: 0 }}>Unregistered Tags (dev only)</h2>
             </div>
             <p style={{ fontSize: "0.78rem", color: C.faint, fontStyle: "italic", marginBottom: "0.75rem" }}>
               These ingester tags exist in the claim graph but are not yet in the pipeline registry.
@@ -345,7 +349,16 @@ export default function PipelinesClient({
               ))}
             </div>
           </div>
-        )}
+        ) : stats.unregisteredTagCount > 0 ? (
+          <div style={{ paddingBottom: "4rem" }}>
+            <p style={{ fontSize: "0.78rem", color: C.faint, fontStyle: "italic" }}>
+              {stats.unregisteredTagCount} additional ingester tags ({stats.unregisteredClaimTotal.toLocaleString()} claims)
+              are counted in the totals above but not yet individually registered here. The full,
+              categorized source catalogue — including these — is on{" "}
+              <Link href="/sources" style={{ color: C.mut, textDecoration: "underline" }}>Sources</Link>.
+            </p>
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -173,6 +173,7 @@ const CATEGORY_COLOR: Record<string, { dot: string; text: string; border: string
   "Pharmaceutical & Health":            { dot: "#f87171", text: "#fca5a5", border: "rgba(248,113,113,0.3)",  bg: "rgba(248,113,113,0.08)" },
   "National Parliaments / Legislation": { dot: "#34d399", text: "#6ee7b7", border: "rgba(52,211,153,0.3)",   bg: "rgba(52,211,153,0.08)" },
   "Archives & Historical":              { dot: "#fb923c", text: "#fdba74", border: "rgba(251,146,60,0.3)",   bg: "rgba(251,146,60,0.08)" },
+  "Editorial / Curated":                { dot: "#d4a853", text: "#e7c988", border: "rgba(212,168,83,0.3)",   bg: "rgba(212,168,83,0.08)" },
   Other:                                { dot: "#9ca3af", text: "#d1d5db", border: "rgba(156,163,175,0.3)",  bg: "rgba(156,163,175,0.08)" },
 };
 

@@ -12,6 +12,7 @@ type Category =
   | "Pharmaceutical & Health"
   | "National Parliaments / Legislation"
   | "Archives & Historical"
+  | "Editorial / Curated"
   | "Other";
 
 interface SourceMeta {
@@ -210,6 +211,21 @@ const SOURCE_REGISTRY: Record<string, SourceMeta> = {
   europeana_wwi_v1:         { label: "Europeana 1914-1918 collection",         sourceUrl: "https://www.europeana.eu",                      category: "Archives & Historical" },
   miller_center_v1:         { label: "Miller Center presidential speeches",    sourceUrl: "https://millercenter.org",                      category: "Archives & Historical" },
   uk_national_archives_v1:  { label: "UK National Archives",                    sourceUrl: "https://www.nationalarchives.gov.uk",          category: "Archives & Historical" },
+
+  // ── Editorial / Curated ──────────────────────────────────────────────────────
+  // Hand-built seed collections and admin-entered records. These are editorial
+  // provenance channels, not external APIs — disclosed here so no ingester tag
+  // renders as an uncategorized internal identifier. (PUBLISH-CHECKLIST.md)
+  "seed:human-history-trajectories": { label: "Curated — human-history trajectories", sourceUrl: "", category: "Editorial / Curated" },
+  "seed:medicine-trajectories":      { label: "Curated — medicine trajectories",      sourceUrl: "", category: "Editorial / Curated" },
+  "seed:astronomy-trajectories":     { label: "Curated — astronomy trajectories",     sourceUrl: "", category: "Editorial / Curated" },
+  "seed:climate-trajectories":       { label: "Curated — climate trajectories",       sourceUrl: "", category: "Editorial / Curated" },
+  "seed:nutrition-trajectories":     { label: "Curated — nutrition trajectories",     sourceUrl: "", category: "Editorial / Curated" },
+  "seed:historical-trajectories":    { label: "Curated — historical trajectories",    sourceUrl: "", category: "Editorial / Curated" },
+  "seed-trajectories":               { label: "Curated — mixed seed trajectories",    sourceUrl: "", category: "Editorial / Curated" },
+  "seed-court-reversals":            { label: "Curated — court reversals",            sourceUrl: "", category: "Editorial / Curated" },
+  "law-settler":                     { label: "Curated — law settling curves",        sourceUrl: "", category: "Editorial / Curated" },
+  manual:                            { label: "Manually curated (admin interface)",   sourceUrl: "", category: "Editorial / Curated" },
 };
 
 const CATEGORY_ORDER: Category[] = [
@@ -220,6 +236,7 @@ const CATEGORY_ORDER: Category[] = [
   "Pharmaceutical & Health",
   "National Parliaments / Legislation",
   "Archives & Historical",
+  "Editorial / Curated",
   "Other",
 ];
 
@@ -251,7 +268,10 @@ export async function loadSourcesSummary(): Promise<SourcesSummary> {
   const rows = await prisma.$queryRaw<GroupRow[]>(Prisma.sql`
     SELECT "ingestedBy", COUNT(*)::int AS count
     FROM "Claim"
+    -- Canonical corpus derivation: must match the homepage and /pipelines
+    -- (deleted = false AND not DEPRECATED). Three surfaces, one number.
     WHERE "verificationStatus" IS DISTINCT FROM 'DEPRECATED'
+      AND "deleted" = false
     GROUP BY "ingestedBy"
     ORDER BY count DESC
   `);
@@ -263,7 +283,11 @@ export async function loadSourcesSummary(): Promise<SourcesSummary> {
   for (const row of rows) {
     const count = Number(row.count);
     totalClaims += count;
-    const meta = SOURCE_REGISTRY[row.ingestedBy];
+    const meta: SourceMeta | undefined =
+      SOURCE_REGISTRY[row.ingestedBy] ??
+      (row.ingestedBy.startsWith("book-analysis:")
+        ? { label: "Book analysis (reader extraction)", sourceUrl: "", category: "Editorial / Curated" }
+        : undefined);
     if (!meta) {
       unmapped.push({ ingestedBy: row.ingestedBy, label: row.ingestedBy, sourceUrl: "", count });
       continue;
