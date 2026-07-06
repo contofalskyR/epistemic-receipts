@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail } from "@/lib/trajectory-detail";
-import { SITE_URL } from "@/lib/site";
+import { serializeJsonLd, trajectoryJsonLd } from "@/lib/jsonld";
 
 // ISR: empty generateStaticParams = on-demand ISR (render on first hit, cache
 // for a day). Do NOT add `export const dynamic = 'force-dynamic'` — it defeats ISR.
@@ -210,18 +210,11 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
         )}
       </section>
 
-      {/* Schema.org JSON-LD for crawlers */}
+      {/* Schema.org JSON-LD — Dataset of dated transitions (briefing 04 §5).
+          Replaces the earlier thin Article stub; transitions are the data. */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: truncate(traj.claimText, 110),
-            url: `${SITE_URL}/settling-curve/${id}`,
-            description: `Epistemic trajectory with ${traj.transitions.length} transitions.`,
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(trajectoryJsonLd(traj, id)) }}
       />
     </div>
   );
