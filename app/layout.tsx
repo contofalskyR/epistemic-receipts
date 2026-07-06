@@ -4,11 +4,16 @@ import "./globals.css";
 import Nav from "@/app/components/Nav";
 import FeedbackButton from "@/app/components/FeedbackButton";
 import LinkViewerProvider from "@/app/components/LinkViewerProvider";
+import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  // Resolves relative OG image / canonical URLs in per-page generateMetadata.
+  // NOTE: no title template — ~35 pages already hard-code the "— Epistemic
+  // Receipts" suffix; a template here would double it.
+  metadataBase: new URL(SITE_URL),
   title: "Epistemic Receipts",
   description:
     "1M+ verified facts from legislation, court decisions, scientific papers, and declassified archives.",

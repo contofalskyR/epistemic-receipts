@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { SITE_URL as SITE_BASE } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SITE_BASE = "https://epistemic-receipts.vercel.app";
 
 export async function POST(request: Request) {
   let body: unknown;

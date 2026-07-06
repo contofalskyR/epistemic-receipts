@@ -1,170 +1,85 @@
-"use client";
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { use } from "react";
-import { Bookmark, BookmarkCheck } from "lucide-react";
+import { notFound } from "next/navigation";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
-import { useBookmarks } from "@/hooks/useBookmarks";
-import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
-import WhatHappenedNextPanel from "@/components/WhatHappenedNextPanel";
-import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
+import { getClaimDetail, type ClaimDetail, type EdgeDetail } from "@/lib/claim-detail";
+import { SITE_URL } from "@/lib/site";
+import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
 import { ShareButtons } from "@/components/ShareButtons";
+import ClaimInteractive from "./ClaimInteractive";
+import BookmarkToggle from "./BookmarkToggle";
+import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } from "./claim-ui";
 
-// ── Types ─────────────────────────────────────────────────────────────────────
+// ── ISR ───────────────────────────────────────────────────────────────────────
+// ~1.76M claim URLs exist and a crawler can hit any of them cold; every ISR
+// miss is a live Neon query (see lib/claim-detail.ts — the query is kept lean
+// for exactly this reason). Empty generateStaticParams + revalidate is the
+// Next 16 opt-in for on-demand ISR: nothing prerendered at build, each claim
+// rendered on first hit, then served from cache for a day.
+// NOTE: if `cacheComponents` is ever enabled in next.config.ts, this segment
+// config is removed in that model and this page needs migrating.
+export const revalidate = 86400;
 
-type Revision = {
-  id: string;
-  priorScore: number | null;
-  newScore: number;
-  reason: string | null;
-  changedAt: string;
-};
+export async function generateStaticParams() {
+  return [];
+}
 
-type MetaEdgeDetail = {
-  id: string;
-  type: string;
-  reason: string | null;
-  createdAt: string;
-  actorSource: { id: string; name: string };
-};
+type Props = { params: Promise<{ id: string }> };
 
-type MemberVoteRecord = {
-  id: string;
-  memberName: string;
-  memberState: string | null;
-  memberParty: string | null;
-  memberId: string | null;
-  chamber: string;
-  vote: string;
-};
+function truncate(s: string, max: number): string {
+  return s.length > max ? s.slice(0, max - 1).trimEnd() + "…" : s;
+}
 
-type LegislativeVoteRecord = {
-  id: string;
-  chamber: string;
-  yesCount: number | null;
-  noCount: number | null;
-  abstainCount: number | null;
-  totalSeats: number | null;
-  passageThreshold: string | null;
-  voteDate: string | null;
-  passageType: string | null;
-  byPartyJson: string | null;
-  dataSource: string | null;
-  _count: { memberVotes: number };
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  // React cache() dedupes this with the page render below — one DB query total.
+  const claim = await getClaimDetail(id);
+  if (!claim) {
+    return { title: "Claim not found — Epistemic Receipts", robots: { index: false } };
+  }
 
-type EdgeDetail = {
-  id: string;
-  type: string;
-  evidenceType: string;
-  createdAt: string;
-  source: {
-    id: string;
-    name: string;
-    url: string | null;
-    publishedAt: string | null;
-    methodologyType: string;
-    politicalContext: {
-      headOfGovernment: string | null;
-      hogParty: string | null;
-      country: string;
-    } | null;
-    legislativeVotes: LegislativeVoteRecord[];
+  const title = `${truncate(claim.text, 90)} — Epistemic Receipts`;
+  const axisLabel = (claim.epistemicAxis ? AXIS_CONFIG[claim.epistemicAxis]?.label : null) ?? "Unclassified";
+  const uniqueSources = new Set(claim.edges.map(e => e.source.id)).size;
+  const latest = claim.statusHistory[0];
+  const latestBit = latest
+    ? ` · latest transition ${latest.fromAxis ? `${latest.fromAxis} → ` : ""}${latest.toAxis} (${new Date(latest.occurredAt).getUTCFullYear()})`
+    : "";
+  const description = truncate(
+    `${axisLabel}${latestBit} · ${uniqueSources} ${uniqueSources === 1 ? "source" : "sources"} · ` +
+    `${claim.edges.length} evidence ${claim.edges.length === 1 ? "link" : "links"} — ${claim.text}`,
+    240,
+  );
+
+  const canonical = `/claims/${claim.id}`;
+  const ogImage = `/api/og/claim?id=${encodeURIComponent(claim.id)}`; // resolved via metadataBase
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Epistemic Receipts",
+      type: "article",
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+    // Retired records stay reachable for the audit trail but out of the index.
+    ...(claim.verificationStatus === "DEPRECATED" ? { robots: { index: false } } : {}),
   };
-  revisions: Revision[];
-  metaEdges: MetaEdgeDetail[];
-};
-
-type ThresholdEvent = {
-  id: string;
-  triggeredBy: string;
-  confirmedBy: string;
-  note: string | null;
-  evidenceSnapshot: string;
-  createdAt: string;
-  triggeredBySource: { name: string; url: string | null } | null;
-};
-
-type ChildClaim = {
-  id: string;
-  text: string;
-  currentStatus: string;
-  epistemicAxis: string | null;
-  claimType: string;
-  _count: { edges: number };
-};
-
-type TopicTag = { id: string; name: string; slug: string; domain: string };
-
-type ClaimDetail = {
-  id: string;
-  text: string;
-  currentStatus: string;
-  epistemicAxis: string | null;
-  claimType: string;
-  claimEmergedAt: string | null;
-  _count?: { statusHistory?: number };
-  claimEmergedPrecision: EmergedPrecision | null;
-  createdAt: string;
-  humanReviewed: boolean;
-  epistemicStatus: string | null;
-  ingestedBy: string;
-  verificationStatus: string | null;
-  parent: { id: string; text: string } | null;
-  children: ChildClaim[];
-  edges: EdgeDetail[];
-  thresholdEvents: ThresholdEvent[];
-  topics: { topic: TopicTag }[];
-};
-
-// ── Shared constants ──────────────────────────────────────────────────────────
-
-const CLAIM_TYPE_LABEL: Record<string, string> = {
-  EMPIRICAL: "Empirical",
-  INSTITUTIONAL: "Institutional",
-  INTERPRETIVE: "Interpretive",
-  HYBRID: "Hybrid",
-};
-
-const CLAIM_TYPE_TOOLTIP: Record<string, string> = {
-  EMPIRICAL: "A factual claim grounded in observable, measurable evidence",
-  INSTITUTIONAL: "A claim about laws, rules, or official decisions by institutions",
-  INTERPRETIVE: "A claim that involves inference or expert judgment",
-  HYBRID: "Combines empirical data with institutional or interpretive framing",
-};
-
-const EPISTEMIC_BADGE: Record<string, { label: string; style: string }> = {
-  confirmed:         { label: "Confirmed ✓",      style: "bg-green-900/70 text-green-300 border border-green-700/50" },
-  retracted:         { label: "Retracted ✗",      style: "bg-red-900/70 text-red-300 border border-red-700/50" },
-  candidate:         { label: "Candidate",         style: "bg-yellow-900/70 text-yellow-300 border border-yellow-700/50" },
-  false_positive:    { label: "False Positive",    style: "bg-gray-700/70 text-gray-400 border border-gray-600/50" },
-  contested_dissent: { label: "Split Decision",    style: "bg-orange-900/70 text-orange-300 border border-orange-700/50" },
-  registered_trial:  { label: "Registered Trial",  style: "bg-blue-900/70 text-blue-300 border border-blue-700/50" },
-  active_trial:      { label: "Active Trial",      style: "bg-blue-900/70 text-blue-300 border border-blue-700/50" },
-  completed_trial:   { label: "Completed Trial",   style: "bg-cyan-900/70 text-cyan-300 border border-cyan-700/50" },
-  approved:          { label: "FDA Approved",      style: "bg-emerald-900/70 text-emerald-300 border border-emerald-700/50" },
-  established:       { label: "Established",       style: "bg-teal-900/70 text-teal-300 border border-teal-700/50" },
-  settled_judgment:  { label: "Settled Judgment",  style: "bg-indigo-900/70 text-indigo-300 border border-indigo-700/50" },
-  contested:         { label: "Contested",         style: "bg-orange-900/70 text-orange-300 border border-orange-700/50" },
-};
-
-// ── Edge/source helpers ───────────────────────────────────────────────────────
-
-const TYPE_COLOR: Record<string, { dot: string; label: string }> = {
-  FOR:       { dot: "bg-green-500 border-green-400",   label: "bg-green-900 text-green-300" },
-  AGAINST:   { dot: "bg-red-500 border-red-400",       label: "bg-red-900 text-red-300" },
-  CITES:     { dot: "bg-blue-500 border-blue-400",     label: "bg-blue-900 text-blue-300" },
-  RETRACTS:  { dot: "bg-orange-500 border-orange-400", label: "bg-orange-900 text-orange-300" },
-  CORRECTED: { dot: "bg-yellow-500 border-yellow-400", label: "bg-yellow-900 text-yellow-300" },
-};
-
-function latestScore(edge: EdgeDetail) { return edge.revisions.at(-1)?.newScore ?? 50; }
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "short" });
 }
 
 // ── Inline timeline for a single claim — lifeline redesign ───────────────────
+// Pure server-rendered markup (no hooks). "Today" is the ISR render time —
+// at most 24h stale, same freshness as the rest of the page.
 
 function fmtTlDate(d: Date) {
   return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
@@ -378,402 +293,16 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   );
 }
 
-// ── EU party colors ───────────────────────────────────────────────────────────
+// ── Main page (server component) ─────────────────────────────────────────────
+// First response carries the receipt itself — claim text, badges, timeline,
+// threshold events, sub-claims — as real HTML. Interactivity (evidence table
+// expand, lazy member votes, follow-up panels) hydrates via ClaimInteractive.
 
-const EU_PARTY_COLORS: Record<string, string> = {
-  EPP:       "bg-blue-900/70 text-blue-300",
-  SD:        "bg-red-900/70 text-red-300",
-  RENEW:     "bg-yellow-900/70 text-yellow-300",
-  ECR:       "bg-teal-900/70 text-teal-300",
-  GUE_NGL:   "bg-rose-900/70 text-rose-300",
-  GREENS:    "bg-green-900/70 text-green-300",
-  GREEN_EFA: "bg-green-900/70 text-green-300",
-  ID:        "bg-indigo-900/70 text-indigo-300",
-  ESN:       "bg-purple-900/70 text-purple-300",
-  PFE:       "bg-orange-900/70 text-orange-300",
-  NI:        "bg-gray-800 text-gray-400",
-};
+export default async function ClaimDetailPage({ params }: Props) {
+  const { id } = await params;
+  const claim = await getClaimDetail(id);
+  if (!claim) notFound();
 
-// US parties
-const US_PARTY_COLORS: Record<string, string> = {
-  D: "bg-blue-900/70 text-blue-300",
-  R: "bg-red-900/70 text-red-300",
-};
-
-function partyColor(party: string | null): string {
-  if (!party) return "bg-gray-800 text-gray-400";
-  return EU_PARTY_COLORS[party] ?? US_PARTY_COLORS[party] ?? "bg-gray-800 text-gray-400";
-}
-
-// ── Country code → flag emoji ─────────────────────────────────────────────────
-
-const COUNTRY_FLAGS: Record<string, string> = {
-  // EU member states (ISO 3166-1 alpha-3)
-  AUT:"🇦🇹", BEL:"🇧🇪", BGR:"🇧🇬", HRV:"🇭🇷", CYP:"🇨🇾", CZE:"🇨🇿", DNK:"🇩🇰",
-  EST:"🇪🇪", FIN:"🇫🇮", FRA:"🇫🇷", DEU:"🇩🇪", GRC:"🇬🇷", HUN:"🇭🇺", IRL:"🇮🇪",
-  ITA:"🇮🇹", LVA:"🇱🇻", LTU:"🇱🇹", LUX:"🇱🇺", MLT:"🇲🇹", NLD:"🇳🇱", POL:"🇵🇱",
-  PRT:"🇵🇹", ROU:"🇷🇴", SVK:"🇸🇰", SVN:"🇸🇮", ESP:"🇪🇸", SWE:"🇸🇪", GBR:"🇬🇧",
-  // Others
-  USA:"🇺🇸", CAN:"🇨🇦", AUS:"🇦🇺", NZL:"🇳🇿", JPN:"🇯🇵", CHN:"🇨🇳", NOR:"🇳🇴",
-  CHE:"🇨🇭", ISL:"🇮🇸", UKR:"🇺🇦", TUR:"🇹🇷",
-};
-
-function countryFlag(code: string | null): string {
-  if (!code) return "";
-  return COUNTRY_FLAGS[code.toUpperCase()] ?? "";
-}
-
-// EU Parliament MEP profile URL
-function mepProfileUrl(memberId: string | null, chamber: string): string | null {
-  if (!memberId) return null;
-  if (chamber === "European Parliament") {
-    return `https://howtheyvote.eu/members/${memberId}`;
-  }
-  // US Congress: bioguide
-  return `https://bioguide.congress.gov/search/bio/${memberId}`;
-}
-
-// ── Individual member votes ───────────────────────────────────────────────────
-
-function MemberVotesSection({ legislativeVoteId, count }: { legislativeVoteId: string; count: number }) {
-  const [open, setOpen] = useState(false);
-  const [filter, setFilter] = useState("");
-  const [votes, setVotes] = useState<MemberVoteRecord[] | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!open || votes !== null || loading) return;
-    setLoading(true);
-    setError(null);
-    fetch(`/api/legislative-votes/${legislativeVoteId}/members`)
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((data: MemberVoteRecord[]) => setVotes(data))
-      .catch(e => setError(e instanceof Error ? e.message : String(e)))
-      .finally(() => setLoading(false));
-  }, [open, votes, loading, legislativeVoteId]);
-
-  const filtered = (votes && filter)
-    ? votes.filter(v =>
-        v.memberName.toLowerCase().includes(filter.toLowerCase()) ||
-        (v.memberState ?? "").toLowerCase().includes(filter.toLowerCase()) ||
-        (v.memberParty ?? "").toLowerCase().includes(filter.toLowerCase()) ||
-        v.vote.toLowerCase().includes(filter.toLowerCase())
-      )
-    : (votes ?? []);
-
-  return (
-    <div className="mt-2">
-      <button
-        className="flex items-center gap-1.5 text-xs hover:opacity-80 transition-opacity"
-        onClick={() => setOpen(v => !v)}
-      >
-        <span className="text-gray-400 font-medium">{count} individual votes</span>
-        <span className="text-gray-600 ml-1">{open ? "▲" : "▼"}</span>
-      </button>
-      {open && (
-        <div className="mt-2 space-y-2">
-          {loading && <p className="text-xs text-gray-500 italic">Loading member votes…</p>}
-          {error && <p className="text-xs text-red-400">Failed to load: {error}</p>}
-          {votes && (
-            <>
-              <input
-                className="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-gray-300 placeholder-gray-600 focus:outline-none focus:border-gray-500"
-                placeholder="Filter by name, state, party, or vote…"
-                value={filter}
-                onChange={e => setFilter(e.target.value)}
-              />
-              <div className="max-h-64 overflow-y-auto rounded border border-gray-800">
-                <table className="w-full text-xs">
-                  <thead className="sticky top-0 bg-gray-900 z-10">
-                    <tr className="text-gray-600 border-b border-gray-800">
-                      <th className="py-1 px-2 text-left font-medium">Member</th>
-                      <th className="py-1 px-2 text-left font-medium">St</th>
-                      <th className="py-1 px-2 text-left font-medium">Party</th>
-                      <th className="py-1 px-2 text-left font-medium">Vote</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filtered.map(m => {
-                      const profileUrl = mepProfileUrl(m.memberId, m.chamber);
-                      const flag = countryFlag(m.memberState);
-                      return (
-                        <tr key={m.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
-                          <td className="py-0.5 px-2 text-gray-300">
-                            {profileUrl ? (
-                              <a href={profileUrl} target="_blank" rel="noopener noreferrer"
-                                className="hover:text-white hover:underline">
-                                {m.memberName}
-                              </a>
-                            ) : m.memberName}
-                          </td>
-                          <td className="py-0.5 px-2 text-gray-500 text-center" title={m.memberState ?? undefined}>
-                            {flag ? flag : (m.memberState || "—")}
-                          </td>
-                          <td className="py-0.5 px-2">
-                            <span className={`px-1 rounded text-[10px] font-medium ${partyColor(m.memberParty)}`}>
-                              {m.memberParty ?? "—"}
-                            </span>
-                          </td>
-                          <td className="py-0.5 px-2">
-                            <span className={`px-1 rounded text-[10px] font-medium ${
-                              m.vote === "Yea"     ? "bg-green-900/60 text-green-300" :
-                              m.vote === "Nay"     ? "bg-red-900/60 text-red-300" :
-                              m.vote === "Abstain" ? "bg-yellow-900/60 text-yellow-400" :
-                              m.vote === "Present" ? "bg-yellow-900/60 text-yellow-400" :
-                              "bg-gray-800 text-gray-500"
-                            }`}>{m.vote}</span>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                    {filtered.length === 0 && (
-                      <tr>
-                        <td colSpan={4} className="py-2 px-2 text-gray-600 italic">No matching members.</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Edges table row ───────────────────────────────────────────────────────────
-
-function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: boolean }) {
-  const [expanded, setExpanded] = useState(false);
-  const score = latestScore(edge);
-  const colors = TYPE_COLOR[edge.type] ?? TYPE_COLOR.CITES;
-
-  return (
-    <>
-      <tr
-        className="border-b border-gray-800 hover:bg-gray-900/40 cursor-pointer transition-colors"
-        onClick={() => setExpanded(v => !v)}
-      >
-        <td className="py-2.5 pr-4">
-          {edge.source.url ? (
-            <span className="flex items-center gap-2 flex-wrap">
-              <a href={edge.source.url} target="_blank" rel="noopener noreferrer"
-                className="text-gray-200 hover:text-white hover:underline text-sm"
-                onClick={e => e.stopPropagation()}>
-                {edge.source.name}
-              </a>
-              {edge.source.url.startsWith('https://doi.org/') ? (
-                <>
-                  <a
-                    href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(edge.source.url.replace('https://doi.org/', ''))}`}
-                    target="_blank" rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
-                    className="text-xs px-1.5 py-0.5 rounded bg-blue-900/50 text-blue-400 hover:text-blue-300 hover:bg-blue-900 transition-colors whitespace-nowrap"
-                    title="Search on PubMed">
-                    PubMed ↗
-                  </a>
-                  <a
-                    href={`https://www.semanticscholar.org/search?q=${encodeURIComponent(edge.source.url.replace('https://doi.org/', ''))}&sort=Relevance`}
-                    target="_blank" rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
-                    className="text-xs px-1.5 py-0.5 rounded bg-purple-900/50 text-purple-400 hover:text-purple-300 hover:bg-purple-900 transition-colors whitespace-nowrap"
-                    title="Search on Semantic Scholar">
-                    S2 ↗
-                  </a>
-                </>
-              ) : (
-                <a
-                  href={`https://scholar.google.com/scholar?q=${encodeURIComponent(edge.source.name)}`}
-                  target="_blank" rel="noopener noreferrer"
-                  onClick={e => e.stopPropagation()}
-                  className="text-xs px-1.5 py-0.5 rounded bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700 transition-colors whitespace-nowrap"
-                  title="Search on Google Scholar">
-                  Scholar ↗
-                </a>
-              )}
-            </span>
-          ) : (
-            <span className="text-gray-300 text-sm">{edge.source.name}</span>
-          )}
-        </td>
-        <td className="py-2.5 pr-4">
-          <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${colors.label}`}>{edge.type}</span>
-        </td>
-        <td className="py-2.5 pr-4">
-          <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">{edge.evidenceType}</span>
-        </td>
-        <td className="py-2.5 pr-4 text-sm font-mono text-gray-300 whitespace-nowrap">
-          {score}/100
-          {hasRetraction && (
-            <span className="text-rose-500/70 font-sans font-normal" title="Score reflects the claim at time of publication — it was later retracted">
-              , at the time
-            </span>
-          )}
-        </td>
-        <td className="py-2.5 pr-4 text-xs text-gray-500">
-          {edge.source.publishedAt ? formatDate(edge.source.publishedAt) : "—"}
-          {edge.source.politicalContext?.headOfGovernment && (
-            <span className="block text-xs text-gray-600 mt-0.5">
-              {edge.source.politicalContext.hogParty === "Conservative Party" ? "🔵 " :
-               edge.source.politicalContext.hogParty === "Labour Party" ? "🔴 " : ""}
-              {edge.source.politicalContext.headOfGovernment}
-            </span>
-          )}
-          {edge.source.legislativeVotes[0] && (() => {
-            const v = edge.source.legislativeVotes[0];
-            const yes = v.yesCount ?? 0, no = v.noCount ?? 0;
-            const total = yes + no;
-            if (total === 0) return null;
-            const yesPct = Math.round((yes / total) * 100);
-            return (
-              <span className="flex items-center gap-1 mt-1">
-                <span className="inline-flex h-1.5 w-12 rounded overflow-hidden">
-                  <span className="bg-green-600" style={{ width: `${yesPct}%` }} />
-                  <span className="bg-red-700" style={{ width: `${100 - yesPct}%` }} />
-                </span>
-                <span className="text-green-500">{yes}</span>
-                <span className="text-gray-700">/</span>
-                <span className="text-red-500">{no}</span>
-              </span>
-            );
-          })()}
-        </td>
-        <td className="py-2.5 text-xs text-gray-600">{edge.source.methodologyType}</td>
-        <td className="py-2.5 pl-4 text-gray-600 text-xs">{expanded ? "▲" : "▼"}</td>
-      </tr>
-      {expanded && (
-        <tr className="border-b border-gray-800 bg-gray-900/30">
-          <td colSpan={7} className="px-4 py-3">
-            <p className="text-xs text-gray-500 mb-2 font-medium uppercase tracking-wide">Revision history</p>
-            <div className="space-y-1.5">
-              {edge.revisions.map(r => (
-                <div key={r.id} className="flex items-start gap-4 text-xs">
-                  <span className="text-white font-mono font-medium shrink-0">
-                    {r.priorScore !== null ? `${r.priorScore} → ${r.newScore}` : `Initial: ${r.newScore}`}/100
-                  </span>
-                  <span className="text-gray-600 shrink-0">{new Date(r.changedAt).toLocaleDateString()}</span>
-                  {r.reason && <span className="text-gray-400 leading-snug">{r.reason}</span>}
-                </div>
-              ))}
-            </div>
-            {edge.source.legislativeVotes.length > 0 && (
-              <div className="mt-3 pt-3 border-t border-gray-800">
-                <p className="text-xs text-gray-500 mb-2 font-medium uppercase tracking-wide">Vote record</p>
-                {edge.source.legislativeVotes.map((v, i) => {
-                  const total = (v.yesCount ?? 0) + (v.noCount ?? 0) + (v.abstainCount ?? 0);
-                  const yesPct = total > 0 ? Math.round(((v.yesCount ?? 0) / total) * 100) : 0;
-                  const noPct  = total > 0 ? Math.round(((v.noCount ?? 0) / total) * 100) : 0;
-                  return (
-                    <div key={i} className="space-y-1.5">
-                      <div className="flex items-center gap-3 text-xs">
-                        <span className="text-gray-400">{v.chamber}</span>
-                        {v.voteDate && <span className="text-gray-600">{new Date(v.voteDate).toLocaleDateString()}</span>}
-                        {v.passageType && <span className="text-gray-600">{v.passageType}</span>}
-                      </div>
-                      <div className="flex items-center gap-2 text-xs font-mono">
-                        <span className="text-green-400">{v.yesCount ?? "—"} aye</span>
-                        <span className="text-gray-700">·</span>
-                        <span className="text-red-400">{v.noCount ?? "—"} no</span>
-                        {v.abstainCount !== null && v.abstainCount > 0 && (
-                          <>
-                            <span className="text-gray-700">·</span>
-                            <span className="text-gray-500">{v.abstainCount} abstain</span>
-                          </>
-                        )}
-                      </div>
-                      {total > 0 && (
-                        <div className="h-1.5 w-full rounded-full bg-gray-800 overflow-hidden flex">
-                          <div className="h-full bg-green-700" style={{ width: `${yesPct}%` }} />
-                          <div className="h-full bg-red-800" style={{ width: `${noPct}%` }} />
-                        </div>
-                      )}
-                      {v._count.memberVotes > 0 && (
-                        <MemberVotesSection legislativeVoteId={v.id} count={v._count.memberVotes} />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </td>
-        </tr>
-      )}
-    </>
-  );
-}
-
-// ── Main page ─────────────────────────────────────────────────────────────────
-
-function BookmarkToggle({ claimId }: { claimId: string }) {
-  const { isBookmarked, toggle, profileKey } = useBookmarks();
-  const active = profileKey ? isBookmarked(claimId) : false;
-  return (
-    <button
-      type="button"
-      onClick={() => toggle(claimId)}
-      className={`text-xs px-2 py-0.5 rounded-full font-medium inline-flex items-center gap-1 transition-colors ${
-        active
-          ? "bg-amber-900/60 text-amber-300 hover:bg-amber-900"
-          : "bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-gray-200"
-      }`}
-      title={active ? "Remove bookmark" : "Bookmark this claim"}
-      aria-pressed={active}
-    >
-      {active ? <BookmarkCheck size={12} /> : <Bookmark size={12} />}
-      <span>{active ? "Bookmarked" : "Bookmark"}</span>
-    </button>
-  );
-}
-
-export default function ClaimDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
-  const [claim, setClaim] = useState<ClaimDetail | null>(null);
-  const [notFound, setNotFound] = useState(false);
-  const [fetchError, setFetchError] = useState<string | null>(null);
-  const [sortDir] = useState<"desc">("desc");
-  const [hasRetraction, setHasRetraction] = useState(false);
-
-  useEffect(() => {
-    fetch(`/api/claims/${id}`)
-      .then(r => {
-        if (r.status === 404) { setNotFound(true); return null; }
-        if (!r.ok) { setFetchError(`Server error (${r.status})`); return null; }
-        return r.json();
-      })
-      .then(d => { if (d) setClaim(d); })
-      .catch(e => setFetchError(e instanceof Error ? e.message : String(e)));
-  }, [id]);
-
-  if (notFound) {
-    return (
-      <div className="space-y-4">
-        <Link href="/" className="text-xs text-gray-500 hover:text-white">← back</Link>
-        <p className="text-gray-500">Claim not found.</p>
-      </div>
-    );
-  }
-
-  if (fetchError) {
-    return (
-      <div className="space-y-4">
-        <Link href="/" className="text-xs text-gray-500 hover:text-white">← back</Link>
-        <p className="text-red-500 text-sm">{fetchError}</p>
-      </div>
-    );
-  }
-
-  if (!claim) {
-    return <p className="text-gray-600 text-sm font-mono animate-pulse">Pulling the receipt…</p>;
-  }
-
-  const sortedEdges = [...claim.edges].sort((a, b) =>
-    sortDir === "desc" ? latestScore(b) - latestScore(a) : latestScore(a) - latestScore(b)
-  );
   const uniqueSources = new Set(claim.edges.map(e => e.source.id)).size;
 
   return (
@@ -832,7 +361,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
           <BookmarkToggle claimId={claim.id} />
         </div>
         <ShareButtons
-          url={typeof window !== "undefined" ? window.location.href : `https://epistemic-receipts.vercel.app/claims/${claim.id}`}
+          url={`${SITE_URL}/claims/${claim.id}`}
           text={`"${claim.text.slice(0, 220)}"${claim.epistemicAxis ? ` — ${claim.epistemicAxis}` : ""} 🧾`}
         />
         {claim.topics.length > 0 && (
@@ -850,9 +379,9 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
         )}
         <div className="flex items-center gap-4 flex-wrap text-xs text-gray-500">
           {claim.claimEmergedAt && claim.claimEmergedPrecision ? (
-            <span>{formatAge(claim.claimEmergedAt, claim.claimEmergedPrecision)} · emerged {formatEmerged(claim.claimEmergedAt, claim.claimEmergedPrecision)}</span>
+            <span>{formatAge(claim.claimEmergedAt, claim.claimEmergedPrecision as EmergedPrecision)} · emerged {formatEmerged(claim.claimEmergedAt, claim.claimEmergedPrecision as EmergedPrecision)}</span>
           ) : (
-            <span>added {new Date(claim.createdAt).toLocaleDateString()}</span>
+            <span>added {new Date(claim.createdAt).toLocaleDateString("en-US")}</span>
           )}
           <span>{uniqueSources} {uniqueSources === 1 ? "source" : "sources"}</span>
           <span>{claim.edges.length} evidence {claim.edges.length === 1 ? "link" : "links"}</span>
@@ -950,49 +479,14 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
         <ClaimTimeline claim={claim} />
       </section>
 
-      {/* Sources & edges table */}
-      <section className="space-y-3">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-          Evidence & sources
-          <span className="ml-2 text-gray-700 font-normal normal-case tracking-normal">
-            — click any row to expand revision history
-          </span>
-        </h2>
-        {claim.edges.length === 0 ? (
-          <p className="text-sm text-gray-700 italic">No sources linked to this claim yet.</p>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="text-xs text-gray-600 border-b border-gray-800">
-                  <th className="pb-2 pr-4 font-medium">Source</th>
-                  <th className="pb-2 pr-4 font-medium">Type</th>
-                  <th className="pb-2 pr-4 font-medium">Evidence</th>
-                  <th className="pb-2 pr-4 font-medium">Score ↓</th>
-                  <th className="pb-2 pr-4 font-medium">Published</th>
-                  <th className="pb-2 font-medium">Method</th>
-                  <th className="pb-2 pl-4" />
-                </tr>
-              </thead>
-              <tbody>
-                {sortedEdges.map(edge => <EdgeRow key={edge.id} edge={edge} hasRetraction={hasRetraction} />)}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
-
-      {/* Follow-up layer — renders nothing if no follow-up relations */}
-      <WhatHappenedNextPanel claimId={claim.id} onHasReversed={setHasRetraction} />
-
-      {/* Citation graph (lazy-loaded — renders nothing if no relations) */}
-      <ClaimRelationsPanel claimId={claim.id} />
+      {/* Evidence table + follow-up/relations panels (client island) */}
+      <ClaimInteractive claim={claim} />
 
       {/* Child claims */}
       {claim.children.length > 0 && (
         <section className="space-y-3">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-            Frames & sub-claims
+            Frames &amp; sub-claims
             <span className="ml-2 text-gray-700 font-normal normal-case tracking-normal">({claim.children.length})</span>
           </h2>
           <div className="space-y-2">

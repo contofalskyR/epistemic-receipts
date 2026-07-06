@@ -2,88 +2,24 @@ import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
+import {
+  OG_WIDTH as W,
+  OG_HEIGHT as H,
+  OG_CACHE_CONTROL,
+  axisColor,
+  FallbackCard,
+} from "@/lib/og-shared";
 
 export const runtime = "nodejs";
 
-const W = 1200;
-const H = 630;
-
-const AXIS_COLOR: Record<string, string> = {
-  SETTLED: "#22c55e",
-  CONTESTED: "#f59e0b",
-  REVERSED: "#ef4444",
-  RECORDED: "#94a3b8",
-  OPEN: "#38bdf8",
-  ABANDONED: "#6b7280",
-  UNRESOLVABLE: "#a78bfa",
-};
-
-function axisColor(axis: string): string {
-  return AXIS_COLOR[axis] ?? "#94a3b8";
-}
-
-// Generic fallback card
-function FallbackCard() {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        width: W,
-        height: H,
-        background: "#0a0a12",
-        padding: "60px 80px",
-        fontFamily: "monospace",
-      }}
-    >
-      <span
-        style={{
-          fontSize: 13,
-          letterSpacing: "0.2em",
-          textTransform: "uppercase",
-          color: "#d4a853",
-          marginBottom: 24,
-        }}
-      >
-        EPISTEMIC RECEIPT 🧾
-      </span>
-      <p
-        style={{
-          fontSize: 48,
-          color: "#ffffff",
-          fontWeight: 600,
-          lineHeight: 1.2,
-          margin: 0,
-          maxWidth: 700,
-        }}
-      >
-        Track how knowledge changes over time.
-      </p>
-      <p
-        style={{
-          position: "absolute",
-          bottom: 48,
-          right: 80,
-          fontSize: 13,
-          color: "#55556e",
-          letterSpacing: "0.08em",
-          margin: 0,
-        }}
-      >
-        epistemic-receipts.com
-      </p>
-    </div>
-  );
-}
+const OG_HEADERS = { "Cache-Control": OG_CACHE_CONTROL };
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
 
   if (!id) {
-    return new ImageResponse(<FallbackCard />, { width: W, height: H });
+    return new ImageResponse(<FallbackCard />, { width: W, height: H, headers: OG_HEADERS });
   }
 
   // Look up featured trajectory for hook + eyebrow
@@ -122,7 +58,7 @@ export async function GET(req: NextRequest) {
   }
 
   if (statusHistory.length === 0 && !claimText && !featured) {
-    return new ImageResponse(<FallbackCard />, { width: W, height: H });
+    return new ImageResponse(<FallbackCard />, { width: W, height: H, headers: OG_HEADERS });
   }
 
   // Derive display data
@@ -236,7 +172,7 @@ export async function GET(req: NextRequest) {
             letterSpacing: "0.1em",
           }}
         >
-          epistemic-receipts.com
+          epistemic-receipts.vercel.app
         </span>
 
         {/* Timeline visualization (right side) */}
@@ -306,6 +242,6 @@ export async function GET(req: NextRequest) {
         </div>
       </div>
     ),
-    { width: W, height: H }
+    { width: W, height: H, headers: OG_HEADERS }
   );
 }

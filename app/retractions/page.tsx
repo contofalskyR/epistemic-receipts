@@ -1,12 +1,11 @@
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata = {
   title: "Retraction Feed API — Epistemic Receipts",
   description:
     "Public JSON and RSS feeds of retracted scientific papers and disputed claims. For researchers, monitoring services, and automated pipelines.",
 };
-
-const SITE_URL = "https://epistemic-receipts.vercel.app";
 
 const EXAMPLE_JSON = `{
   "data": [
