@@ -69,7 +69,16 @@ same GitHub repo (main)
 
 Both projects deploy from `main`. The public edition differs only by environment, mirroring the existing `SITE_PASSWORD` / `ALLOW_EDITS` pattern — configuration, not code divergence.
 
-## Implementation (≈half a day)
+## Implementation
+
+**Status 2026-07-06: code scaffolding SHIPPED.** `lib/publicEdition.ts` (allowlist + edition flags), the middleware deny-by-default page gate, the Nav filter (Lab group hidden on public edition), and edition-aware `app/robots.ts` (replacing static `public/robots.txt`) are all in the tree. Behavior is unchanged until `NEXT_PUBLIC_EDITION` is set — remaining steps are Vercel/ops only:
+
+- [ ] Create the second Vercel project (same repo, `main`), set `NEXT_PUBLIC_EDITION=public`.
+- [ ] Create a read-only Neon role; use its connection string as the public project's `DATABASE_URL`; omit `ALLOW_EDITS` and `ADMIN_TOKEN`.
+- [ ] Attach the custom domain to the public project.
+- [ ] On the lab project: set `NEXT_PUBLIC_EDITION=lab`, then `SITE_PASSWORD` once the public domain is live.
+
+Original design notes below.
 
 1. **`lib/publicEdition.ts`** — single source of truth, shared by middleware and Nav:
 
