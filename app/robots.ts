@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 import { IS_LAB_EDITION } from "@/lib/publicEdition";
+import { SITE_URL } from "@/lib/site";
 
 // Edition-aware robots (replaces the old static public/robots.txt):
 //   lab edition    → Disallow everything; the lab must never be indexed once
 //                    the public domain exists.
-//   public / unset → crawlable, with internal surfaces disallowed. A Sitemap:
-//                    directive should be added here when briefing 04 ships
-//                    sitemap.ts.
+//   public / unset → crawlable, with internal surfaces disallowed, pointing
+//                    crawlers at the pr-3 sitemap index (app/sitemap.ts).
 export default function robots(): MetadataRoute.Robots {
   if (IS_LAB_EDITION) {
     return { rules: { userAgent: "*", disallow: "/" } };
@@ -17,5 +17,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/login", "/review", "/admin", "/edges", "/labs/", "/globe/lab", "/claims/*/edit"],
     },
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

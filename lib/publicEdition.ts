@@ -32,6 +32,7 @@ export const PUBLIC_ROUTES: string[] = [
   "/",
   "/about",
   "/corrections",
+  "/case-studies",
   // Explore
   "/settling-curve",
   "/search",
