@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { getClaimDetail, type ClaimDetail, type EdgeDetail } from "@/lib/claim-detail";
 import { SITE_URL } from "@/lib/site";
+import { claimJsonLd, serializeJsonLd } from "@/lib/jsonld";
 import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
 import { ShareButtons } from "@/components/ShareButtons";
 import ClaimInteractive from "./ClaimInteractive";
@@ -307,6 +308,13 @@ export default async function ClaimDetailPage({ params }: Props) {
 
   return (
     <div className="space-y-10">
+
+      {/* Schema.org JSON-LD — a `Claim` with dated status assertions (briefing 04 §5).
+          Deliberately not ClaimReview: we track settling, we don't issue ratings. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(claimJsonLd(claim)) }}
+      />
 
       {/* Breadcrumb */}
       {claim.parent ? (
