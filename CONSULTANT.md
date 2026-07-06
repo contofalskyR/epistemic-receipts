@@ -4521,3 +4521,24 @@ Settling curve added to Nav "Explore" dropdown.
 - `CONSULTANT.md` — this entry
 
 **Telegram.** Progress notifications sent after each phase. Completion notification sent to chat_id 7688025079.
+
+---
+
+### 2026-07-06 — PR-3: Sitemap + robots.txt (briefing 04, task 3)
+
+**Commits:** f358690 (robots.txt), b557d72 (sitemap)
+
+**Files changed:**
+- `public/robots.txt` — added `Sitemap: https://epistemic-receipts.vercel.app/sitemap.xml` directive above final blank line; existing `/api/` Disallow intact.
+- `app/sitemap.ts` (new) — Next.js 16 `generateSitemaps` sitemap index. Generates:
+  - `/sitemap/static.xml` — static pages + curated trajectory pages (`externalId startsWith "trajectory:"`)
+  - `/sitemap/topics.xml` — all Topic slugs at `/topics/{slug}` + statistics/explorer method pages
+  - `/sitemap/claims-{n}.xml` — multi-step claim pages (claims with ≥ 1 ClaimStatusHistory entry), 50k URLs/chunk. Count queried at generateSitemaps time via `prisma.claim.count({ where: { statusHistory: { some: {} } } })`.
+
+**Claim inclusion decision (documented in code):** multi-step only (≥ 1 ClaimStatusHistory entry, ~350k). All 1.76M pipeline claims with no status history are excluded — they lack settled trajectories and would dilute crawl budget. Revisit when trajectory pages have richer content.
+
+**Pagination:** skip/take with `orderBy: { id: "asc" }` (stable). Acceptable at build/ISR time (each chunk is a separate serverless invocation, never loads > 50k rows per call).
+
+**Build note:** `next build` fails with SIGKILL (memory exhaustion) on this VPS — this is a **pre-existing issue** confirmed by reproducing on the unmodified codebase. `npx tsc --noEmit` passes clean. Vercel deployment will succeed (different compute budget than this VPS).
+
+**DB schema note:** No `curve_length` column exists on Claim. Multi-step detection uses `statusHistory: { some: {} }` (Prisma relation filter). Indexes available: `@@index([claimId, community, occurredAt])` on ClaimStatusHistory covers this subquery. Claim PK (`id`) used for stable skip/take pagination.
