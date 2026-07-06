@@ -29,6 +29,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     title,
     description:
       "Trace how scientific confidence in a claim builds — or unravels — across expert literature, institutions, courts, and public consensus.",
+    // Canonical points to the permalink page so crawlers index the SSR version.
+    alternates: { canonical: `/settling-curve/${t}` },
     openGraph: {
       title,
       images: [{ url: ogImageUrl, width: 1200, height: 630 }],
