@@ -258,6 +258,10 @@ interface CategoryBucket {
 
 export interface SourcesSummary {
   totalClaims: number;
+  /** Claims counted above whose verificationStatus is still NULL (never classified).
+      Site-wide counters (homepage, /pipelines) exclude these — Prisma's
+      `not: "DEPRECATED"` drops NULLs — so totalClaims = their count + unclassifiedClaims. */
+  unclassifiedClaims: number;
   totalSources: number;
   generatedAt: string;
   categories: CategoryBucket[];
@@ -265,16 +269,26 @@ export interface SourcesSummary {
 }
 
 export async function loadSourcesSummary(): Promise<SourcesSummary> {
-  const rows = await prisma.$queryRaw<GroupRow[]>(Prisma.sql`
-    SELECT "ingestedBy", COUNT(*)::int AS count
-    FROM "Claim"
-    -- Canonical corpus derivation: must match the homepage and /pipelines
-    -- (deleted = false AND not DEPRECATED). Three surfaces, one number.
-    WHERE "verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-      AND "deleted" = false
-    GROUP BY "ingestedBy"
-    ORDER BY count DESC
-  `);
+  const [rows, unclassifiedRows] = await Promise.all([
+    prisma.$queryRaw<GroupRow[]>(Prisma.sql`
+      SELECT "ingestedBy", COUNT(*)::int AS count
+      FROM "Claim"
+      -- All live claims: deleted = false, not DEPRECATED. NULL verificationStatus
+      -- counts here (IS DISTINCT FROM), unlike the homepage/pipelines Prisma
+      -- filter — the difference is disclosed as unclassifiedClaims below.
+      WHERE "verificationStatus" IS DISTINCT FROM 'DEPRECATED'
+        AND "deleted" = false
+      GROUP BY "ingestedBy"
+      ORDER BY count DESC
+    `),
+    prisma.$queryRaw<{ count: number }[]>(Prisma.sql`
+      SELECT COUNT(*)::int AS count
+      FROM "Claim"
+      WHERE "verificationStatus" IS NULL
+        AND "deleted" = false
+    `),
+  ]);
+  const unclassifiedClaims = Number(unclassifiedRows[0]?.count ?? 0);
 
   const buckets = new Map<Category, SourceEntry[]>();
   const unmapped: SourceEntry[] = [];
@@ -310,6 +324,7 @@ export async function loadSourcesSummary(): Promise<SourcesSummary> {
 
   return {
     totalClaims,
+    unclassifiedClaims,
     totalSources,
     generatedAt: new Date().toISOString(),
     categories,

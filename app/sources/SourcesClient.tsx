@@ -159,6 +159,7 @@ interface CategoryBucket {
 
 interface SourcesSummary {
   totalClaims: number;
+  unclassifiedClaims?: number;
   totalSources: number;
   generatedAt: string;
   categories: CategoryBucket[];
@@ -420,6 +421,16 @@ export default function SourcesClient({ initialData }: { initialData: SourcesSum
               </div>
             ))}
           </div>
+
+          {/* Derivation note — keeps this total honest against the homepage counter,
+              which excludes claims whose verificationStatus was never set. */}
+          {typeof data.unclassifiedClaims === "number" && data.unclassifiedClaims > 0 && (
+            <p style={{ fontSize: "0.72rem", color: C.faint, margin: "0.9rem 0 0", maxWidth: "52rem", lineHeight: 1.5 }}>
+              Includes {data.unclassifiedClaims.toLocaleString()} claims awaiting verification-status
+              classification; the homepage and pipeline counters report the{" "}
+              {(data.totalClaims - data.unclassifiedClaims).toLocaleString()} classified claims only.
+            </p>
+          )}
         </div>
       </div>
 
