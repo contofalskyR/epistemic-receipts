@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { SITE_URL as SITE_BASE } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const TELEGRAM_RECIPIENT = process.env.TELEGRAM_CHAT_ID;
 const OPENCLAW_URL = "https://gateway.openclaw.ai/v1/message/send";
-const SITE_BASE = "https://epistemic-receipts.vercel.app";
 
 function truncate(s: string, n: number): string {
   const trimmed = s.trim().replace(/\s+/g, " ");

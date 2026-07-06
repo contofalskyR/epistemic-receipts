@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 900;
-
-const SITE_URL = "https://epistemic-receipts.vercel.app";
 const FEED_LIMIT = 50;
 
 type ClaimMeta = {
