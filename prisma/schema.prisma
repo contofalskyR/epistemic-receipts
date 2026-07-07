@@ -775,3 +775,35 @@ model ClaimEmbedding {
   @@index([claimId])
   @@index([contentHash])
 }
+
+// ── Spec 20: Public API ──────────────────────────────────────────────────────
+
+model ApiKey {
+  id           String    @id @default(cuid())
+  orgName      String
+  contactEmail String
+  keyHash      String    @unique // sha256 hex of the raw key
+  tier         String    @default("free") // free | pro | team | enterprise
+  createdAt    DateTime  @default(now())
+  revokedAt    DateTime?
+  lastUsedAt   DateTime?
+
+  usage ApiUsage[]
+
+  @@index([keyHash])
+  @@index([tier])
+}
+
+model ApiUsage {
+  id       String   @id @default(cuid())
+  keyId    String
+  date     String   // YYYY-MM-DD
+  endpoint String   // e.g. "claims" | "verify" | "search"
+  count    Int      @default(0)
+
+  key ApiKey @relation(fields: [keyId], references: [id], onDelete: Cascade)
+
+  @@unique([keyId, date, endpoint])
+  @@index([keyId])
+  @@index([date])
+}
