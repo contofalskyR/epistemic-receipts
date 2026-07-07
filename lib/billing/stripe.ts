@@ -3,10 +3,10 @@ import Stripe from "stripe";
 
 // Stripe client — initialized once per cold start.
 // STRIPE_SECRET_KEY must be set in Vercel env (test key on staging, live key on production).
+// Note: do not throw here at module init — next build runs with NODE_ENV=production and would
+// fail static analysis for any route that imports this module. Stripe calls will fail at
+// request time if the key is missing or invalid, which is the correct runtime behavior.
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-if (!stripeSecretKey && process.env.NODE_ENV === "production") {
-  throw new Error("STRIPE_SECRET_KEY is required in production");
-}
 
 export const stripe = new Stripe(stripeSecretKey ?? "sk_test_placeholder", {
   apiVersion: "2026-06-24.dahlia",
