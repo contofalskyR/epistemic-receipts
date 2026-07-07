@@ -416,7 +416,7 @@ async function main() {
 
   const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
   const startTime = Date.now()
-  let pending: CandidateRecord[] = []
+  const pending: CandidateRecord[] = []
   let tried = 0, found = 0
 
   async function flushPending() {

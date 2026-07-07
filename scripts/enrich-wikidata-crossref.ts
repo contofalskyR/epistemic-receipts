@@ -480,7 +480,7 @@ SELECT DISTINCT ?item ?lbl WHERE {
 }
 LIMIT 5000
 `
-  let wikidataItems: Array<{ qid: string; label: string }> = []
+  const wikidataItems: Array<{ qid: string; label: string }> = []
   try {
     const data = await queryWikidata(sparql)
     const seen = new Set<string>()

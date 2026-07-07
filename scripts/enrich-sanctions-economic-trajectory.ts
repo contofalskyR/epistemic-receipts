@@ -307,8 +307,8 @@ async function main() {
     const growthByYear = valueIndex.get(iso3)?.get(GROWTH_CODE);
     const levelByYear = valueIndex.get(iso3)?.get(GDP_LEVEL_CODE);
 
-    let preVals: number[] = [];
-    let postVals: number[] = [];
+    const preVals: number[] = [];
+    const postVals: number[] = [];
     let src: "growth" | "level_yoy" = "growth";
 
     if (growthByYear && growthByYear.size > 0) {

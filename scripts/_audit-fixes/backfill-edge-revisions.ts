@@ -37,7 +37,7 @@ async function run() {
   }
 
   let inserted = 0;
-  let offset = 0;
+  const offset = 0;
 
   while (true) {
     const batch = await prisma.$queryRaw<{ id: string; type: string }[]>`

@@ -322,7 +322,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   return transport.handleRequest(req);
 }
 
-export async function GET(req: NextRequest): Promise<Response> {
+export async function GET(_req: NextRequest): Promise<Response> {
   // SSE stream resumption is not supported in stateless mode.
   return new Response(
     JSON.stringify({ error: "GET not supported on stateless MCP endpoint. Use POST." }),

@@ -158,7 +158,7 @@ async function main() {
   console.log(`  ${compoundEarliestDate.size} compounds have a datable earliest citation`);
 
   // Update DB
-  let updated = 0;
+  const updated = 0;
   let notFound = 0;
   const updates: Array<{ id: string; date: Date }> = [];
 

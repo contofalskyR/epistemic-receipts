@@ -260,7 +260,7 @@ export async function GET(req: NextRequest) {
     ORDER BY c."externalId"
   `)) as CuratedClaimRow[];
 
-  let curated_lag: Array<{
+  const curated_lag: Array<{
     trajectory_id: string;
     title: string;
     expert_year: number;

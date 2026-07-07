@@ -409,7 +409,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [drawerState]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [drawerState]);  
 
   // Fetch votes when drawer opens
   useEffect(() => {

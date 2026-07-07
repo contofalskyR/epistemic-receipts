@@ -378,7 +378,7 @@ function HomeHeroContent({
     const q = input.trim();
     clearTimeout(debounceRef.current);
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+     
     if (q.length < MIN_QUERY) {
       setData(null);
       setLoading(false);

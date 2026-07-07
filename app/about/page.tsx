@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: 'About — Epistemic Receipts',
   description:
@@ -47,11 +49,11 @@ export default function AboutPage() {
       </p>
 
       <p className="text-gray-500 text-xs">
-        <a href="/methodology" className="underline hover:text-gray-300 transition-colors">Methodology</a>
+        <Link href="/methodology" className="underline hover:text-gray-300 transition-colors">Methodology</Link>
         {" · "}
-        <a href="/corrections" className="underline hover:text-gray-300 transition-colors">Corrections</a>
+        <Link href="/corrections" className="underline hover:text-gray-300 transition-colors">Corrections</Link>
         {" · "}
-        <a href="/datasets" className="underline hover:text-gray-300 transition-colors">Pipeline data cards</a>
+        <Link href="/datasets" className="underline hover:text-gray-300 transition-colors">Pipeline data cards</Link>
       </p>
 
       <p className="text-gray-500 text-xs">

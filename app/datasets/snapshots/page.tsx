@@ -10,6 +10,7 @@
 
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import Link from "next/link";
 
 export const revalidate = 86400;
 
@@ -84,9 +85,9 @@ export default function SnapshotsPage() {
           epistemic-receipts.com/methodology
         </a>{" "}
         · PII excluded per{" "}
-        <a href="/datasets/snapshots/readme" className="underline hover:no-underline">
+        <Link href="/datasets/snapshots/readme" className="underline hover:no-underline">
           snapshot README
-        </a>
+        </Link>
       </div>
 
       {snapshots.length === 0 ? (

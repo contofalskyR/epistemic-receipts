@@ -15,13 +15,6 @@ type PolityRow = {
   name: string;
 };
 
-type ClaimRow = {
-  id: string;
-  text: string;
-  createdAt: Date;
-  claimEmergedAt: Date | null;
-  polityIds: string[];
-};
 
 export async function GET() {
   // Step 1 — pull all polities (small table, ~2,361 rows). We need countryCode
@@ -49,13 +42,6 @@ export async function GET() {
   // Step 2 — find claims that have >= 2 distinct polities in our centroid set.
   // PolityClaim is large (~347k links), so we aggregate at SQL level to keep
   // the working set tight: only claims with multiple polity-country links.
-  type RawRow = {
-    claimId: string;
-    countryCodes: string[];
-  };
-
-  const polityIdsParam = Array.from(polityToCountry.keys());
-
   // Build a comma-separated list of polity IDs as a CTE filter. Prisma's raw
   // query handles the array parameter via Prisma.join.
   const rawRows: Array<{ claim_id: string; country_codes: string[] }> = await prisma.$queryRaw`

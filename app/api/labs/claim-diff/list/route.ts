@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export const revalidate = 300;
@@ -13,7 +13,7 @@ type Row = {
   lastYear: number | null;
 };
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   // Group ClaimStatusHistory by claim, count those with a snapshot; return
   // only claims where ≥ 2 transitions have a snapshot (the minimum needed to
   // compute one diff).

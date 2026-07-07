@@ -136,19 +136,6 @@ export function TopicDrillTable({ topicSummaries }: Props) {
     return `${n.toFixed(1)}%`;
   }
 
-  function GapBar({ gap, max = 100 }: { gap: number; max?: number }) {
-    const intensity =
-      gap >= 60 ? "bg-red-700"
-      : gap >= 40 ? "bg-orange-600"
-      : gap >= 25 ? "bg-yellow-700"
-      : "bg-gray-700";
-    return (
-      <div className="w-24 h-1.5 rounded bg-gray-800 overflow-hidden">
-        <div className={`h-full ${intensity}`} style={{ width: `${Math.min(100, (gap / max) * 100)}%` }} />
-      </div>
-    );
-  }
-
   return (
     <div className="rounded border border-gray-800 overflow-hidden">
       <table className="w-full text-xs">

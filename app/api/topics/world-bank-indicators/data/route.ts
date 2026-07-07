@@ -77,7 +77,7 @@ export async function GET(req: NextRequest) {
     ? countriesAll.filter(c => c.name.toLowerCase().includes(lcQuery))
     : countriesAll;
 
-  let seriesByIso3: Record<string, { name: string; points: { year: number; value: number }[] }> = {};
+  const seriesByIso3: Record<string, { name: string; points: { year: number; value: number }[] }> = {};
   let defaultSelectedIso3: string[] = [];
   if (indicator) {
     const seriesRows = await prisma.$queryRaw<SeriesRow[]>`

@@ -48,11 +48,6 @@ export async function POST(req: NextRequest) {
     where: { ownerId: session.user.id },
   });
 
-  // Resolve user tier for entitlement check
-  const user = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    select: { id: true },
-  });
   // Check org membership for entitlement
   const membership = await prisma.membership.findFirst({
     where: { userId: session.user.id },

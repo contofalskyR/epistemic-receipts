@@ -483,7 +483,7 @@ async function main() {
     let candidates: CandidateRecord[]
     let totalApi: number
     let skippedMalformed: number
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     let rawFirstRespKeys: string[]
     let mockMode = false
 

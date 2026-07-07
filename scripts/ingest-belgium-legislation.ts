@@ -124,7 +124,7 @@ function parseYear(html: string, year: number, verbose: boolean): CandidateRecor
     }
 
     // Clean title: strip leading "<B>N</B>" number, strip HTML tags, strip footnote markers
-    let title = rawTitle
+    const title = rawTitle
       .replace(/^<[^>]+>\s*\d+\s*<\/[^>]+>\s*/, '')  // leading bold number
       .replace(/<[^>]+>/g, '')                          // all HTML tags
       .replace(/\s*\(\d+\)\s*/g, ' ')                  // footnote markers like (1)(2)
@@ -164,7 +164,7 @@ async function fetchAllLaws(hardLimit: number, verbose: boolean): Promise<Candid
   const years = Array.from({ length: currentYear - FIRST_YEAR + 1 }, (_, i) => FIRST_YEAR + i)
   const all: CandidateRecord[] = []
   const seenIds = new Set<string>()
-  let skippedMalformed = 0
+  const skippedMalformed = 0
 
   console.log(`  Fetching ${years.length} years (${FIRST_YEAR}–${currentYear})...`)
 

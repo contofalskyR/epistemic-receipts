@@ -361,7 +361,7 @@ interface Derived {
 
 function deriveFields(cabinet: Cabinet | null, hogParty: string | null): Derived {
   const partyLabels = cabinet?.parties.map(p => p.label) ?? []
-  let governingParty: string | null = hogParty ?? partyLabels[0] ?? null
+  const governingParty: string | null = hogParty ?? partyLabels[0] ?? null
 
   // If hogParty doesn't appear among the cabinet parties (different label
   // spellings, e.g. "CDU" vs "Christian Democratic Union of Germany"), still

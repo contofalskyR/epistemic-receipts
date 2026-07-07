@@ -407,7 +407,7 @@ async function main() {
   const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
   const startTime = Date.now()
   let fetched = 0, noTitle = 0, found = 0
-  let pending: ActRecord[] = []
+  const pending: ActRecord[] = []
 
   async function flushPending() {
     if (pending.length === 0) return

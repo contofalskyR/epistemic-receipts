@@ -747,7 +747,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         globeRef.current.ringsData([]);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [viewMode, globeReady, densityMap, maxCount, originsData, currentGeoSelection, citiesData, openCitySidebar, hexOverlay, hexRings]);
 
   return (

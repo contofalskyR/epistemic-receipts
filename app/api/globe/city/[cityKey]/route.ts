@@ -25,13 +25,7 @@ export async function GET(
   { params }: { params: Promise<{ cityKey: string }> }
 ) {
   const { cityKey } = await params;
-  const parts = cityKey.split("_");
-  // cityKey format: "{lat}_{lon}" where lon may be negative, e.g. "40.7_-74.0"
-  // Split on first underscore, then reassemble the rest for the lon part
-  // Actually lat could be negative too, so we need to find the split point carefully.
-  // Format is always produced by rounding to 1 decimal: "40.7_-74.0" or "-33.9_151.2"
-  // We split on the underscore that separates lat from lon.
-  // Since both can be negative, find the last underscore before a digit or minus that follows it.
+  // cityKey format: "{lat}_{lon}" e.g. "40.7_-74.0" or "-33.9_151.2". Use lastIndexOf to split.
   const splitIdx = cityKey.lastIndexOf("_");
   if (splitIdx === -1) {
     return NextResponse.json({ error: "Invalid cityKey" }, { status: 400 });

@@ -669,15 +669,15 @@ export default function AnthropologyPage() {
           <em>about</em> that concept or fieldworker — only that the term is present.
         </p>
         <p className="text-xs text-gray-500 leading-relaxed">
-          <span className="text-gray-400">Posture on the field's frontier:</span> entries marked{" "}
+          <span className="text-gray-400">Posture on the field&apos;s frontier:</span> entries marked{" "}
           <span className="text-red-300 font-mono">OPEN</span> are unresolved as of 2026 (origin of language,
           behavioral modernity, female agency in prehistory, AI/anthropology, Indigenous data sovereignty).
           Entries marked <span className="text-amber-300 font-mono">CONTESTED</span> are live debates with
           serious objections on multiple sides (Mead-Freeman, EP modularity, Anthropocene framing, Chagnon/Yanomami,
           big-gods/Seshat). Entries marked <span className="text-sky-300 font-mono">REVISED</span> flag classic
           findings that have been substantially reframed (cargo cults, Frazerian magic/religion/science,
-          Benedict's configurations, race as biological taxonomy, original-affluent-society, Kalahari Debate).
-          The hominin family tree is a bush, not a ladder; taxonomic assignments evolve with each season's
+          Benedict&apos;s configurations, race as biological taxonomy, original-affluent-society, Kalahari Debate).
+          The hominin family tree is a bush, not a ladder; taxonomic assignments evolve with each season&apos;s
           fieldwork. Reports of inaccuracy welcome via the{" "}
           <Link href="/feedback" className="underline underline-offset-2">feedback</Link> page.
         </p>

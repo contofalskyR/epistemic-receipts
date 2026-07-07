@@ -311,7 +311,7 @@ async function main() {
 
   // Phase 1: Fetch Bahamas list — POST per letter to enumerate all acts
   console.log('Step 1: Fetching Bahamas acts from alphabetical index (A-Z)...')
-  let bahamasRecords: ActRecord[] = []
+  const bahamasRecords: ActRecord[] = []
   const seenSlugs = new Set<string>()
   for (const letter of BAHAMAS_LETTERS) {
     try {
@@ -333,7 +333,7 @@ async function main() {
 
   // Phase 2: CDX enumerate Belize
   console.log('Step 2: Enumerating Belize acts via Wayback CDX...')
-  let belizeRecords: ActRecord[] = []
+  const belizeRecords: ActRecord[] = []
   try {
     const belizeSlugs = await getBelizeSlugs()
     console.log(`  Belize: ${belizeSlugs.length} acts from CDX`)

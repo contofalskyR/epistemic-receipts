@@ -86,7 +86,7 @@ export async function GET(
     ];
     for (const item of collection.items) {
       const c = item.claim;
-      const sourceUrl = c.edges[0]?.source?.url ?? "";
+      const _sourceUrl = c.edges[0]?.source?.url ?? "";
       const csvEscape = (s: string) => `"${s.replace(/"/g, '""')}"`;
       rows.push(
         [

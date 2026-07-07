@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
 
@@ -28,7 +28,7 @@ function escapeXml(s: string): string {
     .replace(/'/g, "&apos;");
 }
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   const rows = await prisma.claim.findMany({
     where: {
       deleted: false,

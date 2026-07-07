@@ -422,10 +422,10 @@ export default function EnvironmentalSciencePage() {
         </p>
         <p className="mt-3 text-xs text-gray-500 leading-relaxed">
           <strong>Climate science reflects the mainstream scientific consensus.</strong> The greenhouse mechanism,
-          human attribution of recent warming, and the IPCC's assessment conclusions are stated in the card voice
+          human attribution of recent warming, and the IPCC&apos;s assessment conclusions are stated in the card voice
           as the settled position — not hedged as one side of a debate. What is presented evenhandedly are the
           genuine within-field disputes — equilibrium climate sensitivity, aerosol/cloud feedbacks, the social
-          cost of carbon and the discount rate, carbon tax vs cap-and-trade, nuclear's role, degrowth vs green
+          cost of carbon and the discount rate, carbon tax vs cap-and-trade, nuclear&apos;s role, degrowth vs green
           growth, and solar-radiation-management geoengineering. Where a boundary or classification is genuinely
           contested (the community/ecosystem line, the Clementsian climax, monetizing ecosystem services, the
           formal <em>Anthropocene</em>), the dispute is stated, not adjudicated.
