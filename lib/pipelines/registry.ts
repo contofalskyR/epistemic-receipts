@@ -1,4 +1,4 @@
-export type Cadence = 'static' | 'daily' | 'weekly' | 'monthly' | 'perpetual';
+export type Cadence = 'static' | 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'annual' | 'perpetual';
 
 export interface PipelineEntry {
   tag: string;
