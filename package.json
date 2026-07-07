@@ -16,6 +16,7 @@
     "ingest-genbank": "tsx scripts/ingest-genbank.ts"
   },
   "dependencies": {
+    "@sentry/nextjs": "^9.0.0",
     "@ai-sdk/openai": "^4.0.7",
     "@anthropic-ai/sdk": "^0.100.1",
     "@mozilla/readability": "^0.6.0",

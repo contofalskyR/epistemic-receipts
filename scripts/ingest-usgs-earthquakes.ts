@@ -8,10 +8,12 @@
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 import * as fs from 'fs'
+import { makeLogger } from '../lib/log'
 
 const prisma = new PrismaClient()
 
 const INGESTED_BY = 'usgs_eq_v1'
+const log = makeLogger(INGESTED_BY)
 const USGS_BASE = 'https://earthquake.usgs.gov/fdsnws/event/1'
 const PAGE_SIZE = 1000
 
@@ -299,6 +301,7 @@ async function writeRow(
 async function main() {
   const { mode, minMag, since, limit, sampleN, verbose } = parseArgs()
 
+  log.info('pipeline_start', { mode, minMag, since, limit: limit ?? null })
   console.log(`\n── Pipeline 12: USGS Significant Earthquakes ─────────────────────────`)
   console.log(`Mode: ${mode} | Min magnitude: M${minMag} | Since: ${since} | Limit: ${limit || 'all'}`)
 
@@ -445,10 +448,22 @@ async function main() {
 
   if (dbClaims !== counts.ingested) {
     console.error(`  WARNING: DB claim count (${dbClaims}) does not match ingested counter (${counts.ingested})`)
+    log.warn('counter_mismatch', { dbClaims, ingestedCounter: counts.ingested })
   }
+
+  log.info('pipeline_done', {
+    elapsedSeconds: parseFloat(elapsed),
+    rowsWritten: counts.ingested,
+    skipped: counts.skipped,
+    errors: counts.errors,
+    dbClaims,
+    dbSources,
+    dbEdges,
+  })
 }
 
 main().catch(async err => {
+  log.error('pipeline_fatal', { message: err instanceof Error ? err.message : String(err) })
   console.error(err)
   await prisma.$disconnect()
   process.exit(1)
