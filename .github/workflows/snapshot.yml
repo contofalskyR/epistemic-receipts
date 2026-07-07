@@ -1,0 +1,100 @@
+name: Snapshot Export
+
+on:
+  workflow_dispatch:
+    inputs:
+      snapshot_id:
+        description: "Snapshot ID (e.g. er-2026-Q3). Leave blank to auto-detect from current quarter."
+        required: false
+        type: string
+      sample_only:
+        description: "Only build the sample slice (skip full export)"
+        required: false
+        type: boolean
+        default: false
+  schedule:
+    # Quarterly: first day of Jan, Apr, Jul, Oct at 02:00 UTC
+    - cron: "0 2 1 1,4,7,10 *"
+
+jobs:
+  export:
+    name: Export snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install DuckDB CLI
+        run: |
+          # Install DuckDB CLI (latest stable)
+          DUCKDB_VERSION=$(curl -s https://api.github.com/repos/duckdb/duckdb/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+          curl -fsSL "https://github.com/duckdb/duckdb/releases/download/${DUCKDB_VERSION}/duckdb_cli-linux-amd64.zip" -o duckdb.zip
+          unzip duckdb.zip
+          sudo mv duckdb /usr/local/bin/duckdb
+          duckdb --version
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DIRECT_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+
+      - name: Determine snapshot ID
+        id: snapshot_id
+        run: |
+          if [ -n "${{ inputs.snapshot_id }}" ]; then
+            echo "id=${{ inputs.snapshot_id }}" >> $GITHUB_OUTPUT
+          else
+            YEAR=$(date -u +%Y)
+            MONTH=$(date -u +%-m)
+            QUARTER=$(( (MONTH - 1) / 3 + 1 ))
+            echo "id=er-${YEAR}-Q${QUARTER}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Full export
+        if: ${{ !inputs.sample_only }}
+        run: npx tsx scripts/export-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }}
+        env:
+          DATABASE_URL: ${{ secrets.DIRECT_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+
+      - name: Sample slice export
+        run: npx tsx scripts/export-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }} --sample
+        env:
+          DATABASE_URL: ${{ secrets.DIRECT_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+
+      - name: Verify full snapshot
+        if: ${{ !inputs.sample_only }}
+        run: npx tsx scripts/verify-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }}
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+
+      - name: Verify sample snapshot
+        run: npx tsx scripts/verify-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }} --sample
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
