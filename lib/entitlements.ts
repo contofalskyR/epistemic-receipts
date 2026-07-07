@@ -13,7 +13,8 @@ export type Feature =
   | "collections.max"
   | "export.citations"
   | "export.bulk"
-  | "api.keys";
+  | "api.keys"
+  | "litigation";
 
 type FeatureConfig = {
   type: "max";
@@ -43,6 +44,11 @@ const FEATURES: Record<Feature, FeatureConfig> = {
   "api.keys": {
     type: "flag",
     values: { free: false, pro: false, team: false, enterprise: true, org: false, orgAdmin: true },
+  },
+  // litigation: available to team+ individual users and all org contexts
+  "litigation": {
+    type: "flag",
+    values: { free: false, pro: false, team: true, enterprise: true, org: true },
   },
 };
 
