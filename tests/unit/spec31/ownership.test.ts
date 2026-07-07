@@ -4,6 +4,7 @@
  * the auth() call and prisma. They verify that cross-user access is rejected.
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { NextRequest } from "next/server";
 
 // Mock auth and prisma before importing routes
 vi.mock("@/lib/auth", () => ({
@@ -60,7 +61,7 @@ describe("Collections — ownership enforcement", () => {
     (prisma.collection.findFirst as ReturnType<typeof vi.fn>).mockResolvedValue(null);
 
     const { GET } = await import("@/app/api/collections/[id]/route");
-    const req = new Request("http://localhost/api/collections/other-col");
+    const req = new NextRequest("http://localhost/api/collections/other-col");
     const res = await GET(req, { params: Promise.resolve({ id: "other-col" }) });
     expect(res.status).toBe(404);
 
@@ -77,7 +78,7 @@ describe("Collections — ownership enforcement", () => {
     (prisma.collection.findFirst as ReturnType<typeof vi.fn>).mockResolvedValue(null);
 
     const { DELETE } = await import("@/app/api/collections/[id]/route");
-    const req = new Request("http://localhost/api/collections/other-col");
+    const req = new NextRequest("http://localhost/api/collections/other-col");
     const res = await DELETE(req, { params: Promise.resolve({ id: "other-col" }) });
     expect(res.status).toBe(404);
   });
@@ -88,7 +89,7 @@ describe("Collections — ownership enforcement", () => {
     (prisma.collection.findFirst as ReturnType<typeof vi.fn>).mockResolvedValue(null);
 
     const { DELETE } = await import("@/app/api/collections/[id]/items/[claimId]/route");
-    const req = new Request("http://localhost/api/collections/col1/items/claim1");
+    const req = new NextRequest("http://localhost/api/collections/col1/items/claim1");
     const res = await DELETE(req, {
       params: Promise.resolve({ id: "col1", claimId: "claim1" }),
     });
@@ -113,7 +114,7 @@ describe("Alerts — ownership enforcement", () => {
     (prisma.topicSubscription.findFirst as ReturnType<typeof vi.fn>).mockResolvedValue(null);
 
     const { DELETE } = await import("@/app/api/alerts/[id]/route");
-    const req = new Request("http://localhost/api/alerts/alert1");
+    const req = new NextRequest("http://localhost/api/alerts/alert1");
     const res = await DELETE(req, { params: Promise.resolve({ id: "alert1" }) });
     expect(res.status).toBe(404);
 

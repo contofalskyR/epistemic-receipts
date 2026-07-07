@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 // setup.ts mocks server-only and @/lib/prisma globally before this runs
 
 import { runPipeline } from '@/lib/ingest/runner'
+import type { TransformedRow } from '@/lib/ingest/types'
 import { prisma } from '@/lib/prisma'
 
 // Helper to access vi.fn() mocks on the globally-mocked prisma
@@ -68,7 +69,7 @@ describe('runner cursor/resume logic', () => {
     mp.claim.count.mockResolvedValue(1)
 
     await runPipeline(
-      { tag: 'test_v1', adapter, transform: r => r, validate: () => ({ ok: true }), autoApproved: false },
+      { tag: 'test_v1', adapter, transform: (r: TransformedRow) => r, validate: () => ({ ok: true }), autoApproved: false },
       { full: true },
     )
 
@@ -87,7 +88,7 @@ describe('runner cursor/resume logic', () => {
     }
 
     await runPipeline(
-      { tag: 'test_v1', adapter, transform: r => r, validate: () => ({ ok: true }), autoApproved: false },
+      { tag: 'test_v1', adapter, transform: (r: TransformedRow) => r, validate: () => ({ ok: true }), autoApproved: false },
       { full: true },
     )
 
@@ -109,7 +110,7 @@ describe('runner cursor/resume logic', () => {
     mp.claim.count.mockResolvedValue(2)
 
     await runPipeline(
-      { tag: 'test_v1', adapter, transform: r => r, validate: () => ({ ok: true }), autoApproved: false },
+      { tag: 'test_v1', adapter, transform: (r: TransformedRow) => r, validate: () => ({ ok: true }), autoApproved: false },
       { full: true },
     )
 
@@ -132,7 +133,7 @@ describe('runner cursor/resume logic', () => {
     }
 
     const result = await runPipeline(
-      { tag: 'test_v1', adapter, transform: r => r, validate: () => ({ ok: true }), autoApproved: false },
+      { tag: 'test_v1', adapter, transform: (r: TransformedRow) => r, validate: () => ({ ok: true }), autoApproved: false },
       { dryRun: true },
     )
 
@@ -154,7 +155,7 @@ describe('runner cursor/resume logic', () => {
     mp.claim.count.mockResolvedValue(2)
 
     const result = await runPipeline(
-      { tag: 'test_v1', adapter, transform: r => r, validate: () => ({ ok: true }), autoApproved: false },
+      { tag: 'test_v1', adapter, transform: (r: TransformedRow) => r, validate: () => ({ ok: true }), autoApproved: false },
       { full: true },
     )
 
@@ -178,7 +179,7 @@ describe('runner cursor/resume logic', () => {
     mp.claim.count.mockResolvedValue(1)
 
     const result = await runPipeline(
-      { tag: 'test_v1', adapter, transform: r => r, validate: () => ({ ok: true }), autoApproved: false },
+      { tag: 'test_v1', adapter, transform: (r: TransformedRow) => r, validate: () => ({ ok: true }), autoApproved: false },
       { full: true },
     )
 
