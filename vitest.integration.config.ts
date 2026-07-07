@@ -3,7 +3,10 @@ import path from "path";
 
 export default defineConfig({
   test: {
-    include: ["tests/**/*.test.ts"],
+    // Only top-level integration suites (tests/integration.test.ts).
+    // tests/unit/** is owned by vitest.config.ts, which loads
+    // tests/unit/setup.ts — those tests fail without that setup file.
+    include: ["tests/*.test.ts"],
     environment: "node",
     testTimeout: 60_000,
     hookTimeout: 60_000,
