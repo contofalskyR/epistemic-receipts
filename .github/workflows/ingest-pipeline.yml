@@ -1,0 +1,61 @@
+name: Ingest — Pipeline Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Pipeline tag (e.g. congress_v1, paclii_legislation_v1, doj_fara_v1)'
+        required: true
+        type: string
+      dry_run:
+        description: 'Dry run only (no DB writes)'
+        required: false
+        default: 'false'
+        type: boolean
+  schedule:
+    # Monthly refresh: 1st of each month at 02:00 UTC
+    - cron: '0 2 1 * *'
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - congress_v1
+          - doj_fara_v1
+          # paclii excluded from scheduled runs (too slow for cron; run manually)
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+
+      - name: Run pipeline
+        run: |
+          TAG="${{ inputs.tag || matrix.tag }}"
+          DRY_RUN="${{ inputs.dry_run || 'false' }}"
+          if [ "$DRY_RUN" = "true" ]; then
+            npx tsx scripts/run-pipeline.ts --tag "$TAG" --dry-run
+          else
+            npx tsx scripts/run-pipeline.ts --tag "$TAG" --full
+          fi
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          ALLOW_EDITS: ${{ secrets.ALLOW_EDITS }}
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
