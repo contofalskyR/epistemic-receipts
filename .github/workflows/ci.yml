@@ -3,10 +3,32 @@ name: CI
 on:
   pull_request:
     branches: ["**"]
+  push:
+    branches: [main]
 
 jobs:
   quality:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: epistemic_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/epistemic_test
+      DIRECT_URL: postgresql://postgres:postgres@localhost:5432/epistemic_test
+      NODE_ENV: test
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,13 +43,69 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Vitest
+        run: npm install --save-dev vitest @vitest/coverage-v8 2>/dev/null || true
+
       - name: TypeScript type check
         run: npx tsc --noEmit
 
       - name: Lint
         run: npx next lint
 
+      - name: Validate Prisma schema
+        run: npx prisma validate
+
+      - name: Check migration drift
+        run: |
+          npx prisma migrate diff \
+            --from-migrations prisma/migrations \
+            --to-schema-datamodel prisma/schema.prisma \
+            --exit-code
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+          DIRECT_URL: ${{ env.DIRECT_URL }}
+
+      - name: Apply migrations
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+          DIRECT_URL: ${{ env.DIRECT_URL }}
+
+      - name: Run integration tests
+        run: npm run test:integration
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+          DIRECT_URL: ${{ env.DIRECT_URL }}
+          ADMIN_TOKEN: ci-test-admin-token-not-secret
+          NODE_ENV: test
+
       - name: Secret scanning
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  sourcemaps:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (for sourcemap upload)
+        run: npx prisma generate && npx next build
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/epistemic_test
+          DIRECT_URL: postgresql://postgres:postgres@localhost:5432/epistemic_test
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+        continue-on-error: true
