@@ -817,12 +817,14 @@ model ApiUsage {
   date     String   // YYYY-MM-DD
   endpoint String   // e.g. "claims" | "verify" | "search"
   count    Int      @default(0)
+  reportedToStripeAt DateTime? // spec-21: marks rows already reported to Stripe
 
   key ApiKey @relation(fields: [keyId], references: [id], onDelete: Cascade)
 
   @@unique([keyId, date, endpoint])
   @@index([keyId])
   @@index([date])
+  @@index([reportedToStripeAt])
 }
 
 // ── Spec 30: Accounts, Orgs, Entitlements ───────────────────────────────────
@@ -893,8 +895,9 @@ model Org {
   tier                 String    @default("free")
   seats                Int       @default(5)
   ssoConnectionId      String?
-  stripeCustomerId     String?
+  stripeCustomerId     String?   @unique
   stripeSubscriptionId String?
+  enterpriseFlag       Boolean   @default(false) // spec-21: manual tier override without a Stripe subscription
   pastDueSince         DateTime?
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
