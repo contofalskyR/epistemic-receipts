@@ -11,6 +11,7 @@
 //     --out docs/human-review-checklist-free.md
 
 import * as fs from 'fs'
+import * as path from 'path'
 import type { EvalItem } from './schema.js'
 
 function mulberry32(seed: number) {
@@ -121,7 +122,7 @@ async function main() {
   lines.push('**Reviewer:** _____________  ')
   lines.push('**Date:** _____________')
 
-  fs.mkdirSync(require('path').dirname(outPath), { recursive: true })
+  fs.mkdirSync(path.dirname(outPath), { recursive: true })
   fs.writeFileSync(outPath, lines.join('\n'))
   console.log(`Checklist written to ${outPath} (${sample.length} items)`)
 }
