@@ -62,6 +62,7 @@ prisma/migrations.sqlite-backup/
 
 # Pipeline run artifacts (logs, dry-runs, dead letters — regenerable)
 *.log
+*.log.attempt*
 .*-full.log
 .*-dry-run*.log
 .worker*.log
@@ -72,3 +73,6 @@ prisma/migrations.sqlite-backup/
 *-verification.md
 logs/
 scripts/url-check-results.csv
+
+# Editor backups
+*.bak

@@ -2,6 +2,13 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import BooksClient, { type SerializedBook } from "./BooksClient";
 
+
+export const metadata = {
+  title: 'Books — Epistemic Receipts',
+  description:
+    'Book analysis — match book passages against the sourced claims in the graph.',
+};
+
 export const dynamic = "force-dynamic";
 
 export default async function BooksPage() {

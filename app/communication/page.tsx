@@ -431,7 +431,8 @@ export default function CommunicationPage() {
         </p>
         <p className="mt-3 text-xs text-gray-500 leading-relaxed">
           Cross-references: entries marked <span className="font-mono">xref</span> link to sibling taxonomies —{" "}
-          <Link href="/political-science" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">political-science</Link>,{" "}
+          {/* /political-science has no page yet — plain text until the taxonomy is built */}
+          <span className="text-blue-300">political-science</span>,{" "}
           <Link href="/sociology" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">sociology</Link>,{" "}
           <Link href="/psychology" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">psychology</Link>,{" "}
           <Link href="/statistics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">statistics</Link>,{" "}

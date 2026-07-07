@@ -15,8 +15,10 @@ export const metadata: Metadata = {
   // Receipts" suffix; a template here would double it.
   metadataBase: new URL(SITE_URL),
   title: "Epistemic Receipts",
+  // "1.6M+" matches the Nav/search copy convention; the old "1M+ verified
+  // facts" default disagreed with the homepage's derived 1.62M figure.
   description:
-    "1M+ verified facts from legislation, court decisions, scientific papers, and declassified archives.",
+    "A live record of epistemic status across science, law, and history — 1.6M+ sourced claims from legislation, court decisions, scientific papers, and declassified archives.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -36,7 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div className="text-gray-600">
               Conceptualized by{" "}
-              <a href="https://robertcontofalsky.com" target="_blank" rel="noreferrer" className="hover:text-gray-300 transition-colors">
+              {/* NB: only the www host serves this site — the apex domain doesn't resolve. */}
+              <a href="https://www.robertcontofalsky.com/" target="_blank" rel="noreferrer" className="hover:text-gray-300 transition-colors">
                 Robert Contofalsky
               </a>
               {" · "}Designed by{" "}

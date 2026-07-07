@@ -3,8 +3,10 @@ import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
 import { STAT_METHOD_SLUGS } from "@/lib/statMethods";
 
-// Sitemap index: Next.js generates /sitemap.xml (index) + /sitemap/[id].xml
-// (per-chunk files). Each chunk must stay under the 50k-URL protocol cap.
+// Sitemap chunks: with generateSitemaps(), Next serves /sitemap/[id].xml
+// (per-chunk files) but does NOT emit an index — that lives in
+// app/sitemap.xml/route.ts (keep its chunk logic in sync with this file).
+// Each chunk must stay under the 50k-URL protocol cap.
 const CHUNK = 50_000;
 
 const STATIC_URLS: MetadataRoute.Sitemap = [

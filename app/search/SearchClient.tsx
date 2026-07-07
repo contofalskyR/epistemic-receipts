@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
+import { cleanDisplayText } from "@/lib/text";
 
 type ClaimHit = {
   id: string;
@@ -562,14 +563,15 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
       }}
     >
       <p className="text-sm text-gray-200 group-hover:text-white leading-relaxed">
-        <Highlighted text={truncate(claim.text)} query={query} />
+        {/* cleanDisplayText: OpenAlex abstracts carry literal <i>/<sup> tags */}
+        <Highlighted text={truncate(cleanDisplayText(claim.text))} query={query} />
       </p>
 
       {/* Source + year */}
       <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-500">
         {claim.sourceName && (
           <span className="truncate flex-1">
-            <span className="text-gray-600">From:</span> {claim.sourceName}
+            <span className="text-gray-600">From:</span> {cleanDisplayText(claim.sourceName)}
           </span>
         )}
         {year && <span className="shrink-0 font-mono text-gray-600">{year}</span>}
@@ -609,7 +611,7 @@ function SourceResult({ source }: { source: SourceHit }) {
     <>
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-sm text-gray-200 group-hover:text-white truncate">{source.name}</p>
+          <p className="text-sm text-gray-200 group-hover:text-white truncate">{cleanDisplayText(source.name)}</p>
           {source.url && (
             <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
               <a href={source.url} target="_blank" rel="noopener noreferrer"

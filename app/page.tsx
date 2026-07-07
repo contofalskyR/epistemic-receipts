@@ -148,8 +148,6 @@ async function loadHomepageData() {
     transitionCount,
     sourceCount,
     legislativeVoteCount,
-    retractedPapersCount,
-    vdemCount,
     grouped,
     featured,
     whatsNew,
@@ -158,13 +156,17 @@ async function loadHomepageData() {
     prisma.claimStatusHistory.count(),
     prisma.source.count(),
     prisma.legislativeVote.count(),
-    prisma.claim.count({ where: { ingestedBy: "crossref_retractions_v1" } }),
-    prisma.claim.count({ where: { ingestedBy: "vdem_v1" } }),
+    // Per-pipeline counts, CLASSIFIED claims only. `IS NOT NULL` mirrors what
+    // Prisma's `not: "DEPRECATED"` does for the headline count above — without
+    // it the domain tiles silently included the ~138k never-classified claims
+    // and disagreed with the headline/pipelines totals (e.g. the Neuroscience
+    // tile showed 318,775 while /pipelines showed openalex at 212,145).
     prisma.$queryRaw<IngestedByRow[]>(
       Prisma.sql`
         SELECT "ingestedBy", COUNT(*)::int AS count
         FROM "Claim"
         WHERE "verificationStatus" IS DISTINCT FROM 'DEPRECATED'
+          AND "verificationStatus" IS NOT NULL
         GROUP BY "ingestedBy"
       `,
     ),
@@ -172,18 +174,25 @@ async function loadHomepageData() {
     loadRecentTransitions(6),
   ]);
 
-  const stats: HomepageStats = {
-    claims: claimCount,
-    sources: sourceCount,
-    legislativeVotes: legislativeVoteCount,
-    retractedPapers: retractedPapersCount,
-    vdemIndicators: vdemCount,
-  };
-
   const ingestedByCounts = new Map<string, number>();
   for (const row of grouped) {
     ingestedByCounts.set(row.ingestedBy, Number(row.count));
   }
+
+  // Stats-bar numbers derive from the SAME grouped query the domain tiles use,
+  // so the same figure can never differ across one page (audit §8: the stats
+  // bar said 26,624 retracted papers while the Retractions tile said 26,679 —
+  // the bar counted crossref only, the tile crossref + retraction_watch).
+  const sumTags = (...tags: string[]) =>
+    tags.reduce((s, t) => s + (ingestedByCounts.get(t) ?? 0), 0);
+
+  const stats: HomepageStats = {
+    claims: claimCount,
+    sources: sourceCount,
+    legislativeVotes: legislativeVoteCount,
+    retractedPapers: sumTags("crossref_retractions_v1", "retraction_watch_v1"),
+    vdemIndicators: sumTags("vdem_v1"),
+  };
 
   // Derived, never hand-written (audit item 2 / marketing house rule).
   const liveCounts = {

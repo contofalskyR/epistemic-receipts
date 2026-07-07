@@ -3,6 +3,13 @@ import { prisma } from "@/lib/prisma";
 import DrugArcClient from "./DrugArcClient";
 import { StageCard, AreaRow } from "./DrugArcStageCard";
 
+
+export const metadata = {
+  title: 'Drug Arc — Epistemic Receipts',
+  description:
+    "Trace a drug's full arc from registered trials to approval, sourced from ClinicalTrials.gov and Drugs@FDA.",
+};
+
 export const revalidate = 3600;
 
 const C = {

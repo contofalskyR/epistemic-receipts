@@ -44,7 +44,11 @@ async function getCaseStudies(): Promise<CaseStudy[]> {
   const rows = await prisma.claim.findMany({
     where: {
       deleted: false,
-      ingestedBy: "manual",
+      // NOTE: no ingestedBy filter. Curated trajectories carry their seed
+      // pipeline's tag (seed:human-history-trajectories, seed:medicine-trajectories,
+      // …), not "manual" — the old ingestedBy:"manual" filter matched zero rows and
+      // rendered this page empty in production (AUDIT-PRELAUNCH-2026-07-06 §1).
+      // The trajectory: externalId prefix is the discriminator, same as sitemap.ts.
       externalId: { startsWith: "trajectory:" },
       OR: [
         { verificationStatus: null },
@@ -60,26 +64,49 @@ async function getCaseStudies(): Promise<CaseStudy[]> {
         select: { toAxis: true },
       },
     },
-    orderBy: [{ claimEmergedAt: "asc" }],
   });
 
-  return rows.map((row) => {
+  const all = rows.map((row) => {
     const trajectoryId = row.externalId!.replace(/^trajectory:/, "");
     const featured = FEATURED_BY_ID[trajectoryId];
-    const finalAxis = row.statusHistory.at(-1)?.toAxis;
-
+    const axes = row.statusHistory.map((s) => s.toAxis);
     return {
       id: trajectoryId,
       claimText: row.text,
       hook: featured?.hook ?? row.text,
       eyebrow: featured?.eyebrow ?? "CASE STUDY",
-      finalAxis,
-      transitionCount: row.statusHistory.length,
+      finalAxis: axes.at(-1),
+      transitionCount: axes.length,
+      hasReversal: axes.includes("REVERSED"),
+      isFeatured: !!featured,
       emergedYear: row.claimEmergedAt
         ? new Date(row.claimEmergedAt).getUTCFullYear()
         : null,
     };
   });
+
+  // /case-studies is a CURATED landing page, not the full trajectory list
+  // (the footer links /settling-curve for all 5.5k). Showing every trajectory
+  // here would duplicate that page and bury the marquee arcs. Editorial bar:
+  //   1. hand-featured trajectories (real hooks) always in, in curation order;
+  //   2. then the richest arcs — reversals and multi-transition (≥3) stories;
+  //   3. capped, strongest first. (AUDIT-PRELAUNCH-2026-07-06 §1/§6.)
+  const featuredRank = (id: string) => {
+    const i = FEATURED_TRAJECTORIES.findIndex((ft) => ft.id === id);
+    return i === -1 ? Number.MAX_SAFE_INTEGER : i;
+  };
+  const MAX = 60;
+  const studies = all
+    .filter((s) => s.isFeatured || s.hasReversal || s.transitionCount >= 3)
+    .sort(
+      (a, b) =>
+        featuredRank(a.id) - featuredRank(b.id) || // curated first
+        Number(b.hasReversal) - Number(a.hasReversal) || // reversals next
+        b.transitionCount - a.transitionCount || // richest arcs
+        (a.emergedYear ?? 9999) - (b.emergedYear ?? 9999),
+    )
+    .slice(0, MAX);
+  return studies;
 }
 
 export default async function CaseStudiesPage() {

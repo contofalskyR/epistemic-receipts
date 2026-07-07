@@ -12,6 +12,13 @@ import {
 import SinceLastVisit from "./SinceLastVisit";
 import BookmarkedActivity from "./BookmarkedActivity";
 
+
+export const metadata = {
+  title: "What's New — Epistemic Receipts",
+  description:
+    'Recent activity across the Epistemic Receipts pipelines — the latest claims, threshold events, and status transitions added to the graph.',
+};
+
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 

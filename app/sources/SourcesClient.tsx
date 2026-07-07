@@ -251,6 +251,13 @@ function MethodologyPanel({ s, color }: { s: SourceEntry; color: typeof CATEGORY
   );
 }
 
+// Display-only: book-analysis tags carry a per-book cuid (book-analysis:cmp…)
+// that leaked raw onto the public page (AUDIT-PRELAUNCH-2026-07-06 §14).
+// The DB tag is unchanged; only the rendered label is genericized.
+function displayTag(tag: string): string {
+  return tag.startsWith("book-analysis:") ? "book-analysis" : tag;
+}
+
 function SourceCard({ s, color }: { s: SourceEntry; color: typeof CATEGORY_COLOR[string] }) {
   const [open, setOpen] = useState(false);
   const [hov, setHov] = useState(false);
@@ -292,7 +299,7 @@ function SourceCard({ s, color }: { s: SourceEntry; color: typeof CATEGORY_COLOR
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
           <span style={{ color: C.faint, fontSize: "0.72rem", fontFamily: "monospace" }}>
-            {s.ingestedBy}
+            {displayTag(s.ingestedBy)}
           </span>
           <span style={{ color: open ? color.text : C.faint, fontSize: "0.72rem", transition: "color 0.15s" }}>
             {open ? "▲ methodology" : "▼ methodology"}
@@ -545,7 +552,7 @@ export default function SourcesClient({ initialData }: { initialData: SourcesSum
                   background: C.panel, border: `1px solid ${C.panelEdge}`,
                   borderRadius: 6, padding: "0.2rem 0.5rem",
                 }}>
-                  {s.ingestedBy} ({s.count.toLocaleString()})
+                  {displayTag(s.ingestedBy)} ({s.count.toLocaleString()})
                 </span>
               ))}
             </div>

@@ -89,6 +89,7 @@ export type TopicTag = { id: string; name: string; slug: string; domain: string 
 export type StatusTransitionSummary = {
   fromAxis: string | null;
   toAxis: string;
+  community: string;
   occurredAt: string;
   datePrecision: string | null;
 };
@@ -112,7 +113,8 @@ export type ClaimDetail = {
   edges: EdgeDetail[];
   thresholdEvents: ThresholdEventDetail[];
   topics: { topic: TopicTag }[];
-  /** Latest settling-curve transition (take-1), used for meta descriptions. */
+  /** Settling-curve transitions, newest first ([0] = latest, used by meta
+   *  description + JSON-LD; the page timeline sorts ascending locally). */
   statusHistory: StatusTransitionSummary[];
 };
 
@@ -219,12 +221,15 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
   topics: {
     select: { topic: { select: { id: true, name: true, slug: true, domain: true } } },
   },
-  // Latest transition only — powers the meta description. Cheap: leftmost-
-  // prefix of the [claimId, community, occurredAt] index, take 1.
+  // Full transition list, newest first — [0] powers the meta description /
+  // JSON-LD; the page timeline renders all of them (it previously ignored
+  // statusHistory entirely, so pages said "no revisions" while the OG
+  // description cited a transition — AUDIT-PRELAUNCH-2026-07-06 §5).
+  // Still cheap: leftmost-prefix of the [claimId, community, occurredAt]
+  // index, and real-world claims carry at most a few dozen transitions.
   statusHistory: {
     orderBy: [{ occurredAt: "desc" }, { createdAt: "desc" }],
-    take: 1,
-    select: { fromAxis: true, toAxis: true, occurredAt: true, datePrecision: true },
+    select: { fromAxis: true, toAxis: true, community: true, occurredAt: true, datePrecision: true },
   },
 });
 
@@ -299,6 +304,7 @@ function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
     topics: claim.topics,
     statusHistory: claim.statusHistory.map(sh => ({
       ...sh,
+      community: String(sh.community),
       occurredAt: iso(sh.occurredAt),
     })),
   };

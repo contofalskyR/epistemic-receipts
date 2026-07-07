@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
-import { getClaimDetail, type ClaimDetail, type EdgeDetail } from "@/lib/claim-detail";
+import { getClaimDetail, type ClaimDetail, type EdgeDetail, type StatusTransitionSummary } from "@/lib/claim-detail";
 import { SITE_URL } from "@/lib/site";
 import { claimJsonLd, serializeJsonLd } from "@/lib/jsonld";
 import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
@@ -95,13 +95,54 @@ function TlLegendDot({ color, label }: { color: string; label: string }) {
   );
 }
 
+// One timeline node — a dated source, a settling-curve transition, or the
+// claim's emergence. The old version rendered ONLY dated sources, captioned
+// every one of them "Claim emerged", ignored ClaimStatusHistory entirely
+// (pages said "no revisions" while the OG description cited a transition),
+// and measured "dormant since emergence" from the LAST SOURCE date
+// (AUDIT-PRELAUNCH-2026-07-06 §5).
+type TlNode = {
+  kind: "emerged" | "source" | "transition";
+  date: Date;
+  edge?: EdgeDetail;
+  transition?: StatusTransitionSummary;
+};
+
+function fmtTlPrecision(d: Date, precision: string | null): string {
+  if (precision === "YEAR") return String(d.getUTCFullYear());
+  if (precision === "QUARTER" || precision === "MONTH") {
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "short", timeZone: "UTC" });
+  }
+  return fmtTlDate(d);
+}
+
 function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   const datedEdges = claim.edges.filter(e => e.source.publishedAt);
+  const transitions = [...claim.statusHistory].sort(
+    (a, b) => new Date(a.occurredAt).getTime() - new Date(b.occurredAt).getTime(),
+  );
 
-  if (datedEdges.length === 0) {
+  const events: TlNode[] = [
+    ...(claim.claimEmergedAt
+      ? [{ kind: "emerged" as const, date: new Date(claim.claimEmergedAt) }]
+      : []),
+    ...datedEdges.map(e => ({
+      kind: "source" as const,
+      date: new Date(e.source.publishedAt!),
+      edge: e,
+    })),
+    ...transitions.map(t => ({
+      kind: "transition" as const,
+      date: new Date(t.occurredAt),
+      transition: t,
+    })),
+  ].sort((a, b) => a.date.getTime() - b.date.getTime());
+
+  if (events.length === 0) {
     return (
       <p className="text-xs text-gray-600 italic">
-        No dated sources — dots will appear here once sources have publication dates.
+        No dated sources or transitions — dots will appear here once sources have
+        publication dates or the claim has recorded status transitions.
       </p>
     );
   }
@@ -109,7 +150,7 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   const today = new Date();
   const todayTime = today.getTime();
   const PAD_L = 3, PAD_R = 3, RANGE = 94;
-  const startTime = Math.min(...datedEdges.map(e => new Date(e.source.publishedAt!).getTime()));
+  const startTime = Math.min(...events.map(e => e.date.getTime()));
   const totalSpan = Math.max(todayTime - startTime, 1);
 
   function at(d: Date) {
@@ -118,9 +159,7 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
 
   const todayPct = at(today);
 
-  const nodes = datedEdges
-    .map(e => ({ edge: e, date: new Date(e.source.publishedAt!), pct: at(new Date(e.source.publishedAt!)) }))
-    .sort((a, b) => a.date.getTime() - b.date.getTime());
+  const nodes = events.map(e => ({ ...e, pct: at(e.date) }));
 
   const yOff = nodes.map((n, i) => {
     for (let j = 0; j < i; j++) {
@@ -131,6 +170,8 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
 
   const firstPct = nodes[0].pct;
   const lastNode = nodes[nodes.length - 1];
+  // Time since the last recorded activity of ANY kind (source or transition) —
+  // not "since emergence", which the old label falsely claimed.
   const dormantYrs = (todayTime - lastNode.date.getTime()) / (365.25 * 86400000);
 
   const yearTicks: number[] = [];
@@ -151,13 +192,15 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   }
 
   const BLUE = "#60a5fa", AMB = "#f0a000", MUT = "#888898";
+  const SLATE = "#94a3b8", VIOLET = "#a78bfa";
   const TRACK_H = 170, AY = 106;
 
   const dormantChipLeft = lastNode.pct + (todayPct - lastNode.pct) / 2;
   const dormantLabel = dormantYrs >= 1
-    ? `${(Math.round(dormantYrs * 10) / 10).toFixed(1)} yrs · unreviewed since emergence`
-    : `${Math.round(dormantYrs * 12)} mo · unreviewed since emergence`;
+    ? `${(Math.round(dormantYrs * 10) / 10).toFixed(1)} yrs · no new activity`
+    : `${Math.round(dormantYrs * 12)} mo · no new activity`;
   const showDormant = dormantYrs > 0.3 && (todayPct - lastNode.pct) > 4;
+  const hasTransitions = transitions.length > 0;
 
   return (
     <div style={{ background: "#0e0e1c", border: "1px solid #1e1e38", borderRadius: 12, position: "relative", padding: "1.4rem 1.75rem 3.25rem", overflow: "hidden" }}>
@@ -168,11 +211,13 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
       {/* legend — top-right */}
       <div style={{ display: "flex", alignItems: "center", gap: 16,
         position: "absolute", top: "1.25rem", right: "1.5rem", zIndex: 2, flexWrap: "wrap" }}>
-        <TlLegendDot color={BLUE} label="Emerged" />
+        {claim.claimEmergedAt && <TlLegendDot color={BLUE} label="Emerged" />}
+        <TlLegendDot color={SLATE} label="Source" />
+        {hasTransitions && <TlLegendDot color={VIOLET} label="Transition" />}
         <TlLegendDot color={AMB} label="Today" />
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
           <div style={{ width: 24, height: 0, borderTop: `2px dashed ${MUT}`, opacity: 0.5 }} />
-          <span style={{ fontSize: 11, color: MUT }}>Dormant · no revisions</span>
+          <span style={{ fontSize: 11, color: MUT }}>Dormant</span>
         </div>
       </div>
 
@@ -251,32 +296,53 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
             whiteSpace: "nowrap", lineHeight: 1.3 }}>{fmtTlDate(today)}</div>
         </div>
 
-        {/* emerged nodes */}
-        {nodes.map(({ edge, date, pct }, idx) => {
+        {/* event nodes — emergence, dated sources, status transitions */}
+        {nodes.map((node, idx) => {
           const nodeAY = AY + yOff[idx];
-          const tag = voteTag(edge);
+          const tag = node.kind === "source" && node.edge ? voteTag(node.edge) : null;
+          const color =
+            node.kind === "emerged" ? BLUE :
+            node.kind === "transition" ? VIOLET : SLATE;
+          const caption =
+            node.kind === "emerged" ? "Claim emerged" :
+            node.kind === "transition"
+              ? `${node.transition!.fromAxis ? `${node.transition!.fromAxis} → ` : "→ "}${node.transition!.toAxis}`
+              : "Source published";
+          const dateLabel =
+            node.kind === "emerged"
+              ? fmtTlPrecision(node.date, claim.claimEmergedPrecision)
+              : node.kind === "transition"
+                ? fmtTlPrecision(node.date, node.transition!.datePrecision)
+                : fmtTlDate(node.date);
+          const key =
+            node.kind === "source" ? `s-${node.edge!.id}` :
+            node.kind === "transition" ? `t-${node.transition!.occurredAt}-${node.transition!.toAxis}` :
+            "emerged";
+          const rgb =
+            node.kind === "emerged" ? "96,165,250" :
+            node.kind === "transition" ? "167,139,250" : "148,163,184";
           return (
-            <div key={edge.id} style={{ position: "absolute", left: `${pct}%`, top: nodeAY,
+            <div key={key} style={{ position: "absolute", left: `${node.pct}%`, top: nodeAY,
               width: 0, height: 0, zIndex: 3 }}>
               {/* halo */}
               <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
                 width: 54, height: 54, borderRadius: "50%", pointerEvents: "none",
-                background: "radial-gradient(circle, rgba(96,165,250,0.2) 0%, transparent 68%)" }} />
+                background: `radial-gradient(circle, rgba(${rgb},0.2) 0%, transparent 68%)` }} />
               {/* ring */}
               <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
                 width: 22, height: 22, borderRadius: "50%",
-                border: `1.5px solid ${BLUE}`, background: "rgba(96,165,250,0.05)" }} />
+                border: `1.5px solid ${color}`, background: `rgba(${rgb},0.05)` }} />
               {/* core */}
               <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
-                width: 10, height: 10, borderRadius: "50%", background: BLUE, zIndex: 1 }} />
+                width: 10, height: 10, borderRadius: "50%", background: color, zIndex: 1 }} />
               {/* caption above */}
               <div style={{ position: "absolute", bottom: "calc(50% + 15px)",
                 transform: "translateX(-50%)", display: "flex", flexDirection: "column",
                 alignItems: "center", paddingBottom: 4, pointerEvents: "none", zIndex: 2 }}>
-                <span style={{ fontSize: 10, color: MUT,
-                  whiteSpace: "nowrap", lineHeight: 1.4 }}>Claim emerged</span>
+                <span style={{ fontSize: 10, color: node.kind === "transition" ? VIOLET : MUT,
+                  whiteSpace: "nowrap", lineHeight: 1.4 }}>{caption}</span>
                 <span style={{ fontSize: 10, color: "#b0b0c8", fontWeight: 500,
-                  whiteSpace: "nowrap", lineHeight: 1.4 }}>{fmtTlDate(date)}</span>
+                  whiteSpace: "nowrap", lineHeight: 1.4 }}>{dateLabel}</span>
                 {tag && (
                   <span style={{ fontSize: 9, color: tag.color, whiteSpace: "nowrap",
                     lineHeight: 1.4, marginTop: 1, background: `${tag.color}1a`,

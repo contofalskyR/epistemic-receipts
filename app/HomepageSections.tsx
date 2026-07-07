@@ -35,8 +35,12 @@ const DOMAINS: Domain[] = [
     name: "Climate & Environment",
     emoji: "🌡️",
     href: "/search?q=climate",
-    ingestedByKeys: ["world_bank_v1", "ipcc_v1", "who_gho_v1"],
-    sourceTags: ["World Bank", "WHO GHO", "IPCC"],
+    // NB: the pipeline tag is "worldbank_v1" (no underscore) — the old
+    // "world_bank_v1" key silently counted 0, and "ipcc_v1" doesn't exist
+    // as a pipeline, so the tile also displayed an IPCC chip with no IPCC
+    // data behind it (AUDIT-PRELAUNCH-2026-07-06).
+    ingestedByKeys: ["worldbank_v1", "who_gho_v1"],
+    sourceTags: ["World Bank", "WHO GHO"],
     topBorder: "border-t-emerald-500",
     hoverBorder: "hover:border-emerald-400",
   },
@@ -44,16 +48,20 @@ const DOMAINS: Domain[] = [
     name: "US Congress",
     emoji: "🏛️",
     href: "/congress-trades",
-    ingestedByKeys: ["congress_v1", "voteview_v1", "congress_bills_v1"],
+    // congress_stock_act_v1 backs the "STOCK Act" chip; the tracker pipeline
+    // is Congress.gov data like congress_v1.
+    ingestedByKeys: ["congress_v1", "voteview_v1", "congress_bills_v1", "congress_bills_tracker_v1", "congress_stock_act_v1"],
     sourceTags: ["Congress.gov", "Voteview", "STOCK Act"],
     topBorder: "border-t-blue-500",
     hoverBorder: "hover:border-blue-400",
   },
   {
-    name: "Neuroscience",
-    emoji: "🧠",
-    href: "/neuroscience",
-    ingestedByKeys: ["openalex_v1"],
+    name: "Academic Literature",
+    emoji: "📚",
+    href: "/fields",
+    // Was mislabeled "Neuroscience": openalex_v1 is the whole cross-field
+    // OpenAlex corpus, not a neuroscience set (AUDIT-PRELAUNCH-2026-07-06 §9).
+    ingestedByKeys: ["openalex_v1", "nih_reporter_v1"],
     sourceTags: ["OpenAlex", "NIH RePORTER"],
     topBorder: "border-t-purple-500",
     hoverBorder: "hover:border-purple-400",
@@ -84,7 +92,7 @@ const DOMAINS: Domain[] = [
     name: "Vaccines & Medicine",
     emoji: "💉",
     href: "/medicine",
-    ingestedByKeys: ["openfda_labels_v1", "drugsatfda_v1", "faers_adverse_v1", "faers_normalized_drugs_v1"],
+    ingestedByKeys: ["openfda_labels_v1", "drugsatfda_v1", "faers_normalized_drugs_v1"],
     sourceTags: ["openFDA", "Drugs@FDA", "FAERS"],
     topBorder: "border-t-sky-500",
     hoverBorder: "hover:border-sky-400",
@@ -120,7 +128,7 @@ const DOMAINS: Domain[] = [
     name: "Economics",
     emoji: "📊",
     href: "/economics",
-    ingestedByKeys: ["world_bank_v1", "fred_v1", "openfec_v1", "openfec_ie_v1"],
+    ingestedByKeys: ["worldbank_v1", "fred_v1", "openfec_v1", "openfec_ie_v1"],
     sourceTags: ["World Bank", "FRED", "OpenFEC"],
     topBorder: "border-t-yellow-500",
     hoverBorder: "hover:border-yellow-400",
@@ -134,15 +142,20 @@ const DOMAINS: Domain[] = [
     topBorder: "border-t-rose-500",
     hoverBorder: "hover:border-rose-400",
   },
-  {
-    name: "Biology & Physiology",
-    emoji: "🧬",
-    href: "/biology",
-    ingestedByKeys: ["genbank_v1", "ncbi_gene_v1", "iucn_v1"],
-    sourceTags: ["GenBank", "NCBI Gene", "IUCN"],
-    topBorder: "border-t-violet-500",
-    hoverBorder: "hover:border-violet-400",
-  },
+  // "Biology & Physiology" tile removed for launch: genbank_v1 has 99 claims,
+  // ncbi_gene_v1 is dry-run pending, and iucn_v1 doesn't exist yet — a
+  // 99-claim tile beside 300k-claim tiles read as a bug to first-time
+  // visitors (AUDIT-PRELAUNCH-2026-07-06 §9). Re-add once the life-science
+  // pipelines land:
+  // {
+  //   name: "Biology & Physiology",
+  //   emoji: "🧬",
+  //   href: "/biology",
+  //   ingestedByKeys: ["genbank_v1", "ncbi_gene_v1", "iucn_v1"],
+  //   sourceTags: ["GenBank", "NCBI Gene", "IUCN"],
+  //   topBorder: "border-t-violet-500",
+  //   hoverBorder: "hover:border-violet-400",
+  // },
 ];
 
 function truncate(text: string, n: number): string {

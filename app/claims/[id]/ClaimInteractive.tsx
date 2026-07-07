@@ -317,7 +317,7 @@ function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: bo
                   <span className="text-white font-mono font-medium shrink-0">
                     {r.priorScore !== null ? `${r.priorScore} → ${r.newScore}` : `Initial: ${r.newScore}`}/100
                   </span>
-                  <span className="text-gray-600 shrink-0">{new Date(r.changedAt).toLocaleDateString()}</span>
+                  <span className="text-gray-600 shrink-0">{new Date(r.changedAt).toLocaleDateString("en-US")}</span>
                   {r.reason && <span className="text-gray-400 leading-snug">{r.reason}</span>}
                 </div>
               ))}
@@ -333,7 +333,7 @@ function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: bo
                     <div key={i} className="space-y-1.5">
                       <div className="flex items-center gap-3 text-xs">
                         <span className="text-gray-400">{v.chamber}</span>
-                        {v.voteDate && <span className="text-gray-600">{new Date(v.voteDate).toLocaleDateString()}</span>}
+                        {v.voteDate && <span className="text-gray-600">{new Date(v.voteDate).toLocaleDateString("en-US")}</span>}
                         {v.passageType && <span className="text-gray-600">{v.passageType}</span>}
                       </div>
                       <div className="flex items-center gap-2 text-xs font-mono">

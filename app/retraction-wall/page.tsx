@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { cleanDisplayText } from "@/lib/text";
 
 export const revalidate = 3600;
 
@@ -70,12 +71,14 @@ function fmtDate(d: Date | null): string {
 }
 
 function titleFromMetaOrText(meta: RetractionMeta, text: string): string {
+  // cleanDisplayText: CrossRef titles arrive entity-encoded ("Science &amp;
+  // Justice" was double-escaping on these cards) and can carry markup tags.
   const t = (meta?.title || "").trim();
-  if (t) return t;
+  if (t) return cleanDisplayText(t);
   // Fall back to extracting between quotes in claim text
   const m = text.match(/"([^"]+)"/);
-  if (m) return m[1];
-  return text.slice(0, 140);
+  if (m) return cleanDisplayText(m[1]);
+  return cleanDisplayText(text.slice(0, 140));
 }
 
 async function getRecentRetractions(limit: number): Promise<RetractionRow[]> {

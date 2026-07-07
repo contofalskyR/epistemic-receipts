@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { cleanDisplayText } from "@/lib/text";
 
 type Paper = {
   id: string;
@@ -110,7 +111,8 @@ function PaperCard({ paper }: { paper: Paper }) {
               color: S.text,
             }}
           >
-            {paper.title}
+            {/* cleanDisplayText: CrossRef titles arrive entity-encoded / tagged */}
+            {cleanDisplayText(paper.title)}
           </div>
           {paper.firstAuthor && (
             <div style={{ fontSize: "0.75rem", color: S.muted }}>{paper.firstAuthor} et al.</div>

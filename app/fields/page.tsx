@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+
+export const metadata = {
+  title: 'Topic Taxonomies — Epistemic Receipts',
+  description:
+    "Browse the claim graph by academic field — curated taxonomies mapping each discipline's major topics.",
+};
+
 type FieldEntry = {
   slug: string;
   name: string;

@@ -395,7 +395,8 @@ export default function SecurityStudiesPage() {
           Cross-references: entries marked <span className="font-mono">xref</span> link to{" "}
           <Link href="/governance" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">governance</Link>,{" "}
           <Link href="/history" className="text-amber-300 underline underline-offset-2 hover:text-amber-200">history</Link>,{" "}
-          <Link href="/political-science" className="text-violet-300 underline underline-offset-2 hover:text-violet-200">political science</Link>,{" "}
+          {/* /political-science has no page yet — plain text until the taxonomy is built */}
+          <span className="text-violet-300">political science</span>,{" "}
           or other sibling pages rather than duplicating.
         </p>
         <p className="mt-2 text-xs font-mono text-gray-600">
