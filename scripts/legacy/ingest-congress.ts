@@ -1,7 +1,3 @@
-// DEPRECATED (spec/10): migrated to pipelines/congress_v1.ts + lib/ingest harness.
-// Use: npx tsx scripts/run-pipeline.ts --tag congress_v1 [--full | --dry-run]
-// This file preserved for audit trail. Legacy copy: scripts/legacy/ingest-congress.ts
-//
 // Pipeline 15 — Congress.gov Enacted Laws (congress_v1)
 // Dataset: Congress.gov API (api.congress.gov/v3) — requires CONGRESS_API_KEY.
 //          Falls back to DEMO_KEY (30 req/hr) if key is absent; dry-run only.

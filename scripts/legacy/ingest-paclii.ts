@@ -1,7 +1,3 @@
-// DEPRECATED (spec/10): migrated to pipelines/paclii_legislation_v1.ts + lib/ingest harness.
-// Use: npx tsx scripts/run-pipeline.ts --tag paclii_legislation_v1 [--full | --dry-run]
-// This file preserved for audit trail. Legacy copy: scripts/legacy/ingest-paclii.ts
-//
 // Pipeline 87 — PacLII Pacific Island Legislation (paclii_legislation_v1)
 // Dataset: Pacific Islands Legal Information Institute (www.paclii.org)
 // Countries: Fiji, Solomon Islands, Vanuatu, Tonga, Samoa, Kiribati, Tuvalu, Papua New Guinea

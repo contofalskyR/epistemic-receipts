@@ -1,7 +1,3 @@
-// DEPRECATED (spec/10): migrated to pipelines/doj_fara_v1.ts + lib/ingest harness.
-// Use: npx tsx scripts/run-pipeline.ts --tag doj_fara_v1 [--full | --dry-run]
-// This file preserved for audit trail. Legacy copy: scripts/legacy/ingest-doj-fara.ts
-//
 // DOJ FARA Foreign Agent Registrations ingester (doj_fara_v1)
 // Source: efile.fara.gov bulk CSV (FARA_All_ForeignPrincipals.csv.zip)
 // Scope: Active foreign-agent registrations from the DOJ FARA e-filing system.
