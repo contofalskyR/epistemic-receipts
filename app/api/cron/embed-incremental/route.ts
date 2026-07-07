@@ -33,7 +33,7 @@ const BATCH_SIZE = 256;  // smaller than backfill — Vercel function memory bud
 const LOOK_BACK_HOURS = 25;  // overlap window to catch stragglers
 
 export async function GET(req: Request) {
-  const cronSecret = process.env.CRON_SECRETE;
+  const cronSecret = process.env.CRON_SECRET;
   if (!cronSecret) {
     log.warn("CRON_SECRET not set — rejecting request");
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

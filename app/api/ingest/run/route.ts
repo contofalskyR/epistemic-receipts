@@ -13,7 +13,7 @@ const PIPELINE_REGISTRY: Record<string, string> = {
 const MAX_TAG_LENGTH = 64
 
 export async function POST(request: Request) {
-  const cronSecret = process.env.CRON_SECRETE
+  const cronSecret = process.env.CRON_SECRET
   const authHeader = request.headers.get('authorization')
   if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

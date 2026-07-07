@@ -37,7 +37,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   }
 
   // CRON_SECRET check
-  const cronSecret = process.env.CRON_SECRETE;
+  const cronSecret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
   if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     log.warn("unauthorized", { path: "/api/cron/reconcile-pipelines" });
