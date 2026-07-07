@@ -169,3 +169,9 @@ The site launched as **public read-only**. A full audit + hardening pass was app
 ## Env vars (Vercel)
 `ADMIN_TOKEN` (admin auth — required in production), `CRON_SECRET` (crons fail closed without it), `BOOK_UPLOAD_PASSPHRASE` (second factor on book routes), `SITE_PASSWORD` (only to make the site private again), `ALLOW_EDITS` (temporary editing sessions only).
 <!-- END:security-model -->
+
+<!-- BEGIN:build-specs -->
+# Build specs (scaling work)
+
+`SCALING.md` is the phased infrastructure/revenue plan. `specs/` contains execution-ready handoff specs for each build item (specs/README.md has the execution protocol, dependency order, and per-spec model guidance). If you are assigned scaling work: read specs/README.md first, work one spec per session on a `spec/<number>` branch, and never mark a spec done unless its Acceptance criteria all pass with verification output pasted in the PR.
+<!-- END:build-specs -->
