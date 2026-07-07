@@ -128,14 +128,14 @@ const LATERAL_JOINS = `
     LIMIT 1
   ) t ON true`;
 
-// ── tsvector search (top-100 candidates) ─────────────────────────────────────
+// ── SQL builders (exported for unit testing) ─────────────────────────────────
 
-async function tsvectorSearch(
+export function buildTsvectorSql(
   query: string,
   filters: SearchFilters,
   limit: number,
   offset: number,
-): Promise<ClaimRow[]> {
+): { sql: string; params: unknown[] } {
   const conditions: string[] = [`c."deleted" = false`];
   const params: unknown[] = [query];
   let paramIdx = 2;
@@ -161,8 +161,7 @@ async function tsvectorSearch(
 
   const where = conditions.join(" AND ");
 
-  return prisma.$queryRawUnsafe<ClaimRow[]>(
-    `SELECT
+  const sql = `SELECT
        c."id", c."text", c."currentStatus", c."epistemicAxis",
        c."claimType", c."ingestedBy", c."verificationStatus", c."epistemicStatus",
        c."createdAt", c."claimEmergedAt", c."claimEmergedPrecision", c."externalId",
@@ -172,22 +171,17 @@ async function tsvectorSearch(
      ${LATERAL_JOINS}
      WHERE ${where}
      ORDER BY rank DESC, c."createdAt" DESC
-     LIMIT $${limitParam - 2} OFFSET $${offsetParam - 2}`,
-    ...params,
-  );
+     LIMIT $${limitParam} OFFSET $${offsetParam}`;
+
+  return { sql, params };
 }
 
-// ── vector search (top-100 candidates via ClaimEmbedding) ────────────────────
-
-async function vectorSearch(
-  query: string,
+export function buildVectorSql(
+  vecStr: string,
   filters: SearchFilters,
   limit: number,
   offset: number,
-): Promise<ClaimRow[]> {
-  const vec = await embedText3Small(query);
-  const vecStr = `[${vec.join(",")}]`;
-
+): { sql: string; params: unknown[] } {
   const conditions: string[] = [
     `c."deleted" = false`,
     `ce."embedding" IS NOT NULL`,
@@ -212,8 +206,7 @@ async function vectorSearch(
 
   const where = conditions.join(" AND ");
 
-  return prisma.$queryRawUnsafe<ClaimRow[]>(
-    `SELECT
+  const sql = `SELECT
        c."id", c."text", c."currentStatus", c."epistemicAxis",
        c."claimType", c."ingestedBy", c."verificationStatus", c."epistemicStatus",
        c."createdAt", c."claimEmergedAt", c."claimEmergedPrecision", c."externalId",
@@ -224,9 +217,36 @@ async function vectorSearch(
      ${LATERAL_JOINS}
      WHERE ${where}
      ORDER BY ce."embedding" <=> $1::vector
-     LIMIT $${limitParam - 2} OFFSET $${offsetParam - 2}`,
-    ...params,
-  );
+     LIMIT $${limitParam} OFFSET $${offsetParam}`;
+
+  return { sql, params };
+}
+
+// ── tsvector search (top-100 candidates) ─────────────────────────────────────
+
+async function tsvectorSearch(
+  query: string,
+  filters: SearchFilters,
+  limit: number,
+  offset: number,
+): Promise<ClaimRow[]> {
+  const { sql, params } = buildTsvectorSql(query, filters, limit, offset);
+  return prisma.$queryRawUnsafe<ClaimRow[]>(sql, ...params);
+}
+
+// ── vector search (top-100 candidates via ClaimEmbedding) ────────────────────
+
+async function vectorSearch(
+  query: string,
+  filters: SearchFilters,
+  limit: number,
+  offset: number,
+): Promise<ClaimRow[]> {
+  const vec = await embedText3Small(query);
+  const vecStr = `[${vec.join(",")}]`;
+
+  const { sql, params } = buildVectorSql(vecStr, filters, limit, offset);
+  return prisma.$queryRawUnsafe<ClaimRow[]>(sql, ...params);
 }
 
 // ── Hybrid search ─────────────────────────────────────────────────────────────
