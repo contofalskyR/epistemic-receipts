@@ -96,6 +96,10 @@ npx dotenv-cli -e .env.local -- npx tsx scripts/fix-audit-findings.ts --fix rech
 npx dotenv-cli -e .env.local -- npx tsx scripts/fix-audit-findings.ts --fix rechain --execute --allow-row-delete --direct
 ```
 
+## Automation — `scripts/loop-event-pipelines.sh` (Loop 7)
+
+Once each pipeline has had its one human pilot, the loop makes curve creation fully automatic: weekly pass (SLEEP_HOURS=168) re-runs scotus + exoplanets with --execute (idempotent — unchanged feeds no-op, feed updates land as new curves), audits the touched pipelines against the DB, Telegram-pings on inserts, and alerts RED if any audit fails. NZ joins the rotation via EVENT_LOOP_INCLUDE_NZ=1 after its phase-apply pilot. Install under launchd (KeepAlive=true) on the loop machine like the other loops.
+
 ## Constraints (house rules apply; additions)
 
 - Event pipelines write per-row through the contract — never raw INSERTs. Bulk same-shape completions stay in `bulk-promote-corpus.ts`.
