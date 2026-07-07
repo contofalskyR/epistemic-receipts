@@ -53,17 +53,54 @@ jobs:
         run: npx prisma validate
 
       - name: Check migration drift
-        # `migrate diff --from-migrations` replays the migrations into a shadow
-        # database, so --shadow-database-url is REQUIRED — without it the step
-        # can never pass. Use a scratch database on the CI postgres service.
+        # Redesigned 2026-07-07: fails only on NEW drift. The incident left
+        # real, accepted drift (ApiKey columns, Org unique, stale embedding
+        # columns) plus objects Prisma's DSL can't express (HNSW/expression
+        # indexes) — inventoried in .github/known-migration-drift.txt. This
+        # step diffs migrations→schema, qualifies each summary line with its
+        # table, and compares against that allowlist:
+        #   line not in allowlist  → NEW drift → fail (fix schema/migrations,
+        #                            or consciously extend the allowlist)
+        #   allowlist line missing → resolved → informational (prune the file)
+        # `--from-migrations` replays into a shadow DB, so --shadow-database-url
+        # is REQUIRED. If Prisma's summary wording changes on upgrade, this
+        # fails loudly with the delta — update the allowlist wording then.
         run: |
+          set -euo pipefail
           PGPASSWORD=postgres psql -h localhost -U postgres -d postgres \
             -c "CREATE DATABASE epistemic_shadow;"
           npx prisma migrate diff \
             --from-migrations prisma/migrations \
             --to-schema-datamodel prisma/schema.prisma \
             --shadow-database-url "postgresql://postgres:postgres@localhost:5432/epistemic_shadow" \
-            --exit-code
+            > drift-raw.txt
+          cat drift-raw.txt
+
+          # Qualify each [+]/[-]/[*] summary line with its table name.
+          awk '
+            /^\[\*\] Changed the `/ { t=$0; gsub(/.*`/,"",t); table=$0; gsub(/^\[\*\] Changed the `/,"",table); gsub(/` table.*/,"",table); next }
+            /^[[:space:]]*\[[-+*]\]/ { line=$0; sub(/^[[:space:]]+/,"",line); print (table=="" ? "(top)" : table) " :: " line }
+          ' drift-raw.txt | sort -u > drift-current.txt
+
+          grep -v '^#' .github/known-migration-drift.txt | grep -v '^[[:space:]]*$' | sort -u > drift-known.txt
+
+          NEW=$(comm -23 drift-current.txt drift-known.txt || true)
+          RESOLVED=$(comm -13 drift-current.txt drift-known.txt || true)
+
+          if [ -n "$RESOLVED" ]; then
+            echo "::notice::Resolved drift (prune .github/known-migration-drift.txt):"
+            echo "$RESOLVED"
+          fi
+          if [ -n "$NEW" ]; then
+            echo "::error::NEW migration drift (not in .github/known-migration-drift.txt):"
+            echo "$NEW"
+            exit 1
+          fi
+          if [ ! -s drift-current.txt ]; then
+            echo "No drift at all — delete .github/known-migration-drift.txt and restore --exit-code."
+          else
+            echo "Only known drift present ($(wc -l < drift-current.txt | tr -d ' ') lines) — OK."
+          fi
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}
           DIRECT_URL: ${{ env.DIRECT_URL }}

@@ -1,0 +1,30 @@
+# Known migration drift — accepted 2026-07-07 (incident stabilization).
+# Format: <Table> :: <prisma migrate diff summary line>, one per line.
+# CI's "Check migration drift" step fails only on drift NOT listed here.
+# When a catch-up migration resolves an item, DELETE its lines — the step
+# reports resolved lines so this file shrinks honestly. Do not add new lines
+# without understanding why the schema and migrations disagree.
+#
+# Inventory (see AGENTS.md / incident notes 2026-07-06):
+# - ApiKey name/prefix/expiresAt: columns exist in schema, never migrated
+# - Org stripeCustomerId unique: same
+# - Claim/BookClaim embedding: stale legacy MiniLM columns, dropped from schema
+# - HNSW indexes on vector columns + expression indexes (text, searchVector):
+#   real objects Prisma's DSL cannot express — permanent residents here
+# - updatedAt/searchVector defaults: Prisma @updatedAt / generated-column
+#   semantics live outside migration SQL
+ApiKey :: [+] Added column `expiresAt`
+ApiKey :: [+] Added column `name`
+ApiKey :: [+] Added column `prefix`
+BookClaim :: [-] Removed column `embedding`
+Claim :: [-] Removed index on columns (embedding)
+Claim :: [-] Removed index on columns (text)
+Claim :: [-] Removed index on columns (searchVector)
+Claim :: [-] Removed column `embedding`
+Claim :: [*] Altered column `searchVector` (default changed from `Some(DbGenerated(Some("to_tsvector('english'::regconfig, COALESCE(text, ''::text))")))` to `None`)
+Claim :: [*] Altered column `updatedAt` (default changed from `Some(Now)` to `None`)
+ClaimEmbedding :: [-] Removed index on columns (embedding)
+Collection :: [*] Altered column `updatedAt` (default changed from `Some(Now)` to `None`)
+Org :: [*] Altered column `updatedAt` (default changed from `Some(Now)` to `None`)
+Org :: [+] Added unique index on columns (stripeCustomerId)
+TrajectorySearchDoc :: [-] Removed index on columns (embedding)
