@@ -1,0 +1,74 @@
+name: API Contract Tests
+
+on:
+  push:
+    branches: [main, "spec/*"]
+    paths:
+      - "public/api/openapi.yaml"
+      - "app/api/v1/**"
+      - "lib/v1/**"
+      - "tests/unit/v1/**"
+  pull_request:
+    paths:
+      - "public/api/openapi.yaml"
+      - "app/api/v1/**"
+      - "lib/v1/**"
+      - "tests/unit/v1/**"
+
+jobs:
+  spectral-lint:
+    name: Spectral OpenAPI Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint OpenAPI spec
+        run: npx @stoplight/spectral-cli lint public/api/openapi.yaml --ruleset .spectral.yaml
+
+  unit-tests:
+    name: Unit Tests (v1)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run v1 unit tests
+        run: npx vitest run --config vitest.config.ts tests/unit/v1/
+
+  typecheck:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
