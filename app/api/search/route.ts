@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { COUNTRY_TO_PIPELINES, PIPELINE_COUNTRY_NAME } from "@/lib/globe-pipeline-country";
+import { searchClaims, countClaimsTs, type SearchMode } from "@/lib/search";
 
 const MIN_QUERY = 3;
 const DEFAULT_LIMIT = 25;
 const MAX_LIMIT = 100;
+
+const VALID_SEARCH_MODES = ["tsvector", "vector", "hybrid"] as const;
 
 type ClaimHit = {
   id: string;
@@ -47,6 +50,11 @@ export async function GET(req: NextRequest) {
   const axisRaw = (url.searchParams.get("axis") ?? "").trim().toUpperCase();
   const axisFilter = (VALID_AXES as readonly string[]).includes(axisRaw) ? axisRaw : null;
 
+  const searchModeRaw = (url.searchParams.get("search_mode") ?? "").toLowerCase();
+  const searchMode: SearchMode = (VALID_SEARCH_MODES as readonly string[]).includes(searchModeRaw)
+    ? (searchModeRaw as SearchMode)
+    : "hybrid";
+
   const limit = Math.max(
     1,
     Math.min(
@@ -61,6 +69,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       query: qRaw,
       type,
+      searchMode,
       limit,
       offset,
       country: countryRaw || null,
@@ -75,115 +84,38 @@ export async function GET(req: NextRequest) {
   const wantClaims = type === "all" || type === "claims";
   const wantSources = type === "all" || type === "sources";
 
-  // ── Claims: use tsvector ranking with trgm fallback ──
+  // ── Claims: hybrid search (tsvector + vector RRF) ──────────────────────────
 
   let claims: ClaimHit[] = [];
   let claimsCount = 0;
 
   if (wantClaims) {
     if (qRaw.length >= MIN_QUERY) {
-      // Build WHERE fragments
-      const conditions: string[] = [`c."deleted" = false`];
-      const params: unknown[] = [];
-      let paramIdx = 1;
+      const filters = {
+        axis: axisFilter,
+        pipelines: countryActive ? countryPipelines : undefined,
+      };
 
-      // Full-text tsquery condition (primary ranking), OR trgm ILIKE fallback
-      params.push(qRaw);
-      const qParamNum = paramIdx++;
-      conditions.push(
-        `(c."searchVector" @@ websearch_to_tsquery('english', $${qParamNum}) OR c."text" ILIKE '%' || $${qParamNum} || '%')`
-      );
+      // For count, always use tsvector (exact) — vector count is approximate.
+      const [countResult, claimRows] = await Promise.all([
+        countClaimsTs(qRaw, filters),
+        searchClaims(qRaw, searchMode, filters, limit, offset),
+      ]);
 
-      if (countryActive) {
-        // Build IN list for country pipelines
-        const placeholders = countryPipelines.map(() => `$${paramIdx++}`);
-        params.push(...countryPipelines);
-        conditions.push(`c."ingestedBy" IN (${placeholders.join(", ")})`);
-      }
-
-      if (axisFilter) {
-        params.push(axisFilter);
-        conditions.push(`c."epistemicAxis" = $${paramIdx++}`);
-      }
-
-      const whereClause = conditions.join(" AND ");
-
-      // Count
-      const countResult = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
-        `SELECT count(*)::bigint AS count FROM "Claim" c WHERE ${whereClause}`,
-        ...params,
-      );
-      claimsCount = Number(countResult[0].count);
-
-      // Ranked results: ts_rank for FTS matches, 0 for trgm-only matches
-      params.push(limit, offset);
-      const limitParam = paramIdx++;
-      const offsetParam = paramIdx++;
-
-      const claimRows = await prisma.$queryRawUnsafe<Array<{
-        id: string;
-        text: string;
-        currentStatus: string;
-        epistemicAxis: string | null;
-        claimType: string;
-        ingestedBy: string;
-        verificationStatus: string | null;
-        epistemicStatus: string | null;
-        createdAt: Date;
-        claimEmergedAt: Date | null;
-        sourceName: string | null;
-        topicLabel: string | null;
-        rank: number;
-      }>>(
-        `SELECT
-           c."id",
-           c."text",
-           c."currentStatus",
-           c."epistemicAxis",
-           c."claimType",
-           c."ingestedBy",
-           c."verificationStatus",
-           c."epistemicStatus",
-           c."createdAt",
-           c."claimEmergedAt",
-           s."name" AS "sourceName",
-           t."name" AS "topicLabel",
-           ts_rank(c."searchVector", websearch_to_tsquery('english', $1)) AS rank
-         FROM "Claim" c
-         LEFT JOIN LATERAL (
-           SELECT s2."name"
-           FROM "Edge" e
-           JOIN "Source" s2 ON s2."id" = e."sourceId"
-           WHERE e."claimId" = c."id" AND e."deleted" = false
-           ORDER BY e."createdAt" ASC
-           LIMIT 1
-         ) s ON true
-         LEFT JOIN LATERAL (
-           SELECT t2."name"
-           FROM "ClaimTopic" ct
-           JOIN "Topic" t2 ON t2."id" = ct."topicId"
-           WHERE ct."claimId" = c."id"
-           LIMIT 1
-         ) t ON true
-         WHERE ${whereClause}
-         ORDER BY rank DESC, c."createdAt" DESC
-         LIMIT $${limitParam} OFFSET $${offsetParam}`,
-        ...params,
-      );
-
+      claimsCount = countResult;
       claims = claimRows.map(c => ({
         id: c.id,
         text: c.text,
         currentStatus: c.currentStatus,
-        epistemicAxis: c.epistemicAxis ?? null,
+        epistemicAxis: c.epistemicAxis,
         claimType: c.claimType,
         ingestedBy: c.ingestedBy,
         verificationStatus: c.verificationStatus,
-        epistemicStatus: c.epistemicStatus ?? null,
-        createdAt: c.createdAt instanceof Date ? c.createdAt.toISOString() : String(c.createdAt),
-        claimEmergedAt: c.claimEmergedAt instanceof Date ? c.claimEmergedAt.toISOString() : (c.claimEmergedAt ?? null),
-        sourceName: c.sourceName ?? null,
-        topicLabel: c.topicLabel ?? null,
+        epistemicStatus: c.epistemicStatus,
+        createdAt: c.createdAt,
+        claimEmergedAt: c.claimEmergedAt,
+        sourceName: c.sourceName,
+        topicLabel: c.topicLabel,
         rank: c.rank,
       }));
     } else {
@@ -247,7 +179,7 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  // ── Sources: keep Prisma ORM (small table, ILIKE is fine) ──
+  // ── Sources: keep Prisma ORM (small table, ILIKE is fine) ──────────────────
 
   const sourceTextWhere = qRaw.length >= MIN_QUERY
     ? {
@@ -307,6 +239,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({
     query: qRaw,
     type,
+    searchMode,
     limit,
     offset,
     country: countryActive ? countryRaw : null,

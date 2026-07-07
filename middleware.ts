@@ -15,6 +15,8 @@ type RateRule = { pattern: RegExp; maxPerMin: number; methods?: string[] };
 const RATE_LIMIT_RULES: RateRule[] = [
   // Read endpoints — generous limits
   { pattern: /^\/api\/search(\/|$|\?)/, maxPerMin: 30 },
+  { pattern: /^\/api\/v1\/search(\/|$|\?)/, maxPerMin: 20 },
+  { pattern: /^\/api\/v1\/verify(\/|$|\?)/, maxPerMin: 10 },
   { pattern: /^\/api\/stats(\/|$|\?)/, maxPerMin: 20 },
   { pattern: /^\/api\/claims(\/|$|\?)/, maxPerMin: 30 },
   { pattern: /^\/api\/globe(\/|$|\?)/, maxPerMin: 20 },
