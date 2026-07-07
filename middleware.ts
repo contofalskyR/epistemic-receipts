@@ -24,6 +24,7 @@ const RATE_LIMIT_RULES: RateRule[] = [
   { pattern: /^\/api\/search\/miss$/, maxPerMin: 5, methods: ["POST"] },
   { pattern: /^\/api\/subscribe(\/|$)/, maxPerMin: 5, methods: ["POST"] },
   { pattern: /^\/api\/bookmarks(\/|$)/, maxPerMin: 30, methods: ["POST", "DELETE"] },
+  { pattern: /^\/api\/sentry-tunnel$/, maxPerMin: 60, methods: ["POST"] },
 ];
 
 function checkRateLimit(
@@ -87,6 +88,7 @@ const PUBLIC_WRITE_PATHS: RegExp[] = [
   /^\/api\/search\/miss$/, // zero-result search reports (rate limited)
   /^\/api\/subscribe(\/|$)/, // topic email subscriptions (rate limited)
   /^\/api\/bookmarks(\/|$)/, // anonymous client-key bookmarks (rate limited)
+  /^\/api\/sentry-tunnel$/, // Sentry error tunnel (browser → our proxy → Sentry)
 ];
 
 // Pages and APIs that always require an admin session, even for reads.

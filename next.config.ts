@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const securityHeaders = [
   // Force HTTPS for two years, including subdomains (site is Vercel-hosted, always HTTPS)
@@ -67,4 +68,19 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  // Suppress Sentry CLI output during builds
+  silent: !process.env.CI,
+
+  // Upload sourcemaps only when SENTRY_AUTH_TOKEN is set (CI + production builds)
+  sourcemaps: {
+    disable: !process.env.SENTRY_AUTH_TOKEN,
+  },
+
+  // Tunnel path — keep in sync with sentry.client.config.ts tunnelRoute
+  tunnelRoute: "/api/sentry-tunnel",
+
+  // Tree-shake Sentry SDK server-side modules we don't use
+  disableLogger: true,
+  automaticVercelMonitors: false,
+});

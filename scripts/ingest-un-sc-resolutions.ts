@@ -11,10 +11,12 @@ import { PrismaClient } from '@prisma/client'
 import * as fs from 'fs'
 import * as path from 'path'
 import { parse as csvParse } from 'csv-parse/sync'
+import { makeLogger } from '../lib/log'
 
 const prisma = new PrismaClient()
 
 const INGESTED_BY = 'un_sc_resolutions_v1'
+const log = makeLogger(INGESTED_BY)
 const BATCH_SIZE = 100
 const DEFAULT_CSV = 'data/cr-unsc/csv_full/CR-UNSC_2025-12-22_ALL_CSV_FULL.csv'
 
@@ -405,6 +407,7 @@ async function writeRow(
 async function main() {
   const { mode, csvPath, limit, sampleN, verbose } = parseArgs()
 
+  log.info('pipeline_start', { mode, csvPath, limit: limit ?? null })
   console.log(`\n── Pipeline 7: UN SC Resolutions ──────────────────────────────────`)
   console.log(`Mode: ${mode} | CSV: ${csvPath}`)
 
@@ -676,6 +679,20 @@ async function main() {
   fs.writeFileSync('pipeline-7-ingestion-report.md', report)
   console.log('\nWritten: pipeline-7-ingestion-report.md')
   if (dead.length > 0) console.log('Written: pipeline-7-dead-letter.json')
+
+  log.info('pipeline_done', {
+    elapsedSeconds: parseFloat(elapsed),
+    rowsWritten: totalIngested,
+    skipped: totalSkipped,
+    errors: totalErrors,
+    dbClaims: claimCount,
+    dbSources: sourceCount,
+    dbEdges: edgeCount,
+  })
 }
 
-main().catch(e => { console.error(e); process.exit(1) }).finally(() => prisma.$disconnect())
+main().catch(e => {
+  log.error('pipeline_fatal', { message: e instanceof Error ? e.message : String(e) })
+  console.error(e)
+  process.exit(1)
+}).finally(() => prisma.$disconnect())
