@@ -38,25 +38,33 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const url = new URL(request.url);
+  const mode = (url.searchParams.get("mode") ?? "weekly") as "daily" | "weekly";
+  const windowHours = mode === "daily" ? 24 : 7 * 24;
   const now = new Date();
-  const since = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const since = new Date(now.getTime() - windowHours * 60 * 60 * 1000);
 
   const topics = await prisma.watchedTopic.findMany({ orderBy: { createdAt: "asc" } });
 
   const sections: string[] = [];
-  const perTopicCounts: Array<{ keyword: string; label: string; total: number }> = [];
+  const perTopicCounts: Array<{
+    keyword: string;
+    label: string;
+    total: number;
+    statusChanges: number;
+  }> = [];
 
   for (const topic of topics) {
-    const where = {
+    const claimWhere = {
       deleted: false,
       createdAt: { gte: since },
       text: { contains: topic.keyword, mode: "insensitive" as const },
     };
 
     const [total, top] = await Promise.all([
-      prisma.claim.count({ where }),
+      prisma.claim.count({ where: claimWhere }),
       prisma.claim.findMany({
-        where,
+        where: claimWhere,
         orderBy: { createdAt: "desc" },
         take: 3,
         select: {
@@ -74,8 +82,33 @@ export async function GET(request: Request) {
       }),
     ]);
 
-    perTopicCounts.push({ keyword: topic.keyword, label: topic.label, total });
-    if (total === 0) continue;
+    // Status changes (epistemic axis transitions) since last alert
+    const statusChanges = await prisma.claimStatusHistory.findMany({
+      where: {
+        occurredAt: { gte: since },
+        claim: {
+          deleted: false,
+          text: { contains: topic.keyword, mode: "insensitive" as const },
+        },
+        fromAxis: { not: null },
+      },
+      take: 3,
+      orderBy: { occurredAt: "desc" },
+      select: {
+        fromAxis: true,
+        toAxis: true,
+        occurredAt: true,
+        claim: { select: { id: true, text: true } },
+      },
+    });
+
+    perTopicCounts.push({
+      keyword: topic.keyword,
+      label: topic.label,
+      total,
+      statusChanges: statusChanges.length,
+    });
+    if (total === 0 && statusChanges.length === 0) continue;
 
     const lines = top.map((c) => {
       const sourceName = c.edges[0]?.source?.name?.trim();
@@ -85,25 +118,30 @@ export async function GET(request: Request) {
       return `• ${head}${tail ? ` — ${tail}` : ""}`;
     });
 
-    const url = `${SITE_BASE}/search?q=${encodeURIComponent(topic.keyword)}`;
-    sections.push(
-      `${emojiFor(topic.label)} ${topic.label} (${total} new claim${total === 1 ? "" : "s"})\n` +
-        lines.join("\n") +
-        `\nView all: ${url}`,
+    const changelines = statusChanges.map(
+      (s) => `• ${truncate(s.claim.text, 100)} — ${s.fromAxis} → ${s.toAxis}`,
     );
+
+    const searchUrl = `${SITE_BASE}/search?q=${encodeURIComponent(topic.keyword)}`;
+    let section = `${emojiFor(topic.label)} ${topic.label}`;
+    if (total > 0) section += `\n${total} new claim${total === 1 ? "" : "s"}:\n${lines.join("\n")}`;
+    if (statusChanges.length > 0)
+      section += `\n${statusChanges.length} status change${statusChanges.length === 1 ? "" : "s"}:\n${changelines.join("\n")}`;
+    section += `\nView all: ${searchUrl}`;
+    sections.push(section);
   }
 
   const range = `${fmtDate(since)} – ${fmtDate(now)}`;
-  const header = `📬 Weekly Epistemic Receipts Digest — ${range}`;
+  const header = `📬 ${mode === "daily" ? "Daily" : "Weekly"} Epistemic Receipts Digest — ${range}`;
   const body =
     sections.length > 0
       ? sections.join("\n\n")
-      : "No new claims matched any watched topic in the last 7 days.";
+      : `No new claims or status changes matched any watched topic in the last ${mode === "daily" ? "24 hours" : "7 days"}.`;
   const digest = `${header}\n\n${body}`;
 
-  // Always refresh lastAlertAt — we ran the digest job, even if nothing matched.
   await prisma.watchedTopic.updateMany({ data: { lastAlertAt: now } });
 
+  // Send Telegram digest (owner)
   const apiKey = process.env.OPENCLAW_API_KEY;
   let sent = false;
   let sendStatus: number | null = null;
@@ -129,7 +167,7 @@ export async function GET(request: Request) {
     }
   }
 
-  // Email subscribers
+  // Email subscribers (anonymous + userId-linked, filtered by frequency)
   let emailsSent = 0;
   let emailErrors = 0;
 
@@ -139,11 +177,17 @@ export async function GET(request: Request) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const from = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
 
-      for (const { keyword, label, total } of perTopicCounts) {
-        if (total === 0) continue;
+      for (const { keyword, label, total, statusChanges } of perTopicCounts) {
+        if (total === 0 && statusChanges === 0) continue;
 
         const subscribers = await prisma.topicSubscription.findMany({
-          where: { topicKeyword: keyword },
+          where: { topicKeyword: keyword, frequency: mode },
+          select: {
+            id: true,
+            email: true,
+            unsubscribeToken: true,
+            userId: true,
+          },
         });
         if (subscribers.length === 0) continue;
 
@@ -158,33 +202,68 @@ export async function GET(request: Request) {
           select: { id: true, text: true, epistemicAxis: true, currentStatus: true },
         });
 
-        const claimLines = topClaims.map(c => {
+        const topChanges = await prisma.claimStatusHistory.findMany({
+          where: {
+            occurredAt: { gte: since },
+            claim: { deleted: false, text: { contains: keyword, mode: "insensitive" as const } },
+            fromAxis: { not: null },
+          },
+          take: 3,
+          orderBy: { occurredAt: "desc" },
+          select: {
+            fromAxis: true,
+            toAxis: true,
+            claim: { select: { id: true, text: true } },
+          },
+        });
+
+        const claimLines = topClaims.map((c) => {
           const status = (c.epistemicAxis || c.currentStatus || "").trim();
           return `• ${truncate(c.text, 140)}${status ? ` — ${status}` : ""}`;
         });
 
+        const changeLines = topChanges.map(
+          (s) =>
+            `• ${truncate(s.claim.text, 120)} — status changed: ${s.fromAxis} → ${s.toAxis}`,
+        );
+
         for (const sub of subscribers) {
           const unsubUrl = `${SITE_BASE}/api/unsubscribe?token=${sub.unsubscribeToken}`;
+          const manageUrl = sub.userId ? `${SITE_BASE}/alerts` : null;
           const searchUrl = `${SITE_BASE}/search?q=${encodeURIComponent(keyword)}`;
-          const body = [
-            `Weekly update for "${label}" — ${range}`,
+
+          const bodyLines = [
+            `${mode === "daily" ? "Daily" : "Weekly"} update for "${label}" — ${range}`,
             ``,
-            `${total} new claim${total === 1 ? "" : "s"} this week:`,
-            ``,
-            ...claimLines,
-            ``,
-            `See all: ${searchUrl}`,
-            ``,
-            `—`,
-            `Unsubscribe: ${unsubUrl}`,
-          ].join("\n");
+          ];
+
+          if (topClaims.length > 0) {
+            bodyLines.push(
+              `${total} new claim${total === 1 ? "" : "s"}:`,
+              ``,
+              ...claimLines,
+              ``,
+            );
+          }
+
+          if (topChanges.length > 0) {
+            bodyLines.push(
+              `${statusChanges} epistemic status change${statusChanges === 1 ? "" : "s"}:`,
+              ``,
+              ...changeLines,
+              ``,
+            );
+          }
+
+          bodyLines.push(`See all: ${searchUrl}`, ``, `—`, `Unsubscribe: ${unsubUrl}`);
+          if (manageUrl) bodyLines.push(`Manage alerts: ${manageUrl}`);
 
           try {
             await resend.emails.send({
               from,
               to: sub.email,
-              subject: `[Epistemic Receipts] ${total} new ${total === 1 ? "claim" : "claims"} on "${label}"`,
-              text: body,
+              subject: `[Epistemic Receipts] ${mode === "daily" ? "Daily" : "Weekly"} digest — "${label}"`,
+              text: bodyLines.join("\n"),
             });
             await prisma.topicSubscription.update({
               where: { id: sub.id },
@@ -206,6 +285,7 @@ export async function GET(request: Request) {
 
   return NextResponse.json({
     ok: true,
+    mode,
     range,
     topics: perTopicCounts,
     digestLength: digest.length,
