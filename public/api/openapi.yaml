@@ -1,0 +1,740 @@
+openapi: 3.1.0
+info:
+  title: Epistemic Receipts Public API
+  version: "1.0.0"
+  description: |
+    Read-only, authenticated API for accessing the Epistemic Receipts corpus.
+    All endpoints require a bearer API key. Errors use RFC 7807 problem details.
+
+    **Important:** The `/verify` and `/search` endpoints surface *similar documented claims*, not truth verdicts.
+    The `provenanceGrade` field grades *documentation depth*, not factual accuracy.
+  contact:
+    email: api@epistemic-receipts.app
+  license:
+    name: MIT
+
+servers:
+  - url: https://epistemic-receipts.app/api/v1
+    description: Production
+
+security:
+  - BearerAuth: []
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: "API key with er_live_ prefix"
+
+  schemas:
+    ProvenanceGrade:
+      type: string
+      enum: [A, B, C, D, X]
+      description: |
+        Grades documentation depth — NOT factual accuracy.
+        A = humanReviewed + ≥2 primary-source edges.
+        B = verified pipeline + ≥1 primary-source edge.
+        C = auto-approved, no primary-source edges.
+        D = PROVISIONAL.
+        X = DEPRECATED/ABANDONED.
+
+    ClaimSummary:
+      type: object
+      required: [id, text, claimType, epistemicAxis, verificationStatus, ingestedBy, humanReviewed, createdAt, updatedAt, provenanceGrade]
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        claimType:
+          type: string
+          enum: [EMPIRICAL, INSTITUTIONAL, INTERPRETIVE, HYBRID]
+        epistemicAxis:
+          type: string
+          nullable: true
+          enum: [RECORDED, SETTLED, CONTESTED, OPEN, UNRESOLVABLE, null]
+        verificationStatus:
+          type: string
+          nullable: true
+          enum: [VERIFIED, PROVISIONAL, DISPUTED, DEPRECATED, null]
+        ingestedBy:
+          type: string
+        humanReviewed:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        provenanceGrade:
+          $ref: '#/components/schemas/ProvenanceGrade'
+
+    EdgeSummary:
+      type: object
+      required: [id, type, evidenceType, source]
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [FOR, AGAINST, CITES, RETRACTS, CONTRADICTS, CORRECTED]
+        evidenceType:
+          type: string
+          enum: [EVIDENTIARY, PROCEDURAL, ARGUMENTATIVE]
+        source:
+          type: object
+          required: [id, name, methodologyType]
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            url:
+              type: string
+              nullable: true
+              format: uri
+            methodologyType:
+              type: string
+              enum: [primary, derivative, opinion]
+            publishedAt:
+              type: string
+              nullable: true
+              format: date-time
+
+    StatusHistoryItem:
+      type: object
+      required: [id, toAxis, community, occurredAt]
+      properties:
+        id:
+          type: string
+        fromAxis:
+          type: string
+          nullable: true
+        toAxis:
+          type: string
+        community:
+          type: string
+          enum: [EXPERT_LITERATURE, INSTITUTIONAL, JUDICIAL, PUBLIC, MARKET]
+        reason:
+          type: string
+          nullable: true
+        occurredAt:
+          type: string
+          format: date-time
+        datePrecision:
+          type: string
+          nullable: true
+          enum: [DAY, MONTH, QUARTER, YEAR, null]
+        markerSourceId:
+          type: string
+          nullable: true
+
+    ClaimDetail:
+      allOf:
+        - $ref: '#/components/schemas/ClaimSummary'
+        - type: object
+          required: [provenanceDetail, edges, statusHistory, relations, topics]
+          properties:
+            claimEmergedAt:
+              type: string
+              nullable: true
+              format: date-time
+            claimEmergedPrecision:
+              type: string
+              nullable: true
+            autoApproved:
+              type: boolean
+            openAlexId:
+              type: string
+              nullable: true
+            metadata:
+              type: object
+              nullable: true
+              additionalProperties: true
+            provenanceDetail:
+              type: object
+              required: [grade, description, primarySourceEdgeCount]
+              properties:
+                grade:
+                  $ref: '#/components/schemas/ProvenanceGrade'
+                description:
+                  type: string
+                primarySourceEdgeCount:
+                  type: integer
+            edges:
+              type: array
+              items:
+                $ref: '#/components/schemas/EdgeSummary'
+            statusHistory:
+              type: array
+              items:
+                $ref: '#/components/schemas/StatusHistoryItem'
+            relations:
+              type: array
+              items:
+                type: object
+                required: [id, relationType, relatedClaimId]
+                properties:
+                  id:
+                    type: string
+                  relationType:
+                    type: string
+                  relatedClaimId:
+                    type: string
+                  year:
+                    type: integer
+                    nullable: true
+            topics:
+              type: array
+              items:
+                type: object
+                required: [id, name, slug, domain]
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  slug:
+                    type: string
+                  domain:
+                    type: string
+
+    SourceSummary:
+      type: object
+      required: [id, name, methodologyType, humanReviewed, ingestedBy, createdAt]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+          nullable: true
+          format: uri
+        methodologyType:
+          type: string
+          enum: [primary, derivative, opinion]
+        publishedAt:
+          type: string
+          nullable: true
+          format: date-time
+        humanReviewed:
+          type: boolean
+        ingestedBy:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    ProblemDetail:
+      type: object
+      required: [type, title, status, detail]
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+
+paths:
+  /claims:
+    get:
+      operationId: listClaims
+      summary: List claims
+      description: Cursor-paginated list of claims with optional filters.
+      parameters:
+        - name: pipeline
+          in: query
+          schema:
+            type: string
+            maxLength: 100
+        - name: epistemicAxis
+          in: query
+          schema:
+            type: string
+            enum: [RECORDED, SETTLED, CONTESTED, OPEN, UNRESOLVABLE]
+        - name: claimType
+          in: query
+          schema:
+            type: string
+            enum: [EMPIRICAL, INSTITUTIONAL, INTERPRETIVE, HYBRID]
+        - name: verificationStatus
+          in: query
+          schema:
+            type: string
+            enum: [VERIFIED, PROVISIONAL, DISPUTED, DEPRECATED]
+        - name: emergedAfter
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: emergedBefore
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: topic
+          in: query
+          schema:
+            type: string
+            maxLength: 100
+        - name: cursor
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 20
+      responses:
+        "200":
+          description: Paginated list of claims
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data, nextCursor]
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ClaimSummary'
+                  nextCursor:
+                    type: string
+                    nullable: true
+        "400":
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "401":
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "429":
+          description: Rate limited
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /claims/{id}:
+    get:
+      operationId: getClaim
+      summary: Get claim detail
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Claim detail
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+            ETag:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimDetail'
+        "304":
+          description: Not modified
+        "401":
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /sources:
+    get:
+      operationId: listSources
+      summary: List sources
+      parameters:
+        - name: cursor
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 20
+      responses:
+        "200":
+          description: Paginated list of sources
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data, nextCursor]
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SourceSummary'
+                  nextCursor:
+                    type: string
+                    nullable: true
+        "401":
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /sources/{id}:
+    get:
+      operationId: getSource
+      summary: Get source detail
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Source detail
+          headers:
+            ETag:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SourceSummary'
+                  - type: object
+                    properties:
+                      credibilityEvents:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            eventType:
+                              type: string
+                            reason:
+                              type: string
+                            createdAt:
+                              type: string
+                              format: date-time
+                      relationships:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            type:
+                              type: string
+                            otherSourceId:
+                              type: string
+                            otherSourceName:
+                              type: string
+        "304":
+          description: Not modified
+        "401":
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /trajectories/{claimId}:
+    get:
+      operationId: getTrajectory
+      summary: Get claim trajectory
+      description: Ordered status-history transitions for a claim, with marker sources.
+      parameters:
+        - name: claimId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Trajectory
+          headers:
+            ETag:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [claimId, claimText, statusHistory]
+                properties:
+                  claimId:
+                    type: string
+                  claimText:
+                    type: string
+                  statusHistory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StatusHistoryItem'
+        "304":
+          description: Not modified
+        "404":
+          description: Not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /search:
+    get:
+      operationId: searchClaims
+      summary: Search claims
+      description: Hybrid tsvector + vector search. Returns ranked claims with provenance grades.
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 500
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 20
+        - name: mode
+          in: query
+          schema:
+            type: string
+            enum: [tsvector, vector, hybrid]
+            default: hybrid
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [query, data]
+                properties:
+                  query:
+                    type: string
+                  total:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ClaimSummary'
+                        - type: object
+                          properties:
+                            rank:
+                              type: number
+        "400":
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /verify:
+    get:
+      operationId: verifyClaim
+      summary: Find similar documented claims
+      description: |
+        Submit a statement to find the top-10 most similar documented claims.
+        **This is NOT a truth verdict.** epistemicAxis describes the documented claim's status.
+      parameters:
+        - name: statement
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 10
+            maxLength: 500
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
+            default: 10
+      responses:
+        "200":
+          description: Similar claims
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [statement, disclaimer, data]
+                properties:
+                  statement:
+                    type: string
+                  disclaimer:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        claim:
+                          $ref: '#/components/schemas/ClaimSummary'
+                        rank:
+                          type: number
+                        receipts:
+                          type: object
+                          properties:
+                            for:
+                              type: integer
+                            against:
+                              type: integer
+                            contradicts:
+                              type: integer
+        "400":
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /retractions/since/{date}:
+    get:
+      operationId: listRetractionsSince
+      summary: List retractions since a date
+      parameters:
+        - name: date
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date
+          example: "2024-01-01"
+        - name: cursor
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 50
+      responses:
+        "200":
+          description: Retraction claims
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data, nextCursor, since]
+                properties:
+                  since:
+                    type: string
+                    format: date-time
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ClaimSummary'
+                        - type: object
+                          properties:
+                            doi:
+                              type: string
+                              nullable: true
+                            retractionDate:
+                              type: string
+                              nullable: true
+                            originalPaperMetadata:
+                              type: object
+                              nullable: true
+                            contradictsEdges:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  targetClaimId:
+                                    type: string
+                  nextCursor:
+                    type: string
+                    nullable: true
+        "400":
+          description: Invalid date
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /manifest:
+    get:
+      operationId: getManifest
+      summary: Pipeline manifest
+      description: Corpus statistics by pipeline. No auth required.
+      security: []
+      responses:
+        "200":
+          description: Manifest
+
+  /changelog:
+    get:
+      operationId: getChangelog
+      summary: API changelog
+      description: Static JSON list of API changes by version.
+      responses:
+        "200":
+          description: Changelog
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        version:
+                          type: string
+                        date:
+                          type: string
+                        changes:
+                          type: array
+                          items:
+                            type: string
