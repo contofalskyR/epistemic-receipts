@@ -1,0 +1,60 @@
+{"id":"nav-01","category":"navigational","query":"Korematsu v United States","relevant_claim_ids":[],"notes":"SCOTUS internment case, exact case name lookup"}
+{"id":"nav-02","category":"navigational","query":"semaglutide FDA approval","relevant_claim_ids":[],"notes":"GLP-1 drug, navigational by brand/generic name + event"}
+{"id":"nav-03","category":"navigational","query":"Hwang Woo-suk stem cell retraction","relevant_claim_ids":[],"notes":"High-profile retraction, should hit crossref_retractions_v1"}
+{"id":"nav-04","category":"navigational","query":"UN Security Council Resolution 2334","relevant_claim_ids":[],"notes":"Specific UN resolution number, un_sc_resolutions_v1"}
+{"id":"nav-05","category":"navigational","query":"Nobel Prize Medicine 2023","relevant_claim_ids":[],"notes":"Nobel year+category, nobel_v1"}
+{"id":"nav-06","category":"navigational","query":"Roe v Wade Supreme Court","relevant_claim_ids":[],"notes":"SCOTUS case navigational lookup, courtlistener_scotus_v1"}
+{"id":"nav-07","category":"navigational","query":"Citizens United v FEC","relevant_claim_ids":[],"notes":"SCOTUS campaign finance case"}
+{"id":"nav-08","category":"navigational","query":"Pfizer BNT162b2 clinical trial","relevant_claim_ids":[],"notes":"COVID vaccine trial, clinicaltrials_v1"}
+{"id":"nav-09","category":"navigational","query":"Inflation Reduction Act 2022","relevant_claim_ids":[],"notes":"Specific enacted law, congress_v1"}
+{"id":"nav-10","category":"navigational","query":"Proxima Centauri b exoplanet","relevant_claim_ids":[],"notes":"Named exoplanet, nasa_exoplanet_v1"}
+{"id":"nav-11","category":"navigational","query":"CRISPR Cas9 patent","relevant_claim_ids":[],"notes":"Biotech patent claim"}
+{"id":"nav-12","category":"navigational","query":"Ozone hole Montreal Protocol","relevant_claim_ids":[],"notes":"Environmental treaty / historical fact"}
+{"id":"nav-13","category":"navigational","query":"Fukushima earthquake 2011","relevant_claim_ids":[],"notes":"Specific earthquake event, usgs_eq_v1"}
+{"id":"nav-14","category":"navigational","query":"Elizabeth Holmes Theranos SEC","relevant_claim_ids":[],"notes":"SEC filing, sec_edgar_v1"}
+{"id":"nav-15","category":"navigational","query":"DOJ FARA foreign agent registration","relevant_claim_ids":[],"notes":"FARA registrations, doj_fara_v1"}
+{"id":"nav-16","category":"navigational","query":"thalidomide FDA drug approval history","relevant_claim_ids":[],"notes":"Drug history, openfda_v1"}
+{"id":"nav-17","category":"navigational","query":"ivermectin COVID retraction","relevant_claim_ids":[],"notes":"COVID retracted paper, crossref_retractions_v1"}
+{"id":"nav-18","category":"navigational","query":"MDMA clinical trial PTSD phase 3","relevant_claim_ids":[],"notes":"Specific drug trial, clinicaltrials_v1"}
+{"id":"nav-19","category":"navigational","query":"Mauna Loa eruption 2022","relevant_claim_ids":[],"notes":"Specific volcanic eruption, volcanic_eruptions_v1 if ingested"}
+{"id":"nav-20","category":"navigational","query":"EU General Data Protection Regulation","relevant_claim_ids":[],"notes":"GDPR specific legislation, possibly uk_legislation or bundestag"}
+{"id":"top-01","category":"topical","query":"papers retracted for image manipulation","relevant_claim_ids":[],"notes":"Class of retracted papers, crossref_retractions_v1"}
+{"id":"top-02","category":"topical","query":"EU artificial intelligence regulation 2024","relevant_claim_ids":[],"notes":"AI Act legislation, bundestag_v1 or uk_legislation_v1"}
+{"id":"top-03","category":"topical","query":"drug adverse events heart failure","relevant_claim_ids":[],"notes":"FAERS claims about cardiac events"}
+{"id":"top-04","category":"topical","query":"retracted COVID-19 hydroxychloroquine studies","relevant_claim_ids":[],"notes":"COVID HCQ retractions cluster"}
+{"id":"top-05","category":"topical","query":"campaign finance dark money super PAC","relevant_claim_ids":[],"notes":"Campaign finance claims, openfec_ie_v1"}
+{"id":"top-06","category":"topical","query":"SCOTUS voting rights gerrymandering","relevant_claim_ids":[],"notes":"VRA SCOTUS cases cluster"}
+{"id":"top-07","category":"topical","query":"nuclear test atmospheric radioactive fallout","relevant_claim_ids":[],"notes":"Nuclear tests dataset, nuclear_tests_v1"}
+{"id":"top-08","category":"topical","query":"exoplanet habitable zone temperature","relevant_claim_ids":[],"notes":"Exoplanet habitability claims, nasa_exoplanet_v1"}
+{"id":"top-09","category":"topical","query":"NIH grant funding cancer research","relevant_claim_ids":[],"notes":"NIH grants, nih_reporter_v1"}
+{"id":"top-10","category":"topical","query":"Swedish parliament climate legislation","relevant_claim_ids":[],"notes":"Riksdag environmental bills, riksdag_v1"}
+{"id":"top-11","category":"topical","query":"opioid crisis FDA drug approval","relevant_claim_ids":[],"notes":"Opioid-related claims, openfda or faers"}
+{"id":"top-12","category":"topical","query":"gene therapy clinical trial approval","relevant_claim_ids":[],"notes":"Gene therapy trials, clinicaltrials_v1"}
+{"id":"top-13","category":"topical","query":"earthquake magnitude 8 Pacific Ring of Fire","relevant_claim_ids":[],"notes":"Large quakes, usgs_eq_v1"}
+{"id":"top-14","category":"topical","query":"Dutch parliament renewable energy subsidy","relevant_claim_ids":[],"notes":"Tweedekamer energy legislation, tweedekamer_v1"}
+{"id":"top-15","category":"topical","query":"retraction watch data fabrication misconduct","relevant_claim_ids":[],"notes":"retraction_watch_v1 or crossref cluster"}
+{"id":"top-16","category":"topical","query":"Congress stock act insider trading violation","relevant_claim_ids":[],"notes":"STOCK Act congressional trades, openfec_v1"}
+{"id":"top-17","category":"topical","query":"protein structure prediction AlphaFold","relevant_claim_ids":[],"notes":"Biotech claims, possibly in pubchem or OpenAlex context"}
+{"id":"top-18","category":"topical","query":"Irish legislation housing rent freeze","relevant_claim_ids":[],"notes":"Irish housing law, oireachtas_v1"}
+{"id":"top-19","category":"topical","query":"UN Security Council veto Russia Ukraine","relevant_claim_ids":[],"notes":"UN resolutions on Ukraine, un_sc_resolutions_v1"}
+{"id":"top-20","category":"topical","query":"Canadian federal budget bill deficit","relevant_claim_ids":[],"notes":"Canadian budget legislation, canada_bills_v1"}
+{"id":"vmm-01","category":"vocab_mismatch","query":"weight loss drug heart risk","relevant_claim_ids":[],"notes":"Should match GLP-1/semaglutide FAERS cardiac adverse event claims"}
+{"id":"vmm-02","category":"vocab_mismatch","query":"COVID vaccine blood clots","relevant_claim_ids":[],"notes":"Should match thrombocytopenia adverse event claims (FAERS/clinicaltrials)"}
+{"id":"vmm-03","category":"vocab_mismatch","query":"foreign lobbying disclosure rules","relevant_claim_ids":[],"notes":"Should match FARA foreign agent registration claims"}
+{"id":"vmm-04","category":"vocab_mismatch","query":"scientific paper fraud falsified data","relevant_claim_ids":[],"notes":"Should match retraction claims about data fabrication"}
+{"id":"vmm-05","category":"vocab_mismatch","query":"cold fusion energy breakthrough claim","relevant_claim_ids":[],"notes":"Should match contested/open claims about cold fusion"}
+{"id":"vmm-06","category":"vocab_mismatch","query":"space telescope planet detection","relevant_claim_ids":[],"notes":"Should match exoplanet discovery claims (nasa_exoplanet_v1)"}
+{"id":"vmm-07","category":"vocab_mismatch","query":"court ruling privacy internet data","relevant_claim_ids":[],"notes":"Should match SCOTUS digital privacy decisions"}
+{"id":"vmm-08","category":"vocab_mismatch","query":"chemical compound cancer treatment","relevant_claim_ids":[],"notes":"Should match pubchem/clinicaltrials anti-cancer compound claims"}
+{"id":"vmm-09","category":"vocab_mismatch","query":"law increasing minimum wage workers","relevant_claim_ids":[],"notes":"Should match congress legislation on labor standards"}
+{"id":"vmm-10","category":"vocab_mismatch","query":"government ban toxic chemical industry","relevant_claim_ids":[],"notes":"Should match EPA or EU chemical regulation claims"}
+{"id":"para-01","category":"paraphrase","query":"droit à l'oubli données personnelles internet","relevant_claim_ids":[],"notes":"Right to be forgotten (French) → GDPR claims; cross-lingual paraphrase"}
+{"id":"para-02","category":"paraphrase","query":"Recht auf Vergessenwerden personenbezogene Daten","relevant_claim_ids":[],"notes":"Right to be forgotten (German) → GDPR/Bundestag claims"}
+{"id":"para-03","category":"paraphrase","query":"online personal information removal request","relevant_claim_ids":[],"notes":"English paraphrase of GDPR right-to-erasure; vocab mismatch baseline"}
+{"id":"para-04","category":"paraphrase","query":"prescription drug mortality risk elderly","relevant_claim_ids":[],"notes":"Paraphrase: 'medication safety older patients' → FAERS claims"}
+{"id":"para-05","category":"paraphrase","query":"climate accord emission reduction target nations","relevant_claim_ids":[],"notes":"Paraphrase of Paris Agreement / net-zero legislation"}
+{"id":"para-06","category":"paraphrase","query":"Bundestag Klimaschutzgesetz Emissionen","relevant_claim_ids":[],"notes":"German climate protection law → bundestag_v1"}
+{"id":"para-07","category":"paraphrase","query":"veroordeeld moord rechtbank Nederland","relevant_claim_ids":[],"notes":"Dutch: convicted murder court Netherlands → tweedekamer or courtlistener"}
+{"id":"para-08","category":"paraphrase","query":"scientific consensus contradicted later evidence","relevant_claim_ids":[],"notes":"Paraphrase: settled claim later reversed; should hit REVERSED/CONTESTED axis claims"}
+{"id":"para-09","category":"paraphrase","query":"corporate political donation campaign contribution","relevant_claim_ids":[],"notes":"Paraphrase of PAC/super-PAC independent expenditure claims"}
+{"id":"para-10","category":"paraphrase","query":"replication crisis psychology failed study","relevant_claim_ids":[],"notes":"Paraphrase of retracted or contested psychology claims"}
