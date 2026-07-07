@@ -92,6 +92,15 @@ const PUBLIC_WRITE_PATHS: RegExp[] = [
   /^\/api\/subscribe(\/|$)/, // topic email subscriptions (rate limited)
   /^\/api\/bookmarks(\/|$)/, // anonymous client-key bookmarks (rate limited)
   /^\/api\/sentry-tunnel$/, // Sentry error tunnel (browser → our proxy → Sentry)
+  /^\/api\/auth(\/|$)/, // Auth.js (next-auth) sign-in/callback/signout POSTs — CSRF-protected by Auth.js
+  /^\/api\/stripe\/webhook$/, // Stripe webhooks — verified in-route via stripe-signature
+  /^\/api\/mcp$/, // hosted MCP endpoint — authenticated in-route via er_live_ API key
+  // Session-authenticated user features (spec/30, spec/31, spec/40).
+  // Every handler checks `await auth()` and object ownership itself; the
+  // admin key is not the auth mechanism for these.
+  /^\/api\/collections(\/|$)/, // researcher collections CRUD (session auth in-route)
+  /^\/api\/alerts(\/|$)/, // topic alert subscriptions CRUD (session auth in-route)
+  /^\/api\/litigation(\/|$)/, // litigation matters CRUD/export (session + org membership in-route)
 ];
 
 // Pages and APIs that always require an admin session, even for reads.
