@@ -39,6 +39,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/methodology" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
                 Methodology
               </a>
+              {" · "}
+              <a href="/license" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
+                License
+              </a>
+              {" · "}
+              <a href="/terms" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
+                Terms
+              </a>
+              {" · "}
+              <a href="/privacy" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
+                Privacy
+              </a>
             </div>
             <div className="text-gray-600">
               Conceptualized by{" "}
