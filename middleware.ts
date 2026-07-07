@@ -18,6 +18,7 @@ const RATE_LIMIT_RULES: RateRule[] = [
   { pattern: /^\/api\/stats(\/|$|\?)/, maxPerMin: 20 },
   { pattern: /^\/api\/claims(\/|$|\?)/, maxPerMin: 30 },
   { pattern: /^\/api\/globe(\/|$|\?)/, maxPerMin: 20 },
+  { pattern: /^\/api\/v1\/manifest(\/|$|\?)/, maxPerMin: 30 },
   // Public write endpoints — tight limits (per IP, per isolate)
   { pattern: /^\/api\/login$/, maxPerMin: 10, methods: ["POST"] },
   { pattern: /^\/api\/feedback$/, maxPerMin: 5, methods: ["POST"] },

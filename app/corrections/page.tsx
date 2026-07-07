@@ -45,17 +45,19 @@ const ENTRIES: AuditEntry[] = [
     source: "uspto_v1 (Pipeline 5)",
     title: "USPTO Patents pipeline retired — fabricated metadata confirmed on audit",
     description:
-      "On audit, USPTO patent records ingested in Pipeline 5 were confirmed to contain fabricated metadata sourced from model recall rather than the patent registry. US4431740 carried the correct patent number but inventors and title lifted from a different patent (US4237224, the Cohen-Boyer chimeras patent). A separate contamination bug placed court-case-style citation strings in the assignee field on the tobacco bucket.",
+      "Pipeline 5 ingested 182 US patent claims and 97 distinct patent numbers using a hardcoded curated list. On audit, records were confirmed to contain fabricated metadata sourced from model recall rather than the USPTO registry. The fabrication was structural: model memory produced internally consistent but incorrect records.",
     details: [
-      "Failure mode A: model-recall metadata, not API-sourced",
-      "Failure mode B: structural field contamination in assignee column",
-      "All 182 claims set to verificationStatus = DEPRECATED with metadata.deprecation_reason",
-      "Records retained in DB, excluded from default views, accessible via 'Show deprecated' toggle",
-      "Script relocated to scripts/retired/ingest-uspto-patents.ts to prevent re-runs",
+      "Exact scope: 182 claims, 97 distinct patent numbers",
+      "Failure mode A (fabricated metadata): US4431740 carried the correct patent number but title and inventors were lifted from a different patent — US4237224, the Cohen-Boyer chimeric DNA patent. The two patents share a technological lineage that made the confabulation plausible but unverifiable without live API access. Pattern analysis of other records in the batch showed the same signature.",
+      "Failure mode B (structural contamination): court-case-style citation strings were placed in the assignee field for the tobacco patent bucket during ingestion — a separate bug from the fabrication issue, likely caused by inadequate field validation in the ingest script.",
+      "Resolution: all 182 claims set to verificationStatus=DEPRECATED with metadata.deprecation_reason documenting both failure modes. Records retained in database for audit trail. Script relocated to scripts/retired/ingest-uspto-patents.ts to prevent re-runs.",
+      "Doctrine change: AGENTS.md codified the verifiable-sources rule — 'curated lists in HARD_FACT pipelines must be sourced from a verifiable external record (live API, Wikipedia article with citation, peer-reviewed publication, or government database); training-data recall is not a verifiable source.' GenBank (Pipeline 3) had already implemented this correctly by verifying accessions against ncbi.nlm.nih.gov before approval. The USPTO pipeline failed to do so because the absence of a working USPTO bulk API made model recall feel like an acceptable substitute. It was not.",
     ],
     recordsAffected: 182,
     resolutionLinks: [
-      { label: "Architectural rule 1: API-only sourcing", href: "/about" },
+      { label: "Pipeline data card — uspto_v1", href: "/datasets/uspto_v1" },
+      { label: "Methodology — deprecation policy", href: "/methodology#deprecation" },
+      { label: "Methodology — reference-tier test", href: "/methodology#reference-tier" },
     ],
   },
 ];
