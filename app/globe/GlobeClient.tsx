@@ -530,10 +530,15 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           if (code && code !== "-99") openSidebar(code);
         });
 
-      if (typeof (globeInstance as any).hexPolygonUseDots === "function") {
-        (globeInstance as any).hexPolygonUseDots(true);
+      // hexPolygonUseDots exists at runtime but is missing from globe.gl's types.
+      const maybeDots = globeInstance as { hexPolygonUseDots?: (v: boolean) => unknown };
+      if (typeof maybeDots.hexPolygonUseDots === "function") {
+        maybeDots.hexPolygonUseDots(true);
       }
-      const globeMat = globeInstance.globeMaterial() as any;
+      const globeMat = globeInstance.globeMaterial() as {
+        color: { set: (c: string) => void };
+        shininess?: number;
+      };
       globeMat.color.set(LIGHTS_PARAMS.globeColor);
       if ("shininess" in globeMat) globeMat.shininess = 0;
 

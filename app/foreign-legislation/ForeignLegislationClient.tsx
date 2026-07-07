@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { COUNTRY_REGISTRY } from "@/lib/legislation-countries";
 import type { Region } from "@/lib/legislation-countries";
@@ -291,9 +292,9 @@ export default function ForeignLegislationClient({
         height: "48px",
         fontSize: "0.82rem",
       }}>
-        <a href="/" style={{ color: C.brand, textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap" }}>
+        <Link href="/" style={{ color: C.brand, textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap" }}>
           ⬡ Epistemic Receipts
-        </a>
+        </Link>
         <span style={{ color: C.faint }}>/</span>
         <span style={{ color: C.ink, fontWeight: 600, whiteSpace: "nowrap" }}>Global Legislation</span>
       </div>
@@ -400,7 +401,7 @@ export default function ForeignLegislationClient({
               )}
               {urlQ && (
                 <span style={{ fontSize: "0.82rem", color: C.mut }}>
-                  searching "{urlQ}"
+                  searching &quot;{urlQ}&quot;
                 </span>
               )}
             </div>

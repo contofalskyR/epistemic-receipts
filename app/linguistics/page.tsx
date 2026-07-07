@@ -731,8 +731,8 @@ export default function LinguisticsPage() {
         <p className="mt-3 text-xs text-gray-500 leading-relaxed">
           Three headline visualizations sit above the taxonomy: an{" "}
           <strong>interactive IPA chart</strong> (every consonant and vowel clickable to its details), a{" "}
-          <strong>language family tree</strong> covering the world's major families and their speaker counts, and a{" "}
-          <strong>word-order typology explorer</strong> showing the SOV/SVO/VSO/VOS/OVS/OSV distribution across the world's
+          <strong>language family tree</strong> covering the world&apos;s major families and their speaker counts, and a{" "}
+          <strong>word-order typology explorer</strong> showing the SOV/SVO/VSO/VOS/OVS/OSV distribution across the world&apos;s
           languages. Cross-references: entries marked <span className="font-mono">xref</span> link to{" "}
           <Link href="/philosophy" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">philosophy</Link>,{" "}
           <Link href="/computer-science" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">computer-science</Link>,{" "}

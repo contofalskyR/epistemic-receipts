@@ -414,9 +414,9 @@ export default function VotesClient() {
         height: "48px",
         fontSize: "0.82rem",
       }}>
-        <a href="/" style={{ color: C.brand, textDecoration: "none", fontWeight: 500 }}>
+        <Link href="/" style={{ color: C.brand, textDecoration: "none", fontWeight: 500 }}>
           ⬡ Epistemic Receipts
-        </a>
+        </Link>
         <span style={{ color: C.faint }}>/</span>
         <span style={{ color: C.ink, fontWeight: 600 }}>Congressional Roll Calls</span>
       </div>

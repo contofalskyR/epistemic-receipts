@@ -462,7 +462,7 @@ export default function SociologyPage() {
           <span className="text-gray-400">Replication crisis posture:</span> entries marked{" "}
           <span className="text-rose-300 font-mono">REFUTED</span> are findings that have not survived re-examination
           (Hawthorne effect, Stanford Prison Experiment, broken windows policing). Entries marked{" "}
-          <span className="text-amber-300 font-mono">CONTESTED</span> are live debates with serious objections (Piketty's
+          <span className="text-amber-300 font-mono">CONTESTED</span> are live debates with serious objections (Piketty&apos;s
           r&nbsp;&gt;&nbsp;g, mismatch theory, Putnam social-capital decline). Entries marked{" "}
           <span className="text-red-300 font-mono">OPEN</span> are genuine frontier questions as of 2026 (social media
           and adolescent mental health, sociology of AI, structure vs agency, micro-macro reduction, open science in

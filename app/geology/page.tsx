@@ -763,7 +763,7 @@ export default function GeologyPage() {
           <div className="min-w-0">
             <h2 className="text-base font-semibold text-amber-200">Mohs hardness scale</h2>
             <p className="mt-0.5 text-xs text-gray-500">
-              Mohs's 1812 ordinal 1–10 scratch scale plotted against the Vickers-derived absolute hardness (log axis).
+              Mohs&apos;s 1812 ordinal 1–10 scratch scale plotted against the Vickers-derived absolute hardness (log axis).
               Click a mineral to see its chemistry and reference use.
             </p>
           </div>
