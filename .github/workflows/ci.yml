@@ -47,7 +47,7 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Lint
-        run: npx next lint
+        run: npx eslint .
 
       - name: Validate Prisma schema
         run: npx prisma validate
