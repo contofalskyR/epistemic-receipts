@@ -57,6 +57,7 @@ export async function GET() {
       },
       lastRunAt: lastRunByTag.get(p.tag)?.toISOString() ?? null,
       license: "see /license",
+      licenseUrl: "https://epistemic-receipts.vercel.app/license",
     };
   });
 
