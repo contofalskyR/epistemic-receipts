@@ -17,6 +17,20 @@ async function main() {
 
   console.log(`Verifying ${active.length} active pipeline tags…\n`);
 
+  // CI runs against a freshly-migrated, EMPTY postgres service container.
+  // "Every active tag has >0 claims" is an invariant of the production
+  // database, not of an empty schema — on an empty DB every tag would fail
+  // and the check would be permanently red. Skip (exit 0) when there is no
+  // data at all; any populated database still gets the full per-tag check.
+  const totalClaims = await prisma.claim.count();
+  if (totalClaims === 0) {
+    console.log(
+      "Database contains 0 claims (fresh/CI database) — skipping registry verification.\n" +
+        "This check is meaningful only against a populated database (e.g. production)."
+    );
+    return;
+  }
+
   const counts = await prisma.claim.groupBy({
     by: ["ingestedBy"],
     where: { ingestedBy: { in: active.map(p => p.tag) }, deleted: false },
