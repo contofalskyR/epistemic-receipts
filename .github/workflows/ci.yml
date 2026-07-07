@@ -53,10 +53,16 @@ jobs:
         run: npx prisma validate
 
       - name: Check migration drift
+        # `migrate diff --from-migrations` replays the migrations into a shadow
+        # database, so --shadow-database-url is REQUIRED — without it the step
+        # can never pass. Use a scratch database on the CI postgres service.
         run: |
+          PGPASSWORD=postgres psql -h localhost -U postgres -d postgres \
+            -c "CREATE DATABASE epistemic_shadow;"
           npx prisma migrate diff \
             --from-migrations prisma/migrations \
             --to-schema-datamodel prisma/schema.prisma \
+            --shadow-database-url "postgresql://postgres:postgres@localhost:5432/epistemic_shadow" \
             --exit-code
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}
