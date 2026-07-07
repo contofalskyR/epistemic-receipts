@@ -9,6 +9,8 @@ import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge
 import { ShareButtons } from "@/components/ShareButtons";
 import ClaimInteractive from "./ClaimInteractive";
 import BookmarkToggle from "./BookmarkToggle";
+import AddToCollection from "@/components/AddToCollection";
+import CitationButton from "@/components/CitationButton";
 import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } from "./claim-ui";
 
 // ── ISR ───────────────────────────────────────────────────────────────────────
@@ -433,6 +435,8 @@ export default async function ClaimDetailPage({ params }: Props) {
             </Link>
           )}
           <BookmarkToggle claimId={claim.id} />
+          <AddToCollection claimId={claim.id} />
+          <CitationButton type="claim" id={claim.id} />
         </div>
         <ShareButtons
           url={`${SITE_URL}/claims/${claim.id}`}

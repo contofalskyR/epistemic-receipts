@@ -77,6 +77,7 @@ model Claim {
   historicalEvents         ClaimHistoricalEvent[]
   polityLinks              PolityClaim[]
   bookmarks                Bookmark[]
+  collectionItems          CollectionItem[]
   relationsFrom            ClaimRelation[] @relation("ClaimRelationFrom")
   relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
   billCoverage             BillCoverage?
@@ -84,6 +85,7 @@ model Claim {
   statusHistory            ClaimStatusHistory[]
   trajectorySearchDoc      TrajectorySearchDoc?
   claimEmbedding           ClaimEmbedding?
+  matterClaims             MatterClaim[]
 
   @@index([ingestedBy])
   @@index([ingestedBy, id])
@@ -670,9 +672,14 @@ model TopicSubscription {
   confirmed        Boolean   @default(false)
   createdAt        DateTime  @default(now())
   lastAlertAt      DateTime?
+  frequency        String    @default("weekly") // "daily" | "weekly"
+  userId           String?   // nullable — existing email-only subs unaffected
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   @@unique([email, topicKeyword])
   @@index([topicKeyword])
+  @@index([userId])
 }
 
 model ClaimLocation {
@@ -828,10 +835,14 @@ model User {
   image         String?
   createdAt     DateTime  @default(now())
 
-  accounts    Account[]
-  sessions    Session[]
-  memberships Membership[]
-  profiles    Profile[]
+  accounts           Account[]
+  sessions           Session[]
+  memberships        Membership[]
+  profiles           Profile[]
+  collections        Collection[]
+  topicSubscriptions TopicSubscription[]
+  matterClaimsAdded  MatterClaim[]  @relation("MatterClaimAddedBy")
+  matterExports      MatterExport[] @relation("MatterExportBy")
 
   @@index([email])
 }
@@ -888,10 +899,11 @@ model Org {
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
 
-  memberships Membership[]
-  ipRanges    OrgIpRange[]
-  usageDaily  OrgUsageDaily[]
-  apiKeys     ApiKey[]
+  memberships       Membership[]
+  ipRanges          OrgIpRange[]
+  usageDaily        OrgUsageDaily[]
+  apiKeys           ApiKey[]
+  litigationMatters LitigationMatter[]
 }
 
 model Membership {
@@ -931,4 +943,102 @@ model OrgUsageDaily {
 
   @@unique([orgId, date, metric])
   @@index([orgId])
+}
+
+// ── Spec 31: Researcher Features ─────────────────────────────────────────────
+
+model Collection {
+  id          String   @id @default(cuid())
+  ownerId     String
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  items CollectionItem[]
+
+  @@index([ownerId])
+}
+
+model CollectionItem {
+  id           String   @id @default(cuid())
+  collectionId String
+  claimId      String
+  note         String?
+  position     Int      @default(0)
+  addedAt      DateTime @default(now())
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  claim      Claim      @relation(fields: [claimId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, claimId])
+  @@index([collectionId])
+  @@index([claimId])
+}
+
+// ── Spec 40: Litigation Workbench ────────────────────────────────────────────
+
+enum MatterStatus {
+  ACTIVE
+  CLOSED
+  ARCHIVED
+}
+
+enum ExportFormat {
+  PDF
+  JSONL
+  CSV
+}
+
+model LitigationMatter {
+  id           String       @id @default(cuid())
+  orgId        String
+  name         String
+  description  String?
+  status       MatterStatus @default(ACTIVE)
+  jurisdiction String?
+  caseNumber   String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  org     Org            @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  claims  MatterClaim[]
+  exports MatterExport[]
+
+  @@index([orgId])
+  @@index([orgId, status])
+}
+
+model MatterClaim {
+  id           String   @id @default(cuid())
+  matterId     String
+  claimId      String
+  addedAt      DateTime @default(now())
+  addedById    String
+  notes        String?
+  relevanceTag String?
+
+  matter  LitigationMatter @relation(fields: [matterId], references: [id], onDelete: Cascade)
+  claim   Claim            @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  addedBy User             @relation("MatterClaimAddedBy", fields: [addedById], references: [id])
+
+  @@unique([matterId, claimId])
+  @@index([matterId])
+  @@index([claimId])
+}
+
+model MatterExport {
+  id           String       @id @default(cuid())
+  matterId     String
+  format       ExportFormat
+  r2Key        String
+  sha256       String
+  exportedAt   DateTime     @default(now())
+  exportedById String
+
+  matter     LitigationMatter @relation(fields: [matterId], references: [id], onDelete: Cascade)
+  exportedBy User             @relation("MatterExportBy", fields: [exportedById], references: [id])
+
+  @@index([matterId])
 }
