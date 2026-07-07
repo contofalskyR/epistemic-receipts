@@ -47,6 +47,14 @@ export default function AboutPage() {
       </p>
 
       <p className="text-gray-500 text-xs">
+        <a href="/methodology" className="underline hover:text-gray-300 transition-colors">Methodology</a>
+        {" · "}
+        <a href="/corrections" className="underline hover:text-gray-300 transition-colors">Corrections</a>
+        {" · "}
+        <a href="/datasets" className="underline hover:text-gray-300 transition-colors">Pipeline data cards</a>
+      </p>
+
+      <p className="text-gray-500 text-xs">
         Ingestion pipelines, data enrichment, and continuous development are powered by{' '}
         <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-300 transition-colors">OpenClaw</a>
         {' '}— an AI agent runtime for autonomous research workflows.

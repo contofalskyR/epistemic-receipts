@@ -76,6 +76,12 @@ jobs:
           ADMIN_TOKEN: ci-test-admin-token-not-secret
           NODE_ENV: test
 
+      - name: Verify pipeline registry
+        run: npx tsx scripts/verify-registry.ts
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+          DIRECT_URL: ${{ env.DIRECT_URL }}
+
       - name: Secret scanning
         uses: gitleaks/gitleaks-action@v2
         env:
