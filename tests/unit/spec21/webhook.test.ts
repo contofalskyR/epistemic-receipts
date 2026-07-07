@@ -8,15 +8,29 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // ─── Mock stripe module ───────────────────────────────────────────────────────
-const mockConstructEvent = vi.fn();
-const mockOrgUpsert = vi.fn();
-const mockOrgFindUnique = vi.fn();
-const mockOrgUpdate = vi.fn();
-const mockOrgUpdateMany = vi.fn();
-const mockApiKeyUpdateMany = vi.fn();
-const mockMembershipFindFirst = vi.fn();
-const mockSubscriptionsRetrieve = vi.fn();
-const mockSendPaymentFailedEmail = vi.fn();
+// vi.mock factories are hoisted above top-level const declarations, so mocks
+// they reference must be created with vi.hoisted() to avoid a TDZ crash.
+const {
+  mockConstructEvent,
+  mockOrgUpsert,
+  mockOrgFindUnique,
+  mockOrgUpdate,
+  mockOrgUpdateMany,
+  mockApiKeyUpdateMany,
+  mockMembershipFindFirst,
+  mockSubscriptionsRetrieve,
+  mockSendPaymentFailedEmail,
+} = vi.hoisted(() => ({
+  mockConstructEvent: vi.fn(),
+  mockOrgUpsert: vi.fn(),
+  mockOrgFindUnique: vi.fn(),
+  mockOrgUpdate: vi.fn(),
+  mockOrgUpdateMany: vi.fn(),
+  mockApiKeyUpdateMany: vi.fn(),
+  mockMembershipFindFirst: vi.fn(),
+  mockSubscriptionsRetrieve: vi.fn(),
+  mockSendPaymentFailedEmail: vi.fn(),
+}));
 
 vi.mock("stripe", () => ({
   default: vi.fn().mockImplementation(() => ({
@@ -185,7 +199,7 @@ describe("POST /api/stripe/webhook", () => {
     };
 
     mockConstructEvent.mockReturnValue(event);
-    mockOrgFindUnique.mockResolvedValue({ id: "org_1", pastDueSince: null });
+    mockOrgFindUnique.mockResolvedValue({ id: "org_1", name: "Test Org", pastDueSince: null });
     mockOrgUpdate.mockResolvedValue({ id: "org_1" });
     mockMembershipFindFirst.mockResolvedValue({
       user: { email: "owner@example.com" },
@@ -212,7 +226,7 @@ describe("POST /api/stripe/webhook", () => {
     };
 
     mockConstructEvent.mockReturnValue(event);
-    mockOrgFindUnique.mockResolvedValue({ id: "org_1", pastDueSince: new Date("2026-07-01") });
+    mockOrgFindUnique.mockResolvedValue({ id: "org_1", name: "Test Org", pastDueSince: new Date("2026-07-01") });
     mockMembershipFindFirst.mockResolvedValue({ user: { email: "owner@example.com" } });
     mockSendPaymentFailedEmail.mockResolvedValue(undefined);
 

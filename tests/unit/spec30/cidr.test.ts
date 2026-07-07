@@ -78,7 +78,7 @@ describe("validateCidr", () => {
   it("rejects prefix shorter than /16 without confirmFlag", () => {
     const err = validateCidr("10.0.0.0/15");
     expect(err).not.toBeNull();
-    expect(err).toMatch(/broad/i);
+    expect(err).toMatch(/covers more than \/16/i);
   });
 
   it("accepts prefix shorter than /16 with confirmFlag", () => {

@@ -6,8 +6,12 @@
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-const mockApiKeyFindUnique = vi.fn();
-const mockOrgFindUnique = vi.fn();
+// vi.mock factories are hoisted above top-level const declarations, so mocks
+// they reference must be created with vi.hoisted() to avoid a TDZ crash.
+const { mockApiKeyFindUnique, mockOrgFindUnique } = vi.hoisted(() => ({
+  mockApiKeyFindUnique: vi.fn(),
+  mockOrgFindUnique: vi.fn(),
+}));
 
 vi.mock("@/lib/prisma", () => ({
   prisma: {

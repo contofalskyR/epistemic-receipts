@@ -8,10 +8,19 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
 
-const mockApiUsageFindMany = vi.fn();
-const mockApiUsageUpdateMany = vi.fn();
-const mockOrgFindUnique = vi.fn();
-const mockMeterEventsCreate = vi.fn();
+// vi.mock factories are hoisted above top-level const declarations, so mocks
+// they reference must be created with vi.hoisted() to avoid a TDZ crash.
+const {
+  mockApiUsageFindMany,
+  mockApiUsageUpdateMany,
+  mockOrgFindUnique,
+  mockMeterEventsCreate,
+} = vi.hoisted(() => ({
+  mockApiUsageFindMany: vi.fn(),
+  mockApiUsageUpdateMany: vi.fn(),
+  mockOrgFindUnique: vi.fn(),
+  mockMeterEventsCreate: vi.fn(),
+}));
 
 vi.mock("@/lib/prisma", () => ({
   prisma: {
@@ -45,6 +54,10 @@ function makeRequest() {
 
 beforeEach(() => {
   vi.resetAllMocks();
+  // The route reads CRON_SECRETE — the (misspelled) name the Vercel env var
+  // actually uses; see 4f51cae. Keep CRON_SECRET set too for when the env
+  // var is renamed and the code reverts to the correct spelling.
+  process.env.CRON_SECRETE = CRON_SECRET;
   process.env.CRON_SECRET = CRON_SECRET;
   process.env.STRIPE_SECRET_KEY = "sk_test_placeholder";
   process.env.STRIPE_METER_EVENT_NAME = "api_requests_overage";
