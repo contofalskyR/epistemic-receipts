@@ -1,5 +1,5 @@
 extends:
-  - "@stoplight/spectral-oas"
+  - "spectral:oas"
 rules:
   operation-success-response: warn
   operation-operationId: error

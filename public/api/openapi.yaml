@@ -53,11 +53,11 @@ components:
         epistemicAxis:
           type: string
           nullable: true
-          enum: [RECORDED, SETTLED, CONTESTED, OPEN, UNRESOLVABLE, null]
+          enum: [RECORDED, SETTLED, CONTESTED, OPEN, UNRESOLVABLE]
         verificationStatus:
           type: string
           nullable: true
-          enum: [VERIFIED, PROVISIONAL, DISPUTED, DEPRECATED, null]
+          enum: [VERIFIED, PROVISIONAL, DISPUTED, DEPRECATED]
         ingestedBy:
           type: string
         humanReviewed:
@@ -126,7 +126,7 @@ components:
         datePrecision:
           type: string
           nullable: true
-          enum: [DAY, MONTH, QUARTER, YEAR, null]
+          enum: [DAY, MONTH, QUARTER, YEAR]
         markerSourceId:
           type: string
           nullable: true
