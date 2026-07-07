@@ -51,9 +51,11 @@ export async function GET(req: NextRequest) {
   const axisFilter = (VALID_AXES as readonly string[]).includes(axisRaw) ? axisRaw : null;
 
   const searchModeRaw = (url.searchParams.get("search_mode") ?? "").toLowerCase();
+  // Default to tsvector — hybrid requires OPENAI_API_KEY and a populated ClaimEmbedding table.
+  // Callers can opt into hybrid explicitly via ?search_mode=hybrid once those are ready.
   const searchMode: SearchMode = (VALID_SEARCH_MODES as readonly string[]).includes(searchModeRaw)
     ? (searchModeRaw as SearchMode)
-    : "hybrid";
+    : "tsvector";
 
   const limit = Math.max(
     1,

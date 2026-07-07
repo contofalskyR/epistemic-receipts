@@ -257,9 +257,12 @@ async function hybridSearch(
   limit: number,
   offset: number,
 ): Promise<ClaimRow[]> {
-  // Fetch top-100 candidates from each method in parallel
+  // Fetch top-100 candidates from each method in parallel.
+  // Both legs are caught independently — vector fails gracefully when OPENAI_API_KEY
+  // is absent or ClaimEmbedding table is empty; tsvector falls back to [] if the
+  // search index is unavailable (e.g. fresh DB without generated columns).
   const [tsRows, vecRows] = await Promise.all([
-    tsvectorSearch(query, filters, 100, 0),
+    tsvectorSearch(query, filters, 100, 0).catch(() => [] as ClaimRow[]),
     vectorSearch(query, filters, 100, 0).catch(() => [] as ClaimRow[]),
   ]);
 
