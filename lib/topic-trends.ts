@@ -17,7 +17,18 @@ export type KLResult = {
   toDecade: number;
   jsDivergence: number;
   topChanges: { topic: string; delta: number }[];
+  /** Tagged-vote counts behind each side of the comparison. */
+  fromTagged: number;
+  toTagged: number;
+  /** True when either decade has < MIN_TAGGED_FOR_SHIFT tagged votes — the
+   *  divergence is then dominated by sampling noise, not a real shift. */
+  lowSample: boolean;
 };
+
+/** Minimum tagged votes a decade needs before its transitions are ranked as
+ *  "zeitgeist shifts". Below this, JS divergence mostly measures small-sample
+ *  noise (the 1780s bucket is a single year, 1789). */
+export const MIN_TAGGED_FOR_SHIFT = 200;
 
 export type EraHot = {
   era: string;
@@ -73,12 +84,14 @@ function jsDivergence(p: Record<string, number>, q: Record<string, number>): num
 }
 
 export async function getTopicTrends(): Promise<TopicTrendResult> {
+  // NOTE: no `topics IS NOT NULL` filter — totals must count the whole corpus
+  // ("Roll-calls analyzed" claims every recorded vote). parseTopics() treats
+  // NULL as untagged, so tagged counts and shares are unaffected.
   const rows = await prisma.$queryRaw<VoteRow[]>`
     SELECT lv.topics AS topics, lv."voteDate" AS "voteDate"
     FROM "LegislativeVote" lv
     JOIN "Source" s ON s.id = lv."sourceId"
     WHERE s."ingestedBy" = 'voteview_v1'
-      AND lv.topics IS NOT NULL
       AND lv."voteDate" IS NOT NULL
   `;
 
@@ -140,6 +153,9 @@ export async function getTopicTrends(): Promise<TopicTrendResult> {
       toDecade: cur.decade,
       jsDivergence: js,
       topChanges: deltas,
+      fromTagged: prev.taggedVotes,
+      toTagged: cur.taggedVotes,
+      lowSample: prev.taggedVotes < MIN_TAGGED_FOR_SHIFT || cur.taggedVotes < MIN_TAGGED_FOR_SHIFT,
     });
   }
 

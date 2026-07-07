@@ -124,7 +124,20 @@ type VoteItem = {
   url: string | null;
 };
 
-type DrawerState = { topic: string; eraLabel: string } | null;
+// Drawer scope: a decade (precise receipts for dots/cells) or an era (chips).
+type DrawerState = { topic: string; eraLabel?: string; decade?: number } | null;
+
+function drawerQuery(state: NonNullable<DrawerState>): string {
+  return state.decade != null
+    ? `decade=${state.decade}`
+    : `era=${encodeURIComponent(state.eraLabel ?? "")}`;
+}
+
+function drawerScopeLabel(state: NonNullable<DrawerState>): string {
+  return state.decade != null
+    ? `${state.decade}s · ${eraForDecade(state.decade)}`
+    : (state.eraLabel ?? "");
+}
 
 // ── Smooth path (Catmull-Rom → cubic Bézier). Zeitgeist reads as waves, not
 //    connect-the-dots; smoothing is presentational — dots stay on real data. ──
@@ -173,7 +186,7 @@ function ZeitgeistRidgeline({
           <g key={d.decade}>
             <line x1={x(i)} x2={x(i)} y1={padT - 8} y2={H - padB} stroke="#111827" strokeWidth={1} />
             <text x={x(i)} y={H - 6} fontSize={8.5} fill="#4b5563" fontFamily="monospace" textAnchor="middle">
-              {String(d.decade).slice(2)}s
+              {d.decade}s
             </text>
           </g>
         ) : null,
@@ -242,7 +255,7 @@ function TopicTimeline({
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img"
-      aria-label={`${topicLabel(slug)} share of congressional votes per decade`}>
+      aria-label={`${topicLabel(slug)} share of topic-tagged congressional votes per decade`}>
       {/* era boundaries */}
       {pts.map((pt, i) =>
         eraBoundaries.has(pt.decade) ? (
@@ -261,7 +274,7 @@ function TopicTimeline({
         i % 2 === 0 ? (
           <text key={`t${pt.decade}`} x={x(i)} y={H - 8} fontSize={8} fill="#4b5563"
             fontFamily="monospace" textAnchor="middle">
-            {String(pt.decade).slice(2)}s
+            {pt.decade}s
           </text>
         ) : null,
       )}
@@ -272,7 +285,7 @@ function TopicTimeline({
           fill={pt.count > 0 ? "#60a5fa" : "#374151"}
           className={pt.count > 0 ? "cursor-pointer hover:opacity-70" : undefined}
           onClick={() => pt.count > 0 && onDecadeClick(pt.decade)}>
-          <title>{`${pt.decade}s — ${(pt.p * 100).toFixed(1)}% of votes (${pt.count.toLocaleString()} votes). Click for the receipts.`}</title>
+          <title>{`${pt.decade}s — ${(pt.p * 100).toFixed(1)}% of tagged votes (${pt.count.toLocaleString()} ${pt.count === 1 ? "vote" : "votes"}). Click for the receipts.`}</title>
         </circle>
       ))}
       {/* peak annotation */}
@@ -290,6 +303,8 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
   const eras = data.hotTopics.map((h) => h.era);
   const [selectedEra, setSelectedEra] = useState<string>(eras[0] ?? "");
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  // Click a divergence bar to pin its detail panel (hover is transient & desktop-only).
+  const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
 
   // Drawer state
   const [drawerState, setDrawerState] = useState<DrawerState>(null);
@@ -306,12 +321,32 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     [data.klSequence],
   );
 
-  const heatmapTopics = useMemo(() => {
+  // ALL tracked topics, by overall share — no slice. The episodic topics that
+  // fall out of a top-N cut (slavery, civil rights, prohibition, technology…)
+  // are exactly the ones this page exists to trace.
+  const allTopics = useMemo(() => {
     return Object.entries(data.overallDist)
       .sort(([, a], [, b]) => b - a)
-      .slice(0, 18)
       .map(([slug]) => slug);
   }, [data.overallDist]);
+
+  // Ridgeline order: by peak decade, so the waves cascade chronologically —
+  // the zeitgeist marching through time instead of jumping by volume rank.
+  const ridgeTopics = useMemo(() => {
+    const peakDecade = (slug: string): number => {
+      let best = data.decades[0]?.decade ?? 0;
+      let bp = -1;
+      for (const d of data.decades) {
+        const p = d.normalized[slug] ?? 0;
+        if (p > bp) {
+          bp = p;
+          best = d.decade;
+        }
+      }
+      return best;
+    };
+    return [...allTopics].sort((a, b) => peakDecade(a) - peakDecade(b));
+  }, [allTopics, data.decades]);
 
   // The zeitgeist lens: which single topic is being traced across decades.
   const [focusTopic, setFocusTopic] = useState<string>(
@@ -319,21 +354,27 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
       Object.entries(data.overallDist).sort(([, a], [, b]) => b - a)[0]?.[0] ?? "civil_rights",
   );
 
-  // Biggest decade-to-decade shifts in congressional attention.
+  // Biggest decade-to-decade shifts in congressional attention. Low-sample
+  // transitions (either decade under the tagged-vote threshold) are excluded:
+  // JS divergence on a ~30-vote decade measures noise, not zeitgeist.
   const topShifts = useMemo(
-    () => [...data.klSequence].sort((a, b) => b.jsDivergence - a.jsDivergence).slice(0, 5),
+    () =>
+      data.klSequence
+        .filter((k) => !k.lowSample)
+        .sort((a, b) => b.jsDivergence - a.jsDivergence)
+        .slice(0, 5),
     [data.klSequence],
   );
 
   const topicMax = useMemo(() => {
     const m: Record<string, number> = {};
-    for (const slug of heatmapTopics) {
+    for (const slug of allTopics) {
       let mx = 0;
       for (const d of data.decades) mx = Math.max(mx, d.normalized[slug] ?? 0);
       m[slug] = mx;
     }
     return m;
-  }, [data.decades, heatmapTopics]);
+  }, [data.decades, allTopics]);
 
   // Group consecutive decades by era for heatmap header
   const decadeEraGroups = useMemo(() => {
@@ -378,7 +419,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     setDrawerTotal(0);
     setDrawerOffset(0);
     fetch(
-      `/api/analysis/topic-trends/votes?topic=${encodeURIComponent(drawerState.topic)}&era=${encodeURIComponent(drawerState.eraLabel)}&limit=20&offset=0`,
+      `/api/analysis/topic-trends/votes?topic=${encodeURIComponent(drawerState.topic)}&${drawerQuery(drawerState)}&limit=20&offset=0`,
     )
       .then((r) => r.json())
       .then((data) => {
@@ -396,8 +437,8 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     return () => clearTimeout(id);
   }, [drawerState]);
 
-  function openDrawer(topic: string, eraLabel: string) {
-    setDrawerState({ topic, eraLabel });
+  function openDrawer(topic: string, scope: { eraLabel?: string; decade?: number }) {
+    setDrawerState({ topic, ...scope });
   }
 
   function closeDrawer() {
@@ -411,7 +452,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     setDrawerLoading(true);
     setDrawerOffset(nextOffset);
     fetch(
-      `/api/analysis/topic-trends/votes?topic=${encodeURIComponent(drawerState.topic)}&era=${encodeURIComponent(drawerState.eraLabel)}&limit=20&offset=${nextOffset}`,
+      `/api/analysis/topic-trends/votes?topic=${encodeURIComponent(drawerState.topic)}&${drawerQuery(drawerState)}&limit=20&offset=${nextOffset}`,
     )
       .then((r) => r.json())
       .then((data) => {
@@ -511,9 +552,9 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
         </div>
 
         <p className="text-xs text-gray-500">
-          Lift = P(topic | era) / P(topic | overall). Topics with lift &gt; 3× are strongly
-          over-represented in this era relative to the 1789–2026 baseline. Click a chip to see
-          votes.
+          Lift = P(topic | era) / P(topic | overall): how many times its usual share of
+          congressional attention a topic claimed in this era. ×2.0 = double its 1789–2026
+          baseline (shares computed over topic-tagged votes). Click a chip to see the votes.
         </p>
 
         <div className="rounded border border-gray-800 bg-gray-900/40 px-4 py-4">
@@ -525,7 +566,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                   className={`px-3 py-1.5 rounded border text-xs cursor-pointer transition-opacity hover:opacity-80 ${topicColor(h.topic)}`}
                   title={`${h.count.toLocaleString()} votes — click to see vote list`}
                   style={{ touchAction: 'manipulation' }}
-                  onClick={() => openDrawer(h.topic, selected.era)}
+                  onClick={() => openDrawer(h.topic, { eraLabel: selected.era })}
                 >
                   <span className="font-medium">{topicLabel(h.topic)}</span>
                   <span className="ml-2 font-mono opacity-80">×{h.lift.toFixed(1)}</span>
@@ -572,7 +613,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                           style={{ touchAction: 'manipulation' }}
                           onClick={(e) => {
                             e.stopPropagation();
-                            openDrawer(t.topic, h.era);
+                            openDrawer(t.topic, { eraLabel: h.era });
                           }}
                         >
                           {topicLabel(t.topic)}{" "}
@@ -593,8 +634,10 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
         <h2 className="text-base font-semibold text-white">Decade-to-decade divergence</h2>
         <p className="text-xs text-gray-500">
           Jensen-Shannon divergence between consecutive decade topic distributions (0 = identical,
-          1 = maximally different). Background tint shows historical era. Amber bars = high-shift
-          decades. Hover for details.
+          1 = maximally different), computed over topic-tagged votes. Background tint shows
+          historical era. Amber bars = high-shift decades; faded bars involve a decade with under
+          200 tagged votes, where divergence is mostly sampling noise. Hover or click a bar for
+          details.
         </p>
 
         <div className="rounded border border-gray-800 bg-gray-900/40 p-4">
@@ -603,21 +646,29 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
             <div className="flex h-40 gap-[2px]">
               {data.klSequence.map((k, i) => {
                 const barHeight = maxJs > 0 ? Math.max(4, (k.jsDivergence / maxJs) * 160) : 4;
-                const isHigh = k.jsDivergence >= maxJs * 0.7;
+                const isHigh = !k.lowSample && k.jsDivergence >= maxJs * 0.7;
                 const eraBg = getEraStyle(eraForDecade(k.toDecade)).barBg;
                 return (
                   <div
                     key={`${k.fromDecade}-${k.toDecade}`}
-                    className={`flex-1 flex flex-col justify-end min-w-0 ${eraBg}`}
+                    className={`flex-1 flex flex-col justify-end min-w-0 cursor-pointer ${eraBg}`}
                     onMouseEnter={() => setHoverIdx(i)}
                     onMouseLeave={() => setHoverIdx(null)}
+                    onClick={() => setPinnedIdx(pinnedIdx === i ? null : i)}
+                    title={
+                      k.lowSample
+                        ? `${k.fromDecade}s → ${k.toDecade}s — low sample (${k.fromTagged.toLocaleString()} vs ${k.toTagged.toLocaleString()} tagged votes); excluded from the shift ranking`
+                        : `${k.fromDecade}s → ${k.toDecade}s — JS ${k.jsDivergence.toFixed(2)}. Click to pin details.`
+                    }
                   >
                     <div
                       className={`w-full rounded-t transition-colors ${
                         isHigh
                           ? "bg-amber-500/80 hover:bg-amber-400"
                           : "bg-blue-700/70 hover:bg-blue-500"
-                      } ${hoverIdx === i ? "ring-1 ring-white/40" : ""}`}
+                      } ${k.lowSample ? "opacity-30" : ""} ${
+                        hoverIdx === i || pinnedIdx === i ? "ring-1 ring-white/40" : ""
+                      }`}
                       style={{ height: `${barHeight}px` }}
                     />
                   </div>
@@ -630,11 +681,11 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
               {data.klSequence.map((k, i) => (
                 <div
                   key={`label-${k.fromDecade}-${k.toDecade}`}
-                  className="flex-1 text-center min-w-0 overflow-hidden"
+                  className="flex-1 text-center min-w-0"
                 >
                   {i % 4 === 0 ? (
                     <span className="text-[8px] font-mono text-gray-600 whitespace-nowrap">
-                      {String(k.toDecade).slice(2)}
+                      {k.toDecade}s
                     </span>
                   ) : null}
                 </div>
@@ -670,34 +721,56 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
             </div>
           </div>
 
-          {hoverIdx !== null && data.klSequence[hoverIdx] && (
-            <div className="mt-4 border-t border-gray-800 pt-3 text-xs">
-              <div className="text-gray-200 font-medium">
-                {data.klSequence[hoverIdx]!.fromDecade}s →{" "}
-                {data.klSequence[hoverIdx]!.toDecade}s
-              </div>
-              <div className="text-gray-500 mt-0.5">
-                JS divergence:{" "}
-                <span className="text-amber-300 font-mono">
-                  {data.klSequence[hoverIdx]!.jsDivergence.toFixed(4)}
-                </span>
-              </div>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {data.klSequence[hoverIdx]!.topChanges.slice(0, 3).map((c) => (
-                  <span
-                    key={c.topic}
-                    className={`px-2 py-0.5 rounded border text-[11px] ${topicColor(c.topic)}`}
-                  >
-                    {topicLabel(c.topic)}{" "}
-                    <span className="font-mono opacity-70">
-                      {c.delta > 0 ? "+" : ""}
-                      {(c.delta * 100).toFixed(1)}pp
-                    </span>
+          {(() => {
+            const activeIdx = pinnedIdx ?? hoverIdx;
+            const k = activeIdx !== null ? data.klSequence[activeIdx] : undefined;
+            if (activeIdx === null || !k) return null;
+            return (
+              <div className="mt-4 border-t border-gray-800 pt-3 text-xs">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-gray-200 font-medium">
+                    {k.fromDecade}s → {k.toDecade}s
                   </span>
-                ))}
+                  <span className="text-gray-600 font-mono text-[10px]">
+                    {k.fromTagged.toLocaleString()} → {k.toTagged.toLocaleString()} tagged votes
+                  </span>
+                  {k.lowSample && (
+                    <span className="text-[10px] px-1.5 py-0.5 rounded border border-amber-800/60 bg-amber-950/40 text-amber-300">
+                      low sample — excluded from shift ranking
+                    </span>
+                  )}
+                  {pinnedIdx === activeIdx && (
+                    <button
+                      onClick={() => setPinnedIdx(null)}
+                      className="text-[10px] text-gray-500 hover:text-gray-300 underline transition-colors"
+                    >
+                      unpin
+                    </button>
+                  )}
+                </div>
+                <div className="text-gray-500 mt-0.5">
+                  JS divergence:{" "}
+                  <span className="text-amber-300 font-mono">{k.jsDivergence.toFixed(4)}</span>
+                </div>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {k.topChanges.slice(0, 3).map((c) => (
+                    <button
+                      key={c.topic}
+                      onClick={() => openDrawer(c.topic, { decade: k.toDecade })}
+                      className={`px-2 py-0.5 rounded border text-[11px] cursor-pointer hover:opacity-80 transition-opacity ${topicColor(c.topic)}`}
+                      title={`See ${topicLabel(c.topic)} votes in the ${k.toDecade}s`}
+                    >
+                      {topicLabel(c.topic)}{" "}
+                      <span className="font-mono opacity-70">
+                        {c.delta > 0 ? "+" : ""}
+                        {(c.delta * 100).toFixed(1)}pp
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
         </div>
       </section>
 
@@ -705,15 +778,16 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
       <section className="space-y-3">
         <h2 className="text-base font-semibold text-white">The zeitgeist, as waves</h2>
         <p className="text-xs text-gray-500">
-          Each ridge is one topic&apos;s share of congressional attention across 240 years —
-          the bell curves of what America argued about. Every ridge is scaled to its own peak
-          (labeled), so shapes show <em>when</em> a topic mattered, not how big it was overall.
-          Curves are smoothed between decade samples. Click a ridge to trace it below.
+          Each ridge is one topic&apos;s share of topic-tagged votes across 240 years — the bell
+          curves of what America argued about, all {allTopics.length} tracked topics, ordered by
+          when they peaked so the cascade reads chronologically. Every ridge is scaled to its own
+          peak (labeled), so shapes show <em>when</em> a topic mattered, not how big it was
+          overall. Curves are smoothed between decade samples. Click a ridge to trace it below.
         </p>
         <div className="rounded border border-gray-800 bg-gray-900/40 p-4">
           <ZeitgeistRidgeline
             decades={data.decades}
-            topics={heatmapTopics}
+            topics={ridgeTopics}
             focusTopic={focusTopic}
             onPick={(slug) => {
               setFocusTopic(slug);
@@ -734,7 +808,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
               onChange={(e) => setFocusTopic(e.target.value)}
               className="bg-gray-900 border border-gray-700 rounded px-2 py-1 text-gray-200 text-xs"
             >
-              {heatmapTopics.map((slug) => (
+              {allTopics.map((slug) => (
                 <option key={slug} value={slug}>
                   {topicLabel(slug)}
                 </option>
@@ -743,7 +817,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
           </label>
         </div>
         <p className="text-xs text-gray-500">
-          One topic&apos;s share of all congressional roll-calls, decade by decade since 1789 —
+          One topic&apos;s share of topic-tagged roll-calls, decade by decade since 1789 —
           the zeitgeist as a line. Dotted verticals mark era boundaries. Click any decade dot
           to open the actual votes behind it.
         </p>
@@ -757,7 +831,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
             decades={data.decades}
             slug={focusTopic}
             eraBoundaries={eraBoundaryDecades}
-            onDecadeClick={(decade) => openDrawer(focusTopic, eraForDecade(decade))}
+            onDecadeClick={(decade) => openDrawer(focusTopic, { decade })}
           />
         </div>
       </section>
@@ -767,8 +841,9 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
         <h2 className="text-base font-semibold text-white">The biggest zeitgeist shifts</h2>
         <p className="text-xs text-gray-500">
           The five decade transitions where congressional attention changed most (Jensen-Shannon
-          divergence between consecutive decades). ▲ rising topics, ▼ fading — click a chip to
-          see the votes that drove the shift.
+          divergence between consecutive decades; transitions where either decade has under 200
+          tagged votes are excluded as sampling noise). ▲ rising topics, ▼ fading — click a chip
+          to see that topic&apos;s votes in the arriving decade.
         </p>
         <div className="rounded border border-gray-800 bg-gray-900/40 divide-y divide-gray-800/60">
           {topShifts.map((k) => (
@@ -783,9 +858,9 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                 {k.topChanges.slice(0, 4).map((c) => (
                   <button
                     key={c.topic}
-                    onClick={() => openDrawer(c.topic, eraForDecade(k.toDecade))}
+                    onClick={() => openDrawer(c.topic, { decade: k.toDecade })}
                     className={`px-2 py-0.5 rounded border text-[11px] cursor-pointer hover:opacity-80 transition-opacity ${topicColor(c.topic)}`}
-                    title={`${topicLabel(c.topic)}: ${c.delta >= 0 ? "+" : ""}${(c.delta * 100).toFixed(1)} percentage points of attention`}
+                    title={`${topicLabel(c.topic)}: ${c.delta >= 0 ? "+" : ""}${(c.delta * 100).toFixed(1)} percentage points of attention — see its ${k.toDecade}s votes`}
                   >
                     {c.delta >= 0 ? "▲" : "▼"} {topicLabel(c.topic)}{" "}
                     <span className="font-mono opacity-70">
@@ -803,8 +878,10 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
       <section className="space-y-3">
         <h2 className="text-base font-semibold text-white">Topic intensity by decade</h2>
         <p className="text-xs text-gray-500">
-          Cell darkness = topic&apos;s share of votes in that decade (normalized per row).
-          Column headers show full decade; era bands above group them historically.
+          Cell darkness = topic&apos;s share of tagged votes in that decade, scaled to each
+          topic&apos;s own peak (per row) so late-century vote volume doesn&apos;t drown the
+          19th century. All {allTopics.length} topics. Hover a cell for counts and shares;
+          click it for the votes. Era bands group decades historically.
         </p>
 
         <div className="rounded border border-gray-800 overflow-x-auto">
@@ -845,7 +922,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
               </tr>
             </thead>
             <tbody>
-              {heatmapTopics.map((slug) => (
+              {allTopics.map((slug) => (
                 <tr key={slug} className="border-b border-gray-800/40 last:border-0">
                   <td className="px-2 py-1 whitespace-nowrap sticky left-0 bg-gray-950 z-10">
                     <button
@@ -867,14 +944,10 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                     return (
                       <td
                         key={`${slug}-${d.decade}`}
-                        onClick={() => count > 0 && openDrawer(slug, eraForDecade(d.decade))}
+                        onClick={() => count > 0 && openDrawer(slug, { decade: d.decade })}
                         className={`w-7 h-7 text-center align-middle ${heatClass(intensity)} ${eraBoundaryDecades.has(d.decade) ? "border-l-2 border-l-gray-600" : ""} ${count > 0 ? "cursor-pointer hover:ring-1 hover:ring-inset hover:ring-blue-400/70" : ""}`}
-                        title={`${topicLabel(slug)} · ${d.decade}s: ${count.toLocaleString()} votes (${(p * 100).toFixed(1)}%)${count > 0 ? " — click for the votes" : ""}`}
-                      >
-                        <span className="text-[9px] text-white/60 font-mono">
-                          {count > 0 ? count : ""}
-                        </span>
-                      </td>
+                        title={`${topicLabel(slug)} · ${d.decade}s: ${count.toLocaleString()} ${count === 1 ? "vote" : "votes"} (${(p * 100).toFixed(1)}% of tagged)${count > 0 ? " — click for the votes" : ""}`}
+                      />
                     );
                   })}
                 </tr>
@@ -910,7 +983,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
           <div
             role="dialog"
             aria-modal="true"
-            aria-label={`${topicLabel(drawerState.topic)} votes — ${drawerState.eraLabel}`}
+            aria-label={`${topicLabel(drawerState.topic)} votes — ${drawerScopeLabel(drawerState)}`}
             className="fixed right-0 top-0 h-full w-full md:w-[520px] bg-gray-950 border-l border-gray-800 z-50 flex flex-col shadow-2xl transition-transform duration-[280ms] ease-out"
             style={{ transform: drawerVisible ? "translateX(0)" : "translateX(100%)" }}
           >
@@ -920,7 +993,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                 <h3 className="text-sm font-semibold text-white">
                   {topicLabel(drawerState.topic)} votes
                 </h3>
-                <p className="text-xs text-gray-500 mt-0.5">{drawerState.eraLabel}</p>
+                <p className="text-xs text-gray-500 mt-0.5">{drawerScopeLabel(drawerState)}</p>
               </div>
               <button
                 onClick={closeDrawer}
@@ -944,7 +1017,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                 <p className="text-xs text-gray-500 py-8 text-center">Loading…</p>
               ) : drawerVotes.length === 0 ? (
                 <p className="text-xs text-gray-500 py-8 text-center">
-                  No votes found for {topicLabel(drawerState.topic)} in {drawerState.eraLabel}.
+                  No votes found for {topicLabel(drawerState.topic)} in {drawerScopeLabel(drawerState)}.
                 </p>
               ) : (
                 <>
