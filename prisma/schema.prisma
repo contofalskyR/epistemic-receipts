@@ -83,6 +83,7 @@ model Claim {
   locations                ClaimLocation[]
   statusHistory            ClaimStatusHistory[]
   trajectorySearchDoc      TrajectorySearchDoc?
+  claimEmbedding           ClaimEmbedding?
 
   @@index([ingestedBy])
   @@index([ingestedBy, id])
@@ -755,4 +756,22 @@ model TrajectorySearchDoc {
   claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
 
   @@index([claimId])
+}
+
+// One embedding row per claim. Covers ALL non-deleted claims (vs TrajectorySearchDoc
+// which covers only trajectory-annotated claims). Uses text-embedding-3-small (1536 dim).
+// contentHash = sha256(embed_text) — prevents re-embedding unchanged content.
+// Raw SQL migration handles vector(1536) column and HNSW index (Prisma can't).
+model ClaimEmbedding {
+  id          String   @id @default(cuid())
+  claimId     String   @unique
+  embedding   Unsupported("vector(1536)")?
+  model       String
+  contentHash String
+  updatedAt   DateTime @updatedAt
+
+  claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
+
+  @@index([claimId])
+  @@index([contentHash])
 }
