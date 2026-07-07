@@ -136,6 +136,7 @@ function FeaturedHeroCard({ cards }: { cards: HeroCard[] }) {
 
   // Randomize starting card after hydration to avoid always showing index 0.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (cards.length > 1) setActive(Math.floor(Math.random() * cards.length));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -377,6 +378,7 @@ function HomeHeroContent({
     const q = input.trim();
     clearTimeout(debounceRef.current);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (q.length < MIN_QUERY) {
       setData(null);
       setLoading(false);
