@@ -600,8 +600,12 @@ model PolityClaim {
 model Profile {
   id        String     @id @default(uuid())
   key       String     @unique
+  userId    String?
   createdAt DateTime   @default(now())
   bookmarks Bookmark[]
+  user      User?      @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
 }
 
 model Bookmark {
@@ -787,11 +791,17 @@ model ApiKey {
   createdAt    DateTime  @default(now())
   revokedAt    DateTime?
   lastUsedAt   DateTime?
+  expiresAt    DateTime?
+  name         String?
+  prefix       String    @default("")
+  orgId        String?
 
   usage ApiUsage[]
+  org   Org?      @relation(fields: [orgId], references: [id], onDelete: SetNull)
 
   @@index([keyHash])
   @@index([tier])
+  @@index([orgId])
 }
 
 model ApiUsage {
@@ -806,4 +816,119 @@ model ApiUsage {
   @@unique([keyId, date, endpoint])
   @@index([keyId])
   @@index([date])
+}
+
+// ── Spec 30: Accounts, Orgs, Entitlements ───────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  createdAt     DateTime  @default(now())
+
+  accounts    Account[]
+  sessions    Session[]
+  memberships Membership[]
+  profiles    Profile[]
+
+  @@index([email])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Org {
+  id                   String    @id @default(cuid())
+  name                 String
+  slug                 String    @unique
+  tier                 String    @default("free")
+  seats                Int       @default(5)
+  ssoConnectionId      String?
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  pastDueSince         DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  memberships Membership[]
+  ipRanges    OrgIpRange[]
+  usageDaily  OrgUsageDaily[]
+  apiKeys     ApiKey[]
+}
+
+model Membership {
+  userId    String
+  orgId     String
+  role      String   @default("member")
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  org  Org  @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@id([userId, orgId])
+  @@index([orgId])
+}
+
+model OrgIpRange {
+  id          String   @id @default(cuid())
+  orgId       String
+  cidr        String
+  label       String   @default("")
+  confirmFlag Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  org Org @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@index([orgId])
+}
+
+model OrgUsageDaily {
+  id     String @id @default(cuid())
+  orgId  String
+  date   String
+  metric String
+  count  Int    @default(0)
+
+  org Org @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@unique([orgId, date, metric])
+  @@index([orgId])
 }
