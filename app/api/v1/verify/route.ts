@@ -1,74 +1,140 @@
 /**
- * /api/v1/verify
+ * GET /v1/verify?statement=
  *
- * Given a text fragment, find semantically similar claims in the corpus.
- * Uses vector search (ClaimEmbedding) to surface related documented facts.
+ * Given a statement (≤500 chars), find the top-10 nearest documented claims.
+ * Returns provenance grade, epistemicAxis, edge receipt counts, statusHistory
+ * summary, and a direct link.
  *
- * IMPORTANT: This endpoint surfaces SIMILAR claims — not truth verdicts.
- * The `epistemicAxis` field describes the claim's documented status, not
- * a judgment about the submitted text.
+ * IMPORTANT: This surfaces SIMILAR documented claims — NOT a truth verdict.
+ * The grade reflects documentation depth, not whether the statement is true.
  *
- * Security: read-only GET + rate-limited in middleware.
+ * Auth required.
  */
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { searchClaims } from "@/lib/search";
+import { readPrisma } from "@/lib/v1/readClient";
+import { verifyApiKey, isAuthError } from "@/lib/v1/auth";
+import { computeProvenanceGrade, GRADE_DESCRIPTIONS } from "@/lib/v1/provenance";
+import { v1Json, v1Error, methodNotAllowed, badRequest } from "@/lib/v1/respond";
 
 export const dynamic = "force-dynamic";
 
-const MIN_QUERY = 10;
-const DEFAULT_LIMIT = 10;
-const MAX_LIMIT = 25;
-
 export async function GET(req: NextRequest) {
-  const url = new URL(req.url);
-  const text = (url.searchParams.get("text") ?? "").trim();
+  const auth = await verifyApiKey(req, "verify");
+  if (isAuthError(auth)) return v1Error(auth.body, auth.headers);
 
-  if (text.length < MIN_QUERY) {
-    return NextResponse.json(
-      { error: `Text must be at least ${MIN_QUERY} characters.` },
-      { status: 400 },
+  const url = req.nextUrl;
+  const statement = (url.searchParams.get("statement") ?? "").trim();
+
+  if (statement.length < 10) return badRequest("Statement must be at least 10 characters.");
+  if (statement.length > 500) return badRequest("Statement must be at most 500 characters.");
+
+  const limit = Math.min(
+    10,
+    Math.max(1, Number.parseInt(url.searchParams.get("limit") ?? "10", 10) || 10),
+  );
+
+  const results = await searchClaims(statement, "vector", {}, limit, 0).catch(() =>
+    searchClaims(statement, "hybrid", {}, limit, 0),
+  );
+
+  if (results.length === 0) {
+    return v1Json(
+      {
+        statement,
+        disclaimer:
+          "Results are semantically similar documented claims. epistemicAxis reflects the claim's documented status — not a verdict on your statement.",
+        data: [],
+      },
+      { cache: "dynamic" },
     );
   }
 
-  const limit = Math.max(
-    1,
-    Math.min(
-      MAX_LIMIT,
-      Number.parseInt(url.searchParams.get("limit") ?? `${DEFAULT_LIMIT}`, 10) || DEFAULT_LIMIT,
-    ),
-  );
+  const ids = results.map(r => r.id);
 
-  // Use vector search for similarity-based matching; fall back to hybrid if
-  // ClaimEmbedding is empty (pre-backfill). The caller gets similarity scores,
-  // not truth verdicts.
-  const results = await searchClaims(text, "vector", {}, limit, 0).catch(() =>
-    searchClaims(text, "hybrid", {}, limit, 0)
-  );
+  // Fetch edge counts (FOR/AGAINST/CONTRADICTS) + statusHistory counts
+  const [edgeCounts, primaryEdgeCounts, historyItems] = await Promise.all([
+    readPrisma.edge.groupBy({
+      by: ["claimId", "type"],
+      where: { claimId: { in: ids }, deleted: false },
+      _count: { _all: true },
+    }),
+    readPrisma.edge.groupBy({
+      by: ["claimId"],
+      where: { claimId: { in: ids }, deleted: false, source: { methodologyType: "primary" } },
+      _count: { _all: true },
+    }),
+    readPrisma.claimStatusHistory.findMany({
+      where: { claimId: { in: ids } },
+      select: { claimId: true, toAxis: true, occurredAt: true },
+      orderBy: { occurredAt: "desc" },
+    }),
+  ]);
 
-  return NextResponse.json(
-    {
-      text,
-      disclaimer:
-        "Results are semantically similar documented claims. " +
-        "epistemicAxis reflects the claim's documented status — not a verdict on your text.",
-      results: results.map(r => ({
+  const primaryMap = new Map(primaryEdgeCounts.map(e => [e.claimId, e._count._all]));
+
+  type EdgeTypeCount = { claimId: string; type: string; _count: { _all: number } };
+  const receiptsMap = new Map<string, { for: number; against: number; contradicts: number }>();
+  for (const e of edgeCounts as EdgeTypeCount[]) {
+    const cur = receiptsMap.get(e.claimId) ?? { for: 0, against: 0, contradicts: 0 };
+    if (e.type === "FOR") cur.for += e._count._all;
+    else if (e.type === "AGAINST") cur.against += e._count._all;
+    else if (e.type === "RETRACTS" || e.type === "CONTRADICTS") cur.contradicts += e._count._all;
+    receiptsMap.set(e.claimId, cur);
+  }
+
+  const historyMap = new Map<string, { latestAxis: string; totalTransitions: number }>();
+  for (const h of historyItems) {
+    if (!historyMap.has(h.claimId)) {
+      historyMap.set(h.claimId, { latestAxis: h.toAxis, totalTransitions: 0 });
+    }
+    historyMap.get(h.claimId)!.totalTransitions++;
+  }
+
+  const siteBase = process.env.NEXT_PUBLIC_SITE_URL ?? "https://epistemic-receipts.app";
+
+  const data = results.map(r => {
+    const primaryCount = primaryMap.get(r.id) ?? 0;
+    const grade = computeProvenanceGrade({
+      humanReviewed: false, // not in search result type; would need a separate DB fetch
+      autoApproved: false,
+      verificationStatus: r.verificationStatus ?? null,
+      epistemicAxis: r.epistemicAxis ?? null,
+      primarySourceEdgeCount: primaryCount,
+    });
+    return {
+      claim: {
         id: r.id,
-        externalId: r.externalId,
         text: r.text,
-        epistemicAxis: r.epistemicAxis,
         claimType: r.claimType,
-        ingestedBy: r.ingestedBy,
+        epistemicAxis: r.epistemicAxis,
         verificationStatus: r.verificationStatus,
-        epistemicStatus: r.epistemicStatus,
+        ingestedBy: r.ingestedBy,
+        humanReviewed: false,
         createdAt: r.createdAt,
-        claimEmergedAt: r.claimEmergedAt,
-        similarity: Number(r.rank.toFixed(4)),
-      })),
-    },
-    {
-      headers: {
-        "CDN-Cache-Control": "s-maxage=60, stale-while-revalidate=300",
+        updatedAt: null,
+        provenanceGrade: grade,
+        provenanceDescription: GRADE_DESCRIPTIONS[grade],
+        link: `${siteBase}/claims/${r.id}`,
       },
+      rank: Number(r.rank.toFixed(6)),
+      receipts: receiptsMap.get(r.id) ?? { for: 0, against: 0, contradicts: 0 },
+      statusHistorySummary: historyMap.get(r.id) ?? { latestAxis: null, totalTransitions: 0 },
+    };
+  });
+
+  return v1Json(
+    {
+      statement,
+      disclaimer:
+        "Results are semantically similar documented claims. epistemicAxis reflects the claim's documented status — not a verdict on your statement.",
+      data,
     },
+    { cache: "dynamic" },
   );
 }
+
+export function POST() { return methodNotAllowed(); }
+export function PUT() { return methodNotAllowed(); }
+export function PATCH() { return methodNotAllowed(); }
+export function DELETE() { return methodNotAllowed(); }
