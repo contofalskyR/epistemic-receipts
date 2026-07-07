@@ -14,7 +14,7 @@ export const maxDuration = 60;
  * Run twice in a day → Stripe deduplicates via the `identifier` field.
  */
 export async function GET(req: NextRequest) {
-  const cronSecret = process.env.CRON_SECRET;
+  const cronSecret = process.env.CRON_SECRETE;
   if (cronSecret && req.headers.get("authorization") !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
