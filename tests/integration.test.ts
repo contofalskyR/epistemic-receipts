@@ -49,24 +49,20 @@ describe("isReadOnly()", () => {
   it("returns true in production without ALLOW_EDITS", () => {
     const origEnv = process.env.NODE_ENV;
     const origAllow = process.env.ALLOW_EDITS;
-    // @ts-expect-error — overwriting readonly
-    process.env.NODE_ENV = "production";
+    Object.assign(process.env, { NODE_ENV: "production" });
     delete process.env.ALLOW_EDITS;
     expect(isReadOnly()).toBe(true);
-    // @ts-expect-error
-    process.env.NODE_ENV = origEnv;
+    Object.assign(process.env, { NODE_ENV: origEnv });
     if (origAllow !== undefined) process.env.ALLOW_EDITS = origAllow;
   });
 
   it("returns false in production when ALLOW_EDITS=true", () => {
     const origEnv = process.env.NODE_ENV;
     const origAllow = process.env.ALLOW_EDITS;
-    // @ts-expect-error
-    process.env.NODE_ENV = "production";
+    Object.assign(process.env, { NODE_ENV: "production" });
     process.env.ALLOW_EDITS = "true";
     expect(isReadOnly()).toBe(false);
-    // @ts-expect-error
-    process.env.NODE_ENV = origEnv;
+    Object.assign(process.env, { NODE_ENV: origEnv });
     if (origAllow !== undefined) process.env.ALLOW_EDITS = origAllow;
     else delete process.env.ALLOW_EDITS;
   });
@@ -110,14 +106,12 @@ describe("Middleware auth (write gate)", () => {
 
   beforeAll(() => {
     process.env.ADMIN_TOKEN = TEST_TOKEN;
-    // @ts-expect-error
-    process.env.NODE_ENV = "production"; // auth is enforced only outside dev
+    Object.assign(process.env, { NODE_ENV: "production" }); // auth enforced outside dev
     delete process.env.SITE_PASSWORD;
   });
 
   afterAll(() => {
-    // @ts-expect-error
-    process.env.NODE_ENV = "test";
+    Object.assign(process.env, { NODE_ENV: "test" });
   });
 
   it("POST to /api/claims without credentials → 401", async () => {
