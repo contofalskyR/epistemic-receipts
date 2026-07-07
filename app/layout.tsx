@@ -35,6 +35,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/corrections" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
                 Corrections
               </a>
+              {" · "}
+              <a href="/methodology" className="hover:text-gray-300 transition-colors underline-offset-2 hover:underline">
+                Methodology
+              </a>
             </div>
             <div className="text-gray-600">
               Conceptualized by{" "}
