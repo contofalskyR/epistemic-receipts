@@ -36,7 +36,7 @@ p.claimStatusHistory.groupBy({by:['claimId'],_count:true}).then(r=>console.log(r
 
   PROMPT="You are an autonomous agent expanding the Epistemic Receipts settling curve with new historical trajectories.
 
-PROJECT: /Users/robclaw/Projects/epistemic-receipts
+PROJECT: ${PROJECT_DIR}
 Focus area for this run: ${FOCUS}
 
 Your job:
@@ -45,7 +45,7 @@ Your job:
    - Has contemporaneous primary sources or contemporaneous accounts
    - Represents a clear epistemic transition (OPEN→RECORDED, RECORDED→SETTLED, SETTLED→REVERSED, etc.)
    - Non-interpretive (concrete facts, not historical analyses)
-   - NOT already in the DB: read scripts/seed-human-history-trajectories.ts and check EVERY candidate against the existing list by event description AND year, not just externalId. Ask yourself: \"Is there any entry in the seed file that describes the same event on the same date, even if the externalId is phrased differently?\" If yes, SKIP that candidate — it is a duplicate regardless of what the externalId says.
+   - NOT already in the DB: read scripts/seed-human-history-trajectories.ts and check EVERY candidate against the existing list by event description AND year, not just externalId. Ask yourself: \"Is there any entry in the seed file that describes the same event on the same date, even if the externalId is phrased differently?\" If yes, SKIP that candidate — it is a duplicate regardless of what the externalId says. MANDATORY MECHANICAL GATE (the seed files do NOT cover the whole curated DB): for EVERY candidate, run: cd ${PROJECT_DIR} && npx dotenv-cli -e .env.local -- npx tsx scripts/check-candidate-dup.ts --text 'one-sentence summary of the event with its date (strip apostrophes)' . Exit code 2 = DUPLICATE (the tool prints the matching claim): SKIP that candidate and list it under CONSIDERED with reason 'dup-check'. Exit code 0 = proceed. Never seed a candidate that has not passed this check.
 
 2. VERIFY each candidate before adding it. For each source URL you plan to use:
    - Fetch the URL using the WebFetch tool or curl
@@ -55,7 +55,7 @@ Your job:
    Only proceed to step 3 with trajectories that passed source verification.
 
 3. For each verified trajectory, read scripts/seed-human-history-trajectories.ts to understand the format, then add it following EXACTLY the same structure as existing ones. Run:
-   cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-human-history-trajectories.ts
+   cd ${PROJECT_DIR} && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-human-history-trajectories.ts
 
 4. Commit and push: git add -A && git commit -m 'trajectories: add [N] verified curves — [era/region]' && git push origin main
 

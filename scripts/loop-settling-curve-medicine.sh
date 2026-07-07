@@ -68,7 +68,7 @@ p.claimStatusHistory.groupBy({by:['claimId'],_count:true}).then(r=>console.log(r
 
   OPUS_PROMPT="You are a medical research expert and epistemic historian expanding the Epistemic Receipts medicine settling curve dataset.
 
-PROJECT: /Users/robclaw/Projects/epistemic-receipts
+PROJECT: ${PROJECT_DIR}
 SEED FILE: scripts/seed-medicine-trajectories.ts (medicine-specific trajectories)
 HISTORY SEED: scripts/seed-human-history-trajectories.ts (check this too — some medical events may already be in there)
 
@@ -81,7 +81,7 @@ Think of 3-5 specific medical/pharmaceutical epistemic events in this focus area
   - A dateable medical claim (drug approval, study publication, guideline change, regulatory reversal, court ruling) pinned to a specific day or month
   - Has verifiable primary sources: PubMed PMID, FDA approval letter, NEJM/Lancet/BMJ paper, WHO bulletin, congressional record, court decision
   - Represents a clear epistemic transition: OPEN→RECORDED (first evidence), RECORDED→SETTLED (institutional adoption), SETTLED→CONTESTED (safety signal), SETTLED→REVERSED (withdrawal/contradicted), etc.
-  - NOT already in the seed files: read BOTH seed files and check every candidate against existing entries by event description AND date, not just externalId. Ask: 'is this the same event already in either file, even under a different name?'
+  - NOT already in the seed files: read BOTH seed files and check every candidate against existing entries by event description AND date, not just externalId. Ask: 'is this the same event already in either file, even under a different name?' MANDATORY MECHANICAL GATE (the seed files do NOT cover the whole curated DB): for EVERY candidate, run: cd ${PROJECT_DIR} && npx dotenv-cli -e .env.local -- npx tsx scripts/check-candidate-dup.ts --text 'one-sentence summary of the event with its date (strip apostrophes)' . Exit code 2 = DUPLICATE (the tool prints the matching claim): SKIP that candidate and list it under CONSIDERED with reason 'dup-check'. Exit code 0 = proceed. Never seed a candidate that has not passed this check.
 
 STEP 2 — SOURCE VERIFICATION:
 For each candidate, fetch at least one primary source URL:
@@ -160,7 +160,7 @@ else:
 
     SONNET_PROMPT="You are a code execution agent. You have been given a verified JSON spec of medical epistemic trajectories. Do NOT do any research — just execute.
 
-PROJECT: /Users/robclaw/Projects/epistemic-receipts
+PROJECT: ${PROJECT_DIR}
 SEED FILE TO ADD TO: scripts/seed-medicine-trajectories.ts
 
 VERIFIED JSON SPEC:
@@ -171,7 +171,7 @@ CRITICAL: Only perform the 5 steps below. Do NOT run any loop scripts, cron jobs
 Your job:
 1. Read scripts/seed-medicine-trajectories.ts to understand the exact TypeScript format.
 2. Append each trajectory from the JSON spec to the TRAJECTORIES array, following EXACTLY the same structure. Preserve all existing entries.
-3. Run: cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-medicine-trajectories.ts
+3. Run: cd ${PROJECT_DIR} && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-medicine-trajectories.ts
 4. Commit and push: git add -A && git commit -m '💊 medicine: add [N] verified trajectories — [era/domain]' && git push origin main
 5. Output exactly:
 ADDED:[N]
@@ -198,7 +198,7 @@ except:
     if [ "${ADDED:-0}" != "0" ] && [ "${ADDED:-0}" != "" ]; then
       REVIEW_PROMPT="You are a medical epistemic quality reviewer. Verify what Sonnet committed matches the spec and is medically correct.
 
-PROJECT: /Users/robclaw/Projects/epistemic-receipts
+PROJECT: ${PROJECT_DIR}
 ORIGINAL SPEC: ${JSON_SPEC}
 
 1. Read scripts/seed-medicine-trajectories.ts — find the newly added entries at the bottom.
@@ -228,7 +228,7 @@ REVIEW_ISSUES:[specific description of what is wrong and which externalId is aff
         # ─── PHASE 3b: SONNET FIX (max 1 retry) ─────────────────────────
         FIX_PROMPT="You are a code correction agent. An Opus quality reviewer found issues with trajectories you just committed. Fix them now.
 
-PROJECT: /Users/robclaw/Projects/epistemic-receipts
+PROJECT: ${PROJECT_DIR}
 ORIGINAL SPEC: ${JSON_SPEC}
 ISSUES FOUND: ${REVIEW_DETAIL}
 
@@ -236,7 +236,7 @@ CRITICAL: Only perform the 5 steps below. Do NOT run any loop scripts, cron jobs
 
 1. Read scripts/seed-medicine-trajectories.ts and find the affected entries (listed in ISSUES FOUND).
 2. Fix each issue in place — correct the field values to match the spec and the reviewer's feedback.
-3. Re-run: cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-medicine-trajectories.ts
+3. Re-run: cd ${PROJECT_DIR} && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-medicine-trajectories.ts
 4. Commit: git add -A && git commit -m '💊 medicine: fix quality issues flagged by Opus reviewer' && git push origin main
 5. Output: FIX_DONE:[brief description of what you fixed]"
 

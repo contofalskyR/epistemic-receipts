@@ -21,6 +21,8 @@ Each briefing is self-contained: context, verified current state, tasks, constra
 | 4 | `04-ssr-machine-readability.md` — SSR receipts, metadata, sitemap | The entire "queryable infrastructure" thesis | 3–5 days | Medium (touches core pages) |
 | 5 | `05-integrity-fixes.md` — live counts, cited-claim curation, scope, polish | Credibility of 04's newly-visible pages | 1–2 days | Low |
 | 6 | `06-quiet-reversals.md` — citation trajectories → candidates → LLM → human gate | White paper Future Work #2; needs 01 done + promoter runtime | Phase A ~3 days of sweeps; then ongoing | Medium (editorial assertions — human-gated) |
+| 7 | `07-curve-first-domains.md` — CurveExplorer refactor, per-domain rollout | Curve-first product vision | ~1 wk staged | Low (UI refactor, pure) |
+| 8 | `08-transition-event-pipelines.md` — contract library, chain CI, dedupe gate, SCOTUS/exoplanet/NZ event pipelines | **BUILT 2026-07-07 — execute, don't rebuild.** Curvable tails of born-settled/born-recorded corpora | Runbook in doc; each next feed ~1 day | Low (preflight-default, contract-enforced) |
 
 Recommended: 01 first (it protects everything the promoter loop writes), then 04 as the main project with 02/03/05 interleaved. 04 and 05 together are what your audit (`AUDIT-WHITEPAPER-GAP-2026-07-03.md`) called the vision-blocking gap — the corpus now has ~350k multi-step curves that no crawler can see.
 
