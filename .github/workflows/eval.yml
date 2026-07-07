@@ -1,0 +1,30 @@
+name: Eval dry-run
+
+on:
+  pull_request:
+    branches: ["**"]
+    paths:
+      - "scripts/build-eval-set.ts"
+      - "packages/eval/**"
+      - ".github/workflows/eval.yml"
+
+jobs:
+  eval-dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate build-eval-set schema pipeline (dry-run)
+        run: npx tsx scripts/build-eval-set.ts --dry-run
+
+      - name: TypeScript type check (eval package)
+        run: npx tsc --noEmit --skipLibCheck packages/eval/schema.ts packages/eval/score.ts packages/eval/checklist-generator.ts packages/eval/upload-r2.ts
