@@ -41,11 +41,14 @@ census → per-pipeline date backfill → ingest-auto-trajectories rescan → re
    these are PRODUCTION dates — one-line template wording fix available on request.
 2. **chebi (37k)**: rerun existing `backfill-chebi-dates.ts` (PubMed citation dates),
    then Layer-1 rescan; remainder = residue.
-3. **Honest residue, document in methodology**: jacar 31k (no public API — the
+3. **mesh (10k) — RECOVERABLE, 2026-07-08**: `backfill-mesh-dates.ts` sample hit
+   100% via meshv:dateIntroduced (GET-only endpoint; -01-01 stored as YEAR).
+   Run: `--execute --direct` (~7 min at batch 25/400ms) → Layer-1 rescan mesh_v1.
+4. **Honest residue, document in methodology**: jacar 31k (no public API — the
    next different beast, per-page scrape if ever), rxnorm 15k, ofac 10k (Treasury
-   publishes no per-entity designation dates), mesh 10k / omim 1.5k (NLM/OMIM API
-   sweeps possible later), pubchem, small ones. Number goes on the methodology
-   page as proof dates are never invented.
-4. **Still queued from briefing 08**: SCOTUS/exoplanet pipeline pilots, NZ two-phase,
+   publishes no per-entity designation dates), omim 1.5k (API sweep possible,
+   needs OMIM key check), pubchem, small ones, + NARA/mesh no-date remainders.
+   Number goes on the methodology page as proof dates are never invented.
+5. **Still queued from briefing 08**: SCOTUS/exoplanet pipeline pilots, NZ two-phase,
    rechain fix (pause Layer-1 loop first), curated dedupe `--deprecate`, loop-machine
    `git pull` + install loop-event-pipelines.sh, ordering-semantics decision.
