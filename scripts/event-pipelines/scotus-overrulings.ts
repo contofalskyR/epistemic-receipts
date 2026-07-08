@@ -369,7 +369,11 @@ async function main() {
         },
       };
 
-      const result = await emitTransition(prisma, spec, { execute: EXECUTE });
+      // The table URL itself 403s scripted fetches (Akamai) — but when running
+      // from --feed-file the human just saved that exact page, so it is
+      // human-verified. Bot-UA 403 is not link rot (transition-contract note).
+      const skipVerify = markerUrl === TABLE_URL && !!FEED_FILE;
+      const result = await emitTransition(prisma, spec, { execute: EXECUTE, verifyUrls: !skipVerify });
       counts[result.action === "planned" ? "planned" : result.action]++;
       const flag = { inserted: "+", planned: "·", exists: "=", skipped: "✗" }[result.action];
       console.log(`  ${flag} ${result.action.padEnd(8)} ${toAxis.padEnd(9)} @ ${occurredAt}  ${label}  [${match.method}]`);
