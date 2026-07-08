@@ -38,9 +38,11 @@ type Community =
 interface TransitionSource {
   name: string;
   url: string | null;
+  ingestedBy?: string | null;
 }
 
 interface Transition {
+  id?: string;
   fromAxis?: string | null;
   toAxis: Axis;
   community: Community;
@@ -48,6 +50,35 @@ interface Transition {
   datePrecision?: string | null;
   reason: string | null;
   source: TransitionSource;
+}
+
+// ── Provenance — who wrote this receipt? Derived from the row-id conventions
+// each writer uses (deterministic slugs, curated csh:/trajectory: ids,
+// :retraction: rows, Layer-1 cuids) + the marker source's pipeline tag.
+// Radical transparency: every dot on a curve says where it came from.
+const SLUG_ROW_RE = /-(RECORDED|SETTLED|CONTESTED|OPEN|UNRESOLVABLE|REVERSED|ABANDONED)-\d{4}-\d{2}-\d{2}$/;
+
+function provenanceOf(t: Transition): { label: string; title: string } {
+  const id = t.id ?? "";
+  const srcTag = t.source?.ingestedBy ?? "";
+  if (id.startsWith("csh:") || id.startsWith("trajectory:") || id.includes(":trajectory:"))
+    return { label: "curated", title: `Hand-owned seed / agentic research loop with human-owned seed files.\nrow: ${id}` };
+  if (id.includes(":retraction:"))
+    return { label: "retraction records", title: `Built from CrossRef/Retraction Watch retraction data.\nrow: ${id}` };
+  if (SLUG_ROW_RE.test(id)) {
+    if (srcTag.startsWith("event:"))
+      return { label: "event feed", title: `Deterministic event pipeline (${srcTag.replace(/^event:/, "").replace(/_v\d+$/, "")}) — joined from a published institutional feed.\nrow: ${id}` };
+    return { label: "pipeline", title: `Deterministic bulk/promoter pipeline write (verified source URL, preflight-gated).\nrow: ${id}` };
+  }
+  return { label: "auto baseline", title: `Layer-1 template baseline generated from the claim's ingest record.\nrow: ${id || "(id not exposed)"}` };
+}
+
+function flagHref(claimId: string | null, t: Transition): string {
+  const params = new URLSearchParams();
+  if (claimId) params.set("claim", claimId);
+  if (t.id) params.set("transition", t.id);
+  params.set("date", t.occurredAt);
+  return `/corrections?${params.toString()}`;
 }
 
 interface TrajectoryListItem {
@@ -513,6 +544,18 @@ function SettlingCurveInner() {
             ) : (
               <span style={{ fontSize: 13, color: C.mut }}>{only.source.name}</span>
             )}
+            <div className="flex items-center gap-3 mt-3">
+              <span
+                className="font-mono px-1.5 py-px rounded"
+                title={provenanceOf(only).title}
+                style={{ fontSize: 9, color: C.faint, border: `1px solid ${C.panelEdge}`, letterSpacing: "0.05em", cursor: "help" }}
+              >
+                {provenanceOf(only).label}
+              </span>
+              <Link href={flagHref(activeId, only)} className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                flag this receipt →
+              </Link>
+            </div>
             <p className="mt-4" style={{ fontSize: 12, color: C.faint, lineHeight: 1.55 }}>
               A single-point curve is a real claim: nothing has moved yet. When a dated, sourced
               event touches this claim — a repeal, a retraction, an overruling — the loops add the
@@ -667,6 +710,18 @@ function SettlingCurveInner() {
               ) : (
                 <span style={{ fontSize: 13, color: C.mut }}>{detail.source.name}</span>
               )}
+              <div className="flex items-center gap-3 mt-3">
+                <span
+                  className="font-mono px-1.5 py-px rounded"
+                  title={provenanceOf(detail).title}
+                  style={{ fontSize: 9, color: C.faint, border: `1px solid ${C.panelEdge}`, letterSpacing: "0.05em", cursor: "help" }}
+                >
+                  {provenanceOf(detail).label}
+                </span>
+                <Link href={flagHref(activeId, detail)} className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                  flag this receipt →
+                </Link>
+              </div>
               <p className="mt-4" style={{ fontSize: 12, color: C.faint }}>
                 Each point is a dated source — the receipt for when a community changed its mind. Tap any marker.
               </p>
@@ -772,6 +827,22 @@ function SettlingCurveInner() {
                       ) : (
                         <span style={{ fontSize: 11, color: C.mut }}>{tr.source.name}</span>
                       )}
+                      <div className="flex items-center gap-3 mt-2">
+                        <span
+                          className="font-mono px-1.5 py-px rounded"
+                          title={provenanceOf(tr).title}
+                          style={{ fontSize: 9, color: C.faint, border: `1px solid ${C.panelEdge}`, letterSpacing: "0.05em", cursor: "help" }}
+                        >
+                          {provenanceOf(tr).label}
+                        </span>
+                        <Link
+                          href={flagHref(activeId, tr)}
+                          className="font-mono"
+                          style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}
+                        >
+                          flag this receipt →
+                        </Link>
+                      </div>
                     </div>
                   </div>
 

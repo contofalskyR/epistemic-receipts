@@ -18,7 +18,10 @@
 // re-running after manually promoting the one you want (give it more history) or
 // edit KEEP_OVERRIDES below.
 
-import { prisma } from "../lib/prisma";
+// Own client, NOT the app singleton — lib/prisma.ts imports "server-only",
+// which throws when run outside the Next runtime (fixed 2026-07-08).
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 const threshold = (() => {
   const i = process.argv.indexOf("--threshold");

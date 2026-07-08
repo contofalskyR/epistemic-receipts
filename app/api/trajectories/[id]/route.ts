@@ -19,13 +19,14 @@ export async function GET(
   const statusHistorySelect = {
     orderBy: [{ occurredAt: "asc" as const }, { createdAt: "asc" as const }],
     select: {
+      id: true, // row id — its shape encodes which writer produced it (provenance chip)
       fromAxis: true,
       toAxis: true,
       community: true,
       occurredAt: true,
       datePrecision: true,
       reason: true,
-      markerSource: { select: { name: true, url: true, publishedAt: true } },
+      markerSource: { select: { name: true, url: true, publishedAt: true, ingestedBy: true } },
     },
   };
 
@@ -45,6 +46,7 @@ export async function GET(
   if (!claim) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   const transitions = claim.statusHistory.map((s) => ({
+    id: s.id,
     fromAxis: s.fromAxis,
     toAxis: s.toAxis,
     community: s.community,
@@ -52,8 +54,8 @@ export async function GET(
     datePrecision: s.datePrecision,
     reason: s.reason,
     source: s.markerSource
-      ? { name: s.markerSource.name, url: s.markerSource.url }
-      : { name: "(no marker source)", url: null },
+      ? { name: s.markerSource.name, url: s.markerSource.url, ingestedBy: s.markerSource.ingestedBy ?? null }
+      : { name: "(no marker source)", url: null, ingestedBy: null },
   }));
 
   if (wantBibtex) {
