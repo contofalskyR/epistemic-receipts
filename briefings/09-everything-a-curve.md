@@ -61,6 +61,15 @@ census → per-pipeline date backfill → ingest-auto-trajectories rescan → re
    (+14 dateEstablished), 10,000 SETTLED curves created, chain audit fully green.
    Running total this project: **10,271 curves** (mesh 10k + pdg 226 + uk 43 + chebi 2
    pending rescan) + NARA in flight.
+3b. **Event pipelines LIVE (2026-07-09 morning)**: SCOTUS overrulings — 11 arcs
+   written via --feed-file (Akamai blocks scripted fetches of the table; browser-
+   saved copy is the supported path). Roe←Dobbs, Chevron←Loper Bright (REVERSED),
+   Teague←Edwards (CONTESTED, "in part"). Audit green (400 claims/411 transitions).
+   276 residue = overruled cases not in the CL ingest → law-loop work queue.
+   Exoplanets — 75 dead-planet claims confirmed (earlier off-screen execute),
+   audit green; residue feeds astronomy loop for announcement prepends.
+   Methodology "Where dates come from" + Reversals showcase + provenance chips +
+   flag links: all deployed.
 4. **Honest residue, document in methodology**: jacar 31k (no public API — the
    next different beast, per-page scrape if ever), rxnorm 15k, ofac 10k (Treasury
    publishes no per-entity designation dates), omim 1.5k (API sweep possible,
