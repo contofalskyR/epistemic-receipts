@@ -225,7 +225,9 @@ function SettlingCurveInner() {
   const [listLoading, setListLoading] = useState(true);
   const [listError, setListError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
-  const [activeId, setActiveId] = useState<string | null>(null);
+  // Initialized from the URL so deep links open straight into the detail view
+  // without a landing-grid flash.
+  const [activeId, setActiveId] = useState<string | null>(() => searchParams.get("t"));
   const [traj, setTraj] = useState<TrajectoryDetail | null>(null);
   const [loadingDetail, setLoadingDetail] = useState(true);
   const [selected, setSelected] = useState<number | null>(null);
@@ -236,15 +238,19 @@ function SettlingCurveInner() {
   const [eraFilter, setEraFilter] = useState<string>("ALL");
   const [domainFilter, setDomainFilter] = useState<string>("ALL");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [browseMode, setBrowseMode] = useState(false);
   const [filterOpen, setFilterOpen] = useState({ status: true, era: false, domain: false });
   const [receiptOpen, setReceiptOpen] = useState(true);
   const [visibleCount, setVisibleCount] = useState(30);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const [feedVisibleCount, setFeedVisibleCount] = useState(12);
-  const feedSentinelRef = useRef<HTMLDivElement>(null);
+  const [gridVisibleCount, setGridVisibleCount] = useState(24);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  // No deep link → the landing grid (like /legislation's front). A ?t= id —
+  // curated slug or raw claim CUID alike — opens the explorer detail view.
+  const landing = activeId === null;
+
+  // Fetch the list once (retryKey re-runs after errors) — NOT on every
+  // searchParams change; card clicks only move the ?t= param.
   useEffect(() => {
     let cancelled = false;
     setListLoading(true);
@@ -260,15 +266,6 @@ function SettlingCurveInner() {
         if (cancelled) return;
         setList(data);
         setListLoading(false);
-        const deep = searchParams.get("t");
-        // Accept ANY deep-linked id — curated slugs and raw claim CUIDs alike.
-        // /api/trajectories/[id] already falls back to claim ids, which makes
-        // this page the universal curve explorer for all 235k+ multi-step
-        // claims, not just the curated set. (Previously the deep link was
-        // silently discarded unless it matched the curated list.)
-        const initial = deep || (data[0]?.id ?? null);
-        setActiveId(initial);
-        if (initial == null) setLoadingDetail(false);
       })
       .catch(() => {
         if (!cancelled) { setListLoading(false); setListError(true); setLoadingDetail(false); }
@@ -276,7 +273,21 @@ function SettlingCurveInner() {
     return () => {
       cancelled = true;
     };
-  }, [searchParams, retryKey]);
+  }, [retryKey]);
+
+  // Sync the open trajectory with the URL (deep links, card clicks via
+  // history.pushState, and browser back/forward all land here).
+  useEffect(() => {
+    const deep = searchParams.get("t");
+    if (deep) {
+      setActiveId(deep);
+    } else {
+      setActiveId(null);
+      setTraj(null);
+      setSelected(null);
+      setLoadingDetail(false);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (!activeId) return;
@@ -303,7 +314,20 @@ function SettlingCurveInner() {
     setActiveId(id);
     setSelected(null);
     setDrawerOpen(false);
-    setBrowseMode(false);
+    // Shallow URL update — keeps curve URLs shareable and browser-back working
+    // (Next syncs useSearchParams with native history).
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", `/settling-curve?t=${encodeURIComponent(id)}`);
+    }
+  };
+
+  const backToAll = () => {
+    setActiveId(null);
+    setTraj(null);
+    setSelected(null);
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", "/settling-curve");
+    }
   };
 
   const filteredList = useMemo(() => {
@@ -320,10 +344,11 @@ function SettlingCurveInner() {
   // Reset visible counts whenever filters change
   useEffect(() => {
     setVisibleCount(30);
-    setFeedVisibleCount(12);
+    setGridVisibleCount(24);
   }, [query, statusFilter, eraFilter, domainFilter]);
 
-  // Sidebar sentinel
+  // Sidebar sentinel (detail view only — the landing grid uses an explicit
+  // Load-more button instead of infinite scroll)
   const loadMore = useCallback(() => {
     setVisibleCount((n) => n + 20);
   }, []);
@@ -338,22 +363,6 @@ function SettlingCurveInner() {
     obs.observe(el);
     return () => obs.disconnect();
   }, [loadMore]);
-
-  // Feed sentinel
-  const loadMoreFeed = useCallback(() => {
-    setFeedVisibleCount((n) => n + 12);
-  }, []);
-
-  useEffect(() => {
-    const el = feedSentinelRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) loadMoreFeed(); },
-      { rootMargin: "300px" }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [loadMoreFeed, browseMode]);
 
   const activeItem = list.find((l) => l.id === activeId) || null;
   const title = activeItem?.claim ?? traj?.claim ?? "";
@@ -837,7 +846,7 @@ function SettlingCurveInner() {
                   const on = domainFilter === d.key;
                   return (
                     <button key={d.key} type="button"
-                      onClick={() => { setDomainFilter(d.key); if (d.key !== "ALL") setBrowseMode(true); else setBrowseMode(false); }}
+                      onClick={() => setDomainFilter(d.key)}
                       className="rounded-full px-2.5 py-1"
                       style={{ fontSize: 10, letterSpacing: "0.04em",
                         background: on ? "#38bdf822" : "transparent",
@@ -997,102 +1006,179 @@ function SettlingCurveInner() {
     );
   }
 
-  function renderFeed() {
-    const feedItems = filteredList.slice(0, feedVisibleCount);
-    const feedHasMore = feedVisibleCount < filteredList.length;
-    const domainLabel = domainFilter === "ALL" ? "All" : domainFilter.charAt(0).toUpperCase() + domainFilter.slice(1);
+  // Landing — /legislation-style front page: headline, explainer, filter
+  // chips, and a card grid. The explorer detail view opens on ?t= only.
+  function renderLanding() {
+    const gridItems = filteredList.slice(0, gridVisibleCount);
+    const gridHasMore = gridVisibleCount < filteredList.length;
+    const domainsInList = ["ALL", ...Array.from(new Set(list.map((i) => i.domain ?? "history"))).sort()];
+
+    const chip = (on: boolean, color: string) => ({
+      fontSize: 10,
+      letterSpacing: "0.05em",
+      textTransform: "uppercase" as const,
+      background: on ? `${color}22` : "transparent",
+      border: `1px solid ${on ? color : C.panelEdge}`,
+      color: on ? color : C.mut,
+    });
 
     return (
       <div>
-        <div className="mb-6 flex items-baseline justify-between gap-4">
-          <div>
-            <h1 className="font-semibold tracking-tight" style={{ fontSize: 26, lineHeight: 1.15 }}>
-              {domainLabel} receipts
-            </h1>
-            <p className="font-mono mt-1" style={{ fontSize: 11, color: C.mut, letterSpacing: "0.05em" }}>
-              {filteredList.length} TRAJECTORIES · CLICK ANY TO AUDIT
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => { setBrowseMode(false); }}
-            className="font-mono rounded px-3 py-1.5"
-            style={{ fontSize: 11, color: C.mut, border: `1px solid ${C.panelEdge}`, letterSpacing: "0.05em" }}
-          >
-            ← DETAIL VIEW
-          </button>
-        </div>
+        <header className="mb-6">
+          <h1 className="font-semibold tracking-tight" style={{ fontSize: 28, lineHeight: 1.15 }}>
+            Settling curves
+          </h1>
+          <p className="mt-2" style={{ fontSize: 14, color: C.mut, lineHeight: 1.6, maxWidth: 760 }}>
+            Trace how confidence in a claim builds — or unravels — across expert literature,
+            institutions, courts, and the public. Every curve is receipt-by-receipt: each point is a
+            dated, sourced transition. Open one to audit it.
+          </p>
+          <p className="font-mono mt-2" style={{ fontSize: 11, color: C.faint, letterSpacing: "0.05em" }}>
+            {listLoading ? "LOADING TRAJECTORIES…" : `${filteredList.length} CURATED TRAJECTORIES`}
+          </p>
+        </header>
 
-        <div className="space-y-4">
-          {feedItems.map((item) => {
-            const dot = axisDotColor(item);
-            const axisLabel = item.currentAxis ? (STATUS[item.currentAxis]?.label ?? item.currentAxis) : null;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => selectItem(item.id)}
-                className="w-full text-left rounded-lg sc-anim"
-                style={{
-                  background: C.panel,
-                  border: `1px solid ${C.panelEdge}`,
-                  padding: "16px 20px",
-                  transition: "border-color 0.15s",
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.brand + "66"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.panelEdge; }}
-              >
-                <div className="flex items-start gap-3 mb-3">
-                  <span
-                    className="shrink-0 mt-1.5"
-                    style={{ width: 9, height: 9, borderRadius: 9, background: dot, boxShadow: `0 0 0 2px ${C.bg}`, display: "inline-block" }}
-                    aria-hidden
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="leading-snug" style={{ fontSize: 15, color: C.ink, fontWeight: 500 }}>
-                      {truncate(item.claim, 180)}
-                    </p>
-                    <div className="font-mono flex flex-wrap items-center gap-x-3 gap-y-1 mt-2" style={{ fontSize: 10.5, color: C.faint }}>
-                      {item.era && <span style={{ color: C.mut }}>{item.era}</span>}
-                      <span>{item.transitionCount ?? 0} transitions</span>
-                      {item.firstYear != null && item.lastYear != null && (
-                        <span>{item.firstYear}{item.firstYear !== item.lastYear && `–${item.lastYear}`}</span>
-                      )}
-                      {axisLabel && (
-                        <span
-                          className="px-1.5 py-px rounded"
-                          style={{
-                            color: item.currentAxis ? STATUS[item.currentAxis].c : C.mut,
-                            border: `1px solid ${item.currentAxis ? STATUS[item.currentAxis].c + "55" : C.panelEdge}`,
-                          }}
-                        >
-                          {axisLabel}
-                        </span>
-                      )}
-                      {item.hasReversal && <span style={{ color: C.red }}>↩ reversed</span>}
-                    </div>
-                  </div>
-                </div>
-                {item.milestones && item.milestones.length > 0 && (
-                  <div style={{ marginLeft: 20 }}>
-                    <SettlingCurveMini
-                      milestones={item.milestones}
-                      animate={false}
-                      ariaLabel={`Preview for: ${item.claim}`}
-                    />
-                  </div>
-                )}
+        {/* Filters — one compact row instead of a sidebar */}
+        <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search trajectories…"
+            className="px-3 py-1.5 rounded outline-none"
+            style={{ background: C.panel, border: `1px solid ${C.panelEdge}`, color: C.ink, fontSize: 13, minWidth: 220 }}
+          />
+          <div className="flex flex-wrap items-center gap-1.5">
+            {STATUS_FILTERS.map((f) => (
+              <button key={f.key} type="button" onClick={() => setStatusFilter(f.key)}
+                className="font-mono rounded-full px-2.5 py-1" style={chip(statusFilter === f.key, f.color)}>
+                {f.label}
               </button>
-            );
-          })}
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {ERA_FILTERS.map((f) => (
+              <button key={f.key} type="button" onClick={() => setEraFilter(f.key)}
+                className="font-mono rounded-full px-2.5 py-1" style={chip(eraFilter === f.key, C.brand)}>
+                {f.label}
+              </button>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {domainsInList.map((d) => (
+              <button key={d} type="button" onClick={() => setDomainFilter(d)}
+                className="font-mono rounded-full px-2.5 py-1" style={chip(domainFilter === d, "#38bdf8")}>
+                {d === "ALL" ? "All domains" : d}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {feedHasMore && <div ref={feedSentinelRef} style={{ height: 1 }} aria-hidden />}
-        {!feedHasMore && filteredList.length > 0 && (
-          <div className="py-8 text-center font-mono" style={{ color: C.faint, fontSize: 10, letterSpacing: "0.06em" }}>
-            {filteredList.length} RECEIPTS · END OF RESULTS
+        {listError && (
+          <div className="rounded-lg p-5 mb-6" style={{ background: C.panel, border: "1px solid #f43f5e" }}>
+            <span style={{ fontSize: 13, color: "#f43f5e" }}>Failed to load trajectories. </span>
+            <button onClick={() => setRetryKey((k) => k + 1)}
+              style={{ color: C.brand, background: "none", border: "none", cursor: "pointer", fontWeight: 600, fontSize: 13 }}>
+              Tap to retry
+            </button>
           </div>
         )}
+
+        {/* Card grid — /legislation's DomainCurveRail pattern */}
+        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {listLoading
+            ? Array.from({ length: 9 }).map((_, i) => (
+                <div key={i} aria-hidden className="rounded-lg" style={{
+                  height: 190, background: "linear-gradient(90deg,#10101c,#16162a,#10101c)",
+                  border: `1px solid ${C.panelEdge}`,
+                }} />
+              ))
+            : gridItems.map((item) => {
+                const axisLabel = item.currentAxis ? (STATUS[item.currentAxis]?.label ?? item.currentAxis) : null;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => selectItem(item.id)}
+                    className="text-left rounded-lg sc-anim group"
+                    style={{
+                      background: C.panel,
+                      border: `1px solid ${C.panelEdge}`,
+                      padding: "14px 16px",
+                      transition: "border-color 0.15s",
+                    }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.brand + "66"; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.panelEdge; }}
+                  >
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="font-mono" style={{ fontSize: 10, color: C.faint }}>
+                        {item.firstYear ?? ""}
+                        {item.lastYear != null && item.lastYear !== item.firstYear ? ` → ${item.lastYear}` : ""}
+                      </span>
+                      {item.hasReversal ? (
+                        <span className="font-mono" style={{ fontSize: 10, color: C.red }}>↩ reversed</span>
+                      ) : axisLabel ? (
+                        <span className="font-mono px-1.5 py-px rounded" style={{
+                          fontSize: 9,
+                          color: item.currentAxis ? STATUS[item.currentAxis].c : C.mut,
+                          border: `1px solid ${item.currentAxis ? STATUS[item.currentAxis].c + "55" : C.panelEdge}`,
+                        }}>
+                          {axisLabel}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="leading-snug mb-3" style={{ fontSize: 13, color: C.ink, minHeight: 51 }}>
+                      {truncate(item.claim, 120)}
+                    </p>
+                    {item.milestones && item.milestones.length > 0 && (
+                      <SettlingCurveMini
+                        milestones={item.milestones}
+                        animate={false}
+                        ariaLabel={`Settling curve: ${item.claim}`}
+                      />
+                    )}
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="font-mono" style={{ fontSize: 10, color: C.faint }}>
+                        {item.transitionCount ?? 0} transitions{item.era ? ` · ${item.era}` : ""}
+                      </span>
+                      <span className="font-mono opacity-0 group-hover:opacity-100 sc-anim" style={{ fontSize: 11, color: C.brand, transition: "opacity 0.15s" }}>
+                        trace it →
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+        </div>
+
+        {!listLoading && gridHasMore && (
+          <div className="py-8 text-center">
+            <button
+              type="button"
+              onClick={() => setGridVisibleCount((n) => n + 24)}
+              className="font-mono rounded px-5 py-2.5"
+              style={{ fontSize: 12, color: C.brand, border: `1px solid ${C.brand}66`, letterSpacing: "0.05em", background: "rgba(212,168,83,0.06)" }}
+            >
+              LOAD MORE · {filteredList.length - gridVisibleCount} REMAINING
+            </button>
+          </div>
+        )}
+        {!listLoading && !gridHasMore && filteredList.length > 0 && (
+          <div className="py-8 text-center font-mono" style={{ color: C.faint, fontSize: 10, letterSpacing: "0.06em" }}>
+            {filteredList.length} TRAJECTORIES · END OF RESULTS
+          </div>
+        )}
+
+        <p className="mt-4 mb-8 font-mono" style={{ fontSize: 10, color: C.faint, letterSpacing: "0.04em" }}>
+          Trajectories generated by an agentic loop.{" "}
+          <a
+            href="https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/loop-settling-curve.sh"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: C.mut, textDecoration: "underline" }}
+          >
+            How it works →
+          </a>
+        </p>
       </div>
     );
   }
@@ -1274,50 +1360,54 @@ function SettlingCurveInner() {
         className="flex"
         style={{ minHeight: "calc(100vh - 140px)" }}
       >
-        {/* Sidebar (desktop sticky, mobile drawer) */}
-        <aside
-          className="hidden md:flex md:flex-col md:sticky shrink-0 z-30 sc-anim"
-          style={{
-            width: sidebarOpen ? "min(35%, 380px)" : 0,
-            minWidth: sidebarOpen ? 280 : 0,
-            top: 48,
-            height: "calc(100vh - 48px)",
-            borderRight: sidebarOpen ? `1px solid ${C.panelEdge}` : "none",
-            background: C.panel,
-            overflow: "hidden",
-            transition: "width 0.25s ease, min-width 0.25s ease",
-          }}
-        >
-          {renderSidebar()}
-        </aside>
+        {/* Sidebar (desktop sticky, mobile drawer) — explorer detail view only */}
+        {!landing && (
+          <aside
+            className="hidden md:flex md:flex-col md:sticky shrink-0 z-30 sc-anim"
+            style={{
+              width: sidebarOpen ? "min(35%, 380px)" : 0,
+              minWidth: sidebarOpen ? 280 : 0,
+              top: 48,
+              height: "calc(100vh - 48px)",
+              borderRight: sidebarOpen ? `1px solid ${C.panelEdge}` : "none",
+              background: C.panel,
+              overflow: "hidden",
+              transition: "width 0.25s ease, min-width 0.25s ease",
+            }}
+          >
+            {renderSidebar()}
+          </aside>
+        )}
 
-        {/* Sidebar toggle button (desktop) */}
-        <button
-          type="button"
-          onClick={() => setSidebarOpen((v) => !v)}
-          className="hidden md:flex items-center justify-center sticky z-30 sc-anim"
-          style={{
-            top: 48,
-            height: "calc(100vh - 48px)",
-            width: 20,
-            background: C.panel,
-            borderRight: `1px solid ${C.panelEdge}`,
-            color: C.faint,
-            fontSize: 12,
-            cursor: "pointer",
-            flexShrink: 0,
-            transition: "background 0.15s",
-          }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = C.panelEdge; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = C.panel; }}
-          aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
-          title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
-        >
-          {sidebarOpen ? "◀" : "▶"}
-        </button>
+        {/* Sidebar toggle button (desktop, detail view only) */}
+        {!landing && (
+          <button
+            type="button"
+            onClick={() => setSidebarOpen((v) => !v)}
+            className="hidden md:flex items-center justify-center sticky z-30 sc-anim"
+            style={{
+              top: 48,
+              height: "calc(100vh - 48px)",
+              width: 20,
+              background: C.panel,
+              borderRight: `1px solid ${C.panelEdge}`,
+              color: C.faint,
+              fontSize: 12,
+              cursor: "pointer",
+              flexShrink: 0,
+              transition: "background 0.15s",
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = C.panelEdge; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = C.panel; }}
+            aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+            title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+          >
+            {sidebarOpen ? "◀" : "▶"}
+          </button>
+        )}
 
         {/* Mobile drawer overlay — only covers area above the drawer (bottom 80vh excluded) */}
-        {drawerOpen && (
+        {!landing && drawerOpen && (
           <div
             onClick={() => setDrawerOpen(false)}
             className="md:hidden fixed left-0 right-0 top-0 z-40"
@@ -1325,31 +1415,41 @@ function SettlingCurveInner() {
             aria-hidden
           />
         )}
-        <aside
-          className="md:hidden fixed left-0 right-0 bottom-0 z-50 flex flex-col sc-anim"
-          style={{
-            height: "80vh",
-            background: C.panel,
-            borderTop: `1px solid ${C.panelEdge}`,
-            borderTopLeftRadius: 12,
-            borderTopRightRadius: 12,
-            transform: drawerOpen ? "translateY(0)" : "translateY(100%)",
-            transition: "transform 0.25s ease-out",
-            visibility: drawerOpen ? "visible" : "hidden",
-          }}
-          aria-hidden={!drawerOpen}
-        >
-          {renderSidebar()}
-        </aside>
+        {!landing && (
+          <aside
+            className="md:hidden fixed left-0 right-0 bottom-0 z-50 flex flex-col sc-anim"
+            style={{
+              height: "80vh",
+              background: C.panel,
+              borderTop: `1px solid ${C.panelEdge}`,
+              borderTopLeftRadius: 12,
+              borderTopRightRadius: 12,
+              transform: drawerOpen ? "translateY(0)" : "translateY(100%)",
+              transition: "transform 0.25s ease-out",
+              visibility: drawerOpen ? "visible" : "hidden",
+            }}
+            aria-hidden={!drawerOpen}
+          >
+            {renderSidebar()}
+          </aside>
+        )}
 
         {/* Right panel. With the sidebar open the column sits beside it; when
             collapsed (reading mode) it recenters and widens into the freed
             space instead of leaving a dead right half. */}
         <main className="flex-1 min-w-0">
-          <div className={`px-5 md:px-8 py-6 mx-auto ${sidebarOpen ? "max-w-5xl" : "max-w-6xl"}`}>
-            {browseMode ? renderFeed() : (<>
+          <div className={`px-5 md:px-8 py-6 mx-auto ${landing || !sidebarOpen ? "max-w-6xl" : "max-w-5xl"}`}>
+            {landing ? renderLanding() : (<>
 
             {/* Chart header */}
+            <button
+              type="button"
+              onClick={backToAll}
+              className="font-mono mb-3 rounded px-2.5 py-1"
+              style={{ fontSize: 11, color: C.mut, border: `1px solid ${C.panelEdge}`, letterSpacing: "0.05em", background: "transparent", cursor: "pointer" }}
+            >
+              ← ALL CURVES
+            </button>
             <div className="flex items-start justify-between gap-4 mb-5 flex-wrap">
               <div className="flex-1 min-w-0" style={{ minWidth: 260 }}>
                 <h1
@@ -1465,25 +1565,27 @@ function SettlingCurveInner() {
         </main>
       </div>
 
-      {/* Mobile floating button */}
-      <button
-        type="button"
-        onClick={() => listError ? setRetryKey(k => k + 1) : setDrawerOpen(true)}
-        className="md:hidden fixed left-1/2 z-30 px-5 py-3 rounded-full shadow-lg"
-        style={{
-          bottom: 20,
-          transform: "translateX(-50%)",
-          background: C.brand,
-          color: C.bg,
-          fontSize: 13,
-          fontWeight: 600,
-          letterSpacing: "0.02em",
-          boxShadow: "0 6px 24px rgba(0,0,0,0.5)",
-        }}
-      >
-        {listLoading ? "Loading Trajectories…" : listError ? "Retry Loading Trajectories" : `Browse Trajectories (${filteredList.length})`}
-      </button>
-      {listError && (
+      {/* Mobile floating button — detail view only (the landing IS the browser) */}
+      {!landing && (
+        <button
+          type="button"
+          onClick={() => listError ? setRetryKey(k => k + 1) : setDrawerOpen(true)}
+          className="md:hidden fixed left-1/2 z-30 px-5 py-3 rounded-full shadow-lg"
+          style={{
+            bottom: 20,
+            transform: "translateX(-50%)",
+            background: C.brand,
+            color: C.bg,
+            fontSize: 13,
+            fontWeight: 600,
+            letterSpacing: "0.02em",
+            boxShadow: "0 6px 24px rgba(0,0,0,0.5)",
+          }}
+        >
+          {listLoading ? "Loading Trajectories…" : listError ? "Retry Loading Trajectories" : `Browse Trajectories (${filteredList.length})`}
+        </button>
+      )}
+      {!landing && listError && (
         <div style={{ position: "fixed", bottom: 80, left: "50%", transform: "translateX(-50%)", background: "#1a0a0a", border: "1px solid #f43f5e", borderRadius: 8, padding: "10px 16px", fontSize: 12, color: "#f43f5e", zIndex: 200, whiteSpace: "nowrap" }}>
           Failed to load trajectories.{" "}
           <button onClick={() => setRetryKey(k => k + 1)} style={{ color: C.brand, background: "none", border: "none", cursor: "pointer", fontWeight: 600, fontSize: 12 }}>
