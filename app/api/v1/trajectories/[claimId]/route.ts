@@ -21,7 +21,7 @@ export async function GET(
       text: true,
       updatedAt: true,
       statusHistory: {
-        orderBy: { occurredAt: "asc" },
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
         include: {
           markerSource: {
             select: { id: true, name: true, url: true, methodologyType: true },

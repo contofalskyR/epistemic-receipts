@@ -9,6 +9,8 @@ import { prisma } from "@/lib/prisma";
 // boundary.
 
 export type TrajectoryTransition = {
+  /** Explicit chain order (1..n per claim); null on unbackfilled legacy rows. */
+  seq: number | null;
   fromAxis: string | null;
   toAxis: string;
   community: string;
@@ -31,8 +33,11 @@ export type TrajectoryDetail = {
 // CRAWLER HOT PATH — keep to one round-trip with lean selects.
 // ~235k trajectory URLs; every ISR miss runs this query live against Neon.
 const STATUS_HISTORY_SELECT = Prisma.validator<Prisma.ClaimStatusHistoryFindManyArgs>()({
-  orderBy: [{ occurredAt: "asc" as const }, { createdAt: "asc" as const }],
+  // seq = explicit row order (ORDERING-SEMANTICS-2026-07-08.md); ASC puts
+  // NULLs last so unbackfilled legacy rows fall back to date order.
+  orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
   select: {
+    seq: true,
     fromAxis: true,
     toAxis: true,
     community: true,
@@ -52,6 +57,7 @@ const CLAIM_FIELDS = {
 
 type RawStatusHistory = Prisma.ClaimStatusHistoryGetPayload<{
   select: {
+    seq: true;
     fromAxis: true;
     toAxis: true;
     community: true;
@@ -64,6 +70,7 @@ type RawStatusHistory = Prisma.ClaimStatusHistoryGetPayload<{
 
 function serializeTransition(s: RawStatusHistory): TrajectoryTransition {
   return {
+    seq: s.seq,
     fromAxis: s.fromAxis,
     toAxis: s.toAxis,
     community: s.community,

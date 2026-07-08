@@ -65,7 +65,7 @@ export async function GET(req: NextRequest) {
             claimEmergedAt: true,
             ingestedBy: true,
             statusHistory: {
-              orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+              orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
               select: { community: true, toAxis: true, occurredAt: true },
             },
           },
@@ -91,7 +91,7 @@ export async function GET(req: NextRequest) {
             claimEmergedAt: true,
             ingestedBy: true,
             statusHistory: {
-              orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+              orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
               select: { community: true, toAxis: true, occurredAt: true },
             },
           },
@@ -108,9 +108,9 @@ export async function GET(req: NextRequest) {
   ];
 
   const list = allClaims.map((c) => {
-      const sorted = [...c.statusHistory].sort(
-        (a, b) => a.occurredAt.getTime() - b.occurredAt.getTime()
-      );
+      // The query orders by seq (chain order, date fallback for unstamped
+      // legacy rows) — a date re-sort here would undo exactly what seq fixes.
+      const sorted = c.statusHistory;
       const last = sorted[sorted.length - 1];
       const first = sorted[0];
       const isCurated = c.externalId?.startsWith("trajectory:") ?? false;

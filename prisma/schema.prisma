@@ -730,7 +730,11 @@ model ClaimStatusHistory {
   occurredAt    DateTime // the historical date the transition happened (not ingest time)
   datePrecision String? // DAY | MONTH | QUARTER | YEAR
   sourceId      String? // the marker artifact that records this transition
-  createdAt     DateTime           @default(now())
+  createdAt    DateTime           @default(now())
+  // Explicit per-claim row order (1..n), assigned by lib/transition-contract in the
+  // insert transaction; prepends/amendBaseline renumber the whole claim in-transaction
+  // (ORDERING-SEMANTICS-2026-07-08.md). Nullable only for not-yet-backfilled legacy rows.
+  seq           Int?
 
   claim          Claim                     @relation(fields: [claimId], references: [id], onDelete: Cascade)
   markerSource   Source?                   @relation("StatusMarker", fields: [sourceId], references: [id])
@@ -740,6 +744,7 @@ model ClaimStatusHistory {
   // standalone @@index([claimId]) is dropped in favor of this one.
   @@index([claimId, community, occurredAt])
   @@unique([claimId, toAxis, occurredAt])
+  @@unique([claimId, seq])
 }
 
 // AI-extracted structured claims for a single trajectory transition.

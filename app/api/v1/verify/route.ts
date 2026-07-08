@@ -67,7 +67,13 @@ export async function GET(req: NextRequest) {
     readPrisma.claimStatusHistory.findMany({
       where: { claimId: { in: ids } },
       select: { claimId: true, toAxis: true, occurredAt: true },
-      orderBy: { occurredAt: "desc" },
+      // DESC with nulls last so stamped chain order wins but unbackfilled
+      // legacy rows still sort by date instead of jumping to the front.
+      orderBy: [
+        { seq: { sort: "desc", nulls: "last" } },
+        { occurredAt: "desc" },
+        { createdAt: "desc" },
+      ],
     }),
   ]);
 

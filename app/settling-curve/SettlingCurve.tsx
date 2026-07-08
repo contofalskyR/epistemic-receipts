@@ -43,6 +43,8 @@ interface TransitionSource {
 
 interface Transition {
   id?: string;
+  /** Explicit chain order (1..n per claim); null/absent on unbackfilled rows. */
+  seq?: number | null;
   fromAxis?: string | null;
   toAxis: Axis;
   community: Community;
@@ -178,8 +180,23 @@ function frac(dateStr: string) {
 }
 const yr = (d: string) => Number(d.split("-")[0]);
 
+// Chain order (ORDERING-SEMANTICS-2026-07-08.md): explicit seq wins; date is
+// the fallback for unbackfilled legacy rows. X-POSITIONS still come from
+// frac(date) — when a coarse YEAR date makes a later-in-chain dot sit left of
+// its predecessor, the connector visibly doubles back. That's honest: the
+// data really is that coarse; we order by the ledger, we plot by the date.
+function chainOrder(
+  a: { seq?: number | null; occurredAt: string },
+  b: { seq?: number | null; occurredAt: string },
+) {
+  return (
+    (a.seq ?? Infinity) - (b.seq ?? Infinity) ||
+    new Date(a.occurredAt).getTime() - new Date(b.occurredAt).getTime()
+  );
+}
+
 function keyInterval(t: { transitions: Transition[] }) {
-  const sorted = [...t.transitions].sort((a, b) => frac(a.occurredAt) - frac(b.occurredAt));
+  const sorted = [...t.transitions].sort(chainOrder);
   const rev = sorted.find((x) => x.toAxis === "REVERSED");
   const aban = sorted.find((x) => x.toAxis === "ABANDONED");
   const first = sorted[0];
@@ -621,7 +638,7 @@ function SettlingCurveInner() {
               const y = laneY(i);
               const rows = t.transitions
                 .filter((r) => r.community === com)
-                .sort((a, b) => frac(a.occurredAt) - frac(b.occurredAt));
+                .sort(chainOrder);
               return (
                 <g key={com}>
                   <line x1={padL} x2={W - padR} y1={y} y2={y} stroke={C.panelEdge} strokeWidth={1} />
@@ -748,7 +765,7 @@ function SettlingCurveInner() {
 
   function renderTransitionLog() {
     if (!traj || traj.transitions.length === 0) return null;
-    const sorted = [...traj.transitions].sort((a, b) => frac(a.occurredAt) - frac(b.occurredAt));
+    const sorted = [...traj.transitions].sort(chainOrder);
 
     function inheritanceBetween(a: Transition, b: Transition): { label: string; color: string } {
       if (b.toAxis === "REVERSED" || b.toAxis === "ABANDONED") return { label: "OVERTURNED", color: C.red };
@@ -1427,7 +1444,7 @@ function SettlingCurveInner() {
 
   function renderStorySummary() {
     if (!traj || traj.transitions.length < 2) return null;
-    const sorted = [...traj.transitions].sort((a, b) => frac(a.occurredAt) - frac(b.occurredAt));
+    const sorted = [...traj.transitions].sort(chainOrder);
     const first = sorted[0];
     const last = sorted[sorted.length - 1];
     const interval = keyInterval(traj);

@@ -16,6 +16,13 @@
  *   4. Deterministic id `${claimId}-${toAxis}-${YYYY-MM-DD}` + the DB's
  *      @@unique([claimId, toAxis, occurredAt]) make every write idempotent.
  *   5. reason is receipt-grade prose (length-guarded), written from the document.
+ *   6. seq (ORDERING-SEMANTICS-2026-07-08.md): every insert assigns the row's
+ *      explicit per-claim order inside the insert transaction. Appends take the
+ *      next position; entry-row prepends renumber the WHOLE claim in the same
+ *      transaction (never a bare max+1 counter — NZ phase-2 prepends). Existing
+ *      stamps are the order authority and are preserved; only unstamped rows
+ *      fall back to (occurredAt, createdAt). @@unique([claimId, seq]) guards;
+ *      renumbering NULLs the claim's seqs first, so shifts never collide.
  *
  * DRY-RUN BY DEFAULT (house rule): emitTransition plans and validates but does
  * not write unless opts.execute is true. Violations are returned, not thrown —
@@ -272,7 +279,9 @@ export async function emitTransition(
       deleted: true,
       claimEmergedAt: true,
       statusHistory: {
-        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+        // seq is the order authority (Postgres ASC puts NULLs last, so
+        // unstamped legacy rows fall back to date order during rollout).
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
         select: { id: true, fromAxis: true, toAxis: true, occurredAt: true, community: true },
       },
     },
@@ -380,21 +389,33 @@ export async function emitTransition(
   }
 
   try {
-    await db.claimStatusHistory.upsert({
-      where: { id },
-      create: {
-        id,
-        claimId: spec.claimId,
-        fromAxis: spec.fromAxis,
-        toAxis: spec.toAxis,
-        community: spec.community,
-        occurredAt,
-        datePrecision: precision,
-        reason: spec.reason.trim(),
-        sourceId,
-      },
-      update: {}, // idempotent: existing row is left exactly as it was
-    });
+    const writeRowAndSeq = async (tx: Db) => {
+      await tx.claimStatusHistory.upsert({
+        where: { id },
+        create: {
+          id,
+          claimId: spec.claimId,
+          fromAxis: spec.fromAxis,
+          toAxis: spec.toAxis,
+          community: spec.community,
+          occurredAt,
+          datePrecision: precision,
+          reason: spec.reason.trim(),
+          sourceId,
+        },
+        update: {}, // idempotent: existing row is left exactly as it was
+      });
+      // seq is assigned in the SAME transaction as the insert (contract §6).
+      // Appends land at n+1; entry-row prepends shift the whole claim.
+      await renumberClaimSeq(tx, spec.claimId);
+    };
+    if ("$transaction" in db) {
+      await (db as PrismaClient).$transaction((tx) => writeRowAndSeq(tx));
+    } else {
+      // Caller already holds a transaction (e.g. NZ phase-2's amend+prepend) —
+      // run inside it so amend, insert, and renumber commit atomically.
+      await writeRowAndSeq(db);
+    }
   } catch (e) {
     // P2002 on @@unique([claimId, toAxis, occurredAt]) — same logical transition
     // already exists under another id (e.g. a Layer-1 cuid row). That's "exists".
@@ -408,6 +429,63 @@ export async function emitTransition(
   }
 
   return { id, action: "inserted", violations: [], urlCheck };
+}
+
+// ── Explicit row order (seq) ──────────────────────────────────────────────────
+
+/**
+ * Renumber a claim's transition rows to contiguous seq 1..n (contract §6).
+ *
+ * Order rule: the entry row (fromAxis=null) is always first; already-stamped
+ * rows keep their relative order (existing seq is the order AUTHORITY — dates
+ * never reorder stamped receipts); unstamped rows follow, by (occurredAt,
+ * createdAt, id). This places a fresh append at n+1 and a fresh entry prepend
+ * at 1 (shifting the rest), and opportunistically stamps legacy rows it meets.
+ * Legacy-truth stamping at scale is scripts/backfill-transition-seq.ts's job —
+ * run it before relying on seq ordering (it prefers pointer chains over
+ * possibly-lying date order; this helper only handles rows entering through
+ * the contract, where chain coherence is already enforced).
+ *
+ * Collision safety: if more than one row changes, all the claim's seqs are set
+ * NULL first (NULLs are distinct under @@unique([claimId, seq])), then finals
+ * are written — shifts never trip the unique index. Call inside a transaction.
+ */
+export async function renumberClaimSeq(
+  db: Db,
+  claimId: string,
+): Promise<{ changed: number }> {
+  const rows = await db.claimStatusHistory.findMany({
+    where: { claimId },
+    select: { id: true, fromAxis: true, occurredAt: true, createdAt: true, seq: true },
+  });
+  if (rows.length === 0) return { changed: 0 };
+
+  const INF = Number.MAX_SAFE_INTEGER;
+  const ordered = [...rows].sort(
+    (a, b) =>
+      (a.fromAxis === null ? 0 : 1) - (b.fromAxis === null ? 0 : 1) ||
+      (a.seq ?? INF) - (b.seq ?? INF) ||
+      a.occurredAt.getTime() - b.occurredAt.getTime() ||
+      a.createdAt.getTime() - b.createdAt.getTime() ||
+      a.id.localeCompare(b.id),
+  );
+  const desired = ordered.map((r, i) => ({ id: r.id, seq: i + 1, current: r.seq }));
+  const changes = desired.filter((d) => d.current !== d.seq);
+  if (changes.length === 0) return { changed: 0 };
+
+  if (changes.length > 1) {
+    // NULL-phase: clear the claim's seqs so the rewrite can't transiently
+    // collide with a value another row still holds.
+    await db.claimStatusHistory.updateMany({ where: { claimId }, data: { seq: null } });
+    for (const d of desired) {
+      await db.claimStatusHistory.update({ where: { id: d.id }, data: { seq: d.seq } });
+    }
+  } else {
+    // Single change (the common append): its target position is provably free.
+    const d = changes[0];
+    await db.claimStatusHistory.update({ where: { id: d.id }, data: { seq: d.seq } });
+  }
+  return { changed: changes.length };
 }
 
 // ── Consented baseline amendment (wave-2 / prepend pattern) ───────────────────
@@ -431,6 +509,10 @@ export interface AmendBaselineSpec {
  * re-dating) a claim's baseline so a prepended entry row forms a coherent
  * chain. Refuses to run without allowEntryAmend (the wave-2 consent flag).
  * Returns the number of rows amended (0 = guard mismatch, 1 = amended).
+ *
+ * seq note: amending mutates no row COUNT and seq — not dates — is the order
+ * authority, so no renumber happens here. The prepend that follows (via
+ * emitTransition, same transaction) performs the whole-claim renumber.
  */
 export async function amendBaseline(
   db: Db,

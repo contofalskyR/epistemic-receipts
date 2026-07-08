@@ -59,12 +59,13 @@ const SAMPLES = argValue("--samples") ? parseInt(argValue("--samples")!, 10) : 8
 const JSON_OUT = process.argv.includes("--json");
 const STRICT = process.argv.includes("--strict");
 
-type ViolationKind = "E1" | "C1" | "D2" | "S1" | "A1" | "V1";
+type ViolationKind = "E1" | "C1" | "C2" | "D2" | "S1" | "A1" | "V1";
 const WARN_KINDS: ReadonlySet<ViolationKind> = new Set<ViolationKind>(["D2"]);
 
 const KIND_LABEL: Record<ViolationKind, string> = {
   E1: "entry-row count ≠ 1",
   C1: "chain break (fromAxis ≠ prior toAxis)",
+  C2: "seq inconsistency (partial stamp / non-contiguous / not 1..n)",
   D2: "non-entry row precedes claimEmergedAt beyond its precision (warning)",
   S1: "sourceId does not resolve to a Source",
   A1: "degenerate row (same axis AND same community as prior)",
@@ -86,6 +87,8 @@ interface CheckDef {
   sampleSql: string; // must select: pipeline, "claimId", detail (text)
 }
 
+// seq (explicit chain order) is the primary sort once stamped; NULLS LAST keeps
+// unbackfilled legacy rows on the old date order (ORDERING-SEMANTICS-2026-07-08.md).
 const ORDERED_CTE = `
   WITH ordered AS (
     SELECT h."id", h."claimId", h."fromAxis", h."toAxis", h."occurredAt", h."community",
@@ -94,7 +97,7 @@ const ORDERED_CTE = `
            LAG(h."community"::text)   OVER w AS prev_comm,
            ROW_NUMBER()               OVER w AS rn
     ${BASE_JOIN}
-    WINDOW w AS (PARTITION BY h."claimId" ORDER BY h."occurredAt" ASC, h."createdAt" ASC)
+    WINDOW w AS (PARTITION BY h."claimId" ORDER BY h."seq" ASC NULLS LAST, h."occurredAt" ASC, h."createdAt" ASC)
   )`;
 
 // Precision-aware "before": a YEAR-precision row inside the emergence year is
@@ -145,6 +148,41 @@ const CHECKS: CheckDef[] = [
              ', prior toAxis ' || COALESCE(prev_to,'∅') AS detail
       FROM ordered
       WHERE rn > 1 AND ("fromAxis" IS DISTINCT FROM prev_to)
+      LIMIT $2`,
+  },
+  {
+    kind: "C2",
+    countSql: `
+      SELECT COUNT(*) AS n FROM (
+        SELECT h."claimId"
+        ${BASE_JOIN}
+        GROUP BY h."claimId"
+        HAVING COUNT(h."seq") > 0 AND (
+          COUNT(*) <> COUNT(h."seq")
+          OR MIN(h."seq") <> 1
+          OR MAX(h."seq") <> COUNT(h."seq")
+          OR COUNT(DISTINCT h."seq") <> COUNT(h."seq")
+        )
+      ) t`,
+    sampleSql: `
+      SELECT MIN(c2."ingestedBy") AS pipeline, t."claimId",
+             'seq stamped ' || t.stamped || ' of ' || t.total ||
+             ', min ' || COALESCE(t.mn::text,'∅') || ', max ' || COALESCE(t.mx::text,'∅') AS detail
+      FROM (
+        SELECT h."claimId",
+               COUNT(h."seq") AS stamped, COUNT(*) AS total,
+               MIN(h."seq") AS mn, MAX(h."seq") AS mx
+        ${BASE_JOIN}
+        GROUP BY h."claimId"
+        HAVING COUNT(h."seq") > 0 AND (
+          COUNT(*) <> COUNT(h."seq")
+          OR MIN(h."seq") <> 1
+          OR MAX(h."seq") <> COUNT(h."seq")
+          OR COUNT(DISTINCT h."seq") <> COUNT(h."seq")
+        )
+      ) t
+      JOIN "Claim" c2 ON c2."id" = t."claimId"
+      GROUP BY t."claimId", t.stamped, t.total, t.mn, t.mx
       LIMIT $2`,
   },
   {

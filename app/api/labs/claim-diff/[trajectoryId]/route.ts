@@ -110,7 +110,9 @@ export async function GET(
       text: true,
       externalId: true,
       statusHistory: {
-        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+        // seq-first: adjacent-snapshot diffs pair positionally, so order must
+        // be the explicit chain order, not the (sometimes lying) date sort.
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
         select: {
           id: true,
           fromAxis: true,

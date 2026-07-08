@@ -12,6 +12,12 @@
  * Phase 1 — fetch (default):  probe each claim's existing Source URL for the
  *   repeal statement; store metadata.repealedAt / repealedBy (merged, never
  *   clobbered). Resumable: claims already carrying repealedAt are skipped.
+ *   Fetches MUST send X-Api-Key + the probe UA/Accept: www.legislation.govt.nz
+ *   answers keyless scripted clients HTTP 202 with 0 bytes (probe 2,
+ *   logs/nz-probe2.log, 2026-07-08 — note 202 passes res.ok, which is how the
+ *   old run misread the wall as noPattern). Pre-consolidation acts (~pre-1909)
+ *   carry NO dated repeal note on their pages at all — those stay noPattern
+ *   residue, honestly counted.
  *
  * Phase 2 — apply (--phase apply, requires --allow-entry-amend to write):
  *   per claim, in one transaction:
@@ -53,6 +59,7 @@ const prisma = new PrismaClient();
 
 const PIPELINE = "nz_repealed_acts_v1";
 const FETCH_DELAY_MS = 300; // ingest-nz-legislation's politeness convention
+const NZ_API_KEY = process.env.NZ_LEGISLATION_API_KEY;
 
 function argValue(flag: string): string | null {
   const i = process.argv.indexOf(flag);
@@ -64,33 +71,10 @@ const PHASE = argValue("--phase") === "apply" ? "apply" : "fetch";
 const EXECUTE = process.argv.includes("--execute");
 const ALLOW_AMEND = process.argv.includes("--allow-entry-amend");
 const LIMIT = argValue("--limit") ? parseInt(argValue("--limit")!, 10) : null;
+const OFFSET = argValue("--offset") ? parseInt(argValue("--offset")!, 10) : 0;
 const REFETCH = process.argv.includes("--refetch");
 
-const NZ_MONTHS: Record<string, number> = {
-  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6,
-  july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
-};
-
-/** "1 April 1988" → "1988-04-01" */
-function parseNzDate(s: string): string | null {
-  const m = /(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/.exec(s);
-  if (!m) return null;
-  const month = NZ_MONTHS[m[2].toLowerCase()];
-  if (!month) return null;
-  return `${m[3]}-${String(month).padStart(2, "0")}-${String(Number(m[1])).padStart(2, "0")}`;
-}
-
-/** Extract "Repealed, on 1 April 1988, by section 2 of the …" from an act page. */
-function extractRepeal(html: string): { repealedAt: string; repealedBy: string | null } | null {
-  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
-  // by-clause may contain "section 92(1)"-style parens; terminate on a period
-  // or the trailing act citation " (1992 No 76)" — not on any "(".
-  const m = /[Rr]epealed\s*,?\s+on\s+(\d{1,2}\s+[A-Za-z]+\s+\d{4})(?:\s*,?\s+by\s+([^.]{3,220}?))?(?:\.|\s\(\d{4}\s)/.exec(text);
-  if (!m) return null;
-  const repealedAt = parseNzDate(m[1]);
-  if (!repealedAt) return null;
-  return { repealedAt, repealedBy: m[2]?.trim() ?? null };
-}
+import { extractRepeal } from "../../lib/nz-repeal";
 
 type Meta = Record<string, unknown>;
 const asMeta = (v: Prisma.JsonValue | null): Meta =>
@@ -99,6 +83,13 @@ const asMeta = (v: Prisma.JsonValue | null): Meta =>
 // ── Phase 1: repeal-date backfill ─────────────────────────────────────────────
 
 async function phaseFetch() {
+  if (!NZ_API_KEY) {
+    console.error(
+      "NZ_LEGISLATION_API_KEY not set — www.legislation.govt.nz serves HTTP 202 / 0 bytes to keyless scripted clients (probe 2, 2026-07-08). Aborting.",
+    );
+    process.exitCode = 2;
+    return;
+  }
   const claims = await prisma.claim.findMany({
     where: { deleted: false, ingestedBy: PIPELINE },
     select: {
@@ -111,12 +102,19 @@ async function phaseFetch() {
     },
     orderBy: { id: "asc" },
     ...(LIMIT ? { take: LIMIT } : {}),
+    ...(OFFSET ? { skip: OFFSET } : {}),
   });
 
-  const counts = { total: claims.length, alreadyHave: 0, found: 0, noPattern: 0, fetchFailed: 0, noUrl: 0 };
+  const counts = { total: claims.length, alreadyHave: 0, found: 0, noPattern: 0, fetchFailed: 0, emptyBody: 0, noUrl: 0 };
   const patternInventory = new Map<string, number>();
+  const noPatternDecades = new Map<string, number>();
+  const noPatternSamples: string[] = [];
 
+  let processed = 0;
   for (const c of claims) {
+    processed++;
+    if (processed % 250 === 0)
+      console.log(`  … ${processed}/${counts.total} (found ${counts.found}, noPattern ${counts.noPattern}, fetchFailed ${counts.fetchFailed})`);
     const meta = asMeta(c.metadata);
     if (meta.repealedAt && !REFETCH) { counts.alreadyHave++; continue; }
 
@@ -126,11 +124,19 @@ async function phaseFetch() {
     let html: string;
     try {
       const res = await fetch(url, {
-        headers: { "User-Agent": "epistemic-receipts/1.0 (nz-repeal-date backfill)" },
+        headers: {
+          Accept: "application/xml, text/html, */*",
+          "User-Agent": "EpistemicReceipts/1.0 (nz-repeal-date backfill)",
+          "X-Api-Key": NZ_API_KEY,
+        },
         redirect: "follow",
+        signal: AbortSignal.timeout(30_000),
       });
-      if (!res.ok) { counts.fetchFailed++; continue; }
+      // Bot-wall answers HTTP 202 + 0 bytes and res.ok is TRUE for 202 —
+      // only a 200 with a non-empty body is a real page.
+      if (res.status !== 200) { counts.fetchFailed++; continue; }
       html = await res.text();
+      if (html.length === 0) { counts.emptyBody++; continue; }
     } catch {
       counts.fetchFailed++;
       continue;
@@ -141,6 +147,12 @@ async function phaseFetch() {
     const repeal = extractRepeal(html);
     if (!repeal) {
       counts.noPattern++;
+      const yr = /\/act\/[a-z]+\/(\d{4})\//.exec(url)?.[1];
+      if (yr) {
+        const decade = `${yr.slice(0, 3)}0s`;
+        noPatternDecades.set(decade, (noPatternDecades.get(decade) ?? 0) + 1);
+      }
+      if (noPatternSamples.length < 5) noPatternSamples.push(`${url}  ${c.text.slice(0, 60)}`);
       continue;
     }
     counts.found++;
@@ -168,6 +180,12 @@ async function phaseFetch() {
   console.log(counts);
   const decades = [...patternInventory.entries()].sort();
   if (decades.length) console.log(`Repeal years found:`, Object.fromEntries(decades));
+  const misses = [...noPatternDecades.entries()].sort();
+  if (misses.length) console.log(`noPattern by act decade:`, Object.fromEntries(misses));
+  if (noPatternSamples.length) {
+    console.log(`first noPattern samples:`);
+    noPatternSamples.forEach((s) => console.log(`  ${s}`));
+  }
   if (!EXECUTE) console.log(`\nRe-run with --execute to store metadata.repealedAt.`);
   else console.log(`\nNext: --phase apply (preflight), then --phase apply --execute --allow-entry-amend.`);
 }
@@ -310,7 +328,7 @@ async function phaseApply() {
 
 async function main() {
   console.log(
-    `\n=== NZ repealed acts — phase ${PHASE} — ${EXECUTE ? "EXECUTE" : "PREFLIGHT"}${LIMIT ? `, limit ${LIMIT}` : ""} ===`,
+    `\n=== NZ repealed acts — phase ${PHASE} — ${EXECUTE ? "EXECUTE" : "PREFLIGHT"}${LIMIT ? `, limit ${LIMIT}` : ""}${OFFSET ? `, offset ${OFFSET}` : ""} ===`,
   );
   if (PHASE === "fetch") await phaseFetch();
   else await phaseApply();

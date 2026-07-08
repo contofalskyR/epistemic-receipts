@@ -121,7 +121,9 @@ function fmtTlPrecision(d: Date, precision: string | null): string {
 function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   const datedEdges = claim.edges.filter(e => e.source.publishedAt);
   const transitions = [...claim.statusHistory].sort(
-    (a, b) => new Date(a.occurredAt).getTime() - new Date(b.occurredAt).getTime(),
+    (a, b) =>
+      (a.seq ?? Infinity) - (b.seq ?? Infinity) ||
+      new Date(a.occurredAt).getTime() - new Date(b.occurredAt).getTime(),
   );
 
   const events: TlNode[] = [

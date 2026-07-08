@@ -17,9 +17,10 @@ export async function GET(
   const wantRis = format === "ris";
 
   const statusHistorySelect = {
-    orderBy: [{ occurredAt: "asc" as const }, { createdAt: "asc" as const }],
+    orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
     select: {
       id: true, // row id — its shape encodes which writer produced it (provenance chip)
+      seq: true,
       fromAxis: true,
       toAxis: true,
       community: true,
@@ -47,6 +48,7 @@ export async function GET(
 
   const transitions = claim.statusHistory.map((s) => ({
     id: s.id,
+    seq: s.seq,
     fromAxis: s.fromAxis,
     toAxis: s.toAxis,
     community: s.community,

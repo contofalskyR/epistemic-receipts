@@ -87,6 +87,8 @@ export type ChildClaimDetail = {
 export type TopicTag = { id: string; name: string; slug: string; domain: string };
 
 export type StatusTransitionSummary = {
+  /** Explicit chain order (1..n per claim); null on unbackfilled legacy rows. */
+  seq: number | null;
   fromAxis: string | null;
   toAxis: string;
   community: string;
@@ -228,8 +230,12 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
   // Still cheap: leftmost-prefix of the [claimId, community, occurredAt]
   // index, and real-world claims carry at most a few dozen transitions.
   statusHistory: {
-    orderBy: [{ occurredAt: "desc" }, { createdAt: "desc" }],
-    select: { fromAxis: true, toAxis: true, community: true, occurredAt: true, datePrecision: true },
+    orderBy: [
+      { seq: { sort: "desc", nulls: "last" } },
+      { occurredAt: "desc" },
+      { createdAt: "desc" },
+    ],
+    select: { seq: true, fromAxis: true, toAxis: true, community: true, occurredAt: true, datePrecision: true },
   },
 });
 

@@ -41,6 +41,7 @@ import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import * as fs from "fs";
 import * as path from "path";
+import { renumberClaimSeq } from "../lib/transition-contract";
 
 if (process.argv.includes("--direct")) {
   if (!process.env.DIRECT_URL) {
@@ -209,8 +210,11 @@ async function fixMissingEntry() {
 // live-loop race). If deleting it leaves the chain strictly ordered, it is
 // removed (dumped first; requires --allow-row-delete).
 //
-// Claims with same-date ties or non-monotonic authored orders are SKIPPED and
-// listed — those need the ordering-semantics decision or curation, not a script.
+// seq (ORDERING-SEMANTICS-2026-07-08.md) resolved the old tie problem: for
+// fully-stamped claims, seq IS the order — pointers are rewritten from it
+// directly, no date-strictness needed. Unstamped claims still require strictly
+// increasing dates; same-date ties on unstamped rows are SKIPPED with a
+// pointer at backfill-transition-seq (run it first).
 
 async function fixRechain() {
   console.log(`\n── rechain ──`);
@@ -218,10 +222,11 @@ async function fixRechain() {
   const broken = await prisma.$queryRawUnsafe<{ claimId: string }[]>(`
     WITH ordered AS (
       SELECT h."claimId", h."fromAxis",
-             LAG(h."toAxis") OVER (PARTITION BY h."claimId" ORDER BY h."occurredAt" ASC, h."createdAt" ASC) AS prev_to,
-             ROW_NUMBER()    OVER (PARTITION BY h."claimId" ORDER BY h."occurredAt" ASC, h."createdAt" ASC) AS rn
+             LAG(h."toAxis") OVER w AS prev_to,
+             ROW_NUMBER()    OVER w AS rn
       FROM "ClaimStatusHistory" h
       JOIN "Claim" c ON c."id" = h."claimId" AND c."deleted" = false
+      WINDOW w AS (PARTITION BY h."claimId" ORDER BY h."seq" ASC NULLS LAST, h."occurredAt" ASC, h."createdAt" ASC)
     )
     SELECT DISTINCT "claimId" FROM ordered
     WHERE rn > 1 AND ("fromAxis" IS DISTINCT FROM prev_to)
@@ -236,7 +241,11 @@ async function fixRechain() {
   for (const { claimId } of broken) {
     let rows = await prisma.claimStatusHistory.findMany({
       where: { claimId },
-      orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+      orderBy: [
+        { seq: { sort: "asc", nulls: "last" } },
+        { occurredAt: "asc" },
+        { createdAt: "asc" },
+      ],
     });
 
     // Mid-chain cuid entry row (live-loop Layer-1 baseline)?
@@ -246,13 +255,19 @@ async function fixRechain() {
     const deletions = midNull.length === 1 && rows[0].fromAxis !== null ? midNull : [];
     const kept = rows.filter((r) => !deletions.includes(r));
 
-    // Strictly increasing dates only — ties mean the order itself is ambiguous.
-    const strictlyOrdered = kept.every(
-      (r, i) => i === 0 || r.occurredAt.getTime() > kept[i - 1].occurredAt.getTime(),
-    );
+    // Fully-stamped claims: seq IS the order — no date requirement. Unstamped
+    // rows still need strictly increasing dates; otherwise the order is
+    // ambiguous and the backfill (pointer-walk) must decide first.
+    const fullyStamped = kept.every((r) => r.seq !== null);
+    const strictlyOrdered =
+      fullyStamped ||
+      kept.every((r, i) => i === 0 || r.occurredAt.getTime() > kept[i - 1].occurredAt.getTime());
     if (!strictlyOrdered) {
       counts.skippedTies++;
-      skipped.push({ claimId, reason: "same-date tie or non-monotonic — ordering decision needed" });
+      skipped.push({
+        claimId,
+        reason: "same-date tie on unstamped rows — run backfill-transition-seq first",
+      });
       continue;
     }
     if (deletions.length > 0 && EXECUTE && !ALLOW_DELETE) {
@@ -282,12 +297,13 @@ async function fixRechain() {
     }
 
     dump.push(...deletions, ...rows.filter((r) => updates.some((u) => u.id === r.id)));
-    await prisma.$transaction([
-      ...deletions.map((d) => prisma.claimStatusHistory.delete({ where: { id: d.id } })),
-      ...updates.map((u) =>
-        prisma.claimStatusHistory.update({ where: { id: u.id }, data: { fromAxis: u.fromAxis } }),
-      ),
-    ]);
+    await prisma.$transaction(async (tx) => {
+      for (const d of deletions) await tx.claimStatusHistory.delete({ where: { id: d.id } });
+      for (const u of updates)
+        await tx.claimStatusHistory.update({ where: { id: u.id }, data: { fromAxis: u.fromAxis } });
+      // Deletions leave seq gaps; renumber preserves surviving order (contract §6).
+      await renumberClaimSeq(tx, claimId);
+    });
     counts.rechained++;
     counts.midChainEntriesRemoved += deletions.length;
     if (counts.rechained % 50 === 0) console.log(`  … ${counts.rechained}`);
