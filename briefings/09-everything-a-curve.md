@@ -39,11 +39,15 @@ census → per-pipeline date backfill → ingest-auto-trajectories rescan → re
    ```
    Optional polish before the rescan: NARA Layer-1 reason says "catalogued" but
    these are PRODUCTION dates — one-line template wording fix available on request.
-2. **chebi (37k)**: rerun existing `backfill-chebi-dates.ts` (PubMed citation dates),
-   then Layer-1 rescan; remainder = residue.
-3. **mesh (10k) — RECOVERABLE, 2026-07-08**: `backfill-mesh-dates.ts` sample hit
-   100% via meshv:dateIntroduced (GET-only endpoint; -01-01 stored as YEAR).
-   Run: `--execute --direct` (~7 min at batch 25/400ms) → Layer-1 rescan mesh_v1.
+2. **chebi — CLOSED as residue (2026-07-08)**: prior runs had already dated
+   25,409/62,000 (all citable compounds); tonight's rerun found 4 new citable,
+   dated 2. Remaining 36,591 have NO PubMed CITATION rows in ChEBI's accession
+   file — honest residue. (Run `ingest-auto-trajectories.ts --pipeline chebi_v1`
+   once to curve the 2 newcomers.)
+3. **mesh — DONE (2026-07-08)**: 10,000/10,000 dated via meshv:dateIntroduced
+   (+14 dateEstablished), 10,000 SETTLED curves created, chain audit fully green.
+   Running total this project: **10,271 curves** (mesh 10k + pdg 226 + uk 43 + chebi 2
+   pending rescan) + NARA in flight.
 4. **Honest residue, document in methodology**: jacar 31k (no public API — the
    next different beast, per-page scrape if ever), rxnorm 15k, ofac 10k (Treasury
    publishes no per-entity designation dates), omim 1.5k (API sweep possible,
