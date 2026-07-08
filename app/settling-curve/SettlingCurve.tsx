@@ -389,12 +389,105 @@ function SettlingCurveInner() {
 
     const t = traj;
 
-    // Single-step corpus claim (one ClaimStatusHistory row, typically null → RECORDED).
-    // Render a receipt card instead of a degenerate one-dot chart.
+    // Single-step claim: still a settling curve — one dot on its community
+    // lane, then a dashed dormant line to today. A flat curve says something
+    // true: nothing has moved yet. Receipt card below carries the source.
     if (t.transitions.length === 1) {
       const only = t.transitions[0];
       const pl = pipelineLabel(traj.ingestedBy);
+
+      const nowDate = new Date();
+      const nowFrac = nowDate.getUTCFullYear() + nowDate.getUTCMonth() / 12;
+      const evFrac = frac(only.occurredAt);
+      const minY = Math.floor(Math.min(evFrac, nowFrac) - 2);
+      const maxY = Math.ceil(Math.max(evFrac, nowFrac) + 1);
+      const W = 920, padL = 132, padR = 60, padTop = 84, laneH = 54, axisH = 46;
+      const H = padTop + laneH + axisH;
+      const x = (yv: number) => padL + ((yv - minY) / (maxY - minY)) * (W - padL - padR);
+      const laneY = padTop + laneH / 2;
+
+      // Adaptive ticks — a 1,700-year dormancy must not draw 170 decade labels.
+      const span = Math.max(maxY - minY, 1);
+      const mag = Math.pow(10, Math.floor(Math.log10(Math.max(span / 8, 1))));
+      const step = [1, 2, 5, 10].map((m) => m * mag).find((s) => span / s <= 10) ?? 10 * mag;
+      const ticks: number[] = [];
+      for (let v = Math.ceil(minY / step) * step; v <= maxY; v += step) ticks.push(v);
+
+      const dormantYears = Math.floor(nowFrac - evFrac);
+      const dormantLabel =
+        nowFrac > evFrac
+          ? `${dormantYears >= 1 ? `${dormantYears.toLocaleString()} yr${dormantYears === 1 ? "" : "s"}` : "<1 yr"} · no new activity`
+          : null;
+      const segPx = x(nowFrac) - x(evFrac);
+
       return (
+        <>
+        <div className="rounded-lg p-2 mb-5" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
+          <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", height: "auto" }} role="img"
+            aria-label={`Single-point settling curve for: ${t.claim}`}>
+            <line x1={padL} x2={W - padR} y1={laneY} y2={laneY} stroke={C.panelEdge} strokeWidth={1} />
+            <text x={14} y={laneY - 5} fontFamily="ui-monospace, monospace" fontSize={11.5} fill={C.ink} fontWeight="600">
+              {COMMUNITY_LABEL[only.community]}
+            </text>
+            <text x={14} y={laneY + 11} fontFamily="ui-monospace, monospace" fontSize={9.5} fill={C.faint}>
+              1 marker
+            </text>
+
+            {dormantLabel && (
+              <g>
+                <line x1={x(evFrac)} x2={x(nowFrac)} y1={laneY} y2={laneY}
+                  stroke={C.mut} strokeWidth={1.5} strokeDasharray="4 5" strokeOpacity={0.6} />
+                <line x1={x(nowFrac)} x2={x(nowFrac)} y1={padTop - 10} y2={H - axisH}
+                  stroke={C.brand} strokeOpacity={0.35} />
+                <circle cx={x(nowFrac)} cy={laneY} r={4} fill={C.brand} />
+                <text x={x(nowFrac)} y={padTop - 18} textAnchor="middle"
+                  fontFamily="ui-monospace, monospace" fontSize={10} fill={C.brand}>
+                  today
+                </text>
+                {segPx > 220 && (
+                  <g>
+                    <rect x={(x(evFrac) + x(nowFrac)) / 2 - 95} y={laneY - 36} width={190} height={20} rx={10}
+                      fill="rgba(212,168,83,0.08)" stroke={C.brand} strokeOpacity={0.5} />
+                    <text x={(x(evFrac) + x(nowFrac)) / 2} y={laneY - 22} textAnchor="middle"
+                      fontFamily="ui-monospace, monospace" fontSize={10.5} fill={C.brand}>
+                      {dormantLabel}
+                    </text>
+                  </g>
+                )}
+              </g>
+            )}
+
+            <circle cx={x(evFrac)} cy={laneY} r={7} fill={STATUS[only.toAxis].c} stroke={C.bg} strokeWidth={2} />
+            <text x={x(evFrac)} y={laneY + 26} textAnchor="middle"
+              fontFamily="ui-monospace, monospace" fontSize={10} fill={C.mut}>
+              {yr(only.occurredAt)}
+            </text>
+
+            {ticks.map((d) => (
+              <g key={d}>
+                <line x1={x(d)} x2={x(d)} y1={H - axisH} y2={H - axisH + 5} stroke={C.faint} />
+                <text x={x(d)} y={H - axisH + 20} textAnchor="middle"
+                  fontFamily="ui-monospace, monospace" fontSize={11} fill={C.faint}>
+                  {d}
+                </text>
+              </g>
+            ))}
+          </svg>
+        </div>
+
+        <div className="flex flex-wrap gap-x-5 gap-y-2 mb-5">
+          <div className="flex items-center gap-2">
+            <span style={{ width: 10, height: 10, borderRadius: 9, background: STATUS[only.toAxis].c, display: "inline-block" }} />
+            <span className="font-mono" style={{ fontSize: 11, color: C.mut }}>{STATUS[only.toAxis].label}</span>
+          </div>
+          {dormantLabel && (
+            <div className="flex items-center gap-2">
+              <span style={{ width: 14, height: 0, borderTop: `2px dashed ${C.mut}`, display: "inline-block" }} />
+              <span className="font-mono" style={{ fontSize: 11, color: C.mut }}>dormant since {yr(only.occurredAt)}</span>
+            </div>
+          )}
+        </div>
+
         <div className="rounded-lg overflow-hidden" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
           <div className="px-5 py-4 border-b" style={{ borderColor: C.panelEdge }}>
             <div className="flex flex-wrap items-center gap-3">
@@ -421,10 +514,13 @@ function SettlingCurveInner() {
               <span style={{ fontSize: 13, color: C.mut }}>{only.source.name}</span>
             )}
             <p className="mt-4" style={{ fontSize: 12, color: C.faint, lineHeight: 1.55 }}>
-              This claim was recorded at a single point in time. The agentic loop builds multi-step trajectories from records like this.
+              A single-point curve is a real claim: nothing has moved yet. When a dated, sourced
+              event touches this claim — a repeal, a retraction, an overruling — the loops add the
+              next point automatically.
             </p>
           </div>
         </div>
+        </>
       );
     }
 
