@@ -23,7 +23,20 @@ census → per-pipeline date backfill → ingest-auto-trajectories rescan → re
 
 ## Next (in order)
 
-1. **NARA item-level sweep — GO CONFIRMED 2026-07-08.** Sample: 196/200 (98%)
+1. **NARA — API BLOCKED @ ~8k, PIVOTED TO BULK (2026-07-08 23:xx).** The item
+   API cut us off after ~8,000 requests at 13.9/s (HTTP 000, connection refused
+   — quota/abuse block; do NOT relaunch the API sweep). ~5k dates from the first
+   8k are banked. THE PIVOT: NARA's full catalog is on AWS Open Data
+   (s3://nara-national-archives-catalog, plain-HTTPS, no quota; biannual
+   snapshot, currently Apr 2025). New script `backfill-nara-dates-bulk.ts`
+   downloads ONLY the record groups our claims live in, reuses the same date
+   extractors (lib/nara-dates.ts), stamps found-bulk/no-date-bulk (resumable,
+   cached in /tmp/nara-bulk). Morning runbook:
+   ```bash
+   npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-nara-dates-bulk.ts --direct     # preflight: RG list + smallest RG end-to-end
+   npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-nara-dates-bulk.ts --execute --direct
+   ```
+   (Old API note, superseded:  Sample: 196/200 (98%)
    dated via `productionDates`, honest mixed precision (DAY/MONTH/YEAR),
    strategy `?naId_is=`. Projection: ~253k of 258k datable. Launch (survives
    sleep + closed terminal; resumable — swept claims stamped, re-run continues):
@@ -37,7 +50,7 @@ census → per-pipeline date backfill → ingest-auto-trajectories rescan → re
    npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-auto-trajectories.ts --pipeline nara_catalog_v1
    npx dotenv-cli -e .env.local -- npx tsx scripts/census-dateless-claims.ts --direct --json
    ```
-   Optional polish before the rescan: NARA Layer-1 reason says "catalogued" but
+   END superseded note.) Optional polish before the rescan: NARA Layer-1 reason says "catalogued" but
    these are PRODUCTION dates — one-line template wording fix available on request.
 2. **chebi — CLOSED as residue (2026-07-08)**: prior runs had already dated
    25,409/62,000 (all citable compounds); tonight's rerun found 4 new citable,
