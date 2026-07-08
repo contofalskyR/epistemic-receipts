@@ -205,9 +205,8 @@ function MemberVotesSection({ legislativeVoteId, count }: { legislativeVoteId: s
 
 // ── Edges table row ───────────────────────────────────────────────────────────
 
-function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: boolean }) {
+function EdgeRow({ edge }: { edge: EdgeDetail; hasRetraction?: boolean }) {
   const [expanded, setExpanded] = useState(false);
-  const score = latestScore(edge);
   const colors = TYPE_COLOR[edge.type] ?? TYPE_COLOR.CITES;
 
   return (
@@ -264,18 +263,6 @@ function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: bo
         <td className="py-2.5 pr-4">
           <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">{edge.evidenceType}</span>
         </td>
-        <td className="py-2.5 pr-4 text-sm font-mono text-gray-300 whitespace-nowrap">
-          <span title={score === 50
-            ? "50/100 is the neutral starting weight assigned at ingestion — this evidence has not been editorially weighted yet."
-            : "Provenance weight assigned at ingestion and updated only through recorded revisions — expand the row for the audit log."}>
-            {score}/100
-          </span>
-          {hasRetraction && (
-            <span className="text-rose-500/70 font-sans font-normal" title="Score reflects the claim at time of publication — it was later retracted">
-              , at the time
-            </span>
-          )}
-        </td>
         <td className="py-2.5 pr-4 text-xs text-gray-500">
           {edge.source.publishedAt ? formatDate(edge.source.publishedAt) : "—"}
           {edge.source.politicalContext?.headOfGovernment && (
@@ -309,7 +296,7 @@ function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: bo
       </tr>
       {expanded && (
         <tr className="border-b border-gray-800 bg-gray-900/30">
-          <td colSpan={7} className="px-4 py-3">
+          <td colSpan={6} className="px-4 py-3">
             <p className="text-xs text-gray-500 mb-2 font-medium uppercase tracking-wide">Revision history</p>
             <div className="space-y-1.5">
               {edge.revisions.map(r => (
@@ -386,9 +373,7 @@ export default function ClaimInteractive({ claim }: { claim: ClaimDetail }) {
           </span>
         </h2>
         <p className="text-xs text-gray-600 leading-snug">
-          Scores are provenance weights (0–100) assigned at ingestion, not truth probabilities.
-          50 is the neutral default for evidence not yet editorially weighted; every change is
-          preserved in the edge&apos;s revision log.{" "}
+          Every edge keeps a revision log — expand a row for its full audit trail.{" "}
           <a href="/glossary" className="underline hover:text-gray-400 transition-colors">Glossary →</a>
         </p>
         {claim.edges.length === 0 ? (
@@ -401,7 +386,6 @@ export default function ClaimInteractive({ claim }: { claim: ClaimDetail }) {
                   <th className="pb-2 pr-4 font-medium">Source</th>
                   <th className="pb-2 pr-4 font-medium">Type</th>
                   <th className="pb-2 pr-4 font-medium">Evidence</th>
-                  <th className="pb-2 pr-4 font-medium">Score ↓</th>
                   <th className="pb-2 pr-4 font-medium">Published</th>
                   <th className="pb-2 font-medium">Method</th>
                   <th className="pb-2 pl-4" />
