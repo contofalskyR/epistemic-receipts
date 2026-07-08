@@ -39,7 +39,10 @@ const prisma = new PrismaClient();
 
 const SPARQL_ENDPOINT = "https://id.nlm.nih.gov/mesh/sparql";
 const PIPELINE = "mesh_v1";
-const BATCH = 100;
+// NLM's endpoint is GET-with-query-params (POST silently returns empty results
+// — learned 2026-07-08). 25 URIs per batch keeps the encoded URL comfortably
+// under length limits; 10k claims ≈ 400 requests.
+const BATCH = 25;
 const DELAY_MS = 400; // ingest-mesh.ts politeness convention
 
 function argValue(flag: string): string | null {
@@ -54,25 +57,15 @@ const LIMIT = argValue("--limit") ? parseInt(argValue("--limit")!, 10) : null;
 
 interface Binding { d: string; established?: string; created?: string }
 
-async function sparqlDates(descriptorIds: string[]): Promise<Map<string, Binding>> {
-  const values = descriptorIds.map((id) => `<http://id.nlm.nih.gov/mesh/${id}>`).join(" ");
-  const query = `
-PREFIX meshv: <http://id.nlm.nih.gov/mesh/vocab#>
-SELECT ?d ?established ?created WHERE {
-  VALUES ?d { ${values} }
-  OPTIONAL { ?d meshv:dateEstablished ?established }
-  OPTIONAL { ?d meshv:dateCreated ?created }
-}`;
+async function sparqlGet(query: string): Promise<Array<Record<string, { value?: string }>>> {
+  const url = `${SPARQL_ENDPOINT}?${new URLSearchParams({ query, format: "JSON", inference: "true" }).toString()}`;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const res = await fetch(SPARQL_ENDPOINT, {
-        method: "POST",
+      const res = await fetch(url, {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
           Accept: "application/sparql-results+json",
           "User-Agent": "epistemic-receipts/1.0 (mesh date backfill)",
         },
-        body: new URLSearchParams({ query, format: "JSON" }).toString(),
         signal: AbortSignal.timeout(30000),
       });
       if (res.status === 429 || res.status >= 500) {
@@ -83,23 +76,49 @@ SELECT ?d ?established ?created WHERE {
       const data = (await res.json()) as {
         results?: { bindings?: Array<Record<string, { value?: string }>> };
       };
-      const out = new Map<string, Binding>();
-      for (const b of data.results?.bindings ?? []) {
-        const uri = b.d?.value ?? "";
-        const id = uri.split("/").pop() ?? "";
-        if (!id) continue;
-        const prev = out.get(id) ?? { d: id };
-        if (b.established?.value) prev.established = b.established.value;
-        if (b.created?.value) prev.created = b.created.value;
-        out.set(id, prev);
-      }
-      return out;
+      return data.results?.bindings ?? [];
     } catch (e) {
       if (attempt === 1) throw e;
       await new Promise((r) => setTimeout(r, 1500));
     }
   }
-  return new Map();
+  return [];
+}
+
+async function sparqlDates(descriptorIds: string[]): Promise<Map<string, Binding>> {
+  const values = descriptorIds.map((id) => `<http://id.nlm.nih.gov/mesh/${id}>`).join(" ");
+  const query = `PREFIX meshv: <http://id.nlm.nih.gov/mesh/vocab#>
+SELECT ?d ?established ?created WHERE {
+  VALUES ?d { ${values} }
+  OPTIONAL { ?d meshv:dateEstablished ?established }
+  OPTIONAL { ?d meshv:dateCreated ?created }
+}`;
+  const bindings = await sparqlGet(query);
+  const out = new Map<string, Binding>();
+  for (const b of bindings) {
+    const uri = b.d?.value ?? "";
+    const id = uri.split("/").pop() ?? "";
+    if (!id) continue;
+    const prev = out.get(id) ?? { d: id };
+    if (b.established?.value) prev.established = b.established.value;
+    if (b.created?.value) prev.created = b.created.value;
+    out.set(id, prev);
+  }
+  return out;
+}
+
+/** Zero-coverage self-diagnosis: what predicates DOES the first descriptor have? */
+async function diagnose(descriptorId: string): Promise<string> {
+  try {
+    const bindings = await sparqlGet(
+      `SELECT DISTINCT ?p WHERE { <http://id.nlm.nih.gov/mesh/${descriptorId}> ?p ?o }`,
+    );
+    const preds = bindings.map((b) => b.p?.value ?? "").filter(Boolean);
+    if (preds.length === 0) return `descriptor ${descriptorId}: NO triples returned — endpoint/URI problem, not predicate drift.`;
+    return `descriptor ${descriptorId} has predicates:\n  ${preds.join("\n  ")}`;
+  } catch (e) {
+    return `diagnostic query itself failed: ${e instanceof Error ? e.message : String(e)}`;
+  }
 }
 
 /** -01-01 → YEAR (NLM annual-release convention); anything else keeps parsed precision. */
@@ -183,8 +202,11 @@ async function main() {
 
     if (counts.scanned % 2000 === 0)
       console.log(`  … ${counts.scanned.toLocaleString()} scanned, ${counts.dated.toLocaleString()} dated`);
-    if (counts.queried >= 200 && counts.dated === 0)
-      throw new Error("First 200 lookups found zero dates — NLM predicate drift? Aborting before writing anything.");
+    if (counts.queried >= 200 && counts.dated === 0) {
+      const firstId = withIds[0]?.mesh ?? "D000001";
+      console.error(`\nZero dates in the first 200 lookups. Self-diagnosis:\n${await diagnose(firstId)}`);
+      throw new Error("Aborting before writing anything — see predicate list above.");
+    }
     if (counts.scanned >= cap) break outer;
   }
 
