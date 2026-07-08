@@ -1241,6 +1241,81 @@ function SettlingCurveInner() {
           </div>
         </div>
 
+        {/* Reversals showcase — the claims the world took back. Longest-held
+            beliefs that flipped, drawn from the same list the grid uses, so
+            every new reversal the pipelines create competes for a spot. Hidden
+            once the visitor starts filtering/searching (the grid takes over). */}
+        {statusFilter === "ALL" && !query.trim() && (() => {
+          const showcase = filteredList
+            .filter((i) => i.hasReversal && (i.transitionCount ?? 0) >= 2)
+            .sort((a, b) => {
+              const spanA = (a.lastYear ?? 0) - (a.firstYear ?? 0);
+              const spanB = (b.lastYear ?? 0) - (b.firstYear ?? 0);
+              return spanB - spanA || (b.transitionCount ?? 0) - (a.transitionCount ?? 0);
+            })
+            .slice(0, 3);
+          if (showcase.length === 0) return null;
+          return (
+            <div className="mb-8">
+              <div className="flex items-baseline gap-3 mb-3">
+                <h2 className="font-semibold" style={{ fontSize: 16, color: C.ink }}>
+                  <span style={{ color: C.red }}>↩</span> Reversals
+                </h2>
+                <span style={{ fontSize: 12, color: C.mut }}>
+                  claims the world took back — held longest, overturned anyway
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setStatusFilter("REVERSED")}
+                  className="font-mono ml-auto"
+                  style={{ fontSize: 11, color: C.red, background: "none", border: "none", cursor: "pointer", letterSpacing: "0.04em" }}
+                >
+                  all reversals →
+                </button>
+              </div>
+              <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
+                {showcase.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => selectItem(item.id)}
+                    className="text-left rounded-lg sc-anim"
+                    style={{
+                      background: C.panel,
+                      border: `1px solid ${C.red}44`,
+                      borderLeft: `3px solid ${C.red}`,
+                      padding: "14px 16px",
+                      transition: "border-color 0.15s",
+                    }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = C.red; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${C.red}44`; }}
+                  >
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="font-mono" style={{ fontSize: 10, color: C.faint }}>
+                        {item.firstYear ?? ""}
+                        {item.lastYear != null && item.lastYear !== item.firstYear ? ` → ${item.lastYear}` : ""}
+                      </span>
+                      <span className="font-mono" style={{ fontSize: 10, color: C.red }}>
+                        held {Math.max(0, (item.lastYear ?? 0) - (item.firstYear ?? 0))} yrs
+                      </span>
+                    </div>
+                    <p className="leading-snug mb-3" style={{ fontSize: 13, color: C.ink, minHeight: 51 }}>
+                      {truncate(item.claim, 120)}
+                    </p>
+                    {item.milestones && item.milestones.length > 0 && (
+                      <SettlingCurveMini
+                        milestones={item.milestones}
+                        animate={false}
+                        ariaLabel={`Reversal curve: ${item.claim}`}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         {listError && (
           <div className="rounded-lg p-5 mb-6" style={{ background: C.panel, border: "1px solid #f43f5e" }}>
             <span style={{ fontSize: 13, color: "#f43f5e" }}>Failed to load trajectories. </span>
