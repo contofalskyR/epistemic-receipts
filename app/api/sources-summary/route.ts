@@ -328,7 +328,14 @@ export async function loadSourcesSummary(): Promise<SourcesSummary> {
     totalSources,
     generatedAt: new Date().toISOString(),
     categories,
-    unmapped: unmapped.sort((a, b) => b.count - a.count),
+    // Raw internal tags (enrich:*, seed:*, one-off ids) are ops detail, not
+    // public provenance — dev builds show them; production omits the list
+    // entirely so it never ships in the payload. (PUBLISH-CHECKLIST.md P0,
+    // same rule as /pipelines' unregistered-tags section.)
+    unmapped:
+      process.env.NODE_ENV === "development"
+        ? unmapped.sort((a, b) => b.count - a.count)
+        : [],
   };
 }
 
