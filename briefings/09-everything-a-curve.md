@@ -23,14 +23,22 @@ census → per-pipeline date backfill → ingest-auto-trajectories rescan → re
 
 ## Next (in order)
 
-1. **NARA item-level sweep** (`scripts/backfill-nara-dates-api.ts`) — BLOCKED on
-   NARA_API_KEY. ⚠ `.env.local` currently contains a PLACEHOLDER line
-   (`NARA_API_KEY=paste-the-key-here`) — DELETE it before adding the real key
-   (dotenv keeps the first occurrence). Key likely already exists on the loop
-   machine's `.env.local` (it ran the 258k ingest); else Catalog_API@nara.gov.
-   Then: `--direct` (sample 200 → go/no-go coverage %) → `--execute --direct`
-   (resumable, ~18h @ 4/s; swept claims stamped metadata.naraDateSweep).
-   After: `ingest-auto-trajectories.ts --pipeline nara_catalog_v1` + re-census.
+1. **NARA item-level sweep — GO CONFIRMED 2026-07-08.** Sample: 196/200 (98%)
+   dated via `productionDates`, honest mixed precision (DAY/MONTH/YEAR),
+   strategy `?naId_is=`. Projection: ~253k of 258k datable. Launch (survives
+   sleep + closed terminal; resumable — swept claims stamped, re-run continues):
+   ```bash
+   nohup caffeinate -i npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-nara-dates-api.ts --execute --direct > logs/nara-sweep-run.log 2>&1 &
+   tail -f logs/nara-sweep-run.log
+   ```
+   **THE HARVEST (run when the sweep finishes — do not lose these):**
+   ```bash
+   npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-auto-trajectories.ts --pipeline nara_catalog_v1 --dry-run
+   npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-auto-trajectories.ts --pipeline nara_catalog_v1
+   npx dotenv-cli -e .env.local -- npx tsx scripts/census-dateless-claims.ts --direct --json
+   ```
+   Optional polish before the rescan: NARA Layer-1 reason says "catalogued" but
+   these are PRODUCTION dates — one-line template wording fix available on request.
 2. **chebi (37k)**: rerun existing `backfill-chebi-dates.ts` (PubMed citation dates),
    then Layer-1 rescan; remainder = residue.
 3. **Honest residue, document in methodology**: jacar 31k (no public API — the
