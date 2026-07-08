@@ -348,9 +348,10 @@ export default function MethodologyPage() {
           July&nbsp;2026 that includes: ~36,600 ChEBI chemical entities no paper has ever cited;
           ~31,000 JACAR archival items whose catalog publishes no per-item creation date; ~15,000
           RxNorm vocabulary concepts; ~10,000 OFAC sanctions designations (Treasury publishes no
-          per-entity designation dates); and smaller sets across other registries. The National
-          Archives remainder is being measured by the July&nbsp;2026 bulk-catalog sweep and will be
-          recorded here. These numbers are the proof behind the rule: a flat, single-point curve is
+          per-entity designation dates); and smaller sets across other registries. The July&nbsp;2026
+          National Archives bulk-catalog sweep settled the largest case: of 248,439 matched catalog
+          records, 160,595 carried real production dates (now curves) and 91,788 have no date
+          anywhere in NARA&rsquo;s own catalog — they stay curveless, counted here. These numbers are the proof behind the rule: a flat, single-point curve is
           a real epistemic claim — <em>nothing has moved yet</em> — and an undated claim shown
           without a curve is more honest than a curve drawn on an invented date. Every transition
           on every curve carries a provenance tag showing which writer produced it, and a{" "}
