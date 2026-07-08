@@ -1,34 +1,32 @@
 /**
  * backfill-nara-dates-bulk.ts — THE PIVOT (2026-07-08): the item-level API
- * sweep was cut off by NARA's edge after ~8k requests (HTTP 000 — connection
- * refused; quota/abuse block). The right tool for 258k records was always the
- * bulk dataset: NARA publishes the ENTIRE catalog on AWS Open Data —
- * s3://nara-national-archives-catalog/ — organized as
- *   descriptions/record-groups/rg_XXX/rg_XXX-N.json   (≤10k descriptions/file)
- * downloadable over plain HTTPS, no account, no quota, no rate limit.
- * (Docs: archives.gov/developer/national-archives-catalog-dataset. Snapshot is
- * biannual — Apr 2025 currently — so records ingested after the snapshot may
- * miss; they stay stamped no-date-bulk and are honest residue or a later top-up.)
+ * sweep was throttled by NARA's edge after ~8k requests. The right tool for
+ * 258k records was always the bulk dataset: NARA publishes the ENTIRE catalog
+ * on AWS Open Data — s3://nara-national-archives-catalog/ — organized as
+ *   descriptions/record-groups/rg_N/rg_N-M.jsonl   (JSON Lines, ~10-20MB/file)
+ * over plain HTTPS, no account, no quota. VERIFIED layout facts (2026-07-08,
+ * via live listing — the docs' "rg_021/…json" example is wrong twice):
+ *   - record-group dirs are UNPADDED: rg_1/, rg_59/, rg_330/
+ *   - files are .jsonl (one description per line), not .json
+ * Snapshot is biannual (Apr 2026 currently); post-snapshot records miss and
+ * are stamped as residue rather than guessed.
  *
  * Every claim carries metadata.recordGroup, so only the record groups YOUR
- * claims live in are downloaded (typically a handful of RGs, not 87 GB).
- *
- * Flow per record group: list its files via the S3 REST API (XML, curl-grade
- * HTTPS) → download each JSON to the cache dir → parse → extract dates with
- * the SAME extractors as the API sweep (lib/nara-dates.ts) → match against the
- * pipeline's undated naIds → unnest-batched UPDATE + metadata stamp
- * ('found-bulk' / 'no-date-bulk'). Stamps make everything resumable; files are
- * cached on disk so re-runs don't re-download.
+ * claims live in are touched. Files are STREAMED line-by-line (nothing written
+ * to disk — a record group can be 1-2 GB), each line parsed, matched against
+ * the pipeline's undated naIds, dates extracted with the same extractors as
+ * the API sweep (lib/nara-dates.ts), then discarded. A record group stops
+ * early once all its claims are matched. Writes are unnest-batched UPDATEs +
+ * metadata stamps ('found-bulk' / 'no-date-bulk') — fully resumable.
  *
  * PREFLIGHT BY DEFAULT: processes the SMALLEST relevant record group
- * end-to-end (download + parse + coverage report), writes nothing. --execute
- * runs all record groups with writes. --rg N targets one group.
+ * end-to-end, writes nothing. --execute runs all record groups (biggest
+ * first). --rg N targets one group.
  *
  * Usage:
  *   npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-nara-dates-bulk.ts --direct
- *   ... --rg 59                        one record group (preflight unless --execute)
- *   ... --execute --direct             full run, all record groups
- *   ... --cache-dir /path              default /tmp/nara-bulk (survives within a boot)
+ *   ... --rg 65                        one record group (preflight unless --execute)
+ *   ... --execute --direct             full run
  *
  * After: the harvest commands in briefings/09 (ingest-auto-trajectories
  * --pipeline nara_catalog_v1, then the census).
@@ -36,8 +34,8 @@
 
 import "dotenv/config";
 import { PrismaClient, Prisma } from "@prisma/client";
-import * as fs from "fs";
-import * as path from "path";
+import * as readline from "readline";
+import { Readable } from "stream";
 import { extractNaraDate, naraDateFieldInventory, type NaraJson } from "../lib/nara-dates";
 
 if (process.argv.includes("--direct")) {
@@ -61,67 +59,75 @@ function argValue(flag: string): string | null {
 }
 const EXECUTE = process.argv.includes("--execute");
 const ONLY_RG = argValue("--rg");
-const CACHE_DIR = argValue("--cache-dir") ?? "/tmp/nara-bulk";
 
 // ── S3 over plain HTTPS ───────────────────────────────────────────────────────
 
-async function httpGet(url: string, asText = true): Promise<string | null> {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      const res = await fetch(url, {
-        headers: { "User-Agent": "epistemic-receipts/1.0 (nara bulk sweep)" },
-        signal: AbortSignal.timeout(120000),
-      });
-      if (res.status === 429 || res.status >= 500) {
-        await new Promise((r) => setTimeout(r, 3000 * (attempt + 1)));
-        continue;
-      }
-      if (!res.ok) return null;
-      return asText ? await res.text() : null;
-    } catch {
-      await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
-    }
-  }
-  return null;
-}
-
-/** List keys under a prefix via S3 REST (list-type=2), following continuation. */
+/** List keys under a prefix via S3 REST (list-type=2), following continuation.
+ *  Prefix goes in RAW (slashes unencoded — verified via curl); zero-key results
+ *  print the XML head so failures are diagnosable, never silent. */
 async function s3List(prefix: string): Promise<string[]> {
   const keys: string[] = [];
   let token: string | null = null;
+  let lastXml = "";
   for (;;) {
     const url =
-      `${S3_HOST}/?list-type=2&prefix=${encodeURIComponent(prefix)}` +
+      `${S3_HOST}/?list-type=2&max-keys=1000&prefix=${prefix}` +
       (token ? `&continuation-token=${encodeURIComponent(token)}` : "");
-    const xml = await httpGet(url);
+    let xml: string | null = null;
+    for (let attempt = 0; attempt < 3 && xml == null; attempt++) {
+      try {
+        const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
+        if (res.ok) xml = await res.text();
+        else if (res.status >= 500 || res.status === 429)
+          await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+        else break;
+      } catch {
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+      }
+    }
     if (!xml) break;
+    lastXml = xml;
     for (const m of xml.matchAll(/<Key>([^<]+)<\/Key>/g)) keys.push(m[1]);
     const t = /<NextContinuationToken>([^<]+)<\/NextContinuationToken>/.exec(xml);
     if (!t) break;
     token = t[1];
   }
+  if (keys.length === 0 && lastXml)
+    console.log(`    (s3List empty for "${prefix}" — XML head: ${lastXml.replace(/\s+/g, " ").slice(0, 220)})`);
   return keys;
 }
 
-async function downloadToCache(key: string): Promise<string | null> {
-  const dest = path.join(CACHE_DIR, key);
-  if (fs.existsSync(dest) && fs.statSync(dest).size > 0) return dest;
-  fs.mkdirSync(path.dirname(dest), { recursive: true });
-  const body = await httpGet(`${S3_HOST}/${key}`);
-  if (body == null) return null;
-  fs.writeFileSync(dest, body);
-  return dest;
-}
-
-/** Bulk files may be a bare array or wrap records under some key — find them. */
-function recordsFrom(parsed: unknown): NaraJson[] {
-  if (Array.isArray(parsed)) return parsed.filter((r) => r && typeof r === "object") as NaraJson[];
-  if (parsed && typeof parsed === "object") {
-    for (const v of Object.values(parsed as NaraJson)) {
-      if (Array.isArray(v) && v.length > 0 && typeof v[0] === "object") return v as NaraJson[];
-    }
+/** Stream a .jsonl object line-by-line; yields parsed records, stores nothing. */
+async function* streamJsonl(key: string): AsyncGenerator<NaraJson> {
+  let res: Response | null = null;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const r = await fetch(`${S3_HOST}/${key}`, { signal: AbortSignal.timeout(300000) });
+      if (r.ok && r.body) { res = r; break; }
+      if (r.status < 500 && r.status !== 429) break;
+    } catch { /* retry */ }
+    await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
   }
-  return [];
+  if (!res?.body) {
+    console.log(`  ! download failed: ${key}`);
+    return;
+  }
+  const rl = readline.createInterface({
+    input: Readable.fromWeb(res.body as import("stream/web").ReadableStream),
+    crlfDelay: Infinity,
+  });
+  for await (const line of rl) {
+    const s = line.trim();
+    if (!s) continue;
+    try {
+      const obj = JSON.parse(s) as unknown;
+      if (!obj || typeof obj !== "object" || Array.isArray(obj)) continue;
+      // Bulk lines wrap the description: {"record": {...}} (verified 2026-07-08).
+      const inner = (obj as NaraJson).record;
+      if (inner && typeof inner === "object" && !Array.isArray(inner)) yield inner as NaraJson;
+      else yield obj as NaraJson;
+    } catch { /* skip malformed line */ }
+  }
 }
 
 // ── DB side ───────────────────────────────────────────────────────────────────
@@ -152,7 +158,7 @@ async function loadTargets(): Promise<Map<string, Map<string, string>>> {
       const meta = asMeta(c.metadata);
       if (meta.naraDateSweep === "found-bulk" || meta.naraDateSweep === "no-date-bulk") continue;
       const naId = c.externalId?.replace(/^nara_catalog_/, "") ?? "";
-      const rg = String(meta.recordGroup ?? "").replace(/\D/g, "");
+      const rg = String(meta.recordGroup ?? "").replace(/\D/g, "").replace(/^0+/, "");
       if (!/^\d+$/.test(naId) || !rg) continue;
       if (!byRg.has(rg)) byRg.set(rg, new Map());
       byRg.get(rg)!.set(naId, c.id);
@@ -197,8 +203,9 @@ async function flushWrites(
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log(`\n=== NARA bulk-dataset date sweep — ${EXECUTE ? "EXECUTE" : "PREFLIGHT (smallest RG, no writes)"}${ONLY_RG ? `, rg ${ONLY_RG}` : ""} ===`);
-  console.log(`Cache: ${CACHE_DIR} (files are kept; re-runs skip downloads)\n`);
+  console.log(
+    `\n=== NARA bulk-dataset date sweep (streaming) — ${EXECUTE ? "EXECUTE" : "PREFLIGHT (no writes)"}${ONLY_RG ? `, rg ${ONLY_RG}` : ""} ===\n`,
+  );
 
   console.log("Loading undated claims by record group…");
   const byRg = await loadTargets();
@@ -212,55 +219,42 @@ async function main() {
   console.log(`Record groups with undated claims: ${rgList.length}`);
   for (const { rg, count } of [...rgList].sort((a, b) => b.count - a.count).slice(0, 15))
     console.log(`  RG ${rg.padStart(4)} · ${count.toLocaleString()} undated`);
-  if (rgList.length > 15) console.log(`  … ${rgList.length - 15} more (processed in full on --execute)`);
 
   const targets = ONLY_RG
-    ? rgList.filter((r) => r.rg === ONLY_RG.replace(/\D/g, ""))
+    ? rgList.filter((r) => r.rg === ONLY_RG.replace(/\D/g, "").replace(/^0+/, ""))
     : EXECUTE
-      ? [...rgList].sort((a, b) => b.count - a.count) // biggest first — most value early
-      : [rgList[0]]; // preflight: smallest RG, end-to-end
+      ? [...rgList].sort((a, b) => b.count - a.count) // biggest first
+      : [rgList[0]]; // preflight: smallest RG end-to-end
   if (targets.length === 0) {
     console.error(`--rg ${ONLY_RG}: no undated claims in that record group.`);
     process.exitCode = 2;
     return;
   }
 
-  const totals = { files: 0, records: 0, matched: 0, dated: 0, noDate: 0, written: 0, filesMissing: 0 };
+  const totals = { files: 0, records: 0, matched: 0, dated: 0, noDate: 0, written: 0, rgMissing: 0 };
   const inventory = new Map<string, number>();
   const byField = new Map<string, number>();
   const examples: string[] = [];
 
   for (const { rg, count } of targets) {
-    const rgDir = `descriptions/record-groups/rg_${rg.padStart(3, "0")}/`;
+    const rgDir = `descriptions/record-groups/rg_${rg}/`;
     console.log(`\n── RG ${rg} (${count.toLocaleString()} undated) → ${rgDir}`);
-    const keys = (await s3List(rgDir)).filter((k) => k.endsWith(".json"));
+    const keys = (await s3List(rgDir)).filter((k) => k.endsWith(".jsonl") || k.endsWith(".json"));
     if (keys.length === 0) {
-      console.log(`  no files under ${rgDir} — snapshot may predate these records; leaving unswept.`);
-      totals.filesMissing++;
+      console.log(`  no data files under ${rgDir} — snapshot gap; leaving unswept.`);
+      totals.rgMissing++;
       continue;
     }
-    console.log(`  ${keys.length} files in bucket`);
     const want = byRg.get(rg)!;
+    console.log(`  ${keys.length} files · streaming until ${want.size.toLocaleString()} claims are matched`);
 
     let dated: { id: string; date: Date; precision: string; field: string }[] = [];
     let matchedNoDate: string[] = [];
-    for (const [i, key] of keys.entries()) {
-      const file = await downloadToCache(key);
-      if (!file) { console.log(`  ! download failed: ${key}`); continue; }
-      totals.files++;
-      let parsed: unknown;
-      try {
-        parsed = JSON.parse(fs.readFileSync(file, "utf8"));
-      } catch {
-        console.log(`  ! unparsable JSON: ${key}`);
-        continue;
-      }
-      const records = recordsFrom(parsed);
-      totals.records += records.length;
-      if (records.length === 0 && i === 0)
-        console.log(`  ⚠ zero records parsed from first file — top-level keys: ${Object.keys((parsed as NaraJson) ?? {}).slice(0, 8).join(", ")}`);
 
-      for (const rec of records) {
+    fileLoop: for (const [i, key] of keys.entries()) {
+      totals.files++;
+      for await (const rec of streamJsonl(key)) {
+        totals.records++;
         const naId = String(rec.naId ?? "");
         const claimId = want.get(naId);
         if (!claimId) continue;
@@ -283,31 +277,37 @@ async function main() {
           dated = [];
           matchedNoDate = [];
         }
+        if (want.size === 0) {
+          console.log(`  all of RG ${rg}'s claims matched — skipping its remaining files`);
+          break fileLoop;
+        }
       }
       if ((i + 1) % 5 === 0 || i === keys.length - 1)
-        console.log(`  … file ${i + 1}/${keys.length} · matched ${totals.matched.toLocaleString()} · dated ${totals.dated.toLocaleString()}`);
+        console.log(
+          `  … file ${i + 1}/${keys.length} · scanned ${totals.records.toLocaleString()} records · matched ${totals.matched.toLocaleString()} · dated ${totals.dated.toLocaleString()} · ${want.size.toLocaleString()} left`,
+        );
     }
+
     if (EXECUTE && (dated.length > 0 || matchedNoDate.length > 0)) {
       totals.written += await flushWrites(dated, matchedNoDate);
       dated = [];
       matchedNoDate = [];
     }
-    // Claims of this RG never seen in any file: in-bucket-missing (post-snapshot
-    // ingests, or naId not in this RG's files). Stamp as no-date-bulk on execute.
+    // Never seen in any file: post-snapshot ingests or absent naIds → stamp so
+    // re-runs skip them; they are honest residue (or a future snapshot top-up).
     if (EXECUTE && want.size > 0) {
       const leftover = [...want.values()];
       for (let i = 0; i < leftover.length; i += 2000)
         await flushWrites([], leftover.slice(i, i + 2000));
-      console.log(`  ${want.size.toLocaleString()} claims not found in bucket files → stamped no-date-bulk (snapshot gap / genuinely undated)`);
+      console.log(`  ${want.size.toLocaleString()} claims not found in files → stamped no-date-bulk (snapshot gap)`);
       totals.noDate += want.size;
     }
   }
 
   console.log(`\n── Summary ──`);
   console.log(totals);
-  const seen = totals.matched;
-  if (seen > 0)
-    console.log(`Date coverage among matched: ${totals.dated.toLocaleString()}/${seen.toLocaleString()} (${Math.round((totals.dated / seen) * 100)}%)`);
+  if (totals.matched > 0)
+    console.log(`Date coverage among matched: ${totals.dated.toLocaleString()}/${totals.matched.toLocaleString()} (${Math.round((totals.dated / totals.matched) * 100)}%)`);
   if (byField.size > 0)
     console.log(`Winning fields:`, Object.fromEntries([...byField.entries()].sort((a, b) => b[1] - a[1])));
   if (inventory.size > 0)
@@ -315,7 +315,7 @@ async function main() {
   for (const e of examples) console.log(`  ${e}`);
 
   if (!EXECUTE) {
-    console.log(`\nPreflight only (smallest RG). If coverage justifies it:\n  npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-nara-dates-bulk.ts --execute --direct`);
+    console.log(`\nPreflight only — nothing written. If coverage justifies it:\n  caffeinate -i npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-nara-dates-bulk.ts --execute --direct`);
   } else {
     const rows = await prisma.$queryRawUnsafe<[{ n: bigint }]>(
       `SELECT COUNT(*) AS n FROM "Claim" c

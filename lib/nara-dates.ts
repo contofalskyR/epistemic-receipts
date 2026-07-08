@@ -39,7 +39,15 @@ export function tryNaraValue(v: unknown): ParsedDate | null {
   return null;
 }
 
-/** Priority keys first, then a recursive scan for any /date/i-named field. */
+/** Branches whose dates belong to OTHER entities, never to this record:
+ *  ancestors = the parent series / record group (their inclusive dates span
+ *  decades — dating an item by them would fabricate); creators = the agency
+ *  (establishDate is the FBI's founding, not the file's date). Bulk-dataset
+ *  records carry both inline (verified 2026-07-08). */
+const NARA_EXCLUDE_BRANCHES = new Set(["ancestors", "creators", "donors", "contributors", "referenceUnits"]);
+
+/** Priority keys first, then a recursive scan for any /date/i-named field —
+ *  skipping branches that describe parent/creator entities. */
 export function extractNaraDate(record: NaraJson): { parsed: ParsedDate; field: string } | null {
   for (const key of NARA_PRIORITY_KEYS) {
     if (key in record) {
@@ -51,6 +59,7 @@ export function extractNaraDate(record: NaraJson): { parsed: ParsedDate; field: 
   const walk = (obj: NaraJson, prefix: string, depth: number) => {
     if (depth > 3) return;
     for (const [k, v] of Object.entries(obj)) {
+      if (NARA_EXCLUDE_BRANCHES.has(k)) continue;
       const path = prefix ? `${prefix}.${k}` : k;
       if (/date/i.test(k)) {
         const p = tryNaraValue(v);
@@ -64,11 +73,13 @@ export function extractNaraDate(record: NaraJson): { parsed: ParsedDate; field: 
   return found[0] ?? null;
 }
 
-/** Field-name inventory (sample/preflight modes): which date-ish fields exist. */
+/** Field-name inventory (sample/preflight modes): which date-ish fields exist.
+ *  Same branch exclusions as extraction, so the report reflects usable fields. */
 export function naraDateFieldInventory(record: NaraJson, into: Map<string, number>) {
   const walk = (obj: NaraJson, prefix: string, depth: number) => {
     if (depth > 3) return;
     for (const [k, v] of Object.entries(obj)) {
+      if (NARA_EXCLUDE_BRANCHES.has(k)) continue;
       const path = prefix ? `${prefix}.${k}` : k;
       if (/date/i.test(k) && v != null && v !== "") into.set(path, (into.get(path) ?? 0) + 1);
       if (v && typeof v === "object" && !Array.isArray(v)) walk(v as NaraJson, path, depth + 1);
