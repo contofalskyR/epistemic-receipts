@@ -34,7 +34,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
     items: [
       { href: "/retraction-explorer", label: "Retraction Explorer", desc: "26k+ retractions and who still cites them" },
       { href: "/meta-edges", label: "Suppression & Amplification", desc: "Documented actions on evidence — who buried, boosted, or labeled it" },
-      { href: "/corrections", label: "Corrections", desc: "Public audit log — our own pipeline failures, documented" },
+      { href: "/corrections", label: "Corrections", desc: "Our failures, documented — plus a form to flag anything we got wrong" },
       { href: "/opinions", label: "Court Opinions" },
       { href: "/law-settler", label: "Law Settler Curve" },
       { href: "/bookmarks", label: "Bookmarks" },

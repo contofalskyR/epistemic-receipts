@@ -22,8 +22,8 @@ These are the items a skeptic screenshots. Order matters; all are small.
 
 ## P1 — Promote the assets, graduate the Lab (before Show HN / paper circulation)
 
-- [ ] **/corrections into the main nav.** The public audit log is the most persuasive page on the site and is footer-only. Headline it. (Gap audit §5 agrees.)
-- [ ] **Promote /meta-edges as a named feature.** The suppression records — TIRC "doubt is our product," the Fahy brief omission in Korematsu, the SSCP counter-labeling of the Lancet statement — are the strongest editorial content on the site, currently unlinked from the nav and wearing internal copy. Name it (e.g. "Suppression & Amplification"), frame it, link it from Discover.
+- [x] **/corrections into the main nav.** Done — lives in Discover ("Flagship destinations") with description copy; 2026-07-08 it also gained a public flag-a-receipt form (prefilled from flag links, Telegram-notified), and the nav desc now mentions it.
+- [x] **Promote /meta-edges as a named feature.** Done — named "Suppression & Amplification" in the Discover dropdown with framing copy (verified 2026-07-08).
 - [ ] **Briefing 04 (SSR, per-page metadata, sitemap) + Briefing 05 (live counters, cited-claim curation).** Already specced; they remain the vision-blocking items. Everything above makes the pages worth crawling; 04 makes them crawlable.
 - [ ] **Lab graduations** (per `docs/lab-pages-triage-2026-07-03.md`): /retraction-wall, /legislation, /analysis/votes, /drug-arc, /books are at or near production quality — move out of the amber ⚗ group as fixes land.
 - [ ] **Decide /sports Sections A–E.** Section F (sport science) is defensible under the rewritten scope; the 197-entry sports catalog is the weakest-fit content on the site. Either cut A–E or keep the page honest as a pure navigation taxonomy (the rewritten About supports the latter — but then the nav copy should say "Sport Science" rather than "Sports" if trimmed).
