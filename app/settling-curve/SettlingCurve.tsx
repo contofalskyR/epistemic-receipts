@@ -343,6 +343,7 @@ function SettlingCurveInner() {
     setLoadingDetail(true);
     setTraj(null);
     setSelected(null);
+    setTitleExpanded(false);
     fetch(`/api/trajectories/${activeId}`, { signal: AbortSignal.timeout(20000) })
       .then((r) => r.json())
       .then((data: TrajectoryDetail) => {
@@ -373,6 +374,7 @@ function SettlingCurveInner() {
     setActiveId(null);
     setTraj(null);
     setSelected(null);
+    setTitleExpanded(false);
     if (typeof window !== "undefined") {
       window.history.pushState(null, "", "/settling-curve");
     }
@@ -413,7 +415,14 @@ function SettlingCurveInner() {
   }, [loadMore]);
 
   const activeItem = list.find((l) => l.id === activeId) || null;
-  const title = activeItem?.claim ?? traj?.claim ?? "";
+  const [titleExpanded, setTitleExpanded] = useState(false);
+  // Prefer the detail payload's FULL text — the list API truncates at 160 chars
+  // and previously won this fallback chain, leaving long titles permanently
+  // stuck at "…" with no way to read them (2026-07-08 smoke tour finding).
+  const title = traj?.claim ?? activeItem?.claim ?? "";
+  const TITLE_CLAMP = 180;
+  const titleNeedsToggle = title.length > TITLE_CLAMP;
+  const displayTitle = titleNeedsToggle && !titleExpanded ? truncate(title, TITLE_CLAMP) : title;
 
   function renderChart() {
     if ((loadingDetail || listLoading) && !traj) {
@@ -1712,10 +1721,34 @@ function SettlingCurveInner() {
             <div className="flex items-start justify-between gap-4 mb-5 flex-wrap">
               <div className="flex-1 min-w-0" style={{ minWidth: 260 }}>
                 <h1
-                  className="font-semibold tracking-tight mb-1"
+                  className={`font-semibold tracking-tight mb-1${titleNeedsToggle ? " cursor-pointer select-text" : ""}`}
                   style={{ fontSize: 26, lineHeight: 1.15 }}
+                  onClick={titleNeedsToggle ? () => setTitleExpanded((v) => !v) : undefined}
+                  onKeyDown={
+                    titleNeedsToggle
+                      ? (e) => e.key === "Enter" && setTitleExpanded((v) => !v)
+                      : undefined
+                  }
+                  tabIndex={titleNeedsToggle ? 0 : undefined}
+                  role={titleNeedsToggle ? "button" : undefined}
+                  aria-expanded={titleNeedsToggle ? titleExpanded : undefined}
+                  title={
+                    titleNeedsToggle
+                      ? titleExpanded
+                        ? "Click to collapse the title"
+                        : "Click to show the full title"
+                      : undefined
+                  }
                 >
-                  {title || (loadingDetail || listLoading ? "" : "Select a trajectory")}
+                  {displayTitle || (loadingDetail || listLoading ? "" : "Select a trajectory")}
+                  {titleNeedsToggle && !titleExpanded && (
+                    <span
+                      className="ml-2 align-middle font-mono"
+                      style={{ fontSize: 11, color: "#8b8fa3", letterSpacing: "0.06em" }}
+                    >
+                      SHOW FULL
+                    </span>
+                  )}
                 </h1>
                 {traj && traj.transitions.length > 0 && (() => {
                   const years = traj.transitions.map((x) => yr(x.occurredAt));
