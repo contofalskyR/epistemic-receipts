@@ -203,12 +203,13 @@ async function phaseApply() {
         select: { source: { select: { externalId: true, name: true, url: true } } },
       },
       statusHistory: {
-        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
         select: { id: true, fromAxis: true, toAxis: true, occurredAt: true },
       },
     },
     orderBy: { id: "asc" },
     ...(LIMIT ? { take: LIMIT } : {}),
+    ...(OFFSET ? { skip: OFFSET } : {}),
   });
 
   const counts = {
