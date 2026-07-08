@@ -319,6 +319,46 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      {/* Date provenance — every date traces to a document */}
+      <Section id="date-provenance" title="Where dates come from">
+        <p className="text-sm text-gray-400 leading-relaxed">
+          <span className="text-gray-300 font-semibold">Every date on this site traces to a
+          document.</span> A claim&apos;s emergence date and every transition date come from the
+          record itself — a statute&apos;s enactment, a paper&apos;s publication, an archival
+          item&apos;s production date — never from ingest time, never from inference. Precision is
+          stored honestly: a record dated only &quot;1941&quot; is <span className="font-mono text-gray-300">YEAR</span>-precision,
+          not a fabricated January&nbsp;1st. Approximate dates (&quot;ca.&nbsp;1920&quot;) are rejected
+          rather than rounded, and a record never inherits a date from its parent — an FBI case
+          file is not dated 1896 because the Bureau&apos;s record group spans 1896–2008.
+        </p>
+        <p className="text-sm text-gray-400 leading-relaxed mt-2">
+          Dates arrive through four routes, in declining directness: carried on the source record
+          at ingest (most of the corpus); recovered from record metadata in batch backfills (UK
+          National Archives covering dates, Particle Data Group edition dates); looked up from the
+          publisher&apos;s authority system (MeSH terms dated by NLM&apos;s{" "}
+          <span className="font-mono text-gray-300">dateIntroduced</span>; NARA items dated from the
+          National Archives&apos; published bulk catalog); or — clearly labeled as a proxy — dated by
+          earliest citation (ChEBI chemical entities take the date of their first citing paper in
+          PubMed). Backfill scripts run dry-run by default, write with honest precision, and every
+          write is followed by a structural audit of the affected curves.
+        </p>
+        <p className="text-sm text-gray-400 leading-relaxed mt-2">
+          <span className="text-gray-300 font-semibold">The refusal ledger.</span> Some claims have
+          no recoverable date anywhere, and they stay curveless rather than guessed at. As of
+          July&nbsp;2026 that includes: ~36,600 ChEBI chemical entities no paper has ever cited;
+          ~31,000 JACAR archival items whose catalog publishes no per-item creation date; ~15,000
+          RxNorm vocabulary concepts; ~10,000 OFAC sanctions designations (Treasury publishes no
+          per-entity designation dates); and smaller sets across other registries. The National
+          Archives remainder is being measured by the July&nbsp;2026 bulk-catalog sweep and will be
+          recorded here. These numbers are the proof behind the rule: a flat, single-point curve is
+          a real epistemic claim — <em>nothing has moved yet</em> — and an undated claim shown
+          without a curve is more honest than a curve drawn on an invented date. Every transition
+          on every curve carries a provenance tag showing which writer produced it, and a{" "}
+          <Link href="/corrections" className="underline hover:text-gray-300">flag link</Link> if
+          you believe a receipt is wrong.
+        </p>
+      </Section>
+
       {/* Deprecation policy */}
       <Section id="deprecation" title="Deprecation policy">
         <p className="text-sm text-gray-400 leading-relaxed">
