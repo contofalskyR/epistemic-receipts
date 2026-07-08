@@ -53,73 +53,16 @@ const ONLY = argValue("--pipeline");
 const LIMIT = argValue("--limit") ? parseInt(argValue("--limit")!, 10) : null;
 const PAGE = 1000;
 
-type Precision = "DAY" | "MONTH" | "YEAR";
-interface Parsed { date: Date; precision: Precision }
-
-// ── Parsers ───────────────────────────────────────────────────────────────────
-
-const MONTHS: Record<string, number> = {
-  jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
-  jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
-};
-
-function utc(y: number, m = 1, d = 1): Date | null {
-  if (y < 1 || y > 2100) return null;
-  const dt = new Date(Date.UTC(y, m - 1, d));
-  return isNaN(dt.getTime()) || dt.getUTCMonth() !== m - 1 || dt.getUTCDate() !== d ? null : dt;
-}
-
-/** ISO, bare year, year-range start, US M/D/YYYY, "Month D, YYYY". */
-function parseWestern(raw: string): Parsed | null {
-  const s = raw.trim();
-  if (!s) return null;
-
-  let m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s);
-  if (m) { const d = utc(+m[1], +m[2], +m[3]); return d ? { date: d, precision: "DAY" } : null; }
-
-  m = /^(\d{4})-(\d{2})$/.exec(s);
-  if (m) { const d = utc(+m[1], +m[2]); return d ? { date: d, precision: "MONTH" } : null; }
-
-  m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(s); // NARA US-style
-  if (m) { const d = utc(+m[3], +m[1], +m[2]); return d ? { date: d, precision: "DAY" } : null; }
-
-  m = /^([A-Za-z]{3,9})\.?\s+(\d{1,2}),?\s+(\d{4})$/.exec(s); // "December 7, 1941"
-  if (m) {
-    const mo = MONTHS[m[1].slice(0, 3).toLowerCase()];
-    if (mo) { const d = utc(+m[3], mo, +m[2]); return d ? { date: d, precision: "DAY" } : null; }
-  }
-
-  m = /^(\d{4})(?:\s*[-–—/]\s*\d{2,4})?$/.exec(s); // "1941" or range "1941-1945" → start, YEAR
-  if (m) { const d = utc(+m[1]); return d ? { date: d, precision: "YEAR" } : null; }
-
-  return null;
-}
-
-/** Japanese era dates: 明治/大正/昭和/平成/令和 + 年/月/日, full-width digits ok. */
-const ERA_BASE: Record<string, number> = { 明治: 1868, 大正: 1912, 昭和: 1926, 平成: 1989, 令和: 2019 };
-
-function parseJapanese(raw: string): Parsed | null {
-  const s = raw.replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0)).trim();
-  const m = /(明治|大正|昭和|平成|令和)\s*(\d{1,2}|元)\s*年(?:\s*(\d{1,2})\s*月)?(?:\s*(\d{1,2})\s*日)?/.exec(s);
-  if (!m) return null;
-  const year = ERA_BASE[m[1]] + (m[2] === "元" ? 1 : +m[2]) - 1;
-  if (m[3] && m[4]) { const d = utc(year, +m[3], +m[4]); return d ? { date: d, precision: "DAY" } : null; }
-  if (m[3]) { const d = utc(year, +m[3]); return d ? { date: d, precision: "MONTH" } : null; }
-  const d = utc(year);
-  return d ? { date: d, precision: "YEAR" } : null;
-}
+import {
+  parseWestern,
+  parseJapanese,
+  parseCoveringDates,
+  type ParsedDate as Parsed,
+  type BackfillPrecision as Precision,
+} from "../lib/date-parsers";
 
 function parseJacar(raw: string): Parsed | null {
   return parseWestern(raw) ?? parseJapanese(raw);
-}
-
-/** UK covering dates: "1947 Jan 3-June18" / "1946 Jan 22-Nov 12" → start, MONTH|YEAR. */
-function parseCoveringDates(raw: string): Parsed | null {
-  const m = /^(\d{4})(?:\s+([A-Za-z]{3,9}))?/.exec(raw.trim());
-  if (!m) return null;
-  const mo = m[2] ? MONTHS[m[2].slice(0, 3).toLowerCase()] : undefined;
-  const d = mo ? utc(+m[1], mo) : utc(+m[1]);
-  return d ? { date: d, precision: mo ? "MONTH" : "YEAR" } : null;
 }
 
 // ── Pipeline rules (from the census) ─────────────────────────────────────────
@@ -239,16 +182,21 @@ async function runSourceRule(pipeline: string, rule: SourceRule) {
     console.log(`  would set ${Number(rows[0].n).toLocaleString()} claims from Source.publishedAt (${rule.precision}) · (preflight)`);
     return;
   }
+  // Postgres forbids LATERAL referencing the UPDATE target — use DISTINCT ON,
+  // scoped to the pipeline's dateless claims inside the subquery.
   const updated = await prisma.$executeRawUnsafe(
     `UPDATE "Claim" c
-        SET "claimEmergedAt" = src."publishedAt", "claimEmergedPrecision" = $2
-       FROM LATERAL (
-         SELECT s."publishedAt"
-           FROM "Edge" e JOIN "Source" s ON s."id" = e."sourceId"
-          WHERE e."claimId" = c."id" AND e."deleted" = false AND s."publishedAt" IS NOT NULL
-          ORDER BY e."createdAt" ASC LIMIT 1
-       ) src
-      WHERE c."deleted" = false AND c."ingestedBy" = $1 AND c."claimEmergedAt" IS NULL`,
+        SET "claimEmergedAt" = sub."publishedAt", "claimEmergedPrecision" = $2
+       FROM (
+         SELECT DISTINCT ON (e."claimId") e."claimId", s."publishedAt"
+           FROM "Edge" e
+           JOIN "Source" s ON s."id" = e."sourceId"
+           JOIN "Claim" c2 ON c2."id" = e."claimId"
+          WHERE e."deleted" = false AND s."publishedAt" IS NOT NULL
+            AND c2."deleted" = false AND c2."ingestedBy" = $1 AND c2."claimEmergedAt" IS NULL
+          ORDER BY e."claimId", e."createdAt" ASC
+       ) sub
+      WHERE c."id" = sub."claimId" AND c."claimEmergedAt" IS NULL`,
     pipeline,
     rule.precision,
   );
