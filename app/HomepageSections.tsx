@@ -6,10 +6,11 @@ import { compactCount } from "@/lib/format";
 
 export type HomepageStats = {
   claims: number;
+  /** Non-deprecated claims with ≥1 transition row — openable settling curves. */
+  settlingCurves: number;
   sources: number;
   legislativeVotes: number;
   retractedPapers: number;
-  vdemIndicators: number;
 };
 
 export type HomepageSectionsProps = {
@@ -174,10 +175,10 @@ function sumKeys(counts: Map<string, number>, keys: string[]): number {
 function StatsBar({ stats }: { stats: HomepageStats }) {
   const cells: { label: string; value: number }[] = [
     { label: "Claims indexed",       value: stats.claims },
+    { label: "Settling curves",      value: stats.settlingCurves },
     { label: "Primary sources",      value: stats.sources },
     { label: "Congressional votes",  value: stats.legislativeVotes },
     { label: "Retracted papers",     value: stats.retractedPapers },
-    { label: "Democracy indicators", value: stats.vdemIndicators },
   ];
   // Full-bleed band: -mx-6 cancels the global <main> px-6 gutter so the bar runs
   // edge-to-edge, while the inner container keeps the content centered. On mobile
