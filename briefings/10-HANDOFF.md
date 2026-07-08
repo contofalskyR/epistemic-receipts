@@ -1,160 +1,162 @@
-# Briefing 10 — Session Handoff (updated 2026-07-08, EOD — all three threads CLOSED)
+# Briefing 10 — Handoff back to the main agent (2026-07-08, session close)
 
-**EOD status:** Thread 1 (NZ) DONE — 442 reversal arcs applied, pipeline audit
-fully green (4,814 transitions = 4,372 + 442), residue = 3,930 no-dated-note
-old acts + 7 transient fetchFailed (retryable). Thread 2 (NARA) DONE — 166,647
-curves harvested + seq-stamped, census residue 91,788, methodology page
-updated with final numbers. Thread 3 (seq) DONE — backfill executed, C2 green
-corpus-wide, 3 orphan-break claims in logs/seq-backfill-residue.jsonl. Corpus:
-~10k → ~177k curves in one day. Remaining work = the queue below (rechain run,
-dedupe, loop-machine setup, curation, /corrections form, footer link, smoke
-tour). Thread sections below are kept for reference/history.
+Written by the Cowork session that picked up your morning handoff. All three of
+your threads are CLOSED and launch prep advanced well past the plan. Everything
+below EXISTS and is committed + pushed (through `nav: Corrections desc…`) —
+verify, don't rebuild. Robert ran every command; all writes were preflighted,
+audited, and verified against the DB.
 
-## THE MISSION (why any of this matters)
+## THE MISSION (unchanged, kept verbatim)
 
 Robert is preparing epistemic-receipts for public launch. The settling curve —
-a claim's dated, citable trajectory across epistemic status (SETTLED →
-REVERSED etc.) — is the site's single most unique feature. The project:
-**make every claim with a recoverable date an openable settling curve, even at
-length 1; count the truly undatable remainder as honest, documented residue
-(dates are never invented).** Everything below serves that. The threads are
-not cleanup chores — they are the remaining build steps: NZ turns 4,372 flat
-baselines into real reversal arcs; NARA converts ~165k dateless claims into
-curves; the queue hardens it all for launch. 10,271 curves shipped so far.
+a claim's dated, citable trajectory across epistemic status — is the site's
+single most unique feature. Make every claim with a recoverable date an
+openable settling curve, even at length 1; count the truly undatable remainder
+as honest, documented residue. Dates are never invented.
 
-You are picking up mid-project. Everything below EXISTS — verify, don't rebuild.
-Read `AGENTS.md` (house rules), briefings `08` + `09` for depth, plus
-`ORDERING-SEMANTICS-2026-07-08.md` (decided AND built 2026-07-08). This file
-is the current thread.
+## Corpus state (verified against DB, end of session)
 
-## Working relationship (non-negotiable)
+- **~177k settling curves** (was 10,271 this morning): +166,647 NARA, +442 NZ
+  reversal arcs, prior 10,271 + SCOTUS 11 + exoplanets 75.
+- Full-corpus audit: **E1 0 · C2 0 · S1 0 · V1 0**; C1 = 5 rows on 3 seed
+  claims; A1 = 143 seed rows; D2 = 270 warnings. Scope 1,571,180 claims /
+  1,807,374 transitions. Zero script-fixable violations remain — everything
+  left is editorial.
+- Homepage stat band now shows **Settling curves** (live count, replaced
+  Democracy indicators; V-Dem keeps its domain tile).
 
-- Robert is not a developer. You write everything; he runs commands in his
-  terminal and pastes output back. Give one command at a time, no inline `#`
-  comments (zsh eats them), no placeholders he must edit. If the session has
-  folder access, prefer `2>&1 | tee logs/<name>.log` and read the file
-  yourself instead of asking for pastes.
-- Every script: preflight/dry-run by default, writes gated behind `--execute`.
-- Never fabricate dates — skip + count as residue. Precision: ISO→DAY,
-  YYYY-MM→MONTH, YYYY→YEAR.
-- Verify results against the DB, not logs. Long Neon scans need `--direct`
-  (pooler kills them, P1017).
-- All transition writes go through `lib/transition-contract.ts`
-  (emitTransition / amendBaseline / renumberClaimSeq — contract §6: every
-  insert assigns seq in the insert transaction). Run
-  `scripts/audit-chain-integrity.ts` after every `--execute`. Records are
-  retired via verificationStatus, never deleted. Secrets never in chat.
-- CI's migration-drift step is allowlist-based and intentionally strict — do
-  NOT "fix" it by touching prisma.config.ts or applied migrations. New
-  additive migrations committed in lockstep with schema.prisma pass untouched.
+## Thread 1 — NZ repeal dates: CLOSED ✅
 
-## Thread 1 — NZ repeal dates (phase-1 RUNNING, phase-2 next)
+- Probe verdict = path (b), with a twist: www.legislation.govt.nz serves FULL
+  pages iff the request carries `X-Api-Key` + UA/Accept; keyless scripted
+  fetches get **HTTP 202 / 0 bytes** (202 passes `res.ok` — that's how the old
+  run misread the wall as noPattern). Official XML has `date.terminated` but
+  404s on old acts; HTML+regex is the path. Receipts: `logs/nz-probe2.log`.
+- **Pre-1909 acts carry NO dated repeal note on their pages at all** (probe 2
+  proved "Repealed, on" absent from stripped text) → honest residue.
+- Phase-1 patched (headers, key guard, emptyBody counter, 30s timeout,
+  `--offset`, noPattern decade histogram). Extraction lives in
+  `lib/nz-repeal.ts` (shared with probes, unit-tested, handles "the close of"
+  variant). Full run: **442 found / 3,923 noPattern / 7 fetchFailed**.
+- Phase-2 applied **all 442 arcs** (pilot 24 @ offset 4347 + full 418; the 24
+  correctly re-skipped as notSingleStepBaseline on the full pass). Pipeline
+  audit fully green: 4,814 transitions = 4,372 + 442 exactly.
+- `EVENT_LOOP_INCLUDE_NZ=1` is now sanctioned — the pilot was green. The 7
+  fetchFailed are transient; phase-1 is resumable, loop reruns will catch them.
 
-Probe verdict (probe 1 pasted in session, probe 2 → `logs/nz-probe2.log`):
-**path (b)**. No repeal-date field anywhere in the API JSON, BUT
-www.legislation.govt.nz serves full pages when the request carries `X-Api-Key`
-+ probe UA/Accept — keyless scripted fetches get **HTTP 202 / 0 bytes** (202
-passes res.ok; that's how the old run misread the wall as noPattern 100/100).
-Official XML carries `date.terminated` but 404s for old acts — HTML+regex is
-the path. Phase-1 of `scripts/event-pipelines/nz-repealed-prepend.ts` is
-patched: working headers, key guard, emptyBody counter, 30s timeout,
-`--offset`, noPattern decade histogram + sample URLs. Extraction regex moved
-to `lib/nz-repeal.ts` (shared with probes, unit-tested; handles "repealed, on
-the close of …"). **Pre-consolidation acts (~pre-1909) carry NO dated repeal
-note on their pages** (probe 2 proved "Repealed, on" appears nowhere in the
-stripped text) — honest noPattern residue. Preflights: first 100 (oldest) =
-0/100 found as expected; modern tail (`--offset 4272`) = **99/100 found**, DAY
-precision, clean by-clauses.
+## Thread 2 — NARA: CLOSED ✅
 
-RUNNING at handoff: full phase-1 via nohup (PID 44388) →
-`logs/nz-phase1-run.log`, progress every 250. When its summary prints:
+- Sweep final: 3.98M records scanned, **248,439 matched / 160,595 dated /
+  91,788 no-date residue** (91,788 verified against DB, stamped).
+- Harvest minted **166,647 curves** (ran twice — idempotent, second pass
+  Added 0 as designed). Census: total curve-less now **186,581**.
+- Methodology "refusal ledger" updated with the final numbers. Optional
+  "catalogued"→"produced" wording never done — still available.
 
-```bash
-npx dotenv-cli -e .env.local -- npx tsx scripts/event-pipelines/nz-repealed-prepend.ts --phase apply
-npx dotenv-cli -e .env.local -- npx tsx scripts/event-pipelines/nz-repealed-prepend.ts --phase apply --limit 25 --execute --allow-entry-amend
-```
-eyeball 5 curves on /settling-curve → full apply → audit
-`--pipeline nz_repealed_acts_v1`. NOTE: the phase-2 pilot is ALSO the live
-pilot of prepend-aware seq renumbering — verify seq=1 (entry) / seq=2
-(baseline) on amended claims while eyeballing.
+## Thread 3 (new) — ordering semantics: DECIDED + BUILT + LIVE ✅
 
-## Thread 2 — NARA bulk sweep (~finished at handoff)
+Robert approved **Option B** with two amendments (see
+`ORDERING-SEMANTICS-2026-07-08.md`, updated for the record): (1) prepend-aware
+renumbering of the whole claim in the insert transaction — a bare max+1 is
+unacceptable (NZ phase-2 prepends); (2) `@@unique([claimId, seq])`, assigned
+inside the insert transaction. Plus his correction: the killer for Option A is
+**branching** (cross-community rows sharing a fromAxis — no single pointer
+order), not the circularity I'd argued.
 
-`backfill-nara-dates-bulk.ts` nohup. Last seen: file 320/399, dated
-**159,550**, only 88 left — check `logs/nara-bulk-run.log` for the final
-summary, then THE HARVEST (briefing 09 §1): ingest-auto-trajectories
-`--pipeline nara_catalog_v1` dry-run → real → re-census → audit. **NEW STEP:
-after the harvest, re-run `scripts/backfill-transition-seq.ts --direct
---execute`** — Layer-1 writes baselines outside the contract, so harvest rows
-land unstamped (legal; pass A stamps them in one statement, script is
-resumable). Then swap the one sentence in `app/methodology/page.tsx` for the
-final residue number. Optional first: reason wording "catalogued"→"produced".
+- Migration `20260708150000_add_transition_seq` — **applied to prod**; drift
+  gate untouched (schema + migration in lockstep).
+- `lib/transition-contract.ts` contract §6: every insert assigns seq
+  in-transaction; entry prepends renumber (NULL-phase → finals; NULLs distinct
+  under the unique index so shifts never collide). `renumberClaimSeq` exported
+  (entry-first, **existing stamps are the order authority**, unstamped rows
+  fall back to date order). If callers pass a bare client, emitTransition
+  wraps insert+renumber in its own transaction; a passed tx is used as-is.
+  amendBaseline deliberately does NOT renumber (the prepend that follows does).
+- `scripts/backfill-transition-seq.ts` EXECUTED: pass A 1,169,717 single-row
+  claims (one SQL statement); pass B 28,962 date-strict coherent claims; pass C
+  pointer-walked 205,875 date-tied claims and resolved **all but 3**
+  (orphan-break) — pointer chains beat lying dates, per Robert. Residue:
+  `logs/seq-backfill-residue.jsonl` (9 rows total). Batched-VALUES fast path
+  for fully-unstamped claims. Resumable; re-run cost ≈ minutes.
+- `scripts/audit-chain-integrity.ts`: C1/A1 windows order by `seq NULLS LAST`;
+  new **C2** check (partial/non-contiguous stamps). C2 = 0 corpus-wide, held
+  through 442 live prepend renumbers.
+- Consumers swapped to seq-first (date fallback): trajectory-detail (+seq in
+  type/payload), api/trajectories (in-memory date re-sort REMOVED — it undid
+  the fix), api/trajectories/[id] (+seq), search, labs/claim-diff,
+  v1/trajectories, v1/verify (desc nulls-last), claim-detail (+seq),
+  claims/[id] timeline, SettlingCurve `chainOrder` (ORDER by seq; X-POSITIONS
+  still by date — visible back-loops on coarse dates are honest and intended).
+- `fix-audit-findings.ts` rechain is seq-aware: fully-stamped claims rewrite
+  pointers FROM seq; renumbers after mid-chain deletes. **Preflight confirmed
+  0 fixable remain** — the rechain queue item is closed; the old 5 tie-skips
+  are now: 2 healed by seq order, 3 = the curation trio below.
 
-## Thread 3 — seq / ordering semantics (BUILT 2026-07-08, backfill RUNNING)
+⚠ **For you on the loop machine:** `git pull` gets all of this. Layer-1
+(ingest-auto-trajectories) and apply-enrichment still write OUTSIDE the
+contract → their new rows land seq-unstamped (legal; C2 ignores fully-unstamped
+claims). Until you wire them into emitTransition, **re-run
+backfill-transition-seq after each harvest** (pass A catches baselines in one
+statement). Do NOT write raw max+1 seqs anywhere.
 
-Decision: **Option B approved with Robert's amendments** (prepend-aware
-renumbering in-transaction — never max+1; unique (claimId, seq); pointer
-chains beat lying dates; branching, not circularity, is what kills Option A).
-Full rationale + amendments recorded in `ORDERING-SEMANTICS-2026-07-08.md`.
-Built, typechecked (app 0 errors; scripts 0 new vs 92 pre-existing), renumber
-+ walk unit-tested 9/9:
+## Launch prep (same session, Robert-driven smoke tour)
 
-- Migration `20260708150000_add_transition_seq` — **applied to prod** via
-  migrate deploy; prisma generate done.
-- `lib/transition-contract.ts` — contract §6; `renumberClaimSeq` exported
-  (entry-first, stamped order preserved, NULL-phase collision safety).
-- `scripts/backfill-transition-seq.ts` — passes A (single-row, SQL), B
-  (date-strict+coherent, SQL), C (pointer walk, app; batched VALUES fast
-  path). Preflight: A=1,169,717 rows · B=28,962 claims/58,824 rows ·
-  C=205,875 claims, walk resolved all but **3** (orphan-break) →
-  `logs/seq-backfill-residue.jsonl` → curation. RUNNING at handoff via nohup
-  (PID 45632) → `logs/seq-backfill-run.log` (~20-30 min).
-- `scripts/audit-chain-integrity.ts` — C1/A1 windows order by seq NULLS LAST;
-  new **C2** check (partial/non-contiguous stamps). Run `--direct` after the
-  backfill; C2 must be green before anything else writes.
-- Consumers swapped to seq-first (date fallback, NULLS LAST): trajectory-detail
-  (+seq in payload/type), api/trajectories (now trusts DB order — its date
-  re-sort was undoing the fix), api/trajectories/[id] (+seq in payload),
-  search, labs/claim-diff, v1/trajectories, v1/verify (desc), claim-detail
-  (+seq), claims/[id] timeline, SettlingCurve `chainOrder` (x-positions still
-  date-based; visible back-loops on coarse dates are honest and expected).
-- `scripts/fix-audit-findings.ts` rechain is seq-aware: fully-stamped claims
-  rewrite pointers FROM seq (the old 5 tie-skips now resolve); renumbers after
-  mid-chain deletes.
+- **/corrections public form** (`app/corrections/CorrectionForm.tsx`): rides
+  the existing /api/feedback (rate-limited, 300-char cap, DB-stored,
+  Telegram-notified); flag links prefill claim/transition/date via query
+  params. ⚠ `TELEGRAM_BOT_TOKEN` on Vercel is STALE — Robert is swapping it
+  (env var + redeploy + must /start the bot); submissions store regardless.
+- **Score column removed** from the claims evidence table (owner call during
+  tour): weights stay in DB + per-edge revision log; explainer paragraph
+  replaced. Resolves the P0 "score legend" item by deletion.
+- **SettlingCurve title fix** (tour finding): detail header preferred the
+  LIST's 157-char-truncated text over the detail payload's full text — full
+  text now wins; >180-char titles collapse with a SHOW FULL affordance
+  (click/Enter toggles, resets on curve switch).
+- **/sources**: `unmapped` (raw internal tags) omitted from the production
+  payload in `app/api/sources-summary/route.ts` (mirrors /pipelines dev-only
+  rule).
+- **PUBLISH-CHECKLIST.md trued up**: every mechanical P0 is [x] with dates
+  (edit-gate//edges//labs/tag-dumps/string-strip were already done in
+  middleware `ADMIN_PATHS` by a prior session — boxes were stale); P1
+  nav items (corrections in Discover, meta-edges named) also [x].
+- Nav desc for Corrections now mentions the flag form.
 
-## Queue after those (in order)
+## What remains (short, mostly Robert)
 
-1. Post-backfill audit `--direct` — C2 green + full board.
-2. rechain fix — PAUSE loop-auto-trajectories on the loop machine first, then
-   `fix-audit-findings.ts --fix rechain --execute --allow-row-delete --direct`.
-3. Curated dedupe (launch gate, deliberately deferred):
-   `find-duplicate-trajectories.ts` list → Robert picks KEEPs → `--deprecate`.
-4. Loop machine: `git pull` (gets ALL of 2026-07-08's work); install
-   `scripts/loop-event-pipelines.sh` under launchd; unload archived enricher
-   plist; set `EVENT_LOOP_INCLUDE_NZ=1` only after the NZ pilot is green.
-5. Wire Layer-1 (ingest-auto-trajectories) + apply-enrichment into the
-   contract so their rows get seq at write time; until then re-run the seq
-   backfill after each harvest.
-6. Optional display decision (owner's call, separate from seq): render
-   YEAR-precision dots at year-center with a year-wide whisker instead of
-   Jan-1. A visualization convention, not date nudging.
-7. Curation queues: 3 seq orphan-breaks, A1=131 same-community rows, D2=437
-   authored-date warnings, SCOTUS residue 276, exoplanet residue, NZ pre-1909
-   noPattern remainder → law/astronomy loops.
-8. Pre-launch stragglers: dead robertcontofalsky.com footer link, /corrections
-   real form, whitepaper-cited claims curation, prod smoke tour.
+1. **Whitepaper-cited claims curation** (P0, blocks paper circulation):
+   `claims/cmqwoxe6l07dy8o0y6xrs8xnv` (Surgeon General 1964) +
+   `claims/cmqoappnu03yxsadpa90nu942` (Müller 1939 — re-verify footnote
+   targets). Need real curated curves + review. ~an hour with Robert.
+2. **Headline-count decision** (Robert): 1.62M classified-only vs 1.76M
+   including verificationStatus=NULL. One sentence, then fix filters + copy.
+3. **Curation queues**: the trio (alphago-defeats-lee-sedol-2016,
+   pluto-reclassified-dwarf-planet-2006, smiling-buddha-pokhran-i-1974 —
+   self-contradicting seed pointers, same 3 as seq residue); A1 143 rows;
+   D2 270 warnings; duplicates list (command ready, never run:
+   `find-duplicate-trajectories.ts` → Robert picks KEEPs → `--deprecate`).
+4. **Loop machine** (you): pull; install `loop-event-pipelines.sh`; unload the
+   archived enricher plist; set `EVENT_LOOP_INCLUDE_NZ=1`; adopt the
+   backfill-after-harvest rule; longer-term wire Layer-1 + enrichment into the
+   contract.
+5. Telegram token swap + one re-test flag (Robert, in flight).
+6. Optional/queued: NARA reason wording "catalogued"→"produced"; YEAR-dot
+   render convention (year-center + whisker — display decision, not data);
+   registering major pipelines in the registry; P1 briefings 04/05; P2 polish.
 
-## State
+## Logs of record (all in `logs/`)
 
-- Everything-a-curve total: **10,271 curves** (mesh 10,000 + pdg 226 + uk 43 +
-  chebi 2 pending rescan) + SCOTUS 11 reversal arcs + 75 exoplanet
-  retractions. NARA ~159.5k dated pending harvest; NZ up to ~4.4k reversal
-  re-dates pending phase-2.
-- Residue ledger (methodology page): chebi 36,591; jacar ~31k; rxnorm ~15k;
-  ofac ~10k; omim ~1.5k; + NZ pre-1909 remainder (count lands in phase-1
-  summary); + 3 seq orphan-breaks; NARA remainder pending final summary.
-- UI shipped: /settling-curve landing card grid, one-dot dormant curves,
-  search surfaces curves, provenance chips + flag links, Reversals showcase,
-  methodology "Where dates come from".
-- Background jobs at handoff: NZ phase-1 (PID 44388), seq backfill (PID
-  45632) — both nohup'd, logs in `logs/`.
+nz-probe2 · nz-phase1-preflight(-tail) · nz-phase1-run · nz-phase2-preflight ·
+nz-phase2-pilot · nz-phase2-apply · audit-nz-final · nara-bulk-run ·
+nara-harvest(-dryrun) · seq-backfill-preflight · seq-backfill-run(-rerun) ·
+seq-backfill-residue.jsonl · audit-post-seq · audit-post-nara ·
+rechain-preflight · chain-integrity-2026-07-08.json · dup list pending.
+
+## Working-relationship notes (additions that helped)
+
+- `2>&1 | tee logs/<name>.log` on every command; the session reads the file —
+  Robert just says "done". He does not track checklists; send ONE command at a
+  time with plain-language framing of what it does and what to expect.
+- When his screenshots disagree with your expectations, believe the
+  screenshots and go read the render path — both tour bugs (stuck title,
+  stale stat framing) were real.
