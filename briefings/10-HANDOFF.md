@@ -143,6 +143,14 @@ statement). Do NOT write raw max+1 seqs anywhere.
 6. Optional/queued: NARA reason wording "catalogued"→"produced"; YEAR-dot
    render convention (year-center + whisker — display decision, not data);
    registering major pipelines in the registry; P1 briefings 04/05; P2 polish.
+7. **Phase 2 (post-launch, approved 2026-07-08): dropped-story tracker** —
+   Robert's journalism project, adopted as the site's recurring-pull engine.
+   Read briefings/11-journalism-angle.md (the source handoff, incl. its
+   DO-NOT-REDO list) + briefings/12-tracker-integration.md (build plan +
+   the non-negotiable boundary: thread statuses get their own tables, NEVER
+   ClaimStatusHistory rows; resolutions graduate into the corpus via the
+   contract). Engine code staged in tracker/. Build only after the launch
+   plan (marketing/launch-research-report.md) has executed.
 
 ## Logs of record (all in `logs/`)
 
