@@ -1,4 +1,14 @@
-# Briefing 10 — Session Handoff (updated 2026-07-08, late)
+# Briefing 10 — Session Handoff (updated 2026-07-08, EOD — all three threads CLOSED)
+
+**EOD status:** Thread 1 (NZ) DONE — 442 reversal arcs applied, pipeline audit
+fully green (4,814 transitions = 4,372 + 442), residue = 3,930 no-dated-note
+old acts + 7 transient fetchFailed (retryable). Thread 2 (NARA) DONE — 166,647
+curves harvested + seq-stamped, census residue 91,788, methodology page
+updated with final numbers. Thread 3 (seq) DONE — backfill executed, C2 green
+corpus-wide, 3 orphan-break claims in logs/seq-backfill-residue.jsonl. Corpus:
+~10k → ~177k curves in one day. Remaining work = the queue below (rechain run,
+dedupe, loop-machine setup, curation, /corrections form, footer link, smoke
+tour). Thread sections below are kept for reference/history.
 
 ## THE MISSION (why any of this matters)
 
