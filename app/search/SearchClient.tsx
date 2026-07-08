@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
 import { cleanDisplayText } from "@/lib/text";
+import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 
 type ClaimHit = {
   id: string;
@@ -19,6 +20,18 @@ type ClaimHit = {
   claimEmergedAt: string | null;
   sourceName: string | null;
   topicLabel: string | null;
+  transitionCount?: number;
+};
+
+type CurveHit = {
+  id: string;
+  curveId: string;
+  text: string;
+  transitionCount: number;
+  firstYear: number | null;
+  lastYear: number | null;
+  hasReversal: boolean;
+  milestones: { year: number; axis: string }[];
 };
 
 type SourceHit = {
@@ -39,6 +52,7 @@ type SearchResponse = {
   countryName: string | null;
   axis: string | null;
   counts: { claims: number; sources: number };
+  curves?: CurveHit[];
   claims: ClaimHit[];
   sources: SourceHit[];
   message?: string;
@@ -506,14 +520,64 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
   const showClaims = type === "all" || type === "claims";
   const showSources = type === "all" || type === "sources";
   const nothing =
-    (!showClaims || data.claims.length === 0) && (!showSources || data.sources.length === 0);
+    (!showClaims || (data.claims.length === 0 && (data.curves ?? []).length === 0)) &&
+    (!showSources || data.sources.length === 0);
 
   if (nothing) {
     return <MissingState query={data.query} />;
   }
 
+  const curves = data.curves ?? [];
+
   return (
     <div className="space-y-8">
+      {/* Settling curves — the chef's kiss: queries that match a multi-step
+          claim surface its curve first, sparkline and all. */}
+      {showClaims && curves.length > 0 && (
+        <section className="space-y-2">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+            Settling curves ({curves.length})
+          </h2>
+          <p className="text-xs text-gray-600">
+            These results have a traced trajectory — how the claim settled, unsettled, or reversed.
+          </p>
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-1">
+            {curves.map((cv) => (
+              <Link
+                key={cv.id}
+                href={`/settling-curve?t=${encodeURIComponent(cv.curveId)}`}
+                className="block rounded-lg p-4 bg-gray-900/80 border border-gray-800 hover:border-amber-400/50 transition-colors group"
+              >
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="font-mono text-[10px] text-gray-500">
+                    {cv.firstYear ?? ""}
+                    {cv.lastYear != null && cv.lastYear !== cv.firstYear ? ` → ${cv.lastYear}` : ""}
+                  </span>
+                  {cv.hasReversal && (
+                    <span className="font-mono text-[10px] text-rose-400">↩ reversed</span>
+                  )}
+                </div>
+                <p className="text-[13px] text-gray-200 leading-snug mb-3" style={{ minHeight: 36 }}>
+                  {cleanDisplayText(cv.text.length > 120 ? cv.text.slice(0, 117) + "…" : cv.text)}
+                </p>
+                <SettlingCurveMini
+                  milestones={cv.milestones}
+                  ariaLabel={`Settling curve: ${cv.text}`}
+                />
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="font-mono text-[10px] text-gray-500">
+                    {cv.transitionCount} transitions
+                  </span>
+                  <span className="font-mono text-[11px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                    trace it →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
       {showClaims && data.claims.length > 0 && (
         <section className="space-y-2">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
@@ -545,6 +609,7 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
 }
 
 function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; index: number }) {
+  const router = useRouter();
   const year = claim.claimEmergedAt
     ? new Date(claim.claimEmergedAt).getFullYear()
     : claim.createdAt
@@ -552,6 +617,7 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
     : null;
 
   const stripe = (claim.epistemicAxis && AXIS_STRIPE[claim.epistemicAxis]) || AXIS_STRIPE_FALLBACK;
+  const hasCurve = (claim.transitionCount ?? 0) >= 2;
 
   return (
     <Link
@@ -598,8 +664,32 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
             </span>
           )}
         </div>
-        <span className="text-xs text-gray-700 group-hover:text-gray-500 transition-colors shrink-0 ml-2">
-          Evidence trail →
+        <span className="flex items-center gap-3 shrink-0 ml-2">
+          {hasCurve && (
+            <span
+              role="link"
+              tabIndex={0}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                router.push(`/settling-curve?t=${encodeURIComponent(claim.id)}`);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  router.push(`/settling-curve?t=${encodeURIComponent(claim.id)}`);
+                }
+              }}
+              className="text-xs text-amber-500/70 hover:text-amber-300 transition-colors cursor-pointer"
+              title={`${claim.transitionCount} transitions — open the settling curve`}
+            >
+              ↝ Settling curve
+            </span>
+          )}
+          <span className="text-xs text-gray-700 group-hover:text-gray-500 transition-colors">
+            Evidence trail →
+          </span>
         </span>
       </div>
     </Link>

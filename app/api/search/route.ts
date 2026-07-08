@@ -20,6 +20,21 @@ type ClaimHit = {
   sourceName: string | null;
   topicLabel: string | null;
   rank: number | null;
+  /** ClaimStatusHistory rows — ≥2 means a drawable settling curve exists. */
+  transitionCount: number;
+};
+
+/** A search hit that IS a settling curve — multi-step history, mini-chart data. */
+type CurveHit = {
+  id: string;
+  /** Value for /settling-curve?t= — curated slug when available, else claim id. */
+  curveId: string;
+  text: string;
+  transitionCount: number;
+  firstYear: number | null;
+  lastYear: number | null;
+  hasReversal: boolean;
+  milestones: { year: number; axis: string }[];
 };
 
 type SourceHit = {
@@ -79,6 +94,7 @@ export async function GET(req: NextRequest) {
 
   let claims: ClaimHit[] = [];
   let claimsCount = 0;
+  let curves: CurveHit[] = [];
 
   if (wantClaims) {
     if (qRaw.length >= MIN_QUERY) {
@@ -104,6 +120,70 @@ export async function GET(req: NextRequest) {
       }
 
       const whereClause = conditions.join(" AND ");
+
+      // ── Settling curves matching the query (first page only) ──────────────
+      // Multi-step claims (a chained transition exists) ranked by relevance
+      // then curve richness. Curated trajectories included — link by slug.
+      if (offset === 0) {
+        try {
+          const curveRows = await prisma.$queryRawUnsafe<Array<{
+            id: string;
+            text: string;
+            externalId: string | null;
+            transitionCount: bigint;
+          }>>(
+            `SELECT c."id", c."text", c."externalId",
+                    (SELECT COUNT(*) FROM "ClaimStatusHistory" h2 WHERE h2."claimId" = c."id") AS "transitionCount"
+               FROM "Claim" c
+              WHERE ${whereClause}
+                AND (c."verificationStatus" IS NULL OR c."verificationStatus" <> 'DEPRECATED')
+                AND EXISTS (
+                  SELECT 1 FROM "ClaimStatusHistory" h
+                   WHERE h."claimId" = c."id" AND h."fromAxis" IS NOT NULL
+                )
+              ORDER BY ts_rank(c."searchVector", websearch_to_tsquery('english', $${qParamNum})) DESC,
+                       "transitionCount" DESC
+              LIMIT 3`,
+            ...params,
+          );
+
+          if (curveRows.length > 0) {
+            const detail = await prisma.claim.findMany({
+              where: { id: { in: curveRows.map((r) => r.id) } },
+              select: {
+                id: true,
+                statusHistory: {
+                  orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
+                  select: { toAxis: true, occurredAt: true },
+                },
+              },
+            });
+            const historyById = new Map(detail.map((d) => [d.id, d.statusHistory]));
+            curves = curveRows.map((r) => {
+              const history = historyById.get(r.id) ?? [];
+              const years = history.map((h) => h.occurredAt.getUTCFullYear());
+              return {
+                id: r.id,
+                curveId: r.externalId?.startsWith("trajectory:")
+                  ? r.externalId.replace(/^trajectory:/, "")
+                  : r.id,
+                text: r.text,
+                transitionCount: Number(r.transitionCount),
+                firstYear: years.length ? Math.min(...years) : null,
+                lastYear: years.length ? Math.max(...years) : null,
+                hasReversal: history.some((h) => h.toAxis === "REVERSED"),
+                milestones: history.map((h) => ({
+                  year: h.occurredAt.getUTCFullYear(),
+                  axis: h.toAxis,
+                })),
+              };
+            });
+          }
+        } catch {
+          // The curve rail is decoration on search — never break results.
+          curves = [];
+        }
+      }
 
       const countResult = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
         `SELECT count(*)::bigint AS count FROM "Claim" c WHERE ${whereClause}`,
@@ -180,6 +260,7 @@ export async function GET(req: NextRequest) {
         sourceName: c.sourceName ?? null,
         topicLabel: c.topicLabel ?? null,
         rank: c.rank,
+        transitionCount: 0,
       }));
     } else {
       // Country-only filter (no text query) — Prisma ORM path
@@ -238,8 +319,20 @@ export async function GET(req: NextRequest) {
         sourceName: c.edges[0]?.source?.name ?? null,
         topicLabel: c.topics[0]?.topic?.name ?? null,
         rank: null,
+        transitionCount: 0,
       }));
     }
+  }
+
+  // Curve affordance per claim hit — one grouped count over the page of ids.
+  if (claims.length > 0) {
+    const counts = await prisma.claimStatusHistory.groupBy({
+      by: ["claimId"],
+      where: { claimId: { in: claims.map((c) => c.id) } },
+      _count: { _all: true },
+    });
+    const countById = new Map(counts.map((r) => [r.claimId, r._count._all]));
+    claims = claims.map((c) => ({ ...c, transitionCount: countById.get(c.id) ?? 0 }));
   }
 
   // ── Sources ───────────────────────────────────────────────────────────────
@@ -308,6 +401,7 @@ export async function GET(req: NextRequest) {
     countryName,
     axis: axisFilter,
     counts: { claims: claimsCount, sources: sourcesCount },
+    curves,
     claims,
     sources,
   });
