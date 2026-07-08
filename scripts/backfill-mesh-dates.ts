@@ -55,7 +55,10 @@ const EXECUTE = process.argv.includes("--execute");
 const SAMPLE = argValue("--sample") ? parseInt(argValue("--sample")!, 10) : 200;
 const LIMIT = argValue("--limit") ? parseInt(argValue("--limit")!, 10) : null;
 
-interface Binding { d: string; established?: string; created?: string }
+// Live NLM vocab (verified via self-diagnosis 2026-07-08) uses dateIntroduced;
+// older RDF releases documented dateEstablished/dateCreated — query all three.
+// meshv:lastUpdated is deliberately NOT used: it's a revision date, not emergence.
+interface Binding { d: string; established?: string; introduced?: string; created?: string }
 
 async function sparqlGet(query: string): Promise<Array<Record<string, { value?: string }>>> {
   const url = `${SPARQL_ENDPOINT}?${new URLSearchParams({ query, format: "JSON", inference: "true" }).toString()}`;
@@ -88,9 +91,10 @@ async function sparqlGet(query: string): Promise<Array<Record<string, { value?: 
 async function sparqlDates(descriptorIds: string[]): Promise<Map<string, Binding>> {
   const values = descriptorIds.map((id) => `<http://id.nlm.nih.gov/mesh/${id}>`).join(" ");
   const query = `PREFIX meshv: <http://id.nlm.nih.gov/mesh/vocab#>
-SELECT ?d ?established ?created WHERE {
+SELECT ?d ?established ?introduced ?created WHERE {
   VALUES ?d { ${values} }
   OPTIONAL { ?d meshv:dateEstablished ?established }
+  OPTIONAL { ?d meshv:dateIntroduced ?introduced }
   OPTIONAL { ?d meshv:dateCreated ?created }
 }`;
   const bindings = await sparqlGet(query);
@@ -101,6 +105,7 @@ SELECT ?d ?established ?created WHERE {
     if (!id) continue;
     const prev = out.get(id) ?? { d: id };
     if (b.established?.value) prev.established = b.established.value;
+    if (b.introduced?.value) prev.introduced = b.introduced.value;
     if (b.created?.value) prev.created = b.created.value;
     out.set(id, prev);
   }
@@ -172,14 +177,14 @@ async function main() {
       const batch: { id: string; date: Date; precision: string }[] = [];
       for (const c of withIds) {
         const b = bindings.get(c.mesh);
-        const raw = b?.established ?? b?.created;
+        const raw = b?.established ?? b?.introduced ?? b?.created;
         const parsed = raw ? toParsed(raw) : null;
         if (!parsed) {
           counts.noDate++;
           continue;
         }
         counts.dated++;
-        const src = b?.established ? "dateEstablished" : "dateCreated";
+        const src = b?.established ? "dateEstablished" : b?.introduced ? "dateIntroduced" : "dateCreated";
         bySource[src] = (bySource[src] ?? 0) + 1;
         if (examples.length < 8)
           examples.push(`${c.mesh}: ${src}=${raw} → ${parsed.date.toISOString().slice(0, 10)} (${parsed.precision})`);
