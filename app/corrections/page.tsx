@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import CorrectionForm from "./CorrectionForm";
 
 export const revalidate = 3600;
 
@@ -90,6 +92,11 @@ export default function CorrectionsPage() {
           trail outlives any single fix.
         </p>
       </div>
+
+      {/* Flag a receipt — public correction form (rides /api/feedback) */}
+      <Suspense fallback={null}>
+        <CorrectionForm />
+      </Suspense>
 
       {/* Counters */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
