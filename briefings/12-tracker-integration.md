@@ -102,10 +102,15 @@ it. Both systems keep their invariants.
   policyArea=Immigration) + CourtListener/RECAP docket WEBHOOKS (push-based;
   do NOT poll their search API — rate-tightened May 2026 to 5/min) +
   Federal Register API as cheap third. Media Cloud (alive, v4, free key) as
-  optional cross-validation. GDELT: throttle to ~1 req/5s (empirical, not
-  official — test it), and treat its extraction quality as noisy (documented
-  ~55% key-field accuracy in one 2025 study) — GDELT supplies the coverage
-  CURVE, never facts.**
+  optional cross-validation. GDELT: limit confirmed real and aggressive by a
+  live stress test (7/8 rapid requests 429'd — report addendum), but ship the
+  simple artList/timelinevol poller at realistic cadence FIRST and only build
+  fallbacks if it fails there (the addendum explicitly walks back its own
+  overcorrection on this). The 429 behavior also means shared cloud egress
+  IPs can inherit exhausted quotas — one more reason polls run on the loop
+  machine, never Vercel. Treat GDELT extraction as noisy (~55% key-field
+  accuracy in one 2025 study) — it supplies the coverage CURVE, never
+  facts.**
 - Pricing: OPEN — Robert's call, post-shadow. ($49/mo sits in a real band —
   Mention/Awario — but the buyer likely pays $0 today; the sale is "start
   paying," not "switch.")
@@ -138,13 +143,17 @@ status only, no attention dimension. The gap holds. Four amendments:
    the attention framing is unclaimed. Pitch-narrative asset: even ProPublica
    has silently stale trackers ("last updated December 2017") with no
    reader-facing staleness signal.
-3. **Funnel: embed-first.** Cold-start + trust-sensitive domain → borrowed
-   distribution beats owned list in year one. Partner targets ranked:
-   ILW.com/Immigration Daily (36k+ subs, largest surface), Documented
-   (strongest institutional fit; they build data tools themselves — pitch
-   complement, not replacement), CLINIC TIPs (legal-aid network). Product
-   outreach: Particle + Ground News (two-sentence angles drafted in report
-   §4); Austin Kocher as informal ally; Otherweb is dead — ignore.
+3. **Funnel: tip-first, then embed** (revised by the report's same-day
+   addendum — direct search found NO public partnership/syndication program
+   at Documented or ILW, so "embed pilot" is cold outreach, not a self-serve
+   integration). Opening move: once the shadow run produces a REAL orphaned
+   story, pitch it as an exclusive tip to ONE reporter at Documented or
+   similar (one email, near-zero cost); a tip that lands starts the
+   relationship the embed ask needs. Partner ranking unchanged for the later
+   ask: ILW/Immigration Daily (36k+ subs), Documented (pitch complement, not
+   replacement — they build data tools themselves), CLINIC TIPs. Product
+   outreach: Particle + Ground News (angles drafted in report §4); Austin
+   Kocher as informal ally; Otherweb is dead — ignore.
 4. **The PhD white space (for Robert):** research found NO published work
    framing indefinitely-stalled unresolved stories as distinct from ordinary
    attention decay. Named-construct opportunity, scaffolded by Downs 1972
