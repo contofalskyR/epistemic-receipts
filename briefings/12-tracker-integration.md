@@ -88,15 +88,70 @@ it. Both systems keep their invariants.
 
 ## Open questions from briefing 11 — answered where decidable
 
-- Launch domain: **US immigration** (their rec; test threads exist). ✔
-- Newsletter: **merge with reversals digest**, human-gated. ✔
-- Thresholds: keep defaults (14/21/42d) for MVP; revisit per-domain after the
-  shadow run produces data. ✔
-- Activity feed for still-live signal: OPEN — decide during step 7, not MVP.
-- Pricing: OPEN — Robert's call, post-shadow.
+- Launch domain: **US immigration** (their rec; test threads exist) — BUT see
+  the 2026-07-08 research amendments below: it is also the hardest domain for
+  the orphan signal, so the pre-filter layer gates launch.
+- Newsletter: human-gated funnel on **Buttondown** (its draft-by-default API
+  matches the never-auto-send rule natively; free tier to 100 subs). Growth
+  motion is **embed-first** (see amendments), own list is the retention layer.
+- Thresholds: 14/21/42d survive as the coverage clock ONLY. Add: a 30–45 day
+  grace period after peak coverage before the silence clock starts;
+  venue-calibrated dormancy floors (court dockets: 9–12 months of silence is
+  NORMAL); 2+ independent-feed corroboration before ORPHANED fires.
+- Activity feeds: **DECIDED — congress.gov API (5,000 req/hr, filter
+  policyArea=Immigration) + CourtListener/RECAP docket WEBHOOKS (push-based;
+  do NOT poll their search API — rate-tightened May 2026 to 5/min) +
+  Federal Register API as cheap third. Media Cloud (alive, v4, free key) as
+  optional cross-validation. GDELT: throttle to ~1 req/5s (empirical, not
+  official — test it), and treat its extraction quality as noisy (documented
+  ~55% key-field accuracy in one 2025 study) — GDELT supplies the coverage
+  CURVE, never facts.**
+- Pricing: OPEN — Robert's call, post-shadow. ($49/mo sits in a real band —
+  Mention/Awario — but the buyer likely pays $0 today; the sale is "start
+  paying," not "switch.")
 - Thread individuation/branching: manual for MVP. ✔
-- Hosting/poll frequency: loop machine, daily per thread to start (cost ≈
-  threads × 1 Sonnet call/day — trivial at 20 threads). ✔
+- Hosting/poll frequency: loop machine, daily per thread to start. ✔
+
+## 2026-07-08 research amendments (from tracker/news-cycle-research-report.md)
+
+The Sonnet research pass confirmed the core gap with the incumbents' own
+words — Congress.gov help docs: "You will not receive an email if no new
+information has been added" — five vendors checked, all alert on activity,
+none on silence. Three existing immigration trackers (Stanford/Yale IPTP,
+Just Security, the now-archived Justice Action Center tool) track legal
+status only, no attention dimension. The gap holds. Four amendments:
+
+1. **NEW STEP 0 (gates everything public): the quiet-resolution pre-filter +
+   venue-aware dormancy layer.** Immigration is dense with benign
+   silence-while-open patterns: administrative closure (routine dormancy
+   averaging 15 yrs at EOIR, 29 yrs at BIA), TPS statutory auto-extension,
+   monthly visa-bulletin cycles, stays/discovery pauses, story reframing
+   (zero-tolerance→Title 42→Title 8 keyword drift). Before any public
+   ORPHANED flag: encode pre-filters (auto-extension → RESOLVED-equivalent;
+   closure/stay order TYPE detection extends the pending-trigger guardrail),
+   venue floors, the grace period, 2-feed corroboration, and hold to an
+   explicit false-positive ceiling during shadow. ~1–2 weeks. This is the
+   single most important research finding.
+2. **Positioning: lead with attention-decay, never litigation status.** "We
+   watch whether the press is still paying attention, not whether the docket
+   moved" — the status framing collides with three better-branded incumbents;
+   the attention framing is unclaimed. Pitch-narrative asset: even ProPublica
+   has silently stale trackers ("last updated December 2017") with no
+   reader-facing staleness signal.
+3. **Funnel: embed-first.** Cold-start + trust-sensitive domain → borrowed
+   distribution beats owned list in year one. Partner targets ranked:
+   ILW.com/Immigration Daily (36k+ subs, largest surface), Documented
+   (strongest institutional fit; they build data tools themselves — pitch
+   complement, not replacement), CLINIC TIPs (legal-aid network). Product
+   outreach: Particle + Ground News (two-sentence angles drafted in report
+   §4); Austin Kocher as informal ally; Otherweb is dead — ignore.
+4. **The PhD white space (for Robert):** research found NO published work
+   framing indefinitely-stalled unresolved stories as distinct from ordinary
+   attention decay. Named-construct opportunity, scaffolded by Downs 1972
+   (issue-attention cycle) + Soufan 2026 (arXiv:2604.16417 — GDELT-measured
+   coverage-vs-demand gap) + the ICWSM 2026 Swiss change-point paper
+   (methodology/collaboration lead). Cite on the methodology page; candidate
+   dissertation-adjacent paper.
 
 ## Respect their DO-NOT-REDO list
 
