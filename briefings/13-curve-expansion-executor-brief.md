@@ -129,3 +129,13 @@ Preflight counts ≈ executed counts ≈ audit green on the touched pipeline
 (paste all three), 5 curves eyeballed by Robert, logs in logs/, one commit
 per phase (`curves <phase>: <summary>`), and a 5-line addendum appended to
 this file recording counts + residue so the next session inherits state.
+
+## Phase A — DONE (2026-07-09)
+
+OpenAlex ↔ CrossRef retraction DOI join, executed against production.
+- Join: 11,319 matched pairs. **Inserted 5,525 RECORDED→REVERSED arcs** (== preflight `planned`, zero drift).
+- Not written: 3,190 alreadyReversedMatch (OpenAlex-native retracted signal, chain-clean, left as-is); 2,522 conflictingDate + 8 noiseBeforeEmergence → residue `logs/openalex-retraction-conflicts.jsonl` (2,530 = curation queue, not this pipeline's job); 74 skipped on **persistent** doi.org 403s (identical DOIs in preflight and execute → not transient; a plain re-run re-hits the wall — retry needs gentler fetch/UA or trust crossref_v1). 992 inserts are sameDate (coarse-precision pub==retraction; honest by design).
+- Partition: 5,525 + 74 + 3,190 + 2,522 + 8 = 11,319 exact.
+- Audit (`--pipeline openalex_v1 --direct`): 318,769 claims / 329,677 transitions scanned; E1/C1/C2/S1/A1/V1 = 0, D2 = 1 (pre-existing coarse-precision row cmpm7p01932zgsaere6wi0koe, 2018-02-21 DAY precedes emergence 2025-08-12) → 0 hard violations, 1 warning.
+- Axis note: reversal views read `statusHistory.toAxis` (surface correctly), but `epistemicAxis` still reads CONTESTED on 3 non-curve call sites → briefing 15 (axis-leak fix, queued).
+- Logs: phaseA-preflight-full · phaseA-full-execute · audit-openalex-phaseA-full. Loop candidate: yes (resumable; 74 need gentler-fetch retry). Next: Phase B — FDA withdrawals of approval.
