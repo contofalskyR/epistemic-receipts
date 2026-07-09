@@ -439,6 +439,10 @@ export async function emitTransition(
       // seq is assigned in the SAME transaction as the insert (contract §6).
       // Appends land at n+1; entry-row prepends shift the whole claim.
       await renumberClaimSeq(tx, spec.claimId);
+      // Keep the denormalized Claim.epistemicAxis in lockstep with the trajectory's
+      // latest row — this is what lets REVERSED/ABANDONED reach every raw-field
+      // reader (v1 API, topic pages, filters) instead of leaking as stale CONTESTED.
+      await stampClaimAxis(tx, spec.claimId);
     };
     if ("$transaction" in db) {
       await (db as PrismaClient).$transaction((tx) => writeRowAndSeq(tx));
@@ -582,4 +586,39 @@ export async function amendBaseline(
     },
   });
   return { amended: 1, violations: [] };
+}
+
+
+// ── Denormalized axis stamp ───────────────────────────────────────────────────
+
+/**
+ * Claim.epistemicAxis is a denormalized copy of the trajectory's CURRENT state,
+ * i.e. the toAxis of the latest ClaimStatusHistory row (seq order; renumber first).
+ * Historically it was only written at ingest with the 5 "live" values, so claims
+ * whose latest transition is REVERSED/ABANDONED kept a stale axis — the leak found
+ * in the 2026-07 app-feasibility review (v1 claims API, topic pages, filters all
+ * read the raw field). Called by emitTransition in the same transaction as the
+ * insert; scripts/backfill-terminal-axis.ts repairs pre-existing rows.
+ *
+ * COEXISTENCE with resolveDisplayAxis()/lib/effective-axis.ts (committed on
+ * main before this landed): once the stamp + backfill run, stored and terminal
+ * axis agree, so the read-time override layer returns identical answers and
+ * becomes a redundant safety net. Keep it — defense in depth costs nothing —
+ * but its "structurally cannot represent" comments describe the pre-stamp
+ * world; the column is a plain String and now holds terminal values.
+ */
+export async function stampClaimAxis(
+  db: Db,
+  claimId: string,
+): Promise<{ stamped: boolean; axis: string | null }> {
+  const latest = await db.claimStatusHistory.findFirst({
+    where: { claimId },
+    orderBy: [{ seq: "desc" }, { occurredAt: "desc" }, { createdAt: "desc" }],
+    select: { toAxis: true },
+  });
+  if (!latest) return { stamped: false, axis: null };
+  const claim = await db.claim.findUnique({ where: { id: claimId }, select: { epistemicAxis: true } });
+  if (!claim || claim.epistemicAxis === latest.toAxis) return { stamped: false, axis: latest.toAxis };
+  await db.claim.update({ where: { id: claimId }, data: { epistemicAxis: latest.toAxis } });
+  return { stamped: true, axis: latest.toAxis };
 }
