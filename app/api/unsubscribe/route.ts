@@ -11,8 +11,14 @@ export async function GET(request: Request) {
     return new NextResponse("Missing token.", { status: 400, headers: { "Content-Type": "text/plain" } });
   }
 
+  // Token may belong to either subscription type; try both, treat missing as success.
   try {
     await prisma.topicSubscription.delete({ where: { unsubscribeToken: token } });
+  } catch {
+    // Already deleted or token not found — fall through to claim subscriptions
+  }
+  try {
+    await prisma.claimSubscription.delete({ where: { unsubscribeToken: token } });
   } catch {
     // Already deleted or token not found — treat as success
   }
