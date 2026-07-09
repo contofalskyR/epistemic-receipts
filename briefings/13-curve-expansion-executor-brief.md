@@ -7,6 +7,17 @@ This split is deliberate (cf. the advisor-tool pattern): you do the token-heavy
 mechanical work; judgment calls stop and go to the advisor. Do not make
 advisor-tier decisions yourself, and do not stall on executor-tier ones.
 
+## Where to run this
+
+Preferred: **Claude Code on Robert's machine** — you execute your own
+commands there (real env, DB access, network). `.claude/settings.json`
+pre-approves the safe shapes (typecheck, git reads, greps); DB-touching
+`npx dotenv-cli` commands prompt Robert for a one-keypress approval each —
+that keypress replaces the old paste-back loop, it is not optional
+supervision to engineer away. Cowork also works but its sandbox cannot reach
+the DB or most external APIs; there you must fall back to handing Robert
+commands one at a time (see 10-HANDOFF working relationship).
+
 ## Session-start ritual
 
 Read: `AGENTS.md` (house rules — binding), `briefings/10-HANDOFF.md` (state +

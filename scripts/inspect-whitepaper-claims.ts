@@ -8,9 +8,17 @@
  * Also lists sibling smoking/tobacco claims already in the corpus so the new
  * curves don't duplicate an existing trajectory (DUPLICATE-TRAJECTORIES watch).
  *
- * Usage: npx tsx scripts/inspect-whitepaper-claims.ts
+ * Usage: npx dotenv-cli -e .env.local -- npx tsx scripts/inspect-whitepaper-claims.ts
  * Writes nothing.
  */
+import { config as loadEnv } from "dotenv";
+loadEnv({ path: ".env.local" });
+loadEnv();
+// House rule (see audit-chain-integrity.ts --direct): explicit beats inherited.
+// dotenv never overrides an already-set shell var — a stale/empty DATABASE_URL
+// in the environment shadows .env.local and Prisma reports it "not found".
+// Read-only script → the direct (non-pooled) connection is always safe.
+if (process.env.DIRECT_URL) process.env.DATABASE_URL = process.env.DIRECT_URL;
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
