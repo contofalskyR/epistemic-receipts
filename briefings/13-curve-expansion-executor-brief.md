@@ -9,14 +9,21 @@ advisor-tier decisions yourself, and do not stall on executor-tier ones.
 
 ## Where to run this
 
-Preferred: **Claude Code on Robert's machine** — you execute your own
-commands there (real env, DB access, network). `.claude/settings.json`
-pre-approves the safe shapes (typecheck, git reads, greps); DB-touching
-`npx dotenv-cli` commands prompt Robert for a one-keypress approval each —
-that keypress replaces the old paste-back loop, it is not optional
-supervision to engineer away. Cowork also works but its sandbox cannot reach
-the DB or most external APIs; there you must fall back to handing Robert
-commands one at a time (see 10-HANDOFF working relationship).
+Robert's call per session — the trade is quota vs. tedium, and HIS usage
+budget decides (Cowork has stretched his subscription usage materially;
+that is a legitimate reason to prefer it even though its sandbox cannot
+reach the DB or most external APIs).
+
+- **In Cowork:** you cannot run DB/network commands yourself. Hand Robert
+  commands — BATCHED into blocks wherever consecutive steps don't need your
+  inspection in between (label each block "run these in order, say done at
+  the end"), always tee'd to logs/ so you read results yourself. Never make
+  him paste output back.
+- **In Claude Code:** you execute your own commands. `.claude/settings.json`
+  pre-approves safe shapes (typecheck, git reads, greps); DB-touching
+  `npx dotenv-cli` commands prompt him for a one-keypress approval each —
+  that keypress is the human gate on production writes, not friction to
+  engineer away.
 
 ## Session-start ritual
 
