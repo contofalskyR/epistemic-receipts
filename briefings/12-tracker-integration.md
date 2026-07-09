@@ -45,6 +45,11 @@ it. Both systems keep their invariants.
 
 ## Build plan (post-launch, in order)
 
+> **2026-07-08, superseding note:** the plan below is now decomposed into
+> execution-ready per-session specs — **`tracker/specs/README.md` (protocol +
+> dependency graph) and T1–T7**. Future sessions build from the specs; the
+> narrative below stays as rationale.
+
 1. **Schema** (~1 session): additive migration for Thread (question,
    resolution_criteria json, known_pending_trigger json, importance, domain,
    storyline/parent ids), ThreadEvent, ThreadStatusHistory (status, reason,
