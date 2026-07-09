@@ -106,8 +106,15 @@ async function siblings() {
   });
   console.log(`found ${sibs.length} (showing ≤60; transitions in parens)`);
   for (const s of sibs) {
-    const t = s.text.length > 110 ? s.text.slice(0, 110) + "…" : s.text;
-    console.log(`  (${s._count.statusHistory}) ${s.id}  ${s.externalId ?? "—"}  reviewed=${s.humanReviewed}  via=${s.ingestedBy}\n      ${t}`);
+    // Dedup guard: only the curated layer (seed:/trajectory:/manual) can duplicate a
+    // hand-built trajectory, so only those get an eyeball-able text snippet. Bulk
+    // OpenAlex reference rows are dedup-identifiable by externalId alone; printing
+    // their abstract bodies just piles up decontextualized clinical text for no
+    // signal (and needlessly trips content classifiers downstream of this log).
+    const curated = !s.ingestedBy?.startsWith("openalex");
+    const snippet = s.text.length > 110 ? s.text.slice(0, 110) + "…" : s.text;
+    const tail = curated ? `\n      ${snippet}` : "";
+    console.log(`  (${s._count.statusHistory}) ${s.id}  ${s.externalId ?? "—"}  reviewed=${s.humanReviewed}  via=${s.ingestedBy}${tail}`);
   }
 }
 
