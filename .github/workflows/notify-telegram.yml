@@ -10,13 +10,20 @@ jobs:
     if: startsWith(github.event.head_commit.message, '[AUTO]')
     steps:
       - name: Send Telegram notification
+        # Untrusted context (commit message) and secrets are passed via env,
+        # never interpolated into the shell — GitHub Actions script-injection
+        # hardening (docs: security-guides/security-hardening-for-github-actions).
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          COMMIT_SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          COMMIT_MSG="${{ github.event.head_commit.message }}"
-          SHORT_SHA="${{ github.sha }}"
-          SHORT_SHA="${SHORT_SHA:0:7}"
-          TEXT="🤖 ER auto-edit: ${COMMIT_MSG}%0A%0Ahttps://github.com/${{ github.repository }}/commit/${{ github.sha }}"
-          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+          SHORT_SHA="${COMMIT_SHA:0:7}"
+          TEXT="🤖 ER auto-edit: ${COMMIT_MSG}%0A%0Ahttps://github.com/${REPO}/commit/${COMMIT_SHA}"
+          curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_CHAT_ID}" \
             -d "text=${TEXT}" \
             -d "parse_mode=HTML" \
             --fail
