@@ -8,12 +8,39 @@ import { Readability } from "@mozilla/readability";
 // Readability.
 import { parseHTML } from "linkedom";
 import { assertSafeFetchUrl } from "@/lib/ssrfGuard";
+import sanitizeHtml from "sanitize-html";
 
 // node:dns (used by the SSRF guard) requires the Node.js runtime.
 export const runtime = "nodejs";
 
 const MAX_BYTES = 5 * 1024 * 1024; // 5 MB cap on fetched HTML
 const FETCH_TIMEOUT = 8_000;
+const MAX_REDIRECTS = 3; // hop cap; each hop is re-validated by the SSRF guard
+
+// Reader-view sanitizer. We deliberately avoid DOMPurify here: it needs a real
+// DOM backend (jsdom/happy-dom) — jsdom crashed this exact function at module
+// load on Vercel (2026-07-06), and DOMPurify silently NO-OPs on a linkedom
+// window (no document.implementation → passes input through unsanitized).
+// sanitize-html is a pure htmlparser2 sanitizer: no DOM emulation, no jsdom.
+// It keeps presentational markup and strips all active content (scripts, event
+// handlers, javascript: URLs, iframes) — anything not in the allowlist below.
+const SANITIZE_OPTS: sanitizeHtml.IOptions = {
+  allowedTags: [
+    ...sanitizeHtml.defaults.allowedTags,
+    "img", "h1", "h2", "figure", "figcaption", "picture", "source",
+  ],
+  allowedAttributes: {
+    ...sanitizeHtml.defaults.allowedAttributes,
+    img: ["src", "srcset", "alt", "title", "width", "height", "loading"],
+    source: ["src", "srcset", "type", "media"],
+    a: ["href", "name", "target", "rel"],
+  },
+  allowedSchemes: ["http", "https", "mailto"],
+  allowedSchemesByTag: {
+    img: ["http", "https", "data"],
+    source: ["http", "https", "data"],
+  },
+};
 
 /**
  * Can this response be rendered inside an iframe on OUR origin?
@@ -74,21 +101,54 @@ export async function GET(req: NextRequest) {
   if (!safe.ok) {
     return NextResponse.json({ error: safe.error }, { status: safe.status });
   }
-  const parsed = safe.url;
+  let parsed = safe.url;
 
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
 
-    const res = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; EpistemicReceipts/1.0; +https://epistemic-receipts.vercel.app)",
-        Accept: "text/html,application/xhtml+xml",
-      },
-      redirect: "follow",
-    });
+    // Follow redirects manually so every hop is re-validated by the SSRF guard.
+    // A permitted public URL can 30x to 169.254.169.254 or another internal
+    // host; redirect: "follow" would chase it before we could check.
+    let currentUrl = url;
+    let res: Response;
+    let hops = 0;
+    for (;;) {
+      res = await fetch(currentUrl, {
+        signal: controller.signal,
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (compatible; EpistemicReceipts/1.0; +https://epistemic-receipts.vercel.app)",
+          Accept: "text/html,application/xhtml+xml",
+        },
+        redirect: "manual",
+      });
+
+      const location = res.headers.get("location");
+      if (res.status >= 300 && res.status < 400 && location) {
+        if (hops >= MAX_REDIRECTS) {
+          clearTimeout(timer);
+          return NextResponse.json(
+            { error: "too many redirects", embeddable: null },
+            { status: 502 }
+          );
+        }
+        const next = new URL(location, currentUrl).toString();
+        const safeNext = await assertSafeFetchUrl(next);
+        if (!safeNext.ok) {
+          clearTimeout(timer);
+          return NextResponse.json(
+            { error: safeNext.error },
+            { status: safeNext.status }
+          );
+        }
+        currentUrl = next;
+        parsed = safeNext.url;
+        hops++;
+        continue;
+      }
+      break;
+    }
     clearTimeout(timer);
 
     // Best effort even on upstream errors: bot-walled sites (403 to us)
@@ -132,7 +192,7 @@ export async function GET(req: NextRequest) {
       const v = el.getAttribute(attr);
       if (!v || /^(https?:|data:|mailto:|tel:|#|javascript:)/i.test(v)) return;
       try {
-        el.setAttribute(attr, new URL(v, url).toString());
+        el.setAttribute(attr, new URL(v, currentUrl).toString());
       } catch {
         /* leave malformed values untouched */
       }
@@ -150,7 +210,7 @@ export async function GET(req: NextRequest) {
           if (!u) return part.trim();
           if (/^(https?:|data:)/i.test(u)) return part.trim();
           try {
-            return [new URL(u, url).toString(), ...bits].join(" ");
+            return [new URL(u, currentUrl).toString(), ...bits].join(" ");
           } catch {
             return part.trim();
           }
@@ -176,7 +236,10 @@ export async function GET(req: NextRequest) {
         byline: article.byline || null,
         siteName: article.siteName || null,
         excerpt: article.excerpt || null,
-        content: article.content,
+        // Sanitize before returning: Readability preserves inline event handlers
+        // and <script>/<iframe> from the source page, which the client renders
+        // as trusted HTML. DOMPurify strips the active content, keeps the markup.
+        content: sanitizeHtml(article.content, SANITIZE_OPTS),
         textContent: article.textContent?.slice(0, 500) || null,
         length: article.length || 0,
       },
