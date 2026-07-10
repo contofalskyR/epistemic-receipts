@@ -12,6 +12,11 @@
 
 import { prisma } from "@/lib/prisma";
 import { embedText3Small } from "@/lib/embeddings";
+import {
+  terminalAxisLateralJoin,
+  effectiveAxisCondition,
+  REVERSAL_AXES,
+} from "@/lib/effective-axis";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -70,7 +75,7 @@ function rrfFuse(
 
 // ── Row type helpers ──────────────────────────────────────────────────────────
 
-type ClaimRow = {
+export type ClaimRow = {
   id: string;
   text: string;
   currentStatus: string;
@@ -85,15 +90,25 @@ type ClaimRow = {
   externalId: string | null;
   sourceName: string | null;
   topicLabel: string | null;
+  // Terminal transition axis (lib/effective-axis.terminalAxisLateralJoin), NULL
+  // when the claim has no transitions. Used only to resolve the display axis
+  // below; not surfaced in ClaimSearchResult.
+  terminalAxis: string | null;
   rank: number;
 };
 
-function formatRow(row: ClaimRow, mode: SearchMode): ClaimSearchResult {
+export function formatRow(row: ClaimRow, mode: SearchMode): ClaimSearchResult {
+  // Effective (display) axis: a terminal REVERSED/ABANDONED transition overrides
+  // the stale stored column, mirroring resolveDisplayAxis (transition-contract).
+  const effectiveAxis =
+    row.terminalAxis && (REVERSAL_AXES as readonly string[]).includes(row.terminalAxis)
+      ? row.terminalAxis
+      : (row.epistemicAxis ?? null);
   return {
     id: row.id,
     text: row.text,
     currentStatus: row.currentStatus,
-    epistemicAxis: row.epistemicAxis ?? null,
+    epistemicAxis: effectiveAxis,
     claimType: row.claimType,
     ingestedBy: row.ingestedBy,
     verificationStatus: row.verificationStatus ?? null,
@@ -146,7 +161,7 @@ export function buildTsvectorSql(
 
   if (filters.axis) {
     params.push(filters.axis);
-    conditions.push(`c."epistemicAxis" = $${paramIdx++}`);
+    conditions.push(effectiveAxisCondition(`$${paramIdx++}`));
   }
 
   if (filters.pipelines && filters.pipelines.length > 0) {
@@ -166,8 +181,10 @@ export function buildTsvectorSql(
        c."claimType", c."ingestedBy", c."verificationStatus", c."epistemicStatus",
        c."createdAt", c."claimEmergedAt", c."claimEmergedPrecision", c."externalId",
        s."name" AS "sourceName", t."name" AS "topicLabel",
+       term."term" AS "terminalAxis",
        ts_rank(c."searchVector", websearch_to_tsquery('english', $1)) AS rank
      FROM "Claim" c
+     ${terminalAxisLateralJoin()}
      ${LATERAL_JOINS}
      WHERE ${where}
      ORDER BY rank DESC, c."createdAt" DESC
@@ -191,7 +208,7 @@ export function buildVectorSql(
 
   if (filters.axis) {
     params.push(filters.axis);
-    conditions.push(`c."epistemicAxis" = $${paramIdx++}`);
+    conditions.push(effectiveAxisCondition(`$${paramIdx++}`));
   }
 
   if (filters.pipelines && filters.pipelines.length > 0) {
@@ -211,9 +228,11 @@ export function buildVectorSql(
        c."claimType", c."ingestedBy", c."verificationStatus", c."epistemicStatus",
        c."createdAt", c."claimEmergedAt", c."claimEmergedPrecision", c."externalId",
        s."name" AS "sourceName", t."name" AS "topicLabel",
+       term."term" AS "terminalAxis",
        1 - (ce."embedding" <=> $1::vector) AS rank
      FROM "ClaimEmbedding" ce
      JOIN "Claim" c ON c."id" = ce."claimId"
+     ${terminalAxisLateralJoin()}
      ${LATERAL_JOINS}
      WHERE ${where}
      ORDER BY ce."embedding" <=> $1::vector
@@ -342,7 +361,7 @@ export async function countClaimsTs(
 
   if (filters.axis) {
     params.push(filters.axis);
-    conditions.push(`c."epistemicAxis" = $${paramIdx++}`);
+    conditions.push(effectiveAxisCondition(`$${paramIdx++}`));
   }
 
   if (filters.pipelines && filters.pipelines.length > 0) {
@@ -352,8 +371,11 @@ export async function countClaimsTs(
   }
 
   const where = conditions.join(" AND ");
+  // The lateral join is only needed to satisfy effectiveAxisCondition's
+  // reference to term.term; skip it entirely when no axis filter is applied.
+  const axisJoin = filters.axis ? terminalAxisLateralJoin() : "";
   const result = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
-    `SELECT count(*)::bigint AS count FROM "Claim" c WHERE ${where}`,
+    `SELECT count(*)::bigint AS count FROM "Claim" c ${axisJoin} WHERE ${where}`,
     ...params,
   );
   return Number(result[0].count);
