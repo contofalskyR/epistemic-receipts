@@ -15,7 +15,10 @@
     "scripts/event-pipelines/fda-withdrawals.ts",
     "scripts/_census-openalex-retraction.ts",
     "scripts/_census-ofac-baselines.ts",
-    "lib/transition-contract.ts"
+    "lib/transition-contract.ts",
+    "scripts/_census-axis-mismatch.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
