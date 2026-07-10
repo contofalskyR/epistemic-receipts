@@ -533,7 +533,12 @@ async function main() {
       }
       seenClaimIds.add(match.id);
 
-      if (match.terminalAxis !== "RECORDED") {
+      // Terminal REVERSED passes through: emitTransition's idempotency
+      // short-circuit returns "exists" when the same REVERSED@date row is
+      // already there (the cron's weekly re-run overlaps its since-boundary
+      // by design), and returns a chain-break skip when the existing reversal
+      // has a DIFFERENT date — which is honest conflicting-date residue.
+      if (match.terminalAxis !== "RECORDED" && match.terminalAxis !== "REVERSED") {
         counts.otherTerminal++;
         counts.residue++;
         residue.push({ kind: "terminal-axis-not-recorded", terminalAxis: match.terminalAxis, claimId: match.id, notice: ref.id, entry: entry.primaryName });
