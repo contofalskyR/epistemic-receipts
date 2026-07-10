@@ -198,8 +198,15 @@ function reconstructIndividual(name: string): string | null {
 }
 
 function parseDeletionBlock(raw: string): DeletionEntry | null {
-  const text = raw.replace(/\s+/g, " ").trim();
+  let text = raw.replace(/\s+/g, " ").trim();
   if (!text) return null;
+
+  // "(Cyrillic: МАЛЬЦЕВ, Сергей ...)" parentheticals carry commas that poison
+  // the comma-split name extraction (2026-07-10 preflight: most unmatched
+  // individuals were this). The DB names are Latin — strip them everywhere.
+  text = text.replace(/\((?:Cyrillic|Arabic(?: script)?|Chinese|Cyrillic script)?\s*:?\s*[^)]*[Ѐ-ӿ؀-ۿ一-鿿][^)]*\)/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
   const individual = /\(individual\)/i.test(text);
   // Program tags: usually ALL-CAPS ([RUSSIA-EO14024], [SDGT]) but a few carry
@@ -217,10 +224,13 @@ function parseDeletionBlock(raw: string): DeletionEntry | null {
   const beforeParen = text.split(/\s+\(a\.k\.a\./)[0];
   if (individual) {
     // "LAST, First Middle, City, Country; DOB ..." → first two comma fields.
-    const fields = beforeParen.split(",").map((s) => s.trim());
+    const fields = beforeParen.split(",").map((s) => s.trim()).filter(Boolean);
     primaryName = fields.length >= 2 ? `${fields[0]}, ${fields[1]}` : fields[0];
   } else {
-    primaryName = beforeParen.split(",")[0].trim();
+    // Entities: name ends at the first comma. Vessels/aircraft have NO comma —
+    // "VYACHESLAV ARSHINOV (UBGX2) General Cargo Russia flag; ..." — so also
+    // cut at the first " (" (call-sign/paren) and at the first ";".
+    primaryName = beforeParen.split(",")[0].split(" (")[0].split(";")[0].trim();
   }
   if (!primaryName) return null;
 
