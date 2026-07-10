@@ -21,7 +21,7 @@ const WAYBACK_BASE = 'https://web.archive.org/web'
 const CDX_API = 'https://web.archive.org/cdx/search/cdx'
 const THROTTLE_MS = 800
 const DRY_RUN_SAMPLE_COUNT = 20
-const TELEGRAM_TARGET = '7688025079'
+const TELEGRAM_TARGET = process.env.TELEGRAM_CHAT_ID
 
 // Wayback CDX patterns, tried in order until enough candidates are collected.
 // Archival/documentary content first; administrative forms excluded via path filters.
@@ -582,6 +582,10 @@ async function writeRow(
 // ── Notification ──────────────────────────────────────────────────────────────
 
 function notify(message: string) {
+  if (!TELEGRAM_TARGET) {
+    console.log(`  TELEGRAM_CHAT_ID not set — skipping notification: ${message}`)
+    return
+  }
   try {
     execSync(
       `openclaw message send --channel telegram --target "${TELEGRAM_TARGET}" --message "${message.replace(/"/g, '\\"')}"`,

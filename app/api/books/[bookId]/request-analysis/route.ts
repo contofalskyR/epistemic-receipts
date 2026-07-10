@@ -4,7 +4,7 @@ import { requireAdminOrDev } from "@/lib/adminAuth";
 
 export const dynamic = "force-dynamic";
 
-const OWNER_CHAT_ID = "7688025079";
+const OWNER_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 export async function POST(
   req: Request,
@@ -42,6 +42,13 @@ export async function POST(
       { error: "TELEGRAM_BOT_TOKEN not configured" },
       { status: 500 },
     );
+  }
+
+  if (!OWNER_CHAT_ID) {
+    console.log(
+      "[request-analysis] TELEGRAM_CHAT_ID not set — skipping Telegram notification.",
+    );
+    return NextResponse.json({ status: "skipped", matchCount, pendingReasons });
   }
 
   const needsMatch = matchCount === 0 && claimCount > 0;

@@ -83,10 +83,15 @@ async function main() {
   console.log(`\nDone. ${done} reasons written, ${errors} batch errors.`)
 
   if (process.env.TELEGRAM_NOTIFY === 'true') {
-    try {
-      execFileSync('openclaw', ['message', 'send', '--channel', 'telegram', '--target', '7688025079',
-        '--message', `✅ Reasons generated for book ${BOOK_ID}: ${done} written, ${errors} errors.`])
-    } catch {}
+    const chatId = process.env.TELEGRAM_CHAT_ID
+    if (!chatId) {
+      console.log('TELEGRAM_CHAT_ID not set — skipping Telegram notification.')
+    } else {
+      try {
+        execFileSync('openclaw', ['message', 'send', '--channel', 'telegram', '--target', chatId,
+          '--message', `✅ Reasons generated for book ${BOOK_ID}: ${done} written, ${errors} errors.`])
+      } catch {}
+    }
   }
 
   await prisma.$disconnect()
