@@ -10,6 +10,7 @@
     "scripts/event-pipelines/openalex-retraction-join.ts",
     "scripts/event-pipelines/ofac-delistings.ts",
     "scripts/_census-openalex-retraction.ts",
+    "scripts/_census-ofac-baselines.ts",
     "lib/transition-contract.ts"
   ],
   "exclude": ["node_modules"]
