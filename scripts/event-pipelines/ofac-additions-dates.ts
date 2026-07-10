@@ -138,34 +138,65 @@ function toLite(c: { id: string; text: string; metadata: unknown; claimEmergedAt
   };
 }
 
-async function findSdnClaimExact(entry: SdnEntryBlock): Promise<
-  { hit: ClaimLite; method: "text-exact" | "alias-exact" } | "ambiguous" | null
-> {
+/**
+ * In-memory match index. The DB-query-per-name version hammered Neon with an
+ * UNINDEXED jsonb containment scan per alias (2026-07-10: ~8s/notice on
+ * entry-heavy 2010s notices, ~2h projected walk). One upfront query builds
+ * exact-name and alias maps; per-entry matching is then O(1) and offline.
+ *
+ * Semantics vs the DB version: the text tier compared `text CONTAINS
+ * "<name> (OFAC SDN)"`; here we EXTRACT the framed name from each claim text
+ * and compare whole names case-insensitively — same intent, strictly tighter
+ * (a name can no longer accidentally substring-match inside another claim's
+ * remarks). Alias tier compares whole alias strings case-insensitively.
+ */
+interface MatchIndex {
+  byName: Map<string, ClaimLite[]>;
+  byAlias: Map<string, ClaimLite[]>;
+}
+
+const NAME_FRAME_RE = /^[^:]+:\s*(.*?)\s*\(OFAC SDN\)/;
+
+async function buildMatchIndex(): Promise<MatchIndex> {
+  console.log("Building in-memory match index (one query over the pipeline's claims)…");
+  const rows = await prisma.claim.findMany({
+    where: { deleted: false, ingestedBy: PIPELINE },
+    select: liteSelect,
+  });
+  const byName = new Map<string, ClaimLite[]>();
+  const byAlias = new Map<string, ClaimLite[]>();
+  const push = (map: Map<string, ClaimLite[]>, key: string, lite: ClaimLite) => {
+    const k = key.toUpperCase().replace(/\s+/g, " ").trim();
+    if (!k) return;
+    const list = map.get(k) ?? [];
+    list.push(lite);
+    map.set(k, list);
+  };
+  for (const row of rows) {
+    const lite = toLite(row);
+    const framed = NAME_FRAME_RE.exec(row.text)?.[1];
+    if (framed) push(byName, framed, lite);
+    const aliases = ((row.metadata ?? {}) as { aliases?: unknown }).aliases;
+    if (Array.isArray(aliases))
+      for (const a of aliases) if (typeof a === "string") push(byAlias, a, lite);
+  }
+  console.log(`Index: ${rows.length} claims, ${byName.size} names, ${byAlias.size} aliases.`);
+  return { byName, byAlias };
+}
+
+function findSdnClaimExact(index: MatchIndex, entry: SdnEntryBlock):
+  { hit: ClaimLite; method: "text-exact" | "alias-exact" } | "ambiguous" | null {
+  const norm = (s: string) => s.toUpperCase().replace(/\s+/g, " ").trim();
   for (const name of entry.matchNames) {
-    const rows = await prisma.claim.findMany({
-      where: {
-        deleted: false,
-        ingestedBy: PIPELINE,
-        text: { contains: `${name} (OFAC SDN)`, mode: "insensitive" },
-      },
-      select: liteSelect,
-      take: 3,
-    });
-    if (rows.length === 1) return { hit: toLite(rows[0]), method: "text-exact" };
-    if (rows.length > 1) return "ambiguous";
+    const hits = index.byName.get(norm(name)) ?? [];
+    if (hits.length === 1) return { hit: hits[0], method: "text-exact" };
+    if (hits.length > 1) return "ambiguous";
   }
   for (const name of entry.matchNames) {
-    const ids = await prisma.$queryRaw<Array<{ id: string }>>`
-      SELECT id FROM "Claim"
-      WHERE "ingestedBy" = ${PIPELINE}
-        AND deleted = false
-        AND (metadata -> 'aliases') @> jsonb_build_array(${name}::text)
-      LIMIT 3`;
-    if (ids.length === 1) {
-      const row = await prisma.claim.findUnique({ where: { id: ids[0].id }, select: liteSelect });
-      if (row) return { hit: toLite(row), method: "alias-exact" };
-    }
-    if (ids.length > 1) return "ambiguous";
+    const hits = index.byAlias.get(norm(name)) ?? [];
+    const uniq = new Map(hits.map((h) => [h.id, h]));
+    if (uniq.size === 1) return { hit: [...uniq.values()][0], method: "alias-exact" };
+    if (uniq.size > 1) return "ambiguous";
   }
   return null;
 }
@@ -195,6 +226,7 @@ async function main() {
   console.log(`NOT a transition pipeline: writes Claim.claimEmergedAt on dateless ${PIPELINE} claims only.\n`);
 
   const residue: object[] = [];
+  const index = await buildMatchIndex();
   let notices = await enumerateAllNotices();
   console.log(`Notices enumerated: ${notices.length} (oldest ${notices[0]?.date} → newest ${notices[notices.length - 1]?.date})`);
   if (LIMIT) notices = notices.slice(0, LIMIT);
@@ -226,7 +258,7 @@ async function main() {
     const seenInNotice = new Set<string>(); // aka cross-posts within one notice
     for (const entry of section.entries) {
       counts.entries++;
-      const match = await findSdnClaimExact(entry);
+      const match = findSdnClaimExact(index, entry);
       if (match === null) {
         counts.unmatched++;
         // High-volume by construction (delisted-before-snapshot entities have
