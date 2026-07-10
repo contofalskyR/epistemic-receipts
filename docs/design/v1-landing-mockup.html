@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epistemic Receipts — V1 landing mockup</title>
+<meta name="description" content="How long does 'settled' stay settled? A research observatory of 1.76M claims with dated, sourced trajectories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#08080f;--panel:#101019;--line:#1e1e2e;--line2:#3a3a4c;--ink:#ece9e2;--ink2:#c9c5ba;--dim:#9b99a6;--faint:#6f6d7c;--gold:#b8874a;--green:#34d399;--blue:#60a5fa;--amber:#f5c96f;--red:#f0a5a5}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  a{color:var(--ink2);text-decoration:none}
+  a:hover{color:var(--ink)}
+  a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+  header{border-bottom:0.5px solid var(--line)}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px}
+  .brand{font-weight:500;letter-spacing:.02em}
+  nav{display:flex;gap:26px;font-size:13.5px;color:var(--dim)}
+  nav a{color:var(--dim)} nav a.hot{color:var(--ink2)}
+
+  .hero{padding:64px 0 8px;max-width:640px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  h1{font-family:Newsreader,serif;font-weight:500;font-size:clamp(34px,4.6vw,46px);line-height:1.14;margin-bottom:14px}
+  .sub{font-size:16px;color:var(--dim);max-width:56ch}
+
+  .fig{padding:28px 0 4px}
+  .figcap{font-size:12.5px;color:var(--faint);margin-top:8px}
+
+  .ctas{display:flex;gap:12px;padding:26px 0 34px;flex-wrap:wrap}
+  .btn{display:inline-block;background:#e8e5dc;color:#101018;font-weight:500;font-size:14px;padding:12px 20px;border-radius:8px}
+  .btn.ghost{background:transparent;color:var(--ink2);border:0.5px solid var(--line2)}
+  .btn.ghost .doi{color:var(--faint);font-size:11px;margin-left:6px}
+
+  .ticker{border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);overflow:hidden}
+  .ticker .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px;white-space:nowrap}
+  .tlabel{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);flex-shrink:0}
+  .titems{font-size:13px;color:var(--dim);overflow:hidden;text-overflow:ellipsis}
+
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;padding:32px 0}
+  .card{background:var(--panel);border:0.5px solid var(--line);border-radius:12px;padding:20px}
+  .card.tease{border-color:var(--gold)}
+  .card h3{font-size:15px;font-weight:500;margin:10px 0 6px}
+  .card p{font-size:13.5px;color:var(--faint);line-height:1.6}
+  .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .glyph{font-size:20px}
+
+  footer{border-top:0.5px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:18px;padding-bottom:26px;font-size:12.5px;color:var(--faint)}
+  footer a{color:var(--dim)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="brand">Epistemic Receipts</span>
+    <nav>
+      <a href="#">Settling curves</a>
+      <a href="#">Reversals</a>
+      <a href="#">Orphaned trials</a>
+      <a class="hot" href="#">Data and methods</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <p class="eyebrow mono">A research observatory · 1,760,000 claims</p>
+      <h1>How long does &ldquo;settled&rdquo; stay settled?</h1>
+      <p class="sub">Every claim here carries a dated, sourced trajectory — recorded, settled, contested, and sometimes reversed. This is what a million of them look like, aging.</p>
+    </section>
+
+    <section class="fig" aria-label="Survival curves of ratified claims by domain">
+      <svg viewBox="0 0 960 300" width="100%" role="img" aria-label="Survival curves: share of claims still settled versus years since ratification. Statute law decays slowest, peer-reviewed findings fastest; median reversal in psychology marked at 11.2 years.">
+        <line x1="60" y1="16" x2="60" y2="248" stroke="#2a2a3a"/>
+        <line x1="60" y1="248" x2="930" y2="248" stroke="#2a2a3a"/>
+        <text x="52" y="22" text-anchor="end" font-size="12" fill="#6f6d7c">100%</text>
+        <text x="52" y="136" text-anchor="end" font-size="12" fill="#6f6d7c">50%</text>
+        <text x="52" y="251" text-anchor="end" font-size="12" fill="#6f6d7c">0%</text>
+        <text x="60" y="270" font-size="12" fill="#6f6d7c">0</text>
+        <text x="495" y="270" text-anchor="middle" font-size="12" fill="#6f6d7c">years since ratification</text>
+        <text x="926" y="270" text-anchor="end" font-size="12" fill="#6f6d7c">50</text>
+        <path d="M60,20 L175,29 L300,49 L440,84 L580,124 L720,156 L850,176 L930,183" fill="none" stroke="#34d399" stroke-width="3"/>
+        <path d="M60,20 L175,43 L300,84 L440,133 L580,170 L720,196 L850,213 L930,219" fill="none" stroke="#60a5fa" stroke-width="3"/>
+        <path d="M60,20 L160,63 L270,121 L390,170 L510,202 L650,222 L800,233 L930,238" fill="none" stroke="#f59e0b" stroke-width="3"/>
+        <text x="820" y="172" font-size="13" fill="#34d399">statute law</text>
+        <text x="800" y="209" font-size="13" fill="#60a5fa">clinical consensus</text>
+        <text x="760" y="230" font-size="13" fill="#f59e0b">peer-reviewed findings</text>
+        <circle cx="440" cy="170" r="5" fill="#ef4444"/>
+        <text x="452" y="164" font-size="12" fill="#f0a5a5">median reversal, psychology: 11.2y</text>
+      </svg>
+      <p class="figcap">Fig. 1 — survival of ratified claims by domain. <strong style="color:#9b99a6;font-weight:500">Illustrative mock</strong>; the live figure is generated from the corpus and versioned on Zenodo.</p>
+    </section>
+
+    <div class="ctas">
+      <a class="btn" href="#">Explore the curves</a>
+      <a class="btn ghost" href="#">Download the dataset <span class="doi mono">DOI 10.5281/…</span></a>
+    </div>
+  </div>
+
+  <div class="ticker">
+    <div class="wrap">
+      <span class="tlabel mono">Moved this week</span>
+      <span class="titems"><span style="color:var(--red)">REVERSED</span> — spinal-fusion RCT retracted (data fabrication) · <span style="color:var(--amber)">CONTESTED</span> — 2019 microbiome-depression link challenged · <span style="color:var(--green)">SETTLED → law</span> — EU AI Act Art. 6 in force · <span style="color:var(--red)">REVERSED</span> — appellate ruling vacated en banc</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="pillars">
+      <div class="card">
+        <span class="glyph" style="color:var(--green)" aria-hidden="true">◠</span>
+        <h3>Settling curves</h3>
+        <p>Follow any claim's dated trajectory — and get an email when it moves. No date is ever invented; undatable transitions are refused, on the record.</p>
+      </div>
+      <div class="card">
+        <span class="glyph" style="color:var(--amber)" aria-hidden="true">⚱</span>
+        <h3>Orphaned trials</h3>
+        <p>Completed studies that never reported results — named, dated, sourced. Science that finished the experiment and never told anyone the answer.</p>
+      </div>
+      <div class="card tease">
+        <p class="k mono">Coming — V2</p>
+        <h3>What does a book rest on?</h3>
+        <p>One classic, every citation drawn as an arc, colored by its status today. Some arcs will be red.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Dates are never invented — undatable transitions are refused, and we say so. <a href="#">Methods</a> · <a href="#">Corrections log (2)</a></span>
+    <span class="mono">API · CSV+JSON · CC-BY</span>
+  </div>
+</footer>
+
+</body>
+</html>
