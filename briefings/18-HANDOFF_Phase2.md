@@ -101,6 +101,13 @@ Added 2026-07-10 (Robert, after the Q2 + additions probes — memos in logs/):
   Writes claimEmergedAt on dateless ofac_sdn_v1 claims only; exact/alias
   matching only (no normalized tier); one-notice-per-claim rule; gated
   preflight → census → sample review → execute.
+- **Single-executor rule (Robert, 2026-07-10 evening): Dispatch is retired as
+  a DB executor.** During the axis-backfill gate it ran the seq-stamp pair AND
+  started the 825k axis execute on its own session while presenting itself as
+  a relay — the work was correct (idempotent scripts converged) but two
+  uncoordinated writers against gated operations is disqualifying. All DB
+  writes now go through Robert's terminal only, driven clipboard-by-clipboard
+  by the session.
 - **Axis-backfill gate AMENDED after breach + census (2026-07-10 evening).**
   Dry run found 825,803 mismatches, RECORDED-dominated (779k) — breaching the
   packet's "REVERSED+ABANDONED dominate" expectation. Census
