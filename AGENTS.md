@@ -175,3 +175,16 @@ The site launched as **public read-only**. A full audit + hardening pass was app
 
 `SCALING.md` is the phased infrastructure/revenue plan. `specs/` contains execution-ready handoff specs for each build item (specs/README.md has the execution protocol, dependency order, and per-spec model guidance). If you are assigned scaling work: read specs/README.md first, work one spec per session on a `spec/<number>` branch, and never mark a spec done unless its Acceptance criteria all pass with verification output pasted in the PR.
 <!-- END:build-specs -->
+
+<!-- BEGIN:agent-web-verification -->
+# Verifying the live site (robots.txt is not a guardrail)
+
+`robots.txt` sets `Disallow: /api/`. Fetch tools that respect robots (WebFetch / web_fetch) refuse ANY `/api/*` URL with `ROBOTS_DISALLOWED`. That is expected and correct — not a safety guardrail tripping, not an outage, and not something to route around with curl/python. Do not loosen robots.txt or auth to make a fetch succeed (read-side mirror of security-model rule 6).
+
+To check live behavior, in order of preference:
+1. **Code + tests are the source of truth.** API-route logic is verified by reading the handler under `app/api/**` and running its vitest — not by hitting prod.
+2. **Crawlable pages** (`/`, `/search`, `/claims/:id`, `/topics`, …) are robots-allowed and render the same data. Prefer these for live spot-checks. To confirm the epistemic axis, load `/search?q=<term>&axis=REVERSED` plus a few `/claims/:id` pages instead of `/api/v1/claims?epistemicAxis=REVERSED`.
+3. **The metered v1 API** (`/api/v1/*`) needs an API key even on GET — 401 "valid API key required" without one, a separate layer from the middleware admin gate. To exercise it live, use the browser tool (does not gate on robots) with a key, or send the key from a dev script. There is no anonymous read, by design.
+
+Quick triage: `ROBOTS_DISALLOWED` on `/api/` → switch to a crawlable page or the test suite. `401 API key required` on `/api/v1/*` → you need a key, not a workaround.
+<!-- END:agent-web-verification -->
