@@ -5,6 +5,7 @@ import { encodeCursor, decodeCursor } from "@/lib/v1/cursor";
 import { computeProvenanceGrade } from "@/lib/v1/provenance";
 import { ClaimsQuerySchema } from "@/lib/v1/schemas";
 import { v1Json, v1Error, methodNotAllowed, badRequest } from "@/lib/v1/respond";
+import { terminalAxisLateralJoin, effectiveAxisCondition } from "@/lib/effective-axis";
 
 export const dynamic = "force-dynamic";
 
@@ -35,10 +36,11 @@ export async function GET(req: NextRequest) {
   const cursor = q.cursor ? decodeCursor(q.cursor) : null;
   if (q.cursor && !cursor) return badRequest("Invalid cursor.");
 
-  // Build where clause
+  // Build where clause. epistemicAxis is handled separately (below): it can't be
+  // an ORM column match because REVERSED/ABANDONED live on the terminal
+  // transition, not the stored column — see lib/effective-axis.ts.
   const where: Record<string, unknown> = { deleted: false };
   if (q.pipeline) where.ingestedBy = q.pipeline;
-  if (q.epistemicAxis) where.epistemicAxis = q.epistemicAxis;
   if (q.claimType) where.claimType = q.claimType;
   if (q.verificationStatus) where.verificationStatus = q.verificationStatus;
   if (q.emergedAfter || q.emergedBefore) {
@@ -67,22 +69,78 @@ export async function GET(req: NextRequest) {
     topicIds = [topic.id];
   }
 
-  const claims = await readPrisma.claim.findMany({
-    where: topicIds
-      ? { ...where, topics: { some: { topicId: { in: topicIds } } } }
-      : where,
-    include: {
-      edges: {
-        where: { deleted: false },
-        select: { type: true, evidenceType: true, source: { select: { methodologyType: true } } },
-      },
+  const include = {
+    edges: {
+      where: { deleted: false },
+      select: { type: true, evidenceType: true, source: { select: { methodologyType: true } } },
     },
-    orderBy: [{ createdAt: "desc" }, { id: "desc" }],
-    take: limit + 1,
-  });
+  } as const;
 
-  const hasMore = claims.length > limit;
-  const page = hasMore ? claims.slice(0, limit) : claims;
+  type ClaimRow = Awaited<ReturnType<typeof readPrisma.claim.findMany<{ include: typeof include }>>>[number];
+  let page: ClaimRow[];
+  let hasMore: boolean;
+  let lastRow: { createdAt: Date; id: string } | null;
+
+  if (q.epistemicAxis) {
+    // Terminal-aware axis filter: the matching set (and its cursor order) is
+    // resolved in SQL against each claim's terminal transition, then hydrated
+    // through the ORM so the response shape and provenance logic are unchanged.
+    const params: unknown[] = [];
+    const conds: string[] = [`c."deleted" = false`];
+
+    params.push(q.epistemicAxis);
+    conds.push(effectiveAxisCondition(`$${params.length}`));
+    if (q.pipeline) { params.push(q.pipeline); conds.push(`c."ingestedBy" = $${params.length}`); }
+    if (q.claimType) { params.push(q.claimType); conds.push(`c."claimType" = $${params.length}`); }
+    if (q.verificationStatus) { params.push(q.verificationStatus); conds.push(`c."verificationStatus" = $${params.length}`); }
+    if (q.emergedAfter) { params.push(new Date(q.emergedAfter)); conds.push(`c."claimEmergedAt" >= $${params.length}`); }
+    if (q.emergedBefore) { params.push(new Date(q.emergedBefore)); conds.push(`c."claimEmergedAt" <= $${params.length}`); }
+    if (topicIds) {
+      params.push(topicIds);
+      conds.push(`EXISTS (SELECT 1 FROM "ClaimTopic" ct WHERE ct."claimId" = c."id" AND ct."topicId" = ANY($${params.length}::text[]))`);
+    }
+    if (cursor) {
+      params.push(cursor.createdAt);
+      const cAt = params.length;
+      params.push(cursor.id);
+      const cId = params.length;
+      conds.push(`(c."createdAt" < $${cAt} OR (c."createdAt" = $${cAt} AND c."id" < $${cId}))`);
+    }
+    params.push(limit + 1);
+    const limitIdx = params.length;
+
+    const idRows = await readPrisma.$queryRawUnsafe<Array<{ id: string; createdAt: Date }>>(
+      `SELECT c."id", c."createdAt"
+         FROM "Claim" c
+         ${terminalAxisLateralJoin()}
+        WHERE ${conds.join(" AND ")}
+        ORDER BY c."createdAt" DESC, c."id" DESC
+        LIMIT $${limitIdx}`,
+      ...params,
+    );
+
+    hasMore = idRows.length > limit;
+    const pageRows = hasMore ? idRows.slice(0, limit) : idRows;
+    const ids = pageRows.map(r => r.id);
+    const hydrated = ids.length
+      ? await readPrisma.claim.findMany({ where: { id: { in: ids } }, include })
+      : [];
+    const byId = new Map(hydrated.map(c => [c.id, c]));
+    page = ids.map(id => byId.get(id)).filter((c): c is ClaimRow => Boolean(c));
+    lastRow = pageRows.length ? pageRows[pageRows.length - 1] : null;
+  } else {
+    const claims = await readPrisma.claim.findMany({
+      where: topicIds
+        ? { ...where, topics: { some: { topicId: { in: topicIds } } } }
+        : where,
+      include,
+      orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+      take: limit + 1,
+    });
+    hasMore = claims.length > limit;
+    page = hasMore ? claims.slice(0, limit) : claims;
+    lastRow = page.length ? { createdAt: page[page.length - 1].createdAt, id: page[page.length - 1].id } : null;
+  }
 
   const data = page.map(c => {
     const primaryEdges = c.edges.filter(e => e.source.methodologyType === "primary").length;
@@ -108,8 +166,8 @@ export async function GET(req: NextRequest) {
   });
 
   const nextCursor =
-    hasMore && page.length > 0
-      ? encodeCursor(page[page.length - 1].createdAt, page[page.length - 1].id)
+    hasMore && lastRow
+      ? encodeCursor(lastRow.createdAt, lastRow.id)
       : null;
 
   return v1Json({ data, nextCursor }, { cache: "list" });

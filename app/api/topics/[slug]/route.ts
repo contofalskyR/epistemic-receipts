@@ -6,6 +6,7 @@ import {
   MIN_TOTAL,
   type PartyBreakdown,
 } from "@/lib/voteAnalysis";
+import { resolveDisplayAxis } from "@/lib/transition-contract";
 
 const PAGE_SIZE = 20;
 
@@ -102,6 +103,10 @@ export async function GET(
 
   const claimInclude = {
     _count: { select: { edges: { where: { deleted: false } } } },
+    // Terminal transition drives the display axis: Claim.epistemicAxis can't hold
+    // REVERSED/ABANDONED, so a reversed claim's stored axis is stale (see
+    // resolveDisplayAxis). seq is the order authority; toAxis is the payload.
+    statusHistory: { select: { toAxis: true, seq: true } },
     topics: { select: { topic: { select: { id: true, name: true, slug: true, domain: true } } } },
     edges: {
       where: { deleted: false },
@@ -328,7 +333,15 @@ export async function GET(
     },
     parentChain: buildParentChain(topic),
     siblings: siblings.map(s => ({ id: s.id, name: s.name, slug: s.slug, claimCount: s._count.claims })),
-    claims: claimTopics.map(ct => ct.claim),
+    claims: claimTopics.map(ct => {
+      // statusHistory is fetched only to derive displayAxis; strip it from the
+      // payload so the client contract stays lean.
+      const { statusHistory, ...claim } = ct.claim;
+      return {
+        ...claim,
+        displayAxis: resolveDisplayAxis({ epistemicAxis: claim.epistemicAxis, statusHistory }),
+      };
+    }),
     total,
     page,
     pages: Math.max(1, Math.ceil(total / PAGE_SIZE)),

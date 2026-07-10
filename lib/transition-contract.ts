@@ -51,6 +51,37 @@ export const COMMUNITIES: readonly CommunityT[] = [
   "EXPERT_LITERATURE", "INSTITUTIONAL", "JUDICIAL", "PUBLIC", "MARKET",
 ];
 
+// ── Display / filter axis ─────────────────────────────────────────────────────
+
+/**
+ * Axes that exist ONLY as transition outcomes (ClaimStatusHistory.toAxis) and
+ * structurally cannot appear in the 5-value Claim.epistemicAxis column. When a
+ * claim's terminal transition lands on one of these, it is authoritative over
+ * the stored axis for display and filtering — the stored axis is stale.
+ */
+export const REVERSAL_AXES: readonly FactStatusT[] = ["REVERSED", "ABANDONED"];
+
+/**
+ * The axis a claim should DISPLAY (and filter) as. Claim.epistemicAxis cannot
+ * represent REVERSED/ABANDONED, so when a claim's terminal transition (the
+ * latest by seq) is one of those, it overrides the stored axis; otherwise the
+ * stored axis stands. This is the JS mirror of the DB-side terminal computation
+ * used by the /v1/claims and /search filters (see lib/effective-axis.ts).
+ *
+ * seq is the order authority (contract §6); rows entering through the contract
+ * are always stamped, so `seq ?? 0` reliably puts the terminal row last.
+ */
+export function resolveDisplayAxis(claim: {
+  epistemicAxis: string | null;
+  statusHistory: { toAxis: string; seq: number | null }[];
+}): string | null {
+  const latest = [...claim.statusHistory].sort((a, b) => (b.seq ?? 0) - (a.seq ?? 0))[0];
+  if (latest && (REVERSAL_AXES as readonly string[]).includes(latest.toAxis)) {
+    return latest.toAxis;
+  }
+  return claim.epistemicAxis;
+}
+
 // ── Dates ─────────────────────────────────────────────────────────────────────
 
 export interface ParsedFlexibleDate {

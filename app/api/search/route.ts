@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { COUNTRY_TO_PIPELINES, PIPELINE_COUNTRY_NAME } from "@/lib/globe-pipeline-country";
+import { terminalAxisLateralJoin, effectiveAxisCondition, REVERSAL_AXES } from "@/lib/effective-axis";
 
 const MIN_QUERY = 3;
 const DEFAULT_LIMIT = 25;
@@ -58,7 +59,10 @@ export async function GET(req: NextRequest) {
   const countryActive = countryRaw.length > 0 && countryPipelines.length > 0;
   const countryName = countryActive ? PIPELINE_COUNTRY_NAME[countryRaw] ?? null : null;
 
-  const VALID_AXES = ["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE"] as const;
+  // REVERSED/ABANDONED are terminal transition outcomes, not stored-column
+  // values, but are valid filters: resolved against each claim's terminal
+  // transition via effectiveAxisCondition (see lib/effective-axis.ts).
+  const VALID_AXES = ["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE", ...REVERSAL_AXES] as const;
   const axisRaw = (url.searchParams.get("axis") ?? "").trim().toUpperCase();
   const axisFilter = (VALID_AXES as readonly string[]).includes(axisRaw) ? axisRaw : null;
 
@@ -116,10 +120,13 @@ export async function GET(req: NextRequest) {
 
       if (axisFilter) {
         params.push(axisFilter);
-        conditions.push(`c."epistemicAxis" = $${paramIdx++}`);
+        conditions.push(effectiveAxisCondition(`$${paramIdx++}`));
       }
 
       const whereClause = conditions.join(" AND ");
+      // effectiveAxisCondition references `term.term`; every FROM using
+      // whereClause must expose it via the terminal LATERAL join.
+      const axisJoin = axisFilter ? terminalAxisLateralJoin() : "";
 
       // ── Settling curves matching the query (first page only) ──────────────
       // Multi-step claims (a chained transition exists) ranked by relevance
@@ -135,6 +142,7 @@ export async function GET(req: NextRequest) {
             `SELECT c."id", c."text", c."externalId",
                     (SELECT COUNT(*) FROM "ClaimStatusHistory" h2 WHERE h2."claimId" = c."id") AS "transitionCount"
                FROM "Claim" c
+               ${axisJoin}
               WHERE ${whereClause}
                 AND (c."verificationStatus" IS NULL OR c."verificationStatus" <> 'DEPRECATED')
                 AND EXISTS (
@@ -186,7 +194,7 @@ export async function GET(req: NextRequest) {
       }
 
       const countResult = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
-        `SELECT count(*)::bigint AS count FROM "Claim" c WHERE ${whereClause}`,
+        `SELECT count(*)::bigint AS count FROM "Claim" c ${axisJoin} WHERE ${whereClause}`,
         ...params,
       );
       claimsCount = Number(countResult[0].count);
@@ -225,6 +233,7 @@ export async function GET(req: NextRequest) {
            t."name" AS "topicLabel",
            ts_rank(c."searchVector", websearch_to_tsquery('english', $1)) AS rank
          FROM "Claim" c
+         ${axisJoin}
          LEFT JOIN LATERAL (
            SELECT s2."name"
            FROM "Edge" e
@@ -267,44 +276,76 @@ export async function GET(req: NextRequest) {
       const claimCountryWhere = countryActive
         ? { ingestedBy: { in: countryPipelines } }
         : {};
-      const claimWhere = {
-        deleted: false,
-        ...claimCountryWhere,
-        ...(axisFilter ? { epistemicAxis: axisFilter } : {}),
-      };
+      const claimSelect = {
+        id: true,
+        text: true,
+        currentStatus: true,
+        epistemicAxis: true,
+        claimType: true,
+        ingestedBy: true,
+        verificationStatus: true,
+        epistemicStatus: true,
+        createdAt: true,
+        claimEmergedAt: true,
+        edges: {
+          where: { deleted: false },
+          orderBy: { createdAt: "asc" as const },
+          take: 1,
+          select: { source: { select: { name: true } } },
+        },
+        topics: {
+          take: 1,
+          select: { topic: { select: { name: true } } },
+        },
+      } as const;
 
-      const [count, rows] = await Promise.all([
-        prisma.claim.count({ where: claimWhere }),
-        prisma.claim.findMany({
-          where: claimWhere,
-          orderBy: { createdAt: "desc" },
-          take: limit,
-          skip: offset,
-          select: {
-            id: true,
-            text: true,
-            currentStatus: true,
-            epistemicAxis: true,
-            claimType: true,
-            ingestedBy: true,
-            verificationStatus: true,
-            epistemicStatus: true,
-            createdAt: true,
-            claimEmergedAt: true,
-            edges: {
-              where: { deleted: false },
-              orderBy: { createdAt: "asc" as const },
-              take: 1,
-              select: { source: { select: { name: true } } },
-            },
-            topics: {
-              take: 1,
-              select: { topic: { select: { name: true } } },
-            },
-          },
-        }),
-      ]);
-      claimsCount = count;
+      type CountryRow = Awaited<ReturnType<typeof prisma.claim.findMany<{ select: typeof claimSelect }>>>[number];
+      let rows: CountryRow[];
+
+      if (axisFilter) {
+        // Terminal-aware axis filter: the stored epistemicAxis can't hold
+        // REVERSED/ABANDONED and is stale on reversed claims, so resolve the
+        // matching set (and page order) in SQL, then hydrate through the ORM.
+        const p: unknown[] = [];
+        const cc: string[] = [`c."deleted" = false`];
+        p.push(axisFilter); cc.push(effectiveAxisCondition(`$${p.length}`));
+        if (countryActive) { p.push(countryPipelines); cc.push(`c."ingestedBy" = ANY($${p.length}::text[])`); }
+        const whereSql = cc.join(" AND ");
+
+        const countRows = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
+          `SELECT count(*)::bigint AS count FROM "Claim" c ${terminalAxisLateralJoin()} WHERE ${whereSql}`,
+          ...p,
+        );
+        claimsCount = Number(countRows[0].count);
+
+        p.push(limit); const limIdx = p.length;
+        p.push(offset); const offIdx = p.length;
+        const idRows = await prisma.$queryRawUnsafe<Array<{ id: string }>>(
+          `SELECT c."id" FROM "Claim" c ${terminalAxisLateralJoin()} WHERE ${whereSql}
+            ORDER BY c."createdAt" DESC LIMIT $${limIdx} OFFSET $${offIdx}`,
+          ...p,
+        );
+        const ids = idRows.map(r => r.id);
+        const hydrated = ids.length
+          ? await prisma.claim.findMany({ where: { id: { in: ids } }, select: claimSelect })
+          : [];
+        const byId = new Map(hydrated.map(r => [r.id, r]));
+        rows = ids.map(id => byId.get(id)).filter((r): r is CountryRow => Boolean(r));
+      } else {
+        const [count, ormRows] = await Promise.all([
+          prisma.claim.count({ where: { deleted: false, ...claimCountryWhere } }),
+          prisma.claim.findMany({
+            where: { deleted: false, ...claimCountryWhere },
+            orderBy: { createdAt: "desc" },
+            take: limit,
+            skip: offset,
+            select: claimSelect,
+          }),
+        ]);
+        claimsCount = count;
+        rows = ormRows;
+      }
+
       claims = rows.map(c => ({
         id: c.id,
         text: c.text,

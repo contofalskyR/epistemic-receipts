@@ -12,8 +12,11 @@ export const LimitSchema = z
   .optional()
   .transform(v => Math.min(200, Math.max(1, Number.parseInt(v ?? "20", 10) || 20)));
 
+// REVERSED/ABANDONED are terminal transition outcomes, not stored-column values,
+// but they ARE valid filter values: the /v1/claims filter resolves them against
+// each claim's terminal transition (see lib/effective-axis.ts).
 export const EpistemicAxisSchema = z
-  .enum(["RECORDED", "SETTLED", "CONTESTED", "OPEN", "UNRESOLVABLE"])
+  .enum(["RECORDED", "SETTLED", "CONTESTED", "OPEN", "UNRESOLVABLE", "REVERSED", "ABANDONED"])
   .optional();
 
 export const VerificationStatusSchema = z

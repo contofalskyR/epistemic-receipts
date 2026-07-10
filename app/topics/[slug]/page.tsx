@@ -151,6 +151,9 @@ type ClaimItem = {
   text: string;
   currentStatus: string;
   epistemicAxis: string | null;
+  /** Terminal-transition-aware axis from the API (REVERSED/ABANDONED when the
+   *  claim's curve has reversed); falls back to epistemicAxis. */
+  displayAxis: string | null;
   claimType: string;
   claimEmergedAt: string | null;
   claimEmergedPrecision: EmergedPrecision | null;
@@ -733,7 +736,7 @@ function TopicSlugContent() {
                   {c.text}
                 </p>
                 <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                  <EpistemicAxisBadge axis={c.epistemicAxis} />
+                  <EpistemicAxisBadge axis={c.displayAxis ?? c.epistemicAxis} />
                   <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">
                     {c.claimType}
                   </span>
