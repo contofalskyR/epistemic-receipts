@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Weekly OFAC delistings accrual (briefing 16 addendum / 18 Q1 step 5).
+       Install:
+         cp scripts/cron/com.epistemic-receipts.ofac-delistings.plist ~/Library/LaunchAgents/
+         launchctl load ~/Library/LaunchAgents/com.epistemic-receipts.ofac-delistings.plist
+       Manual test run:
+         launchctl start com.epistemic-receipts.ofac-delistings
+       Receipts: logs/ofac-delistings-cron-<date>.log (wrapper) and the
+       launchd stdout/err logs below. The wrapper is fail-closed and audits
+       after every write; state only advances on a clean run. -->
+  <key>Label</key>
+  <string>com.epistemic-receipts.ofac-delistings</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>/Users/robertrutgers/Projects/epistemic-receipts/scripts/cron/ofac-delistings-weekly.sh</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>1</integer>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <key>WorkingDirectory</key>
+  <string>/Users/robertrutgers/Projects/epistemic-receipts</string>
+  <!-- launchd's default PATH has no node/npx; cover Homebrew + system. If your
+       node lives elsewhere (nvm), the launchd err log will say so — adjust. -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/Users/robertrutgers/Projects/epistemic-receipts/logs/ofac-delistings-launchd.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/robertrutgers/Projects/epistemic-receipts/logs/ofac-delistings-launchd.err.log</string>
+</dict>
+</plist>
