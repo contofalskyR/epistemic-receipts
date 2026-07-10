@@ -10,6 +10,7 @@ import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge
 import { ShareButtons } from "@/components/ShareButtons";
 import ClaimInteractive from "./ClaimInteractive";
 import BookmarkToggle from "./BookmarkToggle";
+import FollowClaim from "./FollowClaim";
 import AddToCollection from "@/components/AddToCollection";
 import CitationButton from "@/components/CitationButton";
 import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } from "./claim-ui";
@@ -23,6 +24,20 @@ import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } fro
 // NOTE: if `cacheComponents` is ever enabled in next.config.ts, this segment
 // config is removed in that model and this page needs migrating.
 export const revalidate = 86400;
+
+// Pipelines with ongoing transition-event feeds (SCOTUS overrulings table,
+// retraction joins, the OFAC delistings weekly cron, FDA withdrawals) — the
+// follow-claim copy promises checked-on-an-ongoing-basis only for these;
+// everything else gets expectation-setting copy (handoff §2).
+const LIVE_FED_PIPELINES = new Set([
+  "courtlistener_scotus_v1",
+  "openalex_v1",
+  "openalex_journals_v1",
+  "crossref_retractions_v1",
+  "nasa_exoplanet_v1",
+  "ofac_sdn_v1",
+  "drugsatfda_v1",
+]);
 
 export async function generateStaticParams() {
   return [];
@@ -447,6 +462,7 @@ export default async function ClaimDetailPage({ params }: Props) {
           <AddToCollection claimId={claim.id} />
           <CitationButton type="claim" id={claim.id} />
         </div>
+        <FollowClaim claimId={claim.id} liveFed={LIVE_FED_PIPELINES.has(claim.ingestedBy)} />
         <ShareButtons
           url={`${SITE_URL}/claims/${claim.id}`}
           text={`"${claim.text.slice(0, 220)}"${displayAxis ? ` — ${displayAxis}` : ""} 🧾`}
