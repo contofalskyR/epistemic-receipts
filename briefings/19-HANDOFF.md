@@ -8,14 +8,18 @@ you need the how-we-got-here.
 
 ## 0. LIVE RIGHT NOW — pick this up first
 
-**The corpus-wide axis backfill --execute is RUNNING in Robert's Terminal**
-(`caffeinate -i npx dotenv-cli -e .env.local -- npx tsx
-scripts/backfill-terminal-axis.ts --execute`), started ~evening, ETA 1.5–3 h.
-Idempotent + resumable (skips fixed rows; if interrupted or Neon drops —
-Neon cold-starts regularly, first attempt often fails, retry succeeds —
-re-run the same command). Finish line = an `EXECUTED` block: scanned
-1,579,951 / mismatches 825,803 / `updated:` ≈ high-700ks-to-825k (a Dispatch
-partial run already fixed an early chunk; see §3).
+**The corpus-wide axis backfill is mid-flight, now driven by the SET-BASED
+executor** `scripts/backfill-terminal-axis-batch.ts` (written after Neon
+P1001-dropped the original per-row script twice mid-run; original left
+untouched for provenance). Same semantics/ordering the gate cleared; one
+server-side statement per 20k claims, retry+backoff on connection errors,
+cursor persisted to logs/backfill-terminal-axis-batch.cursor.json — resumes
+after any crash; `--fresh` restarts. Command:
+`caffeinate -i npx dotenv-cli -e .env.local -- npx tsx
+scripts/backfill-terminal-axis-batch.ts --execute`
+Finish line = `EXECUTED (set-based)` block. Verification pass after:
+same script WITHOUT --execute plus `--fresh` → expect would-update ≈ 0
+(the 3 orphan-break claims may flap; documented residue).
 
 When it finishes, resume the closing sequence at step 4 (§2).
 

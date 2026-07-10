@@ -16,7 +16,8 @@
     "scripts/_census-openalex-retraction.ts",
     "scripts/_census-ofac-baselines.ts",
     "lib/transition-contract.ts",
-    "scripts/_census-axis-mismatch.ts"
+    "scripts/_census-axis-mismatch.ts",
+    "scripts/backfill-terminal-axis-batch.ts"
   ],
   "exclude": [
     "node_modules"
