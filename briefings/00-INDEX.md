@@ -48,4 +48,5 @@ session handoffs and specs filed since; each is self-contained, newest state win
 | 14 | `14-project-brief.md` | Cold-start orientation: the observatory thesis, current build, journalism angle — for an agent joining with no context. |
 | 15 | `15-axis-leak-fix.md` | Axis-leak (REVERSED/ABANDONED display) handoff. Resolved via the committed read-time fix (`e8886b0`); the write-time-stamp patch it proposed was dropped. |
 | 16 | `16-ofac-delistings-spec.md` | OFAC delistings pipeline spec (RECORDED→REVERSED on `ofac_sdn_v1`). Feed-probe-first, NZ-style. Ready to build. |
-| 17 | `17-HANDOFF.md` | **Session-close handoff → Fable 5 (2026-07-09 EOD).** Current state, the open board, decisions-not-to-relitigate, execution reality. Start here after 10. |
+| 17 | `17-HANDOFF.md` | **Session-close handoff → Fable 5 (2026-07-09 EOD).** Current state, the open board, decisions-not-to-relitigate, execution reality. Addendum 07-10: P0 verified live, OFAC probe datable. |
+| 18 | `18-HANDOFF.md` | **Work-queue handoff (2026-07-10).** Robert-approved queue: OFAC build+cron (Q1) → FDA Phase B (Q2) → WHO EML (Q3) → Fable patches 1/2/4 (Q4, needs zip re-upload) → tails (Q5). Per-pipeline STOP gates still apply. Start here. |
