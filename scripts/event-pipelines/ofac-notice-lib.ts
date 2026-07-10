@@ -94,10 +94,17 @@ export function parseSdnBlock(raw: string): SdnEntryBlock | null {
   // individuals were this). The DB names are Latin — strip them everywhere.
   // OFAC NESTS these ("(a.k.a. X (Cyrillic: ...))" — preflight #2's stray ")"),
   // so strip innermost-first ([^()]*) and iterate until stable.
+  // Two shapes (additions full-walk review, 2026-07-10):
+  //  1. any paren containing non-Latin script chars (Cyrillic, Arabic incl.
+  //     presentation forms, Hebrew, CJK, kana);
+  //  2. script-LABELED parens regardless of content — "(Latin: CANALES
+  //     RIVERA, ...)" transliterations carry commas but only Latin chars.
   let prev: string;
   do {
     prev = text;
-    text = text.replace(/\([^()]*[Ѐ-ӿ؀-ۿ一-鿿][^()]*\)/g, " ");
+    text = text
+      .replace(/\([^()]*[Ѐ-ӿ؀-ۿﭐ-﷿ﹰ-﻿֐-׿぀-ヿ一-鿿][^()]*\)/g, " ")
+      .replace(/\((?:Latin|Cyrillic|Arabic|Chinese|Japanese|Korean|Hebrew|Greek)(?:\s+script)?\s*:[^()]*\)/gi, " ");
   } while (text !== prev);
   text = text.replace(/\(\s*\)/g, " ").replace(/\s+/g, " ").trim();
 

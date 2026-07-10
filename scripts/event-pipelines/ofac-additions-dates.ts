@@ -310,6 +310,12 @@ async function main() {
       continue;
     }
     const plan = plans[0];
+    // Belt-and-suspenders: a name that still carries parser artifacts must
+    // not write a date (full-walk review found "(Latin: ...)" fragments).
+    if (/[();]/.test(plan.entryName)) {
+      residue.push({ kind: "malformed-name", claimId, entry: plan.entryName, notice: plan.noticeId });
+      continue;
+    }
     const claim = await prisma.claim.findUnique({
       where: { id: claimId },
       select: { claimEmergedAt: true, createdAt: true },
