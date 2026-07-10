@@ -297,6 +297,13 @@ async function main() {
 
   counts.planned = planned.length;
 
+  // Full planned list to disk — the review gate reads THIS (the console shows
+  // a 15-row sample; the reviewer audits the file + cached notice HTML).
+  const plannedPath = path.join(__dirname, "../../logs/ofac-additions-planned.jsonl");
+  fs.mkdirSync(path.dirname(plannedPath), { recursive: true });
+  fs.writeFileSync(plannedPath, planned.map((p) => JSON.stringify(p)).join("\n") + (planned.length ? "\n" : ""));
+  console.log(`\nPlanned writes (${planned.length}) → ${plannedPath}`);
+
   // Sample for the review gate.
   console.log(`\n── First 15 planned writes (sample-review gate) ──`);
   for (const p of planned.slice(0, 15))
