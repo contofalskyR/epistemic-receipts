@@ -101,6 +101,18 @@ Added 2026-07-10 (Robert, after the Q2 + additions probes — memos in logs/):
   Writes claimEmergedAt on dateless ofac_sdn_v1 claims only; exact/alias
   matching only (no normalized tier); one-notice-per-claim rule; gated
   preflight → census → sample review → execute.
+- **Axis-backfill gate AMENDED after breach + census (2026-07-10 evening).**
+  Dry run found 825,803 mismatches, RECORDED-dominated (779k) — breaching the
+  packet's "REVERSED+ABANDONED dominate" expectation. Census
+  (`scripts/_census-axis-mismatch.ts`) split it: 110k = stored-NULL first
+  classifications; 669k = SETTLED→RECORDED corrections of an earlier blanket
+  backfill that had stamped observational/archival/literature pipelines
+  SETTLED against Layer-1 canon (openalex 307k, nara 107k, worldbank 55k,
+  ofac 17.7k, …); 38k = the original CONTESTED→REVERSED leak. Every ≥1k
+  overwrite group verified against the template canon — trajectory wins on
+  all. CLEARED to execute, preconditioned on backfill-transition-seq stamping
+  the 8,748 NULL-seq rows (today's Layer-1 OFAC baselines, all single-row).
+  Product consequence, deliberate: ~700k pages relabel Settled→Recorded.
 
 ## 3. Execution reality (unchanged from 17 §5, one addition)
 
