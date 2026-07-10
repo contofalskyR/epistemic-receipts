@@ -184,6 +184,11 @@ interface PlannedWrite {
 }
 
 async function main() {
+  // The multi-date (re-listing) guard only sees notices WITHIN the run, so a
+  // --limit execute could write a date the full history would flag as a
+  // conflict. Pilot slices are preflight-only; writes require the full walk.
+  if (EXECUTE && LIMIT)
+    throw new Error("--execute with --limit is unsafe (one-notice-per-claim needs full history) — run --execute without --limit");
   console.log(
     `\n=== OFAC additions date-backfill — ${EXECUTE ? "EXECUTE" : "PREFLIGHT (no writes)"}${LIMIT ? `, limit ${LIMIT} notices` : ""} ===\n`,
   );
