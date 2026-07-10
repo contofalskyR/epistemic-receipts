@@ -123,41 +123,15 @@ export async function embedMany3Small(texts: string[]): Promise<number[][]> {
   return embeddings;
 }
 
-// ── Legacy MiniLM interface (384-dim, TrajectorySearchDoc only) ───────────────
-// Kept for backward-compat with the existing semantic search route.
-// Do NOT use for ClaimEmbedding — use embedText3Small / embedMany3Small.
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { pipeline as xenovaPipeline } from "@xenova/transformers";
-
-let _pipe: any = null;
-
-async function getMiniLMPipeline(): Promise<any> {
-  if (!_pipe) {
-    _pipe = await (xenovaPipeline as any)(
-      "feature-extraction",
-      "Xenova/all-MiniLM-L6-v2",
-    );
-  }
-  return _pipe;
-}
-
-/** @deprecated Use embedText3Small for ClaimEmbedding. This is only for TrajectorySearchDoc. */
-export async function embedText(text: string): Promise<number[]> {
-  const pipe = await getMiniLMPipeline();
-  const output = await pipe(text, { pooling: "mean", normalize: true });
-  return Array.from(output.data as Float32Array);
-}
-
-/** @deprecated Use embedMany3Small for ClaimEmbedding. This is only for TrajectorySearchDoc. */
-export async function embedTexts(texts: string[]): Promise<number[][]> {
-  const pipe = await getMiniLMPipeline();
-  const output = await pipe(texts, { pooling: "mean", normalize: true });
-  const dim = 384;
-  const results: number[][] = [];
-  const data = output.data as Float32Array;
-  for (let i = 0; i < texts.length; i++) {
-    results.push(Array.from(data.slice(i * dim, (i + 1) * dim)));
-  }
-  return results;
-}
+// ── Legacy MiniLM interface removed (2026-07) ────────────────────────────────
+// The 384-dim MiniLM embedder (embedText/embedTexts) was only used by the
+// orphaned /api/search/semantic route, which has been deleted. Its top-level
+// `import "@xenova/transformers"` pulled onnxruntime-web → protobufjs (a
+// critical-severity chain) into the SERVER bundle. Removing it drops that
+// dependency from anything that runs at request time.
+//
+// The maintenance scripts that still populate TrajectorySearchDoc
+// (scripts/populate-trajectory-embeddings.ts) import @xenova/transformers
+// directly via their own require(), so they are unaffected. If a MiniLM
+// runtime path is ever needed again, add it to a script-only module — never
+// import @xenova/transformers from a file reachable by an API route.

@@ -43,11 +43,9 @@ async function upstashScan(pattern: string): Promise<string[]> {
 }
 
 export async function GET(req: NextRequest) {
-  const cronSecret = req.headers.get("authorization");
-  if (
-    process.env.CRON_SECRET &&
-    cronSecret !== `Bearer ${process.env.CRON_SECRET}`
-  ) {
+  // Fail closed: an unset CRON_SECRET must reject, not skip the check.
+  const cronSecret = process.env.CRON_SECRET;
+  if (!cronSecret || req.headers.get("authorization") !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

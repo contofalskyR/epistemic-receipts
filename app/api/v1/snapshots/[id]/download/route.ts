@@ -53,6 +53,16 @@ export async function GET(
     );
   }
 
+  // Reject anything that isn't a plain snapshot slug before it reaches the R2
+  // key template (`snapshots/${id}.jsonl.gz`). Without this, an id like
+  // "../other-bucket-object" or one containing slashes could point the signed
+  // URL at a different object.
+  if (!/^[a-z0-9][a-z0-9._-]{0,127}$/i.test(id)) {
+    return v1Error(
+      rfc7807(400, "Bad Request", "Invalid snapshot id."),
+    );
+  }
+
   const key = `snapshots/${id}.jsonl.gz`;
 
   let url: string;

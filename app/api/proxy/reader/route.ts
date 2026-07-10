@@ -7,6 +7,10 @@ import { Readability } from "@mozilla/readability";
 // DOM that bundles cleanly in serverless and is a standard pairing with
 // Readability.
 import { parseHTML } from "linkedom";
+import { assertSafeFetchUrl } from "@/lib/ssrfGuard";
+
+// node:dns (used by the SSRF guard) requires the Node.js runtime.
+export const runtime = "nodejs";
 
 const MAX_BYTES = 5 * 1024 * 1024; // 5 MB cap on fetched HTML
 const FETCH_TIMEOUT = 8_000;
@@ -63,30 +67,14 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "missing url param" }, { status: 400 });
   }
 
-  let parsed: URL;
-  try {
-    parsed = new URL(url);
-  } catch {
-    return NextResponse.json({ error: "invalid url" }, { status: 400 });
+  // SSRF guard: validates protocol AND resolves DNS, rejecting any host that
+  // maps to a private/loopback/link-local/metadata address (incl. decimal-IP,
+  // IPv6-mapped, and DNS-rebinding style bypasses the old prefix check missed).
+  const safe = await assertSafeFetchUrl(url);
+  if (!safe.ok) {
+    return NextResponse.json({ error: safe.error }, { status: safe.status });
   }
-
-  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
-    return NextResponse.json({ error: "invalid protocol" }, { status: 400 });
-  }
-
-  // Block private/internal IPs
-  const host = parsed.hostname;
-  if (
-    host === "localhost" ||
-    host.startsWith("127.") ||
-    host.startsWith("10.") ||
-    host.startsWith("192.168.") ||
-    host === "0.0.0.0" ||
-    host === "::1" ||
-    host.endsWith(".local")
-  ) {
-    return NextResponse.json({ error: "blocked host" }, { status: 403 });
-  }
+  const parsed = safe.url;
 
   try {
     const controller = new AbortController();
