@@ -1,11 +1,18 @@
+// Below-the-fold bands of the V1 landing page (docs/design v1-landing-mockup.html):
+// "Moved recently" ticker → three pillars → corpus index → honesty band.
+// Server component, no client JS. Counting logic is untouched from the
+// pre-launch audit fixes — only the presentation changed (tiles → text links).
+
 import Link from "next/link";
-import type { WhatsNewItem } from "@/lib/feed";
-import { compactCount } from "@/lib/format";
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
+import { snippet, type WhatsNewItem } from "@/lib/feed";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type HomepageStats = {
   claims: number;
+  /** ClaimStatusHistory rows — dated status transitions across the corpus. */
+  transitions: number;
   /** Non-deprecated claims with ≥1 transition row — openable settling curves. */
   settlingCurves: number;
   sources: number;
@@ -20,6 +27,9 @@ export type HomepageSectionsProps = {
 };
 
 // ─── Domain config ────────────────────────────────────────────────────────────
+// V1 renders these as quiet text links in the corpus band instead of tiles, but
+// the config (and its audit-verified pipeline keys) is unchanged. emoji/border
+// fields are kept so the tile presentation can be restored without re-auditing.
 
 type Domain = {
   name: string;
@@ -159,268 +169,222 @@ const DOMAINS: Domain[] = [
   // },
 ];
 
-function truncate(text: string, n: number): string {
-  if (text.length <= n) return text;
-  return text.slice(0, n).trimEnd() + "…";
-}
-
 function sumKeys(counts: Map<string, number>, keys: string[]): number {
   let sum = 0;
   for (const k of keys) sum += counts.get(k) ?? 0;
   return sum;
 }
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
+// ─── "Moved recently" ticker ─────────────────────────────────────────────────
+// The mockup's "Moved this week" strip. Items are the latest ClaimStatusHistory
+// rows by ingestion time (lib/feed.loadRecentTransitions) — labeled "recently"
+// rather than "this week" because the loader has no calendar window and the
+// label must stay true in a slow week. Axis coloring reuses EpistemicAxisBadge.
 
-function StatsBar({ stats }: { stats: HomepageStats }) {
-  const cells: { label: string; value: number }[] = [
-    { label: "Claims indexed",       value: stats.claims },
-    { label: "Settling curves",      value: stats.settlingCurves },
-    { label: "Primary sources",      value: stats.sources },
-    { label: "Congressional votes",  value: stats.legislativeVotes },
-    { label: "Retracted papers",     value: stats.retractedPapers },
-  ];
-  // Full-bleed band: -mx-6 cancels the global <main> px-6 gutter so the bar runs
-  // edge-to-edge, while the inner container keeps the content centered. On mobile
-  // it's a compact 2-column grid (not a 500px-tall stack); 5 columns on desktop.
-  // The gap + container background renders thin separators between cells.
+function MovedTicker({ items }: { items: WhatsNewItem[] }) {
+  if (!items || items.length === 0) return null;
   return (
-    <section className="-mx-6 bg-gray-800/60 border-y border-gray-800">
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-px max-w-6xl mx-auto">
-        {cells.map((c) => (
-          <div key={c.label} className="bg-gray-900/90 px-4 py-6 text-center">
-            <div className="text-2xl sm:text-4xl font-bold text-amber-400 tabular-nums">
-              {c.value.toLocaleString()}
-            </div>
-            <div className="mt-1 text-[11px] sm:text-xs uppercase tracking-widest text-gray-500">
-              {c.label}
-            </div>
-          </div>
+    <section
+      aria-label="Recently moved claims"
+      className="-mx-6 border-y border-gray-800/80 bg-gray-900/30"
+    >
+      <div className="mx-auto flex max-w-5xl items-center gap-5 overflow-x-auto px-6 py-3 no-scrollbar">
+        <span className="shrink-0 text-[11px] font-mono uppercase tracking-[0.14em] text-amber-400/90">
+          Moved recently
+        </span>
+        {items.map((t) => (
+          <Link
+            key={t.id}
+            href={t.href}
+            className="inline-flex shrink-0 items-center gap-2 text-[13px] text-gray-400 transition-colors hover:text-gray-200"
+          >
+            <EpistemicAxisBadge
+              axis={t.toAxis}
+              className="shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium"
+            />
+            <span className="whitespace-nowrap">{snippet(t.reason ?? t.claimText, 88)}</span>
+            {t.occurredYear && (
+              <span className="font-mono text-[11px] text-gray-600">{t.occurredYear}</span>
+            )}
+          </Link>
         ))}
+        <Link
+          href="/feed"
+          className="shrink-0 text-[13px] text-amber-400/80 transition-colors hover:text-amber-300"
+        >
+          Full feed →
+        </Link>
       </div>
     </section>
   );
 }
 
-function DomainGrid({ ingestedByCounts }: { ingestedByCounts: Map<string, number> }) {
+// ─── Pillars ──────────────────────────────────────────────────────────────────
+// Mockup pillar 2 is "Orphaned trials" — that tracker isn't live in this repo
+// (no route, no pipeline), so the second real pillar is the Retraction Explorer,
+// with its count derived from the same grouped query as everything else. The
+// third card is the mockup's V2 tease, deliberately unlinked.
+
+function Pillars({ retractedPapers }: { retractedPapers: number }) {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16">
-      <header className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-white">Explore by Domain</h2>
-        <p className="mt-1 text-sm text-gray-500">
-          Each domain draws on its own primary sources — click any to browse claims
-        </p>
-      </header>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <section className="mx-auto max-w-5xl py-8">
+      <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+        <Link
+          href="/settling-curve"
+          className="group rounded-xl border border-gray-800 bg-gray-900/60 p-5 transition-colors hover:border-gray-600"
+        >
+          <span aria-hidden="true" className="text-xl text-emerald-400">
+            ◠
+          </span>
+          <h3 className="mt-2.5 text-[15px] font-medium text-gray-100 transition-colors group-hover:text-white">
+            Settling curves
+          </h3>
+          <p className="mt-1.5 text-[13.5px] leading-relaxed text-gray-500">
+            Follow any claim&apos;s dated trajectory — and get an email when it moves. No date is
+            ever invented; undatable transitions are refused, on the record.
+          </p>
+        </Link>
+
+        <Link
+          href="/retraction-explorer"
+          className="group rounded-xl border border-gray-800 bg-gray-900/60 p-5 transition-colors hover:border-gray-600"
+        >
+          <span aria-hidden="true" className="text-xl text-rose-300">
+            ↩
+          </span>
+          <h3 className="mt-2.5 text-[15px] font-medium text-gray-100 transition-colors group-hover:text-white">
+            Retracted, still cited
+          </h3>
+          <p className="mt-1.5 text-[13.5px] leading-relaxed text-gray-500">
+            {retractedPapers.toLocaleString("en-US")} retracted papers — named, dated, sourced —
+            and the live citations that still point at them.
+          </p>
+        </Link>
+
+        <div className="rounded-xl border border-amber-700/60 bg-gray-900/60 p-5">
+          <p className="text-[11px] font-mono uppercase tracking-[0.1em] text-amber-400/90">
+            Coming — V2
+          </p>
+          <h3 className="mt-2.5 text-[15px] font-medium text-gray-100">
+            What does a book rest on?
+          </h3>
+          <p className="mt-1.5 text-[13.5px] leading-relaxed text-gray-500">
+            One classic, every citation drawn as an arc, colored by its status today. Some arcs
+            will be red.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Corpus band ──────────────────────────────────────────────────────────────
+// Replaces the StatsBar + DomainGrid tiles with one quiet index band.
+// Stats-bar numbers still derive from the SAME grouped query the domain links
+// use, so the same figure can never differ across one page (audit §8: the stats
+// bar said 26,624 retracted papers while the Retractions tile said 26,679 —
+// the bar counted crossref only, the tile crossref + retraction_watch).
+// Domain routes (/law, /medicine, /history, …) keep their homepage links here —
+// V1 trims are hide-from-nav, never deletion.
+
+function CorpusBand({
+  stats,
+  ingestedByCounts,
+}: {
+  stats: HomepageStats;
+  ingestedByCounts: Map<string, number>;
+}) {
+  const cells: { label: string; value: number }[] = [
+    { label: "claims indexed", value: stats.claims },
+    { label: "dated transitions", value: stats.transitions },
+    { label: "settling curves", value: stats.settlingCurves },
+    { label: "primary sources", value: stats.sources },
+    { label: "congressional votes", value: stats.legislativeVotes },
+    { label: "retracted papers", value: stats.retractedPapers },
+  ];
+  return (
+    <section className="mx-auto max-w-5xl pb-12 pt-2">
+      <h2 className="text-[11px] font-mono uppercase tracking-[0.14em] text-gray-500">
+        The corpus
+      </h2>
+      <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 font-mono text-[13px] leading-relaxed text-gray-500">
+        {cells.map((c, i) => (
+          <span key={c.label} className="whitespace-nowrap">
+            <span className="tabular-nums text-gray-200">{c.value.toLocaleString("en-US")}</span>{" "}
+            {c.label}
+            {i < cells.length - 1 && <span className="text-gray-700"> ·</span>}
+          </span>
+        ))}
+      </p>
+      <div className="mt-5 flex flex-wrap gap-2">
         {DOMAINS.map((d) => {
           const count = sumKeys(ingestedByCounts, d.ingestedByKeys);
           return (
             <Link
               key={d.name}
               href={d.href}
-              className={`group block rounded-xl bg-gray-900/80 border border-gray-800 ${d.hoverBorder} border-t-[3px] ${d.topBorder} px-5 py-5 transition-colors`}
+              className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-800 bg-gray-900/50 px-3 py-1 text-[12.5px] text-gray-300 transition-colors hover:border-gray-600 hover:text-white"
             >
-              <div className="flex items-start gap-3">
-                <span className="text-2xl shrink-0">{d.emoji}</span>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-sm font-semibold text-white group-hover:text-amber-300 transition-colors">
-                    {d.name}
-                  </h3>
-                  <p className="mt-1 text-2xl font-bold text-gray-100 tabular-nums">
-                    {count.toLocaleString()}
-                  </p>
-                  <p className="text-xs text-gray-500">claims</p>
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {d.sourceTags.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[10px] px-2 py-0.5 rounded-full bg-gray-800 text-gray-400 uppercase tracking-wide"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-// ─── Feature showcase strip ─────────────────────────────────────────────────────
-
-type Feature = {
-  emoji: string;
-  name: string;
-  blurb: string;
-  href: string;
-  accent: string; // border-t color
-  cta: string;
-};
-
-const FEATURES: Feature[] = [
-  {
-    emoji: "📈",
-    name: "Settling Curve",
-    blurb: "Watch a claim move across expert literature, institutions, courts, and the public — milestone by milestone.",
-    href: "/settling-curve",
-    accent: "border-t-emerald-500",
-    cta: "Trace a trajectory",
-  },
-  {
-    emoji: "🗳️",
-    name: "Representation Gap",
-    blurb: "700k constituents' opinions vs. how their delegation actually voted — issue by issue.",
-    href: "/analysis/representation",
-    accent: "border-t-sky-500",
-    cta: "See the gap",
-  },
-  {
-    emoji: "💸",
-    name: "Congress Trades",
-    blurb: "STOCK Act disclosures correlated with the votes each legislator cast.",
-    href: "/congress-trades",
-    accent: "border-t-blue-500",
-    cta: "Follow the money",
-  },
-  {
-    emoji: "🔁",
-    name: "Retraction Explorer",
-    blurb: "26k+ retracted papers and the live citations that still point at them.",
-    href: "/retraction-explorer",
-    accent: "border-t-rose-500",
-    cta: "Inspect retractions",
-  },
-  {
-    emoji: "🔍",
-    name: "Case Studies",
-    blurb: "Curated investigations — from Korematsu to Pluto to the lab-leak debate — each tracing a full epistemic arc.",
-    href: "/case-studies",
-    accent: "border-t-amber-500",
-    cta: "Browse case studies",
-  },
-];
-
-function FeatureShowcase({ claimsLabel }: { claimsLabel: string }) {
-  return (
-    <section className="max-w-6xl mx-auto px-6 pt-16 pb-4">
-      <header className="mb-6">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-white">What you can do here</h2>
-        <p className="mt-1 text-sm text-gray-500">
-          Five ways into {claimsLabel} claims — each one a different lens on how knowledge moves.
-        </p>
-      </header>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {FEATURES.map((f) => (
-          <Link
-            key={f.name}
-            href={f.href}
-            className={`group flex flex-col rounded-xl bg-gray-900/80 border border-gray-800 hover:border-gray-600 border-t-[3px] ${f.accent} px-5 py-5 transition-colors`}
-          >
-            <span className="text-2xl">{f.emoji}</span>
-            <h3 className="mt-3 text-base font-semibold text-white group-hover:text-amber-300 transition-colors">
-              {f.name}
-            </h3>
-            <p className="mt-1.5 text-sm text-gray-400 leading-relaxed flex-1">{f.blurb}</p>
-            <span className="mt-4 text-xs font-medium text-amber-400 group-hover:text-amber-300 transition-colors">
-              {f.cta} →
-            </span>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// ─── "What's new" — recent epistemic transitions (ClaimStatusHistory) ────────────
-
-const TRANSITION_AXIS_STYLE: Record<string, { label: string; dot: string; text: string }> = {
-  SETTLED:   { label: "Settled",   dot: "bg-emerald-400", text: "text-emerald-300" },
-  CONTESTED: { label: "Contested", dot: "bg-amber-400",   text: "text-amber-300" },
-  RECORDED:  { label: "Recorded",  dot: "bg-slate-400",   text: "text-slate-300" },
-  REVERSED:  { label: "Reversed",  dot: "bg-red-400",     text: "text-red-300" },
-  ABANDONED: { label: "Abandoned", dot: "bg-gray-500",    text: "text-gray-400" },
-  OPEN:      { label: "Open",      dot: "bg-sky-400",     text: "text-sky-300" },
-};
-
-function WhatsNewStrip({ items }: { items: WhatsNewItem[] }) {
-  if (!items || items.length === 0) return null;
-  return (
-    <section className="max-w-6xl mx-auto px-6 py-16">
-      <header className="mb-6 flex items-baseline justify-between gap-4">
-        <div>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white">What&apos;s new</h2>
-          <p className="mt-1 text-sm text-gray-500">
-            The latest epistemic state-changes added to the graph
-          </p>
-        </div>
-        <Link href="/feed" className="text-sm text-amber-400 hover:text-amber-300 transition-colors shrink-0">
-          Full feed →
-        </Link>
-      </header>
-      <div className="divide-y divide-gray-800 border-y border-gray-800">
-        {items.map((t) => {
-          const axis = TRANSITION_AXIS_STYLE[t.toAxis] ?? TRANSITION_AXIS_STYLE.RECORDED;
-          return (
-            <Link
-              key={t.id}
-              href={t.href}
-              className="group grid grid-cols-1 sm:grid-cols-[1fr_auto] items-center gap-2 sm:gap-6 py-4 hover:bg-gray-900/40 transition-colors -mx-3 px-3 rounded-lg"
-            >
-              <div className="min-w-0">
-                <p className="text-sm text-gray-300 group-hover:text-white transition-colors leading-relaxed">
-                  {truncate(t.claimText, 150)}
-                </p>
-                {t.reason && (
-                  <p className="mt-0.5 text-xs text-gray-600 leading-snug line-clamp-1">
-                    {truncate(t.reason, 120)}
-                  </p>
-                )}
-              </div>
-              <div className="flex items-center gap-3 shrink-0 text-xs">
-                {t.occurredYear && <span className="font-mono text-gray-600">{t.occurredYear}</span>}
-                <span className="inline-flex items-center gap-1.5">
-                  <span className={`w-2 h-2 rounded-full ${axis.dot}`} />
-                  <span className={`font-mono uppercase tracking-wide ${axis.text}`}>{axis.label}</span>
-                </span>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-// ─── Coming soon — in-development features ──────────────────────────────────────
-
-function ComingSoon() {
-  return (
-    <section className="max-w-6xl mx-auto px-6 pt-8 pb-16">
-      <Link
-        href="/globe"
-        className="block rounded-xl border border-gray-800/80 bg-gray-900/40 px-6 py-6 hover:border-gray-600/80 hover:bg-gray-900/60 transition-colors group"
-      >
-        <div className="flex items-start gap-3">
-          <span className="text-xl shrink-0 opacity-60 group-hover:opacity-90 transition-opacity" aria-hidden="true">🌍</span>
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm font-semibold text-gray-400 group-hover:text-gray-200 transition-colors">Interactive Globe</h3>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700/80 border border-amber-900/40 rounded-full px-2 py-0.5">
-                In development
+              {d.name}
+              <span className="font-mono text-[11px] tabular-nums text-gray-600">
+                {count.toLocaleString("en-US")}
               </span>
-            </div>
-            <p className="mt-1.5 text-sm text-gray-500 leading-relaxed max-w-2xl">
-              A geographic view of claims by country — where legislation was passed, where
-              science was published, where events occurred.
-            </p>
-          </div>
-          <span className="text-gray-600 group-hover:text-gray-400 transition-colors text-sm shrink-0 self-center">→</span>
-        </div>
-      </Link>
+            </Link>
+          );
+        })}
+        <Link
+          href="/case-studies"
+          className="inline-flex items-baseline rounded-full border border-gray-800 bg-gray-900/50 px-3 py-1 text-[12.5px] text-gray-300 transition-colors hover:border-gray-600 hover:text-white"
+        >
+          Case studies
+        </Link>
+        <Link
+          href="/globe"
+          className="inline-flex items-baseline rounded-full border border-gray-800 bg-gray-900/50 px-3 py-1 text-[12.5px] text-gray-300 transition-colors hover:border-gray-600 hover:text-white"
+        >
+          Globe
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+// ─── Honesty band ─────────────────────────────────────────────────────────────
+// The mockup footer, as a homepage band (the site-wide footer lives in
+// layout.tsx and is out of scope). "CC-BY" from the mockup is NOT the real
+// license — the data ships under ER-Community-1.0 (/license) — and the API
+// serves JSON only (/docs/api), so the mono line says exactly that.
+
+function HonestyBand() {
+  return (
+    <section className="-mx-6 border-t border-gray-800/80">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-baseline justify-between gap-x-6 gap-y-2 px-6 py-5 text-xs text-gray-500">
+        <span className="leading-relaxed">
+          Dates are never invented — undatable transitions are refused, and we say so.{" "}
+          <Link
+            href="/methodology"
+            className="text-gray-400 underline-offset-2 transition-colors hover:text-gray-200 hover:underline"
+          >
+            Methods
+          </Link>
+          {" · "}
+          <Link
+            href="/corrections"
+            className="text-gray-400 underline-offset-2 transition-colors hover:text-gray-200 hover:underline"
+          >
+            Corrections log
+          </Link>
+        </span>
+        <span className="font-mono">
+          <Link href="/docs/api" className="transition-colors hover:text-gray-300">
+            API
+          </Link>
+          {" · JSON · "}
+          <Link href="/license" className="transition-colors hover:text-gray-300">
+            ER-Community-1.0
+          </Link>
+        </span>
+      </div>
     </section>
   );
 }
@@ -434,11 +398,10 @@ export default function HomepageSections({
 }: HomepageSectionsProps) {
   return (
     <>
-      <FeatureShowcase claimsLabel={compactCount(stats.claims)} />
-      <StatsBar stats={stats} />
-      <WhatsNewStrip items={whatsNew} />
-      <DomainGrid ingestedByCounts={ingestedByCounts} />
-      <ComingSoon />
+      <MovedTicker items={whatsNew} />
+      <Pillars retractedPapers={stats.retractedPapers} />
+      <CorpusBand stats={stats} ingestedByCounts={ingestedByCounts} />
+      <HonestyBand />
     </>
   );
 }
