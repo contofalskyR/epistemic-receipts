@@ -32,3 +32,20 @@ Recommended: 01 first (it protects everything the promoter loop writes), then 04
 - Modify `scripts/bulk-promote-corpus.ts` waves 1–2 logic (done, verified, ran in production). Extending it with a wave 3 entry point is fine (see 03).
 - Rename `logs/corpus-promoter-attempted.jsonl` or other ledger paths.
 - Commit `.env.local` or weaken anything listed in the AGENTS.md security-model section.
+
+## Later briefings (09–17)
+
+The table above is the 2026-07-04 post-promoter roadmap (01–08). These are the
+session handoffs and specs filed since; each is self-contained, newest state wins.
+
+| # | File | What it is |
+|---|------|------------|
+| 09 | `09-everything-a-curve.md` | "Make everything a curve" — the settling-curve expansion goal + state (2026-07-08). |
+| 10 | `10-HANDOFF.md` | **Canonical state doc** — session-close handoff: corpus counts, the seq/ordering contract, working-relationship notes. Read first for current state. |
+| 11 | `11-journalism-angle.md` | Dropped-story tracker — the journalism source handoff + its binding DO-NOT-REDO list. |
+| 12 | `12-tracker-integration.md` | Tracker adopt-as-phase-2 verdict + build plan; the non-negotiable boundary (thread statuses NEVER become ClaimStatusHistory; only merits-resolutions graduate via emitTransition). Specs in `tracker/specs/` T1–T7. |
+| 13 | `13-curve-expansion-executor-brief.md` | Muscle-domain curve expansion (law/legislation/science/RCT). Phase A (OpenAlex↔CrossRef retraction join) DONE — see its addendum. Phases B–D queued. |
+| 14 | `14-project-brief.md` | Cold-start orientation: the observatory thesis, current build, journalism angle — for an agent joining with no context. |
+| 15 | `15-axis-leak-fix.md` | Axis-leak (REVERSED/ABANDONED display) handoff. Resolved via the committed read-time fix (`e8886b0`); the write-time-stamp patch it proposed was dropped. |
+| 16 | `16-ofac-delistings-spec.md` | OFAC delistings pipeline spec (RECORDED→REVERSED on `ofac_sdn_v1`). Feed-probe-first, NZ-style. Ready to build. |
+| 17 | `17-HANDOFF.md` | **Session-close handoff → Fable 5 (2026-07-09 EOD).** Current state, the open board, decisions-not-to-relitigate, execution reality. Start here after 10. |

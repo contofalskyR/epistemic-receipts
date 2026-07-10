@@ -3,7 +3,11 @@ import { prisma } from "@/lib/prisma";
 import { requireOrgRole, isOrgContext } from "@/lib/orgAuth";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy init: a module-top-level `new Resend(...)` throws "Missing API key" during
+// `next build` when RESEND_API_KEY is unset (fails the whole build). Defer to
+// first use, which is always inside a request handler.
+let _resend: Resend | null = null;
+const getResend = () => (_resend ??= new Resend(process.env.RESEND_API_KEY));
 
 type Params = { params: Promise<{ orgId: string }> };
 
@@ -57,7 +61,7 @@ export async function POST(req: NextRequest, { params }: Params) {
   });
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://epistemic-receipts.com";
-  await resend.emails.send({
+  await getResend().emails.send({
     from: process.env.RESEND_FROM ?? "noreply@epistemic-receipts.com",
     to: email as string,
     subject: `You've been added to ${org.name} on Epistemic Receipts`,
