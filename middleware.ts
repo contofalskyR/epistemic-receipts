@@ -30,6 +30,8 @@ const RATE_LIMIT_RULES: RateRule[] = [
   { pattern: /^\/api\/subscribe(\/|$)/, maxPerMin: 5, methods: ["POST"] },
   { pattern: /^\/api\/bookmarks(\/|$)/, maxPerMin: 30, methods: ["POST", "DELETE"] },
   { pattern: /^\/api\/sentry-tunnel$/, maxPerMin: 60, methods: ["POST"] },
+  // Billing endpoints — each call creates a Stripe API object; keep tight
+  { pattern: /^\/api\/stripe\/(checkout|portal)$/, maxPerMin: 5, methods: ["POST"] },
 ];
 
 function checkRateLimit(
@@ -103,6 +105,9 @@ const PUBLIC_WRITE_PATHS: RegExp[] = [
   /^\/api\/collections(\/|$)/, // researcher collections CRUD (session auth in-route)
   /^\/api\/alerts(\/|$)/, // topic alert subscriptions CRUD (session auth in-route)
   /^\/api\/litigation(\/|$)/, // litigation matters CRUD/export (session + org membership in-route)
+  // Stripe billing (F4, SECURITY-ASSESSMENT-2026-07-09 #5): session + org
+  // membership enforced in-route — do NOT list these here without that check.
+  /^\/api\/stripe\/(checkout|portal)$/,
 ];
 
 // Pages and APIs that always require an admin session, even for reads.

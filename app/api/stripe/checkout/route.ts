@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { stripe, PLAN_CONFIG, OVERAGE_PRICE_ID } from "@/lib/billing/stripe";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth";
+import { requireOrgRole, isOrgContext } from "@/lib/orgAuth";
 
 export const runtime = "nodejs";
 
@@ -14,6 +16,12 @@ type CheckoutPlan = "pro" | "team";
  * Creates a Stripe Checkout Session for the given plan.
  * If orgId is provided, links checkout to existing org/customer.
  * On success, redirects to /account?checkout=success.
+ *
+ * Auth (F4 — SECURITY-ASSESSMENT-2026-07-09 finding #5): requires a signed-in
+ * session (401 otherwise). When `orgId` is supplied it is client-controlled,
+ * so the session user must also be a member of that org (403 otherwise) —
+ * without this, user A could start a checkout against org B's Stripe customer
+ * by guessing B's orgId (cross-tenant IDOR).
  */
 export async function POST(req: NextRequest) {
   let plan: CheckoutPlan;
@@ -28,6 +36,20 @@ export async function POST(req: NextRequest) {
     if (plan !== "pro" && plan !== "team") throw new Error("Invalid plan");
   } catch {
     return NextResponse.json({ error: "Invalid request body: plan must be pro or team" }, { status: 400 });
+  }
+
+  // F4 fix (SECURITY-ASSESSMENT-2026-07-09 finding #5): session-gate +
+  // org-membership check. `requireOrgRole` verifies the session AND that the
+  // session user is a member of the org they're purchasing for; with no orgId
+  // (new-subscriber flow from /pricing) a session is still required.
+  if (orgId) {
+    const ctx = await requireOrgRole(orgId, "member");
+    if (!isOrgContext(ctx)) return ctx; // 401 not signed in / 403 not a member
+  } else {
+    const session = await auth();
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
   }
 
   const planCfg = PLAN_CONFIG[plan];
