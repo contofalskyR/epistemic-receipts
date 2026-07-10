@@ -55,21 +55,34 @@
 
 import "dotenv/config";
 import { Prisma, PrismaClient } from "@prisma/client";
-import { parseHTML } from "linkedom";
 import * as fs from "fs";
 import * as path from "path";
 import {
   emitTransition,
   isoDay,
-  BROWSERISH_HEADERS,
   type TransitionSpec,
 } from "../../lib/transition-contract";
+import {
+  OFAC_BASE as BASE,
+  fetchHtml,
+  sleep,
+  noticeIdToDate,
+  noticeRefsFromListing,
+  parseNoticeSections,
+  parseSdnBlock,
+  DELETIONS_HEADING,
+  type NoticeRef,
+  type SdnEntryBlock as DeletionEntry,
+} from "./ofac-notice-lib";
+
+// parseSdnBlock is re-exported through the lib; referenced here so the shared
+// parser stays the single source of truth for both OFAC pipelines.
+void parseSdnBlock;
 
 const prisma = new PrismaClient();
 
 const PIPELINE = "ofac_sdn_v1";
 const EVENT_PIPELINE = "event:ofac_delistings_v1";
-const BASE = "https://ofac.treasury.gov";
 const SEARCH_PATH = "/recent-actions/sanctions-list-updates?search_api_fulltext=removals";
 const FETCH_DELAY_MS = 300;
 
@@ -88,37 +101,9 @@ const RESIDUE_PATH = argValue("--residue-path")
   ?? path.join(__dirname, "../../logs/ofac-delistings-residue.jsonl");
 const STATE_PATH = path.join(__dirname, "../../logs/ofac-delistings-last-run.json");
 
-// ── Fetch helpers ─────────────────────────────────────────────────────────────
-
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-async function fetchHtml(url: string): Promise<string> {
-  const ctl = new AbortController();
-  const timer = setTimeout(() => ctl.abort(), 30000);
-  try {
-    const res = await fetch(url, { headers: BROWSERISH_HEADERS, redirect: "follow", signal: ctl.signal });
-    if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`);
-    return await res.text();
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
 // ── Enumerator ────────────────────────────────────────────────────────────────
-
-interface NoticeRef {
-  id: string;        // "20260629" or "20260520_33"
-  url: string;
-  date: string;      // "YYYY-MM-DD" from the id — matches the Release Date
-}
-
-function noticeIdToDate(id: string): string | null {
-  const m = /^(\d{4})(\d{2})(\d{2})(?:_\d+)?$/.exec(id);
-  if (!m) return null;
-  const iso = `${m[1]}-${m[2]}-${m[3]}`;
-  const d = new Date(`${iso}T00:00:00Z`);
-  return isNaN(d.getTime()) || isoDay(d) !== iso ? null : iso;
-}
+// (fetch + notice-ref + SDN-block parsing live in ofac-notice-lib.ts, shared
+// with the additions date-backfill.)
 
 /** Walk the newest-first removals search; stop once a page is entirely older
  *  than `sinceIso` (pre-snapshot notices are residue by construction, C2). */
@@ -131,15 +116,10 @@ async function enumerateNotices(
 
   for (let page = 0; page < MAX_PAGES; page++) {
     const url = `${BASE}${SEARCH_PATH}&page=${page}`;
-    const html = await fetchHtml(url);
-    const { document } = parseHTML(html);
+    const { refs, undatable } = noticeRefsFromListing(await fetchHtml(url));
+    for (const id of undatable) residue.push({ kind: "undatable-notice-id", id });
 
-    const anchors = Array.from(document.querySelectorAll("a"))
-      .map((a) => a.getAttribute("href") ?? "")
-      .map((h) => /\/recent-actions\/(\d{8}(?:_\d+)?)\b/.exec(h))
-      .filter((m): m is RegExpExecArray => m !== null);
-
-    if (anchors.length === 0) {
+    if (refs.length === 0) {
       if (page === 0)
         throw new Error(
           "enumerator parsed 0 notice links on page 0 — page structure changed? FAIL-CLOSED, nothing written",
@@ -148,19 +128,13 @@ async function enumerateNotices(
     }
 
     let pageHasCurrent = false;
-    for (const m of anchors) {
-      const id = m[1];
-      const date = noticeIdToDate(id);
-      if (!date) {
-        residue.push({ kind: "undatable-notice-id", id });
-        continue;
-      }
-      if (date < sinceIso) {
+    for (const ref of refs) {
+      if (ref.date < sinceIso) {
         preSnapshotSeen++;
         continue;
       }
       pageHasCurrent = true;
-      if (!notices.has(id)) notices.set(id, { id, url: `${BASE}/recent-actions/${id}`, date });
+      if (!notices.has(ref.id)) notices.set(ref.id, ref);
     }
 
     // Newest-first: once a whole page is pre-snapshot, everything after is too.
@@ -179,74 +153,7 @@ async function enumerateNotices(
   return [...notices.values()].sort((a, b) => (a.date < b.date ? -1 : 1));
 }
 
-// ── Notice parsing ────────────────────────────────────────────────────────────
-
-interface DeletionEntry {
-  raw: string;            // full SDN-format block
-  primaryName: string;    // as printed ("AYDIN, Recep Cetin" / "MEGASAN ...")
-  matchNames: string[];   // candidate names to match against the DB
-  individual: boolean;
-  programs: string[];     // ["RUSSIA-EO14024"]
-}
-
-const DELETIONS_HEADING = /following deletions have been made to OFAC['’]s SDN List/i;
-
-/** "LAST, First Middle" → "First Middle LAST" (the ingest's fullName frame). */
-function reconstructIndividual(name: string): string | null {
-  const m = /^([^,]+),\s*(.+)$/.exec(name);
-  return m ? `${m[2].trim()} ${m[1].trim()}` : null;
-}
-
-function parseDeletionBlock(raw: string): DeletionEntry | null {
-  let text = raw.replace(/\s+/g, " ").trim();
-  if (!text) return null;
-
-  // "(Cyrillic: МАЛЬЦЕВ, Сергей ...)" parentheticals carry commas that poison
-  // the comma-split name extraction (2026-07-10 preflight #1: most unmatched
-  // individuals were this). The DB names are Latin — strip them everywhere.
-  // OFAC NESTS these ("(a.k.a. X (Cyrillic: ...))" — preflight #2's stray ")"),
-  // so strip innermost-first ([^()]*) and iterate until stable.
-  let prev: string;
-  do {
-    prev = text;
-    text = text.replace(/\([^()]*[Ѐ-ӿ؀-ۿ一-鿿][^()]*\)/g, " ");
-  } while (text !== prev);
-  text = text.replace(/\(\s*\)/g, " ").replace(/\s+/g, " ").trim();
-
-  const individual = /\(individual\)/i.test(text);
-  // Program tags: usually ALL-CAPS ([RUSSIA-EO14024], [SDGT]) but a few carry
-  // digits/mixed case ([561-Related]) — require a leading capital/digit only.
-  const programs = [...text.matchAll(/\[([A-Z0-9][A-Za-z0-9-]*)\]/g)].map((m) => m[1]);
-  // Program tag is what distinguishes an SDN entry block from stray prose.
-  if (programs.length === 0) return null;
-
-  // a.k.a. list (inside the parenthetical after the primary name).
-  const akas = [...text.matchAll(/a\.k\.a\.\s+([^;)]+)[;)]/g)]
-    .map((m) => m[1].replace(/["“”]/g, "").trim())
-    .filter(Boolean);
-
-  let primaryName: string;
-  const beforeParen = text.split(/\s+\(a\.k\.a\./)[0];
-  if (individual) {
-    // "LAST, First Middle, City, Country; DOB ..." → first two comma fields.
-    const fields = beforeParen.split(",").map((s) => s.trim()).filter(Boolean);
-    primaryName = fields.length >= 2 ? `${fields[0]}, ${fields[1]}` : fields[0];
-  } else {
-    // Entities: name ends at the first comma. Vessels/aircraft have NO comma —
-    // "VYACHESLAV ARSHINOV (UBGX2) General Cargo Russia flag; ..." — so also
-    // cut at the first " (" (call-sign/paren) and at the first ";".
-    primaryName = beforeParen.split(",")[0].split(" (")[0].split(";")[0].trim();
-  }
-  if (!primaryName) return null;
-
-  const matchNames = [primaryName, ...akas];
-  if (individual) {
-    const rebuilt = reconstructIndividual(primaryName);
-    if (rebuilt) matchNames.unshift(rebuilt); // ingest frame first — best exact hit
-  }
-
-  return { raw: text, primaryName, matchNames, individual, programs };
-}
+// ── Notice parsing (shared SDN-block parser in ofac-notice-lib.ts) ───────────
 
 interface ParsedNotice {
   ref: NoticeRef;
@@ -255,65 +162,15 @@ interface ParsedNotice {
   hadDeletionsHeading: boolean;
 }
 
-/** Text lines of a block element, split on <br> boundaries. linkedom's
- *  textContent drops <br> entirely, which would concatenate <br>-separated
- *  SDN entries into one undelimited string — so walk child nodes instead. */
-function blockLines(el: Element): string[] {
-  const lines: string[] = [];
-  let cur = "";
-  const walk = (n: Node) => {
-    for (const child of Array.from(n.childNodes)) {
-      if (child.nodeType === 1 && (child as Element).tagName === "BR") {
-        lines.push(cur);
-        cur = "";
-      } else if (child.nodeType === 3) {
-        cur += child.textContent ?? "";
-      } else if (child.nodeType === 1) {
-        walk(child);
-      }
-    }
-  };
-  walk(el);
-  lines.push(cur);
-  return lines.map((l) => l.trim()).filter(Boolean);
-}
-
 async function parseNotice(ref: NoticeRef): Promise<ParsedNotice> {
   const html = await fetchHtml(ref.url);
-  const { document } = parseHTML(html);
-  const title = document.querySelector("h1")?.textContent?.trim() ?? ref.id;
-
-  const entries: DeletionEntry[] = [];
-  let hadDeletionsHeading = false;
-
-  // The deletions section = heading matching DELETIONS_HEADING, then sibling
-  // blocks until the next heading (h1–h6). Drupal renders entries as <p>
-  // (sometimes one <p> holding several entries separated by <br>).
-  // Dedupe on the block-level container so a <p> and its inner <strong>
-  // matching the same heading text don't walk the section twice.
-  const containers = new Set<Element>();
-  for (const el of Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,h6,p,strong"))) {
-    if (!DELETIONS_HEADING.test(el.textContent ?? "")) continue;
-    containers.add(/^H[1-6]$/.test(el.tagName) ? el : el.closest("p,h1,h2,h3,h4,h5,h6") ?? el);
-  }
-
-  for (const heading of containers) {
-    hadDeletionsHeading = true;
-    // Walk forward from the heading's own block-level container.
-    let node: Element = heading;
-    while (node.nextElementSibling) {
-      node = node.nextElementSibling;
-      if (/^H[1-6]$/.test(node.tagName)) break; // next section
-      const blockText = node.textContent ?? "";
-      if (/following (additions|deletions|changes)/i.test(blockText) && !DELETIONS_HEADING.test(blockText)) break;
-      for (const line of blockLines(node)) {
-        const entry = parseDeletionBlock(line);
-        if (entry) entries.push(entry);
-      }
-    }
-  }
-
-  return { ref, title, entries, hadDeletionsHeading };
+  const section = parseNoticeSections(html, DELETIONS_HEADING, ref.id);
+  return {
+    ref,
+    title: section.title,
+    entries: section.entries,
+    hadDeletionsHeading: section.hadHeading,
+  };
 }
 
 // ── DB matching ───────────────────────────────────────────────────────────────

@@ -84,6 +84,17 @@ Everything in 17 §4 (read-time axis via `resolveDisplayAxis` — any new
 plus: **OFAC = build + forward cron** (Robert, 2026-07-10) · patch 3 stays
 dropped · `logs/` stays gitignored (receipts live on the Mac).
 
+Added 2026-07-10 (Robert, after the Q2 + additions probes — memos in logs/):
+- **FDA withdrawals (Q2): §314.150(c) "no longer marketed" emits NO
+  transition** — the approval judgment stands; only safety/efficacy grounds
+  ((a)/(d)/accelerated-approval failures) emit SETTLED→REVERSED. occurredAt =
+  the notice's legal EFFECTIVE date; never emit a future-dated transition
+  (hold until effective).
+- **OFAC additions date-backfill: BUILD NEXT** (before the FDA build).
+  Writes claimEmergedAt on dateless ofac_sdn_v1 claims only; exact/alias
+  matching only (no normalized tier); one-notice-per-claim rule; gated
+  preflight → census → sample review → execute.
+
 ## 3. Execution reality (unchanged from 17 §5, one addition)
 
 Sandbox: docs/specs/edits/tsc/git-commit + **web_fetch works for feed probes**
