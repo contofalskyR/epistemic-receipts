@@ -162,3 +162,18 @@ create busywork).
 briefing 13 addendum (Phase A counts) · `briefings/16` OFAC spec · the three
 `SECURITY-ASSESSMENT-2026-07-09*.md` + `security-patches.diff` ·
 `logs/openalex-retraction-conflicts.jsonl` (Phase A residue).
+
+## Addendum (2026-07-10, Fable 5 session)
+
+- §1 uncommitted set committed as `2ceec0d`, pushed by Robert.
+- **§3 SHIP: VERIFIED LIVE** — Robert ran both curls post-push:
+  metadata-IP → `403`; Wikipedia → reader JSON (`{"embeddable":true,"title":
+  "Retraction",...}` with sanitize-html content). SSRF guard + reader path
+  confirmed on the deployed build.
+- OFAC probe (briefing 16 checkpoint) done: verdict **DATABLE**, memo at
+  `logs/ofac-feed-probe-2026-07-10.md`. Key caveat: active-snapshot corpus →
+  only post-June-2026 delistings matchable (tens of arcs, accruing forward).
+  STOPPED at the checkpoint pending Robert's build-vs-cron call.
+- Still open: Telegram + NARA rotations (Robert); three untracked files
+  (`SECURITY-ASSESSMENT-2026-07-09.md`, `fable-cover-prompt.md`,
+  `tsconfig.checkonly.json`) awaiting a commit/discard call.
