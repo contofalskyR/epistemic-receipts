@@ -202,11 +202,16 @@ function parseDeletionBlock(raw: string): DeletionEntry | null {
   if (!text) return null;
 
   // "(Cyrillic: МАЛЬЦЕВ, Сергей ...)" parentheticals carry commas that poison
-  // the comma-split name extraction (2026-07-10 preflight: most unmatched
+  // the comma-split name extraction (2026-07-10 preflight #1: most unmatched
   // individuals were this). The DB names are Latin — strip them everywhere.
-  text = text.replace(/\((?:Cyrillic|Arabic(?: script)?|Chinese|Cyrillic script)?\s*:?\s*[^)]*[Ѐ-ӿ؀-ۿ一-鿿][^)]*\)/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  // OFAC NESTS these ("(a.k.a. X (Cyrillic: ...))" — preflight #2's stray ")"),
+  // so strip innermost-first ([^()]*) and iterate until stable.
+  let prev: string;
+  do {
+    prev = text;
+    text = text.replace(/\([^()]*[Ѐ-ӿ؀-ۿ一-鿿][^()]*\)/g, " ");
+  } while (text !== prev);
+  text = text.replace(/\(\s*\)/g, " ").replace(/\s+/g, " ").trim();
 
   const individual = /\(individual\)/i.test(text);
   // Program tags: usually ALL-CAPS ([RUSSIA-EO14024], [SDGT]) but a few carry
@@ -561,7 +566,7 @@ async function main() {
       const result = await emitTransition(prisma, spec, { execute: EXECUTE });
       counts[result.action === "planned" ? "planned" : result.action]++;
       const flag = { inserted: "+", planned: "·", exists: "=", skipped: "✗" }[result.action];
-      console.log(`  ${flag} ${result.action.padEnd(8)} RECORDED→REVERSED @ ${ref.date}  ${label}  [${match.method}]`);
+      console.log(`  ${flag} ${result.action.padEnd(8)} RECORDED→REVERSED @ ${ref.date}  ${label}  [${match.method}]  claim=${match.id}`);
       if (result.violations.length > 0) {
         for (const v of result.violations) console.log(`        ! ${v}`);
         residue.push({ kind: "contract-violation", claimId: match.id, notice: ref.id, entry: entry.primaryName, violations: result.violations });
