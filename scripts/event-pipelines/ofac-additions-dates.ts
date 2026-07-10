@@ -211,6 +211,10 @@ async function main() {
 
   for (const ref of notices) {
     counts.notices++;
+    if (counts.notices % 100 === 0)
+      console.log(
+        `  … ${counts.notices}/${notices.length} notices (${counts.cacheHits} cached, ${counts.matched} matched, ${counts.entries} addition entries so far)`,
+      );
     const { html, fromCache } = await fetchNoticeCached(ref);
     if (fromCache) counts.cacheHits++;
     else await sleep(FETCH_DELAY_MS);
