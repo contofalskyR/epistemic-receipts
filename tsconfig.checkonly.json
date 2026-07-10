@@ -8,6 +8,7 @@
   },
   "include": [
     "scripts/event-pipelines/openalex-retraction-join.ts",
+    "scripts/event-pipelines/ofac-delistings.ts",
     "scripts/_census-openalex-retraction.ts",
     "lib/transition-contract.ts"
   ],
