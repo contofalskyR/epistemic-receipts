@@ -10,11 +10,16 @@
     "scripts/event-pipelines/openalex-retraction-join.ts",
     "scripts/event-pipelines/ofac-delistings.ts",
     "scripts/event-pipelines/ofac-additions-dates.ts",
+    "scripts/event-pipelines/who-eml-dates.ts",
     "scripts/event-pipelines/ofac-notice-lib.ts",
     "scripts/event-pipelines/fda-withdrawals.ts",
     "scripts/_census-openalex-retraction.ts",
     "scripts/_census-ofac-baselines.ts",
-    "lib/transition-contract.ts"
+    "lib/transition-contract.ts",
+    "scripts/_census-axis-mismatch.ts",
+    "scripts/backfill-terminal-axis-batch.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

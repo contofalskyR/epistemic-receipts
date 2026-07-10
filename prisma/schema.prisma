@@ -86,6 +86,8 @@ model Claim {
   trajectorySearchDoc      TrajectorySearchDoc?
   claimEmbedding           ClaimEmbedding?
   matterClaims             MatterClaim[]
+  subscriptions         ClaimSubscription[]
+
 
   @@index([ingestedBy])
   @@index([ingestedBy, id])
@@ -682,6 +684,29 @@ model TopicSubscription {
   @@index([userId])
 }
 
+// Claim-level follow: "notify me when this claim's trajectory moves."
+// Mirrors TopicSubscription's consent mechanics (double-opt-in-ready confirmed flag,
+// unsubscribe token, frequency, lastAlertAt watermark); delivery is
+// app/api/cron/claim-alerts, which diffs ClaimStatusHistory.createdAt > lastAlertAt.
+model ClaimSubscription {
+  id               String    @id @default(cuid())
+  email            String
+  claimId          String
+  unsubscribeToken String    @unique @default(cuid())
+  confirmed        Boolean   @default(false)
+  createdAt        DateTime  @default(now())
+  lastAlertAt      DateTime?
+  frequency        String    @default("weekly") // "daily" | "weekly"
+  userId           String?
+
+  claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  user  User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@unique([email, claimId])
+  @@index([claimId])
+  @@index([userId])
+}
+
 model ClaimLocation {
   id          String   @id @default(cuid())
   claimId     String
@@ -852,6 +877,7 @@ model User {
   matterExports      MatterExport[] @relation("MatterExportBy")
 
   @@index([email])
+  claimSubscriptions ClaimSubscription[]
 }
 
 model Account {

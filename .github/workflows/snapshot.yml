@@ -23,10 +23,10 @@ jobs:
     timeout-minutes: 120
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "20"
           cache: "npm"
@@ -51,9 +51,11 @@ jobs:
 
       - name: Determine snapshot ID
         id: snapshot_id
+        env:
+          SNAPSHOT_ID_INPUT: ${{ inputs.snapshot_id }}
         run: |
-          if [ -n "${{ inputs.snapshot_id }}" ]; then
-            echo "id=${{ inputs.snapshot_id }}" >> $GITHUB_OUTPUT
+          if [ -n "$SNAPSHOT_ID_INPUT" ]; then
+            echo "id=$SNAPSHOT_ID_INPUT" >> $GITHUB_OUTPUT
           else
             YEAR=$(date -u +%Y)
             MONTH=$(date -u +%-m)
@@ -63,8 +65,9 @@ jobs:
 
       - name: Full export
         if: ${{ !inputs.sample_only }}
-        run: npx tsx scripts/export-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }}
+        run: npx tsx scripts/export-snapshot.ts --snapshot-id "$SNAPSHOT_ID"
         env:
+          SNAPSHOT_ID: ${{ steps.snapshot_id.outputs.id }}
           DATABASE_URL: ${{ secrets.DIRECT_URL }}
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
@@ -73,8 +76,9 @@ jobs:
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
 
       - name: Sample slice export
-        run: npx tsx scripts/export-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }} --sample
+        run: npx tsx scripts/export-snapshot.ts --snapshot-id "$SNAPSHOT_ID" --sample
         env:
+          SNAPSHOT_ID: ${{ steps.snapshot_id.outputs.id }}
           DATABASE_URL: ${{ secrets.DIRECT_URL }}
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
@@ -84,16 +88,18 @@ jobs:
 
       - name: Verify full snapshot
         if: ${{ !inputs.sample_only }}
-        run: npx tsx scripts/verify-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }}
+        run: npx tsx scripts/verify-snapshot.ts --snapshot-id "$SNAPSHOT_ID"
         env:
+          SNAPSHOT_ID: ${{ steps.snapshot_id.outputs.id }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
 
       - name: Verify sample snapshot
-        run: npx tsx scripts/verify-snapshot.ts --snapshot-id ${{ steps.snapshot_id.outputs.id }} --sample
+        run: npx tsx scripts/verify-snapshot.ts --snapshot-id "$SNAPSHOT_ID" --sample
         env:
+          SNAPSHOT_ID: ${{ steps.snapshot_id.outputs.id }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}

@@ -580,10 +580,15 @@ async function sendTelegram(msg: string) {
     console.log("\n  TELEGRAM_BOT_TOKEN not set; skipping Telegram ping.");
     return;
   }
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!chatId) {
+    console.log("\n  TELEGRAM_CHAT_ID not set; skipping Telegram ping.");
+    return;
+  }
   try {
     const truncated = msg.length > 3500 ? msg.slice(0, 3500) + "…" : msg;
     execSync(
-      `curl -s -X POST "https://api.telegram.org/bot${token}/sendMessage" -d chat_id=7688025079 --data-urlencode text=${JSON.stringify(truncated)} >/dev/null`,
+      `curl -s -X POST "https://api.telegram.org/bot${token}/sendMessage" -d chat_id=${chatId} --data-urlencode text=${JSON.stringify(truncated)} >/dev/null`,
       { stdio: "inherit" },
     );
     console.log("\n  Telegram ping sent.");

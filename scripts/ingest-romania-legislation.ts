@@ -20,7 +20,7 @@ const PIPELINE = 'Pipeline 69'
 const RESULTS_URL = 'https://legislatie.just.ro/Public/RezultateCautare'
 const DETAIL_BASE = 'https://legislatie.just.ro/Public/DetaliiDocument'
 const PAGE_DELAY_MS = 600
-const TELEGRAM_TARGET = '7688025079'
+const TELEGRAM_TARGET = process.env.TELEGRAM_CHAT_ID
 // In dry-run mode, only scan this many pages per doc type (enough for a good sample)
 const DRY_RUN_MAX_PAGES = 3
 
@@ -373,6 +373,10 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
 // ── Notification ───────────────────────────────────────────────────────────────
 
 function notify(message: string) {
+  if (!TELEGRAM_TARGET) {
+    console.log(`  TELEGRAM_CHAT_ID not set — skipping notification: ${message}`)
+    return
+  }
   try {
     execSync(`openclaw message send --channel telegram --target "${TELEGRAM_TARGET}" --message "${message.replace(/"/g, '\\"')}"`, { stdio: 'ignore' })
   } catch {

@@ -64,6 +64,22 @@ export async function verifyApiKey(
     };
   }
 
+  // Fail closed on expiry (SECURITY-ASSESSMENT-2026-07-09 finding #8): a key
+  // past its expiresAt is rejected like a revoked key. Keys with no expiresAt
+  // never expire. Checked before rate limiting so expired keys consume no
+  // quota and record no usage.
+  if (apiKey.expiresAt && apiKey.expiresAt.getTime() <= Date.now()) {
+    return {
+      status: 401,
+      body: {
+        type: "https://epistemic-receipts.app/errors/unauthorized",
+        title: "Unauthorized",
+        status: 401,
+        detail: `API key expired on ${apiKey.expiresAt.toISOString()}.`,
+      },
+    };
+  }
+
   const tier = apiKey.tier as ApiTier;
   const { allowed, remaining, limit, retryAfter } = await checkRateLimit(apiKey.id, tier);
 

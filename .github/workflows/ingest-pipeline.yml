@@ -29,9 +29,9 @@ jobs:
           # paclii excluded from scheduled runs (too slow for cron; run manually)
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '20'
           cache: 'npm'
@@ -47,14 +47,14 @@ jobs:
 
       - name: Run pipeline
         run: |
-          TAG="${{ inputs.tag || matrix.tag }}"
-          DRY_RUN="${{ inputs.dry_run || 'false' }}"
           if [ "$DRY_RUN" = "true" ]; then
             npx tsx scripts/run-pipeline.ts --tag "$TAG" --dry-run
           else
             npx tsx scripts/run-pipeline.ts --tag "$TAG" --full
           fi
         env:
+          TAG: ${{ inputs.tag || matrix.tag }}
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
           ALLOW_EDITS: ${{ secrets.ALLOW_EDITS }}

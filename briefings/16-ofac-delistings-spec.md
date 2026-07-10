@@ -137,3 +137,17 @@ seq assignment are untouched. Verify counts against the DB, never the logs.
   `epistemicAxis` (chip said "Settled" on freshly reversed claims). Fixed via
   `resolveDisplayAxis` same day (page badge, metadata label, share text, child
   badges, JSON-LD description).
+
+### Final close-out (same day, after the additions backfill)
+
+The addition-notices follow-up (option b) executed end-to-end 2026-07-10:
+**8,750 designation dates** written (DAY precision, notice provenance in
+metadata; 48 multi-date + 52 ambiguous refused; 4,842 unmatched = mostly
+pre-notice-era or delisted-pre-snapshot) → Layer-1 baselined all 8,750 (a
+double-run inserted 0 — unique constraint held, audit E1 = 0) → delistings
+re-run emitted the **11 formerly-baselineless arcs**. Final audit:
+**17,723 claims / 17,750 transitions (= 17,723 baselines + 27 delisting
+arcs), 0 hard / 0 warnings.** Coverage went 8,973 → 17,723 dated curves
+(47% → 93% of the pipeline). Scripts: `ofac-additions-dates.ts` +
+shared `ofac-notice-lib.ts`; receipts in logs/ (planned/residue JSONLs,
+notice cache).

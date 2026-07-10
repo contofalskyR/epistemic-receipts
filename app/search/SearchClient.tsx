@@ -75,6 +75,10 @@ const AXIS_STRIPE: Record<string, string> = {
   RECORDED: "border-l-slate-400/50 hover:border-l-slate-400/50",
   OPEN: "border-l-blue-400/70 hover:border-l-blue-400/70",
   UNRESOLVABLE: "border-l-violet-400/70 hover:border-l-violet-400/70",
+  // Terminal transition outcomes — reach the stored column via the write-time
+  // stamp (patch 3); previously only the read-time override surfaced them.
+  REVERSED: "border-l-rose-400/70 hover:border-l-rose-400/70",
+  ABANDONED: "border-l-gray-500/70 hover:border-l-gray-500/70",
 };
 const AXIS_STRIPE_FALLBACK = "border-l-gray-700 hover:border-l-gray-700";
 
@@ -233,7 +237,7 @@ export default function SearchClient() {
     urlTypeRaw === "claims" || urlTypeRaw === "sources" ? urlTypeRaw : "all";
   const urlOffset = Math.max(0, Number.parseInt(searchParams.get("offset") ?? "0", 10) || 0);
   const urlCountry = (searchParams.get("country") ?? "").trim().toUpperCase();
-  const VALID_AXES = ["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE"] as const;
+  const VALID_AXES = ["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE", "REVERSED", "ABANDONED"] as const;
   const urlAxisRaw = (searchParams.get("axis") ?? "").trim().toUpperCase();
   const urlAxis = (VALID_AXES as readonly string[]).includes(urlAxisRaw) ? urlAxisRaw : "";
 

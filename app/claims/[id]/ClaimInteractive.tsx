@@ -211,8 +211,11 @@ function EdgeRow({ edge }: { edge: EdgeDetail; hasRetraction?: boolean }) {
 
   return (
     <>
+      {/* id + scroll-margin: jump target for the timeline's source markers
+          (adaptive-claim-timeline spec — "click marker scrolls to the row"). */}
       <tr
-        className="border-b border-gray-800 hover:bg-gray-900/40 cursor-pointer transition-colors"
+        id={`evidence-${edge.id}`}
+        className="border-b border-gray-800 hover:bg-gray-900/40 cursor-pointer transition-colors scroll-mt-24 target:bg-blue-950/20"
         onClick={() => setExpanded(v => !v)}
       >
         <td className="py-2.5 pr-4">

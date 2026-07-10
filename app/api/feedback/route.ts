@@ -2,11 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdminOrDev } from "@/lib/adminAuth";
 
-const OWNER_CHAT_ID = "7688025079";
+const OWNER_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 async function notifyTelegram(body: string, email: string | null, pageContext: string | null) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) return;
+  if (!OWNER_CHAT_ID) {
+    console.log("[feedback] TELEGRAM_CHAT_ID not set — skipping Telegram notification.");
+    return;
+  }
   const from = email ? ` (${email})` : "";
   const page = pageContext ? `\n📍 ${pageContext}` : "";
   const text = `💬 New feedback${from}${page}\n\n${body}`;

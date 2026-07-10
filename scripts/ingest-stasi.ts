@@ -490,8 +490,13 @@ async function writeRow(
 // ── Notification ──────────────────────────────────────────────────────────────
 
 function notify(message: string) {
+  const chatId = process.env.TELEGRAM_CHAT_ID
+  if (!chatId) {
+    console.log(`  TELEGRAM_CHAT_ID not set — skipping notification: ${message}`)
+    return
+  }
   try {
-    execSync(`openclaw message send --channel telegram --target "7688025079" --message "${message.replace(/"/g, '\\"')}"`, { stdio: 'pipe' })
+    execSync(`openclaw message send --channel telegram --target "${chatId}" --message "${message.replace(/"/g, '\\"')}"`, { stdio: 'pipe' })
     console.log(`  Notification sent: ${message}`)
   } catch {
     console.warn(`  Notification failed (non-fatal): ${message}`)

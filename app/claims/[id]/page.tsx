@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
-import { getClaimDetail, type ClaimDetail, type EdgeDetail, type StatusTransitionSummary } from "@/lib/claim-detail";
+import { getClaimDetail } from "@/lib/claim-detail";
 import { SITE_URL } from "@/lib/site";
 import { claimJsonLd, serializeJsonLd } from "@/lib/jsonld";
 import { resolveDisplayAxis } from "@/lib/transition-contract";
 import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
 import { ShareButtons } from "@/components/ShareButtons";
 import ClaimInteractive from "./ClaimInteractive";
+import AdaptiveClaimTimeline from "./AdaptiveClaimTimeline";
 import BookmarkToggle from "./BookmarkToggle";
+import FollowClaim from "./FollowClaim";
 import AddToCollection from "@/components/AddToCollection";
 import CitationButton from "@/components/CitationButton";
 import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } from "./claim-ui";
@@ -23,6 +25,20 @@ import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } fro
 // NOTE: if `cacheComponents` is ever enabled in next.config.ts, this segment
 // config is removed in that model and this page needs migrating.
 export const revalidate = 86400;
+
+// Pipelines with ongoing transition-event feeds (SCOTUS overrulings table,
+// retraction joins, the OFAC delistings weekly cron, FDA withdrawals) — the
+// follow-claim copy promises checked-on-an-ongoing-basis only for these;
+// everything else gets expectation-setting copy (handoff §2).
+const LIVE_FED_PIPELINES = new Set([
+  "courtlistener_scotus_v1",
+  "openalex_v1",
+  "openalex_journals_v1",
+  "crossref_retractions_v1",
+  "nasa_exoplanet_v1",
+  "ofac_sdn_v1",
+  "drugsatfda_v1",
+]);
 
 export async function generateStaticParams() {
   return [];
@@ -82,290 +98,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Retired records stay reachable for the audit trail but out of the index.
     ...(claim.verificationStatus === "DEPRECATED" ? { robots: { index: false } } : {}),
   };
-}
-
-// ── Inline timeline for a single claim — lifeline redesign ───────────────────
-// Pure server-rendered markup (no hooks). "Today" is the ISR render time —
-// at most 24h stale, same freshness as the rest of the page.
-
-function fmtTlDate(d: Date) {
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-}
-
-function TlLegendDot({ color, label }: { color: string; label: string }) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-      <div style={{ width: 8, height: 8, borderRadius: "50%", background: color, flexShrink: 0 }} />
-      <span style={{ fontSize: 11, color: "#888898" }}>{label}</span>
-    </div>
-  );
-}
-
-// One timeline node — a dated source, a settling-curve transition, or the
-// claim's emergence. The old version rendered ONLY dated sources, captioned
-// every one of them "Claim emerged", ignored ClaimStatusHistory entirely
-// (pages said "no revisions" while the OG description cited a transition),
-// and measured "dormant since emergence" from the LAST SOURCE date
-// (AUDIT-PRELAUNCH-2026-07-06 §5).
-type TlNode = {
-  kind: "emerged" | "source" | "transition";
-  date: Date;
-  edge?: EdgeDetail;
-  transition?: StatusTransitionSummary;
-};
-
-function fmtTlPrecision(d: Date, precision: string | null): string {
-  if (precision === "YEAR") return String(d.getUTCFullYear());
-  if (precision === "QUARTER" || precision === "MONTH") {
-    return d.toLocaleDateString("en-US", { year: "numeric", month: "short", timeZone: "UTC" });
-  }
-  return fmtTlDate(d);
-}
-
-function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
-  const datedEdges = claim.edges.filter(e => e.source.publishedAt);
-  const transitions = [...claim.statusHistory].sort(
-    (a, b) =>
-      (a.seq ?? Infinity) - (b.seq ?? Infinity) ||
-      new Date(a.occurredAt).getTime() - new Date(b.occurredAt).getTime(),
-  );
-
-  const events: TlNode[] = [
-    ...(claim.claimEmergedAt
-      ? [{ kind: "emerged" as const, date: new Date(claim.claimEmergedAt) }]
-      : []),
-    ...datedEdges.map(e => ({
-      kind: "source" as const,
-      date: new Date(e.source.publishedAt!),
-      edge: e,
-    })),
-    ...transitions.map(t => ({
-      kind: "transition" as const,
-      date: new Date(t.occurredAt),
-      transition: t,
-    })),
-  ].sort((a, b) => a.date.getTime() - b.date.getTime());
-
-  if (events.length === 0) {
-    return (
-      <p className="text-xs text-gray-600 italic">
-        No dated sources or transitions — dots will appear here once sources have
-        publication dates or the claim has recorded status transitions.
-      </p>
-    );
-  }
-
-  const today = new Date();
-  const todayTime = today.getTime();
-  const PAD_L = 3, PAD_R = 3, RANGE = 94;
-  const startTime = Math.min(...events.map(e => e.date.getTime()));
-  const totalSpan = Math.max(todayTime - startTime, 1);
-
-  function at(d: Date) {
-    return PAD_L + ((d.getTime() - startTime) / totalSpan) * RANGE;
-  }
-
-  const todayPct = at(today);
-
-  const nodes = events.map(e => ({ ...e, pct: at(e.date) }));
-
-  const yOff = nodes.map((n, i) => {
-    for (let j = 0; j < i; j++) {
-      if (Math.abs(nodes[j].pct - n.pct) < 6) return i % 2 === 0 ? 15 : -15;
-    }
-    return 0;
-  });
-
-  const firstPct = nodes[0].pct;
-  const lastNode = nodes[nodes.length - 1];
-  // Time since the last recorded activity of ANY kind (source or transition) —
-  // not "since emergence", which the old label falsely claimed.
-  const dormantYrs = (todayTime - lastNode.date.getTime()) / (365.25 * 86400000);
-
-  const yearTicks: number[] = [];
-  let lastYearPct = -Infinity;
-  for (let y = new Date(startTime).getFullYear(); y <= today.getFullYear(); y++) {
-    const pct = at(new Date(y, 0, 1));
-    if (pct >= PAD_L && pct <= 100 - PAD_R && pct - lastYearPct >= 5) {
-      yearTicks.push(new Date(y, 0, 1).getTime());
-      lastYearPct = pct;
-    }
-  }
-
-  function voteTag(edge: EdgeDetail) {
-    const v = edge.source.legislativeVotes?.[0];
-    if (!v) return null;
-    const passed = v.passageType === "PASSED";
-    return { text: `${v.yesCount ?? 0}–${v.noCount ?? 0} · ${passed ? "PASSED" : "FAILED"}`, color: passed ? "#22c55e" : "#ef4444" };
-  }
-
-  const BLUE = "#60a5fa", AMB = "#f0a000", MUT = "#888898";
-  const SLATE = "#94a3b8", VIOLET = "#a78bfa";
-  const TRACK_H = 170, AY = 106;
-
-  const dormantChipLeft = lastNode.pct + (todayPct - lastNode.pct) / 2;
-  const dormantLabel = dormantYrs >= 1
-    ? `${(Math.round(dormantYrs * 10) / 10).toFixed(1)} yrs · no new activity`
-    : `${Math.round(dormantYrs * 12)} mo · no new activity`;
-  const showDormant = dormantYrs > 0.3 && (todayPct - lastNode.pct) > 4;
-  const hasTransitions = transitions.length > 0;
-
-  return (
-    <div style={{ background: "#0e0e1c", border: "1px solid #1e1e38", borderRadius: 12, position: "relative", padding: "1.4rem 1.75rem 3.25rem", overflow: "hidden" }}>
-      {/* gradient tint top-left */}
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", borderRadius: 12,
-        background: "radial-gradient(circle at 0% 0%, rgba(96,165,250,0.07) 0%, transparent 55%)" }} />
-
-      {/* legend — top-right */}
-      <div style={{ display: "flex", alignItems: "center", gap: 16,
-        position: "absolute", top: "1.25rem", right: "1.5rem", zIndex: 2, flexWrap: "wrap" }}>
-        {claim.claimEmergedAt && <TlLegendDot color={BLUE} label="Emerged" />}
-        <TlLegendDot color={SLATE} label="Source" />
-        {hasTransitions && <TlLegendDot color={VIOLET} label="Transition" />}
-        <TlLegendDot color={AMB} label="Today" />
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <div style={{ width: 24, height: 0, borderTop: `2px dashed ${MUT}`, opacity: 0.5 }} />
-          <span style={{ fontSize: 11, color: MUT }}>Dormant</span>
-        </div>
-      </div>
-
-      {/* track */}
-      <div style={{ position: "relative", height: TRACK_H, marginTop: "1.1rem" }}>
-
-        {/* active axis: left edge → first emerged node */}
-        <div style={{ position: "absolute", top: AY, height: 2, left: `${PAD_L}%`,
-          width: `${Math.max(0, firstPct - PAD_L)}%`, transform: "translateY(-50%)",
-          background: `linear-gradient(to right, rgba(96,165,250,0.25), ${BLUE})`,
-          pointerEvents: "none" }} />
-
-        {/* dormant axis: last emerged → today */}
-        <div style={{ position: "absolute", top: AY - 1, left: `${lastNode.pct}%`,
-          width: `${Math.max(0, todayPct - lastNode.pct)}%`,
-          borderTop: "2px dashed rgba(136,136,152,0.35)", pointerEvents: "none" }} />
-
-        {/* year ticks */}
-        {yearTicks.map(ts => {
-          const pct = at(new Date(ts));
-          return (
-            <div key={ts}>
-              <div style={{ position: "absolute", left: `${pct}%`, top: AY - 4,
-                width: 1, height: 8, background: "#1e1e38",
-                transform: "translateX(-50%)", pointerEvents: "none" }} />
-              <span style={{ position: "absolute", left: `${pct}%`, top: AY + 8,
-                transform: "translateX(-50%)", fontSize: 10, color: "#3a3a55",
-                whiteSpace: "nowrap", pointerEvents: "none" }}>
-                {new Date(ts).getFullYear()}
-              </span>
-            </div>
-          );
-        })}
-
-        {/* dormant bracket + chip */}
-        {showDormant && (
-          <>
-            <div style={{ position: "absolute", left: `${lastNode.pct + 0.5}%`,
-              width: `${Math.max(0, todayPct - lastNode.pct - 1)}%`,
-              top: AY - 20, height: 10, pointerEvents: "none",
-              borderTop: "1px solid rgba(240,160,0,0.3)",
-              borderLeft: "1px solid rgba(240,160,0,0.3)",
-              borderRight: "1px solid rgba(240,160,0,0.3)",
-              borderRadius: "3px 3px 0 0" }} />
-            <div style={{ position: "absolute", left: `${dormantChipLeft}%`, top: AY - 38,
-              transform: "translateX(-50%)", whiteSpace: "nowrap", fontSize: 10,
-              color: AMB, background: "rgba(240,160,0,0.1)",
-              border: "1px solid rgba(240,160,0,0.28)", borderRadius: 20,
-              padding: "2px 9px", zIndex: 5, pointerEvents: "none" }}>
-              {dormantLabel}
-            </div>
-          </>
-        )}
-
-        {/* today: full-height vertical line */}
-        <div style={{ position: "absolute", left: `${todayPct}%`, top: 0, bottom: 0, width: 1,
-          background: "rgba(240,160,0,0.18)", transform: "translateX(-50%)",
-          pointerEvents: "none" }} />
-
-        {/* today: halo */}
-        <div style={{ position: "absolute", left: `${todayPct}%`, top: AY, width: 40, height: 40,
-          transform: "translate(-50%, -50%)", borderRadius: "50%", pointerEvents: "none",
-          background: "radial-gradient(circle, rgba(240,160,0,0.22) 0%, transparent 68%)" }} />
-
-        {/* today: core */}
-        <div style={{ position: "absolute", left: `${todayPct}%`, top: AY, width: 9, height: 9,
-          transform: "translate(-50%, -50%)", borderRadius: "50%", background: AMB,
-          zIndex: 10 }} />
-
-        {/* today: caption right-below */}
-        <div style={{ position: "absolute", left: `${todayPct}%`, top: AY + 8,
-          paddingLeft: 10, pointerEvents: "none", zIndex: 5 }}>
-          <div style={{ fontSize: 11, color: AMB, fontWeight: 600,
-            whiteSpace: "nowrap", lineHeight: 1.3 }}>today</div>
-          <div style={{ fontSize: 10, color: MUT,
-            whiteSpace: "nowrap", lineHeight: 1.3 }}>{fmtTlDate(today)}</div>
-        </div>
-
-        {/* event nodes — emergence, dated sources, status transitions */}
-        {nodes.map((node, idx) => {
-          const nodeAY = AY + yOff[idx];
-          const tag = node.kind === "source" && node.edge ? voteTag(node.edge) : null;
-          const color =
-            node.kind === "emerged" ? BLUE :
-            node.kind === "transition" ? VIOLET : SLATE;
-          const caption =
-            node.kind === "emerged" ? "Claim emerged" :
-            node.kind === "transition"
-              ? `${node.transition!.fromAxis ? `${node.transition!.fromAxis} → ` : "→ "}${node.transition!.toAxis}`
-              : "Source published";
-          const dateLabel =
-            node.kind === "emerged"
-              ? fmtTlPrecision(node.date, claim.claimEmergedPrecision)
-              : node.kind === "transition"
-                ? fmtTlPrecision(node.date, node.transition!.datePrecision)
-                : fmtTlDate(node.date);
-          const key =
-            node.kind === "source" ? `s-${node.edge!.id}` :
-            node.kind === "transition" ? `t-${node.transition!.occurredAt}-${node.transition!.toAxis}` :
-            "emerged";
-          const rgb =
-            node.kind === "emerged" ? "96,165,250" :
-            node.kind === "transition" ? "167,139,250" : "148,163,184";
-          return (
-            <div key={key} style={{ position: "absolute", left: `${node.pct}%`, top: nodeAY,
-              width: 0, height: 0, zIndex: 3 }}>
-              {/* halo */}
-              <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
-                width: 54, height: 54, borderRadius: "50%", pointerEvents: "none",
-                background: `radial-gradient(circle, rgba(${rgb},0.2) 0%, transparent 68%)` }} />
-              {/* ring */}
-              <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
-                width: 22, height: 22, borderRadius: "50%",
-                border: `1.5px solid ${color}`, background: `rgba(${rgb},0.05)` }} />
-              {/* core */}
-              <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
-                width: 10, height: 10, borderRadius: "50%", background: color, zIndex: 1 }} />
-              {/* caption above */}
-              <div style={{ position: "absolute", bottom: "calc(50% + 15px)",
-                transform: "translateX(-50%)", display: "flex", flexDirection: "column",
-                alignItems: "center", paddingBottom: 4, pointerEvents: "none", zIndex: 2 }}>
-                <span style={{ fontSize: 10, color: node.kind === "transition" ? VIOLET : MUT,
-                  whiteSpace: "nowrap", lineHeight: 1.4 }}>{caption}</span>
-                <span style={{ fontSize: 10, color: "#b0b0c8", fontWeight: 500,
-                  whiteSpace: "nowrap", lineHeight: 1.4 }}>{dateLabel}</span>
-                {tag && (
-                  <span style={{ fontSize: 9, color: tag.color, whiteSpace: "nowrap",
-                    lineHeight: 1.4, marginTop: 1, background: `${tag.color}1a`,
-                    border: `1px solid ${tag.color}44`, borderRadius: 4,
-                    padding: "1px 4px" }}>{tag.text}</span>
-                )}
-              </div>
-            </div>
-          );
-        })}
-
-      </div>
-
-    </div>
-  );
 }
 
 // ── Main page (server component) ─────────────────────────────────────────────
@@ -447,6 +179,7 @@ export default async function ClaimDetailPage({ params }: Props) {
           <AddToCollection claimId={claim.id} />
           <CitationButton type="claim" id={claim.id} />
         </div>
+        <FollowClaim claimId={claim.id} liveFed={LIVE_FED_PIPELINES.has(claim.ingestedBy)} />
         <ShareButtons
           url={`${SITE_URL}/claims/${claim.id}`}
           text={`"${claim.text.slice(0, 220)}"${displayAxis ? ` — ${displayAxis}` : ""} 🧾`}
@@ -563,7 +296,7 @@ export default async function ClaimDetailPage({ params }: Props) {
       {/* Embedded timeline */}
       <section className="space-y-3">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">Timeline</h2>
-        <ClaimTimeline claim={claim} />
+        <AdaptiveClaimTimeline claim={claim} displayAxis={displayAxis} todayIso={new Date().toISOString()} />
       </section>
 
       {/* Evidence table + follow-up/relations panels (client island) */}
