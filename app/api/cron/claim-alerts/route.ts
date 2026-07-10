@@ -61,7 +61,11 @@ export async function GET(request: Request) {
 
   let emailsSent = 0;
   const canSend = !!process.env.RESEND_API_KEY;
-  let resend: { emails: { send: (o: object) => Promise<unknown> } } | null = null;
+  // Method syntax (bivariant), not arrow-property (strictly contravariant) —
+  // Resend's send(payload: CreateEmailOptions) is narrower than (o: object)
+  // and fails assignment under the arrow form. Recorded per the packet's
+  // "no silent hand-resolutions" rule.
+  let resend: { emails: { send(o: object): Promise<unknown> } } | null = null;
   if (canSend) {
     const { Resend } = await import("resend");
     resend = new Resend(process.env.RESEND_API_KEY);
