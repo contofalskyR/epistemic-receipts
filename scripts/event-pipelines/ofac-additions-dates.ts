@@ -153,6 +153,7 @@ function toLite(c: { id: string; text: string; metadata: unknown; claimEmergedAt
 interface MatchIndex {
   byName: Map<string, ClaimLite[]>;
   byAlias: Map<string, ClaimLite[]>;
+  byId: Map<string, ClaimLite>;
 }
 
 const NAME_FRAME_RE = /^[^:]+:\s*(.*?)\s*\(OFAC SDN\)/;
@@ -165,6 +166,7 @@ async function buildMatchIndex(): Promise<MatchIndex> {
   });
   const byName = new Map<string, ClaimLite[]>();
   const byAlias = new Map<string, ClaimLite[]>();
+  const byId = new Map<string, ClaimLite>();
   const push = (map: Map<string, ClaimLite[]>, key: string, lite: ClaimLite) => {
     const k = key.toUpperCase().replace(/\s+/g, " ").trim();
     if (!k) return;
@@ -174,6 +176,7 @@ async function buildMatchIndex(): Promise<MatchIndex> {
   };
   for (const row of rows) {
     const lite = toLite(row);
+    byId.set(lite.id, lite);
     const framed = NAME_FRAME_RE.exec(row.text)?.[1];
     if (framed) push(byName, framed, lite);
     const aliases = ((row.metadata ?? {}) as { aliases?: unknown }).aliases;
@@ -181,7 +184,7 @@ async function buildMatchIndex(): Promise<MatchIndex> {
       for (const a of aliases) if (typeof a === "string") push(byAlias, a, lite);
   }
   console.log(`Index: ${rows.length} claims, ${byName.size} names, ${byAlias.size} aliases.`);
-  return { byName, byAlias };
+  return { byName, byAlias, byId };
 }
 
 function findSdnClaimExact(index: MatchIndex, entry: SdnEntryBlock):
@@ -293,7 +296,11 @@ async function main() {
     }
   }
 
-  // Stage 2: apply the guardrails per claim, then write.
+  // Stage 2: apply the guardrails per claim (in-memory — the index already
+  // holds claimEmergedAt/createdAt as of run start; the write-time updateMany
+  // null-guard is the race authority). Was a findUnique per claim: ~16k
+  // silent Neon round-trips ≈ 30 min (2026-07-10, "stuck at 1800").
+  console.log(`\nApplying guardrails to ${byClaim.size} matched claims (in-memory)…`);
   const planned: PlannedWrite[] = [];
   for (const [claimId, plans] of byClaim) {
     const dates = [...new Set(plans.map((p) => p.date))];
@@ -316,18 +323,15 @@ async function main() {
       residue.push({ kind: "malformed-name", claimId, entry: plan.entryName, notice: plan.noticeId });
       continue;
     }
-    const claim = await prisma.claim.findUnique({
-      where: { id: claimId },
-      select: { claimEmergedAt: true, createdAt: true },
-    });
-    if (!claim) continue;
-    if (claim.claimEmergedAt) {
+    const lite = index.byId.get(claimId);
+    if (!lite) continue;
+    if (lite.claimEmergedAt) {
       counts.alreadyDated++;
       continue; // never overwrite an existing date
     }
-    if (new Date(`${plan.date}T00:00:00Z`).getTime() > claim.createdAt.getTime()) {
+    if (new Date(`${plan.date}T00:00:00Z`).getTime() > lite.createdAt.getTime()) {
       counts.postdatesSnapshot++;
-      residue.push({ kind: "postdates-snapshot", claimId, entry: plan.entryName, date: plan.date, claimCreatedAt: isoOf(claim.createdAt) });
+      residue.push({ kind: "postdates-snapshot", claimId, entry: plan.entryName, date: plan.date, claimCreatedAt: isoOf(lite.createdAt) });
       continue;
     }
     planned.push(plan);
@@ -348,11 +352,22 @@ async function main() {
     console.log(`  · ${p.date}  ${p.entryName}  [${p.method}]  notice=${p.noticeId}  claim=${p.claimId}${p.uid ? ` uid=${p.uid}` : ""}`);
 
   if (EXECUTE) {
+    // Metadata for the provenance merge, batch-fetched in chunks (the old
+    // findUnique-per-claim shape is what made stage 2 crawl).
+    console.log(`\nWriting ${planned.length} dates (metadata batch-fetched; heartbeat every 500)…`);
+    const metaById = new Map<string, Record<string, unknown>>();
+    const ids = planned.map((p) => p.claimId);
+    for (let i = 0; i < ids.length; i += 500) {
+      const rows = await prisma.claim.findMany({
+        where: { id: { in: ids.slice(i, i + 500) } },
+        select: { id: true, metadata: true },
+      });
+      for (const r of rows) metaById.set(r.id, (r.metadata ?? {}) as Record<string, unknown>);
+    }
+    let written = 0;
     for (const p of planned) {
-      const row = await prisma.claim.findUnique({ where: { id: p.claimId }, select: { metadata: true } });
-      const meta = ((row?.metadata ?? {}) as Record<string, unknown>);
       const merged = {
-        ...meta,
+        ...(metaById.get(p.claimId) ?? {}),
         designation_notice_url: p.noticeUrl,
         designation_notice_id: p.noticeId,
         designation_dated_by: DATED_BY,
@@ -365,12 +380,10 @@ async function main() {
           metadata: merged,
         },
       });
-      if (res.count === 1) {
-        counts.updated++;
-        console.log(`  + dated ${p.date}  ${p.entryName}  claim=${p.claimId}`);
-      } else {
-        counts.skippedRace++;
-      }
+      if (res.count === 1) counts.updated++;
+      else counts.skippedRace++;
+      written++;
+      if (written % 500 === 0) console.log(`  … ${written}/${planned.length} written (${counts.updated} updated, ${counts.skippedRace} race-skipped)`);
     }
   }
 
