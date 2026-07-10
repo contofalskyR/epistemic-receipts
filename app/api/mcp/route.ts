@@ -74,6 +74,7 @@ const AXIS_LABELS: Record<string, string> = {
   RECORDED: "Recorded (documented occurrence)",
   OPEN: "Open (insufficient evidence)",
   UNRESOLVABLE: "Unresolvable (inherently contested)",
+  REVERSED: "Reversed (overturned or retracted after being recorded)",
   ABANDONED: "Abandoned / deprecated",
 };
 function fmtAxis(a: string | null): string { return (a && AXIS_LABELS[a]) ?? a ?? "unknown"; }
@@ -96,7 +97,7 @@ function createMcpServer(cfg: { baseUrl: string; apiKey: string }): McpServer {
     "Full-text and semantic search over the Epistemic Receipts claim graph. Returns matching claims with epistemic axis, provenance grade (documentation depth — not truth), and links. Entry point to find claim IDs for follow-up tools.",
     {
       query: z.string().min(3).max(500).describe('Search terms. Example: "mRNA vaccine effectiveness 2021"'),
-      axis: z.enum(["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE"]).optional(),
+      axis: z.enum(["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE", "REVERSED", "ABANDONED"]).optional(),
       limit: z.number().int().min(1).max(50).optional().default(10),
     },
     async ({ query, axis, limit }) => {
