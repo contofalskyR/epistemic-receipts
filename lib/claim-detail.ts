@@ -82,6 +82,9 @@ export type ChildClaimDetail = {
   epistemicAxis: string | null;
   claimType: string;
   _count: { edges: number };
+  /** Terminal transition only (take 1) — feeds resolveDisplayAxis so child
+   *  badges can't leak a stale stored axis (leak site #5, 2026-07-10). */
+  statusHistory: { toAxis: string; seq: number | null }[];
 };
 
 export type TopicTag = { id: string; name: string; slug: string; domain: string };
@@ -167,6 +170,17 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
       epistemicAxis: true,
       claimType: true,
       _count: { select: { edges: { where: { deleted: false } } } },
+      // Terminal row only — resolveDisplayAxis input for the child badge
+      // (axis-leak site #5). take-1 keeps the hot path lean (children are few).
+      statusHistory: {
+        orderBy: [
+          { seq: { sort: "desc", nulls: "last" } },
+          { occurredAt: "desc" },
+          { createdAt: "desc" },
+        ],
+        take: 1,
+        select: { toAxis: true, seq: true },
+      },
     },
   },
   edges: {

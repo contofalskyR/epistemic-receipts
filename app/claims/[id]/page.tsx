@@ -5,6 +5,7 @@ import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge"
 import { getClaimDetail, type ClaimDetail, type EdgeDetail, type StatusTransitionSummary } from "@/lib/claim-detail";
 import { SITE_URL } from "@/lib/site";
 import { claimJsonLd, serializeJsonLd } from "@/lib/jsonld";
+import { resolveDisplayAxis } from "@/lib/transition-contract";
 import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
 import { ShareButtons } from "@/components/ShareButtons";
 import ClaimInteractive from "./ClaimInteractive";
@@ -42,7 +43,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const title = `${truncate(claim.text, 90)} — Epistemic Receipts`;
-  const axisLabel = (claim.epistemicAxis ? AXIS_CONFIG[claim.epistemicAxis]?.label : null) ?? "Unclassified";
+  // Display axis, not the stored column — a reversed claim must not label
+  // itself with its stale pre-reversal axis (leak site #5, briefing 17 §4).
+  const displayAxis = resolveDisplayAxis(claim);
+  const axisLabel = (displayAxis ? AXIS_CONFIG[displayAxis]?.label : null) ?? "Unclassified";
   const uniqueSources = new Set(claim.edges.map(e => e.source.id)).size;
   const latest = claim.statusHistory[0];
   const latestBit = latest
@@ -374,6 +378,9 @@ export default async function ClaimDetailPage({ params }: Props) {
   const claim = await getClaimDetail(id);
   if (!claim) notFound();
 
+  // Display axis, not the stored column (leak site #5 — briefing 17 §4:
+  // every epistemicAxis read goes through resolveDisplayAxis).
+  const displayAxis = resolveDisplayAxis(claim);
   const uniqueSources = new Set(claim.edges.map(e => e.source.id)).size;
 
   return (
@@ -411,7 +418,7 @@ export default async function ClaimDetailPage({ params }: Props) {
         )}
         <h1 className="text-xl font-semibold text-white leading-snug">{claim.text}</h1>
         <div className="flex items-center gap-2 flex-wrap">
-          <EpistemicAxisBadge axis={claim.epistemicAxis} />
+          <EpistemicAxisBadge axis={displayAxis} />
           <span
             className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400"
             title={CLAIM_TYPE_TOOLTIP[claim.claimType] ?? ""}
@@ -442,7 +449,7 @@ export default async function ClaimDetailPage({ params }: Props) {
         </div>
         <ShareButtons
           url={`${SITE_URL}/claims/${claim.id}`}
-          text={`"${claim.text.slice(0, 220)}"${claim.epistemicAxis ? ` — ${claim.epistemicAxis}` : ""} 🧾`}
+          text={`"${claim.text.slice(0, 220)}"${displayAxis ? ` — ${displayAxis}` : ""} 🧾`}
         />
         {claim.topics.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
@@ -577,7 +584,7 @@ export default async function ClaimDetailPage({ params }: Props) {
                   {child.text}
                 </p>
                 <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                  <EpistemicAxisBadge axis={child.epistemicAxis} />
+                  <EpistemicAxisBadge axis={resolveDisplayAxis(child)} />
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
                     {CLAIM_TYPE_LABEL[child.claimType] ?? child.claimType}
                   </span>

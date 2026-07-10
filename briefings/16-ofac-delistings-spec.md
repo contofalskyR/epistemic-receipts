@@ -111,3 +111,29 @@ to other pipelines (that's editorial CITES work, not this ingester — AGENTS.md
 Dates never invented (an undatable delisting is residue). No loose fuzzy matches
 (skip+count). No writes outside the contract. The classifier/state-machine and
 seq assignment are untouched. Verify counts against the DB, never the logs.
+
+## Addendum — EXECUTED 2026-07-10 (Fable 5 session; all gates passed)
+
+- Probe DATABLE → built `scripts/event-pipelines/ofac-delistings.ts` + fail-closed
+  weekly cron wrapper `scripts/cron/ofac-delistings-weekly.sh` (NOT yet scheduled —
+  enabling it is Robert's call). Final preflight: 5 notices ≥ snapshot 2026-06-04,
+  37 deletion entries, match 37/37 = 100%, planned 16.
+- Executed 16 inserts (pilot 8 + full 8), derived from DB: audit scope went
+  8,973 claims / 8,973 transitions → **8,989 transitions**; audit green twice
+  (E1/C1/C2/D2/S1/A1/V1 = 0, 0 warnings). Curves eyeballed by Robert
+  (MALTSEV cmq006f330x35..., ARSHINOV cmq00e2yd12t1... screenshots).
+- Residue: 11 matched-but-baselineless entities (dateless claims — census
+  `scripts/_census-ofac-baselines.ts`: **10,061 ofac_sdn_v1 claims have zero
+  history rows**; Layer-1 skips claimEmergedAt=null). Follow-up candidate, probe
+  first: OFAC Recent Actions ADDITION notices (2001→) could date designations at
+  scale — would baseline much of the 10k and unlock these 11 arcs. Residue JSONL
+  is per-run (latest run overwrites; canonical snapshots live in the checkpoint
+  memos `logs/ofac-delistings-checkpoint{1,2}-2026-07-10.md`).
+- Commits: `a60338d` build+cron · `01c3662`/`d17ae13` parser (Cyrillic + nested
+  parens, vessels; two preflight iterations under CHECKPOINT 2) · `ff58623`
+  census · `c9db2d6` re-run idempotency (terminal-REVERSED flows to the
+  contract's exists/conflict logic — cron re-runs are clean).
+- Side find: axis-leak site #5 — `/claims/[id]` page + `lib/jsonld.ts` read raw
+  `epistemicAxis` (chip said "Settled" on freshly reversed claims). Fixed via
+  `resolveDisplayAxis` same day (page badge, metadata label, share text, child
+  badges, JSON-LD description).

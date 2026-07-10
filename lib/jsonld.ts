@@ -1,5 +1,6 @@
 import type { ClaimDetail } from "@/lib/claim-detail";
 import type { TrajectoryDetail } from "@/lib/trajectory-detail";
+import { resolveDisplayAxis } from "@/lib/transition-contract";
 import { SITE_URL } from "@/lib/site";
 
 // ── JSON-LD builders (briefing 04, task 5) ────────────────────────────────────
@@ -35,9 +36,11 @@ export function claimJsonLd(claim: ClaimDetail): object {
   const url = `${SITE_URL}/claims/${claim.id}`;
   const latest = claim.statusHistory[0] ?? null;
 
-  // Dated status assertion — the honest core of the markup.
+  // Dated status assertion — the honest core of the markup. Display axis, not
+  // the stored column (leak site #5): a reversed claim must not tell crawlers
+  // it is still SETTLED/CONTESTED.
   const statusBits = [
-    `Epistemic status: ${claim.epistemicAxis ?? "unclassified"}` +
+    `Epistemic status: ${resolveDisplayAxis(claim) ?? "unclassified"}` +
       (latest ? ` as of ${isoDate(latest.occurredAt, latest.datePrecision)}` : ""),
     latest
       ? `Latest transition: ${latest.fromAxis ? `${latest.fromAxis} → ` : ""}${latest.toAxis}`
