@@ -85,6 +85,13 @@ plus: **OFAC = build + forward cron** (Robert, 2026-07-10) · patch 3 stays
 dropped · `logs/` stays gitignored (receipts live on the Mac).
 
 Added 2026-07-10 (Robert, after the Q2 + additions probes — memos in logs/):
+- **Patch 3 is UN-DROPPED (supersedes 17 §4 / 18 Q4 "stays dropped").** Robert,
+  2026-07-10, on delivery of the er-kit execution packet: all 4 patches apply;
+  the write-time stamp COEXISTS with the read-time layer (stamp is
+  self-enforcing forward, read-time stays as safety net). Trigger: leak sites
+  #4 and #5 within two days — exactly briefing 17's own escalation clause.
+  Backfill remains behind its dry-run STOP gate (by-axis breakdown must be
+  REVERSED/ABANDONED-dominated).
 - **FDA withdrawals (Q2): §314.150(c) "no longer marketed" emits NO
   transition** — the approval judgment stands; only safety/efficacy grounds
   ((a)/(d)/accelerated-approval failures) emit SETTLED→REVERSED. occurredAt =
