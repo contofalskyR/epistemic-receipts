@@ -52,23 +52,43 @@ async function main() {
   const counts: Record<Status, number> = { OPEN: 0, STALLED: 0, RESOLVED: 0, ORPHANED: 0 };
   const orphans: { nct: string; title: string; sponsor: string; completed: string; reason: string }[] = [];
   const oddities: string[] = [];
+  // Full per-study rows (every study pulled, not just ORPHANED) so downstream reports can
+  // trace every count in the markdown summary back to an individual record.
+  const csvRows: string[] = [
+    "nctId,title,sponsor,primaryCompletionDate,completionDate,overallStatus,hasResults,classifiedStatus,reason",
+  ];
+  const csvEscape = (v: string) => `"${v.replace(/"/g, '""')}"`;
 
   for (const st of studies) {
+    const ident = st.protocolSection.identificationModule;
+    const s = st.protocolSection.statusModule;
     try {
       const r = classifyStudy(st, AS_OF);
       counts[r.status]++;
+      csvRows.push(
+        [
+          ident.nctId,
+          csvEscape(ident.briefTitle ?? ""),
+          csvEscape(st.protocolSection.sponsorCollaboratorsModule?.leadSponsor?.name ?? ""),
+          s.primaryCompletionDateStruct?.date ?? "",
+          s.completionDateStruct?.date ?? "",
+          s.overallStatus ?? "",
+          String(!!st.hasResults),
+          r.status,
+          csvEscape(r.reason),
+        ].join(","),
+      );
       if (r.status === "ORPHANED") {
-        const s = st.protocolSection.statusModule;
         orphans.push({
-          nct: st.protocolSection.identificationModule.nctId,
-          title: st.protocolSection.identificationModule.briefTitle.slice(0, 90),
+          nct: ident.nctId,
+          title: ident.briefTitle.slice(0, 90),
           sponsor: st.protocolSection.sponsorCollaboratorsModule?.leadSponsor?.name ?? "—",
           completed: s.completionDateStruct?.date ?? s.primaryCompletionDateStruct?.date ?? "—",
           reason: r.reason,
         });
       }
     } catch (e) {
-      oddities.push(`${st.protocolSection?.identificationModule?.nctId ?? "?"}: ${(e as Error).message}`);
+      oddities.push(`${ident?.nctId ?? "?"}: ${(e as Error).message}`);
     }
   }
 
@@ -105,6 +125,9 @@ async function main() {
   const path = `scripts/output/rct-cohort-report-${AS_OF}.md`;
   writeFileSync(path, report);
   process.stderr.write(`\nwritten: ${path}\n`);
+  const csvPath = `scripts/output/rct-cohort-data-${AS_OF}.csv`;
+  writeFileSync(csvPath, csvRows.join("\n") + "\n");
+  process.stderr.write(`written: ${csvPath}\n`);
 }
 
 main().catch((e) => {
