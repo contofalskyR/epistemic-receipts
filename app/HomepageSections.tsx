@@ -13,8 +13,10 @@ export type HomepageStats = {
   claims: number;
   /** ClaimStatusHistory rows — dated status transitions across the corpus. */
   transitions: number;
-  /** Non-deprecated claims with ≥1 transition row — openable settling curves. */
+  /** Non-deprecated claims with ≥2 dated transitions — moved past the entry point at least once. */
   settlingCurves: number;
+  /** Subset of settlingCurves whose transitions land on more than one distinct calendar date — real movement over time, not a same-day bulk completion. */
+  settlingCurvesMultiDate: number;
   sources: number;
   legislativeVotes: number;
   retractedPapers: number;
@@ -298,6 +300,7 @@ function CorpusBand({
     { label: "claims indexed", value: stats.claims },
     { label: "dated transitions", value: stats.transitions },
     { label: "settling curves", value: stats.settlingCurves },
+    { label: "curves with movement over time", value: stats.settlingCurvesMultiDate },
     { label: "primary sources", value: stats.sources },
     { label: "congressional votes", value: stats.legislativeVotes },
     { label: "retracted papers", value: stats.retractedPapers },

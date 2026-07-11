@@ -214,3 +214,20 @@ describe("Claim detail API", () => {
     expect(firstStatus.occurredAt).toBeTruthy();
   });
 });
+
+// ─── Settling curve counts (honest split under a same-day bulk promotion) ────
+
+describe("getSettlingCurveCounts()", () => {
+  it("counts a same-day 2-step curve toward the total but not toward multi-date", async () => {
+    const { getSettlingCurveCounts } = await import("@/lib/curve-counts");
+
+    const counts = await getSettlingCurveCounts();
+
+    // Fixture has exactly two curved claims: claim5 (two distinct dates,
+    // 2020-01-01 and 2023-06-01) and claim6 (same-day RECORDED→SETTLED,
+    // both rows on 2023-01-05). The other 4 claims have no statusHistory
+    // at all, so they contribute to neither number.
+    expect(counts.totalSettlingCurves).toBe(2);
+    expect(counts.multiDateSettlingCurves).toBe(1);
+  });
+});
