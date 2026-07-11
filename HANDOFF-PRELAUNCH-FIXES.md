@@ -1,5 +1,8 @@
 # Handoff — prelaunch fixes (already implemented, needs ship)
 
+> **2026-07-10 UPDATE:** All fixes described below are shipped to `main` (last commit: `1b5f030`). Read this as historical record, not a todo list. Cross-reference `git log` for the definitive commit history.
+
+
 **Status: the code is written and in the working tree. This is NOT a build-from-scratch
 spec — it's a review-and-ship handoff.** Everything below is already applied to
 `epistemic-receipts` (Next 16). `tsc --noEmit` passes (exit 0); ESLint is clean on
