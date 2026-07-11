@@ -143,11 +143,47 @@ const MONTHS: Record<string, string> = {
 };
 
 function parseLongDate(s: string): string | null {
-  const m = /([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/.exec(s);
-  if (!m) return null;
-  const mm = MONTHS[m[1].toLowerCase()];
-  if (!mm) return null;
-  return `${m[3]}-${mm}-${String(Number(m[2])).padStart(2, "0")}`;
+  let m = /([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/.exec(s);
+  if (m) {
+    const mm = MONTHS[m[1].toLowerCase()];
+    if (!mm) return null;
+    return `${m[3]}-${mm}-${String(Number(m[2])).padStart(2, "0")}`;
+  }
+  // "Month Year" (no day) — rare, but occurs in the corpus. Yields MONTH
+  // precision (parseFlexibleDate infers this from the "YYYY-MM" shape).
+  m = /([A-Za-z]+)\s+(\d{4})/.exec(s);
+  if (m) {
+    const mm = MONTHS[m[1].toLowerCase()];
+    if (!mm) return null;
+    return `${m[2]}-${mm}`;
+  }
+  return null;
+}
+
+// Lead-in phrasings observed in the DATES: field, most-specific first so a
+// generic "applicable"/"effective" doesn't pre-empt a longer, more precise
+// match at the same position.
+const DATE_RE = "[A-Za-z]+\\s+\\d{1,2},\\s*\\d{4}|[A-Za-z]+\\s+\\d{4}";
+const EFFECTIVE_DATE_PATTERNS: RegExp[] = [
+  new RegExp(`withdrawn as of\\s+(${DATE_RE})`, "i"),
+  new RegExp(`withdrawal of approval is applicable\\s+(${DATE_RE})`, "i"),
+  new RegExp(`the effective date is\\s+(${DATE_RE})`, "i"),
+  new RegExp(`\\beffective\\s+(${DATE_RE})`, "i"),
+  new RegExp(`\\bapplicable\\s+(${DATE_RE})`, "i"),
+];
+
+/** Scope date extraction to the DATES: field only — never the whole notice. */
+function extractEffectiveDate(plain: string): string | null {
+  const datesMatch =
+    /\bDATES:\s*(.*?)\s*(?:ADDRESSES:|FOR FURTHER INFORMATION CONTACT:|SUPPLEMENTARY INFORMATION:|EFFECTIVE DATE:|$)/i.exec(
+      plain,
+    );
+  const section = datesMatch ? datesMatch[1] : plain;
+  for (const re of EFFECTIVE_DATE_PATTERNS) {
+    const m = re.exec(section);
+    if (m) return parseLongDate(m[1]);
+  }
+  return null;
 }
 
 type Ground = "commercial-c" | "safety-efficacy" | "unclassified";
@@ -176,10 +212,10 @@ function classifyGround(text: string): { ground: Ground; cite: string } {
 function parseNoticeXml(xml: string): ParsedNotice {
   const plain = xml.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 
-  // DATES section: "Approval is withdrawn as of August 5, 2026."
-  let effectiveDate: string | null = null;
-  const asOf = /withdrawn as of\s+([A-Za-z]+\s+\d{1,2},\s*\d{4})/i.exec(plain);
-  if (asOf) effectiveDate = parseLongDate(asOf[1]);
+  // DATES section: "Approval is withdrawn as of August 5, 2026." / "Effective
+  // April 6, 2005." / "The effective date is April 18, 2016." / "Withdrawal
+  // of approval is applicable December 23, 2020." / "Applicable ...".
+  const effectiveDate = extractEffectiveDate(plain);
 
   const { ground, cite } = classifyGround(plain);
 
