@@ -4,8 +4,23 @@
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
+import { emitTransition, type TransitionSpec } from '../lib/transition-contract'
 
 const prisma = new PrismaClient()
+
+// AA-1 (findings/2026-07-11-tobacco-whitepaper): the two whitepaper-cited
+// standalone claims below are NOT created by this script — they pre-exist in
+// the DB (auto-ingested, zero ClaimStatusHistory) and are the exact claim IDs
+// dumped by scripts/inspect-whitepaper-claims.ts. Re-run that script and
+// confirm these IDs still resolve to the Müller/Surgeon-General claims before
+// using --execute; a claim rename or re-ingest would silently repoint these.
+const EXECUTE_TRANSITIONS = process.argv.includes('--execute')
+// Steps 1-6 below (the original flagship-case-study seed) use bare
+// prisma.create() with no externalId dedup — re-running them duplicates the
+// whole case study (DUPLICATE-TRAJECTORIES-2026-07-06.md). They already ran
+// once in production. --aa1-only skips straight to the AA-1 transitions so
+// re-running this file for AA-1 can't accidentally reseed Steps 1-6.
+const AA1_ONLY = process.argv.includes('--aa1-only')
 
 const NOW = new Date()
 
@@ -37,6 +52,9 @@ async function edge(
 async function main() {
   console.log('=== Smoking-Causes-Cancer Seed ===\n')
 
+  if (AA1_ONLY) {
+    console.log('--aa1-only: skipping Steps 1-6 (flagship case study already seeded)')
+  } else {
   // ── Step 1: Parent claim ────────────────────────────────────────────────────
   const parent = await prisma.claim.create({
     data: {
@@ -415,14 +433,147 @@ async function main() {
   }})
 
   console.log('MetaEdges: 3 created')
+  } // end Steps 1-6 (skipped when --aa1-only)
+
+  // ── Step 7 (AA-1): whitepaper-cited standalone claims ──────────────────────
+  // These two claims already exist (see the file-header note near EXECUTE_TRANSITIONS)
+  // and currently show "Dormant · no revisions" because they have zero
+  // ClaimStatusHistory rows. Fix: real transitions through the transition
+  // contract (the only sanctioned ClaimStatusHistory write path — see
+  // specs/OPENCLAW-DATA-DOCTRINE.md §3), not more Edges. Every source URL below
+  // was fetch-confirmed during AA-1 diagnosis (findings/2026-07-11-tobacco-whitepaper/checks.md);
+  // emitTransition re-verifies live via HTTP before accepting a row regardless.
+  //
+  // Run (dry-run — no --execute — prints the plan only). Always pass
+  // --aa1-only or Steps 1-6 above reseed the whole flagship case study:
+  //   npx dotenv-cli -e .env.local -- npx tsx scripts/seed-smoking-cancer.ts --aa1-only
+  // After Robert's yes:
+  //   npx dotenv-cli -e .env.local -- npx tsx scripts/seed-smoking-cancer.ts --aa1-only --execute
+
+  const WHITEPAPER_MULLER_1939_ID = 'cmqoappnu03yxsadpa90nu942' // paper ref [2]
+  const WHITEPAPER_SURGEON_GENERAL_1964_ID = 'cmqwoxe6l07dy8o0y6xrs8xnv' // paper ref [1]
+
+  const mullerSpecs: TransitionSpec[] = [
+    {
+      claimId: WHITEPAPER_MULLER_1939_ID,
+      fromAxis: null,
+      toAxis: 'CONTESTED',
+      community: 'EXPERT_LITERATURE',
+      occurredAt: '1939',
+      reason:
+        "Franz H. Müller's retrospective case-control study of hospitalized lung carcinoma patients reports markedly higher heavy-tobacco-use prevalence among cases than controls — the first quantitative case-control study linking tobacco to lung cancer, though a small, single-institution German series later criticized for methodological limitations.",
+      source: {
+        externalId: 'src:muller-krebsforsch-1939',
+        name: 'Müller FH. Tabakmissbrauch und Lungencarcinom. Zeitschrift für Krebsforschung 1939;49:57-85.',
+        url: 'https://link.springer.com/article/10.1007/BF01633114',
+        publishedAt: '1939',
+        methodologyType: 'primary',
+      },
+    },
+    {
+      claimId: WHITEPAPER_MULLER_1939_ID,
+      fromAxis: 'CONTESTED',
+      toAxis: 'SETTLED',
+      community: 'EXPERT_LITERATURE',
+      occurredAt: '1950-09-30',
+      reason:
+        "Doll & Hill's larger, methodologically stronger British case-control study independently confirms Müller's association eleven years later, moving it from an isolated single-institution result to a replicated finding in the expert literature.",
+      source: {
+        // Same slug as scripts/seed-trajectories.ts's src:doll-hill-bmj-1950 —
+        // upserts onto the same Source row rather than duplicating it.
+        externalId: 'src:doll-hill-bmj-1950',
+        name: 'Doll R, Hill AB. Smoking and Carcinoma of the Lung. BMJ 1950;2(4682):739-748.',
+        url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2038856/',
+        publishedAt: '1950-09-30',
+        methodologyType: 'primary',
+      },
+    },
+    {
+      claimId: WHITEPAPER_MULLER_1939_ID,
+      fromAxis: 'SETTLED',
+      toAxis: 'SETTLED',
+      community: 'INSTITUTIONAL',
+      occurredAt: '1964-01-11',
+      reason:
+        "The U.S. Surgeon General's Advisory Committee report reviews the accumulated case-control and cohort literature (Müller included in the lineage it builds on) and institutionally ratifies the smoking-cancer causal link.",
+      source: {
+        externalId: 'src:surgeon-general-1964',
+        name: 'U.S. Surgeon General Luther Terry — Smoking and Health: Report of the Advisory Committee (1964).',
+        url: 'https://profiles.nlm.nih.gov/spotlight/nn/catalog/nlm:nlmuid-101584932X202-doc',
+        publishedAt: '1964-01-11',
+        methodologyType: 'primary',
+      },
+    },
+  ]
+
+  const surgeonGeneralSpecs: TransitionSpec[] = [
+    {
+      claimId: WHITEPAPER_SURGEON_GENERAL_1964_ID,
+      fromAxis: null,
+      toAxis: 'SETTLED',
+      community: 'INSTITUTIONAL',
+      occurredAt: '1964-01-11',
+      reason:
+        "U.S. Surgeon General Luther Terry's Advisory Committee, after reviewing more than 7,000 scientific articles with over 150 consultants, concludes cigarette smoking is a cause of lung cancer in men and a probable cause in women — the report itself states the evidence is 'sufficient to warrant appropriate remedial action.'",
+      source: {
+        externalId: 'src:surgeon-general-1964',
+        name: 'U.S. Surgeon General Luther Terry — Smoking and Health: Report of the Advisory Committee (1964).',
+        url: 'https://profiles.nlm.nih.gov/spotlight/nn/catalog/nlm:nlmuid-101584932X202-doc',
+        publishedAt: '1964-01-11',
+        methodologyType: 'primary',
+      },
+    },
+    {
+      claimId: WHITEPAPER_SURGEON_GENERAL_1964_ID,
+      fromAxis: 'SETTLED',
+      toAxis: 'SETTLED',
+      community: 'PUBLIC',
+      occurredAt: '1998-11-23',
+      reason:
+        'The Tobacco Master Settlement Agreement between 46 state attorneys general and the major tobacco companies marks broad public/legal acceptance of the report\'s causal conclusion, closing out decades of industry-funded contestation of the 1964 finding.',
+      source: {
+        externalId: 'src:tobacco-msa-1998',
+        name: 'Tobacco Master Settlement Agreement (1998).',
+        url: 'https://www.naag.org/our-work/naag-center-for-tobacco-and-public-health/the-master-settlement-agreement/',
+        publishedAt: '1998-11-23',
+        methodologyType: 'primary',
+      },
+    },
+  ]
+
+  console.log(`\n=== AA-1 transitions (${EXECUTE_TRANSITIONS ? 'EXECUTE' : 'DRY-RUN'}) ===`)
+  for (const spec of [...mullerSpecs, ...surgeonGeneralSpecs]) {
+    const result = await emitTransition(prisma, spec, {
+      execute: EXECUTE_TRANSITIONS,
+      allowEntryRow: spec.fromAxis === null,
+    })
+    const flag = { inserted: '+', planned: '·', exists: '=', skipped: '✗' }[result.action]
+    console.log(`  ${flag} ${result.action.padEnd(8)} ${spec.claimId}  ${spec.fromAxis ?? '∅'} → ${spec.toAxis}  @ ${spec.occurredAt}`)
+    for (const v of result.violations) console.log(`        ! ${v}`)
+  }
+
+  // humanReviewed is a real review signal (AGENTS.md) — only flip it once the
+  // transitions above have actually landed, and only under --execute.
+  if (EXECUTE_TRANSITIONS) {
+    for (const claimId of [WHITEPAPER_MULLER_1939_ID, WHITEPAPER_SURGEON_GENERAL_1964_ID]) {
+      await prisma.claim.update({ where: { id: claimId }, data: { ...REVIEW } })
+    }
+    console.log('humanReviewed stamped on both whitepaper claims')
+  } else {
+    console.log('(dry-run: humanReviewed stamp on both whitepaper claims skipped — rerun with --execute)')
+  }
 
   console.log('\n=== Seed complete ===')
-  console.log('  1 parent claim')
-  console.log('  6 child claims  (A–F)')
-  console.log('  18 sources      (7 primary research, 2 procedural, 3 scholarly synthesis, 3 industry counter, 3 internal documents)')
-  console.log('  19 edges        (with EdgeRevision per edge)')
-  console.log('  3 threshold events  (1964 Surgeon General, 1998 MSA, 2006 RICO)')
-  console.log('  3 meta-edges    (SUPPRESSED)')
+  if (AA1_ONLY) {
+    console.log('  (--aa1-only: Steps 1-6 skipped, only the AA-1 transitions above ran)')
+  } else {
+    console.log('  1 parent claim')
+    console.log('  6 child claims  (A–F)')
+    console.log('  18 sources      (7 primary research, 2 procedural, 3 scholarly synthesis, 3 industry counter, 3 internal documents)')
+    console.log('  19 edges        (with EdgeRevision per edge)')
+    console.log('  3 threshold events  (1964 Surgeon General, 1998 MSA, 2006 RICO)')
+    console.log('  3 meta-edges    (SUPPRESSED)')
+  }
 
   await prisma.$disconnect()
 }
