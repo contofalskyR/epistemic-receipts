@@ -10,6 +10,7 @@ export type SeedResult = {
   sourceIds: string[];
   edgeIds: string[];
   detailClaimId: string;
+  sameDayMultiStepClaimId: string;
 };
 
 export async function seedTestData(prisma: PrismaClient): Promise<SeedResult> {
@@ -100,6 +101,20 @@ export async function seedTestData(prisma: PrismaClient): Promise<SeedResult> {
     },
   });
 
+  // A claim promoted RECORDED→SETTLED on the same calendar date as its entry —
+  // the bulk-promote-corpus.ts shape. Two transitions, one distinct date: this
+  // must count toward "settling curves" but not toward "curves with movement
+  // over time" (lib/curve-counts.ts).
+  const claim6 = await prisma.claim.create({
+    data: {
+      text: "A certified roll-call vote, recorded and settled the same day",
+      ingestedBy: "test_pipeline_v1",
+      epistemicAxis: "SETTLED",
+      claimType: "EMPIRICAL",
+      autoApproved: true,
+    },
+  });
+
   // Edges (src → claim)
   const edge1 = await prisma.edge.create({
     data: {
@@ -157,10 +172,32 @@ export async function seedTestData(prisma: PrismaClient): Promise<SeedResult> {
     },
   });
 
+  await prisma.claimStatusHistory.create({
+    data: {
+      claimId: claim6.id,
+      fromAxis: null,
+      toAxis: "RECORDED",
+      community: "INSTITUTIONAL",
+      occurredAt: new Date("2023-01-05"),
+      datePrecision: "DAY",
+    },
+  });
+  await prisma.claimStatusHistory.create({
+    data: {
+      claimId: claim6.id,
+      fromAxis: "RECORDED",
+      toAxis: "SETTLED",
+      community: "INSTITUTIONAL",
+      occurredAt: new Date("2023-01-05"),
+      datePrecision: "DAY",
+    },
+  });
+
   return {
-    claimIds: [claim1.id, claim2.id, claim3.id, claim4.id, claim5.id],
+    claimIds: [claim1.id, claim2.id, claim3.id, claim4.id, claim5.id, claim6.id],
     sourceIds: [src1.id, src2.id, src3.id],
     edgeIds: [edge1.id, edge2.id],
     detailClaimId: claim5.id,
+    sameDayMultiStepClaimId: claim6.id,
   };
 }

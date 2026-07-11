@@ -6,6 +6,7 @@ import HomepageSections, { type HomepageStats } from "./HomepageSections";
 import { buildSettlingRateAnalysis } from "@/lib/settlingRate";
 import { loadRecentTransitions } from "@/lib/feed";
 import { compactCount } from "@/lib/format";
+import { getSettlingCurveCounts } from "@/lib/curve-counts";
 
 export const revalidate = 300;
 
@@ -24,7 +25,7 @@ async function loadHomepageData() {
   const [
     claimCount,
     transitionCount,
-    curveCount,
+    curveCounts,
     sourceCount,
     legislativeVoteCount,
     grouped,
@@ -34,11 +35,9 @@ async function loadHomepageData() {
   ] = await Promise.all([
     prisma.claim.count({ where: { verificationStatus: { not: "DEPRECATED" } } }),
     prisma.claimStatusHistory.count(),
-    // Settling curves = non-deprecated claims with at least one transition row
-    // (a one-dot curve is a real curve — "nothing has moved yet" is a claim).
-    prisma.claim.count({
-      where: { verificationStatus: { not: "DEPRECATED" }, statusHistory: { some: {} } },
-    }),
+    // Split so a same-day bulk promotion (bulk-promote-corpus.ts) can never
+    // read as "movement over time" — see lib/curve-counts.ts.
+    getSettlingCurveCounts(),
     prisma.source.count(),
     prisma.legislativeVote.count(),
     // Per-pipeline counts, CLASSIFIED claims only. `IS NOT NULL` mirrors what
@@ -85,7 +84,8 @@ async function loadHomepageData() {
   const stats: HomepageStats = {
     claims: claimCount,
     transitions: transitionCount,
-    settlingCurves: curveCount,
+    settlingCurves: curveCounts.totalSettlingCurves,
+    settlingCurvesMultiDate: curveCounts.multiDateSettlingCurves,
     sources: sourceCount,
     legislativeVotes: legislativeVoteCount,
     retractedPapers: sumTags("crossref_retractions_v1", "retraction_watch_v1"),
