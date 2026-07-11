@@ -6,7 +6,7 @@ Managed by RobClaw (material-orchestrator skill). One line per item + status. Ed
 
 ## findings
 
-- [ ] **rct-orphan-rates** — RCT orphan rates per condition using `scripts/rct-cohort-report.ts`; deliverable: `findings/2026-07-10-rct-orphan-rates/` (report.md, data.csv, checks.md ≥5 executed spot-checks, draft-post.md with claims table) | dispatched 2026-07-10 | worker running, brief did not fix --query — outcome TBD
+- [x] **rct-orphan-rates** — DECISION-READY | branch: loop/findings-rct-2026-07-10 | 14,684 trials, 67.7% ORPHANED, 6/6 spot-checks PASS, 13-row claims table complete | awaiting: publish / hold / kill
 - [ ] **rct-orphan-rates-fdaaa** — RCT orphan rates on the tightened FDAAA cohort (Phase 2–4 applicable trials, primary completion ≥2008-01-01); deliverable: `findings/2026-07-11-rct-orphan-rates-fdaaa/` (report.md, data.csv, checks.md ≥5 executed spot-checks against clinicaltrials.gov records, draft-post.md with claims table) | dispatched 2026-07-11
 - [ ] **retraction-lag** — time-from-publication-to-retraction distribution by field
 - [ ] **settling-curve-lifetimes** — median settling-curve lifetimes by domain (feeds homepage Fig. 1)
