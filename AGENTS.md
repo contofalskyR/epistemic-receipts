@@ -188,3 +188,7 @@ To check live behavior, in order of preference:
 
 Quick triage: `ROBOTS_DISALLOWED` on `/api/` → switch to a crawlable page or the test suite. `401 API key required` on `/api/v1/*` → you need a key, not a workaround.
 <!-- END:agent-web-verification -->
+
+<!-- BEGIN:db-write-doctrine -->
+DB writes: before mutating Neon, read `specs/OPENCLAW-DATA-DOCTRINE.md`.
+<!-- END:db-write-doctrine -->
