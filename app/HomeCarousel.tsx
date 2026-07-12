@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 // SVG canvas
 const W = 340, H = 90;
@@ -8,7 +8,7 @@ const PAD = { l: 6, r: 6, t: 14, b: 18 };
 const CW = W - PAD.l - PAD.r;
 const CH = H - PAD.t - PAD.b;
 
-type Pt = [number, number]; // [x%, y%]  y: 0 = top (settled), 100 = bottom (reversed)
+type Pt = [number, number]; // [x%, y%] — y: 0 = top (settled), 100 = bottom (reversed)
 
 function pts2svg(pts: Pt[]): string {
   return pts.map(([x, y]) => `${PAD.l + (x / 100) * CW},${PAD.t + (y / 100) * CH}`).join(" ");
@@ -81,13 +81,83 @@ const SLIDES: Slide[] = [
     startYear: "1912",
     endYear: "1968",
   },
+  {
+    tag: "THE CONTESTED",
+    tagColor: "#fbbf24",
+    range: "2015 → present",
+    milestones: 6,
+    text: "Dietary fat — particularly saturated fat — is a primary driver of cardiovascular disease and should be minimized in a healthy diet. Decades of guidance built on this claim are now contested as evidence for different fatty acid types diverged sharply from the original hypothesis.",
+    href: "/search?q=dietary+fat+cardiovascular",
+    pts: [[0, 18], [20, 16], [40, 20], [60, 35], [80, 50], [100, 58]],
+    finalLabel: "Contested",
+    finalColor: "#fbbf24",
+    startYear: "2015",
+    endYear: "2026",
+  },
+  {
+    tag: "THE REVERSAL",
+    tagColor: "#f87171",
+    range: "2003 → 2012",
+    milestones: 4,
+    text: "Hwang Woo-suk reported deriving human embryonic stem cells from cloned embryos — first in 2004, then with patient-matched lines in 2005. Both Science papers were retracted in 2006 after a fabrication investigation. The work had fooled journal editors, peer reviewers, and the global scientific press.",
+    href: "/retraction-explorer",
+    pts: [[0, 20], [30, 18], [55, 22], [72, 60], [88, 80], [100, 88]],
+    finalLabel: "Reversed",
+    finalColor: "#f87171",
+    startYear: "2003",
+    endYear: "2012",
+  },
 ];
+
+function MiniCurve({ slide }: { slide: Slide }) {
+  const svgPts = pts2svg(slide.pts);
+  const [lx, ly] = slide.pts[slide.pts.length - 1];
+  const svgLx = PAD.l + (lx / 100) * CW;
+  const svgLy = PAD.t + (ly / 100) * CH;
+  return (
+    <div className="overflow-hidden rounded-md bg-[#0b0b12]">
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="w-full" aria-hidden="true">
+        <text x={W - PAD.r} y={PAD.t - 3} textAnchor="end" fontSize={8.5} fill={slide.finalColor} fontFamily="ui-monospace,monospace">
+          {slide.finalLabel}
+        </text>
+        <line x1={PAD.l} y1={PAD.t + 4} x2={W - PAD.r} y2={PAD.t + 4} stroke="#34d399" strokeWidth={0.5} strokeDasharray="3 3" opacity={0.22} />
+        <polyline
+          points={`${PAD.l},${H - PAD.b} ${svgPts} ${W - PAD.r},${H - PAD.b}`}
+          fill={slide.finalColor}
+          opacity={0.08}
+        />
+        <polyline points={svgPts} fill="none" stroke={slide.finalColor} strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" />
+        <circle cx={svgLx} cy={svgLy} r={3.5} fill={slide.finalColor} />
+        <text x={PAD.l} y={H - 4} fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.startYear}</text>
+        <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.endYear}</text>
+      </svg>
+    </div>
+  );
+}
 
 export default function HomeCarousel() {
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const pending = useRef<number | null>(null);
 
-  const next = useCallback(() => setIdx((i) => (i + 1) % SLIDES.length), []);
+  const goTo = useCallback((i: number) => {
+    setVisible(false);
+    pending.current = i;
+  }, []);
+
+  // After fade-out, swap content and fade back in
+  useEffect(() => {
+    if (visible || pending.current === null) return;
+    const id = setTimeout(() => {
+      setIdx(pending.current!);
+      pending.current = null;
+      setVisible(true);
+    }, 280);
+    return () => clearTimeout(id);
+  }, [visible]);
+
+  const next = useCallback(() => goTo((idx + 1) % SLIDES.length), [idx, goTo]);
 
   useEffect(() => {
     if (paused) return;
@@ -96,10 +166,6 @@ export default function HomeCarousel() {
   }, [paused, next]);
 
   const s = SLIDES[idx];
-  const svgPts = pts2svg(s.pts);
-  const [lx, ly] = s.pts[s.pts.length - 1];
-  const svgLx = PAD.l + (lx / 100) * CW;
-  const svgLy = PAD.t + (ly / 100) * CH;
 
   return (
     <div
@@ -107,76 +173,42 @@ export default function HomeCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Tag + meta */}
-      <div className="flex items-baseline justify-between gap-2">
-        <span
-          className="shrink-0 text-[11px] font-mono uppercase tracking-[0.14em]"
-          style={{ color: s.tagColor }}
-        >
-          {s.tag}
-        </span>
-        <span className="truncate text-right text-[11px] font-mono text-gray-600">
-          {s.range} · {s.milestones} milestones
-        </span>
+      {/* Animated content wrapper */}
+      <div
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(6px)",
+          transition: "opacity 0.28s ease, transform 0.28s ease",
+        }}
+      >
+        {/* Tag + meta */}
+        <div className="flex items-baseline justify-between gap-2">
+          <span className="shrink-0 text-[11px] font-mono uppercase tracking-[0.14em]" style={{ color: s.tagColor }}>
+            {s.tag}
+          </span>
+          <span className="truncate text-right text-[11px] font-mono text-gray-600">
+            {s.range} · {s.milestones} milestones
+          </span>
+        </div>
+
+        {/* Claim text */}
+        <p className="mt-3 line-clamp-4 text-[13.5px] leading-relaxed text-gray-300">{s.text}</p>
+
+        {/* Mini settling curve */}
+        <div className="mt-4">
+          <MiniCurve slide={s} />
+        </div>
+
+        {/* Excerpt */}
+        <p className="mt-2.5 line-clamp-2 text-[12px] leading-relaxed text-gray-600">{s.text}</p>
       </div>
 
-      {/* Claim text */}
-      <p className="mt-3 line-clamp-4 text-[13.5px] leading-relaxed text-gray-300">{s.text}</p>
-
-      {/* Mini settling curve */}
-      <div className="mt-4 overflow-hidden rounded-md bg-[#0b0b12]">
-        <svg
-          width={W}
-          height={H}
-          viewBox={`0 0 ${W} ${H}`}
-          className="w-full"
-          aria-hidden="true"
-        >
-          <text
-            x={W - PAD.r}
-            y={PAD.t - 3}
-            textAnchor="end"
-            fontSize={8.5}
-            fill={s.finalColor}
-            fontFamily="ui-monospace,monospace"
-          >
-            {s.finalLabel}
-          </text>
-          <line
-            x1={PAD.l} y1={PAD.t + 4}
-            x2={W - PAD.r} y2={PAD.t + 4}
-            stroke="#34d399" strokeWidth={0.5} strokeDasharray="3 3" opacity={0.22}
-          />
-          <polyline
-            points={`${PAD.l},${H - PAD.b} ${svgPts} ${W - PAD.r},${H - PAD.b}`}
-            fill={s.finalColor}
-            opacity={0.07}
-          />
-          <polyline
-            points={svgPts}
-            fill="none"
-            stroke={s.finalColor}
-            strokeWidth={1.5}
-            strokeLinejoin="round"
-            strokeLinecap="round"
-          />
-          <circle cx={svgLx} cy={svgLy} r={3.5} fill={s.finalColor} />
-          <text x={PAD.l} y={H - 4} fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">
-            {s.startYear}
-          </text>
-          <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">
-            {s.endYear}
-          </text>
-        </svg>
-      </div>
-
-      {/* Excerpt + nav */}
-      <p className="mt-2.5 line-clamp-2 text-[12px] leading-relaxed text-gray-600">{s.text}</p>
-
+      {/* Footer — always visible so dots don't jump */}
       <div className="mt-3 flex items-center justify-between">
         <a
           href={s.href}
           className="text-[12.5px] text-amber-400/80 transition-colors hover:text-amber-300"
+          style={{ opacity: visible ? 1 : 0, transition: "opacity 0.28s ease" }}
         >
           See the full curve →
         </a>
@@ -184,7 +216,7 @@ export default function HomeCarousel() {
           {SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => { setIdx(i); setPaused(true); }}
+              onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               className="rounded-full transition-all duration-300"
               style={{
