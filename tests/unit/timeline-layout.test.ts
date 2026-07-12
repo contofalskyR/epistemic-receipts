@@ -300,6 +300,41 @@ describe("adaptive timeline layout — spec acceptance shapes", () => {
     expect(hasCollapsed).toBe(true);
   });
 
+  // DIVERGENCE between main's structural rule and the salvage doc's dual-condition rule.
+  // Operator decision recorded here; do NOT fix either rule to make this pass.
+  //
+  // Shape: one tight pair (2020-03-15 + 2020-03-16) embedded in an otherwise evenly-paced
+  // history (2000, 2010, 2020, 2020+1d, today).
+  //
+  // Main's structural discriminator: the tight pair forms a 2-marker cluster →
+  // allSingleton=false → isLinear=false → 3 breaks emitted for the even 10yr gaps too.
+  //
+  // Salvage doc's dual-condition rule (gap > abs AND gap > 2× mean): the 10yr gaps
+  // (abs-threshold-qualifying) are NOT anomalous relative to the rest of the history
+  // (~5–7yr mean), so they would NOT break → 0 breaks, linear axis.
+  //
+  // Both are defensible. Main's rule compresses the 10yr gaps because the claim has
+  // a moment of day-scale activity needing cluster room; the dual-condition rule keeps
+  // them linear because those gaps aren't anomalous for this particular history.
+  // Main's rule passed the full spec suite → left in place.
+  it.skip("DIVERGENCE: tight pair amid even large gaps — main breaks outer gaps; dual-condition would not", () => {
+    const { claim, todayIso } = toMainInput([
+      E("a", "2000-01-01", "emerged",    "2000 recorded"),
+      E("b", "2010-06-01", "transition", "2010 settled",        "SETTLED"),
+      E("c", "2020-03-15", "transition", "2020 contested",      "CONTESTED"),
+      E("d", "2020-03-16", "transition", "2020+1d adjudicated", "SETTLED"),
+      TODAY,
+    ]);
+    const layout = computeTimelineLayout(claim, null, todayIso) as AxisLayout;
+    const breaks = layout.segs.filter(s => s.kind === "break") as BreakSeg[];
+
+    // Main's engine: multi-marker cluster exists → isLinear=false → 3 breaks
+    expect(breaks.length).toBeGreaterThan(0);
+
+    // What the dual-condition rule would produce (fails against main — that IS the divergence):
+    // expect(breaks).toHaveLength(0);
+  });
+
   it("2-marker chrome suppression: realCount=2 forces breaks (spec §4 dominant-gap pill)", () => {
     // realCount=2 means chrome=false, but clustering still runs. The large gap
     // between two events spread years apart should produce a break (not isLinear),
