@@ -220,7 +220,7 @@ function StartHere() {
       </h2>
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {START_ITEMS.map((item) => (
-          <a
+          <Link
             key={item.href}
             href={item.href}
             className="group flex flex-col rounded-xl border border-gray-800 bg-gray-900/60 p-4 transition-colors hover:border-gray-600"
@@ -238,7 +238,7 @@ function StartHere() {
             <span className="mt-3 text-[12px] text-gray-600 transition-colors group-hover:text-gray-400">
               See the receipt →
             </span>
-          </a>
+          </Link>
         ))}
       </div>
     </section>
