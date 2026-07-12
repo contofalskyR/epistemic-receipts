@@ -53,6 +53,7 @@ const THROTTLE_MS = 120;   // gap between OpenAlex calls (polite-pool friendly)
 interface OAWork {
   id?: string;
   cited_by_count?: number | null;
+  is_retracted?: boolean | null;
   counts_by_year?: { year: number; cited_by_count: number }[];
 }
 
@@ -134,7 +135,7 @@ async function main(): Promise<void> {
   for (let i = 0; i < workIds.length; i += OA_BATCH) {
     const batch = workIds.slice(i, i + OA_BATCH);
     const filter = `ids.openalex:${batch.map((w) => `https://openalex.org/${w}`).join("|")}`;
-    const url = `${OA_BASE}?filter=${encodeURIComponent(filter)}&select=id,cited_by_count,counts_by_year&per-page=${OA_BATCH}&mailto=${MAILTO}`;
+    const url = `${OA_BASE}?filter=${encodeURIComponent(filter)}&select=id,cited_by_count,counts_by_year,is_retracted&per-page=${OA_BATCH}&mailto=${MAILTO}`;
     let works: OAWork[] = [];
     try {
       works = await oaFetch(url);
@@ -174,6 +175,7 @@ async function main(): Promise<void> {
       pending.push([ext, JSON.stringify({
         cited_by_count: w.cited_by_count ?? 0,
         citationsByYear: byYear,
+        is_retracted: w.is_retracted ?? false,
         citationsFetchedAt: fetchedAt,
       })]);
       fetched++;

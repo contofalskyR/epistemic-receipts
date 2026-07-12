@@ -29,18 +29,40 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NOTIFY="$SCRIPT_DIR/notify-telegram.sh"
 DECISIONS_LOG="$PROJECT_DIR/logs/corpus-promoter-decisions.jsonl"
 ATTEMPTED_LOG="$PROJECT_DIR/logs/corpus-promoter-attempted.jsonl"
+ERRORS_LOG="$PROJECT_DIR/logs/corpus-promoter-errors.jsonl"
 ENRICHMENTS_DIR="$PROJECT_DIR/scripts/enrichments"
 BATCH_SIZE="${BATCH_SIZE:-8}"   # claims per run; each gets its own LLM call
+PROMOTER_MODEL="${PROMOTER_MODEL:-claude-opus-4-8}"
 RUN=0
 
 mkdir -p "$PROJECT_DIR/logs" "$ENRICHMENTS_DIR"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG"; }
 
+# ── Claude API call with retry ───────────────────────────────────────────────
+# Calls claude with --output-format json; echoes the CLI JSON object on stdout.
+# Returns non-zero (and prints nothing) if no valid PROMOTED:/SKIPPED:/FILE:
+# output after 3 attempts. Caller must NOT write to ATTEMPTED_LOG on failure —
+# the claim stays pickable for the next run.
+call_claude() {
+  local attempt out text
+  for attempt in 1 2 3; do
+    out=$(cd "$PROJECT_DIR" && claude --allowedTools "WebSearch,WebFetch" --print \
+      --model "$PROMOTER_MODEL" --output-format json "$1" 2>>"$LOG") || true
+    text=$(echo "$out" | jq -r '.result // empty' 2>/dev/null)
+    if [ -n "$text" ] && echo "$text" | grep -qE '(^PROMOTED:|^SKIPPED:|^FILE:)'; then
+      echo "$out"; return 0
+    fi
+    log "  claude call invalid/errored (attempt ${attempt}/3); backing off ${attempt}m"
+    sleep $((attempt * 60))
+  done
+  return 1
+}
+
 # ── Claim selection ─────────────────────────────────────────────────────────
 # pick-promotable-claim.ts returns openalex_v1 single-step claims, highest
 # cited_by_count first. Newline-delimited JSON:
-#   {id,text,ingestedBy,claimEmergedAt,citedByCount}
+#   {id,text,ingestedBy,claimEmergedAt,citedByCount,doi,isRetracted,openalexId}
 select_claims() {
   cd "$PROJECT_DIR" && npx dotenv-cli -e .env.local -- npx tsx scripts/pick-promotable-claim.ts \
     --count "$BATCH_SIZE" \
@@ -49,12 +71,8 @@ select_claims() {
 }
 
 # ── Prompt templates ────────────────────────────────────────────────────────
-# openalex_v1 is the primary path. crossref_retractions_v1 is kept only for
-# manual --pipeline runs against the wave-2 residue (claims CrossRef couldn't
-# date). Everything else was retired from the LLM queue — deterministic waves
-# or complete-at-length-1 (lib/corpus-completeness.ts).
 build_prompt() {
-  local claim_id="$1" claim_text="$2" ingested_by="$3" emerged_at="$4" cited_by="$5"
+  local claim_id="$1" claim_text="$2" ingested_by="$3" emerged_at="$4" cited_by="$5" doi="$6" openalex_id="$7"
   local body
 
   case "$ingested_by" in
@@ -64,7 +82,11 @@ build_prompt() {
 Claim ID: ${claim_id}
 Claim text: ${claim_text}
 Published: ${emerged_at}
+DOI: ${doi}
+OpenAlex ID: ${openalex_id:-not available}
 Citations (OpenAlex): ${cited_by}
+
+Resolve the DOI first before any title search when researching this claim. Use the DOI and OpenAlex ID to confirm you are researching the correct paper — misidentification is the worst failure mode at this scale.
 
 Search specifically for, in priority order:
 1. RETRACTION or expression of concern — check Retraction Watch (retractionwatch.com), the publisher page, PubMed. If retracted: RECORDED->CONTESTED at the expression-of-concern or first public challenge date (if one exists), then CONTESTED->REVERSED (or RECORDED->REVERSED directly) at the retraction date. Community: EXPERT_LITERATURE.
@@ -75,7 +97,8 @@ Search specifically for, in priority order:
 Hard rules:
 - SKIP is the expected outcome for most papers. If you cannot find a SPECIFIC, DATED, citable follow-up event, emit PROMOTED:0 with SKIPPED:<reason>. A high citation count alone is NOT evidence of settling; do not add RECORDED->SETTLED without a specific adjudicating document.
 - Never invent a transition to make the curve look richer. One verified transition beats three plausible ones.
-- Every transition needs: exact date (DAY precision preferred; MONTH/YEAR acceptable with datePrecision set), ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), 2-3 sentence reason, and one URL you have VERIFIED resolves (fetch it). Prefer doi.org links, PubMed, Cochrane, publisher pages, retractionwatch.com. Discard any transition whose URL you cannot verify."
+- Every transition needs: a date at the precision the adjudicating document supports — never sharpen a month or issue date to a day, a ratifying community (EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET), 2-3 sentence reason, and one URL you have VERIFIED resolves (fetch it). Prefer doi.org links, PubMed, Cochrane, publisher pages, retractionwatch.com. Discard any transition whose URL you cannot verify.
+- Print the TypeScript file inline in your reply; do NOT attempt to create or write files with tools."
       ;;
     crossref_retractions_v1)
       body="You are expanding an epistemic receipt for a retracted academic paper (wave-2 residue: CrossRef has no publication date on record for it — you must find one).
@@ -119,13 +142,13 @@ The TypeScript enrich script MUST follow the pattern in scripts/seed-human-histo
 - claimId is the existing claim id '${claim_id}' — do NOT create a new Claim
 - fromAxis / toAxis are FactStatus strings: OPEN|RECORDED|SETTLED|CONTESTED|REVERSED|ABANDONED|UNRESOLVABLE (the existing first entry already has fromAxis=null -> toAxis=<first>; do not duplicate it)
 - community is one of: EXPERT_LITERATURE|INSTITUTIONAL|JUDICIAL|PUBLIC|MARKET
-- All dates as new Date('YYYY-MM-DD'); set datePrecision ('DAY'|'MONTH'|'QUARTER'|'YEAR')
+- All dates as new Date('YYYY-MM-DD'); set datePrecision ('DAY'|'MONTH'|'QUARTER'|'YEAR') to match what the adjudicating document actually supports
 - Wrap writes in an async main(); end with await prisma.\$disconnect()
 - Only include arcs with high-confidence URLs (DOIs, .gov, official publisher links)"
 }
 
 # ── Main loop ───────────────────────────────────────────────────────────────
-log "=== openalex-promoter loop starting (pid $$, batch ${BATCH_SIZE}) ==="
+log "=== openalex-promoter loop starting (pid $$, batch ${BATCH_SIZE}, model ${PROMOTER_MODEL}) ==="
 
 while true; do
   RUN=$((RUN + 1))
@@ -152,15 +175,25 @@ while true; do
     INGESTED_BY=$(echo "$CLAIM_LINE" | jq -r '.ingestedBy')
     EMERGED_AT=$(echo "$CLAIM_LINE" | jq -r '.claimEmergedAt // "unknown"' | cut -c1-10)
     CITED_BY=$(echo "$CLAIM_LINE" | jq -r '.citedByCount // 0')
+    DOI=$(echo "$CLAIM_LINE" | jq -r '.doi // "not available"')
+    OPENALEX_ID=$(echo "$CLAIM_LINE" | jq -r '.openalexId // ""')
 
     log "  -> claim ${CLAIM_ID} (${INGESTED_BY}, cited_by ${CITED_BY})"
 
-    PROMPT=$(build_prompt "$CLAIM_ID" "$CLAIM_TEXT" "$INGESTED_BY" "$EMERGED_AT" "$CITED_BY")
+    PROMPT=$(build_prompt "$CLAIM_ID" "$CLAIM_TEXT" "$INGESTED_BY" "$EMERGED_AT" "$CITED_BY" "$DOI" "$OPENALEX_ID")
 
-    # --allowedTools is REQUIRED: without it, --print (non-interactive) mode
-    # permission-blocks WebSearch/WebFetch, so every openalex claim SKIPs for
-    # "could not verify a URL" and the run is pure Opus cost (fixed 2026-07-05).
-    OUTPUT=$(cd "$PROJECT_DIR" && claude --allowedTools "WebSearch,WebFetch" --print --model claude-opus-4-8 "$PROMPT" 2>&1) || true
+    # Call claude with retry. On persistent API failure: log to ERRORS_LOG and
+    # skip the ledger write so the claim stays pickable on the next run.
+    if ! CLAUDE_JSON=$(call_claude "$PROMPT"); then
+      log "    API error — no valid output after 3 attempts; claim stays in queue"
+      printf '{"claimId":"%s","ts":"%s","pipeline":"%s","error":"api_failure"}\n' \
+        "$CLAIM_ID" "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" "$INGESTED_BY" >> "$ERRORS_LOG"
+      continue
+    fi
+
+    OUTPUT=$(echo "$CLAUDE_JSON" | jq -r '.result // ""')
+    COST=$(echo "$CLAUDE_JSON" | jq -r '.total_cost_usd // "null"')
+    TURNS=$(echo "$CLAUDE_JSON" | jq -r '.num_turns // "null"')
     echo "$OUTPUT" >> "$LOG"
 
     # Parse output.
@@ -178,20 +211,30 @@ while true; do
         /*) TARGET="$FILE_PATH" ;;
         *)  TARGET="$PROJECT_DIR/$FILE_PATH" ;;
       esac
-      # Ensure target is in enrichments dir
       mkdir -p "$(dirname "$TARGET")"
       echo "$FILE_CONTENT" > "$TARGET"
       log "    wrote ${TARGET}; validating + running via apply-enrichment..."
 
-      # Validate and execute via apply-enrichment.ts
+      # Apply with one retry on transient failure.
+      APPLY_OK=false
       if (cd "$PROJECT_DIR" && npx dotenv-cli -e .env.local -- npx tsx scripts/apply-enrichment.ts "$TARGET" >> "$LOG" 2>&1); then
+        APPLY_OK=true
+      else
+        log "    apply-enrichment failed; retrying in 30s"
+        sleep 30
+        if (cd "$PROJECT_DIR" && npx dotenv-cli -e .env.local -- npx tsx scripts/apply-enrichment.ts "$TARGET" >> "$LOG" 2>&1); then
+          APPLY_OK=true
+        fi
+      fi
+
+      if $APPLY_OK; then
         RESULT="promoted"
         TOTAL_PROMOTED=$((TOTAL_PROMOTED + ${PROMOTED_COUNT:-0}))
         RUN_DETAILS="${RUN_DETAILS}${CLAIM_ID} (cited_by ${CITED_BY}): +${PROMOTED_COUNT} | "
         log "    promoted ${PROMOTED_COUNT} transitions"
       else
         RESULT="failed"
-        log "    apply-enrichment failed for ${TARGET}"
+        log "    apply-enrichment failed for ${TARGET} (2 attempts)"
       fi
     else
       RESULT="skipped"
@@ -201,14 +244,16 @@ while true; do
 
     # Track this attempt.
     ATT_ESCAPED_SKIP=$(printf '%s' "${SKIPPED:-}" | python3 -c "import sys,json;print(json.dumps(sys.stdin.read()))" 2>/dev/null || echo '""')
-    printf '{"claimId":"%s","ts":"%s","result":"%s","pipeline":"%s","promotedCount":%s,"skipReason":%s}\n' \
+    printf '{"claimId":"%s","ts":"%s","result":"%s","pipeline":"%s","promotedCount":%s,"skipReason":%s,"model":"%s","costUsd":%s,"turns":%s}\n' \
       "$CLAIM_ID" "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" "$RESULT" "$INGESTED_BY" "${PROMOTED_COUNT:-0}" "$ATT_ESCAPED_SKIP" \
+      "$PROMOTER_MODEL" "${COST:-null}" "${TURNS:-null}" \
       >> "$ATTEMPTED_LOG"
 
-    # Decision log (full raw output for auditing).
+    # Decision log (full raw text output for auditing).
     RAW_ESCAPED=$(echo "$OUTPUT" | python3 -c "import sys,json;print(json.dumps(sys.stdin.read()))" 2>/dev/null || echo '""')
-    printf '{"run":%d,"ts":"%s","claimId":"%s","pipeline":"%s","result":"%s","promoted":%s,"raw":%s}\n' \
-      "$RUN" "$RUN_TS" "$CLAIM_ID" "$INGESTED_BY" "$RESULT" "${PROMOTED_COUNT:-0}" "$RAW_ESCAPED" \
+    printf '{"run":%d,"ts":"%s","claimId":"%s","pipeline":"%s","result":"%s","promoted":%s,"model":"%s","costUsd":%s,"turns":%s,"raw":%s}\n' \
+      "$RUN" "$RUN_TS" "$CLAIM_ID" "$INGESTED_BY" "$RESULT" "${PROMOTED_COUNT:-0}" \
+      "$PROMOTER_MODEL" "${COST:-null}" "${TURNS:-null}" "$RAW_ESCAPED" \
       >> "$DECISIONS_LOG"
   done <<< "$CLAIMS_JSON"
 

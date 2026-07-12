@@ -21,7 +21,7 @@
  * classified complete-at-length-1 are always refused.
  *
  * Output (newline-delimited JSON, one per line):
- *   { "id": "...", "text": "...", "ingestedBy": "...", "claimEmergedAt": "...", "citedByCount": N }
+ *   { "id": "...", "text": "...", "ingestedBy": "...", "claimEmergedAt": "...", "citedByCount": N, "doi": "..." | null, "isRetracted": bool, "openalexId": "..." | null }
  */
 
 import 'dotenv/config'
@@ -90,6 +90,9 @@ interface Candidate {
   ingestedBy: string
   claimEmergedAt: Date | null
   citedByCount: number
+  doi: string | null
+  isRetracted: boolean
+  openalexId: string | null
 }
 
 async function main() {
@@ -115,7 +118,10 @@ async function main() {
     `SELECT
        c.id, c.text, c."ingestedBy", c."claimEmergedAt",
        CASE WHEN (c.metadata->>'cited_by_count') ~ '^\\d+$'
-            THEN (c.metadata->>'cited_by_count')::int ELSE 0 END AS "citedByCount"
+            THEN (c.metadata->>'cited_by_count')::int ELSE 0 END AS "citedByCount",
+       c.metadata->>'doi' AS doi,
+       (c.metadata->>'is_retracted')::boolean AS "isRetracted",
+       c.metadata->>'openalex_id' AS "openalexId"
      FROM "Claim" c
      JOIN "ClaimStatusHistory" h
        ON h."claimId" = c.id AND h."fromAxis" IS NULL
@@ -123,6 +129,9 @@ async function main() {
        AND c.deleted = false
        AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
        AND c."claimEmergedAt" IS NOT NULL
+       AND c."claimEmergedAt" < now() - interval '2 years'
+       AND (c.metadata->>'is_retracted') IS DISTINCT FROM 'true'
+       AND c.text !~* '^\\s*(Retracted[: ]|Retraction[: ]|Notice of Retraction|Expression of Concern|Erratum[: ]|Correction[: ])'
        AND NOT EXISTS (
          SELECT 1 FROM "ClaimStatusHistory" h2
          WHERE h2."claimId" = c.id AND h2.id <> h.id
