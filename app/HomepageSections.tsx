@@ -177,6 +177,74 @@ function sumKeys(counts: Map<string, number>, keys: string[]): number {
   return sum;
 }
 
+// ─── Start here ───────────────────────────────────────────────────────────────
+
+type StartItem = { category: string; color: string; title: string; desc: string; href: string };
+
+const START_ITEMS: StartItem[] = [
+  {
+    category: "REVERSAL",
+    color: "#f87171",
+    title: "Ulcers aren't caused by stress",
+    desc: "A bacterium overturned 80 years of medical dogma — and won a Nobel.",
+    href: "/stories/h-pylori",
+  },
+  {
+    category: "SETTLED",
+    color: "#34d399",
+    title: "Continents really do drift",
+    desc: "Ridiculed in 1912, plate tectonics was settled science by 1968.",
+    href: "/search?q=plate+tectonics",
+  },
+  {
+    category: "FRAUD",
+    color: "#fb923c",
+    title: "The stem-cell fraud that fooled Science",
+    desc: "Hwang Woo-suk's cloned-cell claims — recorded, then reversed.",
+    href: "/retraction-explorer",
+  },
+  {
+    category: "REPRESENTATION GAP",
+    color: "#22d3ee",
+    title: "Senate votes vs. public opinion",
+    desc: "700k survey respondents vs. how delegation actually voted.",
+    href: "/congress-trades",
+  },
+];
+
+function StartHere() {
+  return (
+    <section className="mx-auto max-w-5xl pb-2 pt-6">
+      <h2 className="text-[11px] font-mono uppercase tracking-[0.14em] text-gray-500">
+        Start here
+      </h2>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {START_ITEMS.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="group flex flex-col rounded-xl border border-gray-800 bg-gray-900/60 p-4 transition-colors hover:border-gray-600"
+          >
+            <span
+              className="text-[10.5px] font-mono uppercase tracking-[0.12em]"
+              style={{ color: item.color }}
+            >
+              {item.category}
+            </span>
+            <h3 className="mt-2 text-[14px] font-medium leading-snug text-gray-100 transition-colors group-hover:text-white">
+              {item.title}
+            </h3>
+            <p className="mt-1.5 flex-1 text-[12.5px] leading-relaxed text-gray-500">{item.desc}</p>
+            <span className="mt-3 text-[12px] text-gray-600 transition-colors group-hover:text-gray-400">
+              See the receipt →
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ─── "Moved recently" ticker ─────────────────────────────────────────────────
 // The mockup's "Moved this week" strip. Items are the latest ClaimStatusHistory
 // rows by ingestion time (lib/feed.loadRecentTransitions) — labeled "recently"
@@ -401,6 +469,7 @@ export default function HomepageSections({
 }: HomepageSectionsProps) {
   return (
     <>
+      <StartHere />
       <MovedTicker items={whatsNew} />
       <Pillars retractedPapers={stats.retractedPapers} />
       <CorpusBand stats={stats} ingestedByCounts={ingestedByCounts} />

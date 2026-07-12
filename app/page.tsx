@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import HomeHero from "./HomeHero";
+import HomeCarousel from "./HomeCarousel";
 import HomepageSections, { type HomepageStats } from "./HomepageSections";
 import { buildSettlingRateAnalysis } from "@/lib/settlingRate";
 import { loadRecentTransitions } from "@/lib/feed";
@@ -107,6 +108,40 @@ export default async function Home() {
         settlingRate={settlingRate}
         datedTrajectoryCount={datedTrajectoryCount}
       />
+      {/* Claim example carousel — sits below the macro settling curve */}
+      <div className="mx-auto max-w-5xl pb-4 pt-8">
+        <div className="grid items-start gap-8 lg:grid-cols-[1fr_400px]">
+          <div>
+            <p className="text-[11px] font-mono uppercase tracking-[0.14em] text-amber-400/90">
+              Claim provenance database
+            </p>
+            <h2 className="mt-4 text-[clamp(26px,3.4vw,36px)] font-medium leading-[1.18] text-gray-100">
+              Track the status of every claim — when it was established, changed, or overturned.
+            </h2>
+            <p className="mt-3.5 max-w-[52ch] text-base leading-relaxed text-gray-400">
+              A live record of epistemic status across science, law, and history.{" "}
+              {compactCount(claimCount)} claims, each sourced and traceable, carrying dated status
+              transitions. Search any topic, follow the evidence trail, and see how each claim&apos;s
+              status shifted over time.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="/settling-curve"
+                className="inline-block rounded-lg bg-amber-400 px-5 py-3 text-sm font-medium text-gray-950 transition-colors hover:bg-amber-300"
+              >
+                Explore the Settling Curve →
+              </a>
+              <a
+                href="/stories/h-pylori"
+                className="inline-block text-sm text-gray-500 underline-offset-4 transition-colors hover:text-gray-300 hover:underline py-3"
+              >
+                View a sample trajectory: semaglutide (GLP-1) →
+              </a>
+            </div>
+          </div>
+          <HomeCarousel />
+        </div>
+      </div>
       <HomepageSections stats={stats} ingestedByCounts={ingestedByCounts} whatsNew={whatsNew} />
     </>
   );
