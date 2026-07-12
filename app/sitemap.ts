@@ -22,6 +22,7 @@ const STATIC_URLS: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/retractions`, changeFrequency: "weekly", priority: 0.7 },
   { url: `${SITE_URL}/globe`, changeFrequency: "monthly", priority: 0.5 },
   { url: `${SITE_URL}/case-studies`, changeFrequency: "weekly", priority: 0.9 },
+  { url: `${SITE_URL}/stories/h-pylori`, changeFrequency: "monthly", priority: 0.7 },
 ];
 
 export async function generateSitemaps() {
