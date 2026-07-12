@@ -126,18 +126,18 @@ export default async function Home() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2.5">
-              <a
+              <Link
                 href="/settling-curve"
                 className="inline-block rounded-lg bg-amber-400 px-4 py-2.5 text-sm font-medium text-gray-950 transition-colors hover:bg-amber-300"
               >
                 Explore the Settling Curve →
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/reversals"
                 className="inline-block rounded-lg border border-gray-700 px-4 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
               >
                 Browse reversals
-              </a>
+              </Link>
             </div>
           </div>
           <HomeCarousel />

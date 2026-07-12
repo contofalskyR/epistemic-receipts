@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Link from "next/link";
 
 // SVG canvas
 const W = 340, H = 90;
@@ -205,13 +206,13 @@ export default function HomeCarousel() {
 
       {/* Footer — always visible so dots don't jump */}
       <div className="mt-3 flex items-center justify-between">
-        <a
+        <Link
           href={s.href}
           className="text-[12.5px] text-amber-400/80 transition-colors hover:text-amber-300"
           style={{ opacity: visible ? 1 : 0, transition: "opacity 0.28s ease" }}
         >
           See the full curve →
-        </a>
+        </Link>
         <div className="flex items-center gap-1.5">
           {SLIDES.map((_, i) => (
             <button
