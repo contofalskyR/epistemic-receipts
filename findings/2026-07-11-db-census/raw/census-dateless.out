@@ -1,0 +1,34 @@
+
+=== Census: curve-less claims — read-only ===
+
+Layer-1 templates parsed: 186 pipelines
+
+TOTAL curve-less: 177,831 claims (177,771 dateless, 60 dated-but-untemplated)
+
+nara_catalog_v1                    noHistory    91788 · dateless    91788 · dated-untemplated       0 · srcDate   0%
+    metadata.naraDateSweep (100% of sample) e.g. no-date-bulk | no-date-bulk | no-date-bulk
+    metadata.endDate (100% of sample) e.g. 
+    metadata.beginDate (100% of sample) e.g. 
+chebi_v1                           noHistory    36591 · dateless    36591 · dated-untemplated       0 · srcDate   0%
+jacar_v1                           noHistory    30767 · dateless    30767 · dated-untemplated       0 · srcDate   0%
+    metadata.rawDate (100% of sample) e.g. 
+rxnorm_v1                          noHistory    14632 · dateless    14632 · dated-untemplated       0 · srcDate   0%
+omim_v1                            noHistory     1512 · dateless     1512 · dated-untemplated       0 · srcDate   0%
+ofac_sdn_v1                        noHistory     1311 · dateless     1311 · dated-untemplated       0 · srcDate   0%
+pubchem_v1                         noHistory      355 · dateless      355 · dated-untemplated       0 · srcDate   0%
+impact_craters_v1                  noHistory      214 · dateless      214 · dated-untemplated       0 · srcDate   0%
+wikidata_chips_v1                  noHistory      132 · dateless      132 · dated-untemplated       0 · srcDate   0%
+periodic_table_v1                  noHistory      119 · dateless      119 · dated-untemplated       0 · srcDate   0%
+africanlii_v1                      noHistory       70 · dateless       70 · dated-untemplated       0 · srcDate   0%
+    metadata.year (100% of sample) e.g. 
+    metadata.waybackTimestamp (100% of sample) e.g. 20190821190701 | 20190823072845 | 20190823025319
+paclii_legislation_v1              noHistory       64 · dateless       64 · dated-untemplated       0 · srcDate   0%
+    metadata.waybackTimestamp (100% of sample) e.g. 20110301121125 | 20060710211641 | 20110301120351
+
+… 13 smaller pipelines (276 claims) — in the JSON report.
+
+Reading the table:
+  dated-untemplated > 0  → I add a Layer-1 template (+ completeness entry); no backfill needed.
+  metadata date key      → cheap batched-UPDATE backfill from the field shown.
+  srcDate% high          → backfill from the primary Source's publishedAt (per-pipeline decision).
+  none of the above      → source-API sweep, or honest residue (stays curve-less).

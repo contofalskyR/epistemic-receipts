@@ -1,0 +1,341 @@
+{
+  "total": 5557,
+  "transitions": [
+    {
+      "_count": {
+        "id": 1070939
+      },
+      "fromAxis": null,
+      "toAxis": "RECORDED"
+    },
+    {
+      "_count": {
+        "id": 495993
+      },
+      "fromAxis": null,
+      "toAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 209983
+      },
+      "fromAxis": "RECORDED",
+      "toAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 29392
+      },
+      "fromAxis": "RECORDED",
+      "toAxis": "REVERSED"
+    },
+    {
+      "_count": {
+        "id": 12781
+      },
+      "fromAxis": null,
+      "toAxis": "REVERSED"
+    },
+    {
+      "_count": {
+        "id": 903
+      },
+      "fromAxis": "SETTLED",
+      "toAxis": "REVERSED"
+    },
+    {
+      "_count": {
+        "id": 432
+      },
+      "fromAxis": "RECORDED",
+      "toAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 323
+      },
+      "fromAxis": "CONTESTED",
+      "toAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 316
+      },
+      "fromAxis": "SETTLED",
+      "toAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 233
+      },
+      "fromAxis": "SETTLED",
+      "toAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 164
+      },
+      "fromAxis": null,
+      "toAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 139
+      },
+      "fromAxis": "CONTESTED",
+      "toAxis": "REVERSED"
+    },
+    {
+      "_count": {
+        "id": 73
+      },
+      "fromAxis": null,
+      "toAxis": "OPEN"
+    },
+    {
+      "_count": {
+        "id": 54
+      },
+      "fromAxis": "REVERSED",
+      "toAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 50
+      },
+      "fromAxis": "OPEN",
+      "toAxis": "RECORDED"
+    },
+    {
+      "_count": {
+        "id": 45
+      },
+      "fromAxis": "SETTLED",
+      "toAxis": "RECORDED"
+    },
+    {
+      "_count": {
+        "id": 24
+      },
+      "fromAxis": "CONTESTED",
+      "toAxis": "RECORDED"
+    },
+    {
+      "_count": {
+        "id": 23
+      },
+      "fromAxis": "RECORDED",
+      "toAxis": "RECORDED"
+    },
+    {
+      "_count": {
+        "id": 21
+      },
+      "fromAxis": "RECORDED",
+      "toAxis": "ABANDONED"
+    },
+    {
+      "_count": {
+        "id": 21
+      },
+      "fromAxis": "CONTESTED",
+      "toAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 18
+      },
+      "fromAxis": "OPEN",
+      "toAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 18
+      },
+      "fromAxis": "REVERSED",
+      "toAxis": "REVERSED"
+    },
+    {
+      "_count": {
+        "id": 10
+      },
+      "fromAxis": "SETTLED",
+      "toAxis": "ABANDONED"
+    },
+    {
+      "_count": {
+        "id": 9
+      },
+      "fromAxis": "CONTESTED",
+      "toAxis": "ABANDONED"
+    },
+    {
+      "_count": {
+        "id": 8
+      },
+      "fromAxis": "REVERSED",
+      "toAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 7
+      },
+      "fromAxis": "OPEN",
+      "toAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 6
+      },
+      "fromAxis": "RECORDED",
+      "toAxis": "OPEN"
+    },
+    {
+      "_count": {
+        "id": 4
+      },
+      "fromAxis": "ABANDONED",
+      "toAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 2
+      },
+      "fromAxis": "CONTESTED",
+      "toAxis": "UNRESOLVABLE"
+    },
+    {
+      "_count": {
+        "id": 2
+      },
+      "fromAxis": "ABANDONED",
+      "toAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 1
+      },
+      "fromAxis": "ABANDONED",
+      "toAxis": "RECORDED"
+    },
+    {
+      "_count": {
+        "id": 1
+      },
+      "fromAxis": "CONTESTED",
+      "toAxis": "OPEN"
+    },
+    {
+      "_count": {
+        "id": 1
+      },
+      "fromAxis": "OPEN",
+      "toAxis": "UNRESOLVABLE"
+    },
+    {
+      "_count": {
+        "id": 1
+      },
+      "fromAxis": "RECORDED",
+      "toAxis": "UNRESOLVABLE"
+    },
+    {
+      "_count": {
+        "id": 1
+      },
+      "fromAxis": "REVERSED",
+      "toAxis": "ABANDONED"
+    },
+    {
+      "_count": {
+        "id": 1
+      },
+      "fromAxis": null,
+      "toAxis": "ABANDONED"
+    }
+  ],
+  "communities": [
+    {
+      "_count": {
+        "id": 1365649
+      },
+      "community": "INSTITUTIONAL"
+    },
+    {
+      "_count": {
+        "id": 438702
+      },
+      "community": "EXPERT_LITERATURE"
+    },
+    {
+      "_count": {
+        "id": 16101
+      },
+      "community": "JUDICIAL"
+    },
+    {
+      "_count": {
+        "id": 1446
+      },
+      "community": "PUBLIC"
+    },
+    {
+      "_count": {
+        "id": 101
+      },
+      "community": "MARKET"
+    }
+  ],
+  "axes": [
+    {
+      "_count": {
+        "id": 4610
+      },
+      "epistemicAxis": "SETTLED"
+    },
+    {
+      "_count": {
+        "id": 4
+      },
+      "epistemicAxis": "OPEN"
+    },
+    {
+      "_count": {
+        "id": 470
+      },
+      "epistemicAxis": "REVERSED"
+    },
+    {
+      "_count": {
+        "id": 128
+      },
+      "epistemicAxis": "RECORDED"
+    },
+    {
+      "_count": {
+        "id": 313
+      },
+      "epistemicAxis": "CONTESTED"
+    },
+    {
+      "_count": {
+        "id": 4
+      },
+      "epistemicAxis": "UNRESOLVABLE"
+    },
+    {
+      "_count": {
+        "id": 28
+      },
+      "epistemicAxis": "ABANDONED"
+    }
+  ],
+  "depthHist": {
+    "1": 1338846,
+    "2": 240217,
+    "3": 838,
+    "4": 46,
+    "5": 3,
+    "6": 1
+  }
+}

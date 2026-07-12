@@ -1,0 +1,18 @@
+{
+  "claims": 1757943,
+  "deletedClaims": 21,
+  "edges": 1718420,
+  "sources": 1686671,
+  "books": 7,
+  "bookChunks": 1271,
+  "bookClaims": 6636,
+  "bookMatches": 6257,
+  "votes": 140491,
+  "polities": 2361,
+  "historicalEvents": 9,
+  "orphanedClaims": 46589,
+  "bookClaimsNoMatch": 4556,
+  "nullVerification": 138010,
+  "dupExternalIds": 0,
+  "sourcesNoEdge": 30285
+}

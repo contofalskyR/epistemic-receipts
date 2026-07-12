@@ -1,0 +1,15 @@
+[20:43:36] START corpus-stats
+[20:45:12] OK    corpus-stats
+[20:45:12] START db-quick-check
+[20:45:46] OK    db-quick-check
+[20:45:46] START census-aggregates
+[20:46:15] OK    census-aggregates
+[20:46:15] START test-curve-stats
+[20:46:21] OK    test-curve-stats
+[20:46:21] START corpus-analysis
+[20:46:24] OK    corpus-analysis
+[20:46:24] START census-dateless
+[20:46:43] OK    census-dateless
+[20:46:43] START chain-integrity
+[20:47:30] FAIL  chain-integrity (exit 0)
+[20:47:30] ALL DONE

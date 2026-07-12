@@ -1,0 +1,38 @@
+
+=== Chain-integrity audit (SQL-first) — all pipelines ===
+
+Scope: 1,579,930 claims, 1,821,950 transitions.
+
+  E1  entry-row count ≠ 1 … ✓ 0  (3.9s)
+  C1  chain break (fromAxis ≠ prior toAxis) … 5  (21.7s)
+        cmqgl56of00rmsasyi6nphlab [seed:human-history-trajectories] row csh:trajectory:alphago-defeats-lee-sedol-2016:2: fromAxis CONTESTED, prior toAxis RECORDED
+        cmqgl56of00rmsasyi6nphlab [seed:human-history-trajectories] row csh:trajectory:alphago-defeats-lee-sedol-2016:1: fromAxis RECORDED, prior toAxis SETTLED
+        cmqh5ebr1012zsag0iwtoltkp [seed:human-history-trajectories] row csh:trajectory:pluto-reclassified-dwarf-planet-2006:2: fromAxis CONTESTED, prior toAxis RECORDED
+        cmqh5ebr1012zsag0iwtoltkp [seed:human-history-trajectories] row csh:trajectory:pluto-reclassified-dwarf-planet-2006:1: fromAxis RECORDED, prior toAxis REVERSED
+        cmqkeeh4x043nsa4oexpkz42i [seed:human-history-trajectories] row csh:trajectory:smiling-buddha-pokhran-i-1974:2: fromAxis CONTESTED, prior toAxis SETTLED
+  C2  seq inconsistency (partial stamp / non-contiguous / not 1..n) … ✓ 0  (2.7s)
+  D2  non-entry row precedes claimEmergedAt beyond its precision (warning) … 270  (2.1s)
+        cmqej93kj00axsa5jbv0its4x [seed:human-history-trajectories] 1814-01-01 (YEAR) precedes emergence 1822-09-27
+        cmpiybrfv8qw6plo727fodpsm [openfda_labels_v1] 2002-01-08 (DAY) precedes emergence 2026-05-19
+        cmpm7p01932zgsaere6wi0koe [openalex_v1] 2018-02-21 (DAY) precedes emergence 2025-08-12
+        cmpiya7mt8p06plo7kve83wpk [openfda_labels_v1] 2005-03-15 (DAY) precedes emergence 2026-05-19
+        cmpiygnm58wkiplo7gksfytr1 [openfda_labels_v1] 2021-01-01 (YEAR) precedes emergence 2026-07-01
+        cmpiyb8sm8q8oplo7y4ltyjaz [openfda_labels_v1] 2012-02-28 (DAY) precedes emergence 2026-05-19
+        cmpiyb8sm8q8oplo7y4ltyjaz [openfda_labels_v1] 2013-11-12 (DAY) precedes emergence 2026-05-19
+        cmpiydac08spoplo727hb7wrb [openfda_labels_v1] 2016-02-01 (MONTH) precedes emergence 2026-05-19
+  S1  sourceId does not resolve to a Source … ✓ 0  (1.0s)
+  A1  degenerate row (same axis AND same community as prior) … 143  (7.3s)
+        cmq7hmjez000wsa8788rkip49 [seed-trajectories] RECORDED→RECORDED (EXPERT_LITERATURE twice) on row trajectory:semaglutide-glp1:1
+        cmq7hmjez000wsa8788rkip49 [seed-trajectories] RECORDED→RECORDED (EXPERT_LITERATURE twice) on row trajectory:semaglutide-glp1:2
+        cmq7hmjez000wsa8788rkip49 [seed-trajectories] SETTLED→SETTLED (INSTITUTIONAL twice) on row trajectory:semaglutide-glp1:5
+        cmq7jlp2x0003sa7eba34v4kc [seed-court-reversals] SETTLED→SETTLED (JUDICIAL twice) on row csh:trajectory:adkins-west-coast-hotel:mid-1936
+        cmqeh3e7c002isaeqdxq6ebex [seed:historical-trajectories] SETTLED→SETTLED (INSTITUTIONAL twice) on row csh:trajectory:soviet-union-dissolution-1991:2
+        cmqej8vku0000sa5j1w69fu34 [seed:human-history-trajectories] SETTLED→SETTLED (EXPERT_LITERATURE twice) on row csh:trajectory:caesar-assassination-44bce:2
+        cmqej8w7l000ksa5jgqq1rlhx [seed:human-history-trajectories] SETTLED→SETTLED (EXPERT_LITERATURE twice) on row csh:trajectory:pompeii-vesuvius-79ce:2
+        cmqej8xiq002isa5j18xnqmpi [seed:human-history-trajectories] SETTLED→SETTLED (INSTITUTIONAL twice) on row csh:trajectory:bastille-storming-1789:2
+  V1  axis value outside FactStatus vocabulary … ✓ 0  (0.5s)
+
+  C1 breakdown (pipeline / row class):
+      seed:human-history-trajectories cuid-rows        5
+
+148 hard violations, 270 warnings.

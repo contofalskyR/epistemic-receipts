@@ -1,0 +1,1119 @@
+{
+  "generatedAt": "2026-07-12T00:45:48.261Z",
+  "basis": "deleted=false unless noted",
+  "claims": {
+    "total_live": 1757943,
+    "deleted": 21,
+    "deprecated_live": 182,
+    "total_live_excl_deprecated": 1757761
+  },
+  "by_verification_status": [
+    {
+      "status": "VERIFIED",
+      "count": 1386803
+    },
+    {
+      "status": "PROVISIONAL",
+      "count": 220686
+    },
+    {
+      "status": "NULL",
+      "count": 138010
+    },
+    {
+      "status": "DISPUTED",
+      "count": 11319
+    },
+    {
+      "status": "HARD_FACT",
+      "count": 943
+    },
+    {
+      "status": "DEPRECATED",
+      "count": 182
+    }
+  ],
+  "by_ingested_by": [
+    {
+      "tag": "openalex_v1",
+      "count": 318775
+    },
+    {
+      "tag": "nara_catalog_v1",
+      "count": 308051
+    },
+    {
+      "tag": "voteview_v1",
+      "count": 113319
+    },
+    {
+      "tag": "openfda_labels_v1",
+      "count": 85068
+    },
+    {
+      "tag": "hungary_legislation_v1",
+      "count": 69441
+    },
+    {
+      "tag": "chebi_v1",
+      "count": 62000
+    },
+    {
+      "tag": "worldbank_v1",
+      "count": 54567
+    },
+    {
+      "tag": "drugsatfda_v1",
+      "count": 46255
+    },
+    {
+      "tag": "jacar_v1",
+      "count": 44600
+    },
+    {
+      "tag": "who_gho_v1",
+      "count": 33714
+    },
+    {
+      "tag": "crossref_retractions_v1",
+      "count": 26624
+    },
+    {
+      "tag": "argentina_legislation_v1",
+      "count": 25824
+    },
+    {
+      "tag": "openalex_journals_v1",
+      "count": 25687
+    },
+    {
+      "tag": "czech_legislation_v1",
+      "count": 24173
+    },
+    {
+      "tag": "vdem_v1",
+      "count": 19777
+    },
+    {
+      "tag": "ofac_sdn_v1",
+      "count": 19034
+    },
+    {
+      "tag": "congress_bills_tracker_v1",
+      "count": 17280
+    },
+    {
+      "tag": "italy_legislation_v1",
+      "count": 16934
+    },
+    {
+      "tag": "chile_legislation_v1",
+      "count": 15889
+    },
+    {
+      "tag": "rxnorm_v1",
+      "count": 14632
+    },
+    {
+      "tag": "romania_legislation_v1",
+      "count": 13878
+    },
+    {
+      "tag": "brazil_legislation_v1",
+      "count": 12818
+    },
+    {
+      "tag": "cyprus_legislation_v1",
+      "count": 12682
+    },
+    {
+      "tag": "russia_legislation_v1",
+      "count": 12015
+    },
+    {
+      "tag": "uk_legislation_v1",
+      "count": 11777
+    },
+    {
+      "tag": "philippines_legislation_v1",
+      "count": 11703
+    },
+    {
+      "tag": "nih_reporter_v1",
+      "count": 11285
+    },
+    {
+      "tag": "clinicaltrials_v1",
+      "count": 10957
+    },
+    {
+      "tag": "congress_v1",
+      "count": 10360
+    },
+    {
+      "tag": "luxembourg_legislation_v1",
+      "count": 10006
+    },
+    {
+      "tag": "europeana_wwi_v1",
+      "count": 10000
+    },
+    {
+      "tag": "mesh_v1",
+      "count": 10000
+    },
+    {
+      "tag": "riksdag_v1",
+      "count": 9989
+    },
+    {
+      "tag": "echr_judgments_v1",
+      "count": 9984
+    },
+    {
+      "tag": "wipo_lex_v1",
+      "count": 9641
+    },
+    {
+      "tag": "eec_council_v1",
+      "count": 8933
+    },
+    {
+      "tag": "costa_rica_legislation_v1",
+      "count": 8483
+    },
+    {
+      "tag": "sipri_milex_v1",
+      "count": 8435
+    },
+    {
+      "tag": "colombia_legislation_v1",
+      "count": 8159
+    },
+    {
+      "tag": "belgium_legislation_v1",
+      "count": 7870
+    },
+    {
+      "tag": "space_missions_v1",
+      "count": 7318
+    },
+    {
+      "tag": "poland_legislation_v1",
+      "count": 6461
+    },
+    {
+      "tag": "bundestag_v1",
+      "count": 6343
+    },
+    {
+      "tag": "nasa_exoplanet_v1",
+      "count": 6277
+    },
+    {
+      "tag": "estonia_legislation_v1",
+      "count": 5870
+    },
+    {
+      "tag": "peru_legislation_v1",
+      "count": 5202
+    },
+    {
+      "tag": "uk_national_archives_v1",
+      "count": 5000
+    },
+    {
+      "tag": "thailand_legislation_v1",
+      "count": 4938
+    },
+    {
+      "tag": "australia_legislation_v1",
+      "count": 4740
+    },
+    {
+      "tag": "usgs_eq_v1",
+      "count": 4696
+    },
+    {
+      "tag": "denmark_legislation_v1",
+      "count": 4550
+    },
+    {
+      "tag": "nz_repealed_acts_v1",
+      "count": 4372
+    },
+    {
+      "tag": "fred_v1",
+      "count": 4349
+    },
+    {
+      "tag": "eu_parliament_v1",
+      "count": 4331
+    },
+    {
+      "tag": "uruguay_legislation_v1",
+      "count": 4297
+    },
+    {
+      "tag": "western_balkans_v1",
+      "count": 4062
+    },
+    {
+      "tag": "slovakia_legislation_v1",
+      "count": 4050
+    },
+    {
+      "tag": "oireachtas_v1",
+      "count": 4040
+    },
+    {
+      "tag": "taiwan_archives_v1",
+      "count": 3935
+    },
+    {
+      "tag": "romania_cnsas_v1",
+      "count": 3927
+    },
+    {
+      "tag": "nationalrat_v1",
+      "count": 3868
+    },
+    {
+      "tag": "loc_collections_v1",
+      "count": 3561
+    },
+    {
+      "tag": "india_legislation_v1",
+      "count": 3540
+    },
+    {
+      "tag": "fec_finance_v1",
+      "count": 3500
+    },
+    {
+      "tag": "seed:human-history-trajectories",
+      "count": 3465
+    },
+    {
+      "tag": "ucdp_v1",
+      "count": 3432
+    },
+    {
+      "tag": "france_legislation_v1",
+      "count": 3046
+    },
+    {
+      "tag": "parlament_at_v1",
+      "count": 3004
+    },
+    {
+      "tag": "kenya_legislation_v1",
+      "count": 2984
+    },
+    {
+      "tag": "un_sc_resolutions_v1",
+      "count": 2798
+    },
+    {
+      "tag": "norway_legislation_v1",
+      "count": 2612
+    },
+    {
+      "tag": "switzerland_legislation_v1",
+      "count": 2413
+    },
+    {
+      "tag": "eu_legislation_v1",
+      "count": 2122
+    },
+    {
+      "tag": "korea_legislation_v1",
+      "count": 2114
+    },
+    {
+      "tag": "japan_legislation_v1",
+      "count": 2080
+    },
+    {
+      "tag": "spain_legislation_v1",
+      "count": 2045
+    },
+    {
+      "tag": "israel_knesset_v1",
+      "count": 2009
+    },
+    {
+      "tag": "fr_rules_v1",
+      "count": 1920
+    },
+    {
+      "tag": "nz_bills_v1",
+      "count": 1879
+    },
+    {
+      "tag": "seed:medicine-trajectories",
+      "count": 1782
+    },
+    {
+      "tag": "srilanka_legislation_v1",
+      "count": 1704
+    },
+    {
+      "tag": "nobel_v1",
+      "count": 1688
+    },
+    {
+      "tag": "finland_legislation_v1",
+      "count": 1683
+    },
+    {
+      "tag": "bangladesh_legislation_v1",
+      "count": 1664
+    },
+    {
+      "tag": "paclii_legislation_v1",
+      "count": 1583
+    },
+    {
+      "tag": "tweedekamer_v1",
+      "count": 1530
+    },
+    {
+      "tag": "omim_v1",
+      "count": 1512
+    },
+    {
+      "tag": "icd11_v1",
+      "count": 1374
+    },
+    {
+      "tag": "portugal_legislation_v1",
+      "count": 1292
+    },
+    {
+      "tag": "courtlistener_circuits_v1",
+      "count": 1232
+    },
+    {
+      "tag": "zambia_legislation_v1",
+      "count": 1119
+    },
+    {
+      "tag": "iceland_legislation_v1",
+      "count": 1069
+    },
+    {
+      "tag": "canada_bills_v1",
+      "count": 1067
+    },
+    {
+      "tag": "miller_center_v1",
+      "count": 1059
+    },
+    {
+      "tag": "nz_legislation_v1",
+      "count": 1041
+    },
+    {
+      "tag": "wikidata_nobel_v1",
+      "count": 1023
+    },
+    {
+      "tag": "central_america_v1",
+      "count": 1017
+    },
+    {
+      "tag": "taiwan_legislation_v1",
+      "count": 1016
+    },
+    {
+      "tag": "faers_normalized_drugs_v1",
+      "count": 999
+    },
+    {
+      "tag": "africanlii_v1",
+      "count": 962
+    },
+    {
+      "tag": "pakistan_code_v1",
+      "count": 943
+    },
+    {
+      "tag": "congress_stock_act_v1",
+      "count": 921
+    },
+    {
+      "tag": "malaysia_legislation_v1",
+      "count": 883
+    },
+    {
+      "tag": "doj_fara_v1",
+      "count": 811
+    },
+    {
+      "tag": "cosmetic_faers_v1",
+      "count": 810
+    },
+    {
+      "tag": "icj_judgments_v1",
+      "count": 800
+    },
+    {
+      "tag": "volcanic_eruptions_v1",
+      "count": 745
+    },
+    {
+      "tag": "fec_finance_pac_v1",
+      "count": 700
+    },
+    {
+      "tag": "caribbean_v1",
+      "count": 675
+    },
+    {
+      "tag": "wto_disputes_v1",
+      "count": 645
+    },
+    {
+      "tag": "nz_local_acts_v1",
+      "count": 611
+    },
+    {
+      "tag": "openfec_v1",
+      "count": 600
+    },
+    {
+      "tag": "openfec_ie_v1",
+      "count": 600
+    },
+    {
+      "tag": "courtlistener_state_supreme_v1",
+      "count": 580
+    },
+    {
+      "tag": "south_africa_legislation_v1",
+      "count": 578
+    },
+    {
+      "tag": "uganda_legislation_v1",
+      "count": 576
+    },
+    {
+      "tag": "latvia_legislation_v1",
+      "count": 567
+    },
+    {
+      "tag": "malta_legislation_v1",
+      "count": 565
+    },
+    {
+      "tag": "frus_v1",
+      "count": 551
+    },
+    {
+      "tag": "jamaica_legislation_v1",
+      "count": 528
+    },
+    {
+      "tag": "zimbabwe_legislation_v1",
+      "count": 513
+    },
+    {
+      "tag": "singapore_legislation_v1",
+      "count": 508
+    },
+    {
+      "tag": "congress_votes_v1",
+      "count": 505
+    },
+    {
+      "tag": "un_ga_resolutions_v1",
+      "count": 501
+    },
+    {
+      "tag": "wikidata_space_missions_v1",
+      "count": 500
+    },
+    {
+      "tag": "icsid_v1",
+      "count": 500
+    },
+    {
+      "tag": "courtlistener_scotus_v1",
+      "count": 460
+    },
+    {
+      "tag": "nato_official_texts_v1",
+      "count": 459
+    },
+    {
+      "tag": "mauritius_legislation_v1",
+      "count": 442
+    },
+    {
+      "tag": "rwanda_legislation_v1",
+      "count": 438
+    },
+    {
+      "tag": "tanzania_legislation_v1",
+      "count": 434
+    },
+    {
+      "tag": "un_treaties_v1",
+      "count": 419
+    },
+    {
+      "tag": "ghana_legislation_v1",
+      "count": 413
+    },
+    {
+      "tag": "scotland_legislation_v1",
+      "count": 408
+    },
+    {
+      "tag": "sec_edgar_v1",
+      "count": 379
+    },
+    {
+      "tag": "fda_aesthetic_devices_v1",
+      "count": 372
+    },
+    {
+      "tag": "central_asia_v1",
+      "count": 369
+    },
+    {
+      "tag": "tt_legislation_v1",
+      "count": 368
+    },
+    {
+      "tag": "pubchem_v1",
+      "count": 355
+    },
+    {
+      "tag": "nist_constants_v1",
+      "count": 355
+    },
+    {
+      "tag": "namibia_legislation_v1",
+      "count": 336
+    },
+    {
+      "tag": "malawi_legislation_v1",
+      "count": 335
+    },
+    {
+      "tag": "eswatini_legislation_v1",
+      "count": 326
+    },
+    {
+      "tag": "echr_v1",
+      "count": 312
+    },
+    {
+      "tag": "mexico_legislation_v1",
+      "count": 309
+    },
+    {
+      "tag": "georgia_legislation_v1",
+      "count": 301
+    },
+    {
+      "tag": "african_court_v1",
+      "count": 300
+    },
+    {
+      "tag": "brunei_legislation_v1",
+      "count": 288
+    },
+    {
+      "tag": "courtlistener_tax_v1",
+      "count": 259
+    },
+    {
+      "tag": "courtlistener_bia_v1",
+      "count": 240
+    },
+    {
+      "tag": "openfda_v1",
+      "count": 233
+    },
+    {
+      "tag": "pdg_particles_v1",
+      "count": 226
+    },
+    {
+      "tag": "courtlistener_disclosures_v1",
+      "count": 218
+    },
+    {
+      "tag": "impact_craters_v1",
+      "count": 214
+    },
+    {
+      "tag": "nuclear_tests_v1",
+      "count": 202
+    },
+    {
+      "tag": "law-settler",
+      "count": 189
+    },
+    {
+      "tag": "uspto_v1",
+      "count": 182
+    },
+    {
+      "tag": "wikidata_chips_v1",
+      "count": 182
+    },
+    {
+      "tag": "uae_legislation_v1",
+      "count": 177
+    },
+    {
+      "tag": "who_essential_medicines_v1",
+      "count": 147
+    },
+    {
+      "tag": "periodic_table_v1",
+      "count": 119
+    },
+    {
+      "tag": "wikidata_elements_v1",
+      "count": 118
+    },
+    {
+      "tag": "czech_abs_v1",
+      "count": 104
+    },
+    {
+      "tag": "wales_senedd_v1",
+      "count": 100
+    },
+    {
+      "tag": "genbank_v1",
+      "count": 99
+    },
+    {
+      "tag": "un_ga_v1",
+      "count": 97
+    },
+    {
+      "tag": "lesotho_legislation_v1",
+      "count": 90
+    },
+    {
+      "tag": "iau_constellations_v1",
+      "count": 88
+    },
+    {
+      "tag": "sierra_leone_legislation_v1",
+      "count": 83
+    },
+    {
+      "tag": "event:exoplanet_retractions_v1",
+      "count": 75
+    },
+    {
+      "tag": "icc_judgments_v1",
+      "count": 74
+    },
+    {
+      "tag": "retraction_watch_v1",
+      "count": 55
+    },
+    {
+      "tag": "icc_cases_v1",
+      "count": 35
+    },
+    {
+      "tag": "croatia_legislation_v1",
+      "count": 33
+    },
+    {
+      "tag": "seed:astronomy-trajectories",
+      "count": 32
+    },
+    {
+      "tag": "seed:nutrition-trajectories",
+      "count": 30
+    },
+    {
+      "tag": "seed:climate-trajectories",
+      "count": 30
+    },
+    {
+      "tag": "solar_system_v1",
+      "count": 28
+    },
+    {
+      "tag": "manual",
+      "count": 23
+    },
+    {
+      "tag": "nist_webbook_v1",
+      "count": 20
+    },
+    {
+      "tag": "book-analysis:cmppvaz700000sal1cnyfutdx",
+      "count": 16
+    },
+    {
+      "tag": "seed-trajectories",
+      "count": 11
+    },
+    {
+      "tag": "slovenia_legislation_v1",
+      "count": 10
+    },
+    {
+      "tag": "seed:historical-trajectories",
+      "count": 10
+    },
+    {
+      "tag": "seed-court-reversals",
+      "count": 8
+    },
+    {
+      "tag": "iau_v1",
+      "count": 5
+    },
+    {
+      "tag": "stasi_v1",
+      "count": 2
+    }
+  ],
+  "by_source_category": [
+    {
+      "category": "US Federal Government",
+      "sources": 18,
+      "claims": 490768
+    },
+    {
+      "category": "Science & Medicine",
+      "sources": 26,
+      "claims": 488285
+    },
+    {
+      "category": "National Parliaments / Legislation",
+      "sources": 86,
+      "claims": 405642
+    },
+    {
+      "category": "Pharmaceutical & Health",
+      "sources": 10,
+      "claims": 147880
+    },
+    {
+      "category": "International Organizations",
+      "sources": 12,
+      "claims": 134485
+    },
+    {
+      "category": "Archives & Historical",
+      "sources": 8,
+      "claims": 69074
+    },
+    {
+      "category": "Courts & Legal",
+      "sources": 14,
+      "claims": 15956
+    },
+    {
+      "category": "Editorial / Curated",
+      "sources": 10,
+      "claims": 5580
+    }
+  ],
+  "source_category_unmapped": [
+    {
+      "tag": "event:exoplanet_retractions_v1",
+      "count": 75
+    },
+    {
+      "tag": "book-analysis:cmppvaz700000sal1cnyfutdx",
+      "count": 16
+    }
+  ],
+  "source_category_basis": "deleted=false AND verificationStatus <> 'DEPRECATED' (matches /api/sources-summary)",
+  "curves_all": {
+    "claims_with_history": 1579930,
+    "multi_step": 241084,
+    "span_gt1_date": 34292,
+    "followable": 3516,
+    "followable_via_3plus": 881,
+    "followable_via_2span_multicommunity": 2635,
+    "multi_step_spanning": 34292,
+    "multi_community": 3333
+  },
+  "curves_curated_trajectory_subset": {
+    "claims_with_history": 5557,
+    "multi_step": 5210,
+    "span_gt1_date": 5068,
+    "followable": 3381,
+    "followable_via_3plus": 763,
+    "followable_via_2span_multicommunity": 2618,
+    "multi_step_spanning": 5068,
+    "multi_community": 3203
+  },
+  "transition_count_distribution": [
+    {
+      "transitions": "1",
+      "claims": 1338846
+    },
+    {
+      "transitions": "2",
+      "claims": 240203
+    },
+    {
+      "transitions": "3",
+      "claims": 831
+    },
+    {
+      "transitions": "4",
+      "claims": 46
+    },
+    {
+      "transitions": "5",
+      "claims": 3
+    },
+    {
+      "transitions": "6",
+      "claims": 1
+    }
+  ],
+  "history_totals": {
+    "rows": 1821999,
+    "distinct_claims": 1579951
+  },
+  "transition_matrix_top25": [
+    {
+      "from": "∅",
+      "to": "RECORDED",
+      "count": 1070939
+    },
+    {
+      "from": "∅",
+      "to": "SETTLED",
+      "count": 495993
+    },
+    {
+      "from": "RECORDED",
+      "to": "SETTLED",
+      "count": 209983
+    },
+    {
+      "from": "RECORDED",
+      "to": "REVERSED",
+      "count": 29392
+    },
+    {
+      "from": "∅",
+      "to": "REVERSED",
+      "count": 12781
+    },
+    {
+      "from": "SETTLED",
+      "to": "REVERSED",
+      "count": 903
+    },
+    {
+      "from": "RECORDED",
+      "to": "CONTESTED",
+      "count": 432
+    },
+    {
+      "from": "CONTESTED",
+      "to": "SETTLED",
+      "count": 323
+    },
+    {
+      "from": "SETTLED",
+      "to": "CONTESTED",
+      "count": 316
+    },
+    {
+      "from": "SETTLED",
+      "to": "SETTLED",
+      "count": 233
+    },
+    {
+      "from": "∅",
+      "to": "CONTESTED",
+      "count": 164
+    },
+    {
+      "from": "CONTESTED",
+      "to": "REVERSED",
+      "count": 139
+    },
+    {
+      "from": "∅",
+      "to": "OPEN",
+      "count": 73
+    },
+    {
+      "from": "REVERSED",
+      "to": "SETTLED",
+      "count": 54
+    },
+    {
+      "from": "OPEN",
+      "to": "RECORDED",
+      "count": 50
+    },
+    {
+      "from": "SETTLED",
+      "to": "RECORDED",
+      "count": 45
+    },
+    {
+      "from": "CONTESTED",
+      "to": "RECORDED",
+      "count": 24
+    },
+    {
+      "from": "RECORDED",
+      "to": "RECORDED",
+      "count": 23
+    },
+    {
+      "from": "RECORDED",
+      "to": "ABANDONED",
+      "count": 21
+    },
+    {
+      "from": "CONTESTED",
+      "to": "CONTESTED",
+      "count": 21
+    },
+    {
+      "from": "OPEN",
+      "to": "SETTLED",
+      "count": 18
+    },
+    {
+      "from": "REVERSED",
+      "to": "REVERSED",
+      "count": 18
+    },
+    {
+      "from": "SETTLED",
+      "to": "ABANDONED",
+      "count": 10
+    },
+    {
+      "from": "CONTESTED",
+      "to": "ABANDONED",
+      "count": 9
+    },
+    {
+      "from": "REVERSED",
+      "to": "CONTESTED",
+      "count": 8
+    }
+  ],
+  "reversal_arcs": {
+    "claims_with_reversed_transition": 43214,
+    "by_community": [
+      {
+        "community": "EXPERT_LITERATURE",
+        "claims": 38183
+      },
+      {
+        "community": "INSTITUTIONAL",
+        "claims": 4914
+      },
+      {
+        "community": "JUDICIAL",
+        "claims": 97
+      },
+      {
+        "community": "MARKET",
+        "claims": 16
+      },
+      {
+        "community": "PUBLIC",
+        "claims": 14
+      }
+    ],
+    "retraction_pairs_expert_literature": {
+      "total": 29292,
+      "valid_positive_survival": 28330,
+      "indeterminate": 962
+    },
+    "court_reversals": {
+      "judicial_reversed_claims": 97,
+      "judicial_settled_to_reversed_claims": 68,
+      "seed_court_reversals_claims": 8
+    }
+  },
+  "seeded_trajectories": [
+    {
+      "tag": "seed:human-history-trajectories",
+      "claims": 3465,
+      "with_history": 3465
+    },
+    {
+      "tag": "seed:medicine-trajectories",
+      "claims": 1782,
+      "with_history": 1782
+    },
+    {
+      "tag": "law-settler",
+      "claims": 189,
+      "with_history": 189
+    },
+    {
+      "tag": "seed:astronomy-trajectories",
+      "claims": 32,
+      "with_history": 32
+    },
+    {
+      "tag": "seed:nutrition-trajectories",
+      "claims": 30,
+      "with_history": 30
+    },
+    {
+      "tag": "seed:climate-trajectories",
+      "claims": 30,
+      "with_history": 30
+    },
+    {
+      "tag": "seed-trajectories",
+      "claims": 11,
+      "with_history": 11
+    },
+    {
+      "tag": "seed:historical-trajectories",
+      "claims": 10,
+      "with_history": 10
+    },
+    {
+      "tag": "seed-court-reversals",
+      "claims": 8,
+      "with_history": 8
+    }
+  ],
+  "sources": {
+    "total_live": 1686671,
+    "by_methodology_type": [
+      {
+        "type": "primary",
+        "count": 1681825
+      },
+      {
+        "type": "derivative",
+        "count": 4772
+      },
+      {
+        "type": "secondary",
+        "count": 40
+      },
+      {
+        "type": "opinion",
+        "count": 34
+      }
+    ]
+  }
+}
