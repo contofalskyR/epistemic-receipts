@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
 import { serializeJsonLd } from "@/lib/jsonld";
+import CitationButton from "@/components/CitationButton";
 import { SITE_URL } from "@/lib/site";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
@@ -266,13 +267,14 @@ export default async function HPyloriStoryPage() {
       </section>
 
       {/* Footer nav */}
-      <footer className="pt-4 border-t border-gray-800 flex gap-6 text-sm text-gray-500">
+      <footer className="pt-4 border-t border-gray-800 flex gap-6 items-center text-sm text-gray-500">
         <Link href="/stories" className="hover:text-amber-400 transition-colors">
           More stories →
         </Link>
         <Link href="/settling-curve" className="hover:text-amber-400 transition-colors">
           Browse all trajectories →
         </Link>
+        <CitationButton type="claim" id={hpylori.claimId} />
       </footer>
 
       <script

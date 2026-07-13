@@ -249,6 +249,73 @@ export default function EpistemicCoverage() {
               </ResponsiveContainer>
             </section>
 
+            {/* Known residues — honesty ledger */}
+            <section
+              style={{
+                background: C.panel,
+                border: `1px solid ${C.panelEdge}`,
+                borderRadius: 8,
+                padding: "20px 24px",
+                marginBottom: 40,
+              }}
+            >
+              <div style={{ fontSize: 11, color: C.mut, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>
+                Known residues
+              </div>
+              <div style={{ fontSize: 12, color: C.faint, marginBottom: 16 }}>
+                Gaps and known-incomplete sets in this corpus — internal discipline made public. Each item traces to a{" "}
+                <a href="/corrections" style={{ color: C.brand, textDecoration: "underline" }}>corrections log</a>{" "}
+                entry or MATERIAL-LOG date.
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                {[
+                  {
+                    label: "Single-step retraction residue (wave 2)",
+                    count: "~8,344",
+                    detail: "CrossRef/OpenAlex retractions ingested as RECORDED→REVERSED but lacking a prior RECORDED transition; the fromAxis gap means the curve is one step, not two. The data is correct; the arc is incomplete.",
+                    log: "MATERIAL-LOG 2026-07-11",
+                  },
+                  {
+                    label: "Unparsed FDA DATES-variant notices",
+                    count: "2",
+                    detail: "Two FDA withdrawal-of-approval notices used a non-standard DATES field layout that the parser did not handle. The claims are in the DB as RECORDED; the REVERSED transition was not written.",
+                    log: "MATERIAL-LOG 2026-07-11",
+                  },
+                  {
+                    label: "Hyphenated NDA residue (no-application-numbers)",
+                    count: "unknown",
+                    detail: "A subset of FDA notices referenced application numbers in a hyphenated format the parser skipped. Affects drugsatfda_v1 cross-linking only; transitions are not missing.",
+                    log: "MATERIAL-LOG 2026-07-11",
+                  },
+                  {
+                    label: "Blocked C1 seed rows",
+                    count: "5",
+                    detail: "Five curated trajectory seed rows that failed the transition-contract validation during the C1 seeding pass. The claims exist; their status curves were not written.",
+                    log: "MATERIAL-LOG 2026-07-12",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    style={{
+                      borderLeft: `2px solid ${C.panelEdge}`,
+                      paddingLeft: 12,
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
+                      <span style={{ fontSize: 13, color: C.ink }}>{item.label}</span>
+                      <span style={{ fontSize: 11, color: C.mut, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
+                        {item.count}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 11, color: C.faint, marginTop: 3, lineHeight: 1.5 }}>
+                      {item.detail}{" "}
+                      <span style={{ color: C.panelEdge }}>({item.log})</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             {/* Top pipelines */}
             <section
               style={{
