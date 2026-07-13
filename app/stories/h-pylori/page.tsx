@@ -267,8 +267,8 @@ export default async function HPyloriStoryPage() {
 
       {/* Footer nav */}
       <footer className="pt-4 border-t border-gray-800 flex gap-6 text-sm text-gray-500">
-        <Link href="/case-studies" className="hover:text-amber-400 transition-colors">
-          More case studies →
+        <Link href="/stories" className="hover:text-amber-400 transition-colors">
+          More stories →
         </Link>
         <Link href="/settling-curve" className="hover:text-amber-400 transition-colors">
           Browse all trajectories →

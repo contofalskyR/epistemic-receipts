@@ -23,7 +23,15 @@ const STATIC_URLS: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/reversals`, changeFrequency: "weekly", priority: 0.7 },
   { url: `${SITE_URL}/globe`, changeFrequency: "monthly", priority: 0.5 },
   { url: `${SITE_URL}/case-studies`, changeFrequency: "weekly", priority: 0.9 },
+  { url: `${SITE_URL}/stories`, changeFrequency: "monthly", priority: 0.8 },
   { url: `${SITE_URL}/stories/h-pylori`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/stories/smoking-lung-cancer`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/stories/continental-drift`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/stories/cold-fusion`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/stories/semaglutide-glp1`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/stories/cfc-ozone-depletion`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/stories/dietary-fat-heart`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/stories/voting-rights-act-1965`, changeFrequency: "monthly", priority: 0.7 },
 ];
 
 export async function generateSitemaps() {
