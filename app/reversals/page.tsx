@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
 import DomainCurveRail from "../components/DomainCurveRail";
 import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 
-export const revalidate = 86400; // ISR: rebuild at most once per day
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Court Reversals — Epistemic Receipts",
+  title: "Reversal Index — Epistemic Receipts",
   description:
-    "Landmark Supreme Court and ECHR doctrines that were later overruled — Plessy to Brown, Roe to Dobbs, Chevron to Loper Bright. Each arc traces a definitive SETTLED ruling to its definitive REVERSED one, receipt by receipt.",
+    "A cross-community reversal hub: court overrulings, FDA drug withdrawals, expert-literature retractions, and legislative repeals — each arc sourced and dated.",
 };
 
 type ReversalArc = {
@@ -21,9 +22,6 @@ type ReversalArc = {
   summary: string;
 };
 
-// Hand-curated from scripts/seed-court-reversals.ts — 8 doctrines settled by one
-// ruling and later reversed by another, both ratified by the JUDICIAL community.
-// Roe→Dobbs leads: it is the most legible reversal to a general audience.
 const CURATED_ARCS: ReversalArc[] = [
   {
     slug: "roe-dobbs",
@@ -91,88 +89,261 @@ const CURATED_ARCS: ReversalArc[] = [
   },
 ];
 
-export default function ReversalsPage() {
+function fmtCount(n: number) {
+  if (n >= 1_000) return (n / 1_000).toFixed(1) + "k";
+  return n.toLocaleString();
+}
+
+export default async function ReversalsPage() {
+  const [judicialCount, institutionalCount, literatureCount, legislativeCount] =
+    await Promise.all([
+      prisma.claimStatusHistory.count({
+        where: { toAxis: "REVERSED", community: "JUDICIAL" },
+      }),
+      prisma.claimStatusHistory.count({
+        where: { toAxis: "REVERSED", community: "INSTITUTIONAL" },
+      }),
+      prisma.claimStatusHistory.count({
+        where: { toAxis: "REVERSED", community: "EXPERT_LITERATURE" },
+      }),
+      prisma.claimStatusHistory.count({
+        where: {
+          toAxis: "REVERSED",
+          claim: { ingestedBy: "nz_repealed_acts_v1" },
+        },
+      }),
+    ]);
+
   const [featured, ...rest] = CURATED_ARCS;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16 space-y-12">
+    <div className="max-w-4xl mx-auto px-6 py-16 space-y-16">
       <FieldGuideBanner
-        domain="Court Reversals"
+        domain="Reversal Index"
         curatedHref="/settling-curve?t=roe-dobbs"
         curatedLabel="Roe v. Wade → Dobbs trajectory"
       />
+
       <header className="space-y-3">
         <p className="text-xs text-gray-600 font-mono uppercase tracking-widest">
-          Judicial arcs
+          Cross-community reversal hub
         </p>
         <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-          Court Reversals
+          Reversal Index
         </h1>
         <p className="text-gray-400 text-base max-w-2xl leading-relaxed">
-          Judicial reversals are the clearest case of epistemic settling: a court
-          rules, the ruling is SETTLED doctrine — and decades later, another court
-          reverses it. Unlike a slow drift in scientific consensus, each side of the
-          arc is a single, dated, citable event. No inference is required to say
-          when the law changed: the opinion says so on its face.
+          Epistemic reversals happen in courts, in regulatory agencies, in the
+          scientific literature, and in legislatures. Each community names what
+          it means differently — overruled, withdrawn, retracted, repealed — but
+          the structure is the same: a claim reaches SETTLED status, then a
+          dated event returns it to REVERSED. This page sections each by who
+          ratified it.
         </p>
       </header>
 
-      {/* Featured: Roe → Dobbs */}
-      <Link
-        href={`/settling-curve?t=${featured.slug}`}
-        className="group block rounded-xl bg-gray-900/70 border border-gray-800 hover:border-amber-500/60 px-6 py-6 transition-colors"
-      >
-        <span className="text-[10px] font-mono uppercase tracking-widest text-amber-500">
-          Most-traced reversal
-        </span>
-        <p className="mt-2 text-white font-semibold text-xl leading-snug group-hover:text-amber-300 transition-colors">
-          {featured.settledCase} ({featured.settledYear}) → {featured.reversedCase} ({featured.reversedYear})
+      {/* ── JUDICIAL ─────────────────────────────────────────────────────── */}
+      <section className="space-y-8" aria-labelledby="judicial-heading">
+        <div className="border-l-2 border-amber-500/50 pl-4 space-y-1">
+          <p className="text-[10px] font-mono uppercase tracking-widest text-amber-500">
+            Ratifying community · Judicial
+          </p>
+          <h2 id="judicial-heading" className="text-xl font-semibold text-white">
+            Court overrulings
+          </h2>
+          {judicialCount > 0 && (
+            <p className="text-xs text-gray-500">
+              {fmtCount(judicialCount)} REVERSED transitions in the judicial record
+            </p>
+          )}
+        </div>
+        <p className="text-sm text-gray-400 max-w-2xl leading-relaxed">
+          Judicial reversals are the clearest case of epistemic settling: a court
+          rules, the ruling is SETTLED doctrine — and decades later, another court
+          reverses it. Each side of the arc is a single, dated, citable opinion.
         </p>
-        <p className="mt-2 text-gray-400 text-sm leading-relaxed max-w-2xl">
-          {featured.summary}
-        </p>
-        <span className="mt-3 inline-block text-xs font-mono text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
-          trace the full arc →
-        </span>
-      </Link>
 
-      {/* Curated list */}
-      <section className="space-y-4">
-        <h2 className="text-lg font-semibold text-white">
-          Eight landmark overruling arcs
-        </h2>
-        <ul className="space-y-3">
-          {rest.map((arc) => (
-            <li key={arc.slug}>
-              <Link
-                href={`/settling-curve?t=${arc.slug}`}
-                className="group flex flex-col sm:flex-row sm:items-start gap-3 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-gray-600 px-5 py-4 transition-colors"
-              >
-                <div className="flex-1 min-w-0 space-y-1">
-                  <p className="text-white font-medium text-sm leading-snug group-hover:text-amber-300 transition-colors">
-                    {arc.settledCase} → {arc.reversedCase}
-                  </p>
-                  <p className="text-gray-500 text-xs leading-relaxed">{arc.summary}</p>
-                </div>
-                <span className="shrink-0 font-mono text-[11px] text-gray-500">
-                  {arc.settledYear} → {arc.reversedYear}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {/* Featured */}
+        <Link
+          href={`/settling-curve?t=${featured.slug}`}
+          className="group block rounded-xl bg-gray-900/70 border border-gray-800 hover:border-amber-500/60 px-6 py-6 transition-colors"
+        >
+          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-500">
+            Most-traced reversal
+          </span>
+          <p className="mt-2 text-white font-semibold text-xl leading-snug group-hover:text-amber-300 transition-colors">
+            {featured.settledCase} ({featured.settledYear}) → {featured.reversedCase} ({featured.reversedYear})
+          </p>
+          <p className="mt-2 text-gray-400 text-sm leading-relaxed max-w-2xl">
+            {featured.summary}
+          </p>
+          <span className="mt-3 inline-block text-xs font-mono text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
+            trace the full arc →
+          </span>
+        </Link>
+
+        <section className="space-y-4">
+          <h3 className="text-base font-semibold text-white">
+            Eight landmark overruling arcs
+          </h3>
+          <ul className="space-y-3">
+            {rest.map((arc) => (
+              <li key={arc.slug}>
+                <Link
+                  href={`/settling-curve?t=${arc.slug}`}
+                  className="group flex flex-col sm:flex-row sm:items-start gap-3 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-gray-600 px-5 py-4 transition-colors"
+                >
+                  <div className="flex-1 min-w-0 space-y-1">
+                    <p className="text-white font-medium text-sm leading-snug group-hover:text-amber-300 transition-colors">
+                      {arc.settledCase} → {arc.reversedCase}
+                    </p>
+                    <p className="text-gray-500 text-xs leading-relaxed">{arc.summary}</p>
+                  </div>
+                  <span className="shrink-0 font-mono text-[11px] text-gray-500">
+                    {arc.settledYear} → {arc.reversedYear}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <Suspense fallback={null}>
+          <DomainCurveRail
+            title="All judicial reversal arcs"
+            subtitle="Curated trajectories above, plus every Supreme Court opinion matched against the Library of Congress Constitution Annotated Table of Decisions Overruled."
+            pipelines={["seed-court-reversals", "courtlistener_scotus_v1"]}
+            limit={20}
+          />
+        </Suspense>
       </section>
 
-      {/* Dynamic rail: the 8 curated arcs above plus SCOTUS overruling-table arcs
-          detected against courtlistener_scotus_v1 (event:scotus_overrulings_v1). */}
-      <Suspense fallback={null}>
-        <DomainCurveRail
-          title="All judicial reversal arcs"
-          subtitle="Curated trajectories above, plus every Supreme Court opinion matched against the Library of Congress Constitution Annotated Table of Decisions Overruled — each with its own settling curve."
-          pipelines={["seed-court-reversals", "courtlistener_scotus_v1"]}
-          limit={20}
-        />
-      </Suspense>
+      {/* ── INSTITUTIONAL ────────────────────────────────────────────────── */}
+      {institutionalCount > 0 && (
+        <section className="space-y-6" aria-labelledby="institutional-heading">
+          <div className="border-l-2 border-sky-500/50 pl-4 space-y-1">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-sky-400">
+              Ratifying community · Institutional
+            </p>
+            <h2 id="institutional-heading" className="text-xl font-semibold text-white">
+              Regulatory withdrawals
+            </h2>
+            <p className="text-xs text-gray-500">
+              {fmtCount(institutionalCount)} REVERSED transitions in the institutional record
+              {" "}·{" "}
+              <span className="text-gray-600">
+                residue: ~2 unparsed FDA DATES-variant notices (MATERIAL-LOG 2026-07-11)
+                —{" "}
+                <Link href="/corrections" className="underline hover:text-gray-400 transition-colors">
+                  corrections log
+                </Link>
+              </span>
+            </p>
+          </div>
+          <p className="text-sm text-gray-400 max-w-2xl leading-relaxed">
+            When a regulatory agency withdraws approval — a market withdrawal, a
+            voluntary recall, a safety-based revocation — the drug or device moves from
+            SETTLED (approved) to REVERSED (withdrawn). The ratifying community is
+            institutional: FDA, EMA, or equivalent. Arcs from <code className="text-xs text-gray-500">drugsatfda_v1</code>.
+          </p>
+          <Suspense fallback={null}>
+            <DomainCurveRail
+              title="FDA withdrawal arcs"
+              subtitle="Drugs that moved from regulatory approval (SETTLED) to market withdrawal (REVERSED). Bextra, Iressa, Meridia, Mylotarg, Opana ER, and others."
+              pipelines={["drugsatfda_v1"]}
+              limit={12}
+            />
+          </Suspense>
+          <p className="text-xs text-gray-600">
+            <Link
+              href="/settling-curve?pipeline=drugsatfda_v1&status=REVERSED"
+              className="hover:text-gray-400 transition-colors underline"
+            >
+              Browse all institutional reversal arcs in the explorer →
+            </Link>
+          </p>
+        </section>
+      )}
+
+      {/* ── EXPERT LITERATURE ────────────────────────────────────────────── */}
+      {literatureCount > 0 && (
+        <section className="space-y-6" aria-labelledby="literature-heading">
+          <div className="border-l-2 border-rose-500/50 pl-4 space-y-1">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-rose-400">
+              Ratifying community · Expert Literature
+            </p>
+            <h2 id="literature-heading" className="text-xl font-semibold text-white">
+              Retractions
+            </h2>
+            <p className="text-xs text-gray-500">
+              {fmtCount(literatureCount)} REVERSED transitions in the expert-literature record
+              {" "}·{" "}
+              <span className="text-gray-600">
+                residue: ~8,344 single-step retraction arcs (MATERIAL-LOG 2026-07-11)
+                —{" "}
+                <Link href="/corrections" className="underline hover:text-gray-400 transition-colors">
+                  corrections log
+                </Link>
+              </span>
+            </p>
+          </div>
+          <p className="text-sm text-gray-400 max-w-2xl leading-relaxed">
+            A retraction moves a published claim from SETTLED (accepted by the field)
+            to REVERSED (withdrawn by the journal or authors). REVERSED here is not
+            "debunked" — it is the ratifying community&apos;s formal act. The reasons vary:
+            data fabrication, irreproducibility, ethical violations. Arcs from{" "}
+            <code className="text-xs text-gray-500">crossref_retractions_v1</code> and the
+            OpenAlex–CrossRef join.
+          </p>
+          <Suspense fallback={null}>
+            <DomainCurveRail
+              title="Retraction arcs"
+              subtitle="Published claims retracted by journals or authors — each arc carries the retraction notice as its source."
+              pipelines={["crossref_retractions_v1"]}
+              limit={12}
+            />
+          </Suspense>
+          <p className="text-xs text-gray-600">
+            <Link
+              href="/retraction-explorer"
+              className="hover:text-gray-400 transition-colors underline"
+            >
+              Browse all retraction arcs in the retraction explorer →
+            </Link>
+          </p>
+        </section>
+      )}
+
+      {/* ── LEGISLATIVE REPEALS ──────────────────────────────────────────── */}
+      {legislativeCount > 0 && (
+        <section className="space-y-6" aria-labelledby="legislative-heading">
+          <div className="border-l-2 border-violet-500/50 pl-4 space-y-1">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-violet-400">
+              Legislative
+            </p>
+            <h2 id="legislative-heading" className="text-xl font-semibold text-white">
+              Legislative repeals
+            </h2>
+            <p className="text-xs text-gray-500">
+              {fmtCount(legislativeCount)} repealed acts in the legislative record
+            </p>
+          </div>
+          <p className="text-sm text-gray-400 max-w-2xl leading-relaxed">
+            When a legislature formally repeals an enacted statute, the legal
+            claim it carried moves from SETTLED (enacted) to REVERSED (repealed).
+            This is a repeal — not an overturn by a court, not a falsification —
+            the legislature itself ended the law&apos;s operative force. Arcs from{" "}
+            <code className="text-xs text-gray-500">nz_repealed_acts_v1</code>.
+          </p>
+          <Suspense fallback={null}>
+            <DomainCurveRail
+              title="Legislative repeal arcs"
+              subtitle="Statutes enacted (SETTLED) then formally repealed (REVERSED) by the legislature. Each arc carries the repeal date as its REVERSED transition."
+              pipelines={["nz_repealed_acts_v1"]}
+              limit={12}
+            />
+          </Suspense>
+        </section>
+      )}
 
       <footer className="pt-4 border-t border-gray-800 flex gap-6 text-sm text-gray-500">
         <Link href="/settling-curve" className="hover:text-amber-400 transition-colors">
