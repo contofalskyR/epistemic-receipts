@@ -13,6 +13,7 @@ import {
   CartesianGrid,
   Cell,
 } from "recharts";
+import { AXIS_COLOR, axisColor } from "@/lib/status";
 
 // design tokens — match settling-rate / settling-curve overview
 const C = {
@@ -24,22 +25,11 @@ const C = {
   faint: "#55556e",
   brand: "#f0a000",
   blue: "#3690c0",
-  green: "#1a9850",
-  red: "#d73027",
+  green: "#22c55e",
+  red: "#ef4444",
   deep: "#08519c",
 };
 
-// per-axis palette
-const AXIS_COLOR: Record<string, string> = {
-  RECORDED: "#3690c0",
-  SETTLED: "#1a9850",
-  CONTESTED: "#d73027",
-  REVERSED: "#7b3294",
-  OPEN: "#f0a000",
-};
-function axisColor(axis: string): string {
-  return AXIS_COLOR[axis] ?? C.mut;
-}
 
 interface StatusPoint {
   axis: string;

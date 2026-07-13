@@ -10,6 +10,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import SettlingCurveNav from "../SettlingCurveNav";
+import { AXIS_COLOR } from "@/lib/status";
 
 const C = {
   bg: "#08080f",
@@ -19,20 +20,13 @@ const C = {
   mut: "#8b8ba3",
   faint: "#55556e",
   brand: "#f0a000",
-  settled: "#51b749",
-  recorded: "#7ae7bf",
-  reversed: "#f43f5e",
-  contested: "#ff887c",
-  abandoned: "#8b8ba3",
+  settled: "#22c55e",
+  recorded: "#94a3b8",
+  reversed: "#ef4444",
+  contested: "#f59e0b",
+  abandoned: "#6b7280",
 };
 
-const AXIS_COLOR: Record<string, string> = {
-  SETTLED: C.settled,
-  RECORDED: C.recorded,
-  REVERSED: C.reversed,
-  CONTESTED: C.contested,
-  ABANDONED: C.abandoned,
-};
 
 const COMMUNITY_LABEL: Record<string, string> = {
   INSTITUTIONAL: "Institutional",

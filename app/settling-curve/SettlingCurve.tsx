@@ -5,6 +5,7 @@ import Link from "next/link";
 import SettlingCurveMini from "../components/SettlingCurveMini";
 import { ShareButtons } from "@/components/ShareButtons";
 import SettlingCurveNav from "./SettlingCurveNav";
+import { AXIS_COLOR } from "@/lib/status";
 
 const C = {
   bg: "#0a0a0a",
@@ -106,13 +107,13 @@ interface TrajectoryDetail {
 }
 
 const STATUS: Record<Axis, { c: string; label: string }> = {
-  RECORDED: { c: "#94a3b8", label: "Recorded" },
-  SETTLED: { c: "#22c55e", label: "Settled" },
-  CONTESTED: { c: "#f59e0b", label: "Contested" },
-  OPEN: { c: "#38bdf8", label: "Open" },
-  UNRESOLVABLE: { c: "#a78bfa", label: "Unresolvable" },
-  REVERSED: { c: "#ef4444", label: "Reversed" },
-  ABANDONED: { c: "#6b7280", label: "Abandoned" },
+  RECORDED:     { c: AXIS_COLOR["RECORDED"],     label: "Recorded" },
+  SETTLED:      { c: AXIS_COLOR["SETTLED"],      label: "Settled" },
+  CONTESTED:    { c: AXIS_COLOR["CONTESTED"],    label: "Contested" },
+  OPEN:         { c: AXIS_COLOR["OPEN"],         label: "Open" },
+  UNRESOLVABLE: { c: AXIS_COLOR["UNRESOLVABLE"], label: "Unresolvable" },
+  REVERSED:     { c: AXIS_COLOR["REVERSED"],     label: "Reversed" },
+  ABANDONED:    { c: AXIS_COLOR["ABANDONED"],    label: "Abandoned" },
 };
 
 const COMMUNITY_ORDER: Community[] = ["EXPERT_LITERATURE", "INSTITUTIONAL", "JUDICIAL", "PUBLIC", "MARKET"];

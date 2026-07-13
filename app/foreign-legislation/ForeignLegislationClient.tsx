@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { COUNTRY_REGISTRY } from "@/lib/legislation-countries";
 import type { Region } from "@/lib/legislation-countries";
+import { AXIS_COLOR } from "@/lib/status";
 
 const FOREIGN_COUNTRIES = COUNTRY_REGISTRY.filter((c) => c.code !== "us");
 const REGIONS: Region[] = ["Europe", "Asia-Pacific", "Americas", "Africa"];
@@ -20,11 +21,11 @@ const C = {
 } as const;
 
 const AXIS_INFO: Record<string, { label: string; color: string; bg: string }> = {
-  SETTLED: { label: "Settled", color: "#6ee7b7", bg: "rgba(16,185,129,0.12)" },
-  CONTESTED: { label: "Contested", color: "#fcd34d", bg: "rgba(245,158,11,0.12)" },
-  RECORDED: { label: "Recorded", color: "#94a3b8", bg: "rgba(100,116,139,0.15)" },
-  OPEN: { label: "Open Q.", color: "#93c5fd", bg: "rgba(59,130,246,0.12)" },
-  UNRESOLVABLE: { label: "Unresolvable", color: "#c4b5fd", bg: "rgba(139,92,246,0.12)" },
+  SETTLED:      { label: "Settled",      color: AXIS_COLOR["SETTLED"],      bg: "rgba(34,197,94,0.12)" },
+  CONTESTED:    { label: "Contested",    color: AXIS_COLOR["CONTESTED"],    bg: "rgba(245,158,11,0.12)" },
+  RECORDED:     { label: "Recorded",     color: AXIS_COLOR["RECORDED"],     bg: "rgba(100,116,139,0.15)" },
+  OPEN:         { label: "Open Q.",      color: AXIS_COLOR["OPEN"],         bg: "rgba(59,130,246,0.12)" },
+  UNRESOLVABLE: { label: "Unresolvable", color: AXIS_COLOR["UNRESOLVABLE"], bg: "rgba(139,92,246,0.12)" },
 };
 
 type LegClaim = {

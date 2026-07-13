@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import SettlingCurveMini from "../components/SettlingCurveMini";
+import { AXIS_COLOR } from "@/lib/status";
 
 const C = {
   bg: "#0a0a0a",
@@ -15,12 +16,12 @@ const C = {
 } as const;
 
 const AXIS_META: Record<string, { label: string; color: string; border: string; bg: string }> = {
-  SETTLED:     { label: "Settled",     color: "#22c55e", border: "rgba(34,197,94,0.4)",   bg: "rgba(34,197,94,0.1)" },
-  CONTESTED:   { label: "Contested",   color: "#f59e0b", border: "rgba(245,158,11,0.4)",  bg: "rgba(245,158,11,0.1)" },
-  REVERSED:    { label: "Reversed",    color: "#ef4444", border: "rgba(239,68,68,0.4)",   bg: "rgba(239,68,68,0.1)" },
-  OPEN:        { label: "Open",        color: "#38bdf8", border: "rgba(56,189,248,0.4)",  bg: "rgba(56,189,248,0.1)" },
-  RECORDED:    { label: "Recorded",    color: "#94a3b8", border: "rgba(148,163,184,0.4)", bg: "rgba(148,163,184,0.1)" },
-  ABANDONED:   { label: "Abandoned",   color: "#6b7280", border: "rgba(107,114,128,0.4)", bg: "rgba(107,114,128,0.1)" },
+  SETTLED:   { label: "Settled",   color: AXIS_COLOR["SETTLED"],   border: "rgba(34,197,94,0.4)",   bg: "rgba(34,197,94,0.1)" },
+  CONTESTED: { label: "Contested", color: AXIS_COLOR["CONTESTED"], border: "rgba(245,158,11,0.4)",  bg: "rgba(245,158,11,0.1)" },
+  REVERSED:  { label: "Reversed",  color: AXIS_COLOR["REVERSED"],  border: "rgba(239,68,68,0.4)",   bg: "rgba(239,68,68,0.1)" },
+  OPEN:      { label: "Open",      color: AXIS_COLOR["OPEN"],      border: "rgba(56,189,248,0.4)",  bg: "rgba(56,189,248,0.1)" },
+  RECORDED:  { label: "Recorded",  color: AXIS_COLOR["RECORDED"],  border: "rgba(148,163,184,0.4)", bg: "rgba(148,163,184,0.1)" },
+  ABANDONED: { label: "Abandoned", color: AXIS_COLOR["ABANDONED"], border: "rgba(107,114,128,0.4)", bg: "rgba(107,114,128,0.1)" },
 };
 
 const FILTERS = [

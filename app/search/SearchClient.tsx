@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
+import { EpistemicLegend } from "@/components/EpistemicLegend";
 import { cleanDisplayText } from "@/lib/text";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 
@@ -204,25 +205,9 @@ function MissingState({ query }: { query: string }) {
 }
 
 function SearchLegend() {
-  const entries = [
-    { dot: "bg-emerald-400", label: "Settled", tip: "Consensus established — no known active dispute" },
-    { dot: "bg-amber-400", label: "Contested", tip: "Actively disputed, retracted, or under challenge" },
-    { dot: "bg-slate-400", label: "Recorded", tip: "Officially documented — it happened, epistemic weight varies" },
-    { dot: "bg-blue-400", label: "Open", tip: "Unresolved empirical question — outcome not yet determined" },
-  ];
   return (
-    <div
-      className="flex items-center gap-x-4 gap-y-1 flex-wrap text-xs text-gray-500 px-1"
-      style={{ animation: "result-in 0.3s ease forwards" }}
-    >
-      <span className="text-gray-600 font-mono uppercase tracking-wider">Status edge:</span>
-      {entries.map(e => (
-        <span key={e.label} className="inline-flex items-center gap-1.5 cursor-help" title={e.tip}>
-          <span className={`h-1.5 w-1.5 rounded-full ${e.dot}`} aria-hidden="true" />
-          {e.label}
-        </span>
-      ))}
-      <span className="text-gray-600">· each result links to its full evidence trail</span>
+    <div style={{ animation: "result-in 0.3s ease forwards" }}>
+      <EpistemicLegend label="Status edge:" className="px-1" />
     </div>
   );
 }

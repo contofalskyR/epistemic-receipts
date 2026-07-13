@@ -8,19 +8,8 @@ export const OG_HEIGHT = 630;
 export const OG_CACHE_CONTROL =
   "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800";
 
-export const AXIS_COLOR: Record<string, string> = {
-  SETTLED: "#22c55e",
-  CONTESTED: "#f59e0b",
-  REVERSED: "#ef4444",
-  RECORDED: "#94a3b8",
-  OPEN: "#38bdf8",
-  ABANDONED: "#6b7280",
-  UNRESOLVABLE: "#a78bfa",
-};
-
-export function axisColor(axis: string): string {
-  return AXIS_COLOR[axis] ?? "#94a3b8";
-}
+// Re-exported from lib/status so OG images and the app share one source of truth.
+export { AXIS_COLOR, axisColor } from "@/lib/status";
 
 // Generic fallback card (bad/missing id, claim not found)
 export function FallbackCard() {

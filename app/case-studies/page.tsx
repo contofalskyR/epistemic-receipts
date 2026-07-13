@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
+import { AXIS_TEXT_CLASS } from "@/lib/status";
 
 export const revalidate = 3600; // ISR: rebuild at most once per hour (was 86400 — caused stale empty page after fix deploy)
 
@@ -12,13 +13,13 @@ export const metadata: Metadata = {
 };
 
 const AXIS_STYLE: Record<string, { label: string; color: string }> = {
-  SETTLED:       { label: "Settled",       color: "text-emerald-400" },
-  CONTESTED:     { label: "Contested",     color: "text-amber-400" },
-  REVERSED:      { label: "Reversed",      color: "text-rose-400" },
-  ABANDONED:     { label: "Abandoned",     color: "text-gray-500" },
-  OPEN:          { label: "Open",          color: "text-sky-400" },
-  UNRESOLVABLE:  { label: "Unresolvable",  color: "text-violet-400" },
-  RECORDED:      { label: "Recorded",      color: "text-gray-400" },
+  SETTLED:      { label: "Settled",      color: AXIS_TEXT_CLASS["SETTLED"] },
+  CONTESTED:    { label: "Contested",    color: AXIS_TEXT_CLASS["CONTESTED"] },
+  REVERSED:     { label: "Reversed",     color: AXIS_TEXT_CLASS["REVERSED"] },
+  ABANDONED:    { label: "Abandoned",    color: AXIS_TEXT_CLASS["ABANDONED"] },
+  OPEN:         { label: "Open",         color: AXIS_TEXT_CLASS["OPEN"] },
+  UNRESOLVABLE: { label: "Unresolvable", color: AXIS_TEXT_CLASS["UNRESOLVABLE"] },
+  RECORDED:     { label: "Recorded",     color: AXIS_TEXT_CLASS["RECORDED"] },
 };
 
 function axisStyle(axis: string | undefined) {
