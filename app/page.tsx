@@ -124,8 +124,8 @@ export default async function Home() {
                 A live record of epistemic status across science, law, and history.{" "}
                 <strong className="text-gray-200">{compactCount(claimCount)}</strong> claims, each
                 sourced and traceable, carrying{" "}
-                <strong className="text-gray-200">{compactCount(transitionCount)}</strong> dated
-                status transitions. Search any topic, follow the evidence trail, and see how each
+                <strong className="text-gray-200">{compactCount(transitionCount)}</strong>{" "}
+                dated status transitions. Search any topic, follow the evidence trail, and see how each
                 claim&apos;s status shifted over time.
               </p>
             </div>
