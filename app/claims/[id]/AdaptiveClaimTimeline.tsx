@@ -560,13 +560,34 @@ export default function AdaptiveClaimTimeline({
                 );
               }
               m.transitions.forEach((t, i) => {
+                const anchorId = t.seq != null ? `t-${t.seq}` : undefined;
+                const anchorHref = anchorId ? `#${anchorId}` : undefined;
                 rows.push(
-                  <li key={`${m.key}-t${i}`} className="flex items-baseline gap-3 text-xs">
+                  <li
+                    key={`${m.key}-t${i}`}
+                    id={anchorId}
+                    className="flex items-baseline gap-3 text-xs group/receipt"
+                  >
                     <span className="shrink-0 w-44 text-gray-500">
                       {hoverDate(new Date(t.occurredAt), toPrec(t.datePrecision))}
                     </span>
                     <span style={{ color: axisColor(t.toAxis), fontWeight: 600 }}>{transitionChain(t)}</span>
                     <span className="text-gray-600">{t.community.replace(/_/g, " ")}</span>
+                    {anchorHref && (
+                      <a
+                        href={anchorHref}
+                        className="ml-auto shrink-0 opacity-0 group-hover/receipt:opacity-100 transition-opacity text-gray-700 hover:text-gray-400 font-mono"
+                        title={`Link to this transition: /claims/${claim.id}${anchorHref}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const url = `${window.location.origin}/claims/${claim.id}${anchorHref}`;
+                          void navigator.clipboard?.writeText(url).catch(() => {});
+                          window.location.hash = anchorHref;
+                        }}
+                      >
+                        #
+                      </a>
+                    )}
                   </li>,
                 );
               });
