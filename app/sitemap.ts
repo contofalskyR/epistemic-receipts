@@ -11,7 +11,9 @@ const CHUNK = 50_000;
 
 const STATIC_URLS: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1.0 },
+  { url: `${SITE_URL}/start-here`, changeFrequency: "monthly", priority: 0.9 },
   { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/docs/api`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/glossary`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/trajectories`, changeFrequency: "daily", priority: 0.9 },
   { url: `${SITE_URL}/topics`, changeFrequency: "weekly", priority: 0.8 },

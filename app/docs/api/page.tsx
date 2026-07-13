@@ -1,4 +1,13 @@
-"use client";
+import type { Metadata } from "next";
+
+export const revalidate = 86400;
+
+export const metadata: Metadata = {
+  title: "API Docs — Epistemic Receipts",
+  description:
+    "Public API v1 for the Epistemic Receipts corpus — read-only, cursor-paginated endpoints for claims, trajectories, sources, search, and retractions.",
+  alternates: { canonical: "/docs/api" },
+};
 
 export default function ApiDocsPage() {
   return (

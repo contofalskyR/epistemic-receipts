@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Admin and internal routes — no crawl value
+Disallow: /api/admin/
+Disallow: /api/ingest/
+Disallow: /api/cron/
+Disallow: /api/stripe/
+Disallow: /api/auth/
+Disallow: /api/sentry-tunnel/
+Disallow: /admin/
+
+# API v1 requires auth — no crawl value
+Disallow: /api/v1/
+
+# Public API endpoints are crawlable (no auth required, read-only)
+Allow: /api/v1/manifest
+Allow: /api/v1/changelog
+
+Sitemap: https://epistemic-receipts.app/sitemap.xml

@@ -36,6 +36,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
       { href: "/meta-edges", label: "Suppression & Amplification", desc: "Documented actions on evidence — who buried, boosted, or labeled it" },
       { href: "/corrections", label: "Corrections", desc: "Our failures, documented — plus a form to flag anything we got wrong" },
       { href: "/opinions", label: "Court Opinions" },
+      { href: "/start-here", label: "Start Here", desc: "Curated trajectories, stories, and key entry points — new? begin here" },
       { href: "/stories", label: "Stories", desc: "Editorial narratives tracing specific claims through the epistemic graph" },
       { href: "/reversals", label: "Court Reversals", desc: "Landmark doctrines settled by one ruling, overruled by another" },
       { href: "/law-settler", label: "Law Settler Curve" },

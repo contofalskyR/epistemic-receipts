@@ -142,6 +142,12 @@ export default async function Home() {
               >
                 View a sample trajectory: semaglutide (GLP-1) →
               </Link>
+              <Link
+                href="/start-here"
+                className="text-sm text-gray-500 transition-colors hover:text-gray-300 hover:underline underline-offset-4"
+              >
+                New here? Start with the curated trajectories →
+              </Link>
             </div>
           </div>
           <HomeCarousel />
