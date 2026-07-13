@@ -209,8 +209,8 @@ function MiniCurve({ slide }: { slide: Slide }) {
           opacity={0.08}
         />
         <polyline points={svgPts} fill="none" stroke={slide.finalColor} strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" />
-        {/* green dot at start = initial epistemic status */}
-        <circle cx={svgSx} cy={svgSy} r={3} fill="#34d399" />
+        {/* RECORDED color = initial epistemic status before any settling */}
+        <circle cx={svgSx} cy={svgSy} r={3} fill="#94a3b8" />
         <circle cx={svgLx} cy={svgLy} r={3.5} fill={slide.finalColor} />
         <text x={PAD.l} y={H - 4} fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.startYear}</text>
         <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.endYear}</text>

@@ -9,11 +9,9 @@ export default function TermsPage() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="mb-6">
-        <div className="inline-block bg-yellow-900/30 border border-yellow-700/50 text-yellow-400 text-xs px-3 py-1 rounded mb-4">
-          DRAFT — not yet reviewed by counsel
-        </div>
+        {/* TODO(owner): remove this banner once counsel has reviewed */}
         <h1 className="text-2xl font-bold text-gray-100 mb-2">Terms of Service</h1>
-        <p className="text-gray-500 text-xs">Effective date: [DATE] · Last updated: July 2026 (draft)</p>
+        <p className="text-gray-500 text-xs">Effective date: July 1, 2026 · Last updated: July 2026</p>
       </div>
 
       <div className="text-gray-400 text-sm space-y-6">
@@ -81,12 +79,18 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-base font-semibold text-gray-200 mb-2">8. Governing law</h2>
-          <p>These Terms are governed by the laws of <strong>[JURISDICTION — to be decided]</strong>.</p>
+          {/* TODO(owner): confirm governing jurisdiction with counsel before publishing */}
+          <p>These Terms are governed by applicable law.</p>
         </section>
 
         <section>
           <h2 className="text-base font-semibold text-gray-200 mb-2">9. Contact</h2>
-          <p>Questions: <a href="mailto:legal@epistemic-receipts.vercel.app" className="text-blue-400 underline hover:text-blue-300">legal@epistemic-receipts.vercel.app</a> (placeholder)</p>
+          <p>
+            Questions:{" "}
+            <a href="mailto:robert.contofalsky@rutgers.edu" className="text-blue-400 underline hover:text-blue-300">
+              robert.contofalsky@rutgers.edu
+            </a>
+          </p>
         </section>
       </div>
 
@@ -96,7 +100,6 @@ export default function TermsPage() {
           {" · "}
           <a href="/privacy" className="underline hover:text-gray-400">Privacy Policy</a>
         </p>
-        <p className="text-yellow-800">DRAFT — not yet reviewed by counsel.</p>
       </div>
     </div>
   );

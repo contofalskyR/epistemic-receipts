@@ -3,7 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
 
-export const revalidate = 86400; // ISR: rebuild at most once per day
+export const revalidate = 3600; // ISR: rebuild at most once per hour (was 86400 — caused stale empty page after fix deploy)
 
 export const metadata: Metadata = {
   title: "Case Studies — Epistemic Receipts",

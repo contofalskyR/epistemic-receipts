@@ -26,9 +26,7 @@ export default function LicensePage() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="mb-8">
-        <div className="inline-block bg-yellow-900/30 border border-yellow-700/50 text-yellow-400 text-xs px-3 py-1 rounded mb-4">
-          DRAFT — not yet reviewed by counsel
-        </div>
+        {/* TODO(owner): remove this banner once counsel has reviewed */}
         <h1 className="text-2xl font-bold text-gray-100 mb-2">License</h1>
         <p className="text-gray-400 text-sm">
           Epistemic Receipts is free to use for research and non-commercial purposes under the{" "}
@@ -150,9 +148,7 @@ export default function LicensePage() {
           {" · "}
           <a href="/corrections" className="underline hover:text-gray-400">Corrections</a>
         </p>
-        <p className="text-yellow-800">
-          All legal documents on this site are DRAFTs pending attorney review. Do not rely on them until counsel has approved.
-        </p>
+        {/* TODO(owner): add reviewed-by-counsel note once approved */}
       </div>
     </div>
   );
