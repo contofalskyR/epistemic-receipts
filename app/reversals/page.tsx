@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
 import DomainCurveRail from "../components/DomainCurveRail";
+import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 
 export const revalidate = 86400; // ISR: rebuild at most once per day
 
@@ -95,6 +96,11 @@ export default function ReversalsPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 space-y-12">
+      <FieldGuideBanner
+        domain="Court Reversals"
+        curatedHref="/settling-curve?t=roe-dobbs"
+        curatedLabel="Roe v. Wade → Dobbs trajectory"
+      />
       <header className="space-y-3">
         <p className="text-xs text-gray-600 font-mono uppercase tracking-widest">
           Judicial arcs

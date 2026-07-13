@@ -14,6 +14,8 @@ import BookmarkToggle from "./BookmarkToggle";
 import FollowClaim from "./FollowClaim";
 import AddToCollection from "@/components/AddToCollection";
 import CitationButton from "@/components/CitationButton";
+import { TrajectoryDepth } from "@/components/TrajectoryDepth";
+import { EpistemicLegend } from "@/components/EpistemicLegend";
 import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } from "./claim-ui";
 
 // ── ISR ───────────────────────────────────────────────────────────────────────
@@ -114,6 +116,13 @@ export default async function ClaimDetailPage({ params }: Props) {
   // every epistemicAxis read goes through resolveDisplayAxis).
   const displayAxis = resolveDisplayAxis(claim);
   const uniqueSources = new Set(claim.edges.map(e => e.source.id)).size;
+  const depthCount = claim._count?.statusHistory ?? claim.statusHistory.length;
+  const depthFirstYear = claim.statusHistory.length > 0
+    ? new Date(claim.statusHistory[claim.statusHistory.length - 1].occurredAt).getUTCFullYear()
+    : null;
+  const depthLastYear = claim.statusHistory.length > 0
+    ? new Date(claim.statusHistory[0].occurredAt).getUTCFullYear()
+    : null;
 
   return (
     <div className="space-y-10">
@@ -167,6 +176,11 @@ export default async function ClaimDetailPage({ params }: Props) {
               UNREVIEWED
             </span>
           )}
+          <TrajectoryDepth
+            transitionCount={depthCount}
+            firstYear={depthFirstYear}
+            lastYear={depthLastYear}
+          />
           {(claim._count?.statusHistory ?? 0) >= 2 && (
             <Link
               href={`/settling-curve?t=${encodeURIComponent(claim.id)}`}
@@ -179,6 +193,7 @@ export default async function ClaimDetailPage({ params }: Props) {
           <AddToCollection claimId={claim.id} />
           <CitationButton type="claim" id={claim.id} />
         </div>
+        <EpistemicLegend label="Axis key:" className="pt-1" />
         <FollowClaim claimId={claim.id} liveFed={LIVE_FED_PIPELINES.has(claim.ingestedBy)} />
         <ShareButtons
           url={`${SITE_URL}/claims/${claim.id}`}

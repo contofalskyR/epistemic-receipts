@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import LegislationClient from "./LegislationClient";
 import LegislationStats from "./LegislationStats";
 import DomainCurveRail from "../components/DomainCurveRail";
+import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +14,13 @@ export const metadata = {
 export default function LegislationPage() {
   return (
     <div className="space-y-0">
+      <div className="max-w-6xl mx-auto px-6 pt-8">
+        <FieldGuideBanner
+          domain="Legislation"
+          curatedHref="/settling-curve?t=roe-dobbs"
+          curatedLabel="Roe → Dobbs trajectory"
+        />
+      </div>
       {/* Curve-first (briefings/07): lead with legislative trajectories — how
           bills and legal claims moved through institutions and courts — before
           the country tables. Grows automatically as wave 3 adds bill outcomes. */}

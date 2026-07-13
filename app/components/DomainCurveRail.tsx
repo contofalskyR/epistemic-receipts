@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import SettlingCurveMini from "./SettlingCurveMini";
+import { TrajectoryDepth } from "@/components/TrajectoryDepth";
 
 /**
  * DomainCurveRail — a server-rendered strip of the richest settling curves for
@@ -123,9 +124,11 @@ export default async function DomainCurveRail({
               ariaLabel={`Settling curve: ${it.text}`}
             />
             <div className="mt-2 flex items-center justify-between">
-              <span className="font-mono text-[10px] text-gray-500">
-                {it.transitionCount} transitions
-              </span>
+              <TrajectoryDepth
+                transitionCount={it.transitionCount}
+                firstYear={it.firstYear}
+                lastYear={it.lastYear}
+              />
               <span className="font-mono text-[11px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
                 trace it →
               </span>

@@ -7,6 +7,7 @@ import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge
 import { EpistemicLegend } from "@/components/EpistemicLegend";
 import { cleanDisplayText } from "@/lib/text";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
+import { TrajectoryDepth } from "@/components/TrajectoryDepth";
 
 type ClaimHit = {
   id: string;
@@ -225,6 +226,7 @@ export default function SearchClient() {
   const VALID_AXES = ["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE", "REVERSED", "ABANDONED"] as const;
   const urlAxisRaw = (searchParams.get("axis") ?? "").trim().toUpperCase();
   const urlAxis = (VALID_AXES as readonly string[]).includes(urlAxisRaw) ? urlAxisRaw : "";
+  const urlTraced = searchParams.get("traced") === "1";
 
   const [input, setInput] = useState(urlQ);
   const [data, setData] = useState<SearchResponse | null>(null);
@@ -237,7 +239,7 @@ export default function SearchClient() {
   }, [urlQ]);
 
   const pushUrl = useCallback(
-    (overrides: Partial<{ q: string; type: string; offset: number; country: string; axis: string }>) => {
+    (overrides: Partial<{ q: string; type: string; offset: number; country: string; axis: string; traced: boolean }>) => {
       const next = new URLSearchParams(searchParams.toString());
       if (overrides.q !== undefined) {
         if (overrides.q) next.set("q", overrides.q);
@@ -258,6 +260,10 @@ export default function SearchClient() {
       if (overrides.axis !== undefined) {
         if (overrides.axis) next.set("axis", overrides.axis);
         else next.delete("axis");
+      }
+      if (overrides.traced !== undefined) {
+        if (overrides.traced) next.set("traced", "1");
+        else next.delete("traced");
       }
       const qs = next.toString();
       router.replace(qs ? `/search?${qs}` : "/search");
@@ -424,6 +430,17 @@ export default function SearchClient() {
               </button>
             );
           })}
+          <button
+            onClick={() => pushUrl({ traced: !urlTraced, offset: 0 })}
+            className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+              urlTraced
+                ? "bg-amber-500/20 text-amber-300 border-amber-500/50 font-medium"
+                : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
+            }`}
+            title="Show only claims with a traced trajectory (≥2 transitions)"
+          >
+            Traced ≥2
+          </button>
 
           {data && showResults && (
             <span className="text-xs text-gray-500 ml-auto">
@@ -474,7 +491,7 @@ export default function SearchClient() {
       {error && <p className="text-sm text-red-400">{error}</p>}
 
       {data && !loading && !error && showResults && (
-        <Results data={data} type={urlType} />
+        <Results data={data} type={urlType} tracedOnly={urlTraced} />
       )}
 
       {/* Pagination */}
@@ -505,9 +522,9 @@ export default function SearchClient() {
   );
 }
 
-function Results({ data, type }: { data: SearchResponse; type: "claims" | "sources" | "all" }) {
+function Results({ data, type, tracedOnly = false }: { data: SearchResponse; type: "claims" | "sources" | "all"; tracedOnly?: boolean }) {
   const showClaims = type === "all" || type === "claims";
-  const showSources = type === "all" || type === "sources";
+  const showSources = (type === "all" || type === "sources") && !tracedOnly;
   const nothing =
     (!showClaims || (data.claims.length === 0 && (data.curves ?? []).length === 0)) &&
     (!showSources || data.sources.length === 0);
@@ -554,9 +571,11 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
                   ariaLabel={`Settling curve: ${cv.text}`}
                 />
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-gray-500">
-                    {cv.transitionCount} transitions
-                  </span>
+                  <TrajectoryDepth
+                    transitionCount={cv.transitionCount}
+                    firstYear={cv.firstYear}
+                    lastYear={cv.lastYear}
+                  />
                   <span className="font-mono text-[11px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
                     trace it →
                   </span>
@@ -567,7 +586,7 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
         </section>
       )}
 
-      {showClaims && data.claims.length > 0 && (
+      {showClaims && !tracedOnly && data.claims.length > 0 && (
         <section className="space-y-2">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
             Claims ({data.counts.claims.toLocaleString()})

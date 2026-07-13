@@ -49,13 +49,68 @@ export default async function FeedPage() {
 
       <SinceLastVisit />
 
+      {/* Trajectory activity leads — these are claims with traced transitions */}
+      <section className="space-y-3">
+        <div className="flex items-center gap-2">
+          <Activity size={14} className="text-amber-500" />
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+            Trajectory activity · last {EVENT_WINDOW_DAYS} days
+          </h2>
+        </div>
+        <p className="text-xs text-gray-600 -mt-1">
+          Claims whose epistemic status crossed a recorded threshold — the most substantive updates in the graph.
+        </p>
+
+        {events.length === 0 && (
+          <div className="rounded-lg border border-dashed border-gray-800 p-6 text-center">
+            <p className="text-sm text-gray-500">
+              No threshold events in the last {EVENT_WINDOW_DAYS} days.
+            </p>
+          </div>
+        )}
+
+        {events.length > 0 && (
+          <ul className="space-y-2">
+            {events.map(e => (
+              <li
+                key={e.id}
+                className="rounded-lg border border-gray-800 bg-gray-900/40 hover:bg-gray-900 transition-colors p-3"
+              >
+                <Link href={`/claims/${e.claimId}`} className="block space-y-1.5">
+                  <p className="text-sm text-gray-100 leading-snug line-clamp-2">
+                    {snippet(e.claimText, 160)}
+                  </p>
+                  <div className="flex items-center gap-2 flex-wrap text-[10px]">
+                    <span className={`px-1.5 py-0.5 rounded-full font-medium ${STATUS_STYLE.HARD_FACT}`}>
+                      threshold crossed
+                    </span>
+                    <span className="text-gray-500 font-mono">
+                      {friendlyPipelineLabel(e.triggeredBy)}
+                    </span>
+                    <span className="text-gray-600 ml-auto">
+                      {fmtDate(e.createdAt)}
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <BookmarkedActivity />
+
+      {/* Corpus growth — raw ingestion, secondary */}
       <section className="space-y-3">
         <div className="flex items-center gap-2">
           <Database size={14} className="text-gray-500" />
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-            Recent claims by pipeline · last {PIPELINE_WINDOW_DAYS} days
+            Corpus growth · last {PIPELINE_WINDOW_DAYS} days
           </h2>
         </div>
+        <p className="text-xs text-gray-600 -mt-1">
+          Recently ingested baseline claims — reference records without traced trajectories yet.
+        </p>
 
         {pipelines.length === 0 && (
           <div className="rounded-lg border border-dashed border-gray-800 p-6 text-center">
@@ -77,10 +132,10 @@ export default async function FeedPage() {
                     href={`/claims?ingestedBy=${encodeURIComponent(p.ingestedBy)}`}
                     className="group/link"
                   >
-                    <span className="text-sm text-amber-300 group-hover/link:text-amber-200">
+                    <span className="text-sm text-gray-300 group-hover/link:text-white">
                       {friendlyPipelineLabel(p.ingestedBy)}
                     </span>
-                    <span className="ml-2 font-mono text-[10px] text-gray-600 break-all">
+                    <span className="ml-2 font-mono text-[10px] text-gray-700 break-all">
                       {p.ingestedBy}
                     </span>
                   </Link>
@@ -109,53 +164,6 @@ export default async function FeedPage() {
           </ul>
         )}
       </section>
-
-      <section className="space-y-3">
-        <div className="flex items-center gap-2">
-          <Activity size={14} className="text-gray-500" />
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-            Recent threshold events · last {EVENT_WINDOW_DAYS} days
-          </h2>
-        </div>
-
-        {events.length === 0 && (
-          <div className="rounded-lg border border-dashed border-gray-800 p-6 text-center">
-            <p className="text-sm text-gray-500">
-              No threshold events in the last {EVENT_WINDOW_DAYS} days.
-            </p>
-          </div>
-        )}
-
-        {events.length > 0 && (
-          <ul className="space-y-2">
-            {events.map(e => (
-              <li
-                key={e.id}
-                className="rounded-lg border border-gray-800 bg-gray-900/40 hover:bg-gray-900 transition-colors p-3"
-              >
-                <Link href={`/claims/${e.claimId}`} className="block space-y-1.5">
-                  <p className="text-sm text-gray-100 leading-snug line-clamp-2">
-                    {snippet(e.claimText, 160)}
-                  </p>
-                  <div className="flex items-center gap-2 flex-wrap text-[10px]">
-                    <span className={`px-1.5 py-0.5 rounded-full font-medium ${STATUS_STYLE.HARD_FACT}`}>
-                      threshold crossed
-                    </span>
-                    <span className="text-gray-500 font-mono">
-                      {e.triggeredBy}
-                    </span>
-                    <span className="text-gray-600 ml-auto">
-                      {fmtDate(e.createdAt)}
-                    </span>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <BookmarkedActivity />
     </div>
   );
 }

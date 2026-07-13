@@ -6,6 +6,7 @@ import SettlingCurveMini from "../components/SettlingCurveMini";
 import { ShareButtons } from "@/components/ShareButtons";
 import SettlingCurveNav from "./SettlingCurveNav";
 import { AXIS_COLOR } from "@/lib/status";
+import { EpistemicLegend } from "@/components/EpistemicLegend";
 
 const C = {
   bg: "#0a0a0a",
@@ -1230,6 +1231,9 @@ function SettlingCurveInner() {
           <p className="font-mono mt-2" style={{ fontSize: 11, color: C.faint, letterSpacing: "0.05em" }}>
             {listLoading ? "LOADING TRAJECTORIES…" : `${filteredList.length} CURATED TRAJECTORIES`}
           </p>
+          <div className="mt-3">
+            <EpistemicLegend label="Axis key:" />
+          </div>
         </header>
 
         {/* Filters — one compact row instead of a sidebar */}

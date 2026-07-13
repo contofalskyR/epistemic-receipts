@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
@@ -154,16 +155,7 @@ function XrefBadges({ entry }: { entry: EarthEntry }) {
 
 function StatusBadge({ entry }: { entry: EarthEntry }) {
   if (!entry.status) return null;
-  if (entry.status === "open") {
-    return <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-950/60 text-red-300 font-mono border border-red-900/60">OPEN</span>;
-  }
-  if (entry.status === "refuted") {
-    return <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-950/60 text-rose-300 font-mono border border-rose-900/60">REFUTED</span>;
-  }
-  if (entry.status === "landmark") {
-    return <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-950/60 text-amber-300 font-mono border border-amber-900/60">LANDMARK</span>;
-  }
-  return <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-950/60 text-green-300 font-mono border border-green-900/60">RESOLVED</span>;
+  return <DomainStatusBadge status={entry.status} />;
 }
 
 // ────────────────────────────────────────────────────────────────────────────
