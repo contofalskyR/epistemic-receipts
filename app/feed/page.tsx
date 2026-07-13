@@ -167,6 +167,12 @@ export default async function FeedPage() {
           </ul>
         )}
       </section>
+
+      <p className="text-xs text-gray-600">
+        <Link href="/open-questions" className="hover:text-gray-400 transition-colors underline">
+          Open questions: longest contested claims →
+        </Link>
+      </p>
     </div>
   );
 }
