@@ -1,4 +1,6 @@
 "use client";
+import { FieldGuideBanner } from "@/components/FieldGuideBanner";
+import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -344,27 +346,6 @@ function XrefBadges({ entry }: { entry: PhilEntry }) {
   );
 }
 
-function StatusBadge({ entry }: { entry: PhilEntry }) {
-  if (!entry.status) return null;
-  const styles: Record<string, string> = {
-    open: "bg-red-950/60 text-red-300 border-red-900/60",
-    contested: "bg-amber-950/60 text-amber-300 border-amber-900/60",
-    resolved: "bg-green-950/60 text-green-300 border-green-900/60",
-    refuted: "bg-rose-950/60 text-rose-300 border-rose-900/60",
-  };
-  const labels: Record<string, string> = {
-    open: "OPEN",
-    contested: "CONTESTED",
-    resolved: "RESOLVED",
-    refuted: "REFUTED",
-  };
-  const cls = styles[entry.status] ?? styles.contested;
-  return (
-    <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono border ${cls}`}>
-      {labels[entry.status] ?? entry.status.toUpperCase()}
-    </span>
-  );
-}
 
 // ────────────────────────────────────────────────────────────────────────────
 // Entry card
@@ -402,7 +383,7 @@ function EntryCard({
           {entry.disputed && (
             <span className="text-[10px] px-1.5 py-0.5 rounded font-mono bg-orange-950/60 text-orange-300 border border-orange-900/60">ATTRIBUTION DISPUTED</span>
           )}
-          <StatusBadge entry={entry} />
+          <DomainStatusBadge status={entry.status ?? ""} />
           <Link
             href={`/search?q=${encodeURIComponent(entry.name)}`}
             onClick={(e) => e.stopPropagation()}
@@ -620,6 +601,7 @@ export default function PhilosophyPage() {
 
   return (
     <div className="space-y-8">
+      <FieldGuideBanner domain="Philosophy" className="mb-2" />
       <div className="border-b border-gray-800 pb-6">
         <h1 className="text-2xl font-semibold text-white">Philosophy — A Working Taxonomy</h1>
         <p className="mt-3 text-sm text-gray-400 leading-relaxed">
@@ -716,6 +698,17 @@ export default function PhilosophyPage() {
           Non-Western traditions (Buddhist, Confucian, Daoist, Vedic, Islamic) are included as substantive
           entries, not footnotes. Last updated June 2026.
         </p>
+      </div>
+      <div className="border-t border-gray-700/40 pt-6 mt-4">
+        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
+        <div className="flex flex-wrap gap-4">
+          <a href="/search?q=philosophy" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
+            Search Philosophy in the claim graph →
+          </a>
+          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+            Browse all trajectories →
+          </a>
+        </div>
       </div>
     </div>
   );

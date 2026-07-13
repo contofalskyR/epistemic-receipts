@@ -1,4 +1,6 @@
 "use client";
+import { FieldGuideBanner } from "@/components/FieldGuideBanner";
+import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -346,21 +348,6 @@ function MathFragment({ text, className }: { text: string; className?: string })
 // Status badge for theorems / open problems
 // ────────────────────────────────────────────────────────────────────────────
 
-function StatusBadge({ entry }: { entry: MathEntry }) {
-  if (!entry.status) return null;
-  if (entry.status === "open") {
-    return (
-      <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-950/60 text-red-300 font-mono border border-red-900/60">
-        OPEN{entry.millennium ? " · millennium" : ""}
-      </span>
-    );
-  }
-  return (
-    <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-950/60 text-green-300 font-mono border border-green-900/60">
-      SOLVED{entry.millennium ? " · millennium" : ""}
-    </span>
-  );
-}
 
 function XrefBadges({ entry }: { entry: MathEntry }) {
   if (!entry.xref || entry.xref.length === 0) return null;
@@ -417,7 +404,7 @@ function EntryCard({
       <div className="flex items-baseline justify-between gap-2">
         <h3 className="text-sm font-semibold text-white group-hover:text-gray-100">{entry.name}</h3>
         <div className="flex items-center gap-2 shrink-0">
-          <StatusBadge entry={entry} />
+          <DomainStatusBadge status={entry.status ?? ""} />
           <Link
             href={`/search?q=${encodeURIComponent(entry.name)}`}
             onClick={(e) => e.stopPropagation()}
@@ -764,6 +751,7 @@ export default function MathematicsPage() {
         </p>
       ) : (
         <div className="space-y-8">
+      <FieldGuideBanner domain="Mathematics" className="mb-2" />
           {(["A", "B", "C", "D"] as Section[]).map((sec) => {
             const items = bySection[sec];
             if (items.length === 0) return null;
@@ -811,6 +799,17 @@ export default function MathematicsPage() {
           taxonomy curated 2026-06-04 · LaTeX typesetting via KaTeX · prerequisite DAG built from entry data ·
           claim cross-references pending
         </p>
+      </div>
+      <div className="border-t border-gray-700/40 pt-6 mt-4">
+        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
+        <div className="flex flex-wrap gap-4">
+          <a href="/search?q=mathematics" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
+            Search Mathematics in the claim graph →
+          </a>
+          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+            Browse all trajectories →
+          </a>
+        </div>
       </div>
     </div>
   );

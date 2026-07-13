@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Props = {
   domain: string;
   curatedHref?: string;
@@ -17,12 +19,12 @@ export function FieldGuideBanner({ domain, curatedHref, curatedLabel, className 
         </p>
       </div>
       {curatedHref && curatedLabel && (
-        <a
+        <Link
           href={curatedHref}
           className="text-[11px] font-mono text-amber-400/70 hover:text-amber-300 whitespace-nowrap transition-colors shrink-0"
         >
           see the trajectory →
-        </a>
+        </Link>
       )}
     </div>
   );

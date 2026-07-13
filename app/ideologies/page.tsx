@@ -1,4 +1,5 @@
 "use client";
+import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 
 import { useState, useMemo } from "react";
 import { FAMILIES, type Ism, type Family } from "./data";
@@ -460,6 +461,7 @@ export default function IdeologiesPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <FieldGuideBanner domain="Ideologies & Political Thought" className="mb-6" />
       <h1 className="text-2xl font-bold text-white mb-1">Ideologies</h1>
       <p className="text-gray-400 text-sm mb-1">
         {totalIsms} isms · {ALL_FAMILIES.length} families — political philosophies described from the standpoint of their adherents.
@@ -509,6 +511,17 @@ export default function IdeologiesPage() {
           allExpanded={allExpanded}
         />
       ))}
+      <div className="border-t border-gray-700/40 pt-6 mt-4">
+        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
+        <div className="flex flex-wrap gap-4">
+          <a href="/search?q=ideology+political" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
+            Search Ideologies & Political Thought in the claim graph →
+          </a>
+          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+            Browse all trajectories →
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

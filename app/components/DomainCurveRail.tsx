@@ -31,34 +31,53 @@ export default async function DomainCurveRail({
   title,
   subtitle,
   pipelines,
+  trajectoryIds,
   limit = 6,
 }: {
   title: string;
   subtitle?: string;
-  pipelines: string[];
+  pipelines?: string[];
+  trajectoryIds?: string[];
   limit?: number;
 }) {
+  if (!pipelines?.length && !trajectoryIds?.length) return null;
   let items: RailItem[] = [];
   try {
-    const claims = await prisma.claim.findMany({
-      where: {
-        ingestedBy: { in: pipelines },
-        deleted: false,
-        OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
-        statusHistory: { some: { fromAxis: { not: null } } },
+    const sharedSelect = {
+      id: true,
+      text: true,
+      externalId: true,
+      statusHistory: {
+        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }] as [
+          { occurredAt: "asc" },
+          { createdAt: "asc" },
+        ],
+        select: { toAxis: true, occurredAt: true },
       },
-      select: {
-        id: true,
-        text: true,
-        externalId: true,
-        statusHistory: {
-          orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-          select: { toAxis: true, occurredAt: true },
-        },
-      },
-      orderBy: { statusHistory: { _count: "desc" } },
-      take: limit,
-    });
+    };
+    const claims = trajectoryIds?.length
+      ? await prisma.claim.findMany({
+          where: {
+            externalId: { in: trajectoryIds.map((id) => `trajectory:${id}`) },
+            deleted: false,
+            OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
+            statusHistory: { some: { fromAxis: { not: null } } },
+          },
+          select: sharedSelect,
+          orderBy: { statusHistory: { _count: "desc" } },
+          take: limit,
+        })
+      : await prisma.claim.findMany({
+          where: {
+            ingestedBy: { in: pipelines! },
+            deleted: false,
+            OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
+            statusHistory: { some: { fromAxis: { not: null } } },
+          },
+          select: sharedSelect,
+          orderBy: { statusHistory: { _count: "desc" } },
+          take: limit,
+        });
 
     items = claims.map((c) => {
       const years = c.statusHistory.map((s) => s.occurredAt.getUTCFullYear());

@@ -1,4 +1,6 @@
 "use client";
+import { FieldGuideBanner } from "@/components/FieldGuideBanner";
+import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -346,27 +348,6 @@ function MathFragment({ text, className }: { text: string; className?: string })
 // Badges
 // ────────────────────────────────────────────────────────────────────────────
 
-function StatusBadge({ entry }: { entry: LogicEntry }) {
-  if (!entry.status) return null;
-  const styles: Record<string, string> = {
-    open: "bg-red-950/60 text-red-300 border-red-900/60",
-    solved: "bg-green-950/60 text-green-300 border-green-900/60",
-    refuted: "bg-rose-950/60 text-rose-300 border-rose-900/60",
-    contested: "bg-amber-950/60 text-amber-300 border-amber-900/60",
-  };
-  const labels: Record<string, string> = {
-    open: "OPEN",
-    solved: "SOLVED",
-    refuted: "REFUTED",
-    contested: "CONTESTED",
-  };
-  const cls = styles[entry.status] ?? styles.contested;
-  return (
-    <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono border ${cls}`}>
-      {labels[entry.status] ?? entry.status.toUpperCase()}
-    </span>
-  );
-}
 
 function HistoricalBadge({ entry }: { entry: LogicEntry }) {
   if (!entry.historical) return null;
@@ -437,7 +418,7 @@ function EntryCard({
         <h3 className="text-sm font-semibold text-white group-hover:text-gray-100">{entry.name}</h3>
         <div className="flex items-center gap-2 shrink-0 flex-wrap">
           <HistoricalBadge entry={entry} />
-          <StatusBadge entry={entry} />
+          <DomainStatusBadge status={entry.status ?? ""} />
           <Link
             href={`/search?q=${encodeURIComponent(entry.name)}`}
             onClick={(e) => e.stopPropagation()}
@@ -786,6 +767,7 @@ export default function LogicPage() {
         </p>
       ) : (
         <div className="space-y-8">
+      <FieldGuideBanner domain="Logic & Critical Thinking" className="mb-2" />
           {(["A", "B", "C", "D", "E"] as Section[]).map((sec) => {
             const items = bySection[sec];
             if (items.length === 0) return null;
@@ -833,6 +815,17 @@ export default function LogicPage() {
           taxonomy curated 2026-06-06 · LaTeX typesetting via KaTeX · lineage DAG built from entry data ·
           claim cross-references pending
         </p>
+      </div>
+      <div className="border-t border-gray-700/40 pt-6 mt-4">
+        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
+        <div className="flex flex-wrap gap-4">
+          <a href="/search?q=logic" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
+            Search Logic & Critical Thinking in the claim graph →
+          </a>
+          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+            Browse all trajectories →
+          </a>
+        </div>
       </div>
     </div>
   );

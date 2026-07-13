@@ -1,5 +1,4 @@
 "use client";
-import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
@@ -7,14 +6,13 @@ import Link from "next/link";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
-import type { PsychEntry, ColorKey, Family, Section, BrainRegion, BrainLobe } from "./types";
-import { FAMILIES_1_7 } from "./data";
-import { FAMILIES_8_14 } from "./data2";
-import { FAMILIES_15_22 } from "./data3";
-import { BRAIN_REGIONS, LOBE_STYLES, BIG_FIVE_TRAITS } from "./brain";
+import type { PhysEntry, ColorKey, Family, Section } from "./types";
+import { FAMILIES_1_8 } from "./data";
+import { FAMILIES_9_16 } from "./data2";
+import { FAMILIES_17_24 } from "./data3";
 import { LiveResearchCard } from "@/components/LiveResearchCard";
 
-const ALL_FAMILIES: Family[] = [...FAMILIES_1_7, ...FAMILIES_8_14, ...FAMILIES_15_22];
+const ALL_FAMILIES: Family[] = [...FAMILIES_1_8, ...FAMILIES_9_16, ...FAMILIES_17_24];
 
 // ────────────────────────────────────────────────────────────────────────────
 // Color palettes
@@ -46,11 +44,11 @@ const COLOR_STYLES: Record<
 };
 
 const SECTION_INFO: Record<Section, { name: string; tagline: string }> = {
-  A: { name: "Section A — Foundations & Methods", tagline: "Schools, history, research design, and psychometrics." },
-  B: { name: "Section B — Biological & Cognitive Sciences", tagline: "Neurons, perception, cognitive neuroscience, and the puzzle of consciousness." },
-  C: { name: "Section C — Cognition & Learning", tagline: "How experience changes behavior — learning, memory, attention, thought, decision-making." },
-  D: { name: "Section D — Development, Personality & Social", tagline: "Lifespan, individual differences, motivation, evolutionary mind, social behavior." },
-  E: { name: "Section E — Clinical, Applied & Frontiers", tagline: "Mental disorder, therapy, work, education, culture, well-being, replication crisis." },
+  A: { name: "Section A — Classical Mechanics", tagline: "Kinematics, Newton's laws, energy, momentum, rotation, oscillations, and fluid mechanics." },
+  B: { name: "Section B — Thermodynamics & Statistical Mechanics", tagline: "Temperature, heat, the four laws of thermodynamics, kinetic theory, and heat engines." },
+  C: { name: "Section C — Electromagnetism & Optics", tagline: "Electrostatics, magnetism, Maxwell's equations, EM waves, geometric and wave optics." },
+  D: { name: "Section D — Quantum & Relativistic Physics", tagline: "Special relativity, quantum mechanics foundations, atomic and nuclear physics, and the Standard Model." },
+  E: { name: "Section E — Astrophysics, Condensed Matter & Open Questions", tagline: "General relativity, cosmology, condensed matter, and the frontier problems that remain unsolved." },
 };
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -106,7 +104,7 @@ function MathExpr({ expr, className }: { expr: string; className?: string }) {
 // Filter / search
 // ────────────────────────────────────────────────────────────────────────────
 
-function entryMatches(entry: PsychEntry, query: string): boolean {
+function entryMatches(entry: PhysEntry, query: string): boolean {
   if (!query) return true;
   const q = query.toLowerCase();
   if (entry.name.toLowerCase().includes(q)) return true;
@@ -114,264 +112,15 @@ function entryMatches(entry: PsychEntry, query: string): boolean {
   if (plainText(entry.keyFact).toLowerCase().includes(q)) return true;
   if (entry.formula && plainText(entry.formula).toLowerCase().includes(q)) return true;
   if (entry.example && plainText(entry.example).toLowerCase().includes(q)) return true;
-  if (entry.researcher && entry.researcher.toLowerCase().includes(q)) return true;
   if (entry.tags.some((t) => t.toLowerCase().includes(q))) return true;
   return false;
-}
-
-// ────────────────────────────────────────────────────────────────────────────
-// Brain regions explorer
-// ────────────────────────────────────────────────────────────────────────────
-
-function BrainSchematic({ onSelect, selected }: { onSelect: (r: BrainRegion) => void; selected: string | null }) {
-  const W = 720;
-  const H = 420;
-
-  return (
-    <div className="overflow-x-auto">
-      <svg width={W} height={H} role="img" aria-label="Schematic brain with clickable regions" className="block">
-        <defs>
-          <radialGradient id="brain-glow" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#1f2937" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#0a0a0a" stopOpacity="0.95" />
-          </radialGradient>
-        </defs>
-        {/* Cortical silhouette (very schematic) */}
-        <path
-          d="M 80 220 C 80 100, 200 50, 380 50 C 540 50, 640 110, 660 220 C 670 320, 580 360, 480 360 L 280 360 C 180 360, 80 320, 80 220 Z"
-          fill="url(#brain-glow)"
-          stroke="#4b5563"
-          strokeWidth={1.5}
-        />
-        {/* Brainstem stub */}
-        <path
-          d="M 380 360 L 380 405 L 470 405 L 470 360 Z"
-          fill="#1f2937"
-          stroke="#4b5563"
-          strokeWidth={1.5}
-        />
-        {/* Cerebellum lobule */}
-        <path
-          d="M 510 320 C 510 280, 570 290, 600 320 C 620 350, 600 390, 550 395 C 510 395, 490 360, 510 320 Z"
-          fill="#1f2937"
-          stroke="#4b5563"
-          strokeWidth={1.5}
-        />
-
-        {/* Region nodes */}
-        {BRAIN_REGIONS.map((r) => {
-          const s = LOBE_STYLES[r.lobe];
-          const isSelected = r.abbreviation === selected;
-          return (
-            <g
-              key={r.abbreviation}
-              onClick={() => onSelect(r)}
-              style={{ cursor: "pointer" }}
-            >
-              <circle
-                cx={r.x}
-                cy={r.y}
-                r={isSelected ? 11 : 8}
-                fill={s.bg}
-                stroke={isSelected ? "#ffffff" : s.border}
-                strokeWidth={isSelected ? 2 : 1.2}
-                opacity={isSelected ? 1 : 0.92}
-              />
-              <text
-                x={r.x}
-                y={r.y + 3}
-                textAnchor="middle"
-                fontSize={8}
-                fill={s.text}
-                fontFamily="ui-monospace, monospace"
-                pointerEvents="none"
-              >
-                {r.abbreviation.length > 4 ? r.abbreviation.slice(0, 4) : r.abbreviation}
-              </text>
-              <title>{`${r.name} (${r.abbreviation}) — ${s.label}`}</title>
-            </g>
-          );
-        })}
-      </svg>
-      {/* Legend */}
-      <div className="pt-3 flex flex-wrap gap-2 text-[10px]">
-        {Object.entries(LOBE_STYLES).map(([key, s]) => (
-          <div key={key} className="flex items-center gap-1.5">
-            <span
-              className="inline-block w-3 h-3 rounded-sm"
-              style={{ background: s.bg, border: `1px solid ${s.border}` }}
-            />
-            <span style={{ color: s.text }} className="font-mono">{s.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function BrainRegionDetail({ region }: { region: BrainRegion }) {
-  const s = LOBE_STYLES[region.lobe];
-  return (
-    <div className="rounded border p-4 space-y-2" style={{ borderColor: s.border, background: `${s.bg}66` }}>
-      <div className="flex items-baseline justify-between">
-        <div>
-          <p className="text-[10px] uppercase tracking-widest" style={{ color: s.text }}>{s.label}</p>
-          <h3 className="text-xl font-semibold text-white">
-            {region.name} <span className="text-gray-400 font-mono text-sm">({region.abbreviation})</span>
-          </h3>
-        </div>
-      </div>
-      <div>
-        <p className="text-[10px] uppercase tracking-widest text-gray-500">Functions</p>
-        <ul className="mt-1 text-xs text-gray-200 list-disc list-inside leading-relaxed">
-          {region.functions.map((f) => (
-            <li key={f}>{f}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <p className="text-[10px] uppercase tracking-widest text-gray-500">Lesion effects</p>
-        <p className="mt-1 text-xs text-gray-200 leading-relaxed">{region.lesionEffects}</p>
-      </div>
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────────────────────────────────────
-// Big Five interactive slider profile
-// ────────────────────────────────────────────────────────────────────────────
-
-type BigFiveScores = Record<"O" | "C" | "E" | "A" | "N", number>;
-
-function describeScore(score: number, traitName: string, high: string, low: string): string {
-  if (score >= 80) return `Very high ${traitName.toLowerCase()} — ${high}`;
-  if (score >= 60) return `High ${traitName.toLowerCase()} — ${high.split(",")[0]}.`;
-  if (score >= 40) return `Average ${traitName.toLowerCase()} — balanced between poles.`;
-  if (score >= 20) return `Low ${traitName.toLowerCase()} — ${low.split(",")[0]}.`;
-  return `Very low ${traitName.toLowerCase()} — ${low}`;
-}
-
-const TRAIT_COLORS: Record<"O" | "C" | "E" | "A" | "N", string> = {
-  O: "#a78bfa",
-  C: "#60a5fa",
-  E: "#fbbf24",
-  A: "#34d399",
-  N: "#fb7185",
-};
-
-function BigFiveProfile() {
-  const [scores, setScores] = useState<BigFiveScores>({ O: 50, C: 50, E: 50, A: 50, N: 50 });
-
-  // Radar chart geometry (pentagonal).
-  const W = 360;
-  const H = 320;
-  const cx = W / 2;
-  const cy = H / 2 + 8;
-  const R = 110;
-  const keys: ("O" | "C" | "E" | "A" | "N")[] = ["O", "C", "E", "A", "N"];
-  const angle = (i: number) => (-Math.PI / 2) + (2 * Math.PI * i) / keys.length;
-  const point = (i: number, r: number) => ({ x: cx + r * Math.cos(angle(i)), y: cy + r * Math.sin(angle(i)) });
-
-  const polyPoints = keys
-    .map((k, i) => {
-      const r = (scores[k] / 100) * R;
-      const p = point(i, r);
-      return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-    })
-    .join(" ");
-
-  return (
-    <div className="grid sm:grid-cols-5 gap-4 items-start">
-      {/* Sliders */}
-      <div className="sm:col-span-3 space-y-3">
-        {BIG_FIVE_TRAITS.map((t) => {
-          const v = scores[t.key];
-          const color = TRAIT_COLORS[t.key];
-          return (
-            <div key={t.key} className="space-y-1">
-              <div className="flex items-baseline justify-between gap-2">
-                <div className="min-w-0">
-                  <span className="text-xs font-mono mr-2" style={{ color }}>{t.key}</span>
-                  <span className="text-sm font-semibold text-white">{t.shortName}</span>
-                </div>
-                <span className="text-xs font-mono text-gray-400 shrink-0">{v}</span>
-              </div>
-              <p className="text-[11px] text-gray-500 leading-snug">{t.description}</p>
-              <input
-                type="range"
-                min={0}
-                max={100}
-                value={v}
-                onChange={(e) => setScores({ ...scores, [t.key]: Number(e.target.value) })}
-                className="w-full"
-                style={{ accentColor: color }}
-              />
-              <p className="text-[11px] text-gray-300 leading-snug">
-                {describeScore(v, t.shortName, t.highPole, t.lowPole)}
-              </p>
-              <p className="text-[10px] text-gray-600 font-mono">
-                facets: {t.facets.join(" · ")}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-      {/* Radar */}
-      <div className="sm:col-span-2">
-        <svg width={W} height={H} role="img" aria-label="Big Five radar chart" className="mx-auto block">
-          {/* Concentric grid */}
-          {[0.25, 0.5, 0.75, 1.0].map((frac, gi) => (
-            <polygon
-              key={gi}
-              fill="none"
-              stroke="#374151"
-              strokeWidth={0.7}
-              points={keys.map((_, i) => {
-                const p = point(i, R * frac);
-                return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-              }).join(" ")}
-            />
-          ))}
-          {/* Axes */}
-          {keys.map((_, i) => {
-            const p = point(i, R);
-            return <line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="#374151" strokeWidth={0.7} />;
-          })}
-          {/* Filled polygon */}
-          <polygon points={polyPoints} fill="#a78bfa55" stroke="#a78bfa" strokeWidth={1.4} />
-          {/* Axis labels */}
-          {keys.map((k, i) => {
-            const p = point(i, R + 16);
-            return (
-              <text
-                key={k}
-                x={p.x}
-                y={p.y + 4}
-                textAnchor="middle"
-                fontSize={11}
-                fill={TRAIT_COLORS[k]}
-                fontFamily="ui-monospace, monospace"
-                fontWeight={600}
-              >
-                {k}
-              </text>
-            );
-          })}
-        </svg>
-        <p className="text-[10px] text-gray-500 mt-2 text-center leading-snug">
-          Move the sliders to see a Big-Five profile. The radar shows the five trait scores together.
-          Self-report scores are not destiny — they are an unstable, situational snapshot of a continuous trait.
-        </p>
-      </div>
-    </div>
-  );
 }
 
 // ────────────────────────────────────────────────────────────────────────────
 // Xref & status badges
 // ────────────────────────────────────────────────────────────────────────────
 
-function XrefBadges({ entry }: { entry: PsychEntry }) {
+function XrefBadges({ entry }: { entry: PhysEntry }) {
   if (!entry.xref || entry.xref.length === 0) return null;
   return (
     <>
@@ -401,7 +150,7 @@ function EntryCard({
   expanded,
   onToggle,
 }: {
-  entry: PsychEntry;
+  entry: PhysEntry;
   family: Family;
   expanded: boolean;
   onToggle: () => void;
@@ -455,12 +204,6 @@ function EntryCard({
           <MathExpr expr={entry.formula} />
         </div>
       )}
-      {entry.researcher && (
-        <div className="mt-1 text-[11px] text-gray-400 leading-relaxed">
-          <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Researcher</span>
-          {entry.researcher}
-        </div>
-      )}
 
       {expanded && entry.example && (
         <div className="mt-3 pt-3 -mx-4 -mb-3 px-4 pb-4 border-t border-gray-700/70 bg-gray-900/80 rounded-b space-y-3">
@@ -493,7 +236,7 @@ function FamilySection({
   setExpanded,
 }: {
   family: Family;
-  filteredEntries: PsychEntry[];
+  filteredEntries: PhysEntry[];
   collapsed: boolean;
   onToggleCollapse: () => void;
   expanded: string | null;
@@ -564,21 +307,11 @@ function SectionHeader({ section, count }: { section: Section; count: number }) 
 // ────────────────────────────────────────────────────────────────────────────
 
 const ALL_SLUGS = ALL_FAMILIES.map((f) => f.slug);
-const LOBE_COUNTS: Record<BrainLobe, number> = BRAIN_REGIONS.reduce(
-  (acc, r) => {
-    acc[r.lobe] = (acc[r.lobe] ?? 0) + 1;
-    return acc;
-  },
-  { frontal: 0, parietal: 0, temporal: 0, occipital: 0, limbic: 0, subcortical: 0, cerebellum: 0, brainstem: 0 } as Record<BrainLobe, number>,
-);
 
-export default function PsychologyPage() {
+export default function PhysicsPage() {
   const [query, setQuery] = useState("");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   const [expanded, setExpanded] = useState<string | null>(null);
-  const [selectedRegion, setSelectedRegion] = useState<BrainRegion | null>(null);
-  const [showBrain, setShowBrain] = useState(true);
-  const [showBigFive, setShowBigFive] = useState(true);
 
   const filtered = useMemo(() => {
     return ALL_FAMILIES.map((f) => ({
@@ -602,7 +335,7 @@ export default function PsychologyPage() {
   const expandAll = () => setCollapsed(new Set());
   const collapseAll = () => setCollapsed(new Set(ALL_SLUGS));
 
-  const bySection: Record<Section, { family: Family; entries: PsychEntry[] }[]> = { A: [], B: [], C: [], D: [], E: [] };
+  const bySection: Record<Section, { family: Family; entries: PhysEntry[] }[]> = { A: [], B: [], C: [], D: [], E: [] };
   for (const f of filtered) bySection[f.family.section].push(f);
 
   const sectionCounts: Record<Section, number> = { A: 0, B: 0, C: 0, D: 0, E: 0 };
@@ -611,93 +344,29 @@ export default function PsychologyPage() {
   return (
     <div className="space-y-8">
       <div className="border-b border-gray-800 pb-6">
-        <h1 className="text-2xl font-semibold text-white">Psychology — A Working Taxonomy</h1>
+        <h1 className="text-2xl font-semibold text-white">Physics — A Working Taxonomy</h1>
         <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-          A field guide to psychology organized into 22 families across five sections — Foundations &amp; Methods,
-          Biological &amp; Cognitive Sciences, Cognition &amp; Learning, Development/Personality/Social, and
-          Clinical/Applied/Frontiers. Each card carries a <em>key fact</em>, where relevant a <em>formula</em>{" "}
-          (typeset with KaTeX), the original <em>researcher</em>, and an <em>example</em>. Status badges
-          mark <strong>LANDMARK</strong>, <strong>CONTESTED</strong>, <strong>REFUTED</strong>, and{" "}
-          <strong>OPEN</strong> entries. The 2010s replication crisis has reshaped what counts as well-established;
-          we mark the casualties accordingly.
+          A field guide to physics organized into 24 families across five sections — Classical Mechanics,
+          Thermodynamics &amp; Statistical Mechanics, Electromagnetism &amp; Optics, Quantum &amp; Relativistic
+          Physics, and Astrophysics/Condensed Matter/Frontier Questions. Each card carries a{" "}
+          <em>key fact</em>, where relevant a <em>formula</em> (typeset with KaTeX), and an <em>example</em>.
+          Entries in Section E marked <strong>OPEN</strong> are genuinely unsolved problems.
+          Color codes the family; clicking a header collapses it; clicking a card expands it.
         </p>
         <p className="mt-3 text-xs text-gray-500 leading-relaxed">
           Cross-references: entries marked <span className="font-mono">xref</span> link to{" "}
-          <Link href="/biology" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">biology</Link>,{" "}
-          <Link href="/medicine" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">medicine</Link>,{" "}
-          <Link href="/statistics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">statistics</Link>,{" "}
-          <Link href="/philosophy" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">philosophy</Link>,
-          and other siblings rather than duplicating.
+          <Link href="/mathematics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">mathematics</Link>{" "}
+          or{" "}
+          <Link href="/chemistry" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">chemistry</Link>{" "}
+          rather than duplicating.
         </p>
         <p className="mt-2 text-xs font-mono text-gray-600">
-          {ALL_FAMILIES.length} families · {totalEntries} entries · {BRAIN_REGIONS.length} brain regions · 5 Big-Five traits
+          {ALL_FAMILIES.length} families · {totalEntries} entries
           {query && (
             <span className="text-gray-500"> · {matchCount} matching &ldquo;{query}&rdquo;</span>
           )}
         </p>
       </div>
-
-      {/* Brain regions explorer */}
-      <section className="rounded-lg border border-gray-800 overflow-hidden">
-        <button
-          onClick={() => setShowBrain((v) => !v)}
-          className="w-full text-left px-5 py-3 bg-gray-900/60 hover:brightness-125 transition-all flex items-baseline justify-between gap-4"
-        >
-          <div className="min-w-0">
-            <h2 className="text-base font-semibold text-gray-100">Brain regions explorer</h2>
-            <p className="mt-0.5 text-xs text-gray-500">
-              {BRAIN_REGIONS.length} regions across 8 lobes — click a node to see functions and the classic lesion syndromes.
-            </p>
-          </div>
-          <span className="text-xs text-gray-400">{showBrain ? "▾" : "▸"}</span>
-        </button>
-        {showBrain && (
-          <div className="bg-gray-950/40 p-4 grid sm:grid-cols-3 gap-4">
-            <div className="sm:col-span-2">
-              <BrainSchematic onSelect={setSelectedRegion} selected={selectedRegion?.abbreviation ?? null} />
-              <p className="text-[10px] text-gray-600 mt-2 leading-snug">
-                Schematic left-sagittal view. Coordinates are illustrative, not anatomically precise.
-                Lobes: frontal {LOBE_COUNTS.frontal} · parietal {LOBE_COUNTS.parietal} · temporal {LOBE_COUNTS.temporal} ·
-                occipital {LOBE_COUNTS.occipital} · limbic {LOBE_COUNTS.limbic} · subcortical {LOBE_COUNTS.subcortical} ·
-                cerebellum {LOBE_COUNTS.cerebellum} · brainstem {LOBE_COUNTS.brainstem}.
-              </p>
-            </div>
-            <div>
-              {selectedRegion ? (
-                <BrainRegionDetail region={selectedRegion} />
-              ) : (
-                <div className="rounded border border-gray-800 p-4 text-xs text-gray-400">
-                  Click any region in the schematic to view its functions and the cognitive deficits produced by lesions.
-                  Examples: <span className="font-mono">PFC</span> (Phineas Gage), <span className="font-mono">HC</span>{" "}
-                  (patient HM), <span className="font-mono">FFA</span> (prosopagnosia), <span className="font-mono">AMY</span>{" "}
-                  (Klüver-Bucy).
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* Big Five profile */}
-      <section className="rounded-lg border border-gray-800 overflow-hidden">
-        <button
-          onClick={() => setShowBigFive((v) => !v)}
-          className="w-full text-left px-5 py-3 bg-gray-900/60 hover:brightness-125 transition-all flex items-baseline justify-between gap-4"
-        >
-          <div className="min-w-0">
-            <h2 className="text-base font-semibold text-gray-100">Big Five personality profile</h2>
-            <p className="mt-0.5 text-xs text-gray-500">
-              Move the sliders to construct an OCEAN profile. Radar updates live. The five traits are the dominant trait taxonomy in personality psychology.
-            </p>
-          </div>
-          <span className="text-xs text-gray-400">{showBigFive ? "▾" : "▸"}</span>
-        </button>
-        {showBigFive && (
-          <div className="bg-gray-950/40 p-4">
-            <BigFiveProfile />
-          </div>
-        )}
-      </section>
 
       {/* Filter / controls */}
       <div className="sticky top-0 z-10 -mx-6 px-6 py-3 bg-gray-950/95 backdrop-blur border-b border-gray-800/60 flex flex-col sm:flex-row gap-3 sm:items-center">
@@ -705,7 +374,7 @@ export default function PsychologyPage() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Filter by name, key fact, formula, tag, researcher — e.g. 'Kahneman', 'attachment', 'replication'"
+          placeholder="Filter by name, key fact, formula, tag — e.g. 'entropy', 'quantum', 'Maxwell', 'dark matter'"
           className="flex-1 px-3 py-2 bg-gray-900 border border-gray-800 rounded text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:border-gray-600"
         />
         <div className="flex gap-2 text-xs">
@@ -738,7 +407,6 @@ export default function PsychologyPage() {
         </p>
       ) : (
         <div className="space-y-8">
-      <FieldGuideBanner domain="Psychology" className="mb-2" />
           {(["A", "B", "C", "D", "E"] as Section[]).map((sec) => {
             const items = bySection[sec];
             if (items.length === 0) return null;
@@ -762,7 +430,7 @@ export default function PsychologyPage() {
         </div>
       )}
 
-      <LiveResearchCard slug="psychology" />
+      <LiveResearchCard slug="physics" />
 
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">
@@ -771,30 +439,16 @@ export default function PsychologyPage() {
           <em>about</em> that concept — only that the term is present.
         </p>
         <p className="text-xs text-gray-500 leading-relaxed">
-          <span className="text-gray-400">Replication crisis posture:</span> entries marked{" "}
-          <span className="text-rose-300 font-mono">REFUTED</span> are findings that have not survived registered
-          replication (power posing, ego depletion, facial-feedback hypothesis, MBTI). Entries marked{" "}
-          <span className="text-amber-300 font-mono">CONTESTED</span> have effect sizes that have shrunk substantially
-          on replication (stereotype threat, IAT predictive validity, growth mindset, marshmallow test, Stanford Prison Experiment,
-          Hofstede). Entries marked <span className="text-red-300 font-mono">OPEN</span> are genuine frontier
-          questions as of 2026 (hard problem of consciousness, free will, animal consciousness, theory of mind in LLMs,
-          post-2010 adolescent mental health). Reports of inaccuracy welcome via the{" "}
+          <span className="text-gray-400">Open questions:</span> entries marked{" "}
+          <span className="text-red-300 font-mono">OPEN</span> are genuinely unresolved as of 2026. Dark matter and
+          dark energy are supported by overwhelming observational evidence; their nature is unknown, not their
+          existence. Room-temperature superconductivity claims (LK-99, 2023) have not been independently replicated.
+          Reports of inaccuracy welcome via the{" "}
           <Link href="/feedback" className="underline underline-offset-2">feedback</Link> page.
         </p>
         <p className="text-xs font-mono text-gray-700">
-          taxonomy curated 2026-06-05 · LaTeX typesetting via KaTeX · {ALL_FAMILIES.length} families · {totalEntries} entries · {BRAIN_REGIONS.length} brain regions
+          taxonomy curated 2026-06-04 · LaTeX typesetting via KaTeX · 24 families · {totalEntries} entries
         </p>
-      </div>
-      <div className="border-t border-gray-700/40 pt-6 mt-4">
-        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
-        <div className="flex flex-wrap gap-4">
-          <a href="/search?q=psychology" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
-            Search Psychology in the claim graph →
-          </a>
-          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
-            Browse all trajectories →
-          </a>
-        </div>
       </div>
     </div>
   );

@@ -1,19 +1,15 @@
 "use client";
-import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import katex from "katex";
-import "katex/dist/katex.min.css";
 
-import type { ColorKey, EducationEntry, Family, Section } from "./types";
-import { FAMILIES_1_6 } from "./data";
-import { FAMILIES_7_13 } from "./data2";
-import { FAMILIES_14_18 } from "./data3";
-import { LiveResearchCard } from "@/components/LiveResearchCard";
+import type { HistEntry, ColorKey, Family, Section } from "./types";
+import { FAMILIES_1_8 } from "./data";
+import { FAMILIES_9_16 } from "./data2";
+import { FAMILIES_17_24 } from "./data3";
 
-const ALL_FAMILIES: Family[] = [...FAMILIES_1_6, ...FAMILIES_7_13, ...FAMILIES_14_18];
+const ALL_FAMILIES: Family[] = [...FAMILIES_1_8, ...FAMILIES_9_16, ...FAMILIES_17_24];
 
 // ────────────────────────────────────────────────────────────────────────────
 // Color palettes
@@ -32,95 +28,47 @@ const COLOR_STYLES: Record<
     accent: string;
   }
 > = {
-  amber:   { headerBg: "bg-amber-950/40",   headerBorder: "border-amber-900",   headerText: "text-amber-200",   chipBg: "bg-amber-950/60",   chipText: "text-amber-300",   cardBorder: "border-amber-950/70",   cardHover: "hover:border-amber-700",   accent: "text-amber-400" },
-  yellow:  { headerBg: "bg-yellow-950/40",  headerBorder: "border-yellow-900",  headerText: "text-yellow-200",  chipBg: "bg-yellow-950/60",  chipText: "text-yellow-300",  cardBorder: "border-yellow-950/70",  cardHover: "hover:border-yellow-700",  accent: "text-yellow-400" },
-  blue:    { headerBg: "bg-blue-950/40",    headerBorder: "border-blue-900",    headerText: "text-blue-200",    chipBg: "bg-blue-950/60",    chipText: "text-blue-300",    cardBorder: "border-blue-950/70",    cardHover: "hover:border-blue-700",    accent: "text-blue-400" },
-  sky:     { headerBg: "bg-sky-950/40",     headerBorder: "border-sky-900",     headerText: "text-sky-200",     chipBg: "bg-sky-950/60",     chipText: "text-sky-300",     cardBorder: "border-sky-950/70",     cardHover: "hover:border-sky-700",     accent: "text-sky-400" },
-  emerald: { headerBg: "bg-emerald-950/40", headerBorder: "border-emerald-900", headerText: "text-emerald-200", chipBg: "bg-emerald-950/60", chipText: "text-emerald-300", cardBorder: "border-emerald-950/70", cardHover: "hover:border-emerald-700", accent: "text-emerald-400" },
-  green:   { headerBg: "bg-green-950/40",   headerBorder: "border-green-900",   headerText: "text-green-200",   chipBg: "bg-green-950/60",   chipText: "text-green-300",   cardBorder: "border-green-950/70",   cardHover: "hover:border-green-700",   accent: "text-green-400" },
-  teal:    { headerBg: "bg-teal-950/40",    headerBorder: "border-teal-900",    headerText: "text-teal-200",    chipBg: "bg-teal-950/60",    chipText: "text-teal-300",    cardBorder: "border-teal-950/70",    cardHover: "hover:border-teal-700",    accent: "text-teal-400" },
-  cyan:    { headerBg: "bg-cyan-950/40",    headerBorder: "border-cyan-900",    headerText: "text-cyan-200",    chipBg: "bg-cyan-950/60",    chipText: "text-cyan-300",    cardBorder: "border-cyan-950/70",    cardHover: "hover:border-cyan-700",    accent: "text-cyan-400" },
   violet:  { headerBg: "bg-violet-950/40",  headerBorder: "border-violet-900",  headerText: "text-violet-200",  chipBg: "bg-violet-950/60",  chipText: "text-violet-300",  cardBorder: "border-violet-950/70",  cardHover: "hover:border-violet-700",  accent: "text-violet-400" },
   indigo:  { headerBg: "bg-indigo-950/40",  headerBorder: "border-indigo-900",  headerText: "text-indigo-200",  chipBg: "bg-indigo-950/60",  chipText: "text-indigo-300",  cardBorder: "border-indigo-950/70",  cardHover: "hover:border-indigo-700",  accent: "text-indigo-400" },
-  orange:  { headerBg: "bg-orange-950/40",  headerBorder: "border-orange-900",  headerText: "text-orange-200",  chipBg: "bg-orange-950/60",  chipText: "text-orange-300",  cardBorder: "border-orange-950/70",  cardHover: "hover:border-orange-700",  accent: "text-orange-400" },
-  pink:    { headerBg: "bg-pink-950/40",    headerBorder: "border-pink-900",    headerText: "text-pink-200",    chipBg: "bg-pink-950/60",    chipText: "text-pink-300",    cardBorder: "border-pink-950/70",    cardHover: "hover:border-pink-700",    accent: "text-pink-400" },
+  blue:    { headerBg: "bg-blue-950/40",    headerBorder: "border-blue-900",    headerText: "text-blue-200",    chipBg: "bg-blue-950/60",    chipText: "text-blue-300",    cardBorder: "border-blue-950/70",    cardHover: "hover:border-blue-700",    accent: "text-blue-400" },
+  sky:     { headerBg: "bg-sky-950/40",     headerBorder: "border-sky-900",     headerText: "text-sky-200",     chipBg: "bg-sky-950/60",     chipText: "text-sky-300",     cardBorder: "border-sky-950/70",     cardHover: "hover:border-sky-700",     accent: "text-sky-400" },
+  cyan:    { headerBg: "bg-cyan-950/40",    headerBorder: "border-cyan-900",    headerText: "text-cyan-200",    chipBg: "bg-cyan-950/60",    chipText: "text-cyan-300",    cardBorder: "border-cyan-950/70",    cardHover: "hover:border-cyan-700",    accent: "text-cyan-400" },
+  teal:    { headerBg: "bg-teal-950/40",    headerBorder: "border-teal-900",    headerText: "text-teal-200",    chipBg: "bg-teal-950/60",    chipText: "text-teal-300",    cardBorder: "border-teal-950/70",    cardHover: "hover:border-teal-700",    accent: "text-teal-400" },
+  emerald: { headerBg: "bg-emerald-950/40", headerBorder: "border-emerald-900", headerText: "text-emerald-200", chipBg: "bg-emerald-950/60", chipText: "text-emerald-300", cardBorder: "border-emerald-950/70", cardHover: "hover:border-emerald-700", accent: "text-emerald-400" },
+  green:   { headerBg: "bg-green-950/40",   headerBorder: "border-green-900",   headerText: "text-green-200",   chipBg: "bg-green-950/60",   chipText: "text-green-300",   cardBorder: "border-green-950/70",   cardHover: "hover:border-green-700",   accent: "text-green-400" },
+  amber:   { headerBg: "bg-amber-950/40",   headerBorder: "border-amber-900",   headerText: "text-amber-200",   chipBg: "bg-amber-950/60",   chipText: "text-amber-300",   cardBorder: "border-amber-950/70",   cardHover: "hover:border-amber-700",   accent: "text-amber-400" },
   rose:    { headerBg: "bg-rose-950/40",    headerBorder: "border-rose-900",    headerText: "text-rose-200",    chipBg: "bg-rose-950/60",    chipText: "text-rose-300",    cardBorder: "border-rose-950/70",    cardHover: "hover:border-rose-700",    accent: "text-rose-400" },
 };
 
 const SECTION_INFO: Record<Section, { name: string; tagline: string }> = {
-  A: { name: "Section A — Learning Theories: How People Learn", tagline: "The foundational theories of learning — behaviorist, cognitivist, constructivist, sociocultural, and connectivist." },
-  B: { name: "Section B — Instructional Methods & Design", tagline: "How teaching is planned, structured, and delivered." },
-  C: { name: "Section C — Curriculum, Standards & the Content of Schooling", tagline: "What gets taught, how it is organized, and who decides." },
-  D: { name: "Section D — Assessment & Educational Measurement", tagline: "How learning is measured — psychometrics, testing, and evaluation." },
-  E: { name: "Section E — Educational Psychology & Human Development", tagline: "The psychological processes and developmental stages that shape learning." },
-  F: { name: "Section F — Education Policy, Systems & the Sociology of Schooling", tagline: "The institutions, policies, and social forces that structure education." },
-  G: { name: "Section G — Educational Technology & the Learning Sciences", tagline: "Technology-mediated learning, AI in education, and the interdisciplinary learning sciences." },
+  A: { name: "Section A — Ancient", tagline: "Prehistory through late antiquity: human origins, the Near East, Egypt, Greece, Rome, Asia, and pre-Columbian Americas and Africa." },
+  B: { name: "Section B — Medieval", tagline: "Byzantium, Islamic caliphates, medieval Europe and Asia, the Mongol world, and the medieval Indian Ocean." },
+  C: { name: "Section C — Early Modern", tagline: "Renaissance and Reformation, Iberian voyages, the Columbian Exchange, gunpowder empires, and the Scientific Revolution." },
+  D: { name: "Section D — Modern & Contemporary", tagline: "Atlantic revolutions, the Industrial Revolution, world wars, decolonization, the Cold War, and the post-1991 world." },
+  E: { name: "Section E — Historiography & Contested Questions", tagline: "How historians work and the questions they still argue about." },
 };
-
-// ────────────────────────────────────────────────────────────────────────────
-// KaTeX rendering helpers
-// ────────────────────────────────────────────────────────────────────────────
-
-function escapeHTML(s: string): string {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function renderInlineMath(text: string): string {
-  if (!text) return "";
-  const re = /\$([^$]+)\$/g;
-  let last = 0;
-  let out = "";
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > last) out += escapeHTML(text.slice(last, m.index));
-    try {
-      out += katex.renderToString(m[1], { throwOnError: false, output: "html", strict: "ignore" });
-    } catch {
-      out += escapeHTML(m[0]);
-    }
-    last = re.lastIndex;
-  }
-  if (last < text.length) out += escapeHTML(text.slice(last));
-  return out;
-}
-
-function plainText(text: string): string {
-  return text.replace(/\$([^$]+)\$/g, "$1");
-}
-
-function MathFragment({ text, className }: { text: string; className?: string }) {
-  const html = useMemo(() => renderInlineMath(text), [text]);
-  return <span className={className} dangerouslySetInnerHTML={{ __html: html }} />;
-}
 
 // ────────────────────────────────────────────────────────────────────────────
 // Filter / search
 // ────────────────────────────────────────────────────────────────────────────
 
-function entryMatches(entry: EducationEntry, query: string): boolean {
+function entryMatches(entry: HistEntry, query: string): boolean {
   if (!query) return true;
   const q = query.toLowerCase();
   if (entry.name.toLowerCase().includes(q)) return true;
   if (entry.description.toLowerCase().includes(q)) return true;
-  if (entry.principle && plainText(entry.principle).toLowerCase().includes(q)) return true;
-  if (entry.lineage && entry.lineage.toLowerCase().includes(q)) return true;
-  if (entry.example && plainText(entry.example).toLowerCase().includes(q)) return true;
-  if (entry.principalCritiques && plainText(entry.principalCritiques).toLowerCase().includes(q)) return true;
+  if (entry.keyFact.toLowerCase().includes(q)) return true;
+  if (entry.date && entry.date.toLowerCase().includes(q)) return true;
+  if (entry.example && entry.example.toLowerCase().includes(q)) return true;
   if (entry.tags.some((t) => t.toLowerCase().includes(q))) return true;
-  if (entry.xref?.some((x) => x.toLowerCase().includes(q))) return true;
-  if (entry.figures?.some((f) => f.toLowerCase().includes(q))) return true;
   return false;
 }
 
-function slugifyEntry(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-}
-
 // ────────────────────────────────────────────────────────────────────────────
-// Badges
+// Xref & status badges
 // ────────────────────────────────────────────────────────────────────────────
 
-function XrefBadges({ entry }: { entry: EducationEntry }) {
+function XrefBadges({ entry }: { entry: HistEntry }) {
   if (!entry.xref || entry.xref.length === 0) return null;
   return (
     <>
@@ -150,7 +98,7 @@ function EntryCard({
   expanded,
   onToggle,
 }: {
-  entry: EducationEntry;
+  entry: HistEntry;
   family: Family;
   expanded: boolean;
   onToggle: () => void;
@@ -195,46 +143,22 @@ function EntryCard({
         </div>
       )}
       <div className="mt-2 text-xs text-gray-300 leading-relaxed">
-        <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Principle</span>
-        <MathFragment text={entry.principle} />
+        <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Key fact</span>
+        {entry.keyFact}
       </div>
+      {entry.date && (
+        <div className="mt-1 text-xs text-gray-400 leading-relaxed italic">
+          <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2 not-italic">Date</span>
+          {entry.date}
+        </div>
+      )}
 
-      {expanded && (
+      {expanded && entry.example && (
         <div className="mt-3 pt-3 -mx-4 -mb-3 px-4 pb-4 border-t border-gray-700/70 bg-gray-900/80 rounded-b space-y-3">
-          {entry.lineage && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-gray-500">Lineage</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.lineage}</p>
-            </div>
-          )}
-          {entry.figures && entry.figures.length > 0 && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-gray-500">Key figures</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.figures.join(", ")}</p>
-            </div>
-          )}
-          {entry.era && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-gray-500">Era</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.era}</p>
-            </div>
-          )}
-          {entry.example && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-gray-500">Example</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed">
-                <MathFragment text={entry.example} />
-              </p>
-            </div>
-          )}
-          {entry.principalCritiques && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-amber-400/80">Principal critiques</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed border-l-2 border-amber-900/60 pl-3">
-                <MathFragment text={entry.principalCritiques} />
-              </p>
-            </div>
-          )}
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-gray-500">Example</p>
+            <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.example}</p>
+          </div>
         </div>
       )}
     </div>
@@ -245,6 +169,10 @@ function EntryCard({
 // Family section
 // ────────────────────────────────────────────────────────────────────────────
 
+function slugifyEntry(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
 function FamilySection({
   family,
   filteredEntries,
@@ -254,7 +182,7 @@ function FamilySection({
   setExpanded,
 }: {
   family: Family;
-  filteredEntries: EducationEntry[];
+  filteredEntries: HistEntry[];
   collapsed: boolean;
   onToggleCollapse: () => void;
   expanded: string | null;
@@ -325,9 +253,8 @@ function SectionHeader({ section, count }: { section: Section; count: number }) 
 // ────────────────────────────────────────────────────────────────────────────
 
 const ALL_SLUGS = ALL_FAMILIES.map((f) => f.slug);
-const SECTIONS: Section[] = ["A", "B", "C", "D", "E", "F", "G"];
 
-export default function EducationPage() {
+export default function HistoryPage() {
   const [query, setQuery] = useState("");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -354,36 +281,39 @@ export default function EducationPage() {
   const expandAll = () => setCollapsed(new Set());
   const collapseAll = () => setCollapsed(new Set(ALL_SLUGS));
 
-  const bySection: Record<Section, { family: Family; entries: EducationEntry[] }[]> = {
-    A: [], B: [], C: [], D: [], E: [], F: [], G: [],
-  };
+  const bySection: Record<Section, { family: Family; entries: HistEntry[] }[]> = { A: [], B: [], C: [], D: [], E: [] };
   for (const f of filtered) bySection[f.family.section].push(f);
 
-  const sectionCounts: Record<Section, number> = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0, G: 0 };
+  const sectionCounts: Record<Section, number> = { A: 0, B: 0, C: 0, D: 0, E: 0 };
   for (const fam of ALL_FAMILIES) sectionCounts[fam.section] += fam.entries.length;
 
   return (
     <div className="space-y-8">
       <div className="border-b border-gray-800 pb-6">
-        <h1 className="text-2xl font-semibold text-white">Education — A Working Taxonomy</h1>
+        <h1 className="text-2xl font-semibold text-white">History — A Working Taxonomy</h1>
         <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-          A field guide to education organized into {ALL_FAMILIES.length} families across seven sections —
-          from learning theories (behaviorist, cognitivist, constructivist, sociocultural, connectivist),
-          through instructional methods, curriculum design, assessment and psychometrics, educational
-          psychology and development, education policy and sociology, to educational technology and the
-          learning sciences. Each card carries a <em>Principle</em> (the core idea), and where relevant
-          a <em>Lineage</em> (intellectual ancestry), <em>Key figures</em>, and an <em>Era</em>.
-          Color codes the section; clicking a header collapses it; clicking a card expands it.
+          A field guide to history organized into {ALL_FAMILIES.length} families across five sections — Ancient,
+          Medieval, Early Modern, Modern &amp; Contemporary, and Historiography &amp; Contested Questions. Each
+          card carries a <em>key fact</em>, an approximate <em>date</em> where applicable, and optional context.
+          Entries marked <strong>OPEN</strong> are unresolved questions; <strong>CONTESTED</strong> entries are
+          claims historians still argue about; <strong>REVISED</strong> entries are views that recent scholarship
+          has substantially reframed. Color codes the family; clicking a header collapses it; clicking a card
+          expands it.
         </p>
         <p className="mt-3 text-xs text-gray-500 leading-relaxed">
           Cross-references: entries marked <span className="font-mono">xref</span> link to{" "}
-          <Link href="/psychology" className="text-violet-300 underline underline-offset-2 hover:text-violet-200">psychology</Link>,{" "}
-          <Link href="/sociology" className="text-emerald-300 underline underline-offset-2 hover:text-emerald-200">sociology</Link>,{" "}
-          <Link href="/statistics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">statistics</Link>,{" "}
-          or other sibling pages rather than duplicating.
+          <Link href="/historical-events" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">historical events</Link>,{" "}
+          <Link href="/ideologies" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">ideologies</Link>,{" "}
+          <Link href="/philosophy" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">philosophy</Link>,{" "}
+          <Link href="/governance" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">governance</Link>,{" "}
+          <Link href="/law" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">law</Link>,{" "}
+          <Link href="/economics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">economics</Link>,{" "}
+          <Link href="/biology" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">biology</Link>, or{" "}
+          <Link href="/astronomy" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">astronomy</Link>{" "}
+          rather than duplicating.
         </p>
         <p className="mt-2 text-xs font-mono text-gray-600">
-          {ALL_FAMILIES.length} families · {totalEntries} entries · 7 sections
+          {ALL_FAMILIES.length} families · {totalEntries} entries
           {query && (
             <span className="text-gray-500"> · {matchCount} matching &ldquo;{query}&rdquo;</span>
           )}
@@ -396,7 +326,7 @@ export default function EducationPage() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Filter by name, principle, figure, tag — e.g. 'Piaget', 'constructivism', 'assessment', 'Bloom'"
+          placeholder="Filter by name, key fact, date, tag — e.g. 'Rome', '1492', 'Mongol', 'Versailles', 'Annales'"
           className="flex-1 px-3 py-2 bg-gray-900 border border-gray-800 rounded text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:border-gray-600"
         />
         <div className="flex gap-2 text-xs">
@@ -429,8 +359,7 @@ export default function EducationPage() {
         </p>
       ) : (
         <div className="space-y-8">
-      <FieldGuideBanner domain="Education" className="mb-2" />
-          {SECTIONS.map((sec) => {
+          {(["A", "B", "C", "D", "E"] as Section[]).map((sec) => {
             const items = bySection[sec];
             if (items.length === 0) return null;
             return (
@@ -453,28 +382,27 @@ export default function EducationPage() {
         </div>
       )}
 
-      <LiveResearchCard slug="education" />
-
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">
           <span className="text-gray-400">Note:</span> the &ldquo;search&rdquo; link on each card runs a free-text
           search over claim and source text. A term appearing in a claim does not mean the claim is{" "}
-          <em>about</em> that concept — only that the term is present.
+          <em>about</em> that event or figure — only that the term is present.
+        </p>
+        <p className="text-xs text-gray-500 leading-relaxed">
+          <span className="text-gray-400">Open questions and contested narratives:</span> entries marked{" "}
+          <span className="text-red-300 font-mono">OPEN</span> are unresolved as of 2026.{" "}
+          <span className="text-amber-300 font-mono">CONTESTED</span> indicates an ongoing scholarly dispute
+          (Roman fall, Cold War origins, intentionalism vs. functionalism, etc.).{" "}
+          <span className="text-sky-300 font-mono">REVISED</span> entries flag a long-standing view that recent
+          scholarship has substantially reframed (feudalism, Westphalia, Late Antiquity, tulip mania, Great
+          Zimbabwe). The taxonomy is exhaustive but not encyclopedic — and Western history is
+          better-represented than non-Western for archival reasons (this is itself a problem the field
+          continues to work on). Reports of inaccuracy welcome via the{" "}
+          <Link href="/feedback" className="underline underline-offset-2">feedback</Link> page.
         </p>
         <p className="text-xs font-mono text-gray-700">
-          last updated: 2026-07-03 · LaTeX typesetting via KaTeX · claim cross-references pending
+          taxonomy curated 2026-06-05 · {ALL_FAMILIES.length} families · {totalEntries} entries
         </p>
-      </div>
-      <div className="border-t border-gray-700/40 pt-6 mt-4">
-        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
-        <div className="flex flex-wrap gap-4">
-          <a href="/search?q=education" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
-            Search Education in the claim graph →
-          </a>
-          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
-            Browse all trajectories →
-          </a>
-        </div>
       </div>
     </div>
   );

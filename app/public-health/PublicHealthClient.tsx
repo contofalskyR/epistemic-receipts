@@ -1,19 +1,17 @@
 "use client";
-import { FieldGuideBanner } from "@/components/FieldGuideBanner";
-import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
-import type { ColorKey, EducationEntry, Family, Section } from "./types";
-import { FAMILIES_1_6 } from "./data";
-import { FAMILIES_7_13 } from "./data2";
-import { FAMILIES_14_18 } from "./data3";
+import type { ColorKey, PHEntry, Family, Section } from "./types";
+import { FAMILIES_1_7 } from "./data";
+import { FAMILIES_8_13 } from "./data2";
+import { FAMILIES_14_19 } from "./data3";
 import { LiveResearchCard } from "@/components/LiveResearchCard";
 
-const ALL_FAMILIES: Family[] = [...FAMILIES_1_6, ...FAMILIES_7_13, ...FAMILIES_14_18];
+const ALL_FAMILIES: Family[] = [...FAMILIES_1_7, ...FAMILIES_8_13, ...FAMILIES_14_19];
 
 // ────────────────────────────────────────────────────────────────────────────
 // Color palettes
@@ -32,29 +30,25 @@ const COLOR_STYLES: Record<
     accent: string;
   }
 > = {
-  amber:   { headerBg: "bg-amber-950/40",   headerBorder: "border-amber-900",   headerText: "text-amber-200",   chipBg: "bg-amber-950/60",   chipText: "text-amber-300",   cardBorder: "border-amber-950/70",   cardHover: "hover:border-amber-700",   accent: "text-amber-400" },
-  yellow:  { headerBg: "bg-yellow-950/40",  headerBorder: "border-yellow-900",  headerText: "text-yellow-200",  chipBg: "bg-yellow-950/60",  chipText: "text-yellow-300",  cardBorder: "border-yellow-950/70",  cardHover: "hover:border-yellow-700",  accent: "text-yellow-400" },
-  blue:    { headerBg: "bg-blue-950/40",    headerBorder: "border-blue-900",    headerText: "text-blue-200",    chipBg: "bg-blue-950/60",    chipText: "text-blue-300",    cardBorder: "border-blue-950/70",    cardHover: "hover:border-blue-700",    accent: "text-blue-400" },
-  sky:     { headerBg: "bg-sky-950/40",     headerBorder: "border-sky-900",     headerText: "text-sky-200",     chipBg: "bg-sky-950/60",     chipText: "text-sky-300",     cardBorder: "border-sky-950/70",     cardHover: "hover:border-sky-700",     accent: "text-sky-400" },
-  emerald: { headerBg: "bg-emerald-950/40", headerBorder: "border-emerald-900", headerText: "text-emerald-200", chipBg: "bg-emerald-950/60", chipText: "text-emerald-300", cardBorder: "border-emerald-950/70", cardHover: "hover:border-emerald-700", accent: "text-emerald-400" },
-  green:   { headerBg: "bg-green-950/40",   headerBorder: "border-green-900",   headerText: "text-green-200",   chipBg: "bg-green-950/60",   chipText: "text-green-300",   cardBorder: "border-green-950/70",   cardHover: "hover:border-green-700",   accent: "text-green-400" },
-  teal:    { headerBg: "bg-teal-950/40",    headerBorder: "border-teal-900",    headerText: "text-teal-200",    chipBg: "bg-teal-950/60",    chipText: "text-teal-300",    cardBorder: "border-teal-950/70",    cardHover: "hover:border-teal-700",    accent: "text-teal-400" },
-  cyan:    { headerBg: "bg-cyan-950/40",    headerBorder: "border-cyan-900",    headerText: "text-cyan-200",    chipBg: "bg-cyan-950/60",    chipText: "text-cyan-300",    cardBorder: "border-cyan-950/70",    cardHover: "hover:border-cyan-700",    accent: "text-cyan-400" },
   violet:  { headerBg: "bg-violet-950/40",  headerBorder: "border-violet-900",  headerText: "text-violet-200",  chipBg: "bg-violet-950/60",  chipText: "text-violet-300",  cardBorder: "border-violet-950/70",  cardHover: "hover:border-violet-700",  accent: "text-violet-400" },
   indigo:  { headerBg: "bg-indigo-950/40",  headerBorder: "border-indigo-900",  headerText: "text-indigo-200",  chipBg: "bg-indigo-950/60",  chipText: "text-indigo-300",  cardBorder: "border-indigo-950/70",  cardHover: "hover:border-indigo-700",  accent: "text-indigo-400" },
-  orange:  { headerBg: "bg-orange-950/40",  headerBorder: "border-orange-900",  headerText: "text-orange-200",  chipBg: "bg-orange-950/60",  chipText: "text-orange-300",  cardBorder: "border-orange-950/70",  cardHover: "hover:border-orange-700",  accent: "text-orange-400" },
-  pink:    { headerBg: "bg-pink-950/40",    headerBorder: "border-pink-900",    headerText: "text-pink-200",    chipBg: "bg-pink-950/60",    chipText: "text-pink-300",    cardBorder: "border-pink-950/70",    cardHover: "hover:border-pink-700",    accent: "text-pink-400" },
+  blue:    { headerBg: "bg-blue-950/40",    headerBorder: "border-blue-900",    headerText: "text-blue-200",    chipBg: "bg-blue-950/60",    chipText: "text-blue-300",    cardBorder: "border-blue-950/70",    cardHover: "hover:border-blue-700",    accent: "text-blue-400" },
+  sky:     { headerBg: "bg-sky-950/40",     headerBorder: "border-sky-900",     headerText: "text-sky-200",     chipBg: "bg-sky-950/60",     chipText: "text-sky-300",     cardBorder: "border-sky-950/70",     cardHover: "hover:border-sky-700",     accent: "text-sky-400" },
+  cyan:    { headerBg: "bg-cyan-950/40",    headerBorder: "border-cyan-900",    headerText: "text-cyan-200",    chipBg: "bg-cyan-950/60",    chipText: "text-cyan-300",    cardBorder: "border-cyan-950/70",    cardHover: "hover:border-cyan-700",    accent: "text-cyan-400" },
+  teal:    { headerBg: "bg-teal-950/40",    headerBorder: "border-teal-900",    headerText: "text-teal-200",    chipBg: "bg-teal-950/60",    chipText: "text-teal-300",    cardBorder: "border-teal-950/70",    cardHover: "hover:border-teal-700",    accent: "text-teal-400" },
+  emerald: { headerBg: "bg-emerald-950/40", headerBorder: "border-emerald-900", headerText: "text-emerald-200", chipBg: "bg-emerald-950/60", chipText: "text-emerald-300", cardBorder: "border-emerald-950/70", cardHover: "hover:border-emerald-700", accent: "text-emerald-400" },
+  green:   { headerBg: "bg-green-950/40",   headerBorder: "border-green-900",   headerText: "text-green-200",   chipBg: "bg-green-950/60",   chipText: "text-green-300",   cardBorder: "border-green-950/70",   cardHover: "hover:border-green-700",   accent: "text-green-400" },
+  amber:   { headerBg: "bg-amber-950/40",   headerBorder: "border-amber-900",   headerText: "text-amber-200",   chipBg: "bg-amber-950/60",   chipText: "text-amber-300",   cardBorder: "border-amber-950/70",   cardHover: "hover:border-amber-700",   accent: "text-amber-400" },
   rose:    { headerBg: "bg-rose-950/40",    headerBorder: "border-rose-900",    headerText: "text-rose-200",    chipBg: "bg-rose-950/60",    chipText: "text-rose-300",    cardBorder: "border-rose-950/70",    cardHover: "hover:border-rose-700",    accent: "text-rose-400" },
 };
 
 const SECTION_INFO: Record<Section, { name: string; tagline: string }> = {
-  A: { name: "Section A — Learning Theories: How People Learn", tagline: "The foundational theories of learning — behaviorist, cognitivist, constructivist, sociocultural, and connectivist." },
-  B: { name: "Section B — Instructional Methods & Design", tagline: "How teaching is planned, structured, and delivered." },
-  C: { name: "Section C — Curriculum, Standards & the Content of Schooling", tagline: "What gets taught, how it is organized, and who decides." },
-  D: { name: "Section D — Assessment & Educational Measurement", tagline: "How learning is measured — psychometrics, testing, and evaluation." },
-  E: { name: "Section E — Educational Psychology & Human Development", tagline: "The psychological processes and developmental stages that shape learning." },
-  F: { name: "Section F — Education Policy, Systems & the Sociology of Schooling", tagline: "The institutions, policies, and social forces that structure education." },
-  G: { name: "Section G — Educational Technology & the Learning Sciences", tagline: "Technology-mediated learning, AI in education, and the interdisciplinary learning sciences." },
+  A: { name: "Section A — Epidemiological Methods & Study Designs", tagline: "The quantitative core: how we measure disease and identify causes." },
+  B: { name: "Section B — Measures of Disease Frequency & Association", tagline: "The rates, ratios, and measures that quantify disease burden and risk." },
+  C: { name: "Section C — Disease Surveillance & Outbreak Investigation", tagline: "Detecting, tracking, and responding to health threats in real time." },
+  D: { name: "Section D — Infectious-Disease & Chronic-Disease Epidemiology", tagline: "The epidemiology of communicable and non-communicable disease." },
+  E: { name: "Section E — Environmental, Occupational & Global Health", tagline: "Health at the population-environment interface and across borders." },
+  F: { name: "Section F — Biostatistics, Health Systems, Policy & Determinants", tagline: "The statistical methods, health systems, and social forces that shape population health." },
 };
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -84,6 +78,14 @@ function renderInlineMath(text: string): string {
   return out;
 }
 
+function renderFormula(expr: string): string {
+  try {
+    return katex.renderToString(expr, { throwOnError: false, output: "html", strict: "ignore", displayMode: false });
+  } catch {
+    return escapeHTML(expr);
+  }
+}
+
 function plainText(text: string): string {
   return text.replace(/\$([^$]+)\$/g, "$1");
 }
@@ -93,22 +95,27 @@ function MathFragment({ text, className }: { text: string; className?: string })
   return <span className={className} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
+function FormulaExpr({ expr, className }: { expr: string; className?: string }) {
+  const html = useMemo(() => renderFormula(expr), [expr]);
+  return <span className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // Filter / search
 // ────────────────────────────────────────────────────────────────────────────
 
-function entryMatches(entry: EducationEntry, query: string): boolean {
+function entryMatches(entry: PHEntry, query: string): boolean {
   if (!query) return true;
   const q = query.toLowerCase();
   if (entry.name.toLowerCase().includes(q)) return true;
   if (entry.description.toLowerCase().includes(q)) return true;
+  if (entry.definition && plainText(entry.definition).toLowerCase().includes(q)) return true;
   if (entry.principle && plainText(entry.principle).toLowerCase().includes(q)) return true;
-  if (entry.lineage && entry.lineage.toLowerCase().includes(q)) return true;
+  if (entry.interpretation && plainText(entry.interpretation).toLowerCase().includes(q)) return true;
   if (entry.example && plainText(entry.example).toLowerCase().includes(q)) return true;
   if (entry.principalCritiques && plainText(entry.principalCritiques).toLowerCase().includes(q)) return true;
   if (entry.tags.some((t) => t.toLowerCase().includes(q))) return true;
   if (entry.xref?.some((x) => x.toLowerCase().includes(q))) return true;
-  if (entry.figures?.some((f) => f.toLowerCase().includes(q))) return true;
   return false;
 }
 
@@ -120,7 +127,7 @@ function slugifyEntry(name: string): string {
 // Badges
 // ────────────────────────────────────────────────────────────────────────────
 
-function XrefBadges({ entry }: { entry: EducationEntry }) {
+function XrefBadges({ entry }: { entry: PHEntry }) {
   if (!entry.xref || entry.xref.length === 0) return null;
   return (
     <>
@@ -139,7 +146,6 @@ function XrefBadges({ entry }: { entry: EducationEntry }) {
   );
 }
 
-
 // ────────────────────────────────────────────────────────────────────────────
 // Entry card
 // ────────────────────────────────────────────────────────────────────────────
@@ -150,7 +156,7 @@ function EntryCard({
   expanded,
   onToggle,
 }: {
-  entry: EducationEntry;
+  entry: PHEntry;
   family: Family;
   expanded: boolean;
   onToggle: () => void;
@@ -173,7 +179,6 @@ function EntryCard({
       <div className="flex items-baseline justify-between gap-2">
         <h3 className="text-sm font-semibold text-white group-hover:text-gray-100">{entry.name}</h3>
         <div className="flex items-center gap-2 shrink-0">
-          <DomainStatusBadge status={entry.status ?? ""} />
           <Link
             href={`/search?q=${encodeURIComponent(entry.name)}`}
             onClick={(e) => e.stopPropagation()}
@@ -194,29 +199,27 @@ function EntryCard({
           <XrefBadges entry={entry} />
         </div>
       )}
-      <div className="mt-2 text-xs text-gray-300 leading-relaxed">
-        <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Principle</span>
-        <MathFragment text={entry.principle} />
-      </div>
+      {entry.definition && (
+        <div className="mt-2 text-xs text-gray-300 leading-relaxed">
+          <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Definition / formula</span>
+          <FormulaExpr expr={entry.definition} />
+        </div>
+      )}
+      {entry.principle && (
+        <div className="mt-2 text-xs text-gray-300 leading-relaxed">
+          <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Principle</span>
+          <MathFragment text={entry.principle} />
+        </div>
+      )}
 
       {expanded && (
         <div className="mt-3 pt-3 -mx-4 -mb-3 px-4 pb-4 border-t border-gray-700/70 bg-gray-900/80 rounded-b space-y-3">
-          {entry.lineage && (
+          {entry.interpretation && (
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-gray-500">Lineage</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.lineage}</p>
-            </div>
-          )}
-          {entry.figures && entry.figures.length > 0 && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-gray-500">Key figures</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.figures.join(", ")}</p>
-            </div>
-          )}
-          {entry.era && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-gray-500">Era</p>
-              <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.era}</p>
+              <p className="text-[10px] uppercase tracking-widest text-gray-500">Interpretation</p>
+              <p className="mt-1 text-xs text-gray-300 leading-relaxed">
+                <MathFragment text={entry.interpretation} />
+              </p>
             </div>
           )}
           {entry.example && (
@@ -225,6 +228,12 @@ function EntryCard({
               <p className="mt-1 text-xs text-gray-300 leading-relaxed">
                 <MathFragment text={entry.example} />
               </p>
+            </div>
+          )}
+          {entry.dataSource && (
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-gray-500">Data source</p>
+              <p className="mt-1 text-xs text-gray-300 leading-relaxed">{entry.dataSource}</p>
             </div>
           )}
           {entry.principalCritiques && (
@@ -254,7 +263,7 @@ function FamilySection({
   setExpanded,
 }: {
   family: Family;
-  filteredEntries: EducationEntry[];
+  filteredEntries: PHEntry[];
   collapsed: boolean;
   onToggleCollapse: () => void;
   expanded: string | null;
@@ -325,9 +334,9 @@ function SectionHeader({ section, count }: { section: Section; count: number }) 
 // ────────────────────────────────────────────────────────────────────────────
 
 const ALL_SLUGS = ALL_FAMILIES.map((f) => f.slug);
-const SECTIONS: Section[] = ["A", "B", "C", "D", "E", "F", "G"];
+const SECTIONS: Section[] = ["A", "B", "C", "D", "E", "F"];
 
-export default function EducationPage() {
+export default function PublicHealthPage() {
   const [query, setQuery] = useState("");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -354,36 +363,36 @@ export default function EducationPage() {
   const expandAll = () => setCollapsed(new Set());
   const collapseAll = () => setCollapsed(new Set(ALL_SLUGS));
 
-  const bySection: Record<Section, { family: Family; entries: EducationEntry[] }[]> = {
-    A: [], B: [], C: [], D: [], E: [], F: [], G: [],
+  const bySection: Record<Section, { family: Family; entries: PHEntry[] }[]> = {
+    A: [], B: [], C: [], D: [], E: [], F: [],
   };
   for (const f of filtered) bySection[f.family.section].push(f);
 
-  const sectionCounts: Record<Section, number> = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0, G: 0 };
+  const sectionCounts: Record<Section, number> = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
   for (const fam of ALL_FAMILIES) sectionCounts[fam.section] += fam.entries.length;
 
   return (
     <div className="space-y-8">
       <div className="border-b border-gray-800 pb-6">
-        <h1 className="text-2xl font-semibold text-white">Education — A Working Taxonomy</h1>
+        <h1 className="text-2xl font-semibold text-white">Public Health &amp; Epidemiology — A Working Taxonomy</h1>
         <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-          A field guide to education organized into {ALL_FAMILIES.length} families across seven sections —
-          from learning theories (behaviorist, cognitivist, constructivist, sociocultural, connectivist),
-          through instructional methods, curriculum design, assessment and psychometrics, educational
-          psychology and development, education policy and sociology, to educational technology and the
-          learning sciences. Each card carries a <em>Principle</em> (the core idea), and where relevant
-          a <em>Lineage</em> (intellectual ancestry), <em>Key figures</em>, and an <em>Era</em>.
+          A field guide to public health and epidemiology organized into {ALL_FAMILIES.length} families
+          across six sections — from epidemiological methods and study designs, through measures of disease
+          frequency, surveillance, infectious and chronic disease, environmental and global health,
+          to biostatistics, health systems, policy, and the social determinants. Each card carries either a{" "}
+          <em>Definition/formula</em> (for the quantitative measures — incidence, prevalence, odds ratio, NNT,
+          typeset with KaTeX) or a <em>Principle</em> (for the conceptual and systems-level entries).
           Color codes the section; clicking a header collapses it; clicking a card expands it.
         </p>
         <p className="mt-3 text-xs text-gray-500 leading-relaxed">
           Cross-references: entries marked <span className="font-mono">xref</span> link to{" "}
-          <Link href="/psychology" className="text-violet-300 underline underline-offset-2 hover:text-violet-200">psychology</Link>,{" "}
-          <Link href="/sociology" className="text-emerald-300 underline underline-offset-2 hover:text-emerald-200">sociology</Link>,{" "}
           <Link href="/statistics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">statistics</Link>,{" "}
+          <Link href="/pharmacology" className="text-violet-300 underline underline-offset-2 hover:text-violet-200">pharmacology</Link>,{" "}
+          <Link href="/environmental-science" className="text-emerald-300 underline underline-offset-2 hover:text-emerald-200">environmental science</Link>,{" "}
           or other sibling pages rather than duplicating.
         </p>
         <p className="mt-2 text-xs font-mono text-gray-600">
-          {ALL_FAMILIES.length} families · {totalEntries} entries · 7 sections
+          {ALL_FAMILIES.length} families · {totalEntries} entries · 6 sections
           {query && (
             <span className="text-gray-500"> · {matchCount} matching &ldquo;{query}&rdquo;</span>
           )}
@@ -396,7 +405,7 @@ export default function EducationPage() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Filter by name, principle, figure, tag — e.g. 'Piaget', 'constructivism', 'assessment', 'Bloom'"
+          placeholder="Filter by name, definition, principle, tag — e.g. 'incidence', 'odds ratio', 'surveillance', 'NNT'"
           className="flex-1 px-3 py-2 bg-gray-900 border border-gray-800 rounded text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:border-gray-600"
         />
         <div className="flex gap-2 text-xs">
@@ -429,7 +438,6 @@ export default function EducationPage() {
         </p>
       ) : (
         <div className="space-y-8">
-      <FieldGuideBanner domain="Education" className="mb-2" />
           {SECTIONS.map((sec) => {
             const items = bySection[sec];
             if (items.length === 0) return null;
@@ -453,7 +461,7 @@ export default function EducationPage() {
         </div>
       )}
 
-      <LiveResearchCard slug="education" />
+      <LiveResearchCard slug="public-health" />
 
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">
@@ -464,17 +472,6 @@ export default function EducationPage() {
         <p className="text-xs font-mono text-gray-700">
           last updated: 2026-07-03 · LaTeX typesetting via KaTeX · claim cross-references pending
         </p>
-      </div>
-      <div className="border-t border-gray-700/40 pt-6 mt-4">
-        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
-        <div className="flex flex-wrap gap-4">
-          <a href="/search?q=education" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
-            Search Education in the claim graph →
-          </a>
-          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
-            Browse all trajectories →
-          </a>
-        </div>
       </div>
     </div>
   );

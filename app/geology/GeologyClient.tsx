@@ -1,5 +1,4 @@
 "use client";
-import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
@@ -7,14 +6,13 @@ import Link from "next/link";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
-import type { PsychEntry, ColorKey, Family, Section, BrainRegion, BrainLobe } from "./types";
-import { FAMILIES_1_7 } from "./data";
-import { FAMILIES_8_14 } from "./data2";
-import { FAMILIES_15_22 } from "./data3";
-import { BRAIN_REGIONS, LOBE_STYLES, BIG_FIVE_TRAITS } from "./brain";
-import { LiveResearchCard } from "@/components/LiveResearchCard";
+import type { GeoEntry, ColorKey, Family, Section, TimeUnit, MohsMineral } from "./types";
+import { FAMILIES_1_8 } from "./data";
+import { FAMILIES_9_16 } from "./data2";
+import { FAMILIES_17_24 } from "./data3";
+import { TIME_UNITS, MOHS_SCALE, HARDNESS_REFERENCES } from "./timescale";
 
-const ALL_FAMILIES: Family[] = [...FAMILIES_1_7, ...FAMILIES_8_14, ...FAMILIES_15_22];
+const ALL_FAMILIES: Family[] = [...FAMILIES_1_8, ...FAMILIES_9_16, ...FAMILIES_17_24];
 
 // ────────────────────────────────────────────────────────────────────────────
 // Color palettes
@@ -46,11 +44,11 @@ const COLOR_STYLES: Record<
 };
 
 const SECTION_INFO: Record<Section, { name: string; tagline: string }> = {
-  A: { name: "Section A — Foundations & Methods", tagline: "Schools, history, research design, and psychometrics." },
-  B: { name: "Section B — Biological & Cognitive Sciences", tagline: "Neurons, perception, cognitive neuroscience, and the puzzle of consciousness." },
-  C: { name: "Section C — Cognition & Learning", tagline: "How experience changes behavior — learning, memory, attention, thought, decision-making." },
-  D: { name: "Section D — Development, Personality & Social", tagline: "Lifespan, individual differences, motivation, evolutionary mind, social behavior." },
-  E: { name: "Section E — Clinical, Applied & Frontiers", tagline: "Mental disorder, therapy, work, education, culture, well-being, replication crisis." },
+  A: { name: "Section A — Earth Materials", tagline: "Minerals, crystals, and the three rock families plus the geochemistry that ties them together." },
+  B: { name: "Section B — Earth Dynamics & Structure", tagline: "Plate tectonics, deformation, volcanoes, earthquakes, and the geophysics of Earth's interior." },
+  C: { name: "Section C — Surface Systems", tagline: "Geomorphology, sedimentary environments, groundwater, ice, ocean, and atmospheric Earth." },
+  D: { name: "Section D — Earth History", tagline: "Stratigraphy, geologic time, and the four-billion-year fossil record." },
+  E: { name: "Section E — Applied, Planetary & Frontier", tagline: "Ore deposits, hydrocarbons, planetary geology, and the questions that remain open." },
 };
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -106,7 +104,7 @@ function MathExpr({ expr, className }: { expr: string; className?: string }) {
 // Filter / search
 // ────────────────────────────────────────────────────────────────────────────
 
-function entryMatches(entry: PsychEntry, query: string): boolean {
+function entryMatches(entry: GeoEntry, query: string): boolean {
   if (!query) return true;
   const q = query.toLowerCase();
   if (entry.name.toLowerCase().includes(q)) return true;
@@ -114,264 +112,15 @@ function entryMatches(entry: PsychEntry, query: string): boolean {
   if (plainText(entry.keyFact).toLowerCase().includes(q)) return true;
   if (entry.formula && plainText(entry.formula).toLowerCase().includes(q)) return true;
   if (entry.example && plainText(entry.example).toLowerCase().includes(q)) return true;
-  if (entry.researcher && entry.researcher.toLowerCase().includes(q)) return true;
   if (entry.tags.some((t) => t.toLowerCase().includes(q))) return true;
   return false;
-}
-
-// ────────────────────────────────────────────────────────────────────────────
-// Brain regions explorer
-// ────────────────────────────────────────────────────────────────────────────
-
-function BrainSchematic({ onSelect, selected }: { onSelect: (r: BrainRegion) => void; selected: string | null }) {
-  const W = 720;
-  const H = 420;
-
-  return (
-    <div className="overflow-x-auto">
-      <svg width={W} height={H} role="img" aria-label="Schematic brain with clickable regions" className="block">
-        <defs>
-          <radialGradient id="brain-glow" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#1f2937" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#0a0a0a" stopOpacity="0.95" />
-          </radialGradient>
-        </defs>
-        {/* Cortical silhouette (very schematic) */}
-        <path
-          d="M 80 220 C 80 100, 200 50, 380 50 C 540 50, 640 110, 660 220 C 670 320, 580 360, 480 360 L 280 360 C 180 360, 80 320, 80 220 Z"
-          fill="url(#brain-glow)"
-          stroke="#4b5563"
-          strokeWidth={1.5}
-        />
-        {/* Brainstem stub */}
-        <path
-          d="M 380 360 L 380 405 L 470 405 L 470 360 Z"
-          fill="#1f2937"
-          stroke="#4b5563"
-          strokeWidth={1.5}
-        />
-        {/* Cerebellum lobule */}
-        <path
-          d="M 510 320 C 510 280, 570 290, 600 320 C 620 350, 600 390, 550 395 C 510 395, 490 360, 510 320 Z"
-          fill="#1f2937"
-          stroke="#4b5563"
-          strokeWidth={1.5}
-        />
-
-        {/* Region nodes */}
-        {BRAIN_REGIONS.map((r) => {
-          const s = LOBE_STYLES[r.lobe];
-          const isSelected = r.abbreviation === selected;
-          return (
-            <g
-              key={r.abbreviation}
-              onClick={() => onSelect(r)}
-              style={{ cursor: "pointer" }}
-            >
-              <circle
-                cx={r.x}
-                cy={r.y}
-                r={isSelected ? 11 : 8}
-                fill={s.bg}
-                stroke={isSelected ? "#ffffff" : s.border}
-                strokeWidth={isSelected ? 2 : 1.2}
-                opacity={isSelected ? 1 : 0.92}
-              />
-              <text
-                x={r.x}
-                y={r.y + 3}
-                textAnchor="middle"
-                fontSize={8}
-                fill={s.text}
-                fontFamily="ui-monospace, monospace"
-                pointerEvents="none"
-              >
-                {r.abbreviation.length > 4 ? r.abbreviation.slice(0, 4) : r.abbreviation}
-              </text>
-              <title>{`${r.name} (${r.abbreviation}) — ${s.label}`}</title>
-            </g>
-          );
-        })}
-      </svg>
-      {/* Legend */}
-      <div className="pt-3 flex flex-wrap gap-2 text-[10px]">
-        {Object.entries(LOBE_STYLES).map(([key, s]) => (
-          <div key={key} className="flex items-center gap-1.5">
-            <span
-              className="inline-block w-3 h-3 rounded-sm"
-              style={{ background: s.bg, border: `1px solid ${s.border}` }}
-            />
-            <span style={{ color: s.text }} className="font-mono">{s.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function BrainRegionDetail({ region }: { region: BrainRegion }) {
-  const s = LOBE_STYLES[region.lobe];
-  return (
-    <div className="rounded border p-4 space-y-2" style={{ borderColor: s.border, background: `${s.bg}66` }}>
-      <div className="flex items-baseline justify-between">
-        <div>
-          <p className="text-[10px] uppercase tracking-widest" style={{ color: s.text }}>{s.label}</p>
-          <h3 className="text-xl font-semibold text-white">
-            {region.name} <span className="text-gray-400 font-mono text-sm">({region.abbreviation})</span>
-          </h3>
-        </div>
-      </div>
-      <div>
-        <p className="text-[10px] uppercase tracking-widest text-gray-500">Functions</p>
-        <ul className="mt-1 text-xs text-gray-200 list-disc list-inside leading-relaxed">
-          {region.functions.map((f) => (
-            <li key={f}>{f}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <p className="text-[10px] uppercase tracking-widest text-gray-500">Lesion effects</p>
-        <p className="mt-1 text-xs text-gray-200 leading-relaxed">{region.lesionEffects}</p>
-      </div>
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────────────────────────────────────
-// Big Five interactive slider profile
-// ────────────────────────────────────────────────────────────────────────────
-
-type BigFiveScores = Record<"O" | "C" | "E" | "A" | "N", number>;
-
-function describeScore(score: number, traitName: string, high: string, low: string): string {
-  if (score >= 80) return `Very high ${traitName.toLowerCase()} — ${high}`;
-  if (score >= 60) return `High ${traitName.toLowerCase()} — ${high.split(",")[0]}.`;
-  if (score >= 40) return `Average ${traitName.toLowerCase()} — balanced between poles.`;
-  if (score >= 20) return `Low ${traitName.toLowerCase()} — ${low.split(",")[0]}.`;
-  return `Very low ${traitName.toLowerCase()} — ${low}`;
-}
-
-const TRAIT_COLORS: Record<"O" | "C" | "E" | "A" | "N", string> = {
-  O: "#a78bfa",
-  C: "#60a5fa",
-  E: "#fbbf24",
-  A: "#34d399",
-  N: "#fb7185",
-};
-
-function BigFiveProfile() {
-  const [scores, setScores] = useState<BigFiveScores>({ O: 50, C: 50, E: 50, A: 50, N: 50 });
-
-  // Radar chart geometry (pentagonal).
-  const W = 360;
-  const H = 320;
-  const cx = W / 2;
-  const cy = H / 2 + 8;
-  const R = 110;
-  const keys: ("O" | "C" | "E" | "A" | "N")[] = ["O", "C", "E", "A", "N"];
-  const angle = (i: number) => (-Math.PI / 2) + (2 * Math.PI * i) / keys.length;
-  const point = (i: number, r: number) => ({ x: cx + r * Math.cos(angle(i)), y: cy + r * Math.sin(angle(i)) });
-
-  const polyPoints = keys
-    .map((k, i) => {
-      const r = (scores[k] / 100) * R;
-      const p = point(i, r);
-      return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-    })
-    .join(" ");
-
-  return (
-    <div className="grid sm:grid-cols-5 gap-4 items-start">
-      {/* Sliders */}
-      <div className="sm:col-span-3 space-y-3">
-        {BIG_FIVE_TRAITS.map((t) => {
-          const v = scores[t.key];
-          const color = TRAIT_COLORS[t.key];
-          return (
-            <div key={t.key} className="space-y-1">
-              <div className="flex items-baseline justify-between gap-2">
-                <div className="min-w-0">
-                  <span className="text-xs font-mono mr-2" style={{ color }}>{t.key}</span>
-                  <span className="text-sm font-semibold text-white">{t.shortName}</span>
-                </div>
-                <span className="text-xs font-mono text-gray-400 shrink-0">{v}</span>
-              </div>
-              <p className="text-[11px] text-gray-500 leading-snug">{t.description}</p>
-              <input
-                type="range"
-                min={0}
-                max={100}
-                value={v}
-                onChange={(e) => setScores({ ...scores, [t.key]: Number(e.target.value) })}
-                className="w-full"
-                style={{ accentColor: color }}
-              />
-              <p className="text-[11px] text-gray-300 leading-snug">
-                {describeScore(v, t.shortName, t.highPole, t.lowPole)}
-              </p>
-              <p className="text-[10px] text-gray-600 font-mono">
-                facets: {t.facets.join(" · ")}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-      {/* Radar */}
-      <div className="sm:col-span-2">
-        <svg width={W} height={H} role="img" aria-label="Big Five radar chart" className="mx-auto block">
-          {/* Concentric grid */}
-          {[0.25, 0.5, 0.75, 1.0].map((frac, gi) => (
-            <polygon
-              key={gi}
-              fill="none"
-              stroke="#374151"
-              strokeWidth={0.7}
-              points={keys.map((_, i) => {
-                const p = point(i, R * frac);
-                return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-              }).join(" ")}
-            />
-          ))}
-          {/* Axes */}
-          {keys.map((_, i) => {
-            const p = point(i, R);
-            return <line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="#374151" strokeWidth={0.7} />;
-          })}
-          {/* Filled polygon */}
-          <polygon points={polyPoints} fill="#a78bfa55" stroke="#a78bfa" strokeWidth={1.4} />
-          {/* Axis labels */}
-          {keys.map((k, i) => {
-            const p = point(i, R + 16);
-            return (
-              <text
-                key={k}
-                x={p.x}
-                y={p.y + 4}
-                textAnchor="middle"
-                fontSize={11}
-                fill={TRAIT_COLORS[k]}
-                fontFamily="ui-monospace, monospace"
-                fontWeight={600}
-              >
-                {k}
-              </text>
-            );
-          })}
-        </svg>
-        <p className="text-[10px] text-gray-500 mt-2 text-center leading-snug">
-          Move the sliders to see a Big-Five profile. The radar shows the five trait scores together.
-          Self-report scores are not destiny — they are an unstable, situational snapshot of a continuous trait.
-        </p>
-      </div>
-    </div>
-  );
 }
 
 // ────────────────────────────────────────────────────────────────────────────
 // Xref & status badges
 // ────────────────────────────────────────────────────────────────────────────
 
-function XrefBadges({ entry }: { entry: PsychEntry }) {
+function XrefBadges({ entry }: { entry: GeoEntry }) {
   if (!entry.xref || entry.xref.length === 0) return null;
   return (
     <>
@@ -395,13 +144,17 @@ function XrefBadges({ entry }: { entry: PsychEntry }) {
 // Entry card
 // ────────────────────────────────────────────────────────────────────────────
 
+function slugifyEntry(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
 function EntryCard({
   entry,
   family,
   expanded,
   onToggle,
 }: {
-  entry: PsychEntry;
+  entry: GeoEntry;
   family: Family;
   expanded: boolean;
   onToggle: () => void;
@@ -455,13 +208,6 @@ function EntryCard({
           <MathExpr expr={entry.formula} />
         </div>
       )}
-      {entry.researcher && (
-        <div className="mt-1 text-[11px] text-gray-400 leading-relaxed">
-          <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Researcher</span>
-          {entry.researcher}
-        </div>
-      )}
-
       {expanded && entry.example && (
         <div className="mt-3 pt-3 -mx-4 -mb-3 px-4 pb-4 border-t border-gray-700/70 bg-gray-900/80 rounded-b space-y-3">
           <div>
@@ -477,12 +223,355 @@ function EntryCard({
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Family section
+// Geologic time scale explorer
 // ────────────────────────────────────────────────────────────────────────────
 
-function slugifyEntry(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+// Use a log-like compression on time so the Precambrian (~88% of Earth history)
+// doesn't visually dwarf the Phanerozoic. We piecewise-stretch the Phanerozoic
+// to ~50% of the bar width.
+const TIMELINE_WIDTH = 900;
+const PHANEROZOIC_START = 538.8;
+const EARTH_AGE = 4567;
+const PHAN_FRACTION = 0.55;
+
+function timeToX(ma: number): number {
+  if (ma <= PHANEROZOIC_START) {
+    // Phanerozoic — linear from PHANEROZOIC_START at left edge of Phanerozoic block to 0 at right edge.
+    const frac = (PHANEROZOIC_START - ma) / PHANEROZOIC_START;
+    return TIMELINE_WIDTH * (1 - PHAN_FRACTION) + TIMELINE_WIDTH * PHAN_FRACTION * frac;
+  }
+  // Precambrian — linear from EARTH_AGE at left edge to PHANEROZOIC_START at start of Phanerozoic block.
+  const frac = (EARTH_AGE - ma) / (EARTH_AGE - PHANEROZOIC_START);
+  return TIMELINE_WIDTH * (1 - PHAN_FRACTION) * frac;
 }
+
+function TimeScaleExplorer({
+  selected,
+  setSelected,
+}: {
+  selected: TimeUnit | null;
+  setSelected: (u: TimeUnit | null) => void;
+}) {
+  const eons = TIME_UNITS.filter((u) => u.level === "eon");
+  const eras = TIME_UNITS.filter((u) => u.level === "era");
+  const periods = TIME_UNITS.filter((u) => u.level === "period");
+
+  const rowHeight = 36;
+  const gap = 4;
+  const rows = [eons, eras, periods];
+  const totalHeight = rows.length * (rowHeight + gap) + 30;
+
+  const renderUnit = (u: TimeUnit, rowIdx: number) => {
+    const x1 = timeToX(u.startMa);
+    const x2 = timeToX(u.endMa);
+    const width = Math.max(2, x1 - x2);
+    const left = TIMELINE_WIDTH - x1;
+    const y = rowIdx * (rowHeight + gap);
+    const isSelected = selected?.name === u.name;
+    return (
+      <g
+        key={u.name}
+        transform={`translate(${left}, ${y})`}
+        onClick={() => setSelected(isSelected ? null : u)}
+        style={{ cursor: "pointer" }}
+      >
+        <rect
+          width={width}
+          height={rowHeight}
+          fill={u.color}
+          stroke={isSelected ? "#ffffff" : "#1f2937"}
+          strokeWidth={isSelected ? 2 : 1}
+          rx={2}
+        />
+        {width > 60 && (
+          <text
+            x={width / 2}
+            y={rowHeight / 2 + 4}
+            fill="#f3f4f6"
+            textAnchor="middle"
+            fontSize={11}
+            fontFamily="ui-monospace, monospace"
+          >
+            {u.name}
+          </text>
+        )}
+        {width <= 60 && width > 12 && (
+          <text
+            x={width / 2}
+            y={rowHeight / 2 + 4}
+            fill="#f3f4f6"
+            textAnchor="middle"
+            fontSize={9}
+            fontFamily="ui-monospace, monospace"
+          >
+            {u.name.slice(0, 3)}
+          </text>
+        )}
+      </g>
+    );
+  };
+
+  // Tick marks at meaningful ages.
+  const tickAges = [0, 66, 252, 539, 1000, 2000, 3000, 4000, 4567];
+
+  return (
+    <div className="space-y-3">
+      <div className="overflow-x-auto">
+        <svg width={TIMELINE_WIDTH} height={totalHeight} role="img" aria-label="Geologic time scale">
+          {rows.map((row, i) => (
+            <g key={i}>
+              {row.map((u) => renderUnit(u, i))}
+            </g>
+          ))}
+          {/* Tick axis */}
+          <g transform={`translate(0, ${rows.length * (rowHeight + gap)})`}>
+            <line x1={0} y1={0} x2={TIMELINE_WIDTH} y2={0} stroke="#4b5563" strokeWidth={1} />
+            {tickAges.map((age) => {
+              const x = TIMELINE_WIDTH - timeToX(age);
+              return (
+                <g key={age} transform={`translate(${x}, 0)`}>
+                  <line y1={0} y2={5} stroke="#9ca3af" strokeWidth={1} />
+                  <text y={18} fontSize={10} fill="#9ca3af" textAnchor="middle" fontFamily="ui-monospace, monospace">
+                    {age === 0 ? "now" : `${age} Ma`}
+                  </text>
+                </g>
+              );
+            })}
+          </g>
+        </svg>
+      </div>
+      <p className="text-[10px] text-gray-500">
+        Boundary ages from the International Chronostratigraphic Chart (ICS 2023). The Phanerozoic (last 538.8 Myr) is
+        stretched to ~55% of the bar; Precambrian time is compressed. Click any block for details.
+      </p>
+      {selected && (
+        <div
+          className="rounded border p-4 space-y-2"
+          style={{ borderColor: selected.color, background: `${selected.color}22` }}
+        >
+          <div className="flex items-baseline justify-between gap-3">
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-gray-400">{selected.level}</p>
+              <h3 className="text-lg font-semibold text-white">{selected.name}</h3>
+              {selected.parent && <p className="text-xs text-gray-400">part of {selected.parent}</p>}
+            </div>
+            <div className="text-right">
+              <div className="text-lg font-mono text-white">
+                {selected.startMa.toLocaleString()} – {selected.endMa.toLocaleString()} Ma
+              </div>
+              <div className="text-[10px] uppercase tracking-widest text-gray-500">
+                duration {(selected.startMa - selected.endMa).toLocaleString()} Myr
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-gray-500">Key events</p>
+            <ul className="mt-1 text-xs text-gray-300 leading-relaxed list-disc list-inside space-y-0.5">
+              {selected.events.map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Mohs hardness visualization
+// ────────────────────────────────────────────────────────────────────────────
+
+const MOHS_COLOR = "#a78bfa";
+const ABSOLUTE_COLOR = "#fbbf24";
+
+function MohsScale({
+  selected,
+  setSelected,
+}: {
+  selected: MohsMineral | null;
+  setSelected: (m: MohsMineral | null) => void;
+}) {
+  const width = 880;
+  const height = 280;
+  const padL = 60;
+  const padR = 20;
+  const padT = 20;
+  const padB = 90;
+  const innerW = width - padL - padR;
+  const innerH = height - padT - padB;
+  // Use log scale for absolute hardness so the diamond outlier doesn't flatten everything.
+  const maxAbs = MOHS_SCALE[MOHS_SCALE.length - 1].absoluteHardness;
+  const logMin = 0;
+  const logMax = Math.log10(maxAbs);
+  const xFor = (mohs: number) => padL + ((mohs - 1) / 9) * innerW;
+  const yForAbs = (abs: number) => padT + innerH * (1 - (Math.log10(abs) - logMin) / (logMax - logMin));
+  const yForMohs = (mohs: number) => padT + innerH * (1 - (mohs - 1) / 9);
+
+  return (
+    <div className="space-y-3">
+      <div className="overflow-x-auto">
+        <svg width={width} height={height} role="img" aria-label="Mohs hardness scale">
+          {/* Grid */}
+          <g>
+            {MOHS_SCALE.map((m) => (
+              <line
+                key={`grid-${m.hardness}`}
+                x1={xFor(m.hardness)}
+                y1={padT}
+                x2={xFor(m.hardness)}
+                y2={padT + innerH}
+                stroke="#1f2937"
+                strokeDasharray="2 2"
+              />
+            ))}
+          </g>
+          {/* Axes */}
+          <line x1={padL} y1={padT + innerH} x2={padL + innerW} y2={padT + innerH} stroke="#4b5563" />
+          <text x={padL + innerW / 2} y={height - 12} fontSize={11} fill="#9ca3af" textAnchor="middle" fontFamily="ui-monospace, monospace">
+            Mohs hardness (ordinal 1–10)
+          </text>
+          <text
+            x={15}
+            y={padT + innerH / 2}
+            fontSize={11}
+            fill="#9ca3af"
+            textAnchor="middle"
+            fontFamily="ui-monospace, monospace"
+            transform={`rotate(-90, 15, ${padT + innerH / 2})`}
+          >
+            scaled value (log)
+          </text>
+          {/* Mohs ordinal line */}
+          <polyline
+            points={MOHS_SCALE.map((m) => `${xFor(m.hardness)},${yForMohs(m.hardness)}`).join(" ")}
+            fill="none"
+            stroke={MOHS_COLOR}
+            strokeWidth={1.5}
+            strokeDasharray="4 3"
+          />
+          {/* Absolute hardness curve */}
+          <polyline
+            points={MOHS_SCALE.map((m) => `${xFor(m.hardness)},${yForAbs(m.absoluteHardness)}`).join(" ")}
+            fill="none"
+            stroke={ABSOLUTE_COLOR}
+            strokeWidth={2}
+          />
+          {/* Mineral dots + labels */}
+          {MOHS_SCALE.map((m) => {
+            const isSelected = selected?.hardness === m.hardness;
+            return (
+              <g key={m.hardness}>
+                <circle
+                  cx={xFor(m.hardness)}
+                  cy={yForAbs(m.absoluteHardness)}
+                  r={isSelected ? 7 : 4.5}
+                  fill={ABSOLUTE_COLOR}
+                  stroke={isSelected ? "#ffffff" : "#0a0a0a"}
+                  strokeWidth={1.5}
+                  onClick={() => setSelected(isSelected ? null : m)}
+                  style={{ cursor: "pointer" }}
+                />
+                <text
+                  x={xFor(m.hardness)}
+                  y={padT + innerH + 16}
+                  fontSize={10}
+                  fill="#d1d5db"
+                  textAnchor="middle"
+                  fontFamily="ui-monospace, monospace"
+                >
+                  {m.hardness}
+                </text>
+                <text
+                  x={xFor(m.hardness)}
+                  y={padT + innerH + 30}
+                  fontSize={10}
+                  fill="#9ca3af"
+                  textAnchor="middle"
+                  fontFamily="ui-monospace, monospace"
+                >
+                  {m.name}
+                </text>
+                <text
+                  x={xFor(m.hardness)}
+                  y={padT + innerH + 44}
+                  fontSize={9}
+                  fill="#6b7280"
+                  textAnchor="middle"
+                  fontFamily="ui-monospace, monospace"
+                >
+                  {m.absoluteHardness}
+                </text>
+              </g>
+            );
+          })}
+          {/* Reference-object markers on horizontal axis */}
+          {HARDNESS_REFERENCES.map((r) => (
+            <g key={r.name}>
+              <line
+                x1={xFor(r.hardness)}
+                y1={padT}
+                x2={xFor(r.hardness)}
+                y2={padT + innerH}
+                stroke="#9ca3af"
+                strokeOpacity={0.3}
+                strokeDasharray="1 4"
+              />
+              <text
+                x={xFor(r.hardness) + 3}
+                y={padT + 12}
+                fontSize={9}
+                fill="#9ca3af"
+                fontFamily="ui-monospace, monospace"
+              >
+                {r.name}
+              </text>
+            </g>
+          ))}
+          {/* Legend */}
+          <g transform={`translate(${padL}, ${padT - 2})`}>
+            <line x1={0} y1={0} x2={20} y2={0} stroke={ABSOLUTE_COLOR} strokeWidth={2} />
+            <text x={26} y={4} fontSize={10} fill={ABSOLUTE_COLOR} fontFamily="ui-monospace, monospace">absolute (Vickers, log)</text>
+            <line x1={170} y1={0} x2={190} y2={0} stroke={MOHS_COLOR} strokeWidth={1.5} strokeDasharray="4 3" />
+            <text x={196} y={4} fontSize={10} fill={MOHS_COLOR} fontFamily="ui-monospace, monospace">Mohs ordinal step</text>
+          </g>
+        </svg>
+      </div>
+      {selected && (
+        <div
+          className="rounded border border-amber-900 p-4 space-y-2 bg-amber-950/30"
+        >
+          <div className="flex items-baseline justify-between gap-3">
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-amber-400">Mineral</p>
+              <h3 className="text-lg font-semibold text-white">{selected.name}</h3>
+              <p className="text-xs text-gray-400 mt-1">
+                <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Formula</span>
+                <MathExpr expr={selected.formula} />
+              </p>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-mono text-white">{selected.hardness}</div>
+              <div className="text-[10px] uppercase tracking-widest text-gray-500">Mohs (ordinal)</div>
+              <div className="text-xs text-amber-300 font-mono mt-1">~{selected.absoluteHardness}× talc (absolute)</div>
+            </div>
+          </div>
+          <p className="text-xs text-gray-300 leading-relaxed">{selected.example}</p>
+        </div>
+      )}
+      <p className="text-[10px] text-gray-500 leading-relaxed">
+        The Mohs scale (Friedrich Mohs, 1812) is ordinal — &ldquo;harder than&rdquo; via scratch test. Absolute hardness
+        from Vickers indentation (Tabor 1954, plotted log scale) shows the scale is highly non-linear at the top:
+        diamond is ~4× harder than corundum despite being one step up. Fingernail ≈ 2.5; copper penny ≈ 3.5; iron nail ≈
+        4.5; glass plate ≈ 5.5; steel file ≈ 6.5.
+      </p>
+    </div>
+  );
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Family section
+// ────────────────────────────────────────────────────────────────────────────
 
 function FamilySection({
   family,
@@ -493,7 +582,7 @@ function FamilySection({
   setExpanded,
 }: {
   family: Family;
-  filteredEntries: PsychEntry[];
+  filteredEntries: GeoEntry[];
   collapsed: boolean;
   onToggleCollapse: () => void;
   expanded: string | null;
@@ -564,21 +653,15 @@ function SectionHeader({ section, count }: { section: Section; count: number }) 
 // ────────────────────────────────────────────────────────────────────────────
 
 const ALL_SLUGS = ALL_FAMILIES.map((f) => f.slug);
-const LOBE_COUNTS: Record<BrainLobe, number> = BRAIN_REGIONS.reduce(
-  (acc, r) => {
-    acc[r.lobe] = (acc[r.lobe] ?? 0) + 1;
-    return acc;
-  },
-  { frontal: 0, parietal: 0, temporal: 0, occipital: 0, limbic: 0, subcortical: 0, cerebellum: 0, brainstem: 0 } as Record<BrainLobe, number>,
-);
 
-export default function PsychologyPage() {
+export default function GeologyPage() {
   const [query, setQuery] = useState("");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   const [expanded, setExpanded] = useState<string | null>(null);
-  const [selectedRegion, setSelectedRegion] = useState<BrainRegion | null>(null);
-  const [showBrain, setShowBrain] = useState(true);
-  const [showBigFive, setShowBigFive] = useState(true);
+  const [selectedTime, setSelectedTime] = useState<TimeUnit | null>(null);
+  const [selectedMineral, setSelectedMineral] = useState<MohsMineral | null>(null);
+  const [showTime, setShowTime] = useState(true);
+  const [showMohs, setShowMohs] = useState(false);
 
   const filtered = useMemo(() => {
     return ALL_FAMILIES.map((f) => ({
@@ -602,7 +685,7 @@ export default function PsychologyPage() {
   const expandAll = () => setCollapsed(new Set());
   const collapseAll = () => setCollapsed(new Set(ALL_SLUGS));
 
-  const bySection: Record<Section, { family: Family; entries: PsychEntry[] }[]> = { A: [], B: [], C: [], D: [], E: [] };
+  const bySection: Record<Section, { family: Family; entries: GeoEntry[] }[]> = { A: [], B: [], C: [], D: [], E: [] };
   for (const f of filtered) bySection[f.family.section].push(f);
 
   const sectionCounts: Record<Section, number> = { A: 0, B: 0, C: 0, D: 0, E: 0 };
@@ -611,90 +694,72 @@ export default function PsychologyPage() {
   return (
     <div className="space-y-8">
       <div className="border-b border-gray-800 pb-6">
-        <h1 className="text-2xl font-semibold text-white">Psychology — A Working Taxonomy</h1>
+        <h1 className="text-2xl font-semibold text-white">Geology — A Working Taxonomy</h1>
         <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-          A field guide to psychology organized into 22 families across five sections — Foundations &amp; Methods,
-          Biological &amp; Cognitive Sciences, Cognition &amp; Learning, Development/Personality/Social, and
-          Clinical/Applied/Frontiers. Each card carries a <em>key fact</em>, where relevant a <em>formula</em>{" "}
-          (typeset with KaTeX), the original <em>researcher</em>, and an <em>example</em>. Status badges
-          mark <strong>LANDMARK</strong>, <strong>CONTESTED</strong>, <strong>REFUTED</strong>, and{" "}
-          <strong>OPEN</strong> entries. The 2010s replication crisis has reshaped what counts as well-established;
-          we mark the casualties accordingly.
+          A field guide to geology organized into {ALL_FAMILIES.length} families across five sections — Earth Materials,
+          Earth Dynamics &amp; Structure, Surface Systems, Earth History, and Applied/Planetary/Frontier. Each card
+          carries a <em>key fact</em>, where relevant a <em>formula</em> (typeset with KaTeX — radiometric decay, Darcy,
+          Bragg, stream power), and an <em>example</em>. Entries marked <strong>OPEN</strong> are genuinely unresolved
+          as of 2026 (Snowball Earth details, Mars life, AMOC tipping, slow earthquakes, Anthropocene formalization).
         </p>
         <p className="mt-3 text-xs text-gray-500 leading-relaxed">
           Cross-references: entries marked <span className="font-mono">xref</span> link to{" "}
-          <Link href="/biology" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">biology</Link>,{" "}
-          <Link href="/medicine" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">medicine</Link>,{" "}
-          <Link href="/statistics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">statistics</Link>,{" "}
-          <Link href="/philosophy" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">philosophy</Link>,
-          and other siblings rather than duplicating.
+          <Link href="/physics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">physics</Link>,{" "}
+          <Link href="/chemistry" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">chemistry</Link>, or{" "}
+          <Link href="/statistics" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">statistics</Link>{" "}
+          rather than duplicating. The two headline visualizations are the <strong>geologic time scale explorer</strong>{" "}
+          (click any eon, era, or period for boundary ages and key events) and the <strong>Mohs hardness scale</strong>{" "}
+          (the 10 reference minerals with their absolute Vickers values plotted log-scale to show that diamond is ~4×
+          harder than corundum despite being one ordinal step up).
         </p>
         <p className="mt-2 text-xs font-mono text-gray-600">
-          {ALL_FAMILIES.length} families · {totalEntries} entries · {BRAIN_REGIONS.length} brain regions · 5 Big-Five traits
+          {ALL_FAMILIES.length} families · {totalEntries} entries · {TIME_UNITS.length} time units · 10 Mohs minerals
           {query && (
             <span className="text-gray-500"> · {matchCount} matching &ldquo;{query}&rdquo;</span>
           )}
         </p>
       </div>
 
-      {/* Brain regions explorer */}
-      <section className="rounded-lg border border-gray-800 overflow-hidden">
+      {/* Geologic time scale */}
+      <section className="rounded-lg border border-violet-900 overflow-hidden">
         <button
-          onClick={() => setShowBrain((v) => !v)}
-          className="w-full text-left px-5 py-3 bg-gray-900/60 hover:brightness-125 transition-all flex items-baseline justify-between gap-4"
+          onClick={() => setShowTime((v) => !v)}
+          className="w-full text-left px-5 py-3 bg-violet-950/40 hover:brightness-125 transition-all flex items-baseline justify-between gap-4"
         >
           <div className="min-w-0">
-            <h2 className="text-base font-semibold text-gray-100">Brain regions explorer</h2>
+            <h2 className="text-base font-semibold text-violet-200">Geologic time scale explorer</h2>
             <p className="mt-0.5 text-xs text-gray-500">
-              {BRAIN_REGIONS.length} regions across 8 lobes — click a node to see functions and the classic lesion syndromes.
+              ICS 2023 chronostratigraphic chart. Eons, eras, and periods shown to scale (Phanerozoic stretched). Click
+              any unit for boundary ages and key events.
             </p>
           </div>
-          <span className="text-xs text-gray-400">{showBrain ? "▾" : "▸"}</span>
+          <span className="text-xs text-violet-400">{showTime ? "▾" : "▸"}</span>
         </button>
-        {showBrain && (
-          <div className="bg-gray-950/40 p-4 grid sm:grid-cols-3 gap-4">
-            <div className="sm:col-span-2">
-              <BrainSchematic onSelect={setSelectedRegion} selected={selectedRegion?.abbreviation ?? null} />
-              <p className="text-[10px] text-gray-600 mt-2 leading-snug">
-                Schematic left-sagittal view. Coordinates are illustrative, not anatomically precise.
-                Lobes: frontal {LOBE_COUNTS.frontal} · parietal {LOBE_COUNTS.parietal} · temporal {LOBE_COUNTS.temporal} ·
-                occipital {LOBE_COUNTS.occipital} · limbic {LOBE_COUNTS.limbic} · subcortical {LOBE_COUNTS.subcortical} ·
-                cerebellum {LOBE_COUNTS.cerebellum} · brainstem {LOBE_COUNTS.brainstem}.
-              </p>
-            </div>
-            <div>
-              {selectedRegion ? (
-                <BrainRegionDetail region={selectedRegion} />
-              ) : (
-                <div className="rounded border border-gray-800 p-4 text-xs text-gray-400">
-                  Click any region in the schematic to view its functions and the cognitive deficits produced by lesions.
-                  Examples: <span className="font-mono">PFC</span> (Phineas Gage), <span className="font-mono">HC</span>{" "}
-                  (patient HM), <span className="font-mono">FFA</span> (prosopagnosia), <span className="font-mono">AMY</span>{" "}
-                  (Klüver-Bucy).
-                </div>
-              )}
-            </div>
+        {showTime && (
+          <div className="bg-gray-950/40 p-4">
+            <TimeScaleExplorer selected={selectedTime} setSelected={setSelectedTime} />
           </div>
         )}
       </section>
 
-      {/* Big Five profile */}
-      <section className="rounded-lg border border-gray-800 overflow-hidden">
+      {/* Mohs hardness */}
+      <section className="rounded-lg border border-amber-900 overflow-hidden">
         <button
-          onClick={() => setShowBigFive((v) => !v)}
-          className="w-full text-left px-5 py-3 bg-gray-900/60 hover:brightness-125 transition-all flex items-baseline justify-between gap-4"
+          onClick={() => setShowMohs((v) => !v)}
+          className="w-full text-left px-5 py-3 bg-amber-950/40 hover:brightness-125 transition-all flex items-baseline justify-between gap-4"
         >
           <div className="min-w-0">
-            <h2 className="text-base font-semibold text-gray-100">Big Five personality profile</h2>
+            <h2 className="text-base font-semibold text-amber-200">Mohs hardness scale</h2>
             <p className="mt-0.5 text-xs text-gray-500">
-              Move the sliders to construct an OCEAN profile. Radar updates live. The five traits are the dominant trait taxonomy in personality psychology.
+              Mohs&apos;s 1812 ordinal 1–10 scratch scale plotted against the Vickers-derived absolute hardness (log axis).
+              Click a mineral to see its chemistry and reference use.
             </p>
           </div>
-          <span className="text-xs text-gray-400">{showBigFive ? "▾" : "▸"}</span>
+          <span className="text-xs text-amber-400">{showMohs ? "▾" : "▸"}</span>
         </button>
-        {showBigFive && (
+        {showMohs && (
           <div className="bg-gray-950/40 p-4">
-            <BigFiveProfile />
+            <MohsScale selected={selectedMineral} setSelected={setSelectedMineral} />
           </div>
         )}
       </section>
@@ -705,7 +770,7 @@ export default function PsychologyPage() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Filter by name, key fact, formula, tag, researcher — e.g. 'Kahneman', 'attachment', 'replication'"
+          placeholder="Filter by name, key fact, formula, tag — e.g. 'basalt', 'zircon', 'Darcy', 'Cambrian'"
           className="flex-1 px-3 py-2 bg-gray-900 border border-gray-800 rounded text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:border-gray-600"
         />
         <div className="flex gap-2 text-xs">
@@ -738,7 +803,6 @@ export default function PsychologyPage() {
         </p>
       ) : (
         <div className="space-y-8">
-      <FieldGuideBanner domain="Psychology" className="mb-2" />
           {(["A", "B", "C", "D", "E"] as Section[]).map((sec) => {
             const items = bySection[sec];
             if (items.length === 0) return null;
@@ -762,8 +826,6 @@ export default function PsychologyPage() {
         </div>
       )}
 
-      <LiveResearchCard slug="psychology" />
-
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">
           <span className="text-gray-400">Note:</span> the &ldquo;search&rdquo; link on each card runs a free-text
@@ -771,30 +833,15 @@ export default function PsychologyPage() {
           <em>about</em> that concept — only that the term is present.
         </p>
         <p className="text-xs text-gray-500 leading-relaxed">
-          <span className="text-gray-400">Replication crisis posture:</span> entries marked{" "}
-          <span className="text-rose-300 font-mono">REFUTED</span> are findings that have not survived registered
-          replication (power posing, ego depletion, facial-feedback hypothesis, MBTI). Entries marked{" "}
-          <span className="text-amber-300 font-mono">CONTESTED</span> have effect sizes that have shrunk substantially
-          on replication (stereotype threat, IAT predictive validity, growth mindset, marshmallow test, Stanford Prison Experiment,
-          Hofstede). Entries marked <span className="text-red-300 font-mono">OPEN</span> are genuine frontier
-          questions as of 2026 (hard problem of consciousness, free will, animal consciousness, theory of mind in LLMs,
-          post-2010 adolescent mental health). Reports of inaccuracy welcome via the{" "}
-          <Link href="/feedback" className="underline underline-offset-2">feedback</Link> page.
+          <span className="text-gray-400">Open questions:</span> entries marked{" "}
+          <span className="text-red-300 font-mono">OPEN</span> are genuinely unresolved as of 2026. Snowball Earth onset
+          and termination details, life on early Mars, slow-earthquake mechanism, AMOC tipping risk, Anthropocene
+          formalization, and the sixth-extinction trajectory all remain actively debated. Reports of inaccuracy welcome
+          via the <Link href="/feedback" className="underline underline-offset-2">feedback</Link> page.
         </p>
         <p className="text-xs font-mono text-gray-700">
-          taxonomy curated 2026-06-05 · LaTeX typesetting via KaTeX · {ALL_FAMILIES.length} families · {totalEntries} entries · {BRAIN_REGIONS.length} brain regions
+          taxonomy curated 2026-06-05 · LaTeX typesetting via KaTeX · ICS 2023 time scale · {ALL_FAMILIES.length} families · {totalEntries} entries
         </p>
-      </div>
-      <div className="border-t border-gray-700/40 pt-6 mt-4">
-        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
-        <div className="flex flex-wrap gap-4">
-          <a href="/search?q=psychology" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
-            Search Psychology in the claim graph →
-          </a>
-          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
-            Browse all trajectories →
-          </a>
-        </div>
       </div>
     </div>
   );

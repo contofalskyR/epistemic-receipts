@@ -1,4 +1,6 @@
 "use client";
+import { FieldGuideBanner } from "@/components/FieldGuideBanner";
+import { DomainStatusBadge } from "@/components/DomainStatusBadge";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -157,22 +159,6 @@ function XrefBadges({ entry }: { entry: CommEntry }) {
   );
 }
 
-function StatusBadge({ entry }: { entry: CommEntry }) {
-  if (!entry.status) return null;
-  if (entry.status === "open") {
-    return (
-      <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-950/60 text-amber-300 font-mono border border-amber-900/60">OPEN</span>
-    );
-  }
-  if (entry.status === "refuted") {
-    return (
-      <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-950/60 text-rose-300 font-mono border border-rose-900/60">REFUTED</span>
-    );
-  }
-  return (
-    <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-950/60 text-green-300 font-mono border border-green-900/60">RESOLVED</span>
-  );
-}
 
 // ────────────────────────────────────────────────────────────────────────────
 // Utilities
@@ -215,7 +201,7 @@ function EntryCard({
       <div className="flex items-baseline justify-between gap-2">
         <h3 className="text-sm font-semibold text-white group-hover:text-gray-100">{entry.name}</h3>
         <div className="flex items-center gap-2 shrink-0">
-          <StatusBadge entry={entry} />
+          <DomainStatusBadge status={entry.status ?? ""} />
           <Link
             href={`/search?q=${encodeURIComponent(entry.name)}`}
             onClick={(e) => e.stopPropagation()}
@@ -498,6 +484,7 @@ export default function CommunicationPage() {
         </p>
       ) : (
         <div className="space-y-8">
+      <FieldGuideBanner domain="Communication & Media Studies" className="mb-2" />
           {ALL_SECTIONS.map((sec) => {
             const items = bySection[sec];
             if (items.length === 0) return null;
@@ -555,6 +542,17 @@ export default function CommunicationPage() {
         <p className="text-xs font-mono text-gray-700">
           taxonomy curated 2026-07-03 · last updated: 2026-07-03 · KaTeX typesetting available · claim cross-references pending
         </p>
+      </div>
+      <div className="border-t border-gray-700/40 pt-6 mt-4">
+        <p className="text-[11px] font-mono uppercase tracking-widest text-gray-600 mb-2">Discover related claims in the graph</p>
+        <div className="flex flex-wrap gap-4">
+          <a href="/search?q=communication+media" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
+            Search Communication & Media Studies in the claim graph →
+          </a>
+          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+            Browse all trajectories →
+          </a>
+        </div>
       </div>
     </div>
   );
