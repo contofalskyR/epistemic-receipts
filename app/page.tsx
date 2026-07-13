@@ -93,11 +93,11 @@ async function loadHomepageData() {
     retractedPapers: sumTags("crossref_retractions_v1", "retraction_watch_v1"),
   };
 
-  return { claimCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew };
+  return { claimCount, transitionCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew };
 }
 
 export default async function Home() {
-  const { claimCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew } =
+  const { claimCount, transitionCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew } =
     await loadHomepageData();
 
   return (
@@ -111,33 +111,36 @@ export default async function Home() {
       />
       {/* Claim example carousel — below the macro settling curve */}
       <div className="mx-auto max-w-5xl pb-4 pt-10">
-        <div className="grid items-start gap-6 lg:grid-cols-[1fr_420px]">
-          <div className="flex flex-col justify-center gap-5">
+        <div className="grid items-start gap-8 lg:grid-cols-[1fr_420px]">
+          <div className="flex flex-col justify-center gap-6">
             <div>
               <p className="text-[11px] font-mono uppercase tracking-[0.14em] text-amber-400/90">
-                Example trajectories
+                Claim provenance database
               </p>
-              <h2 className="mt-3 text-[clamp(22px,2.8vw,30px)] font-medium leading-[1.22] text-gray-100">
-                Every claim carries a dated, sourced settling curve.
+              <h2 className="mt-4 text-[clamp(26px,3.4vw,38px)] font-semibold leading-[1.16] text-gray-100">
+                Track the status of every claim — when it was established, changed, or overturned.
               </h2>
-              <p className="mt-2.5 text-[14px] leading-relaxed text-gray-500">
-                Science reverses. Courts overrule themselves. Consensus takes decades to form — and
-                sometimes collapses overnight. Each record here shows exactly when it happened, with
-                the source that said so.
+              <p className="mt-3.5 max-w-[52ch] text-base leading-relaxed text-gray-400">
+                A live record of epistemic status across science, law, and history.{" "}
+                <strong className="text-gray-200">{compactCount(claimCount)}</strong> claims, each
+                sourced and traceable, carrying{" "}
+                <strong className="text-gray-200">{compactCount(transitionCount)}</strong> dated
+                status transitions. Search any topic, follow the evidence trail, and see how each
+                claim&apos;s status shifted over time.
               </p>
             </div>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-col gap-3">
               <Link
                 href="/settling-curve"
-                className="inline-block rounded-lg bg-amber-400 px-4 py-2.5 text-sm font-medium text-gray-950 transition-colors hover:bg-amber-300"
+                className="inline-block w-fit rounded-lg bg-amber-400 px-5 py-3 text-sm font-medium text-gray-950 transition-colors hover:bg-amber-300"
               >
                 Explore the Settling Curve →
               </Link>
               <Link
-                href="/reversals"
-                className="inline-block rounded-lg border border-gray-700 px-4 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
+                href="/stories/h-pylori"
+                className="text-sm text-amber-400/80 transition-colors hover:text-amber-300 hover:underline underline-offset-4"
               >
-                Browse reversals
+                View a sample trajectory: H. pylori (ulcers) →
               </Link>
             </div>
           </div>
