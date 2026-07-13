@@ -37,9 +37,9 @@ const SLIDES: Slide[] = [
     milestones: 3,
     text: "In Giles v. Harris (189 U.S. 475), decided 27 April 1903, the U.S. Supreme Court declined to order Alabama to register Black voters disenfranchised under the state's 1901 constitution, holding that federal equity courts would not supervise state voting and that relief from such 'political wrongs' must come from the political branches.",
     href: "/reversals",
-    pts: [[0, 26], [28, 28], [58, 44], [80, 68], [100, 82]],
+    pts: [[0, 8], [30, 10], [55, 14], [70, 45], [85, 72], [100, 86]],
     finalLabel: "Reversed",
-    finalColor: "#f87171",
+    finalColor: "#f97316",
     startYear: "1903",
     endYear: "1962",
   },
@@ -50,7 +50,7 @@ const SLIDES: Slide[] = [
     milestones: 3,
     text: "The U.S. Supreme Court held in The Paquete Habana, decided 8 January 1900, that customary international law is part of United States law and must be ascertained and applied by federal courts as questions of right depending on it arise.",
     href: "/settling-curve",
-    pts: [[0, 70], [25, 60], [55, 42], [80, 20], [100, 10]],
+    pts: [[0, 72], [20, 68], [40, 60], [55, 65], [72, 42], [88, 20], [100, 9]],
     finalLabel: "Settled",
     finalColor: "#34d399",
     startYear: "1900",
@@ -63,9 +63,9 @@ const SLIDES: Slide[] = [
     milestones: 4,
     text: "Peptic ulcers are caused by excess stomach acid and stress — not bacterial infection. This consensus held for decades until Barry Marshall and Robin Warren isolated Helicobacter pylori and demonstrated its role in ulcer disease, upending 80 years of gastroenterology.",
     href: "/stories/h-pylori",
-    pts: [[0, 18], [25, 20], [50, 28], [70, 55], [88, 74], [100, 84]],
+    pts: [[0, 10], [40, 12], [58, 16], [70, 50], [85, 78], [100, 90]],
     finalLabel: "Reversed",
-    finalColor: "#f87171",
+    finalColor: "#f97316",
     startYear: "1984",
     endYear: "1994",
   },
@@ -76,7 +76,7 @@ const SLIDES: Slide[] = [
     milestones: 5,
     text: "The continents move — once joined as Pangaea, they separate along tectonic boundaries at measurable rates. Alfred Wegener proposed continental drift in 1912 and was widely ridiculed. Seafloor spreading was confirmed in the 1960s and plate tectonics became the settled framework of geology.",
     href: "/search?q=plate+tectonics",
-    pts: [[0, 75], [20, 70], [42, 56], [60, 38], [80, 18], [100, 9]],
+    pts: [[0, 78], [18, 72], [35, 68], [52, 55], [68, 35], [82, 16], [100, 8]],
     finalLabel: "Settled",
     finalColor: "#34d399",
     startYear: "1912",
@@ -89,7 +89,7 @@ const SLIDES: Slide[] = [
     milestones: 6,
     text: "Dietary fat — particularly saturated fat — is a primary driver of cardiovascular disease and should be minimized in a healthy diet. Decades of guidance built on this claim are now contested as evidence for different fatty acid types diverged sharply from the original hypothesis.",
     href: "/search?q=dietary+fat+cardiovascular",
-    pts: [[0, 18], [20, 16], [40, 20], [60, 35], [80, 50], [100, 58]],
+    pts: [[0, 22], [14, 28], [28, 18], [42, 32], [56, 25], [70, 42], [84, 35], [100, 48]],
     finalLabel: "Contested",
     finalColor: "#fbbf24",
     startYear: "2015",
@@ -102,19 +102,100 @@ const SLIDES: Slide[] = [
     milestones: 4,
     text: "Hwang Woo-suk reported deriving human embryonic stem cells from cloned embryos — first in 2004, then with patient-matched lines in 2005. Both Science papers were retracted in 2006 after a fabrication investigation. The work had fooled journal editors, peer reviewers, and the global scientific press.",
     href: "/retraction-explorer",
-    pts: [[0, 20], [30, 18], [55, 22], [72, 60], [88, 80], [100, 88]],
+    pts: [[0, 8], [45, 9], [58, 11], [68, 55], [80, 82], [100, 92]],
     finalLabel: "Reversed",
-    finalColor: "#f87171",
+    finalColor: "#f97316",
     startYear: "2003",
     endYear: "2012",
+  },
+  {
+    tag: "THE REVERSAL",
+    tagColor: "#f87171",
+    range: "1935 → 1967",
+    milestones: 5,
+    text: "Lobotomy — surgical severing of connections in the prefrontal cortex — was a legitimate and widely practiced psychiatric treatment for depression, schizophrenia, and anxiety. António Egas Moniz received the Nobel Prize in Physiology or Medicine in 1949 for developing the procedure. The practice was abandoned as antipsychotic drugs emerged and evidence of permanent harm accumulated.",
+    href: "/search?q=lobotomy",
+    pts: [[0, 30], [20, 22], [35, 15], [55, 18], [70, 42], [85, 68], [100, 84]],
+    finalLabel: "Reversed",
+    finalColor: "#f97316",
+    startYear: "1935",
+    endYear: "1967",
+  },
+  {
+    tag: "THE SETTLEMENT",
+    tagColor: "#34d399",
+    range: "1950 → 1964",
+    milestones: 4,
+    text: "Cigarette smoking causes lung cancer. The link was long denied by tobacco companies and contested in scientific literature funded by the industry. The 1950 Doll-Hill and Wynder-Graham studies independently established the association. The U.S. Surgeon General's 1964 report formally settled the scientific consensus.",
+    href: "/search?q=tobacco+lung+cancer",
+    pts: [[0, 62], [18, 58], [32, 65], [48, 55], [62, 38], [78, 20], [100, 8]],
+    finalLabel: "Settled",
+    finalColor: "#34d399",
+    startYear: "1950",
+    endYear: "1964",
+  },
+  {
+    tag: "THE REVERSAL",
+    tagColor: "#f87171",
+    range: "1921 → 1986",
+    milestones: 5,
+    text: "Tetraethyl lead added to gasoline was safe at levels encountered in normal use. Industry-funded research maintained this position for decades while independent scientists documented neurological harm, especially in children. The EPA began phasing out leaded gasoline in 1973; the U.S. ban was complete by 1996.",
+    href: "/search?q=leaded+gasoline",
+    pts: [[0, 12], [20, 10], [38, 16], [55, 28], [72, 52], [88, 72], [100, 84]],
+    finalLabel: "Reversed",
+    finalColor: "#f97316",
+    startYear: "1921",
+    endYear: "1986",
+  },
+  {
+    tag: "THE SETTLEMENT",
+    tagColor: "#34d399",
+    range: "1847 → 1900",
+    milestones: 4,
+    text: "Puerperal fever is caused by physicians carrying infectious material between the dissection room and the delivery ward. Ignaz Semmelweis demonstrated in 1847 that handwashing with chlorinated lime dramatically reduced mortality. His findings were dismissed and he died in an asylum, but Pasteur's germ theory vindicated him by 1900.",
+    href: "/search?q=semmelweis+handwashing",
+    pts: [[0, 62], [22, 68], [40, 72], [58, 55], [75, 30], [90, 12], [100, 6]],
+    finalLabel: "Settled",
+    finalColor: "#34d399",
+    startYear: "1847",
+    endYear: "1900",
+  },
+  {
+    tag: "THE CONTESTED",
+    tagColor: "#fbbf24",
+    range: "2018 → present",
+    milestones: 7,
+    text: "Social media use causes depression, anxiety, and other mental health problems in adolescents, particularly girls. The 2018 Twenge et al. findings launched a major policy debate, but subsequent meta-analyses found effect sizes inconsistent and often small. Jonathan Haidt's 2023 synthesis renewed the case; the causal direction and magnitude remain disputed.",
+    href: "/search?q=social+media+teen+mental+health",
+    pts: [[0, 42], [12, 36], [25, 50], [38, 40], [52, 55], [65, 44], [78, 52], [92, 46], [100, 50]],
+    finalLabel: "Contested",
+    finalColor: "#fbbf24",
+    startYear: "2018",
+    endYear: "2026",
+  },
+  {
+    tag: "THE REVERSAL",
+    tagColor: "#f87171",
+    range: "1977 → 2000",
+    milestones: 3,
+    text: "Saccharin, the artificial sweetener, causes bladder cancer. A 1977 Canadian study showed bladder tumors in rats fed high doses of saccharin. The FDA proposed a ban; Congress instead required warning labels. Later research showed the rat mechanism does not apply to humans, and saccharin was removed from the U.S. list of anticipated carcinogens in 2000.",
+    href: "/search?q=saccharin+bladder+cancer",
+    pts: [[0, 24], [22, 22], [42, 30], [60, 50], [78, 68], [100, 76]],
+    finalLabel: "Reversed",
+    finalColor: "#f97316",
+    startYear: "1977",
+    endYear: "2000",
   },
 ];
 
 function MiniCurve({ slide }: { slide: Slide }) {
   const svgPts = pts2svg(slide.pts);
   const [lx, ly] = slide.pts[slide.pts.length - 1];
+  const [sx, sy] = slide.pts[0];
   const svgLx = PAD.l + (lx / 100) * CW;
   const svgLy = PAD.t + (ly / 100) * CH;
+  const svgSx = PAD.l + (sx / 100) * CW;
+  const svgSy = PAD.t + (sy / 100) * CH;
   return (
     <div className="overflow-hidden rounded-md bg-[#0b0b12]">
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="w-full" aria-hidden="true">
@@ -128,6 +209,8 @@ function MiniCurve({ slide }: { slide: Slide }) {
           opacity={0.08}
         />
         <polyline points={svgPts} fill="none" stroke={slide.finalColor} strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" />
+        {/* green dot at start = initial epistemic status */}
+        <circle cx={svgSx} cy={svgSy} r={3} fill="#34d399" />
         <circle cx={svgLx} cy={svgLy} r={3.5} fill={slide.finalColor} />
         <text x={PAD.l} y={H - 4} fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.startYear}</text>
         <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.endYear}</text>
@@ -193,12 +276,15 @@ export default function HomeCarousel() {
         </div>
 
         {/* Claim text */}
-        <p className="mt-3 line-clamp-4 text-[13.5px] leading-relaxed text-gray-300">{s.text}</p>
+        <p className="mt-3 line-clamp-5 text-[13.5px] leading-relaxed text-gray-300">{s.text}</p>
 
         {/* Mini settling curve */}
         <div className="mt-4">
           <MiniCurve slide={s} />
         </div>
+
+        {/* Excerpt below curve — same claim, muted */}
+        <p className="mt-2.5 line-clamp-2 text-[12px] leading-relaxed text-gray-600">{s.text}</p>
       </div>
 
       {/* Footer — always visible so dots don't jump */}

@@ -215,9 +215,12 @@ const START_ITEMS: StartItem[] = [
 function StartHere() {
   return (
     <section className="mx-auto max-w-5xl pb-2 pt-6">
-      <h2 className="text-[11px] font-mono uppercase tracking-[0.14em] text-gray-500">
-        Start here
-      </h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-[11px] font-mono uppercase tracking-[0.14em] text-gray-500">
+          Start here
+        </h2>
+        <span className="text-[11px] font-mono text-gray-600">scroll for more →</span>
+      </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {START_ITEMS.map((item) => (
           <Link

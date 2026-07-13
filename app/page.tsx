@@ -137,10 +137,10 @@ export default async function Home() {
                 Explore the Settling Curve →
               </Link>
               <Link
-                href="/stories/h-pylori"
+                href="/search?q=semaglutide"
                 className="text-sm text-amber-400/80 transition-colors hover:text-amber-300 hover:underline underline-offset-4"
               >
-                View a sample trajectory: H. pylori (ulcers) →
+                View a sample trajectory: semaglutide (GLP-1) →
               </Link>
             </div>
           </div>
