@@ -131,9 +131,20 @@ export type PipelineBucket = {
 export async function loadPipelineBuckets(): Promise<PipelineBucket[]> {
   const since = new Date(Date.now() - PIPELINE_WINDOW_DAYS * 24 * 60 * 60 * 1000);
 
+  // Non-English pipelines are excluded from the default feed so that claims in
+  // Swedish, German, Japanese, etc. don't surface on English-language pages
+  // without a gloss. They remain accessible via /foreign-legislation and direct
+  // claim links. Guardrail: source text is never altered — only excluded here.
+  const { NON_ENGLISH_PIPELINES } = await import("@/lib/non-english-pipelines");
+  const excludedTags = Array.from(NON_ENGLISH_PIPELINES);
+
   const grouped = await prisma.claim.groupBy({
     by: ["ingestedBy"],
-    where: { deleted: false, createdAt: { gte: since } },
+    where: {
+      deleted: false,
+      createdAt: { gte: since },
+      ingestedBy: { notIn: excludedTags },
+    },
     _count: { _all: true },
     orderBy: { _count: { ingestedBy: "desc" } },
     take: PIPELINE_LIMIT,
@@ -146,7 +157,7 @@ export async function loadPipelineBuckets(): Promise<PipelineBucket[]> {
     where: {
       deleted: false,
       createdAt: { gte: since },
-      ingestedBy: { in: ingestedByList },
+      ingestedBy: { in: ingestedByList, notIn: excludedTags },
     },
     orderBy: { createdAt: "desc" },
     select: { id: true, text: true, ingestedBy: true, createdAt: true },

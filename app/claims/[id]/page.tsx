@@ -16,6 +16,7 @@ import AddToCollection from "@/components/AddToCollection";
 import CitationButton from "@/components/CitationButton";
 import { TrajectoryDepth } from "@/components/TrajectoryDepth";
 import { EpistemicLegend } from "@/components/EpistemicLegend";
+import { pipelineLanguage } from "@/lib/non-english-pipelines";
 import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } from "./claim-ui";
 
 // ── ISR ───────────────────────────────────────────────────────────────────────
@@ -181,6 +182,14 @@ export default async function ClaimDetailPage({ params }: Props) {
             firstYear={depthFirstYear}
             lastYear={depthLastYear}
           />
+          {pipelineLanguage(claim.ingestedBy) && (
+            <span
+              className="text-xs px-2 py-0.5 rounded-full font-medium bg-sky-950 text-sky-400 border border-sky-800/50"
+              title="Source text is in a non-English language — this record has not been translated"
+            >
+              Source: {pipelineLanguage(claim.ingestedBy)}
+            </span>
+          )}
           {(claim._count?.statusHistory ?? 0) >= 2 && (
             <Link
               href={`/settling-curve?t=${encodeURIComponent(claim.id)}`}

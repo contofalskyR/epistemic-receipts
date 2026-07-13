@@ -8,6 +8,7 @@ import { EpistemicLegend } from "@/components/EpistemicLegend";
 import { cleanDisplayText } from "@/lib/text";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 import { TrajectoryDepth } from "@/components/TrajectoryDepth";
+import { isNonEnglish, pipelineLanguage } from "@/lib/non-english-pipelines";
 
 type ClaimHit = {
   id: string;
@@ -227,6 +228,8 @@ export default function SearchClient() {
   const urlAxisRaw = (searchParams.get("axis") ?? "").trim().toUpperCase();
   const urlAxis = (VALID_AXES as readonly string[]).includes(urlAxisRaw) ? urlAxisRaw : "";
   const urlTraced = searchParams.get("traced") === "1";
+  // lang=all shows non-English claims; default (omitted) hides them
+  const urlLangAll = searchParams.get("lang") === "all";
 
   const [input, setInput] = useState(urlQ);
   const [data, setData] = useState<SearchResponse | null>(null);
@@ -239,7 +242,7 @@ export default function SearchClient() {
   }, [urlQ]);
 
   const pushUrl = useCallback(
-    (overrides: Partial<{ q: string; type: string; offset: number; country: string; axis: string; traced: boolean }>) => {
+    (overrides: Partial<{ q: string; type: string; offset: number; country: string; axis: string; traced: boolean; lang: string }>) => {
       const next = new URLSearchParams(searchParams.toString());
       if (overrides.q !== undefined) {
         if (overrides.q) next.set("q", overrides.q);
@@ -264,6 +267,10 @@ export default function SearchClient() {
       if (overrides.traced !== undefined) {
         if (overrides.traced) next.set("traced", "1");
         else next.delete("traced");
+      }
+      if (overrides.lang !== undefined) {
+        if (overrides.lang === "all") next.set("lang", "all");
+        else next.delete("lang");
       }
       const qs = next.toString();
       router.replace(qs ? `/search?${qs}` : "/search");
@@ -441,6 +448,17 @@ export default function SearchClient() {
           >
             Traced ≥2
           </button>
+          <button
+            onClick={() => pushUrl({ lang: urlLangAll ? "" : "all", offset: 0 })}
+            className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+              urlLangAll
+                ? "bg-sky-500/20 text-sky-300 border-sky-500/50 font-medium"
+                : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
+            }`}
+            title="Toggle display of non-English claims (Swedish, German, Japanese, etc.)"
+          >
+            {urlLangAll ? "All languages" : "English only"}
+          </button>
 
           {data && showResults && (
             <span className="text-xs text-gray-500 ml-auto">
@@ -491,7 +509,7 @@ export default function SearchClient() {
       {error && <p className="text-sm text-red-400">{error}</p>}
 
       {data && !loading && !error && showResults && (
-        <Results data={data} type={urlType} tracedOnly={urlTraced} />
+        <Results data={data} type={urlType} tracedOnly={urlTraced} langAll={urlLangAll} />
       )}
 
       {/* Pagination */}
@@ -522,11 +540,17 @@ export default function SearchClient() {
   );
 }
 
-function Results({ data, type, tracedOnly = false }: { data: SearchResponse; type: "claims" | "sources" | "all"; tracedOnly?: boolean }) {
+function Results({ data, type, tracedOnly = false, langAll = false }: { data: SearchResponse; type: "claims" | "sources" | "all"; tracedOnly?: boolean; langAll?: boolean }) {
   const showClaims = type === "all" || type === "claims";
   const showSources = (type === "all" || type === "sources") && !tracedOnly;
+
+  // Filter non-English claims from default display; show them when langAll=true
+  const visibleClaims = langAll
+    ? data.claims
+    : data.claims.filter((c) => !isNonEnglish(c.ingestedBy));
+
   const nothing =
-    (!showClaims || (data.claims.length === 0 && (data.curves ?? []).length === 0)) &&
+    (!showClaims || (visibleClaims.length === 0 && (data.curves ?? []).length === 0)) &&
     (!showSources || data.sources.length === 0);
 
   if (nothing) {
@@ -586,14 +610,14 @@ function Results({ data, type, tracedOnly = false }: { data: SearchResponse; typ
         </section>
       )}
 
-      {showClaims && !tracedOnly && data.claims.length > 0 && (
+      {showClaims && !tracedOnly && visibleClaims.length > 0 && (
         <section className="space-y-2">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
             Claims ({data.counts.claims.toLocaleString()})
           </h2>
           <SearchLegend />
           <div className="space-y-2">
-            {data.claims.map((c, i) => (
+            {visibleClaims.map((c, i) => (
               <ClaimResult key={c.id} claim={c} query={data.query} index={i} />
             ))}
           </div>
@@ -655,6 +679,14 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
       <div className="flex items-center justify-between mt-2">
         <div className="flex items-center gap-1.5 flex-wrap">
           <EpistemicAxisBadge axis={claim.epistemicAxis} />
+          {pipelineLanguage(claim.ingestedBy) && (
+            <span
+              className="text-xs px-2 py-0.5 rounded-full font-medium bg-sky-950 text-sky-400 border border-sky-800/50"
+              title="Source text is in a non-English language — not translated"
+            >
+              {pipelineLanguage(claim.ingestedBy)}
+            </span>
+          )}
           {claim.topicLabel && (
             <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-950 text-indigo-300">
               {claim.topicLabel}
