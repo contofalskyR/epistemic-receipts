@@ -4558,6 +4558,46 @@ Settling curve added to Nav "Explore" dropdown.
 
 ---
 
+### 2026-07-13 — B3: Reversal Index, On This Day, Receipts, Open Questions (Build Brief #3)
+
+**Branch:** `loop/site-b3-2026-07-13`. **Zero DB writes.** Read-only surfaces over existing data.
+
+**B3-0 — Preflight census (read-only script).**
+`scripts/b3-preflight.ts` — REVERSED transition counts by community, DAY-precision sample, CONTESTED count (433), multi-community claims (3,348 total, 3,241 divergent).
+
+**B3-1 — Quick wins.**
+- `app/components/DomainRecentMoves.tsx` — async server component querying last-30d transitions by trajectory externalId. Added to all 11 domain pages.
+- `app/settling-curve/coverage/EpistemicCoverage.tsx` — "Known residues" honesty ledger section added with 4 doc-sourced entries: ~8,344 single-step retraction residue, ~2 unparsed FDA DATES-variant notices, hyphenated NDA residue, 5 blocked C1 seed rows.
+- `components/CitationButton.tsx` — extended to all 7 story pages and `/settling-curve/[id]` page.
+
+**B3-2 — On This Day.**
+`app/components/OnThisDay.tsx` — async server component. DAY-precision WHERE clause is the honesty guard (no YEAR-precision rows can appear). UTC-based month/day. Ranks curated slugs first, then multi-step, single-step. Non-English pipeline exclusion. Cap 8. Wired into homepage (revalidate bumped 300→3600) and `/feed`.
+
+**B3-3 — Reversal Index extended.**
+`app/reversals/page.tsx` extended from courts-only to four-section hub: JUDICIAL (unchanged), INSTITUTIONAL (drugsatfda_v1 + live count 4,914), EXPERT_LITERATURE (crossref_retractions_v1 + live count 38,183 + residue footnote ~8,344), Legislative (nz_repealed_acts_v1). Each section gated on count > 0.
+
+**B3-4 — Receipt permalinks + anchors.**
+- `app/receipts/[id]/page.tsx` — permanent route for ClaimStatusHistory PK. 404 on unknown/soft-deleted/DEPRECATED. `noindex` + `rel=canonical` → parent claim. `app/api/og/receipt/route.tsx` — OG image per receipt.
+- `app/claims/[id]/AdaptiveClaimTimeline.tsx` — `id="t-{seq}"` on each transition `<li>`. Hover-visible `#` copy-link.
+
+**B3-5 — Open questions dormancy leaderboard.**
+- `lib/dormancy.ts` — `loadDormantContested(limit)` + `loadRecentlyWoken()` shared library.
+- `app/open-questions/page.tsx` — SSR, revalidate 3600. Top 50 CONTESTED claims by dormancy. "Recently woken" strip suppressed if empty.
+- Added to `app/sitemap.ts` static list.
+
+**B3-6 — Split ledger step 0 (read-only census).**
+`scripts/count-community-divergence.ts` — 3,348 multi-community claims, 3,241 divergent (96.8%). Pair-frequency table. Recommendation: split-ledger index page (requires separate brief to build).
+
+**Files added:**
+`scripts/b3-preflight.ts`, `app/components/DomainRecentMoves.tsx` (wired into 11 domain pages), `app/components/OnThisDay.tsx`, `app/api/og/receipt/route.tsx`, `app/receipts/[id]/page.tsx`, `lib/dormancy.ts`, `app/open-questions/page.tsx`, `scripts/count-community-divergence.ts`, `briefs/2026-07-13-b3-report.md`
+
+**Files modified:**
+`app/settling-curve/coverage/EpistemicCoverage.tsx`, `app/reversals/page.tsx`, 7 story pages + `app/settling-curve/[id]/page.tsx` (CitationButton), `app/claims/[id]/AdaptiveClaimTimeline.tsx`, `app/sitemap.ts`, `app/page.tsx` (revalidate + OnThisDay), `app/feed/page.tsx` (OnThisDay)
+
+**Gotcha:** `markerSource` not `source` on ClaimStatusHistory Prisma relation — any raw query referencing transition provenance must use the correct field name.
+
+---
+
 ### 2026-07-14 — B4: Split Ledger + Communities (Build Brief #4)
 
 **Branch:** `loop/site-b4-2026-07-14`. **Zero DB writes.** Read-only surfaces over existing transitions.
