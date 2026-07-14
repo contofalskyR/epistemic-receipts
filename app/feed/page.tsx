@@ -11,6 +11,7 @@ import {
 } from "@/lib/feed";
 import SinceLastVisit from "./SinceLastVisit";
 import BookmarkedActivity from "./BookmarkedActivity";
+import OnThisDay from "@/app/components/OnThisDay";
 
 
 export const metadata = {
@@ -48,6 +49,8 @@ export default async function FeedPage() {
       </div>
 
       <SinceLastVisit />
+
+      <OnThisDay />
 
       {/* Trajectory activity leads — these are claims with traced transitions */}
       <section className="space-y-3">
@@ -164,6 +167,12 @@ export default async function FeedPage() {
           </ul>
         )}
       </section>
+
+      <p className="text-xs text-gray-600">
+        <Link href="/open-questions" className="hover:text-gray-400 transition-colors underline">
+          Open questions: longest contested claims →
+        </Link>
+      </p>
     </div>
   );
 }

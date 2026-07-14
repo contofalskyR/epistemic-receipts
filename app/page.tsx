@@ -9,8 +9,9 @@ import { buildSettlingRateAnalysis } from "@/lib/settlingRate";
 import { loadRecentTransitions } from "@/lib/feed";
 import { compactCount } from "@/lib/format";
 import { getSettlingCurveCounts } from "@/lib/curve-counts";
+import OnThisDay from "@/app/components/OnThisDay";
 
-export const revalidate = 300;
+export const revalidate = 3600;
 
 // V1 landing metadata mirrors the hero copy. No corpus numbers here — metadata
 // is built at compile time and hand-written figures would drift from the DB
@@ -153,6 +154,7 @@ export default async function Home() {
           <HomeCarousel />
         </div>
       </div>
+      <OnThisDay />
       <HomepageSections stats={stats} ingestedByCounts={ingestedByCounts} whatsNew={whatsNew} />
     </>
   );

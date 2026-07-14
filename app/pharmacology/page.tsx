@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import DomainCurveRail from "@/app/components/DomainCurveRail";
+import DomainRecentMoves from "@/app/components/DomainRecentMoves";
 import { FieldGuideBanner } from "@/components/FieldGuideBanner";
 import { DOMAIN_TRAJECTORIES, DOMAIN_FLAGSHIP } from "@/lib/domain-trajectories";
 import PharmacologyClient from "./PharmacologyClient";
@@ -24,6 +25,7 @@ export default function PharmacologyPage() {
         subtitle="Curated arcs for this field — the exception, not the rule. Most entries below are reference records in the corpus, not traced curves."
         trajectoryIds={DOMAIN_TRAJECTORIES["pharmacology"] as string[]}
       />
+      <DomainRecentMoves trajectoryIds={DOMAIN_TRAJECTORIES["pharmacology"]} />
       <PharmacologyClient />
     </div>
   );

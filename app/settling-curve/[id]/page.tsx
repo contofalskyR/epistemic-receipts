@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail } from "@/lib/trajectory-detail";
 import { serializeJsonLd, trajectoryJsonLd } from "@/lib/jsonld";
+import CitationButton from "@/components/CitationButton";
 
 // ISR: empty generateStaticParams = on-demand ISR (render on first hit, cache
 // for a day). Do NOT add `export const dynamic = 'force-dynamic'` — it defeats ISR.
@@ -137,6 +138,7 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
           >
             View claim page →
           </Link>
+          <CitationButton type="claim" id={traj.claimId} />
         </div>
       </div>
 

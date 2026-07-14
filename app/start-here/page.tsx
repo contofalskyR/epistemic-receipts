@@ -216,6 +216,7 @@ export default function StartHerePage() {
             { href: "/trajectories", label: "Trajectory Encyclopedia", desc: "All curated arcs by domain" },
             { href: "/reversals", label: "Court Reversals", desc: "Eight landmark overruling arcs" },
             { href: "/feed", label: "What's New", desc: "Latest trajectory activity" },
+            { href: "/open-questions", label: "Open Questions", desc: "Longest contested claims — dormancy leaderboard" },
             { href: "/glossary", label: "Glossary", desc: "Axis definitions and methodology" },
           ].map((d) => (
             <Link

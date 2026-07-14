@@ -34,6 +34,7 @@ const STATIC_URLS: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/stories/cfc-ozone-depletion`, changeFrequency: "monthly", priority: 0.7 },
   { url: `${SITE_URL}/stories/dietary-fat-heart`, changeFrequency: "monthly", priority: 0.7 },
   { url: `${SITE_URL}/stories/voting-rights-act-1965`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/open-questions`, changeFrequency: "weekly", priority: 0.7 },
 ];
 
 export async function generateSitemaps() {
