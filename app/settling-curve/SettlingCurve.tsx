@@ -1856,6 +1856,14 @@ function SettlingCurveInner() {
               >
                 How it works →
               </a>
+              {" · "}
+              <a href="/communities" style={{ color: C.mut, textDecoration: "underline" }}>
+                Ratifying communities →
+              </a>
+              {" · "}
+              <a href="/split-ledger" style={{ color: C.mut, textDecoration: "underline" }}>
+                Split Ledger →
+              </a>
             </p>
             </>)}
           </div>

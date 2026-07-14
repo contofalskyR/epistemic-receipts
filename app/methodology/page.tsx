@@ -404,6 +404,9 @@ export default function MethodologyPage() {
         <Link href="/api/v1/manifest" className="hover:text-gray-300 transition-colors">
           Machine-readable manifest &rarr;
         </Link>
+        <Link href="/communities" className="hover:text-gray-300 transition-colors">
+          Ratifying Communities &rarr;
+        </Link>
         <Link href="/sources" className="hover:text-gray-300 transition-colors">
           Sources &rarr;
         </Link>
