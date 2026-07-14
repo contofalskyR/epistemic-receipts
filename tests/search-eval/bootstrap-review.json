@@ -1,0 +1,982 @@
+[
+  {
+    "id": "nav-01",
+    "category": "navigational",
+    "query": "Korematsu v United States",
+    "relevant_claim_ids": [
+      "cmoqm2eql005dxn7jgk228ffa",
+      "cmoqm2eq3005bxn7jarzsu2fr"
+    ],
+    "notes": "SCOTUS internment case, exact case name lookup",
+    "_candidate_texts": [
+      {
+        "id": "cmoqm2eql005dxn7jgk228ffa",
+        "text": "Korematsu v. United States (1944) held the wartime exclusion of Japanese-America",
+        "rank": 0.46362185
+      },
+      {
+        "id": "cmoqm2eq3005bxn7jarzsu2fr",
+        "text": "The U.S. Supreme Court's 1944 ruling in Korematsu v. United States, which upheld",
+        "rank": 0.46362185
+      }
+    ]
+  },
+  {
+    "id": "nav-02",
+    "category": "navigational",
+    "query": "semaglutide FDA approval",
+    "relevant_claim_ids": [
+      "cmq40stob0ygusa8sm50exm7w",
+      "cmq40stm30ygtsa8sspik8w3j",
+      "cmq40stjv0ygssa8sad6lzfwo",
+      "cmq40k63x0ujbsa8s1m0ikfpb",
+      "cmq40k61q0ujasa8s4ggdhy82",
+      "cmq40k5xd0uj8sa8smivxl0cu",
+      "cmq40k5v60uj7sa8swnpm7prb",
+      "cmq40k5sz0uj6sa8srg98j15q",
+      "cmq40sthq0ygrsa8swm269pp2",
+      "cmq40o0bk0wa9sa8spk4ecvft"
+    ],
+    "notes": "GLP-1 drug, navigational by brand/generic name + event",
+    "_candidate_texts": [
+      {
+        "id": "cmq40stob0ygusa8sm50exm7w",
+        "text": "FDA Original Approval: WEGOVY (SEMAGLUTIDE), TABLET;ORAL 25MG. Application NDA 2",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40stm30ygtsa8sspik8w3j",
+        "text": "FDA Original Approval: WEGOVY (SEMAGLUTIDE), TABLET;ORAL 9MG. Application NDA 21",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40stjv0ygssa8sad6lzfwo",
+        "text": "FDA Original Approval: WEGOVY (SEMAGLUTIDE), TABLET;ORAL 4MG. Application NDA 21",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40k63x0ujbsa8s1m0ikfpb",
+        "text": "FDA Original Approval: OZEMPIC (SEMAGLUTIDE), TABLET;ORAL 9MG. Application NDA 2",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40k61q0ujasa8s4ggdhy82",
+        "text": "FDA Original Approval: OZEMPIC (SEMAGLUTIDE), TABLET;ORAL 4MG. Application NDA 2",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40k5xd0uj8sa8smivxl0cu",
+        "text": "FDA Original Approval: RYBELSUS (SEMAGLUTIDE), TABLET;ORAL 14MG. Application NDA",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40k5v60uj7sa8swnpm7prb",
+        "text": "FDA Original Approval: RYBELSUS (SEMAGLUTIDE), TABLET;ORAL 7MG. Application NDA ",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40k5sz0uj6sa8srg98j15q",
+        "text": "FDA Original Approval: RYBELSUS (SEMAGLUTIDE), TABLET;ORAL 3MG. Application NDA ",
+        "rank": 0.31373477
+      },
+      {
+        "id": "cmq40sthq0ygrsa8swm269pp2",
+        "text": "FDA Original Approval: WEGOVY (SEMAGLUTIDE), TABLET;ORAL 1.5MG. Application NDA ",
+        "rank": 0.30196568
+      },
+      {
+        "id": "cmq40o0bk0wa9sa8spk4ecvft",
+        "text": "FDA Original Approval: WEGOVY (SEMAGLUTIDE), SOLUTION;SUBCUTANEOUS 1MG/0.5ML (1M",
+        "rank": 0.30196568
+      }
+    ]
+  },
+  {
+    "id": "nav-03",
+    "category": "navigational",
+    "query": "Hwang Woo-suk stem cell retraction",
+    "relevant_claim_ids": [
+      "cmqgh86ow00htsas2ri8fnuhz"
+    ],
+    "notes": "High-profile retraction, should hit crossref_retractions_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmqgh86ow00htsas2ri8fnuhz",
+        "text": "South Korean scientist Hwang Woo-suk's reported creation of patient-specific hum",
+        "rank": 0.6498059
+      }
+    ]
+  },
+  {
+    "id": "nav-04",
+    "category": "navigational",
+    "query": "UN Security Council Resolution 2334",
+    "relevant_claim_ids": [
+      "cmp2yn62605y9xn4nn904yzn8"
+    ],
+    "notes": "Specific UN resolution number, un_sc_resolutions_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmp2yn62605y9xn4nn904yzn8",
+        "text": "UN Security Council adopted Resolution 2334 on 2016-12-23 concerning on cessatio",
+        "rank": 0.6399358
+      }
+    ]
+  },
+  {
+    "id": "nav-05",
+    "category": "navigational",
+    "query": "Nobel Prize Medicine 2023",
+    "relevant_claim_ids": [
+      "cmq3dwbh6023jsa4s44wumy9b",
+      "cmq3dw99a022dsa4sqg0wusa1",
+      "cmpbrkkam04mjplbc9cy033p5",
+      "cmpbrkk5e04mdplbcyi683boz",
+      "cmovn1kvv00brxnqg08bzn2yd",
+      "cmovn1kor00bkxnqg2td8dqgt",
+      "cmq3dxica02pvsa4seop07m2r",
+      "cmq3dw5wa020jsa4sehkbojd7",
+      "cmqxqpjk1082osanflqnrdlz4"
+    ],
+    "notes": "Nobel year+category, nobel_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmq3dwbh6023jsa4s44wumy9b",
+        "text": "Drew Weissman: Nobel Prize in Physiology or Medicine (2023). American physician-",
+        "rank": 0.4515873
+      },
+      {
+        "id": "cmq3dw99a022dsa4sqg0wusa1",
+        "text": "Katalin Karikó: Nobel Prize in Physiology or Medicine (2023). Hungarian biochemi",
+        "rank": 0.4456023
+      },
+      {
+        "id": "cmpbrkkam04mjplbc9cy033p5",
+        "text": "Drew Weissman was awarded The Nobel Prize in Physiology or Medicine 2023 \"for th",
+        "rank": 0.4456023
+      },
+      {
+        "id": "cmpbrkk5e04mdplbcyi683boz",
+        "text": "Katalin Karikó was awarded The Nobel Prize in Physiology or Medicine 2023 \"for t",
+        "rank": 0.4456023
+      },
+      {
+        "id": "cmovn1kvv00brxnqg08bzn2yd",
+        "text": "Drew Weissman was awarded the Nobel Prize in Physiology or Medicine in 2023 for ",
+        "rank": 0.43586302
+      },
+      {
+        "id": "cmovn1kor00bkxnqg2td8dqgt",
+        "text": "Katalin Karikó was awarded the Nobel Prize in Physiology or Medicine in 2023 for",
+        "rank": 0.43586302
+      },
+      {
+        "id": "cmq3dxica02pvsa4seop07m2r",
+        "text": "Ferid Murad: Nobel Prize in Physiology or Medicine (1998). American physician an",
+        "rank": 0.35059118
+      },
+      {
+        "id": "cmq3dw5wa020jsa4sehkbojd7",
+        "text": "Harald zur Hausen: Nobel Prize in Physiology or Medicine (2008). German virologi",
+        "rank": 0.33294654
+      },
+      {
+        "id": "cmqxqpjk1082osanflqnrdlz4",
+        "text": "On 16 November 2023 the UK Medicines and Healthcare products Regulatory Agency a",
+        "rank": 0.19509882
+      }
+    ]
+  },
+  {
+    "id": "nav-06",
+    "category": "navigational",
+    "query": "Roe v Wade Supreme Court",
+    "relevant_claim_ids": [
+      "cmpmcrn7y5gjxsafwut87vrkx",
+      "cmq0igftd0zm3sayn7gkap9z8",
+      "cmoqmcwur01cbxnpymicv8u4i",
+      "cmqej91cj007ssa5j61yl50ef",
+      "cmpm5m4mq23zlsafw52eomlae",
+      "cmpm8lmpc3ifrsafw3t7srq2h"
+    ],
+    "notes": "SCOTUS case navigational lookup, courtlistener_scotus_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmpmcrn7y5gjxsafwut87vrkx",
+        "text": "3 hypotheses--community preferences incentives and disincentives and organizatio",
+        "rank": 0.7299292
+      },
+      {
+        "id": "cmq0igftd0zm3sayn7gkap9z8",
+        "text": "H.Res. 938 (119th Congress) — \"Condemning the Supreme Court's decision to overtu",
+        "rank": 0.6857047
+      },
+      {
+        "id": "cmoqmcwur01cbxnpymicv8u4i",
+        "text": "The U.S. Supreme Court in Roe v. Wade (1973) issued a ruling on the legal questi",
+        "rank": 0.63993573
+      },
+      {
+        "id": "cmqej91cj007ssa5j61yl50ef",
+        "text": "The U.S. Supreme Court ruled in Roe v. Wade (1973) that the Constitution protect",
+        "rank": 0.634319
+      },
+      {
+        "id": "cmpm5m4mq23zlsafw52eomlae",
+        "text": "Abstract Past research has shown that elected officials are generally responsive",
+        "rank": 0.6199309
+      },
+      {
+        "id": "cmpm8lmpc3ifrsafw3t7srq2h",
+        "text": "As measured by the total fertility rate (TFR), fertility in the United States fe",
+        "rank": 0.61950904
+      }
+    ]
+  },
+  {
+    "id": "nav-07",
+    "category": "navigational",
+    "query": "Citizens United v FEC",
+    "relevant_claim_ids": [
+      "cmr3x79e6000j8ovtmrxdkv1v"
+    ],
+    "notes": "SCOTUS campaign finance case",
+    "_candidate_texts": [
+      {
+        "id": "cmr3x79e6000j8ovtmrxdkv1v",
+        "text": "The rule that government may constitutionally prohibit corporations from making ",
+        "rank": 0.48776016
+      }
+    ]
+  },
+  {
+    "id": "nav-08",
+    "category": "navigational",
+    "query": "Pfizer BNT162b2 clinical trial",
+    "relevant_claim_ids": [
+      "cmplzw4ew05rpsawa5v0j12u4"
+    ],
+    "notes": "COVID vaccine trial, clinicaltrials_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmplzw4ew05rpsawa5v0j12u4",
+        "text": "Clinical trial NCT04887948 registered to study 20-valent pneumococcal conjugate ",
+        "rank": 0.20291469
+      }
+    ]
+  },
+  {
+    "id": "nav-09",
+    "category": "navigational",
+    "query": "Inflation Reduction Act 2022",
+    "relevant_claim_ids": [],
+    "notes": "Specific enacted law, congress_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "nav-10",
+    "category": "navigational",
+    "query": "Proxima Centauri b exoplanet",
+    "relevant_claim_ids": [
+      "cmq3wjbh9bhlvsavcuq6d0cag",
+      "cmq3t4k499fopsavcieexev8a"
+    ],
+    "notes": "Named exoplanet, nasa_exoplanet_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmq3wjbh9bhlvsavcuq6d0cag",
+        "text": "Abstract The discovery of exoplanets orbiting red dwarfs, such as Proxima Centau",
+        "rank": 0.48713684
+      },
+      {
+        "id": "cmq3t4k499fopsavcieexev8a",
+        "text": "Abstract We address the important question of whether the newly discovered exopl",
+        "rank": 0.46362188
+      }
+    ]
+  },
+  {
+    "id": "nav-11",
+    "category": "navigational",
+    "query": "CRISPR Cas9 patent",
+    "relevant_claim_ids": [
+      "cmot5uuu70048xnl5sepauk6a",
+      "cmot5uua3003gxnl5q24jmjsy"
+    ],
+    "notes": "Biotech patent claim",
+    "_candidate_texts": [
+      {
+        "id": "cmot5uuu70048xnl5sepauk6a",
+        "text": "U.S. Patent 10,113,167 (CRISPR-Cas9 systems in eukaryotic cells) was granted to ",
+        "rank": 0.25133982
+      },
+      {
+        "id": "cmot5uua3003gxnl5q24jmjsy",
+        "text": "U.S. Patent 8,771,945 (CRISPR-Cas9 compositions and methods II) was granted to B",
+        "rank": 0.25133982
+      }
+    ]
+  },
+  {
+    "id": "nav-12",
+    "category": "navigational",
+    "query": "Ozone hole Montreal Protocol",
+    "relevant_claim_ids": [
+      "cmq3rqbq08lidsavctuaonxws",
+      "cmq3sdg058zf7savclrmor074",
+      "cmqj845i3002dsat9za9g70y3"
+    ],
+    "notes": "Environmental treaty / historical fact",
+    "_candidate_texts": [
+      {
+        "id": "cmq3rqbq08lidsavctuaonxws",
+        "text": "Chlorine- and bromine-containing ozone-depleting substances (ODSs) are controlle",
+        "rank": 0.49132085
+      },
+      {
+        "id": "cmq3sdg058zf7savclrmor074",
+        "text": "Abstract The Antarctic ozone hole is decreasing in size but this recovery will b",
+        "rank": 0.43629485
+      },
+      {
+        "id": "cmqj845i3002dsat9za9g70y3",
+        "text": "Susan Solomon and colleagues reported in Science on 30 June 2016 the first detec",
+        "rank": 0.26963028
+      }
+    ]
+  },
+  {
+    "id": "nav-13",
+    "category": "navigational",
+    "query": "Fukushima earthquake 2011",
+    "relevant_claim_ids": [
+      "cmpmc94t057wfsafwj7h25a4r",
+      "cmpmcmi695e4xsafw7b3ddwn0",
+      "cmqgh5aoe00hrsambqgxwsj2q",
+      "cmq3nphz366g7savckmknfxc9",
+      "cmq3f1ksj0yz1savcfqjjugba",
+      "cmq3upzxcae87savcbycw2ps9"
+    ],
+    "notes": "Specific earthquake event, usgs_eq_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmpmc94t057wfsafwj7h25a4r",
+        "text": "BACKGROUND: The Great East Japan Earthquake on 11th March 2011 and the subsequen",
+        "rank": 0.23418191
+      },
+      {
+        "id": "cmpmcmi695e4xsafw7b3ddwn0",
+        "text": "The 2011 Japanese earthquake and tsunami, and the consequent accident at the Fuk",
+        "rank": 0.17050958
+      },
+      {
+        "id": "cmqgh5aoe00hrsambqgxwsj2q",
+        "text": "Reactor cores at the Fukushima Daiichi Nuclear Power Plant melted down following",
+        "rank": 0.13902691
+      },
+      {
+        "id": "cmq3nphz366g7savckmknfxc9",
+        "text": "In March 2011, an accident at the Fukushima Daiichi nuclear power plant (FNPP-AC",
+        "rank": 0.10849563
+      },
+      {
+        "id": "cmq3f1ksj0yz1savcfqjjugba",
+        "text": "Abstract. On 11 March 2011, an earthquake occurred about 130 km off the Pacific ",
+        "rank": 0.09864751
+      },
+      {
+        "id": "cmq3upzxcae87savcbycw2ps9",
+        "text": "Chemical transport models played key roles in understanding the atmospheric beha",
+        "rank": 0.09708454
+      }
+    ]
+  },
+  {
+    "id": "nav-14",
+    "category": "navigational",
+    "query": "Elizabeth Holmes Theranos SEC",
+    "relevant_claim_ids": [],
+    "notes": "SEC filing, sec_edgar_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "nav-15",
+    "category": "navigational",
+    "query": "DOJ FARA foreign agent registration",
+    "relevant_claim_ids": [],
+    "notes": "FARA registrations, doj_fara_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "nav-16",
+    "category": "navigational",
+    "query": "thalidomide FDA drug approval history",
+    "relevant_claim_ids": [],
+    "notes": "Drug history, openfda_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "nav-17",
+    "category": "navigational",
+    "query": "ivermectin COVID retraction",
+    "relevant_claim_ids": [
+      "cmp9soc1r18npplosxih7hot3",
+      "cmp9tlnu22o7vplos1dmlicmp",
+      "cmp9u1i8h3ea1plos5ipdlbqu"
+    ],
+    "notes": "COVID retracted paper, crossref_retractions_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmp9soc1r18npplosxih7hot3",
+        "text": "The paper \"Use of ivermectin in the treatment of Covid-19: A pilot trial\" by Hen",
+        "rank": 0.10374692
+      },
+      {
+        "id": "cmp9tlnu22o7vplos1dmlicmp",
+        "text": "The paper \"Treatment with Ivermectin Is Associated with Decreased Mortality in C",
+        "rank": 0.07833488
+      },
+      {
+        "id": "cmp9u1i8h3ea1plos5ipdlbqu",
+        "text": "The paper \"Ivermectin and the odds of hospitalization due to COVID-19: evidence ",
+        "rank": 0.06557039
+      }
+    ]
+  },
+  {
+    "id": "nav-18",
+    "category": "navigational",
+    "query": "MDMA clinical trial PTSD phase 3",
+    "relevant_claim_ids": [
+      "cmpm20r4516jpsat0gag6t0f7",
+      "cmplzu8a706wpsat0jasgu2km"
+    ],
+    "notes": "Specific drug trial, clinicaltrials_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmpm20r4516jpsat0gag6t0f7",
+        "text": "BACKGROUND: Posttraumatic stress disorder is a prevalent mental health condition",
+        "rank": 0.7520976
+      },
+      {
+        "id": "cmplzu8a706wpsat0jasgu2km",
+        "text": "Post-traumatic stress disorder (PTSD) presents a major public health problem for",
+        "rank": 0.61600643
+      }
+    ]
+  },
+  {
+    "id": "nav-19",
+    "category": "navigational",
+    "query": "Mauna Loa eruption 2022",
+    "relevant_claim_ids": [],
+    "notes": "Specific volcanic eruption, volcanic_eruptions_v1 if ingested",
+    "_candidate_texts": []
+  },
+  {
+    "id": "nav-20",
+    "category": "navigational",
+    "query": "EU General Data Protection Regulation",
+    "relevant_claim_ids": [
+      "cmpd61bp300zyplnvpos6g7nd",
+      "cmpm95wdc3rx9safwk7u4wu00",
+      "cmpmbqob64zalsafwkc7mkpi3",
+      "cmpcqxmjr008xpl02jexkbqs1",
+      "cmpm1cv8o0rkgsa86tph5j3ov",
+      "cmpm8j7lq3halsafwlclqhwnd"
+    ],
+    "notes": "GDPR specific legislation, possibly uk_legislation or bundestag",
+    "_candidate_texts": [
+      {
+        "id": "cmpd61bp300zyplnvpos6g7nd",
+        "text": "Bill entitled an Act to establish a body to be known as An Coimisiún um Chosaint",
+        "rank": 0.8508606
+      },
+      {
+        "id": "cmpm95wdc3rx9safwk7u4wu00",
+        "text": "The rapid development of digital health poses a critical challenge to the person",
+        "rank": 0.8186526
+      },
+      {
+        "id": "cmpmbqob64zalsafwkc7mkpi3",
+        "text": "This article addresses a critical gap in the current AI regulatory discourse by ",
+        "rank": 0.72818255
+      },
+      {
+        "id": "cmpcqxmjr008xpl02jexkbqs1",
+        "text": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 Apr",
+        "rank": 0.64743364
+      },
+      {
+        "id": "cmpm1cv8o0rkgsa86tph5j3ov",
+        "text": "The General Data Protection Regulation (GDPR) is considered by some to be the mo",
+        "rank": 0.53877246
+      },
+      {
+        "id": "cmpm8j7lq3halsafwlclqhwnd",
+        "text": "Technology giants, bolstered by weak regulatory oversight, have expanded capacit",
+        "rank": 0.5217569
+      }
+    ]
+  },
+  {
+    "id": "top-01",
+    "category": "topical",
+    "query": "papers retracted for image manipulation",
+    "relevant_claim_ids": [
+      "cmqoda1y006zgsawi30q160lv",
+      "85140e0e-7064-4115-92c5-141fdbf3c75b",
+      "15d5c4a4-7cb8-4b91-8718-31886edfb477",
+      "cmp9tgyi42gppplosqjfl0znw"
+    ],
+    "notes": "Class of retracted papers, crossref_retractions_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmqoda1y006zgsawi30q160lv",
+        "text": "On 30 January 2014 Haruko Obokata and colleagues at Japan's RIKEN institute publ",
+        "rank": 0.43587363
+      },
+      {
+        "id": "85140e0e-7064-4115-92c5-141fdbf3c75b",
+        "text": "This article has been retracted: please see Elsevier Policy on Article Withdrawa",
+        "rank": 0.26542792
+      },
+      {
+        "id": "15d5c4a4-7cb8-4b91-8718-31886edfb477",
+        "text": "Cancer Biotherapy and Radiopharmaceuticals is officially retracting the article ",
+        "rank": 0.25134033
+      },
+      {
+        "id": "cmp9tgyi42gppplosqjfl0znw",
+        "text": "The paper \"Notice of Retraction: Research on the Presentation Mode in E-Learning",
+        "rank": 0.19055471
+      }
+    ]
+  },
+  {
+    "id": "top-02",
+    "category": "topical",
+    "query": "EU artificial intelligence regulation 2024",
+    "relevant_claim_ids": [
+      "cmpcqymvm01zxpl02egk02ogn"
+    ],
+    "notes": "AI Act legislation, bundestag_v1 or uk_legislation_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmpcqymvm01zxpl02egk02ogn",
+        "text": "Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 Ju",
+        "rank": 0.83551925
+      }
+    ]
+  },
+  {
+    "id": "top-03",
+    "category": "topical",
+    "query": "drug adverse events heart failure",
+    "relevant_claim_ids": [
+      "cmpm88u6k3c94saerxik6dmpu",
+      "cmpm0sucs0n1dsat01lljvoa2"
+    ],
+    "notes": "FAERS claims about cardiac events",
+    "_candidate_texts": [
+      {
+        "id": "cmpm88u6k3c94saerxik6dmpu",
+        "text": "<h2>Summary</h2><h3>Background</h3> Semaglutide, a GLP-1 receptor agonist, reduc",
+        "rank": 0.33606282
+      },
+      {
+        "id": "cmpm0sucs0n1dsat01lljvoa2",
+        "text": "CONTEXT: Recent reports of serious adverse events with rosiglitazone use have ra",
+        "rank": 0.19258894
+      }
+    ]
+  },
+  {
+    "id": "top-04",
+    "category": "topical",
+    "query": "retracted COVID-19 hydroxychloroquine studies",
+    "relevant_claim_ids": [
+      "cmp9tjtnh2lbpplos0turt2xi"
+    ],
+    "notes": "COVID HCQ retractions cluster",
+    "_candidate_texts": [
+      {
+        "id": "cmp9tjtnh2lbpplos0turt2xi",
+        "text": "The paper \"Can use of hydroxychloroquine and azithromycin as a treatment of COVI",
+        "rank": 0.3667023
+      }
+    ]
+  },
+  {
+    "id": "top-05",
+    "category": "topical",
+    "query": "campaign finance dark money super PAC",
+    "relevant_claim_ids": [],
+    "notes": "Campaign finance claims, openfec_ie_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-06",
+    "category": "topical",
+    "query": "SCOTUS voting rights gerrymandering",
+    "relevant_claim_ids": [],
+    "notes": "VRA SCOTUS cases cluster",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-07",
+    "category": "topical",
+    "query": "nuclear test atmospheric radioactive fallout",
+    "relevant_claim_ids": [],
+    "notes": "Nuclear tests dataset, nuclear_tests_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-08",
+    "category": "topical",
+    "query": "exoplanet habitable zone temperature",
+    "relevant_claim_ids": [],
+    "notes": "Exoplanet habitability claims, nasa_exoplanet_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-09",
+    "category": "topical",
+    "query": "NIH grant funding cancer research",
+    "relevant_claim_ids": [],
+    "notes": "NIH grants, nih_reporter_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-10",
+    "category": "topical",
+    "query": "Swedish parliament climate legislation",
+    "relevant_claim_ids": [],
+    "notes": "Riksdag environmental bills, riksdag_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-11",
+    "category": "topical",
+    "query": "opioid crisis FDA drug approval",
+    "relevant_claim_ids": [],
+    "notes": "Opioid-related claims, openfda or faers",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-12",
+    "category": "topical",
+    "query": "gene therapy clinical trial approval",
+    "relevant_claim_ids": [
+      "cmplznfyd03pvsat04kltvzmg",
+      "cmpm6j9962jdysaerrmt9q8l1",
+      "cmpm18rbr0u73sat06tyqyvkd",
+      "cmpmbp9xz4ymasaerv67w75p1",
+      "cmpm62v7m2bmysaera9em8l2j"
+    ],
+    "notes": "Gene therapy trials, clinicaltrials_v1",
+    "_candidate_texts": [
+      {
+        "id": "cmplznfyd03pvsat04kltvzmg",
+        "text": "To date, almost 2600 gene therapy clinical trials have been completed, are ongoi",
+        "rank": 0.81786644
+      },
+      {
+        "id": "cmpm6j9962jdysaerrmt9q8l1",
+        "text": "Currently, clinical gene therapy is experiencing a renaissance, with new product",
+        "rank": 0.7517653
+      },
+      {
+        "id": "cmpm18rbr0u73sat06tyqyvkd",
+        "text": "Fifty years after the discovery of adeno-associated virus (AAV) and more than 30",
+        "rank": 0.6774153
+      },
+      {
+        "id": "cmpmbp9xz4ymasaerv67w75p1",
+        "text": "The rapidly changing field of gene therapy promises a number of innovative treat",
+        "rank": 0.51414365
+      },
+      {
+        "id": "cmpm62v7m2bmysaera9em8l2j",
+        "text": "Biallelic mutations in the RPE65 gene affect nearly 8% of Leber Congenital Amaur",
+        "rank": 0.343029
+      }
+    ]
+  },
+  {
+    "id": "top-13",
+    "category": "topical",
+    "query": "earthquake magnitude 8 Pacific Ring of Fire",
+    "relevant_claim_ids": [],
+    "notes": "Large quakes, usgs_eq_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-14",
+    "category": "topical",
+    "query": "Dutch parliament renewable energy subsidy",
+    "relevant_claim_ids": [],
+    "notes": "Tweedekamer energy legislation, tweedekamer_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-15",
+    "category": "topical",
+    "query": "retraction watch data fabrication misconduct",
+    "relevant_claim_ids": [],
+    "notes": "retraction_watch_v1 or crossref cluster",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-16",
+    "category": "topical",
+    "query": "Congress stock act insider trading violation",
+    "relevant_claim_ids": [],
+    "notes": "STOCK Act congressional trades, openfec_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-17",
+    "category": "topical",
+    "query": "protein structure prediction AlphaFold",
+    "relevant_claim_ids": [],
+    "notes": "Biotech claims, possibly in pubchem or OpenAlex context",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-18",
+    "category": "topical",
+    "query": "Irish legislation housing rent freeze",
+    "relevant_claim_ids": [],
+    "notes": "Irish housing law, oireachtas_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-19",
+    "category": "topical",
+    "query": "UN Security Council veto Russia Ukraine",
+    "relevant_claim_ids": [],
+    "notes": "UN resolutions on Ukraine, un_sc_resolutions_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "top-20",
+    "category": "topical",
+    "query": "Canadian federal budget bill deficit",
+    "relevant_claim_ids": [],
+    "notes": "Canadian budget legislation, canada_bills_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-01",
+    "category": "vocab_mismatch",
+    "query": "weight loss drug heart risk",
+    "relevant_claim_ids": [],
+    "notes": "Should match GLP-1/semaglutide FAERS cardiac adverse event claims",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-02",
+    "category": "vocab_mismatch",
+    "query": "COVID vaccine blood clots",
+    "relevant_claim_ids": [],
+    "notes": "Should match thrombocytopenia adverse event claims (FAERS/clinicaltrials)",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-03",
+    "category": "vocab_mismatch",
+    "query": "foreign lobbying disclosure rules",
+    "relevant_claim_ids": [],
+    "notes": "Should match FARA foreign agent registration claims",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-04",
+    "category": "vocab_mismatch",
+    "query": "scientific paper fraud falsified data",
+    "relevant_claim_ids": [],
+    "notes": "Should match retraction claims about data fabrication",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-05",
+    "category": "vocab_mismatch",
+    "query": "cold fusion energy breakthrough claim",
+    "relevant_claim_ids": [],
+    "notes": "Should match contested/open claims about cold fusion",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-06",
+    "category": "vocab_mismatch",
+    "query": "space telescope planet detection",
+    "relevant_claim_ids": [
+      "cmq3q2clp7lh1savcehpe3hx4",
+      "cmq3ghuds1u8dsavcyov2k1v5",
+      "cmq3ogrso6muvsavcwe1vd0o4"
+    ],
+    "notes": "Should match exoplanet discovery claims (nasa_exoplanet_v1)",
+    "_candidate_texts": [
+      {
+        "id": "cmq3q2clp7lh1savcehpe3hx4",
+        "text": "Darwin (ESA) and Terrestrial Planet Finder-TPF (NASA) are two projects of space ",
+        "rank": 0.43186483
+      },
+      {
+        "id": "cmq3ghuds1u8dsavcyov2k1v5",
+        "text": "The hot Jupiter HD 189733b is the most extensively observed exoplanet. Its atmos",
+        "rank": 0.20079406
+      },
+      {
+        "id": "cmq3ogrso6muvsavcwe1vd0o4",
+        "text": "Abstract Seven rocky planets orbit the nearby dwarf star TRAPPIST-1, providing a",
+        "rank": 0.18155229
+      }
+    ]
+  },
+  {
+    "id": "vmm-07",
+    "category": "vocab_mismatch",
+    "query": "court ruling privacy internet data",
+    "relevant_claim_ids": [],
+    "notes": "Should match SCOTUS digital privacy decisions",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-08",
+    "category": "vocab_mismatch",
+    "query": "chemical compound cancer treatment",
+    "relevant_claim_ids": [
+      "5afb35a1-3318-4641-8c40-e6b87bfe57ec",
+      "cmp9tqw1k2wv1plosbggqdzbp",
+      "cmpmbupnu515asaerdm71fh9d",
+      "f1d6a4d3-4423-4396-b648-256b61191ade",
+      "cmpmakyk54fqysaerjmscwrb6"
+    ],
+    "notes": "Should match pubchem/clinicaltrials anti-cancer compound claims",
+    "_candidate_texts": [
+      {
+        "id": "5afb35a1-3318-4641-8c40-e6b87bfe57ec",
+        "text": "By using a mixed-ligand approach, a Co(II) coordination polymer (CP) with the ch",
+        "rank": 0.44071168
+      },
+      {
+        "id": "cmp9tqw1k2wv1plosbggqdzbp",
+        "text": "The paper \"A new heterocycles compound: Liver cancer treatment combined with hig",
+        "rank": 0.27933457
+      },
+      {
+        "id": "cmpmbupnu515asaerdm71fh9d",
+        "text": "Antibody-Drug Conjugates (ADCs) represent an innovative class of potent anti-can",
+        "rank": 0.22135623
+      },
+      {
+        "id": "f1d6a4d3-4423-4396-b648-256b61191ade",
+        "text": "Doxorubicin (DOX) is a cytotoxic drug used for the treatment of breast cancer (B",
+        "rank": 0.18856463
+      },
+      {
+        "id": "cmpmakyk54fqysaerjmscwrb6",
+        "text": "Colorectal cancer (CRC) is one of the intimidating causes of death around the wo",
+        "rank": 0.14554653
+      }
+    ]
+  },
+  {
+    "id": "vmm-09",
+    "category": "vocab_mismatch",
+    "query": "law increasing minimum wage workers",
+    "relevant_claim_ids": [],
+    "notes": "Should match congress legislation on labor standards",
+    "_candidate_texts": []
+  },
+  {
+    "id": "vmm-10",
+    "category": "vocab_mismatch",
+    "query": "government ban toxic chemical industry",
+    "relevant_claim_ids": [],
+    "notes": "Should match EPA or EU chemical regulation claims",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-01",
+    "category": "paraphrase",
+    "query": "droit à l'oubli données personnelles internet",
+    "relevant_claim_ids": [],
+    "notes": "Right to be forgotten (French) → GDPR claims; cross-lingual paraphrase",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-02",
+    "category": "paraphrase",
+    "query": "Recht auf Vergessenwerden personenbezogene Daten",
+    "relevant_claim_ids": [],
+    "notes": "Right to be forgotten (German) → GDPR/Bundestag claims",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-03",
+    "category": "paraphrase",
+    "query": "online personal information removal request",
+    "relevant_claim_ids": [],
+    "notes": "English paraphrase of GDPR right-to-erasure; vocab mismatch baseline",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-04",
+    "category": "paraphrase",
+    "query": "prescription drug mortality risk elderly",
+    "relevant_claim_ids": [],
+    "notes": "Paraphrase: 'medication safety older patients' → FAERS claims",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-05",
+    "category": "paraphrase",
+    "query": "climate accord emission reduction target nations",
+    "relevant_claim_ids": [],
+    "notes": "Paraphrase of Paris Agreement / net-zero legislation",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-06",
+    "category": "paraphrase",
+    "query": "Bundestag Klimaschutzgesetz Emissionen",
+    "relevant_claim_ids": [],
+    "notes": "German climate protection law → bundestag_v1",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-07",
+    "category": "paraphrase",
+    "query": "veroordeeld moord rechtbank Nederland",
+    "relevant_claim_ids": [],
+    "notes": "Dutch: convicted murder court Netherlands → tweedekamer or courtlistener",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-08",
+    "category": "paraphrase",
+    "query": "scientific consensus contradicted later evidence",
+    "relevant_claim_ids": [],
+    "notes": "Paraphrase: settled claim later reversed; should hit REVERSED/CONTESTED axis claims",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-09",
+    "category": "paraphrase",
+    "query": "corporate political donation campaign contribution",
+    "relevant_claim_ids": [],
+    "notes": "Paraphrase of PAC/super-PAC independent expenditure claims",
+    "_candidate_texts": []
+  },
+  {
+    "id": "para-10",
+    "category": "paraphrase",
+    "query": "replication crisis psychology failed study",
+    "relevant_claim_ids": [],
+    "notes": "Paraphrase of retracted or contested psychology claims",
+    "_candidate_texts": []
+  }
+]
