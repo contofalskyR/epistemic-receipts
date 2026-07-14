@@ -4,6 +4,11 @@ import { notFound } from "next/navigation";
 import { getTrajectoryDetail } from "@/lib/trajectory-detail";
 import { serializeJsonLd, trajectoryJsonLd } from "@/lib/jsonld";
 import CitationButton from "@/components/CitationButton";
+import EmbedButton from "@/components/EmbedButton";
+import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
+import { SITE_URL } from "@/lib/site";
+
+const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
 // ISR: empty generateStaticParams = on-demand ISR (render on first hit, cache
 // for a day). Do NOT add `export const dynamic = 'force-dynamic'` — it defeats ISR.
@@ -139,6 +144,12 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
             View claim page →
           </Link>
           <CitationButton type="claim" id={traj.claimId} />
+          <EmbedButton
+            slug={CURATED_SLUGS.has(id) ? id : undefined}
+            claimId={traj.claimId}
+            title={traj.claimText.slice(0, 80)}
+            siteUrl={SITE_URL}
+          />
         </div>
       </div>
 
