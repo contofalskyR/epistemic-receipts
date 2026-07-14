@@ -221,7 +221,9 @@ export async function middleware(req: NextRequest) {
     const allowedThrough =
       pathname === "/login" ||
       pathname === "/api/login" ||
-      pathname.startsWith("/api/bookmarks");
+      pathname.startsWith("/api/bookmarks") ||
+      pathname.startsWith("/embed/") ||
+      pathname.startsWith("/api/badge/");
 
     if (!allowedThrough) {
       const cookie = req.cookies.get("site_auth")?.value;

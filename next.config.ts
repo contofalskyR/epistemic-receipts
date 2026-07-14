@@ -48,6 +48,12 @@ const securityHeaders = [
   },
 ];
 
+// CSP for /embed/* — identical to global but frame-ancestors is open so
+// third-party sites can embed the trajectory widget.
+const embedCsp = securityHeaders
+  .find(h => h.key === "Content-Security-Policy")!
+  .value.replace("frame-ancestors 'none'", "frame-ancestors *");
+
 const nextConfig: NextConfig = {
   // jsdom removed 2026-07-06: even externalized it crashed the deployed
   // /api/proxy/reader function (500 before any JSON reached the client).
@@ -58,6 +64,15 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        // Allow embedding from any origin for embed pages only.
+        // Overrides the global X-Frame-Options and frame-ancestors for /embed/* only.
+        source: "/embed/(.*)",
+        headers: [
+          { key: "X-Frame-Options", value: "ALLOWALL" },
+          { key: "Content-Security-Policy", value: embedCsp },
+        ],
       },
     ];
   },
