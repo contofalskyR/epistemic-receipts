@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "The Long Abandonment of Wegener: Continental Drift from Ridicule to Revolution — Epistemic Receipts",
   description:
     "Wegener proposed continental drift in 1915. Mainstream geology abandoned it in 1926 for lack of a mechanism. Vine and Matthews's 1963 seafloor magnetic data finally settled the theory.",
-  alternates: { canonical: "/stories/continental-drift" },
+  alternates: { canonical: "/stories/continental-drift", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/continental-drift")}` } },
   openGraph: {
     title: "The Long Abandonment of Wegener",
     description:

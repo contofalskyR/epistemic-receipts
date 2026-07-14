@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "The Ozone Claim: From Chemistry to Treaty — Epistemic Receipts",
   description:
     "Molina and Rowland predicted in 1974 that CFCs would destroy stratospheric ozone. The claim was contested for over a decade before the Montreal Protocol ratified it in 1987 and developed-country production was phased out by 1995.",
-  alternates: { canonical: "/stories/cfc-ozone-depletion" },
+  alternates: { canonical: "/stories/cfc-ozone-depletion", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/cfc-ozone-depletion")}` } },
   openGraph: {
     title: "The Ozone Claim: From Chemistry to Treaty",
     description:

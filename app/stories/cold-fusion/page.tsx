@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Eight Months from Announcement to Abandonment: Cold Fusion — Epistemic Receipts",
   description:
     "Fleischmann and Pons announced cold fusion in April 1989. By November, the DOE Energy Research Advisory Board found no convincing evidence. The arc closed in under a year.",
-  alternates: { canonical: "/stories/cold-fusion" },
+  alternates: { canonical: "/stories/cold-fusion", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/cold-fusion")}` } },
   openGraph: {
     title: "Eight Months from Announcement to Abandonment: Cold Fusion",
     description:

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "H. pylori: two arcs, one settling event — Epistemic Receipts",
   description:
     "On February 9, 1994, one NIH consensus conference ratified the H. pylori theory of ulcers and reversed the stress/acid theory it replaced — the same event settling two arcs at once.",
-  alternates: { canonical: "/stories/h-pylori" },
+  alternates: { canonical: "/stories/h-pylori", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/h-pylori")}` } },
   openGraph: {
     title: "H. pylori: two arcs, one settling event",
     description:

@@ -131,6 +131,90 @@ curl -H "Authorization: Bearer er_live_YOUR_KEY" \\
   "https://epistemic-receipts.app/api/v1/retractions/since/2024-01-01"`}
         </code>
       </pre>
+
+      <h2>Embeds &amp; badges</h2>
+      <p>
+        Three read-only endpoints let you embed epistemic status into external pages.
+        No API key required — all three are publicly accessible.
+      </p>
+
+      <h3>iframe embed (curated trajectories)</h3>
+      <p>
+        Any of the 13 curated trajectories can be embedded as a self-contained iframe. The embed
+        shows the claim text, settling-curve rail, current axis, and latest year. No site chrome,
+        no auth cookie, no JavaScript (server-rendered SVG).
+      </p>
+      <pre><code>{`<iframe
+  src="https://epistemic-receipts.vercel.app/embed/trajectory/hpylori-ulcers"
+  width="100%"
+  height="200"
+  style="border:0"
+  loading="lazy"
+  title="H. pylori &amp; peptic ulcers — settling curve"
+></iframe>`}</code></pre>
+      <p>
+        Supported slugs: <code>semaglutide-glp1</code>, <code>smoking-lung-cancer</code>,{" "}
+        <code>hpylori-ulcers</code>, <code>stress-acid-ulcers</code>,{" "}
+        <code>dietary-fat-heart</code>, <code>oxycontin-reduced-abuse-liability-1995</code>,{" "}
+        <code>continental-drift</code>, <code>cold-fusion</code>, <code>cfc-ozone-depletion</code>,{" "}
+        <code>pluto-discovery-1930</code>, <code>civil-rights-act-1964</code>,{" "}
+        <code>clean-air-act-1970</code>, <code>voting-rights-act-1965</code>.
+        Any other slug returns 404.
+      </p>
+      <p>
+        Framing headers: <code>X-Frame-Options: ALLOWALL</code> and{" "}
+        <code>Content-Security-Policy: frame-ancestors *</code> are set on all <code>/embed/*</code>{" "}
+        responses. Global <code>frame-ancestors &apos;none&apos;</code> applies everywhere else.
+      </p>
+
+      <h3>Claim badge (any non-deprecated claim)</h3>
+      <p>
+        A shields-style SVG badge showing the claim&apos;s current epistemic axis and year.
+        Colored by the canonical axis palette in <code>lib/status.ts</code>.
+      </p>
+      <pre><code>{`[![Epistemic status](https://epistemic-receipts.vercel.app/api/badge/claim/CLAIMID.svg)](https://epistemic-receipts.vercel.app/claims/CLAIMID)`}</code></pre>
+      <p>
+        Replace <code>CLAIMID</code> with a cuid (e.g. <code>cmpixrswa83s6plo7eoxhvok4</code>).
+        Unknown, soft-deleted, or DEPRECATED claims return a gray &ldquo;unknown&rdquo; badge with 404.
+        Cache headers: <code>public, s-maxage=3600, stale-while-revalidate=86400</code>.
+      </p>
+
+      <h3>Trajectory badge (curated slugs)</h3>
+      <p>
+        Same shield format as the claim badge, but resolved by curated trajectory slug.
+        Shows the trajectory&apos;s latest axis and year.
+      </p>
+      <pre><code>{`<img src="https://epistemic-receipts.vercel.app/api/badge/trajectory/smoking-lung-cancer" alt="Epistemic status" />`}</code></pre>
+      <p>
+        Only curated slugs are supported (same list as iframe embed). Non-curated slugs return
+        gray &ldquo;unknown&rdquo; badge with 404.
+      </p>
+
+      <h3>oEmbed</h3>
+      <p>
+        An oEmbed endpoint wraps trajectory and story URLs in a rich embed JSON response.
+        Trajectory and story pages include a{" "}
+        <code>&lt;link rel=&quot;alternate&quot; type=&quot;application/json+oembed&quot;&gt;</code>{" "}
+        tag so oEmbed-aware consumers discover it automatically.
+      </p>
+      <pre><code>{`GET /api/oembed?url=https://epistemic-receipts.vercel.app/settling-curve/smoking-lung-cancer`}</code></pre>
+      <p>Returns:</p>
+      <pre><code>{`{
+  "version": "1.0",
+  "type": "rich",
+  "provider_name": "Epistemic Receipts",
+  "provider_url": "https://epistemic-receipts.vercel.app",
+  "title": "settling curve — smoking lung cancer",
+  "html": "<iframe src=\\"...\\" width=\\"600\\" height=\\"200\\" ...></iframe>",
+  "width": 600,
+  "height": 200
+}`}</code></pre>
+      <p>
+        The <code>url</code> parameter must be a <code>https://epistemic-receipts.vercel.app</code>{" "}
+        URL matching <code>/settling-curve/&#123;curated-slug&#125;</code> or{" "}
+        <code>/stories/&#123;slug&#125;</code>. All other URLs return 404.
+        This is a lookup — no external fetches are made.
+      </p>
     </main>
   );
 }
