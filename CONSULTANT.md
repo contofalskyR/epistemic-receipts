@@ -4673,3 +4673,59 @@ Embeddable slugs: semaglutide-glp1, smoking-lung-cancer, hpylori-ulcers, stress-
 - All 7 story pages — EmbedButton import + JSX in footer
 
 **Gotcha (Edit tool):** During this session the Edit/Write tools reported success but changes were not persisted to disk in several cases. All file modifications were re-applied via Bash Python scripts as a reliable fallback. If future sessions see similar issues, use `python3 -c` or heredoc writes instead of Edit tool.
+
+---
+
+### 2026-07-14 — B6: Independent verification, curve shapes, embed finish (Build Brief #6)
+
+**Branch:** `loop/site-b6-2026-07-14`. **Zero DB writes.** Independent verification of B3/B4/B5 + new /patterns + embed finish.
+
+**B6-1 — Independent verification & hardening.**
+Cross-checked all B3/B4/B5 claims against current main. Findings:
+- FIXED: unescaped `"` in `app/reversals/page.tsx` line 292 (pre-existing ESLint error, `"debunked"` → `&ldquo;debunked&rdquo;`)
+- FIXED: B3 CONSULTANT.md entry was absent (B3 worker never wrote it); added in this session
+- PASS: Residue footnotes in /reversals match honesty ledger on /settling-curve/coverage
+- PASS: /open-questions dormancy query correct (UTC, datePrecision=DAY guard)
+- PASS: /split-ledger Tier-1/Tier-2 logic matches B4-1 script
+- PASS: /communities community::text cast present; exemplar slugs verified
+- PASS: /receipts/[id] noindex + canonical + YEAR-precision rendering honest
+- PASS: OnThisDay UTC timezone, datePrecision=DAY guard, revalidate=3600
+- PASS: /embed/trajectory/[slug] noindex + frame-ancestors * + X-Frame-Options: ALLOWALL
+- PASS: /api/badge/claim/[id].svg AXIS_COLOR from lib/status.ts; cache headers present
+- PASS: t-{seq} anchors wired in AdaptiveClaimTimeline.tsx
+- PASS: sitemap has open-questions, split-ledger, communities; receipts/embed absent
+- PASS: all new pages have metadata exports; noindex exactly on receipts + embeds
+- PASS: TSC 1 pre-existing error (sanitize-html types); validator.ts error no longer present
+- FLAGGED: `app/sitemap.ts` comment references `app/sitemap.xml/route.ts` which does not exist (stale comment, no functional issue — Next.js handles the index automatically via generateSitemaps())
+- NOTED: stray hex in embed/trajectory page are theme colors (#0a0a0a, #ffffff, etc.) — not axis colors, justified
+
+**B6-2 — PUBLIC_ROUTES launch diff.**
+`lib/publicEdition.ts`: added 10 routes to PUBLIC_ROUTES (one isolated commit for owner review):
+`/reversals`, `/open-questions`, `/split-ledger`, `/communities`, `/patterns`, `/stories`, `/start-here`, `/methodology`, `/docs`, `/receipts`.
+Decision note: `/receipts` recommended yes (shareable atom, already noindex). `/api/*` not gated by this list.
+
+**B6-3 — The shapes of settling (/patterns page).**
+`lib/curve-shapes.ts` — pure classifier over ordered toAxis sequences. 6 shapes:
+  `monotone-settle` | `contested-then-settled` | `settle-then-reverse` | `flip-flop` | `abandoned` | `other`
+Direction semantics: axis ordinals RECORDED(1)→OPEN(2)→CONTESTED(3)→SETTLED(4); terminal exits REVERSED/ABANDONED/UNRESOLVABLE.
+Direction change = ordinal reversal or terminal exit. RECORDED→CONTESTED→SETTLED = 0 changes (forward path).
+
+`tests/unit/curve-shapes.test.ts` — 16 vitest tests, all passing.
+
+`app/patterns/page.tsx` — ISR `revalidate=86400`. One grouped query + in-memory classification over all multi-step claims (≥2 transitions). Prints reconciliation equation (shape counts must sum to total). 3 exemplars per shape (curated first, pipeline fallback). Deep links into explorer.
+Linked from: explorer footnote (SettlingCurve.tsx), /methodology footer, /start-here discovery grid.
+Added to sitemap.ts static list and PUBLIC_ROUTES.
+
+**B6-4 — Embed finish (B5-5 tail).**
+`app/api/badge/trajectory/[slug]/route.ts` — curated-only trajectory badge. Same shield format as claim badge. Shows latest axis + year. Non-curated → 404. Already public via `/api/badge/*` carve-out.
+`app/api/oembed/route.ts` — oEmbed JSON (`type: "rich"`). Validates url param against `SITE_URL` + known route shapes. No external fetch (lookup only, no SSRF). 
+`app/settling-curve/[id]/page.tsx` + all 7 story pages — `alternates.types['application/json+oembed']` added to metadata.
+`app/docs/api/page.tsx` — "Embeds & badges" section added (iframe, claim badge, trajectory badge, oEmbed; snippets match EmbedButton output).
+
+**Files added:**
+`lib/curve-shapes.ts`, `tests/unit/curve-shapes.test.ts`, `app/patterns/page.tsx`, `app/api/badge/trajectory/[slug]/route.ts`, `app/api/oembed/route.ts`, `briefs/2026-07-14-b6-report.md`
+
+**Files modified:**
+`CONSULTANT.md` (B3 entry added + this entry), `app/reversals/page.tsx` (ESLint fix), `lib/publicEdition.ts` (PUBLIC_ROUTES), `app/sitemap.ts` (/patterns added), `app/settling-curve/SettlingCurve.tsx` (curve-shapes link), `app/methodology/page.tsx` (curve-shapes link), `app/start-here/page.tsx` (curve-shapes card), `app/settling-curve/[id]/page.tsx` (oEmbed alternate), all 7 story pages (oEmbed alternate), `app/docs/api/page.tsx` (embeds section)
+
+**Gotcha:** `markerSource` not `source` on `ClaimStatusHistory` Prisma relation — confirmed still correct in schema.
