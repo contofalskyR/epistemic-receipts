@@ -345,7 +345,7 @@ export default async function ReversalsPage() {
         </section>
       )}
 
-      <footer className="pt-4 border-t border-gray-800 flex gap-6 text-sm text-gray-500">
+      <footer className="pt-4 border-t border-gray-800 flex flex-wrap gap-6 text-sm text-gray-500">
         <Link href="/settling-curve" className="hover:text-amber-400 transition-colors">
           Browse all trajectories →
         </Link>
@@ -354,6 +354,9 @@ export default async function ReversalsPage() {
         </Link>
         <Link href="/law-settler" className="hover:text-amber-400 transition-colors">
           Law Settler Curve →
+        </Link>
+        <Link href="/split-ledger" className="hover:text-amber-400 transition-colors">
+          Split Ledger →
         </Link>
       </footer>
     </div>
