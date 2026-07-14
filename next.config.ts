@@ -58,7 +58,7 @@ const nextConfig: NextConfig = {
   // jsdom removed 2026-07-06: even externalized it crashed the deployed
   // /api/proxy/reader function (500 before any JSON reached the client).
   // The route now uses linkedom, which bundles cleanly.
-  serverExternalPackages: ["ws", "@neondatabase/serverless", "@prisma/adapter-neon", "pdf-parse", "@xenova/transformers"],
+  serverExternalPackages: ["ws", "@neondatabase/serverless", "@prisma/adapter-neon", "pdf-parse"],
   async headers() {
     return [
       {
