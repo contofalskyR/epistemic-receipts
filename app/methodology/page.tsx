@@ -407,6 +407,9 @@ export default function MethodologyPage() {
         <Link href="/communities" className="hover:text-gray-300 transition-colors">
           Ratifying Communities &rarr;
         </Link>
+        <Link href="/patterns" className="hover:text-gray-300 transition-colors">
+          Curve Shapes &rarr;
+        </Link>
         <Link href="/sources" className="hover:text-gray-300 transition-colors">
           Sources &rarr;
         </Link>

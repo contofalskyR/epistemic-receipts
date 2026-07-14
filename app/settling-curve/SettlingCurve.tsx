@@ -1864,6 +1864,10 @@ function SettlingCurveInner() {
               <a href="/split-ledger" style={{ color: C.mut, textDecoration: "underline" }}>
                 Split Ledger →
               </a>
+              {" · "}
+              <a href="/patterns" style={{ color: C.mut, textDecoration: "underline" }}>
+                Curve shapes →
+              </a>
             </p>
             </>)}
           </div>

@@ -218,6 +218,7 @@ export default function StartHerePage() {
             { href: "/feed", label: "What's New", desc: "Latest trajectory activity" },
             { href: "/open-questions", label: "Open Questions", desc: "Longest contested claims — dormancy leaderboard" },
             { href: "/split-ledger", label: "Split Ledger", desc: "Claims where communities have reached incompatible conclusions" },
+            { href: "/patterns", label: "Curve Shapes", desc: "The six shapes that settling curves take, with live counts" },
             { href: "/glossary", label: "Glossary", desc: "Axis definitions and methodology" },
           ].map((d) => (
             <Link

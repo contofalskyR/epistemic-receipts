@@ -80,6 +80,7 @@ export const PUBLIC_ROUTES: string[] = [
   "/open-questions",
   "/split-ledger",
   "/communities",
+  "/patterns",
   "/stories",
   "/start-here",
   "/methodology",

@@ -37,6 +37,7 @@ const STATIC_URLS: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/open-questions`, changeFrequency: "weekly", priority: 0.7 },
   { url: `${SITE_URL}/split-ledger`, changeFrequency: "weekly", priority: 0.8 },
   { url: `${SITE_URL}/communities`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/patterns`, changeFrequency: "monthly", priority: 0.7 },
 ];
 
 export async function generateSitemaps() {
