@@ -60,10 +60,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `/settling-curve/${id}`;
   const ogImage = `/api/og/trajectory?id=${encodeURIComponent(id)}`;
 
+  const oEmbedUrl = `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + canonical)}`;
+
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      types: { "application/json+oembed": oEmbedUrl },
+    },
     openGraph: {
       title,
       description,
