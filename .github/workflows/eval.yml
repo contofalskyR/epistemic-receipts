@@ -8,6 +8,9 @@ on:
       - "packages/eval/**"
       - ".github/workflows/eval.yml"
 
+permissions:
+  contents: read
+
 jobs:
   eval-dry-run:
     runs-on: ubuntu-latest

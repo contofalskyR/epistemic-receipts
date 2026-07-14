@@ -16,6 +16,9 @@ on:
     # Quarterly: first day of Jan, Apr, Jul, Oct at 02:00 UTC
     - cron: "0 2 1 1,4,7,10 *"
 
+permissions:
+  contents: read
+
 jobs:
   export:
     name: Export snapshot
