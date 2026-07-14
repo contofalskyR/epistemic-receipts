@@ -4593,3 +4593,43 @@ Settling curve added to Nav "Explore" dropdown.
 - `app/settling-curve/SettlingCurve.tsx` — Communities + Split Ledger added to explorer footnote
 
 **Gotcha (enum cast in raw SQL):** Prisma `$queryRaw` with `community = ${comm}` fails with `operator does not exist: "RatifyingCommunity" = text`. Workaround: cast in SQL with `community::text = '...'` or use `$queryRawUnsafe`. Both production queries use `community::text` in SELECT to avoid this.
+
+---
+
+### 2026-07-14 — B5: Embeds & Badges (Build Brief #5)
+
+**Branch:** `loop/site-b5-2026-07-14`. **Zero DB writes.** Read-only embed routes + SVG badge API.
+
+**B5-1 — Middleware carve-out.**
+
+Added `/embed/` and `/api/badge/` to `SITE_PASSWORD` gate's `allowedThrough` condition (middleware.ts). Added `/embed` to `PUBLIC_ROUTES` in `lib/publicEdition.ts`. Added `/embed/(.*)` header override in `next.config.ts` that sets `X-Frame-Options: ALLOWALL` and CSP `frame-ancestors *` (overriding global DENY/none). Total diff: 3 files, ~20 lines.
+
+**B5-2 — `/embed/trajectory/[slug]`.**
+
+`app/embed/trajectory/[slug]/page.tsx` — curated-only gate (13 slugs from `lib/domain-trajectories.ts` DOMAIN_TRAJECTORIES). Resolves via `getTrajectoryDetail`. Renders SettlingCurveMini (server SVG, no client JS). `?theme=dark|light`. ISR `revalidate=3600`. `app/embed/layout.tsx` injects CSS to hide Nav/footer/feedback button from root layout.
+
+Embeddable slugs: semaglutide-glp1, smoking-lung-cancer, hpylori-ulcers, stress-acid-ulcers, dietary-fat-heart, oxycontin-reduced-abuse-liability-1995, continental-drift, cold-fusion, cfc-ozone-depletion, pluto-discovery-1930, civil-rights-act-1964, clean-air-act-1970, voting-rights-act-1965.
+
+**B5-3 — `/api/badge/claim/[id].svg`.**
+
+`app/api/badge/claim/[id]/route.ts` — shields-style SVG badge. Left cell "epistemic status", right cell "Label · year" in axis color from `lib/status.ts`. cuid v1 validation before query. Soft-deleted/DEPRECATED/unknown → gray "unknown" + 404. `Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400`. No new deps.
+
+**B5-4 — Embed affordance.**
+
+`components/EmbedButton.tsx` — client component alongside CitationButton. Shows copyable iframe snippet and badge markdown. `siteUrl` prop from server prevents hardcoding vercel.app hostname. Added to `app/settling-curve/[id]/page.tsx` (iframe only for CURATED_SLUGS; badge always) and all 7 story pages.
+
+**Files added:**
+- `app/embed/layout.tsx`
+- `app/embed/trajectory/[slug]/page.tsx`
+- `app/api/badge/claim/[id]/route.ts`
+- `components/EmbedButton.tsx`
+- `briefs/2026-07-14-b5-report.md`
+
+**Files modified:**
+- `middleware.ts` — SITE_PASSWORD allowedThrough carve-out
+- `lib/publicEdition.ts` — `/embed` added to PUBLIC_ROUTES
+- `next.config.ts` — `/embed/(.*)` header override
+- `app/settling-curve/[id]/page.tsx` — EmbedButton + CURATED_SLUGS check
+- All 7 story pages — EmbedButton import + JSX in footer
+
+**Gotcha (Edit tool):** During this session the Edit/Write tools reported success but changes were not persisted to disk in several cases. All file modifications were re-applied via Bash Python scripts as a reliable fallback. If future sessions see similar issues, use `python3 -c` or heredoc writes instead of Edit tool.

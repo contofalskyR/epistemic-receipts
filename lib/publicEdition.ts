@@ -75,6 +75,8 @@ export const PUBLIC_ROUTES: string[] = [
   "/stats",
   "/statistics",
   "/feedback",
+  // Embeds — publicly accessible iframes (no auth cookie required)
+  "/embed",
   // Domain taxonomies (curated navigation aids — see /about)
   "/anthropology", "/astronomy", "/biology", "/chemistry", "/communication",
   "/computer-science", "/earth-sciences", "/economics", "/education",
