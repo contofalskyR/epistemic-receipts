@@ -15,6 +15,9 @@ on:
       - "lib/v1/**"
       - "tests/unit/v1/**"
 
+permissions:
+  contents: read
+
 jobs:
   spectral-lint:
     name: Spectral OpenAPI Lint

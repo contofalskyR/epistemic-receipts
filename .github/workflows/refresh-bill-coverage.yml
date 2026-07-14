@@ -11,6 +11,9 @@ on:
         required: false
         default: '200'
 
+permissions:
+  contents: read
+
 jobs:
   refresh:
     runs-on: ubuntu-latest

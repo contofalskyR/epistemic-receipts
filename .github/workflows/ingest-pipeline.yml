@@ -16,6 +16,9 @@ on:
     # Monthly refresh: 1st of each month at 02:00 UTC
     - cron: '0 2 1 * *'
 
+permissions:
+  contents: read
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest

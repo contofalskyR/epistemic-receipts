@@ -163,7 +163,7 @@ The site launched as **public read-only**. A full audit + hardening pass was app
 2. **Never interpolate user input into `$queryRawUnsafe` strings.** Pass values as bind parameters (`$1, $2, ...` + spread args). For ILIKE, escape `\ % _` first (see `app/api/retractions/route.ts` for the `likeParam` pattern). Hand-rolled quote escaping (`.replace(/'/g, "''")`) is banned.
 3. **New public write endpoints** require: an explicit entry in `PUBLIC_WRITE_PATHS` in `middleware.ts`, a rate-limit rule in `RATE_LIMIT_RULES`, JSON parse guarded with `.catch(() => null)`, and length caps on every string field.
 4. **Do not weaken:** security headers in `next.config.ts` (incl. HSTS), cookie flags (`httpOnly`, `secure`, `sameSite`), timing-safe comparisons in `app/api/login/route.ts` and `lib/adminAuth.ts`, fail-closed `CRON_SECRET` checks in `/api/ingest/scotus` and `/api/cron/topic-alerts`.
-5. **Never commit secrets.** `.env.local` is gitignored and must stay that way; no hardcoded tokens/fallback passphrases in code (`?? "changeme"` patterns are banned).
+5. **Never commit secrets.** `.env.local` is gitignored and must stay that way; no hardcoded tokens/fallback passphrases in code (`?? "changeme"` patterns are banned). On every fresh clone, run `git config core.hooksPath .githooks` to enable the gitleaks pre-push scan (requires `gitleaks` on PATH) — CI's gitleaks runs after the push, which on a public repo is too late.
 6. If a request unexpectedly 401s during development against production, the fix is to supply admin credentials (login at `/login` with `ADMIN_TOKEN`, or send the Bearer header from scripts) — not to exempt the route.
 
 ## Env vars (Vercel)

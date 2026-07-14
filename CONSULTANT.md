@@ -4633,3 +4633,51 @@ Embeddable slugs: semaglutide-glp1, smoking-lung-cancer, hpylori-ulcers, stress-
 - All 7 story pages — EmbedButton import + JSX in footer
 
 **Gotcha (Edit tool):** During this session the Edit/Write tools reported success but changes were not persisted to disk in several cases. All file modifications were re-applied via Bash Python scripts as a reliable fallback. If future sessions see similar issues, use `python3 -c` or heredoc writes instead of Edit tool.
+
+---
+
+### 2026-07-14 — B7: Security Remediation & Launch Close-outs (Build Brief #7)
+
+**Branch:** `loop/site-b7-2026-07-14`. **Zero DB writes.** Security hardening pass before public launch.
+
+**B7-1 — PUBLIC_ROUTES additions.**
+
+Added `/terms`, `/privacy`, `/license` to `PUBLIC_ROUTES` in `lib/publicEdition.ts`. These footer-linked legal pages would 404 on the public edition without this.
+
+**B7-2 — Gitleaks pre-push hook.**
+
+Installed local gitleaks pre-push hook. Untracked junk files cleaned from workspace.
+
+**B7-3 — Dependency cleanup.**
+
+Removed `@xenova/transformers` (MiniLM path abandoned; dead code). Bumped `@sentry/nextjs` `^9→^10` (v10.65.0). Deleted `scripts/populate-trajectory-embeddings.ts`. Regenerated lockfile. `tsc --noEmit` clean.
+
+Also removed stale `@xenova/transformers` entry from `serverExternalPackages` in `next.config.ts` (B7-5 commit).
+
+**B7-4 — Auth hygiene audit.**
+
+No changes needed. Middleware gates all mutations via `PUBLIC_WRITE_PATHS + isAdminRequest`. Cron/ingest routes check `CRON_SECRET`. Session routes call `await auth()` in-handler. No hardcoded credentials found.
+
+**B7-5 — CSP cleanup.**
+
+Removed stale `@xenova/transformers` from `serverExternalPackages`. `connect-src 'self' https:` left intentionally broad (globe.gl textures, vercel.live). `script-src 'unsafe-inline'` retained (Next.js RSC requirement).
+
+**B7-6 — Workflow hardening.**
+
+Added `permissions: contents: read` to 10 of 11 workflow files. All actions were already SHA-pinned. Only `mcp-publish.yml` had a permissions block pre-existing (with `id-token: write`).
+
+**B7-7 — Whitepaper close-out.**
+
+`WHITEPAPER.md` is tracked in git (no app route). Two whitepaper-cited claim IDs could not be DB-verified on VPS (no DATABASE_URL); Robert must verify post-merge via Neon console or deployed URL.
+
+**Files added:**
+- `B7-REPORT.md`
+
+**Files modified:**
+- `lib/publicEdition.ts` — PUBLIC_ROUTES additions
+- `package.json` — dep changes
+- `package-lock.json` — regenerated
+- `scripts/populate-trajectory-embeddings.ts` — deleted
+- `next.config.ts` — serverExternalPackages cleanup
+- `.github/workflows/*.yml` (10 files) — permissions block added
+- `CONSULTANT.md` — this entry

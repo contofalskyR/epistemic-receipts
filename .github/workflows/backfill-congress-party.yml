@@ -3,6 +3,9 @@ name: Backfill — Congress byPartyJson
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   backfill:
     runs-on: ubuntu-latest
