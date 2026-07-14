@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
 import { serializeJsonLd } from "@/lib/jsonld";
 import CitationButton from "@/components/CitationButton";
+import EmbedButton from "@/components/EmbedButton";
 import { SITE_URL } from "@/lib/site";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
@@ -275,6 +276,7 @@ export default async function HPyloriStoryPage() {
           Browse all trajectories →
         </Link>
         <CitationButton type="claim" id={hpylori.claimId} />
+        <EmbedButton slug={HPYLORI_SLUG} claimId={hpylori.claimId} title="H. pylori &amp; peptic ulcers" siteUrl={SITE_URL} />
       </footer>
 
       <script

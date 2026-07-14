@@ -217,6 +217,7 @@ export default function StartHerePage() {
             { href: "/reversals", label: "Court Reversals", desc: "Eight landmark overruling arcs" },
             { href: "/feed", label: "What's New", desc: "Latest trajectory activity" },
             { href: "/open-questions", label: "Open Questions", desc: "Longest contested claims — dormancy leaderboard" },
+            { href: "/split-ledger", label: "Split Ledger", desc: "Claims where communities have reached incompatible conclusions" },
             { href: "/glossary", label: "Glossary", desc: "Axis definitions and methodology" },
           ].map((d) => (
             <Link
