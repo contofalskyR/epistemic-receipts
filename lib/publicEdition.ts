@@ -75,6 +75,16 @@ export const PUBLIC_ROUTES: string[] = [
   "/stats",
   "/statistics",
   "/feedback",
+  // Reader-facing pages from B3–B5 and prior weeks not yet listed
+  "/reversals",
+  "/open-questions",
+  "/split-ledger",
+  "/communities",
+  "/stories",
+  "/start-here",
+  "/methodology",
+  "/docs",
+  "/receipts",
   // Embeds — publicly accessible iframes (no auth cookie required)
   "/embed",
   // Domain taxonomies (curated navigation aids — see /about)
