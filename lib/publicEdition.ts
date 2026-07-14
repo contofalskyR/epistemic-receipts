@@ -75,6 +75,10 @@ export const PUBLIC_ROUTES: string[] = [
   "/stats",
   "/statistics",
   "/feedback",
+  // Legal — footer-linked from every page; must resolve on the public edition
+  "/terms",
+  "/privacy",
+  "/license",
   // Embeds — publicly accessible iframes (no auth cookie required)
   "/embed",
   // Domain taxonomies (curated navigation aids — see /about)
