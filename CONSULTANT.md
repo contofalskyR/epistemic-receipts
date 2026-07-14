@@ -4555,3 +4555,41 @@ Settling curve added to Nav "Explore" dropdown.
 **Build note:** `next build` fails with SIGKILL (memory exhaustion) on this VPS — this is a **pre-existing issue** confirmed by reproducing on the unmodified codebase. `npx tsc --noEmit` passes clean. Vercel deployment will succeed (different compute budget than this VPS).
 
 **DB schema note:** No `curve_length` column exists on Claim. Multi-step detection uses `statusHistory: { some: {} }` (Prisma relation filter). Indexes available: `@@index([claimId, community, occurredAt])` on ClaimStatusHistory covers this subquery. Claim PK (`id`) used for stable skip/take pagination.
+
+---
+
+### 2026-07-14 — B4: Split Ledger + Communities (Build Brief #4)
+
+**Branch:** `loop/site-b4-2026-07-14`. **Zero DB writes.** Read-only surfaces over existing transitions.
+
+**B4-1 — Divergence tiering census.**
+
+`scripts/b4-divergence-tiers.ts`. Classifies all 3,241 divergent multi-community claims into:
+- **Tier 1 — Conflict (386):** one community SETTLED/REVERSED while another is CONTESTED/REVERSED/ABANDONED. 312 curated, 74 pipeline-only. Top pairs: EL↔IN (266), IN↔PU (66), IN↔JU (40).
+- **Tier 2 — Stage-lag (2,855):** same arc at different stages (RECORDED vs SETTLED, etc.). Top pair: EL↔IN (1,523).
+
+**B4-2 — /split-ledger.**
+
+`lib/split-ledger.ts` — shared query library (one source of truth for script + page, mirrors `lib/dormancy.ts` pattern). Module-level 1hr classification cache. Functions: `loadTier1Claims(page)`, `loadTier2Claims(pair?, page)`, `loadSplitLedgerCounts()`.
+
+`app/split-ledger/page.tsx` — ISR `revalidate = 3600`. Two sections: Tier 1 (listed/paginated at 50) and Tier 2 (collapsed-subordinate, community-pair filter, paginated). Uses `AXIS_BG_CLASS` from `lib/status.ts` for axis badges. Pagination via `?t1page=N&t2page=N&pair=X`. Added to sitemap, linked from `/start-here` and `/reversals`.
+
+**B4-3 — /communities.**
+
+`app/communities/page.tsx` — ISR `revalidate = 3600`. Five communities per `RatifyingCommunity` enum from `prisma/schema.prisma` (EXPERT_LITERATURE, INSTITUTIONAL, JUDICIAL, PUBLIC, MARKET). Live counts: IN 1,158,240 claims/1,365,613 transitions · EL 407,877/438,643 · JU 15,828/16,056 · PU 1,365/1,443 · MK 91/101. Five verified exemplar slugs: `smoking-lung-cancer` (EL), `laiv-flumist-acip-not-recommended-reversal-2016` (IN), `miranda-rights` (JU), `apollo11-moon-landing` (PU), `ibm-pc-introduced-1981` (MK). Added to sitemap. Linked from `/split-ledger`, `/methodology`, and settling-curve explorer footnote.
+
+**Files added:**
+- `scripts/b4-divergence-tiers.ts` (census script)
+- `lib/split-ledger.ts` (shared query library)
+- `app/split-ledger/page.tsx` (Tier 1 + Tier 2 index)
+- `app/communities/page.tsx` (five-community explainer)
+- `briefs/2026-07-14-b4-report.md` (full census output + spot-checks)
+
+**Files modified:**
+- `app/sitemap.ts` — `/split-ledger` + `/communities` added to static list
+- `app/start-here/page.tsx` — Split Ledger added to discovery grid
+- `app/reversals/page.tsx` — Split Ledger added to footer links
+- `app/methodology/page.tsx` — Communities added to footer links
+- `app/settling-curve/SettlingCurve.tsx` — Communities + Split Ledger added to explorer footnote
+
+**Gotcha (enum cast in raw SQL):** Prisma `$queryRaw` with `community = ${comm}` fails with `operator does not exist: "RatifyingCommunity" = text`. Workaround: cast in SQL with `community::text = '...'` or use `$queryRawUnsafe`. Both production queries use `community::text` in SELECT to avoid this.
