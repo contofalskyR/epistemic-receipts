@@ -367,7 +367,7 @@ export default function SearchClient() {
         <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Search</p>
         <h1 className="mt-1 text-2xl font-semibold text-white">Pull the receipt on any claim</h1>
         <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">
-          1.6M+ sourced claims — settled, contested, or overturned. Every result traces back to
+          1.76M+ sourced claims — settled, contested, or overturned. Every result traces back to
           who said it, when, and whether it&apos;s still standing.
         </p>
       </div>
