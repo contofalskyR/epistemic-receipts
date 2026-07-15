@@ -96,15 +96,20 @@ function TrajectoryCard({ traj }: { traj: LawTrajectory }) {
         <SettlingCurveMini milestones={traj.milestones} animate={false} />
       </div>
 
+      {/* Title */}
+      <p style={{ color: C.ink, fontSize: "0.92rem", fontWeight: 600, margin: "0 0 0.4rem", lineHeight: 1.3 }}>
+        {slugToTitle(traj.id)}
+      </p>
+
       {/* Claim text */}
       <p
         style={{
           color: C.mut,
-          fontSize: "0.82rem",
+          fontSize: "0.8rem",
           lineHeight: 1.5,
           margin: 0,
           display: "-webkit-box",
-          WebkitLineClamp: 3,
+          WebkitLineClamp: 2,
           WebkitBoxOrient: "vertical",
           overflow: "hidden",
         }}
@@ -160,12 +165,26 @@ function Chip({
   );
 }
 
+function slugToTitle(slug: string): string {
+  return slug
+    .split("-")
+    .map((w) => {
+      if (w === "v") return "v.";
+      const minor = ["of", "in", "the", "a", "an", "and", "or", "for", "to"];
+      if (minor.includes(w)) return w;
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    })
+    .join(" ");
+}
+
 export default function LawSettlerClient({ trajectories }: { trajectories: LawTrajectory[] }) {
   const [filter, setFilter] = useState<"all" | "SETTLED" | "REVERSED" | "CONTESTED">("all");
+  const [search, setSearch] = useState("");
 
-  const visible = filter === "all"
-    ? trajectories
-    : trajectories.filter((t) => t.currentAxis === filter);
+  const q = search.trim().toLowerCase();
+  const visible = trajectories
+    .filter((t) => filter === "all" || t.currentAxis === filter)
+    .filter((t) => !q || t.claim.toLowerCase().includes(q) || t.id.toLowerCase().includes(q));
 
   const reversedCount = trajectories.filter((t) => t.currentAxis === "REVERSED").length;
   const settledCount = trajectories.filter((t) => t.currentAxis === "SETTLED").length;
@@ -261,6 +280,26 @@ export default function LawSettlerClient({ trajectories }: { trajectories: LawTr
 
       {/* Filter + grid */}
       <div style={{ maxWidth: "64rem", margin: "0 auto", padding: "1.5rem 1.5rem 4rem" }}>
+        {/* Search */}
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search trajectories…"
+          style={{
+            width: "100%",
+            background: C.panel,
+            border: `1px solid ${C.panelEdge}`,
+            borderRadius: 8,
+            color: C.ink,
+            fontSize: "0.85rem",
+            padding: "0.55rem 0.9rem",
+            marginBottom: "1rem",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
+        />
+
         {/* Filter chips */}
         <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
           {FILTERS.map((f) => {
@@ -290,7 +329,7 @@ export default function LawSettlerClient({ trajectories }: { trajectories: LawTr
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
               gap: "1rem",
             }}
           >
