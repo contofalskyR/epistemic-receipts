@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import { snippet, type WhatsNewItem } from "@/lib/feed";
+import { DISCOVERY_HOOKS } from "@/lib/discovery-rail";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -463,6 +464,46 @@ function HonestyBand() {
   );
 }
 
+// ─── Discovery rail ───────────────────────────────────────────────────────────
+// Curated narrative entry points (lib/discovery-rail.ts) — six "follow this
+// thread" hooks, each with an eyebrow label, a title, and a one-line blurb.
+// Rendered as a horizontally-scrollable row so the rail doesn't push down the
+// below-fold content on mobile. Deliberately distinct from the hero's featured
+// trajectories so the two rows don't echo each other.
+
+function DiscoveryRail() {
+  return (
+    <section className="mx-auto max-w-5xl pb-6 pt-2">
+      <div className="flex items-center justify-between pb-3">
+        <h2 className="text-[11px] font-mono uppercase tracking-[0.14em] text-gray-500">
+          Follow a thread
+        </h2>
+      </div>
+      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-none" style={{ scrollSnapType: "x mandatory" }}>
+        {DISCOVERY_HOOKS.map((hook) => (
+          <Link
+            key={hook.href}
+            href={hook.href}
+            className="group flex shrink-0 flex-col rounded-xl border border-gray-800 bg-gray-900/60 p-4 transition-colors hover:border-gray-600"
+            style={{ scrollSnapAlign: "start", width: "clamp(220px, 35vw, 280px)" }}
+          >
+            <span className={`text-[10.5px] font-mono uppercase tracking-[0.12em] ${hook.eyebrowColor}`}>
+              {hook.eyebrow}
+            </span>
+            <h3 className="mt-2 text-[14px] font-medium leading-snug text-gray-100 transition-colors group-hover:text-white">
+              {hook.title}
+            </h3>
+            <p className="mt-1.5 flex-1 text-[12.5px] leading-relaxed text-gray-500">{hook.blurb}</p>
+            <span className="mt-3 text-[12px] text-gray-600 transition-colors group-hover:text-gray-400">
+              Follow →
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ─── Top-level export ─────────────────────────────────────────────────────────
 
 export default function HomepageSections({
@@ -473,6 +514,7 @@ export default function HomepageSections({
   return (
     <>
       <StartHere />
+      <DiscoveryRail />
       <MovedTicker items={whatsNew} />
       <Pillars retractedPapers={stats.retractedPapers} />
       <CorpusBand stats={stats} ingestedByCounts={ingestedByCounts} />

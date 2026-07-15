@@ -53,7 +53,11 @@ export const PUBLIC_ROUTES: string[] = [
   "/meta-edges",
   "/opinions",
   "/law-settler",
-  "/bookmarks",
+  "/open-questions",
+  "/split-ledger",
+  "/start-here",
+  "/stories",
+  "/reversals",
   // Research
   "/feed",
   "/sources",
