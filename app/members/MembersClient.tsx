@@ -10,6 +10,7 @@ type MemberHit = {
   memberState: string | null;
   memberParty: string | null;
   voteCount: number;
+  nominateDim1: number | null;
 };
 
 type MembersResponse = { members: MemberHit[] };
@@ -140,6 +141,11 @@ export default function MembersClient() {
                         <div className="text-[10px] text-gray-500 mt-1 font-mono">
                           {m.voteCount.toLocaleString()} votes
                         </div>
+                        {m.nominateDim1 !== null && (
+                          <div className="text-[10px] text-gray-600 mt-0.5 font-mono" title="DW-NOMINATE Dim 1 (economic axis)">
+                            DW1: {m.nominateDim1 >= 0 ? "+" : ""}{m.nominateDim1.toFixed(2)}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </Link>

@@ -68,6 +68,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
       { href: "/legislation", label: "Legislation", desc: "Search US and global legislation — bills, acts, and regulatory history" },
       { href: "/analysis/topics", label: "Topic Trends" },
       { href: "/analysis/votes", label: "Vote Analysis" },
+      { href: "/analysis/ideology", label: "Ideology (DW-NOMINATE)", desc: "DW-NOMINATE scores by Congress — caucus scatter and party distributions" },
       { href: "/stats", label: "Statistics" },
       { href: "/analysis/representation", label: "Representation" },
       { href: "/analysis/retraction-lag", label: "Retraction Lag" },

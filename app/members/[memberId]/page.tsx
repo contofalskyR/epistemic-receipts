@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
+import IdeologySection from "./IdeologySection";
 
 export const revalidate = 600;
 
@@ -183,6 +185,10 @@ export default async function MemberProfilePage({
           sub={unityPct === null ? "no decided partisan votes" : `${matches.toLocaleString()} / ${decided.toLocaleString()} aligned`}
         />
       </div>
+
+      <Suspense fallback={null}>
+        <IdeologySection memberId={memberId} />
+      </Suspense>
 
       <section>
         <h2 className="text-xs text-gray-500 font-mono uppercase tracking-widest mb-3">Chamber breakdown</h2>
