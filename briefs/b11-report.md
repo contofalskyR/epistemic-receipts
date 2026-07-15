@@ -453,3 +453,64 @@ STOP: no enrichment write without recorded yes. Merge ≠ execute.
 | B11-3 Landmark owner review | ⏸ Awaiting owner yes | — |
 | B11-3 Enrichment pilot (25 entries) | ⏸ Awaiting owner yes | — |
 | B11-3 Full enrichment run | ⏸ Awaiting owner yes | — |
+
+---
+
+## B11 Worker Session 2 (2026-07-15 ~23:05–23:30 UTC) — C pilot + repo findings
+
+### ⚠️ URGENT: origin/main build is broken (deploys failing)
+
+The B11b UI commit (95f53f4) is on origin/main and calls `prisma.memberIdeology`, but the
+MemberIdeology **schema model is not on main** (it lives in a895008, only on the b11 branches).
+`prisma generate` + typecheck fail on main → Vercel is stuck serving an old deployment —
+verified: `/analysis/ideology` returns 404 in production while `/` is 200.
+**Fix: merge `loop/votes-b11c-2026-07-15`** (carries schema + migration + ingest script +
+landmark subset + this report). Migration is already applied+resolved in prod, so merge is safe.
+
+### Branch hygiene performed
+
+- Landmark-subset commit 47c6dd4 was stranded on local `main` (unpushed, would have been
+  swept to origin/main by the next promoter push). Cherry-picked onto b11c (cc0fd3c, taking
+  the fixed build-landmark-subset.ts), then local `main` reset to origin/main.
+- Concurrent-session note: at 23:08–23:09 UTC another session committed the report to b11c
+  (905da32) in this same checkout; contention checked before every push this session.
+
+### Workstream C — Pilot COMPLETE + VERIFIED
+
+See `briefs/b11-c-checkpoint.md` for the full memo. Summary:
+- 25/25 rollcalls written via **Voteview per-rollcall API** (not Clerk XML — doesn't exist
+  pre-1990; senate.gov also 403s this VPS; Voteview provides `clerk_rollnumber` as bridge).
+- 6,799 MemberVote rows, residue 0, exact tally gate (parsed = API = DB counts) on every write.
+- 5 spot-checks: Clerk XML + GovTrack (independent) exact; 633/633 full-row match vs live
+  Voteview on 3 historical rollcalls.
+- Paired/announced votes labeled explicitly; POTUS rows excluded by district/modifier
+  (NOT icpsr range — Thurmond is icpsr 99369; a range filter would have dropped him).
+- bioguide joins only 9% during pilot because A-ingest was ~50% done — full run should wait
+  for ingest completion + one re-join pass for pilot rows (exact icpsr key, no fuzzy).
+- **STOPPED per brief: awaiting owner yes for the full 1,500 run (~40 min, ~400k rows).**
+
+### Full-113k cost/value memo (updated with measured numbers)
+
+- **Cost:** 113,319 API fetches @300ms throttle ≈ **10–16 h wall**; ~272 rows/rollcall avg →
+  **~30M MemberVote rows, ~6 GB**. Idempotent/resumable with the pilot script as-is.
+- **Cheaper path:** Voteview `HSall_votes.csv` bulk file (one download, ~100M member-vote
+  records) + the same ICPSR crosswalk — no per-vote fetches, but needs a bulk-load
+  architecture decision (COPY vs batched createMany) and ~2 GB staging.
+- **Value:** complete per-member voting records 1789–present → member profile pages become
+  fully populated for every historical member; enables party-unity/ideology-vs-vote analyses
+  at full corpus scale. Receipt-value doctrine: most of the 30M rows would back pages with
+  near-zero traffic; the landmark 1,500 covers the votes people actually open.
+- **Recommendation:** decision stays open per brief. If wanted later, bulk CSV > API loop.
+
+### Census corrections revealed by execution
+
+- "Clerk/Senate XML" as the enrichment source (census §enrich-member-votes) is wrong for
+  voteview_v1: pre-1990 votes have no XML and Voteview roll numbers ≠ Clerk roll numbers.
+  The Voteview API is the correct source and carries the bridge field.
+- enrich-member-votes.ts needed no fix for congress_votes_v1 (100% coverage confirmed), so
+  a new script `enrich-landmark-member-votes.ts` was written for voteview_v1 instead.
+
+### Workstream A — still awaiting owner's final ingest count
+
+MemberIdeology grew 25,056 → 27,454+ during this session (Mac ingest running). Record the
+final count here when the owner sends it; then re-run the join sanity + pilot re-join pass.
