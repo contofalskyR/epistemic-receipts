@@ -132,6 +132,7 @@ async function main() {
        AND c."claimEmergedAt" < now() - interval '2 years'
        AND (c.metadata->>'is_retracted') IS DISTINCT FROM 'true'
        AND c.text !~* '^\\s*(Retracted[: ]|Retraction[: ]|Notice of Retraction|Expression of Concern|Erratum[: ]|Correction[: ])'
+       AND CASE WHEN (c.metadata->>'cited_by_count') ~ '^[0-9]+$' THEN (c.metadata->>'cited_by_count')::int ELSE 0 END >= 5000
        AND NOT EXISTS (
          SELECT 1 FROM "ClaimStatusHistory" h2
          WHERE h2."claimId" = c.id AND h2.id <> h.id
