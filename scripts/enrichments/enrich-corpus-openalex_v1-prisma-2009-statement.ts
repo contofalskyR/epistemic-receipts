@@ -1,92 +1,88 @@
-// Enrichment: post-publication epistemic trajectory for the PRISMA 2009 statement.
+// Enrichment: post-publication epistemic arc for the PRISMA 2009 Statement.
 //
-// Claim: cmpmc56df562rsafwrz2c48as
-//   Moher D, Liberati A, Tetzlaff J, Altman DG (PRISMA Group).
-//   "Preferred reporting items for systematic reviews and meta-analyses:
-//    the PRISMA statement." BMJ 2009;339:b2535.  (DOI 10.1136/bmj.b2535)
-//   OpenAlex W2156098321. Published 2009-07-21.
+// Claim: cmplztvcu02ddsa86i71p33a6 (openalex_v1, W2005501262)
+//   "Preferred Reporting Items for Systematic Reviews and Meta-Analyses:
+//    The PRISMA Statement" — Moher, Liberati, Tetzlaff, Altman et al.,
+//    Annals of Internal Medicine, 2009-08-18. DOI 10.7326/0003-4819-151-4-200908180-00135.
 //
-// Baseline row (fromAxis=null -> RECORDED at 2009-07-21) already exists; do NOT duplicate it.
+// The baseline ClaimStatusHistory row (fromAxis=null -> RECORDED @ 2009-08-18) already
+// exists and is NOT duplicated here.
 //
-// Post-publication event added here:
-//   RECORDED -> ABANDONED (2021-03-29, EXPERT_LITERATURE)
-//   The PRISMA authoring group published the PRISMA 2020 statement
-//   (BMJ 2021;372:n71, 29 March 2021), which explicitly "replaces the 2009
-//   statement" and states the PRISMA 2009 statement "should no longer be used."
-//   The 2009 checklist/flow-diagram artifact described by this claim was formally
-//   superseded and retired — not overturned as erroneous, but retired in favour of
-//   the updated 27-item PRISMA 2020 guideline. That retirement is ABANDONED, not
-//   REVERSED (the reporting approach was carried forward, not shown wrong).
+// Post-publication research (verified 2026-07-15):
+//   - No retraction and no expression of concern (Crossref update-to: none; PubMed 19621072).
+//   - No dated failed replication or methodological critique paper overturning the statement.
+//   - The reporting-guideline paradigm the 2009 statement introduced was so thoroughly
+//     adopted that the same expert body (the PRISMA Group) issued a formal, updated
+//     consensus — the PRISMA 2020 statement (Page et al., BMJ 2021;372:n71, 2021-03-29,
+//     DOI 10.1136/bmj.n71, PubMed 33782057). PRISMA 2020 explicitly "updates" rather than
+//     refutes the 2009 guideline, affirming its foundational reporting framework as the
+//     durable field standard while modernizing the checklist. This is a vindication /
+//     settling event ratified by the expert literature — RECORDED -> SETTLED.
 //
-// Verified sources:
-//   - PRISMA 2020 statement (adjudicating document): https://doi.org/10.1136/bmj.n71  (HTTP 200)
-//   - PRISMA official history page (corroboration):   https://www.prisma-statement.org/history-and-development  (HTTP 200)
+// Idempotent: upserts source on externalId and the status row on its deterministic slug id.
 //
 // Run:     npx tsx scripts/enrichments/enrich-corpus-openalex_v1-prisma-2009-statement.ts
-// Idempotent: upserts on source.externalId and claimStatusHistory.id.
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const CLAIM_ID = 'cmpmc56df562rsafwrz2c48as'
+const CLAIM_ID = 'cmplztvcu02ddsa86i71p33a6'
 
 async function main() {
-  // ── RECORDED -> ABANDONED: PRISMA 2020 supersedes and retires PRISMA 2009 ──
-  const occurredAt = '2021-03-29'
-
+  // ── RECORDED -> SETTLED: PRISMA 2020 statement reaffirms + updates the standard ──
   const source = await prisma.source.upsert({
-    where: { externalId: 'src:prisma-2020-supersedes-2009' },
+    where: { externalId: 'src:prisma-2020-statement-bmj-n71' },
     create: {
-      externalId: 'src:prisma-2020-supersedes-2009',
-      name: 'Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ 2021;372:n71. doi:10.1136/bmj.n71 — "The PRISMA 2020 statement replaces the 2009 statement … which should no longer be used."',
-      url: 'https://doi.org/10.1136/bmj.n71',
+      externalId: 'src:prisma-2020-statement-bmj-n71',
+      name: 'Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ 2021;372:n71. DOI 10.1136/bmj.n71.',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/33782057/',
       publishedAt: new Date('2021-03-29'),
       methodologyType: 'primary',
-      ingestedBy: 'enrich:corpus-openalex_v1',
+      ingestedBy: 'enrich-openalex_v1',
     },
     update: {
-      name: 'Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ 2021;372:n71. doi:10.1136/bmj.n71 — "The PRISMA 2020 statement replaces the 2009 statement … which should no longer be used."',
-      url: 'https://doi.org/10.1136/bmj.n71',
+      name: 'Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ 2021;372:n71. DOI 10.1136/bmj.n71.',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/33782057/',
       publishedAt: new Date('2021-03-29'),
+      methodologyType: 'primary',
     },
   })
 
-  const histId = `${CLAIM_ID}-ABANDONED-${occurredAt}` // cmpmc56df562rsafwrz2c48as-ABANDONED-2021-03-29
+  const slug = `${CLAIM_ID}-SETTLED-2021-03-29`
   await prisma.claimStatusHistory.upsert({
-    where: { id: histId },
+    where: { id: slug },
     create: {
-      id: histId,
+      id: slug,
       claimId: CLAIM_ID,
       fromAxis: 'RECORDED',
-      toAxis: 'ABANDONED',
+      toAxis: 'SETTLED',
       community: 'EXPERT_LITERATURE',
-      occurredAt: new Date(occurredAt),
+      occurredAt: new Date('2021-03-29'),
       datePrecision: 'DAY',
-      reason:
-        'On 29 March 2021 the PRISMA authoring group published the PRISMA 2020 statement (BMJ 2021;372:n71), which explicitly "replaces the 2009 statement" and directs that the PRISMA 2009 statement "should no longer be used." The 2009 reporting checklist and flow diagram described by this claim were formally superseded and retired in favour of the updated 27-item PRISMA 2020 guideline — a retirement driven by a decade of methodological advances, not a finding that the original approach was wrong.',
       sourceId: source.id,
+      reason:
+        'The PRISMA Group issued the PRISMA 2020 statement (BMJ 2021;372:n71, 2021-03-29), a formal updated consensus that explicitly updates — rather than refutes — the 2009 statement. By reaffirming the 2009 reporting-guideline framework as the durable standard for systematic reviews while modernizing its checklist, the expert literature ratified the original finding: RECORDED -> SETTLED.',
     },
     update: {
       fromAxis: 'RECORDED',
-      toAxis: 'ABANDONED',
+      toAxis: 'SETTLED',
       community: 'EXPERT_LITERATURE',
-      occurredAt: new Date(occurredAt),
+      occurredAt: new Date('2021-03-29'),
       datePrecision: 'DAY',
-      reason:
-        'On 29 March 2021 the PRISMA authoring group published the PRISMA 2020 statement (BMJ 2021;372:n71), which explicitly "replaces the 2009 statement" and directs that the PRISMA 2009 statement "should no longer be used." The 2009 reporting checklist and flow diagram described by this claim were formally superseded and retired in favour of the updated 27-item PRISMA 2020 guideline — a retirement driven by a decade of methodological advances, not a finding that the original approach was wrong.',
       sourceId: source.id,
     },
   })
 
-  console.log(`  ✓ ${CLAIM_ID}: RECORDED -> ABANDONED (${occurredAt})`)
-
-  await prisma.$disconnect()
+  console.log(`Enriched claim ${CLAIM_ID}: +1 transition (RECORDED -> SETTLED @ 2021-03-29)`)
 }
 
-main().catch(async (e) => {
-  console.error(e)
-  await prisma.$disconnect()
-  process.exit(1)
-})
+main()
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
