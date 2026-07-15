@@ -1076,3 +1076,30 @@ model MatterExport {
 
   @@index([matterId])
 }
+
+// DW-NOMINATE ideology scores per member per Congress, ingested from Voteview HSall_members.csv.
+// One row per (icpsrId, congress, chamber). Joined to MemberVote via bioguide_id / memberId.
+// Source URL + file SHA-256 stored in metadata for reproducibility.
+// Nokken-Poole variants stored but not surfaced in UI (see metadata.hasNokkenPoole).
+model MemberIdeology {
+  id            String   @id @default(cuid())
+  icpsrId       Int      // Voteview ICPSR integer member ID
+  bioguideId    String?  // bioguide ID (null for pre-bioguide members, ~pre-1980)
+  congress      Int
+  chamber       String   // "House" | "Senate"
+  memberName    String
+  party         String?  // party abbreviation from Voteview
+  stateAbbrev   String?
+  nominateDim1  Float?   // economic axis: −1 liberal → +1 conservative
+  nominateDim2  Float?   // social/racial axis
+  geoMeanProb   Float?   // nominate_geo_mean_probability: overall model fit
+  metadata      Json?    // { sourceUrl, fileSha256, nokkenPoole1, nokkenPoole2, hasNokkenPoole }
+  dataSource    String   @default("voteview_members_v1")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([icpsrId, congress, chamber])
+  @@index([bioguideId])
+  @@index([congress, chamber])
+  @@index([nominateDim1])
+}

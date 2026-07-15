@@ -196,15 +196,108 @@ The script targets `congress_votes_v1` only (matches `congress_law_source_{congr
 
 ---
 
+## Owner Decisions Received (2026-07-15)
+
+**Decision 1 — DW-NOMINATE: GO**
+- Schema migration approved. Standard chain: dry-run → pilot 25 → word-for-word verify → owner yes → full run.
+- Deterministic IDs: `sha256("voteview_members_v1:{icpsr}:{congress}:{chamber}")` → `mi_{hex24}`
+- Nokken-Poole stored in `metadata` only; standard DW-NOMINATE surfaced in UI.
+- **Migration window required** — owner pauses corpus promoter loop before applying.
+
+**Decision 2 — Landmark subset: HYBRID**
+- Curated named landmarks (~200–400) + all <0.5% margin votes (~1,000), deduped, capped at 1,500.
+- Every vote carries a machine-readable `reason` field ("landmark: Civil Rights Act of 1964" / "decided by <0.5%").
+- Historical-event linker stays unchanged (correct for `/historical-events`, not a landmark criterion).
+- Pilot 25 → verify → owner yes before full subset run.
+
+---
+
+## B11-2 — DW-NOMINATE Ingest: Files Written
+
+### Schema migration
+
+**File:** `prisma/migrations/20260715000000_add_member_ideology/migration.sql`  
+**Schema:** `prisma/schema.prisma` — new `MemberIdeology` model added (additive only).
+
+New table: `MemberIdeology` — one row per `(icpsrId, congress, chamber)`.  
+Columns: `icpsrId`, `bioguideId`, `congress`, `chamber`, `memberName`, `party`, `stateAbbrev`,  
+`nominateDim1`, `nominateDim2`, `geoMeanProb`, `metadata` (JSON: sourceUrl, fileSha256,  
+hasNokkenPoole, nokkenPoole1/2), `dataSource`, `createdAt`, `updatedAt`.  
+Indexes: `(icpsrId, congress, chamber)` unique; `bioguideId`; `(congress, chamber)`; `nominateDim1`.
+
+### Apply commands (owner runs, after pausing corpus promoter loop)
+
+```bash
+# 1. Apply migration SQL directly (shadow DB is broken — use execute path)
+npx prisma db execute \
+  --file prisma/migrations/20260715000000_add_member_ideology/migration.sql \
+  --schema prisma/schema.prisma
+
+# 2. Mark migration as applied in _prisma_migrations
+npx prisma migrate resolve \
+  --applied 20260715000000_add_member_ideology
+
+# 3. Verify migration status is clean
+npx prisma migrate status
+
+# 4. Download the CSV (if not already present)
+mkdir -p /tmp/voteview
+curl -L https://voteview.com/static/data/out/members/HSall_members.csv \
+  -o /tmp/voteview/HSall_members.csv
+
+# 5. Dry-run ingest to verify parsing
+npx tsx scripts/ingest-voteview-members.ts --dry-run
+
+# 6. PILOT: ingest Congress 118 only (most recent, bioguide IDs available, spot-checkable)
+npx tsx scripts/ingest-voteview-members.ts --execute --congress 118
+```
+
+### Pilot verification (Congress 118 — after step 6)
+
+Owner spot-checks 3–5 members from the `MemberIdeology` table against the live Voteview
+member browser at https://voteview.com/congress/house — confirm:
+- `nominateDim1` matches "DW-NOMINATE Dim 1" shown on member page (tolerance ±0.001)
+- `bioguideId` matches bioguide.congress.gov member record
+- `party` matches expected party affiliation
+
+**If pilot values match word-for-word: report back with "run full ingest".**  
+Full run: `npx tsx scripts/ingest-voteview-members.ts --execute`  
+Expected: ~13,000 rows.
+
+---
+
+## B11-3 — Landmark Subset Builder: File Written
+
+**File:** `scripts/build-landmark-subset.ts`
+
+Two criteria:
+- **Named landmarks** — ILIKE text search on `Source.title` for ~35 landmark bills (Civil Rights Act, VRA, ACA, AUMF, etc.). Every match traces to an actual DB record. Passage + cloture pairs included.
+- **Close-call** — `|yesCount - noCount| / (yesCount + noCount) < 0.005` on `voteview_v1`.
+
+Output: JSON array of `{ externalId, legislativeVoteId, sourceId, sourceTitle, voteDate, result, reason, reasonType }` tuples. Capped at 1,500 after dedup. Landmarks sorted first.
+
+### Run to generate the list
+
+```bash
+# On VPS (needs DATABASE_URL):
+npx tsx scripts/build-landmark-subset.ts --output /tmp/landmark-subset.json
+```
+
+**NEXT step after running:** Owner reviews `/tmp/landmark-subset.json` and confirms the landmark
+text matches look correct (anchor spot-check). Then: "run pilot" to proceed to the 25-entry
+Voteview XML fetch pilot (to be scripted in B11-3 continuation).
+
+---
+
 ## Phases Completed
 
 | Phase | Status | Notes |
 |-------|--------|-------|
 | B11-1 Census | ✅ Complete | Key findings above |
-| B11-2 DW-NOMINATE surfacing | 🔴 STOPPED | Scores not in DB; addendum written; awaiting owner approval |
-| B11-3 Member-vote backfill | 🔴 STOPPED | Landmark subset premise fails (39,815 vs 500-1,500); owner must redefine |
-| B11-4 Member profile analytics | ⏸ Pending B11-2/3 | `congress_votes_v1` members already have party-unity % rendered |
-| B11-5 Verification | ⏸ Pending | Nothing to verify yet |
+| B11-2 DW-NOMINATE surfacing | 🟡 Awaiting migration window | Schema + migration SQL + ingest script written; pilot commands ready |
+| B11-3 Member-vote backfill | 🟡 Awaiting landmark list review | Subset builder written; needs owner to run + confirm matches |
+| B11-4 Member profile analytics | ⏸ Pending B11-2 ingest | `congress_votes_v1` members already have party-unity % |
+| B11-5 Verification | ⏸ Pending | — |
 
 ---
 
