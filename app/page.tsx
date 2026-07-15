@@ -10,6 +10,7 @@ import { loadRecentTransitions } from "@/lib/feed";
 import { compactCount } from "@/lib/format";
 import { getSettlingCurveCounts } from "@/lib/curve-counts";
 import OnThisDay from "@/app/components/OnThisDay";
+import MobileTrajectoryCarousel from "@/app/components/MobileTrajectoryCarousel";
 
 export const revalidate = 3600;
 
@@ -103,13 +104,22 @@ export default async function Home() {
 
   return (
     <>
-      <HomeHero
-        claimCount={claimCount}
-        // Derived, never hand-written (audit item 2 / marketing house rule).
-        claimsCompact={compactCount(claimCount)}
-        settlingRate={settlingRate}
-        datedTrajectoryCount={datedTrajectoryCount}
-      />
+      {/* §3.4 mobile-first carousel — shown only below sm (< 640px).
+          Uses FEATURED_TRAJECTORIES with SettlingCurveMini, replacing the
+          survival fig as the above-the-fold visual on phones. */}
+      <div className="mx-auto max-w-5xl pt-4">
+        <MobileTrajectoryCarousel />
+      </div>
+      {/* Desktop/tablet hero — hidden on small screens where the carousel leads. */}
+      <div className="hidden sm:block">
+        <HomeHero
+          claimCount={claimCount}
+          // Derived, never hand-written (audit item 2 / marketing house rule).
+          claimsCompact={compactCount(claimCount)}
+          settlingRate={settlingRate}
+          datedTrajectoryCount={datedTrajectoryCount}
+        />
+      </div>
       {/* Claim example carousel — below the macro settling curve */}
       <div className="mx-auto max-w-5xl pb-4 pt-10">
         <div className="grid items-start gap-8 lg:grid-cols-[1fr_420px]">

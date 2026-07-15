@@ -28,10 +28,17 @@ export default function HomeHero({
   return (
     <div className="mx-auto max-w-5xl">
       {/* ── Hero ── */}
-      <section className="max-w-2xl pt-8 sm:pt-14">
+      {/*
+        Padding note: layout.tsx <main> carries py-8 (needed for ~80 non-homepage
+        routes). The hero's own pt-8 sm:pt-14 previously stacked on top of that.
+        Resolved: hero top padding reduced to pt-2 sm:pt-6 so total above-headline
+        space is py-8 + pt-2 = ~40px mobile / py-8 + pt-6 = ~56px desktop.
+      */}
+      <section className="max-w-2xl pt-2 sm:pt-6">
         <p className="text-xs font-mono uppercase tracking-[0.14em] text-amber-400/90">
           A research observatory · {claimCount.toLocaleString("en-US")} claims
         </p>
+        {/* HOOK: owner picks from briefs/b9-hook-candidates.md */}
         <h1
           className={`${newsreader.className} mt-4 text-[clamp(34px,4.6vw,46px)] font-medium leading-[1.14] text-gray-100`}
         >
