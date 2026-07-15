@@ -236,9 +236,13 @@ export default function SearchClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const inputFocusedRef = useRef(false);
 
+  // Only sync input from URL when not focused — avoids clobbering mid-keystroke.
   useEffect(() => {
-    setInput(urlQ);
+    if (!inputFocusedRef.current) {
+      setInput(urlQ);
+    }
   }, [urlQ]);
 
   const pushUrl = useCallback(
@@ -394,6 +398,8 @@ export default function SearchClient() {
           type="text"
           value={input}
           onChange={e => onInputChange(e.target.value)}
+          onFocus={() => { inputFocusedRef.current = true; }}
+          onBlur={() => { inputFocusedRef.current = false; }}
           placeholder="Search claims and sources…"
           autoFocus
           className="w-full bg-gray-900 border border-gray-700 text-gray-100 text-sm rounded px-3 py-2 placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
