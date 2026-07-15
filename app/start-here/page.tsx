@@ -205,14 +205,14 @@ export default function StartHerePage() {
         <div>
           <h2 className="text-xl font-bold text-white">Where to go next</h2>
           <p className="mt-1 text-sm text-gray-500 max-w-2xl">
-            The graph holds over 1.6 million claims. These are the most useful entry points
+            The graph holds over 1.7 million claims. These are the most useful entry points
             beyond the curated set.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 gap-3">
           {[
             { href: "/settling-curve", label: "Settling Curve", desc: "Interactive visualization for any trajectory" },
-            { href: "/search", label: "Search", desc: "Full-text across 1.6M claims" },
+            { href: "/search", label: "Search", desc: "Full-text + semantic across 1.76M claims" },
             { href: "/trajectories", label: "Trajectory Encyclopedia", desc: "All curated arcs by domain" },
             { href: "/reversals", label: "Court Reversals", desc: "Eight landmark overruling arcs" },
             { href: "/feed", label: "What's New", desc: "Latest trajectory activity" },
