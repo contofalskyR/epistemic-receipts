@@ -184,7 +184,7 @@ export default function LawSettlerClient({ trajectories }: { trajectories: LawTr
   const q = search.trim().toLowerCase();
   const visible = trajectories
     .filter((t) => filter === "all" || t.currentAxis === filter)
-    .filter((t) => !q || t.claim.toLowerCase().includes(q) || t.id.toLowerCase().includes(q) || t.id.toLowerCase().replace(/-/g, " ").includes(q));
+    .filter((t) => !q || t.claim.toLowerCase().includes(q) || t.id.toLowerCase().includes(q) || t.id.toLowerCase().replace(/-/g, " ").includes(q) || slugToTitle(t.id).toLowerCase().includes(q));
 
   const reversedCount = trajectories.filter((t) => t.currentAxis === "REVERSED").length;
   const settledCount = trajectories.filter((t) => t.currentAxis === "SETTLED").length;
@@ -316,7 +316,7 @@ export default function LawSettlerClient({ trajectories }: { trajectories: LawTr
             );
           })}
           <span style={{ marginLeft: "auto", fontSize: "0.78rem", color: C.faint, alignSelf: "center" }}>
-            {visible.length} trajectory{visible.length !== 1 ? "s" : ""}
+            {visible.length} {visible.length !== 1 ? "trajectories" : "trajectory"}
           </span>
         </div>
 
