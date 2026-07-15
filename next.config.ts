@@ -79,6 +79,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/stock-act", destination: "/congress-trades", permanent: true },
+      // B9-3: /foreign-legislation folded into /legislation (same data, US-inclusive UI).
+      // Nav entry removed; permanent redirect ensures old bookmarks and links land correctly.
+      { source: "/foreign-legislation", destination: "/legislation", permanent: true },
     ];
   },
 };

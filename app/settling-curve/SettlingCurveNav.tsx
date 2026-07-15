@@ -53,6 +53,14 @@ export default function SettlingCurveNav({
       >
         Epistemic Coverage
       </Link>
+      {/* B9-3: Law Settler Curve folded in as a section of the settling-curve suite.
+          Also remains a standalone Discover nav item at /law-settler. */}
+      <Link
+        href="/law-settler"
+        style={tabStyle(false)}
+      >
+        Law Doctrine
+      </Link>
     </div>
   );
 }
