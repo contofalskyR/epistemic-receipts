@@ -80,7 +80,7 @@ export default async function SettlingCurvePage() {
       transitionCount: sorted.length,
       hasReversal: sorted.some((s) => s.toAxis === "REVERSED"),
       hasAbandonment: sorted.some((s) => s.toAxis === "ABANDONED"),
-      currentAxis: (last?.toAxis ?? null) as string | null,
+      currentAxis: last?.toAxis ?? null,
       firstYear: first ? first.occurredAt.getUTCFullYear() : null,
       lastYear: last ? last.occurredAt.getUTCFullYear() : null,
       milestones: sorted.map((s) => ({
@@ -90,5 +90,5 @@ export default async function SettlingCurvePage() {
     };
   });
 
-  return <SettlingCurve initialList={initialList} />;
+  return <SettlingCurve initialList={initialList as Parameters<typeof SettlingCurve>[0]["initialList"]} />;
 }
