@@ -41,18 +41,54 @@ const PIPELINE_LABEL: Record<string, string> = {
   nara_catalog_v1: "US National Archives",
   voteview_v1: "Congressional Roll-Call Votes",
   openfda_labels_v1: "FDA Drug Labels",
-  hungary_legislation_v1: "Hungarian Legislation",
   chebi_v1: "ChEBI Chemical Entities",
   worldbank_v1: "World Bank Economic Data",
+  world_bank_v1: "World Bank Economic Data",
   drugsatfda_v1: "FDA Drug Approvals",
   jacar_v1: "Japan Asian Historical Records",
   who_gho_v1: "WHO Global Health Observatory",
   crossref_retractions_v1: "Crossref Retractions",
+  retraction_watch_v1: "Retraction Watch",
   congress_v1: "US Congress Bills (Enacted)",
+  congress_bills_v1: "US Congress Bills",
   vdem_v1: "V-Dem Democracy Dataset",
   courtlistener_scotus_v1: "SCOTUS Opinions",
   courtlistener_circuits_v1: "Federal Circuit Court Opinions",
+  courtlistener_state_supreme_v1: "State Supreme Court Opinions",
+  faers_adverse_v1: "FAERS Adverse Events",
+  faers_normalized_drugs_v1: "FAERS Drug Records",
+  miller_center_v1: "Miller Center",
+  frus_v1: "Foreign Relations of the US",
+  nasa_exoplanet_v1: "NASA Exoplanet Archive",
+  ofac_sdn_v1: "OFAC Sanctions List",
+  fred_v1: "FRED Economic Data",
+  openfec_v1: "OpenFEC Campaign Finance",
+  // Non-English legislation pipelines
+  riksdag_v1: "Riksdag (Sweden)",
+  bundestag_v1: "Bundestag (Germany)",
+  stasi_v1: "Stasi Records (Germany)",
+  japan_legislation_v1: "Japanese Legislation",
+  portugal_legislation_v1: "Portuguese Legislation",
+  poland_legislation_v1: "Polish Legislation",
+  brunei_legislation_v1: "Brunei Legislation",
+  hungary_legislation_v1: "Hungarian Legislation",
+  romania_legislation_v1: "Romanian Legislation",
+  czech_legislation_v1: "Czech Legislation",
+  italy_legislation_v1: "Italian Legislation",
+  chile_legislation_v1: "Chilean Legislation",
+  argentina_legislation_v1: "Argentine Legislation",
+  manual: "Curated Trajectories",
 };
+
+function friendlyLabel(pipelineId: string): string {
+  return (
+    PIPELINE_LABEL[pipelineId] ??
+    pipelineId
+      .replace(/_v\d+$/i, "")
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase())
+  );
+}
 
 function fmt(n: number) {
   if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + "M";
@@ -342,7 +378,7 @@ export default function EpistemicCoverage() {
                         <span style={{ color: C.faint, marginRight: 8, fontSize: 11, fontVariantNumeric: "tabular-nums" }}>
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        {PIPELINE_LABEL[p.pipeline] ?? p.pipeline}
+                        {friendlyLabel(p.pipeline)}
                       </span>
                       <span style={{ color: C.mut, fontVariantNumeric: "tabular-nums" }}>{fmtFull(p.count)}</span>
                     </div>

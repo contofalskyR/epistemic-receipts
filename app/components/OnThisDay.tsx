@@ -22,9 +22,13 @@ function fmtYear(d: Date): string {
 }
 
 function rankScore(row: OTDRow): number {
+  // Curated trajectories first (hand-verified epistemic arcs)
   if (row.externalId?.startsWith("trajectory:")) return 0;
-  if (row.isMultiStep) return 1;
-  return 2;
+  // Non-RECORDED transitions next (settlement, contestation, reversals — more interesting)
+  if (row.toAxis !== "RECORDED") return 1;
+  // Multi-step claims (have a settling curve) over single-point entries
+  if (row.isMultiStep) return 2;
+  return 3;
 }
 
 export default async function OnThisDay() {

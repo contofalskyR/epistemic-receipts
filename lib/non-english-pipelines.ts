@@ -11,6 +11,13 @@ export const NON_ENGLISH_PIPELINES: ReadonlySet<string> = new Set([
   "portugal_legislation_v1", // Portuguese
   "poland_legislation_v1",   // Polish
   "brunei_legislation_v1",   // Malay
+  // B14-3: missing legislation pipelines added (verified against /pipelines registry)
+  "romania_legislation_v1",  // Romanian
+  "hungary_legislation_v1",  // Hungarian
+  "czech_legislation_v1",    // Czech
+  "italy_legislation_v1",    // Italian
+  "chile_legislation_v1",    // Spanish
+  "argentina_legislation_v1", // Spanish
 ]);
 
 export const PIPELINE_LANGUAGE: Record<string, string> = {
@@ -22,6 +29,12 @@ export const PIPELINE_LANGUAGE: Record<string, string> = {
   portugal_legislation_v1: "Portuguese",
   poland_legislation_v1: "Polish",
   brunei_legislation_v1: "Malay",
+  romania_legislation_v1: "Romanian",
+  hungary_legislation_v1: "Hungarian",
+  czech_legislation_v1: "Czech",
+  italy_legislation_v1: "Italian",
+  chile_legislation_v1: "Spanish",
+  argentina_legislation_v1: "Spanish",
 };
 
 export function isNonEnglish(ingestedBy: string | null | undefined): boolean {

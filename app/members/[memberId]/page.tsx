@@ -59,7 +59,7 @@ export default async function MemberProfilePage({
 
   // Pull a recent sample of this member's votes (most recent first by vote date)
   // plus aggregate counts.
-  const [latestRow, totalVotes, chamberBreakdown, partyMixRows] = await Promise.all([
+  const [latestRow, totalVotes, chamberBreakdown, partyMixRows, yeaCount, nayCount] = await Promise.all([
     prisma.memberVote.findFirst({
       where: { memberId },
       orderBy: { createdAt: "desc" },
@@ -75,6 +75,12 @@ export default async function MemberProfilePage({
       by: ["memberParty"],
       where: { memberId },
       _count: { _all: true },
+    }),
+    prisma.memberVote.count({
+      where: { memberId, vote: { in: ["Yea", "Yes", "yea", "yes"] } },
+    }),
+    prisma.memberVote.count({
+      where: { memberId, vote: { in: ["Nay", "No", "nay", "no"] } },
     }),
   ]);
 
@@ -157,13 +163,7 @@ export default async function MemberProfilePage({
   const decided = unityRows[0] ? Number(unityRows[0].decided) : 0;
   const unityPct = decided > 0 ? (matches / decided) * 100 : null;
 
-  // Aggregate yea/nay counts for the headline cards.
-  const yeaCount = await prisma.memberVote.count({
-    where: { memberId, vote: { in: ["Yea", "Yes", "yea", "yes"] } },
-  });
-  const nayCount = await prisma.memberVote.count({
-    where: { memberId, vote: { in: ["Nay", "No", "nay", "no"] } },
-  });
+  const otherCount = totalVotes - yeaCount - nayCount;
 
   return (
     <div className="max-w-5xl mx-auto space-y-8">
@@ -184,10 +184,11 @@ export default async function MemberProfilePage({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         <Stat label="Total votes" value={totalVotes.toLocaleString()} />
         <Stat label="Yea" value={yeaCount.toLocaleString()} tint="text-green-400" />
         <Stat label="Nay" value={nayCount.toLocaleString()} tint="text-red-400" />
+        <Stat label="Other" value={otherCount.toLocaleString()} tint="text-gray-400" sub="present / not voting" />
         <Stat
           label="Party unity"
           value={unityPct === null ? "—" : `${unityPct.toFixed(1)}%`}
