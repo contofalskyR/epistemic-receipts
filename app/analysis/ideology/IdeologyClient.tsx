@@ -18,14 +18,25 @@ export type IdeologyPoint = {
   state: string | null;
 };
 
+// Voteview stores party as numeric codes; map to abbreviations for coloring/bucketing
+const PARTY_CODE_TO_ABBR: Record<string, string> = {
+  "100": "D",
+  "200": "R",
+  "328": "I",
+  "329": "I",
+  "522": "I",
+};
+function resolveParty(p: string): string {
+  return PARTY_CODE_TO_ABBR[p] ?? (p.length <= 2 ? p.toUpperCase() : "I");
+}
+
 const PARTY_COLORS: Record<string, string> = {
   D: "#60a5fa",
   R: "#f87171",
   I: "#a78bfa",
-  ID: "#a78bfa",
 };
 function partyColor(p: string): string {
-  return PARTY_COLORS[p.toUpperCase()] ?? "#94a3b8";
+  return PARTY_COLORS[resolveParty(p)] ?? "#94a3b8";
 }
 
 type TooltipEntry = { payload?: IdeologyPoint };
@@ -62,7 +73,7 @@ export function ScatterPlot({
   // Group by party for separate scatter series (different colors)
   const byParty: Record<string, IdeologyPoint[]> = {};
   for (const p of points) {
-    const key = p.party.toUpperCase();
+    const key = resolveParty(p.party);
     if (!byParty[key]) byParty[key] = [];
     byParty[key].push(p);
   }
@@ -164,7 +175,7 @@ export function Dim1Histogram({
     const idx = Math.min(BINS - 1, Math.floor((p.dim1 + 1) / binWidth));
     if (idx < 0 || idx >= BINS) continue;
     const b = bins[idx];
-    const pk = p.party.toUpperCase();
+    const pk = resolveParty(p.party);
     if (pk === "D") b.D++;
     else if (pk === "R") b.R++;
     else b.I++;
@@ -183,7 +194,7 @@ export function Dim1Histogram({
           </span>
         ))}
       </div>
-      <div className="flex items-end gap-px h-40 w-full">
+      <div className="flex items-stretch gap-px h-40 w-full">
         {bins.map((b) => (
           <div
             key={b.label}

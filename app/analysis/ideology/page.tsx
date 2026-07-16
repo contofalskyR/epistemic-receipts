@@ -90,6 +90,14 @@ export default async function IdeologyAnalysisPage({
     ORDER BY AVG("nominateDim1")
   `;
 
+  const PARTY_NAMES: Record<string, string> = {
+    "100": "Democrat", "200": "Republican", "328": "Independent",
+    "329": "Independent Democrat", "522": "Independent",
+  };
+  function partyLabel(code: string | null): string {
+    return code ? (PARTY_NAMES[code] ?? code) : "?";
+  }
+
   function fmt(v: number | null): string {
     if (v === null) return "—";
     return v >= 0 ? `+${v.toFixed(3)}` : v.toFixed(3);
@@ -166,7 +174,7 @@ export default async function IdeologyAnalysisPage({
               <tbody>
                 {partyStats.map((s) => (
                   <tr key={s.party ?? "_"} className="border-b border-gray-800/50 text-gray-400 hover:bg-gray-800/30">
-                    <td className="px-4 py-2 text-gray-200">{s.party ?? "?"}</td>
+                    <td className="px-4 py-2 text-gray-200">{partyLabel(s.party)}</td>
                     <td className="px-4 py-2 text-right">{Number(s.n).toLocaleString()}</td>
                     <td className="px-4 py-2 text-right">{fmt(s.avgdim1)}</td>
                     <td className="px-4 py-2 text-right">{fmt(s.mindim1)}</td>
