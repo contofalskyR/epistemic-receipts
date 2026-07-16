@@ -1,5 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
+
+const getDatasetRollcalls = unstable_cache(
+  async () => {
+    const rows = await prisma.$queryRaw<[{ n: bigint }]>`
+      SELECT COUNT(*) as n FROM "LegislativeVote"
+      WHERE "dataSource" = 'congress_votes_v1' AND "byPartyJson" IS NOT NULL
+    `;
+    return Number(rows[0]?.n ?? 505);
+  },
+  ["ideology-dataset-rollcalls"],
+  { revalidate: 3600 }
+);
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -124,12 +137,7 @@ export async function GET(req: NextRequest) {
   // Top 10 most recent defections (already ordered by voteDate DESC)
   const topDefections = defections.slice(0, 10);
 
-  // Total US rollcalls with party breakdown in this dataset
-  const datasetCountRow = await prisma.$queryRaw<[{ n: bigint }]>`
-    SELECT COUNT(*) as n FROM "LegislativeVote"
-    WHERE "dataSource" = 'congress_votes_v1' AND "byPartyJson" IS NOT NULL
-  `;
-  const datasetRollcalls = Number(datasetCountRow[0]?.n ?? 505);
+  const datasetRollcalls = await getDatasetRollcalls();
 
   return NextResponse.json({
     bioguideId,
