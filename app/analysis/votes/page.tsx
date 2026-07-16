@@ -1,5 +1,6 @@
 export const revalidate = 3600;
 
+import { unstable_cache } from "next/cache";
 import type { ReactNode } from "react";
 import PageHero from "@/app/components/PageHero";
 import {
@@ -8,6 +9,15 @@ import {
   type GlobalRow,
   type PartyRow,
 } from "@/lib/voteAnalysis";
+
+// Cache the expensive vote analysis computation for the ISR revalidation period.
+// Without this, buildVoteAnalysis runs on every render during static generation
+// and consistently times out at the 60s build-worker limit.
+const getCachedVoteAnalysis = unstable_cache(
+  buildVoteAnalysis,
+  ["vote-analysis"],
+  { revalidate: 3600 },
+);
 import DecadeTrendChart from "./DecadeTrendChart";
 import TopicHeatmap from "./TopicHeatmap";
 import PartyEconomicPanel, { type PartyEconomicData } from "./PartyEconomicPanel";
@@ -97,7 +107,7 @@ function NayBar({ nayPct }: { nayPct: number }) {
 }
 
 export default async function AnalysisVotesPage() {
-  const data = await buildVoteAnalysis();
+  const data = await getCachedVoteAnalysis();
   const {
     meta,
     countries,

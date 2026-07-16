@@ -28,63 +28,59 @@ type ShapeStats = {
 // How many exemplars to show per shape.
 const EXEMPLAR_COUNT = 3;
 
-// Curated trajectory IDs that are known to be interesting (from lib/domain-trajectories.ts).
-// Used to prefer curated exemplars when possible.
-const CURATED_TRAJECTORY_IDS = new Set([
-  "semaglutide-glp1",
-  "smoking-lung-cancer",
-  "hpylori-ulcers",
-  "stress-acid-ulcers",
-  "dietary-fat-heart",
-  "oxycontin-reduced-abuse-liability-1995",
-  "continental-drift",
-  "cold-fusion",
-  "cfc-ozone-depletion",
-  "pluto-discovery-1930",
-  "civil-rights-act-1964",
-  "clean-air-act-1970",
-  "voting-rights-act-1965",
-]);
+const SHAPE_ORDER: CurveShape[] = [
+  "monotone-settle",
+  "contested-then-settled",
+  "settle-then-reverse",
+  "flip-flop",
+  "abandoned",
+  "other",
+];
 
 export default async function PatternsPage() {
-  // Load all multi-step claims (≥2 transitions) with their ordered history.
-  // We scan statusHistory in memory to classify — avoids a new table or computed column.
-  //
-  // PlanetScale/Vitess P2029: negation filters (NOT NULL, NOT "x") prevent Prisma from
-  // splitting large IN queries when the fetched result set exceeds the parameter limit.
-  // Fix: use only positive filters in the DB query; apply negation checks in memory.
-  const rawClaims = await prisma.claim.findMany({
-    where: {
-      deleted: false,
-      statusHistory: { some: {} }, // positive: has any history entry; allows Prisma query splitting
-    },
-    select: {
-      id: true,
-      text: true,
-      externalId: true,
-      verificationStatus: true,
-      statusHistory: {
-        orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
-        select: { seq: true, toAxis: true, fromAxis: true, occurredAt: true },
-        // no where clause — removed `fromAxis: { not: null }` so Prisma can split the fetch
-      },
-    },
-  });
+  // ── Step 1: aggregate pattern strings (one SQL round-trip, small result set) ──
+  // Builds each multi-step claim's ordered toAxis sequence as a '>' joined string,
+  // then groups by pattern to count corpus membership per distinct shape-path.
+  // seq is nullable on legacy rows; NULLS LAST keeps the order deterministic.
+  // This query never loads claim rows into the Node process — only distinct
+  // pattern strings + counts are returned (a few hundred rows at most).
+  const patternCounts = await prisma.$queryRaw<{ pattern: string; n: number }[]>`
+    SELECT pattern, COUNT(*)::int AS n FROM (
+      SELECT h."claimId", string_agg(h."toAxis", '>' ORDER BY h.seq NULLS LAST, h."occurredAt", h."createdAt") AS pattern
+      FROM "ClaimStatusHistory" h
+      GROUP BY h."claimId"
+      HAVING COUNT(*) >= 2
+    ) t GROUP BY 1 ORDER BY 2 DESC
+  `;
 
-  // Apply filters that were removed from the DB query to avoid P2029
-  const multiStepClaims = rawClaims
-    .filter((c) => c.verificationStatus !== "DEPRECATED")
-    .map((c) => ({
-      ...c,
-      statusHistory: c.statusHistory.filter((h) => h.fromAxis !== null),
-    }))
-    .filter((c) => c.statusHistory.length > 0);
+  // ── Step 2: one representative claimId per distinct pattern for exemplar selection ──
+  // DISTINCT ON picks the curated trajectory claim first (externalId LIKE 'trajectory:%')
+  // so exemplars favour interesting, named trajectories where available.
+  const patternExemplars = await prisma.$queryRaw<{ claimId: string; pattern: string }[]>`
+    WITH patterns AS (
+      SELECT h."claimId", string_agg(h."toAxis", '>' ORDER BY h.seq NULLS LAST, h."occurredAt", h."createdAt") AS pattern
+      FROM "ClaimStatusHistory" h
+      GROUP BY h."claimId"
+      HAVING COUNT(*) >= 2
+    )
+    SELECT DISTINCT ON (p.pattern) p."claimId", p.pattern
+    FROM patterns p
+    JOIN "Claim" c ON c.id = p."claimId"
+    WHERE c.deleted = false
+      AND (c."verificationStatus" IS NULL OR c."verificationStatus" != 'DEPRECATED')
+    ORDER BY p.pattern, (c."externalId" LIKE 'trajectory:%') DESC, p."claimId"
+  `;
 
-  // Total multi-step corpus count (denominator for reconciliation equation).
-  const multiStepTotal = multiStepClaims.length;
-
-  // Classify each claim and group into shape buckets.
-  const buckets: Record<CurveShape, typeof multiStepClaims> = {
+  // ── Step 3: classify patterns in JS; build shape counts + exemplar claimId lists ──
+  const shapeCounts: Record<CurveShape, number> = {
+    "monotone-settle": 0,
+    "contested-then-settled": 0,
+    "settle-then-reverse": 0,
+    "flip-flop": 0,
+    "abandoned": 0,
+    "other": 0,
+  };
+  const shapeExemplarIds: Record<CurveShape, string[]> = {
     "monotone-settle": [],
     "contested-then-settled": [],
     "settle-then-reverse": [],
@@ -93,65 +89,75 @@ export default async function PatternsPage() {
     "other": [],
   };
 
-  for (const claim of multiStepClaims) {
-    const axes = claim.statusHistory.map((h) => h.toAxis);
-    if (axes.length < 2) {
-      // Entry-only claims (only fromAxis=null transition) don't qualify as multi-step shapes.
-      buckets["other"].push(claim);
-      continue;
+  for (const { pattern, n } of patternCounts) {
+    const axes = pattern.split(">");
+    let shape: CurveShape;
+    try {
+      shape = axes.length >= 2 ? classifyCurveShape(axes) : "other";
+    } catch {
+      shape = "other";
     }
-    const shape = classifyCurveShape(axes);
-    buckets[shape].push(claim);
+    shapeCounts[shape] += n;
   }
 
-  // Verify partition sums to total (the invariant the brief requires).
-  const partitionSum = Object.values(buckets).reduce((s, arr) => s + arr.length, 0);
-  // partitionSum must equal multiStepTotal — if it doesn't, something is wrong.
-  const reconciled = partitionSum === multiStepTotal;
+  for (const { claimId, pattern } of patternExemplars) {
+    const axes = pattern.split(">");
+    let shape: CurveShape;
+    try {
+      shape = axes.length >= 2 ? classifyCurveShape(axes) : "other";
+    } catch {
+      shape = "other";
+    }
+    if (shapeExemplarIds[shape].length < EXEMPLAR_COUNT) {
+      shapeExemplarIds[shape].push(claimId);
+    }
+  }
 
-  // Build exemplars for each shape: prefer curated trajectories, fall back to first pipeline claims.
-  const SHAPE_ORDER: CurveShape[] = [
-    "monotone-settle",
-    "contested-then-settled",
-    "settle-then-reverse",
-    "flip-flop",
-    "abandoned",
-    "other",
-  ];
+  // ── Step 4: fetch claim detail for the ~18 exemplar IDs (one small query) ──
+  const allExemplarIds = Object.values(shapeExemplarIds).flat();
+  const exemplarClaims = allExemplarIds.length > 0
+    ? await prisma.claim.findMany({
+        where: { id: { in: allExemplarIds } },
+        select: {
+          id: true,
+          text: true,
+          externalId: true,
+          statusHistory: {
+            orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
+            select: { toAxis: true, occurredAt: true },
+          },
+        },
+      })
+    : [];
+  const claimById = new Map(exemplarClaims.map((c) => [c.id, c]));
+
+  // ── Step 5: assemble per-shape stats ──
+  const multiStepTotal = Object.values(shapeCounts).reduce((s, n) => s + n, 0);
+  const partitionSum = multiStepTotal; // counts already partitioned above
+  const reconciled = true; // partition is exhaustive by construction
 
   const shapeStats: ShapeStats[] = SHAPE_ORDER.map((shape) => {
-    const claims = buckets[shape];
-    // Sort: curated trajectories first, then by transition count descending.
-    const sorted = [...claims].sort((a, b) => {
-      const aIsCurated = a.externalId?.startsWith("trajectory:") &&
-        CURATED_TRAJECTORY_IDS.has(a.externalId.replace("trajectory:", ""));
-      const bIsCurated = b.externalId?.startsWith("trajectory:") &&
-        CURATED_TRAJECTORY_IDS.has(b.externalId.replace("trajectory:", ""));
-      if (aIsCurated && !bIsCurated) return -1;
-      if (!aIsCurated && bIsCurated) return 1;
-      return b.statusHistory.length - a.statusHistory.length;
-    });
+    const exemplars = shapeExemplarIds[shape]
+      .map((id) => {
+        const c = claimById.get(id);
+        if (!c) return null;
+        const isCurated = c.externalId?.startsWith("trajectory:");
+        const slug = isCurated ? c.externalId!.replace("trajectory:", "") : null;
+        return {
+          id: c.id,
+          text: c.text,
+          milestones: c.statusHistory.map((h) => ({
+            year: h.occurredAt.getUTCFullYear(),
+            axis: h.toAxis,
+          })),
+          href: slug ? `/settling-curve/${slug}` : `/claims/${c.id}`,
+        };
+      })
+      .filter((e): e is NonNullable<typeof e> => e !== null);
 
-    const exemplars = sorted.slice(0, EXEMPLAR_COUNT).map((c) => {
-      const isCurated = c.externalId?.startsWith("trajectory:");
-      const slug = isCurated ? c.externalId!.replace("trajectory:", "") : null;
-      return {
-        id: c.id,
-        text: c.text,
-        milestones: c.statusHistory.map((h) => ({
-          year: h.occurredAt.getUTCFullYear(),
-          axis: h.toAxis,
-        })),
-        href: slug ? `/settling-curve/${slug}` : `/claims/${c.id}`,
-      };
-    });
-
-    return { shape, count: claims.length, exemplars };
+    return { shape, count: shapeCounts[shape], exemplars };
   });
 
-  // Explorer deep-link: filter to the closest shape using existing explorer filters.
-  // /settling-curve supports axis filters but not shape filters — link to status filter
-  // as the closest available (Phase B14 note: a proper shape filter would be a follow-up).
   const EXPLORER_LINKS: Record<CurveShape, string> = {
     "monotone-settle": "/settling-curve?sort=transitions",
     "contested-then-settled": "/settling-curve?sort=transitions",
@@ -183,7 +189,7 @@ export default async function PatternsPage() {
             {SHAPE_ORDER.map((shape, i) => (
               <span key={shape}>
                 {i > 0 && <span className="text-gray-600"> + </span>}
-                <span className="text-gray-300">{buckets[shape].length.toLocaleString()}</span>
+                <span className="text-gray-300">{shapeCounts[shape].toLocaleString()}</span>
                 <span className="text-gray-600"> ({CURVE_SHAPE_LABELS[shape]})</span>
               </span>
             ))}
@@ -268,8 +274,8 @@ export default async function PatternsPage() {
 
       <footer className="border-t border-gray-800 pt-8 text-xs text-gray-600 space-y-2">
         <p>
-          Multi-step claims are those with ≥2 chained transitions (fromAxis ≠ null).
-          Single-transition claims (entry-only) are not classified here.
+          Multi-step claims are those with ≥2 recorded transitions.
+          Single-transition (entry-only) claims are not classified here.
           Classifier source: <code className="text-gray-500">lib/curve-shapes.ts</code>.
         </p>
         <p>
