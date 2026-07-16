@@ -1,3 +1,5 @@
+import { AXIS_COLOR } from "@/lib/status";
+
 // Compact, server-rendered SVG sparkline of a claim's epistemic milestones.
 // Deliberately NOT the full /settling-curve component — no client JS, no data
 // fetching. It takes already-loaded milestones and draws dots across a timeline,
@@ -17,13 +19,13 @@ export type MiniMilestone = {
 };
 
 export const AXIS_VIS: Record<string, { color: string; level: number; label: string }> = {
-  ABANDONED:    { color: "#6b7280", level: 0.10, label: "Abandoned" },
-  REVERSED:     { color: "#ef4444", level: 0.16, label: "Reversed" },
-  OPEN:         { color: "#38bdf8", level: 0.24, label: "Open" },
-  UNRESOLVABLE: { color: "#a78bfa", level: 0.30, label: "Unresolvable" },
-  CONTESTED:    { color: "#f59e0b", level: 0.36, label: "Contested" },
-  RECORDED:     { color: "#94a3b8", level: 0.48, label: "Recorded" },
-  SETTLED:      { color: "#22c55e", level: 0.92, label: "Settled" },
+  ABANDONED:    { color: AXIS_COLOR["ABANDONED"]    ?? "#6b7280", level: 0.10, label: "Abandoned" },
+  REVERSED:     { color: AXIS_COLOR["REVERSED"]     ?? "#ef4444", level: 0.16, label: "Reversed" },
+  OPEN:         { color: AXIS_COLOR["OPEN"]         ?? "#38bdf8", level: 0.24, label: "Open" },
+  UNRESOLVABLE: { color: AXIS_COLOR["UNRESOLVABLE"] ?? "#a78bfa", level: 0.30, label: "Unresolvable" },
+  CONTESTED:    { color: AXIS_COLOR["CONTESTED"]    ?? "#f59e0b", level: 0.36, label: "Contested" },
+  RECORDED:     { color: AXIS_COLOR["RECORDED"]     ?? "#94a3b8", level: 0.48, label: "Recorded" },
+  SETTLED:      { color: AXIS_COLOR["SETTLED"]      ?? "#22c55e", level: 0.92, label: "Settled" },
 };
 
 export default function SettlingCurveMini({
