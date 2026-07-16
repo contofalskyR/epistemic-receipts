@@ -1,88 +1,23 @@
 import Link from "next/link";
-import { Prisma } from "@prisma/client";
-import { prisma } from "@/lib/prisma";
 import { AXIS_BG_CLASS, AXIS_LABEL } from "@/lib/status";
-import { NON_ENGLISH_PIPELINES } from "@/lib/non-english-pipelines";
+import { selectTodayRows, rankAndFilter, type OTDRow } from "@/lib/on-this-day";
 
-const MAX_ITEMS = 8;
-
-type OTDRow = {
-  claimId: string;
-  claimText: string;
-  externalId: string | null;
-  ingestedBy: string | null;
-  fromAxis: string | null;
-  toAxis: string;
-  occurredAt: Date;
-  isMultiStep: boolean;
-};
+export type { OTDRow };
 
 function fmtYear(d: Date): string {
   return String(d.getUTCFullYear());
 }
 
-function rankScore(row: OTDRow): number {
-  // Curated trajectories first (hand-verified epistemic arcs)
-  if (row.externalId?.startsWith("trajectory:")) return 0;
-  // Non-RECORDED transitions next (settlement, contestation, reversals — more interesting)
-  if (row.toAxis !== "RECORDED") return 1;
-  // Multi-step claims (have a settling curve) over single-point entries
-  if (row.isMultiStep) return 2;
-  return 3;
-}
-
-export default async function OnThisDay() {
+export default async function OnThisDay({ rows: rowsProp }: { rows?: OTDRow[] } = {}) {
   const now = new Date();
-  const mm = now.getUTCMonth() + 1;
-  const dd = now.getUTCDate();
-
-  // month-day string for display e.g. "July 13"
   const monthDay = now.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     timeZone: "UTC",
   });
 
-  const nonEnglish = Array.from(NON_ENGLISH_PIPELINES);
-
-  const rows = await prisma.$queryRaw<OTDRow[]>(
-    Prisma.sql`
-      SELECT
-        c.id AS "claimId",
-        LEFT(c.text, 120) AS "claimText",
-        c."externalId",
-        c."ingestedBy",
-        csh."fromAxis",
-        csh."toAxis",
-        csh."occurredAt",
-        EXISTS (
-          SELECT 1 FROM "ClaimStatusHistory" csh2
-          WHERE csh2."claimId" = c.id AND csh2."fromAxis" IS NOT NULL
-        ) AS "isMultiStep"
-      FROM "ClaimStatusHistory" csh
-      JOIN "Claim" c ON c.id = csh."claimId"
-      WHERE csh."datePrecision" = 'DAY'
-        AND EXTRACT(MONTH FROM csh."occurredAt") = ${mm}
-        AND EXTRACT(DAY   FROM csh."occurredAt") = ${dd}
-        AND c.deleted = false
-        AND (c."verificationStatus" IS NULL OR c."verificationStatus" != 'DEPRECATED')
-        AND (c."ingestedBy" IS NULL OR c."ingestedBy" != ALL(${nonEnglish}::text[]))
-      LIMIT ${MAX_ITEMS * 6}
-    `
-  );
-
-  if (!rows.length) return null;
-
-  // Rank and deduplicate by claimId (keep first occurrence per claim)
-  const seen = new Set<string>();
-  const sorted = rows
-    .sort((a, b) => rankScore(a) - rankScore(b) || a.occurredAt.getTime() - b.occurredAt.getTime())
-    .filter((r) => {
-      if (seen.has(r.claimId)) return false;
-      seen.add(r.claimId);
-      return true;
-    })
-    .slice(0, MAX_ITEMS);
+  const rawRows = rowsProp ?? (await selectTodayRows());
+  const sorted = rankAndFilter(rawRows);
 
   if (!sorted.length) return null;
 

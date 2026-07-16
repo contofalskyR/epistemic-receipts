@@ -11,6 +11,7 @@ import { compactCount } from "@/lib/format";
 import { getSettlingCurveCounts } from "@/lib/curve-counts";
 import OnThisDay from "@/app/components/OnThisDay";
 import MobileTrajectoryCarousel from "@/app/components/MobileTrajectoryCarousel";
+import { selectTodayRows, rankAndFilter } from "@/lib/on-this-day";
 
 export const revalidate = 3600;
 
@@ -36,6 +37,7 @@ async function loadHomepageData() {
     settlingRate,
     datedTrajectoryCount,
     whatsNew,
+    otdRawRows,
   ] = await Promise.all([
     prisma.claim.count({ where: { verificationStatus: { not: "DEPRECATED" } } }),
     prisma.claimStatusHistory.count(),
@@ -71,6 +73,7 @@ async function loadHomepageData() {
       },
     }),
     loadRecentTransitions(6),
+    selectTodayRows(),
   ]);
 
   const ingestedByCounts = new Map<string, number>();
@@ -95,11 +98,11 @@ async function loadHomepageData() {
     retractedPapers: sumTags("crossref_retractions_v1", "retraction_watch_v1"),
   };
 
-  return { claimCount, transitionCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew };
+  return { claimCount, transitionCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew, otdRows: rankAndFilter(otdRawRows) };
 }
 
 export default async function Home() {
-  const { claimCount, transitionCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew } =
+  const { claimCount, transitionCount, stats, ingestedByCounts, settlingRate, datedTrajectoryCount, whatsNew, otdRows } =
     await loadHomepageData();
 
   return (
@@ -164,7 +167,7 @@ export default async function Home() {
           <HomeCarousel />
         </div>
       </div>
-      <OnThisDay />
+      <OnThisDay rows={otdRows} />
       <HomepageSections stats={stats} ingestedByCounts={ingestedByCounts} whatsNew={whatsNew} />
     </>
   );

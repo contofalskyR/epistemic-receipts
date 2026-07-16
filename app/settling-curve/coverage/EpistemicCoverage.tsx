@@ -158,7 +158,7 @@ export default function EpistemicCoverage() {
   const maxPipeline = data ? Math.max(...data.topPipelines.map((p) => p.count)) : 1;
 
   return (
-    <div style={{ background: C.bg, color: C.ink, marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem", minHeight: "100vh" }}>
+    <div style={{ background: C.bg, color: C.ink, marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem", marginBottom: "-2rem", minHeight: "100vh" }}>
       <SettlingCurveNav active="coverage" />
 
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "32px 24px 64px" }}>
