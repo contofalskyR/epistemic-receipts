@@ -293,6 +293,12 @@ export default function EpistemicCoverage() {
                     detail: "Five curated trajectory seed rows that failed the transition-contract validation during the C1 seeding pass. The claims exist; their status curves were not written.",
                     log: "MATERIAL-LOG 2026-07-12",
                   },
+                  {
+                    label: "Landmark member-vote residue (Congress 103 House)",
+                    count: "12",
+                    detail: "12 Congress 103 House rollcalls excluded — tally mismatch between parsed vote record and Voteview API (never inferred). The other 1,488 of 1,500 landmark rollcalls carry member-level records.",
+                    log: "briefs/b11-report.md 2026-07-16",
+                  },
                 ].map((item) => (
                   <div
                     key={item.label}
