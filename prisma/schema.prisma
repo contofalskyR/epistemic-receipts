@@ -607,9 +607,25 @@ model Profile {
   userId    String?
   createdAt DateTime   @default(now())
   bookmarks Bookmark[]
+  follows   Follow[]
   user      User?      @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   @@index([userId])
+}
+
+// B12: polymorphic follow — one row per (profile, entity). Anonymous-first:
+// profileId comes from the same hashed-key Profile the bookmarks use.
+model Follow {
+  id         String   @id @default(cuid())
+  profileId  String
+  entityType String // "claim" | "trajectory" | "topic" | "domain" | "story"
+  entityId   String
+  createdAt  DateTime @default(now())
+  profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, entityType, entityId])
+  @@index([profileId])
+  @@map("Follow")
 }
 
 model Bookmark {
