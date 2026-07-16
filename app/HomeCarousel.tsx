@@ -213,6 +213,7 @@ export default function HomeCarousel() {
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(true);
+  const reducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const pending = useRef<number | null>(null);
 
   const goTo = useCallback((i: number) => {
@@ -234,10 +235,10 @@ export default function HomeCarousel() {
   const next = useCallback(() => goTo((idx + 1) % SLIDES.length), [idx, goTo]);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || reducedMotion) return;
     const id = setInterval(next, 5500);
     return () => clearInterval(id);
-  }, [paused, next]);
+  }, [paused, reducedMotion, next]);
 
   const s = SLIDES[idx];
   const tagColor = AXIS_COLOR[s.finalAxis] ?? "#94a3b8";
@@ -253,7 +254,7 @@ export default function HomeCarousel() {
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(6px)",
-          transition: "opacity 0.28s ease, transform 0.28s ease",
+          transition: reducedMotion ? "none" : "opacity 0.28s ease, transform 0.28s ease",
         }}
       >
         {/* Tag + meta */}
@@ -274,8 +275,6 @@ export default function HomeCarousel() {
           <MiniCurve slide={s} />
         </div>
 
-        {/* Excerpt below curve — same claim, muted */}
-        <p className="mt-2.5 line-clamp-2 text-[12px] leading-relaxed text-gray-600">{s.text}</p>
       </div>
 
       {/* Footer — always visible so dots don't jump */}

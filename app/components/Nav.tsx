@@ -11,7 +11,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
     blurb: "Browse the knowledge graph",
     items: [
       { href: "/settling-curve", label: "Settling Curve", desc: "How a claim settled — or unraveled — over time" },
-      { href: "/search", label: "Search", desc: "Full-text across 1.6M claims" },
+      { href: "/search", label: "Search", desc: "Full-text + semantic across 1.76M claims" },
       { href: "/trajectories", label: "Trajectory Encyclopedia" },
       { href: "/fields", label: "Topic Taxonomies" },
       { href: "/prereq-graph", label: "Evidence Chains" },
@@ -260,7 +260,7 @@ export default function Nav() {
             onClick={() => setMobileOpen(false)}
             className="block py-2 mb-1 text-gray-200 hover:text-white font-medium transition-colors"
           >
-            ⌕ Search 1.6M claims
+            ⌕ Search 1.76M claims
           </Link>
           <Link
             href="/about"

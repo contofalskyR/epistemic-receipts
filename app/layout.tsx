@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   // "1.6M+" matches the Nav/search copy convention; the old "1M+ verified
   // facts" default disagreed with the homepage's derived 1.62M figure.
   description:
-    "A live record of epistemic status across science, law, and history — 1.6M+ sourced claims from legislation, court decisions, scientific papers, and declassified archives.",
+    "A live record of epistemic status across science, law, and history — 1.7M+ sourced claims from legislation, court decisions, scientific papers, and declassified archives.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
