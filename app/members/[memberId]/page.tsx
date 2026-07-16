@@ -80,6 +80,14 @@ export default async function MemberProfilePage({
 
   if (!latestRow || totalVotes === 0) notFound();
 
+  // Normalize raw Voteview chamber strings: "House of Representatives" → "House".
+  const chamberMap: Record<string, number> = {};
+  for (const row of chamberBreakdown) {
+    const key = row.chamber === "House of Representatives" ? "House" : (row.chamber ?? "Unknown");
+    chamberMap[key] = (chamberMap[key] ?? 0) + row._count._all;
+  }
+  const normalizedChambers = Object.entries(chamberMap).map(([chamber, count]) => ({ chamber, count }));
+
   // Pull paginated vote history joined to the LegislativeVote + Source.
   const memberRows = await prisma.memberVote.findMany({
     where: { memberId },
@@ -198,13 +206,13 @@ export default async function MemberProfilePage({
       <section>
         <h2 className="text-xs text-gray-500 font-mono uppercase tracking-widest mb-3">Chamber breakdown</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {chamberBreakdown.map(c => (
+          {normalizedChambers.map(c => (
             <div key={c.chamber} className="rounded-lg border border-gray-800 bg-gray-900 p-4 flex items-center justify-between">
               <div>
                 <div className="text-sm text-gray-200">{c.chamber}</div>
-                <div className="text-xs text-gray-500 mt-1">{((c._count._all / totalVotes) * 100).toFixed(1)}% of votes</div>
+                <div className="text-xs text-gray-500 mt-1">{((c.count / totalVotes) * 100).toFixed(1)}% of votes</div>
               </div>
-              <div className="text-2xl font-semibold text-white">{c._count._all.toLocaleString()}</div>
+              <div className="text-2xl font-semibold text-white">{c.count.toLocaleString()}</div>
             </div>
           ))}
         </div>
