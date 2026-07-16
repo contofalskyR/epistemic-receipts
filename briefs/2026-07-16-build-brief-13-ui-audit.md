@@ -56,6 +56,8 @@ Inventory every chart/graph component (curve rails, SettlingCurveMini, survival 
 
 `briefs/b13-ui-audit-findings.md` on the branch: every finding as `severity | route/file | what | proposed fix | effort(S/M/L)`, with severities: **P0** = renders wrong information (ordering, precision, mislabeled data); **P1** = broken or embarrassing (contrast failures, dead links, collision, missing reduced-motion); **P2** = polish (voice, spacing, animation feel). Plus: the inline-fix commit list (typos/aria/format one-liners you shipped), the sort-order table, the contrast table, and a proposed fix-pass grouping (what a Brief #14 would batch, in what order). The visual-pass findings will be merged into this file — leave a placeholder section.
 
+Note: `briefs/b13-visual-audit-findings.md` already exists — the owner's browser pass is complete. Merge your mechanical findings with it (don't overwrite; append or note the merge point).
+
 ## STOP conditions
 
 Any edit to claim/source/quoted text; any visual redesign attempted inline; a P0 ordering finding tempting a data fix (report it — ordering repairs on rows are data-lane, owner-gated); two consecutive failures on one criterion. Blocked beats invented.
