@@ -128,17 +128,24 @@ export async function GET(req: NextRequest) {
       // whereClause must expose it via the terminal LATERAL join.
       const axisJoin = axisFilter ? terminalAxisLateralJoin() : "";
 
+      // Snapshot base params before adding limit/offset so count, curves, and
+      // claims can all fire in parallel (they share the WHERE clause but
+      // claims needs two extra $N params that would shift the count's indexes).
+      const baseParams = [...params];
+
+      // Start count + curves + claims in parallel (tsvector — no embedding call).
+      // B14-2 perf: was 3 sequential round-trips; now all three start together.
+      const countPromise = prisma.$queryRawUnsafe<[{ count: bigint }]>(
+        `SELECT count(*)::bigint AS count FROM "Claim" c ${axisJoin} WHERE ${whereClause}`,
+        ...baseParams,
+      );
+
       // ── Settling curves matching the query (first page only) ──────────────
       // Multi-step claims (a chained transition exists) ranked by relevance
       // then curve richness. Curated trajectories included — link by slug.
-      if (offset === 0) {
-        try {
-          const curveRows = await prisma.$queryRawUnsafe<Array<{
-            id: string;
-            text: string;
-            externalId: string | null;
-            transitionCount: bigint;
-          }>>(
+      type CurveRawRow = { id: string; text: string; externalId: string | null; transitionCount: bigint };
+      const curveRowsPromise: Promise<CurveRawRow[]> = offset === 0
+        ? prisma.$queryRawUnsafe<CurveRawRow[]>(
             `SELECT c."id", c."text", c."externalId",
                     (SELECT COUNT(*) FROM "ClaimStatusHistory" h2 WHERE h2."claimId" = c."id") AS "transitionCount"
                FROM "Claim" c
@@ -152,58 +159,15 @@ export async function GET(req: NextRequest) {
               ORDER BY ts_rank(c."searchVector", websearch_to_tsquery('english', $${qParamNum})) DESC,
                        "transitionCount" DESC
               LIMIT 3`,
-            ...params,
-          );
-
-          if (curveRows.length > 0) {
-            const detail = await prisma.claim.findMany({
-              where: { id: { in: curveRows.map((r) => r.id) } },
-              select: {
-                id: true,
-                statusHistory: {
-                  orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
-                  select: { seq: true, toAxis: true, occurredAt: true },
-                },
-              },
-            });
-            const historyById = new Map(detail.map((d) => [d.id, d.statusHistory]));
-            curves = curveRows.map((r) => {
-              const history = historyById.get(r.id) ?? [];
-              const years = history.map((h) => h.occurredAt.getUTCFullYear());
-              return {
-                id: r.id,
-                curveId: r.externalId?.startsWith("trajectory:")
-                  ? r.externalId.replace(/^trajectory:/, "")
-                  : r.id,
-                text: r.text,
-                transitionCount: Number(r.transitionCount),
-                firstYear: years.length ? Math.min(...years) : null,
-                lastYear: years.length ? Math.max(...years) : null,
-                hasReversal: history.some((h) => h.toAxis === "REVERSED"),
-                milestones: history.map((h) => ({
-                  year: h.occurredAt.getUTCFullYear(),
-                  axis: h.toAxis,
-                })),
-              };
-            });
-          }
-        } catch {
-          // The curve rail is decoration on search — never break results.
-          curves = [];
-        }
-      }
-
-      const countResult = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
-        `SELECT count(*)::bigint AS count FROM "Claim" c ${axisJoin} WHERE ${whereClause}`,
-        ...params,
-      );
-      claimsCount = Number(countResult[0].count);
+            ...baseParams,
+          ).catch(() => [] as CurveRawRow[])
+        : Promise.resolve([]);
 
       params.push(limit, offset);
       const limitParam = paramIdx++;
       const offsetParam = paramIdx++;
 
-      const claimRows = await prisma.$queryRawUnsafe<Array<{
+      const claimRowsPromise = prisma.$queryRawUnsafe<Array<{
         id: string;
         text: string;
         currentStatus: string;
@@ -254,6 +218,53 @@ export async function GET(req: NextRequest) {
          LIMIT $${limitParam} OFFSET $${offsetParam}`,
         ...params,
       );
+
+      // Await all three in parallel — wall-clock is now max(count, curves, claims)
+      // instead of count + curves + claims.
+      const [countResult, rawCurveRows, claimRows] = await Promise.all([
+        countPromise,
+        curveRowsPromise,
+        claimRowsPromise,
+      ]);
+      claimsCount = Number(countResult[0].count);
+
+      // Curve detail depends on rawCurveRows but is small (≤3 IDs).
+      if (rawCurveRows.length > 0) {
+        try {
+          const detail = await prisma.claim.findMany({
+            where: { id: { in: rawCurveRows.map((r) => r.id) } },
+            select: {
+              id: true,
+              statusHistory: {
+                orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+                select: { seq: true, toAxis: true, occurredAt: true },
+              },
+            },
+          });
+          const historyById = new Map(detail.map((d) => [d.id, d.statusHistory]));
+          curves = rawCurveRows.map((r) => {
+            const history = historyById.get(r.id) ?? [];
+            const years = history.map((h) => h.occurredAt.getUTCFullYear());
+            return {
+              id: r.id,
+              curveId: r.externalId?.startsWith("trajectory:")
+                ? r.externalId.replace(/^trajectory:/, "")
+                : r.id,
+              text: r.text,
+              transitionCount: Number(r.transitionCount),
+              firstYear: years.length ? Math.min(...years) : null,
+              lastYear: years.length ? Math.max(...years) : null,
+              hasReversal: history.some((h) => h.toAxis === "REVERSED"),
+              milestones: history.map((h) => ({
+                year: h.occurredAt.getUTCFullYear(),
+                axis: h.toAxis,
+              })),
+            };
+          });
+        } catch {
+          curves = [];
+        }
+      }
 
       claims = claimRows.map(c => ({
         id: c.id,
@@ -445,5 +456,11 @@ export async function GET(req: NextRequest) {
     curves,
     claims,
     sources,
+  }, {
+    headers: {
+      // Cache identical queries at the CDN for 30s — eliminates repeat cold-start
+      // for popular/repeated searches. Short TTL keeps results fresh enough.
+      "Cache-Control": "public, s-maxage=30, stale-while-revalidate=120",
+    },
   });
 }

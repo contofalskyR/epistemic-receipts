@@ -269,10 +269,11 @@ function truncate(s: string, n: number): string {
   return s.slice(0, n).trimEnd() + "…";
 }
 
-function SettlingCurveInner() {
+function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[] }) {
   const searchParams = useSearchParams();
-  const [list, setList] = useState<TrajectoryListItem[]>([]);
-  const [listLoading, setListLoading] = useState(true);
+  const [list, setList] = useState<TrajectoryListItem[]>(initialList ?? []);
+  // Skip loading state when the page already supplied an initial list (ISR/SSR path).
+  const [listLoading, setListLoading] = useState(!initialList?.length);
   const [listError, setListError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
   // Initialized from the URL so deep links open straight into the detail view
@@ -1902,10 +1903,10 @@ function SettlingCurveInner() {
   );
 }
 
-export default function SettlingCurve() {
+export default function SettlingCurve({ initialList }: { initialList?: TrajectoryListItem[] }) {
   return (
     <Suspense fallback={null}>
-      <SettlingCurveInner />
+      <SettlingCurveInner initialList={initialList} />
     </Suspense>
   );
 }
