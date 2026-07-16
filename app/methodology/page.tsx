@@ -393,6 +393,24 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      {/* Member voting analytics — reversal definition */}
+      <Section id="voting-reversal-definition" title="What counts as a voting reversal">
+        <p className="text-sm text-gray-400 leading-relaxed">
+          Member pages display a <span className="text-gray-300 font-semibold">position reversals</span> subsection when a member cast opposite votes on the same question. The bar for a qualifying reversal is intentionally strict:
+        </p>
+        <ul className="list-disc pl-5 text-sm text-gray-400 space-y-1 mt-2">
+          <li>The two votes must be on the <span className="text-gray-300">identical passage question</span> of the <span className="text-gray-300">identical bill</span> (same bill number and Congress).</li>
+          <li>Votes on different amendments to the same bill do <em>not</em> qualify — amendments are distinct questions, not reversed positions.</li>
+          <li>Votes on the same bill in different Congresses do <em>not</em> qualify — changed context is editorial territory, not a query-detectable flip.</li>
+        </ul>
+        <p className="text-sm text-gray-400 leading-relaxed mt-2">
+          Under the 1,500-rollcall landmark subset currently covered, zero members meet this definition. The subsection remains hidden until a real case enters the data. The looser bill-family matching (same bill, any amendment, same Congress) is retained as an internal diagnostic — it flags <em>candidate</em> reversals for editorial review — but is never rendered automatically.
+        </p>
+        <p className="text-sm text-gray-400 leading-relaxed mt-2">
+          All voting stats are scoped to the covered landmark subset, with the denominator printed on each stat.
+        </p>
+      </Section>
+
       {/* Footer links */}
       <div className="pt-2 border-t border-gray-800 flex flex-wrap gap-4 text-xs text-gray-500">
         <Link href="/corrections" className="hover:text-gray-300 transition-colors">
