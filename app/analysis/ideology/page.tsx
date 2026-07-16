@@ -2,6 +2,7 @@ export const revalidate = 3600;
 
 import { prisma } from "@/lib/prisma";
 import { ScatterPlot, Dim1Histogram, type IdeologyPoint } from "./IdeologyClient";
+import { IdeologyPicker } from "./IdeologyPicker";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata = {
@@ -47,14 +48,15 @@ export default async function IdeologyAnalysisPage({
   const chamber = sp.chamber ?? chamberOptions[0] ?? "House";
 
   const rawPoints = await prisma.$queryRaw<
-    { dim1: number; dim2: number | null; party: string | null; name: string; state: string | null }[]
+    { dim1: number; dim2: number | null; party: string | null; name: string; state: string | null; bioguideId: string | null }[]
   >`
     SELECT
       "nominateDim1" AS dim1,
       "nominateDim2" AS dim2,
       party,
       "memberName" AS name,
-      "stateAbbrev" AS state
+      "stateAbbrev" AS state,
+      "bioguideId" AS "bioguideId"
     FROM "MemberIdeology"
     WHERE congress = ${congress}
       AND chamber = ${chamber}
@@ -68,6 +70,7 @@ export default async function IdeologyAnalysisPage({
     party: r.party ?? "?",
     name: r.name,
     state: r.state,
+    bioguideId: r.bioguideId,
   }));
 
   const chamberRow = available.find((r) => r.congress === congress && r.chamber === chamber);
@@ -118,48 +121,18 @@ export default async function IdeologyAnalysisPage({
       <PageHero
         eyebrow="Analysis · Ideology"
         title="Congressional Ideology"
-        lede="DW-NOMINATE scores place members on a −1 (liberal) to +1 (conservative) economic axis, estimated from roll-call voting patterns."
+        lede="DW-NOMINATE scores are estimated from a member's full roll-call record and describe voting geometry — where a member's pattern falls relative to all others. Scores do not describe what a member believes or why they voted."
       />
 
       {/* Congress / chamber picker */}
-      <div className="flex flex-wrap gap-3 items-center">
-        <form method="get" className="flex flex-wrap gap-3 items-center">
-          <label className="flex items-center gap-2 text-xs text-gray-400">
-            <span className="font-mono text-gray-600 uppercase tracking-widest">Congress</span>
-            <select
-              name="congress"
-              defaultValue={String(congress)}
-              className="bg-gray-900 border border-gray-700 text-gray-200 text-xs rounded px-2 py-1 focus:outline-none focus:border-gray-500"
-            >
-              {[...new Set(available.map((r) => r.congress))].map((c) => (
-                <option key={c} value={String(c)}>
-                  {ordinal(c)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="flex items-center gap-2 text-xs text-gray-400">
-            <span className="font-mono text-gray-600 uppercase tracking-widest">Chamber</span>
-            <select
-              name="chamber"
-              defaultValue={chamber}
-              className="bg-gray-900 border border-gray-700 text-gray-200 text-xs rounded px-2 py-1 focus:outline-none focus:border-gray-500"
-            >
-              {chamberOptions.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            type="submit"
-            className="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded border border-gray-700 transition-colors"
-          >
-            Update
-          </button>
-        </form>
-        <span className="text-xs text-gray-600 font-mono ml-auto">
+      <div className="flex flex-wrap gap-3 items-center justify-between">
+        <IdeologyPicker
+          congress={congress}
+          chamber={chamber}
+          congresses={[...new Set(available.map((r) => r.congress))]}
+          chamberOptions={chamberOptions}
+        />
+        <span className="text-xs text-gray-600 font-mono">
           {totalRows.toLocaleString()} total member-congress scores in DB
         </span>
       </div>
@@ -225,8 +198,34 @@ export default async function IdeologyAnalysisPage({
         </div>
       </section>
 
+      {/* Taxonomy cross-links */}
+      <section className="rounded-lg border border-gray-800 bg-gray-900/50 p-4 text-xs text-gray-500 space-y-2">
+        <p className="font-mono text-gray-600 uppercase tracking-widest">What do these axes represent?</p>
+        <p>
+          DW-NOMINATE scores are estimated from each member{"'"}s full voting record using a spatial model of legislative
+          choice (Lewis, Poole, Rosenthal et al., Voteview). The model derives positions from votes alone; a score is
+          the geometric point that best predicts a member{"'"}s roll-call pattern — not a label for their beliefs.
+        </p>
+        <p>
+          Dim 1 tracks the economic cleavage that has organized US legislative coalitions since the New Deal. In modern
+          Congresses, Dim 1 and party affiliation carry nearly the same information; a score on this axis rarely
+          separates the two signals. Dim 2 captured a second cross-cutting cleavage — most distinctive before the
+          post-1965 realignment — and carries less predictive weight in contemporary sessions.
+        </p>
+        <p>
+          <a href="/ideologies#liberalism" className="text-amber-500/80 hover:text-amber-400 underline">
+            Liberalism
+          </a>{" "}
+          and{" "}
+          <a href="/ideologies#conservatism" className="text-amber-500/80 hover:text-amber-400 underline">
+            conservatism
+          </a>{" "}
+          — definitional background in the Epistemic Receipts taxonomy. No ism is attached to a vote or member on this page.
+        </p>
+      </section>
+
       {/* Attribution */}
-      <section className="text-xs text-gray-600 border-t border-gray-800 pt-4">
+      <section className="text-xs text-gray-600 border-t border-gray-800 pt-4 space-y-2">
         <p>
           <strong className="text-gray-500">Source:</strong> Lewis, Jeffrey B., Keith Poole, Howard Rosenthal, Adam Boche,
           Aaron Rudkin, and Luke Sonnet (2024).{" "}
@@ -234,12 +233,17 @@ export default async function IdeologyAnalysisPage({
           <a href="https://voteview.com" target="_blank" rel="noreferrer" className="hover:text-gray-400 underline">
             https://voteview.com
           </a>
-          . DW-NOMINATE scores estimated from all available roll-call votes for each Congress.
+          . DW-NOMINATE scores are estimated from all available roll-call votes for each Congress; each member{"'"}s
+          score is the geometric position that best predicts their full voting record.
         </p>
-        <p className="mt-2">
-          Dim 1 (economic axis): negative scores indicate more liberal voting patterns (favoring redistribution,
-          expanded government); positive scores indicate more conservative patterns. Dim 2 (social/racial axis)
-          was more predictive in the pre-civil-rights era and is secondary in modern Congresses.
+        <p>
+          Dim 1 (economic dimension): the axis that has most consistently separated US legislative coalitions since
+          the New Deal. The model defines the poles from votes, not from policy labels; the axis is named
+          {" "}"economic" because that is the cleavage it has empirically tracked, not because any vote is judged on
+          its economic content. By convention, negative scores sit at the pole that has tracked liberal voting
+          patterns, positive at the conservative pole — labels for where coalitions have landed, not judgments of
+          any vote{"'"}s content. Dim 2 (social/racial dimension): a second cross-cutting cleavage most predictive
+          before the post-1965 party realignment.
         </p>
       </section>
     </div>

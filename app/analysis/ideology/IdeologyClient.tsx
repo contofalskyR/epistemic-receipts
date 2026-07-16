@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { IdeologyPanel } from "./IdeologyPanel";
 import {
   CartesianGrid,
   ResponsiveContainer,
@@ -17,6 +18,7 @@ export type IdeologyPoint = {
   party: string;
   name: string;
   state: string | null;
+  bioguideId: string | null;
 };
 
 function ordinal(n: number): string {
@@ -81,6 +83,8 @@ export function ScatterPlot({
   chamber: string;
   totalMembers: number;
 }) {
+  const [panelId, setPanelId] = useState<string | null>(null);
+
   // Group by party for separate scatter series (different colors)
   const byParty: Record<string, IdeologyPoint[]> = {};
   for (const p of points) {
@@ -147,13 +151,28 @@ export function ScatterPlot({
               fill={partyColor(p)}
               opacity={0.7}
               r={3}
+              cursor="pointer"
+              onClick={(data: IdeologyPoint) => {
+                if (data?.bioguideId) {
+                  setPanelId(data.bioguideId);
+                } else if (data?.bioguideId === null) {
+                  // fallback: no bioguideId, nothing to open
+                }
+              }}
             />
           ))}
         </ScatterChart>
       </ResponsiveContainer>
       <p className="text-[10px] text-gray-600 mt-2 text-right">
-        {ordinal(congress)} Congress · {chamber} · DW-NOMINATE via Voteview (Lewis et al.)
+        {ordinal(congress)} Congress · {chamber} · DW-NOMINATE via Voteview (Lewis et al.) · click a dot for detail
       </p>
+
+      <IdeologyPanel
+        bioguideId={panelId}
+        congress={congress}
+        chamber={chamber}
+        onClose={() => setPanelId(null)}
+      />
     </div>
   );
 }
