@@ -4681,3 +4681,24 @@ Added `permissions: contents: read` to 10 of 11 workflow files. All actions were
 - `next.config.ts` — serverExternalPackages cleanup
 - `.github/workflows/*.yml` (10 files) — permissions block added
 - `CONSULTANT.md` — this entry
+
+---
+
+### 2026-07-16 — B11: Members Ideology & Landmark Roll-Call Analytics (Build Brief #11, close-out)
+
+**Branch:** `loop/votes-b11d-2026-07-16` (b11b UI + b11c subset merged to main earlier; this branch carries B11-4/B11-5). **Zero DB writes this loop** — enrichment ran earlier with owner approval.
+
+**What shipped (this branch):**
+
+- `app/members/[memberId]/LandmarkAnalytics.tsx` — party-unity %, attendance %, notable-votes timeline (10 most recent), reversal detection; all scoped to the 1,500-rollcall landmark subset, denominators in-DOM ("across N landmark roll-calls with member-level records"), D-4 empty-state when a member has 0 covered votes.
+- `lib/landmark.ts` + `data/landmark-bill-families.json` — subset ids + exact Voteview bill_number/vote_question per rollcall (1,434/1,500; 66 without a bill number omitted, no fuzzy fallback). Builder: `scripts/build-landmark-bill-families.ts`.
+- Known-residues entry on `/settling-curve/coverage`: 12 Congress 103 House rollcalls excluded — tally mismatch between parsed vote record and Voteview API (never inferred).
+- `briefs/b11-report.md` — placeholders filled, all phases marked complete.
+
+**Judgment call flagged for owner:** the brief's reversal definition (bill-family match only) flags opposite votes on *different amendments* as flip-flops (~25 per member, 1,212 members — verified by SQL). Shipped stricter definition: identical passage-type vote_question + identical bill + same Congress. Current data has zero such reversals, so the subsection never renders today. One-line loosening in `lib/landmark.ts` if brief-as-written is preferred.
+
+**Data state now:** MemberIdeology 51,061 rows (100% ingest, all Congresses/chambers). Landmark MemberVote 345,388 rows (6,799 pilot + 338,589 full) across 1,488/1,500 rollcalls, 12 residue. Full 113k voteview backfill: decision still open (bulk CSV recommended over API loop if pursued).
+
+**Verification:** scoped tsc clean (full tsc OOMs on 4 GB VPS; scoped config `tsconfig.b11d-check.json` follows `tsconfig.checkonly.json` precedent), eslint clean on changed files, 3 stats recomputed by independent SQL match rendered values exactly (Hoyer 94.8%/97.4%, Inouye 95.5%/94.2%, Kennedy 93.6%/94.5%), denominators confirmed in DOM, prod renders ideology on House+Senate member pages.
+
+**Ops note:** mid-session, another process switched the shared checkout from the work branch to main — one commit briefly landed on local main (never pushed; moved to the loop branch, local main reset to origin/main). This loop then moved to a dedicated worktree (`er-b11d-votes`), matching the er-aa* pattern. Recommend all future loops use worktrees from the start.

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
 import IdeologySection from "./IdeologySection";
+import LandmarkAnalytics from "./LandmarkAnalytics";
 
 export const revalidate = 600;
 
@@ -188,6 +189,10 @@ export default async function MemberProfilePage({
 
       <Suspense fallback={null}>
         <IdeologySection memberId={memberId} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LandmarkAnalytics memberId={memberId} />
       </Suspense>
 
       <section>

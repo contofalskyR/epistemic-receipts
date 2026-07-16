@@ -303,9 +303,14 @@ Voteview XML fetch pilot (to be scripted in B11-3 continuation).
 
 ## Spot-check Table (congress_votes_v1 — current data)
 
-| memberId | Name | Party | State | Total MemberVotes |
-|----------|------|-------|-------|-------------------|
-| To be filled in B11-4 after owner approvals | | | | |
+| memberId | Name | Chamber | Landmark covered | Party unity | Attendance |
+|----------|------|---------|------------------|-------------|------------|
+| I000025 | INOUYE, Daniel Ken | Senate | 486 | 95.5% (429/449) | 94.2% |
+| H000874 | HOYER, Steny Hamilton | House | 420 | 94.8% (386/407) | 97.4% |
+| K000105 | KENNEDY, Edward Moore (Ted) | Senate | 466 | 93.6% (383/409) | 94.5% |
+
+Filled 2026-07-16 (B11-5) — computed by independent SQL against the landmark subset;
+matched the rendered `/members/[memberId]` LandmarkAnalytics values exactly.
 
 ---
 
@@ -525,3 +530,80 @@ See `briefs/b11-c-checkpoint.md` for the full memo. Summary:
 ### Workstream A — still awaiting owner's final ingest count
 
 MemberIdeology final count: **51,061 rows** (50,504 inserted + 557 updated from pilot). Confirmed 2026-07-16 02:43 UTC.
+
+---
+
+## B11-4 + B11-5 Close-out (2026-07-16, branch `loop/votes-b11d-2026-07-16`)
+
+### Final confirmed data state
+
+| Metric | Value |
+|--------|-------|
+| MemberIdeology rows | 51,061 (all Congresses, both chambers, 100% ingest) |
+| Landmark MemberVote rows | 345,388 (6,799 pilot + 338,589 full run) |
+| Landmark rollcalls with member records | 1,488 / 1,500 |
+| Residue | 12 (Congress 103 House cluster — tally mismatch parsed vs. Voteview API; never inferred) |
+| Bioguide join | exact ICPSR key; 6,185 rows memberId=null (pre-bioguide members, by design) |
+
+Residue is now public on `/settling-curve/coverage` → Known residues.
+
+### B11-4 — Member profile analytics (shipped)
+
+`app/members/[memberId]/LandmarkAnalytics.tsx` — server component, all stats scoped to the
+1,500-vote landmark subset (ids via `lib/landmark.ts` ← `data/landmark-rollcalls.json`), D-4
+empty-state (renders nothing when the member has 0 covered votes):
+
+1. **Party unity %** — member vs. own-party majority over plain Yea/Nay landmark votes;
+   numerator/denominator + "across N landmark roll-calls with member-level records" in DOM.
+2. **Attendance %** — (Yea+Nay) / (Yea+Nay+Not Voting); paired/announced positions excluded
+   from every denominator (not cast votes). Same denominator label.
+3. **Notable votes timeline** — 10 most recent covered landmark votes: date, Source name,
+   position, result, linked to `/votes/[id]`.
+4. **Notable reversals** — DEFINITION TIGHTENED DURING EXECUTION, owner should review:
+   the brief specified exact bill-family matching only. Executed as specified, this flags
+   opposite votes on *different amendments* to the same bill — ~25 false "reversals" per
+   member, corpus-wide (verified by SQL: 6,708 member-family groups under name-match,
+   1,212 members affected). That would render misleading flip-flop claims on nearly every
+   member page. Shipped definition: opposite plain votes on the **identical passage-type
+   vote_question of the identical bill in the same Congress** (exact strings from the
+   canonical Voteview rollcalls CSV; no fuzzy matching). Under this definition the covered
+   subset contains **zero** reversals (verified corpus-wide), so the subsection currently
+   never renders — honest, and it activates automatically if future data contains one.
+   Loosening back to bill-family-only is a one-line change in `lib/landmark.ts` if the owner
+   prefers the brief-as-written behavior.
+
+Supporting artifacts:
+- `data/landmark-bill-families.json` — 1,434/1,500 rollcalls with exact Voteview
+  `bill_number` + `vote_question` (66 entries have no bill number → omitted, no fallback).
+  Built by `scripts/build-landmark-bill-families.ts` from `HSall_rollcalls.csv` (fetched
+  2026-07-16); deterministic, committed.
+- Known-residues entry added to `/settling-curve/coverage` (12 Congress 103 House rollcalls).
+
+### B11-5 — Verification (2026-07-16)
+
+- `tsc` clean via scoped `tsconfig.b11d-check.json` (full `npx tsc --noEmit` OOMs on the
+  4 GB VPS — precedent `tsconfig.checkonly.json`; full pass also ran clean on the pre-refactor
+  commit before memory pressure rose).
+- `npx eslint` clean on all changed files.
+- 3 rendered stats recomputed by independent SQL (table above) — exact match.
+- Denominators confirmed present in DOM (view-source contains the "across N landmark
+  roll-calls with member-level records" string per stat).
+- Spot-checks: House member (H000874 Hoyer) + Senate member (I000025 Inouye). Prod
+  (epistemic-receipts.vercel.app) renders the DW-NOMINATE ideology section on both — the
+  earlier stuck deployment is resolved. The new landmark analytics + notable-votes section
+  verified on a local dev server of this branch (no PR/preview exists by instruction);
+  rendered unity/attendance values matched the SQL table above exactly on both pages, and
+  "Notable reversals" correctly did not render (0 cases).
+
+### Phases — FINAL (2026-07-16)
+
+| Phase | Status | Branch |
+|-------|--------|--------|
+| B11-1 Census | ✅ Complete | b11 |
+| B11-2 DW-NOMINATE ingest (A) | ✅ Complete — 51,061 rows confirmed | owner Mac + b11 |
+| B11-2 DW-NOMINATE UI (B) | ✅ Complete | b11b (merged) |
+| B11-3 Landmark subset build (C) | ✅ Complete | b11c (merged) |
+| B11-3 Enrichment pilot (25 entries) | ✅ Complete — 6,799 rows, 0 residue | b11c |
+| B11-3 Full enrichment run | ✅ Complete — 338,589 rows, 12 residue | owner-approved run |
+| B11-4 Member profile analytics | ✅ Complete | b11d |
+| B11-5 Verification | ✅ Complete | b11d |
