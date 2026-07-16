@@ -368,7 +368,19 @@ a post-B11 decision with a dedicated brief.
 
 43.8% US coverage at 35% ingest completion is on track. EU Parliament members (1,269) correctly excluded — no DW-NOMINATE for European legislators by design.
 
-**AWAITING OWNER:** Paste terminal output confirming 51,061 rows. A-final memo will follow.
+**CONFIRMED (2026-07-16 02:43 UTC):** Owner pasted terminal output.
+
+```
+CSV SHA-256: 0432a6864354a90f9fa1479caa57ab9ea12fb2d69dd72ddd35d5dd2940776188
+Total rows in CSV: 51,061
+Rows after filter: 51,061
+Inserted: 50,504
+Updated: 557   ← pilot (Congress 118) rows updated
+Skipped: 0
+MemberIdeology rows in DB: 51,061
+```
+
+Ingest complete. Join sanity re-run queued.
 
 ---
 
@@ -512,5 +524,4 @@ See `briefs/b11-c-checkpoint.md` for the full memo. Summary:
 
 ### Workstream A — still awaiting owner's final ingest count
 
-MemberIdeology grew 25,056 → 27,454+ during this session (Mac ingest running). Record the
-final count here when the owner sends it; then re-run the join sanity + pilot re-join pass.
+MemberIdeology final count: **51,061 rows** (50,504 inserted + 557 updated from pilot). Confirmed 2026-07-16 02:43 UTC.
