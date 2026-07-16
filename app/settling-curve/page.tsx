@@ -63,7 +63,7 @@ export default async function SettlingCurvePage() {
       claimEmergedAt: true,
       ingestedBy: true,
       statusHistory: {
-        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+        orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
         select: { community: true, toAxis: true, occurredAt: true },
       },
     },
