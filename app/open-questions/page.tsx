@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { loadDormantContested, loadRecentlyWoken } from "@/lib/dormancy";
+import { AXIS_BG_CLASS } from "@/lib/status";
 
 export const revalidate = 3600;
 
@@ -95,7 +96,7 @@ export default async function OpenQuestionsPage() {
           <ol className="space-y-2">
             {dormant.map((item, idx) => (
               <li key={item.claimId} className="flex items-start gap-3">
-                <span className="shrink-0 w-7 text-right text-[11px] font-mono text-gray-700 pt-1">
+                <span className="shrink-0 w-7 text-right text-[11px] font-mono text-gray-500 pt-1">
                   {idx + 1}.
                 </span>
                 <Link
@@ -112,8 +113,8 @@ export default async function OpenQuestionsPage() {
                       {dormancyLabel(item.dormancyYears)}
                     </p>
                   </div>
-                  <span className="shrink-0 text-[10px] font-mono text-gray-700 whitespace-nowrap">
-                    CONTESTED
+                  <span className={`shrink-0 text-[10px] font-mono px-1.5 py-0.5 rounded whitespace-nowrap ${AXIS_BG_CLASS["CONTESTED"]}`}>
+                    Contested
                   </span>
                 </Link>
               </li>

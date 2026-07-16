@@ -193,3 +193,33 @@ Notable items confirmed by code inspection:
 ---
 
 *Findings generated from code-side audit on branch `loop/site-b13-2026-07-16`. Visual-pass items imported from `b13-visual-audit-findings.md` (owner's browser pass, 2026-07-16). Merge is additive — this doc supersedes neither.*
+
+---
+
+## B14 Close-out Status (branch `loop/site-b14-2026-07-16`, 2026-07-16)
+
+| Finding | Status | Notes |
+|---------|--------|-------|
+| `/patterns` page missing (P0) | **FIXED** — B14-1 | Page built per B6-3 spec; added to PUBLIC_ROUTES; CONSULTANT.md root-cause written |
+| seq ordering — DomainCurveRail (P1) | **FIXED** — B14-1 | seq-first orderBy + select; regression test in `tests/unit/seq-ordering.test.ts` |
+| seq ordering — search route (P1) | **FIXED** — B14-1 | seq-first orderBy + select |
+| seq ordering — history route (P1) | **FIXED** — B14-1 | Both findMany calls updated |
+| seq ordering — law-settler (P1) | **FIXED** — B14-1 | orderBy + in-memory JS sort both updated |
+| seq ordering — case-studies (P1) | **FIXED** — B14-1 | orderBy + select updated |
+| seq ordering — lib/following.ts (P2) | **FIXED** — B14-1 | orderBy + select updated |
+| /settling-curve cold load 9 skeletons (P1) | **FIXED** — B14-2 | ISR + initialList from server; SettlingCurveInner accepts initialList |
+| /search ~5–9s cold query (P1) | **FIXED** — B14-2 | count/curves/claims parallelized; s-maxage=30 cache header added |
+| /members stat tiles Yea+Nay≠Total (P1) | **FIXED** — B14-3 | "Other" tile added (present/not-voting = Total−Yea−Nay); yea/nay moved to Promise.all |
+| /feed "0 new claims" counter suspect (P1) | **INVESTIGATED** — no bug | API + client logic correct; 0 is accurate when no new claims since last visit |
+| /feed OnThisDay non-English leak — Romanian (P1) | **FIXED** — B14-3 | 6 missing pipelines added to `lib/non-english-pipelines.ts` (Romania, Hungary, Czech, Italy, Chile, Argentina) |
+| / vs /feed OnThisDay disagree (P1) | **INVESTIGATED** — single impl | Both import the same `app/components/OnThisDay.tsx`; was a false-positive. Ranking logic updated in B14-3 |
+| /settling-curve/coverage raw pipeline tags (P1) | **FIXED** — B14-3 | PIPELINE_LABEL expanded; `friendlyLabel()` fallback added so no raw IDs render |
+| open-questions CONTESTED badge contrast ~1.8:1 (P1) | **FIXED** — B14-4 | Replaced with AXIS_BG_CLASS.CONTESTED (amber-900/amber-300); rank number gray-700→gray-500 |
+| SettlingCurveMini color re-declaration (P2) | **FIXED** — B14-4 | AXIS_VIS.color fields now sourced from `AXIS_COLOR` (lib/status) |
+| corpus metadata "1.6M" stale (P2) | **FIXED** — B14-4 | Metadata description made evergreen; CorpusCharts fallback → "…" |
+| HomeSurvivalFig survival curve color (P2) | **OWNER-CALL** — deferred | #34d399 vs canonical #22c55e — design decision, not a bug |
+| "Coming — V2" card (P2) | **OWNER-CALL** — deferred | Status of V2 unknown; owner to decide: reframe or remove |
+| Story pages formatDate duplicate (P2) | **DEFERRED** | Broad refactor (8+ files) — not scoped for B14; propose as standalone B15 task |
+| /claims default sort diversification (P2) | **DEFERRED** | NARA-wall P2 — needs design decision on first-page ordering |
+| /members default browse empty state (P2) | **DEFERRED** | UX enhancement, no clear spec |
+| b11-report.md phases table stale (B14-5) | **FIXED** — B14-5 | B11-2/3/4/5 marked complete with confirmed data values |

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import SettlingCurve from "./SettlingCurve";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
+import { prisma } from "@/lib/prisma";
+
+// ISR: revalidate the curated trajectory list hourly so cold load shows real cards, not skeletons.
+export const revalidate = 3600;
 
 type Props = {
   searchParams: Promise<{ t?: string }>;
@@ -43,6 +47,48 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   };
 }
 
-export default function SettlingCurvePage() {
-  return <SettlingCurve />;
+export default async function SettlingCurvePage() {
+  // Fetch curated trajectories at ISR time so the initial grid renders real cards
+  // without a client fetch round-trip. The client component still fetches the full
+  // list (curated + auto) in the background for filter support.
+  const curated = await prisma.claim.findMany({
+    where: {
+      deleted: false,
+      OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
+      externalId: { startsWith: "trajectory:" },
+    },
+    select: {
+      externalId: true,
+      text: true,
+      claimEmergedAt: true,
+      ingestedBy: true,
+      statusHistory: {
+        orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
+        select: { community: true, toAxis: true, occurredAt: true },
+      },
+    },
+  });
+
+  const initialList = curated.map((c) => {
+    const sorted = c.statusHistory;
+    const last = sorted[sorted.length - 1];
+    const first = sorted[0];
+    return {
+      id: c.externalId!.replace(/^trajectory:/, ""),
+      claim: c.text.length > 160 ? c.text.slice(0, 157) + "…" : c.text,
+      communities: [...new Set(sorted.map((s) => s.community))],
+      transitionCount: sorted.length,
+      hasReversal: sorted.some((s) => s.toAxis === "REVERSED"),
+      hasAbandonment: sorted.some((s) => s.toAxis === "ABANDONED"),
+      currentAxis: last?.toAxis ?? null,
+      firstYear: first ? first.occurredAt.getUTCFullYear() : null,
+      lastYear: last ? last.occurredAt.getUTCFullYear() : null,
+      milestones: sorted.map((s) => ({
+        year: s.occurredAt.getUTCFullYear(),
+        axis: s.toAxis,
+      })),
+    };
+  });
+
+  return <SettlingCurve initialList={initialList as Parameters<typeof SettlingCurve>[0]["initialList"]} />;
 }

@@ -294,10 +294,10 @@ Voteview XML fetch pilot (to be scripted in B11-3 continuation).
 | Phase | Status | Notes |
 |-------|--------|-------|
 | B11-1 Census | ✅ Complete | Key findings above |
-| B11-2 DW-NOMINATE surfacing | 🟡 Awaiting migration window | Schema + migration SQL + ingest script written; pilot commands ready |
-| B11-3 Member-vote backfill | 🟡 Awaiting landmark list review | Subset builder written; needs owner to run + confirm matches |
-| B11-4 Member profile analytics | ⏸ Pending B11-2 ingest | `congress_votes_v1` members already have party-unity % |
-| B11-5 Verification | ⏸ Pending | — |
+| B11-2 DW-NOMINATE surfacing | ✅ Complete | 51,061 MemberIdeology rows ingested (2026-07-16) |
+| B11-3 Member-vote backfill | ✅ Complete | 345,388 landmark MemberVote rows; 1,488/1,500 rollcalls covered |
+| B11-4 Member profile analytics | ✅ Complete | LandmarkAnalytics shipped; see close-out section below |
+| B11-5 Verification | ✅ Complete | 3 members spot-checked; values matched rendered DOM exactly |
 
 ---
 

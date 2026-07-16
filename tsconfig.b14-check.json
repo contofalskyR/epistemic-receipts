@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "noEmit": true
+  },
+  "include": [
+    "lib/curve-shapes.ts",
+    "lib/following.ts",
+    "lib/publicEdition.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

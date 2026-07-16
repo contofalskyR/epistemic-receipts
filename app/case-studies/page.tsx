@@ -61,8 +61,8 @@ async function getCaseStudies(): Promise<CaseStudy[]> {
       text: true,
       claimEmergedAt: true,
       statusHistory: {
-        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-        select: { toAxis: true },
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+        select: { seq: true, toAxis: true },
       },
     },
   });

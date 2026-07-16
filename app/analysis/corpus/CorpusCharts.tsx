@@ -181,7 +181,7 @@ export default function CorpusCharts() {
         >
           A structural view of every epistemic baseline in the record — not the curated
           trajectories, but all{" "}
-          {data ? data.totalHistoryRows.toLocaleString() : "1.6M"} ClaimStatusHistory rows. Where
+          {data ? data.totalHistoryRows.toLocaleString() : "…"} ClaimStatusHistory rows. Where
           does knowledge enter the record, which communities ratify it, when did it emerge, and
           which pipelines produced it.
         </p>

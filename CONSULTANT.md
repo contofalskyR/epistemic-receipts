@@ -4702,3 +4702,34 @@ Added `permissions: contents: read` to 10 of 11 workflow files. All actions were
 **Verification:** scoped tsc clean (full tsc OOMs on 4 GB VPS; scoped config `tsconfig.b11d-check.json` follows `tsconfig.checkonly.json` precedent), eslint clean on changed files, 3 stats recomputed by independent SQL match rendered values exactly (Hoyer 94.8%/97.4%, Inouye 95.5%/94.2%, Kennedy 93.6%/94.5%), denominators confirmed in DOM, prod renders ideology on House+Senate member pages.
 
 **Ops note:** mid-session, another process switched the shared checkout from the work branch to main — one commit briefly landed on local main (never pushed; moved to the loop branch, local main reset to origin/main). This loop then moved to a dedicated worktree (`er-b11d-votes`), matching the er-aa* pattern. Recommend all future loops use worktrees from the start.
+
+---
+
+### 2026-07-16 — B14: UI Fix Pass — seq ordering, /patterns build, honesty fixes, P2 sweep
+
+**Branch:** `loop/site-b14-2026-07-16`. **Zero DB writes.**
+
+#### /patterns — Root Cause Analysis (B14 amendment 2)
+
+`/patterns` was specified in Build Brief #6 phase B6-3 (2026-07-14) as a page showing classifier shapes over multi-step claims. B6's completion report claimed the page was built, but it was never committed. The root cause: **the B6 worker reported completion without a final `git log` check**. The page was not in the filesystem, not in `PUBLIC_ROUTES`, and had zero route references in any app file — a full zero, not a partial build. This escaped three verification layers:
+
+1. B6's own verification section listed `tsc`/ESLint green and vitest green, but did not verify `app/patterns/` existed on disk.
+2. B13's visual audit (browser pass) flagged the 404 and correctly identified it as a build task.
+3. B13's mechanical audit confirmed the page was absent from both the filesystem and `PUBLIC_ROUTES`.
+
+**How B14 fixed it:** Built `lib/curve-shapes.ts` (pure classifier over ordered `toAxis` sequence), `app/patterns/page.tsx` (ISR, daily revalidation, reconciliation equation displayed on page), unit tests for the classifier. Added `/patterns` to `PUBLIC_ROUTES` only after the page was confirmed on disk.
+
+**Structural safeguard added:** the reconciliation equation is rendered on the page itself (`partitionSum === multiStepTotal`), so any future data drift or classification bug produces a visible ⚠ on the live page rather than a silent mismatch.
+
+#### Seq ordering fix (B14 amendment 3)
+
+Six curve consumers were ordering by `occurredAt` instead of `seq`. Fixed all six with seq-first `orderBy` (see ORDERING-SEMANTICS-2026-07-08.md for the decision). Files changed:
+
+- `app/components/DomainCurveRail.tsx` — seq-first orderBy + seq in select
+- `app/api/search/route.ts` — seq-first orderBy + seq in select
+- `app/api/history/route.ts` — seq-first orderBy (both machine and curated lens)
+- `app/law-settler/page.tsx` — seq-first orderBy + in-memory sort uses seq ?? Infinity
+- `app/case-studies/page.tsx` — seq-first orderBy + seq in select
+- `lib/following.ts` — seq-desc for take:1 query (gets latest transition correctly)
+
+Regression test: `tests/unit/seq-ordering.test.ts` — covers the YEAR-precision edge case (the original problem from the doc), null-seq fallback, and canonical orderBy shapes.

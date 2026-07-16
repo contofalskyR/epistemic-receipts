@@ -99,8 +99,8 @@ async function loadMachineLens(): Promise<EncyclopediaItem[]> {
   // Milestones for the selected claims only (~1k claims, few rows each).
   const history = await prisma.claimStatusHistory.findMany({
     where: { claimId: { in: rows.map((r) => r.id) } },
-    orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-    select: { claimId: true, toAxis: true, community: true, occurredAt: true },
+    orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+    select: { claimId: true, seq: true, toAxis: true, community: true, occurredAt: true },
   });
   const byClaim = new Map<string, typeof history>();
   for (const h of history) {
@@ -140,8 +140,8 @@ async function loadCuratedLens(): Promise<EncyclopediaItem[]> {
       text: true,
       claimEmergedAt: true,
       statusHistory: {
-        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-        select: { community: true, toAxis: true, occurredAt: true },
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+        select: { seq: true, community: true, toAxis: true, occurredAt: true },
       },
     },
   });

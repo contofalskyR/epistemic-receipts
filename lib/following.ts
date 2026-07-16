@@ -9,6 +9,7 @@
  */
 
 import { createHash } from "crypto";
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
 export const FOLLOW_ENTITY_TYPES = [
@@ -83,18 +84,18 @@ type ClaimLite = {
   statusHistory: { occurredAt: Date }[];
 };
 
-const CLAIM_LITE_SELECT = {
+const CLAIM_LITE_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
   id: true,
   text: true,
   epistemicAxis: true,
   verificationStatus: true,
   deleted: true,
   statusHistory: {
-    orderBy: { occurredAt: "desc" as const },
+    orderBy: [{ seq: "desc" as const }, { occurredAt: "desc" as const }],
     take: 1,
-    select: { occurredAt: true },
+    select: { seq: true, occurredAt: true },
   },
-} as const;
+});
 
 function claimIsDeprecated(c: ClaimLite): boolean {
   return c.deleted || c.verificationStatus === "DEPRECATED";
