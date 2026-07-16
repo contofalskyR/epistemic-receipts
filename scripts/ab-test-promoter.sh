@@ -31,7 +31,7 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 ATTEMPTED_LOG="$PROJECT_DIR/logs/corpus-promoter-attempted.jsonl"
 OUT_DIR="$PROJECT_DIR/logs/ab-test"
 MODEL_A="${MODEL_A:-claude-opus-4-8}"
-MODEL_B="${MODEL_B:-anthropic/claude-fable-5}"
+MODEL_B="${MODEL_B:-claude-fable-5}"
 TAG_A="opus"
 TAG_B="fable"
 N_CLAIMS="${N_CLAIMS:-20}"
@@ -129,18 +129,23 @@ run_one() {
   prompt=$(build_prompt "$cid" "$text" "$emerged" "$cited" "$doi" "$oaid")
 
   log "  [$tag] $cid — calling $model"
-  local attempt
+  local attempt is_error
   for attempt in 1 2; do
     out=$(claude --allowedTools "WebSearch,WebFetch" --print \
       --model "$model" --output-format json "$prompt" 2>>"$OUT_DIR/errors.log") || true
     result=$(echo "$out" | jq -r '.result // empty' 2>/dev/null)
-    if [ -n "$result" ]; then
+    is_error=$(echo "$out" | jq -r '.is_error // false' 2>/dev/null)
+    # Valid = no API error AND the output contract is present (same grep as
+    # the production loop's call_claude). An error message or a rambling
+    # non-contract reply is a FAILED run, never a saved result.
+    if [ "$is_error" != "true" ] && [ -n "$result" ] \
+       && echo "$result" | grep -qE '(^PROMOTED:|^SKIPPED:|^FILE:)'; then
       echo "$out" > "$json_out"
       echo "$result" > "$txt_out"
       log "  [$tag] $cid — done ($(echo "$out" | jq -r '.total_cost_usd // "?"') USD)"
       return 0
     fi
-    log "  [$tag] $cid — invalid/empty (attempt $attempt/2), backing off 30s"
+    log "  [$tag] $cid — invalid (is_error=$is_error, contract=$(echo "$result" | grep -cE '(^PROMOTED:|^SKIPPED:|^FILE:)' || true)); attempt $attempt/2, backing off 30s"
     sleep 30
   done
   echo "[$(date -u '+%FT%TZ')] FAILED after 2 attempts: $cid $model" >> "$OUT_DIR/errors.log"
