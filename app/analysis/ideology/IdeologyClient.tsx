@@ -19,6 +19,16 @@ export type IdeologyPoint = {
   state: string | null;
 };
 
+function ordinal(n: number): string {
+  if (n % 100 >= 11 && n % 100 <= 13) return `${n}th`;
+  switch (n % 10) {
+    case 1: return `${n}st`;
+    case 2: return `${n}nd`;
+    case 3: return `${n}rd`;
+    default: return `${n}th`;
+  }
+}
+
 // Voteview stores party as numeric codes; map to abbreviations for coloring/bucketing
 const PARTY_CODE_TO_ABBR: Record<string, string> = {
   "100": "D",
@@ -96,7 +106,7 @@ export function ScatterPlot({
           {points.length.toLocaleString()} of {totalMembers.toLocaleString()} members with scores
         </span>
       </div>
-      <ResponsiveContainer width="100%" height={380}>
+      <ResponsiveContainer key={`${congress}-${chamber}`} width="100%" height={380}>
         <ScatterChart margin={{ top: 8, right: 16, bottom: 16, left: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
           <XAxis
@@ -142,7 +152,7 @@ export function ScatterPlot({
         </ScatterChart>
       </ResponsiveContainer>
       <p className="text-[10px] text-gray-600 mt-2 text-right">
-        {congress}th Congress · {chamber} · DW-NOMINATE via Voteview (Lewis et al.)
+        {ordinal(congress)} Congress · {chamber} · DW-NOMINATE via Voteview (Lewis et al.)
       </p>
     </div>
   );
@@ -299,7 +309,7 @@ export function Dim1Histogram({
       )}
 
       <p className="text-[10px] text-gray-600 mt-2 text-right">
-        {congress}th Congress · {chamber} · DW-NOMINATE via Voteview (Lewis et al.)
+        {ordinal(congress)} Congress · {chamber} · DW-NOMINATE via Voteview (Lewis et al.)
       </p>
     </div>
   );

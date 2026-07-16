@@ -90,6 +90,16 @@ export default async function IdeologyAnalysisPage({
     ORDER BY AVG("nominateDim1")
   `;
 
+  function ordinal(n: number): string {
+    if (n % 100 >= 11 && n % 100 <= 13) return `${n}th`;
+    switch (n % 10) {
+      case 1: return `${n}st`;
+      case 2: return `${n}nd`;
+      case 3: return `${n}rd`;
+      default: return `${n}th`;
+    }
+  }
+
   const PARTY_NAMES: Record<string, string> = {
     "100": "Democrat", "200": "Republican", "328": "Independent",
     "329": "Independent Democrat", "522": "Independent",
@@ -123,7 +133,7 @@ export default async function IdeologyAnalysisPage({
             >
               {[...new Set(available.map((r) => r.congress))].map((c) => (
                 <option key={c} value={String(c)}>
-                  {c}th
+                  {ordinal(c)}
                 </option>
               ))}
             </select>
@@ -158,7 +168,7 @@ export default async function IdeologyAnalysisPage({
       {partyStats.length > 0 && (
         <section>
           <h2 className="text-xs text-gray-500 font-mono uppercase tracking-widest mb-3">
-            Party summary — {congress}th Congress · {chamber}
+            Party summary — {ordinal(congress)} Congress · {chamber}
           </h2>
           <div className="rounded-lg border border-gray-800 bg-gray-900 overflow-hidden">
             <table className="w-full text-xs font-mono">
@@ -193,7 +203,7 @@ export default async function IdeologyAnalysisPage({
       {/* Histogram */}
       <section>
         <h2 className="text-xs text-gray-500 font-mono uppercase tracking-widest mb-3">
-          Dim 1 distribution — {congress}th Congress · {chamber}
+          Dim 1 distribution — {ordinal(congress)} Congress · {chamber}
         </h2>
         <div className="rounded-lg border border-gray-800 bg-gray-900 p-4">
           <Dim1Histogram points={points} congress={congress} chamber={chamber} />
@@ -203,7 +213,7 @@ export default async function IdeologyAnalysisPage({
       {/* Scatter plot */}
       <section>
         <h2 className="text-xs text-gray-500 font-mono uppercase tracking-widest mb-3">
-          Dim 1 × Dim 2 scatter — {congress}th Congress · {chamber}
+          Dim 1 × Dim 2 scatter — {ordinal(congress)} Congress · {chamber}
         </h2>
         <div className="rounded-lg border border-gray-800 bg-gray-900 p-4">
           <ScatterPlot
