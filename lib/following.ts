@@ -94,7 +94,7 @@ const CLAIM_LITE_SELECT = {
     take: 1,
     select: { seq: true, occurredAt: true },
   },
-} as const;
+};
 
 function claimIsDeprecated(c: ClaimLite): boolean {
   return c.deleted || c.verificationStatus === "DEPRECATED";
