@@ -6,6 +6,7 @@ import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge"
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import { TopicTimeline } from "@/components/TopicTimeline";
 import WorldBankView from "./WorldBankView";
+import FollowButton from "@/app/components/FollowButton";
 
 const DOMAIN_LABELS: Record<string, string> = {
   astronomy:    "Astronomy",
@@ -406,24 +407,6 @@ function TopicSlugContent() {
   const [data, setData] = useState<TopicData | null>(null);
   const [notFound, setNotFound] = useState(false);
 
-  const [watchOpen, setWatchOpen] = useState(false);
-  const [watchEmail, setWatchEmail] = useState("");
-  const [watchStatus, setWatchStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
-
-  async function handleWatch(topicKeyword: string, topicLabel: string) {
-    setWatchStatus("loading");
-    try {
-      const res = await fetch("/api/subscribe/topic", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: watchEmail, topicKeyword, topicLabel }),
-      });
-      setWatchStatus(res.ok ? "done" : "error");
-    } catch {
-      setWatchStatus("error");
-    }
-  }
-
   useEffect(() => {
     setData(null);
     setNotFound(false);
@@ -495,14 +478,7 @@ function TopicSlugContent() {
       <div className="border-b border-gray-800 pb-6 space-y-2">
         <div className="flex items-start justify-between gap-4">
           <h1 className="text-xl font-semibold text-white">{topic.name}</h1>
-          {watchStatus !== "done" && (
-            <button
-              onClick={() => setWatchOpen(o => !o)}
-              className="flex-shrink-0 text-xs px-3 py-1.5 rounded border border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500 hover:text-gray-200 transition-colors"
-            >
-              {watchOpen ? "Cancel" : "Watch"}
-            </button>
-          )}
+          <FollowButton entityType="topic" entityId={topic.slug} />
         </div>
         {topic.description && (
           <p className="text-sm text-gray-400">{topic.description}</p>
@@ -514,30 +490,6 @@ function TopicSlugContent() {
             {domainLabel}
           </Link>
         </div>
-        {watchOpen && watchStatus !== "done" && (
-          <div className="flex items-center gap-2 pt-1">
-            <input
-              type="email"
-              value={watchEmail}
-              onChange={e => setWatchEmail(e.target.value)}
-              placeholder="your@email.com"
-              className="flex-1 text-sm px-3 py-1.5 rounded border border-gray-700 bg-gray-900 text-gray-200 placeholder-gray-600 focus:outline-none focus:border-gray-500"
-            />
-            <button
-              onClick={() => handleWatch(topic.slug, topic.name)}
-              disabled={watchStatus === "loading" || !watchEmail.includes("@")}
-              className="text-xs px-3 py-1.5 rounded border border-gray-600 bg-gray-800 text-gray-300 hover:bg-gray-700 disabled:opacity-40 transition-colors"
-            >
-              {watchStatus === "loading" ? "…" : "Subscribe"}
-            </button>
-            {watchStatus === "error" && (
-              <span className="text-xs text-red-400">Failed. Try again.</span>
-            )}
-          </div>
-        )}
-        {watchStatus === "done" && (
-          <p className="text-xs text-green-400 pt-1">You&apos;re subscribed! Check your inbox.</p>
-        )}
       </div>
 
       {/* Temporal evidence strip — when claims on this topic first appeared */}

@@ -83,6 +83,8 @@ export const PUBLIC_ROUTES: string[] = [
   "/terms",
   "/privacy",
   "/license",
+  // Personal (anonymous-key, no auth): follows + bookmarks in one place (B12)
+  "/following",
   // Embeds — publicly accessible iframes (no auth cookie required)
   "/embed",
   // Domain taxonomies (curated navigation aids — see /about)

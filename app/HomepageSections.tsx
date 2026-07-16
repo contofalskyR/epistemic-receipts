@@ -314,7 +314,7 @@ function Pillars({ retractedPapers }: { retractedPapers: number }) {
             Settling curves
           </h3>
           <p className="mt-1.5 text-[13.5px] leading-relaxed text-gray-500">
-            Follow any claim&apos;s dated trajectory — and get an email when it moves. No date is
+            Follow any claim&apos;s dated trajectory — see every move. No date is
             ever invented; undatable transitions are refused, on the record.
           </p>
         </Link>

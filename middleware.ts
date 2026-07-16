@@ -29,6 +29,7 @@ const RATE_LIMIT_RULES: RateRule[] = [
   { pattern: /^\/api\/search\/miss$/, maxPerMin: 5, methods: ["POST"] },
   { pattern: /^\/api\/subscribe(\/|$)/, maxPerMin: 5, methods: ["POST"] },
   { pattern: /^\/api\/bookmarks(\/|$)/, maxPerMin: 30, methods: ["POST", "DELETE"] },
+  { pattern: /^\/api\/follow(\/|$)/, maxPerMin: 30, methods: ["POST", "DELETE"] },
   { pattern: /^\/api\/sentry-tunnel$/, maxPerMin: 60, methods: ["POST"] },
   // Billing endpoints — each call creates a Stripe API object; keep tight
   { pattern: /^\/api\/stripe\/(checkout|portal)$/, maxPerMin: 5, methods: ["POST"] },
@@ -95,6 +96,7 @@ const PUBLIC_WRITE_PATHS: RegExp[] = [
   /^\/api\/search\/miss$/, // zero-result search reports (rate limited)
   /^\/api\/subscribe(\/|$)/, // topic email subscriptions (rate limited)
   /^\/api\/bookmarks(\/|$)/, // anonymous client-key bookmarks (rate limited)
+  /^\/api\/follow(\/|$)/, // anonymous client-key follows (B12, rate limited)
   /^\/api\/sentry-tunnel$/, // Sentry error tunnel (browser → our proxy → Sentry)
   /^\/api\/auth(\/|$)/, // Auth.js (next-auth) sign-in/callback/signout POSTs — CSRF-protected by Auth.js
   /^\/api\/stripe\/webhook$/, // Stripe webhooks — verified in-route via stripe-signature
@@ -222,6 +224,7 @@ export async function middleware(req: NextRequest) {
       pathname === "/login" ||
       pathname === "/api/login" ||
       pathname.startsWith("/api/bookmarks") ||
+      pathname.startsWith("/api/follow") ||
       pathname.startsWith("/embed/") ||
       pathname.startsWith("/api/badge/");
 

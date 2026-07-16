@@ -1,0 +1,32 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "incremental": false
+  },
+  "include": [
+    "next-env.d.ts",
+    "types/**/*.d.ts",
+    "lib/following.ts",
+    "lib/publicEdition.ts",
+    "app/api/follow/route.ts",
+    "app/api/follow/check/route.ts",
+    "app/api/feed/following/route.ts",
+    "app/api/feed/following.rss/route.ts",
+    "app/components/FollowButton.tsx",
+    "app/following/page.tsx",
+    "app/following/layout.tsx",
+    "app/feed/FollowingActivity.tsx",
+    "app/feed/BookmarkedActivity.tsx",
+    "app/feed/page.tsx",
+    "app/claims/[id]/page.tsx",
+    "app/settling-curve/[id]/page.tsx",
+    "app/topics/[slug]/page.tsx",
+    "app/HomepageSections.tsx",
+    "next.config.ts",
+    "middleware.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

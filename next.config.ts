@@ -82,6 +82,9 @@ const nextConfig: NextConfig = {
       // B9-3: /foreign-legislation folded into /legislation (same data, US-inclusive UI).
       // Nav entry removed; permanent redirect ensures old bookmarks and links land correctly.
       { source: "/foreign-legislation", destination: "/legislation", permanent: true },
+      // B12-3: bookmarks + alerts unified into /following (one place, not three).
+      { source: "/bookmarks", destination: "/following", permanent: true },
+      { source: "/alerts", destination: "/following", permanent: true },
     ];
   },
 };

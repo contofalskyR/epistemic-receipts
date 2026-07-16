@@ -5,6 +5,7 @@ import { getTrajectoryDetail } from "@/lib/trajectory-detail";
 import { serializeJsonLd, trajectoryJsonLd } from "@/lib/jsonld";
 import CitationButton from "@/components/CitationButton";
 import EmbedButton from "@/components/EmbedButton";
+import FollowButton from "@/app/components/FollowButton";
 import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
 import { SITE_URL } from "@/lib/site";
 
@@ -143,6 +144,7 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
           >
             View claim page →
           </Link>
+          <FollowButton entityType="trajectory" entityId={id} />
           <CitationButton type="claim" id={traj.claimId} />
           <EmbedButton
             slug={CURATED_SLUGS.has(id) ? id : undefined}

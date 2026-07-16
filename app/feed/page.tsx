@@ -11,6 +11,7 @@ import {
 } from "@/lib/feed";
 import SinceLastVisit from "./SinceLastVisit";
 import BookmarkedActivity from "./BookmarkedActivity";
+import FollowingActivity from "./FollowingActivity";
 import OnThisDay from "@/app/components/OnThisDay";
 
 
@@ -47,6 +48,8 @@ export default async function FeedPage() {
           events, and your saved claims.
         </p>
       </div>
+
+      <FollowingActivity />
 
       <SinceLastVisit />
 

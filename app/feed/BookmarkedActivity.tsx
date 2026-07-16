@@ -98,10 +98,10 @@ export default function BookmarkedActivity() {
             updated, you&apos;ll see it here.
           </p>
           <Link
-            href="/bookmarks"
+            href="/following"
             className="inline-block mt-2 text-xs text-amber-400 hover:text-amber-300 underline underline-offset-2"
           >
-            Go to bookmarks →
+            Go to Following →
           </Link>
         </div>
       )}
