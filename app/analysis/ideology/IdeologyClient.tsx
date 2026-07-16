@@ -17,6 +17,7 @@ export type IdeologyPoint = {
   party: string;
   name: string;
   state: string | null;
+  bioguideId: string | null;
 };
 
 function ordinal(n: number): string {
@@ -147,6 +148,10 @@ export function ScatterPlot({
               fill={partyColor(p)}
               opacity={0.7}
               r={3}
+              cursor="pointer"
+              onClick={(data: IdeologyPoint) => {
+                if (data?.bioguideId) window.location.href = `/members/${data.bioguideId}`;
+              }}
             />
           ))}
         </ScatterChart>

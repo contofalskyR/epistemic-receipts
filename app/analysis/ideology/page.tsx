@@ -2,6 +2,7 @@ export const revalidate = 3600;
 
 import { prisma } from "@/lib/prisma";
 import { ScatterPlot, Dim1Histogram, type IdeologyPoint } from "./IdeologyClient";
+import { IdeologyPicker } from "./IdeologyPicker";
 import PageHero from "@/app/components/PageHero";
 
 export const metadata = {
@@ -47,14 +48,15 @@ export default async function IdeologyAnalysisPage({
   const chamber = sp.chamber ?? chamberOptions[0] ?? "House";
 
   const rawPoints = await prisma.$queryRaw<
-    { dim1: number; dim2: number | null; party: string | null; name: string; state: string | null }[]
+    { dim1: number; dim2: number | null; party: string | null; name: string; state: string | null; bioguideId: string | null }[]
   >`
     SELECT
       "nominateDim1" AS dim1,
       "nominateDim2" AS dim2,
       party,
       "memberName" AS name,
-      "stateAbbrev" AS state
+      "stateAbbrev" AS state,
+      "bioguideId" AS "bioguideId"
     FROM "MemberIdeology"
     WHERE congress = ${congress}
       AND chamber = ${chamber}
@@ -68,6 +70,7 @@ export default async function IdeologyAnalysisPage({
     party: r.party ?? "?",
     name: r.name,
     state: r.state,
+    bioguideId: r.bioguideId,
   }));
 
   const chamberRow = available.find((r) => r.congress === congress && r.chamber === chamber);
@@ -122,44 +125,14 @@ export default async function IdeologyAnalysisPage({
       />
 
       {/* Congress / chamber picker */}
-      <div className="flex flex-wrap gap-3 items-center">
-        <form method="get" className="flex flex-wrap gap-3 items-center">
-          <label className="flex items-center gap-2 text-xs text-gray-400">
-            <span className="font-mono text-gray-600 uppercase tracking-widest">Congress</span>
-            <select
-              name="congress"
-              defaultValue={String(congress)}
-              className="bg-gray-900 border border-gray-700 text-gray-200 text-xs rounded px-2 py-1 focus:outline-none focus:border-gray-500"
-            >
-              {[...new Set(available.map((r) => r.congress))].map((c) => (
-                <option key={c} value={String(c)}>
-                  {ordinal(c)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="flex items-center gap-2 text-xs text-gray-400">
-            <span className="font-mono text-gray-600 uppercase tracking-widest">Chamber</span>
-            <select
-              name="chamber"
-              defaultValue={chamber}
-              className="bg-gray-900 border border-gray-700 text-gray-200 text-xs rounded px-2 py-1 focus:outline-none focus:border-gray-500"
-            >
-              {chamberOptions.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            type="submit"
-            className="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded border border-gray-700 transition-colors"
-          >
-            Update
-          </button>
-        </form>
-        <span className="text-xs text-gray-600 font-mono ml-auto">
+      <div className="flex flex-wrap gap-3 items-center justify-between">
+        <IdeologyPicker
+          congress={congress}
+          chamber={chamber}
+          congresses={[...new Set(available.map((r) => r.congress))]}
+          chamberOptions={chamberOptions}
+        />
+        <span className="text-xs text-gray-600 font-mono">
           {totalRows.toLocaleString()} total member-congress scores in DB
         </span>
       </div>
@@ -223,6 +196,23 @@ export default async function IdeologyAnalysisPage({
             totalMembers={totalMembersInCongress}
           />
         </div>
+      </section>
+
+      {/* Taxonomy cross-links */}
+      <section className="rounded-lg border border-gray-800 bg-gray-900/50 p-4 text-xs text-gray-500">
+        <p className="font-mono text-gray-600 uppercase tracking-widest mb-2">What do these axes mean?</p>
+        <p>
+          Dim 1 tracks the economic/redistributive dimension — the core left–right axis. Dim 2 tracks social and racial
+          policy cleavages, more salient in pre-civil-rights eras.{" "}
+          <a href="/ideologies#liberalism" className="text-amber-500/80 hover:text-amber-400 underline">
+            Liberalism
+          </a>{" "}
+          and{" "}
+          <a href="/ideologies#conservatism" className="text-amber-500/80 hover:text-amber-400 underline">
+            conservatism
+          </a>{" "}
+          as epistemic categories in the Epistemic Receipts taxonomy.
+        </p>
       </section>
 
       {/* Attribution */}
