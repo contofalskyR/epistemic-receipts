@@ -28,6 +28,7 @@ type PanelData = {
     defectionCount: number;
   };
   defections: DefectionRow[];
+  datasetRollcalls: number;
 };
 
 const PARTY_NAMES: Record<string, string> = {
@@ -183,10 +184,9 @@ export function IdeologyPanel({ bioguideId, congress, chamber, onClose }: Props)
                   </div>
                 )}
                 <p className="text-[10px] text-gray-700 mt-2">
-                  Ordered by recency. Covers US congress_votes_v1 rollcalls with party data.
+                  Ordered by recency. Covers {data.datasetRollcalls} US roll-calls with recorded party breakdowns (113th–119th Congresses).
                   <br />
-                  Placement (Dim 1) is estimated from all roll-calls — defections are where individual
-                  position shows through party discipline, not the input to the score.
+                  Placement is estimated from this member{"'"}s full voting record — defections are where individual position shows through party discipline, not the input to the score.
                 </p>
               </section>
             )}

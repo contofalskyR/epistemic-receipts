@@ -124,6 +124,13 @@ export async function GET(req: NextRequest) {
   // Top 10 most recent defections (already ordered by voteDate DESC)
   const topDefections = defections.slice(0, 10);
 
+  // Total US rollcalls with party breakdown in this dataset
+  const datasetCountRow = await prisma.$queryRaw<[{ n: bigint }]>`
+    SELECT COUNT(*) as n FROM "LegislativeVote"
+    WHERE "dataSource" = 'congress_votes_v1' AND "byPartyJson" IS NOT NULL
+  `;
+  const datasetRollcalls = Number(datasetCountRow[0]?.n ?? 505);
+
   return NextResponse.json({
     bioguideId,
     ideology: ideology ?? null,
@@ -134,7 +141,6 @@ export async function GET(req: NextRequest) {
       defectionCount: defections.length,
     },
     defections: topDefections,
-    // Fine print: present/paired excluded, denominator = castable votes with party data
-    note: "Present and Not Voting excluded from cohesion math. Covers congress_votes_v1 rollcalls only (~505 US rollcalls with party breakdown).",
+    datasetRollcalls,
   });
 }

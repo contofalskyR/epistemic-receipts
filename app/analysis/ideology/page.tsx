@@ -121,7 +121,7 @@ export default async function IdeologyAnalysisPage({
       <PageHero
         eyebrow="Analysis · Ideology"
         title="Congressional Ideology"
-        lede="DW-NOMINATE scores place members on a −1 (liberal) to +1 (conservative) economic axis, estimated from roll-call voting patterns."
+        lede="DW-NOMINATE scores are estimated from a member's full roll-call record and describe voting geometry — where a member's pattern falls relative to all others. Scores do not describe what a member believes or why they voted."
       />
 
       {/* Congress / chamber picker */}
@@ -199,11 +199,20 @@ export default async function IdeologyAnalysisPage({
       </section>
 
       {/* Taxonomy cross-links */}
-      <section className="rounded-lg border border-gray-800 bg-gray-900/50 p-4 text-xs text-gray-500">
-        <p className="font-mono text-gray-600 uppercase tracking-widest mb-2">What do these axes mean?</p>
+      <section className="rounded-lg border border-gray-800 bg-gray-900/50 p-4 text-xs text-gray-500 space-y-2">
+        <p className="font-mono text-gray-600 uppercase tracking-widest">What do these axes represent?</p>
         <p>
-          Dim 1 tracks the economic/redistributive dimension — the core left–right axis. Dim 2 tracks social and racial
-          policy cleavages, more salient in pre-civil-rights eras.{" "}
+          DW-NOMINATE scores are estimated from each member{"'"}s full voting record using a spatial model of legislative
+          choice (Lewis, Poole, Rosenthal et al., Voteview). The model derives positions from votes alone; a score is
+          the geometric point that best predicts a member{"'"}s roll-call pattern — not a label for their beliefs.
+        </p>
+        <p>
+          Dim 1 tracks the economic cleavage that has organized US legislative coalitions since the New Deal. In modern
+          Congresses, Dim 1 and party affiliation carry nearly the same information; a score on this axis rarely
+          separates the two signals. Dim 2 captured a second cross-cutting cleavage — most distinctive before the
+          post-1965 realignment — and carries less predictive weight in contemporary sessions.
+        </p>
+        <p>
           <a href="/ideologies#liberalism" className="text-amber-500/80 hover:text-amber-400 underline">
             Liberalism
           </a>{" "}
@@ -211,12 +220,12 @@ export default async function IdeologyAnalysisPage({
           <a href="/ideologies#conservatism" className="text-amber-500/80 hover:text-amber-400 underline">
             conservatism
           </a>{" "}
-          as epistemic categories in the Epistemic Receipts taxonomy.
+          — definitional background in the Epistemic Receipts taxonomy. No ism is attached to a vote or member on this page.
         </p>
       </section>
 
       {/* Attribution */}
-      <section className="text-xs text-gray-600 border-t border-gray-800 pt-4">
+      <section className="text-xs text-gray-600 border-t border-gray-800 pt-4 space-y-2">
         <p>
           <strong className="text-gray-500">Source:</strong> Lewis, Jeffrey B., Keith Poole, Howard Rosenthal, Adam Boche,
           Aaron Rudkin, and Luke Sonnet (2024).{" "}
@@ -224,12 +233,17 @@ export default async function IdeologyAnalysisPage({
           <a href="https://voteview.com" target="_blank" rel="noreferrer" className="hover:text-gray-400 underline">
             https://voteview.com
           </a>
-          . DW-NOMINATE scores estimated from all available roll-call votes for each Congress.
+          . DW-NOMINATE scores are estimated from all available roll-call votes for each Congress; each member{"'"}s
+          score is the geometric position that best predicts their full voting record.
         </p>
-        <p className="mt-2">
-          Dim 1 (economic axis): negative scores indicate more liberal voting patterns (favoring redistribution,
-          expanded government); positive scores indicate more conservative patterns. Dim 2 (social/racial axis)
-          was more predictive in the pre-civil-rights era and is secondary in modern Congresses.
+        <p>
+          Dim 1 (economic dimension): the axis that has most consistently separated US legislative coalitions since
+          the New Deal. The model defines the poles from votes, not from policy labels; the axis is named
+          {" "}"economic" because that is the cleavage it has empirically tracked, not because any vote is judged on
+          its economic content. By convention, negative scores sit at the pole that has tracked liberal voting
+          patterns, positive at the conservative pole — labels for where coalitions have landed, not judgments of
+          any vote{"'"}s content. Dim 2 (social/racial dimension): a second cross-cutting cleavage most predictive
+          before the post-1965 party realignment.
         </p>
       </section>
     </div>
