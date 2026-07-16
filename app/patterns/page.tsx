@@ -49,25 +49,36 @@ const CURATED_TRAJECTORY_IDS = new Set([
 export default async function PatternsPage() {
   // Load all multi-step claims (≥2 transitions) with their ordered history.
   // We scan statusHistory in memory to classify — avoids a new table or computed column.
-  // This query is bounded: ~13.4% of 1.76M claims have 2+ transitions = ~236k rows.
-  // We select only the minimal shape for classification.
-  const multiStepClaims = await prisma.claim.findMany({
+  //
+  // PlanetScale/Vitess P2029: negation filters (NOT NULL, NOT "x") prevent Prisma from
+  // splitting large IN queries when the fetched result set exceeds the parameter limit.
+  // Fix: use only positive filters in the DB query; apply negation checks in memory.
+  const rawClaims = await prisma.claim.findMany({
     where: {
       deleted: false,
-      OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
-      statusHistory: { some: { fromAxis: { not: null } } }, // has at least one chained transition
+      statusHistory: { some: {} }, // positive: has any history entry; allows Prisma query splitting
     },
     select: {
       id: true,
       text: true,
       externalId: true,
+      verificationStatus: true,
       statusHistory: {
-        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
-        select: { seq: true, toAxis: true, occurredAt: true },
-        where: { fromAxis: { not: null } }, // only chained transitions count toward shape
+        orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
+        select: { seq: true, toAxis: true, fromAxis: true, occurredAt: true },
+        // no where clause — removed `fromAxis: { not: null }` so Prisma can split the fetch
       },
     },
   });
+
+  // Apply filters that were removed from the DB query to avoid P2029
+  const multiStepClaims = rawClaims
+    .filter((c) => c.verificationStatus !== "DEPRECATED")
+    .map((c) => ({
+      ...c,
+      statusHistory: c.statusHistory.filter((h) => h.fromAxis !== null),
+    }))
+    .filter((c) => c.statusHistory.length > 0);
 
   // Total multi-step corpus count (denominator for reconciliation equation).
   const multiStepTotal = multiStepClaims.length;
