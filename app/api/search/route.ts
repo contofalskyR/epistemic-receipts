@@ -161,8 +161,8 @@ export async function GET(req: NextRequest) {
               select: {
                 id: true,
                 statusHistory: {
-                  orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-                  select: { toAxis: true, occurredAt: true },
+                  orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+                  select: { seq: true, toAxis: true, occurredAt: true },
                 },
               },
             });

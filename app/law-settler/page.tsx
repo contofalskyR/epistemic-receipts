@@ -29,15 +29,16 @@ export default async function LawSettlerPage() {
       externalId: true,
       text: true,
       statusHistory: {
-        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-        select: { toAxis: true, occurredAt: true, community: true },
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+        select: { seq: true, toAxis: true, occurredAt: true, community: true },
       },
     },
   });
 
   const trajectories: LawTrajectory[] = claims.map((c) => {
+    // seq-first sort: coarse-precision dates (YEAR → Jan 1) can produce wrong order when sorted by date alone
     const sorted = [...c.statusHistory].sort(
-      (a, b) => a.occurredAt.getTime() - b.occurredAt.getTime()
+      (a, b) => (a.seq ?? Infinity) - (b.seq ?? Infinity) || a.occurredAt.getTime() - b.occurredAt.getTime()
     );
     const milestones = sorted.map((s) => ({
       year: s.occurredAt.getUTCFullYear(),

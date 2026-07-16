@@ -48,11 +48,12 @@ export default async function DomainCurveRail({
       text: true,
       externalId: true,
       statusHistory: {
-        orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }] as [
+        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }] as [
+          { seq: "asc" },
           { occurredAt: "asc" },
           { createdAt: "asc" },
         ],
-        select: { toAxis: true, occurredAt: true },
+        select: { seq: true, toAxis: true, occurredAt: true },
       },
     };
     const claims = trajectoryIds?.length

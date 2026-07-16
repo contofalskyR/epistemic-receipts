@@ -90,9 +90,9 @@ const CLAIM_LITE_SELECT = {
   verificationStatus: true,
   deleted: true,
   statusHistory: {
-    orderBy: { occurredAt: "desc" as const },
+    orderBy: [{ seq: "desc" as const }, { occurredAt: "desc" as const }],
     take: 1,
-    select: { occurredAt: true },
+    select: { seq: true, occurredAt: true },
   },
 } as const;
 

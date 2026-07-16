@@ -47,6 +47,7 @@ export const PUBLIC_ROUTES: string[] = [
   "/members",
   "/financial",
   // Discover
+  "/patterns",
   "/retraction-explorer",
   "/retraction-wall",
   "/retractions",
