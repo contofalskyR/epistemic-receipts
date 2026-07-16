@@ -1,0 +1,70 @@
+{
+  "cutoffTimestamp": "2026-07-16T18:16:44.042Z",
+  "seed": 1814377032,
+  "totalPopulation": 1821329,
+  "targetN": 500,
+  "actualN": 520,
+  "generatedAt": "2026-07-16T18:17:19.562Z",
+  "strata": {
+    "openalex:baseline": {
+      "population": 344456,
+      "selected": 95
+    },
+    "openalex:enrichment": {
+      "population": 11228,
+      "selected": 10
+    },
+    "other:enrichment": {
+      "population": 13255,
+      "selected": 10
+    },
+    "retractions:baseline": {
+      "population": 26699,
+      "selected": 10
+    },
+    "other:baseline": {
+      "population": 236573,
+      "selected": 65
+    },
+    "votes:enrichment": {
+      "population": 113940,
+      "selected": 31
+    },
+    "fda_drugs:enrichment": {
+      "population": 85457,
+      "selected": 23
+    },
+    "fda_drugs:baseline": {
+      "population": 133737,
+      "selected": 37
+    },
+    "retractions:enrichment": {
+      "population": 18280,
+      "selected": 10
+    },
+    "votes:baseline": {
+      "population": 143585,
+      "selected": 39
+    },
+    "legislation:baseline": {
+      "population": 463472,
+      "selected": 127
+    },
+    "archives:baseline": {
+      "population": 230647,
+      "selected": 63
+    }
+  },
+  "verdictClasses": [
+    "CORRECT",
+    "WRONG_DATE",
+    "WRONG_AXIS",
+    "SOURCE_MISMATCH",
+    "IDENTITY_MISMATCH",
+    "UNVERIFIABLE"
+  ],
+  "identityMismatchExamples": [
+    "Braun & Clarke claim — claim text is actually a citing paper, not the cited work",
+    "COSIT 2022 item — claim text does not match the work resolved by the DOI/OpenAlex anchor"
+  ]
+}
