@@ -274,8 +274,6 @@ export default function HomeCarousel() {
           <MiniCurve slide={s} />
         </div>
 
-        {/* Excerpt below curve — same claim, muted */}
-        <p className="mt-2.5 line-clamp-2 text-[12px] leading-relaxed text-gray-600">{s.text}</p>
       </div>
 
       {/* Footer — always visible so dots don't jump */}
