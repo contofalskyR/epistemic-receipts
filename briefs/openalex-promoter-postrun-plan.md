@@ -1,6 +1,6 @@
 # OpenAlex LLM Promoter — Post-Run Audit & Expansion Plan
 
-**Run completed:** 2026-07-16 (641 claims, `openalex_v1`, ≥5,000 `cited_by_count`)  
+**Run completed:** 2026-07-16 · `openalex_v1` · ≥5,000 `cited_by_count` tier **exhausted** (runs #1–92)  
 **Model:** `claude-opus-4-8` · **Loop:** `scripts/loop-corpus-promoter.sh` on Mac
 
 ---
@@ -9,15 +9,16 @@
 
 The first sustained batch of the OpenAlex LLM promoter targeted the 641 highest-cited `openalex_v1` papers (≥5,000 `cited_by_count`). Each was researched for a specific, dated post-publication event — retraction, failed replication, meta-analysis that overturns or confirms, guideline adoption. Widespread citation alone is not a qualifying event. Papers without a datable event were skipped. This is correct behavior, not a defect.
 
-Fill in from logs once Robert pushes Mac commits:
+**Final numbers (2026-07-16, Mac logs):**
 
 | Metric | Value |
 |---|---|
-| Total attempted | `[FINAL_ATTEMPTED]` |
-| Promoted (transitions written) | `[FINAL_PROMOTED]` |
-| Skipped | `[FINAL_SKIPPED]` |
-| Yield % | `[FINAL_YIELD_%]` |
-| Transitions written to DB | `[FINAL_TRANSITIONS]` |
+| Total attempted | 667 |
+| Promoted (transitions written) | 271 |
+| Skipped | 252 |
+| Other (errors / already-promoted) | 144 |
+| Yield % | **40.6%** |
+| Git commits (promoter batches) | 79 |
 
 ---
 
@@ -38,23 +39,21 @@ grep '"result":"promoted"' logs/corpus-promoter-attempted.jsonl | wc -l
 grep '"result":"skipped"'  logs/corpus-promoter-attempted.jsonl | wc -l
 ```
 
-**Step 3 — DB breakdown of what landed (run on VPS via psql or `npx tsx`):**
-```sql
-SELECT csh."toAxis", csh.community, COUNT(*) AS n
-FROM "ClaimStatusHistory" csh
-JOIN "Claim" c ON csh."claimId" = c.id
-WHERE c.pipeline = 'openalex_v1'
-  AND csh."humanReviewed" = false
-  AND csh."occurredAt" > '2026-07-15'
-GROUP BY csh."toAxis", csh.community
-ORDER BY COUNT(*) DESC;
-```
+**Step 3 — DB breakdown (already run 2026-07-16):**
 
-**What to look for:**
-- `EXPERT_LITERATURE` community should dominate — promoter sources academic follow-on work
-- Mix of `toAxis` values is healthy: SETTLED (replicated/confirmed), CONTESTED (challenged), REVERSED (retracted/overturned), ABANDONED (withdrawn/never-followed)
-- **Concerning:** all REVERSED → may indicate over-aggressive retraction attribution; cross-check a sample from `logs/corpus-promoter-decisions.jsonl`
-- **Concerning:** 0 promoted → prompt or apply-enrichment.ts validation blocked everything; check recent `enrichments/` dir for rejected scripts
+| toAxis | community | n |
+|---|---|---|
+| SETTLED | EXPERT_LITERATURE | 131 |
+| CONTESTED | EXPERT_LITERATURE | 97 |
+| SETTLED | INSTITUTIONAL | 80 |
+| REVERSED | INSTITUTIONAL | 5 |
+| REVERSED | EXPERT_LITERATURE | 3 |
+| CONTESTED | INSTITUTIONAL | 2 |
+| **Total** | | **318** |
+
+318 transitions written to DB from 271 promoted claims (avg ~1.17 transitions/claim — expected, some claims get 2 steps).
+
+**Reading:** Healthy mix — SETTLED and CONTESTED dominate as expected for high-citation academic work. Only 8 REVERSED across both communities (2.5%), no over-attribution signal. EXPERT_LITERATURE dominates (72%), INSTITUTIONAL 28% — promoter is sourcing follow-on literature correctly.
 
 ---
 
