@@ -368,7 +368,10 @@ export default function SearchClient() {
         <h1 className="mt-1 text-2xl font-semibold text-white">Pull the receipt on any claim</h1>
         <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">
           1.76M+ sourced claims — settled, contested, or overturned. Every result traces back to
-          who said it, when, and whether it&apos;s still standing.
+          who said it, when, and whether it&apos;s still standing.{" "}
+          <span className="text-gray-600">
+            Hybrid search: full-text + OpenAI semantic embeddings (text-embedding-3-small).
+          </span>
         </p>
       </div>
 
