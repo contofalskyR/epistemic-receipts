@@ -564,17 +564,22 @@ export default function CurveOverview() {
                         {i + 1}.
                       </div>
                       <div style={{ flex: 1 }}>
-                        <div
+                        <a
+                          href={`/settling-curve/${item.trajectory_id}`}
                           style={{
                             fontSize: 13,
                             color: C.ink,
                             marginBottom: 3,
                             lineHeight: 1.4,
+                            display: "block",
+                            textDecoration: "none",
                           }}
+                          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.brand; }}
+                          onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = C.ink; }}
                         >
                           {item.title}
                           {item.title.length === 120 ? "…" : ""}
-                        </div>
+                        </a>
                         <div
                           style={{
                             fontSize: 12,
