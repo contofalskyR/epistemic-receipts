@@ -34,17 +34,17 @@ function main() {
   const rows = csvParse(fs.readFileSync(csvPath, 'utf-8'), {
     columns: true,
     skip_empty_lines: true,
-  }) as { congress: string; chamber: string; rollnumber: string; bill_number: string }[]
+  }) as { congress: string; chamber: string; rollnumber: string; bill_number: string; vote_question: string }[]
 
   // externalId format matches scripts/ingest-voteview.ts buildExternalId()
-  const billByExternalId = new Map<string, string>()
+  const billByExternalId = new Map<string, { bill: string; question: string }>()
   for (const r of rows) {
     const code = r.chamber === 'Senate' ? 's' : 'h'
     const extId = `voteview_source_${r.congress}_${code}_${r.rollnumber}`
     if (!wanted.has(extId)) continue
     const bill = (r.bill_number || '').trim()
     if (!bill) continue
-    billByExternalId.set(extId, bill)
+    billByExternalId.set(extId, { bill, question: (r.vote_question || '').trim() })
   }
 
   const out = subset
@@ -52,7 +52,8 @@ function main() {
     .map(e => ({
       externalId: e.externalId,
       legislativeVoteId: e.legislativeVoteId,
-      billNumber: billByExternalId.get(e.externalId)!,
+      billNumber: billByExternalId.get(e.externalId)!.bill,
+      voteQuestion: billByExternalId.get(e.externalId)!.question,
     }))
 
   const outPath = join(process.cwd(), 'data/landmark-bill-families.json')

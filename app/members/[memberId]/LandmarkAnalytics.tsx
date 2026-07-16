@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { BILL_FAMILY_BY_VOTE_ID, LANDMARK_VOTE_IDS } from "@/lib/landmark";
+import { LANDMARK_VOTE_IDS, REVERSAL_FAMILY_BY_VOTE_ID } from "@/lib/landmark";
 
 // Landmark roll-call analytics (B11-4). Every stat here is computed over the
 // member's rows inside the 1,500-vote landmark subset only — no extrapolation.
@@ -112,12 +112,13 @@ export default async function LandmarkAnalytics({ memberId }: { memberId: string
   const unityDecided = unityRows[0] ? Number(unityRows[0].decided) : 0;
   const unityPct = unityDecided > 0 ? (unityMatches / unityDecided) * 100 : null;
 
-  // Notable reversals: same member, same bill family (exact Voteview bill_number
-  // within one congress — see lib/landmark.ts), opposite plain cast votes.
+  // Notable reversals: same member, opposite plain cast votes on the identical
+  // passage question of the identical bill (see lib/landmark.ts for why the
+  // grouping is this strict).
   const byFamily = new Map<string, LandmarkRow[]>();
   for (const r of rows) {
     if (r.vote !== "Yea" && r.vote !== "Nay") continue;
-    const family = BILL_FAMILY_BY_VOTE_ID.get(r.legislativeVoteId);
+    const family = REVERSAL_FAMILY_BY_VOTE_ID.get(r.legislativeVoteId);
     if (!family) continue;
     const list = byFamily.get(family);
     if (list) list.push(r);
@@ -215,9 +216,9 @@ export default async function LandmarkAnalytics({ memberId }: { memberId: string
               Notable reversals
             </h3>
             <p className="text-[10px] text-gray-600 mb-2">
-              Roll-calls in the landmark subset where this member cast opposite votes on the same bill
-              (exact Voteview bill-number match within one Congress — amendments, procedural motions, and
-              final passage of the same bill share a family; no fuzzy title matching).
+              Roll-calls in the landmark subset where this member cast opposite votes on the identical
+              passage question of the identical bill (exact Voteview bill-number and question match within
+              one Congress; no fuzzy title matching).
             </p>
             <div className="space-y-2">
               {reversals.map((rev) => (
