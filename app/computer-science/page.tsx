@@ -823,9 +823,9 @@ export default function ComputerSciencePage() {
           <a href="/search?q=computer+science" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
             Search Computer Science in the claim graph →
           </a>
-          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+          <Link href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
             Browse all trajectories →
-          </a>
+          </Link>
         </div>
       </div>
     </div>

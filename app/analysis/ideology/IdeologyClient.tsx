@@ -152,11 +152,11 @@ export function ScatterPlot({
               opacity={0.7}
               r={3}
               cursor="pointer"
-              onClick={(data: IdeologyPoint) => {
-                if (data?.bioguideId) {
-                  setPanelId(data.bioguideId);
-                } else if (data?.bioguideId === null) {
-                  // fallback: no bioguideId, nothing to open
+              onClick={(data) => {
+                // recharts passes a ScatterPointItem; the original datum lives on .payload
+                const point = (data?.payload ?? data) as IdeologyPoint | undefined;
+                if (point?.bioguideId) {
+                  setPanelId(point.bioguideId);
                 }
               }}
             />

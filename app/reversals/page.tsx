@@ -289,7 +289,7 @@ export default async function ReversalsPage() {
           <p className="text-sm text-gray-400 max-w-2xl leading-relaxed">
             A retraction moves a published claim from SETTLED (accepted by the field)
             to REVERSED (withdrawn by the journal or authors). REVERSED here is not
-            "debunked" — it is the ratifying community&apos;s formal act. The reasons vary:
+            &ldquo;debunked&rdquo; — it is the ratifying community&apos;s formal act. The reasons vary:
             data fabrication, irreproducibility, ethical violations. Arcs from{" "}
             <code className="text-xs text-gray-500">crossref_retractions_v1</code> and the
             OpenAlex–CrossRef join.
