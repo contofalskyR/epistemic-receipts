@@ -283,6 +283,7 @@ export default async function PatternsPage() {
         </p>
         <div className="flex gap-4 pt-2">
           <Link href="/settling-curve" className="hover:text-gray-400 transition-colors">Explore curves →</Link>
+          <Link href="/canon" className="hover:text-gray-400 transition-colors">The Canon →</Link>
           <Link href="/methodology" className="hover:text-gray-400 transition-colors">Methodology →</Link>
           <Link href="/start-here" className="hover:text-gray-400 transition-colors">Start here →</Link>
         </div>
