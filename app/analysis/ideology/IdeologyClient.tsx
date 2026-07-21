@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { IdeologyPanel } from "./IdeologyPanel";
 import {
   CartesianGrid,
@@ -310,19 +311,40 @@ export function Dim1Histogram({
             </button>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-0.5 max-h-52 overflow-y-auto pr-1">
-            {selectedMembers.map((p, i) => (
-              <div key={i} className="flex items-center gap-1.5 text-[10px] min-w-0">
-                <span
-                  className="shrink-0 inline-block w-1.5 h-1.5 rounded-sm"
-                  style={{ background: partyColor(p.party) }}
-                />
-                <span className="text-gray-200 truncate">{p.name}</span>
-                <span className="text-gray-600 shrink-0">{p.state}</span>
-                <span className="text-gray-600 shrink-0 font-mono">
-                  {p.dim1 >= 0 ? "+" : ""}{p.dim1.toFixed(2)}
-                </span>
-              </div>
-            ))}
+            {selectedMembers.map((p, i) => {
+              const row = (
+                <>
+                  <span
+                    className="shrink-0 inline-block w-1.5 h-1.5 rounded-sm"
+                    style={{ background: partyColor(p.party) }}
+                  />
+                  <span className={`truncate ${p.bioguideId ? "text-gray-200 group-hover:text-amber-300 group-hover:underline" : "text-gray-200"}`}>
+                    {p.name}
+                  </span>
+                  <span className="text-gray-600 shrink-0">{p.state}</span>
+                  <span className="text-gray-600 shrink-0 font-mono">
+                    {p.dim1 >= 0 ? "+" : ""}{p.dim1.toFixed(2)}
+                  </span>
+                </>
+              );
+              // Route to the member's page — placement, party-unity, and their
+              // votes (the audit trail) live there. Rows without a bioguideId
+              // stay plain text rather than dead links.
+              return p.bioguideId ? (
+                <Link
+                  key={i}
+                  href={`/members/${p.bioguideId}`}
+                  title={`${p.name} — placement, party unity, votes`}
+                  className="group flex items-center gap-1.5 text-[10px] min-w-0"
+                >
+                  {row}
+                </Link>
+              ) : (
+                <div key={i} className="flex items-center gap-1.5 text-[10px] min-w-0">
+                  {row}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
