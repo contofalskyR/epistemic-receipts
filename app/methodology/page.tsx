@@ -1,4 +1,6 @@
 import Link from "next/link";
+import * as fs from "fs";
+import * as path from "path";
 
 export const metadata = {
   title: "Methodology — Epistemic Receipts",
@@ -12,6 +14,102 @@ export const metadata = {
    claim here should be verifiable against the codebase (prisma/schema.prisma,
    AGENTS.md) or publicly visible site behaviour. Flag anything that isn't.
    ─────────────────────────────────────────────────────────────────────────── */
+
+type PublishedRate = {
+  version: number;
+  computedAt: string;
+  populationDescription: string;
+  population: number;
+  seed: number;
+  sampledRows: number;
+  verifiedRows: number;
+  errorRows: number;
+  errorRate: number;
+  wilsonLow: number;
+  wilsonHigh: number;
+  unverifiableRate: number;
+  quotableSentence: string;
+  perStratum: {
+    stratum: string;
+    population: number;
+    verified: number;
+    errors: number;
+    rate: number | null;
+    wilsonLow: number | null;
+    wilsonHigh: number | null;
+    insufficientN: boolean;
+  }[];
+};
+
+function loadPublishedRate(): PublishedRate | null {
+  try {
+    const p = path.join(process.cwd(), "findings", "b15-error-audit", "published-rate.json");
+    if (!fs.existsSync(p)) return null;
+    return JSON.parse(fs.readFileSync(p, "utf8")) as PublishedRate;
+  } catch {
+    return null;
+  }
+}
+
+function fmtPct(x: number | null, digits = 2): string {
+  if (x === null) return "—";
+  return (100 * x).toFixed(digits) + "%";
+}
+
+function MeasuredAccuracy() {
+  const rate = loadPublishedRate();
+  if (!rate) return null; // section appears only once the audit is complete — no placeholder copy
+  const computedDate = rate.computedAt.slice(0, 10);
+  return (
+    <Section id="measured-accuracy" title="Measured accuracy">
+      <p className="text-sm text-gray-400 leading-relaxed">{rate.quotableSentence}</p>
+      <p className="text-sm text-gray-400 leading-relaxed">
+        Population: {rate.populationDescription} ({rate.population.toLocaleString("en-US")} rows at sampling time).
+        Method: stratified random sample, deterministic seed ({rate.seed}), verdicts rendered exclusively by a human
+        reviewer against live sources — worksheets and the sampling manifest are committed in{" "}
+        <a
+          href="https://github.com/contofalskyR/epistemic-receipts/tree/main/findings/b15-error-audit"
+          className="underline hover:text-gray-300"
+        >
+          findings/b15-error-audit
+        </a>{" "}
+        (the receipts for the receipt-audit). Version {rate.version}, computed {computedDate}. Sampled errors were
+        subsequently corrected through the normal corrections flow; the rate above reflects the corpus as sampled.
+      </p>
+      <div className="rounded-lg border border-gray-800 bg-gray-900 overflow-hidden mt-2">
+        <table className="w-full text-xs font-mono">
+          <thead>
+            <tr className="border-b border-gray-800 text-gray-600">
+              <th className="text-left px-4 py-2">Stratum</th>
+              <th className="text-right px-4 py-2">Verified</th>
+              <th className="text-right px-4 py-2">Errors</th>
+              <th className="text-right px-4 py-2">Rate</th>
+              <th className="text-right px-4 py-2">95% CI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rate.perStratum.map((s) => (
+              <tr key={s.stratum} className="border-b border-gray-800/50 text-gray-400">
+                <td className="px-4 py-2 text-gray-200">{s.stratum}</td>
+                <td className="px-4 py-2 text-right">{s.verified}</td>
+                <td className="px-4 py-2 text-right">{s.errors}</td>
+                <td className="px-4 py-2 text-right">{s.insufficientN ? "insufficient n" : fmtPct(s.rate)}</td>
+                <td className="px-4 py-2 text-right">
+                  {s.insufficientN ? "—" : `${fmtPct(s.wilsonLow)}–${fmtPct(s.wilsonHigh)}`}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-xs text-gray-600 mt-1">
+        {fmtPct(rate.unverifiableRate, 1)} of sampled rows were UNVERIFIABLE (source dead or paywalled, no substitute
+        found) — reported separately, not counted as correct. Thin strata are reported as insufficient n, never
+        extrapolated. Re-measured quarterly with a fresh seed.
+      </p>
+    </Section>
+  );
+}
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -410,6 +508,11 @@ export default function MethodologyPage() {
           All voting stats are scoped to the covered landmark subset, with the denominator printed on each stat.
         </p>
       </Section>
+
+      {/* Measured accuracy — renders only once B15's published-rate.json exists.
+          The rate is computed by scripts/b15-compute-rate.ts from owner-verified
+          worksheets (findings/b15-error-audit/) and never rendered partially. */}
+      <MeasuredAccuracy />
 
       {/* Footer links */}
       <div className="pt-2 border-t border-gray-800 flex flex-wrap gap-4 text-xs text-gray-500">
