@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import SettlingCurveMini, { type MiniMilestone } from "@/app/components/SettlingCurveMini";
@@ -40,18 +41,152 @@ function fmtCitations(n: number): string {
   return n.toLocaleString("en-US");
 }
 
-function filterFragment(filter: Filter) {
-  switch (filter) {
-    case "curved":
-      return Prisma.sql`AND h.steps >= 2`;
-    case "reversed":
-      return Prisma.sql`AND h.last_axis = 'REVERSED'`;
-    case "single":
-      return Prisma.sql`AND h.steps < 2`;
-    default:
-      return Prisma.empty;
-  }
-}
+// Population predicate shared by every query.
+const POP_WHERE = Prisma.sql`
+  c."ingestedBy" = 'openalex_v1'
+  AND c.deleted = false
+  AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
+  AND ${CITED_INT} >= 5000`;
+
+// Grouped step aggregation — one pass over ClaimStatusHistory instead of a
+// per-claim LATERAL over the whole population (the /patterns B14 lesson: this
+// table has ~1.8M rows; aggregate once, cache the result).
+const STEPS_CTE = Prisma.sql`
+  SELECT h."claimId", COUNT(*)::int AS steps,
+         (array_agg(h."toAxis" ORDER BY h.seq NULLS LAST, h."occurredAt", h."createdAt"))[COUNT(*)::int] AS last_axis
+  FROM "ClaimStatusHistory" h
+  JOIN pop ON pop.id = h."claimId"
+  GROUP BY h."claimId"`;
+
+type Census = {
+  total: number;
+  curved: number;
+  reversed: number;
+  reviewed: number;
+  openalex_total: number;
+  no_count: number;
+};
+
+// Heavy census — cached for the ISR hour. First miss pays once, not per visitor.
+const getCanonCensus = unstable_cache(
+  async (): Promise<Census> => {
+    const [agg] = await prisma.$queryRaw<Census[]>`
+      WITH pop AS (
+        SELECT c.id, (c.metadata ? 'promoterReview') AS reviewed
+        FROM "Claim" c
+        WHERE ${POP_WHERE}
+      ), st AS (${STEPS_CTE}), cov AS (
+        SELECT COUNT(*)::int AS openalex_total,
+               COUNT(*) FILTER (WHERE NOT ((c.metadata->>'cited_by_count') ~ '^[0-9]+$'))::int AS no_count
+        FROM "Claim" c
+        WHERE c."ingestedBy" = 'openalex_v1' AND c.deleted = false
+          AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
+      )
+      SELECT
+        (SELECT COUNT(*)::int FROM pop) AS total,
+        (SELECT COUNT(*)::int FROM st WHERE st.steps >= 2) AS curved,
+        (SELECT COUNT(*)::int FROM st WHERE st.last_axis = 'REVERSED') AS reversed,
+        (SELECT COUNT(*)::int FROM pop WHERE pop.reviewed) AS reviewed,
+        cov.openalex_total, cov.no_count
+      FROM cov
+    `;
+    return agg;
+  },
+  ["canon-census"],
+  { revalidate: 3600 }
+);
+
+// Page of rows + filtered count + milestones, cached per (filter, page).
+// "all" never touches the steps aggregate before pagination — it joins step
+// data for the 50 visible rows only. Filtered views need the aggregate, and
+// the cache absorbs that cost hourly per filter.
+const getCanonPage = unstable_cache(
+  async (filter: Filter, page: number) => {
+    let filtered: number;
+    let rows: CanonRow[];
+
+    if (filter === "all") {
+      const [{ n }] = await prisma.$queryRaw<{ n: number }[]>`
+        SELECT COUNT(*)::int AS n FROM "Claim" c WHERE ${POP_WHERE}
+      `;
+      filtered = n;
+      const pageCount = Math.max(1, Math.ceil(filtered / PAGE_SIZE));
+      const offset = (Math.min(Math.max(1, page), pageCount) - 1) * PAGE_SIZE;
+      rows = await prisma.$queryRaw<CanonRow[]>`
+        WITH pop AS (
+          SELECT c.id, c.text,
+                 EXTRACT(YEAR FROM c."claimEmergedAt")::int AS year,
+                 ${CITED_INT} AS cited,
+                 c.metadata->>'doi' AS doi,
+                 c.metadata->'promoterReview' AS review,
+                 c."claimEmergedAt"
+          FROM "Claim" c
+          WHERE ${POP_WHERE}
+          ORDER BY 4 DESC, c."claimEmergedAt" ASC NULLS LAST, c.id
+          LIMIT ${PAGE_SIZE} OFFSET ${offset}
+        ), st AS (${STEPS_CTE})
+        SELECT pop.id, pop.text, pop.year, pop.cited, pop.doi, pop.review,
+               COALESCE(st.steps, 0)::int AS steps, st.last_axis
+        FROM pop LEFT JOIN st ON st."claimId" = pop.id
+        ORDER BY pop.cited DESC, pop."claimEmergedAt" ASC NULLS LAST, pop.id
+      `;
+    } else {
+      const cond =
+        filter === "curved"
+          ? Prisma.sql`COALESCE(st.steps, 0) >= 2`
+          : filter === "reversed"
+            ? Prisma.sql`st.last_axis = 'REVERSED'`
+            : Prisma.sql`COALESCE(st.steps, 0) < 2`;
+      const [{ n }] = await prisma.$queryRaw<{ n: number }[]>`
+        WITH pop AS (
+          SELECT c.id FROM "Claim" c WHERE ${POP_WHERE}
+        ), st AS (${STEPS_CTE})
+        SELECT COUNT(*)::int AS n
+        FROM pop LEFT JOIN st ON st."claimId" = pop.id
+        WHERE ${cond}
+      `;
+      filtered = n;
+      const pageCount = Math.max(1, Math.ceil(filtered / PAGE_SIZE));
+      const offset = (Math.min(Math.max(1, page), pageCount) - 1) * PAGE_SIZE;
+      rows = await prisma.$queryRaw<CanonRow[]>`
+        WITH pop AS (
+          SELECT c.id, c.text,
+                 EXTRACT(YEAR FROM c."claimEmergedAt")::int AS year,
+                 ${CITED_INT} AS cited,
+                 c.metadata->>'doi' AS doi,
+                 c.metadata->'promoterReview' AS review,
+                 c."claimEmergedAt"
+          FROM "Claim" c
+          WHERE ${POP_WHERE}
+        ), st AS (${STEPS_CTE})
+        SELECT pop.id, pop.text, pop.year, pop.cited, pop.doi, pop.review,
+               COALESCE(st.steps, 0)::int AS steps, st.last_axis
+        FROM pop LEFT JOIN st ON st."claimId" = pop.id
+        WHERE ${cond}
+        ORDER BY pop.cited DESC, pop."claimEmergedAt" ASC NULLS LAST, pop.id
+        LIMIT ${PAGE_SIZE} OFFSET ${offset}
+      `;
+    }
+
+    // Milestones for the minis — only the multi-step rows on this page.
+    const curvedIds = rows.filter((r) => r.steps >= 2).map((r) => r.id);
+    let milestones: { claimId: string; year: number; axis: string; reason: string | null }[] = [];
+    if (curvedIds.length > 0) {
+      milestones = await prisma.$queryRaw<{ claimId: string; year: number; axis: string; reason: string | null }[]>`
+        SELECT h."claimId",
+               EXTRACT(YEAR FROM h."occurredAt")::int AS year,
+               h."toAxis" AS axis,
+               h.reason
+        FROM "ClaimStatusHistory" h
+        WHERE h."claimId" IN (${Prisma.join(curvedIds)})
+        ORDER BY h."claimId", h.seq NULLS LAST, h."occurredAt", h."createdAt"
+      `;
+    }
+    return { filtered, rows, milestones };
+  },
+  ["canon-page"],
+  { revalidate: 3600 }
+);
 
 export default async function CanonPage({
   searchParams,
@@ -64,106 +199,18 @@ export default async function CanonPage({
     : "all";
   const page = Math.max(1, Number.parseInt(sp.page ?? "1", 10) || 1);
 
-  // ── Census aggregates (the header's denominators — one round trip) ────────
-  const [agg] = await prisma.$queryRaw<
-    {
-      total: number;
-      curved: number;
-      reversed: number;
-      reviewed: number;
-      openalex_total: number;
-      no_count: number;
-    }[]
-  >`
-    WITH pop AS (
-      SELECT c.id,
-             c.metadata ? 'promoterReview' AS reviewed,
-             h.steps, h.last_axis
-      FROM "Claim" c
-      JOIN LATERAL (
-        SELECT COUNT(*)::int AS steps,
-               (array_agg(h."toAxis" ORDER BY h.seq NULLS LAST, h."occurredAt", h."createdAt"))[COUNT(*)::int] AS last_axis
-        FROM "ClaimStatusHistory" h WHERE h."claimId" = c.id
-      ) h ON true
-      WHERE c."ingestedBy" = 'openalex_v1'
-        AND c.deleted = false
-        AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-        AND ${CITED_INT} >= 5000
-    )
-    SELECT
-      (SELECT COUNT(*)::int FROM pop) AS total,
-      (SELECT COUNT(*)::int FROM pop WHERE steps >= 2) AS curved,
-      (SELECT COUNT(*)::int FROM pop WHERE last_axis = 'REVERSED') AS reversed,
-      (SELECT COUNT(*)::int FROM pop WHERE reviewed) AS reviewed,
-      (SELECT COUNT(*)::int FROM "Claim" c
-        WHERE c."ingestedBy" = 'openalex_v1' AND c.deleted = false
-          AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED') AS openalex_total,
-      (SELECT COUNT(*)::int FROM "Claim" c
-        WHERE c."ingestedBy" = 'openalex_v1' AND c.deleted = false
-          AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-          AND NOT ((c.metadata->>'cited_by_count') ~ '^[0-9]+$')) AS no_count
-  `;
-
-  const frag = filterFragment(filter);
-  const [{ filtered }] = await prisma.$queryRaw<{ filtered: number }[]>`
-    SELECT COUNT(*)::int AS filtered
-    FROM "Claim" c
-    JOIN LATERAL (
-      SELECT COUNT(*)::int AS steps,
-             (array_agg(h."toAxis" ORDER BY h.seq NULLS LAST, h."occurredAt", h."createdAt"))[COUNT(*)::int] AS last_axis
-      FROM "ClaimStatusHistory" h WHERE h."claimId" = c.id
-    ) h ON true
-    WHERE c."ingestedBy" = 'openalex_v1'
-      AND c.deleted = false
-      AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-      AND ${CITED_INT} >= 5000
-      ${frag}
-  `;
+  const [agg, pageData] = await Promise.all([getCanonCensus(), getCanonPage(filter, page)]);
+  const { filtered, rows, milestones } = pageData;
 
   const pageCount = Math.max(1, Math.ceil(filtered / PAGE_SIZE));
   const safePage = Math.min(page, pageCount);
   const offset = (safePage - 1) * PAGE_SIZE;
 
-  const rows = await prisma.$queryRaw<CanonRow[]>`
-    SELECT c.id, c.text,
-           EXTRACT(YEAR FROM c."claimEmergedAt")::int AS year,
-           ${CITED_INT} AS cited,
-           c.metadata->>'doi' AS doi,
-           c.metadata->'promoterReview' AS review,
-           h.steps, h.last_axis
-    FROM "Claim" c
-    JOIN LATERAL (
-      SELECT COUNT(*)::int AS steps,
-             (array_agg(h."toAxis" ORDER BY h.seq NULLS LAST, h."occurredAt", h."createdAt"))[COUNT(*)::int] AS last_axis
-      FROM "ClaimStatusHistory" h WHERE h."claimId" = c.id
-    ) h ON true
-    WHERE c."ingestedBy" = 'openalex_v1'
-      AND c.deleted = false
-      AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-      AND ${CITED_INT} >= 5000
-      ${frag}
-    ORDER BY 4 DESC, c."claimEmergedAt" ASC NULLS LAST, c.id
-    LIMIT ${PAGE_SIZE} OFFSET ${offset}
-  `;
-
-  // Milestones for the minis — only the multi-step rows on this page.
-  const curvedIds = rows.filter((r) => r.steps >= 2).map((r) => r.id);
   const milestonesByClaim = new Map<string, MiniMilestone[]>();
-  if (curvedIds.length > 0) {
-    const ms = await prisma.$queryRaw<{ claimId: string; year: number; axis: string; reason: string | null }[]>`
-      SELECT h."claimId",
-             EXTRACT(YEAR FROM h."occurredAt")::int AS year,
-             h."toAxis" AS axis,
-             h.reason
-      FROM "ClaimStatusHistory" h
-      WHERE h."claimId" IN (${Prisma.join(curvedIds)})
-      ORDER BY h."claimId", h.seq NULLS LAST, h."occurredAt", h."createdAt"
-    `;
-    for (const m of ms) {
-      const list = milestonesByClaim.get(m.claimId) ?? [];
-      list.push({ year: m.year, axis: m.axis, reason: m.reason });
-      milestonesByClaim.set(m.claimId, list);
-    }
+  for (const m of milestones) {
+    const list = milestonesByClaim.get(m.claimId) ?? [];
+    list.push({ year: m.year, axis: m.axis, reason: m.reason });
+    milestonesByClaim.set(m.claimId, list);
   }
 
   const filters: { key: Filter; label: string; count: number }[] = [
