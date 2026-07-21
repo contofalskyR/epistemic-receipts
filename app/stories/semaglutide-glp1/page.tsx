@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "From Lab Target to Ozempic: GLP-1's 25-Year Arc — Epistemic Receipts",
   description:
     "A 1996 Nature paper identified GLP-1's appetite-suppressing role in rats. Semaglutide reached FDA approval for type 2 diabetes in 2017 and for obesity in 2021 — a 25-year arc from RECORDED to SETTLED.",
-  alternates: { canonical: "/stories/semaglutide-glp1" },
+  alternates: { canonical: "/stories/semaglutide-glp1", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/semaglutide-glp1")}` } },
   openGraph: {
     title: "From Lab Target to Ozempic: GLP-1's 25-Year Arc",
     description:

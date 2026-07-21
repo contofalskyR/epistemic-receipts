@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "The Dietary Fat Hypothesis: Settled, Then Contested Again — Epistemic Receipts",
   description:
     "Ancel Keys linked saturated fat to heart disease in 1953. The USDA Dietary Guidelines institutionalized the claim in 1980. A 2010 meta-analysis returned it to CONTESTED — where it remains.",
-  alternates: { canonical: "/stories/dietary-fat-heart" },
+  alternates: { canonical: "/stories/dietary-fat-heart", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/dietary-fat-heart")}` } },
   openGraph: {
     title: "The Dietary Fat Hypothesis: Settled, Then Contested Again",
     description:

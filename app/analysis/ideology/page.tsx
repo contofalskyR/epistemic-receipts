@@ -239,7 +239,7 @@ export default async function IdeologyAnalysisPage({
         <p>
           Dim 1 (economic dimension): the axis that has most consistently separated US legislative coalitions since
           the New Deal. The model defines the poles from votes, not from policy labels; the axis is named
-          {" "}"economic" because that is the cleavage it has empirically tracked, not because any vote is judged on
+          {" "}&ldquo;economic&rdquo; because that is the cleavage it has empirically tracked, not because any vote is judged on
           its economic content. By convention, negative scores sit at the pole that has tracked liberal voting
           patterns, positive at the conservative pole — labels for where coalitions have landed, not judgments of
           any vote{"'"}s content. Dim 2 (social/racial dimension): a second cross-cutting cleavage most predictive

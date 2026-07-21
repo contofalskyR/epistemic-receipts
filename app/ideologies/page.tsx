@@ -6,6 +6,7 @@ import { FAMILIES, type Ism, type Family } from "./data";
 import { FAMILIES_S3_S4 } from "./data2";
 import { FAMILIES_S5_S6 } from "./data3";
 import { FAMILIES_S7_S8 } from "./data4";
+import Link from "next/link";
 
 const ALL_FAMILIES: Family[] = [
   ...FAMILIES,
@@ -517,9 +518,9 @@ export default function IdeologiesPage() {
           <a href="/search?q=ideology+political" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
             Search Ideologies & Political Thought in the claim graph →
           </a>
-          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+          <Link href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
             Browse all trajectories →
-          </a>
+          </Link>
         </div>
       </div>
     </div>

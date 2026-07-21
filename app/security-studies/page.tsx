@@ -479,9 +479,9 @@ export default function SecurityStudiesPage() {
           <a href="/search?q=security+studies" className="text-xs text-sky-400/70 hover:text-sky-300 transition-colors font-mono">
             Search Security Studies in the claim graph →
           </a>
-          <a href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
+          <Link href="/settling-curve" className="text-xs text-amber-400/50 hover:text-amber-300 transition-colors font-mono">
             Browse all trajectories →
-          </a>
+          </Link>
         </div>
       </div>
     </div>

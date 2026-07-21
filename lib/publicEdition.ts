@@ -48,6 +48,7 @@ export const PUBLIC_ROUTES: string[] = [
   "/financial",
   // Discover
   "/patterns",
+  "/canon",
   "/retraction-explorer",
   "/retraction-wall",
   "/retractions",

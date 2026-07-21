@@ -215,6 +215,7 @@ export default function StartHerePage() {
             { href: "/search", label: "Search", desc: "Full-text + semantic across 1.76M claims" },
             { href: "/trajectories", label: "Trajectory Encyclopedia", desc: "All curated arcs by domain" },
             { href: "/reversals", label: "Court Reversals", desc: "Eight landmark overruling arcs" },
+            { href: "/canon", label: "The Canon", desc: "Most-cited papers, ranked, each with its audit state" },
             { href: "/feed", label: "What's New", desc: "Latest trajectory activity" },
             { href: "/open-questions", label: "Open Questions", desc: "Longest contested claims — dormancy leaderboard" },
             { href: "/split-ledger", label: "Split Ledger", desc: "Claims where communities have reached incompatible conclusions" },

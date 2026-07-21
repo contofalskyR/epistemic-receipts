@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "The Voting Rights Act: Settlement and Partial Reversal — Epistemic Receipts",
   description:
     "Enacted in 1965, upheld unanimously by the Supreme Court in 1966, and then partially reversed in Shelby County v. Holder in 2013 — the VRA's preclearance mechanism traces a 48-year arc from RECORDED to SETTLED to REVERSED.",
-  alternates: { canonical: "/stories/voting-rights-act-1965" },
+  alternates: { canonical: "/stories/voting-rights-act-1965", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/voting-rights-act-1965")}` } },
   openGraph: {
     title: "The Voting Rights Act: Settlement and Partial Reversal",
     description:

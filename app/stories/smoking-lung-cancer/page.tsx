@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Smoke and Evidence: The Fourteen-Year Road to Consensus — Epistemic Receipts",
   description:
     "Doll and Hill's 1950 BMJ case-control study contested by the tobacco industry for fourteen years, settled by the 1964 Surgeon General's report, and legally ratified by the 1998 Tobacco Master Settlement Agreement.",
-  alternates: { canonical: "/stories/smoking-lung-cancer" },
+  alternates: { canonical: "/stories/smoking-lung-cancer", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/smoking-lung-cancer")}` } },
   openGraph: {
     title: "Smoke and Evidence: The Fourteen-Year Road to Consensus",
     description:

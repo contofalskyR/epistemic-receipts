@@ -31,8 +31,10 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Run integrity checks
+        # tsx (a devDependency) instead of ts-node: ts-node is NOT in package.json,
+        # so `npx ts-node` fetched an unpinned copy from the registry on every run.
         run: |
-          npx ts-node --project tsconfig.scripts.json scripts/check-integrity.ts
+          npx tsx scripts/check-integrity.ts
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
