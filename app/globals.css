@@ -38,3 +38,14 @@
   display: none;
 }
 
+
+/* Fig. 1 survival animation — reduced-motion fallback: hide the traveling
+   ball, show every SMIL-revealed element immediately. */
+@media (prefers-reduced-motion: reduce) {
+  .rm-hide {
+    display: none;
+  }
+  .rm-show {
+    opacity: 1 !important;
+  }
+}

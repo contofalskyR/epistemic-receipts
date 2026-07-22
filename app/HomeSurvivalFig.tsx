@@ -1,15 +1,21 @@
-// Fig. 1 on the V1 landing page — the real macro settling curve, server-rendered
-// as a static SVG (no client JS, no recharts). Data comes from the SAME loader
-// the /analysis/settling-rate page and the paper figure use
-// (lib/settlingRate.buildSettlingRateAnalysis), so the homepage figure can never
-// disagree with the published analysis. The v1-landing mockup shipped an
-// "illustrative mock" with hand-drawn domain curves and an invented
-// "median reversal: 11.2y" stat — house rule (derived, never hand-written)
-// forbids that, so this renders the live corpus curve instead:
-// share of tracked claims not yet settled, by years since each claim emerged.
+// Fig. 1 on the V1 landing page — the real macro settling curve. Data comes
+// from the SAME loader the /analysis/settling-rate page and the paper figure
+// use (lib/settlingRate.buildSettlingRateAnalysis), so the homepage figure can
+// never disagree with the published analysis. House rule (derived, never
+// hand-written) still holds: the curve, the median, and every number are live.
+//
+// The animation layer (2026-07-21, owner request): a ball rolls slowly down
+// the curve once on load; as it passes the ages where curated claims actually
+// settled or reversed, those claims surface as small readable settling curves
+// (palette = the settling-curve axis colors); the median marker pops when the
+// ball crosses it, the ball fades at the tail, and the figure rests in its
+// final static state. All SMIL — no JS timers; prefers-reduced-motion renders
+// the final state immediately (see .rm-hide/.rm-show in globals.css).
 
 import Link from "next/link";
 import type { SettlingRateData } from "@/lib/settlingRate";
+import { AXIS_COLOR } from "@/lib/status";
+import { SLIDES, slideAgeYears, type Slide } from "./homeSlides";
 
 // Crop the survival grid (which extends to 500 years) to the first 50 years,
 // matching the mockup's 0→50 viewport where the shape actually moves.
@@ -22,6 +28,10 @@ const PAD_R = 30;
 const PLOT_TOP = 20; // y of 100%
 const PLOT_BOTTOM = 248; // y of 0%
 
+// One full pass of the ball, in seconds. Time maps linearly to the x-axis, so
+// an exemplar that settled after N years pops at (N / 50) * BALL_DUR.
+const BALL_DUR = 9;
+
 function xScale(t: number): number {
   return PAD_L + (t / X_MAX_YEARS) * (W - PAD_L - PAD_R);
 }
@@ -31,6 +41,92 @@ function yScale(pct: number): number {
 
 function fmtYears(y: number): string {
   return y % 1 === 0 ? String(y) : y.toFixed(1);
+}
+
+// Exemplars for the fly-by cards: curated homepage trajectories that reached a
+// terminal state within the figure's 50-year window. Editorial picks, data
+// from the shared slide deck (no invented values).
+const EXEMPLAR_SHORTS = [
+  "Ulcers: acid → H. pylori",
+  "Smoking causes lung cancer",
+  "Saccharin scare reversed",
+  "Lobotomy abandoned",
+];
+
+type Exemplar = { slide: Slide; age: number };
+
+function pickExemplars(): Exemplar[] {
+  return EXEMPLAR_SHORTS.map((short) => SLIDES.find((s) => s.short === short))
+    .filter((s): s is Slide => Boolean(s))
+    .map((slide) => ({ slide, age: slideAgeYears(slide) }))
+    .filter((e) => e.age > 0 && e.age <= X_MAX_YEARS - 3)
+    .sort((a, b) => a.age - b.age);
+}
+
+// Card geometry
+const CARD_W = 132;
+const CARD_H = 60;
+
+function ExemplarCard({
+  ex,
+  index,
+  curveYAt,
+}: {
+  ex: Exemplar;
+  index: number;
+  curveYAt: (age: number) => number;
+}) {
+  const { slide, age } = ex;
+  const startColor = AXIS_COLOR[slide.initialAxis] ?? "#94a3b8";
+  const endColor = AXIS_COLOR[slide.finalAxis] ?? "#94a3b8";
+  const amber = AXIS_COLOR["CONTESTED"];
+  const throughAmber = startColor !== endColor && startColor !== amber && endColor !== amber;
+  const gid = `fig-ex-grad-${index}`;
+
+  const cx = xScale(age);
+  const cy = curveYAt(age);
+  const above = index % 2 === 0;
+  const boxX = Math.min(Math.max(cx - CARD_W / 2, PAD_L + 2), W - PAD_R - CARD_W - 2);
+  const boxY = above ? Math.max(cy - CARD_H - 16, 2) : Math.min(cy + 14, PLOT_BOTTOM - CARD_H - 2);
+  const delay = 0.2 + (age / X_MAX_YEARS) * (BALL_DUR - 0.4);
+
+  // The tiny readable curve: the slide's own trajectory, scaled into the card.
+  const mini = slide.pts
+    .map(([x, y], i) => `${i === 0 ? "M" : "L"}${(10 + (x / 100) * (CARD_W - 20)).toFixed(1)},${(24 + (y / 100) * 16).toFixed(1)}`)
+    .join(" ");
+  const verb = slide.finalAxis === "SETTLED" ? "settled" : slide.finalAxis === "REVERSED" ? "reversed" : "moved";
+
+  return (
+    <g opacity={0} className="rm-show" aria-hidden="true">
+      <animate attributeName="opacity" begin={`${delay.toFixed(2)}s`} dur="0.5s" values="0;1" fill="freeze" />
+      {/* tether from the curve point to the card */}
+      <line x1={cx} y1={cy} x2={cx} y2={above ? boxY + CARD_H : boxY} stroke="#374151" strokeWidth={1} strokeDasharray="2 3" />
+      <circle cx={cx} cy={cy} r={2.5} fill={endColor} />
+      <g transform={`translate(${boxX},${boxY})`}>
+        <rect width={CARD_W} height={CARD_H} rx={6} fill="#0d1320" stroke="#1f2937" />
+        <defs>
+          <linearGradient id={gid} x1="0" y1="0" x2={CARD_W} y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor={startColor} />
+            {throughAmber && <stop offset="55%" stopColor={amber} />}
+            <stop offset="100%" stopColor={endColor} />
+          </linearGradient>
+        </defs>
+        <text x={10} y={15} fontSize={10} fill="#d1d5db" fontFamily="ui-sans-serif,system-ui">
+          {slide.short}
+        </text>
+        <path d={mini} fill="none" stroke={`url(#${gid})`} strokeWidth={1.4} strokeLinejoin="round" strokeLinecap="round" />
+        <circle
+          cx={10 + ((slide.pts[slide.pts.length - 1][0] / 100) * (CARD_W - 20))}
+          cy={24 + (slide.pts[slide.pts.length - 1][1] / 100) * 16}
+          r={2.2}
+          fill={endColor}
+        />
+        <text x={10} y={CARD_H - 7} fontSize={8.5} fill={endColor} fontFamily="ui-monospace,monospace">
+          {verb} after {age}y
+        </text>
+      </g>
+    </g>
+  );
 }
 
 export default function HomeSurvivalFig({
@@ -52,6 +148,15 @@ export default function HomeSurvivalFig({
     )
     .join(" ");
 
+  // y-position on the live curve for a given age (nearest grid point).
+  const curveYAt = (age: number): number => {
+    let best = points[0];
+    for (const p of points) {
+      if (Math.abs(p.yearsAfterEmergence - age) < Math.abs(best.yearsAfterEmergence - age)) best = p;
+    }
+    return yScale(best.pctUnsettled);
+  };
+
   // Median marker: the first grid point at or under 50% unsettled — the same
   // crossing lib/settlingRate reports as kmMedianYears.
   const km = data.kmMedianYears;
@@ -62,10 +167,14 @@ export default function HomeSurvivalFig({
   const mx = medianPoint ? xScale(medianPoint.yearsAfterEmergence) : 0;
   const my = medianPoint ? yScale(medianPoint.pctUnsettled) : 0;
   const medianLabelLeft = mx > 600; // anchor the label away from the right edge
+  const medianDelay =
+    medianPoint && km !== null ? 0.2 + (medianPoint.yearsAfterEmergence / X_MAX_YEARS) * (BALL_DUR - 0.4) : 0;
 
   const last = points[points.length - 1];
   const lastY = yScale(last.pctUnsettled);
   const curveLabelY = Math.min(Math.max(lastY - 10, 32), 242);
+
+  const exemplars = pickExemplars();
 
   const nLabel = datedTrajectoryCount.toLocaleString("en-US");
   const revLabel = data.reversalRate.toFixed(1);
@@ -130,9 +239,15 @@ export default function HomeSurvivalFig({
           share still unsettled
         </text>
 
-        {/* median-crossing marker */}
+        {/* exemplar fly-by cards — real curated trajectories at their real ages */}
+        {exemplars.map((ex, i) => (
+          <ExemplarCard key={ex.slide.short} ex={ex} index={i} curveYAt={curveYAt} />
+        ))}
+
+        {/* median-crossing marker — pops as the ball crosses it, persists */}
         {medianPoint && km !== null && (
-          <g>
+          <g opacity={0} className="rm-show">
+            <animate attributeName="opacity" begin={`${medianDelay.toFixed(2)}s`} dur="0.4s" values="0;1" fill="freeze" />
             <circle cx={mx} cy={my} r="5" fill="#ef4444" />
             <text
               x={medianLabelLeft ? mx - 12 : mx + 12}
@@ -145,6 +260,18 @@ export default function HomeSurvivalFig({
             </text>
           </g>
         )}
+
+        {/* the ball — rolls the full curve once, then fades into the tail */}
+        <g opacity={0} className="rm-hide" aria-hidden="true">
+          <animate attributeName="opacity" begin="0.2s" dur="0.3s" values="0;1" fill="freeze" />
+          <animate attributeName="opacity" begin={`${(BALL_DUR - 0.4).toFixed(2)}s`} dur="0.4s" values="1;0" fill="freeze" />
+          <circle r={8} fill={AXIS_COLOR["CONTESTED"]} opacity={0.18}>
+            <animateMotion begin="0.2s" dur={`${BALL_DUR - 0.4}s`} calcMode="linear" fill="freeze" path={path} />
+          </circle>
+          <circle r={4.5} fill={AXIS_COLOR["CONTESTED"]}>
+            <animateMotion begin="0.2s" dur={`${BALL_DUR - 0.4}s`} calcMode="linear" fill="freeze" path={path} />
+          </circle>
+        </g>
       </svg>
       <figcaption className="mt-2 text-[12.5px] leading-relaxed text-gray-600">
         Fig. 1 — the settling curve: share of tracked claims not yet settled, by years since each
