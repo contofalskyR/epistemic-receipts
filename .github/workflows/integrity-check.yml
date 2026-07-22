@@ -1,9 +1,10 @@
 name: Nightly Integrity Check
 
+# Nightly cron killed 2026-07-22 per owner — the check remains runnable on
+# demand via workflow_dispatch. Note: the 2026-07-22 run (first with tsx)
+# still failed in ~55s, so the residual cause is environmental (DATABASE_URL
+# secret) or a real data-integrity finding — the manual run's log will say.
 on:
-  schedule:
-    # 3am UTC daily
-    - cron: '0 3 * * *'
   workflow_dispatch:
 
 permissions:

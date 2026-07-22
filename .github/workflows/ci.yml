@@ -95,7 +95,10 @@ jobs:
             echo "$RESOLVED"
           fi
           if [ -n "$NEW" ]; then
-            echo "::error::NEW migration drift (not in .github/known-migration-drift.txt):"
+            # %0A = newline in workflow-command annotations, so the drift lines
+            # are readable on the run page itself (not only in the step log).
+            NEW_ANNOT=$(printf '%s' "$NEW" | sed ':a;N;$!ba;s/\n/%0A/g')
+            echo "::error::NEW migration drift (not in .github/known-migration-drift.txt):%0A${NEW_ANNOT}"
             echo "$NEW"
             exit 1
           fi
