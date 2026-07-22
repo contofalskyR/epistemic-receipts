@@ -31,6 +31,10 @@ const PLOT_BOTTOM = 248; // y of 0%
 // One full pass of the ball, in seconds. Time maps linearly to the x-axis, so
 // an exemplar that settled after N years pops at (N / 50) * BALL_DUR.
 const BALL_DUR = 9;
+// When the intro sequence is over, card bodies and the median label fade out,
+// leaving anchor dots on the curve. Hovering a dot re-reveals its card (CSS
+// .figcard rules in globals.css).
+const SETTLE_AT = BALL_DUR + 1.2;
 
 function xScale(t: number): number {
   return PAD_L + (t / X_MAX_YEARS) * (W - PAD_L - PAD_R);
@@ -97,33 +101,44 @@ function ExemplarCard({
   const verb = slide.finalAxis === "SETTLED" ? "settled" : slide.finalAxis === "REVERSED" ? "reversed" : "moved";
 
   return (
-    <g opacity={0} className="rm-show" aria-hidden="true">
-      <animate attributeName="opacity" begin={`${delay.toFixed(2)}s`} dur="0.5s" values="0;1" fill="freeze" />
-      {/* tether from the curve point to the card */}
-      <line x1={cx} y1={cy} x2={cx} y2={above ? boxY + CARD_H : boxY} stroke="#374151" strokeWidth={1} strokeDasharray="2 3" />
-      <circle cx={cx} cy={cy} r={2.5} fill={endColor} />
-      <g transform={`translate(${boxX},${boxY})`}>
-        <rect width={CARD_W} height={CARD_H} rx={6} fill="#0d1320" stroke="#1f2937" />
-        <defs>
-          <linearGradient id={gid} x1="0" y1="0" x2={CARD_W} y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor={startColor} />
-            {throughAmber && <stop offset="55%" stopColor={amber} />}
-            <stop offset="100%" stopColor={endColor} />
-          </linearGradient>
-        </defs>
-        <text x={10} y={15} fontSize={10} fill="#d1d5db" fontFamily="ui-sans-serif,system-ui">
-          {slide.short}
-        </text>
-        <path d={mini} fill="none" stroke={`url(#${gid})`} strokeWidth={1.4} strokeLinejoin="round" strokeLinecap="round" />
-        <circle
-          cx={10 + ((slide.pts[slide.pts.length - 1][0] / 100) * (CARD_W - 20))}
-          cy={24 + (slide.pts[slide.pts.length - 1][1] / 100) * 16}
-          r={2.2}
-          fill={endColor}
-        />
-        <text x={10} y={CARD_H - 7} fontSize={8.5} fill={endColor} fontFamily="ui-monospace,monospace">
-          {verb} after {age}y
-        </text>
+    <g className="figcard">
+      {/* generous invisible hover target around the anchor point */}
+      <circle cx={cx} cy={cy} r={13} fill="transparent" pointerEvents="all" aria-hidden="true" />
+      {/* anchor dot — pops in with the card and persists on the curve */}
+      <circle cx={cx} cy={cy} r={2.5} fill={endColor} opacity={0} className="rm-show" aria-hidden="true">
+        <animate attributeName="opacity" begin={`${delay.toFixed(2)}s`} dur="0.4s" values="0;1" fill="freeze" />
+      </circle>
+      {/* card body — appears as the ball passes, fades once the sequence
+          settles, reappears on hover; clicks through to the trajectory */}
+      <g opacity={0} className="figcard-body">
+        <animate attributeName="opacity" begin={`${delay.toFixed(2)}s`} dur="0.5s" values="0;1" fill="freeze" />
+        <animate attributeName="opacity" begin={`${SETTLE_AT.toFixed(2)}s`} dur="0.8s" values="1;0" fill="freeze" />
+        <line x1={cx} y1={cy} x2={cx} y2={above ? boxY + CARD_H : boxY} stroke="#374151" strokeWidth={1} strokeDasharray="2 3" />
+        <a href={slide.href} aria-label={`${slide.short} — ${verb} after ${age} years, view the trajectory`}>
+          <g transform={`translate(${boxX},${boxY})`} cursor="pointer">
+            <rect width={CARD_W} height={CARD_H} rx={6} fill="#0d1320" stroke="#1f2937" />
+            <defs>
+              <linearGradient id={gid} x1="0" y1="0" x2={CARD_W} y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor={startColor} />
+                {throughAmber && <stop offset="55%" stopColor={amber} />}
+                <stop offset="100%" stopColor={endColor} />
+              </linearGradient>
+            </defs>
+            <text x={10} y={15} fontSize={10} fill="#d1d5db" fontFamily="ui-sans-serif,system-ui">
+              {slide.short}
+            </text>
+            <path d={mini} fill="none" stroke={`url(#${gid})`} strokeWidth={1.4} strokeLinejoin="round" strokeLinecap="round" />
+            <circle
+              cx={10 + ((slide.pts[slide.pts.length - 1][0] / 100) * (CARD_W - 20))}
+              cy={24 + (slide.pts[slide.pts.length - 1][1] / 100) * 16}
+              r={2.2}
+              fill={endColor}
+            />
+            <text x={10} y={CARD_H - 7} fontSize={8.5} fill={endColor} fontFamily="ui-monospace,monospace">
+              {verb} after {age}y
+            </text>
+          </g>
+        </a>
       </g>
     </g>
   );
@@ -244,20 +259,28 @@ export default function HomeSurvivalFig({
           <ExemplarCard key={ex.slide.short} ex={ex} index={i} curveYAt={curveYAt} />
         ))}
 
-        {/* median-crossing marker — pops as the ball crosses it, persists */}
+        {/* median-crossing marker — the red dot pops as the ball crosses it
+            and persists; the text label fades with the cards and returns on
+            hover (the caption below always carries the number). */}
         {medianPoint && km !== null && (
-          <g opacity={0} className="rm-show">
-            <animate attributeName="opacity" begin={`${medianDelay.toFixed(2)}s`} dur="0.4s" values="0;1" fill="freeze" />
-            <circle cx={mx} cy={my} r="5" fill="#ef4444" />
-            <text
-              x={medianLabelLeft ? mx - 12 : mx + 12}
-              y={my - 8}
-              textAnchor={medianLabelLeft ? "end" : "start"}
-              fontSize="12"
-              fill="#f0a5a5"
-            >
-              median time to settle: {fmtYears(km)}y
-            </text>
+          <g className="figcard">
+            <circle cx={mx} cy={my} r={13} fill="transparent" pointerEvents="all" aria-hidden="true" />
+            <circle cx={mx} cy={my} r={5} fill="#ef4444" opacity={0} className="rm-show">
+              <animate attributeName="opacity" begin={`${medianDelay.toFixed(2)}s`} dur="0.4s" values="0;1" fill="freeze" />
+            </circle>
+            <g opacity={0} className="figcard-body">
+              <animate attributeName="opacity" begin={`${medianDelay.toFixed(2)}s`} dur="0.4s" values="0;1" fill="freeze" />
+              <animate attributeName="opacity" begin={`${SETTLE_AT.toFixed(2)}s`} dur="0.8s" values="1;0" fill="freeze" />
+              <text
+                x={medianLabelLeft ? mx - 12 : mx + 12}
+                y={my - 8}
+                textAnchor={medianLabelLeft ? "end" : "start"}
+                fontSize="12"
+                fill="#f0a5a5"
+              >
+                median time to settle: {fmtYears(km)}y
+              </text>
+            </g>
           </g>
         )}
 

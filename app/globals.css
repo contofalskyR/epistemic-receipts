@@ -49,3 +49,56 @@
     opacity: 1 !important;
   }
 }
+
+/* Fig. 1 exemplar cards — hover-reveal after the animation settles.
+   The card body's opacity is driven by SMIL during the intro sequence;
+   these CSS property rules win over the frozen attribute on hover. */
+.figcard .figcard-body {
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.figcard:hover .figcard-body {
+  opacity: 1 !important;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .figcard .figcard-body {
+    opacity: 0 !important;
+  }
+  .figcard:hover .figcard-body {
+    opacity: 1 !important;
+    pointer-events: auto;
+  }
+}
+
+/* Carousel mini-curve dot — one forward pass per slide, rests at the verdict. */
+@keyframes pong-once {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+}
+/* Hidden unless the browser supports CSS motion paths on SVG (else the dot
+   would sit inert at the SVG origin). */
+.pong-once {
+  display: none;
+}
+@supports (offset-path: path("M0,0 L1,1")) {
+  .pong-once {
+    display: block;
+    animation: pong-once 2.8s ease-in-out 0.3s both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pong-once,
+  .pong-once * {
+    display: none !important;
+  }
+}

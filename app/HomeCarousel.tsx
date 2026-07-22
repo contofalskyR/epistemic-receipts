@@ -60,24 +60,17 @@ function MiniCurve({ slide, reducedMotion }: { slide: Slide; reducedMotion: bool
         <polyline points={svgPts} fill="none" stroke={`url(#${gid})`} strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" />
         <circle cx={svgSx} cy={svgSy} r={3} fill={startColor} />
         <circle cx={svgLx} cy={svgLy} r={3.5} fill={endColor} />
-        {/* The pong: the claim as a dot, tracing its own trajectory back and
-            forth. Amber-forward palette per the settling-curve language. */}
+        {/* The claim as a dot, tracing its trajectory ONCE per slide and
+            resting at the verdict (CSS motion path restarts on slide change
+            via the key; reduced-motion hides it entirely). */}
         {!reducedMotion && (
-          <g>
-            <circle r={5.5} fill={amber} opacity={0.18}>
-              <animateMotion dur="5.2s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path={dPath} />
-            </circle>
-            <circle r={2.8} fill={amber}>
-              <animateMotion dur="5.2s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;0.5;1" path={dPath} />
-              <animate
-                attributeName="fill"
-                dur="5.2s"
-                repeatCount="indefinite"
-                values={`${startColor};${amber};${endColor};${amber};${startColor}`}
-                keyTimes="0;0.3;0.5;0.7;1"
-              />
-            </circle>
-          </g>
+          <circle
+            key={`pong-${slide.startYear}-${slide.short}`}
+            className="pong-once"
+            r={2.8}
+            fill={amber}
+            style={{ offsetPath: `path("${dPath}")` }}
+          />
         )}
         <text x={PAD.l} y={H - 4} fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.startYear}</text>
         <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize={8.5} fill="#4b5563" fontFamily="ui-monospace,monospace">{slide.endYear}</text>
