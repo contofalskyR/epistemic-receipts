@@ -2,6 +2,7 @@
 --
 -- Contract:
 --   * INSERT/UPDATE/DELETE on exactly: "Profile", "Bookmark", "Follow".
+--   * INSERT on "Feedback" (write-only: /api/feedback never reads it back).
 --   * SELECT everywhere else (the public edition is otherwise read-only).
 --   * NO access of any kind to "TopicSubscription" / "ClaimSubscription"
 --     (they hold email addresses — the public edition must never read them).
@@ -33,6 +34,12 @@ GRANT INSERT, UPDATE, DELETE ON TABLE "Profile" TO er_scoped_writes;
 GRANT INSERT, UPDATE, DELETE ON TABLE "Bookmark" TO er_scoped_writes;
 GRANT INSERT, UPDATE, DELETE ON TABLE "Follow" TO er_scoped_writes;
 
+-- 5b. Visitor feedback: INSERT only, no read-back, no UPDATE/DELETE.
+--     app/api/feedback/route.ts writes here and B8-3 grades whether it persists.
+--     Without this the public edition returns 500 on every feedback submission.
+--     Id is a Prisma cuid() (app-generated), so no sequence grant is required.
+GRANT INSERT ON TABLE "Feedback" TO er_scoped_writes;
+
 -- 6. Future tables created by the migration owner default to SELECT-only.
 --    NOTE: any future table holding PII must get an explicit REVOKE here —
 --    add it to the migration that creates the table.
@@ -41,5 +48,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO er_scoped_wr
 -- Verification (run as er_scoped_writes):
 --   SELECT count(*) FROM "Claim";                          -- works
 --   INSERT INTO "Follow" ...;                              -- works
+--   INSERT INTO "Feedback" (id, body) VALUES (...);         -- works
+--   SELECT count(*) FROM "Feedback";                        -- permission denied
 --   SELECT count(*) FROM "TopicSubscription";              -- permission denied
 --   INSERT INTO "Claim" (...) VALUES (...);                -- permission denied

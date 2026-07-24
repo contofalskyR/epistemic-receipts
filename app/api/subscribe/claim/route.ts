@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { IS_PUBLIC_EDITION } from "@/lib/publicEdition";
 import { SITE_URL as SITE_BASE } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -13,6 +14,14 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  * Delivery: /api/cron/claim-alerts diffs ClaimStatusHistory since lastAlertAt.
  */
 export async function POST(request: Request) {
+  // Email subscriptions are lab-only: er_scoped_writes has NO access to
+  // "TopicSubscription"/"ClaimSubscription" (they hold email addresses — see
+  // docs/runbooks/er_scoped_writes.sql). Fail closed and legibly rather than
+  // 500-ing on a permission error the visitor cannot act on.
+  if (IS_PUBLIC_EDITION) {
+    return NextResponse.json({ error: "Not available on this edition" }, { status: 404 });
+  }
+
   let body: unknown;
   try {
     body = await request.json();

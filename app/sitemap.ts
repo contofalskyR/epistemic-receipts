@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
+import { IS_PUBLIC_EDITION, isPublicRoute } from "@/lib/publicEdition";
 import { STAT_METHOD_SLUGS } from "@/lib/statMethods";
 
 // Sitemap chunks: with generateSitemaps(), Next serves /sitemap/[id].xml
@@ -9,7 +10,7 @@ import { STAT_METHOD_SLUGS } from "@/lib/statMethods";
 // Each chunk must stay under the 50k-URL protocol cap.
 const CHUNK = 50_000;
 
-const STATIC_URLS: MetadataRoute.Sitemap = [
+const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1.0 },
   { url: `${SITE_URL}/start-here`, changeFrequency: "monthly", priority: 0.9 },
   { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
@@ -39,6 +40,14 @@ const STATIC_URLS: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/split-ledger`, changeFrequency: "weekly", priority: 0.8 },
   { url: `${SITE_URL}/communities`, changeFrequency: "monthly", priority: 0.7 },
 ];
+
+// The public edition gates pages deny-by-default (lib/publicEdition.ts). Advertising
+// a URL that edition 404s is a crawl-quality own-goal, so filter through the SAME
+// predicate the middleware uses — the sitemap then cannot drift from what is served.
+// Lab edition keeps the full list (its robots.txt disallows everything anyway).
+const STATIC_URLS: MetadataRoute.Sitemap = STATIC_URLS_ALL.filter(
+  (e) => !IS_PUBLIC_EDITION || isPublicRoute(e.url.slice(SITE_URL.length) || "/"),
+);
 
 export async function generateSitemaps() {
   // Count multi-step claims (curve_length ≥ 1: any documented transition).

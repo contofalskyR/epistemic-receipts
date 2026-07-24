@@ -31,6 +31,12 @@ export const IS_LAB_EDITION = EDITION === "lab";
 export const PUBLIC_ROUTES: string[] = [
   "/",
   "/about",
+  // /methodology is footer-linked from app/layout.tsx (i.e. from EVERY page) and
+  // is the sole render site for B15's measured error rate. /communities is
+  // plain public content, linked from /settling-curve, /split-ledger and
+  // /methodology, and carried in app/sitemap.ts. Both 404'd here until 07-24.
+  "/methodology",
+  "/communities",
   "/corrections",
   "/case-studies",
   // Explore

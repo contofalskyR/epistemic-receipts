@@ -71,6 +71,10 @@ prisma/migrations.sqlite-backup/
 *-dry-run*.txt
 *-dead-letter.json
 *-verification.md
+# ...but build briefs are source, not run artifacts. This pattern silently kept
+# briefs/2026-07-14-build-brief-8-public-edition-verification.md -- the entire
+# gate-3 go/no-go spec -- out of the repo from 07-14 to 07-24.
+!briefs/*-verification.md
 logs/
 scripts/url-check-results.csv
 

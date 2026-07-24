@@ -1,5 +1,11 @@
 # Publish Checklist — Live-Site Audit 2026-07-06
 
+> **Reconciled with the code 2026-07-24** (`PREPUBLICATION-GAPS-2026-07-24.md`). The
+> edition flag is `NEXT_PUBLIC_EDITION=public` — the literal `"1"` this document
+> carried until now does not error, it silently leaves the page gate OFF, which
+> would deploy the full lab surface on the public domain. B8-6 runs §Verification
+> verbatim, so treat drift here as a launch blocker, not a docs nit.
+
 **Scope:** what to publish, what to hide, and what to fix first — from a route-by-route browse of production (epistemic-receipts.vercel.app) on 2026-07-06, cross-checked against `AUDIT-WHITEPAPER-GAP-2026-07-03.md`, `docs/lab-pages-triage-2026-07-03.md`, and the nav (`app/components/Nav.tsx`).
 
 House rule applies to every item here: fixes must not fabricate data; where a number is wrong, derive it — never hand-write it.
@@ -41,10 +47,10 @@ These are the items a skeptic screenshots. Order matters; all are small.
 
 ## Verification (definition of done for P0)
 
-1. Fetch the tobacco and H. pylori claim URLs — each shows a curve with ≥2 dated, sourced transitions and no UNREVIEWED badge.
+1. Fetch the two marquee claim URLs — Surgeon General 1964 (`claims/cmqwoxe6l07dy8o0y6xrs8xnv`) and Müller 1939 (`claims/cmqoappnu03yxsadpa90nu942`; **not** H. pylori — see P0 above) — each shows a curve with ≥2 dated, sourced transitions and no UNREVIEWED badge.
 2. Grep production HTML for "Editing is disabled" as anonymous visitor → zero hits.
 3. `/edges`, `/labs/claim-diff`, `/claims/*/edit`, `/admin/*`, `/review` → 404 or login for anonymous.
-4. Homepage, /pipelines, /sources show the same claim total (or labeled variants).
+4. Homepage, /pipelines, /sources show the same claim total (or labeled variants). **Blocked on an owner decision** (see P0 “Reconcile the three public corpus totals”): do the 137,875 never-classified claims join the headline count? Site says 1.62M, corpus is 1.76M. B8-6 cannot pass verbatim until this is answered.
 5. /pipelines and /sources show zero raw `enrich:*` / cuid tags to anonymous visitors.
 
 ---
@@ -62,8 +68,8 @@ same GitHub repo (main)
 ├── Vercel project A: epistemic-receipts        ← the lab (today's site)
 │     env: SITE_PASSWORD=<set>                  ← goes private again
 └── Vercel project B: epistemic-receipts-public ← the publishable site
-      env: PUBLIC_EDITION=1                     ← route allowlist active
-      env: DATABASE_URL=<read-only role>        ← defense in depth
+      env: NEXT_PUBLIC_EDITION=public           ← route allowlist active
+      env: DATABASE_URL=<er_scoped_writes role> ← defense in depth
       custom domain: epistemicreceipts.org (or similar)
 ```
 
@@ -74,7 +80,7 @@ Both projects deploy from `main`. The public edition differs only by environment
 **Status 2026-07-06: code scaffolding SHIPPED.** `lib/publicEdition.ts` (allowlist + edition flags), the middleware deny-by-default page gate, the Nav filter (Lab group hidden on public edition), and edition-aware `app/robots.ts` (replacing static `public/robots.txt`) are all in the tree. Behavior is unchanged until `NEXT_PUBLIC_EDITION` is set — remaining steps are Vercel/ops only:
 
 - [ ] Create the second Vercel project (same repo, `main`), set `NEXT_PUBLIC_EDITION=public`.
-- [ ] Create a read-only Neon role; use its connection string as the public project's `DATABASE_URL`; omit `ALLOW_EDITS` and `ADMIN_TOKEN`.
+- [ ] Create the `er_scoped_writes` Neon role (`docs/runbooks/er_scoped_writes.sql` — B12 Q2, approved 2026-07-16; supersedes the “read-only” wording below); use its connection string as the public project's `DATABASE_URL`; omit `ALLOW_EDITS` and `ADMIN_TOKEN`.
 - [ ] Attach the custom domain to the public project.
 - [ ] On the lab project: set `NEXT_PUBLIC_EDITION=lab`, then `SITE_PASSWORD` once the public domain is live.
 
@@ -83,7 +89,7 @@ Original design notes below.
 1. **`lib/publicEdition.ts`** — single source of truth, shared by middleware and Nav:
 
 ```ts
-export const IS_PUBLIC_EDITION = process.env.NEXT_PUBLIC_EDITION === "1";
+export const IS_PUBLIC_EDITION = process.env.NEXT_PUBLIC_EDITION === "public";
 
 // Deny-by-default page allowlist for the public edition (prefix match).
 export const PUBLIC_ROUTES = [
@@ -101,7 +107,7 @@ export const PUBLIC_ROUTES = [
 
 3. **`Nav.tsx`** — filter `GROUPS` against `PUBLIC_ROUTES` when `IS_PUBLIC_EDITION`; the ⚗ Lab group disappears entirely on the public edition and stays on the lab site.
 
-4. **Database:** create a Neon role with `SELECT`-only grants and use its connection string in project B. Public edition physically cannot write, independent of `ALLOW_EDITS`/`ADMIN_TOKEN` (omit both from project B's env anyway). Public write paths that must still work (feedback, search-miss, subscribe) can keep a scoped-writes role or an API route that proxies via the lab deployment — decide per feature; default is read-only.
+4. **Database:** create a Neon role with `SELECT`-only grants and use its connection string in project B. **Superseded 2026-07-16:** the role is `er_scoped_writes` — SELECT everywhere, INSERT/UPDATE/DELETE on `Profile`/`Bookmark`/`Follow`, INSERT on `Feedback`, and no access at all to the email-bearing subscription tables. Public edition physically cannot write, independent of `ALLOW_EDITS`/`ADMIN_TOKEN` (omit both from project B's env anyway). Public write paths that must still work (feedback, search-miss, subscribe) can keep a scoped-writes role or an API route that proxies via the lab deployment — decide per feature; default is read-only.
 
 5. **Crawlability split:** `robots.txt` and `sitemap.ts` (briefing 04) serve real content only when `IS_PUBLIC_EDITION`; the lab project serves `Disallow: /`. Search engines and AI crawlers only ever meet the curated surface. OG metadata likewise.
 
