@@ -5,6 +5,11 @@
 > carried until now does not error, it silently leaves the page gate OFF, which
 > would deploy the full lab surface on the public domain. B8-6 runs §Verification
 > verbatim, so treat drift here as a launch blocker, not a docs nit.
+>
+> **The *Public Edition* and *Sequencing* sections below are superseded by
+> `LAUNCH-PLAN-2026-07-24.md`.** The P0/P1/P2 lists and §Verification above remain
+> live — §Verification is still the definition of done, and its item 1 (the two
+> marquee claims) is an unmet blocker on gate 3.
 
 **Scope:** what to publish, what to hide, and what to fix first — from a route-by-route browse of production (epistemic-receipts.vercel.app) on 2026-07-06, cross-checked against `AUDIT-WHITEPAPER-GAP-2026-07-03.md`, `docs/lab-pages-triage-2026-07-03.md`, and the nav (`app/components/Nav.tsx`).
 

@@ -1,5 +1,9 @@
 # Pre-publication gap audit — 2026-07-24
 
+> **Folded into `LAUNCH-PLAN-2026-07-24.md` on 2026-07-24.** Kept as the record of
+> what was found and why. Findings A1–A4 and the §D doc drift are fixed and shipped
+> (`3197621`); everything still open is carried in the launch plan. Work from that.
+
 **Method:** verified against `origin/main` (tip `4e7f0de`, fetched 07-24 18:13), the
 GitHub Actions run pages, and the live lab site. Nothing here is taken from the
 handoff on trust. Whitepaper-gap items deliberately out of scope per owner.

@@ -1,5 +1,12 @@
 # Publication Runbook — what's left (2026-07-22)
 
+> **SUPERSEDED 2026-07-24 by `LAUNCH-PLAN-2026-07-24.md`.** Kept for history.
+> Two things below are wrong: step 3 is described as unblocked, but B8-6 cannot
+> pass until the two marquee claims are curated (§1 of the launch plan), and this
+> document ends at "publication-ready" without the flip itself — domain,
+> `NEXT_PUBLIC_EDITION=lab` on the lab project, then `SITE_PASSWORD`. Use the
+> launch plan.
+
 Correct: **steps 1 and 2 are done.** CI is green on main (run #166+), all 54
 migrations are applied in prod. Optional 10-second confirmation of step 2:
 click **Follow** on any live claim page, reload — if it sticks, done.
