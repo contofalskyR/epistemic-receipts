@@ -1837,6 +1837,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ── 36. FDA trans fat / PHOs — not GRAS — 2013 ──────────────────────────────
+  {
+    externalId: 'trajectory:fda-trans-fat-pho-not-gras-2013',
+    text: 'The U.S. Food and Drug Administration determined that partially hydrogenated oils (PHOs) — the primary dietary source of industrially produced trans fat — are no longer \'generally recognized as safe\' (GRAS) for any use in human food, issuing a tentative determination on November 8, 2013 and a final declaratory order on June 17, 2015.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-11-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA published a tentative determination in the Federal Register that there is no longer scientific consensus that PHOs are GRAS, opening a public comment period. This was the first formal regulatory move to reclassify industrially produced trans fat from a permitted ingredient to a food additive requiring premarket approval, reversing decades of unregulated use.',
+        source: {
+          externalId: 'src:fda-pho-determination-overview',
+          name: 'U.S. Food and Drug Administration. Final Determination Regarding Partially Hydrogenated Oils (Removing Trans Fat) — timeline, tentative determination November 2013.',
+          url: 'https://www.fda.gov/food/food-additives-petitions/final-determination-regarding-partially-hydrogenated-oils-removing-trans-fat',
+          publishedAt: '2013-11-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-06-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued its final determination (declaratory order, 80 FR 34650) concluding that PHOs are not GRAS for any human food use, with a compliance date of June 18, 2018. The agency projected the removal could prevent thousands of heart attacks and deaths annually, institutionalizing the empirical trans-fat/coronary-heart-disease link into binding food-additive law and effectively removing artificial trans fat from the U.S. food supply.',
+        source: {
+          externalId: 'src:fda-pho-final-determination-fr-2015',
+          name: 'U.S. Food and Drug Administration. Final Determination Regarding Partially Hydrogenated Oils. 80 FR 34650, Federal Register, June 17, 2015.',
+          url: 'https://www.federalregister.gov/documents/2015/06/17/2015-14883/final-determination-regarding-partially-hydrogenated-oils',
+          publishedAt: '2015-06-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 37. USDA school meal nutrition standards — HHFKA — 2012 ─────────────────
+  {
+    externalId: 'trajectory:usda-school-meal-nutrition-standards-hhfka-2012',
+    text: 'The USDA established stronger nutrition standards for the National School Lunch and School Breakfast Programs — more fruits, vegetables, and whole grains and phased sodium and fat limits aligned with the Dietary Guidelines — in a final rule published January 26, 2012 under the Healthy, Hunger-Free Kids Act of 2010.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-01-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-01-26',
+        datePrecision: 'DAY',
+        reason: 'USDA\'s Food and Nutrition Service published the final rule \'Nutrition Standards in the National School Lunch and School Breakfast Programs,\' the first major update to school-meal standards in over 15 years, requiring more whole grains, fruits, and vegetables and setting phased sodium-reduction targets. It operationalized the Healthy, Hunger-Free Kids Act of 2010 and the Institute of Medicine\'s recommendations for roughly 30 million children.',
+        source: {
+          externalId: 'src:usda-school-meal-standards-fr-2012',
+          name: 'USDA Food and Nutrition Service. Nutrition Standards in the National School Lunch and School Breakfast Programs. 77 FR 4088, Federal Register, January 26, 2012.',
+          url: 'https://www.federalregister.gov/documents/2012/01/26/2012-1010/nutrition-standards-in-the-national-school-lunch-and-school-breakfast-programs',
+          publishedAt: '2012-01-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-12-12',
+        datePrecision: 'DAY',
+        reason: 'USDA published the 2018 Final Rule \'Child Nutrition Programs: Flexibilities for Milk, Whole Grains, and Sodium Requirements\' (83 FR 63775), which permanently allowed low-fat flavored milk, cut the whole-grain-rich requirement from 100% to 50% of weekly grains, and eliminated the strictest (\'Target 2/Final\') sodium target. The rollback contested the 2012 standards on the grounds of plate waste and cost, weakening the science-based limits.',
+        source: {
+          externalId: 'src:usda-school-meal-flexibilities-fr-2018',
+          name: 'USDA Food and Nutrition Service. Child Nutrition Programs: Flexibilities for Milk, Whole Grains, and Sodium Requirements. 83 FR 63775, Federal Register, December 12, 2018.',
+          url: 'https://www.federalregister.gov/documents/2018/12/12/2018-26762/child-nutrition-programs-flexibilities-for-milk-whole-grains-and-sodium-requirements',
+          publishedAt: '2018-12-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2020-04-13',
+        datePrecision: 'DAY',
+        reason: 'In Center for Science in the Public Interest v. Perdue, the U.S. District Court for the District of Maryland vacated the 2018 Final Rule on April 13, 2020, finding the sodium and whole-grain rollbacks were not a \'logical outgrowth\' of the interim rule and violated the Administrative Procedure Act. The vacatur restored the stronger 2012 standards, and USDA formalized the restoration in the Federal Register.',
+        source: {
+          externalId: 'src:usda-school-meal-vacatur-fr-2020',
+          name: 'USDA Food and Nutrition Service. Child Nutrition Programs: Rescission of Milk, Whole Grains, and Sodium Flexibilities; Notice of Vacatur (documenting CSPI v. Perdue, D. Md., Apr. 13, 2020). Federal Register, November 24, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/11/24/2020-25760/child-nutrition-programs-rescission-of-milk-whole-grains-and-sodium-flexibilities-notice-of-vacatur',
+          publishedAt: '2020-11-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 38. Chile front-of-package warning labels — Law 20.606 — 2012 ───────────
+  {
+    externalId: 'trajectory:chile-front-of-package-warning-labels-2012',
+    text: 'Chile\'s Law 20.606 on the Nutritional Composition of Food and its Advertising, published July 6, 2012 and in force from June 27, 2016, made Chile the first country to mandate black-octagon \'high in\' front-of-package warning labels together with restrictions on child-directed marketing and a ban on sales in schools for foods high in calories, sugar, saturated fat, or sodium.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-07-06',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-06',
+        datePrecision: 'MONTH',
+        reason: 'Chile enacted Law 20.606 (Diario Oficial No. 40.305, July 6, 2012), establishing the statutory framework for mandatory front-of-package warning labels, advertising restrictions, and school-sales limits on nutrient-dense foods. It advanced the then-untested policy claim that mandatory warning labeling plus marketing controls could shift population diets.',
+        source: {
+          externalId: 'src:chile-ley-20606-bcn-2012',
+          name: 'Biblioteca del Congreso Nacional de Chile. Ley 20.606 sobre Composición Nutricional de los Alimentos y su Publicidad. Diario Oficial, 6 July 2012.',
+          url: 'https://www.bcn.cl/leychile/Navegar?idNorma=1041570',
+          publishedAt: '2012-07-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-06-27',
+        datePrecision: 'DAY',
+        reason: 'The implementing regulations entered into full force on June 27, 2016 (Phase 1), making Chile the first country in the world to require the black-octagon warning labels, restrict marketing of \'high-in\' products to children, and prohibit their sale in schools. The world-first policy was institutionalized and became a template later adopted across Latin America.',
+        source: {
+          externalId: 'src:chile-ssb-labeling-plosmed-2020',
+          name: 'Taillie LS, et al. An evaluation of Chile\'s Law of Food Labeling and Advertising on sugar-sweetened beverage purchases from 2015 to 2017: A before-and-after study. PLoS Medicine. 2020;17(2):e1003015.',
+          url: 'https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1003015',
+          publishedAt: '2020-02-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-09-27',
+        datePrecision: 'DAY',
+        reason: 'An interrupted-time-series analysis in PLOS Medicine found that three years after full (Phase 2) implementation, household purchases fell sharply versus counterfactual trends — sugar −36.8%, energy −23.0%, sodium −21.9%, saturated fat −15.7% — with consistent effects across socioeconomic groups. This empirically confirmed the effectiveness claim that had been institutionally adopted in 2016, settling it in the research literature.',
+        source: {
+          externalId: 'src:chile-labeling-its-plosmed-2024',
+          name: 'Taillie LS, et al. Decreases in purchases of energy, sodium, sugar, and saturated fat 3 years after implementation of the Chilean food labeling and marketing law: An interrupted time series analysis. PLoS Medicine. 2024;21(9):e1004463.',
+          url: 'https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1004463',
+          publishedAt: '2024-09-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 39. FDA menu calorie labeling rule — 2014 ────────────────────────────────
+  {
+    externalId: 'trajectory:fda-menu-calorie-labeling-rule-2014',
+    text: 'The U.S. Food and Drug Administration issued a final rule on December 1, 2014, under Section 4205 of the Affordable Care Act, requiring chain restaurants and similar retail food establishments with 20 or more locations to post calorie counts for standard menu items — a mandate that took nationwide effect on May 7, 2018 after repeated compliance delays.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-12-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-12-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA published the final rule \'Food Labeling; Nutrition Labeling of Standard Menu Items in Restaurants and Similar Retail Food Establishments\' (79 FR 71156), implementing ACA Section 4205 and requiring covered chains to disclose calories on menus and menu boards. It established the first federal mandate that point-of-purchase calorie information be provided to consumers dining out.',
+        source: {
+          externalId: 'src:fda-menu-labeling-final-rule-fr-2014',
+          name: 'U.S. Food and Drug Administration. Food Labeling; Nutrition Labeling of Standard Menu Items in Restaurants and Similar Retail Food Establishments. 79 FR 71156, Federal Register, December 1, 2014.',
+          url: 'https://www.federalregister.gov/documents/2014/12/01/2014-27833/food-labeling-nutrition-labeling-of-standard-menu-items-in-restaurants-and-similar-retail-food',
+          publishedAt: '2014-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'MARKET',
+        occurredAt: '2017-05-04',
+        datePrecision: 'DAY',
+        reason: 'Amid pushback from grocers, convenience stores, and pizza chains over scope and cost, the FDA repeatedly delayed the compliance date (originally December 2015) and on May 4, 2017 extended it again to May 7, 2018 while reopening comment. The delays reflected sustained industry and political contestation of whether and how the mandate would take effect.',
+        source: {
+          externalId: 'src:fda-menu-labeling-compliance-extension-fr-2017',
+          name: 'U.S. Food and Drug Administration. Food Labeling; Nutrition Labeling of Standard Menu Items...; Extension of Compliance Date; Request for Comments. Federal Register, May 4, 2017.',
+          url: 'https://www.federalregister.gov/documents/2017/05/04/2017-09029/food-labeling-nutrition-labeling-of-standard-menu-items-in-restaurants-and-similar-retail-food',
+          publishedAt: '2017-05-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-05-07',
+        datePrecision: 'DAY',
+        reason: 'The menu-labeling requirements became enforceable nationwide on May 7, 2018, ending years of delay and making chain-restaurant calorie disclosure a settled federal standard. The mandate was implemented uniformly across covered establishments, resolving the regulatory contestation over its effective date.',
+        source: {
+          externalId: 'src:fda-menu-labeling-requirements-page',
+          name: 'U.S. Food and Drug Administration. Menu Labeling Requirements (compliance date May 7, 2018).',
+          url: 'https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/menu-labeling-requirements',
+          publishedAt: '2018-05-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
