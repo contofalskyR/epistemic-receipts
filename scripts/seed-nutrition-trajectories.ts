@@ -2467,6 +2467,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SUGAR-SWEETENED BEVERAGES & ADDED SUGAR SCIENCE (2004–2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SSB–type 2 diabetes prospective cohort — 2004 ───────────────────────────
+  {
+    externalId: 'trajectory:sugar-sweetened-beverages-type2-diabetes-2004',
+    text: 'Schulze and colleagues reported in JAMA on August 25, 2004 that, in the prospective Nurses\' Health Study II cohort of over 91,000 women, higher consumption of sugar-sweetened beverages was associated with greater weight gain and a significantly increased incidence of type 2 diabetes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-08-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-08-25',
+        datePrecision: 'DAY',
+        reason: 'Schulze, Manson, Ludwig, Colditz, Stampfer, Willett, and Hu published a prospective analysis of 91,249 women in Nurses\' Health Study II, finding that women who increased sugar-sweetened beverage intake gained more weight and had a relative risk of type 2 diabetes of 1.83 for those consuming one or more per day versus less than one per month. It was among the first large prospective cohorts to directly link sugary drinks to incident diabetes rather than obesity alone, moving the metabolic-harm hypothesis into first-tier epidemiological evidence.',
+        source: {
+          externalId: 'src:schulze-ssb-diabetes-jama-2004',
+          name: 'Schulze MB, Manson JE, Ludwig DS, Colditz GA, Stampfer MJ, Willett WC, Hu FB. Sugar-sweetened beverages, weight gain, and incidence of type 2 diabetes in young and middle-aged women. JAMA. 2004;292(8):927–934.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15328324/',
+          publishedAt: '2004-08-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Malik and colleagues published a meta-analysis in Diabetes Care (November 2010) pooling prospective cohorts covering over 300,000 participants and finding that individuals in the highest category of sugar-sweetened beverage intake had a 26% greater risk of type 2 diabetes and a 20% greater risk of metabolic syndrome than those in the lowest. The quantitative pooling settled the sugar-sweetened-beverage/diabetes link as established science in the expert literature.',
+        source: {
+          externalId: 'src:malik-ssb-diabetes-meta-diabetescare-2010',
+          name: 'Malik VS, Popkin BM, Bray GA, Després JP, Willett WC, Hu FB. Sugar-sweetened beverages and risk of metabolic syndrome and type 2 diabetes: a meta-analysis. Diabetes Care. 2010;33(11):2477–2483.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20693348/',
+          publishedAt: '2010-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fructose-specific cardiometabolic harm — Stanhope 2009 ──────────────────
+  {
+    externalId: 'trajectory:fructose-specific-cardiometabolic-harm-stanhope-2009',
+    text: 'Stanhope and colleagues reported in the Journal of Clinical Investigation in May 2009 that, in a controlled human feeding trial, fructose-sweetened but not glucose-sweetened beverages increased visceral adiposity, raised blood lipids, and decreased insulin sensitivity in overweight and obese adults, establishing evidence that fructose specifically drives cardiometabolic harm.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Stanhope and colleagues randomized overweight/obese adults to 10 weeks of glucose- or fructose-sweetened beverages providing 25% of energy and found that only the fructose group gained visceral fat, developed dyslipidemia (increased de novo lipogenesis and apoB), and lost insulin sensitivity. The controlled human trial provided the strongest mechanistic evidence that fructose, distinct from glucose, produces cardiometabolic harm, sharpening the metabolic case against sugar beyond simple calorie excess.',
+        source: {
+          externalId: 'src:stanhope-fructose-jci-2009',
+          name: 'Stanhope KL, Schwarz JM, Keim NL, et al. Consuming fructose-sweetened, not glucose-sweetened, beverages increases visceral adiposity and lipids and decreases insulin sensitivity in overweight/obese humans. J Clin Invest. 2009;119(5):1322–1334.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19381015/',
+          publishedAt: '2009-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-02-21',
+        datePrecision: 'DAY',
+        reason: 'Sievenpiper and colleagues published a systematic review and meta-analysis of controlled feeding trials in Annals of Internal Medicine (February 21, 2012) finding that fructose does not cause weight gain when isocalorically substituted for other carbohydrates, arguing that fructose harm observed in studies like Stanhope\'s was driven by the excess calories rather than fructose per se. The two lines of evidence placed the question of fructose-specific metabolic toxicity into active scientific contestation over dose and mechanism.',
+        source: {
+          externalId: 'src:sievenpiper-fructose-meta-annals-2012',
+          name: 'Sievenpiper JL, de Souza RJ, Mirrahimi A, et al. Effect of fructose on body weight in controlled feeding trials: a systematic review and meta-analysis. Ann Intern Med. 2012;156(4):291–304.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22351714/',
+          publishedAt: '2012-02-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AHA added-sugar scientific statement — 2009 ─────────────────────────────
+  {
+    externalId: 'trajectory:aha-added-sugar-limit-scientific-statement-2009',
+    text: 'The American Heart Association issued its first scientific statement setting quantitative upper limits on added-sugar intake on August 24, 2009 (Circulation), recommending most women consume no more than about 100 calories per day and most men no more than about 150 calories per day of added sugars for cardiovascular health.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2009-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-08-24',
+        datePrecision: 'DAY',
+        reason: 'The AHA Nutrition Committee, led by Rachel Johnson, published \'Dietary Sugars Intake and Cardiovascular Health\' in Circulation, concluding that excessive added-sugar intake contributes to cardiovascular risk factors and recommending discretionary added-sugar ceilings of roughly 100 kcal/day (about 6 teaspoons) for women and 150 kcal/day (about 9 teaspoons) for men. It was the first quantitative added-sugar limit issued by a major U.S. medical body, institutionalizing added sugar as a distinct cardiovascular concern six years before WHO and USDA adopted their own caps.',
+        source: {
+          externalId: 'src:johnson-aha-dietary-sugars-circulation-2009',
+          name: 'Johnson RK, Appel LJ, Brands M, et al. Dietary sugars intake and cardiovascular health: a scientific statement from the American Heart Association. Circulation. 2009;120(11):1011–1020.',
+          url: 'https://www.ahajournals.org/doi/10.1161/circulationaha.109.192627',
+          publishedAt: '2009-08-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Added sugar and cardiovascular mortality — Yang 2014 ─────────────────────
+  {
+    externalId: 'trajectory:added-sugar-cardiovascular-mortality-yang-2014',
+    text: 'Yang and colleagues reported in JAMA Internal Medicine on February 3, 2014 that, using NHANES data linked to mortality follow-up, higher added-sugar consumption was associated with significantly increased cardiovascular disease mortality, with U.S. adults consuming 25% or more of their calories from added sugar having roughly a threefold higher risk of CVD death than those consuming less than 10%.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-02-03',
+        datePrecision: 'DAY',
+        reason: 'Yang, Zhang, Gregg, Flanders, Merritt, and Hu analyzed added-sugar intake against cardiovascular mortality in a nationally representative NHANES cohort and found a dose-response relationship, with an adjusted hazard ratio of 2.75 for CVD death among adults getting 25% or more of energy from added sugar versus less than 10%. The study established a direct association between added sugar and cardiovascular death — an endpoint distinct from obesity, diabetes, or dental caries — strengthening the empirical basis for the added-sugar limits then under consideration by U.S. dietary guideline bodies.',
+        source: {
+          externalId: 'src:yang-added-sugar-cvd-mortality-jamaim-2014',
+          name: 'Yang Q, Zhang Z, Gregg EW, Flanders WD, Merritt R, Hu FB. Added sugar intake and cardiovascular diseases mortality among US adults. JAMA Intern Med. 2014;174(4):516–524.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24493081/',
+          publishedAt: '2014-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dietary sugars and body weight meta-analysis — Te Morenga 2013 ───────────
+  {
+    externalId: 'trajectory:dietary-sugars-body-weight-te-morenga-2013',
+    text: 'Te Morenga, Mallard, and Mann established in a BMJ systematic review and meta-analysis published January 15, 2013 that reducing dietary free sugars lowers body weight while increasing sugar raises it, providing the randomized-trial and cohort evidence base that WHO subsequently cited in setting its free-sugars limit.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-01-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-01-15',
+        datePrecision: 'DAY',
+        reason: 'Te Morenga, Mallard, and Mann pooled 30 randomized controlled trials and 38 cohort studies in the BMJ, finding that reduced free-sugar intake was associated with a mean body-weight decrease (about 0.8 kg) and increased intake with a gain (about 0.75 kg) in ad libitum diets, with a comparable effect from swapping sugars for other carbohydrates being null — isolating the effect to energy from sugars. The meta-analysis provided the causal randomized-trial evidence linking free sugars to body weight that earlier ecological and cohort work could not.',
+        source: {
+          externalId: 'src:te-morenga-sugars-body-weight-bmj-2013',
+          name: 'Te Morenga L, Mallard S, Mann J. Dietary sugars and body weight: systematic review and meta-analyses of randomised controlled trials and cohort studies. BMJ. 2012;346:e7492.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23321486/',
+          publishedAt: '2013-01-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-03-04',
+        datePrecision: 'DAY',
+        reason: 'The World Health Organization issued its guideline on free-sugars intake on March 4, 2015, drawing directly on the Te Morenga body-weight review (and companion caries evidence) to strongly recommend limiting free sugars to under 10% of total energy. The institutional adoption converted the meta-analytic body-weight finding into settled global public-health policy.',
+        source: {
+          externalId: 'src:who-sugars-guideline-2015-temorenga-basis',
+          name: 'World Health Organization. Guideline: Sugars intake for adults and children. Geneva: WHO; 4 March 2015.',
+          url: 'https://www.who.int/publications/i/item/9789241549028',
+          publishedAt: '2015-03-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
