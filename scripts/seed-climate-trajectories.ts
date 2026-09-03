@@ -1815,6 +1815,201 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── 43. IEA — solar PV cheapest electricity in history — 2020 ──────────────
+  {
+    externalId: 'trajectory:iea-solar-cheapest-electricity-2020',
+    text: 'The International Energy Agency declared in its World Energy Outlook 2020, published on 13 October 2020, that in regions with good resources and access to low-cost financing solar photovoltaic power had become the cheapest source of electricity in history.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-10-13',
+        datePrecision: 'DAY',
+        reason: 'In the World Energy Outlook 2020, the IEA reported that revised cost and financing assumptions made new utility-scale solar PV the cheapest electricity ever seen in the best locations, stating solar was 20–50% cheaper than it had estimated a year earlier. Coming from the world\'s leading intergovernmental energy authority — long regarded as conservative on renewables — this placed the \'solar is cheapest\' claim onto the authoritative institutional record for the first time.',
+        source: {
+          externalId: 'src:iea-weo-2020',
+          name: 'International Energy Agency. World Energy Outlook 2020. Paris: IEA, 13 October 2020.',
+          url: 'https://www.iea.org/reports/world-energy-outlook-2020',
+          publishedAt: '2020-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '2024-09-24',
+        datePrecision: 'MONTH',
+        reason: 'IRENA\'s Renewable Power Generation Costs in 2023 (September 2024) found that 81% (382 GW) of the 473 GW of utility-scale renewable capacity commissioned in 2023 produced electricity more cheaply than the cheapest fossil-fuel alternative, with solar PV and onshore wind the lowest-cost options. Independent global cost data from the sector\'s dedicated agency confirmed the cost-crossover as an established market fact rather than a one-off IEA projection.',
+        source: {
+          externalId: 'src:irena-power-costs-2023',
+          name: 'International Renewable Energy Agency. Renewable Power Generation Costs in 2023 (Executive Summary). Abu Dhabi: IRENA, September 2024.',
+          url: 'https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2024/Sep/IRENA_Renewable_power_generation_costs_in_2023_executive_summary.pdf',
+          publishedAt: '2024-09-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 44. UK — first major economy to enshrine net-zero in law — 2019 ─────────
+  {
+    externalId: 'trajectory:uk-net-zero-2050-law-2019',
+    text: 'The United Kingdom became the first major economy to enshrine a net-zero greenhouse gas emissions target in law when the Climate Change Act 2008 (2050 Target Amendment) Order came into force on 27 June 2019, committing the UK to at least a 100% reduction in emissions relative to 1990 levels by 2050.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-06-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-06-27',
+        datePrecision: 'DAY',
+        reason: 'Acting on the Committee on Climate Change\'s May 2019 advice, the UK government amended the Climate Change Act 2008 to replace its 80%-reduction target with a legally binding net-zero-by-2050 obligation, and announced it as the first such law passed by a major economy. This converted net zero from an aspirational policy goal into a statutory duty, setting the template subsequently followed by the EU and dozens of other states.',
+        source: {
+          externalId: 'src:uk-gov-net-zero-law-2019',
+          name: 'UK Government (BEIS). Press release: UK becomes first major economy to pass net zero emissions law. GOV.UK, 27 June 2019.',
+          url: 'https://www.gov.uk/government/news/uk-becomes-first-major-economy-to-pass-net-zero-emissions-law',
+          publishedAt: '2019-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 45. Boundary Dam 3 — first commercial coal-plant CCS — 2014 ─────────────
+  {
+    externalId: 'trajectory:boundary-dam-first-coal-ccs-2014',
+    text: 'SaskPower launched Boundary Dam Unit 3 in Estevan, Saskatchewan on 2 October 2014 as the world\'s first commercial-scale post-combustion carbon capture and storage facility on a coal-fired power plant, designed to capture up to one million tonnes of CO₂ per year.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-10-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-10-02',
+        datePrecision: 'DAY',
+        reason: 'SaskPower and the Government of Canada announced the launch of the CAD 1.4 billion Boundary Dam 3 retrofit as the world\'s first commercial-scale post-combustion CCS project on a coal plant, capable of capturing up to one million tonnes of CO₂ annually. The event established coal-plant CCS as a demonstrated, operating technology rather than a laboratory concept.',
+        source: {
+          externalId: 'src:canada-boundary-dam-launch-2014',
+          name: 'Government of Canada. Harper Government Celebrates World-First Commercial Carbon Capture and Storage. Canada.ca news archive, 2 October 2014.',
+          url: 'https://www.canada.ca/en/news/archive/2014/10/harper-government-celebrates-world-first-commercial-carbon-capture-storage.html',
+          publishedAt: '2014-10-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-04-30',
+        datePrecision: 'DAY',
+        reason: 'Analysing SaskPower\'s own operating data, IEEFA reported on 30 April 2024 that Boundary Dam 3\'s long-term capture rate through end-2023 was only about 57% — far below the promised 90% — because the capture unit was available for only ~80% of operating hours and processed only part of the flue gas. The persistent shortfall, with no comparable coal-CCS plant following at scale, contested the founding claim that commercial coal-plant CCS was a viable, at-scale mitigation pathway.',
+        source: {
+          externalId: 'src:ieefa-boundary-dam-underperforming-2024',
+          name: 'Schlissel D, Kalegha M. Carbon Capture at Boundary Dam 3 Still an Underperforming Failure. Institute for Energy Economics and Financial Analysis (IEEFA), 30 April 2024.',
+          url: 'https://ieefa.org/resources/carbon-capture-boundary-dam-3-still-underperforming-failure',
+          publishedAt: '2024-04-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 46. IEA — net-zero 2050 roadmap, no new fossil expansion — 2021 ─────────
+  {
+    externalId: 'trajectory:iea-net-zero-2050-roadmap-2021',
+    text: 'The International Energy Agency published \'Net Zero by 2050: A Roadmap for the Global Energy Sector\' on 18 May 2021, concluding that a 1.5°C-aligned pathway requires no new oil and gas fields approved for development, and no new coal mines or unabated coal plants, beyond projects already committed as of 2021.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-18',
+        datePrecision: 'DAY',
+        reason: 'In its first comprehensive net-zero roadmap, the IEA — historically seen as sympathetic to fossil-fuel producers — modelled 400+ milestones and concluded there is no need for new oil and gas fields or new coal mines beyond already-committed projects on a 1.5°C path. This marked a striking reversal of the agency\'s institutional posture and put the \'no new fossil expansion\' finding onto the authoritative energy-analysis record.',
+        source: {
+          externalId: 'src:iea-net-zero-2050-2021',
+          name: 'International Energy Agency. Net Zero by 2050: A Roadmap for the Global Energy Sector. Paris: IEA, 18 May 2021.',
+          url: 'https://www.iea.org/reports/net-zero-by-2050',
+          publishedAt: '2021-05-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-09-26',
+        datePrecision: 'DAY',
+        reason: 'In its 2023 update, \'Net Zero Roadmap: A Global Pathway to Keep the 1.5°C Goal in Reach\' (26 September 2023), the IEA reaffirmed with updated data that no new long-lead-time upstream oil and gas projects and no new unabated coal are needed on the 1.5°C pathway. The restatement two years on, against sustained pushback from OPEC and fossil producers, cemented the finding as the agency\'s standing analytical position rather than a one-off scenario.',
+        source: {
+          externalId: 'src:iea-net-zero-roadmap-2023-update',
+          name: 'International Energy Agency. Net Zero Roadmap: A Global Pathway to Keep the 1.5 °C Goal in Reach — 2023 Update. Paris: IEA, 26 September 2023.',
+          url: 'https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach',
+          publishedAt: '2023-09-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 47. UK — coal power phaseout completed — 2024 ───────────────────────────
+  {
+    externalId: 'trajectory:uk-coal-power-phaseout-2024',
+    text: 'The United Kingdom pledged in November 2015 to phase out unabated coal-fired electricity and completed the phase-out when Ratcliffe-on-Soar power station closed on 30 September 2024, making the UK the first G7 nation to end coal power, 142 years after the world\'s first coal-fired public power station opened in London.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-11-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-11-18',
+        datePrecision: 'DAY',
+        reason: 'In an \'energy policy reset\' speech on 18 November 2015, Energy and Climate Change Secretary Amber Rudd committed the UK to closing all unabated coal-fired power stations by 2025, the first such national coal phase-out pledge by a major economy. The commitment converted coal exit from analytical possibility into declared government policy.',
+        source: {
+          externalId: 'src:uk-coal-phaseout-pledge-2015',
+          name: 'Carbon Brief. In-depth: UK pledges coal phase-out by 2025, but uncertainty remains (Amber Rudd energy policy reset speech). 18 November 2015.',
+          url: 'https://www.carbonbrief.org/in-depth-uk-pledges-coal-phase-out-by-2025-but-uncertainty-remains/',
+          publishedAt: '2015-11-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '2024-09-30',
+        datePrecision: 'DAY',
+        reason: 'Ratcliffe-on-Soar, the UK\'s last coal-fired power station, ceased generation on 30 September 2024, ending 142 years of coal power and making the UK the first G7 nation to eliminate coal from its grid — coal had still supplied ~40% of UK electricity in 2012. The physical closure realised the 2015 pledge, converting the phase-out from policy target into an accomplished, effectively irreversible energy-system fact.',
+        source: {
+          externalId: 'src:uk-ratcliffe-coal-closure-2024',
+          name: 'ABC News. UK\'s last coal-fired power plant officially closes as energy transition takes hold. 30 September 2024.',
+          url: 'https://www.abc.net.au/news/2024-09-30/last-coal-fired-power-plant-in-uk-officially-closes/104378430',
+          publishedAt: '2024-09-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 28. Gornitz, Lebedeff & Hansen — global sea-level trend — 1982 ───────────
   {
     externalId: 'trajectory:gornitz-lebedeff-hansen-sea-level-trend-1982',
