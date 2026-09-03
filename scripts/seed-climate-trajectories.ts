@@ -1395,6 +1395,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── 33. Stott, Stone & Allen — European heatwave attribution — 2004 ──────────
+  {
+    externalId: 'trajectory:stott-european-heatwave-attribution-2004',
+    text: 'Peter Stott, Dáithí Stone, and Myles Allen reported in Nature on 2 December 2004 that human influence had at least doubled the risk of the extreme 2003 European summer heatwave, the first formal probabilistic attribution of an individual extreme weather event to anthropogenic climate change.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-12-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-12-02',
+        datePrecision: 'DAY',
+        reason: 'Stott, Stone, and Allen published \'Human contribution to the European heatwave of 2003\' in Nature (432:610–614), using a coupled climate model to estimate the fraction of attributable risk and concluding it was very likely (>90% confidence) that human influence had at least doubled the risk of a summer as hot as 2003. This was the founding demonstration that the probability of a specific extreme event could be formally partitioned between natural variability and anthropogenic forcing, launching the field of extreme-event attribution.',
+        source: {
+          externalId: 'src:stott-heatwave-attribution-nature-2004',
+          name: 'Stott PA, Stone DA, Allen MR. Human contribution to the European heatwave of 2003. Nature. 2004;432(7017):610–614.',
+          url: 'https://doi.org/10.1038/nature03089',
+          publishedAt: '2004-12-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-11',
+        datePrecision: 'DAY',
+        reason: 'The U.S. National Academies of Sciences, Engineering, and Medicine released \'Attribution of Extreme Weather Events in the Context of Climate Change\' on 11 March 2016, concluding that the science of event attribution had matured to the point where confident, quantitative statements about the human influence on many individual events — especially heat extremes — were scientifically defensible. The intergovernmental-caliber assessment validated the probabilistic method Stott pioneered, moving single-event attribution from a novel single result to an accepted discipline.',
+        source: {
+          externalId: 'src:nas-extreme-event-attribution-2016',
+          name: 'National Academies of Sciences, Engineering, and Medicine. Attribution of Extreme Weather Events in the Context of Climate Change. Washington, DC: The National Academies Press. March 11, 2016.',
+          url: 'https://nap.nationalacademies.org/catalog/21852/attribution-of-extreme-weather-events-in-the-context-of-climate-change',
+          publishedAt: '2016-03-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 34. Emanuel — hurricane intensity and climate change — 1987 ───────────────
+  {
+    externalId: 'trajectory:emanuel-hurricane-intensity-climate-1987',
+    text: 'Kerry Emanuel reported in Nature on 2 April 1987 that a Carnot-cycle model of tropical cyclones predicts hurricane maximum potential intensity will rise with greenhouse warming, estimating a 40–50% increase in destructive potential for a doubling of atmospheric CO₂ — the first physically-grounded prediction of hurricane intensification under climate change.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-04-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-04-02',
+        datePrecision: 'DAY',
+        reason: 'Emanuel published \'The dependence of hurricane intensity on climate\' in Nature (326:483–485), applying a thermodynamic (Carnot-engine) theory of tropical cyclone maximum potential intensity to GCM-projected doubled-CO₂ sea-surface temperatures and deriving a 40–50% increase in the destructive potential of hurricanes. It was the first mechanistic claim that a warming climate would produce measurably more intense tropical cyclones, converting a qualitative expectation into a quantitative, testable prediction.',
+        source: {
+          externalId: 'src:emanuel-hurricane-intensity-nature-1987',
+          name: 'Emanuel KA. The dependence of hurricane intensity on climate. Nature. 1987;326(6112):483–485.',
+          url: 'https://doi.org/10.1038/326483a0',
+          publishedAt: '1987-04-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-08-09',
+        datePrecision: 'DAY',
+        reason: 'The IPCC Sixth Assessment Report Working Group I, released 9 August 2021, concluded with high confidence that the proportion of intense (Category 3–5) tropical cyclones has increased over the past four decades and that peak tropical-cyclone intensities and heavy-rainfall rates will rise with further warming. The intergovernmental assessment endorsed the intensity–warming relationship Emanuel first derived in 1987, settling it as established climate science even as tropical-cyclone frequency remains uncertain.',
+        source: {
+          externalId: 'src:ipcc-ar6-wg1-2021',
+          name: 'IPCC. Climate Change 2021: The Physical Science Basis (AR6 WGI), Summary for Policymakers and Ch. 11 (Weather and climate extreme events). August 9, 2021.',
+          url: 'https://www.ipcc.ch/report/ar6/wg1/',
+          publishedAt: '2021-08-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 35. Emanuel — tropical cyclone destructiveness — 2005 ────────────────────
+  {
+    externalId: 'trajectory:emanuel-tropical-cyclone-destructiveness-2005',
+    text: 'Kerry Emanuel reported in Nature on 31 July 2005 that the observed power dissipation of tropical cyclones had nearly doubled over the previous ~30 years in the North Atlantic and western North Pacific, closely tracking rising tropical sea-surface temperatures, presenting this as observational evidence that hurricanes had already grown more destructive.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-07-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-07-31',
+        datePrecision: 'DAY',
+        reason: 'Emanuel published \'Increasing destructiveness of tropical cyclones over the past 30 years\' in Nature (436:686–688), introducing the Power Dissipation Index (PDI) and showing it had roughly doubled since the mid-1970s in step with tropical SST. Appearing weeks before Hurricane Katrina, it was the first claim that the intensification predicted from theory was already detectable in the historical record.',
+        source: {
+          externalId: 'src:emanuel-destructiveness-nature-2005',
+          name: 'Emanuel K. Increasing destructiveness of tropical cyclones over the past 30 years. Nature. 2005;436(7051):686–688.',
+          url: 'https://doi.org/10.1038/nature03906',
+          publishedAt: '2005-07-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-12-22',
+        datePrecision: 'DAY',
+        reason: 'In a formal Brief Communications Arising in Nature (438:E11–E12) on 22 December 2005, Christopher Landsea argued that Emanuel\'s result was an artifact of the analysis: the smoothing was flawed, the Atlantic bias-removal correction was too aggressive, and a longer U.S. landfall record showed no comparable trend, with intensities as high in the mid-20th century. Together with Pielke\'s parallel critique, this launched a durable dispute over the homogeneity of the tropical-cyclone data and the magnitude of the observed trend that remains unresolved, even as the broader intensity–warming link firmed up.',
+        source: {
+          externalId: 'src:landsea-hurricanes-warming-nature-2005',
+          name: 'Landsea CW. Hurricanes and global warming. Nature. 2005;438(7071):E11–E12.',
+          url: 'https://doi.org/10.1038/nature04477',
+          publishedAt: '2005-12-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 36. Kelley et al. — Syrian drought and climate change — 2015 ─────────────
+  {
+    externalId: 'trajectory:kelley-syrian-drought-climate-2015',
+    text: 'Colin Kelley and colleagues reported in PNAS on 2 March 2015 that anthropogenic climate change had made the record 2007–2010 Fertile Crescent drought two-to-three times more likely and that this drought contributed to the unrest preceding the Syrian civil war, the most prominent claim linking a specific drought\'s human-driven severity to societal conflict.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-03-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-03-02',
+        datePrecision: 'DAY',
+        reason: 'Kelley, Mohtadi, Cane, Seager, and Kushnir published \'Climate change in the Fertile Crescent and implications of the recent Syrian drought\' in PNAS (112(11):3241–3246), attributing a long-term drying and warming trend in the region to anthropogenic forcing, estimating it made the severe 2007–2010 drought 2–3 times more likely, and arguing the drought\'s agricultural collapse and displacement helped catalyze the 2011 uprising. It became the flagship empirical case for climate change as a contributing driver of a specific armed conflict.',
+        source: {
+          externalId: 'src:kelley-syrian-drought-pnas-2015',
+          name: 'Kelley CP, Mohtadi S, Cane MA, Seager R, Kushnir Y. Climate change in the Fertile Crescent and implications of the recent Syrian drought. PNAS. 2015;112(11):3241–3246.',
+          url: 'https://doi.org/10.1073/pnas.1421533112',
+          publishedAt: '2015-03-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Jan Selby, Omar Dahi, Christiane Fröhlich, and Mike Hulme published \'Climate change and the Syrian civil war revisited\' in Political Geography (60:232–244), arguing there is no sound evidence that the drought was necessarily anthropogenic or that it was a significant driver of the war, and challenging the migration and causal-chain figures Kelley relied on. Published in a special section with responses and a rejoinder, it moved the drought-to-conflict attribution from an influential finding to an openly contested claim in the climate-security literature.',
+        source: {
+          externalId: 'src:selby-syria-revisited-polgeo-2017',
+          name: 'Selby J, Dahi OS, Fröhlich C, Hulme M. Climate change and the Syrian civil war revisited. Political Geography. 2017;60:232–244.',
+          url: 'https://doi.org/10.1016/j.polgeo.2017.05.007',
+          publishedAt: '2017-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 37. NAS — extreme event attribution report — 2016 ───────────────────────
+  {
+    externalId: 'trajectory:nas-extreme-event-attribution-2016',
+    text: 'The U.S. National Academies of Sciences, Engineering, and Medicine concluded on 11 March 2016, in \'Attribution of Extreme Weather Events in the Context of Climate Change,\' that the science of attributing individual extreme weather events to human-caused climate change had matured into a credible discipline capable of quantitative, event-specific statements.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-03-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-11',
+        datePrecision: 'DAY',
+        reason: 'The National Academies released the consensus study report \'Attribution of Extreme Weather Events in the Context of Climate Change,\' the first authoritative U.S. assessment to conclude that confidence in event attribution is highest for temperature-related extremes (heat and cold), growing for drought and heavy precipitation, and lowest for phenomena like tropical cyclones. By formally grading attribution confidence by event type, it established the field\'s legitimacy and its methodological frontier in one document.',
+        source: {
+          externalId: 'src:nas-extreme-event-attribution-2016',
+          name: 'National Academies of Sciences, Engineering, and Medicine. Attribution of Extreme Weather Events in the Context of Climate Change. Washington, DC: The National Academies Press. March 11, 2016.',
+          url: 'https://nap.nationalacademies.org/catalog/21852/attribution-of-extreme-weather-events-in-the-context-of-climate-change',
+          publishedAt: '2016-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-08-09',
+        datePrecision: 'DAY',
+        reason: 'The IPCC Sixth Assessment Report Working Group I (9 August 2021) incorporated extreme-event attribution as a standard element of its assessment, devoting Chapter 11 to attributable changes in weather and climate extremes and stating that human influence on many observed extremes — including heatwaves, heavy precipitation, and droughts — is now well established. The intergovernmental adoption of event attribution as routine assessment practice settled the discipline\'s scientific standing that the 2016 National Academies report had recorded.',
+        source: {
+          externalId: 'src:ipcc-ar6-wg1-2021',
+          name: 'IPCC. Climate Change 2021: The Physical Science Basis (AR6 WGI), Ch. 11 (Weather and climate extreme events in a changing climate). August 9, 2021.',
+          url: 'https://www.ipcc.ch/report/ar6/wg1/',
+          publishedAt: '2021-08-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 28. Gornitz, Lebedeff & Hansen — global sea-level trend — 1982 ───────────
   {
     externalId: 'trajectory:gornitz-lebedeff-hansen-sea-level-trend-1982',
