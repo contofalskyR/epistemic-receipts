@@ -2849,6 +2849,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GENERAL RELATIVITY — EXPERIMENTAL TESTS (1919–2011)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eddington eclipse — light deflection — 1919 ────────────────────────────
+  {
+    externalId: 'trajectory:eddington-eclipse-light-deflection-1919',
+    text: 'The British 1919 solar-eclipse expeditions led by Frank Dyson, Arthur Eddington, and Charles Davidson measured the gravitational deflection of starlight passing near the Sun and found it consistent with Einstein\'s general-relativistic prediction of ~1.75 arcseconds, roughly twice the Newtonian value, from observations made at the total eclipse of 29 May 1919.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-05-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-11-06',
+        datePrecision: 'DAY',
+        reason: 'At a joint meeting of the Royal Society and the Royal Astronomical Society on 6 November 1919, Dyson announced that the eclipse plates from Sobral (Brazil) and Príncipe (Gulf of Guinea) showed a stellar deflection near the solar limb close to Einstein\'s 1.75-arcsecond prediction rather than the 0.87-arcsecond Newtonian value. The definitive results were published in 1920 in Philosophical Transactions of the Royal Society A. The announcement recorded the first observational confirmation of general relativity and made Einstein an international celebrity.',
+        source: {
+          externalId: 'src:dyson-eddington-davidson-deflection-1920',
+          name: 'Dyson FW, Eddington AS, Davidson C. A Determination of the Deflection of Light by the Sun\'s Gravitational Field, from Observations Made at the Total Eclipse of May 29, 1919. Philosophical Transactions of the Royal Society of London, Series A. 1920;220:291–333.',
+          url: 'https://doi.org/10.1098/rsta.1920.0009',
+          publishedAt: '1920-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-03-26',
+        datePrecision: 'DAY',
+        reason: 'Later eclipse expeditions (culminating in the 1973 Texas–Princeton Sobral expedition) and, decisively, radio-frequency measurements sharpened the deflection test far beyond the 1919 optical precision. Shapiro, Davis, Lebach, and Gregory reported in Physical Review Letters (2004) a very-long-baseline interferometry determination of the solar gravitational deflection of radio waves agreeing with general relativity to 0.04%. Repeated model-independent confirmation across the 20th century settled light-bending as an established relativistic effect.',
+        source: {
+          externalId: 'src:shapiro-vlbi-deflection-2004',
+          name: 'Shapiro SS, Davis JL, Lebach DE, Gregory JS. Measurement of the Solar Gravitational Deflection of Radio Waves Using Geodetic Very-Long-Baseline Interferometry Data, 1979–1999. Physical Review Letters. 2004;92(12):121101.',
+          url: 'https://doi.org/10.1103/PhysRevLett.92.121101',
+          publishedAt: '2004-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pound–Rebka — gravitational redshift — 1960 ────────────────────────────
+  {
+    externalId: 'trajectory:pound-rebka-gravitational-redshift-1960',
+    text: 'Robert Pound and Glen Rebka measured the gravitational shift in frequency of 14.4 keV gamma rays over the 22.5-metre Jefferson tower at Harvard using the Mössbauer effect, confirming general relativity\'s predicted gravitational redshift in a terrestrial laboratory, published in Physical Review Letters on 1 April 1960.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1960-04-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-04-01',
+        datePrecision: 'DAY',
+        reason: 'Pound and Rebka\'s \'Apparent Weight of Photons\' (Physical Review Letters 4:337, 1 April 1960) exploited recoil-free Mössbauer emission of Co-57/Fe-57 gamma rays to detect the ~2×10⁻¹⁵ fractional frequency shift induced by Earth\'s gravitational potential over a 22.5 m vertical path. It provided the first precise laboratory confirmation of the gravitational redshift, one of the three classical tests of general relativity, previously only weakly constrained by stellar spectra.',
+        source: {
+          externalId: 'src:pound-rebka-apparent-weight-photons-1960',
+          name: 'Pound RV, Rebka GA. Apparent Weight of Photons. Physical Review Letters. 1960;4(7):337–341.',
+          url: 'https://doi.org/10.1103/PhysRevLett.4.337',
+          publishedAt: '1960-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Pound and Snider\'s improved experiment (Physical Review 140:B788, 1965) refined the measurement to about 1% agreement with the general-relativistic prediction, removing systematic uncertainties of the 1960 apparatus. This tightened confirmation, later reinforced by the Gravity Probe A hydrogen-maser experiment (Vessot & Levine 1980), settled the gravitational redshift as an established effect.',
+        source: {
+          externalId: 'src:pound-snider-effect-of-gravity-1965',
+          name: 'Pound RV, Snider JL. Effect of Gravity on Gamma Radiation. Physical Review. 1965;140(3B):B788–B803.',
+          url: 'https://doi.org/10.1103/PhysRev.140.B788',
+          publishedAt: '1965-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hulse–Taylor — binary pulsar & gravitational radiation — 1974 ──────────
+  {
+    externalId: 'trajectory:hulse-taylor-binary-pulsar-gravitational-radiation-1974',
+    text: 'Russell Hulse and Joseph Taylor discovered the first binary pulsar, PSR B1913+16, at the Arecibo radio telescope on 2 July 1974, a rapidly rotating neutron star in a tight eccentric orbit whose subsequent orbital decay provided the first evidence for gravitational radiation as predicted by general relativity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1974-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-01-15',
+        datePrecision: 'DAY',
+        reason: 'Hulse and Taylor reported \'Discovery of a Pulsar in a Binary System\' (Astrophysical Journal Letters 195:L51, 1975), describing a 59 ms pulsar whose pulse period varied cyclically over a 7.75-hour, highly eccentric orbit. The system furnished the first clean laboratory of strong-field relativistic dynamics and the first accurate neutron-star masses, recording a candidate probe of gravitational radiation.',
+        source: {
+          externalId: 'src:hulse-taylor-binary-pulsar-1975',
+          name: 'Hulse RA, Taylor JH. Discovery of a Pulsar in a Binary System. The Astrophysical Journal. 1975;195:L51–L53.',
+          url: 'https://doi.org/10.1086/181708',
+          publishedAt: '1975-01-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-02-15',
+        datePrecision: 'DAY',
+        reason: 'Taylor and Weisberg\'s \'A New Test of General Relativity\' (Astrophysical Journal 253:908, 1982) showed the measured decay of PSR B1913+16\'s orbital period matched the rate expected from energy loss to gravitational waves to within a few percent, giving the first quantitative evidence that gravitational radiation exists. Hulse and Taylor received the 1993 Nobel Prize in Physics for the discovery, institutionally settling the result.',
+        source: {
+          externalId: 'src:taylor-weisberg-gr-test-1982',
+          name: 'Taylor JH, Weisberg JM. A New Test of General Relativity: Gravitational Radiation and the Binary Pulsar PSR 1913+16. The Astrophysical Journal. 1982;253:908–920.',
+          url: 'https://doi.org/10.1086/159690',
+          publishedAt: '1982-02-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hafele–Keating — atomic clock time dilation — 1972 ────────────────────
+  {
+    externalId: 'trajectory:hafele-keating-atomic-clock-time-dilation-1972',
+    text: 'Joseph Hafele and Richard Keating flew four cesium-beam atomic clocks on commercial jets eastward and westward around the world in October 1971 and found the observed time differences relative to reference clocks at the U.S. Naval Observatory matched the combined special- and general-relativistic predictions, published in Science on 14 July 1972.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-07-14',
+        datePrecision: 'DAY',
+        reason: 'In two companion papers in Science (177:166 and 177:168, 14 July 1972), Hafele and Keating reported that the around-the-world clocks lost 59±10 ns eastward and gained 273±7 ns westward relative to ground clocks, agreeing with predictions combining kinematic (special-relativistic) time dilation and gravitational (general-relativistic) blueshift. It was the first direct macroscopic-clock test of relativistic time dilation using portable atomic clocks.',
+        source: {
+          externalId: 'src:hafele-keating-observed-time-gains-1972',
+          name: 'Hafele JC, Keating RE. Around-the-World Atomic Clocks: Observed Relativistic Time Gains. Science. 1972;177(4044):168–170.',
+          url: 'https://doi.org/10.1126/science.177.4044.168',
+          publishedAt: '1972-07-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-09-24',
+        datePrecision: 'DAY',
+        reason: 'Higher-precision successors removed doubts about the modest statistical significance of the 1971 flights: Chou et al. (Science 2010) used optical aluminum-ion clocks to detect gravitational time dilation from a height change of only 33 cm and velocity time dilation at ~10 m/s, confirming relativistic clock effects at the sub-microscopic scale and settling the result now embedded in GPS operation.',
+        source: {
+          externalId: 'src:chou-optical-clocks-relativity-2010',
+          name: 'Chou CW, Hume DB, Rosenband T, Wineland DJ. Optical Clocks and Relativity. Science. 2010;329(5999):1630–1633.',
+          url: 'https://doi.org/10.1126/science.1192720',
+          publishedAt: '2010-09-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gravity Probe B — frame-dragging & geodetic — 2011 ────────────────────
+  {
+    externalId: 'trajectory:gravity-probe-b-frame-dragging-geodetic-2011',
+    text: 'The Gravity Probe B satellite experiment, led by Francis Everitt at Stanford, used four cryogenic gyroscopes in Earth orbit to measure the general-relativistic geodetic precession and frame-dragging (Lense–Thirring) effect, reporting on 31 May 2011 a geodetic drift of −6601.8±18.3 mas/yr and a frame-dragging drift of −37.2±7.2 mas/yr, both consistent with general relativity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-05-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-05-31',
+        datePrecision: 'DAY',
+        reason: 'Everitt et al.\'s \'Gravity Probe B: Final Results of a Space Experiment to Test General Relativity\' (Physical Review Letters 106:221101, 31 May 2011) reported the geodetic effect measured to ~0.3% and the much smaller frame-dragging (gravitomagnetic) effect measured to ~19%, both agreeing with general relativity after modeling unexpected electrostatic gyroscope torques. It recorded the first dedicated space-based measurement of frame-dragging on an orbiting gyroscope.',
+        source: {
+          externalId: 'src:everitt-gravity-probe-b-2011',
+          name: 'Everitt CWF, DeBra DB, Parkinson BW, et al. Gravity Probe B: Final Results of a Space Experiment to Test General Relativity. Physical Review Letters. 2011;106(22):221101.',
+          url: 'https://doi.org/10.1103/PhysRevLett.106.221101',
+          publishedAt: '2011-05-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-03-11',
+        datePrecision: 'DAY',
+        reason: 'The frame-dragging effect was confirmed independently and more precisely by satellite laser ranging to the LAGEOS and LARES geodetic satellites; Ciufolini et al. (European Physical Journal C, 2016) reported a ~5% measurement of the Lense–Thirring precession in agreement with general relativity. Combined with GP-B\'s high-precision geodetic result, gravitomagnetic frame-dragging became an established, independently corroborated prediction.',
+        source: {
+          externalId: 'src:ciufolini-lares-frame-dragging-2016',
+          name: 'Ciufolini I, Paolozzi A, Pavlis EC, et al. A test of general relativity using the LARES and LAGEOS satellites and a GRACE Earth gravity model. European Physical Journal C. 2016;76:120.',
+          url: 'https://doi.org/10.1140/epjc/s10052-016-3961-8',
+          publishedAt: '2016-03-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── TASSO — gluon discovery — 1979 ─────────────────────────────────────────
   {
     externalId: 'trajectory:tasso-gluon-three-jet-1979',
