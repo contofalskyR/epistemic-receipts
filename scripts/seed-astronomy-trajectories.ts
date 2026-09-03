@@ -2675,6 +2675,222 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PARTICLE PHYSICS — STANDARD MODEL BUILDING BLOCKS (1962–1979)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Danby et al. — muon neutrino — 1962 ────────────────────────────────────
+  {
+    externalId: 'trajectory:danby-two-neutrinos-muon-neutrino-1962',
+    text: 'Danby, Gaillard, Goulianos, Lederman, Mistry, Schwartz and Steinberger reported on 1 July 1962 that neutrinos produced with muons yield only muons (never electrons) when they interact, proving the existence of a second, distinct neutrino — the muon neutrino.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-07-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-07-01',
+        datePrecision: 'DAY',
+        reason: 'Using the first high-energy neutrino beam at Brookhaven\'s AGS, the team recorded 29 muon-producing events and no electron-producing events. Conservation and lepton-number arguments showed the neutrinos accompanying muons in pion decay could not be identical to the neutrinos of beta decay, establishing on the scientific record that there are (at least) two kinds of neutrinos.',
+        source: {
+          externalId: 'src:danby-two-neutrinos-prl-1962',
+          name: 'Danby G, Gaillard J-M, Goulianos K, Lederman LM, Mistry N, Schwartz M, Steinberger J. Observation of High-Energy Neutrino Reactions and the Existence of Two Kinds of Neutrinos. Phys. Rev. Lett. 1962;9(1):36–44.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1962PhRvL...9...36D',
+          publishedAt: '1962-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-10',
+        datePrecision: 'MONTH',
+        reason: 'The Royal Swedish Academy of Sciences awarded the 1988 Nobel Prize in Physics to Lederman, Schwartz and Steinberger for the neutrino-beam method and the demonstration of the doublet structure of the leptons through the discovery of the muon neutrino, canonizing the two-neutrino result as a pillar of the Standard Model.',
+        source: {
+          externalId: 'src:nobel-physics-1988-two-neutrinos',
+          name: 'Royal Swedish Academy of Sciences. The Nobel Prize in Physics 1988 — Lederman, Schwartz, Steinberger. 1988.',
+          url: 'https://www.nobelprize.org/prizes/physics/1988/summary/',
+          publishedAt: '1988-10-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Barnes et al. — Omega-minus baryon — 1964 ──────────────────────────────
+  {
+    externalId: 'trajectory:omega-minus-baryon-eightfold-way-1964',
+    text: 'Barnes and collaborators reported in Physical Review Letters on 24 February 1964 the observation at Brookhaven of the Ω⁻ (Omega-minus), a baryon with strangeness −3 whose mass and properties matched Gell-Mann and Ne\'eman\'s Eightfold Way prediction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-02-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-02-24',
+        datePrecision: 'DAY',
+        reason: 'In a bubble-chamber exposure at the Brookhaven AGS, the team found a single event interpreted as production and decay of a hyperon with strangeness −3 at a mass (~1686 MeV) closely matching the state Gell-Mann had predicted in 1962 to complete the SU(3) baryon decuplet. The paper placed the predicted particle on the empirical record.',
+        source: {
+          externalId: 'src:barnes-omega-minus-prl-1964',
+          name: 'Barnes VE, Connolly PL, Crennell DJ, et al. Observation of a Hyperon with Strangeness Minus Three. Phys. Rev. Lett. 1964;12(8):204–206.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1964PhRvL..12..204B',
+          publishedAt: '1964-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1969-10',
+        datePrecision: 'MONTH',
+        reason: 'The Ω⁻ was hailed as the decisive confirmation of the Eightfold Way / SU(3) classification of hadrons. The Royal Swedish Academy of Sciences awarded Murray Gell-Mann the 1969 Nobel Prize in Physics for his contributions and discoveries concerning the classification of elementary particles and their interactions, settling the symmetry scheme the Omega-minus had vindicated.',
+        source: {
+          externalId: 'src:nobel-physics-1969-gell-mann',
+          name: 'Royal Swedish Academy of Sciences. The Nobel Prize in Physics 1969 — Murray Gell-Mann. 1969.',
+          url: 'https://www.nobelprize.org/prizes/physics/1969/summary/',
+          publishedAt: '1969-10-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── SLAC-MIT — deep inelastic scattering & quarks — 1969 ───────────────────
+  {
+    externalId: 'trajectory:slac-mit-deep-inelastic-scattering-quarks-1969',
+    text: 'Breidenbach, Friedman, Kendall and the SLAC-MIT team reported in Physical Review Letters on 20 October 1969 that highly inelastic electron-proton scattering showed weak dependence on momentum transfer (scaling), the first experimental evidence that the proton contains point-like constituents (quarks/partons).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-10-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-10-20',
+        datePrecision: 'DAY',
+        reason: 'At SLAC\'s 20 GeV linear accelerator the team measured deep inelastic e-p scattering at 6° and 10° and found the structure function νW₂ depended only on the ratio ω rather than separately on q² — Bjorken scaling. Interpreted via Feynman\'s parton model, this signalled hard scattering off point-like charged constituents inside the proton, putting quark substructure on the empirical record.',
+        source: {
+          externalId: 'src:breidenbach-dis-prl-1969',
+          name: 'Breidenbach M, Friedman JI, Kendall HW, et al. Observed Behavior of Highly Inelastic Electron-Proton Scattering. Phys. Rev. Lett. 1969;23(16):935–939.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1969PhRvL..23..935B',
+          publishedAt: '1969-10-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-10',
+        datePrecision: 'MONTH',
+        reason: 'After the scaling result was tied together with QCD and the quark-parton model over the 1970s, the Royal Swedish Academy of Sciences awarded the 1990 Nobel Prize in Physics to Friedman, Kendall and Taylor for their pioneering deep inelastic scattering investigations of essential importance to the quark model, canonizing quark substructure of the nucleon.',
+        source: {
+          externalId: 'src:nobel-physics-1990-dis-quarks',
+          name: 'Royal Swedish Academy of Sciences. The Nobel Prize in Physics 1990 — Friedman, Kendall, Taylor. 1990.',
+          url: 'https://www.nobelprize.org/prizes/physics/1990/summary/',
+          publishedAt: '1990-10-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gargamelle — weak neutral currents — 1973 ───────────────────────────────
+  {
+    externalId: 'trajectory:gargamelle-weak-neutral-currents-1973',
+    text: 'The Gargamelle collaboration at CERN reported in Physics Letters B in September 1973 the observation of neutrino interactions producing no muon or electron — the first direct evidence of the weak neutral current predicted by electroweak unification.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-09',
+        datePrecision: 'MONTH',
+        reason: 'In the Gargamelle heavy-liquid bubble chamber exposed to CERN neutrino/antineutrino beams, the team found hadronic events (and one clean electron event) in which the incoming neutrino produced no charged lepton — a muon-less/electron-less signature. This is the fingerprint of a Z⁰-mediated weak neutral current, the process required by the Glashow-Weinberg-Salam electroweak theory, placing neutral currents on the empirical record.',
+        source: {
+          externalId: 'src:hasert-gargamelle-neutral-currents-1973',
+          name: 'Hasert FJ, et al. (Gargamelle Collaboration). Observation of neutrino-like interactions without muon or electron in the Gargamelle neutrino experiment. Phys. Lett. B 1973;46(1):138–140.',
+          url: 'https://doi.org/10.1016/0370-2693(73)90499-1',
+          publishedAt: '1973-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-10',
+        datePrecision: 'MONTH',
+        reason: 'After initial scepticism (and a confirming Fermilab HPWF result), neutral currents were accepted as verification of electroweak unification. The Royal Swedish Academy of Sciences awarded the 1979 Nobel Prize in Physics to Glashow, Salam and Weinberg for the unified electroweak theory including its prediction of the weak neutral current, settling the Gargamelle discovery as foundational Standard-Model physics.',
+        source: {
+          externalId: 'src:nobel-physics-1979-electroweak',
+          name: 'Royal Swedish Academy of Sciences. The Nobel Prize in Physics 1979 — Glashow, Salam, Weinberg. 1979.',
+          url: 'https://www.nobelprize.org/prizes/physics/1979/summary/',
+          publishedAt: '1979-10-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── TASSO — gluon discovery — 1979 ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:tasso-gluon-three-jet-1979',
+    text: 'The TASSO collaboration at DESY\'s PETRA collider reported in 1979 the observation of planar three-jet events in electron-positron annihilation, the first direct evidence for the gluon — the carrier of the strong force emitted as hard bremsstrahlung by a quark.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-08',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-08',
+        datePrecision: 'MONTH',
+        reason: 'As PETRA reached ~27–31 GeV in 1979, TASSO found e⁺e⁻ annihilation events with three distinct, coplanar hadron jets instead of the usual two, matching the QCD prediction of a quark-antiquark pair plus a hard radiated gluon (q q̄ g). The three-jet result was presented publicly (EPS Geneva, July; Lepton-Photon Symposium at Fermilab, August 1979) and published in Physics Letters B, placing the gluon on the empirical record.',
+        source: {
+          externalId: 'src:tasso-three-jet-gluon-1979',
+          name: 'Brandelik R, et al. (TASSO Collaboration). Evidence for Planar Events in e⁺e⁻ Annihilation at High Energies. Phys. Lett. B 1979;86(2):243–249.',
+          url: 'https://doi.org/10.1016/0370-2693(79)90830-X',
+          publishedAt: '1979-09-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995',
+        datePrecision: 'YEAR',
+        reason: 'The three-jet observation was rapidly corroborated by the other three PETRA experiments (JADE, Mark-J, PLUTO), cementing the gluon and QCD. The European Physical Society awarded its 1995 High Energy and Particle Physics Prize to the TASSO, JADE, Mark-J and PLUTO collaborations for establishing the existence of the gluon, an institutional settling of the discovery.',
+        source: {
+          externalId: 'src:desy-gluon-40-years-backgrounder',
+          name: 'Deutsches Elektronen-Synchrotron (DESY). The discovery of the gluon — a research trip back to the 70s (40 years of the gluon). 2019.',
+          url: 'https://www.desy.de/news/backgrounders/40_years_of_gluon/index_eng.html',
+          publishedAt: '2019-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
