@@ -6961,6 +6961,152 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "cumming-richmond-county-school-equal-protection-1899",
+    claim:
+      "The U.S. Supreme Court held in Cumming v. Richmond County Board of Education (175 U.S. 528, decided 18 December 1899) that the Fourteenth Amendment's Equal Protection Clause did not bar a county from operating a tax-funded public high school for white children while providing none for Black children.",
+    emergedAt: "1899-12-18",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1899-12-18",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A unanimous Court, per Justice Harlan, affirmed the Georgia courts and declined to disturb the county's suspension of the Black high school, treating public education as primarily a state matter reachable by federal courts only on a 'clear and unmistakable disregard' of federal rights. This was the first time the Supreme Court applied the Equal Protection Clause to public schooling, and it settled a permissive rule that federal review would not reach the unequal provision of public education by race.",
+        sourceName:
+          "Harlan J. Cumming v. Richmond County Board of Education, 175 U.S. 528 (1899). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/175/528",
+        methodologyType: "primary",
+      },
+      {
+        date: "1954-05-17",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In Brown v. Board of Education the Court, per Chief Justice Warren, held that racially separate public educational facilities are inherently unequal and violate the Equal Protection Clause. Brown repudiated the premise underlying Cumming that states could constitutionally provide public education unequally by race, ending the permissive rule Cumming had settled.",
+        sourceName:
+          "Warren C.J. Brown v. Board of Education, 347 U.S. 483 (1954). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/347/483",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "guinn-grandfather-clause-fifteenth-amendment-1915",
+    claim:
+      "The U.S. Supreme Court held in Guinn v. United States (238 U.S. 347, decided 21 June 1915) that Oklahoma's 'grandfather clause' exempting descendants of pre-1866 voters from a literacy test violated the Fifteenth Amendment because it revived the very racial disenfranchisement the Amendment forbade.",
+    emergedAt: "1915-06-21",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1915-06-21",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A unanimous Court, per Chief Justice White, struck down Oklahoma's grandfather clause as inherently reintroducing a racial standard for voting keyed to a date before the Fifteenth Amendment, while leaving the standalone literacy test intact. It was the Court's first decision invalidating a state voter-qualification device under the Fifteenth Amendment, settling that facially race-neutral schemes calibrated to entrench pre-Amendment disenfranchisement are unconstitutional.",
+        sourceName:
+          "White C.J. Guinn v. United States, 238 U.S. 347 (1915). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/238/347",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "moore-dempsey-mob-dominated-trial-due-process-1923",
+    claim:
+      "The U.S. Supreme Court held in Moore v. Dempsey (261 U.S. 86, decided 19 February 1923) that a state criminal trial dominated by mob violence violates the Fourteenth Amendment's Due Process Clause and is subject to federal habeas corpus review even after the state's own appellate courts have acted.",
+    emergedAt: "1923-02-19",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1923-02-19",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Reviewing the capital convictions of Black defendants tried amid mob pressure after the 1919 Elaine, Arkansas massacre, the Court per Justice Holmes reversed the dismissal of their habeas petition, holding that where 'the whole proceeding is a mask' swept along by public passion, federal courts must examine the facts. Departing from Frank v. Mangum (1915), which had deferred to state corrective process, it settled that federal habeas reaches state trials whose integrity is destroyed by mob domination.",
+        sourceName:
+          "Holmes J. Moore v. Dempsey, 261 U.S. 86 (1923). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/261/86",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "truax-raich-alien-right-to-work-equal-protection-1915",
+    claim:
+      "The U.S. Supreme Court held in Truax v. Raich (239 U.S. 33, decided 1 November 1915) that the Fourteenth Amendment's Equal Protection Clause protects lawfully resident aliens' right to earn a living, striking down an Arizona law requiring employers to keep at least 80% of their workforce native-born citizens or qualified electors.",
+    emergedAt: "1915-11-01",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1915-11-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Court, per Justice Hughes, held that a state may not deny lawful alien inhabitants 'the ordinary means of earning a livelihood' by reserving private employment for citizens, because the Equal Protection Clause reaches 'any person' regardless of citizenship. It settled that alienage-based exclusion from ordinary private-sector work is constitutionally impermissible, a foundation later built upon when alienage became a suspect classification.",
+        sourceName:
+          "Hughes J. Truax v. Raich, 239 U.S. 33 (1915). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/239/33",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "berea-college-compelled-segregation-private-education-1908",
+    claim:
+      "The U.S. Supreme Court held in Berea College v. Kentucky (211 U.S. 45, decided 9 November 1908) that a state may forbid an incorporated private college from teaching Black and white students together, by imposing the prohibition as a condition on the corporation's charter, without violating the Fourteenth Amendment.",
+    emergedAt: "1908-11-09",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1908-11-09",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Court, per Justice Brewer, upheld Kentucky's 1904 anti-integration statute as applied to the incorporated college on the narrow ground that a state may attach conditions to charters of corporations it creates and may alter or repeal, reserving the question of the law's validity against individuals. Justice Harlan dissented. The decision settled that a state could compel racial segregation in private education through corporate-charter power, extending the permissive segregation regime beyond public facilities.",
+        sourceName:
+          "Brewer J. Berea College v. Kentucky, 211 U.S. 45 (1908). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/211/45",
+        methodologyType: "primary",
+      },
+      {
+        date: "1954-05-17",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Brown v. Board of Education held that state-compelled racial segregation in education violates the Equal Protection Clause, repudiating the premise on which Berea College rested that a state may lawfully require the separation of the races in schooling. The state power to mandate educational segregation that Berea had settled was thereby overturned.",
+        sourceName:
+          "Warren C.J. Brown v. Board of Education, 347 U.S. 483 (1954). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/347/483",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
