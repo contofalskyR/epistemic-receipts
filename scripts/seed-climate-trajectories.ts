@@ -2442,6 +2442,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Neftel et al. — Siple ice-core pre-industrial CO₂ baseline — 1985 ──────
+  {
+    externalId: 'trajectory:neftel-siple-ice-core-preindustrial-co2-1985',
+    text: 'Neftel, Moor, Oeschger, and Stauffer reported in Nature in May 1985 that air occluded in the Siple Station (West Antarctica) ice core showed atmospheric CO₂ rose from a pre-industrial level of roughly 280 ppmv to about 345 ppmv over the past two centuries, directly linking the rise to industrial fossil-fuel emissions.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Neftel and colleagues published the first high-resolution ice-core CO₂ record spanning the industrial transition, showing pre-industrial concentrations near 280 ppmv rising smoothly into the instrumental Mauna Loa record. This provided the first direct, gas-in-ice evidence that the modern CO₂ rise is anthropogenic and established the pre-industrial baseline used in radiative-forcing calculations.',
+        source: {
+          externalId: 'src:neftel-nature-siple-co2-1985',
+          name: 'Neftel A, Moor E, Oeschger H, Stauffer B. Evidence from polar ice cores for the increase in atmospheric CO2 in the past two centuries. Nature. 1985;315:45–47.',
+          url: 'https://www.nature.com/articles/315045a0',
+          publishedAt: '1985-05-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-02-20',
+        datePrecision: 'DAY',
+        reason: 'Etheridge and colleagues used three high-accumulation Law Dome (East Antarctica) ice cores to reconstruct atmospheric CO₂ from 1006 AD to 1978 with unparalleled age resolution, confirming the stable ~280 ppmv pre-industrial level and its smooth splice to the Mauna Loa record. The independent replication settled the pre-industrial baseline and the anthropogenic attribution of the industrial-era rise.',
+        source: {
+          externalId: 'src:etheridge-law-dome-co2-1996',
+          name: 'Etheridge DM, Steele LP, Langenfelds RL, Francey RJ, Barnola JM, Morgan VI. Natural and anthropogenic changes in atmospheric CO2 over the last 1000 years from air in Antarctic ice and firn. J Geophys Res Atmos. 1996;101(D2):4115–4128.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/10.1029/95JD03410',
+          publishedAt: '1996-02-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Barnola et al. — Vostok CO₂–temperature coupling — 1987 ────────────────
+  {
+    externalId: 'trajectory:barnola-vostok-co2-temperature-coupling-1987',
+    text: 'Barnola, Raynaud, Korotkevich, and Lorius reported in Nature in October 1987 that the Vostok (East Antarctica) ice core yielded a 160,000-year record of atmospheric CO₂ that correlated closely with Antarctic temperature across the last two full glacial–interglacial cycles.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Vostok record extended direct measurement of past atmospheric CO₂ to 160,000 years, revealing that CO₂ tracked Antarctic air temperature through the ~100,000-year glacial cycles with a secondary ~21,000-year component. This established the empirical CO₂–temperature coupling over glacial-interglacial time and implicated CO₂ as an amplifier of orbital climate forcing.',
+        source: {
+          externalId: 'src:barnola-vostok-co2-nature-1987',
+          name: 'Barnola JM, Raynaud D, Korotkevich YS, Lorius C. Vostok ice core provides 160,000-year record of atmospheric CO2. Nature. 1987;329:408–414.',
+          url: 'https://www.nature.com/articles/329408a0',
+          publishedAt: '1987-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-06-03',
+        datePrecision: 'DAY',
+        reason: 'Petit and colleagues extended the Vostok record to 420,000 years across four glacial cycles, confirming the tight CO₂/CH₄–temperature correlation found in 1987 and showing that present-day greenhouse-gas burdens are unprecedented over that span. The extension across additional independent cycles settled the glacial-interglacial CO₂–climate coupling as a robust paleoclimate constraint.',
+        source: {
+          externalId: 'src:petit-vostok-420kyr-nature-1999',
+          name: 'Petit JR, Jouzel J, Raynaud D, et al. Climate and atmospheric history of the past 420,000 years from the Vostok ice core, Antarctica. Nature. 1999;399:429–436.',
+          url: 'https://www.nature.com/articles/20859',
+          publishedAt: '1999-06-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Blake & Rowland — global tropospheric methane increase — 1988 ───────────
+  {
+    externalId: 'trajectory:blake-rowland-global-methane-increase-1988',
+    text: 'Blake and Rowland reported in Science in March 1988 that the average worldwide tropospheric methane mixing ratio rose about 11%, from 1.52 ppmv in January 1978 to 1.684 ppmv in September 1987, an increase of roughly 0.016 ppmv (~1%) per year measured across a global latitude network.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-03-04',
+        datePrecision: 'DAY',
+        reason: 'Blake and Rowland documented a sustained, spatially coherent worldwide rise in tropospheric methane from nearly a decade of systematic flask sampling across latitudes. This established quantitatively that atmospheric methane — a potent greenhouse gas — was increasing globally at about 1% per year, elevating CH₄ to a first-order concern alongside CO₂.',
+        source: {
+          externalId: 'src:blake-rowland-methane-science-1988',
+          name: 'Blake DR, Rowland FS. Continuing worldwide increase in tropospheric methane, 1978 to 1987. Science. 1988;239(4844):1129–1131.',
+          url: 'https://www.science.org/doi/10.1126/science.239.4844.1129',
+          publishedAt: '1988-03-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-08-20',
+        datePrecision: 'DAY',
+        reason: 'Dlugokencky and colleagues at NOAA independently quantified the global methane growth rate and latitudinal distribution from a dedicated 1983–1992 cooperative flask network referenced to a single calibration scale. The independent, calibration-controlled global record confirmed the worldwide methane rise, settling it as a monitored, institutionally tracked greenhouse-gas trend.',
+        source: {
+          externalId: 'src:dlugokencky-methane-growth-jgr-1994',
+          name: 'Dlugokencky EJ, Steele LP, Lang PM, Masarie KA. The growth rate and distribution of atmospheric methane. J Geophys Res Atmos. 1994;99(D8):17021–17043.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/94JD01245',
+          publishedAt: '1994-08-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Weiss — tropospheric N₂O increase — 1981 ────────────────────────────────
+  {
+    externalId: 'trajectory:weiss-tropospheric-n2o-increase-1981',
+    text: 'R.F. Weiss reported in the Journal of Geophysical Research in 1981 that precise measurements of tropospheric nitrous oxide (N₂O) collected 1976–1980 across the major oceans showed a global concentration of about 300 ppb rising at roughly 0.2% per year, with the Northern Hemisphere higher than the Southern.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-08-20',
+        datePrecision: 'DAY',
+        reason: 'Weiss provided the first high-precision, globally distributed determination of the tropospheric N₂O burden and its temporal trend, demonstrating a measurable secular increase and a north–south gradient consistent with anthropogenic (largely surface) sources. This recorded N₂O as a rising long-lived greenhouse and ozone-relevant gas rather than a fixed background constituent.',
+        source: {
+          externalId: 'src:weiss-n2o-distribution-jgr-1981',
+          name: 'Weiss RF. The temporal and spatial distribution of tropospheric nitrous oxide. J Geophys Res Oceans. 1981;86(C8):7185–7195.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/JC086iC08p07185',
+          publishedAt: '1981-08-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-10-20',
+        datePrecision: 'DAY',
+        reason: 'Prinn and colleagues deduced N₂O emissions and trends from ten years of the globally distributed ALE-GAGE monitoring network, confirming a sustained rise of about 0.25% per year and a ~110–180-year atmospheric lifetime of largely anthropogenic origin. The multi-station, decade-long calibrated network settled the global N₂O increase first indicated by Weiss.',
+        source: {
+          externalId: 'src:prinn-n2o-ale-gage-jgr-1990',
+          name: 'Prinn R, Cunnold D, Rasmussen R, et al. Atmospheric emissions and trends of nitrous oxide deduced from 10 years of ALE-GAGE data. J Geophys Res Atmos. 1990;95(D11):18369–18385.',
+          url: 'https://www.academia.edu/8418906/Atmospheric_emissions_and_trends_of_nitrous_oxide_deduced_from_10_years_of_ALE_GAGE_data',
+          publishedAt: '1990-10-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
