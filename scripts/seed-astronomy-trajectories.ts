@@ -1771,6 +1771,222 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SOLAR SYSTEM EXPLORATION (1995–2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 40. New Horizons — Pluto flyby — 2015 ───────────────────────────────────
+  {
+    externalId: 'trajectory:new-horizons-pluto-flyby-2015',
+    text: "NASA's New Horizons spacecraft, at closest approach on 14 July 2015, returned the first close-up data revealing that Pluto has a geologically active, diverse surface and an extensive but low-density nitrogen atmosphere.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-07-14',
+        datePrecision: 'DAY',
+        reason: 'New Horizons flew ~12,500 km from Pluto on 14 July 2015, the first spacecraft to reconnoiter the Pluto system. Its instruments recorded imagery and spectra showing nitrogen-ice glaciers (Sputnik Planitia), water-ice mountains, and layered atmospheric haze, downlinked over the following months. This converted centuries of telescopic speculation about Pluto into direct in-situ measurement.',
+        source: {
+          externalId: 'src:stern-new-horizons-pluto-science-2015',
+          name: 'Stern SA, et al. The Pluto system: Initial results from its exploration by New Horizons. Science. 2015;350(6258):aad1815.',
+          url: 'https://doi.org/10.1126/science.aad1815',
+          publishedAt: '2015-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-10-16',
+        datePrecision: 'DAY',
+        reason: 'Stern et al. published the peer-reviewed initial results in Science on 16 October 2015, establishing in the literature that Pluto is geologically active with diverse terrains and an extensive, lower-than-expected-density atmosphere, and that Charon likewise shows complex relief. The encounter data entered the scientific record as confirmed findings.',
+        source: {
+          externalId: 'src:stern-new-horizons-pluto-science-2015',
+          name: 'Stern SA, et al. The Pluto system: Initial results from its exploration by New Horizons. Science. 2015;350(6258):aad1815.',
+          url: 'https://doi.org/10.1126/science.aad1815',
+          publishedAt: '2015-10-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 41. Huygens — Titan landing — 2005 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:huygens-titan-landing-2005',
+    text: "ESA's Huygens probe descended through Titan's atmosphere and landed on its surface on 14 January 2005 — the first landing on a body in the outer Solar System — revealing a methane-cycle landscape of drainage channels and a damp granular surface.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-01-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-01-14',
+        datePrecision: 'DAY',
+        reason: "After release from the Cassini orbiter, Huygens entered Titan's atmosphere and touched down on 14 January 2005, transmitting roughly 2.5 hours of descent and surface data. Images showed dendritic drainage networks and rounded cobbles, and instruments detected methane at the surface, indicating an active methane hydrological cycle. This was the first in-situ data ever obtained from Titan's surface.",
+        source: {
+          externalId: 'src:esa-huygens-descent-overview-2005',
+          name: 'European Space Agency. An overview of the descent and landing of the Huygens probe on Titan. ESA Science Portal. 2005.',
+          url: 'https://sci.esa.int/web/cassini-huygens/-/41863-an-overview-of-the-descent-and-landing-of-the-huygens-probe-on-titan',
+          publishedAt: '2005-12-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-12-08',
+        datePrecision: 'DAY',
+        reason: "Lebreton et al. published the peer-reviewed overview of the descent and landing in Nature on 8 December 2005, consolidating the mission team's analysis of the atmospheric structure, winds, and surface into the scientific record and confirming Titan as an Earth-like world driven by a methane cycle.",
+        source: {
+          externalId: 'src:lebreton-huygens-titan-nature-2005',
+          name: 'Lebreton J-P, et al. An overview of the descent and landing of the Huygens probe on Titan. Nature. 2005;438(7069):758–764.',
+          url: 'https://doi.org/10.1038/nature04347',
+          publishedAt: '2005-12-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 42. Cassini — Enceladus plumes — 2005–2006 ──────────────────────────────
+  {
+    externalId: 'trajectory:cassini-enceladus-plumes-2005',
+    text: "Cassini measurements in 2005 established that Saturn's moon Enceladus vents plumes of water vapour and ice particles from warm south-polar fractures, implying a subsurface reservoir of liquid water, as reported by Porco et al. in March 2006.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-07-14',
+        datePrecision: 'DAY',
+        reason: "During Cassini's close (~168 km) Enceladus flyby on 14 July 2005, the magnetometer, ion-neutral mass spectrometer, and UV spectrometer detected a localized water-vapour atmosphere over the warm south-polar 'tiger stripe' fractures; later in 2005 backlit imaging captured the icy jets directly. This was the first evidence of ongoing geological activity on the small icy moon.",
+        source: {
+          externalId: 'src:porco-enceladus-active-pole-pubmed-2006',
+          name: 'Porco CC, et al. Cassini observes the active south pole of Enceladus. Science. 2006;311(5766):1393–1401. (PubMed 16527964)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16527964/',
+          publishedAt: '2006-03-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-03-10',
+        datePrecision: 'DAY',
+        reason: "Porco et al. published 'Cassini Observes the Active South Pole of Enceladus' in Science on 10 March 2006, establishing that jets of fine icy particles vented from the south pole supply Saturn's E ring and implying subsurface liquid water — a landmark result for outer-Solar-System astrobiology.",
+        source: {
+          externalId: 'src:porco-enceladus-active-pole-science-2006',
+          name: 'Porco CC, et al. Cassini Observes the Active South Pole of Enceladus. Science. 2006;311(5766):1393–1401.',
+          url: 'https://doi.org/10.1126/science.1123013',
+          publishedAt: '2006-03-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 43. Galileo probe — Jupiter atmosphere entry — 1995 ─────────────────────
+  {
+    externalId: 'trajectory:galileo-probe-jupiter-entry-1995',
+    text: "NASA's Galileo atmospheric entry probe made the first in-situ measurements of a gas-giant atmosphere when it descended into Jupiter on 7 December 1995, returning helium, methane, water, and noble-gas abundances.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-12-07',
+        datePrecision: 'DAY',
+        reason: "The Galileo probe entered Jupiter's atmosphere at ~47 km/s on 7 December 1995 and transmitted about 58 minutes of data from roughly 0.4 to 22 bar before succumbing to heat and pressure. Its mass spectrometer measured a near-solar He/H2 ratio and a surprisingly dry, cloud-poor 'hot spot' entry site. This was the first direct sampling of a giant planet's atmosphere.",
+        source: {
+          externalId: 'src:niemann-galileo-probe-ads-1996',
+          name: 'Niemann HB, et al. The Galileo Probe Mass Spectrometer: Composition of Jupiter\'s Atmosphere. Science. 1996;272(5263):846–849. (ADS 1996Sci...272..846N)',
+          url: 'https://ui.adsabs.harvard.edu/abs/1996Sci...272..846N',
+          publishedAt: '1996-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-05-10',
+        datePrecision: 'DAY',
+        reason: "Niemann et al. published the Galileo Probe Mass Spectrometer composition results in Science on 10 May 1996, placing the in-situ Jovian atmospheric composition — helium, methane, water, and detected krypton and xenon — into the peer-reviewed record and constraining models of giant-planet formation.",
+        source: {
+          externalId: 'src:niemann-galileo-probe-science-1996',
+          name: 'Niemann HB, et al. The Galileo Probe Mass Spectrometer: Composition of Jupiter\'s Atmosphere. Science. 1996;272(5263):846–849.',
+          url: 'https://doi.org/10.1126/science.272.5263.846',
+          publishedAt: '1996-05-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 44. Curiosity — Gale Crater habitable environment — 2013 ────────────────
+  {
+    externalId: 'trajectory:curiosity-gale-crater-habitable-2013',
+    text: "NASA's Curiosity rover established that the Yellowknife Bay mudstones in Gale Crater record an ancient habitable fluvio-lacustrine environment on Mars, announced 12 March 2013 and published by Grotzinger et al. in December 2013.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-03-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-03-12',
+        datePrecision: 'DAY',
+        reason: "Powder drilled from the Sheepbed mudstone at Yellowknife Bay and analyzed by Curiosity's CheMin and SAM instruments revealed clay minerals and a benign, neutral-pH, low-salinity aqueous setting with the key elements for life. NASA announced on 12 March 2013 that Gale Crater once hosted an environment capable of supporting microbial life.",
+        source: {
+          externalId: 'src:grotzinger-yellowknife-bay-pubmed-2013',
+          name: 'Grotzinger JP, et al. A Habitable Fluvio-Lacustrine Environment at Yellowknife Bay, Gale Crater, Mars. Science. 2014;343(6169):1242777. (PubMed 24324272)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24324272/',
+          publishedAt: '2013-12-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-12-09',
+        datePrecision: 'DAY',
+        reason: 'Grotzinger et al. published the peer-reviewed analysis in Science (online 9 December 2013; printed 24 January 2014), formally establishing that the Yellowknife Bay strata record an ancient habitable lake-and-stream system, moving the claim from a NASA announcement to a settled result in the literature.',
+        source: {
+          externalId: 'src:grotzinger-yellowknife-bay-science-2014',
+          name: 'Grotzinger JP, et al. A Habitable Fluvio-Lacustrine Environment at Yellowknife Bay, Gale Crater, Mars. Science. 2014;343(6169):1242777.',
+          url: 'https://doi.org/10.1126/science.1242777',
+          publishedAt: '2013-12-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
@@ -1817,29 +2033,32 @@ async function upsertTrajectory(t: Trajectory) {
     })
 
     const histId = `csh:${t.externalId}:${i}`
-    await prisma.claimStatusHistory.upsert({
-      where: { id: histId },
-      create: {
-        id: histId,
-        claimId: claim.id,
-        fromAxis: tr.fromAxis ?? undefined,
-        toAxis: tr.toAxis,
-        community: tr.community,
-        occurredAt: new Date(tr.occurredAt),
-        datePrecision: tr.datePrecision,
-        reason: tr.reason,
-        sourceId: source.id,
-      },
-      update: {
-        fromAxis: tr.fromAxis ?? undefined,
-        toAxis: tr.toAxis,
-        community: tr.community,
-        occurredAt: new Date(tr.occurredAt),
-        datePrecision: tr.datePrecision,
-        reason: tr.reason,
-        sourceId: source.id,
-      },
+    const histData = {
+      claimId: claim.id,
+      fromAxis: tr.fromAxis ?? undefined,
+      toAxis: tr.toAxis,
+      community: tr.community,
+      occurredAt: new Date(tr.occurredAt),
+      datePrecision: tr.datePrecision,
+      reason: tr.reason,
+      sourceId: source.id,
+    }
+    // Idempotent upsert: reconcile by id and by unique constraint
+    const byId = await prisma.claimStatusHistory.findUnique({ where: { id: histId } })
+    const byUnique = await prisma.claimStatusHistory.findFirst({
+      where: { claimId: claim.id, toAxis: tr.toAxis, occurredAt: new Date(tr.occurredAt) },
     })
+    if (byId && byId.claimId !== claim.id) {
+      // Orphaned row from a previous claim — remove it before reconciling
+      await prisma.claimStatusHistory.delete({ where: { id: histId } })
+    }
+    if (byUnique) {
+      await prisma.claimStatusHistory.update({ where: { id: byUnique.id }, data: histData })
+    } else if (byId && byId.claimId === claim.id) {
+      await prisma.claimStatusHistory.update({ where: { id: histId }, data: histData })
+    } else {
+      await prisma.claimStatusHistory.create({ data: { id: histId, ...histData } })
+    }
 
     const existingEdge = await prisma.edge.findFirst({ where: { claimId: claim.id, sourceId: source.id } })
     if (!existingEdge) {
