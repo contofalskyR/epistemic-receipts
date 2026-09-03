@@ -2820,6 +2820,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── DeConto & Pollard — marine ice-cliff instability — 2016 ─────────────────
+  {
+    externalId: 'trajectory:deconto-pollard-marine-ice-cliff-instability-2016',
+    text: 'Robert DeConto and David Pollard argued on 30 March 2016 that atmospheric warming could trigger hydrofracturing of Antarctic ice shelves and marine ice-cliff instability (MICI), potentially causing Antarctica alone to contribute more than one metre of sea-level rise by 2100 under high emissions.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-03-30',
+        datePrecision: 'DAY',
+        reason: 'DeConto and Pollard introduced marine ice-cliff instability and ice-shelf hydrofracturing into a coupled ice-sheet–climate model, roughly doubling prior projections of the Antarctic contribution to 21st-century sea-level rise (>1 m by 2100, >15 m by 2500 under unabated emissions). The paper reframed Antarctic ice loss as potentially far faster and more nonlinear than the IPCC AR5 had assumed, and became one of the most-cited and most-debated sea-level papers of the decade.',
+        source: {
+          externalId: 'src:deconto-pollard-antarctica-sea-level-nature-2016',
+          name: 'DeConto RM, Pollard D. Contribution of Antarctica to past and future sea-level rise. Nature. 2016;531(7596):591–597.',
+          url: 'https://www.nature.com/articles/nature17145',
+          publishedAt: '2016-03-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-02-06',
+        datePrecision: 'DAY',
+        reason: 'Tamsin Edwards and colleagues reanalyzed the DeConto–Pollard ensemble and found that marine ice-cliff instability is not required to reproduce Antarctic sea-level contributions in the mid-Pliocene, the Last Interglacial, or 1992–2017, yielding a most-likely 2100 value near 45 cm rather than the higher MICI-driven figures. The result placed the MICI mechanism and its high-end projections in active scientific dispute, where they remain unobserved in the modern era.',
+        source: {
+          externalId: 'src:edwards-revisiting-mici-nature-2019',
+          name: 'Edwards TL, Brandon MA, Durand G, et al. Revisiting Antarctic ice loss due to marine ice-cliff instability. Nature. 2019;566(7742):58–64.',
+          url: 'https://www.nature.com/articles/s41586-019-0901-4',
+          publishedAt: '2019-02-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Caesar & Rahmstorf — AMOC observed weakening — 2018 ─────────────────────
+  {
+    externalId: 'trajectory:amoc-observed-weakening-caesar-2018',
+    text: 'L. Caesar and Stefan Rahmstorf reported on 11 April 2018 that a sea-surface-temperature \'fingerprint\' shows the Atlantic Meridional Overturning Circulation (AMOC) has weakened by about 15% (≈3 Sv) since the mid-20th century, probably as a consequence of anthropogenic climate change.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-04-11',
+        datePrecision: 'DAY',
+        reason: 'Caesar, Rahmstorf and colleagues used a subpolar-cooling / Gulf-Stream-warming SST fingerprint calibrated against CMIP5 simulations to infer a ~15% (3 ± 1 Sv) decline in the AMOC since the mid-twentieth century. It was among the first observation-based indications that the overturning circulation had already measurably slowed, moving AMOC weakening from model projection toward observed record.',
+        source: {
+          externalId: 'src:caesar-amoc-weakening-nature-2018',
+          name: 'Caesar L, Rahmstorf S, Robinson A, Feulner G, Saba V. Observed fingerprint of a weakening Atlantic Ocean overturning circulation. Nature. 2018;556(7700):191–196.',
+          url: 'https://www.nature.com/articles/s41586-018-0006-5',
+          publishedAt: '2018-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-07-25',
+        datePrecision: 'DAY',
+        reason: 'Peter and Susanne Ditlevsen applied early-warning statistics to Atlantic SST proxies and estimated a possible AMOC collapse as early as mid-century (central estimate ~2057, range 2025–2095), sharply escalating the claim. The paper drew prominent expert pushback (e.g., Science Media Centre reactions) over its proxy choice and stationarity assumptions, and a 2025 author correction, leaving the magnitude and imminence of AMOC decline actively contested even as the direction is broadly accepted.',
+        source: {
+          externalId: 'src:ditlevsen-amoc-collapse-warning-natcomms-2023',
+          name: 'Ditlevsen P, Ditlevsen S. Warning of a forthcoming collapse of the Atlantic meridional overturning circulation. Nature Communications. 2023;14:4254.',
+          url: 'https://www.nature.com/articles/s41467-023-39810-w',
+          publishedAt: '2023-07-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IMBIE — Antarctic ice sheet mass balance reconciliation — 2018 ───────────
+  {
+    externalId: 'trajectory:imbie-antarctic-ice-sheet-mass-balance-2018',
+    text: 'The international Ice Sheet Mass Balance Inter-comparison Exercise (IMBIE) reported on 13 June 2018 that a reconciliation of satellite altimetry, gravimetry and interferometry shows Antarctica lost about 2,720 billion tonnes of ice from 1992 to 2017 (≈7.6 mm of sea-level rise), with the loss rate tripling since 2012.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-11-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-11-30',
+        datePrecision: 'DAY',
+        reason: 'Shepherd and 46 co-authors published the first IMBIE reconciliation, combining previously discordant altimetry, interferometry and gravimetry estimates under common regions, intervals and glacial-isostatic-adjustment models. It resolved a long-standing conflict among satellite methods and established that both polar ice sheets were losing mass, converting a contested measurement into a documented multi-method record.',
+        source: {
+          externalId: 'src:shepherd-reconciled-ice-sheet-mass-balance-science-2012',
+          name: 'Shepherd A, Ivins ER, A G, et al. A Reconciled Estimate of Ice-Sheet Mass Balance. Science. 2012;338(6111):1183–1189.',
+          url: 'https://www.science.org/doi/10.1126/science.1228102',
+          publishedAt: '2012-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-06-13',
+        datePrecision: 'DAY',
+        reason: 'The second IMBIE assessment, a 24-nation, 84-author collaboration coordinated by ESA and NASA, confirmed accelerating Antarctic mass loss (2,720 ± 1,390 Gt over 1992–2017; loss rate rising from 76 to 219 Gt/yr, tripling after 2012). As the authoritative community-consensus reconciliation later adopted by IPCC assessments, it settled that Antarctica is losing ice at an accelerating rate and contributing measurably to sea-level rise.',
+        source: {
+          externalId: 'src:imbie-antarctic-mass-balance-nature-2018',
+          name: 'The IMBIE Team (Shepherd A, Fricker HA, Nowicki S, et al.). Mass balance of the Antarctic Ice Sheet from 1992 to 2017. Nature. 2018;558(7709):219–222.',
+          url: 'https://www.nature.com/articles/s41586-018-0179-y',
+          publishedAt: '2018-06-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NOAA/ICRI — fourth global coral bleaching event — 2024 ──────────────────
+  {
+    externalId: 'trajectory:fourth-global-coral-bleaching-event-2024',
+    text: 'NOAA and the International Coral Reef Initiative confirmed on 15 April 2024 that a fourth global mass coral bleaching event was underway — driven by record ocean heat stress across the Atlantic, Pacific and Indian Oceans — which became the largest and most widespread on record.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-04-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-04-15',
+        datePrecision: 'DAY',
+        reason: 'NOAA Coral Reef Watch and the ICRI jointly declared the fourth global coral bleaching event (the second within a decade), reporting bleaching-level heat stress across all three ocean basins plus the Red Sea and Persian Gulf. The declaration formally recorded that planetary-scale, climate-driven coral bleaching had recurred, based on NOAA\'s satellite heat-stress monitoring.',
+        source: {
+          externalId: 'src:noaa-fourth-global-bleaching-event-2024',
+          name: 'NOAA. NOAA confirms 4th global coral bleaching event. News release, 15 April 2024.',
+          url: 'https://www.noaa.gov/news-release/noaa-confirms-4th-global-coral-bleaching-event',
+          publishedAt: '2024-04-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2025-09-01',
+        datePrecision: 'MONTH',
+        reason: 'As NOAA Coral Reef Watch tracked the event past its first year, bleaching-level heat stress had affected roughly 84% of the world\'s coral reef area across at least 83 countries and territories — surpassing the 2014–2017 third global event (68%) — making it the largest and longest global bleaching event on record. The sustained, authoritatively monitored scale settled coral mass bleaching as an established recurring consequence of anthropogenic ocean warming.',
+        source: {
+          externalId: 'src:noaa-crw-global-bleaching-status-update-2025',
+          name: 'NOAA Coral Reef Watch. Current Global Bleaching Event: Status Update & Data Submission. 2025.',
+          url: 'https://coralreefwatch.noaa.gov/satellite/research/coral_bleaching_report.php',
+          publishedAt: '2025-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
