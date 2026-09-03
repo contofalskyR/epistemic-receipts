@@ -7261,6 +7261,201 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "sec-alj-appointments-clause-lucia-2018",
+    claim:
+      "Administrative law judges of the U.S. Securities and Exchange Commission are 'Officers of the United States' who must be appointed in conformity with the Appointments Clause, as held by the U.S. Supreme Court in Lucia v. SEC on 21 June 2018.",
+    emergedAt: "2016-12-27",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2016-12-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Bandimere v. SEC (844 F.3d 1168, 10th Cir., 27 Dec 2016) the Tenth Circuit held that SEC ALJs are inferior 'Officers of the United States' who were not constitutionally appointed, directly conflicting with the D.C. Circuit's decision in Raymond J. Lucia Cos. v. SEC (832 F.3d 277, 2016) that ALJs are mere employees. The resulting circuit split made the constitutional status of agency adjudicators an openly contested question, casting doubt on hundreds of in-house SEC enforcement proceedings.",
+        sourceName:
+          "Tenth Circuit. Bandimere v. SEC, 844 F.3d 1168 (10th Cir. 2016).",
+        sourceUrl:
+          "https://www.leagle.com/decision/inadvfco170320000249",
+        methodologyType: "primary",
+      },
+      {
+        date: "2018-06-21",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Lucia v. SEC (585 U.S. 237, 21 June 2018): the Supreme Court, per Justice Kagan, held that SEC ALJs are 'Officers of the United States' subject to the Appointments Clause because they hold continuing statutory positions and exercise significant discretion in adversarial proceedings, applying Freytag v. Commissioner. The ruling resolved the Bandimere/Lucia circuit split and settled that agency adjudicators wielding comparable authority must be constitutionally appointed, entitling Lucia to a new hearing before a properly appointed judge.",
+        sourceName:
+          "Kagan J. Lucia v. Securities and Exchange Commission, 585 U.S. 237 (2018). Opinion of the Court.",
+        sourceUrl:
+          "https://www.law.cornell.edu/supremecourt/text/17-130",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "ftc-13b-monetary-relief-amg-2021",
+    claim:
+      "Section 13(b) of the Federal Trade Commission Act, which authorizes the FTC to seek 'permanent injunctions,' empowers courts to award equitable monetary relief such as restitution and disgorgement — a proposition established by circuit consensus beginning with FTC v. H.N. Singer (9th Cir. 1982) and rejected by the U.S. Supreme Court in AMG Capital Management v. FTC on 22 April 2021.",
+    emergedAt: "1982-02-05",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1982-02-05",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "FTC v. H.N. Singer, Inc. (668 F.2d 1107, 9th Cir. 1982) held that a district court exercising its authority to grant a permanent injunction under Section 13(b) also carries the inherent equitable power to 'grant any ancillary relief necessary to accomplish complete justice,' including rescission and restitution. Followed by at least eight other circuits over the following decades, Singer settled a nationwide consensus that Section 13(b) authorized the FTC to recover money from wrongdoers, making it the agency's primary consumer-redress tool.",
+        sourceName:
+          "Ninth Circuit. FTC v. H.N. Singer, Inc., 668 F.2d 1107 (9th Cir. 1982).",
+        sourceUrl:
+          "https://law.justia.com/cases/federal/appellate-courts/F2/668/1107/",
+        methodologyType: "primary",
+      },
+      {
+        date: "2019-08-21",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "FTC v. Credit Bureau Center, LLC (937 F.3d 764, 7th Cir., 21 Aug 2019): the Seventh Circuit, per Judge Sykes, overruled its own precedent and broke with eight other circuits, holding that Section 13(b)'s text authorizes only prospective injunctive relief and cannot support an implied right to restitution. The decision shattered the decades-long Singer consensus and created a live circuit split over whether the FTC's central monetary-recovery mechanism had any statutory basis.",
+        sourceName:
+          "Sykes J. FTC v. Credit Bureau Center, LLC, 937 F.3d 764 (7th Cir. 2019).",
+        sourceUrl:
+          "https://law.justia.com/cases/federal/appellate-courts/ca7/18-2847/18-2847-2019-08-21.html",
+        methodologyType: "primary",
+      },
+      {
+        date: "2021-04-22",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "AMG Capital Management, LLC v. FTC (593 U.S. 67, 22 April 2021): a unanimous Court, per Justice Breyer, held that 'Section 13(b) does not authorize the Commission to seek, or a court to award, equitable monetary relief such as restitution or disgorgement,' reasoning that the provision authorizes only prospective injunctive relief and that Congress addressed monetary remedies through the separate administrative processes of §5 and §19. The decision repudiated the Singer line of authority and stripped the FTC of its principal consumer-redress tool absent new legislation.",
+        sourceName:
+          "Breyer J. AMG Capital Management, LLC v. Federal Trade Commission, 593 U.S. 67 (2021). Opinion of the Court.",
+        sourceUrl:
+          "https://www.law.cornell.edu/supremecourt/text/19-508",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "paralyzed-veterans-interpretive-rule-notice-comment-2015",
+    claim:
+      "Under the Administrative Procedure Act, a federal agency must use notice-and-comment rulemaking when it significantly revises a prior definitive interpretation of one of its own regulations — the 'Paralyzed Veterans doctrine' announced by the D.C. Circuit in 1997 and rejected by the U.S. Supreme Court in Perez v. Mortgage Bankers Association on 9 March 2015.",
+    emergedAt: "1997-07-01",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1997-07-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Paralyzed Veterans of America v. D.C. Arena L.P. (117 F.3d 579, D.C. Cir., 1 July 1997) held that once an agency gives a regulation a definitive interpretation, it must use APA notice-and-comment procedures to significantly change that interpretation, reasoning that a new construction effectively amends the underlying rule. The doctrine, binding in the influential D.C. Circuit, settled a procedural constraint that forced agencies to open a comment period before altering established interpretive positions.",
+        sourceName:
+          "D.C. Circuit. Paralyzed Veterans of America v. D.C. Arena L.P., 117 F.3d 579 (D.C. Cir. 1997).",
+        sourceUrl:
+          "https://www.courtlistener.com/opinion/743059/paralyzed-veterans-of-america-appelleescross-appellants-v-dc-arena/",
+        methodologyType: "primary",
+      },
+      {
+        date: "2015-03-09",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Perez v. Mortgage Bankers Association (575 U.S. 92, 9 March 2015): a unanimous Court, per Justice Sotomayor, held the Paralyzed Veterans doctrine 'contrary to the clear text of the APA's rulemaking provisions,' because §553 categorically exempts interpretive rules from notice-and-comment, and agencies therefore need not use those procedures to amend or repeal such rules any more than to issue them. The ruling overruled the D.C. Circuit doctrine outright and reinstated the Department of Labor's 2010 interpretation on mortgage-loan-officer overtime.",
+        sourceName:
+          "Sotomayor J. Perez v. Mortgage Bankers Association, 575 U.S. 92 (2015). Opinion of the Court.",
+        sourceUrl:
+          "https://www.law.cornell.edu/supremecourt/text/13-1041",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "brand-x-agency-override-judicial-construction-2005",
+    claim:
+      "A federal agency's reasonable interpretation of an ambiguous statute prevails over a court's prior contrary construction of the same statute, unless that earlier decision held the statute's meaning to follow from unambiguous terms — the rule of statutory-precedent displacement established by the U.S. Supreme Court in National Cable & Telecommunications Ass'n v. Brand X on 27 June 2005.",
+    emergedAt: "2005-06-27",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2005-06-27",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "National Cable & Telecommunications Ass'n v. Brand X Internet Services (545 U.S. 967, 27 June 2005): the Court, per Justice Thomas, upheld the FCC's classification of cable broadband as an 'information service' and held that 'a court's prior judicial construction of a statute trumps an agency construction' only when the prior decision held the statute unambiguous. The ruling settled that Chevron deference lets an agency override even a federal court's earlier reading of an ambiguous statute, subordinating stare decisis to agency gap-filling authority.",
+        sourceName:
+          "Thomas J. National Cable & Telecommunications Ass'n v. Brand X Internet Services, 545 U.S. 967 (2005). Opinion of the Court.",
+        sourceUrl:
+          "https://www.law.cornell.edu/supremecourt/text/545/967",
+        methodologyType: "primary",
+      },
+      {
+        date: "2024-06-28",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Loper Bright Enterprises v. Raimondo (603 U.S. 369, 28 June 2024): by holding that 'Chevron is overruled' and requiring courts to exercise independent judgment on questions of statutory meaning, the Court removed the deference framework on which Brand X wholly depended. With courts no longer bound to accept an agency's reasonable reading of an ambiguous statute, Brand X's mechanism permitting an agency to displace a prior judicial construction lost its doctrinal foundation, ending the rule of statutory-precedent displacement.",
+        sourceName:
+          "Roberts CJ. Loper Bright Enterprises v. Raimondo, 603 U.S. 369 (2024). Opinion of the Court.",
+        sourceUrl:
+          "https://www.law.cornell.edu/supremecourt/text/22-451",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "michigan-v-epa-cost-consideration-appropriate-necessary-2015",
+    claim:
+      "The EPA must consider costs — most importantly compliance costs — before deciding whether regulating hazardous air pollutants from power plants is 'appropriate and necessary' under Clean Air Act §112(n)(1)(A); interpreting that phrase to make cost irrelevant is unreasonable, as held by the U.S. Supreme Court in Michigan v. EPA on 29 June 2015.",
+    emergedAt: "2015-06-29",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2015-06-29",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Michigan v. EPA (576 U.S. 743, 29 June 2015): a 5–4 majority, per Justice Scalia, held that EPA 'interpreted §7412(n)(1)(A) unreasonably when it deemed cost irrelevant to the decision to regulate power plants,' concluding that reasonable agency regulation requires attention to cost and that 'appropriate and necessary' cannot be read to license the agency to ignore the costs of compliance. While leaving methodology to the agency's discretion, the decision settled that cost consideration is a mandatory input to the threshold decision to regulate, constraining agency rulemaking under open-ended statutory standards.",
+        sourceName:
+          "Scalia J. Michigan v. Environmental Protection Agency, 576 U.S. 743 (2015). Opinion of the Court.",
+        sourceUrl:
+          "https://www.law.cornell.edu/supremecourt/text/14-46",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
