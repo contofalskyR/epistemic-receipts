@@ -1605,6 +1605,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── 38. Parmesan & Yohe — species fingerprint of climate change — 2003 ────────
+  {
+    externalId: 'trajectory:parmesan-yohe-species-fingerprint-2003',
+    text: 'Camille Parmesan and Gary Yohe reported in Nature on 2 January 2003 that a meta-analysis of more than 1,700 species revealed a globally coherent biological fingerprint of climate change — species ranges shifting poleward and upward by about 6.1 km per decade and spring events advancing by about 2.3 days per decade.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-01-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-02',
+        datePrecision: 'DAY',
+        reason: 'Parmesan and Yohe published \'A globally coherent fingerprint of climate change impacts across natural systems\' in Nature (421:37–42), applying meta-analyses to over 1,700 species and finding significant poleward/upward range shifts averaging 6.1 km per decade and spring phenological events advancing 2.3 days per decade. By defining a diagnostic \'sign-switching\' fingerprint uniquely predicted by twentieth-century warming, it was the first quantitative demonstration that climate change was already reshaping the geography and timing of life across taxa worldwide.',
+        source: {
+          externalId: 'src:parmesan-yohe-fingerprint-nature-2003',
+          name: 'Parmesan C, Yohe G. A globally coherent fingerprint of climate change impacts across natural systems. Nature. 2003;421(6918):37–42.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12511946/',
+          publishedAt: '2003-01-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-04-06',
+        datePrecision: 'DAY',
+        reason: 'The IPCC Fourth Assessment Report Working Group II Summary for Policymakers, approved in Brussels on 6 April 2007, concluded with very high confidence that recent warming is strongly affecting terrestrial biological systems, citing poleward and upward shifts in species ranges and the earlier timing of spring events. By synthesizing this evidence into an intergovernmental consensus, the assessment elevated the Parmesan–Yohe fingerprint from a single meta-analysis to settled institutional science on observed ecological impacts of warming.',
+        source: {
+          externalId: 'src:ipcc-ar4-wg2-spm-2007',
+          name: 'IPCC. Climate Change 2007: Impacts, Adaptation and Vulnerability (AR4 WGII), Summary for Policymakers. April 6, 2007.',
+          url: 'https://www.ipcc.ch/report/ar4/wg2/',
+          publishedAt: '2007-04-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 39. Thomas et al. — extinction risk from climate change — 2004 ──────────
+  {
+    externalId: 'trajectory:thomas-extinction-risk-climate-2004',
+    text: 'Chris Thomas and colleagues reported in Nature on 8 January 2004 that, under mid-range warming scenarios for 2050, 15–37% of species in sampled regions covering roughly 20% of Earth\'s land surface would be \'committed to extinction\' from climate change.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-01-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-01-08',
+        datePrecision: 'DAY',
+        reason: 'Thomas, Cameron, Green and 16 co-authors published \'Extinction risk from climate change\' in Nature (427:145–148), using species–area relationships applied to projected climate-driven range contractions across sample regions on every vegetated continent. They estimated that 15–37% of species would be committed to extinction by 2050 under mid-range warming (~24% average), the first global, multi-taxon quantitative projection of climate-driven extinction and one of the most-cited biodiversity results of the decade.',
+        source: {
+          externalId: 'src:thomas-extinction-risk-nature-2004',
+          name: 'Thomas CD, Cameron A, Green RE, et al. Extinction risk from climate change. Nature. 2004;427(6970):145–148.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14712274/',
+          publishedAt: '2004-01-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In a set of Brief Communications Arising in Nature (430:33–34, 1 July 2004), Thuiller et al. (\'Uncertainty in predictions of extinction risk\'), Buckley & Roughgarden, and Harte et al. (\'Climate change and extinction risk\') argued that the species–area method, dispersal assumptions, and scenario handling made the 15–37% figures highly uncertain and likely misleading. Thomas et al.\'s reply defended the broad conclusion while conceding wide error bars, leaving the specific extinction percentages an openly contested benchmark in conservation biology.',
+        source: {
+          externalId: 'src:extinction-risk-critiques-nature-2004',
+          name: 'Thuiller W, et al.; Buckley LB, Roughgarden J; Harte J, et al.; with reply by Thomas CD, et al. Biodiversity conservation: Uncertainty in predictions of extinction risk / Climate change and extinction risk. Nature. 2004;430:33–34.',
+          url: 'https://www.nature.com/articles/nature02716',
+          publishedAt: '2004-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 40. Pounds et al. — amphibian chytrid warming hypothesis — 2006 ─────────
+  {
+    externalId: 'trajectory:pounds-amphibian-chytrid-warming-2006',
+    text: 'J. Alan Pounds and colleagues reported in Nature on 12 January 2006 that a wave of harlequin frog (Atelopus) extinctions in the American tropics — including the Monteverde harlequin frog and golden toad — was driven by global-warming-enhanced outbreaks of the chytrid fungus Batrachochytrium dendrobatidis, the \'climate-linked epidemic\' hypothesis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-01-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-12',
+        datePrecision: 'DAY',
+        reason: 'Pounds and colleagues published \'Widespread amphibian extinctions from epidemic disease driven by global warming\' in Nature (439:161–167), reporting that about 67% of the ~110 endemic Atelopus species had vanished and analysing the timing of losses against sea-surface and air temperatures to conclude with >99% confidence that large-scale warming was a key factor. They proposed that warming shifts highland temperatures toward the growth optimum of the chytrid fungus, encouraging lethal outbreaks — the founding statement of the climate-linked-epidemic hypothesis for amphibian declines.',
+        source: {
+          externalId: 'src:pounds-amphibian-chytrid-nature-2006',
+          name: 'Pounds JA, Bustamante MR, Coloma LA, et al. Widespread amphibian extinctions from epidemic disease driven by global warming. Nature. 2006;439(7073):161–167.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16407945/',
+          publishedAt: '2006-01-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-03-25',
+        datePrecision: 'DAY',
+        reason: 'Lips, Diffendorfer, Mendelson, and Sears published \'Riding the wave: reconciling the roles of disease and climate change in amphibian declines\' in PLoS Biology (6(3):e72) on 25 March 2008, finding no evidence that climate change was driving chytridiomycosis outbreaks and showing that Central and South American declines were better explained by the spatiotemporal spread of Batrachochytrium as an introduced pathogen. Together with Rohr et al.\'s parallel PNAS critique, it directly challenged the climate-linked-epidemic hypothesis, moving Pounds\'s warming-driven-extinction claim into open scientific dispute.',
+        source: {
+          externalId: 'src:lips-riding-the-wave-plosbio-2008',
+          name: 'Lips KR, Diffendorfer J, Mendelson JR III, Sears MW. Riding the wave: reconciling the roles of disease and climate change in amphibian declines. PLoS Biology. 2008;6(3):e72.',
+          url: 'https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0060072',
+          publishedAt: '2008-03-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 41. U.S. FWS — polar bear ESA threatened listing — 2008 ─────────────────
+  {
+    externalId: 'trajectory:polar-bear-esa-threatened-listing-2008',
+    text: 'On 15 May 2008 the U.S. Fish and Wildlife Service listed the polar bear (Ursus maritimus) as threatened throughout its range under the Endangered Species Act, citing the ongoing and projected loss of sea-ice habitat from climate change — the first species listed primarily because of anthropogenic global warming.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2008-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-05-15',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Fish and Wildlife Service published its final rule \'Determination of Threatened Status for the Polar Bear (Ursus maritimus) Throughout Its Range\' in the Federal Register (73 FR 28212) on 15 May 2008, finding that the best available science showed sea-ice habitat was declining and would continue to decline due to climate change, rendering the species likely to become endangered within the foreseeable future (defined as 45 years). It was the first ESA listing to rest on climate-model projections of greenhouse-driven habitat loss, formally entering climate change into U.S. endangered-species law.',
+        source: {
+          externalId: 'src:fws-polar-bear-listing-fr-2008',
+          name: 'U.S. Fish and Wildlife Service. Endangered and Threatened Wildlife and Plants; Determination of Threatened Status for the Polar Bear (Ursus maritimus) Throughout Its Range. 73 FR 28212. May 15, 2008.',
+          url: 'https://www.federalregister.gov/documents/2008/05/15/E8-11105/endangered-and-threatened-wildlife-and-plants-determination-of-threatened-status-for-the-polar-bear',
+          publishedAt: '2008-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2013-03-01',
+        datePrecision: 'DAY',
+        reason: 'In In re Polar Bear Endangered Species Act Listing and § 4(d) Rule Litigation (709 F.3d 1), the U.S. Court of Appeals for the D.C. Circuit unanimously affirmed the listing on 1 March 2013, rejecting challenges from industry, states, and environmental groups and holding that the Service\'s conclusion that the polar bear is threatened by climate-driven sea-ice loss was reasonable and adequately supported by the record. Appellate affirmation settled the climate-based listing as legally durable federal policy.',
+        source: {
+          externalId: 'src:dc-circuit-polar-bear-listing-2013',
+          name: 'In re Polar Bear Endangered Species Act Listing and § 4(d) Rule Litigation, 709 F.3d 1 (D.C. Cir. 2013). Decided March 1, 2013.',
+          url: 'https://www.biologicaldiversity.org/species/mammals/polar_bear/pdfs/Appellate_Court_Decision_Upholding_Polar_Bear_Endangered_Species_Act_Listing_3_1_2013.pdf',
+          publishedAt: '2013-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 42. Walter et al. — permafrost thaw lake methane — 2006 ─────────────────
+  {
+    externalId: 'trajectory:walter-permafrost-thaw-lake-methane-2006',
+    text: 'Katey Walter and colleagues reported in Nature on 7 September 2006 that ebullition (bubbling) of methane from thawing permafrost lakes in North Siberia is a large, previously underestimated source that constitutes a positive feedback to climate warming, with fluxes up to five times prior estimates.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-09-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-09-07',
+        datePrecision: 'DAY',
+        reason: 'Walter, Zimov, Chanton, Verbyla, and Chapin published \'Methane bubbling from Siberian thaw lakes as a positive feedback to climate warming\' in Nature (443:71–75), using new bubble-trap measurements to show that ebullition accounts for ~95% of methane emissions from these thaw lakes and that regional fluxes may be five times higher than previously estimated — raising estimates of northern-wetland emissions by 10–63%. Because thawing Pleistocene-carbon-rich permafrost fuels the bubbling, expanding thaw lakes represent a self-amplifying carbon feedback, one of the first field quantifications of the permafrost-carbon–climate feedback.',
+        source: {
+          externalId: 'src:walter-thaw-lake-methane-nature-2006',
+          name: 'Walter KM, Zimov SA, Chanton JP, Verbyla D, Chapin FS III. Methane bubbling from Siberian thaw lakes as a positive feedback to climate warming. Nature. 2006;443(7107):71–75.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16957728/',
+          publishedAt: '2006-09-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-04-09',
+        datePrecision: 'DAY',
+        reason: 'Schuur and 49 co-authors of the Permafrost Carbon Network published \'Climate change and the permafrost carbon feedback\' in Nature (520:171–179) on 9 April 2015, synthesizing field and modeling evidence to conclude that permafrost thaw will release large amounts of carbon as CO₂ and methane, amplifying warming as a positive feedback. This community-wide expert consensus established the permafrost-carbon feedback — of which thaw-lake methane ebullition is a component — as settled science, moving the mechanism Walter quantified in 2006 from a striking single-region finding to an accepted element of the global carbon cycle.',
+        source: {
+          externalId: 'src:schuur-permafrost-carbon-feedback-nature-2015',
+          name: 'Schuur EAG, McGuire AD, Schädel C, et al. Climate change and the permafrost carbon feedback. Nature. 2015;520(7546):171–179.',
+          url: 'https://www.nature.com/articles/nature14338',
+          publishedAt: '2015-04-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 28. Gornitz, Lebedeff & Hansen — global sea-level trend — 1982 ───────────
   {
     externalId: 'trajectory:gornitz-lebedeff-hansen-sea-level-trend-1982',
