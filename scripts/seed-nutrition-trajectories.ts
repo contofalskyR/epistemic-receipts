@@ -2051,6 +2051,224 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ALCOHOL SCIENCE ERA (1981–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 40. French paradox — wine cardioprotection — 1992 ───────────────────────
+  {
+    externalId: 'trajectory:french-paradox-wine-cardioprotection-1992',
+    text: 'Serge Renaud and Michel de Lorgeril claimed in The Lancet on 20 June 1992 that regular red wine consumption explains the \'French paradox\' — France\'s low coronary heart disease mortality despite high saturated-fat intake — by inhibiting platelet aggregation, positing that wine is cardioprotective.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-06-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-06-20',
+        datePrecision: 'DAY',
+        reason: 'Renaud and de Lorgeril published \'Wine, alcohol, platelets, and the French paradox for coronary heart disease\' in The Lancet, attributing France\'s low CHD mortality to wine\'s inhibition of platelet aggregation. The hypothesis entered the peer-reviewed record and, amplified by a November 1991 CBS \'60 Minutes\' segment, drove a measurable surge in U.S. red wine sales.',
+        source: {
+          externalId: 'src:renaud-delorgeril-lancet-1992',
+          name: 'Renaud S, de Lorgeril M. Wine, alcohol, platelets, and the French paradox for coronary heart disease. Lancet. 1992 Jun 20;339(8808):1523-6.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1351198/',
+          publishedAt: '1992-06-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-05-29',
+        datePrecision: 'DAY',
+        reason: 'Malcolm Law and Nicholas Wald argued in the BMJ that the French paradox is largely an artifact of a time lag between rising animal-fat consumption and its delayed effect on CHD mortality, compounded by under-certification of ischemic heart disease deaths in France — not a protective effect of wine. This shifted the wine-cardioprotection claim from accepted explanation to contested confounding.',
+        source: {
+          externalId: 'src:law-wald-bmj-1999',
+          name: 'Law M, Wald N. Why heart disease mortality is low in France: the time lag explanation. BMJ. 1999 May 29;318(7196):1471-6.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10346778/',
+          publishedAt: '1999-05-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-22',
+        datePrecision: 'DAY',
+        reason: 'The GBD 2016 Alcohol Collaborators\' global analysis in The Lancet found that the level of alcohol minimizing total health loss is zero, and that any cardioprotective association is outweighed by cancer and other harms. This dismantled the causal claim that wine drinking protects the heart at the population level, reversing the French-paradox interpretation.',
+        source: {
+          externalId: 'src:gbd-2016-alcohol-lancet-2018',
+          name: 'GBD 2016 Alcohol Collaborators. Alcohol use and burden for 195 countries and territories, 1990-2016: a systematic analysis for the Global Burden of Disease Study 2016. Lancet. 2018 Sep 22;392(10152):1015-1035.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30146330/',
+          publishedAt: '2018-09-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 41. Alcohol mortality U-shaped curve — 1981 ──────────────────────────────
+  {
+    externalId: 'trajectory:alcohol-mortality-u-shaped-curve-1981',
+    text: 'Michael Marmot and colleagues claimed in The Lancet on 14 March 1981 that the relationship between alcohol intake and all-cause mortality is U-shaped, meaning moderate drinkers have lower mortality than both heavy drinkers and abstainers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-03-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-03-14',
+        datePrecision: 'DAY',
+        reason: 'Marmot, Rose, Shipley and Thomas published \'Alcohol and mortality: a U-shaped curve\' in The Lancet, reporting from the Whitehall civil servants cohort that moderate drinkers had the lowest mortality. This formalized the J/U-shaped-curve claim that would underpin decades of \'moderate drinking is good for you\' epidemiology.',
+        source: {
+          externalId: 'src:marmot-lancet-1981',
+          name: 'Marmot MG, Rose G, Shipley MJ, Thomas BJ. Alcohol and mortality: a U-shaped curve. Lancet. 1981 Mar 14;1(8220):580-3.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6110820/',
+          publishedAt: '1981-03-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-12-09',
+        datePrecision: 'DAY',
+        reason: 'By the turn of the century the J-curve was treated as established: large pooled analyses and reviews, such as the BMJ meta-analysis of alcohol and coronary heart disease by Corrao and colleagues, reported consistent risk reductions at moderate intake. The U-shaped curve became conventional epidemiological wisdom and informed dietary-guideline language permitting moderate drinking.',
+        source: {
+          externalId: 'src:corrao-cvd-alcohol-2000',
+          name: 'Corrao G, Rubbiati L, Bagnardi V, Zambon A, Poikolainen K. Alcohol and coronary heart disease: a meta-analysis. Addiction. 2000 Oct;95(10):1505-23.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11070527/',
+          publishedAt: '2000-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Tim Stockwell and colleagues\' systematic review and meta-analysis in the Journal of Studies on Alcohol and Drugs showed that the apparent mortality benefit of moderate drinking largely vanishes once \'abstainer bias\' (sick people who quit or never drank being counted as abstainers) and study-quality confounders are corrected. This reframed the U-shaped curve as a methodological artifact, reopening the settled claim.',
+        source: {
+          externalId: 'src:stockwell-jsad-2016',
+          name: 'Stockwell T, Zhao J, Panwar S, Roemer A, Naimi T, Chikritzhs T. Do \'Moderate\' Drinkers Have Reduced Mortality Risk? A Systematic Review and Meta-Analysis of Alcohol Consumption and All-Cause Mortality. J Stud Alcohol Drugs. 2016 Mar;77(2):185-98.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26997174/',
+          publishedAt: '2016-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 42. MACH15 trial terminated — industry capture — 2018 ───────────────────
+  {
+    externalId: 'trajectory:mach-moderate-alcohol-cvd-trial-terminated-2018',
+    text: 'The NIH-funded Moderate Alcohol and Cardiovascular Health (MACH15) randomized trial, designed to test whether one daily drink prevents cardiovascular disease, was terminated by NIH Director Francis Collins on 15 June 2018 after an investigation found the ~$100 million study had been improperly solicited from and shaped by the alcohol industry.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The MACH15 trial (NCT03169530) was registered and launched in 2017 by the National Institute on Alcohol Abuse and Alcoholism, enrolling participants to randomize adults to one daily drink or abstention to test a cardiovascular benefit. It represented the first attempt to convert the observational \'moderate drinking is protective\' hypothesis into randomized causal evidence.',
+        source: {
+          externalId: 'src:mach15-clinicaltrials-nct03169530',
+          name: 'Moderate Alcohol and Cardiovascular Health Trial (MACH15). ClinicalTrials.gov Identifier NCT03169530. First posted 30 May 2017.',
+          url: 'https://clinicaltrials.gov/study/NCT03169530',
+          publishedAt: '2017-05-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-06-15',
+        datePrecision: 'DAY',
+        reason: 'Following a working-group report to the NIH Advisory Committee to the Director documenting that NIAAA staff secretly courted alcohol-industry money and steered the design toward a pro-alcohol endpoint, NIH Director Francis Collins terminated the trial on 15 June 2018. The termination invalidated the planned randomized test and became a landmark case of industry capture corrupting a public research question.',
+        source: {
+          externalId: 'src:mitchell-ajph-mach-2020',
+          name: 'Mitchell G, Lesch M, McCambridge J. Alcohol Industry Involvement in the Moderate Alcohol and Cardiovascular Health Trial. Am J Public Health. 2020 Apr;110(4):485-488.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32078349/',
+          publishedAt: '2020-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 43. No safe level of alcohol — 2018–2023 ─────────────────────────────────
+  {
+    externalId: 'trajectory:no-safe-level-of-alcohol-2018-2023',
+    text: 'The GBD 2016 Alcohol Collaborators claimed in The Lancet on 22 September 2018 that there is no safe level of alcohol consumption — the intake minimizing total health loss is zero — a conclusion adopted institutionally by the WHO and Canada in January 2023.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-09-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-22',
+        datePrecision: 'DAY',
+        reason: 'The GBD 2016 Alcohol Collaborators concluded in The Lancet that across 195 countries the level of consumption minimizing harm is zero, overturning the prior \'moderate drinking is protective\' consensus. The claim that no amount of alcohol is safe entered the peer-reviewed record as a direct challenge to the J-curve.',
+        source: {
+          externalId: 'src:gbd-2016-alcohol-nosafe-2018',
+          name: 'GBD 2016 Alcohol Collaborators. Alcohol use and burden for 195 countries and territories, 1990-2016: a systematic analysis for the Global Burden of Disease Study 2016. Lancet. 2018 Sep 22;392(10152):1015-1035.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30146330/',
+          publishedAt: '2018-09-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-07-16',
+        datePrecision: 'DAY',
+        reason: 'The GBD 2020 Alcohol Collaborators refined the earlier finding in The Lancet, reporting age- and sex-specific thresholds: for adults over ~40 without underlying conditions, small amounts may carry some benefit, while for younger adults the safe level is effectively zero. This internally contested the blanket \'no safe level\' framing by making the harm threshold population-dependent.',
+        source: {
+          externalId: 'src:gbd-2020-alcohol-lancet-2022',
+          name: 'GBD 2020 Alcohol Collaborators. Population-level risks of alcohol consumption by amount, geography, age, sex, and year: a systematic analysis for the Global Burden of Disease Study 2020. Lancet. 2022 Jul 16;400(10347):185-235.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35843246/',
+          publishedAt: '2022-07-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-01-04',
+        datePrecision: 'DAY',
+        reason: 'The WHO/Europe declared on 4 January 2023 that no level of alcohol consumption is safe for health, stating risk begins \'from the first drop,\' in a position paper published as a comment in The Lancet Public Health; Canada\'s Centre on Substance Use and Addiction followed on 17 January 2023 with guidance that no amount is risk-free and that low risk means two or fewer drinks per week. This moved the \'no safe level\' claim into official public-health policy.',
+        source: {
+          externalId: 'src:who-lancet-ph-nosafe-2023',
+          name: 'Anderson BO, Berdzuli N, Ilbawi A, Kestel D, et al. Health and cancer risks associated with low levels of alcohol consumption. Lancet Public Health. 2023 Jan;8(1):e6-e7.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36603913/',
+          publishedAt: '2023-01-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
