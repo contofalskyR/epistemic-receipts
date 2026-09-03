@@ -54,6 +54,182 @@ interface Trajectory {
 const TRAJECTORIES: Trajectory[] = [
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — verified curves (added batch 2026-09-02)
+  // Kelvin fixes the age of the Earth from cooling, later reversed by radioactivity (1862) ·
+  // Edwin Hall discovers the Hall effect (1879) ·
+  // Stefan's fourth-power law of thermal radiation, later derived by Boltzmann (1879) ·
+  // Metchnikoff discovers phagocytosis in starfish larvae at Messina (1882)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Kelvin fixes the age of the Earth from cooling; reversed by radioactivity — 1862 ──
+  {
+    externalId: 'trajectory:kelvin-age-of-earth-cooling-1862',
+    text: 'In 1862 William Thomson (later Lord Kelvin) calculated the age of the Earth from the physics of a cooling solid. Assuming the Earth had begun as a molten body and had since lost heat by conduction to space, he fixed its age at between 20 and 400 million years, and over the following decades narrowed his estimate toward the lower bound — probably nearer 20 than 40 million years. The figure clashed sharply with the far longer timescales geologists and Darwinian evolution seemed to require, and Kelvin pressed it as a physical limit on both. The estimate was overturned in the early twentieth century: the discovery of radioactivity showed that the Earth continually replenishes its internal heat by radioactive decay — invalidating Kelvin\'s core assumption — and radiometric dating established an age of billions of years, roughly a hundred times his figure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1862-04-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1862-04-28',
+        datePrecision: 'DAY',
+        reason: 'Thomson read "On the Secular Cooling of the Earth" to the Royal Society of Edinburgh on 28 April 1862, deriving from the conduction of heat out of an initially molten globe that the Earth was between 20 and 400 million years old. The calculation placed a quantitative physical bound on the age of the Earth on the scientific record and became a central objection to the long timescales demanded by uniformitarian geology and Darwinian natural selection.',
+        source: {
+          externalId: 'src:kelvin-secular-cooling-earth-1862',
+          name: 'Thomson W. On the Secular Cooling of the Earth. Read to the Royal Society of Edinburgh, 28 April 1862; Transactions of the Royal Society of Edinburgh, vol. 23 (1864). (age estimate 20–400 million years)',
+          url: 'https://en.wikipedia.org/wiki/Age_of_the_Earth',
+          publishedAt: '1862-04-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1907-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The discovery of radioactivity (Becquerel 1896; the Curies) revealed that radioactive decay continually generates heat inside the Earth, invalidating Kelvin\'s assumption of steady cooling from a molten start. Ernest Rutherford argued in 1904 that radioactive heat overturned the cooling estimate, and in 1907 Bertram Boltwood used uranium–lead ratios to obtain radiometric ages of over two billion years — orders of magnitude beyond Kelvin\'s figure. Radiometric dating went on to establish an age near 4.5 billion years, definitively reversing the cooling-based limit.',
+        source: {
+          externalId: 'src:radioactivity-reverses-kelvin-age-1907',
+          name: 'Radioactivity overturns Kelvin\'s cooling estimate: Rutherford (1904) on radioactive heat; Boltwood (1907) uranium–lead radiometric ages exceeding two billion years. (Age of the Earth)',
+          url: 'https://en.wikipedia.org/wiki/Age_of_the_Earth',
+          publishedAt: '1907-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Edwin Hall discovers the Hall effect — 1879 ──
+  {
+    externalId: 'trajectory:edwin-hall-effect-1879',
+    text: 'In 1879, while a graduate student under Henry Rowland at Johns Hopkins University, Edwin Herbert Hall discovered that when a current-carrying conductor is placed in a magnetic field perpendicular to the current, a measurable voltage develops across the conductor transverse to both the current and the field. The effect — detected as a tiny deflection with a delicate apparatus, eighteen years before the electron itself was identified — showed that the magnet acts on the moving charges in the conductor rather than merely on the wire. Reported in the American Journal of Mathematics, the Hall effect became a settled cornerstone of the physics of charge transport: its sign reveals whether the charge carriers are positive or negative, and Hall probes remain a standard tool for measuring magnetic fields.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1879-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Hall published "On a New Action of the Magnet on Electric Currents" in the American Journal of Mathematics (vol. 2, no. 3, 1879), reporting that a magnetic field applied perpendicular to a current in a gold-leaf conductor produced a measurable transverse voltage. The result placed on the record a new electromagnetic phenomenon — the magnet acting on the current itself — distinct from the mechanical force on the conductor.',
+        source: {
+          externalId: 'src:hall-new-action-magnet-1879',
+          name: 'Hall EH. On a New Action of the Magnet on Electric Currents. American Journal of Mathematics 1879;2(3):287–292.',
+          url: 'https://en.wikipedia.org/wiki/Hall_effect',
+          publishedAt: '1879-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Hall effect was reproduced across many materials and, after J. J. Thomson\'s identification of the electron in 1897, explained by the deflection of moving charge carriers, with the sign of the Hall voltage giving the sign of the carriers. It became a settled and quantitatively understood cornerstone of solid-state and electromagnetic physics, and the basis of the Hall probe used to measure magnetic fields.',
+        source: {
+          externalId: 'src:hall-effect-settled-carrier-sign',
+          name: 'The Hall effect established as a foundational transport phenomenon: its sign determines the sign of charge carriers; basis of Hall-probe magnetometry. (Hall effect)',
+          url: 'https://en.wikipedia.org/wiki/Hall_effect',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Stefan's fourth-power law of thermal radiation; derived by Boltzmann — 1879 ──
+  {
+    externalId: 'trajectory:stefan-boltzmann-radiation-law-1879',
+    text: 'In 1879 Josef Stefan proposed, on the basis of experimental measurements of radiant heat, that the total energy radiated by a hot body per unit area is proportional to the fourth power of its absolute temperature (j ∝ T⁴). Stefan reached the law empirically, in part by analysing John Tyndall\'s measurements of the radiation from a heated platinum wire, and used it to estimate the surface temperature of the Sun. In 1884 his former student Ludwig Boltzmann derived the same fourth-power relation from theoretical principles, treating thermal radiation with a thermodynamic argument built on radiation pressure. The combined result — the Stefan–Boltzmann law — became a settled foundation of thermal-radiation physics and a step on the road to the quantum theory of blackbody radiation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1879-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In "Über die Beziehung zwischen der Wärmestrahlung und der Temperatur" (1879) Stefan concluded from experimental radiation measurements — including Tyndall\'s data on a heated platinum wire — that the total radiated power scales as the fourth power of absolute temperature, and applied the law to estimate the Sun\'s surface temperature. The fourth-power relation was thereby placed on the record as an empirical law of thermal radiation.',
+        source: {
+          externalId: 'src:stefan-radiation-temperature-1879',
+          name: 'Stefan J. Über die Beziehung zwischen der Wärmestrahlung und der Temperatur. Sitzungsberichte der Kaiserlichen Akademie der Wissenschaften, Wien (1879). (empirical T⁴ radiation law)',
+          url: 'https://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_law',
+          publishedAt: '1879-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1884-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1884 Ludwig Boltzmann derived Stefan\'s fourth-power law from theoretical considerations, drawing on Adolfo Bartoli\'s work on radiation pressure and treating thermal radiation with an ideal heat-engine argument. The independent theoretical derivation confirmed the empirical law and made the Stefan–Boltzmann law a settled foundation of radiation physics, later underpinning the study of blackbody radiation and the quantum theory that followed.',
+        source: {
+          externalId: 'src:boltzmann-derives-radiation-law-1884',
+          name: 'Boltzmann L. Ableitung des Stefan\'schen Gesetzes ... Annalen der Physik (1884) — thermodynamic derivation of the T⁴ radiation law from radiation pressure. (Stefan–Boltzmann law)',
+          url: 'https://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_law',
+          publishedAt: '1884-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Metchnikoff discovers phagocytosis in starfish larvae at Messina — 1882 ──
+  {
+    externalId: 'trajectory:metchnikoff-phagocytosis-1882',
+    text: 'In 1882, while observing transparent starfish (bipinnaria) larvae in Messina, Élie Metchnikoff inserted small rose or citrus thorns into the larvae and found mobile cells clustering around and engulfing the foreign bodies. He concluded that certain wandering cells actively seek out and devour intruders such as bacteria — naming them phagocytes ("devouring cells") — and proposed that this cellular ingestion is a general mechanism of animal defence against infection. The idea that immunity rests on the action of cells met sharp scepticism from leading bacteriologists, who favoured a humoral view of immunity in the blood serum, and was contested for years. It was ultimately vindicated: phagocytosis became a settled foundation of immunology, and Metchnikoff shared the 1908 Nobel Prize in Physiology or Medicine with Paul Ehrlich for work on immunity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1882-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1883-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Metchnikoff first demonstrated the phenomenon in 1882 by inserting thorns into transparent starfish larvae at Messina and observing mobile cells surround them, and presented his phagocyte theory of cellular immunity at Odessa in 1883. The claim that specialised cells engulf and destroy invading microbes was thereby placed on the scientific record as a proposed general mechanism of defence against infection.',
+        source: {
+          externalId: 'src:metchnikoff-phagocyte-theory-1883',
+          name: 'Metchnikoff É. Phagocyte theory of cellular immunity — starfish-larva experiments at Messina (1882), presented at Odessa (1883). (Élie Metchnikoff)',
+          url: 'https://en.wikipedia.org/wiki/%C3%89lie_Metchnikoff',
+          publishedAt: '1883-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1908-12-10',
+        datePrecision: 'DAY',
+        reason: 'Metchnikoff\'s cellular theory of immunity was initially contested by proponents of humoral immunity, but accumulating evidence for the role of phagocytes established phagocytosis as a settled foundation of immunology. The Nobel Prize in Physiology or Medicine for 1908 was awarded jointly to Metchnikoff and Paul Ehrlich in recognition of their work on immunity, ratifying the phagocyte theory alongside the humoral account.',
+        source: {
+          externalId: 'src:nobel-medicine-1908-metchnikoff-ehrlich',
+          name: 'Nobel Prize in Physiology or Medicine 1908 — jointly to Élie Metchnikoff and Paul Ehrlich "in recognition of their work on immunity."',
+          url: 'https://en.wikipedia.org/wiki/%C3%89lie_Metchnikoff',
+          publishedAt: '1908-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // PHYSICS REVOLUTION & ATOMIC AGE (1900–1950) — verified curves (added batch 2026-06-29 #4)
   // Hahn & Meitner announce protactinium, the long-lived parent of actinium, element 91 (1918) ·
   // Eddington publishes the stellar mass–luminosity relation (1924) ·
@@ -168907,6 +169083,226 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.nature.com/articles/s41467-022-29923-z',
           publishedAt: '2022-05-17',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY BYZANTINE / EASTERN ROMAN ECUMENICAL COUNCILS (pre-500 CE) — verified curves
+  // (added batch 2026-09-02 · Ancient/Classical Eastern Europe & Byzantine sphere)
+  // First Council of Nicaea condemns Arianism, defines homoousios 20 May 325 ·
+  // Edict of Thessalonica makes Nicene Christianity the state religion 27 Feb 380 ·
+  // First Council of Constantinople affirms the divinity of the Holy Spirit 381 ·
+  // Council of Ephesus condemns Nestorius, proclaims Mary Theotokos 22 Jun 431 ·
+  // Council of Chalcedon defines the two natures of Christ 8 Oct – 1 Nov 451
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First Council of Nicaea condemns Arianism and defines homoousios — 20 May 325 ──
+  {
+    externalId: 'trajectory:first-council-nicaea-arianism-325',
+    text: 'The presbyter Arius of Alexandria taught that the Son of God was a created being, distinct in substance from and subordinate to the Father — that "there was a time when the Son was not" — a doctrine that split the Eastern church in the early fourth century. The First Council of Nicaea, the first ecumenical council, was convened by the emperor Constantine I and opened on 20 May 325 at Nicaea in Bithynia. Its roughly 300 assembled bishops condemned Arius, declaring the Son to be "of one substance" (homoousios) with the Father — "begotten, not made" — and promulgated the original Nicene Creed; Arius and his die-hard supporters were excommunicated and exiled and his writings ordered burned. The Nicene definition was contested for decades under pro-Arian emperors, but it was decisively reaffirmed by the First Council of Constantinople in 381 and became the settled Trinitarian doctrine of the Christian church.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0325-05-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0325-05-20',
+        datePrecision: 'DAY',
+        reason: 'The First Council of Nicaea, convened by Constantine I and opened on 20 May 325 with some 300 bishops, condemned the teaching of Arius that the Son is a created being subordinate in substance to the Father. It defined the Son to be "of one substance" (homoousios) with the Father, "begotten, not made," promulgated the original Nicene Creed, and excommunicated and exiled Arius. The conciliar definition placed the co-eternal consubstantiality of the Son on the ecumenical record as the church\'s official teaching.',
+        source: {
+          externalId: 'src:first-council-nicaea-325',
+          name: 'First Council of Nicaea, opened 20 May 325 under Emperor Constantine I — condemning Arianism and defining the Son as homoousios (of one substance) with the Father in the Nicene Creed. (contemporaneous conciliar record; date reported by Socrates Scholasticus)',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_Nicaea',
+          publishedAt: '0325-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0381-07-09',
+        datePrecision: 'MONTH',
+        reason: 'The Nicene definition was fiercely contested through the mid-fourth century under pro-Arian emperors and rival councils, but the First Council of Constantinople in 381, convened by Theodosius I, reaffirmed and expanded the Nicene Creed and condemned all forms of Arianism. The consubstantiality of the Son thereby became the settled Trinitarian doctrine of the Catholic and Eastern Orthodox churches, embodied in the Niceno-Constantinopolitan Creed recited to this day.',
+        source: {
+          externalId: 'src:nicaea-reaffirmed-constantinople-381',
+          name: 'First Council of Constantinople (381) reaffirming and expanding the Nicene Creed against Arianism — establishing the consubstantiality of the Son as settled ecumenical doctrine. (conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_Constantinople',
+          publishedAt: '0381-07-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Edict of Thessalonica makes Nicene Christianity the state religion — 27 February 380 ──
+  {
+    externalId: 'trajectory:edict-thessalonica-cunctos-populos-380',
+    text: 'On 27 February 380 the emperors Theodosius I, Gratian, and Valentinian II issued at Thessalonica the edict "Cunctos populos," which for the first time in Roman law made Nicene Christianity the official religion of the Roman Empire. The edict commanded all subjects to hold the faith "which the divine Apostle Peter delivered to the Romans" — belief in the one deity of the Father, the Son, and the Holy Spirit "in equal majesty and in a holy Trinity" — and branded adherents of other creeds "foolish madmen" (dementes vesanos) who should be called heretics and were liable to punishment. Preserved in the Codex Theodosianus (XVI.1.2), it marked the definitive establishment of Nicene orthodoxy as the state church and reversed decades in which pro-Arian and other Christologies had enjoyed imperial favour.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0380-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0380-02-27',
+        datePrecision: 'DAY',
+        reason: 'The edict "Cunctos populos," issued at Thessalonica on 27 February 380 by Theodosius I together with Gratian and Valentinian II, decreed that all peoples of the empire should profess the Nicene faith of the one deity of the Father, Son, and Holy Spirit in a holy Trinity, and declared all who dissented to be heretics subject to punishment. The law placed Nicene Christianity on the imperial record as the official religion of the Roman state; its text survives in the Codex Theodosianus XVI.1.2.',
+        source: {
+          externalId: 'src:edict-thessalonica-380',
+          name: 'Edict of Thessalonica ("Cunctos populos"), 27 February 380 — Theodosius I, Gratian, and Valentinian II establishing Nicene Christianity as the state religion; preserved in Codex Theodosianus XVI.1.2. (contemporaneous imperial law)',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_Thessalonica',
+          publishedAt: '0380-02-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0381-07-09',
+        datePrecision: 'MONTH',
+        reason: 'Theodosius I enforced the edict by expelling the Arian bishop Demophilus from Constantinople and convening the First Council of Constantinople in 381, which reaffirmed the Nicene faith and organised the imperial church around it. Nicene Christianity thereby became, and durably remained, the established religion of the Roman and Byzantine state, a settlement never subsequently reversed.',
+        source: {
+          externalId: 'src:thessalonica-consolidated-constantinople-381',
+          name: 'First Council of Constantinople (381) and Theodosius I\'s enforcement measures consolidating Nicene Christianity as the established religion of the Roman Empire. (conciliar and imperial record)',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_Constantinople',
+          publishedAt: '0381-07-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First Council of Constantinople affirms the divinity of the Holy Spirit — 381 ──
+  {
+    externalId: 'trajectory:first-council-constantinople-holy-spirit-381',
+    text: 'The First Council of Constantinople, the second ecumenical council, was convened by the emperor Theodosius I and met from May to July 381 in the church of Hagia Irene with about 150 Eastern bishops. Beyond reaffirming the Nicene condemnation of Arianism, it settled the disputed question of the Holy Spirit against the Pneumatomachi (or "Macedonians"), who had denied the full divinity of the Spirit: the council confirmed the Spirit as "the Lord, the giver of life," to be worshipped and glorified together with the Father and the Son, and it also condemned Apollinarianism. Its expanded creed — the Niceno-Constantinopolitan Creed — completed the doctrine of the Trinity and became the baptismal and liturgical creed of the whole Christian church, reaffirmed at the Council of Chalcedon in 451 and used to this day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0381-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0381-07-09',
+        datePrecision: 'MONTH',
+        reason: 'The First Council of Constantinople, convened by Theodosius I and meeting from May to July 381 with about 150 bishops, condemned the Pneumatomachi ("Macedonians") who denied the divinity of the Holy Spirit, together with Arianism and Apollinarianism. It affirmed the Holy Spirit as the Lord and giver of life, worshipped and glorified with the Father and the Son, and promulgated the expanded Niceno-Constantinopolitan Creed, placing the full divinity of the Spirit and the completed doctrine of the Trinity on the ecumenical record.',
+        source: {
+          externalId: 'src:first-council-constantinople-381',
+          name: 'First Council of Constantinople (Second Ecumenical Council), May–July 381 under Emperor Theodosius I — condemning the Pneumatomachi and affirming the divinity of the Holy Spirit in the Niceno-Constantinopolitan Creed. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_Constantinople',
+          publishedAt: '0381-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0451-10-22',
+        datePrecision: 'DAY',
+        reason: 'The Council of Chalcedon in 451 formally read out, endorsed, and enshrined the creed of the 150 fathers of Constantinople alongside that of Nicaea, giving the Niceno-Constantinopolitan Creed universal ecumenical authority. The full divinity of the Holy Spirit and the completed Trinitarian doctrine became, and remain, settled teaching of the Catholic, Eastern Orthodox, and most Protestant churches.',
+        source: {
+          externalId: 'src:constantinople-creed-ratified-chalcedon-451',
+          name: 'Council of Chalcedon (451) endorsing and enshrining the Niceno-Constantinopolitan Creed of the 150 fathers, giving it universal ecumenical authority. (conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_Constantinople',
+          publishedAt: '0451-10-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Ephesus condemns Nestorius and proclaims Mary Theotokos — 22 June 431 ──
+  {
+    externalId: 'trajectory:council-ephesus-nestorius-theotokos-431',
+    text: 'The patriarch Nestorius of Constantinople objected to calling the Virgin Mary "Theotokos" (God-bearer), preferring "Christotokos" (Christ-bearer), on the ground that a creature could not bear God and that the divine and human in Christ should be more sharply distinguished. The Council of Ephesus, the third ecumenical council, was convened by the emperor Theodosius II and opened on 22 June 431 under the presidency of Cyril of Alexandria. Meeting before the arrival of Nestorius\'s supporters, it condemned and deposed Nestorius, anathematised his teaching, and affirmed that Mary is rightly called Theotokos because the one born of her is God incarnate — one person in two natures. The condemnation of Nestorianism was reaffirmed at Chalcedon in 451 and became settled doctrine, though it precipitated the lasting schism of the Church of the East.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0431-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0431-06-22',
+        datePrecision: 'DAY',
+        reason: 'The Council of Ephesus, convened by Theodosius II and opened on 22 June 431 under Cyril of Alexandria, condemned and deposed the patriarch Nestorius and anathematised his Christology, affirming that the Virgin Mary is rightly titled Theotokos ("God-bearer") because the one born of her is God incarnate, one person uniting divine and human natures. The conciliar act placed the Theotokos title and the condemnation of Nestorianism on the ecumenical record.',
+        source: {
+          externalId: 'src:council-ephesus-431',
+          name: 'Council of Ephesus (Third Ecumenical Council), opened 22 June 431 under Emperor Theodosius II and Cyril of Alexandria — condemning Nestorius and proclaiming Mary Theotokos. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Ephesus',
+          publishedAt: '0431-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0451-10-22',
+        datePrecision: 'DAY',
+        reason: 'The Council of Chalcedon in 451 reaffirmed the condemnation of Nestorius and the Theotokos title as it defined the union of Christ\'s two natures in one person. The teaching became settled doctrine of the Catholic and Orthodox churches; Nestorius\'s followers separated as the Church of the East, so the condemnation stands as the mainstream ecumenical settlement notwithstanding that continuing schism.',
+        source: {
+          externalId: 'src:ephesus-reaffirmed-chalcedon-451',
+          name: 'Council of Chalcedon (451) reaffirming the condemnation of Nestorianism and the Theotokos title within the definition of Christ\'s two natures. (conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Chalcedon',
+          publishedAt: '0451-10-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Chalcedon defines the two natures of Christ — 8 October – 1 November 451 ──
+  {
+    externalId: 'trajectory:council-chalcedon-two-natures-451',
+    text: 'The Council of Chalcedon, the fourth ecumenical council, was convened by the emperor Marcian and met from 8 October to 1 November 451 at Chalcedon, across the Bosphorus from Constantinople, with several hundred bishops — the largest council of antiquity. Against the doctrine of Eutyches, who held that after the incarnation Christ had only a single (divine) nature, the council adopted the Chalcedonian Definition on 22 October 451, declaring Christ to be "acknowledged in two natures, without confusion, without change, without division, without separation" — perfect in deity and perfect in humanity, one person and one hypostasis. It condemned Eutychian Monophysitism and confirmed the earlier councils. The Definition became the settled Christology of the Chalcedonian churches (Catholic, Eastern Orthodox, most Protestant), but its rejection by the Miaphysites opened a permanent schism, separating the Oriental Orthodox churches, who repudiate Chalcedon to this day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0451-10-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0451-10-22',
+        datePrecision: 'DAY',
+        reason: 'The Council of Chalcedon, convened by Emperor Marcian and meeting from 8 October to 1 November 451, adopted the Chalcedonian Definition on 22 October 451, declaring Christ to be acknowledged in two natures — divine and human — "without confusion, without change, without division, without separation," in one person and one hypostasis, and condemning the Monophysitism of Eutyches. The Definition placed the doctrine of the hypostatic union on the ecumenical record as the church\'s official Christology.',
+        source: {
+          externalId: 'src:council-chalcedon-451',
+          name: 'Council of Chalcedon (Fourth Ecumenical Council), 8 October – 1 November 451 under Emperor Marcian — the Chalcedonian Definition of Christ in two natures, adopted 22 October 451, condemning Eutychian Monophysitism. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Chalcedon',
+          publishedAt: '0451-10-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0553-06-02',
+        datePrecision: 'MONTH',
+        reason: 'Despite fierce resistance from the Miaphysites, the Chalcedonian Definition was upheld by the imperial church and reaffirmed by the Second Council of Constantinople in 553, becoming the permanent Christological standard of the Catholic, Eastern Orthodox, and most Protestant traditions. The Oriental Orthodox churches, however, rejected Chalcedon outright, so the "two natures" definition stands as settled doctrine within the Chalcedonian churches while remaining the dividing line of a schism that endures to the present.',
+        source: {
+          externalId: 'src:chalcedon-upheld-constantinople-553',
+          name: 'Second Council of Constantinople (553) upholding the Chalcedonian Definition against continuing Miaphysite opposition; Chalcedon remains the Christological standard of the Chalcedonian churches. (conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Chalcedon',
+          publishedAt: '0553-06-02',
+          methodologyType: 'derivative',
         },
       },
     ],
