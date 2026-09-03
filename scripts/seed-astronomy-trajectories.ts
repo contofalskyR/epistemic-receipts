@@ -2075,7 +2075,179 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 47. Curiosity — Gale Crater habitable environment — 2013 ────────────────
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OUTER SOLAR SYSTEM DISCOVERIES (1944–1992)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 47. Jewitt & Luu — first Kuiper Belt object 1992 QB1 — 1992 ─────────────
+  {
+    externalId: 'trajectory:jewitt-luu-kuiper-belt-1992qb1-1992',
+    text: 'On 30 August 1992 David Jewitt and Jane Luu discovered 1992 QB1, the first observed trans-Neptunian object beyond Pluto, confirming the existence of the hypothesized Kuiper Belt.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-08-30',
+        datePrecision: 'DAY',
+        reason: 'Using the University of Hawaii 2.2-m telescope on Mauna Kea, Jewitt and Luu detected a slow-moving ~23rd-magnitude object orbiting beyond Neptune, announced via IAU Circular and published in Nature in 1993. It was the first direct detection of a body in the region predicted by Edgeworth and Kuiper, recording the Kuiper Belt as an observed rather than merely hypothesized population.',
+        source: {
+          externalId: 'src:jewitt-luu-1992qb1-nature-1993',
+          name: 'Jewitt D, Luu J. Discovery of the candidate Kuiper belt object 1992 QB1. Nature. 1993;362(6422):730–732.',
+          url: 'https://www.nature.com/articles/362730a0',
+          publishedAt: '1993-04-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within three years of 1992 QB1, Jewitt, Luu and collaborators had found dozens of comparable trans-Neptunian objects in dedicated surveys, establishing that the outer Solar System hosts a populous disk of icy bodies rather than empty space. The Kuiper Belt became settled fact and the recognized reservoir of short-period comets and the context that later reframed Pluto as one member among many.',
+        source: {
+          externalId: 'src:jewitt-luu-kuiper-belt-review-1996',
+          name: 'Jewitt D, Luu J. The Kuiper Belt (review of the growing trans-Neptunian population). 1996.',
+          url: 'http://www2.ess.ucla.edu/~jewitt/papers/1996/LJ96b.pdf',
+          publishedAt: '1996-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 48. Kuiper — Titan atmosphere detected — 1944 ───────────────────────────
+  {
+    externalId: 'trajectory:kuiper-titan-atmosphere-1944',
+    text: 'In 1944 Gerard Kuiper detected methane absorption bands in the spectrum of Saturn\'s moon Titan, establishing it as the first satellite in the Solar System confirmed to possess a substantial atmosphere.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1944-11-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-11-01',
+        datePrecision: 'YEAR',
+        reason: 'Kuiper obtained spectra of Titan at McDonald Observatory and identified methane absorption bands, reporting the result in the Astrophysical Journal as \'Titan: a Satellite with an Atmosphere.\' The detection recorded the first spectroscopic evidence that any moon retains a gaseous envelope, distinguishing Titan from the airless satellites then known.',
+        source: {
+          externalId: 'src:kuiper-titan-atmosphere-apj-1944',
+          name: 'Kuiper GP. Titan: a Satellite with an Atmosphere. Astrophysical Journal. 1944;100:378–383.',
+          url: 'https://doi.org/10.1086/144679',
+          publishedAt: '1944-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-11-12',
+        datePrecision: 'DAY',
+        reason: 'When Voyager 1 flew past Titan on 12 November 1980, its radio-occultation experiment measured a dense nitrogen-dominated atmosphere with a surface pressure of about 1.5 bar, far thicker than Kuiper\'s methane detection alone had implied. The in-situ confirmation settled Titan\'s atmosphere as a fact and revealed it as the most substantial atmosphere of any moon.',
+        source: {
+          externalId: 'src:tyler-voyager-titan-radio-science-1981',
+          name: 'Tyler GL, et al. Radio Science Investigations of the Saturn System with Voyager 1: Preliminary Results. Science. 1981;212(4491):201–206.',
+          url: 'https://doi.org/10.1126/science.212.4491.201',
+          publishedAt: '1981-04-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 49. Voyager 1 — Jupiter ring discovery — 1979 ───────────────────────────
+  {
+    externalId: 'trajectory:voyager1-jupiter-ring-discovery-1979',
+    text: 'On 4 March 1979 NASA\'s Voyager 1 spacecraft imaged a thin, faint ring encircling Jupiter\'s equator, the first detection of a Jovian ring system.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-03-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-03-04',
+        datePrecision: 'DAY',
+        reason: 'A single long-exposure Voyager 1 image, targeted at Jupiter\'s equatorial plane to test for material suspected from Pioneer charged-particle data, revealed a faint ring never seen from Earth. Announced within days via IAU Circular and detailed in Science, it recorded that Jupiter — like Saturn — possesses a ring.',
+        source: {
+          externalId: 'src:smith-voyager1-jupiter-system-science-1979',
+          name: 'Smith BA, et al. The Jupiter System Through the Eyes of Voyager 1. Science. 1979;204(4396):951–972.',
+          url: 'https://doi.org/10.1126/science.204.4396.951',
+          publishedAt: '1979-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-07-10',
+        datePrecision: 'DAY',
+        reason: 'Voyager 2\'s Jupiter encounter in July 1979 imaged the ring from multiple geometries, characterizing its structure and forward-scattering dust and confirming it was a real, persistent feature rather than an imaging artifact. This settled Jupiter\'s ring system and established that all four giant planets bear rings.',
+        source: {
+          externalId: 'src:owen-jupiter-rings-nature-1979',
+          name: 'Owen T, et al. Jupiter\'s rings. Nature. 1979;281:442–446.',
+          url: 'https://doi.org/10.1038/281442a0',
+          publishedAt: '1979-10-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 50. Pluto atmosphere — occultation evidence — 1988 ──────────────────────
+  {
+    externalId: 'trajectory:pluto-atmosphere-occultation-1988',
+    text: 'On 9 June 1988 a stellar occultation observed from the Kuiper Airborne Observatory and southern-hemisphere sites revealed the gradual dimming of the occulted star, providing the first direct evidence that Pluto has an atmosphere.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-06-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-06-09',
+        datePrecision: 'DAY',
+        reason: 'As Pluto passed in front of a star, observers recorded a gradual rather than abrupt drop in the star\'s light, the signature of starlight refracted through a tenuous gas envelope. The light-curve, consistent with a methane atmosphere at low pressure, recorded Pluto\'s atmosphere as an observed fact for the first time.',
+        source: {
+          externalId: 'src:hubbard-pluto-atmosphere-nature-1988',
+          name: 'Hubbard WB, Hunten DM, Dieters SW, Hill KM, Watson RD. Occultation evidence for an atmosphere on Pluto. Nature. 1988;336(6198):452–454.',
+          url: 'https://www.nature.com/articles/336452a0',
+          publishedAt: '1988-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-07-14',
+        datePrecision: 'DAY',
+        reason: 'When New Horizons flew through the Pluto system on 14 July 2015, its ultraviolet and radio occultation experiments directly measured the atmosphere\'s composition (nitrogen with methane and hazes), temperature and surface pressure. The in-situ data definitively settled the existence and structure of Pluto\'s atmosphere that the 1988 occultation had first inferred.',
+        source: {
+          externalId: 'src:gladstone-newhorizons-pluto-atmosphere-science-2016',
+          name: 'Gladstone GR, et al. The atmosphere of Pluto as observed by New Horizons. Science. 2016;351(6279):aad8866.',
+          url: 'https://doi.org/10.1126/science.aad8866',
+          publishedAt: '2016-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 51. Curiosity — Gale Crater habitable environment — 2013 ────────────────
   {
     externalId: 'trajectory:curiosity-gale-crater-habitable-2013',
     text: "NASA's Curiosity rover established that the Yellowknife Bay mudstones in Gale Crater record an ancient habitable fluvio-lacustrine environment on Mars, announced 12 March 2013 and published by Grotzinger et al. in December 2013.",
