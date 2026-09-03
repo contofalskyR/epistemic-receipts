@@ -6615,6 +6615,206 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "zenger-truth-defense-seditious-libel-1735",
+    claim:
+      "The claim that truth is a defense to a charge of seditious libel and that the jury—not the judge—may decide both the law and the facts in a libel prosecution was first vindicated by the acquittal of printer John Peter Zenger by a New York jury on 4 August 1735.",
+    emergedAt: "1735-08-04",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1735-08-04",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In Crown v. John Peter Zenger, a New York jury acquitted the printer of seditious libel after defense counsel Andrew Hamilton conceded publication but urged jurors to weigh the truth of the criticism and to decide the whole case themselves, defying Chief Justice DeLancey's instruction that under English common law truth was no defense and that the bench alone determined whether a writing was libelous. The verdict established no formal precedent, but it directly challenged the Blackstonian seditious-libel doctrine and moved the question from settled orthodoxy into open contest in colonial legal culture.",
+        sourceName:
+          "Historical Society of the New York Courts. Crown v. John Peter Zenger (1735).",
+        sourceUrl: "https://history.nycourts.gov/case/crown-v-zenger/",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1804-02-13",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "CONTESTED",
+        community: "JUDICIAL",
+        reason:
+          "In People v. Croswell, decided by the New York Supreme Court of Judicature on 13 February 1804, Alexander Hamilton revived the Zenger argument on appeal, contending that truth published with good motives is a defense to criminal libel and that the jury may judge both law and fact. Justice James Kent's opinion adopted Hamilton's reasoning, but the court split evenly, leaving the common-law rule formally unchanged while giving the Zenger position authoritative judicial articulation.",
+        sourceName:
+          "Historical Society of the New York Courts. People v. Croswell (1804).",
+        sourceUrl: "https://history.nycourts.gov/case/people-v-croswell/",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1805-01-01",
+        precision: "YEAR",
+        fromAxis: "CONTESTED",
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "In 1805 the New York Legislature enacted a libel statute writing Hamilton's Croswell argument into law, permitting non-malicious publication of the truth as a defense to criminal libel and authorizing the jury to determine both the law and the fact. Breaking with English precedent, the statute settled the Zenger principle in New York and became a model widely copied into other states' constitutions and codes.",
+        sourceName:
+          "The First Amendment Encyclopedia (MTSU). People v. Croswell (1804) and the New York libel statute of 1805.",
+        sourceUrl: "https://www.mtsu.edu/first-amendment/article/566/people-v-croswell",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "virginia-statute-religious-freedom-1786",
+    claim:
+      "Virginia's Act for Establishing Religious Freedom, enacted by the General Assembly on 16 January 1786, established that no person may be compelled to attend or support any religious worship or ministry and that religious opinion shall in no way affect civil capacities—disestablishing religion in the Commonwealth.",
+    emergedAt: "1786-01-16",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1786-01-16",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Virginia General Assembly enacted Thomas Jefferson's bill—drafted in 1777 and shepherded through the legislature by James Madison against Patrick Henry's competing general-assessment plan—declaring 'that no man shall be compelled to frequent or support any religious worship, place, or ministry whatsoever' and that religious opinion 'shall in no wise diminish, enlarge, or affect their civil capacities.' The Act disestablished the Anglican church in Virginia and settled, as state law, the principle of separating civil authority from religious profession.",
+        sourceName:
+          "Jefferson, Thomas. An Act for Establishing Religious Freedom (16 January 1786). Enrolled Bills, Library of Virginia (Encyclopedia Virginia primary document).",
+        sourceUrl: "https://encyclopediavirginia.org/primary-documents/an-act-for-establishing-religious-freedom-1786/",
+        methodologyType: "primary",
+      },
+      {
+        date: "1791-12-15",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The ratification of the First Amendment on 15 December 1791 nationalized the Virginia disestablishment principle at the federal level, barring Congress from making any 'law respecting an establishment of religion, or prohibiting the free exercise thereof.' Drawing on the Virginia model championed by Madison, the federal guarantee reinforced and generalized the settled Commonwealth rule.",
+        sourceName:
+          "U.S. National Archives. Bill of Rights (First Amendment), ratified 15 December 1791.",
+        sourceUrl: "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+        methodologyType: "primary",
+      },
+      {
+        date: "1947-02-10",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Everson v. Board of Education (330 U.S. 1, decided 10 February 1947), the Supreme Court expressly grounded the meaning of the Establishment Clause in Jefferson and Madison's Virginia campaign, adopting the 'wall of separation between church and state' as the constitutional standard and applying it to the states. The decision confirmed that the disestablishment principle first enacted in Virginia had become settled national constitutional doctrine.",
+        sourceName:
+          "Everson v. Board of Education, 330 U.S. 1 (1947).",
+        sourceUrl: "https://supreme.justia.com/cases/federal/us/330/1/",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "first-amendment-ratified-1791",
+    claim:
+      "The First Amendment to the U.S. Constitution—barring Congress from abridging the freedom of speech or of the press, respecting an establishment of religion or prohibiting its free exercise, or curbing the rights of assembly and petition—was proposed by the First Congress on 25 September 1789 and ratified as supreme federal law on 15 December 1791.",
+    emergedAt: "1789-09-25",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1789-09-25",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "On 25 September 1789 the First Congress approved twelve proposed amendments and transmitted them to the state legislatures for ratification; the third of these—guaranteeing the freedoms of religion, speech, press, assembly, and petition against federal abridgment—entered the official constitutional record as a proposed guarantee. This recorded, but did not yet make binding, the textual commitment that would become the First Amendment.",
+        sourceName:
+          "U.S. National Archives. Bill of Rights transcript — twelve amendments proposed by Congress, 25 September 1789.",
+        sourceUrl: "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+        methodologyType: "primary",
+      },
+      {
+        date: "1791-12-15",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Ratification by three-fourths of the states, completed on 15 December 1791, made the amendment binding supreme law: 'Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the Government for a redress of grievances.' As a matter of constitutional text, the First Amendment became—and remains—settled fundamental law, even as the scope of each clause would be litigated for the following two centuries.",
+        sourceName:
+          "U.S. National Archives. Bill of Rights (First Amendment), ratified 15 December 1791.",
+        sourceUrl: "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "sedition-act-seditious-libel-punishable-1798",
+    claim:
+      "The Sedition Act, approved 14 July 1798, embodied the claim that the First Amendment permits Congress to criminally punish 'false, scandalous and malicious' writing against the federal government and its officers—a premise later repudiated in the 'court of history.'",
+    emergedAt: "1798-07-14",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1798-07-14",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Federalist-controlled Congress enacted the Sedition Act, making it a crime punishable by up to two years' imprisonment and a $2,000 fine to 'write, print, utter or publish' any 'false, scandalous and malicious' matter against the government, Congress, or the President. The Act embodied the prevailing Blackstonian understanding that the freedom of the press bars only prior restraint, not subsequent punishment—treating seditious-libel prosecution as compatible with the First Amendment.",
+        sourceName:
+          "The Sedition Act (An Act in addition to the act... for the punishment of certain crimes), 5th Cong., approved 14 July 1798. Avalon Project, Yale Law School.",
+        sourceUrl: "https://avalon.law.yale.edu/18th_century/sedact.asp",
+        methodologyType: "primary",
+      },
+      {
+        date: "1799-12-03",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "CONTESTED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Virginia Resolutions (24 December 1798, drafted by Madison) and the Kentucky Resolutions (1798 and, in a second resolution of 3 December 1799, drafted by Jefferson) declared the Alien and Sedition Acts 'palpable violations' of the Constitution and articulated a broader conception of the freedoms of speech and press than the Blackstonian view. The resolutions turned the Act's constitutionality into a defining national dispute and framed the free-expression argument that would ultimately prevail.",
+        sourceName:
+          "Kentucky Resolution of 1799 (Alien and Sedition Acts), approved 3 December 1799. Avalon Project, Yale Law School.",
+        sourceUrl: "https://avalon.law.yale.edu/18th_century/kenres.asp",
+        methodologyType: "primary",
+      },
+      {
+        date: "1801-03-03",
+        precision: "DAY",
+        fromAxis: "CONTESTED",
+        toAxis: "ABANDONED",
+        community: "INSTITUTIONAL",
+        reason:
+          "By its own sunset clause the Sedition Act was to 'continue and be in force until the third day of March, one thousand eight hundred and one'—the final day of the Adams administration—and it expired that day without renewal. The incoming Jefferson administration let it lapse and pardoned those convicted under it, so the doctrine that seditious libel could be criminally punished was abandoned without ever being adjudicated by the Supreme Court.",
+        sourceName:
+          "The Sedition Act, Section 4 (sunset clause, in force until 3 March 1801). Avalon Project, Yale Law School.",
+        sourceUrl: "https://avalon.law.yale.edu/18th_century/sedact.asp",
+        methodologyType: "primary",
+      },
+      {
+        date: "1964-03-09",
+        precision: "DAY",
+        fromAxis: "ABANDONED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In New York Times Co. v. Sullivan (376 U.S. 254, decided 9 March 1964), the Supreme Court observed that although the Sedition Act was never tested in the Court, 'the attack upon its validity has carried the day in the court of history,' treating its punishment of criticism of government as fundamentally incompatible with the central meaning of the First Amendment. The Court thereby retrospectively reversed the constitutional premise on which the 1798 Act had rested.",
+        sourceName:
+          "New York Times Co. v. Sullivan, 376 U.S. 254 (1964) (Sedition Act 'court of history' passage).",
+        sourceUrl: "https://supreme.justia.com/cases/federal/us/376/254/",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
