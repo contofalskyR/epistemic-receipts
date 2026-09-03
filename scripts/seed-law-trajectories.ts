@@ -7456,6 +7456,102 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "ex-post-facto-clause-criminal-only-calder-bull-1798",
+    claim:
+      "In Calder v. Bull, 3 U.S. 386 (8 August 1798), the U.S. Supreme Court held that the Constitution's Ex Post Facto Clause reaches only retrospective criminal laws, not retrospective civil laws that unsettle vested property rights.",
+    emergedAt: "1798-08-08",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1798-08-08",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Reviewing a Connecticut legislative act that set aside a probate decree and reopened a settled inheritance, the Supreme Court held seriatim that the Ex Post Facto Clause (Art. I, §§ 9-10) is a technical term of art confined to criminal punishment, so retrospective civil laws affecting property are not barred by it. In the process Justice Chase argued that unwritten 'first principles of the social compact' independently forbid a legislature from taking one person's property and giving it to another, while Justice Iredell rejected any judicial power to void statutes for offending 'natural justice' absent a written constitutional limit — framing a foundational, still-unresolved debate over natural-law limits on legislative power over vested property, even as the ex-post-facto holding itself became settled and enduring doctrine.",
+        sourceName:
+          "Supreme Court of the United States. Calder v. Bull, 3 U.S. (3 Dall.) 386 (1798).",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/3/386",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "rule-against-perpetuities-origin-duke-of-norfolk-1682",
+    claim:
+      "In the Duke of Norfolk's Case (3 Ch. Cas. 1, 1682), the English Court of Chancery under Lord Nottingham held that a grantor may not tie up future interests in property indefinitely, establishing the common-law rule against perpetuities.",
+    emergedAt: "1682-01-01",
+    emergedPrecision: "YEAR",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1682-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Adjudicating a dispute over a shifting executory limitation created by the Earl of Arundel to control the descent of his estates, Lord Nottingham LC held that such contingent future interests could not be allowed to remain unvested indefinitely and must be confined within the compass of lives then in being. The decree settled the principle that the law will not permit property to be rendered inalienable by remote contingencies — the origin of the modern rule against perpetuities — though the precise permissible period (lives in being plus twenty-one years) was not fixed until Cadell v. Palmer (1833).",
+        sourceName:
+          "Court of Chancery (Nottingham LC). Duke of Norfolk's Case, 3 Ch. Cas. 1, 22 Eng. Rep. 931 (Ch. 1682).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Duke_of_Norfolk%27s_Case",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "statute-of-uses-executes-the-use-1536",
+    claim:
+      "The Statute of Uses (27 Hen. 8 c. 10), enacted by the Parliament of England in 1536, provided that a person holding land to the use of another was divested of the legal estate, which passed automatically to the beneficiary ('executing the use') — converting equitable interests into legal estates.",
+    emergedAt: "1536-01-01",
+    emergedPrecision: "YEAR",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1536-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Landowners had widely used the 'use' — conveying legal title to feoffees who held for the grantor's benefit — to evade feudal incidents (wardship, marriage, escheat) owed to the Crown and to devise land in defiance of the common-law bar on wills of freehold. Parliament, at Henry VIII's instance, enacted the Statute of Uses to abolish the split by 'executing' the use, vesting the legal estate in the beneficiary and restoring the Crown's feudal revenue. The statute settled the legal status of uses, reshaped English conveyancing, and — by leaving 'active' uses and the use-upon-a-use unexecuted — inadvertently seeded the modern law of trusts.",
+        sourceName:
+          "Parliament of England. Statute of Uses, 27 Hen. 8 c. 10 (1536).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Statute_of_Uses",
+        methodologyType: "derivative",
+      },
+    ],
+  },
+
+  {
+    id: "statute-of-wills-devise-of-freehold-land-1540",
+    claim:
+      "The Statute of Wills (32 Hen. 8 c. 1), enacted by the Parliament of England in 1540, for the first time permitted landholders to devise most freehold land by written will, overriding the common-law rule that real property could pass only by descent.",
+    emergedAt: "1540-01-01",
+    emergedPrecision: "YEAR",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1540-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "INSTITUTIONAL",
+        reason:
+          "By 'executing' uses, the Statute of Uses (1536) had eliminated the device landowners relied on to direct the descent of their land by will, provoking widespread protest that culminated in demands during the Pilgrimage of Grace. Parliament responded with the Statute of Wills, expressly authorizing tenants to devise all land held in socage and two-thirds of land held by knight-service by written testament. The Act settled the freeholder's testamentary power over real property — a right unknown to the medieval common law — and laid a cornerstone of Anglo-American inheritance and property law.",
+        sourceName:
+          "Parliament of England. Statute of Wills, 32 Hen. 8 c. 1 (1540).",
+        sourceUrl: "https://en.wikipedia.org/wiki/Wills_Act_1540",
+        methodologyType: "derivative",
+      },
+    ],
+  },
 ];
 
 async function main() {
