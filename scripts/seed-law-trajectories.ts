@@ -6815,6 +6815,152 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "presidential-blockade-war-power-prize-cases-1863",
+    claim:
+      "The U.S. Supreme Court held in the Prize Cases, decided 10 March 1863, that President Lincoln had constitutional authority as Commander-in-Chief to impose a naval blockade of Southern ports and seize neutral and enemy vessels in response to the rebellion without awaiting a congressional declaration of war.",
+    emergedAt: "1863-03-10",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1863-03-10",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 Court, per Justice Grier, held that a state of war existed as a fact from the moment of insurrection and that the President 'was bound to meet it in the shape it presented itself, without waiting for Congress to baptize it with a name.' The ruling settled that the executive may respond to armed rebellion with belligerent measures such as blockade under existing statutory and constitutional authority, becoming the foundational precedent for presidential emergency war powers. The four dissenters, led by Justice Nelson, argued that only Congress could initiate a legal state of war.",
+        sourceName:
+          "Grier J. The Prize Cases, 67 U.S. (2 Black) 635 (1863). Opinion of the Court.",
+        sourceUrl: "https://supreme.justia.com/cases/federal/us/67/635/",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "thermal-imaging-home-search-kyllo-2001",
+    claim:
+      "The U.S. Supreme Court held in Kyllo v. United States, decided 11 June 2001, that the government's use of a thermal-imaging device not in general public use to detect heat inside a home is a Fourth Amendment 'search' that is presumptively unreasonable without a warrant.",
+    emergedAt: "2001-06-11",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2001-06-11",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 majority, per Justice Scalia, held that 'where the Government uses a device that is not in general public use, to explore details of a private home that would previously have been unknowable without physical intrusion, the surveillance is a search and is presumptively unreasonable without a warrant.' The decision drew a firm constitutional line at the entrance to the home for sense-enhancing surveillance technology, settling that emerging detection tech cannot erode the reasonable expectation of privacy in the interior of a dwelling.",
+        sourceName:
+          "Scalia J. Kyllo v. United States, 533 U.S. 27 (2001). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/533/27",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "sixth-amendment-deliberate-elicitation-massiah-1964",
+    claim:
+      "The U.S. Supreme Court held in Massiah v. United States, decided 18 May 1964, that once adversary criminal proceedings have begun, the Sixth Amendment bars the government from deliberately eliciting incriminating statements from an indicted defendant in the absence of counsel and using them at trial.",
+    emergedAt: "1964-05-18",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1964-05-18",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Justice Stewart, for the Court, held that a defendant's own incriminating statements — here elicited by a cooperating codefendant wired for sound after Massiah had been indicted and released on bail — 'could not constitutionally be used by the prosecution as evidence against him at his trial.' The ruling established the Sixth Amendment 'deliberate elicitation' standard, attaching the right to counsel at the initiation of formal proceedings and creating a distinct doctrinal line separate from the Fifth Amendment custodial-interrogation rules later announced in Miranda. It remains the controlling framework for post-charge questioning.",
+        sourceName:
+          "Stewart J. Massiah v. United States, 377 U.S. 201 (1964). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/377/201",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "vehicle-search-incident-arrest-belton-gant-1981",
+    claim:
+      "Under New York v. Belton, decided 1 July 1981, police could as a bright-line rule search the entire passenger compartment of a vehicle incident to the lawful arrest of a recent occupant — a rule the U.S. Supreme Court rejected in Arizona v. Gant (21 April 2009).",
+    emergedAt: "1981-07-01",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1981-07-01",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "The Court held that when police make a lawful custodial arrest of a vehicle's occupant, they may as a contemporaneous incident of that arrest search the entire passenger compartment and any containers within it. The decision established a bright-line rule intended to give officers clear guidance, treating the passenger compartment as categorically within the arrestee's reach. In practice lower courts read Belton to authorize such searches automatically upon any occupant's arrest.",
+        sourceName:
+          "Stewart J. New York v. Belton, 453 U.S. 454 (1981). Opinion of the Court.",
+        sourceUrl: "https://supreme.justia.com/cases/federal/us/453/454/",
+        methodologyType: "primary",
+      },
+      {
+        date: "2009-04-21",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "A 5–4 Court, per Justice Stevens, rejected the broad bright-line reading of Belton, holding that police may search a vehicle incident to arrest only when the arrestee is unsecured and within reaching distance of the passenger compartment, or when it is reasonable to believe the vehicle contains evidence of the offense of arrest. By repudiating the automatic search-upon-arrest rule that had governed for nearly three decades, Gant reversed the settled doctrine and substantially narrowed the search-incident-to-arrest exception for vehicles.",
+        sourceName:
+          "Stevens J. Arizona v. Gant, 556 U.S. 332 (2009). Opinion of the Court.",
+        sourceUrl: "https://supreme.justia.com/cases/federal/us/556/332/",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "governor-extradition-noncompellable-dennison-1861",
+    claim:
+      "The U.S. Supreme Court held in Kentucky v. Dennison, decided March 1861, that although the Constitution's Extradition Clause obligates a state to deliver up a fugitive from justice on proper demand, the federal courts have no power to compel a state governor to do so by mandamus — a holding overruled by Puerto Rico v. Branstad (23 June 1987).",
+    emergedAt: "1861-03-14",
+    emergedPrecision: "MONTH",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1861-03-14",
+        precision: "MONTH",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Chief Justice Taney, for the Court, held that Ohio's Governor Dennison had a constitutional and statutory duty to surrender Willis Lago (indicted in Kentucky for assisting a slave to escape) but that the federal government had no delegated power 'to use any coercive means to compel him.' On the eve of the Civil War the ruling settled that the extradition duty was, in effect, morally binding but judicially unenforceable, leaving compliance to the discretion of state executives.",
+        sourceName:
+          "Taney CJ. Kentucky v. Dennison, 65 U.S. (24 How.) 66 (1861). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/65/66",
+        methodologyType: "primary",
+      },
+      {
+        date: "1987-06-23",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "A unanimous Court, per Justice Marshall, held that Dennison's rule that federal courts cannot compel a governor's performance of the extradition duty 'can stand no longer,' finding no basis to distinguish extradition from other constitutional duties enforceable by federal mandamus. Ordering Iowa's Governor Branstad to surrender a fugitive wanted in Puerto Rico, the Court reversed the 126-year-old precedent and made the extradition obligation judicially enforceable.",
+        sourceName:
+          "Marshall J. Puerto Rico v. Branstad, 483 U.S. 219 (1987). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/483/219",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
