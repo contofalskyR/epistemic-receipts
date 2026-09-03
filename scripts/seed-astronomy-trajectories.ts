@@ -1945,7 +1945,137 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 44. Curiosity — Gale Crater habitable environment — 2013 ────────────────
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // KEPLER / CLASSICAL OPTICS ERA (1609–1769)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 44. Kepler — elliptical orbits — Astronomia Nova 1609 ───────────────────
+  {
+    externalId: 'trajectory:kepler-astronomia-nova-elliptical-orbits-1609',
+    text: 'Johannes Kepler established in his 1609 Astronomia Nova that Mars, and by extension the planets, move in elliptical orbits with the Sun at one focus (first law) and sweep out equal areas in equal times (second law), replacing the circular-orbit dogma that had governed astronomy since antiquity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1609-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1609-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kepler published Astronomia Nova in 1609, using Tycho Brahe\'s unprecedentedly precise naked-eye positional data for Mars to abandon circular orbits and derive the ellipse law and the equal-areas law. Because the work was mathematically dense, contradicted the deeply entrenched circular-orbit tradition, and was buried in Kepler\'s account of his own reasoning, it saw little immediate uptake — even Galileo ignored it — so the two laws entered the literature without broad acceptance.',
+        source: {
+          externalId: 'src:kepler-astronomia-nova-1609',
+          name: 'Kepler J. Astronomia Nova ΑΙΤΙΟΛΟΓΗΤΟΣ, seu Physica Coelestis, tradita commentariis de motibus stellae Martis. Heidelberg. 1609.',
+          url: 'https://library.si.edu/digital-library/book/astronomianovaa00kepl',
+          publishedAt: '1609-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-07-05',
+        datePrecision: 'DAY',
+        reason: 'Newton\'s Philosophiæ Naturalis Principia Mathematica (1687) derived Kepler\'s three laws as exact mathematical consequences of the law of universal gravitation and the inverse-square force, giving the empirical regularities a physical cause. This converted Kepler\'s laws from an accurate but unexplained kinematic description into fundamental theorems of celestial mechanics, settling them as foundational to the mathematical science of orbits.',
+        source: {
+          externalId: 'src:newton-principia-1687',
+          name: 'Newton I. Philosophiæ Naturalis Principia Mathematica. London: Royal Society; 1687.',
+          url: 'https://archive.org/details/philosophiaenatu00newt_0',
+          publishedAt: '1687-07-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 45. Huygens — Saturn ring hypothesis — 1659 ─────────────────────────────
+  {
+    externalId: 'trajectory:huygens-saturn-ring-1659',
+    text: 'Christiaan Huygens announced in his 1659 Systema Saturnium that the puzzling changing \'appendages\' of Saturn observed since Galileo are produced by a thin, flat ring, inclined to the ecliptic and nowhere touching the planet, that encircles Saturn — the first correct account of the ring.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1659-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1659-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Using a telescope of markedly improved optical quality, Huygens deduced the true geometry of Saturn\'s appendages and published it in Systema Saturnium (1659), having earlier secured priority by lodging the solution as an anagram in 1656. He held that a single thin, flat ring, inclined about 20° and detached from the globe, produced the appearances Galileo had found inexplicable, and he correctly predicted the ring\'s periodic apparent opening, closing, and edge-on disappearance. Rival explanations from contemporaries such as Fabri and Divini meant the ring hypothesis was initially contested.',
+        source: {
+          externalId: 'src:huygens-systema-saturnium-1659',
+          name: 'Huygens C. Systema Saturnium, sive de causis mirandorum Saturni phaenomenōn, et comite ejus planeta novo. The Hague: Adriaan Vlacq. 1659.',
+          url: 'https://www.loc.gov/item/2021666744/',
+          publishedAt: '1659-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1675-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Giovanni Domenico Cassini\'s discovery in 1675 of a dark gap dividing the ring (the Cassini Division) confirmed that Saturn is genuinely encircled by a detached, structured ring system rather than by Fabri-style satellites or a solid uniform lamina, vindicating Huygens\'s core ring hypothesis while revealing it was not a single body. The confirmed opening and closing of the ring over succeeding decades, exactly as Huygens\'s tilted-ring geometry predicted, established the ring as an accepted feature of the Saturnian system.',
+        source: {
+          externalId: 'src:cassini-ring-division-1675',
+          name: 'MacTutor History of Mathematics. Cassini and the Division in Saturn\'s Ring (1675 discovery of the Cassini Division).',
+          url: 'https://mathshistory.st-andrews.ac.uk/Extras/Cassini_Saturn/',
+          publishedAt: '1675-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 46. Transit of Venus — solar parallax — 1769 ────────────────────────────
+  {
+    externalId: 'trajectory:transit-of-venus-solar-parallax-1769',
+    text: 'Astronomers deployed on worldwide expeditions to time the transit of Venus across the Sun on 3 June 1769 in order to measure the solar parallax and thereby fix the absolute scale of the solar system (the astronomical unit), applying the differential-timing method Edmond Halley had proposed in 1716.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1769-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1771-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Thomas Hornsby\'s reduction of the international 1769 timings, \'The quantity of the Sun\'s parallax as deduced from the observations of the transit of Venus, on June 3, 1769,\' was published in the Philosophical Transactions of the Royal Society in 1771. From the parallax he derived he computed an Earth–Sun distance of roughly 93 million miles, the first solar-system scale obtained from the transit-of-Venus method and a value close to the modern figure, though individual expeditions\' timings scattered because of the \'black-drop\' effect.',
+        source: {
+          externalId: 'src:hornsby-solar-parallax-transit-1771',
+          name: 'Hornsby T. The quantity of the Sun\'s parallax, as deduced from the observations of the transit of Venus, on June 3, 1769. Philosophical Transactions of the Royal Society. 1771;61:574–579.',
+          url: 'https://doi.org/10.1098/rstl.1771.0054',
+          publishedAt: '1771-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1824-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Johann Franz Encke, director of the Berlin Observatory, carried out in 1824 a comprehensive least-squares re-reduction of all the 1761 and 1769 transit-of-Venus observations, deriving a solar parallax of 8.5776 arcseconds (an astronomical unit of about 153 million km). Encke\'s value became the internationally adopted benchmark for the scale of the solar system for the remainder of the 19th century, settling the transit method\'s result as the accepted measure of the Earth–Sun distance until later transits and radar refined it.',
+        source: {
+          externalId: 'src:encke-solar-parallax-1824',
+          name: 'Encke JF. Der Venusdurchgang von 1769 als Fortsetzung der Abhandlung über die Entfernung der Sonne von der Erde. Gotha. 1824. (Solar parallax 8.5776″.)',
+          url: 'https://www.britannica.com/biography/Johann-Franz-Encke',
+          publishedAt: '1824-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 47. Curiosity — Gale Crater habitable environment — 2013 ────────────────
   {
     externalId: 'trajectory:curiosity-gale-crater-habitable-2013',
     text: "NASA's Curiosity rover established that the Yellowknife Bay mudstones in Gale Crater record an ancient habitable fluvio-lacustrine environment on Mars, announced 12 March 2013 and published by Grotzinger et al. in December 2013.",
