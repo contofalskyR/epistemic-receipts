@@ -1623,6 +1623,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // FOOD SAFETY & FOOD ADDITIVE SCIENCE (1968–2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 31. IARC glyphosate — Group 2A probable carcinogen — 2015 ───────────────
+  {
+    externalId: 'trajectory:iarc-glyphosate-probable-carcinogen-2015',
+    text: 'The World Health Organization\'s International Agency for Research on Cancer classified glyphosate — the active ingredient in Roundup — as \'probably carcinogenic to humans\' (Group 2A) on March 20, 2015, citing limited evidence for non-Hodgkin lymphoma in humans and sufficient evidence of carcinogenicity in experimental animals.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-03-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-03-20',
+        datePrecision: 'DAY',
+        reason: 'The IARC Monograph Volume 112 Working Group of 17 experts published its summary evaluation in Lancet Oncology online on March 20, 2015 (Guyton et al.), classifying glyphosate as Group 2A (\'probably carcinogenic to humans\'). The finding — based on positive case-control associations with non-Hodgkin lymphoma and tumor increases in rodent studies — abruptly overturned the prevailing regulatory assumption that the world\'s most-used herbicide was non-carcinogenic, and became the scientific anchor for subsequent litigation and regulatory review.',
+        source: {
+          externalId: 'src:iarc-glyphosate-lancet-oncol-2015',
+          name: 'Guyton KZ, Loomis D, Grosse Y, et al. (IARC Monograph Working Group). Carcinogenicity of tetrachlorvinphos, parathion, malathion, diazinon, and glyphosate. Lancet Oncology. 2015;16(5):490–491. (Published online March 20, 2015.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25801782/',
+          publishedAt: '2015-03-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-11-12',
+        datePrecision: 'DAY',
+        reason: 'The European Food Safety Authority published its peer-reviewed conclusion on November 12, 2015 that glyphosate is \'unlikely to pose a carcinogenic hazard to humans\' and should not be classified as carcinogenic under EU rules, directly contradicting IARC\'s Group 2A finding. EFSA (later echoed by the US EPA and ECHA) attributed the divergence to its inclusion of unpublished regulatory studies and its hazard-versus-exposure framing. The head-to-head disagreement between two major scientific bodies placed the glyphosate–cancer question into open institutional contestation.',
+        source: {
+          externalId: 'src:efsa-glyphosate-conclusion-2015',
+          name: 'European Food Safety Authority. Glyphosate: EFSA updates toxicological profile. EFSA press release, 12 November 2015.',
+          url: 'https://www.efsa.europa.eu/en/press/news/151112',
+          publishedAt: '2015-11-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 32. BPA — food-contact endocrine risk — 2010 ────────────────────────────
+  {
+    externalId: 'trajectory:bpa-food-contact-endocrine-risk-2010',
+    text: 'The claim that bisphenol A (BPA) leaching from food and beverage packaging poses a human health risk as an endocrine disruptor moved from contested toxicology to divergent regulatory action when Canada declared BPA a toxic substance on October 13, 2010 and the US FDA amended its food-additive regulations on July 17, 2012 to stop permitting BPA-based polycarbonate in baby bottles and sippy cups.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-13',
+        datePrecision: 'DAY',
+        reason: 'By an Order adding BPA to Schedule 1 of the Canadian Environmental Protection Act on October 13, 2010, Canada became the first country in the world to formally declare bisphenol A a toxic substance, citing dietary intake as the primary exposure route and precautionary concern over neurodevelopmental effects seen in rodent studies. The declaration converted a decade of contested endocrine-disruptor laboratory findings into a binding national regulatory designation.',
+        source: {
+          externalId: 'src:canada-bpa-toxic-2010',
+          name: 'Government of Canada. Bisphenol A added to Schedule 1 (List of Toxic Substances), Canadian Environmental Protection Act, 1999. October 13, 2010. (Reported: \'BPA declared toxic by Canada,\' CBC News.)',
+          url: 'https://www.cbc.ca/news/science/bpa-declared-toxic-by-canada-1.873250',
+          publishedAt: '2010-10-13',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-17',
+        datePrecision: 'DAY',
+        reason: 'The US FDA issued a final rule (Indirect Food Additives: Polymers) effective July 17, 2012 amending 21 CFR to no longer provide for BPA-based polycarbonate resins in baby bottles and sippy cups. Crucially, FDA framed the action as recognizing industry abandonment of those uses rather than a safety determination, and continued to maintain BPA is safe at current food-contact exposure levels — a stance at odds with Canada\'s toxic designation. The split leaves the underlying BPA health-risk claim actively contested between regulators.',
+        source: {
+          externalId: 'src:fda-bpa-baby-bottles-fed-reg-2012',
+          name: 'U.S. Food and Drug Administration. Indirect Food Additives: Polymers. Final rule, 77 FR 41899. Federal Register, July 17, 2012.',
+          url: 'https://www.federalregister.gov/documents/2012/07/17/2012-17366/indirect-food-additives-polymers',
+          publishedAt: '2012-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 33. Saccharin — carcinogen delisting — 2000 ──────────────────────────────
+  {
+    externalId: 'trajectory:saccharin-carcinogen-delisting-2000',
+    text: 'Saccharin, listed since 1981 in the US National Toxicology Program\'s Report on Carcinogens as \'reasonably anticipated to be a human carcinogen\' after high-dose rat bladder-cancer studies, was removed from the list in 2000 once mechanistic research showed the rat tumor pathway does not apply to humans.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1981-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following 1970s rodent studies linking high-dose saccharin to bladder cancer — and the 1977 Saccharin Study and Labeling Act under which Congress imposed a mandatory consumer warning label instead of a ban — the National Toxicology Program listed saccharin in its Report on Carcinogens (from the 1981 Second Annual Report) as reasonably anticipated to be a human carcinogen. The listing plus warning label institutionally settled saccharin\'s status as a probable carcinogen for two decades.',
+        source: {
+          externalId: 'src:nci-artificial-sweeteners-factsheet',
+          name: 'National Cancer Institute. Artificial Sweeteners and Cancer (Fact Sheet). U.S. National Institutes of Health.',
+          url: 'https://www.cancer.gov/about-cancer/causes-prevention/risk/diet/artificial-sweeteners-fact-sheet',
+          publishedAt: '1981-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 2000 the National Toxicology Program removed saccharin from its Report on Carcinogens after mechanistic studies demonstrated that the rat bladder-tumor mechanism (involving urinary protein and pH unique to male rats) does not operate in humans. Congress correspondingly repealed the mandatory saccharin warning-label requirement that year. The reversal is a canonical case of a settled institutional carcinogen designation being overturned once the animal-to-human extrapolation was shown to be invalid.',
+        source: {
+          externalId: 'src:nci-artificial-sweeteners-factsheet',
+          name: 'National Cancer Institute. Artificial Sweeteners and Cancer (Fact Sheet): \'in 2000 it was removed from the list.\' U.S. National Institutes of Health.',
+          url: 'https://www.cancer.gov/about-cancer/causes-prevention/risk/diet/artificial-sweeteners-fact-sheet',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 34. Aspartame — Ramazzini carcinogenicity — 2006 ────────────────────────
+  {
+    externalId: 'trajectory:aspartame-ramazzini-carcinogenicity-2006',
+    text: 'The Ramazzini Foundation (Soffritti et al.) reported in March 2006 in Environmental Health Perspectives the first experimental evidence that aspartame acts as a multipotential carcinogen in rats at doses near the human acceptable daily intake, reopening the safety debate over the sweetener the FDA had approved in 1981.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Soffritti M, Belpoggi F, et al. of the European Ramazzini Foundation published \'First experimental demonstration of the multipotential carcinogenic effects of aspartame administered in the feed to Sprague-Dawley rats\' in Environmental Health Perspectives (2006;114(3):379–385). The lifespan bioassay reported dose-related increases in lymphomas, leukemias, and other tumors at exposures near the human ADI — the first large animal study to claim aspartame carcinogenicity, challenging a quarter-century of regulatory safety assurances.',
+        source: {
+          externalId: 'src:soffritti-aspartame-ehp-2006',
+          name: 'Soffritti M, Belpoggi F, Degli Esposti D, Lambertini L, et al. First experimental demonstration of the multipotential carcinogenic effects of aspartame administered in the feed to Sprague-Dawley rats. Environmental Health Perspectives. 2006;114(3):379–385.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16507461/',
+          publishedAt: '2006-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-12-10',
+        datePrecision: 'DAY',
+        reason: 'The European Food Safety Authority published its full re-evaluation of aspartame (EFSA Journal 2013;11(12):3496) on December 10, 2013, concluding after review of the Ramazzini and other studies that aspartame is safe at the existing acceptable daily intake of 40 mg/kg/day and ruling out a genotoxic or carcinogenic risk. EFSA\'s explicit rejection of the Ramazzini carcinogenicity findings set regulators against the primary study, leaving aspartame\'s cancer risk in ongoing scientific contestation (later re-raised by IARC\'s 2023 Group 2B classification).',
+        source: {
+          externalId: 'src:efsa-aspartame-reevaluation-2013',
+          name: 'EFSA Panel on Food Additives and Nutrient Sources (ANS). Scientific Opinion on the re-evaluation of aspartame (E 951) as a food additive. EFSA Journal. 2013;11(12):3496.',
+          url: 'https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2013.3496',
+          publishedAt: '2013-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 35. MSG — Chinese Restaurant Syndrome reversal — 1968 ───────────────────
+  {
+    externalId: 'trajectory:msg-chinese-restaurant-syndrome-reversal-1968',
+    text: 'The claim that monosodium glutamate causes \'Chinese Restaurant Syndrome\' — headache, flushing, and numbness — first reported in a 1968 New England Journal of Medicine letter by Robert Ho Man Kwok, was substantially reversed after a 1995 FDA-commissioned FASEB review found no consistent evidence that MSG causes a distinct syndrome and the FDA reaffirmed MSG as generally recognized as safe.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-04-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-04-04',
+        datePrecision: 'DAY',
+        reason: 'Robert Ho Man Kwok\'s letter \'Chinese-restaurant syndrome\' appeared in the New England Journal of Medicine on April 4, 1968 (278(14):796), describing numbness, weakness, and palpitations after eating at Chinese restaurants and speculating MSG as a cause. The letter seeded decades of research and popular belief that MSG is a dietary toxin, entering the medical literature as a recorded clinical observation.',
+        source: {
+          externalId: 'src:kwok-crs-nejm-1968',
+          name: 'Kwok RHM. Chinese-restaurant syndrome. New England Journal of Medicine. 1968;278(14):796.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25276867/',
+          publishedAt: '1968-04-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'An independent 1995 review by the Federation of American Societies for Experimental Biology (FASEB), commissioned by the FDA, concluded there was no consistent evidence that MSG causes a distinct \'syndrome,\' finding only mild, transient, self-limited symptoms in some sensitive people consuming ≥3 g of MSG without food (far above typical dietary amounts). The FDA continues to classify MSG as generally recognized as safe (GRAS). The controlled review reversed the standing of MSG as a proven cause of Chinese Restaurant Syndrome.',
+        source: {
+          externalId: 'src:fda-msg-faseb-qa',
+          name: 'U.S. Food and Drug Administration. Questions and Answers on Monosodium Glutamate (MSG). (Citing the 1995 FASEB report commissioned by FDA.)',
+          url: 'https://www.fda.gov/food/food-additives-petitions/questions-and-answers-monosodium-glutamate-msg',
+          publishedAt: '1995-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
