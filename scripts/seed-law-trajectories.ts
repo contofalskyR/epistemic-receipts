@@ -7552,6 +7552,129 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "federal-child-labor-commerce-power-1918",
+    claim:
+      "The U.S. Supreme Court held in Hammer v. Dagenhart (247 U.S. 251, decided 3 June 1918) that Congress lacked Commerce Clause power to prohibit the interstate shipment of goods produced with child labor, striking down the Keating-Owen Child Labor Act; the doctrine was unanimously overruled in United States v. Darby (3 February 1941).",
+    emergedAt: "1918-06-03",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1918-06-03",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Hammer v. Dagenhart, a 5–4 majority per Justice Day struck down the Keating-Owen Act, holding that manufacturing and mining are local activities ('the making of goods and the mining of coal are not commerce') reserved to the states under the Tenth Amendment, so Congress could not bar interstate shipment of child-labor goods. The decision settled, for a generation, a sharp production/commerce distinction that placed federal regulation of labor conditions beyond congressional power. Justice Holmes's dissent, joined by three others, argued the commerce power was plenary over goods crossing state lines.",
+        sourceName:
+          "Day J. Hammer v. Dagenhart, 247 U.S. 251 (1918). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/247/251",
+        methodologyType: "primary",
+      },
+      {
+        date: "1941-02-03",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "In United States v. Darby, a unanimous Court per Justice Stone upheld the Fair Labor Standards Act and expressly overruled Hammer v. Dagenhart, calling its distinction between production and commerce 'novel' and unsupported, and holding that Congress may regulate interstate shipment of goods made under substandard labor conditions and reach intrastate activities affecting such commerce. The decision reversed the child-labor doctrine, repudiated the production/commerce line, and re-characterized the Tenth Amendment as 'but a truism,' completing the New Deal expansion of the commerce power.",
+        sourceName:
+          "Stone J. United States v. Darby, 312 U.S. 100 (1941). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/312/100",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "permanent-replacement-economic-strikers-1938",
+    claim:
+      "The U.S. Supreme Court held in NLRB v. Mackay Radio & Telegraph Co. (304 U.S. 333, decided 16 May 1938) that an employer facing an economic strike may hire permanent replacements and is not required to discharge them to reinstate returning strikers, while it may not otherwise discriminate against strikers for union activity.",
+    emergedAt: "1938-05-16",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1938-05-16",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In NLRB v. Mackay Radio, the Court per Justice Roberts held that although the National Labor Relations Act protects the right to strike, an employer conducting business during an economic strike 'is not bound to discharge those hired to fill the places of strikers' when the strikers seek to return, establishing the employer's right to permanently replace economic strikers. The Court simultaneously enforced the NLRB's order because the employer had unlawfully singled out union activists for non-reinstatement. This 'Mackay doctrine' settled a durable and much-criticized asymmetry in American strike law that survives today.",
+        sourceName:
+          "Roberts J. NLRB v. Mackay Radio & Telegraph Co., 304 U.S. 333 (1938). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/304/333",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "mcdonnell-douglas-burden-shifting-1973",
+    claim:
+      "The U.S. Supreme Court established in McDonnell Douglas Corp. v. Green (411 U.S. 792, decided 14 May 1973) the three-step burden-shifting framework for proving disparate-treatment discrimination under Title VII by circumstantial evidence: plaintiff's prima facie case, employer's articulation of a legitimate nondiscriminatory reason, then plaintiff's showing of pretext.",
+    emergedAt: "1973-05-14",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1973-05-14",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In McDonnell Douglas v. Green, a unanimous Court per Justice Powell set out the order and allocation of proof for individual Title VII disparate-treatment claims: the plaintiff first makes a prima facie case (membership in a protected class, qualification, rejection, and continued availability of the position), the burden then shifts to the employer to articulate a legitimate, nondiscriminatory reason, and the plaintiff may then prove that reason a pretext for discrimination. The framework settled how circumstantial employment-discrimination cases are adjudicated and became the single most-cited method of proof in federal employment law, later refined in Texas Dept. of Community Affairs v. Burdine (1981) and St. Mary's Honor Center v. Hicks (1993).",
+        sourceName:
+          "Powell J. McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supremecourt/text/411/792",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "ledbetter-pay-discrimination-limitations-2007",
+    claim:
+      "The U.S. Supreme Court held in Ledbetter v. Goodyear Tire & Rubber Co. (550 U.S. 618, decided 29 May 2007) that Title VII's 180-day charging period for a pay-discrimination claim runs from the original discriminatory pay-setting decision and is not restarted by each subsequent paycheck; Congress reversed the holding in the Lilly Ledbetter Fair Pay Act of 2009.",
+    emergedAt: "2007-05-29",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "2007-05-29",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In Ledbetter v. Goodyear, a 5–4 majority per Justice Alito held that a Title VII disparate-pay plaintiff must file an EEOC charge within 180 days of the discrete discriminatory pay decision, and that later paychecks reflecting that past decision are non-actionable present effects that do not restart the limitations clock. The ruling settled a restrictive limitations rule that barred many pay-discrimination suits where the initial decision was time-barred. Justice Ginsburg's dissent, read from the bench, urged Congress to correct the Court's 'cramped' reading.",
+        sourceName:
+          "Alito J. Ledbetter v. Goodyear Tire & Rubber Co., 550 U.S. 618 (2007). Opinion of the Court.",
+        sourceUrl: "https://www.law.cornell.edu/supct/html/05-1074.ZS.html",
+        methodologyType: "primary",
+      },
+      {
+        date: "2009-01-29",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "INSTITUTIONAL",
+        reason:
+          "The Lilly Ledbetter Fair Pay Act of 2009 (Pub. L. 111-2), signed by President Obama on 29 January 2009 as the first law of his presidency, amended Title VII and related statutes to provide that an unlawful discriminatory-compensation practice occurs — and a new charging period begins — each time compensation is paid pursuant to a discriminatory decision or practice. Enacted expressly to override Ledbetter, the statute restored the paycheck-accrual rule and reversed the Court's limitations holding.",
+        sourceName:
+          "U.S. Congress. Lilly Ledbetter Fair Pay Act of 2009, Pub. L. 111-2, 123 Stat. 5 (S. 181, 111th Cong.).",
+        sourceUrl:
+          "https://www.congress.gov/bill/111th-congress/senate-bill/181",
+        methodologyType: "primary",
+      },
+    ],
+  },
 ];
 
 async function main() {
