@@ -2052,6 +2052,186 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Fourier — atmospheric greenhouse mechanism — 1824 ───────────────────────
+  {
+    externalId: 'trajectory:fourier-atmospheric-greenhouse-1824',
+    text: 'Joseph Fourier proposed in 1824, in \'Remarques générales sur les températures du globe terrestre et des espaces planétaires\' (Annales de Chimie et de Physique), that the Earth\'s atmosphere retains heat by being more transparent to incoming visible solar radiation than to the outgoing radiant (infrared) heat of the surface, the first scientific articulation of what is now called the greenhouse effect.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1824-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1824-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Fourier published his general remarks on terrestrial temperatures in the Annales de Chimie et de Physique (Ser. 2, vol. 27, pp. 136–167), arguing by analogy to a heated box covered with glass that the atmosphere admits solar light but impedes the escape of the ground\'s radiant heat, warming the planet. This placed the greenhouse-warming mechanism onto the scientific record for the first time, laying the foundation of climate physics.',
+        source: {
+          externalId: 'src:fourier-temperatures-globe-1824',
+          name: 'Fourier J-B J. Remarques générales sur les températures du globe terrestre et des espaces planétaires. Annales de Chimie et de Physique, Ser. 2. 1824;27:136–167. (English translation, R.T. Pierrehumbert, of the 1827 Mémoires version.)',
+          url: 'https://geosci.uchicago.edu/~rtp1/papers/Fourier1827Trans.pdf',
+          publishedAt: '1824-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-02-07',
+        datePrecision: 'DAY',
+        reason: 'Fourier\'s qualitative mechanism was placed on firm experimental footing when John Tyndall\'s 1861 Bakerian Lecture demonstrated in the laboratory that atmospheric gases such as water vapour and carbonic acid actually absorb radiant heat, supplying the physical agent Fourier had only inferred. The greenhouse-warming principle thereby became a settled foundation of atmospheric physics, later quantified by Arrhenius (1896).',
+        source: {
+          externalId: 'src:tyndall-bakerian-absorption-1861',
+          name: 'Tyndall J. The Bakerian Lecture: On the Absorption and Radiation of Heat by Gases and Vapours, and on the Physical Connexion of Radiation, Absorption, and Conduction. Philosophical Transactions of the Royal Society of London. 1861;151:1–36.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1861.0001',
+          publishedAt: '1861-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tyndall — gas heat absorption experiments — 1861 ────────────────────────
+  {
+    externalId: 'trajectory:tyndall-gas-heat-absorption-1861',
+    text: 'John Tyndall reported in his 1861 Bakerian Lecture to the Royal Society (Philosophical Transactions vol. 151) the first experimental measurements showing that water vapour, carbonic acid (CO₂), and other polyatomic gases strongly absorb and radiate infrared heat while the main atmospheric gases nitrogen and oxygen do not, identifying the specific gases responsible for the atmosphere\'s heat-trapping effect.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1861-02-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-02-07',
+        datePrecision: 'DAY',
+        reason: 'Tyndall\'s paper — received 10 January and read 7 February 1861 — reported ratio-spectrophotometer experiments demonstrating that \'perfectly colourless and invisible gases and vapours\' such as aqueous vapour and carbonic acid absorb radiant heat far more strongly than dry air, whereas oxygen and nitrogen are nearly transparent to it. This put the identity of the atmosphere\'s radiatively active gases onto the scientific record.',
+        source: {
+          externalId: 'src:tyndall-bakerian-absorption-phil-trans-1861',
+          name: 'Tyndall J. The Bakerian Lecture: On the Absorption and Radiation of Heat by Gases and Vapours. Philosophical Transactions of the Royal Society of London. 1861;151:1–36.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1861.0001',
+          publishedAt: '1861-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Tyndall\'s identification of water vapour and CO₂ as the atmosphere\'s infrared absorbers was consolidated into settled quantitative theory when Svante Arrhenius (1896) used gas-absorption data to compute the surface-temperature response to changes in atmospheric carbonic acid, making the radiative role of these gases a durable foundation of climate science confirmed by all later spectroscopy.',
+        source: {
+          externalId: 'src:arrhenius-carbonic-acid-1896',
+          name: 'Arrhenius S. On the Influence of Carbonic Acid in the Air upon the Temperature of the Ground. Philosophical Magazine and Journal of Science, Ser. 5. 1896;41(251):237–276.',
+          url: 'https://www.tandfonline.com/doi/abs/10.1080/14786449608620846',
+          publishedAt: '1896-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── UNFCCC — framework convention adopted — 1992 ────────────────────────────
+  {
+    externalId: 'trajectory:unfccc-framework-convention-adopted-1992',
+    text: 'The United Nations Framework Convention on Climate Change (UNFCCC) was adopted in New York on 9 May 1992, establishing the first global treaty framework whose objective is the stabilization of atmospheric greenhouse-gas concentrations at a level that would prevent dangerous anthropogenic interference with the climate system.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1992-05-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-05-09',
+        datePrecision: 'DAY',
+        reason: 'The Intergovernmental Negotiating Committee adopted the text of the Framework Convention at the close of its fifth session in New York on 9 May 1992; it was then opened for signature at the Rio Earth Summit in June 1992. This created the foundational institutional record and negotiating architecture (the Conference of the Parties) under which all subsequent climate treaties — Kyoto and Paris — were concluded.',
+        source: {
+          externalId: 'src:un-treaty-collection-unfccc',
+          name: 'United Nations Treaty Collection. United Nations Framework Convention on Climate Change, adopted New York 9 May 1992 (Chapter XXVII.7; UNTS vol. 1771, No. 30822).',
+          url: 'https://treaties.un.org/pages/ViewDetailsIII.aspx?src=IND&mtdsg_no=XXVII-7&chapter=27&clang=_en',
+          publishedAt: '1992-05-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-03-21',
+        datePrecision: 'DAY',
+        reason: 'The Convention entered into force on 21 March 1994, ninety days after the 50th ratification, becoming binding international law. Its near-universal membership (198 parties) and its role as the standing legal basis for the annual COP process establish it as settled, foundational climate-governance infrastructure rather than a contested proposal.',
+        source: {
+          externalId: 'src:unfccc-entry-into-force-1994',
+          name: 'United Nations Treaty Collection. UNFCCC — entry into force 21 March 1994 in accordance with Article 23(1).',
+          url: 'https://treaties.un.org/pages/ViewDetailsIII.aspx?src=IND&mtdsg_no=XXVII-7&chapter=27&clang=_en',
+          publishedAt: '1994-03-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Copenhagen Accord — COP15 non-adoption — 2009 ───────────────────────────
+  {
+    externalId: 'trajectory:copenhagen-accord-cop15-2009',
+    text: 'At the COP15 climate conference in Copenhagen on 18 December 2009, the Conference of the Parties merely \'took note of\' the Copenhagen Accord — a three-page political statement negotiated by a small group of heads of state that recognized the 2°C goal but set no binding emission targets — rather than formally adopting it, marking the collapse of expectations for a legally binding successor to the Kyoto Protocol.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2009-12-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-12-18',
+        datePrecision: 'DAY',
+        reason: 'Facing opposition from several parties, the COP15 plenary declined to adopt the accord as a formal decision and instead issued decision 2/CP.15, under which the Conference \'takes note of the Copenhagen Accord.\' The \'take note\' formulation deliberately signalled that the accord carried no legal force, recording on the institutional record that the attempt to secure a binding global deal had failed and that international climate ambition was politically contested.',
+        source: {
+          externalId: 'src:unfccc-decision-2cp15-copenhagen-accord',
+          name: 'UNFCCC. Decision 2/CP.15, Copenhagen Accord. FCCC/CP/2009/11/Add.1, 30 March 2010.',
+          url: 'https://unfccc.int/resource/docs/2009/cop15/eng/11a01.pdf',
+          publishedAt: '2010-03-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Glasgow Climate Pact — coal phase-down — 2021 ────────────────────────────
+  {
+    externalId: 'trajectory:glasgow-climate-pact-coal-phasedown-2021',
+    text: 'The Glasgow Climate Pact, adopted by consensus of nearly 200 parties at COP26 on 13 November 2021, became the first decision in the UNFCCC process to explicitly call for accelerating efforts toward the \'phase-down of unabated coal power and phase-out of inefficient fossil fuel subsidies,\' naming fossil fuels in a formal climate-treaty outcome for the first time.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-11-13',
+        datePrecision: 'DAY',
+        reason: 'After a last-minute intervention by India and China that changed the language from \'phase-out\' to \'phase-down,\' the COP26 plenary adopted decision 1/CP.26 (the Glasgow Climate Pact) by consensus. For the first time in nearly three decades of UNFCCC decisions, an agreed outcome text explicitly identified unabated coal power and fossil-fuel subsidies as targets for reduction, placing fossil fuels formally onto the treaty record.',
+        source: {
+          externalId: 'src:unfccc-decision-1cp26-glasgow-pact',
+          name: 'UNFCCC. Decision 1/CP.26, Glasgow Climate Pact. FCCC/CP/2021/12/Add.1, 13 November 2021.',
+          url: 'https://unfccc.int/sites/default/files/resource/cp2021_12_add1E.pdf',
+          publishedAt: '2021-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
