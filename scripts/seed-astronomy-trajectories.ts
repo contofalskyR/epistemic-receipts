@@ -2289,6 +2289,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // STELLAR SPECTROSCOPY & NUCLEOSYNTHESIS (1920–1957)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 52. Saha thermal ionization & stellar spectral sequence — 1920 ───────────
+  {
+    externalId: 'trajectory:saha-thermal-ionization-stellar-spectra-1920',
+    text: 'Meghnad Saha established in 1920 that the sequence of stellar spectral types is fundamentally a temperature sequence, governed by his thermal-ionization equation describing how the ionization of atoms in a stellar atmosphere varies with temperature and pressure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1920-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Meghnad Saha published \'Ionization in the Solar Chromosphere\' (Philosophical Magazine, Series 6, 1920), applying thermodynamic dissociation/ionization theory to stellar atmospheres. He argued that the appearance and disappearance of absorption lines along the Harvard O–B–A–F–G–K–M sequence reflects temperature-driven ionization and excitation of a broadly common composition, not differing chemical makeup. This reframed the empirical spectral sequence as a physically interpretable temperature ladder.',
+        source: {
+          externalId: 'src:saha-ionization-solar-chromosphere-1920',
+          name: 'Saha MN. LIII. Ionization in the Solar Chromosphere. The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science, Series 6. 1920;40(238):472–488.',
+          url: 'https://doi.org/10.1080/14786441008636148',
+          publishedAt: '1920-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Ralph H. Fowler and Edward A. Milne generalized Saha\'s equation to the condition of maximum line intensity, deriving a reliable temperature scale and low reversing-layer pressures (~10^-4 atm) for the spectral sequence (MNRAS, May 1923). Their quantitative treatment, soon applied comprehensively in Cecilia Payne\'s 1925 thesis, made Saha\'s ionization theory the accepted quantitative foundation of astrophysical spectroscopy.',
+        source: {
+          externalId: 'src:fowler-milne-absorption-lines-1923',
+          name: 'Fowler RH, Milne EA. The Intensities of Absorption Lines in Stellar Spectra, and the Temperatures and Pressures in the Reversing Layers of Stars. Monthly Notices of the Royal Astronomical Society. 1923;83(7):403–424.',
+          url: 'https://doi.org/10.1093/mnras/83.7.403',
+          publishedAt: '1923-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 53. Harvard spectral classification — IAU standard — 1922 ────────────────
+  {
+    externalId: 'trajectory:harvard-spectral-classification-iau-standard-1922',
+    text: 'The Harvard spectral classification of stars into the O–B–A–F–G–K–M temperature sequence, compiled by Annie Jump Cannon at Harvard College Observatory, was formally adopted by the International Astronomical Union as the official worldwide stellar-classification standard at its first General Assembly in Rome in May 1922.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1918-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1918-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Annie Jump Cannon and Edward C. Pickering began publishing the Henry Draper Catalogue in the Annals of the Astronomical Observatory of Harvard College (first volume 1918), classifying ~225,000 stars into the ordered O–B–A–F–G–K–M sequence. This vast, uniformly classified body of data established the Harvard system as the dominant empirical stellar taxonomy in the literature.',
+        source: {
+          externalId: 'src:cannon-pickering-henry-draper-catalogue-1918',
+          name: 'Cannon AJ, Pickering EC. The Henry Draper Catalogue (0h, 1h, 2h, and 3h). Annals of the Astronomical Observatory of Harvard College. 1918;91:1.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1918AnHar..91....1C/abstract',
+          publishedAt: '1918-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1922-05-01',
+        datePrecision: 'MONTH',
+        reason: 'At the first General Assembly of the newly founded International Astronomical Union in Rome (May 1922), the earlier provisional acceptance of the Harvard classification was formally and unanimously approved as the permanent international standard for stellar spectral types. This converted a Harvard-house convention into a globally binding norm that remains the basis of stellar classification today.',
+        source: {
+          externalId: 'src:giridhar-advances-spectral-classification-2010',
+          name: 'Giridhar S. Advances in Spectral Classification. (Review documenting the IAU\'s 1922 adoption of the Harvard system as the international standard.) 2010.',
+          url: 'https://arxiv.org/pdf/1004.1294',
+          publishedAt: '2010-04-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 54. Merrill — technetium in S-type stars — 1952 ─────────────────────────
+  {
+    externalId: 'trajectory:merrill-technetium-s-stars-1952',
+    text: 'Paul W. Merrill reported in 1952 the detection of absorption lines of technetium — an element with no stable isotopes — in the atmospheres of S-type red-giant stars, providing direct observational evidence that heavy elements are being synthesized inside stars.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-05-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-05-02',
+        datePrecision: 'DAY',
+        reason: 'Paul Merrill published \'Technetium in the Stars\' (Science, 2 May 1952), identifying technetium absorption lines in the spectra of long-period-variable S-type stars such as R Andromedae. Because technetium has no stable isotope (its longest-lived relevant isotope decays on timescales far shorter than stellar ages), its presence implied the element had been produced recently within the stars themselves — recorded as a striking, then-unexplained result.',
+        source: {
+          externalId: 'src:merrill-technetium-stars-1952',
+          name: 'Merrill PW. Technetium in the Stars. Science. 1952;115(2992):484.',
+          url: 'https://doi.org/10.1126/science.115.2992.484',
+          publishedAt: '1952-05-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Merrill\'s technetium detection was incorporated as key observational proof in the landmark B²FH synthesis (Burbidge, Burbidge, Fowler & Hoyle, Reviews of Modern Physics, October 1957), which explained it as a signature of ongoing slow-neutron-capture (s-process) nucleosynthesis in red giants. The observation thereby settled as incontrovertible evidence that stars actively manufacture heavy elements.',
+        source: {
+          externalId: 'src:b2fh-synthesis-elements-stars-1957',
+          name: 'Burbidge EM, Burbidge GR, Fowler WA, Hoyle F. Synthesis of the Elements in Stars. Reviews of Modern Physics. 1957;29(4):547–650.',
+          url: 'https://doi.org/10.1103/RevModPhys.29.547',
+          publishedAt: '1957-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 55. Hoyle state of carbon-12 — triple-alpha process — 1953 ───────────────
+  {
+    externalId: 'trajectory:hoyle-carbon-12-resonance-triple-alpha-1953',
+    text: 'The excited \'Hoyle state\' of carbon-12 near 7.65 MeV — predicted by Fred Hoyle to be necessary for the triple-alpha process that produces carbon in stars — was experimentally established in 1953 by Dunbar, Pixley, Wenzel and Whaling at Caltech.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Hoyle argued that carbon could only be produced in significant amounts in stars if carbon-12 possessed a previously unknown resonant excited state near 7.65 MeV. Dunbar, Pixley, Wenzel and Whaling then measured the alpha spectrum of the N14(d,α)C12 reaction and reported a level at 7.68±0.03 MeV (Physical Review, 1 Nov 1953), explicitly crediting Hoyle for pointing out its astrophysical significance — recording the predicted state as a real experimental fact.',
+        source: {
+          externalId: 'src:dunbar-c12-768-mev-state-1953',
+          name: 'Dunbar DNF, Pixley RE, Wenzel WA, Whaling W. The 7.68-Mev State in C12. Physical Review. 1953;92(3):649–650.',
+          url: 'https://doi.org/10.1103/PhysRev.92.649',
+          publishedAt: '1953-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-07-15',
+        datePrecision: 'DAY',
+        reason: 'Cook, Fowler, Lauritsen and Lauritsen showed via the beta decay of B12 that this second excited state of C12 (excitation energy 7.653±0.008 MeV) breaks up predominantly into three alpha particles (Physical Review, 1957), demonstrating it functions in the triple-alpha reaction exactly as Hoyle required. Combined with its central role in B²FH the same year, this settled the Hoyle state as the linchpin of stellar carbon production.',
+        source: {
+          externalId: 'src:cook-fowler-lauritsen-b12-c12-red-giants-1957',
+          name: 'Cook CW, Fowler WA, Lauritsen CC, Lauritsen T. B12, C12, and the Red Giants. Physical Review. 1957;107(2):508–515.',
+          url: 'https://doi.org/10.1103/PhysRev.107.508',
+          publishedAt: '1957-07-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 56. B²FH — stellar nucleosynthesis — 1957 ────────────────────────────────
+  {
+    externalId: 'trajectory:b2fh-stellar-nucleosynthesis-1957',
+    text: 'Burbidge, Burbidge, Fowler and Hoyle established in 1957 that essentially all chemical elements heavier than hydrogen and helium are synthesized inside stars through a defined set of nuclear processes (hydrogen and helium burning, s- and r-process neutron capture, and others).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The review paper \'Synthesis of the Elements in Stars\' (B²FH) appeared in Reviews of Modern Physics (October 1957), synthesizing nuclear-reaction cross-sections, stellar-evolution theory, and observed elemental abundances into a comprehensive framework in which stars forge the heavy elements. It recorded, in one coherent scheme, the specific processes (e-, s-, r-, p-, and others) responsible for the abundance pattern of the elements.',
+        source: {
+          externalId: 'src:b2fh-reviews-modern-physics-1957',
+          name: 'Burbidge EM, Burbidge GR, Fowler WA, Hoyle F. Synthesis of the Elements in Stars. Reviews of Modern Physics. 1957;29(4):547–650.',
+          url: 'https://doi.org/10.1103/RevModPhys.29.547',
+          publishedAt: '1957-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The 1983 Nobel Prize in Physics was awarded to William A. Fowler \'for his theoretical and experimental studies of the nuclear reactions of importance in the formation of the chemical elements in the universe,\' recognizing the stellar-nucleosynthesis program that B²FH crystallized. The institutional honor marked the theory\'s status as settled consensus in physics and astrophysics.',
+        source: {
+          externalId: 'src:nobel-physics-1983-fowler-nucleosynthesis',
+          name: 'The Nobel Prize in Physics 1983 — William A. Fowler (nuclear reactions in the formation of the chemical elements). Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1983/summary/',
+          publishedAt: '1983-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
