@@ -2461,7 +2461,179 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 56. B²FH — stellar nucleosynthesis — 1957 ────────────────────────────────
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EXOPLANETS & LATE-20TH-C COSMOLOGY (1992–2005)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 56. Wolszczan & Frail — first confirmed exoplanets — 1992 ───────────────
+  {
+    externalId: 'trajectory:wolszczan-frail-pulsar-planets-1992',
+    text: 'Aleksander Wolszczan and Dale Frail reported on 9 January 1992 that precise timing of the millisecond pulsar PSR B1257+12 revealed at least two Earth-mass bodies orbiting it — the first confirmed planets beyond the Solar System.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-01-09',
+        datePrecision: 'DAY',
+        reason: 'Wolszczan and Frail published \'A planetary system around the millisecond pulsar PSR1257+12\' in Nature, reporting that periodic variations in the pulse arrival times of the 6.2-ms pulsar, measured with the 305-m Arecibo radio telescope, were best explained by two planet-sized companions of at least ~2.8 and ~3.4 Earth masses in ~66- and ~98-day orbits. It placed on the scientific record the first credible detection of planets around any star other than the Sun, though the pulsar-timing method left open whether the signal was a genuine planetary system.',
+        source: {
+          externalId: 'src:wolszczan-frail-pulsar-planets-nature-1992',
+          name: 'Wolszczan A, Frail DA. A planetary system around the millisecond pulsar PSR1257+12. Nature. 1992;355(6356):145–147.',
+          url: 'https://doi.org/10.1038/355145a0',
+          publishedAt: '1992-01-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-04-22',
+        datePrecision: 'MONTH',
+        reason: 'After three further years of Arecibo timing, Wolszczan reported detection of the mutual gravitational perturbations between the two planets predicted by their near 3:2 orbital-period ratio, plus a third moon-mass body. Because such resonant perturbations cannot be mimicked by pulsar noise, this constituted, in the author\'s words, \'irrefutable evidence\' that a genuine planetary system had been identified, converting the 1992 detection into settled fact.',
+        source: {
+          externalId: 'src:wolszczan-confirmation-earth-mass-planets-science-1994',
+          name: 'Wolszczan A. Confirmation of Earth-Mass Planets Orbiting the Millisecond Pulsar PSR B1257+12. Science. 1994;264(5158):538–542.',
+          url: 'https://www.science.org/doi/10.1126/science.264.5158.538',
+          publishedAt: '1994-04-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 57. Phillips — Type Ia supernova light-curve standardization — 1993 ───────
+  {
+    externalId: 'trajectory:phillips-type-ia-supernova-standardization-1993',
+    text: 'Mark M. Phillips reported in 1993 that the peak luminosity of a Type Ia supernova is tightly correlated with the decline rate of its B-band light curve (Δm₁₅(B)), transforming Type Ia supernovae into standardizable candles for precision cosmological distance measurement.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-08-20',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-08-20',
+        datePrecision: 'MONTH',
+        reason: 'Phillips published \'The Absolute Magnitudes of Type IA Supernovae\' in Astrophysical Journal Letters, deriving B, V and I absolute magnitudes for nine well-observed events and showing they correlate tightly with the initial decline rate Δm₁₅(B): slower-declining supernovae are intrinsically brighter. This overturned the assumption that Type Ia supernovae are perfect standard candles and supplied the correction that made them precise distance indicators.',
+        source: {
+          externalId: 'src:phillips-absolute-magnitudes-type-ia-apjl-1993',
+          name: 'Phillips MM. The Absolute Magnitudes of Type IA Supernovae. The Astrophysical Journal Letters. 1993;413:L105–L108.',
+          url: 'https://doi.org/10.1086/186970',
+          publishedAt: '1993-08-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-10-04',
+        datePrecision: 'DAY',
+        reason: 'The light-curve-shape standardization (refined by Hamuy et al. 1996 and by Riess, Press & Kirshner\'s 1996 multi-color light-curve-shape method) became the indispensable foundation of the High-z Supernova Search Team and Supernova Cosmology Project measurements that revealed cosmic acceleration in 1998. The Royal Swedish Academy of Sciences ratified the whole standardized-candle enterprise by awarding the 2011 Nobel Prize in Physics to Perlmutter, Schmidt and Riess, cementing Δm₁₅ standardization as settled cosmological methodology.',
+        source: {
+          externalId: 'src:nobel-accelerating-universe-2011-standard-candle',
+          name: 'The Nobel Prize in Physics 2011: Saul Perlmutter, Brian P. Schmidt and Adam G. Riess.',
+          url: 'https://www.nobelprize.org/prizes/physics/2011/summary/',
+          publishedAt: '2011-10-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 58. HST Key Project — Hubble constant H₀ = 72 — 2001 ────────────────────
+  {
+    externalId: 'trajectory:hst-key-project-hubble-constant-2001',
+    text: 'The Hubble Space Telescope Key Project (Freedman et al.) reported in May 2001 a final Hubble constant of H₀ = 72 ± 8 km s⁻¹ Mpc⁻¹, resolving the decades-long factor-of-two dispute between the competing distance scales of Sandage (~50) and de Vaucouleurs (~100).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-05-20',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-05-20',
+        datePrecision: 'MONTH',
+        reason: 'Freedman et al. published the final results of the HST Key Project in the Astrophysical Journal, using HST-measured Cepheid distances to 31 galaxies to calibrate five independent secondary distance indicators (Type Ia supernovae, the Tully-Fisher relation, surface-brightness fluctuations, the fundamental plane, and Type II supernovae). All methods converged on H₀ ≈ 72 km s⁻¹ Mpc⁻¹, recording for the first time a distance-ladder value of the Hubble constant good to ~10% and ending the long factor-of-two impasse.',
+        source: {
+          externalId: 'src:freedman-hst-key-project-hubble-constant-apj-2001',
+          name: 'Freedman WL, Madore BF, Gibson BK, et al. Final Results from the Hubble Space Telescope Key Project to Measure the Hubble Constant. The Astrophysical Journal. 2001;553(1):47–72.',
+          url: 'https://iopscience.iop.org/article/10.1086/320638',
+          publishedAt: '2001-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-02-11',
+        datePrecision: 'DAY',
+        reason: 'WMAP\'s first-year CMB data (Spergel et al. 2003) independently determined H₀ ≈ 71 km s⁻¹ Mpc⁻¹ from the microwave-background power spectrum — a completely different physical method — in close agreement with the Key Project distance-ladder value. The convergence of the local distance ladder and the early-universe CMB settled the Hubble constant to roughly 10%. The later, much sharper Hubble tension (local ~73 vs CMB ~67) is a ~5σ discrepancy that emerged only with sub-few-percent precision measurements a decade later.',
+        source: {
+          externalId: 'src:spergel-wmap-first-year-h0-2003',
+          name: 'Spergel DN, Verde L, Peiris HV, et al. First-Year WMAP Observations: Determination of Cosmological Parameters. The Astrophysical Journal Supplement Series. 2003;148(1):175–194.',
+          url: 'https://iopscience.iop.org/article/10.1086/377226',
+          publishedAt: '2003-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 59. SDSS & 2dFGRS — baryon acoustic oscillations — 2005 ─────────────────
+  {
+    externalId: 'trajectory:sdss-2df-baryon-acoustic-oscillations-2005',
+    text: 'In January 2005 the SDSS (Eisenstein et al.) and 2dF Galaxy Redshift Survey (Cole et al.) teams independently detected the baryon acoustic oscillation peak at ~100 h⁻¹ Mpc in the large-scale clustering of galaxies, confirming the predicted recombination-epoch sound-horizon scale and establishing a cosmic standard ruler for measuring expansion and dark energy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-01-11',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-01-11',
+        datePrecision: 'MONTH',
+        reason: 'Eisenstein et al. posted (arXiv astro-ph/0501171, 11 January 2005; published ApJ 633:560) the detection of a well-defined peak at ~100 h⁻¹ Mpc in the two-point correlation function of 46,748 SDSS luminous red galaxies, matching the predicted imprint of recombination-epoch acoustic oscillations on the low-redshift matter distribution. This recorded, for the first time in the galaxy distribution, the baryon acoustic feature long predicted from the physics of the photon-baryon fluid.',
+        source: {
+          externalId: 'src:eisenstein-sdss-baryon-acoustic-peak-apj-2005',
+          name: 'Eisenstein DJ, Zehavi I, Hogg DW, et al. Detection of the Baryon Acoustic Peak in the Large-Scale Correlation Function of SDSS Luminous Red Galaxies. The Astrophysical Journal. 2005;633(2):560–574.',
+          url: 'https://iopscience.iop.org/article/10.1086/466512',
+          publishedAt: '2005-11-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-09-01',
+        datePrecision: 'YEAR',
+        reason: 'The SDSS detection was corroborated the same year by an independent survey and instrument: Cole et al. found the acoustic signature in the power spectrum of the completed 2dF Galaxy Redshift Survey, an independent detection with a different galaxy population and analysis. Two simultaneous independent detections, later sharpened to percent-level precision as a dark-energy standard ruler by the SDSS-III BOSS survey (Anderson et al. 2014), settled BAO as an established cosmological probe.',
+        source: {
+          externalId: 'src:cole-2dfgrs-power-spectrum-mnras-2005',
+          name: 'Cole S, Percival WJ, Peacock JA, et al. The 2dF Galaxy Redshift Survey: power-spectrum analysis of the final data set and cosmological implications. Monthly Notices of the Royal Astronomical Society. 2005;362(2):505–534.',
+          url: 'https://doi.org/10.1111/j.1365-2966.2005.09318.x',
+          publishedAt: '2005-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 60. B²FH — stellar nucleosynthesis — 1957 ────────────────────────────────
   {
     externalId: 'trajectory:b2fh-stellar-nucleosynthesis-1957',
     text: 'Burbidge, Burbidge, Fowler and Hoyle established in 1957 that essentially all chemical elements heavier than hydrogen and helium are synthesized inside stars through a defined set of nuclear processes (hydrogen and helium burning, s- and r-process neutron capture, and others).',
