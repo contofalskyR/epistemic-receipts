@@ -2610,6 +2610,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Copenhagen Amendment to the Montreal Protocol — 1992 ────────────────────
+  {
+    externalId: 'trajectory:copenhagen-amendment-montreal-protocol-1992',
+    text: 'On 25 November 1992 the parties to the Montreal Protocol adopted the Copenhagen Amendment, accelerating the total CFC/carbon-tetrachloride/methyl-chloroform phase-out to 1 January 1996 for developed countries, adding hydrochlorofluorocarbons (HCFCs) to the controlled-substances schedule, and bringing methyl bromide under control for the first time.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1992-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-11-25',
+        datePrecision: 'DAY',
+        reason: 'At the Fourth Meeting of the Parties in Copenhagen (23–25 November 1992), governments adopted the second amendment to the Montreal Protocol, advancing the developed-country CFC phase-out from 2000 to 1996, introducing a full HCFC phase-down schedule, and freezing methyl-bromide consumption at 1991 levels. Prompted by the strengthened ozone-loss evidence of the early 1990s, it converted the treaty from partial control toward complete elimination of the major ozone-depleting substances.',
+        source: {
+          externalId: 'src:unep-copenhagen-amendment-handbook',
+          name: 'UNEP Ozone Secretariat. Handbook for the Montreal Protocol on Substances that Deplete the Ozone Layer — Copenhagen Amendment (Fourth Meeting of the Parties, 23–25 November 1992).',
+          url: 'https://ozone.unep.org/sites/default/files/2019-08/MP-Handbook-2012.pdf',
+          publishedAt: '1992-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-06-14',
+        datePrecision: 'DAY',
+        reason: 'The Copenhagen Amendment entered into force on 14 June 1994 after the twentieth instrument of ratification, becoming binding international law and locking in the accelerated 1996 CFC phase-out. It subsequently achieved wide ratification, institutionally settling the shift from CFC reduction to elimination and the first international controls on HCFCs and methyl bromide.',
+        source: {
+          externalId: 'src:epa-international-ozone-treaties',
+          name: 'US EPA. International Treaties and Cooperation about the Protection of the Stratospheric Ozone Layer — Copenhagen Amendment (1992).',
+          url: 'https://www.epa.gov/ozone-layer-protection/international-treaties-and-cooperation-about-protection-stratospheric-ozone',
+          publishedAt: '1994-06-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── IPCC SAR — 'discernible human influence' — 1995 ─────────────────────────
+  {
+    externalId: 'trajectory:ipcc-sar-discernible-human-influence-1995',
+    text: 'The IPCC Second Assessment Report Working Group I Summary for Policymakers, approved by governments at the Madrid plenary on 29 November 1995, concluded that \'the balance of evidence suggests a discernible human influence on global climate\' — the first intergovernmental scientific statement attributing observed warming, in part, to human activity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-11-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-11-29',
+        datePrecision: 'DAY',
+        reason: 'At the Madrid plenary (27–29 November 1995), IPCC member governments approved the WGI Summary for Policymakers containing the phrase \'the balance of evidence suggests a discernible human influence on global climate\' — the compromise wording (the adjective \'discernible\' suggested by chairman Bert Bolin) that superseded the 1990 First Assessment\'s judgement that detection was not yet possible. It was the first cautious but consensus intergovernmental attribution of climate change to human activity, resting on greenhouse physics, the observed warming, and fingerprint pattern-comparison.',
+        source: {
+          externalId: 'src:ipcc-sar-wg1-spm-1995',
+          name: 'IPCC. Climate Change 1995: The Science of Climate Change (Second Assessment Report, WGI), Summary for Policymakers. 1995/1996.',
+          url: 'https://www.ipcc.ch/site/assets/uploads/2018/06/2nd-assessment-en.pdf',
+          publishedAt: '1995-11-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-01-22',
+        datePrecision: 'DAY',
+        reason: 'The IPCC Third Assessment Report WGI Summary for Policymakers, approved at Shanghai and released 22 January 2001, strengthened the 1995 language to conclude that \'most of the observed warming over the last 50 years is likely to have been due to the increase in greenhouse gas concentrations.\' The upgrade from \'discernible\' to a quantified likelihood moved anthropogenic attribution from a first tentative statement to established intergovernmental consensus, later reinforced as \'very likely\' (AR4, 2007) and \'extremely likely\' (AR5, 2013).',
+        source: {
+          externalId: 'src:ipcc-tar-wg1-spm-2001',
+          name: 'IPCC. Climate Change 2001: The Scientific Basis (Third Assessment Report, WGI), Summary for Policymakers. January 2001.',
+          url: 'https://www.ipcc.ch/report/ar3/wg1/',
+          publishedAt: '2001-01-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mann, Bradley & Hughes — hockey stick — 1998 ────────────────────────────
+  {
+    externalId: 'trajectory:mann-bradley-hughes-hockey-stick-1998',
+    text: 'Michael Mann, Raymond Bradley, and Malcolm Hughes reported in Nature on 23 April 1998 a multiproxy reconstruction of Northern Hemisphere temperatures showing that late-20th-century warmth exceeded any period back to at least AD 1400 — the \'hockey stick\' curve, extended to a full millennium in their 1999 follow-up.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-04-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-04-23',
+        datePrecision: 'DAY',
+        reason: 'Mann, Bradley, and Hughes published \'Global-scale temperature patterns and climate forcing over the past six centuries\' in Nature (392:779–787), introducing a spatially resolved multiproxy method (tree rings, ice cores, corals, historical records) to reconstruct hemispheric temperature and concluding recent years were the warmest since at least 1400. The 1999 GRL extension to AD 1000 produced the iconic flat-shaft, rising-blade \'hockey stick,\' which the IPCC TAR (2001) featured prominently.',
+        source: {
+          externalId: 'src:mann-bradley-hughes-nature-1998',
+          name: 'Mann ME, Bradley RS, Hughes MK. Global-scale temperature patterns and climate forcing over the past six centuries. Nature. 1998;392(6678):779–787.',
+          url: 'https://www.nature.com/articles/33859',
+          publishedAt: '1998-04-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2005-02-12',
+        datePrecision: 'DAY',
+        reason: 'Stephen McIntyre and Ross McKitrick published \'Hockey sticks, principal components, and spurious significance\' in Geophysical Research Letters (32:L03710), arguing that MBH\'s principal-component convention biased the reconstruction toward a hockey-stick shape. The critique became a political lightning rod, and the November 2009 \'Climategate\' hack of University of East Anglia emails amplified public attacks on the curve, opening a prolonged period in which the reconstruction was contested in the press and in policy fights even as its core conclusion held in the literature.',
+        source: {
+          externalId: 'src:mcintyre-mckitrick-grl-2005',
+          name: 'McIntyre S, McKitrick R. Hockey sticks, principal components, and spurious significance. Geophysical Research Letters. 2005;32(3):L03710.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2004GL021750',
+          publishedAt: '2005-02-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-04-21',
+        datePrecision: 'DAY',
+        reason: 'After the U.S. National Research Council\'s 2006 review largely upheld MBH (high confidence in warmth of recent decades; plausible warmest in a millennium) and multiple independent inquiries cleared the Climategate scientists of misconduct, the PAGES 2k Consortium published continental-scale, community-built reconstructions in Nature Geoscience (6:339–346) confirming that recent warming is anomalous over the past two millennia. Independent replication with expanded proxy networks re-established the hockey-stick conclusion as settled paleoclimate science.',
+        source: {
+          externalId: 'src:pages2k-nature-geoscience-2013',
+          name: 'PAGES 2k Consortium. Continental-scale temperature variability during the past two millennia. Nature Geoscience. 2013;6(5):339–346.',
+          url: 'https://www.nature.com/articles/ngeo1797',
+          publishedAt: '2013-04-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Newchurch — first stage of ozone recovery — 2003 ────────────────────────
+  {
+    externalId: 'trajectory:newchurch-first-stage-ozone-recovery-2003',
+    text: 'Mike Newchurch and colleagues reported in the Journal of Geophysical Research on 16 August 2003 the first statistically significant evidence of a slowdown in upper-stratospheric ozone loss after 1997, which they characterized as \'the first stage of ozone recovery\' attributable to the leveling of stratospheric chlorine under the Montreal Protocol.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-08-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-08-16',
+        datePrecision: 'DAY',
+        reason: 'Newchurch, Yang, Cunnold, Reinsel, Zawodny, and Russell published \'Evidence for slowdown in stratospheric ozone loss: First stage of ozone recovery\' in JGR (108(D16):4507). Using merged SAGE I/II and HALOE satellite ozone profiles with seasonal, solar, and QBO signals removed, they showed the 35–45 km global ozone decline had slowed significantly (>95% confidence) after 1997, the first observational detection of a Montreal-Protocol-driven turnaround. The claim was initially treated as preliminary, since recovery of the Antarctic ozone hole itself had not yet emerged from natural variability.',
+        source: {
+          externalId: 'src:newchurch-jgr-ozone-recovery-2003',
+          name: 'Newchurch MJ, Yang E-S, Cunnold DM, Reinsel GC, Zawodny JM, Russell JM III. Evidence for slowdown in stratospheric ozone loss: First stage of ozone recovery. J Geophys Res Atmos. 2003;108(D16):4507.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2003JD003471',
+          publishedAt: '2003-08-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-09-10',
+        datePrecision: 'DAY',
+        reason: 'The WMO/UNEP Scientific Assessment of Ozone Depletion: 2014, released 10 September 2014, concluded that total-column and upper-stratospheric ozone had stopped declining and were showing the first signs of increase attributable to the decline in ozone-depleting substances under the Montreal Protocol. This intergovernmental assessment elevated the tentative 2003 slowdown detection to the settled institutional finding that ozone recovery was under way — later confirmed for the Antarctic hole by Solomon et al. (2016).',
+        source: {
+          externalId: 'src:wmo-unep-ozone-assessment-2014',
+          name: 'WMO/UNEP. Scientific Assessment of Ozone Depletion: 2014 — Assessment for Decision-Makers / Executive Summary. September 2014.',
+          url: 'https://csl.noaa.gov/assessments/ozone/2014/',
+          publishedAt: '2014-09-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Record Antarctic ozone hole — 2006 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:record-antarctic-ozone-hole-2006',
+    text: 'In late September 2006 NASA and NOAA measured the most severe Antarctic ozone hole on record — a maximum single-day area of about 29.5 million square kilometres and, on 8 October, the lowest total-column ozone ever observed — a \'double record breaker\' for both area and depth, marking the empirical peak of ozone depletion before recovery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-10-20',
+        datePrecision: 'DAY',
+        reason: 'NASA and NOAA jointly announced that the 2006 Antarctic ozone hole broke records for both area (average 21–30 September ~10.6 million square miles) and depth (record-low column ozone on 8 October), driven by an unusually cold Antarctic stratosphere acting on still-near-peak stratospheric chlorine and bromine. Coming nearly two decades after the Montreal Protocol, the record confirmed that ozone-depleting-substance lifetimes impose a multi-decade lag, so the hole would keep reaching extreme sizes before recovery — establishing the empirical severity baseline against which later healing (Solomon 2016) is measured.',
+        source: {
+          externalId: 'src:nasa-noaa-record-ozone-hole-2006',
+          name: 'NASA/NOAA. Antarctic Ozone Hole Is a Double Record Breaker (Goddard Space Flight Center press release). 19–20 October 2006.',
+          url: 'https://www.nasa.gov/centers-and-facilities/goddard/nasa-and-noaa-announce-ozone-hole-is-a-double-record-breaker/',
+          publishedAt: '2006-10-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
