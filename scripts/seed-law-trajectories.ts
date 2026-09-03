@@ -7107,6 +7107,160 @@ const TRAJECTORIES: LawTrajectory[] = [
       },
     ],
   },
+
+  {
+    id: "charitable-immunity-abrogated-georgetown-1942",
+    claim:
+      "A charitable institution is immune from tort liability for injuries negligently caused by its employees (the charitable-immunity doctrine), a rule adopted by the Massachusetts Supreme Judicial Court in McDonald v. Massachusetts General Hospital (1876) and dismantled for the District of Columbia by Judge Rutledge in President & Directors of Georgetown College v. Hughes (D.C. Cir., 30 June 1942).",
+    emergedAt: "1876-01-01",
+    emergedPrecision: "YEAR",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1876-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "McDonald v. Massachusetts General Hospital, 120 Mass. 432 (1876): The Massachusetts Supreme Judicial Court held that a public charity is not liable for injuries negligently caused by its agents, reasoning on a 'trust fund' theory that charitable assets held in trust may not be diverted to satisfy tort judgments. The rule, itself resting on English precedent that had already been overruled, was received across American jurisdictions and became the settled charitable-immunity doctrine for the next half-century.",
+        sourceName:
+          "Supreme Judicial Court of Massachusetts. McDonald v. Massachusetts General Hospital, 120 Mass. 432 (1876).",
+        sourceUrl: "http://masscases.com/cases/sjc/120/120mass432.html",
+        methodologyType: "primary",
+      },
+      {
+        date: "1942-06-30",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "President & Directors of Georgetown College v. Hughes, 130 F.2d 810 (D.C. Cir., 30 June 1942): Confronting for the first time whether a charitable hospital answers for an employee's negligence, Judge Wiley Rutledge wrote an opinion that methodically refuted every historical and policy rationale for charitable immunity and exposed the doctrine's origin in a misread, overruled English case. Although the en banc court split on the broadest form of the question, the judgment denied the hospital immunity, and the opinion is universally credited (Prosser) with reversing the course of the law and beginning the national abandonment of charitable immunity.",
+        sourceName:
+          "Rutledge J. President & Directors of Georgetown College v. Hughes, 130 F.2d 810 (D.C. Cir. 1942).",
+        sourceUrl:
+          "https://www.courtlistener.com/opinion/1474142/president-and-dir-of-georgetown-college-v-hughes/",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "governmental-tort-immunity-abolished-muskopf-1961",
+    claim:
+      "Governmental entities in California are immune from tort liability for injuries negligently caused by their agents (the governmental-immunity doctrine), applied to hospital districts in Talley v. Northern San Diego County Hospital District (15 May 1953) and abolished by the California Supreme Court in Muskopf v. Corning Hospital District (27 January 1961).",
+    emergedAt: "1953-05-15",
+    emergedPrecision: "DAY",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1953-05-15",
+        precision: "DAY",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Talley v. Northern San Diego County Hospital District, 41 Cal.2d 33 (15 May 1953): The California Supreme Court held that a hospital district, as a state agency performing a governmental function, was immune from suit for the negligence of its agents, extending the long-received common-law doctrine of governmental tort immunity to such districts. The decision confirmed as settled California law that a government entity could not be held liable in tort for negligence for which its employees would personally answer.",
+        sourceName:
+          "Supreme Court of California. Talley v. Northern San Diego County Hospital Dist., 41 Cal.2d 33, 257 P.2d 22 (1953).",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/talley-v-northern-san-diego-hosp-dist-26528",
+        methodologyType: "primary",
+      },
+      {
+        date: "1961-01-27",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Muskopf v. Corning Hospital District, 55 Cal.2d 211 (27 January 1961): Reviewing a paying patient's negligence suit over an aggravated hip injury, Justice Traynor's court held that after reevaluation the rule of governmental immunity 'must be discarded as mistaken and unjust,' overruling Talley and abolishing common-law governmental tort immunity in California. The reversal was so consequential that the Legislature enacted a two-year moratorium and then the California Tort Claims Act of 1963, replacing the abolished common-law immunity with a statutory liability-and-immunity scheme.",
+        sourceName:
+          "Traynor J. Muskopf v. Corning Hospital District, 55 Cal.2d 211, 359 P.2d 457 (1961).",
+        sourceUrl:
+          "https://scocal.stanford.edu/opinion/muskopf-v-corning-hospital-dist-32826",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "commercial-impracticability-suez-transatlantic-1966",
+    claim:
+      "A party is discharged from a contract only when an unforeseen supervening contingency, whose risk the parties did not allocate, renders performance commercially impracticable — the modern three-part impracticability test articulated by the D.C. Circuit in Transatlantic Financing Corp. v. United States (27 May 1966).",
+    emergedAt: "1952-01-01",
+    emergedPrecision: "YEAR",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1952-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "RECORDED",
+        community: "INSTITUTIONAL",
+        reason:
+          "Uniform Commercial Code § 2-615 (promulgated by the American Law Institute and NCCUSL, 1952): The section excused a seller's delay or non-delivery of goods where performance had been made 'impracticable' by the occurrence of a contingency the non-occurrence of which was a basic assumption of the contract, displacing the older rigid 'impossibility' standard for sales. The concept of commercial impracticability was thereby recorded as model statutory law for goods, but § 2-615 supplied no general test governing service and carriage contracts, leaving the operative common-law standard unsettled.",
+        sourceName:
+          "American Law Institute & NCCUSL. Uniform Commercial Code § 2-615: Excuse by Failure of Presupposed Conditions (1952).",
+        sourceUrl: "https://www.law.cornell.edu/ucc/2/2-615",
+        methodologyType: "primary",
+      },
+      {
+        date: "1966-05-27",
+        precision: "DAY",
+        fromAxis: "RECORDED",
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "Transatlantic Financing Corp. v. United States, 363 F.2d 312 (D.C. Cir., 27 May 1966): Judge J. Skelly Wright held that excuse for impracticability requires that an unexpected contingency occur, that its risk be neither allocated by agreement nor by custom, and that the occurrence render performance commercially impracticable — then found that the Suez Canal's 1956 closure, forcing a longer voyage around the Cape of Good Hope, failed the test and did not excuse the carrier. The opinion became the canonical common-law articulation of commercial impracticability, aligning the doctrine with UCC § 2-615 and later Restatement (Second) of Contracts § 261, settling the modern framework.",
+        sourceName:
+          "Wright J. Transatlantic Financing Corp. v. United States, 363 F.2d 312 (D.C. Cir. 1966).",
+        sourceUrl:
+          "https://www.courtlistener.com/opinion/272453/transatlantic-financing-corporation-v-united-states/",
+        methodologyType: "primary",
+      },
+    ],
+  },
+
+  {
+    id: "proximate-cause-foreseeability-wagon-mound-1961",
+    claim:
+      "A negligent defendant is liable only for damage of a kind that was reasonably foreseeable, not for all direct consequences of the negligent act — the foreseeability test for remoteness adopted by the Privy Council in Overseas Tankship (U.K.) Ltd v Morts Dock & Engineering Co (The Wagon Mound, No. 1) (18 January 1961), displacing the directness test of In re Polemis (1921).",
+    emergedAt: "1921-01-01",
+    emergedPrecision: "YEAR",
+    claimType: "INSTITUTIONAL",
+    milestones: [
+      {
+        date: "1921-01-01",
+        precision: "YEAR",
+        fromAxis: null,
+        toAxis: "SETTLED",
+        community: "JUDICIAL",
+        reason:
+          "In re Polemis and Furness, Withy & Co Ltd [1921] 3 KB 560 (Court of Appeal): Where stevedores negligently dropped a plank into a hold, igniting petrol vapour and destroying the ship, the court held the defendants liable for all consequences directly traceable to the negligent act even though a fire was not reasonably foreseeable. The 'directness' test — liability for all direct consequences regardless of foreseeability — became the settled common-law standard for remoteness of damage in negligence.",
+        sourceName:
+          "Court of Appeal. In re Polemis and Furness, Withy & Co Ltd [1921] 3 KB 560.",
+        sourceUrl:
+          "https://en.wikipedia.org/wiki/Re_Polemis_%26_Furness,_Withy_%26_Co_Ltd",
+        methodologyType: "derivative",
+      },
+      {
+        date: "1961-01-18",
+        precision: "DAY",
+        fromAxis: "SETTLED",
+        toAxis: "REVERSED",
+        community: "JUDICIAL",
+        reason:
+          "Overseas Tankship (U.K.) Ltd v Morts Dock & Engineering Co (The Wagon Mound, No. 1) [1961] AC 388 (Privy Council, 18 January 1961): After furnace oil negligently discharged into Sydney Harbour ignited and burned the plaintiff's wharf, the Privy Council rejected In re Polemis, holding that a defendant is liable only for consequences of a kind that were reasonably foreseeable and that the fire damage was too remote. Foreseeability displaced directness as the governing test for remoteness in negligence throughout the common-law world, reversing forty years of settled doctrine.",
+        sourceName:
+          "Privy Council. Overseas Tankship (U.K.) Ltd v Morts Dock & Engineering Co Ltd (The Wagon Mound, No. 1) [1961] AC 388, [1961] UKPC 2.",
+        sourceUrl:
+          "https://en.wikipedia.org/wiki/Overseas_Tankship_(UK)_Ltd_v_Morts_Dock_and_Engineering_Co_Ltd",
+        methodologyType: "derivative",
+      },
+    ],
+  },
 ];
 
 async function main() {
