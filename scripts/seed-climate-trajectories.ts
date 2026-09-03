@@ -47,7 +47,7 @@ interface Trajectory {
   claimType: 'EMPIRICAL' | 'INSTITUTIONAL' | 'INTERPRETIVE' | 'HYBRID'
   claimEmergedAt: string
   claimEmergedPrecision: DatePrecision
-  currentAxis: 'RECORDED' | 'SETTLED' | 'CONTESTED' | 'OPEN' | 'UNRESOLVABLE'
+  currentAxis: 'RECORDED' | 'SETTLED' | 'CONTESTED' | 'OPEN' | 'UNRESOLVABLE' | 'REVERSED'
   transitions: Transition[]
 }
 
@@ -2199,6 +2199,216 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'UNFCCC. Decision 2/CP.15, Copenhagen Accord. FCCC/CP/2009/11/Add.1, 30 March 2010.',
           url: 'https://unfccc.int/resource/docs/2009/cop15/eng/11a01.pdf',
           publishedAt: '2010-03-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Callendar — fossil CO₂ warming — 1938 ───────────────────────────────────
+  {
+    externalId: 'trajectory:callendar-fossil-co2-warming-1938',
+    text: 'Guy Stewart Callendar argued in the Quarterly Journal of the Royal Meteorological Society in 1938 that human fossil-fuel combustion had measurably raised atmospheric CO₂ and was warming global temperatures, quantifying the effect at roughly 0.003 °C per year.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1938-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Callendar, a steam engineer and amateur meteorologist, compiled world temperature records and CO₂ measurements and, using radiation absorption coefficients, argued that fossil-fuel CO₂ was accumulating in the atmosphere and warming the planet. Read to the Royal Meteorological Society on 16 February 1938 and published in its Quarterly Journal, the paper was the first to link observed 20th-century warming to industrial CO₂, but it was met with skepticism from professional meteorologists who doubted CO₂ absorption was unsaturated and dismissed the temperature trend as natural variability.',
+        source: {
+          externalId: 'src:callendar-qjrms-1938',
+          name: 'Callendar GS. The artificial production of carbon dioxide and its influence on temperature. Quarterly Journal of the Royal Meteorological Society. 1938;64(275):223–240.',
+          url: 'https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.49706427503',
+          publishedAt: '1938-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-08-01',
+        datePrecision: 'MONTH',
+        reason: 'After Keeling\'s continuous Mauna Loa record (from 1958) confirmed the year-on-year CO₂ rise Callendar had inferred, the IPCC First Assessment Report (1990) treated rising anthropogenic CO₂ and its warming influence as established science. What had been dismissed as an amateur\'s speculation in 1938 — sometimes called the \'Callendar effect\' — was institutionally settled as the foundation of modern climate assessment.',
+        source: {
+          externalId: 'src:ipcc-far-wg1-1990',
+          name: 'IPCC. Climate Change: The IPCC Scientific Assessment (First Assessment Report, Working Group I). 1990.',
+          url: 'https://www.ipcc.ch/report/ar1/wg1/',
+          publishedAt: '1990-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Supran, Rahmstorf & Oreskes — ExxonMobil knew — 2015/2023 ───────────────
+  {
+    externalId: 'trajectory:supran-oreskes-exxon-knew-2023',
+    text: 'Investigative journalism (2015) and peer-reviewed analysis by Supran, Rahmstorf and Oreskes (Science, 2023) established that ExxonMobil\'s own scientists accurately projected the magnitude and timing of human-caused global warming from the late 1970s onward while the company publicly manufactured doubt about climate science.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2015-09-16',
+        datePrecision: 'DAY',
+        reason: 'InsideClimate News published \'Exxon: The Road Not Taken,\' a document-based investigation showing that Exxon\'s in-house scientists (e.g., James Black\'s 1977 warning to management and a 1982 internal projection) had understood CO₂-driven warming decades earlier, even as the company later funded doubt campaigns. A parallel Los Angeles Times/Columbia investigation followed. The reporting put the \'Exxon knew\' claim onto the public record from primary corporate documents.',
+        source: {
+          externalId: 'src:insideclimate-exxon-road-not-taken-2015',
+          name: 'Banerjee N, Song L, Hasemyer D. Exxon: The Road Not Taken. InsideClimate News. 2015-09-16.',
+          url: 'https://insideclimatenews.org/news/16092015/exxons-own-research-confirmed-fossil-fuels-role-in-global-warming/',
+          publishedAt: '2015-09-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-01-13',
+        datePrecision: 'DAY',
+        reason: 'Supran, Rahmstorf and Oreskes published \'Assessing ExxonMobil\'s global warming projections\' in Science, quantitatively evaluating every warming projection Exxon and ExxonMobil scientists documented between 1977 and 2003. They found 63–83% of the projections accurate and at least as skillful as independent academic and government models, moving the \'Exxon knew\' finding from journalistic claim to peer-reviewed scientific record and directly contradicting the company\'s public doubt-casting — a documented parallel to the tobacco industry\'s playbook.',
+        source: {
+          externalId: 'src:supran-oreskes-exxon-science-2023',
+          name: 'Supran G, Rahmstorf S, Oreskes N. Assessing ExxonMobil\'s global warming projections. Science. 2023;379(6628):eabk0063.',
+          url: 'https://www.science.org/doi/10.1126/science.abk0063',
+          publishedAt: '2023-01-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Santer — fingerprint detection contested — 1996 ─────────────────────────
+  {
+    externalId: 'trajectory:santer-fingerprint-detection-contested-1996',
+    text: 'Santer and colleagues reported in Nature on 4 July 1996 that the observed vertical pattern of atmospheric temperature change matched the \'fingerprint\' predicted by models including greenhouse gases and sulfate aerosols, providing detection-level evidence of human influence on climate.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-07-04',
+        datePrecision: 'DAY',
+        reason: 'Santer et al. published \'A search for human influences on the thermal structure of the atmosphere\' in Nature, showing that the spatial pattern of 1963–1987 temperature change matched model predictions incorporating CO₂, sulfate aerosols and stratospheric ozone, with the model–observation agreement strengthening over time. The pattern-based \'fingerprint\' detection provided the empirical backbone for the IPCC Second Assessment Report\'s conclusion of a \'discernible human influence\' on climate.',
+        source: {
+          externalId: 'src:santer-fingerprint-nature-1996',
+          name: 'Santer BD, Taylor KE, Wigley TML, et al. A search for human influences on the thermal structure of the atmosphere. Nature. 1996;382(6586):39–46.',
+          url: 'https://www.nature.com/articles/382039a0',
+          publishedAt: '1996-07-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1996-07-11',
+        datePrecision: 'DAY',
+        reason: 'Frederick Seitz, a former National Academy of Sciences president with no climate expertise, published \'A Major Deception on Global Warming\' in the Wall Street Journal (12 June 1996), accusing Santer of improperly altering the IPCC detection chapter; the fossil-fuel-funded Global Climate Coalition amplified the charge as \'scientific cleansing.\' A sustained public campaign through July 1996 (including further WSJ exchanges) sought to discredit the detection finding, mirroring the tobacco industry\'s manufactured-doubt tactics rather than engaging the science.',
+        source: {
+          externalId: 'src:seitz-wsj-major-deception-1996',
+          name: 'Seitz F. A Major Deception on Global Warming (op-ed). The Wall Street Journal. 1996-06-12.',
+          url: 'https://stephenschneider.stanford.edu/Publications/PDF_Papers/WSJ_July11_96.pdf',
+          publishedAt: '1996-06-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-11-05',
+        datePrecision: 'DAY',
+        reason: 'Santer et al. revisited the fingerprint analysis in PNAS with an additional ~17 years of observations, confirming and strengthening the 1996 detection of a human-caused signal in atmospheric temperature structure and refuting the claim that natural variability could explain it. The peer-reviewed literature re-settled the detection finding the 1996 doubt campaign had tried to discredit.',
+        source: {
+          externalId: 'src:santer-thermal-structure-pnas-2013',
+          name: 'Santer BD, et al. Human and natural influences on the changing thermal structure of the atmosphere. PNAS. 2013;110(43):17235–17240.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.1305332110',
+          publishedAt: '2013-11-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Massachusetts v. EPA — GHGs as air pollutants — 2007 ────────────────────
+  {
+    externalId: 'trajectory:massachusetts-v-epa-ghg-air-pollutant-2007',
+    text: 'The U.S. Supreme Court held on 2 April 2007 in Massachusetts v. EPA that greenhouse gases fit the Clean Air Act\'s definition of \'air pollutant\' and that the EPA has statutory authority to regulate them from new motor vehicles.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2007-04-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2007-04-02',
+        datePrecision: 'DAY',
+        reason: 'By a 5–4 vote (Stevens, J.), the Court ruled that Massachusetts had standing to sue and that the Clean Air Act\'s sweeping definition of \'air pollutant\' encompasses carbon dioxide and other greenhouse gases, so the EPA could not decline to regulate them for reasons unrelated to whether they endanger public health. The decision — the Supreme Court\'s first on climate change — judicially settled that GHGs are regulable pollutants and compelled the EPA to make a science-based endangerment determination.',
+        source: {
+          externalId: 'src:mass-v-epa-scotus-2007',
+          name: 'Massachusetts v. Environmental Protection Agency, 549 U.S. 497 (2007).',
+          url: 'https://supreme.justia.com/cases/federal/us/549/497/',
+          publishedAt: '2007-04-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EPA GHG Endangerment Finding — 2009 / rescinded 2026 ────────────────────
+  {
+    externalId: 'trajectory:epa-ghg-endangerment-finding-2009',
+    text: 'On 7 December 2009 the U.S. EPA Administrator signed the Endangerment Finding determining that atmospheric concentrations of six greenhouse gases threaten the public health and welfare of current and future generations under Clean Air Act Section 202(a).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-12-15',
+        datePrecision: 'DAY',
+        reason: 'Responding to the Supreme Court\'s mandate in Massachusetts v. EPA, the EPA signed the Endangerment Finding on 7 December 2009 and published it in the Federal Register on 15 December 2009 (74 FR 66496), finding that CO₂, methane, nitrous oxide, HFCs, PFCs and SF₆ endanger public health and welfare. It became the legal foundation for all subsequent U.S. federal greenhouse-gas regulation and was upheld by the D.C. Circuit in 2012.',
+        source: {
+          externalId: 'src:epa-endangerment-finding-2009',
+          name: 'EPA. Endangerment and Cause or Contribute Findings for Greenhouse Gases Under Section 202(a) of the Clean Air Act. 74 FR 66496. 2009-12-15.',
+          url: 'https://www.epa.gov/climate-change/endangerment-and-cause-or-contribute-findings-greenhouse-gases-under-section-202a',
+          publishedAt: '2009-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2026-02-18',
+        datePrecision: 'DAY',
+        reason: 'After proposing reconsideration in mid-2025, the EPA finalized a rule rescinding the 2009 Endangerment Finding and repealing all greenhouse-gas emission standards for motor vehicles, published in the Federal Register on 18 February 2026. The agency argued Section 202(a) does not authorize regulating emissions to address global climate change — a regulatory reversal of the finding that had anchored U.S. climate policy for sixteen years, and a landmark instance of policy rollback despite unchanged underlying science.',
+        source: {
+          externalId: 'src:epa-endangerment-rescission-fr-2026',
+          name: 'EPA. Rescission of the Greenhouse Gas Endangerment Finding and Motor Vehicle Greenhouse Gas Emission Standards Under the Clean Air Act (Final Rule). Federal Register. 2026-02-18.',
+          url: 'https://www.federalregister.gov/documents/2026/02/18/2026-03157/rescission-of-the-greenhouse-gas-endangerment-finding-and-motor-vehicle-greenhouse-gas-emission',
+          publishedAt: '2026-02-18',
           methodologyType: 'primary',
         },
       },
