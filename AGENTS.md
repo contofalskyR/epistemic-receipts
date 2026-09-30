@@ -1,3 +1,6 @@
+# Start here
+Read `STATUS.md` (live tracker: current state, locked decisions, phase checklist, next action) before doing anything else. Read `AUDIT.md` only if the task touches routes, nav, or page data. Do not read the other root-level planning docs unless `STATUS.md` sends you there.
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 
