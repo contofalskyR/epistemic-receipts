@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isPublicRoute } from "@/lib/publicEdition";
+import { isKnownRoute } from "@/lib/routeManifest";
 
 // ─── Rate limiting ────────────────────────────────────────────────────────────
 // Best-effort in-memory rate limiting. Vercel Edge is stateless across instances,
@@ -15,24 +16,16 @@ type RateRule = { pattern: RegExp; maxPerMin: number; methods?: string[] };
 const RATE_LIMIT_RULES: RateRule[] = [
   // Read endpoints — generous limits
   { pattern: /^\/api\/search(\/|$|\?)/, maxPerMin: 30 },
-  { pattern: /^\/api\/v1\/search(\/|$|\?)/, maxPerMin: 20 },
-  { pattern: /^\/api\/v1\/verify(\/|$|\?)/, maxPerMin: 10 },
   { pattern: /^\/api\/stats(\/|$|\?)/, maxPerMin: 20 },
   { pattern: /^\/api\/claims(\/|$|\?)/, maxPerMin: 30 },
   { pattern: /^\/api\/globe(\/|$|\?)/, maxPerMin: 20 },
-  { pattern: /^\/api\/v1\/manifest(\/|$|\?)/, maxPerMin: 30 },
   // Server-side fetch proxy — tighter, since each call makes an outbound fetch
   { pattern: /^\/api\/proxy\/reader/, maxPerMin: 20 },
   // Public write endpoints — tight limits (per IP, per isolate)
   { pattern: /^\/api\/login$/, maxPerMin: 10, methods: ["POST"] },
   { pattern: /^\/api\/feedback$/, maxPerMin: 5, methods: ["POST"] },
   { pattern: /^\/api\/search\/miss$/, maxPerMin: 5, methods: ["POST"] },
-  { pattern: /^\/api\/subscribe(\/|$)/, maxPerMin: 5, methods: ["POST"] },
-  { pattern: /^\/api\/bookmarks(\/|$)/, maxPerMin: 30, methods: ["POST", "DELETE"] },
-  { pattern: /^\/api\/follow(\/|$)/, maxPerMin: 30, methods: ["POST", "DELETE"] },
   { pattern: /^\/api\/sentry-tunnel$/, maxPerMin: 60, methods: ["POST"] },
-  // Billing endpoints — each call creates a Stripe API object; keep tight
-  { pattern: /^\/api\/stripe\/(checkout|portal)$/, maxPerMin: 5, methods: ["POST"] },
 ];
 
 function checkRateLimit(
@@ -94,32 +87,16 @@ const PUBLIC_WRITE_PATHS: RegExp[] = [
   /^\/api\/login$/, // password login
   /^\/api\/feedback$/, // visitor feedback (rate limited, in-route caps)
   /^\/api\/search\/miss$/, // zero-result search reports (rate limited)
-  /^\/api\/subscribe(\/|$)/, // topic email subscriptions (rate limited)
-  /^\/api\/bookmarks(\/|$)/, // anonymous client-key bookmarks (rate limited)
-  /^\/api\/follow(\/|$)/, // anonymous client-key follows (B12, rate limited)
   /^\/api\/sentry-tunnel$/, // Sentry error tunnel (browser → our proxy → Sentry)
-  /^\/api\/auth(\/|$)/, // Auth.js (next-auth) sign-in/callback/signout POSTs — CSRF-protected by Auth.js
-  /^\/api\/stripe\/webhook$/, // Stripe webhooks — verified in-route via stripe-signature
-  /^\/api\/mcp$/, // hosted MCP endpoint — authenticated in-route via er_live_ API key
-  // Session-authenticated user features (spec/30, spec/31, spec/40).
-  // Every handler checks `await auth()` and object ownership itself; the
-  // admin key is not the auth mechanism for these.
-  /^\/api\/collections(\/|$)/, // researcher collections CRUD (session auth in-route)
-  /^\/api\/litigation(\/|$)/, // litigation matters CRUD/export (session + org membership in-route)
-  // Stripe billing (F4, SECURITY-ASSESSMENT-2026-07-09 #5): session + org
-  // membership enforced in-route — do NOT list these here without that check.
-  /^\/api\/stripe\/(checkout|portal)$/,
 ];
 
 // Pages and APIs that always require an admin session, even for reads.
-// /edges (raw editing surface), /labs/* (unfinished experiments), and the
-// per-claim /edit form are internal tooling — gated like /review until they
-// are designed as public pages (PUBLISH-CHECKLIST.md).
+// The Lab gate above already covers every non-public page; this list is the
+// API side (/api/review) plus the page paths kept for defense in depth.
 const ADMIN_PATHS: RegExp[] = [
   /^\/admin(\/|$)/,
   /^\/review(\/|$)/,
   /^\/api\/review(\/|$)/,
-  /^\/edges(\/|$)/,
   /^\/labs(\/|$)/,
   /^\/claims\/[^/]+\/edit(\/|$)/,
 ];
@@ -179,10 +156,17 @@ export async function middleware(req: NextRequest) {
   // gate as /admin — a redirect to /login?from=…. /login itself stays open so
   // the owner can sign in; API routes keep their own gates (reads public,
   // writes admin below); paths with a file extension (robots.txt, sitemap.xml,
-  // assets) pass through. Unknown paths hit this gate too: deny-by-default
-  // means "not listed" is indistinguishable from "does not exist" here.
+  // assets) pass through. A path with no page file at all (lib/routeManifest.ts,
+  // generated at build time) falls through to Next's real 404 instead — the
+  // gate is for Lab pages, not for typos.
   const isPageRequest = !pathname.startsWith("/api/") && !pathname.includes(".");
-  if (!isDev && isPageRequest && pathname !== "/login" && !isPublicRoute(pathname)) {
+  if (
+    !isDev &&
+    isPageRequest &&
+    pathname !== "/login" &&
+    !isPublicRoute(pathname) &&
+    isKnownRoute(pathname)
+  ) {
     if (!(await isAdminRequest(req))) {
       const loginUrl = req.nextUrl.clone();
       loginUrl.pathname = "/login";
@@ -225,8 +209,6 @@ export async function middleware(req: NextRequest) {
     const allowedThrough =
       pathname === "/login" ||
       pathname === "/api/login" ||
-      pathname.startsWith("/api/bookmarks") ||
-      pathname.startsWith("/api/follow") ||
       pathname.startsWith("/embed/") ||
       pathname.startsWith("/api/badge/");
 

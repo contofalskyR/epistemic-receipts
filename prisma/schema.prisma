@@ -76,8 +76,6 @@ model Claim {
   bookClaimMatches         BookClaimMatch[]
   historicalEvents         ClaimHistoricalEvent[]
   polityLinks              PolityClaim[]
-  bookmarks                Bookmark[]
-  collectionItems          CollectionItem[]
   relationsFrom            ClaimRelation[] @relation("ClaimRelationFrom")
   relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
   billCoverage             BillCoverage?
@@ -85,8 +83,6 @@ model Claim {
   statusHistory            ClaimStatusHistory[]
   trajectorySearchDoc      TrajectorySearchDoc?
   claimEmbedding           ClaimEmbedding?
-  matterClaims             MatterClaim[]
-  subscriptions         ClaimSubscription[]
 
 
   @@index([ingestedBy])
@@ -601,47 +597,6 @@ model PolityClaim {
   @@index([claimId])
 }
 
-model Profile {
-  id        String     @id @default(uuid())
-  key       String     @unique
-  userId    String?
-  createdAt DateTime   @default(now())
-  bookmarks Bookmark[]
-  follows   Follow[]
-  user      User?      @relation(fields: [userId], references: [id], onDelete: SetNull)
-
-  @@index([userId])
-}
-
-// B12: polymorphic follow — one row per (profile, entity). Anonymous-first:
-// profileId comes from the same hashed-key Profile the bookmarks use.
-model Follow {
-  id         String   @id @default(cuid())
-  profileId  String
-  entityType String // "claim" | "trajectory" | "topic" | "domain" | "story"
-  entityId   String
-  createdAt  DateTime @default(now())
-  profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
-
-  @@unique([profileId, entityType, entityId])
-  @@index([profileId])
-  @@map("Follow")
-}
-
-model Bookmark {
-  id        String   @id @default(uuid())
-  profileId String
-  claimId   String
-  createdAt DateTime @default(now())
-
-  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  claim   Claim   @relation(fields: [claimId], references: [id], onDelete: Cascade)
-
-  @@unique([profileId, claimId])
-  @@index([profileId])
-  @@index([claimId])
-}
-
 model BillCoverage {
   id           Int      @id @default(autoincrement())
   claimId      String   @unique
@@ -679,48 +634,6 @@ model WatchedTopic {
   label       String
   createdAt   DateTime  @default(now())
   lastAlertAt DateTime?
-}
-
-model TopicSubscription {
-  id               String    @id @default(cuid())
-  email            String
-  topicKeyword     String
-  topicLabel       String
-  unsubscribeToken String    @unique @default(cuid())
-  confirmed        Boolean   @default(false)
-  createdAt        DateTime  @default(now())
-  lastAlertAt      DateTime?
-  frequency        String    @default("weekly") // "daily" | "weekly"
-  userId           String?   // nullable — existing email-only subs unaffected
-
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
-
-  @@unique([email, topicKeyword])
-  @@index([topicKeyword])
-  @@index([userId])
-}
-
-// Claim-level follow: "notify me when this claim's trajectory moves."
-// Mirrors TopicSubscription's consent mechanics (double-opt-in-ready confirmed flag,
-// unsubscribe token, frequency, lastAlertAt watermark); delivery is
-// app/api/cron/claim-alerts, which diffs ClaimStatusHistory.createdAt > lastAlertAt.
-model ClaimSubscription {
-  id               String    @id @default(cuid())
-  email            String
-  claimId          String
-  unsubscribeToken String    @unique @default(cuid())
-  confirmed        Boolean   @default(false)
-  createdAt        DateTime  @default(now())
-  lastAlertAt      DateTime?
-  frequency        String    @default("weekly") // "daily" | "weekly"
-  userId           String?
-
-  claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
-  user  User? @relation(fields: [userId], references: [id], onDelete: SetNull)
-
-  @@unique([email, claimId])
-  @@index([claimId])
-  @@index([userId])
 }
 
 model ClaimLocation {
@@ -835,263 +748,11 @@ model ClaimEmbedding {
 
 // ── Spec 20: Public API ──────────────────────────────────────────────────────
 
-model ApiKey {
-  id           String    @id @default(cuid())
-  orgName      String
-  contactEmail String
-  keyHash      String    @unique // sha256 hex of the raw key
-  tier         String    @default("free") // free | pro | team | enterprise
-  createdAt    DateTime  @default(now())
-  revokedAt    DateTime?
-  lastUsedAt   DateTime?
-  expiresAt    DateTime?
-  name         String?
-  prefix       String    @default("")
-  orgId        String?
-
-  usage ApiUsage[]
-  org   Org?      @relation(fields: [orgId], references: [id], onDelete: SetNull)
-
-  @@index([keyHash])
-  @@index([tier])
-  @@index([orgId])
-}
-
-model ApiUsage {
-  id       String   @id @default(cuid())
-  keyId    String
-  date     String   // YYYY-MM-DD
-  endpoint String   // e.g. "claims" | "verify" | "search"
-  count    Int      @default(0)
-  reportedToStripeAt DateTime? // spec-21: marks rows already reported to Stripe
-
-  key ApiKey @relation(fields: [keyId], references: [id], onDelete: Cascade)
-
-  @@unique([keyId, date, endpoint])
-  @@index([keyId])
-  @@index([date])
-  @@index([reportedToStripeAt])
-}
-
 // ── Spec 30: Accounts, Orgs, Entitlements ───────────────────────────────────
-
-model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  emailVerified DateTime?
-  name          String?
-  image         String?
-  createdAt     DateTime  @default(now())
-
-  accounts           Account[]
-  sessions           Session[]
-  memberships        Membership[]
-  profiles           Profile[]
-  collections        Collection[]
-  topicSubscriptions TopicSubscription[]
-  matterClaimsAdded  MatterClaim[]  @relation("MatterClaimAddedBy")
-  matterExports      MatterExport[] @relation("MatterExportBy")
-
-  @@index([email])
-  claimSubscriptions ClaimSubscription[]
-}
-
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  @@index([userId])
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
-}
-
-model Org {
-  id                   String    @id @default(cuid())
-  name                 String
-  slug                 String    @unique
-  tier                 String    @default("free")
-  seats                Int       @default(5)
-  ssoConnectionId      String?
-  stripeCustomerId     String?   @unique
-  stripeSubscriptionId String?
-  enterpriseFlag       Boolean   @default(false) // spec-21: manual tier override without a Stripe subscription
-  pastDueSince         DateTime?
-  createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
-
-  memberships       Membership[]
-  ipRanges          OrgIpRange[]
-  usageDaily        OrgUsageDaily[]
-  apiKeys           ApiKey[]
-  litigationMatters LitigationMatter[]
-}
-
-model Membership {
-  userId    String
-  orgId     String
-  role      String   @default("member")
-  createdAt DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  org  Org  @relation(fields: [orgId], references: [id], onDelete: Cascade)
-
-  @@id([userId, orgId])
-  @@index([orgId])
-}
-
-model OrgIpRange {
-  id          String   @id @default(cuid())
-  orgId       String
-  cidr        String
-  label       String   @default("")
-  confirmFlag Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  org Org @relation(fields: [orgId], references: [id], onDelete: Cascade)
-
-  @@index([orgId])
-}
-
-model OrgUsageDaily {
-  id     String @id @default(cuid())
-  orgId  String
-  date   String
-  metric String
-  count  Int    @default(0)
-
-  org Org @relation(fields: [orgId], references: [id], onDelete: Cascade)
-
-  @@unique([orgId, date, metric])
-  @@index([orgId])
-}
 
 // ── Spec 31: Researcher Features ─────────────────────────────────────────────
 
-model Collection {
-  id          String   @id @default(cuid())
-  ownerId     String
-  name        String
-  description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  owner User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  items CollectionItem[]
-
-  @@index([ownerId])
-}
-
-model CollectionItem {
-  id           String   @id @default(cuid())
-  collectionId String
-  claimId      String
-  note         String?
-  position     Int      @default(0)
-  addedAt      DateTime @default(now())
-
-  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
-  claim      Claim      @relation(fields: [claimId], references: [id], onDelete: Cascade)
-
-  @@unique([collectionId, claimId])
-  @@index([collectionId])
-  @@index([claimId])
-}
-
 // ── Spec 40: Litigation Workbench ────────────────────────────────────────────
-
-enum MatterStatus {
-  ACTIVE
-  CLOSED
-  ARCHIVED
-}
-
-enum ExportFormat {
-  PDF
-  JSONL
-  CSV
-}
-
-model LitigationMatter {
-  id           String       @id @default(cuid())
-  orgId        String
-  name         String
-  description  String?
-  status       MatterStatus @default(ACTIVE)
-  jurisdiction String?
-  caseNumber   String?
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
-
-  org     Org            @relation(fields: [orgId], references: [id], onDelete: Cascade)
-  claims  MatterClaim[]
-  exports MatterExport[]
-
-  @@index([orgId])
-  @@index([orgId, status])
-}
-
-model MatterClaim {
-  id           String   @id @default(cuid())
-  matterId     String
-  claimId      String
-  addedAt      DateTime @default(now())
-  addedById    String
-  notes        String?
-  relevanceTag String?
-
-  matter  LitigationMatter @relation(fields: [matterId], references: [id], onDelete: Cascade)
-  claim   Claim            @relation(fields: [claimId], references: [id], onDelete: Cascade)
-  addedBy User             @relation("MatterClaimAddedBy", fields: [addedById], references: [id])
-
-  @@unique([matterId, claimId])
-  @@index([matterId])
-  @@index([claimId])
-}
-
-model MatterExport {
-  id           String       @id @default(cuid())
-  matterId     String
-  format       ExportFormat
-  r2Key        String
-  sha256       String
-  exportedAt   DateTime     @default(now())
-  exportedById String
-
-  matter     LitigationMatter @relation(fields: [matterId], references: [id], onDelete: Cascade)
-  exportedBy User             @relation("MatterExportBy", fields: [exportedById], references: [id])
-
-  @@index([matterId])
-}
 
 // DW-NOMINATE ideology scores per member per Congress, ingested from Voteview HSall_members.csv.
 // One row per (icpsrId, congress, chamber). Joined to MemberVote via bioguide_id / memberId.

@@ -11,22 +11,12 @@ export default function PrivacyPage() {
       <div className="mb-6">
         {/* TODO(owner): remove this banner once counsel has reviewed */}
         <h1 className="text-2xl font-bold text-gray-100 mb-2">Privacy Policy</h1>
-        <p className="text-gray-500 text-xs">Effective date: July 1, 2026 · Last updated: July 2026</p>
+        <p className="text-gray-500 text-xs">Effective date: July 1, 2026 · Last updated: September 30, 2026</p>
       </div>
 
       <div className="text-gray-400 text-sm space-y-6">
         <section>
           <h2 className="text-base font-semibold text-gray-200 mb-2">1. What we collect</h2>
-
-          <h3 className="text-sm font-semibold text-gray-300 mb-2">Topic-alert subscriptions</h3>
-          <p className="mb-2">
-            When you subscribe to topic email alerts, we store: email address, topic keyword and label, an
-            unsubscribe token, and timestamps. Confirmation emails are sent via{" "}
-            <strong className="text-gray-300">Resend</strong> (resend.com).
-          </p>
-          <p className="text-xs text-gray-500 mb-4">
-            Code refs: <code>prisma/schema.prisma:659</code> · <code>app/api/subscribe/topic/route.ts</code>
-          </p>
 
           <h3 className="text-sm font-semibold text-gray-300 mb-2">Feedback submissions</h3>
           <p className="mb-2">
@@ -38,16 +28,13 @@ export default function PrivacyPage() {
             Code refs: <code>prisma/schema.prisma:331</code> · <code>app/api/feedback/route.ts</code>
           </p>
 
-          <h3 className="text-sm font-semibold text-gray-300 mb-2">Bookmarks (profile key)</h3>
-          <p className="mb-2">
-            No account required. Your browser generates a random UUID (<code>crypto.randomUUID()</code>), stores
-            it in <code>localStorage</code> under <code>er_profile_key</code>, and sends it to our API. We store
-            only the <strong className="text-gray-300">SHA-256 hash</strong> of that UUID — never the raw key.
-            Bookmarks are stored as claim IDs linked to this hash.
-          </p>
-          <p className="text-xs text-gray-500 mb-4">
-            Code refs: <code>hooks/useBookmarks.ts:25</code> (key generation) · <code>app/api/bookmarks/route.ts:12</code>{" "}
-            (SHA-256 hash) · <code>prisma/schema.prisma:599</code> (Profile schema)
+          <h3 className="text-sm font-semibold text-gray-300 mb-2">Retired features</h3>
+          <p className="mb-2 text-xs text-gray-500">
+            Until September 2026 the site offered email topic alerts and browser-key bookmarks. Both were
+            removed on 2026-09-30; the subscription and bookmark tables (which held one bookmark and no
+            subscriptions) are dropped by the same change. Any browser key left in your{" "}
+            <code>localStorage</code> under <code>er_profile_key</code> is never sent anywhere now and can be
+            cleared from your browser settings.
           </p>
         </section>
 
@@ -64,7 +51,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-base font-semibold text-gray-200 mb-2">3. Data sharing</h2>
           <ul className="list-disc list-inside space-y-1">
-            <li><strong className="text-gray-300">Resend</strong> — email delivery for subscription confirmations.</li>
+            <li><strong className="text-gray-300">Resend</strong> — email delivery for operational alerts to the site owner only (no visitor email is sent).</li>
             <li><strong className="text-gray-300">Vercel</strong> — hosting infrastructure; see vercel.com/legal/privacy-policy.</li>
             <li><strong className="text-gray-300">Telegram</strong> — feedback forwarded to the site owner&rsquo;s private account.</li>
           </ul>
@@ -74,17 +61,14 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-base font-semibold text-gray-200 mb-2">4. Your rights</h2>
           <ul className="list-disc list-inside space-y-1">
-            <li><strong className="text-gray-300">Unsubscribe</strong> from alerts at any time via the link in any alert email.</li>
-            <li><strong className="text-gray-300">Request deletion</strong> of feedback or bookmark records by contacting us.</li>
+            <li><strong className="text-gray-300">Request deletion</strong> of feedback records by contacting us.</li>
           </ul>
         </section>
 
         <section>
           <h2 className="text-base font-semibold text-gray-200 mb-2">5. Retention</h2>
           <ul className="list-disc list-inside space-y-1">
-            <li>Topic subscriptions: until you unsubscribe.</li>
             <li>Feedback: indefinitely (contact us to request deletion).</li>
-            <li>Hashed profile key and bookmarks: indefinitely (contact us to request deletion).</li>
             <li>In-memory rate-limit data: ephemeral.</li>
           </ul>
         </section>
@@ -92,7 +76,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-base font-semibold text-gray-200 mb-2">6. Security</h2>
           <p>
-            Database connections use TLS. Profile keys are stored as SHA-256 hashes. HSTS and CSP headers
+            Database connections use TLS. HSTS and CSP headers
             are enforced. Admin authentication uses timing-safe comparison.
           </p>
         </section>

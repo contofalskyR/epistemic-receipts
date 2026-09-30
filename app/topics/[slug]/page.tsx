@@ -6,7 +6,6 @@ import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge"
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import { TopicTimeline } from "@/components/TopicTimeline";
 import WorldBankView from "./WorldBankView";
-import FollowButton from "@/app/components/FollowButton";
 
 const DOMAIN_LABELS: Record<string, string> = {
   astronomy:    "Astronomy",
@@ -482,7 +481,6 @@ function TopicSlugContent() {
       <div className="border-b border-gray-800 pb-6 space-y-2">
         <div className="flex items-start justify-between gap-4">
           <h1 className="text-xl font-semibold text-white">{topic.name}</h1>
-          <FollowButton entityType="topic" entityId={topic.slug} />
         </div>
         {topic.description && (
           <p className="text-sm text-gray-400">{topic.description}</p>

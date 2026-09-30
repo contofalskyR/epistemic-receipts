@@ -17,7 +17,6 @@ export async function seedTestData(prisma: PrismaClient): Promise<SeedResult> {
   // Clear related tables first (order matters due to FK constraints)
   await prisma.claimStatusHistory.deleteMany({});
   await prisma.claimTopic.deleteMany({});
-  await prisma.bookmark.deleteMany({});
   await prisma.edgeRevision.deleteMany({});
   await prisma.metaEdge.deleteMany({});
   await prisma.edge.deleteMany({});

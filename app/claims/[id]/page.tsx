@@ -10,9 +10,6 @@ import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge
 import { ShareButtons } from "@/components/ShareButtons";
 import ClaimInteractive from "./ClaimInteractive";
 import AdaptiveClaimTimeline from "./AdaptiveClaimTimeline";
-import BookmarkToggle from "./BookmarkToggle";
-import FollowButton from "@/app/components/FollowButton";
-import AddToCollection from "@/components/AddToCollection";
 import CitationButton from "@/components/CitationButton";
 import { TrajectoryDepth } from "@/components/TrajectoryDepth";
 import { EpistemicLegend } from "@/components/EpistemicLegend";
@@ -184,9 +181,6 @@ export default async function ClaimDetailPage({ params }: Props) {
               View settling curve →
             </Link>
           )}
-          <FollowButton entityType="claim" entityId={claim.id} />
-          <BookmarkToggle claimId={claim.id} />
-          <AddToCollection claimId={claim.id} />
           <CitationButton type="claim" id={claim.id} />
         </div>
         <EpistemicLegend label="Axis key:" className="pt-1" />

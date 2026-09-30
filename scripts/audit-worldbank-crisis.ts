@@ -1,10 +1,23 @@
-import { neon } from '@neondatabase/serverless';
+import { Pool } from 'pg';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 
-const sql = neon(process.env.DIRECT_URL || process.env.DATABASE_URL!);
+// Tagged-template shim over pg so the queries below read exactly as they did
+// against Neon's sql`` tag (front door phase 3: Neon driver retired).
+const pool = new Pool({
+  connectionString: (process.env.DIRECT_URL || process.env.DATABASE_URL || "")
+    .replace(/([?&])sslmode=[^&]*&?/, "$1")
+    .replace(/[?&]$/, ""),
+  ssl: { rejectUnauthorized: false },
+  max: 2,
+});
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function sql(strings: TemplateStringsArray, ...values: unknown[]): Promise<any[]> {
+  const text = strings.reduce((acc, part, i) => acc + part + (i < values.length ? `$${i + 1}` : ""), "");
+  return (await pool.query(text, values)).rows;
+}
 
 // Crisis indicator codes added by the worldbank expansion run
 const CRISIS_INDICATOR_CODES = [
@@ -295,7 +308,9 @@ async function run() {
   console.log('\n=== AUDIT COMPLETE ===');
 }
 
-run().catch(err => {
-  console.error('Fatal:', err);
-  process.exit(1);
-});
+run()
+  .then(() => pool.end())
+  .catch(err => {
+    console.error('Fatal:', err);
+    process.exit(1);
+  });

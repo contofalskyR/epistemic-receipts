@@ -167,121 +167,8 @@ export async function GET(request: Request) {
     }
   }
 
-  // Email subscribers (anonymous + userId-linked, filtered by frequency)
-  let emailsSent = 0;
-  let emailErrors = 0;
-
-  if (process.env.RESEND_API_KEY) {
-    try {
-      const { Resend } = await import("resend");
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const from = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
-
-      for (const { keyword, label, total, statusChanges } of perTopicCounts) {
-        if (total === 0 && statusChanges === 0) continue;
-
-        const subscribers = await prisma.topicSubscription.findMany({
-          where: { topicKeyword: keyword, frequency: mode },
-          select: {
-            id: true,
-            email: true,
-            unsubscribeToken: true,
-            userId: true,
-          },
-        });
-        if (subscribers.length === 0) continue;
-
-        const topClaims = await prisma.claim.findMany({
-          where: {
-            deleted: false,
-            createdAt: { gte: since },
-            text: { contains: keyword, mode: "insensitive" as const },
-          },
-          orderBy: { createdAt: "desc" },
-          take: 5,
-          select: { id: true, text: true, epistemicAxis: true, currentStatus: true },
-        });
-
-        const topChanges = await prisma.claimStatusHistory.findMany({
-          where: {
-            occurredAt: { gte: since },
-            claim: { deleted: false, text: { contains: keyword, mode: "insensitive" as const } },
-            fromAxis: { not: null },
-          },
-          take: 3,
-          orderBy: { occurredAt: "desc" },
-          select: {
-            fromAxis: true,
-            toAxis: true,
-            claim: { select: { id: true, text: true } },
-          },
-        });
-
-        const claimLines = topClaims.map((c) => {
-          const status = (c.epistemicAxis || c.currentStatus || "").trim();
-          return `• ${truncate(c.text, 140)}${status ? ` — ${status}` : ""}`;
-        });
-
-        const changeLines = topChanges.map(
-          (s) =>
-            `• ${truncate(s.claim.text, 120)} — status changed: ${s.fromAxis} → ${s.toAxis}`,
-        );
-
-        for (const sub of subscribers) {
-          const unsubUrl = `${SITE_BASE}/api/unsubscribe?token=${sub.unsubscribeToken}`;
-          const manageUrl = sub.userId ? `${SITE_BASE}/following` : null;
-          const searchUrl = `${SITE_BASE}/search?q=${encodeURIComponent(keyword)}`;
-
-          const bodyLines = [
-            `${mode === "daily" ? "Daily" : "Weekly"} update for "${label}" — ${range}`,
-            ``,
-          ];
-
-          if (topClaims.length > 0) {
-            bodyLines.push(
-              `${total} new claim${total === 1 ? "" : "s"}:`,
-              ``,
-              ...claimLines,
-              ``,
-            );
-          }
-
-          if (topChanges.length > 0) {
-            bodyLines.push(
-              `${statusChanges} epistemic status change${statusChanges === 1 ? "" : "s"}:`,
-              ``,
-              ...changeLines,
-              ``,
-            );
-          }
-
-          bodyLines.push(`See all: ${searchUrl}`, ``, `—`, `Unsubscribe: ${unsubUrl}`);
-          if (manageUrl) bodyLines.push(`Manage alerts: ${manageUrl}`);
-
-          try {
-            await resend.emails.send({
-              from,
-              to: sub.email,
-              subject: `[Epistemic Receipts] ${mode === "daily" ? "Daily" : "Weekly"} digest — "${label}"`,
-              text: bodyLines.join("\n"),
-            });
-            await prisma.topicSubscription.update({
-              where: { id: sub.id },
-              data: { lastAlertAt: now },
-            });
-            emailsSent++;
-          } catch (err) {
-            console.error(`[topic-alerts] Email to ${sub.email} failed:`, err);
-            emailErrors++;
-          }
-        }
-      }
-    } catch (err) {
-      console.error("[topic-alerts] Resend init failed:", err);
-    }
-  } else {
-    console.log("[topic-alerts] RESEND_API_KEY not set — skipping subscriber emails.");
-  }
+  // Email subscribers were removed in front door phase 3 (TopicSubscription had
+  // 0 rows and no subscribe UI); this cron is the owner's Telegram digest only.
 
   return NextResponse.json({
     ok: true,
@@ -292,7 +179,5 @@ export async function GET(request: Request) {
     sent,
     sendStatus,
     sendError,
-    emailsSent,
-    emailErrors,
   });
 }

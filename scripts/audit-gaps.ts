@@ -1,12 +1,18 @@
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { neonConfig } from "@neondatabase/serverless";
-import ws from "ws";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
-neonConfig.webSocketConstructor = ws as unknown as typeof WebSocket;
-
-const adapter = new PrismaNeon({ connectionString: process.env.DATABASE_URL! });
-const p = new PrismaClient({ adapter });
+// Self-hosted Postgres (STATUS.md): strip sslmode so the explicit ssl option
+// wins, and accept the server's self-signed certificate — same as lib/prisma.ts.
+function makePrisma(): PrismaClient {
+  const connectionString = (process.env.DATABASE_URL ?? "")
+    .replace(/([?&])sslmode=[^&]*&?/, "$1")
+    .replace(/[?&]$/, "");
+  if (!connectionString) throw new Error("DATABASE_URL not set");
+  const pool = new Pool({ connectionString, ssl: { rejectUnauthorized: false }, max: 3 });
+  return new PrismaClient({ adapter: new PrismaPg(pool) });
+}
+const p = makePrisma();
 
 type Row = Record<string, unknown>;
 function tab(rows: Row[], cols: string[]) {

@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { PIPELINES, getPipeline } from "@/lib/pipelines/registry";
+import { getDataPipelines, getPipeline } from "@/lib/pipelines/registry";
 
 export const revalidate = 3600;
 
 type Props = { params: Promise<{ tag: string }> };
 
 export async function generateStaticParams() {
-  return PIPELINES.map(p => ({ tag: p.tag }));
+  return getDataPipelines().map(p => ({ tag: p.tag }));
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -123,19 +123,23 @@ export default async function DatasetPage({ params }: Props) {
         <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
           <dt className="text-gray-500">Upstream source</dt>
           <dd className="text-gray-200">
-            <a
-              href={p.upstreamUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white underline underline-offset-2 transition-colors"
-            >
-              {p.upstreamName}
-            </a>
+            {p.upstreamUrl ? (
+              <a
+                href={p.upstreamUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-white underline underline-offset-2 transition-colors"
+              >
+                {p.upstreamName}
+              </a>
+            ) : (
+              p.upstreamName
+            )}
           </dd>
           <dt className="text-gray-500">Fetch method</dt>
-          <dd className="text-gray-200">{p.method}</dd>
+          <dd className="text-gray-200">{p.method ?? "—"}</dd>
           <dt className="text-gray-500">Cadence</dt>
-          <dd className="text-gray-200 capitalize">{p.cadence}</dd>
+          <dd className="text-gray-200 capitalize">{p.cadence ?? "—"}</dd>
           {cov.lastRunAt && (
             <>
               <dt className="text-gray-500">Last successful run</dt>

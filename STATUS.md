@@ -37,11 +37,12 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 ## Environment facts (so a fresh agent needn't rediscover them)
 
 - `.env.local` has `DATABASE_URL` → the OCI Postgres (self-signed cert, URL ends in `?sslmode=require`).
-  `lib/prisma.ts` / `lib/v1/readClient.ts` strip that param and pass `ssl: { rejectUnauthorized: false }`;
-  do the same in ad-hoc scripts. `DATABASE_URL_READ` is optional (falls back to `DATABASE_URL`).
+  `lib/prisma.ts` strips that param and passes `ssl: { rejectUnauthorized: false }`; do the same in ad-hoc
+  scripts (see `scripts/ingest-cces.ts`). `DATABASE_URL_READ` is no longer read by anything (the v1 read client
+  went in Phase 3).
 - Read-only verification pattern (no writes, ever):
   `node -e 'require("dotenv").config({path:".env.local"}); const {Pool}=require("pg"); …pool.query("select …")'`.
-- `npm run build` = `prisma generate && next build`; it prerenders 309 pages against the live DB (reads only).
+- `npm run build` = `prisma generate && node scripts/gen-route-manifest.mjs && next build`; it prerenders 309 pages against the live DB (reads only).
   **Locally, run it as `CIRCLE_NODE_TOTAL=2 npm run build`** (1 prerender worker, ~4 min, 0 timeouts — verified
   2026-09-30). The default 9 workers saturate the OCI Postgres and the sitemap's deep-OFFSET claim chunks
   (`app/sitemap.ts`, `claims-25..28`, ~37 s each in isolation) exceed Next's 60 s static-generation timeout →
@@ -132,9 +133,50 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
         `generateSitemaps()` — it does not; only `/sitemap/{static,topics,claims-N}.xml` exist, while robots.txt
         advertises `/sitemap.xml`. Fix in Phase 3/4: an index route under a non-conflicting path (e.g.
         `/sitemap-index.xml`) + robots pointer, or list the chunk URLs in robots.
-- [ ] **Phase 3 — delete & consolidate** · `/edges`, `/globe/lab` (port deep-time slider first),
-      `/analysis/corpus` (port transition matrix first), five page-less `data.ts` dirs, ~25 uncalled API routes,
-      two of three pipeline registries, six scripts still importing the Neon driver
+- [x] **Phase 3 — delete & consolidate** · branch `fix/front-door-phase-3` · done 2026-09-30 · build green ·
+      tsc clean · tests green · PR: owner pushes the branch and opens it (merge Phase 2's PR first — this branch
+      sits on top of `e3f031e`)
+  - **Recovery:** the pre-deletion state is tag `v0-full-site` = branch `archive/full-site` (= `e3f031e`, the
+    Phase 2 tip). Anything below comes back with `git checkout archive/full-site -- <path>`.
+  - [x] SaaS layer deleted: `/org/*`, `/pricing`, `/account`, `/docs/api`; `/api/org/*`, `/api/stripe/*`,
+        `/api/litigation/*`, `/api/admin/api-keys*`, crons `report-stripe-usage` + `flush-api-usage`;
+        `lib/billing`, `lib/litigation`, `lib/orgAuth`, `lib/orgUsage`, `lib/entitlements`, `lib/cidr`;
+        `scripts/stripe-setup.ts`. **Judgment call:** `/api/v1/*`, `/api/mcp` and `lib/v1` went too — with key
+        minting gone (0 keys ever) nothing could authenticate to them. Packages `stripe`, `next-auth`,
+        `@auth/prisma-adapter` removed.
+  - [x] second auth system deleted: `/auth/*`, `/api/auth/[...nextauth]`, `lib/auth.ts`, `/api/user/*`. `/login`
+        (admin cookie) is the only gate.
+  - [x] social features deleted: collections (+`AddToCollection`), follows (+`FollowButton`), `/following`,
+        bookmarks (+`BookmarkToggle`, `hooks/useBookmarks`), `/api/feed/following*|bookmarked-activity`,
+        subscriptions (`/api/subscribe/*`, `/api/unsubscribe`, cron `claim-alerts`, the email branch of
+        `topic-alerts` — the owner's Telegram digest and `WatchedTopic` (10 rows) stay). Rows lost: 1 Bookmark,
+        2 Profile. Privacy page rewritten to match.
+  - [x] audit deletes: `/edges` (+`/api/edges`); `/globe/lab` after porting the deep-time slider into `/globe`
+        (log-scale 4.5 Ga→present, era labels, geography-only below 3000 BCE; the lab's mapping was mirrored);
+        `/analysis/corpus` (+API, `lib/corpusAnalysis`) after porting the transition matrix to `/stats`
+        (`TransitionMatrixSection`, live-claim join); five page-less taxonomy `data.ts` dirs (arts, criminology,
+        materials-science, political-economy, religious-studies); `components/destinations` (dead); 17 uncalled
+        API routes (`claims/[id]/topics*`, `books/*/matches/reasons`, `drug-arc/funnel|therapeutic-areas`,
+        `historical-events*`, `threshold-events*`, `trajectories/search`, `timeline`, `datasets`, `domains`,
+        `pipelines`, `claims/homepage`, five `stats/*`).
+  - [x] one pipeline registry: `lib/pipelines/registry.ts` now 194 entries with `category` + `status`; `/sources`
+        and `/pipelines` derive from it (their own 185- and 78-row lists deleted). 9 tags defaulted to
+        category "Other" (`cces_v1`, `eu_parliament_votes_v2`, `ipn_v1`, `uspto_v1`, `costarica_legislation_v1`,
+        `ncbi_gene_v1`, `nih_clinical_trials_v1`, `cr_unsc_v1`, `scotus_v1`).
+  - [x] Neon gone: 3 one-shot `_fix/_check` scripts deleted; `audit-gaps.ts`, `audit-worldbank-crisis.ts`,
+        `ingest-cces.ts` moved to the pg adapter; `serverExternalPackages` trimmed to `pdf-parse`.
+  - [x] **Prisma:** 20 models removed (User, Account, Session, VerificationToken, Org, Membership, OrgIpRange,
+        OrgUsageDaily, ApiKey, ApiUsage, LitigationMatter, MatterClaim, MatterExport, Collection, CollectionItem,
+        Profile, Follow, Bookmark, TopicSubscription, ClaimSubscription) + enums MatterStatus, ExportFormat +
+        Claim's four back-relations. Migration written, **NOT applied** (nothing writes to the DB):
+        `prisma/migrations/20260930120000_phase3_drop_saas_social_auth/migration.sql` — owner runs
+        `npx prisma migrate deploy` after merge. Until then the tables sit unused; the app never touches them.
+  - [x] real 404s: `scripts/gen-route-manifest.mjs` → `lib/route-manifest.json` (104 routes, 14 patterns) runs
+        in `npm run build`; middleware gates only paths that exist, unknown paths reach Next's 404.
+        `tests/unit/route-manifest.test.ts` fails if the committed file is stale.
+  - [x] `/sitemap.xml` fixed: `app/sitemap-index.xml/route.ts` builds the index from `generateSitemaps()`;
+        `next.config.ts` rewrites `/sitemap.xml` → it (beforeFiles). Sitemap filters use `LIVE_CLAIM_WHERE`.
+  - [x] `LATER.md` written (Congress-as-claims first).
 - [ ] **Phase 4 — guard** · route-link test in CI, extended to components/, lib/, template hrefs;
       public→Lab links fail; every `PUBLIC_ROUTES` entry must have a page
 - [ ] **Phase 5 — content** · source the taxonomies, inline receipts in stories, claim links on Analyze pages
@@ -149,4 +191,4 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Owner says "go" → Phase 3 (delete & consolidate).
+Owner says "go" → Phase 4 (guard). Before that: merge Phase 2 + Phase 3, run `npx prisma migrate deploy`.

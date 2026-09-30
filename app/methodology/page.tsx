@@ -143,8 +143,7 @@ export default function MethodologyPage() {
           This page documents the data model, status vocabulary, pipeline standards, and
           editorial policies that govern what is in the graph and how it is labelled. It
           is a reference for readers who want to understand what they are looking at —
-          and a contract for anyone building on the{" "}
-          <Link href="/api/v1/manifest" className="underline hover:text-gray-300">public API</Link>.
+          and a contract for anyone citing it.
         </p>
       </div>
 
@@ -521,9 +520,6 @@ export default function MethodologyPage() {
         </Link>
         <Link href="/datasets" className="hover:text-gray-300 transition-colors">
           Pipeline data cards &rarr;
-        </Link>
-        <Link href="/api/v1/manifest" className="hover:text-gray-300 transition-colors">
-          Machine-readable manifest &rarr;
         </Link>
         <Link href="/communities" className="hover:text-gray-300 transition-colors">
           Ratifying Communities &rarr;

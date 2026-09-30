@@ -34,7 +34,7 @@ describe("Lab gate (middleware.ts)", () => {
     delete process.env.ADMIN_TOKEN;
   });
 
-  it.each(["/", "/search", "/settling-curve", "/opinions", "/methodology", "/docs/api", "/start-here"])(
+  it.each(["/", "/search", "/settling-curve", "/opinions", "/methodology", "/start-here"])(
     "%s (public) passes through anonymously",
     async (p) => {
       expect(passedThrough(await middleware(req(p)))).toBe(true);
@@ -57,9 +57,12 @@ describe("Lab gate (middleware.ts)", () => {
     },
   );
 
-  it("an unknown path gets the gate too — deny-by-default cannot tell 'not listed' from 'does not exist'", async () => {
-    expect(gate(await middleware(req("/no-such-page")))).not.toBeNull();
-  });
+  it.each(["/no-such-page", "/docs/api", "/following", "/pricing", "/collections", "/globe/lab", "/analysis/corpus"])(
+    "%s has no page file → passes through to Next's real 404, not the gate (phase 3 route manifest)",
+    async (p) => {
+      expect(passedThrough(await middleware(req(p)))).toBe(true);
+    },
+  );
 
   it("the gate does not leak the request's query string into /login", async () => {
     const g = gate(await middleware(req("/history?utm_source=x&token=y")));

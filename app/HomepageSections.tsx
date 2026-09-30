@@ -427,8 +427,9 @@ function CorpusBand({
 // ─── Honesty band ─────────────────────────────────────────────────────────────
 // The mockup footer, as a homepage band (the site-wide footer lives in
 // layout.tsx and is out of scope). "CC-BY" from the mockup is NOT the real
-// license — the data ships under ER-Community-1.0 (/license) — and the API
-// serves JSON only (/docs/api), so the mono line says exactly that.
+// license — the data ships under ER-Community-1.0 (/license); the mono line
+// says exactly that. (The metered API and its /docs/api page were removed in
+// front door phase 3.)
 
 function HonestyBand() {
   return (
@@ -451,10 +452,6 @@ function HonestyBand() {
           </Link>
         </span>
         <span className="font-mono">
-          <Link href="/docs/api" className="transition-colors hover:text-gray-300">
-            API
-          </Link>
-          {" · JSON · "}
           <Link href="/license" className="transition-colors hover:text-gray-300">
             ER-Community-1.0
           </Link>
