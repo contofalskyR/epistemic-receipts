@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { corpusCount } from "@/lib/corpus";
+import { compactCount } from "@/lib/format";
 
 // Static server component — no DB call, fully crawlable, no client-only gate.
 export const revalidate = 86400;
@@ -103,7 +105,10 @@ const STORIES: { href: string; title: string; eyebrow: string }[] = [
   { href: "/stories/voting-rights-act-1965", title: "The Voting Rights Act: Settlement and Partial Reversal", eyebrow: "Constitutional law" },
 ];
 
-export default function StartHerePage() {
+export default async function StartHerePage() {
+  // Derived corpus figures (lib/corpus.ts) — this page used to hand-write "1.7 million" and "1.76M".
+  const claims = await corpusCount();
+  const claimsCompact = compactCount(claims);
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 space-y-16">
       <header className="space-y-4">
@@ -205,14 +210,14 @@ export default function StartHerePage() {
         <div>
           <h2 className="text-xl font-bold text-white">Where to go next</h2>
           <p className="mt-1 text-sm text-gray-500 max-w-2xl">
-            The graph holds over 1.7 million claims. These are the most useful entry points
+            The graph holds {claims.toLocaleString("en-US")} claims. These are the most useful entry points
             beyond the curated set.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 gap-3">
           {[
             { href: "/settling-curve", label: "Settling Curve", desc: "Interactive visualization for any trajectory" },
-            { href: "/search", label: "Search", desc: "Full-text + semantic across 1.76M claims" },
+            { href: "/search", label: "Search", desc: `Full-text + semantic across ${claimsCompact} claims` },
             { href: "/trajectories", label: "Trajectory Encyclopedia", desc: "All curated arcs by domain" },
             { href: "/reversals", label: "Court Reversals", desc: "Eight landmark overruling arcs" },
             { href: "/canon", label: "The Canon", desc: "Most-cited papers, ranked, each with its audit state" },

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { corpusCount, corpusCountByPipeline } from "@/lib/corpus";
 import HomeHero from "./HomeHero";
 import HomeCarousel from "./HomeCarousel";
 import HomepageSections, { type HomepageStats } from "./HomepageSections";
@@ -24,8 +24,6 @@ export const metadata: Metadata = {
     "A research observatory of sourced claims, each carrying a dated epistemic trajectory — recorded, settled, contested, and sometimes reversed.",
 };
 
-type IngestedByRow = { ingestedBy: string; count: number };
-
 async function loadHomepageData() {
   const [
     claimCount,
@@ -39,27 +37,19 @@ async function loadHomepageData() {
     whatsNew,
     otdRawRows,
   ] = await Promise.all([
-    prisma.claim.count({ where: { verificationStatus: { not: "DEPRECATED" } } }),
+    // The corpus total — one definition site-wide (lib/corpus.ts). This used to
+    // be `verificationStatus: { not: "DEPRECATED" }`, which drops NULL status
+    // and put 1.62M in the hero while the nav said "1.76M".
+    corpusCount(),
     prisma.claimStatusHistory.count(),
     // Split so a same-day bulk promotion (bulk-promote-corpus.ts) can never
     // read as "movement over time" — see lib/curve-counts.ts.
     getSettlingCurveCounts(),
     prisma.source.count(),
     prisma.legislativeVote.count(),
-    // Per-pipeline counts, CLASSIFIED claims only. `IS NOT NULL` mirrors what
-    // Prisma's `not: "DEPRECATED"` does for the headline count above — without
-    // it the domain links silently included the ~138k never-classified claims
-    // and disagreed with the headline/pipelines totals (e.g. the Neuroscience
-    // tile showed 318,775 while /pipelines showed openalex at 212,145).
-    prisma.$queryRaw<IngestedByRow[]>(
-      Prisma.sql`
-        SELECT "ingestedBy", COUNT(*)::int AS count
-        FROM "Claim"
-        WHERE "verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-          AND "verificationStatus" IS NOT NULL
-        GROUP BY "ingestedBy"
-      `,
-    ),
+    // Per-pipeline counts under the SAME definition as the headline, so the
+    // domain tiles and stats band always sum to it (and agree with /pipelines).
+    corpusCountByPipeline(),
     // Fig. 1 — the same loader /analysis/settling-rate and the paper figure use,
     // so the homepage curve can never disagree with the published analysis.
     buildSettlingRateAnalysis(),

@@ -5,28 +5,34 @@ import Nav from "@/app/components/Nav";
 import FeedbackButton from "@/app/components/FeedbackButton";
 import LinkViewerProvider from "@/app/components/LinkViewerProvider";
 import { SITE_URL } from "@/lib/site";
+import { corpusCountCompact } from "@/lib/corpus";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  // Resolves relative OG image / canonical URLs in per-page generateMetadata.
-  // NOTE: no title template — ~35 pages already hard-code the "— Epistemic
-  // Receipts" suffix; a template here would double it.
-  metadataBase: new URL(SITE_URL),
-  title: "Epistemic Receipts",
-  // "1.6M+" matches the Nav/search copy convention; the old "1M+ verified
-  // facts" default disagreed with the homepage's derived 1.62M figure.
-  description:
-    "A live record of epistemic status across science, law, and history — 1.7M+ sourced claims from legislation, court decisions, scientific papers, and declassified archives.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  // The corpus figure is derived (lib/corpus.ts, cached hourly), never typed:
+  // the previous hand-written "1.7M+" here disagreed with the nav's "1.76M"
+  // and the homepage's 1.62M at the same time.
+  const claims = await corpusCountCompact();
+  return {
+    // Resolves relative OG image / canonical URLs in per-page generateMetadata.
+    // NOTE: no title template — ~35 pages already hard-code the "— Epistemic
+    // Receipts" suffix; a template here would double it.
+    metadataBase: new URL(SITE_URL),
+    title: "Epistemic Receipts",
+    description:
+      `A live record of epistemic status across science, law, and history — ${claims} sourced claims from legislation, court decisions, scientific papers, and declassified archives.`,
+  };
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const claimsCompact = await corpusCountCompact();
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full bg-gray-950`}>
       <body className="min-h-full text-gray-100 antialiased">
         <LinkViewerProvider>
-          <Nav />
+          <Nav claimsCompact={claimsCompact} />
           <main className="px-6 py-8">{children}</main>
           <FeedbackButton />
           <footer className="border-t border-gray-800/50 px-6 py-4 text-center text-xs text-gray-500 space-y-1">

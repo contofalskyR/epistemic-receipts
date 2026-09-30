@@ -1,9 +1,12 @@
 "use client";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { IS_PUBLIC_EDITION, isPublicRoute } from "@/lib/publicEdition";
 
-type NavItem = { href: string; label: string; desc?: string };
+// A desc may depend on the corpus figure ("1.76M"), which the layout derives
+// from the DB (lib/corpus.ts) and passes down — never a literal in this file.
+type NavItem = { href: string; label: string; desc?: string | ((claims: string) => string) };
+type ResolvedNavItem = { href: string; label: string; desc?: string };
 
 const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[] = [
   {
@@ -11,7 +14,7 @@ const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[
     blurb: "Browse the knowledge graph",
     items: [
       { href: "/settling-curve", label: "Settling Curve", desc: "How a claim settled — or unraveled — over time" },
-      { href: "/search", label: "Search", desc: "Full-text + semantic across 1.76M claims" },
+      { href: "/search", label: "Search", desc: (claims) => `Full-text + semantic across ${claims} claims` },
       { href: "/trajectories", label: "Trajectory Encyclopedia" },
       { href: "/fields", label: "Topic Taxonomies" },
       { href: "/prereq-graph", label: "Evidence Chains" },
@@ -89,7 +92,7 @@ function Dropdown({
 }: {
   label: string;
   blurb: string;
-  items: NavItem[];
+  items: ResolvedNavItem[];
   open: boolean;
   onOpen: () => void;
   onClose: () => void;
@@ -163,10 +166,22 @@ const VISIBLE_GROUPS = IS_PUBLIC_EDITION
       .filter((g) => g.items.length > 0)
   : GROUPS;
 
-export default function Nav() {
+/** `claimsCompact` is the derived corpus figure ("1.76M") from app/layout.tsx. */
+export default function Nav({ claimsCompact }: { claimsCompact: string }) {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+
+  const groups = useMemo(
+    () =>
+      VISIBLE_GROUPS.map((g) => ({
+        ...g,
+        items: g.items.map(
+          (i): ResolvedNavItem => ({ ...i, desc: typeof i.desc === "function" ? i.desc(claimsCompact) : i.desc }),
+        ),
+      })),
+    [claimsCompact],
+  );
 
   useEffect(() => {
     function onDown(e: MouseEvent) {
@@ -209,7 +224,7 @@ export default function Nav() {
         <Link href="/" className="font-semibold text-white">
           Epistemic Receipts
         </Link>
-        {VISIBLE_GROUPS.map((g) => (
+        {groups.map((g) => (
           <Dropdown
             key={g.label}
             label={g.label}
@@ -260,7 +275,7 @@ export default function Nav() {
             onClick={() => setMobileOpen(false)}
             className="block py-2 mb-1 text-gray-200 hover:text-white font-medium transition-colors"
           >
-            ⌕ Search 1.76M claims
+            ⌕ Search {claimsCompact} claims
           </Link>
           <Link
             href="/about"
@@ -269,7 +284,7 @@ export default function Nav() {
           >
             About
           </Link>
-          {VISIBLE_GROUPS.map((g) => (
+          {groups.map((g) => (
             <div key={g.label} className="mt-3">
               <div className={`text-xs uppercase tracking-wider py-1.5 ${g.lab ? "text-amber-700" : "text-gray-500"}`}>
                 {g.lab && "⚗ "}{g.label}

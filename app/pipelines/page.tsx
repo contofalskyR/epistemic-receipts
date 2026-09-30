@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 
 import { prisma } from "@/lib/prisma";
+import { corpusCountByPipeline } from "@/lib/corpus";
 import PipelinesClient, { type PipelineRow, type PipelinesStats, type UnregisteredRow } from "./PipelinesClient";
 
 type PipelineStatus = "in-production" | "dry-run-complete" | "dry-run-pending" | "awaiting-approval" | "retired";
@@ -103,11 +104,11 @@ const PIPELINE_REGISTRY: PipelineMeta[] = [
 
 export default async function PipelinesPage() {
   const [claimCounts, sourceCounts] = await Promise.all([
-    prisma.claim.groupBy({
-      by: ["ingestedBy"],
-      _count: { _all: true },
-      where: { deleted: false, verificationStatus: { not: "DEPRECATED" } },
-    }),
+    // Per-pipeline claim counts under the site-wide corpus definition
+    // (lib/corpus.ts: deleted = false), shared with the homepage tiles and
+    // /api/corpus-stats. The old `verificationStatus: { not: "DEPRECATED" }`
+    // filter silently dropped every never-classified (NULL status) claim.
+    corpusCountByPipeline(),
     prisma.source.groupBy({
       by: ["ingestedBy"],
       _count: { _all: true },
@@ -116,7 +117,7 @@ export default async function PipelinesPage() {
   ]);
 
   const getClaimCount = (tag: string) =>
-    claimCounts.find((r) => r.ingestedBy === tag)?._count._all ?? 0;
+    claimCounts.find((r) => r.ingestedBy === tag)?.count ?? 0;
   const getSourceCount = (tag: string) =>
     sourceCounts.find((r) => r.ingestedBy === tag)?._count._all ?? 0;
 
@@ -128,7 +129,7 @@ export default async function PipelinesPage() {
 
   const pipelineClaimTotal = claimCounts
     .filter((r) => r.ingestedBy !== "manual")
-    .reduce((sum, r) => sum + r._count._all, 0);
+    .reduce((sum, r) => sum + r.count, 0);
   const pipelineSourceTotal = sourceCounts
     .filter((r) => r.ingestedBy !== "manual")
     .reduce((sum, r) => sum + r._count._all, 0);

@@ -1,12 +1,16 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 
 // Returns the full topic tree nested by domain.
 // Each topic node includes claimCount (direct tags only, not inherited from children).
+// The count uses the default-view filter (lib/corpus.ts) — the same population
+// /topics/[slug] lists — instead of the raw ClaimTopic row count, which also
+// counted tags on deleted and DEPRECATED claims.
 export async function GET() {
   const topics = await prisma.topic.findMany({
     orderBy: [{ domain: "asc" }, { name: "asc" }],
-    include: { _count: { select: { claims: true } } },
+    include: { _count: { select: { claims: { where: { claim: LIVE_CLAIM_WHERE } } } } },
   });
 
   type Node = {

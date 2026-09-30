@@ -162,7 +162,12 @@ export default async function RetractionWallPage() {
     last30d,
   ] = await Promise.all([
     prisma.claim.count({ where: { ingestedBy: PIPELINE, deleted: false } }),
-    prisma.claimRelation.count({ where: { relationType: "CONTRADICTS" } }),
+    // The tile says "linking retractions to originals", so count exactly the
+    // CTE's population above (CONTRADICTS from a live claim of this pipeline)
+    // — not every CONTRADICTS relation in the graph, which is what it counted.
+    prisma.claimRelation.count({
+      where: { relationType: "CONTRADICTS", fromClaim: { ingestedBy: PIPELINE, deleted: false } },
+    }),
     getRecentRetractions(100),
     getTopRipple(10),
     prisma.claim.count({

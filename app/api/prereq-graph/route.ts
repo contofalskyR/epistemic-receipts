@@ -1,44 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { countLinkedClaims, linkedClaimsWhere } from "@/lib/prereq-graph";
 
 export const revalidate = 3600;
 
 const PAGE_SIZE = 25;
-
-const DOMAIN_INGESTED: Record<string, string[]> = {
-  science: [
-    "openalex_v1",
-    "nih_reporter_v1",
-    "nasa_exoplanet_v1",
-    "nuclear_tests_v1",
-    "periodic_table_v1",
-    "usgs_eq_v1",
-  ],
-  medicine: [
-    "clinicaltrials_v1",
-    "openfda_labels_v1",
-    "faers_normalized_drugs_v1",
-    "openfda_v1",
-    "rxnorm_v1",
-    "chebi_v1",
-  ],
-  law: [
-    "courtlistener_scotus_v1",
-    "courtlistener_circuits_v1",
-    "un_sc_resolutions_v1",
-    "echr_v1",
-    "doj_fara_v1",
-  ],
-  legislation: [
-    "congress_v1",
-    "riksdag_v1",
-    "bundestag_v1",
-    "tweedekamer_v1",
-    "oireachtas_v1",
-    "nationalrat_v1",
-    "eu_legislation_v1",
-  ],
-};
 
 export async function GET(req: NextRequest) {
   const sp = req.nextUrl.searchParams;
@@ -47,22 +13,11 @@ export async function GET(req: NextRequest) {
   const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
 
-  // Object.hasOwn guards against prototype-chain lookups (e.g. ?domain=constructor)
-  const pipelines = Object.hasOwn(DOMAIN_INGESTED, domain) ? DOMAIN_INGESTED[domain] : null;
-  const domainClause = pipelines
-    ? `AND c."ingestedBy" IN (${pipelines.map((p) => `'${p}'`).join(",")})`
-    : "";
+  // Population definition shared with the page header (lib/prereq-graph.ts):
+  // domain chip from an allowlist, search term as a bind param.
+  const { clause, params } = linkedClaimsWhere({ domain, q });
 
-  // Search — user input passed as a bind param, never interpolated
-  const params: unknown[] = [];
-  let searchClause = "";
-  if (q) {
-    const escaped = q.replace(/[\\%_]/g, (m) => `\\${m}`);
-    params.push(`%${escaped}%`);
-    searchClause = `AND (c.text ILIKE $1 OR c.metadata->>'title' ILIKE $1)`;
-  }
-
-  const [rows, countRows] = await Promise.all([
+  const [rows, total] = await Promise.all([
     prisma.$queryRawUnsafe<
       Array<{
         id: string;
@@ -76,30 +31,14 @@ export async function GET(req: NextRequest) {
     >(
       `SELECT c.id, c.text, c.metadata, c."epistemicAxis", c."ingestedBy", c."claimEmergedAt",
               COUNT(cr.id) AS links
-       FROM "Claim" c
-       JOIN "ClaimRelation" cr ON cr."fromClaimId" = c.id
-       WHERE c.deleted = false
-         AND cr."relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')
-         ${domainClause}
-         ${searchClause}
+       ${clause}
        GROUP BY c.id
        ORDER BY links DESC, c."claimEmergedAt" DESC NULLS LAST
        LIMIT ${PAGE_SIZE} OFFSET ${offset}`,
       ...params
     ),
-    prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
-      `SELECT COUNT(DISTINCT c.id) AS count
-       FROM "Claim" c
-       JOIN "ClaimRelation" cr ON cr."fromClaimId" = c.id
-       WHERE c.deleted = false
-         AND cr."relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')
-         ${domainClause}
-         ${searchClause}`,
-      ...params
-    ),
+    countLinkedClaims({ domain, q }),
   ]);
-
-  const total = Number(countRows[0]?.count ?? 0);
 
   const claims = rows.map((r) => {
     const m = r.metadata as Record<string, unknown> | null;

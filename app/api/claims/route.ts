@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
 import { requireAdminOrDev } from "@/lib/adminAuth";
+import { corpusCount } from "@/lib/corpus";
 
 const VALID_PRECISIONS = ["DAY", "MONTH", "QUARTER", "YEAR"];
 const VALID_CLAIM_TYPES = ["EMPIRICAL", "INSTITUTIONAL", "INTERPRETIVE", "HYBRID"];
@@ -12,7 +13,8 @@ const PAGE_SIZE = 100;
 export async function GET(req: NextRequest) {
   const offset = Math.max(0, parseInt(req.nextUrl.searchParams.get("offset") ?? "0", 10) || 0);
   const [total, claims] = await Promise.all([
-    prisma.claim.count({ where: { deleted: false } }),
+    // Paging total = the corpus total (lib/corpus.ts), same definition as the listing filter.
+    corpusCount(),
     prisma.claim.findMany({
       where: { deleted: false },
       orderBy: { createdAt: "desc" },

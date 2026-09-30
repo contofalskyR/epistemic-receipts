@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 import { loadDormantContested, loadRecentlyWoken } from "@/lib/dormancy";
 import { AXIS_BG_CLASS } from "@/lib/status";
 
@@ -22,12 +23,11 @@ export default async function OpenQuestionsPage() {
   const [dormant, woken, totalContested] = await Promise.all([
     loadDormantContested(50),
     loadRecentlyWoken(),
+    // The population the list below ranks: live CONTESTED claims WITH a dated
+    // status transition (lib/dormancy.ts INNER JOINs ClaimStatusHistory). The
+    // header used to count every CONTESTED claim, history or not.
     prisma.claim.count({
-      where: {
-        epistemicAxis: "CONTESTED",
-        deleted: false,
-        OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
-      },
+      where: { epistemicAxis: "CONTESTED", ...LIVE_CLAIM_WHERE, statusHistory: { some: {} } },
     }),
   ]);
 
@@ -41,8 +41,8 @@ export default async function OpenQuestionsPage() {
           Longest contested claims
         </h1>
         <p className="text-gray-400 text-sm max-w-2xl leading-relaxed">
-          {totalContested.toLocaleString()} claims are currently stamped CONTESTED in this corpus —
-          their status is genuinely unresolved between ratifying communities.
+          {totalContested.toLocaleString()} claims with a dated status transition are currently stamped
+          CONTESTED in this corpus — their status is genuinely unresolved between ratifying communities.
           Below are those with the longest gap since any new transition was recorded.
           Dormancy is information, not a defect.
         </p>

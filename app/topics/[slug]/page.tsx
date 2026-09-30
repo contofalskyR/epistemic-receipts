@@ -206,6 +206,9 @@ type TopicData = {
   siblings: { id: string; name: string; slug: string; claimCount: number }[];
   claims: ClaimItem[];
   total: number;
+  // True when no claim is tagged with this topic and the API substituted a
+  // text search on the topic name (api/topics/[slug]) — disclosed below.
+  usedTextFallback?: boolean;
   page: number;
   pages: number;
   availableParties: { party: string; claimCount: number }[];
@@ -445,7 +448,7 @@ function TopicSlugContent() {
 
   if (!data) return <p className="text-gray-600 text-sm">Loading…</p>;
 
-  const { topic, parentChain, siblings, claims, total, pages, availableParties, availableLeaders, timeline, voteStats, partyVoteTallies, partyRowsParsed, sourceTags } = data;
+  const { topic, parentChain, siblings, claims, total, usedTextFallback, pages, availableParties, availableLeaders, timeline, voteStats, partyVoteTallies, partyRowsParsed, sourceTags } = data;
   const domainLabel = DOMAIN_LABELS[topic.domain] ?? topic.domain;
 
   // Render the dedicated World Bank view (indicator faceting, country filter, comparison chart).
@@ -659,6 +662,11 @@ function TopicSlugContent() {
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
             Claims{total > 0 && ` (${total.toLocaleString()}${q ? " matching" : ""})`}
+            {usedTextFallback && (
+              <span className="ml-2 normal-case tracking-normal font-normal text-amber-500/80">
+                — no claims are tagged with this topic yet; showing claims whose text mentions “{topic.name}”
+              </span>
+            )}
           </h2>
           <select
             value={sort}

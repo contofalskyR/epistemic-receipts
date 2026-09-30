@@ -7,6 +7,7 @@ import {
   type PartyBreakdown,
 } from "@/lib/voteAnalysis";
 import { resolveDisplayAxis } from "@/lib/transition-contract";
+import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 
 const PAGE_SIZE = 20;
 
@@ -34,6 +35,14 @@ export async function GET(
   const leader = req.nextUrl.searchParams.get("leader") ?? "";
   const q = req.nextUrl.searchParams.get("q")?.trim() ?? "";
 
+  // Default-view filter (lib/corpus.ts): non-deleted, not DEPRECATED, NULL status
+  // included. Applied to the list AND to every child/sibling claimCount below,
+  // so the numbers on the tree match the rows a click reveals. The old inline
+  // `NOT: { verificationStatus: "DEPRECATED" }` also dropped never-classified claims.
+  const showDeprecated = req.nextUrl.searchParams.get("deprecated") === "1";
+  const baseClaimFilter = showDeprecated ? { deleted: false } : LIVE_CLAIM_WHERE;
+  const liveClaimCount = { _count: { select: { claims: { where: { claim: baseClaimFilter } } } } };
+
   const topic = await prisma.topic.findUnique({
     where: { slug },
     include: {
@@ -44,9 +53,9 @@ export async function GET(
       },
       children: {
         include: {
-          _count: { select: { claims: true } },
+          ...liveClaimCount,
           children: {
-            include: { _count: { select: { claims: true } } },
+            include: liveClaimCount,
             orderBy: { name: "asc" },
           },
         },
@@ -61,16 +70,11 @@ export async function GET(
   const siblings = topic.parentTopicId
     ? await prisma.topic.findMany({
         where: { parentTopicId: topic.parentTopicId, id: { not: topic.id } },
-        include: { _count: { select: { claims: true } } },
+        include: liveClaimCount,
         orderBy: { name: "asc" },
       })
     : [];
 
-  const showDeprecated = req.nextUrl.searchParams.get("deprecated") === "1";
-  const baseClaimFilter = {
-    deleted: false,
-    ...(showDeprecated ? {} : { NOT: { verificationStatus: "DEPRECATED" } }),
-  };
   const pcFilter = party || leader ? {
     edges: {
       some: {

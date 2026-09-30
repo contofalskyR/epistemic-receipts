@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { liveClaimSql } from "@/lib/corpus";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 import { classifyCurveShape, CURVE_SHAPE_LABELS, CURVE_SHAPE_DESCRIPTIONS, type CurveShape } from "@/lib/curve-shapes";
 import { AXIS_BG_CLASS } from "@/lib/status";
@@ -44,10 +45,15 @@ export default async function PatternsPage() {
   // seq is nullable on legacy rows; NULLS LAST keeps the order deterministic.
   // This query never loads claim rows into the Node process — only distinct
   // pattern strings + counts are returned (a few hundred rows at most).
+  // Joined to Claim under the default-view filter (lib/corpus.ts) so the shape
+  // counts and the exemplars below describe the same population — the counts
+  // used to include histories of deleted and DEPRECATED claims.
   const patternCounts = await prisma.$queryRaw<{ pattern: string; n: number }[]>`
     SELECT pattern, COUNT(*)::int AS n FROM (
       SELECT h."claimId", string_agg(h."toAxis", '>' ORDER BY h.seq NULLS LAST, h."occurredAt", h."createdAt") AS pattern
       FROM "ClaimStatusHistory" h
+      JOIN "Claim" c ON c.id = h."claimId"
+      WHERE ${liveClaimSql("c")}
       GROUP BY h."claimId"
       HAVING COUNT(*) >= 2
     ) t GROUP BY 1 ORDER BY 2 DESC
@@ -66,8 +72,7 @@ export default async function PatternsPage() {
     SELECT DISTINCT ON (p.pattern) p."claimId", p.pattern
     FROM patterns p
     JOIN "Claim" c ON c.id = p."claimId"
-    WHERE c.deleted = false
-      AND (c."verificationStatus" IS NULL OR c."verificationStatus" != 'DEPRECATED')
+    WHERE ${liveClaimSql("c")}
     ORDER BY p.pattern, (c."externalId" LIKE 'trajectory:%') DESC, p."claimId"
   `;
 
