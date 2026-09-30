@@ -1,18 +1,23 @@
 import "server-only";
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { neonConfig } from "@neondatabase/serverless";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
-// Use WebSocket for Neon serverless — eliminates TCP cold-start (~5s) on Vercel
-if (typeof WebSocket === "undefined") {
-  // Node.js environment (local dev, scripts)
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  neonConfig.webSocketConstructor = require("ws");
+// pg-connection-string turns `sslmode=require` into `ssl: {}` and lets the URL
+// override the explicit `ssl` option below, which re-enables certificate
+// verification and rejects the server's self-signed cert. Strip the param so
+// the explicit option wins.
+function withoutSslMode(url: string): string {
+  return url.replace(/([?&])sslmode=[^&]*&?/, "$1").replace(/[?&]$/, "");
 }
 
 function makePrismaClient() {
-  const connectionString = process.env.DATABASE_URL!;
-  const adapter = new PrismaNeon({ connectionString });
+  const pool = new Pool({
+    connectionString: withoutSslMode(process.env.DATABASE_URL ?? ""),
+    ssl: { rejectUnauthorized: false },
+    max: 3,
+  });
+  const adapter = new PrismaPg(pool);
   return new PrismaClient({ adapter });
 }
 
