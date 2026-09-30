@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
-import { IS_PUBLIC_EDITION, isPublicRoute } from "@/lib/publicEdition";
+import { isPublicRoute } from "@/lib/publicEdition";
 import { STAT_METHOD_SLUGS } from "@/lib/statMethods";
 
 // Sitemap chunks: with generateSitemaps(), Next serves /sitemap/[id].xml
@@ -17,15 +17,10 @@ const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/docs/api`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/glossary`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/trajectories`, changeFrequency: "daily", priority: 0.9 },
-  { url: `${SITE_URL}/topics`, changeFrequency: "weekly", priority: 0.8 },
   { url: `${SITE_URL}/sources`, changeFrequency: "weekly", priority: 0.7 },
-  { url: `${SITE_URL}/statistics`, changeFrequency: "weekly", priority: 0.7 },
-  { url: `${SITE_URL}/statistics/explorer`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/search`, changeFrequency: "monthly", priority: 0.6 },
-  { url: `${SITE_URL}/retractions`, changeFrequency: "weekly", priority: 0.7 },
   { url: `${SITE_URL}/reversals`, changeFrequency: "weekly", priority: 0.7 },
   { url: `${SITE_URL}/canon`, changeFrequency: "daily", priority: 0.8 },
-  { url: `${SITE_URL}/globe`, changeFrequency: "monthly", priority: 0.5 },
   { url: `${SITE_URL}/case-studies`, changeFrequency: "weekly", priority: 0.9 },
   { url: `${SITE_URL}/stories`, changeFrequency: "monthly", priority: 0.8 },
   { url: `${SITE_URL}/stories/h-pylori`, changeFrequency: "monthly", priority: 0.7 },
@@ -41,13 +36,14 @@ const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/communities`, changeFrequency: "monthly", priority: 0.7 },
 ];
 
-// The public edition gates pages deny-by-default (lib/publicEdition.ts). Advertising
-// a URL that edition 404s is a crawl-quality own-goal, so filter through the SAME
-// predicate the middleware uses — the sitemap then cannot drift from what is served.
-// Lab edition keeps the full list (its robots.txt disallows everything anyway).
-const STATIC_URLS: MetadataRoute.Sitemap = STATIC_URLS_ALL.filter(
-  (e) => !IS_PUBLIC_EDITION || isPublicRoute(e.url.slice(SITE_URL.length) || "/"),
-);
+// Page routes are deny-by-default (lib/publicEdition.ts). Advertising a URL the
+// middleware answers with the login gate is a crawl-quality own-goal, so every
+// list here is filtered through the SAME predicate the middleware uses — the
+// sitemap then cannot drift from what is served.
+const onlyPublic = (entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap =>
+  entries.filter((e) => isPublicRoute(e.url.slice(SITE_URL.length) || "/"));
+
+const STATIC_URLS: MetadataRoute.Sitemap = onlyPublic(STATIC_URLS_ALL);
 
 export async function generateSitemaps() {
   // Count multi-step claims (curve_length ≥ 1: any documented transition).
@@ -101,7 +97,7 @@ export default async function sitemap(props: {
       priority: 0.9,
     }));
 
-    return [...STATIC_URLS, ...curatedUrls];
+    return onlyPublic([...STATIC_URLS, ...curatedUrls]);
   }
 
   // Chunk 1: topic pages + statistics explorer method pages
@@ -123,7 +119,8 @@ export default async function sitemap(props: {
       priority: 0.6,
     }));
 
-    return [...topicUrls, ...explorerUrls];
+    // The explorer pages are Lab; onlyPublic() drops them until they are not.
+    return onlyPublic([...topicUrls, ...explorerUrls]);
   }
 
   // Claim chunks: id = "claims-0", "claims-1", ...

@@ -41,18 +41,8 @@ export default function SettlingCurveNav({
       <Link href="/settling-curve" style={tabStyle(active === "individual")}>
         Individual Trajectories
       </Link>
-      <Link
-        href="/settling-curve/overview"
-        style={tabStyle(active === "overview")}
-      >
-        Distribution Overview
-      </Link>
-      <Link
-        href="/settling-curve/coverage"
-        style={tabStyle(active === "coverage")}
-      >
-        Epistemic Coverage
-      </Link>
+      {/* Distribution Overview and Epistemic Coverage are Lab pages (AUDIT.md §B):
+          reachable from the ⚗ Lab menu with the admin session, not from this bar. */}
       {/* B9-3: Law Settler Curve folded in as a section of the settling-curve suite.
           Also remains a standalone Discover nav item at /law-settler. */}
       <Link

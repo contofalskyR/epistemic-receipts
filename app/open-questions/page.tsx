@@ -127,8 +127,8 @@ export default async function OpenQuestionsPage() {
         <Link href="/settling-curve" className="hover:text-amber-400 transition-colors">
           Browse all trajectories →
         </Link>
-        <Link href="/feed" className="hover:text-amber-400 transition-colors">
-          What&apos;s new →
+        <Link href="/split-ledger" className="hover:text-amber-400 transition-colors">
+          Split ledger →
         </Link>
         <Link href="/start-here" className="hover:text-amber-400 transition-colors">
           Start here →

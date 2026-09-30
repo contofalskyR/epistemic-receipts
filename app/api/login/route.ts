@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { isAdminRequest } from "@/lib/adminAuth";
 
 const rateLimitMap = new Map<string, number[]>();
 
@@ -14,6 +15,16 @@ function isRateLimited(ip: string): boolean {
 
 function sha256Hex(value: string): string {
   return crypto.createHash("sha256").update(value).digest("hex");
+}
+
+// GET /api/login — does this request carry the admin session? It drives the
+// ⚗ Lab nav group (app/components/Nav.tsx), which renders only for that
+// session. The cookie is httpOnly, so the client cannot read it; this is the
+// one-bit probe (timing-safe compare in lib/adminAuth). Open in `next dev` like
+// every other gate. Reveals nothing the caller does not already hold.
+export async function GET(req: NextRequest) {
+  const admin = process.env.NODE_ENV === "development" || isAdminRequest(req);
+  return NextResponse.json({ admin }, { headers: { "Cache-Control": "no-store" } });
 }
 
 export async function POST(req: NextRequest) {

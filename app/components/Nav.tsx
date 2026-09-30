@@ -1,102 +1,98 @@
 "use client";
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
-import { IS_PUBLIC_EDITION, isPublicRoute } from "@/lib/publicEdition";
+import { usePathname } from "next/navigation";
+import { isPublicRoute } from "@/lib/publicEdition";
 
-// A desc may depend on the corpus figure ("1.76M"), which the layout derives
-// from the DB (lib/corpus.ts) and passes down — never a literal in this file.
-type NavItem = { href: string; label: string; desc?: string | ((claims: string) => string) };
-type ResolvedNavItem = { href: string; label: string; desc?: string };
+// ─── The front door ──────────────────────────────────────────────────────────
+// Six flat links + About (STATUS.md, locked 2026-09-30; AUDIT.md §D). Every
+// other public page is surfaced from the homepage and /settling-curve;
+// Methodology, Corrections and legal live in the footer (app/layout.tsx).
+type NavLink = { href: string; label: string };
 
-const GROUPS: { label: string; blurb: string; items: NavItem[]; lab?: boolean }[] = [
+const TOP_LINKS: NavLink[] = [
+  { href: "/settling-curve", label: "Settling Curve" },
+  { href: "/search", label: "Search" },
+  { href: "/opinions", label: "Opinions" },
+  { href: "/retraction-explorer", label: "Retractions" },
+  { href: "/split-ledger", label: "Split Ledger" },
+  { href: "/reversals", label: "Reversals" },
+];
+
+// ─── The Lab ─────────────────────────────────────────────────────────────────
+// One deployment: every page not on the public list (lib/publicEdition.ts) is
+// Lab. middleware.ts answers anonymous requests for them with the login gate,
+// and this group renders only once GET /api/login confirms the admin session —
+// so nav and middleware can never disagree about what is reachable.
+type LabSection = { label: string; items: NavLink[] };
+
+const LAB_SECTIONS: LabSection[] = [
   {
     label: "Explore",
-    blurb: "Browse the knowledge graph",
     items: [
-      { href: "/settling-curve", label: "Settling Curve", desc: "How a claim settled — or unraveled — over time" },
-      { href: "/search", label: "Search", desc: (claims) => `Full-text + semantic across ${claims} claims` },
-      { href: "/trajectories", label: "Trajectory Encyclopedia" },
+      { href: "/claims", label: "Claims" },
+      { href: "/topics", label: "Topics" },
       { href: "/fields", label: "Topic Taxonomies" },
       { href: "/prereq-graph", label: "Evidence Chains" },
+      { href: "/settling-curve/coverage", label: "Coverage" },
+      { href: "/settling-curve/overview", label: "Overview" },
     ],
   },
   {
     label: "Analyze",
-    blurb: "Quantitative views & politics",
     items: [
-      { href: "/analysis/settling-rate", label: "Settling Rate", desc: "How fast knowledge settles, by decade and over time" },
-      { href: "/congress-trades", label: "Congress Trades", desc: "Legislator trades vs. their voting record" },
+      { href: "/analysis/settling-rate", label: "Settling Rate" },
+      { href: "/congress-trades", label: "Congress Trades" },
       { href: "/votes", label: "Browse Votes" },
       { href: "/members", label: "Members" },
       { href: "/financial", label: "Financial" },
+      { href: "/analysis/topics", label: "Topic Trends" },
+      { href: "/analysis/votes", label: "Vote Analysis" },
+      { href: "/analysis/ideology", label: "Ideology (DW-NOMINATE)" },
+      { href: "/analysis/representation", label: "Representation" },
+      { href: "/analysis/retraction-lag", label: "Retraction Lag" },
+      { href: "/stats", label: "Statistics" },
+      { href: "/stats/media-coverage", label: "Media Coverage" },
+      { href: "/statistics", label: "Statistical Methods" },
     ],
   },
   {
     label: "Discover",
-    blurb: "Flagship destinations",
     items: [
-      { href: "/retraction-explorer", label: "Retraction Explorer", desc: "26k+ retractions and who still cites them" },
-      { href: "/meta-edges", label: "Suppression & Amplification", desc: "Documented actions on evidence — who buried, boosted, or labeled it" },
-      { href: "/corrections", label: "Corrections", desc: "Our failures, documented — plus a form to flag anything we got wrong" },
-      { href: "/opinions", label: "Court Opinions" },
-      { href: "/start-here", label: "Start Here", desc: "Curated trajectories, stories, and key entry points — new? begin here" },
-      { href: "/stories", label: "Stories", desc: "Editorial narratives tracing specific claims through the epistemic graph" },
-      { href: "/reversals", label: "Court Reversals", desc: "Landmark doctrines settled by one ruling, overruled by another" },
-      { href: "/law-settler", label: "Law Settler Curve", desc: "How legal doctrine settles and reverses — traced through landmark Supreme Court decisions" },
-      { href: "/open-questions", label: "Open Questions", desc: "The 50 longest-dormant contested claims in the observatory" },
-      { href: "/split-ledger", label: "Split Ledger", desc: "Claims where expert and institutional communities have diverged" },
+      { href: "/meta-edges", label: "Suppression & Amplification" },
+      { href: "/retraction-wall", label: "Retraction Wall" },
+      { href: "/retractions", label: "Retraction Feeds" },
     ],
   },
   {
     label: "Research",
-    blurb: "Data sources & reference",
     items: [
-      { href: "/feed", label: "What's New", desc: "Latest additions to the graph" },
-      { href: "/sources", label: "Sources", desc: "Provenance & methodology for every data pipeline" },
+      { href: "/feed", label: "What's New" },
       { href: "/pipelines", label: "Pipelines" },
-      { href: "/glossary", label: "Glossary" },
-    ],
-  },
-  {
-    label: "Lab",
-    blurb: "In development — rough edges expected",
-    lab: true,
-    items: [
       { href: "/globe", label: "Globe" },
-      { href: "/claims", label: "Claims" },
-      { href: "/topics", label: "Topics" },
       { href: "/historical-events", label: "Events" },
-      { href: "/books", label: "Books" },
-      { href: "/stats/media-coverage", label: "Media Coverage" },
-      { href: "/legislation", label: "Legislation", desc: "Search US and global legislation — bills, acts, and regulatory history" },
-      { href: "/analysis/topics", label: "Topic Trends" },
-      { href: "/analysis/votes", label: "Vote Analysis" },
-      { href: "/analysis/ideology", label: "Ideology (DW-NOMINATE)", desc: "DW-NOMINATE scores by Congress — caucus scatter and party distributions" },
-      { href: "/stats", label: "Statistics" },
-      { href: "/analysis/representation", label: "Representation" },
-      { href: "/analysis/retraction-lag", label: "Retraction Lag" },
-      { href: "/retraction-wall", label: "Retraction Wall" },
+      { href: "/legislation", label: "Legislation" },
       { href: "/drug-arc", label: "Drug Arc" },
+      { href: "/books", label: "Books" },
     ],
   },
 ];
 
-function Dropdown({
-  label,
-  blurb,
-  items,
+// A Lab link that has since been published belongs in TOP_LINKS or on a page,
+// not here — keep the group honest by construction.
+const LAB_VISIBLE: LabSection[] = LAB_SECTIONS.map((s) => ({
+  ...s,
+  items: s.items.filter((i) => !isPublicRoute(i.href)),
+})).filter((s) => s.items.length > 0);
+
+function LabDropdown({
   open,
   onOpen,
   onClose,
-  lab = false,
 }: {
-  label: string;
-  blurb: string;
-  items: ResolvedNavItem[];
   open: boolean;
   onOpen: () => void;
   onClose: () => void;
-  lab?: boolean;
 }) {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -114,86 +110,81 @@ function Dropdown({
       <button
         type="button"
         onClick={() => (open ? onClose() : onOpen())}
-        className={`transition-colors ${open
-          ? lab ? "text-amber-400" : "text-white"
-          : lab ? "text-amber-600 hover:text-amber-400" : "text-gray-400 hover:text-white"
-        }`}
+        className={`transition-colors ${open ? "text-amber-400" : "text-amber-600 hover:text-amber-400"}`}
         aria-haspopup="true"
         aria-expanded={open}
       >
-        {lab && <span className="mr-1 text-[10px]">⚗</span>}
-        {label} <span className={`text-xs ${lab ? "text-amber-800" : "text-gray-600"}`}>▾</span>
+        <span className="mr-1 text-[10px]">⚗</span>
+        Lab <span className="text-xs text-amber-800">▾</span>
       </button>
       {open && (
-        <div className={`absolute left-0 top-full z-50 mt-1 w-72 rounded-lg border py-2 shadow-2xl ${
-          lab
-            ? "border-amber-900/50 bg-gray-950"
-            : "border-gray-700 bg-gray-900"
-        }`}>
-          <div className={`px-4 pb-2 mb-1 border-b ${lab ? "border-amber-900/30" : "border-gray-800"}`}>
-            <span className={`text-[10px] font-mono uppercase tracking-widest ${lab ? "text-amber-700" : "text-gray-500"}`}>{blurb}</span>
+        <div className="absolute right-0 top-full z-50 mt-1 w-[40rem] max-w-[90vw] rounded-lg border border-amber-900/50 bg-gray-950 py-3 shadow-2xl">
+          <div className="px-4 pb-2 mb-1 border-b border-amber-900/30">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700">
+              In development — rough edges expected · admin session only
+            </span>
           </div>
-          {lab && (
-            <div className="px-4 py-1.5 mb-1">
-              <span className="text-[10px] text-amber-700/70">Pages below are works-in-progress. Links work; polish does not.</span>
-            </div>
-          )}
-          {items.map((i) => (
-            <Link
-              key={i.href}
-              href={i.href}
-              onClick={onClose}
-              className={`block px-4 py-1.5 transition-colors group ${lab ? "hover:bg-amber-950/30" : "hover:bg-gray-800"}`}
-            >
-              <span className={`block text-sm group-hover:text-white ${lab ? "text-amber-200/70" : "text-gray-200"}`}>{i.label}</span>
-              {i.desc && (
-                <span className="block text-xs text-gray-500 leading-snug">{i.desc}</span>
-              )}
-            </Link>
-          ))}
+          <div className="grid grid-cols-2 gap-x-6 px-2 sm:grid-cols-4">
+            {LAB_VISIBLE.map((s) => (
+              <div key={s.label} className="py-1">
+                <div className="px-2 pb-1 text-[10px] font-mono uppercase tracking-widest text-gray-500">{s.label}</div>
+                {s.items.map((i) => (
+                  <Link
+                    key={i.href}
+                    href={i.href}
+                    onClick={onClose}
+                    className="block rounded px-2 py-1 text-[13px] text-amber-200/70 transition-colors hover:bg-amber-950/30 hover:text-white"
+                  >
+                    {i.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
   );
 }
 
-// On the public edition the ⚗ Lab group is hidden entirely and every item is
-// checked against the PUBLIC_ROUTES allowlist, so nav and middleware can never
-// disagree about what is reachable. (lib/publicEdition.ts)
-const VISIBLE_GROUPS = IS_PUBLIC_EDITION
-  ? GROUPS.filter((g) => !g.lab)
-      .map((g) => ({ ...g, items: g.items.filter((i) => isPublicRoute(i.href)) }))
-      .filter((g) => g.items.length > 0)
-  : GROUPS;
+/**
+ * Is this browser holding the admin session? The cookie is httpOnly, so ask
+ * GET /api/login (one bit, no DB). Defaults to "no" — the Lab group is hidden
+ * until the probe says otherwise, never the other way round.
+ */
+function useIsAdmin(): boolean {
+  const [admin, setAdmin] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/login", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : { admin: false }))
+      .then((d) => { if (!cancelled) setAdmin(d?.admin === true); })
+      .catch(() => { if (!cancelled) setAdmin(false); });
+    return () => { cancelled = true; };
+    // Re-probe on navigation so logging in at /login shows the group on the next page.
+  }, [pathname]);
+  return admin;
+}
 
 /** `claimsCompact` is the derived corpus figure ("1.76M") from app/layout.tsx. */
 export default function Nav({ claimsCompact }: { claimsCompact: string }) {
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [labOpen, setLabOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
-
-  const groups = useMemo(
-    () =>
-      VISIBLE_GROUPS.map((g) => ({
-        ...g,
-        items: g.items.map(
-          (i): ResolvedNavItem => ({ ...i, desc: typeof i.desc === "function" ? i.desc(claimsCompact) : i.desc }),
-        ),
-      })),
-    [claimsCompact],
-  );
+  const isAdmin = useIsAdmin();
 
   useEffect(() => {
     function onDown(e: MouseEvent) {
       if (e.button !== 0) return; // ignore right-click / middle-click
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setOpenGroup(null);
+        setLabOpen(false);
         setMobileOpen(false);
       }
     }
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        setOpenGroup(null);
+        setLabOpen(false);
         setMobileOpen(false);
       }
     }
@@ -224,27 +215,18 @@ export default function Nav({ claimsCompact }: { claimsCompact: string }) {
         <Link href="/" className="font-semibold text-white">
           Epistemic Receipts
         </Link>
-        {groups.map((g) => (
-          <Dropdown
-            key={g.label}
-            label={g.label}
-            blurb={g.blurb}
-            items={g.items}
-            lab={g.lab}
-            open={openGroup === g.label}
-            onOpen={() => setOpenGroup(g.label)}
-            onClose={() =>
-              setOpenGroup((prev) => (prev === g.label ? null : prev))
-            }
-          />
+        {TOP_LINKS.map((l) => (
+          <Link key={l.href} href={l.href} className="text-gray-400 hover:text-white transition-colors">
+            {l.label}
+          </Link>
         ))}
-        <Link
-          href="/about"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
+        <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
           About
         </Link>
         <div className="flex-1" />
+        {isAdmin && (
+          <LabDropdown open={labOpen} onOpen={() => setLabOpen(true)} onClose={() => setLabOpen(false)} />
+        )}
         <Link
           href="/search"
           className="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-gray-900/70 px-3 py-1.5 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
@@ -277,24 +259,34 @@ export default function Nav({ claimsCompact }: { claimsCompact: string }) {
           >
             ⌕ Search {claimsCompact} claims
           </Link>
+          {TOP_LINKS.filter((l) => l.href !== "/search").map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 text-gray-300 hover:text-white transition-colors"
+            >
+              {l.label}
+            </Link>
+          ))}
           <Link
             href="/about"
             onClick={() => setMobileOpen(false)}
-            className="block py-2 mb-1 text-gray-200 hover:text-white font-medium transition-colors"
+            className="block py-2 text-gray-300 hover:text-white transition-colors"
           >
             About
           </Link>
-          {groups.map((g) => (
-            <div key={g.label} className="mt-3">
-              <div className={`text-xs uppercase tracking-wider py-1.5 ${g.lab ? "text-amber-700" : "text-gray-500"}`}>
-                {g.lab && "⚗ "}{g.label}
+          {isAdmin && LAB_VISIBLE.map((s) => (
+            <div key={s.label} className="mt-3">
+              <div className="text-xs uppercase tracking-wider py-1.5 text-amber-700">
+                ⚗ Lab · {s.label}
               </div>
-              {g.items.map((i) => (
+              {s.items.map((i) => (
                 <Link
                   key={i.href}
                   href={i.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`block py-1.5 pl-3 hover:text-white transition-colors ${g.lab ? "text-amber-700/60" : "text-gray-400"}`}
+                  className="block py-1.5 pl-3 text-amber-700/60 hover:text-white transition-colors"
                 >
                   {i.label}
                 </Link>

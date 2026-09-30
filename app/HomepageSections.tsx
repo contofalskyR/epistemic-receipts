@@ -61,7 +61,7 @@ const DOMAINS: Domain[] = [
   {
     name: "US Congress",
     emoji: "🏛️",
-    href: "/congress-trades",
+    href: "/topics/us-enacted-legislation",
     // congress_stock_act_v1 backs the "STOCK Act" chip; the tracker pipeline
     // is Congress.gov data like congress_v1.
     ingestedByKeys: ["congress_v1", "voteview_v1", "congress_bills_v1", "congress_bills_tracker_v1", "congress_stock_act_v1"],
@@ -72,7 +72,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Academic Literature",
     emoji: "📚",
-    href: "/fields",
+    href: "/topics/academic-literature",
     // Was mislabeled "Neuroscience": openalex_v1 is the whole cross-field
     // OpenAlex corpus, not a neuroscience set (AUDIT-PRELAUNCH-2026-07-06 §9).
     ingestedByKeys: ["openalex_v1", "nih_reporter_v1"],
@@ -83,7 +83,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Law & Courts",
     emoji: "⚖️",
-    href: "/law",
+    href: "/opinions",
     ingestedByKeys: [
       "courtlistener_scotus_v1",
       "courtlistener_circuits_v1",
@@ -96,7 +96,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Global Politics",
     emoji: "🌍",
-    href: "/search?q=politics",
+    href: "/topics/vdem",
     ingestedByKeys: ["vdem_v1", "who_gho_v1", "ofac_sdn_v1"],
     sourceTags: ["V-Dem", "WHO GHO", "OFAC SDN"],
     topBorder: "border-t-red-500",
@@ -105,7 +105,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Vaccines & Medicine",
     emoji: "💉",
-    href: "/medicine",
+    href: "/topics/medicine",
     ingestedByKeys: ["openfda_labels_v1", "drugsatfda_v1", "faers_normalized_drugs_v1"],
     sourceTags: ["openFDA", "Drugs@FDA", "FAERS"],
     topBorder: "border-t-sky-500",
@@ -114,7 +114,7 @@ const DOMAINS: Domain[] = [
   {
     name: "History",
     emoji: "📜",
-    href: "/history",
+    href: "/topics/nara-catalog",
     ingestedByKeys: ["nara_catalog_v1", "miller_center_v1", "frus_v1"],
     sourceTags: ["NARA", "Miller Center", "FRUS"],
     topBorder: "border-t-orange-500",
@@ -123,7 +123,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Astronomy & Space",
     emoji: "🔭",
-    href: "/astronomy",
+    href: "/topics/astronomy",
     ingestedByKeys: ["nasa_exoplanet_v1", "space_missions_v1"],
     sourceTags: ["NASA", "GCAT"],
     topBorder: "border-t-teal-500",
@@ -132,7 +132,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Chemistry & Physics",
     emoji: "🧪",
-    href: "/chemistry",
+    href: "/topics/chemistry",
     ingestedByKeys: ["chebi_v1", "pubchem_v1", "periodic_table_v1"],
     sourceTags: ["ChEBI", "PubChem", "IUPAC"],
     topBorder: "border-t-pink-500",
@@ -141,7 +141,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Economics",
     emoji: "📊",
-    href: "/economics",
+    href: "/topics/world-bank-indicators",
     ingestedByKeys: ["worldbank_v1", "fred_v1", "openfec_v1", "openfec_ie_v1"],
     sourceTags: ["World Bank", "FRED", "OpenFEC"],
     topBorder: "border-t-yellow-500",
@@ -195,7 +195,7 @@ const START_ITEMS: StartItem[] = [
     color: "#34d399",
     title: "Continents really do drift",
     desc: "Ridiculed in 1912, plate tectonics was settled science by 1968.",
-    href: "/search?q=plate+tectonics",
+    href: "/stories/continental-drift",
   },
   {
     category: "FRAUD",
@@ -205,11 +205,11 @@ const START_ITEMS: StartItem[] = [
     href: "/retraction-explorer",
   },
   {
-    category: "REPRESENTATION GAP",
+    category: "SPLIT",
     color: "#22d3ee",
-    title: "Senate votes vs. public opinion",
-    desc: "700k survey respondents vs. how delegation actually voted.",
-    href: "/congress-trades",
+    title: "Where experts and institutions disagree",
+    desc: "Claims settled in one ratifying community and still contested in another.",
+    href: "/split-ledger",
   },
 ];
 
@@ -283,10 +283,10 @@ function MovedTicker({ items }: { items: WhatsNewItem[] }) {
           </Link>
         ))}
         <Link
-          href="/feed"
+          href="/settling-curve"
           className="shrink-0 text-[13px] text-amber-400/80 transition-colors hover:text-amber-300"
         >
-          Full feed →
+          All settling curves →
         </Link>
       </div>
     </section>
@@ -414,10 +414,10 @@ function CorpusBand({
           Case studies
         </Link>
         <Link
-          href="/globe"
+          href="/sources"
           className="inline-flex items-baseline rounded-full border border-gray-800 bg-gray-900/50 px-3 py-1 text-[12.5px] text-gray-300 transition-colors hover:border-gray-600 hover:text-white"
         >
-          Globe
+          Sources
         </Link>
       </div>
     </section>

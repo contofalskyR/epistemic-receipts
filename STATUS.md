@@ -22,7 +22,7 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
   query, no literals. The 182 DEPRECATED uspto rows count (they are `deleted = false`); `/stats` and `/sources`
   say so. Default views hide them via `LIVE_CLAIM_WHERE`.
 - Lab serving = one deployment; non-public routes require the admin cookie; Lab dropdown only when logged in.
-  Retire the two-project `NEXT_PUBLIC_EDITION` scaffolding.
+  Two-project `NEXT_PUBLIC_EDITION` scaffolding retired 2026-09-30 (Phase 2); the env var is inert.
 - Top nav = Settling Curve · Search · Opinions · Retractions · Split Ledger · Reversals (+ About).
   Methodology / Corrections / legal in the footer.
 - The 33 taxonomies + `/fields` + `/statistics` move to Lab as one block.
@@ -97,10 +97,41 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - Found, left for later: `/communities` types "(~1.1M)" for the largest community (Phase 5 content);
         `app/api/pipelines/route.ts` (no in-app caller) still runs its own GROUP BY — Phase 3 deletion; ~11 inline
         copies of the correct not-DEPRECATED filter could be swept to `LIVE_CLAIM_WHERE` in Phase 3/4.
-- [ ] **Phase 2 — the Lab line** · nav to six links; Lab group behind admin cookie; `PUBLIC_ROUTES` edits
-      (taxonomy block, /analysis, /stats, /globe, /legislation, /drug-arc, /historical-events, /pipelines,
-      /meta-edges, /feed, /books; `DENY_EXACT` for /claims, /topics, /settling-curve/coverage|overview);
-      retarget homepage tiles; retire edition scaffolding
+- [x] **Phase 2 — the Lab line** · branch `fix/front-door-phase-2` · done 2026-09-30 · build green under
+      `NEXT_PUBLIC_EDITION=public` · tsc clean · 441 tests pass · PR: owner pushes the branch and opens it
+  - [x] `lib/publicEdition.ts`: EXACT `PUBLIC_ROUTES` (no prefix matching) + `PUBLIC_PATTERNS` for the five
+        dynamic pages (`/claims/[id]`, `/settling-curve/[id]`, `/topics/[slug]`, `/datasets/[tag]`,
+        `/embed/trajectory/[slug]`) + `DENY_EXACT` (/claims, /topics, /settling-curve/coverage|overview,
+        /datasets/snapshots) + `/claims/[id]/edit` pattern. Buckets from AUDIT.md §B.
+  - [x] `middleware.ts` (not renamed): every non-public page route → admin gate (redirect `/login?from=…`),
+        same response as /admin; `/login` stays open; APIs and file-extension paths untouched. Unknown paths get
+        the gate too (deny-by-default). `NEXT_PUBLIC_EDITION` scaffolding retired everywhere (middleware, robots,
+        sitemap, Nav, subscribe routes) — email subscribe is live again on the one deployment.
+  - [x] Nav = Settling Curve · Search · Opinions · Retractions · Split Ledger · Reversals · About; ⚗ Lab dropdown
+        (four sections) renders only after `GET /api/login` → `{ admin: true }` (new one-bit probe, timing-safe,
+        open in dev). Lab items self-filter through `isPublicRoute`.
+  - [x] homepage retargets: domain links → `/topics/<root-slug>` (academic-literature, nara-catalog, medicine,
+        chemistry, astronomy, vdem, us-enacted-legislation, world-bank-indicators) and `/opinions`; "Full feed" →
+        `/settling-curve`; "Globe" pill → `/sources`; start card → `/stories/continental-drift`; the
+        "Senate votes vs public opinion" card (→ /congress-trades, Lab) became a Split Ledger card.
+  - [x] public→Lab links removed: Fig. 1 "Full analysis" (→ /analysis/settling-rate) now → `/settling-curve`;
+        settling-curve tab bar lost the Overview/Coverage tabs; topic breadcrumbs to /topics and
+        /domains/economics are plain text; /search, /case-studies, /open-questions, /following, /start-here
+        links to /fields, /topics, /feed retargeted.
+  - [x] tests: `public-edition-routes.test.ts` rewritten (full route paths, comment-stripped hrefs, every
+        PUBLIC_ROUTES/DENY_EXACT entry must have a page, matcher rows); new `lab-gate.test.ts` runs the
+        middleware as production (40 cases). Sitemap: every list through `onlyPublic()`; Lab URLs removed.
+  - Deviations from AUDIT.md §B, owner to confirm: `/start-here` KEPT PUBLIC (audit: LAB) — /, /patterns,
+        /open-questions and the 404 page use it as the onboarding entry; `/docs/api` and `/datasets*` public
+        (Phase 0). Moved to Lab beyond the STATUS list, per the audit buckets:
+        /prereq-graph, /retraction-wall, /retractions, /congress-trades, /votes, /members, /financial,
+        /domains/[domain], /reader/[bookId], /fields, /statistics*.
+  - Known behaviour: anonymous requests for unknown paths redirect to /login rather than 404 (deny-by-default).
+  - Found, pre-existing, NOT touched: **`/sitemap.xml` is a 404 on production** (verified 2026-09-30) and has been
+        since commit 89a72f9 (2026-07-07) removed `app/sitemap.xml/route.ts` believing Next 16 emits an index for
+        `generateSitemaps()` — it does not; only `/sitemap/{static,topics,claims-N}.xml` exist, while robots.txt
+        advertises `/sitemap.xml`. Fix in Phase 3/4: an index route under a non-conflicting path (e.g.
+        `/sitemap-index.xml`) + robots pointer, or list the chunk URLs in robots.
 - [ ] **Phase 3 — delete & consolidate** · `/edges`, `/globe/lab` (port deep-time slider first),
       `/analysis/corpus` (port transition matrix first), five page-less `data.ts` dirs, ~25 uncalled API routes,
       two of three pipeline registries, six scripts still importing the Neon driver
@@ -118,4 +149,4 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Owner says "go" → Phase 2 (the Lab line).
+Owner says "go" → Phase 3 (delete & consolidate).
