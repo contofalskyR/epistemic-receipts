@@ -49,7 +49,7 @@ The baseline was better than most "vibe coded" projects: `.env.local` was never 
 - **Admin cookie is a static hash of ADMIN_TOKEN** with no server-side revocation — rotating the token invalidates all sessions; do that periodically and after any suspected leak.
 - **Topic subscribe has no double opt-in**: someone can subscribe an email they don't own (rate-limited, unsubscribe link included). Fine at small scale; add confirmation emails if it grows.
 - **CSP includes `unsafe-eval`/`unsafe-inline`** (needed by Next RSC streaming and the three.js globe). Acceptable; revisit with nonces if you ever handle sensitive user data.
-- **If you open-source the repo**: history is clean (verified), but the planning docs (CONSULTANT.md, ROADMAP.md, etc.) reveal infra details and a Telegram chat ID baked into two routes — consider trimming. Also delete the stray `scripts/ingest-loc-collections.ts.bak` and `scripts/scripts/` cruft.
+- **If you open-source the repo**: history is clean (verified), but the planning docs (docs/CONSULTANT.md, docs/ROADMAP.md, etc.) reveal infra details and a Telegram chat ID baked into two routes — consider trimming. Also delete the stray `scripts/ingest-loc-collections.ts.bak` and `scripts/scripts/` cruft.
 
 ## Verification performed
 

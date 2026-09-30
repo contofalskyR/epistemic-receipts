@@ -7,26 +7,14 @@ import { isPublicRoute, PUBLIC_ROUTES, DENY_EXACT } from "@/lib/publicEdition";
 // phase 2 (2026-09-30): one deployment, page routes deny-by-default against
 // an EXACT public list (lib/publicEdition.ts), Lab behind the admin session.
 //
-// Nav is safe by construction (the ⚗ Lab group renders only for the admin
-// session and filters itself through isPublicRoute), but hardcoded <Link>/<a>
-// hrefs in page bodies and app/layout.tsx are NOT filtered. A public page
-// linking into the Lab sends an anonymous visitor to the login gate — that is
-// how /methodology, footer-linked from every page, once shipped as a 404.
+// Links are guarded by tests/unit/link-integrity.test.ts (phase 4): every
+// href an anonymous visitor can render — pages, layouts, app/components/,
+// components/, lib/ — must stay public, and every href must exist. This file
+// keeps the list itself honest: each entry is a real page, the matcher is
+// exact, and the sitemap never advertises a Lab URL.
 
 const ROOT = path.resolve(__dirname, "../..");
 const APP = path.join(ROOT, "app");
-
-/** Routes intentionally absent from the public list that public pages may still
- *  reference. Adding one here is a decision — write the reason. */
-const LAB_ONLY: Record<string, string> = {
-  "/api": "not a page route (v1 API links from /methodology and /datasets)",
-  "/pricing": "commercial surface dark at launch (owner call 2026-07-24); /docs/api describes the tiers",
-};
-
-const labOnlyReason = (href: string): string | undefined => {
-  const hit = Object.keys(LAB_ONLY).find((p) => href === p || href.startsWith(p + "/"));
-  return hit ? LAB_ONLY[hit] : undefined;
-};
 
 function walk(dir: string, out: string[] = []): string[] {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -48,40 +36,6 @@ function owningRoute(file: string): string {
   return segs.length ? "/" + segs.join("/") : "/";
 }
 
-/** Commented-out code is not a link. */
-function stripComments(src: string): string {
-  return src
-    .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
-    .replace(/\/\*[\s\S]*?\*\//g, "")
-    .replace(/(^|[^:\\"'`])\/\/.*$/gm, "$1");
-}
-
-// Requires a closing delimiter, and excludes `$` — a dynamic template literal
-// (href={`/claims/${id}`}) has no statically-checkable target, so skip it.
-const HREF_RE = /href[=:]\s*\{?\s*["'`](\/[^"'`\s{}$]*)["'`]/g;
-
-describe("front door: no public page links to a route the Lab gate would intercept", () => {
-  const files = walk(APP).filter((f) => isPublicRoute(owningRoute(f)));
-
-  it("finds pages to check", () => {
-    expect(files.length).toBeGreaterThan(20);
-  });
-
-  const offenders: string[] = [];
-  for (const file of files) {
-    const src = stripComments(fs.readFileSync(file, "utf8"));
-    for (const m of src.matchAll(HREF_RE)) {
-      const href = m[1].split(/[?#]/)[0].replace(/\/$/, "") || "/";
-      if (isPublicRoute(href) || labOnlyReason(href)) continue;
-      offenders.push(`${path.relative(ROOT, file)} -> ${href}`);
-    }
-  }
-
-  it("has no link from a public page to a Lab route", () => {
-    expect(offenders).toEqual([]);
-  });
-});
-
 describe("front door: the sitemap never advertises a URL the Lab gate intercepts", () => {
   const src = fs.readFileSync(path.join(APP, "sitemap.ts"), "utf8");
 
@@ -98,7 +52,7 @@ describe("front door: the sitemap never advertises a URL the Lab gate intercepts
     const urls = [...src.matchAll(/\$\{SITE_URL\}(\/[^`"'$]*)`/g)]
       .map((m) => m[1].replace(/\/$/, "") || "/");
     expect(urls.length).toBeGreaterThan(10);
-    const dropped = urls.filter((u) => !isPublicRoute(u) && !labOnlyReason(u));
+    const dropped = urls.filter((u) => !isPublicRoute(u));
     expect(dropped).toEqual([]);
   });
 });

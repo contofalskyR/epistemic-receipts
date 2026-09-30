@@ -78,7 +78,7 @@ If rows exist under different tags → fix `lib/legislation-countries.ts` (same 
 `buildVoteAnalysis()` in `lib/voteAnalysis.ts` scans up to 500k MemberVote rows per revalidation. Precompute to JSON via a script + cron (pattern: `scripts/enrich-party-economic-response.ts` → `scripts/output/party-economic-response.json`), or wrap in `unstable_cache` with a long TTL. The loading.tsx from Part 1 is a stopgap, not the fix.
 
 ## Do NOT touch
-- `CONSULTANT.md`, `app/components/LinkViewer.tsx`, `app/api/proxy/reader/route.ts` — another session was editing these on 2026-07-03 (~01:26 BST); they are NOT part of this work.
+- `docs/CONSULTANT.md`, `app/components/LinkViewer.tsx`, `app/api/proxy/reader/route.ts` — another session was editing these on 2026-07-03 (~01:26 BST); they are NOT part of this work.
 - Security invariants listed in AGENTS.md (middleware deny-by-default, timing-safe comparisons, PUBLIC_WRITE_PATHS, etc.).
 
-When done, append a dated entry to CONSULTANT.md describing what you applied and the results of 3a–3d, per repo convention.
+When done, append a dated entry to docs/CONSULTANT.md describing what you applied and the results of 3a–3d, per repo convention.

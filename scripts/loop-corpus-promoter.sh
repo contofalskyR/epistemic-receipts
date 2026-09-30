@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Openalex promoter — perpetual launchd loop.
 #
-# Retargeted 2026-07-03 (CORPUS-PROMOTER-BULK-PLAN.md §5). Wave 1 bulk-promoted
+# Retargeted 2026-07-03 (docs/CORPUS-PROMOTER-BULK-PLAN.md §5). Wave 1 bulk-promoted
 # 205,679 vote/FDA claims, wave 2 curved 18,280 retractions, and the
 # completeness reclassification (lib/corpus-completeness.ts) removed born-
 # settled/born-recorded pipelines from the queue. What remains for the LLM is

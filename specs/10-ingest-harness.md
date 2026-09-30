@@ -25,7 +25,7 @@ New module `lib/ingest/`:
 Port them to `pipelines/<tag>.ts` (new dir) using the harness. Old scripts move to `scripts/legacy/` untouched. Behavior must be identical: run against staging, diff row counts and 20 sampled records against the legacy script's output.
 
 ## Migration checklist deliverable
-`specs/10-migration-checklist.md`: table of remaining active pipelines (from AGENTS.md registry + ROADMAP.md), each with fetch archetype and est. effort. Rule going forward: new pipelines MUST use the harness; legacy pipelines migrate opportunistically when they next need a re-run (the partial-run backlog — Hungary, Slovenia, Czech, Latvia, MeSH — are the natural next candidates).
+`specs/10-migration-checklist.md`: table of remaining active pipelines (from AGENTS.md registry + docs/ROADMAP.md), each with fetch archetype and est. effort. Rule going forward: new pipelines MUST use the harness; legacy pipelines migrate opportunistically when they next need a re-run (the partial-run backlog — Hungary, Slovenia, Czech, Latvia, MeSH — are the natural next candidates).
 
 ## Out of scope
 Rewriting >3 pipelines. Touching curated/editorial scripts (`add-*.ts`, case-study scripts). New data sources. Changing any schema.

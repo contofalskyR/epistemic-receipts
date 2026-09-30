@@ -120,37 +120,39 @@ Also ≥4/4 without a slot: `/open-questions`, `/canon`, `/patterns`, `/case-stu
 
 ## E. Doc pile
 
-None of `DESIGN-*`, `REVIEW-*`, `NEXT-SESSION`, `SHIP-BRIEF`, `STRANGER-TEST` ever existed in git history. Near-matches: `SECURITY-REVIEW-2026-06-12.md`, `HOMEPAGE-REDESIGN-PLAN.md`, `HANDOFF-PRELAUNCH-FIXES.md`, `specs/HANDOFF-OPENCLAW.md`, `docs/review-2026-06-09.md`, `CONSULTANT.md`. Root pile, first 20 lines only (★ = referenced by AGENTS/CLAUDE/README/specs/code):
+*(Consolidated in front door phase 4, 2026-09-30: the paths below were rewritten to where each file went — referenced docs to `docs/`, the rest to `docs/archive/` with `docs/archive/README.md` as the index. `STATUS.md` § Docs is the current map.)*
 
-- `ARCHIVES.md` — declassified-archive catalogue
-- `AUDIT-2026-05-21.md`, `AUDIT-PRELAUNCH-2026-07-06.md`, `AUDIT-WHITEPAPER-GAP-2026-07-03.md` — past audits
-- `B7-REPORT.md` — Build Brief 7 report
-- `CHECKLIST-2026-07-08.md` — owner's what's-left list
-- `chemistry-taxonomy-build-prompt.md`, `statistics-taxonomy-build-prompt-v2.md`, `TAXONOMY-META-PROMPT.md` — prompts that generated the taxonomy pages
-- ★ `CONSULTANT.md` (4,830 lines) — architectural memory; the de facto pile
-- ★ `CORPUS-PROMOTER-BULK-PLAN.md` — backfill plan
-- `DUPLICATE-TRAJECTORIES-2026-07-06.md` — generated duplicate report
-- ★ `epistemic-receipts-marketing.md` — positioning draft
-- `fable-cover-prompt.md` — AI prompt with pasted diagnostics
-- `HANDOFF-PRELAUNCH-FIXES.md` — shipped 2026-07-10
-- `HARD_FACTS_DOMAINS.md` — domain list
-- `HISTORY.md` — build decisions and dead ends
-- `HOMEPAGE-REDESIGN-PLAN.md` — homepage plan
-- `LAUNCH-PLAN-2026-07-24.md` — launch source of truth
-- `MATERIAL-LOG.md`, `MATERIAL-QUEUE.md` — orchestrator log/queue
-- `NARA-ROADMAP.md` — NARA roadmap; **plaintext API key at line 5**
-- ★ `ORDERING-SEMANTICS-2026-07-08.md` — claim-row ordering decision
-- `PIPELINE_QUEUE.md`, `TASK_QUEUE.md` — agent queues (May 2026)
-- `PITCH-COGSCI-SETTLING-CURVES.md` — pitch
-- `PREPUBLICATION-GAPS-2026-07-24.md`, `PUBLICATION-RUNBOOK-2026-07-22.md` — superseded by launch plan
-- `problem-solve.md` — north-star thesis
-- ★ `PUBLISH-CHECKLIST.md` — edition-flag checklist
-- `ROADMAP.md` — pipelines + monetization
-- `Robert Contofalsky - Epistemic Receipts (cleaned).md`, `WHITEPAPER.md` — whitepaper drafts
-- ★ `SCALING.md` — phased plan driving `specs/`
-- `scientific.md` — corpus-construction notes
-- `SECURITY-ASSESSMENT-2026-07-09.md`, ★ `SECURITY-REVIEW-2026-06-12.md` — security reviews
-- `substack-article-general.md`, `substack-article-technical.md` — article drafts
+None of `DESIGN-*`, `REVIEW-*`, `NEXT-SESSION`, `SHIP-BRIEF`, `STRANGER-TEST` ever existed in git history. Near-matches: `docs/SECURITY-REVIEW-2026-06-12.md`, `docs/archive/HOMEPAGE-REDESIGN-PLAN.md`, `docs/archive/HANDOFF-PRELAUNCH-FIXES.md`, `specs/HANDOFF-OPENCLAW.md`, `docs/review-2026-06-09.md`, `docs/CONSULTANT.md`. Root pile, first 20 lines only (★ = referenced by AGENTS/CLAUDE/README/specs/code):
+
+- `docs/archive/ARCHIVES.md` — declassified-archive catalogue
+- `docs/archive/AUDIT-2026-05-21.md`, `docs/archive/AUDIT-PRELAUNCH-2026-07-06.md`, `docs/archive/AUDIT-WHITEPAPER-GAP-2026-07-03.md` — past audits
+- `docs/archive/B7-REPORT.md` — Build Brief 7 report
+- `docs/archive/CHECKLIST-2026-07-08.md` — owner's what's-left list
+- `docs/archive/chemistry-taxonomy-build-prompt.md`, `docs/archive/statistics-taxonomy-build-prompt-v2.md`, `docs/archive/TAXONOMY-META-PROMPT.md` — prompts that generated the taxonomy pages
+- ★ `docs/CONSULTANT.md` (4,830 lines) — architectural memory; the de facto pile
+- ★ `docs/CORPUS-PROMOTER-BULK-PLAN.md` — backfill plan
+- `docs/archive/DUPLICATE-TRAJECTORIES-2026-07-06.md` — generated duplicate report
+- ★ `docs/epistemic-receipts-marketing.md` — positioning draft
+- `docs/archive/fable-cover-prompt.md` — AI prompt with pasted diagnostics
+- `docs/archive/HANDOFF-PRELAUNCH-FIXES.md` — shipped 2026-07-10
+- `docs/HARD_FACTS_DOMAINS.md` — domain list
+- `docs/archive/HISTORY.md` — build decisions and dead ends
+- `docs/archive/HOMEPAGE-REDESIGN-PLAN.md` — homepage plan
+- `docs/archive/LAUNCH-PLAN-2026-07-24.md` — launch source of truth
+- `docs/archive/MATERIAL-LOG.md`, `docs/archive/MATERIAL-QUEUE.md` — orchestrator log/queue
+- `docs/archive/NARA-ROADMAP.md` — NARA roadmap; **plaintext API key at line 5**
+- ★ `docs/ORDERING-SEMANTICS-2026-07-08.md` — claim-row ordering decision
+- `docs/archive/PIPELINE_QUEUE.md`, `docs/TASK_QUEUE.md` — agent queues (May 2026)
+- `docs/archive/PITCH-COGSCI-SETTLING-CURVES.md` — pitch
+- `docs/archive/PREPUBLICATION-GAPS-2026-07-24.md`, `docs/archive/PUBLICATION-RUNBOOK-2026-07-22.md` — superseded by launch plan
+- `docs/archive/problem-solve.md` — north-star thesis
+- ★ `docs/PUBLISH-CHECKLIST.md` — edition-flag checklist
+- `docs/ROADMAP.md` — pipelines + monetization
+- `docs/archive/Robert Contofalsky - Epistemic Receipts (cleaned).md`, `docs/archive/WHITEPAPER.md` — whitepaper drafts
+- ★ `docs/SCALING.md` — phased plan driving `specs/`
+- `docs/archive/scientific.md` — corpus-construction notes
+- `docs/archive/SECURITY-ASSESSMENT-2026-07-09.md`, ★ `docs/SECURITY-REVIEW-2026-06-12.md` — security reviews
+- `docs/archive/substack-article-general.md`, `docs/archive/substack-article-technical.md` — article drafts
 - `docs/review-2026-06-09.md`, ★ `specs/HANDOFF-OPENCLAW.md` — repo review / orchestrator boot doc
 
 Other dirs (counts): docs 15, specs 31, briefs 37, briefings 21, marketing 3, memory 2, tracker 10, legal 6. Only 9 of 41 are referenced anywhere.
@@ -161,4 +163,4 @@ Other dirs (counts): docs 15, specs 31, briefs 37, briefings 21, marketing 3, me
 
 1. **A Lab split already exists — four times, undeployed, prefix-matched.** Nav `lab:true` only hides a dropdown on the public edition (all 15 items stay in `PUBLIC_ROUTES`, sitemapped, crawlable, home-linked); `ADMIN_PATHS` gates `/labs/*`; `DENY_EXACT` gates `/globe/lab`; `tests/unit/public-edition-routes.test.ts` keeps its own `LAB_ONLY` list. `isPublicRoute` matches by prefix (`lib/publicEdition.ts:116-118`), so dropping `/claims` or `/topics` 404s every canonical URL emitted by `/api/v1/verify`, `/api/mcp`, `EmbedButton` and the sitemap. Don't add a fifth mechanism or a `/lab/` prefix; move listing pages, not prefixes; verify with a production build under `NEXT_PUBLIC_EDITION=public` (every gate is bypassed in `next dev`).
 2. **The gate lives in a deprecated file and CI protects no links.** `middleware.ts` carries the security model and edition gate; Next 16 renames it `proxy.ts` (Node runtime), both files together fail the build, and `tests/integration.test.ts:26` imports `{ middleware }` — don't rename it in the restructure PR. The link-integrity test never runs in CI, skips `components/`, `lib/` and template hrefs, and treats `LAB_ONLY` hits as passes (`/docs/api` is already a public 404 while it's green). Path-bound config (`/embed` CSP override, oEmbed matchers, six cron paths, four permanent 308 redirects) breaks silently on directory moves; never move `/embed`, `/settling-curve/[id]`, `/claims/[id]`.
-3. **Content integrity is the real front-door problem.** The 33 taxonomies (~94k lines, ~4.2k "key facts", ~1.4k status stamps, 0 URLs) breach the sourcing rule by analogy and squat root slugs (`/history`, `/law`, `/physics`) — bucket them as one unit. Corpus counts have four query definitions plus hand-bumped "1.76M" literals; the "165k vs 0" is a query divergence, not a string. Freeze number edits during the restructure, then route every total through one helper. Also: a plaintext NARA API key is committed at `NARA-ROADMAP.md:5` (rotate, purge); `/datasets/[tag]` is dead on Next 16; `/account`, Stripe's success URL, always bounces to `/login`.
+3. **Content integrity is the real front-door problem.** The 33 taxonomies (~94k lines, ~4.2k "key facts", ~1.4k status stamps, 0 URLs) breach the sourcing rule by analogy and squat root slugs (`/history`, `/law`, `/physics`) — bucket them as one unit. Corpus counts have four query definitions plus hand-bumped "1.76M" literals; the "165k vs 0" is a query divergence, not a string. Freeze number edits during the restructure, then route every total through one helper. Also: a plaintext NARA API key is committed at `docs/archive/NARA-ROADMAP.md:5` (rotate, purge); `/datasets/[tag]` is dead on Next 16; `/account`, Stripe's success URL, always bounces to `/login`.

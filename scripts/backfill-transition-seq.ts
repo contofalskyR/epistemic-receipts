@@ -1,6 +1,6 @@
 /**
  * backfill-transition-seq.ts — one-time stamp of ClaimStatusHistory.seq
- * (ORDERING-SEMANTICS-2026-07-08.md, Option B as approved).
+ * (docs/ORDERING-SEMANTICS-2026-07-08.md, Option B as approved).
  *
  * Three passes, cheapest truth first:
  *

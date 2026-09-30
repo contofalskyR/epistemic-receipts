@@ -65,7 +65,7 @@ export default async function PipelinesPage() {
 
   // Raw internal tags (enrich:*, seed:*, one-off ids) are ops detail, not public
   // provenance. Development builds show the raw list; production shows an
-  // aggregate line and defers the catalogue to /sources. (PUBLISH-CHECKLIST.md)
+  // aggregate line and defers the catalogue to /sources. (docs/PUBLISH-CHECKLIST.md)
   const showRawUnregistered = process.env.NODE_ENV === "development";
   const unregisteredClaimTotal = unregisteredTags.reduce(
     (sum, t) => sum + getClaimCount(t),

@@ -88,7 +88,7 @@ interface CheckDef {
 }
 
 // seq (explicit chain order) is the primary sort once stamped; NULLS LAST keeps
-// unbackfilled legacy rows on the old date order (ORDERING-SEMANTICS-2026-07-08.md).
+// unbackfilled legacy rows on the old date order (docs/ORDERING-SEMANTICS-2026-07-08.md).
 const ORDERED_CTE = `
   WITH ordered AS (
     SELECT h."id", h."claimId", h."fromAxis", h."toAxis", h."occurredAt", h."community",

@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import fs from "node:fs";
 import path from "node:path";
 import { isKnownRoute, ROUTE_MANIFEST } from "@/lib/routeManifest";
 import { PUBLIC_ROUTES, DENY_EXACT } from "@/lib/publicEdition";
@@ -18,6 +19,23 @@ describe("route manifest", () => {
 
   it("knows every public route and every carve-out (they are real pages)", () => {
     for (const r of [...PUBLIC_ROUTES, ...DENY_EXACT]) expect(isKnownRoute(r), r).toBe(true);
+  });
+
+  // Freshness above already implies this (the manifest is rebuilt from the
+  // tree), but a deleted page should fail by name, not as a list diff.
+  it.each(ROUTE_MANIFEST.routes)("%s has its app/**/page.tsx", (r) => {
+    const dir = path.resolve(__dirname, "../../app", r === "/" ? "." : r.slice(1));
+    const file = ["page.tsx", "page.ts", "page.jsx", "page.js", "page.mdx"].map((f) => path.join(dir, f)).find((f) => fs.existsSync(f));
+    expect(file, `${r} → ${path.relative(path.resolve(__dirname, "../.."), dir)}/page.*`).toBeDefined();
+  });
+
+  it("every dynamic pattern comes from a page directory with a [segment]", () => {
+    const fresh = buildManifest(path.resolve(__dirname, "../../app"));
+    expect(ROUTE_MANIFEST.patterns.length).toBeGreaterThan(5);
+    for (const p of ROUTE_MANIFEST.patterns) {
+      expect(fresh.patterns, p).toContain(p);
+      expect(p, `${p} has no dynamic segment — it belongs in routes`).toMatch(/\[\^\/\]\+|\.\+/);
+    }
   });
 
   it.each(["/claims/cmq4mvgxk005rsapo2iqcpl03", "/settling-curve/h-pylori", "/topics/medicine", "/claims/abc/edit", "/embed/trajectory/h-pylori", "/votes/123", "/history", "/login", "/admin/feedback"])(

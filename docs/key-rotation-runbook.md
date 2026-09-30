@@ -82,7 +82,7 @@ env vars" blocked task.
       (`git filter-repo` / BFG) — optional but recommended since the repo may be
       shared. Rotation alone makes the leaked key useless, which is sufficient
       for security; history rewrite is hygiene.
-- [ ] Check off the rotation task in `TASK_QUEUE.md`.
+- [ ] Check off the rotation task in `docs/TASK_QUEUE.md`.
 
 ---
 
@@ -91,11 +91,11 @@ env vars" blocked task.
   `scripts/populate-bill-coverage.ts`; the key is now required from the
   environment. Authored this runbook.
 - **2026-06-09 (later):** Found the live NYT key was **still present** in the
-  working tree at `CONSULTANT.md:1653` (a seed-command example) — the earlier pass
+  working tree at `docs/CONSULTANT.md:1653` (a seed-command example) — the earlier pass
   scrubbed only the script. Redacted it. Also identified the "Azure" key as
   `COLOMBIA_SEARCH_KEY` (Azure Cognitive Search) and corrected the Azure section
   above, which had wrongly reported Azure as unused.
 
 The **dashboard rotation itself remains open** and is Robert's to perform.
-Because the leaked NYT key is in git history (and was in `CONSULTANT.md` until
+Because the leaked NYT key is in git history (and was in `docs/CONSULTANT.md` until
 today), it must still be treated as compromised and regenerated.

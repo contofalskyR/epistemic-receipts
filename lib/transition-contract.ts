@@ -16,7 +16,7 @@
  *   4. Deterministic id `${claimId}-${toAxis}-${YYYY-MM-DD}` + the DB's
  *      @@unique([claimId, toAxis, occurredAt]) make every write idempotent.
  *   5. reason is receipt-grade prose (length-guarded), written from the document.
- *   6. seq (ORDERING-SEMANTICS-2026-07-08.md): every insert assigns the row's
+ *   6. seq (docs/ORDERING-SEMANTICS-2026-07-08.md): every insert assigns the row's
  *      explicit per-claim order inside the insert transaction. Appends take the
  *      next position; entry-row prepends renumber the WHOLE claim in the same
  *      transaction (never a bare max+1 counter — NZ phase-2 prepends). Existing
@@ -28,7 +28,7 @@
  * not write unless opts.execute is true. Violations are returned, not thrown —
  * the caller decides whether a skip is fatal.
  *
- * See: CORPUS-PROMOTER-BULK-PLAN.md (deterministic ids, entry-amend semantics),
+ * See: docs/CORPUS-PROMOTER-BULK-PLAN.md (deterministic ids, entry-amend semantics),
  * briefings/00-INDEX.md (house rules), briefings/08-transition-event-pipelines.md.
  */
 

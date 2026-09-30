@@ -61,7 +61,7 @@ The non-legislative pipeline expansion mirrors the legislative exhaustiveness go
 - `rxnorm_v1` — NLM canonical drug names + relationships. In progress (target ~14,632). Script: `ingest-rxnorm.ts`
 - `chebi_v1` — EBI chemical ontology, ~62,000 compounds. In progress. Script: `ingest-chebi.ts`
 - `omim_v1` — OMIM phenotype entries, ~15,000. Partial (1,512 ingested, hit rate limit 2026-05-21). **OMIM_API_KEY provided ✅ — in .env.local.** Rate limit: ~250 requests per window; use 500ms delay. Resuming via cron 2026-05-22 02:15 EDT. Script: `ingest-omim.ts`
-- `openfda_labels_v1` — 258k FDA drug labels (partition-fixed). **BLOCKED** pending CONSULTANT.md decisions. Script: `ingest-openfda-labels.ts`
+- `openfda_labels_v1` — 258k FDA drug labels (partition-fixed). **BLOCKED** pending docs/CONSULTANT.md decisions. Script: `ingest-openfda-labels.ts`
 
 ## Science / Physics / History pipeline scripts (built 2026-05-21)
 
@@ -152,7 +152,7 @@ Last synced from DB: 2026-05-21. Total claims (excl. deprecated): ~336,900+ acro
 <!-- BEGIN:security-model -->
 # Security model (hardening pass 2026-06-12, commit c0a3430)
 
-The site launched as **public read-only**. A full audit + hardening pass was applied — see `SECURITY-REVIEW-2026-06-12.md` for findings. These rules are now invariants; do not undo them to "fix" a 401.
+The site launched as **public read-only**. A full audit + hardening pass was applied — see `docs/SECURITY-REVIEW-2026-06-12.md` for findings. These rules are now invariants; do not undo them to "fix" a 401.
 
 ## How auth works now
 - `SITE_PASSWORD` unset ⇒ site is publicly readable (this is the launch state). Setting it restores the old private gate. The old "503 when unset in production" behavior is gone.
@@ -176,7 +176,7 @@ The site launched as **public read-only**. A full audit + hardening pass was app
 <!-- BEGIN:build-specs -->
 # Build specs (scaling work)
 
-`SCALING.md` is the phased infrastructure/revenue plan. `specs/` contains execution-ready handoff specs for each build item (specs/README.md has the execution protocol, dependency order, and per-spec model guidance). If you are assigned scaling work: read specs/README.md first, work one spec per session on a `spec/<number>` branch, and never mark a spec done unless its Acceptance criteria all pass with verification output pasted in the PR.
+`docs/SCALING.md` is the phased infrastructure/revenue plan. `specs/` contains execution-ready handoff specs for each build item (specs/README.md has the execution protocol, dependency order, and per-spec model guidance). If you are assigned scaling work: read specs/README.md first, work one spec per session on a `spec/<number>` branch, and never mark a spec done unless its Acceptance criteria all pass with verification output pasted in the PR.
 <!-- END:build-specs -->
 
 <!-- BEGIN:agent-web-verification -->

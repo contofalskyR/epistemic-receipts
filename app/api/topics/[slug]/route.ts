@@ -141,7 +141,7 @@ export async function GET(
   ]);
 
   // Fallback: leaf topics like Neuroscience may have a Topic row but no ClaimTopic
-  // associations (population is a future task — see CONSULTANT.md). Surface real
+  // associations (population is a future task — see docs/CONSULTANT.md). Surface real
   // claims via a topic-name text match so the slug page isn't empty.
   let usedTextFallback = false;
   if (total === 0 && topic.children.length === 0) {

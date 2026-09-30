@@ -23,7 +23,7 @@
 //   - Claim.metadata.dataset = 'gbd_v1' with raw IHME fields preserved
 //   - HARD_FACT / EMPIRICAL / VERIFIED — same as WHO GHO
 //   - After ingest: link to who_gho_v1 by (country, year, cause keyword)
-//     via CORROBORATES MetaEdge — see CONSULTANT.md changelog 2026-06-07.
+//     via CORROBORATES MetaEdge — see docs/CONSULTANT.md changelog 2026-06-07.
 //
 // Running the file now exits non-zero with the blocked reason so CI cannot
 // silently treat it as a no-op success.

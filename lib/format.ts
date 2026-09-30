@@ -1,5 +1,5 @@
 /** Compact human count for derived stats — "1.76M", "412k", "9,340".
- *  House rule (epistemic-receipts-marketing.md): numbers on marketing surfaces
+ *  House rule (docs/epistemic-receipts-marketing.md): numbers on marketing surfaces
  *  are always derived from the database, never hand-written. */
 export function compactCount(n: number): string {
   if (n >= 1_000_000) {

@@ -68,7 +68,7 @@ function isSettled(axis: string): boolean {
 
 /**
  * Classify an ordered sequence of toAxis values (≥2 elements).
- * Input must already be sorted seq-first (see ORDERING-SEMANTICS-2026-07-08.md).
+ * Input must already be sorted seq-first (see docs/ORDERING-SEMANTICS-2026-07-08.md).
  */
 export function classifyCurveShape(axes: string[]): CurveShape {
   if (axes.length < 2) {

@@ -1,9 +1,9 @@
-# SCALING.md — Infrastructure & Revenue Build Plan
+# docs/SCALING.md — Infrastructure & Revenue Build Plan
 
-Companion to `ROADMAP.md` (pipelines/features) — this doc covers how the system and business scale.
+Companion to `docs/ROADMAP.md` (pipelines/features) — this doc covers how the system and business scale.
 Priority order: **AI/data licensing → institutional subscriptions → litigation research → audience.**
 
-The thesis: the scalable asset is not the site — it is the versioned, provenance-rich claim graph plus the audit discipline around it. The site is the demo; the API, snapshot exports, and eval sets are the product. This extends the wedge sequence already in `ROADMAP.md` (Alerts ✅ → Public API → `/ask`) and the investor-memo items (design partner first, `/verify`, retraction feed, methodology page).
+The thesis: the scalable asset is not the site — it is the versioned, provenance-rich claim graph plus the audit discipline around it. The site is the demo; the API, snapshot exports, and eval sets are the product. This extends the wedge sequence already in `docs/ROADMAP.md` (Alerts ✅ → Public API → `/ask`) and the investor-memo items (design partner first, `/verify`, retraction feed, methodology page).
 
 ---
 
@@ -31,9 +31,9 @@ Goal: a third party can consume the corpus, understand its provenance, and trust
 
 ## Phase 2 — API v1 + first revenue (months 2–5)
 
-**2.1 API productization.** Read-only, versioned `/v1` surface separate from the site's internal `/api/*`, with a deprecation policy: `/v1/claims`, `/v1/sources`, `/v1/edges`, `/v1/trajectories`, `/v1/search`, plus the two endpoints ROADMAP.md already identifies as the wedge: `/v1/retractions/since/{date}` (first paying customer: research-integrity desks, publishers) and `/v1/verify?statement=...` (nearest claims + provenance grade + contradicting edges + status timeline — RAG-with-receipts for AI builders). API keys per org, tiered rate limits (extend existing middleware rules), metered usage → Stripe metered billing. Do not build billing.
+**2.1 API productization.** Read-only, versioned `/v1` surface separate from the site's internal `/api/*`, with a deprecation policy: `/v1/claims`, `/v1/sources`, `/v1/edges`, `/v1/trajectories`, `/v1/search`, plus the two endpoints docs/ROADMAP.md already identifies as the wedge: `/v1/retractions/since/{date}` (first paying customer: research-integrity desks, publishers) and `/v1/verify?statement=...` (nearest claims + provenance grade + contradicting edges + status timeline — RAG-with-receipts for AI builders). API keys per org, tiered rate limits (extend existing middleware rules), metered usage → Stripe metered billing. Do not build billing.
 
-**2.2 Isolation + caching.** Serve `/v1` from a Neon read replica so a customer crawl never degrades the site; aggressive ETag caching — most reference data is effectively immutable. Free tier requires attribution; paid tiers by volume + bulk-export access ($99–299/mo self-serve per ROADMAP.md, custom for labs).
+**2.2 Isolation + caching.** Serve `/v1` from a Neon read replica so a customer crawl never degrades the site; aggressive ETag caching — most reference data is effectively immutable. Free tier requires attribution; paid tiers by volume + bulk-export access ($99–299/mo self-serve per docs/ROADMAP.md, custom for labs).
 
 **2.3 MCP server.** Expose `search_claims`, `get_claim_with_receipts`, `get_trajectory`, `state_of_knowledge(topic, date)` wrapping `/v1`. In 2026 this is the cheapest distribution channel to AI developers: agents grounding answers in your receipts is simultaneously the demo and the funnel.
 
@@ -48,7 +48,7 @@ Universities, libraries, newsrooms, think tanks at $5k–25k/yr; pharma MLR as t
 - Real accounts: Auth.js/Clerk for users (upgrade path from the anonymous `Profile` + email-subscription base that alerts already created); WorkOS for SSO/SAML when the first university asks. Keep admin-token auth for ops as-is.
 - Org entitlements: seats, feature gates (alert volume, saved collections, export quotas, API keys), IP-range access (still how library authentication works), COUNTER-style usage reports for renewals.
 - Researcher features that convert: citation export (BibTeX/CSL/Zotero translator — cheap, disproportionately loved), saved collections with notes, higher-volume topic alerts on the existing Resend infra.
-- Pharma MLR pilot (from ROADMAP.md): "prove this marketing claim is still supported and rests on nothing retracted" — needs retraction feed + `/verify` + case-study library first; one regulated customer here outweighs ten library deals.
+- Pharma MLR pilot (from docs/ROADMAP.md): "prove this marketing claim is still supported and rests on nothing retracted" — needs retraction feed + `/verify` + case-study library first; one regulated customer here outweighs ten library deals.
 - Sales motion: two or three discounted institutional pilots; scite.ai's library-mediated, FTE-priced playbook is the template.
 
 ## Phase 4 — Litigation research workbench (months 8+)
@@ -77,7 +77,7 @@ The editorial rules are the brand: reference-tier test gates every new bulk pipe
 
 ## What NOT to build
 
-User-generated claims (moderation cost destroys the audit guarantee). Verdicts or truth scores (no-verdict stance is the differentiation). A consumer fact-check app (donation-funded elsewhere for a reason). Self-built billing/auth/search where Stripe/Clerk/WorkOS/Meilisearch exist. A general `/ask` engine before the API has customers — ROADMAP.md is right to sequence it last.
+User-generated claims (moderation cost destroys the audit guarantee). Verdicts or truth scores (no-verdict stance is the differentiation). A consumer fact-check app (donation-funded elsewhere for a reason). Self-built billing/auth/search where Stripe/Clerk/WorkOS/Meilisearch exist. A general `/ask` engine before the API has customers — docs/ROADMAP.md is right to sequence it last.
 
 ## Sequencing summary
 

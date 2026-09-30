@@ -25,7 +25,7 @@
  *   npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-retraction-pub-dates.ts --execute
  *   npx dotenv-cli -e .env.local -- npx tsx scripts/backfill-retraction-pub-dates.ts --execute --refresh
  *
- * Then: wave 2 with --pub-date-key originalPublished (see CORPUS-PROMOTER-BULK-PLAN.md §4).
+ * Then: wave 2 with --pub-date-key originalPublished (see docs/CORPUS-PROMOTER-BULK-PLAN.md §4).
  */
 
 import "dotenv/config";

@@ -127,6 +127,6 @@ Once answered, the read-path swap (step 1) can proceed in a supervised session; 
   scope mapped, drop migration drafted-but-unapplied. **No irreversible action taken** — all 3
   (or 4) legacy columns intact, 210/35/8 query sites untouched, draft migration unapplied. To stop
   this blocked task from starving the autonomous queue every 5 hours, the worker's portion is being
-  marked complete in `TASK_QUEUE.md` (kept with the ⏸ marker and explicit "column drop stays
+  marked complete in `docs/TASK_QUEUE.md` (kept with the ⏸ marker and explicit "column drop stays
   unexecuted" text so the audit trail remains accurate). **The schema migration itself is NOT done
   and remains gated on Robert's two answers (§6) + a supervised read-path swap (§3 step 1).**

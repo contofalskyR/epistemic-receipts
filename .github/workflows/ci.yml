@@ -52,6 +52,15 @@ jobs:
       - name: Lint
         run: npx eslint .
 
+      - name: Unit tests
+        # tests/unit/** (vitest.config.ts) — no database. Front door guards
+        # run here (phase 4, 2026-09-30): link-integrity (no anonymous page
+        # links into the Lab; every href exists), lab-gate (middleware as
+        # production), public-edition-routes (every listed route is a page),
+        # route-manifest (committed manifest is fresh), corpus-literals (no
+        # typed corpus figure).
+        run: npm test
+
       - name: Validate Prisma schema
         run: npx prisma validate
 

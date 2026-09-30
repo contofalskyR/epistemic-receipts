@@ -6,7 +6,7 @@
 set -euo pipefail
 
 REPO="$HOME/Projects/epistemic-receipts"
-QUEUE="$REPO/TASK_QUEUE.md"
+QUEUE="$REPO/docs/TASK_QUEUE.md"
 LOG="$REPO/.worker.log"
 
 TASKS_DONE=0
@@ -47,10 +47,10 @@ while true; do
 TASK: $TASK
 
 Instructions:
-1. Read TASK_QUEUE.md and AGENTS.md for project context
-2. Check git log --oneline -20 and ls scripts/ BEFORE doing anything — if the task involves building a pipeline that already exists, skip the build and just run the dry-run instead; update the task description in TASK_QUEUE.md accordingly
+1. Read docs/TASK_QUEUE.md and AGENTS.md for project context
+2. Check git log --oneline -20 and ls scripts/ BEFORE doing anything — if the task involves building a pipeline that already exists, skip the build and just run the dry-run instead; update the task description in docs/TASK_QUEUE.md accordingly
 3. Complete the task above — read relevant files before editing anything
-3. When done, edit TASK_QUEUE.md: change '- [ ] $TASK' to '- [x] $TASK (completed $DATE)'
+3. When done, edit docs/TASK_QUEUE.md: change '- [ ] $TASK' to '- [x] $TASK (completed $DATE)'
 4. Move the completed line under '## Completed' at the bottom
 5. Git add and commit all changes with a clear message
 6. Output exactly this format at the end:

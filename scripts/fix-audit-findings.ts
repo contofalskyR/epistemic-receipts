@@ -210,7 +210,7 @@ async function fixMissingEntry() {
 // live-loop race). If deleting it leaves the chain strictly ordered, it is
 // removed (dumped first; requires --allow-row-delete).
 //
-// seq (ORDERING-SEMANTICS-2026-07-08.md) resolved the old tie problem: for
+// seq (docs/ORDERING-SEMANTICS-2026-07-08.md) resolved the old tie problem: for
 // fully-stamped claims, seq IS the order — pointers are rewritten from it
 // directly, no date-strictness needed. Unstamped claims still require strictly
 // increasing dates; same-date ties on unstamped rows are SKIPPED with a

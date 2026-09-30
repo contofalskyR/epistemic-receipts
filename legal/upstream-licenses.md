@@ -2,7 +2,7 @@
 
 # Epistemic Receipts — Upstream Licence Audit Table
 
-*Last updated: July 2026. Source: AGENTS.md active pipeline registry + science/medicine pipeline notes + ROADMAP.md shipped list. `lib/pipelines/registry.ts` did not exist at time of writing (Spec 11 in progress).*
+*Last updated: July 2026. Source: AGENTS.md active pipeline registry + science/medicine pipeline notes + docs/ROADMAP.md shipped list. `lib/pipelines/registry.ts` did not exist at time of writing (Spec 11 in progress).*
 
 *Where terms are uncertain: UNKNOWN. Never assume permissive.*
 
@@ -68,14 +68,14 @@
 
 ## Coverage summary
 
-- **Total pipeline tags enumerated:** 50 (from AGENTS.md active registry + science/medicine notes + ROADMAP.md shipped list, as of July 2026)
+- **Total pipeline tags enumerated:** 50 (from AGENTS.md active registry + science/medicine notes + docs/ROADMAP.md shipped list, as of July 2026)
 - **Clear permission (public domain or open licence):** 32
 - **Conditional (non-commercial restriction, share-alike, or partial unknown):** 9 — `un_sc_resolutions_v1`, `courtlistener_scotus_v1`, `courtlistener_circuits_v1`, `nato_official_texts_v1`, `rxnorm_v1`, `nuclear_tests_v1`, `who_essential_medicines_v1`, `volcanic_eruptions_v1`, `fred_v1`
 - **UNKNOWN (must verify before snapshot inclusion):** 7 — `iau_constellations_v1`, `iau_v1`, `retraction_watch_v1`, `solar_system_v1`, `bundestag_v1`, `space_missions_v1`, `stasi_v1`
 - **RESTRICTED (redistribution prohibited or blocked):** 2 — `icd11_v1` (CC BY-ND), `omim_v1` (proprietary)
 - **Retired:** 1 — `uspto_v1`
 
-*Note: Pipelines in the scripts directory that are not yet active in the DB (future planned pipelines from ROADMAP.md) are not included here. Each new pipeline must have a row added to this table before its data is included in any snapshot export.*
+*Note: Pipelines in the scripts directory that are not yet active in the DB (future planned pipelines from docs/ROADMAP.md) are not included here. Each new pipeline must have a row added to this table before its data is included in any snapshot export.*
 
 ---
 
