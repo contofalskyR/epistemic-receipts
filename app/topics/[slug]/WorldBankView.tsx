@@ -137,9 +137,10 @@ export default function WorldBankView({ topicName, topicTotal }: { topicName: st
     <div className="space-y-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-gray-500 flex-wrap">
-        <Link href="/topics" className="hover:text-gray-300 transition-colors">Topics</Link>
+        {/* /topics and /domains/[domain] are Lab pages — crumb roots stay text. */}
+        <span>Topics</span>
         <span className="text-gray-700">›</span>
-        <Link href="/domains/economics" className="hover:text-gray-300 transition-colors">Economics</Link>
+        <span>Economics</span>
         <span className="text-gray-700">›</span>
         <span className="text-gray-300">{topicName}</span>
       </nav>
@@ -161,9 +162,7 @@ export default function WorldBankView({ topicName, topicTotal }: { topicName: st
           <span className="text-gray-800">·</span>
           <span>{data.countriesTotal} countries</span>
           <span className="text-gray-800">·</span>
-          <Link href="/domains/economics" className="hover:text-gray-300 transition-colors">
-            Economics
-          </Link>
+          <span>Economics</span>
         </div>
       </div>
 

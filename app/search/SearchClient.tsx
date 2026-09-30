@@ -200,7 +200,7 @@ function MissingState({ query }: { query: string }) {
       )}
 
       <p className="text-xs text-gray-600 pt-2">
-        Try a broader term, or browse <Link href="/fields" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">Fields</Link> to explore what&apos;s already here.
+        Try a broader term, or browse the <Link href="/case-studies" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">curated case studies</Link> to explore what&apos;s already here.
       </p>
     </div>
   );
@@ -497,9 +497,9 @@ export default function SearchClient({ claimsCompact }: { claimsCompact: string 
             ))}
           </div>
           <p className="text-xs text-gray-600">
-            Or browse by discipline in{" "}
-            <Link href="/fields" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">
-              Fields
+            Or start from the{" "}
+            <Link href="/settling-curve" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">
+              settling curves
             </Link>
             .
           </p>

@@ -1,119 +1,98 @@
-// ─── Public-edition switch ────────────────────────────────────────────────────
-// One repo, one branch, two Vercel projects, one env var. (PUBLISH-CHECKLIST.md)
+// ─── The public route list ───────────────────────────────────────────────────
 //
-//   NEXT_PUBLIC_EDITION=public → the publishable site: page routes are
-//     deny-by-default against PUBLIC_ROUTES below, the ⚗ Lab nav group is
-//     hidden, robots.txt allows crawling.
-//   NEXT_PUBLIC_EDITION=lab    → robots.txt disallows everything (the lab
-//     stays out of search indexes); no page gating beyond ADMIN_PATHS.
-//   unset                      → today's behavior, completely unchanged.
+// One deployment (STATUS.md, locked 2026-09-30). Page routes are deny-by-default:
+// a request for anything not listed here needs the admin session — middleware.ts
+// answers with the admin gate (redirect to /login?from=…) — and the ⚗ Lab nav
+// group renders only for that session. There is no second Vercel project and no
+// NEXT_PUBLIC_EDITION flag any more; this list IS the front door.
 //
-// Setting up the public project:
-//   1. Vercel → New Project → same repo, production branch `main`.
-//   2. Env on the public project: NEXT_PUBLIC_EDITION=public, a READ-ONLY
-//      Postgres role's connection string as DATABASE_URL, no ALLOW_EDITS,
-//      no ADMIN_TOKEN (the public edition has no auth surface at all).
-//   3. Attach the custom domain to the public project.
-//   4. On this (lab) project: NEXT_PUBLIC_EDITION=lab, and once the public
-//      domain is live, set SITE_PASSWORD to take the lab private again.
+// Matching is EXACT. Listing pages are listed by path; pages with a dynamic
+// segment are listed as patterns. Never prefix-match: the old prefix matcher
+// meant "drop /claims" would have 404'd every /claims/<id> receipt — the
+// canonical URL emitted by /api/v1/verify, /api/mcp, EmbedButton and the sitemap.
 //
-// NEXT_PUBLIC_* is inlined at build time, so each Vercel project bakes its
-// own edition into both server (middleware) and client (Nav) bundles.
+// Buckets come from AUDIT.md §B (FRONT DOOR vs LAB). A new page ships publicly
+// only when it is added here — one reviewable diff. /api/* is not gated by this
+// list (reads are public; writes are admin-gated in middleware.ts).
 
-export const EDITION = process.env.NEXT_PUBLIC_EDITION ?? "";
-export const IS_PUBLIC_EDITION = EDITION === "public";
-export const IS_LAB_EDITION = EDITION === "lab";
-
-// Page prefixes reachable on the public edition. DENY-BY-DEFAULT: a new route
-// does not ship publicly until it is added here — the publish decision is one
-// reviewable diff. /api/* is not gated here (reads are public; writes are
-// already admin-gated in middleware).
 export const PUBLIC_ROUTES: string[] = [
   "/",
   "/about",
-  // /methodology is footer-linked from app/layout.tsx (i.e. from EVERY page) and
-  // is the sole render site for B15's measured error rate. /communities is
-  // plain public content, linked from /settling-curve, /split-ledger and
-  // /methodology, and carried in app/sitemap.ts. Both 404'd here until 07-24.
   "/methodology",
   "/communities",
   "/corrections",
-  "/case-studies",
-  // Explore
+  "/glossary",
+  "/feedback",
+  // Onboarding index. AUDIT.md §B buckets it LAB (duplicates home/stories), but
+  // /, /patterns, /open-questions and the 404 page all point newcomers here, and
+  // Phase 1 fixed its counts — kept public until Phase 3 folds it in.
+  "/start-here",
+  // The six top-nav destinations (AUDIT.md §D)
   "/settling-curve",
   "/search",
-  "/trajectories",
-  "/fields",
-  "/prereq-graph",
-  // Analyze
-  "/analysis",
-  "/congress-trades",
-  "/votes",
-  "/members",
-  "/financial",
-  // Discover
-  "/patterns",
-  "/canon",
-  "/retraction-explorer",
-  "/retraction-wall",
-  "/retractions",
-  "/meta-edges",
   "/opinions",
+  "/retraction-explorer",
+  "/split-ledger",
+  "/reversals",
+  // Receipt surfaces surfaced from the homepage and /settling-curve
+  "/trajectories",
+  "/case-studies",
+  "/canon",
+  "/patterns",
   "/law-settler",
   "/open-questions",
-  "/split-ledger",
-  "/start-here",
   "/stories",
-  "/reversals",
-  // Research
-  "/feed",
+  "/stories/cfc-ozone-depletion",
+  "/stories/cold-fusion",
+  "/stories/continental-drift",
+  "/stories/dietary-fat-heart",
+  "/stories/h-pylori",
+  "/stories/semaglutide-glp1",
+  "/stories/smoking-lung-cancer",
+  "/stories/voting-rights-act-1965",
+  // Provenance
   "/sources",
   "/datasets",
-  "/pipelines",
-  "/glossary",
-  // API reference — linked from /, /start-here, /pricing, the sitemap and the
-  // v1 API's 401 message; it 404'd on the public edition until 2026-09-30.
+  // API reference — linked from /, the sitemap and the v1 API's 401 message
   "/docs/api",
-  // Graph browsing
-  "/claims",
-  "/topics",
-  "/domains",
-  "/historical-events",
-  "/globe",
-  "/books",
-  "/reader", // /reader/[bookId] — the index redirects to /books in next.config.ts
-  "/legislation",
-  "/drug-arc",
-  "/stats",
-  "/statistics",
-  "/feedback",
-  // Legal — footer-linked from every page; must resolve on the public edition
+  // Personal (anonymous-key, no auth): follows + bookmarks in one place (B12)
+  "/following",
+  // Legal — footer-linked from every page
   "/terms",
   "/privacy",
   "/license",
-  // Personal (anonymous-key, no auth): follows + bookmarks in one place (B12)
-  "/following",
-  // Embeds — publicly accessible iframes (no auth cookie required)
-  "/embed",
-  // Domain taxonomies (curated navigation aids — see /about)
-  "/anthropology", "/astronomy", "/biology", "/chemistry", "/communication",
-  "/computer-science", "/earth-sciences", "/economics", "/education",
-  "/engineering", "/environmental-science", "/finance", "/geology",
-  "/governance", "/history", "/ideologies", "/ip-law", "/law", "/linguistics",
-  "/logic", "/mathematics", "/medicine", "/neuroscience", "/pharmacology",
-  "/philosophy", "/physics", "/physiology", "/psychology", "/public-health",
-  "/security-studies", "/sociology", "/sports", "/tax-law",
 ];
 
-// Denials that would otherwise pass a prefix match above.
-const DENY_EXACT: string[] = ["/globe/lab"];
+// Pages with a dynamic segment. One pattern per page file; `[^/]+` is one segment.
+export const PUBLIC_PATTERNS: RegExp[] = [
+  /^\/claims\/[^/]+$/, // app/claims/[id] — the receipt. Never move (AUDIT.md §F.2).
+  /^\/settling-curve\/[^/]+$/, // app/settling-curve/[id] — trajectory permalink. Never move.
+  /^\/topics\/[^/]+$/, // app/topics/[slug] — topic claims; the /topics tree itself is Lab.
+  /^\/datasets\/[^/]+$/, // app/datasets/[tag] — provenance card.
+  /^\/embed\/trajectory\/[^/]+$/, // third-party iframes. Never move.
+];
+
+// Lab pages that a pattern above would otherwise admit, or listing pages whose
+// children are public while the listing itself is Lab (AUDIT.md §B).
+export const DENY_EXACT: string[] = [
+  "/claims", // 336k-row dump, superseded by /search
+  "/topics", // topic tree
+  "/settling-curve/coverage",
+  "/settling-curve/overview",
+  "/datasets/snapshots", // empty snapshot list
+];
 const DENY_PATTERNS: RegExp[] = [/^\/claims\/[^/]+\/edit(\/|$)/];
 
+/** Path only: no query, no hash, no trailing slash (except "/"). */
+function normalize(pathname: string): string {
+  const path = pathname.split(/[?#]/)[0];
+  return path.length > 1 ? path.replace(/\/+$/, "") : path || "/";
+}
+
 export function isPublicRoute(pathname: string): boolean {
-  if (DENY_EXACT.some((d) => pathname === d || pathname.startsWith(d + "/"))) return false;
-  if (DENY_PATTERNS.some((p) => p.test(pathname))) return false;
-  if (pathname === "/") return true;
-  return PUBLIC_ROUTES.some(
-    (p) => p !== "/" && (pathname === p || pathname.startsWith(p + "/"))
-  );
+  const p = normalize(pathname);
+  if (DENY_EXACT.includes(p)) return false;
+  if (DENY_PATTERNS.some((r) => r.test(p))) return false;
+  if (PUBLIC_ROUTES.includes(p)) return true;
+  return PUBLIC_PATTERNS.some((r) => r.test(p));
 }

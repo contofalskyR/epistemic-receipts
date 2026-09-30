@@ -440,7 +440,7 @@ function TopicSlugContent() {
   if (notFound) {
     return (
       <div className="space-y-4">
-        <Link href="/topics" className="text-xs text-gray-500 hover:text-white">← Topics</Link>
+        <Link href="/search" className="text-xs text-gray-500 hover:text-white">← Search</Link>
         <p className="text-gray-500">Topic not found.</p>
       </div>
     );
@@ -460,7 +460,8 @@ function TopicSlugContent() {
     <div className="space-y-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-gray-500 flex-wrap">
-        <Link href="/topics" className="hover:text-gray-300 transition-colors">Topics</Link>
+        {/* The topic tree (/topics) is a Lab page — crumb root stays text. */}
+        <span>Topics</span>
         <span className="text-gray-700">›</span>
         <Link href={`/domains/${topic.domain}`} className="hover:text-gray-300 transition-colors capitalize">
           {domainLabel}

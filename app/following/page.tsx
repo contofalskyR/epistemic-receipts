@@ -185,11 +185,7 @@ export default function FollowingPage() {
           </p>
           <p className="text-xs text-gray-600">
             Hit &ldquo;Follow&rdquo; on any claim, settling curve, or topic —
-            its dated moves will show up here and in your{" "}
-            <Link href="/feed" className="text-amber-400 hover:text-amber-300 underline underline-offset-2">
-              feed
-            </Link>
-            .
+            its dated moves will show up here.
           </p>
         </div>
       )}

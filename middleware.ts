@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { IS_PUBLIC_EDITION, isPublicRoute } from "@/lib/publicEdition";
+import { isPublicRoute } from "@/lib/publicEdition";
 
 // ─── Rate limiting ────────────────────────────────────────────────────────────
 // Best-effort in-memory rate limiting. Vercel Edge is stateless across instances,
@@ -173,21 +173,23 @@ export async function middleware(req: NextRequest) {
     });
   }
 
-  // ── Public edition: deny-by-default page gate (lib/publicEdition.ts) ──
-  // Active only when NEXT_PUBLIC_EDITION=public (the second Vercel project).
-  // API routes keep their own gates (reads public, writes admin below);
-  // paths with a file extension (robots.txt, assets) pass through.
-  if (
-    IS_PUBLIC_EDITION &&
-    !isDev &&
-    !pathname.startsWith("/api/") &&
-    !pathname.includes(".") &&
-    !isPublicRoute(pathname)
-  ) {
-    return new NextResponse("Not Found", {
-      status: 404,
-      headers: { "Content-Type": "text/plain" },
-    });
+  // ── The Lab gate: deny-by-default page routes (lib/publicEdition.ts) ──
+  // One deployment (STATUS.md, locked 2026-09-30): every page route that is
+  // not on the exact public list needs the admin session and gets the same
+  // gate as /admin — a redirect to /login?from=…. /login itself stays open so
+  // the owner can sign in; API routes keep their own gates (reads public,
+  // writes admin below); paths with a file extension (robots.txt, sitemap.xml,
+  // assets) pass through. Unknown paths hit this gate too: deny-by-default
+  // means "not listed" is indistinguishable from "does not exist" here.
+  const isPageRequest = !pathname.startsWith("/api/") && !pathname.includes(".");
+  if (!isDev && isPageRequest && pathname !== "/login" && !isPublicRoute(pathname)) {
+    if (!(await isAdminRequest(req))) {
+      const loginUrl = req.nextUrl.clone();
+      loginUrl.pathname = "/login";
+      loginUrl.search = "";
+      loginUrl.searchParams.set("from", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
   }
 
   // ── Admin-only areas (pages and APIs) ──
@@ -198,6 +200,7 @@ export async function middleware(req: NextRequest) {
       }
       const loginUrl = req.nextUrl.clone();
       loginUrl.pathname = "/login";
+      loginUrl.search = "";
       loginUrl.searchParams.set("from", pathname);
       return NextResponse.redirect(loginUrl);
     }

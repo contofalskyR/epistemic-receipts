@@ -36,11 +36,12 @@ export const DISCOVERY_HOOKS: DiscoveryHook[] = [
     href: "/settling-curve?t=hwang-woosuk-stem-cell-fraud-2006",
   },
   {
-    eyebrow: "REPRESENTATION GAP",
+    // Was "Senate votes vs. public opinion" → /analysis/representation, a Lab page.
+    eyebrow: "OPEN QUESTION",
     eyebrowColor: "text-sky-300",
-    title: "Senate votes vs. public opinion",
-    blurb: "700k survey respondents vs. how their delegation actually voted.",
-    href: "/analysis/representation",
+    title: "The longest-contested claims",
+    blurb: "Fifty claims stamped CONTESTED and left there — dormancy is information.",
+    href: "/open-questions",
   },
   {
     eyebrow: "RETRACTED",
@@ -50,10 +51,11 @@ export const DISCOVERY_HOOKS: DiscoveryHook[] = [
     href: "/retraction-explorer",
   },
   {
-    eyebrow: "FOLLOW THE MONEY",
+    // Was "Senators trading what they regulate" → /congress-trades, a Lab page.
+    eyebrow: "CANON",
     eyebrowColor: "text-blue-300",
-    title: "Senators trading what they regulate",
-    blurb: "STOCK Act disclosures lined up against the votes they cast.",
-    href: "/congress-trades",
+    title: "The most-cited papers, audited",
+    blurb: "Papers with 5,000+ citations, each carrying its epistemic status.",
+    href: "/canon",
   },
 ];

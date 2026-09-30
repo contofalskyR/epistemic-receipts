@@ -178,8 +178,8 @@ export default async function CaseStudiesPage() {
         <Link href="/settling-curve" className="hover:text-amber-400 transition-colors">
           Browse all trajectories →
         </Link>
-        <Link href="/topics" className="hover:text-amber-400 transition-colors">
-          Topic index →
+        <Link href="/split-ledger" className="hover:text-amber-400 transition-colors">
+          Split ledger →
         </Link>
       </footer>
     </div>

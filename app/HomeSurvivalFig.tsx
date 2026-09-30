@@ -300,11 +300,13 @@ export default function HomeSurvivalFig({
         Fig. 1 — the settling curve: share of tracked claims not yet settled, by years since each
         claim emerged. {kmSentence} Computed live from{" "}
         <span className="text-gray-500">{nLabel}</span> dated trajectories.{" "}
+        {/* /analysis/settling-rate (the full write-up) is a Lab page; the public
+            next step is the curves themselves. */}
         <Link
-          href="/analysis/settling-rate"
+          href="/settling-curve"
           className="text-gray-400 underline-offset-2 hover:text-gray-200 hover:underline"
         >
-          Full analysis →
+          Explore the trajectories →
         </Link>
       </figcaption>
     </figure>

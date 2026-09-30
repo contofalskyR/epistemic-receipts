@@ -1,16 +1,11 @@
 import type { MetadataRoute } from "next";
-import { IS_LAB_EDITION } from "@/lib/publicEdition";
 import { SITE_URL } from "@/lib/site";
 
-// Edition-aware robots (replaces the old static public/robots.txt):
-//   lab edition    → Disallow everything; the lab must never be indexed once
-//                    the public domain exists.
-//   public / unset → crawlable, with internal surfaces disallowed, pointing
-//                    crawlers at the pr-3 sitemap index (app/sitemap.ts).
+// One deployment: crawlable, with internal surfaces disallowed, pointing
+// crawlers at the sitemap index (app/sitemap.ts). Lab pages need no rule here —
+// middleware.ts answers anonymous requests for them with a redirect to /login,
+// which is disallowed, so nothing behind the gate can be indexed.
 export default function robots(): MetadataRoute.Robots {
-  if (IS_LAB_EDITION) {
-    return { rules: { userAgent: "*", disallow: "/" } };
-  }
   return {
     rules: {
       userAgent: "*",
