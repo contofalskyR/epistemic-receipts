@@ -1,7 +1,8 @@
 /**
  * Ownership enforcement tests for spec/31.
- * These test the auth guards on collection + alert routes by mocking
- * the auth() call and prisma. They verify that cross-user access is rejected.
+ * These test the auth guards on collection routes by mocking the auth() call
+ * and prisma. They verify that cross-user access is rejected. (The /api/alerts
+ * routes this file also covered were deleted in front door phase 0.)
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
@@ -22,11 +23,6 @@ vi.mock("@/lib/prisma", () => ({
     },
     collectionItem: {
       findUnique: vi.fn(),
-      delete: vi.fn(),
-      update: vi.fn(),
-    },
-    topicSubscription: {
-      findFirst: vi.fn(),
       delete: vi.fn(),
       update: vi.fn(),
     },
@@ -94,35 +90,5 @@ describe("Collections — ownership enforcement", () => {
       params: Promise.resolve({ id: "col1", claimId: "claim1" }),
     });
     expect(res.status).toBe(404);
-  });
-});
-
-describe("Alerts — ownership enforcement", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
-  it("GET /api/alerts returns 401 when not authenticated", async () => {
-    mockAuth.mockResolvedValue(null);
-    const { GET } = await import("@/app/api/alerts/route");
-    const res = await GET();
-    expect(res.status).toBe(401);
-  });
-
-  it("DELETE /api/alerts/[id] returns 404 for another user's alert", async () => {
-    mockAuth.mockResolvedValue({ user: { id: "user-A" } });
-    (prisma.topicSubscription.findFirst as ReturnType<typeof vi.fn>).mockResolvedValue(null);
-
-    const { DELETE } = await import("@/app/api/alerts/[id]/route");
-    const req = new NextRequest("http://localhost/api/alerts/alert1");
-    const res = await DELETE(req, { params: Promise.resolve({ id: "alert1" }) });
-    expect(res.status).toBe(404);
-
-    // Verify userId filter was applied
-    expect(prisma.topicSubscription.findFirst).toHaveBeenCalledWith(
-      expect.objectContaining({
-        where: expect.objectContaining({ userId: "user-A" }),
-      }),
-    );
   });
 });

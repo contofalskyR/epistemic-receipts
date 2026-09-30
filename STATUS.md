@@ -38,8 +38,15 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   do the same in ad-hoc scripts. `DATABASE_URL_READ` is optional (falls back to `DATABASE_URL`).
 - Read-only verification pattern (no writes, ever):
   `node -e 'require("dotenv").config({path:".env.local"}); const {Pool}=require("pg"); …pool.query("select …")'`.
-- `npm run build` = `prisma generate && next build`; it prerenders 288 pages against the live DB (reads only).
-  `scripts/` is excluded from `tsconfig.json`, so build/`tsc` never type-check it.
+- `npm run build` = `prisma generate && next build`; it prerenders 309 pages against the live DB (reads only).
+  **Locally, run it as `CIRCLE_NODE_TOTAL=2 npm run build`** (1 prerender worker, ~4 min, 0 timeouts — verified
+  2026-09-30). The default 9 workers saturate the OCI Postgres and the sitemap's deep-OFFSET claim chunks
+  (`app/sitemap.ts`, `claims-25..28`, ~37 s each in isolation) exceed Next's 60 s static-generation timeout →
+  "Failed to build /sitemap/[__metadata_id__]/route … after 3 attempts", exit 1. Two default-config runs failed
+  that way on 2026-09-30 with an unrelated diff; not a code problem. (`CIRCLE_NODE_TOTAL` is what Next's default
+  `experimental.cpus` reads — no config change needed.) Vercel builds fine as-is.
+  `scripts/` is excluded from `tsconfig.json`, so build/`tsc` never type-check it. After deleting routes, run the
+  build before `tsc --noEmit`: the stale generated `.next/types/validator.ts` otherwise reports phantom errors.
 - `gh` is not installed and git has no GitHub credential in this shell: agents commit locally, the owner pushes
   with `! git push -u origin <branch>` and opens the PR at
   `https://github.com/contofalskyR/epistemic-receipts/compare/main...<branch>?expand=1`.
@@ -50,13 +57,20 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 ## Phases
 
 - [x] **Phase -1 — pg driver** · branch `phase-minus-1/pg-driver` · PR #22 merged · build green · counts verified.
-- [ ] **Phase 0 — stop the bleeding** · branch `fix/front-door-phase-0` (awaiting "go")
-  - [ ] strip NARA key line from `NARA-ROADMAP.md`; give owner the `git filter-repo` purge command (owner runs it)
-  - [ ] `/datasets/[tag]`: `await params` (un-404s every card linked from /about, /methodology)
-  - [ ] delete redirect-shadowed pages + their API routes: `/stock-act`, `/foreign-legislation`, `/alerts`, `/bookmarks`;
-        move `/timeline` and `/reader` redirect stubs into `next.config.ts`; alert emails → `/following`
-  - [ ] add `/docs/api` to `PUBLIC_ROUTES`; hide "Collect" when there is no auth surface
-  - [ ] commit `AUDIT.md` + `STATUS.md`
+- [x] **Phase 0 — stop the bleeding** · branch `fix/front-door-phase-0` · done 2026-09-30 · build green · tsc clean ·
+      310 tests pass · PR: owner pushes the branch and opens it (see Environment facts)
+  - [x] strip NARA key from `NARA-ROADMAP.md` — it was also in `HISTORY.md`, `ROADMAP.md`, `TASK_QUEUE.md`; all four
+        now read `<redacted — set NARA_API_KEY in .env.local>`. Purge command was handed over in the Phase 0 chat
+        report, deliberately NOT in the PR (public repo). Owner runs it after rotating.
+  - [x] `/datasets/[tag]`: `await params` (un-404s every card linked from /about, /methodology)
+  - [x] delete redirect-shadowed pages + their API routes: `/stock-act`, `/foreign-legislation`, `/alerts`, `/bookmarks`
+        (`/api/bookmarks` kept — `hooks/useBookmarks` + `/following` use it); `/timeline` and `/reader` redirect stubs
+        moved into `next.config.ts` (exact sources; `/reader/[bookId]` untouched); alert emails → `/following`
+  - [x] add `/docs/api` to `PUBLIC_ROUTES`; "Collect" renders only once a session is confirmed (mount probe, fail closed)
+  - [x] commit `AUDIT.md` + `STATUS.md`
+  - Found on the way, left for Phase 3: `components/destinations/DestinationNav.tsx` is unmounted dead code (its
+    `/foreign-legislation` link was retargeted to `/legislation`); `/following` still has no TopicSubscription UI now
+    that `/api/alerts` is gone (the cron keeps sending; only the manage surface is missing).
 - [ ] **Phase 1 — honest numbers** · `corpusCount()` helper everywhere, delete 1.76M/1.7M+ literals;
       `/prereq-graph` header from the body's query + error state; `/api/corpus-stats` join fix;
       "N CURATED" label; topics/patterns/open-questions/retraction-wall filter alignment
@@ -75,8 +89,10 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 - [ ] `grep -c error /tmp/restore-rest.log` on the server → expect 0 (then the empty tables above were empty on Neon)
 - [ ] move `/var/lib/pgsql/dump/epistemic_receipts_backup.dump` (12 GB) off the root disk
-- [ ] rotate the NARA API key when the new one arrives; then run the purge command from the Phase 0 PR
+- [ ] rotate the NARA API key when the new one arrives; put it in `.env.local` as `NARA_API_KEY` (the script reads
+      that; no NARA var exists there today); then run the `git filter-repo` purge command from the Phase 0 chat report
+      (mirror clone → `--replace-text` → force-push; collaborators re-clone)
 
 ## Next action
 
-Owner says "go" → Phase 0.
+Owner says "go" → Phase 1.

@@ -105,7 +105,6 @@ const PUBLIC_WRITE_PATHS: RegExp[] = [
   // Every handler checks `await auth()` and object ownership itself; the
   // admin key is not the auth mechanism for these.
   /^\/api\/collections(\/|$)/, // researcher collections CRUD (session auth in-route)
-  /^\/api\/alerts(\/|$)/, // topic alert subscriptions CRUD (session auth in-route)
   /^\/api\/litigation(\/|$)/, // litigation matters CRUD/export (session + org membership in-route)
   // Stripe billing (F4, SECURITY-ASSESSMENT-2026-07-09 #5): session + org
   // membership enforced in-route — do NOT list these here without that check.

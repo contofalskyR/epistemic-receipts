@@ -229,7 +229,7 @@ export async function GET(request: Request) {
 
         for (const sub of subscribers) {
           const unsubUrl = `${SITE_BASE}/api/unsubscribe?token=${sub.unsubscribeToken}`;
-          const manageUrl = sub.userId ? `${SITE_BASE}/alerts` : null;
+          const manageUrl = sub.userId ? `${SITE_BASE}/following` : null;
           const searchUrl = `${SITE_BASE}/search?q=${encodeURIComponent(keyword)}`;
 
           const bodyLines = [

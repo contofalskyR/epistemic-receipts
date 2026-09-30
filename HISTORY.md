@@ -92,7 +92,7 @@ ALLOW_EDITS=true npx ts-node -r dotenv/config scripts/ingest-nara-catalog.ts \
 - **Gotcha:** model alias `haiku` (without provider prefix) is rejected by the allowlist. Must use full ID: `anthropic/claude-haiku-4-5`
 
 ### API keys
-- Key 1: `KSHVEuDXNd27xXkByehli5Eak8TvnKJi99Kiz7DK` (in `.env.local`)
+- Key 1: `<redacted — set NARA_API_KEY in .env.local>` (in `.env.local`)
 - Keys 2–3: register at Catalog_API@nara.gov (free, ~1 week turnaround)
 
 ---

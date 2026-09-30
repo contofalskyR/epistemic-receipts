@@ -224,7 +224,7 @@ Scripts exist for all; architectural review pending before full production runs.
 
 Full roadmap in **`NARA-ROADMAP.md`** (committed 2026-05-28). 73 RGs across 5 tiers. Erase rows there as each RG finishes.
 
-**API key:** `KSHVEuDXNd27xXkByehli5Eak8TvnKJi99Kiz7DK` | **Limit:** 10k calls/month
+**API key:** `<redacted — set NARA_API_KEY in .env.local>` | **Limit:** 10k calls/month
 **Script:** `scripts/ingest-nara-catalog.ts` — `--rg <N>` flag; `--full` for uncapped pagination
 
 | RG | Collection | Status |
