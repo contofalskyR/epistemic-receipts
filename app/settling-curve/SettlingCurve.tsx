@@ -87,6 +87,9 @@ function flagHref(claimId: string | null, t: Transition): string {
 
 interface TrajectoryListItem {
   id: string;
+  // true for hand-curated `trajectory:` claims; the API marks auto-generated
+  // entries false. Drives the header label, which used to count both as CURATED.
+  isCurated?: boolean;
   claim: string;
   domain?: string;
   era?: string;
@@ -393,6 +396,19 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
       return true;
     });
   }, [list, query, statusFilter, eraFilter, domainFilter]);
+
+  // Header label. The SSR list is curated-only; the background /api/trajectories
+  // fetch appends up to 5,000 auto-generated claims (most recently created
+  // first), so after it lands the old "N CURATED TRAJECTORIES" read 10,698 for
+  // 5,698 curated arcs. Say what is actually in the list.
+  const listLabel = useMemo(() => {
+    const curated = filteredList.filter((i) => i.isCurated !== false).length;
+    const auto = filteredList.length - curated;
+    const curatedPart = `${curated.toLocaleString("en-US")} CURATED TRAJECTORIES`;
+    return auto > 0
+      ? `${curatedPart} · ${auto.toLocaleString("en-US")} MOST RECENT AUTO-GENERATED`
+      : curatedPart;
+  }, [filteredList]);
 
   // Reset visible counts whenever filters change
   useEffect(() => {
@@ -1230,7 +1246,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
             dated, sourced transition. Open one to audit it.
           </p>
           <p className="font-mono mt-2" style={{ fontSize: 11, color: C.faint, letterSpacing: "0.05em" }}>
-            {listLoading ? "LOADING TRAJECTORIES…" : `${filteredList.length} CURATED TRAJECTORIES`}
+            {listLoading ? "LOADING TRAJECTORIES…" : listLabel}
           </p>
           <div className="mt-3">
             <EpistemicLegend label="Axis key:" />

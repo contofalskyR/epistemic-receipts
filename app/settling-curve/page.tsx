@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SettlingCurve from "./SettlingCurve";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
 import { prisma } from "@/lib/prisma";
+import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 
 // ISR: revalidate the curated trajectory list hourly so cold load shows real cards, not skeletons.
 export const revalidate = 3600;
@@ -52,11 +53,7 @@ export default async function SettlingCurvePage() {
   // without a client fetch round-trip. The client component still fetches the full
   // list (curated + auto) in the background for filter support.
   const curated = await prisma.claim.findMany({
-    where: {
-      deleted: false,
-      OR: [{ verificationStatus: null }, { verificationStatus: { not: "DEPRECATED" } }],
-      externalId: { startsWith: "trajectory:" },
-    },
+    where: { ...LIVE_CLAIM_WHERE, externalId: { startsWith: "trajectory:" } },
     select: {
       externalId: true,
       text: true,
@@ -75,6 +72,7 @@ export default async function SettlingCurvePage() {
     const first = sorted[0];
     return {
       id: c.externalId!.replace(/^trajectory:/, ""),
+      isCurated: true,
       claim: c.text.length > 160 ? c.text.slice(0, 157) + "…" : c.text,
       communities: [...new Set(sorted.map((s) => s.community))],
       transitionCount: sorted.length,

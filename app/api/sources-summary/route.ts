@@ -1,6 +1,6 @@
-import { Prisma } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { corpusCountByPipeline } from "@/lib/corpus";
 
 export const revalidate = 300;
 
@@ -240,8 +240,6 @@ const CATEGORY_ORDER: Category[] = [
   "Other",
 ];
 
-type GroupRow = { ingestedBy: string; count: number };
-
 interface SourceEntry {
   ingestedBy: string;
   label: string;
@@ -257,10 +255,11 @@ interface CategoryBucket {
 }
 
 export interface SourcesSummary {
+  /** The site-wide corpus total (lib/corpus.ts: deleted = false) — the per-source
+      rows below are the same query grouped by ingestedBy, so they sum to it. */
   totalClaims: number;
   /** Claims counted above whose verificationStatus is still NULL (never classified).
-      Site-wide counters (homepage, /pipelines) exclude these — Prisma's
-      `not: "DEPRECATED"` drops NULLs — so totalClaims = their count + unclassifiedClaims. */
+      Disclosed, not excluded: the corpus total counts them everywhere. */
   unclassifiedClaims: number;
   totalSources: number;
   generatedAt: string;
@@ -269,26 +268,14 @@ export interface SourcesSummary {
 }
 
 export async function loadSourcesSummary(): Promise<SourcesSummary> {
-  const [rows, unclassifiedRows] = await Promise.all([
-    prisma.$queryRaw<GroupRow[]>(Prisma.sql`
-      SELECT "ingestedBy", COUNT(*)::int AS count
-      FROM "Claim"
-      -- All live claims: deleted = false, not DEPRECATED. NULL verificationStatus
-      -- counts here (IS DISTINCT FROM), unlike the homepage/pipelines Prisma
-      -- filter — the difference is disclosed as unclassifiedClaims below.
-      WHERE "verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-        AND "deleted" = false
-      GROUP BY "ingestedBy"
-      ORDER BY count DESC
-    `),
-    prisma.$queryRaw<{ count: number }[]>(Prisma.sql`
-      SELECT COUNT(*)::int AS count
-      FROM "Claim"
-      WHERE "verificationStatus" IS NULL
-        AND "deleted" = false
-    `),
+  const [rows, unclassifiedClaims] = await Promise.all([
+    // One per-pipeline query site-wide (lib/corpus.ts), so this census, the
+    // homepage tiles and /pipelines can never disagree. It used to exclude the
+    // 182 DEPRECATED rows here alone; the corpus total counts them (and /stats
+    // says so), so the census does too.
+    corpusCountByPipeline(),
+    prisma.claim.count({ where: { deleted: false, verificationStatus: null } }),
   ]);
-  const unclassifiedClaims = Number(unclassifiedRows[0]?.count ?? 0);
 
   const buckets = new Map<Category, SourceEntry[]>();
   const unmapped: SourceEntry[] = [];

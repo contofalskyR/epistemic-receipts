@@ -214,7 +214,8 @@ function SearchLegend() {
   );
 }
 
-export default function SearchClient() {
+// `claimsCompact` is the derived corpus figure ("1.76M") from app/search/page.tsx.
+export default function SearchClient({ claimsCompact }: { claimsCompact: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -367,7 +368,7 @@ export default function SearchClient() {
         <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Search</p>
         <h1 className="mt-1 text-2xl font-semibold text-white">Pull the receipt on any claim</h1>
         <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">
-          1.76M+ sourced claims — settled, contested, or overturned. Every result traces back to
+          {claimsCompact}+ sourced claims — settled, contested, or overturned. Every result traces back to
           who said it, when, and whether it&apos;s still standing.{" "}
           <span className="text-gray-600">
             Hybrid search: full-text + OpenAI semantic embeddings (text-embedding-3-small).

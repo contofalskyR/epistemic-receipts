@@ -1,6 +1,7 @@
 export const revalidate = 300;
 
 import { prisma } from "@/lib/prisma";
+import { corpusCount } from "@/lib/corpus";
 import {
   getTopTopicsByLegislature,
   getPassRateByTopic,
@@ -157,9 +158,9 @@ export default async function StatsPage() {
     getPassRateByTopic(),
     getCongressStats(),
     getCongressPartyStats(),
-    // Same definition as /api/corpus-stats (deleted = false), so the hero
-    // number always agrees with the corpus section rendered below it.
-    prisma.claim.count({ where: { deleted: false } }),
+    // The corpus total (lib/corpus.ts) — the same call /api/corpus-stats makes,
+    // so the hero number always agrees with the corpus section rendered below it.
+    corpusCount(),
     prisma.claimStatusHistory.count(),
     prisma.legislativeVote.count(),
   ]);

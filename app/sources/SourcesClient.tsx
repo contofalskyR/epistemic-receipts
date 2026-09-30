@@ -429,13 +429,14 @@ export default function SourcesClient({ initialData }: { initialData: SourcesSum
             ))}
           </div>
 
-          {/* Derivation note — keeps this total honest against the homepage counter,
-              which excludes claims whose verificationStatus was never set. */}
+          {/* Derivation note. The total is the site-wide corpus figure (lib/corpus.ts),
+              the same one the homepage, nav and /pipelines show; never-classified
+              claims are disclosed here, not subtracted anywhere. */}
           {typeof data.unclassifiedClaims === "number" && data.unclassifiedClaims > 0 && (
             <p style={{ fontSize: "0.72rem", color: C.faint, margin: "0.9rem 0 0", maxWidth: "52rem", lineHeight: 1.5 }}>
-              Includes {data.unclassifiedClaims.toLocaleString()} claims awaiting verification-status
-              classification; the homepage and pipeline counters report the{" "}
-              {(data.totalClaims - data.unclassifiedClaims).toLocaleString()} classified claims only.
+              Same total as the homepage and pipeline counters. Includes{" "}
+              {data.unclassifiedClaims.toLocaleString()} claims awaiting verification-status
+              classification and records flagged deprecated for audit-trail purposes.
             </p>
           )}
         </div>

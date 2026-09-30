@@ -418,6 +418,8 @@ export default function PrereqGraphClient({
   const [claims, setClaims] = useState<ClaimRow[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [qInput, setQInput] = useState(urlQ);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -435,22 +437,40 @@ export default function PrereqGraphClient({
     [router, searchParams]
   );
 
+  // A failed or non-OK fetch is an error, not an empty result: before this the
+  // catch branch just cleared `loading`, so a 500 or a timeout rendered as
+  // "No claims found for this filter." under a header saying 165k had links.
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+    setLoadError(false);
     setExpandedId(null);
     const p = new URLSearchParams();
     if (urlDomain !== "all") p.set("domain", urlDomain);
     if (urlQ) p.set("q", urlQ);
     if (urlPage > 1) p.set("page", String(urlPage));
     fetch(`/api/prereq-graph?${p.toString()}`)
-      .then((r) => r.json())
+      .then(async (r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((d) => {
+        if (cancelled) return;
         setClaims(d.claims ?? []);
         setTotal(d.total ?? 0);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
-  }, [urlDomain, urlQ, urlPage]);
+      .catch(() => {
+        if (cancelled) return;
+        setClaims([]);
+        setTotal(0);
+        setLoadError(true);
+        setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [urlDomain, urlQ, urlPage, retryKey]);
 
   const PAGE_SIZE = 25;
   const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -504,7 +524,7 @@ export default function PrereqGraphClient({
             margin: 0,
           }}
         >
-          How claims connect: trials → approvals → outcomes. Citation graph of {initialStats.claimsWithLinks.toLocaleString()}+ linked claims, ranked by most-cited first.
+          How claims connect: trials → approvals → outcomes. Citation graph of {initialStats.claimsWithLinks.toLocaleString()} linked claims, ranked by most-cited first.
         </p>
       </div>
 
@@ -607,7 +627,9 @@ export default function PrereqGraphClient({
         >
           {loading
             ? "Loading…"
-            : `${total.toLocaleString()} claims — page ${urlPage} of ${pageCount}`}
+            : loadError
+              ? "Couldn't load claims"
+              : `${total.toLocaleString()} claims — page ${urlPage} of ${pageCount}`}
         </div>
 
         {loading && (
@@ -646,7 +668,30 @@ export default function PrereqGraphClient({
           </div>
         )}
 
-        {!loading && claims.length === 0 && (
+        {!loading && loadError && (
+          <div
+            style={{ textAlign: "center", padding: "3rem", color: S.muted }}
+          >
+            Couldn&apos;t load claims — the request failed.{" "}
+            <button
+              type="button"
+              onClick={() => setRetryKey((k) => k + 1)}
+              style={{
+                background: "none",
+                border: `1px solid ${S.border}`,
+                borderRadius: "6px",
+                color: S.text,
+                cursor: "pointer",
+                padding: "0.25rem 0.6rem",
+                fontSize: "0.8rem",
+              }}
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
+        {!loading && !loadError && claims.length === 0 && (
           <div
             style={{ textAlign: "center", padding: "3rem", color: S.muted }}
           >

@@ -17,7 +17,10 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
 
 ## Decisions (locked)
 
-- Corpus count = `deleted = false` (1,758,084). Public figure stays "1.76M". One helper, one query, no literals.
+- Corpus count = `deleted = false` (1,758,084 at restore; 1,758,090 on 2026-09-30 — six rows were written after
+  the restore, source unknown, worth a look). Public figure stays "1.76M". One helper (`lib/corpus.ts`), one
+  query, no literals. The 182 DEPRECATED uspto rows count (they are `deleted = false`); `/stats` and `/sources`
+  say so. Default views hide them via `LIVE_CLAIM_WHERE`.
 - Lab serving = one deployment; non-public routes require the admin cookie; Lab dropdown only when logged in.
   Retire the two-project `NEXT_PUBLIC_EDITION` scaffolding.
 - Top nav = Settling Curve · Search · Opinions · Retractions · Split Ledger · Reversals (+ About).
@@ -71,9 +74,29 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - Found on the way, left for Phase 3: `components/destinations/DestinationNav.tsx` is unmounted dead code (its
     `/foreign-legislation` link was retargeted to `/legislation`); `/following` still has no TopicSubscription UI now
     that `/api/alerts` is gone (the cron keeps sending; only the manage surface is missing).
-- [ ] **Phase 1 — honest numbers** · `corpusCount()` helper everywhere, delete 1.76M/1.7M+ literals;
-      `/prereq-graph` header from the body's query + error state; `/api/corpus-stats` join fix;
-      "N CURATED" label; topics/patterns/open-questions/retraction-wall filter alignment
+- [x] **Phase 1 — honest numbers** · branch `fix/front-door-phase-1` · done 2026-09-30 · build green · tsc clean ·
+      314 tests pass · PR: owner pushes the branch and opens it
+  - [x] `lib/corpus.ts`: `corpusCount()` (deleted = false, `unstable_cache` 1 h), `corpusCountCompact()` ("1.76M"),
+        `corpusCountByPipeline()` (same definition, so tiles sum to the headline), `LIVE_CLAIM_WHERE` /
+        `liveClaimSql()` (default-view filter: not deleted, not DEPRECATED, NULL status IN). Used by `/`, layout
+        metadata + Nav, `/search`, `/start-here`, `/stats`, `/sources`, `/pipelines`, `/api/claims`, `/api/corpus-stats`.
+  - [x] literals gone: `Nav.tsx` ×2, `SearchClient.tsx`, `start-here` ×2, `layout.tsx` ("1.7M+"), `prereq-graph`
+        metadata ("4.8M+"), `settling-curve/coverage` metadata ("1M+"), corpus-stats note ("1.25M rows").
+        Guard: `tests/unit/corpus-literals.test.ts` (figure within two words of "claims"; dated records + `/corrections` exempt).
+  - [x] `/prereq-graph`: `lib/prereq-graph.ts` is the one population query for header and body; client shows
+        "Couldn't load claims — Retry" on a failed fetch instead of "No claims found".
+  - [x] `/api/corpus-stats`: `total_claims` was COUNT(*) over `Claim LEFT JOIN Edge` (claim–edge pairs: 1,765,275
+        vs 1,758,090) → `corpusCount()` + EXISTS; `pct_sourced` 96.9 → 97.3.
+  - [x] "N CURATED": `isCurated` flag + label "5,698 CURATED TRAJECTORIES · 5,000 MOST RECENT AUTO-GENERATED"
+        (it read "10,698 CURATED" after the background fetch).
+  - [x] filter alignment: topics list `_count` now uses the default-view filter (was raw ClaimTopic rows) and the
+        detail discloses its text-search fallback; patterns shape counts join live claims (241,501 → 241,480);
+        open-questions header = ranked population (CONTESTED with a dated transition); retraction-wall tile counts
+        the CTE's population (pipeline-restricted CONTRADICTS); `/api/trajectories` auto list no longer drops
+        NULL-status claims.
+  - Found, left for later: `/communities` types "(~1.1M)" for the largest community (Phase 5 content);
+        `app/api/pipelines/route.ts` (no in-app caller) still runs its own GROUP BY — Phase 3 deletion; ~11 inline
+        copies of the correct not-DEPRECATED filter could be swept to `LIVE_CLAIM_WHERE` in Phase 3/4.
 - [ ] **Phase 2 — the Lab line** · nav to six links; Lab group behind admin cookie; `PUBLIC_ROUTES` edits
       (taxonomy block, /analysis, /stats, /globe, /legislation, /drug-arc, /historical-events, /pipelines,
       /meta-edges, /feed, /books; `DENY_EXACT` for /claims, /topics, /settling-curve/coverage|overview);
@@ -95,4 +118,4 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Owner says "go" → Phase 1.
+Owner says "go" → Phase 2 (the Lab line).

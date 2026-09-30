@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { corpusCount, corpusCountByPipeline } from "@/lib/corpus";
+import { compactCount } from "@/lib/format";
 
 export const revalidate = 3600;
 
@@ -9,23 +11,27 @@ export async function GET(req: NextRequest) {
   // ── 1. Total claims & source coverage ──────────────────────────────────
   // "Sourced" = structural link: the claim has at least one non-deleted Edge
   // to a Source record. This is provenance, not editorial judgment.
-  type CoverageRow = {
-    total_claims: number;
-    claims_with_source: number;
-    pct_sourced: number;
-  };
+  //
+  // total_claims is the site-wide corpus total (lib/corpus.ts). It used to be
+  // COUNT(*) over `Claim LEFT JOIN Edge`, which counts claim–edge PAIRS: a
+  // claim with three edges counted three times, inflating the total to
+  // 1,765,275 against a corpus of 1,758,090 and understating pct_sourced.
+  type SourcedRow = { claims_with_source: number };
 
-  const coverageRows = await prisma.$queryRaw<CoverageRow[]>`
-    SELECT
-      COUNT(*)::int                              AS total_claims,
-      COUNT(DISTINCT e."claimId")::int           AS claims_with_source,
-      ROUND(100.0 * COUNT(DISTINCT e."claimId") / NULLIF(COUNT(*), 0), 1)::float AS pct_sourced
-    FROM "Claim" c
-    LEFT JOIN "Edge" e ON e."claimId" = c.id AND e.deleted = false
-    WHERE c.deleted = false
-  `;
-  const coverage = coverageRows[0];
-  const total_claims = coverage?.total_claims ?? 0;
+  const [total_claims, sourcedRows, verified_n] = await Promise.all([
+    corpusCount(),
+    prisma.$queryRaw<SourcedRow[]>`
+      SELECT COUNT(*)::int AS claims_with_source
+      FROM "Claim" c
+      WHERE c.deleted = false
+        AND EXISTS (SELECT 1 FROM "Edge" e WHERE e."claimId" = c.id AND e.deleted = false)
+    `,
+    // For coverage_note — the figure used to be typed ("1.25M rows").
+    prisma.claim.count({ where: { deleted: false, verificationStatus: "VERIFIED" } }),
+  ]);
+  const claims_with_source = sourcedRows[0]?.claims_with_source ?? 0;
+  const pct_sourced =
+    total_claims > 0 ? Math.round((claims_with_source / total_claims) * 1000) / 10 : 0;
 
   // ── 2. Epistemic axis distribution ─────────────────────────────────────
   // epistemicAxis is assigned at ingestion by pipeline constants or a
@@ -80,29 +86,18 @@ export async function GET(req: NextRequest) {
   const status_history_n = historyRows[0]?.n ?? 0;
 
   // ── 5. Pipeline breakdown (top 20) ─────────────────────────────────────
-  type PipelineRow = { "ingestedBy": string | null; n: number };
-
-  const pipelineRows = await prisma.$queryRaw<PipelineRow[]>`
-    SELECT "ingestedBy", COUNT(*)::int AS n
-    FROM "Claim"
-    WHERE deleted = false
-    GROUP BY "ingestedBy"
-    ORDER BY n DESC
-    LIMIT 20
-  `;
-
-  const pipeline_breakdown = pipelineRows
-    .filter((r) => r.ingestedBy !== null)
-    .map((r) => ({
-      pipeline: r.ingestedBy as string,
-      n: r.n,
-      pct: total_claims > 0 ? Math.round((r.n / total_claims) * 1000) / 10 : 0,
-    }));
+  // Same per-pipeline query the homepage tiles and /pipelines use (lib/corpus.ts),
+  // so the three can never disagree.
+  const pipeline_breakdown = (await corpusCountByPipeline()).slice(0, 20).map((r) => ({
+    pipeline: r.ingestedBy,
+    n: r.count,
+    pct: total_claims > 0 ? Math.round((r.count / total_claims) * 1000) / 10 : 0,
+  }));
 
   // ── 6. Build response ───────────────────────────────────────────────────
   const payload = {
     total_claims,
-    sourced_pct: coverage?.pct_sourced ?? 0,
+    sourced_pct: pct_sourced,
     // human_reviewed_n / _pct deliberately omitted: no reliable per-claim
     // human-review flag exists. verificationStatus='VERIFIED' is a pipeline
     // constant (set at ingest), not an editorial action. humanReviewed=true
@@ -120,7 +115,7 @@ export async function GET(req: NextRequest) {
       "\"Epistemic axis\" (SETTLED/RECORDED/CONTESTED/etc.) is assigned at ingestion by pipeline constants or " +
       "a post-hoc backfill script, NOT by a human reviewer. " +
       "There is no reliable per-claim human-review flag: verificationStatus='VERIFIED' is a pipeline ingestion constant " +
-      "on 1.25M rows and does NOT represent editorial review. " +
+      `on ${compactCount(verified_n)} rows and does NOT represent editorial review. ` +
       "The genuine review signals are: ThresholdEvents (human-promoted epistemic transitions) and ClaimStatusHistory (trajectory transitions). " +
       "\"Auto-classified\" = claims where epistemicAxis was assigned at ingestion or backfill (vs. null/unclassified).",
   };

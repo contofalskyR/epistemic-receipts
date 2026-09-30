@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 
 export const dynamic = "force-dynamic";
 
@@ -50,14 +51,7 @@ export async function GET(req: NextRequest) {
     // Curated trajectory: claims — no statusHistory filter, always show all
     source !== "auto"
       ? prisma.claim.findMany({
-          where: {
-            deleted: false,
-            OR: [
-              { verificationStatus: null },
-              { verificationStatus: { not: "DEPRECATED" as const } },
-            ],
-            externalId: { startsWith: "trajectory:" },
-          },
+          where: { ...LIVE_CLAIM_WHERE, externalId: { startsWith: "trajectory:" } },
           select: {
             id: true,
             externalId: true,
@@ -75,14 +69,14 @@ export async function GET(req: NextRequest) {
     // Auto-generated: regular DB claims with status history
     source !== "curated"
       ? prisma.claim.findMany({
+          // Default-view filter (lib/corpus.ts). The old bare `not: "DEPRECATED"`
+          // dropped every never-classified claim from the auto list.
           where: {
-            deleted: false,
-            verificationStatus: { not: "DEPRECATED" as const },
-            statusHistory: { some: {} },
-            OR: [
-              { externalId: null },
-              { externalId: { not: { startsWith: "trajectory:" } } },
+            AND: [
+              LIVE_CLAIM_WHERE,
+              { OR: [{ externalId: null }, { externalId: { not: { startsWith: "trajectory:" } } }] },
             ],
+            statusHistory: { some: {} },
           },
           select: {
             id: true,
