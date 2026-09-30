@@ -2,7 +2,7 @@
 
 Track every NARA Record Group (RG) worth ingesting. Erase checkboxes as each run completes.
 
-**API key:** `KSHVEuDXNd27xXkByehli5Eak8TvnKJi99Kiz7DK` (Key 1 — register 2–3 more at Catalog_API@nara.gov)
+**API key:** `<redacted — set NARA_API_KEY in .env.local>` (Key 1 — register 2–3 more at Catalog_API@nara.gov)
 **Rate limit:** 10,000 calls/month per key × 100 records/call = up to 1M records/month per key
 **Strategy:** Plain page-based pagination + cursor resume. Date-range slicing does NOT work (NARA ignores date filters for large RGs — see HISTORY.md). Use `--max-pages 100` to cap per run, `--resume` to continue next month.
 **Script:** `scripts/ingest-nara-catalog.ts` — flag is `--record-group <N>` (NOT `--rg`); `--full` to write DB

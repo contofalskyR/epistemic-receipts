@@ -85,6 +85,10 @@ const nextConfig: NextConfig = {
       // B12-3: bookmarks + alerts unified into /following (one place, not three).
       { source: "/bookmarks", destination: "/following", permanent: true },
       { source: "/alerts", destination: "/following", permanent: true },
+      // Former redirect-stub pages (front door phase 0). Exact sources only:
+      // /reader/[bookId] is a real page and must keep rendering.
+      { source: "/timeline", destination: "/settling-curve", permanent: true },
+      { source: "/reader", destination: "/books", permanent: true },
     ];
   },
 };

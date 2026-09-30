@@ -22,10 +22,8 @@ const LAB_ONLY: Record<string, string> = {
   "/edges": "admin-gated until designed",
   "/labs": "experimental group",
   "/account": "session-authed",
-  "/alerts": "session-authed",
   "/collections": "session-authed, robots:noindex",
   "/pricing": "commercial surface dark at launch (owner call 2026-07-24)",
-  "/docs": "API docs follow /pricing; flip both together",
   "/auth": "Auth.js routes",
   "/api": "not a page route",
   "/globe/lab": "explicitly denied in DENY_EXACT",
@@ -96,11 +94,23 @@ describe("public edition: the sitemap never advertises a URL the edition 404s", 
 });
 
 describe("public edition: routes the gap audit fixed stay fixed", () => {
-  it.each(["/methodology", "/communities", "/corrections", "/terms", "/privacy"])(
+  // /docs/api joined the list in front door phase 0 (2026-09-30): it is linked
+  // from /, /start-here, the sitemap and the v1 API's 401 message.
+  it.each(["/methodology", "/communities", "/corrections", "/terms", "/privacy", "/docs/api"])(
     "%s is reachable on the public edition", (r) => {
       expect(isPublicRoute(r)).toBe(true);
     },
   );
+
+  it.each(["/stock-act", "/foreign-legislation", "/timeline"])(
+    "%s left PUBLIC_ROUTES with its page (next.config.ts redirects it)", (r) => {
+      expect(isPublicRoute(r)).toBe(false);
+    },
+  );
+
+  it("/reader/[bookId] stays reachable after the /reader index stub was removed", () => {
+    expect(isPublicRoute("/reader/some-book")).toBe(true);
+  });
 
   it("/methodology is reachable — it renders B15's measured error rate", () => {
     expect(isPublicRoute("/methodology")).toBe(true);

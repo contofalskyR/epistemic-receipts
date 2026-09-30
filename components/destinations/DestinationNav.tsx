@@ -6,7 +6,7 @@ const DESTINATIONS = [
   { href: "/congress-trades", label: "Congress Trades" },
   { href: "/retraction-explorer", label: "Retraction Explorer" },
   { href: "/prereq-graph", label: "Evidence Chains" },
-  { href: "/foreign-legislation", label: "Global Legislation" },
+  { href: "/legislation", label: "Global Legislation" },
 ];
 
 export function DestinationNav() {

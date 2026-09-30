@@ -5,12 +5,15 @@ import { PIPELINES, getPipeline } from "@/lib/pipelines/registry";
 
 export const revalidate = 3600;
 
+type Props = { params: Promise<{ tag: string }> };
+
 export async function generateStaticParams() {
   return PIPELINES.map(p => ({ tag: p.tag }));
 }
 
-export async function generateMetadata({ params }: { params: { tag: string } }) {
-  const p = getPipeline(params.tag);
+export async function generateMetadata({ params }: Props) {
+  const { tag } = await params;
+  const p = getPipeline(tag);
   if (!p) return {};
   return {
     title: `${p.name} — Datasets — Epistemic Receipts`,
@@ -72,11 +75,12 @@ function fmtDate(d: Date | null | undefined) {
   return d.toISOString().slice(0, 10);
 }
 
-export default async function DatasetPage({ params }: { params: { tag: string } }) {
-  const p = getPipeline(params.tag);
+export default async function DatasetPage({ params }: Props) {
+  const { tag } = await params;
+  const p = getPipeline(tag);
   if (!p) notFound();
 
-  const cov = await getCoverage(params.tag);
+  const cov = await getCoverage(tag);
 
   const pills = [
     { label: "Total claims", value: cov.total.toLocaleString(), color: "text-white" },
@@ -95,7 +99,7 @@ export default async function DatasetPage({ params }: { params: { tag: string } 
           Datasets
         </Link>
         <span>/</span>
-        <span className="text-gray-400 font-mono">{params.tag}</span>
+        <span className="text-gray-400 font-mono">{tag}</span>
       </nav>
 
       {/* Header */}

@@ -48,7 +48,6 @@ export const PUBLIC_ROUTES: string[] = [
   // Analyze
   "/analysis",
   "/congress-trades",
-  "/stock-act",
   "/votes",
   "/members",
   "/financial",
@@ -72,17 +71,18 @@ export const PUBLIC_ROUTES: string[] = [
   "/datasets",
   "/pipelines",
   "/glossary",
+  // API reference — linked from /, /start-here, /pricing, the sitemap and the
+  // v1 API's 401 message; it 404'd on the public edition until 2026-09-30.
+  "/docs/api",
   // Graph browsing
   "/claims",
   "/topics",
   "/domains",
   "/historical-events",
-  "/timeline",
   "/globe",
   "/books",
-  "/reader",
+  "/reader", // /reader/[bookId] — the index redirects to /books in next.config.ts
   "/legislation",
-  "/foreign-legislation",
   "/drug-arc",
   "/stats",
   "/statistics",
