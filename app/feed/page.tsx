@@ -10,8 +10,6 @@ import {
   snippet,
 } from "@/lib/feed";
 import SinceLastVisit from "./SinceLastVisit";
-import BookmarkedActivity from "./BookmarkedActivity";
-import FollowingActivity from "./FollowingActivity";
 import OnThisDay from "@/app/components/OnThisDay";
 
 
@@ -49,7 +47,6 @@ export default async function FeedPage() {
         </p>
       </div>
 
-      <FollowingActivity />
 
       <SinceLastVisit />
 
@@ -104,7 +101,6 @@ export default async function FeedPage() {
         )}
       </section>
 
-      <BookmarkedActivity />
 
       {/* Corpus growth — raw ingestion, secondary */}
       <section className="space-y-3">

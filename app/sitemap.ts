@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
 import { isPublicRoute } from "@/lib/publicEdition";
+import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 import { STAT_METHOD_SLUGS } from "@/lib/statMethods";
 
 // Sitemap chunks: with generateSitemaps(), Next serves /sitemap/[id].xml
@@ -14,7 +15,6 @@ const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1.0 },
   { url: `${SITE_URL}/start-here`, changeFrequency: "monthly", priority: 0.9 },
   { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
-  { url: `${SITE_URL}/docs/api`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/glossary`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/trajectories`, changeFrequency: "daily", priority: 0.9 },
   { url: `${SITE_URL}/sources`, changeFrequency: "weekly", priority: 0.7 },
@@ -53,11 +53,7 @@ export async function generateSitemaps() {
   // excluded — they lack settled trajectories and would dilute crawl budget.
   // Revisit including all claims once the trajectory pages have more content.
   const multiStepCount = await prisma.claim.count({
-    where: {
-      deleted: false,
-      verificationStatus: { not: "DEPRECATED" },
-      statusHistory: { some: {} },
-    },
+    where: { ...LIVE_CLAIM_WHERE, statusHistory: { some: {} } },
   });
 
   const claimChunks = Math.ceil(multiStepCount / CHUNK) || 1;
@@ -78,14 +74,7 @@ export default async function sitemap(props: {
   // Chunk 0: static pages + curated hand-built trajectories
   if (id === "static") {
     const curated = await prisma.claim.findMany({
-      where: {
-        deleted: false,
-        externalId: { startsWith: "trajectory:" },
-        OR: [
-          { verificationStatus: null },
-          { verificationStatus: { not: "DEPRECATED" } },
-        ],
-      },
+      where: { ...LIVE_CLAIM_WHERE, externalId: { startsWith: "trajectory:" } },
       select: { externalId: true, updatedAt: true },
       orderBy: { updatedAt: "desc" },
     });
@@ -134,11 +123,10 @@ export default async function sitemap(props: {
   // here because this runs at build time (or ISR revalidation) and each chunk
   // is a separate serverless invocation — no single query loads > 50k rows.
   const claims = await prisma.claim.findMany({
-    where: {
-      deleted: false,
-      verificationStatus: { not: "DEPRECATED" },
-      statusHistory: { some: {} },
-    },
+    // Default-view filter (lib/corpus.ts) — the bare `not: "DEPRECATED"` here
+    // dropped never-classified claims from the sitemap while the chunk count
+    // above used the same bug, so they stayed consistent but wrong.
+    where: { ...LIVE_CLAIM_WHERE, statusHistory: { some: {} } },
     select: { id: true, updatedAt: true },
     orderBy: { id: "asc" },
     skip,

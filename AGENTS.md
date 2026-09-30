@@ -186,10 +186,10 @@ The site launched as **public read-only**. A full audit + hardening pass was app
 
 To check live behavior, in order of preference:
 1. **Code + tests are the source of truth.** API-route logic is verified by reading the handler under `app/api/**` and running its vitest — not by hitting prod.
-2. **Crawlable pages** (`/`, `/search`, `/claims/:id`, `/topics`, …) are robots-allowed and render the same data. Prefer these for live spot-checks. To confirm the epistemic axis, load `/search?q=<term>&axis=REVERSED` plus a few `/claims/:id` pages instead of `/api/v1/claims?epistemicAxis=REVERSED`.
-3. **The metered v1 API** (`/api/v1/*`) needs an API key even on GET — 401 "valid API key required" without one, a separate layer from the middleware admin gate. To exercise it live, use the browser tool (does not gate on robots) with a key, or send the key from a dev script. There is no anonymous read, by design.
+2. **Crawlable pages** (`/`, `/search`, `/claims/:id`, `/topics/:slug`, …) are robots-allowed and render the same data. Prefer these for live spot-checks. To confirm the epistemic axis, load `/search?q=<term>&axis=REVERSED` plus a few `/claims/:id` pages.
+3. **Lab pages** (anything not in `lib/publicEdition.ts`) answer anonymous requests with a 307 to `/login?from=…`; paths with no page file get Next's 404 (`lib/route-manifest.json`). The metered v1 API and `/api/mcp` were deleted in front door phase 3 (2026-09-30) — there is no key-gated read API any more.
 
-Quick triage: `ROBOTS_DISALLOWED` on `/api/` → switch to a crawlable page or the test suite. `401 API key required` on `/api/v1/*` → you need a key, not a workaround.
+Quick triage: `ROBOTS_DISALLOWED` on `/api/` → switch to a crawlable page or the test suite. `307 → /login` on a page → it is a Lab page, not an outage.
 <!-- END:agent-web-verification -->
 
 <!-- BEGIN:db-write-doctrine -->

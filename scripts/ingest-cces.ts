@@ -24,13 +24,8 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { neonConfig } from "@neondatabase/serverless";
-
-if (typeof WebSocket === "undefined") {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  neonConfig.webSocketConstructor = require("ws");
-}
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
 interface AggregateRow {
   state: string;
@@ -47,10 +42,15 @@ interface AggregateRow {
 const DEFAULT_INPUT = "/tmp/cces/cces_aggregates.json";
 const PIPELINE_TAG = "cces_v1";
 
+// Self-hosted Postgres (STATUS.md): strip sslmode so the explicit ssl option
+// wins, and accept the server's self-signed certificate — same as lib/prisma.ts.
 function makePrisma() {
-  const connectionString = process.env.DATABASE_URL;
+  const connectionString = (process.env.DATABASE_URL ?? "")
+    .replace(/([?&])sslmode=[^&]*&?/, "$1")
+    .replace(/[?&]$/, "");
   if (!connectionString) throw new Error("DATABASE_URL not set");
-  return new PrismaClient({ adapter: new PrismaNeon({ connectionString }) });
+  const pool = new Pool({ connectionString, ssl: { rejectUnauthorized: false }, max: 3 });
+  return new PrismaClient({ adapter: new PrismaPg(pool) });
 }
 
 async function main() {

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate && node scripts/gen-route-manifest.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "test:integration": "vitest run --config vitest.integration.config.ts",
@@ -19,7 +19,6 @@
   "dependencies": {
     "@ai-sdk/openai": "^4.0.7",
     "@anthropic-ai/sdk": "^0.100.1",
-    "@auth/prisma-adapter": "^2.11.2",
     "@aws-sdk/client-s3": "^3.1080.0",
     "@aws-sdk/lib-storage": "^3.1080.0",
     "@aws-sdk/s3-request-presigner": "^3.1080.0",
@@ -38,7 +37,6 @@
     "linkedom": "^0.18.12",
     "lucide-react": "^1.17.0",
     "next": "^16.2.6",
-    "next-auth": "^5.0.0-beta.31",
     "pdf-parse": "^1.1.1",
     "pg": "^8.23.0",
     "prisma": "^6.19.3",
@@ -49,7 +47,6 @@
     "resend": "^6.12.4",
     "sanitize-html": "^2.17.5",
     "server-only": "^0.0.1",
-    "stripe": "^22.3.0",
     "three": "^0.184.0",
     "ws": "^8.21.0"
   },

@@ -111,12 +111,61 @@ function claimBadge(status: string) {
 const MIN_YEAR = 1789;
 const MAX_YEAR = 2026;
 
+// ─── Deep time (ported from /globe/lab, front door phase 3) ──────────────────
+// A second slider scale: 4.5 Ga → present on a log axis, so the last few
+// centuries keep resolution while the Precambrian is still reachable. The
+// paleogeography for any year comes from lib/historical-geo.ts exactly as the
+// historical mode's borders do — the lab had no separate renderer, only this
+// scale. (The lab's mapping was mirrored — slider "Now" computed to 4.5 Ga ago;
+// here 0 = 4.5 Ga, DEEP_STEPS = present.)
+const EARTH_AGE = 4_500_000_000;
+const DEEP_STEPS = 1000;
+// JS Dates stop at ±271,821 years and dated claims stop long before that:
+// below this year the density fetch is skipped and only geography is shown.
+const DEEP_FETCH_FLOOR = -3000;
+
+type Era = { name: string; emoji: string; startYear: number; endYear: number };
+const ERAS: Era[] = [
+  { name: "Formation of Earth", emoji: "🌑", startYear: -EARTH_AGE, endYear: -4_000_000_000 },
+  { name: "Archean Eon", emoji: "🌋", startYear: -4_000_000_000, endYear: -2_500_000_000 },
+  { name: "Proterozoic Eon", emoji: "🦠", startYear: -2_500_000_000, endYear: -540_000_000 },
+  { name: "Paleozoic Era", emoji: "🐟", startYear: -540_000_000, endYear: -252_000_000 },
+  { name: "Age of Dinosaurs", emoji: "🦕", startYear: -252_000_000, endYear: -66_000_000 },
+  { name: "Age of Mammals", emoji: "🦣", startYear: -66_000_000, endYear: -2_600_000 },
+  { name: "Ice Ages", emoji: "🧊", startYear: -2_600_000, endYear: -10_000 },
+  { name: "Human Civilization", emoji: "🏛️", startYear: -10_000, endYear: -3_000 },
+  { name: "Recorded History", emoji: "📜", startYear: -3_000, endYear: MAX_YEAR + 1 },
+];
+function getEraForYear(year: number): Era {
+  return ERAS.find((e) => year >= e.startYear && year < e.endYear) ?? ERAS[ERAS.length - 1];
+}
+/** Slider position (0 = 4.5 Ga, DEEP_STEPS = present) → calendar year, log scale. */
+function deepSliderToYear(v: number): number {
+  const t = 1 - Math.min(Math.max(v, 0), DEEP_STEPS) / DEEP_STEPS;
+  const yearsAgo = Math.pow(EARTH_AGE + MAX_YEAR, t) - 1;
+  return Math.round(MAX_YEAR - yearsAgo);
+}
+function yearToDeepSlider(year: number): number {
+  const yearsAgo = Math.max(0, MAX_YEAR - year);
+  const t = Math.log10(yearsAgo + 1) / Math.log10(EARTH_AGE + MAX_YEAR);
+  return Math.round((1 - t) * DEEP_STEPS);
+}
+function formatDeepYear(year: number): string {
+  if (year >= -3000) return year < 0 ? `${Math.abs(year).toLocaleString()} BCE` : `${year}`;
+  const yearsAgo = MAX_YEAR - year;
+  if (yearsAgo >= 1_000_000_000) return `${(yearsAgo / 1_000_000_000).toFixed(1)} billion years ago`;
+  if (yearsAgo >= 1_000_000) return `${(yearsAgo / 1_000_000).toFixed(1)} million years ago`;
+  if (yearsAgo >= 1000) return `${Math.round(yearsAgo / 1000).toLocaleString()}k years ago`;
+  return `${yearsAgo.toLocaleString()} years ago`;
+}
+
 // Hard cap on claims accumulated via "Load more" — beyond this, hand off to /search
 // (which is properly paginated) instead of growing the DOM unboundedly.
 const MAX_LOADED_CLAIMS = 200;
 
 function formatYear(year: number): string {
   if (year >= MAX_YEAR) return "Present";
+  if (year < MIN_YEAR) return formatDeepYear(year);
   return `${year}`;
 }
 
@@ -160,8 +209,10 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [loadingMoreClaims, setLoadingMoreClaims] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("heatmap");
 
-  // Time slider state
+  // Time slider state. `deepTime` swaps the slider's scale (1789–present linear
+  // vs 4.5 Ga–present log); `currentYear` stays the single source of truth.
   const [currentYear, setCurrentYear] = useState<number>(MAX_YEAR);
+  const [deepTime, setDeepTime] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [densityState, setDensityState] = useState<DensityRow[]>(density);
   const [totalClaimCount, setTotalClaimCount] = useState<number>(
@@ -310,6 +361,14 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       setTotalClaimCount(density.reduce((sum, d) => sum + d.claimCount, 0));
       return;
     }
+    // Deep time: no dated claim predates recorded history and a JS Date cannot
+    // hold −4.5 Ga, so skip the fetch — the slider drives geography only.
+    if (currentYear < DEEP_FETCH_FLOOR) {
+      setDensityState([]);
+      setTotalClaimCount(0);
+      setLoadingDensity(false);
+      return;
+    }
     let cancelled = false;
     const t = setTimeout(async () => {
       setLoadingDensity(true);
@@ -440,7 +499,8 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           setIsPlaying(false);
           return MAX_YEAR;
         }
-        return y + 1;
+        // Deep time advances by slider steps (log scale), otherwise a year at a time.
+        return deepTime ? Math.min(MAX_YEAR, deepSliderToYear(yearToDeepSlider(y) + 4)) : y + 1;
       });
     }, 1000);
     return () => {
@@ -449,7 +509,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         playIntervalRef.current = null;
       }
     };
-  }, [isPlaying]);
+  }, [isPlaying, deepTime]);
 
   // Initial globe init (modern GeoJSON only — historical is loaded on demand)
   useEffect(() => {
@@ -937,8 +997,8 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
               type="button"
               onClick={() => {
                 if (isAtPresent) {
-                  // Restart from MIN_YEAR when at the end
-                  setCurrentYear(MIN_YEAR);
+                  // Restart from the start of the active scale when at the end
+                  setCurrentYear(deepTime ? -EARTH_AGE + 1 : MIN_YEAR);
                   setIsPlaying(true);
                 } else {
                   setIsPlaying((p) => !p);
@@ -961,10 +1021,17 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
                   `${totalClaimCount.toLocaleString()} claims in ${CATEGORY_LABELS[categoryFilter]}`
                 ) : isAtPresent ? (
                   `${totalClaimCount.toLocaleString()} claims (all time)`
+                ) : currentYear < DEEP_FETCH_FLOOR ? (
+                  "geography only — no dated claims this far back"
                 ) : (
-                  `${totalClaimCount.toLocaleString()} claims through ${currentYear}`
+                  `${totalClaimCount.toLocaleString()} claims through ${formatYear(currentYear)}`
                 )}
               </div>
+              {deepTime && !isAtPresent && (
+                <div className="text-[11px] mt-0.5 text-purple-300/80">
+                  {getEraForYear(currentYear).emoji} {getEraForYear(currentYear).name}
+                </div>
+              )}
               {currentGeoSelection && !isAtPresent && (
                 <div className="text-[11px] mt-0.5 flex items-center justify-center gap-1">
                   {loadingGeo && (
@@ -986,6 +1053,24 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
               type="button"
               onClick={() => {
                 setIsPlaying(false);
+                setDeepTime((d) => !d);
+                // Leaving deep time from before 1789 would strand the linear slider.
+                if (deepTime && currentYear < MIN_YEAR) setCurrentYear(MIN_YEAR);
+              }}
+              aria-pressed={deepTime}
+              className={`px-2 py-1 text-[11px] rounded border transition-colors ${
+                deepTime
+                  ? "border-purple-500 text-purple-200 bg-purple-950/40"
+                  : "border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
+              }`}
+              title={deepTime ? "Back to 1789–present" : "Deep time: 4.5 billion years of geography"}
+            >
+              Deep time
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setIsPlaying(false);
                 setCurrentYear(MAX_YEAR);
               }}
               disabled={isAtPresent && !isPlaying}
@@ -999,27 +1084,58 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           <div className="relative">
             <input
               type="range"
-              min={MIN_YEAR}
-              max={MAX_YEAR}
+              min={deepTime ? 0 : MIN_YEAR}
+              max={deepTime ? DEEP_STEPS : MAX_YEAR}
               step={1}
-              value={currentYear}
+              value={deepTime ? yearToDeepSlider(currentYear) : Math.max(MIN_YEAR, currentYear)}
               onChange={(e) => {
                 setIsPlaying(false);
-                setCurrentYear(parseInt(e.target.value, 10));
+                const v = parseInt(e.target.value, 10);
+                setCurrentYear(deepTime ? deepSliderToYear(v) : v);
               }}
-              className="w-full h-2 bg-gradient-to-r from-amber-900 via-amber-700 to-amber-500 rounded-lg appearance-none cursor-pointer
+              className={`w-full h-2 rounded-lg appearance-none cursor-pointer bg-gradient-to-r ${
+                deepTime
+                  ? "from-purple-900 via-blue-800 via-emerald-700 to-amber-500"
+                  : "from-amber-900 via-amber-700 to-amber-500"
+              }
                 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer
-                [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
-              aria-label="Year"
+                [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer`}
+              aria-label={deepTime ? "Deep time" : "Year"}
             />
-            <div className="flex justify-between text-[10px] text-gray-500 mt-1">
-              <span>{MIN_YEAR}</span>
-              <span>1850</span>
-              <span>1900</span>
-              <span>1950</span>
-              <span>2000</span>
-              <span>Now</span>
-            </div>
+            {deepTime ? (
+              // Log scale: ticks sit where the mapping puts them, not evenly.
+              <div className="relative h-4 text-[10px] text-gray-500 mt-1">
+                {[
+                  { label: "4.5 Ga", year: -EARTH_AGE + 1 },
+                  { label: "540 Ma", year: -540_000_000 },
+                  { label: "66 Ma", year: -66_000_000 },
+                  { label: "10k BCE", year: -10_000 },
+                  { label: "1 CE", year: 1 },
+                  { label: "Now", year: MAX_YEAR },
+                ].map((t) => {
+                  const pct = (yearToDeepSlider(t.year) / DEEP_STEPS) * 100;
+                  const align = pct <= 0 ? "" : pct >= 100 ? "-translate-x-full" : "-translate-x-1/2";
+                  return (
+                    <span
+                      key={t.label}
+                      className={`absolute whitespace-nowrap ${align}`}
+                      style={{ left: `${Math.min(100, Math.max(0, pct))}%` }}
+                    >
+                      {t.label}
+                    </span>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="flex justify-between text-[10px] text-gray-500 mt-1">
+                <span>{MIN_YEAR}</span>
+                <span>1850</span>
+                <span>1900</span>
+                <span>1950</span>
+                <span>2000</span>
+                <span>Now</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

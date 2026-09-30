@@ -17,6 +17,7 @@ import VotingInferenceSection from "./VotingInferenceSection";
 import AdvancedVotingSection from "./AdvancedVotingSection";
 import AllVotesStatsSection from "./AllVotesStatsSection";
 import CorpusStatsSection from "./CorpusStatsSection";
+import TransitionMatrixSection from "./TransitionMatrixSection";
 
 const MIN_TOTAL = 10;
 
@@ -244,6 +245,11 @@ export default async function StatsPage() {
       {/* Corpus composition — what we actually have receipts for */}
       <Suspense fallback={null}>
         <CorpusStatsSection />
+      </Suspense>
+
+      {/* Ported from /analysis/corpus (phase 3): the transition matrix */}
+      <Suspense fallback={null}>
+        <TransitionMatrixSection />
       </Suspense>
 
       <div className="pt-4 border-t border-zinc-800">

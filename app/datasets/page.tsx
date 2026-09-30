@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PIPELINES } from "@/lib/pipelines/registry";
+import { getDataPipelines } from "@/lib/pipelines/registry";
 
 export const metadata = {
   title: "Datasets — Epistemic Receipts",
@@ -8,8 +8,9 @@ export const metadata = {
 };
 
 export default function DatasetsPage() {
-  const active = PIPELINES.filter(p => !p.retired);
-  const retired = PIPELINES.filter(p => p.retired);
+  // Data pipelines only (entries with a fetch method); editorial/seed tags live on /sources.
+  const active = getDataPipelines().filter(p => !p.retired);
+  const retired = getDataPipelines().filter(p => p.retired);
 
   return (
     <div className="max-w-4xl mx-auto space-y-10 pb-16">
@@ -82,12 +83,6 @@ export default function DatasetsPage() {
         </section>
       )}
 
-      <div className="text-xs text-gray-600">
-        <Link href="/api/v1/manifest" className="hover:text-gray-400 transition-colors font-mono">
-          GET /api/v1/manifest
-        </Link>{" "}
-        — machine-readable version with live counts
-      </div>
     </div>
   );
 }

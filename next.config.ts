@@ -58,7 +58,7 @@ const nextConfig: NextConfig = {
   // jsdom removed 2026-07-06: even externalized it crashed the deployed
   // /api/proxy/reader function (500 before any JSON reached the client).
   // The route now uses linkedom, which bundles cleanly.
-  serverExternalPackages: ["ws", "@neondatabase/serverless", "@prisma/adapter-neon", "pdf-parse"],
+  serverExternalPackages: ["pdf-parse"],
   async headers() {
     return [
       {
@@ -76,15 +76,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return {
+      // /sitemap.xml is claimed by the metadata convention (app/sitemap.ts with
+      // generateSitemaps) yet served nothing; a route file there conflicts at
+      // build time. Serve the index from /sitemap-index.xml before the
+      // filesystem is consulted so the URL robots.txt advertises resolves.
+      beforeFiles: [{ source: "/sitemap.xml", destination: "/sitemap-index.xml" }],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
   async redirects() {
     return [
       { source: "/stock-act", destination: "/congress-trades", permanent: true },
       // B9-3: /foreign-legislation folded into /legislation (same data, US-inclusive UI).
       // Nav entry removed; permanent redirect ensures old bookmarks and links land correctly.
       { source: "/foreign-legislation", destination: "/legislation", permanent: true },
-      // B12-3: bookmarks + alerts unified into /following (one place, not three).
-      { source: "/bookmarks", destination: "/following", permanent: true },
-      { source: "/alerts", destination: "/following", permanent: true },
       // Former redirect-stub pages (front door phase 0). Exact sources only:
       // /reader/[bookId] is a real page and must keep rendering.
       { source: "/timeline", destination: "/settling-curve", permanent: true },

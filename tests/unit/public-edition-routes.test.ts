@@ -121,7 +121,7 @@ describe("front door: every listed public route has a page", () => {
 
 describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs", () => {
   it.each([
-    "/", "/methodology", "/communities", "/corrections", "/terms", "/privacy", "/docs/api",
+    "/", "/methodology", "/communities", "/corrections", "/terms", "/privacy",
     "/settling-curve", "/search", "/opinions", "/retraction-explorer", "/split-ledger", "/reversals",
   ])("%s is public", (r) => {
     expect(isPublicRoute(r)).toBe(true);

@@ -7,7 +7,7 @@
  *   hybrid   — RRF(tsvector top-100 + vector top-100, k=60) — DEFAULT
  *
  * The search_mode query param selects the mode; omit for hybrid.
- * Wired into /api/search, /api/v1/search, /api/v1/verify.
+ * Wired into /api/search.
  */
 
 import { prisma } from "@/lib/prisma";

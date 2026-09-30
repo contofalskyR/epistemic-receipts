@@ -15,14 +15,6 @@
     {
       "path": "/api/cron/embed-incremental",
       "schedule": "0 2 * * *"
-    },
-    {
-      "path": "/api/cron/flush-api-usage",
-      "schedule": "0 3 * * *"
-    },
-    {
-      "path": "/api/cron/claim-alerts",
-      "schedule": "30 0 * * 1"
     }
   ]
 }

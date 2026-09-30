@@ -53,10 +53,6 @@ export const PUBLIC_ROUTES: string[] = [
   // Provenance
   "/sources",
   "/datasets",
-  // API reference — linked from /, the sitemap and the v1 API's 401 message
-  "/docs/api",
-  // Personal (anonymous-key, no auth): follows + bookmarks in one place (B12)
-  "/following",
   // Legal — footer-linked from every page
   "/terms",
   "/privacy",
