@@ -144,29 +144,3 @@ jobs:
         uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  sourcemaps:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    needs: quality
-    steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build (for sourcemap upload)
-        run: npx prisma generate && npx next build
-        env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/epistemic_test
-          DIRECT_URL: postgresql://postgres:postgres@localhost:5432/epistemic_test
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-        continue-on-error: true

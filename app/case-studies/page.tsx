@@ -3,6 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
 import { AXIS_TEXT_CLASS } from "@/lib/status";
+import { EmptyState } from "@/components/DataState";
 
 export const revalidate = 3600; // ISR: rebuild at most once per hour (was 86400 — caused stale empty page after fix deploy)
 
@@ -131,7 +132,7 @@ export default async function CaseStudiesPage() {
 
       {/* List */}
       {studies.length === 0 ? (
-        <p className="text-gray-500 text-sm">No case studies found.</p>
+        <EmptyState title="No curated case studies found." hint="The query ran and matched nothing — no claim carries a trajectory:* id yet." />
       ) : (
         <ul className="space-y-4">
           {studies.map((cs) => {

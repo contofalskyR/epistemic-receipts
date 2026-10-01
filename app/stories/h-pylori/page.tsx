@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -21,14 +22,13 @@ export const metadata: Metadata = {
   description:
     "On February 9, 1994, one NIH consensus conference ratified the H. pylori theory of ulcers and reversed the stress/acid theory it replaced — the same event settling two arcs at once.",
   alternates: { canonical: "/stories/h-pylori", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/h-pylori")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "H. pylori: two arcs, one settling event",
-    description:
-      "Marshall & Warren's 1984 bacterial theory of ulcers, doubted for a decade, ratified by NIH in 1994 and confirmed by the 2005 Nobel Prize — the same 1994 conference that reversed the stress/acid theory it replaced.",
+    description: "Marshall & Warren's 1984 bacterial theory of ulcers, doubted for a decade, ratified by NIH in 1994 and confirmed by the 2005 Nobel Prize — the same 1994 conference that reversed the stress/acid theory it replaced.",
     url: "/stories/h-pylori",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(HPYLORI_SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

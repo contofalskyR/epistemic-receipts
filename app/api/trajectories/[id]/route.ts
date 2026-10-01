@@ -1,21 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
-export const revalidate = 600;
+// Reading ?format= makes this handler dynamic, so the old route-level
+// `revalidate` never applied. The trajectory itself is cached for an hour per
+// id (STATUS.md Phase 5); the export formats are rendered from the cached,
+// already-stringified transitions.
+export const dynamic = "force-dynamic";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-
-  // CSV export
-  const url = new URL(req.url);
-  const format = url.searchParams.get("format");
-  const wantCsv = format === "csv";
-  const wantBibtex = format === "bibtex";
-  const wantRis = format === "ris";
-
+const loadTrajectory = unstable_cache(async (id: string) => {
   const statusHistorySelect = {
     orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
     select: {
@@ -44,7 +37,7 @@ export async function GET(
     });
   }
 
-  if (!claim) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (!claim) return null;
 
   const transitions = claim.statusHistory.map((s) => ({
     id: s.id,
@@ -59,6 +52,28 @@ export async function GET(
       ? { name: s.markerSource.name, url: s.markerSource.url, ingestedBy: s.markerSource.ingestedBy ?? null }
       : { name: "(no marker source)", url: null, ingestedBy: null },
   }));
+
+  return { text: claim.text, ingestedBy: claim.ingestedBy ?? null, transitions };
+}, ["api-trajectory-detail"], { revalidate: 3600 });
+
+const CACHE_CONTROL = "public, s-maxage=3600, stale-while-revalidate=86400";
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+
+  // CSV export
+  const url = new URL(req.url);
+  const format = url.searchParams.get("format");
+  const wantCsv = format === "csv";
+  const wantBibtex = format === "bibtex";
+  const wantRis = format === "ris";
+
+  const claim = await loadTrajectory(id);
+  if (!claim) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  const { transitions } = claim;
 
   if (wantBibtex) {
     const slug = claim.text.slice(0, 40).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/_+$/, "");
@@ -133,5 +148,8 @@ export async function GET(
     });
   }
 
-  return NextResponse.json({ id, claim: claim.text, transitions, ingestedBy: claim.ingestedBy ?? null });
+  return NextResponse.json(
+    { id, claim: claim.text, transitions, ingestedBy: claim.ingestedBy },
+    { headers: { "Cache-Control": CACHE_CONTROL } },
+  );
 }

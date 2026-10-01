@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { cleanDisplayText } from "@/lib/text";
+import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
 
 type Paper = {
   id: string;
@@ -324,6 +325,9 @@ export default function RetractionExplorerClient({
   const [papers, setPapers] = useState<Paper[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  // A failed request is an error, never "No papers found" (Phase 5).
+  const [error, setError] = useState<string | null>(null);
+  const [retryKey, setRetryKey] = useState(0);
   const [qInput, setQInput] = useState(urlQ);
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -351,15 +355,28 @@ export default function RetractionExplorerClient({
 
     if (urlSortBy !== "impact") params.set("sortBy", urlSortBy);
 
+    let cancelled = false;
+    setError(null);
     fetch(`/api/retractions?${params.toString()}`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((d) => {
+        if (cancelled) return;
         setPapers(d.papers ?? []);
         setTotal(d.total ?? 0);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
-  }, [urlField, urlReason, urlQ, urlSortBy, urlPage]);
+      .catch((e: unknown) => {
+        if (cancelled) return;
+        setError(e instanceof Error ? e.message : "request failed");
+        setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [urlField, urlReason, urlQ, urlSortBy, urlPage, retryKey]);
 
   const handleQChange = (v: string) => {
     setQInput(v);
@@ -599,7 +616,7 @@ export default function RetractionExplorerClient({
           color: S.muted,
         }}
       >
-        {loading ? "Loading…" : `${total.toLocaleString()} papers`}
+        {loading ? "Loading…" : error ? "—" : `${total.toLocaleString()} papers`}
       </div>
 
       {/* Papers list */}
@@ -614,21 +631,26 @@ export default function RetractionExplorerClient({
         }}
       >
         {loading ? (
-          <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
-            Loading papers…
-          </div>
+          <LoadingState label="Loading retracted papers…" lines={4} />
+        ) : error ? (
+          <ErrorState what="retracted papers" detail={error} onRetry={() => setRetryKey((k) => k + 1)} />
         ) : papers.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "4rem 2rem", color: S.muted }}>
-            <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>🔬</div>
-            No papers found matching your filters.
-          </div>
+          urlField !== "all" || urlReason !== "all" || urlQ ? (
+            <EmptyState
+              title="No retracted papers for this filter."
+              hint="The query ran and matched nothing — try another field, reason or search term."
+              action={{ label: "Clear filters", onClick: () => pushUrl({ field: "all", reason: "all", q: "", page: "1" }) }}
+            />
+          ) : (
+            <EmptyState title="No retracted papers indexed yet." />
+          )
         ) : (
           papers.map((p) => <PaperCard key={p.id} paper={p} />)
         )}
       </div>
 
       {/* Pagination */}
-      {!loading && total > 25 && (
+      {!loading && !error && total > 25 && (
         <div
           style={{
             padding: "0 2rem 2rem",

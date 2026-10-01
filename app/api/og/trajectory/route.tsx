@@ -6,10 +6,13 @@ import {
   OG_WIDTH as W,
   OG_HEIGHT as H,
   OG_CACHE_CONTROL,
-  axisColor,
+  CurveCard,
   FallbackCard,
 } from "@/lib/og-shared";
 
+// Link-preview card for /settling-curve/[id], /settling-curve?t= and the
+// stories: the claim's settling curve, drawn with the same geometry as the
+// page (STATUS.md Phase 5). `id` is a trajectory slug or a raw claim CUID.
 export const runtime = "nodejs";
 
 const OG_HEADERS = { "Cache-Control": OG_CACHE_CONTROL };
@@ -22,51 +25,44 @@ export async function GET(req: NextRequest) {
     return new ImageResponse(<FallbackCard />, { width: W, height: H, headers: OG_HEADERS });
   }
 
-  // Look up featured trajectory for hook + eyebrow
+  // Featured trajectories carry an owner-written hook and fallback milestones.
   const featured = FEATURED_TRAJECTORIES.find((t) => t.id === id) ?? null;
 
-  // Fetch from DB
-  type StatusHistoryEntry = { toAxis: string; occurredAt: Date };
+  type StatusHistoryEntry = { toAxis: string; occurredAt: Date; community: string };
   let claimText: string | null = null;
   let statusHistory: StatusHistoryEntry[] = [];
 
   try {
+    const select = {
+      text: true,
+      statusHistory: {
+        // Chain order (seq), date fallback for legacy rows — same as the page.
+        orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
+        select: { toAxis: true, occurredAt: true, community: true },
+        take: 60,
+      },
+    };
     let row = await prisma.claim.findFirst({
       where: { externalId: `trajectory:${id}`, deleted: false },
-      select: {
-        text: true,
-        statusHistory: {
-          orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-          select: { toAxis: true, occurredAt: true },
-        },
-      },
+      select,
     });
     // Fallback: raw CUID (corpus search results link directly by claim id)
     if (!row) {
-      row = await prisma.claim.findFirst({
-        where: { id, deleted: false },
-        select: {
-          text: true,
-          statusHistory: {
-            orderBy: [{ occurredAt: "asc" }, { createdAt: "asc" }],
-            select: { toAxis: true, occurredAt: true },
-          },
-        },
-      });
+      row = await prisma.claim.findFirst({ where: { id, deleted: false }, select });
     }
     if (row) {
       claimText = row.text;
-      statusHistory = row.statusHistory as StatusHistoryEntry[];
+      statusHistory = row.statusHistory;
     }
   } catch {
     // DB unavailable — use featured fallback milestones
   }
 
-  // Fall back to featured milestones if DB returned nothing
   if (statusHistory.length === 0 && featured) {
     statusHistory = featured.milestones.map((m) => ({
       toAxis: m.axis,
       occurredAt: new Date(`${m.year}-01-01`),
+      community: m.community ?? "",
     }));
   }
 
@@ -74,187 +70,21 @@ export async function GET(req: NextRequest) {
     return new ImageResponse(<FallbackCard />, { width: W, height: H, headers: OG_HEADERS });
   }
 
-  // Derive display data
-  const hook =
-    featured?.hook ??
-    (claimText ? claimText.slice(0, 120) + (claimText.length > 120 ? "…" : "") : "");
-
-  const years = statusHistory.map((s) => new Date(s.occurredAt).getFullYear());
-  const firstYear = Math.min(...years);
-  const lastYear = Math.max(...years);
-  const yearSpan = firstYear === lastYear ? String(firstYear) : `${firstYear} → ${lastYear}`;
-  const transitionCount = statusHistory.length;
-
-  // Timeline dots — cap at 10 for visual cleanliness
-  const dots = statusHistory.slice(0, 10);
-  const dotSize = 14;
-  const lineX = W - 160;
-  const dotX = lineX;
-  const timelineTop = 80;
-  const timelineBottom = H - 80;
-  const timelineHeight = timelineBottom - timelineTop;
-  const dotSpacing = dots.length > 1 ? timelineHeight / (dots.length - 1) : 0;
+  const title = featured?.hook ?? claimText ?? "";
+  const communities = new Set(statusHistory.map((s) => s.community).filter(Boolean)).size;
+  const caption =
+    `${statusHistory.length} transition${statusHistory.length !== 1 ? "s" : ""}` +
+    (communities > 1 ? ` · ${communities} communities` : "");
 
   return new ImageResponse(
     (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: W,
-          height: H,
-          background: "#0a0a12",
-          position: "relative",
-          fontFamily: "monospace",
-        }}
-      >
-        {/* Main content area */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: "60px 220px 60px 80px",
-            flex: 1,
-          }}
-        >
-          {/* Eyebrow */}
-          <span
-            style={{
-              fontSize: 12,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "#d4a853",
-              marginBottom: 20,
-            }}
-          >
-            EPISTEMIC RECEIPT 🧾
-          </span>
-
-          {/* Hook */}
-          <p
-            style={{
-              fontSize: 44,
-              color: "#ffffff",
-              fontWeight: 600,
-              lineHeight: 1.15,
-              margin: 0,
-              marginBottom: 28,
-              maxWidth: 700,
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {hook}
-          </p>
-
-          {/* Year span */}
-          <span
-            style={{
-              fontSize: 22,
-              color: "#d4a853",
-              letterSpacing: "0.1em",
-              marginBottom: 10,
-            }}
-          >
-            {yearSpan}
-          </span>
-
-          {/* Transition count */}
-          <span
-            style={{
-              fontSize: 14,
-              color: "#55556e",
-              letterSpacing: "0.08em",
-            }}
-          >
-            {transitionCount} transition{transitionCount !== 1 ? "s" : ""}
-          </span>
-        </div>
-
-        {/* Bottom-right watermark */}
-        <span
-          style={{
-            position: "absolute",
-            bottom: 48,
-            right: 48,
-            fontSize: 12,
-            color: "#3a3a55",
-            letterSpacing: "0.1em",
-          }}
-        >
-          epistemic-receipts.vercel.app
-        </span>
-
-        {/* Timeline visualization (right side) */}
-        <div
-          style={{
-            position: "absolute",
-            right: 80,
-            top: 0,
-            width: 80,
-            height: H,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {/* Vertical connecting line */}
-          <div
-            style={{
-              position: "absolute",
-              left: dotX - 80 + 40 - 1,
-              top: timelineTop + dotSize / 2,
-              width: 2,
-              height: timelineHeight - dotSize,
-              background: "#1e1e2e",
-            }}
-          />
-
-          {/* Dots */}
-          {dots.map((dot, i) => {
-            const topOffset = timelineTop + (dots.length > 1 ? i * dotSpacing : timelineHeight / 2);
-            const dotYear = new Date(dot.occurredAt).getFullYear();
-            return (
-              <div
-                key={i}
-                style={{
-                  position: "absolute",
-                  left: 40 - dotSize / 2,
-                  top: topOffset,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                }}
-              >
-                <div
-                  style={{
-                    width: dotSize,
-                    height: dotSize,
-                    borderRadius: "50%",
-                    background: axisColor(dot.toAxis),
-                    boxShadow: `0 0 6px ${axisColor(dot.toAxis)}88`,
-                    flexShrink: 0,
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: 10,
-                    color: "#3a3a55",
-                    letterSpacing: "0.05em",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {dotYear}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <CurveCard
+        eyebrow="SETTLING CURVE"
+        title={title}
+        milestones={statusHistory.map((s) => ({ year: s.occurredAt.getUTCFullYear(), axis: s.toAxis }))}
+        caption={caption}
+      />
     ),
-    { width: W, height: H, headers: OG_HEADERS }
+    { width: W, height: H, headers: OG_HEADERS },
   );
 }

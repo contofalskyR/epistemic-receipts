@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { getDataPipelines, getPipeline } from "@/lib/pipelines/registry";
+import { EmptyState } from "@/components/DataState";
 
 export const revalidate = 3600;
 
@@ -162,7 +163,7 @@ export default async function DatasetPage({ params }: Props) {
         </h2>
 
         {cov.total === 0 ? (
-          <p className="text-sm text-gray-500 italic">No claims ingested yet.</p>
+          <EmptyState title="No claims ingested from this pipeline yet." hint="The registry entry exists; the ingester has not written a row." />
         ) : (
           <>
             <div className="flex flex-wrap gap-3">

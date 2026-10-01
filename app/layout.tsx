@@ -6,6 +6,7 @@ import FeedbackButton from "@/app/components/FeedbackButton";
 import LinkViewerProvider from "@/app/components/LinkViewerProvider";
 import { SITE_URL } from "@/lib/site";
 import { corpusCountCompact } from "@/lib/corpus";
+import { socialMetadata } from "@/lib/og";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -15,14 +16,19 @@ export async function generateMetadata(): Promise<Metadata> {
   // the previous hand-written "1.7M+" here disagreed with the nav's "1.76M"
   // and the homepage's 1.62M at the same time.
   const claims = await corpusCountCompact();
+  const description =
+    `A live record of epistemic status across science, law, and history — ${claims} sourced claims from legislation, court decisions, scientific papers, and declassified archives.`;
   return {
     // Resolves relative OG image / canonical URLs in per-page generateMetadata.
     // NOTE: no title template — ~35 pages already hard-code the "— Epistemic
     // Receipts" suffix; a template here would double it.
     metadataBase: new URL(SITE_URL),
     title: "Epistemic Receipts",
-    description:
-      `A live record of epistemic status across science, law, and history — ${claims} sourced claims from legislation, court decisions, scientific papers, and declassified archives.`,
+    description,
+    // Default link-preview card for every page that does not set its own
+    // (lib/og.ts). Pages that do must go through socialMetadata() too — a
+    // child `openGraph` replaces this whole block, image included.
+    ...socialMetadata({ title: "Epistemic Receipts", description, url: "/" }),
   };
 }
 

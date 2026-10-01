@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { corpusCount } from "@/lib/corpus";
 import { compactCount } from "@/lib/format";
+import { socialMetadata } from "@/lib/og";
 
 // Static server component — no DB call, fully crawlable, no client-only gate.
 export const revalidate = 86400;
@@ -11,13 +12,11 @@ export const metadata: Metadata = {
   description:
     "An entry point into Epistemic Receipts: fully-built curated trajectories, editorial stories, and key discovery paths. Every link here goes to a real, sourced record.",
   alternates: { canonical: "/start-here" },
-  openGraph: {
+  ...socialMetadata({
     title: "Start Here — Epistemic Receipts",
-    description:
-      "Curated trajectories, stories, and discovery paths — a structured entry point into the epistemic graph.",
+    description: "Curated trajectories, stories, and discovery paths — a structured entry point into the epistemic graph.",
     url: "/start-here",
-    siteName: "Epistemic Receipts",
-  },
+  }),
 };
 
 const CURATED_TRAJECTORIES: {

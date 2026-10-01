@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import WorldBankChart, { colorForIso3 } from "./WorldBankChart";
+import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
 
 type Indicator = { code: string; label: string; unit: string; claimCount: number };
 type Country = { iso3: string; name: string; claimCount: number };
@@ -72,6 +73,8 @@ export default function WorldBankView({ topicName, topicTotal }: { topicName: st
   const [userTouchedSelection, setUserTouchedSelection] = useState(false);
   const [data, setData] = useState<Payload | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [retryKey, setRetryKey] = useState(0);
 
   // Debounce country search input
   useEffect(() => {
@@ -81,21 +84,32 @@ export default function WorldBankView({ topicName, topicTotal }: { topicName: st
 
   // Fetch payload whenever indicator / search / page changes
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+    setError(null);
     const qs = new URLSearchParams({ page: String(page) });
     if (indicator) qs.set("indicator", indicator);
     if (debouncedCountryQuery) qs.set("country", debouncedCountryQuery);
     fetch(`/api/topics/world-bank-indicators/data?${qs.toString()}`)
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((d: Payload) => {
+        if (cancelled) return;
         setData(d);
         // Reset chart selection when indicator changes (unless user has explicitly picked)
         if (!userTouchedSelection || selectedIso3.length === 0) {
           setSelectedIso3(d.defaultSelectedIso3);
         }
       })
-      .finally(() => setLoading(false));
-  }, [indicator, debouncedCountryQuery, page]); // eslint-disable-line react-hooks/exhaustive-deps
+      .catch((e: unknown) => {
+        // A failed request is an error with Retry, never an empty table (Phase 5).
+        if (!cancelled) setError(e instanceof Error ? e.message : "request failed");
+      })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [indicator, debouncedCountryQuery, page, retryKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function switchIndicator(code: string) {
     setIndicator(code);
@@ -127,8 +141,11 @@ export default function WorldBankView({ topicName, topicTotal }: { topicName: st
       .filter((s): s is { iso3: string; name: string; points: { year: number; value: number }[] } => s !== null);
   }, [data, selectedIso3]);
 
+  if (error && !data) {
+    return <ErrorState what="World Bank indicator data" detail={error} onRetry={() => setRetryKey(k => k + 1)} />;
+  }
   if (!data) {
-    return <p className="text-gray-600 text-sm">Loading…</p>;
+    return <LoadingState label="Loading indicator data…" lines={5} />;
   }
 
   const formatter = makeFormatter(indicator);
@@ -274,10 +291,13 @@ export default function WorldBankView({ topicName, topicTotal }: { topicName: st
           <p className="text-[11px] text-gray-600">Sorted alphabetically by country, then by year (newest first).</p>
         </div>
 
-        {data.total === 0 ? (
-          <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-8 text-center">
-            <p className="text-gray-600 text-sm">No claims match the current filter.</p>
-          </div>
+        {error ? (
+          <ErrorState what="this page of indicator claims" detail={error} onRetry={() => setRetryKey(k => k + 1)} />
+        ) : data.total === 0 ? (
+          <EmptyState
+            title="No indicator claims match the current filter."
+            hint="The query ran and matched nothing — pick another indicator or clear the country search."
+          />
         ) : (
           <div className="space-y-2">
             {data.claims.map(c => (

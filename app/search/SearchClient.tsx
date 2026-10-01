@@ -9,6 +9,7 @@ import { cleanDisplayText } from "@/lib/text";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 import { TrajectoryDepth } from "@/components/TrajectoryDepth";
 import { isNonEnglish, pipelineLanguage } from "@/lib/non-english-pipelines";
+import { ErrorState, LoadingState } from "@/components/DataState";
 
 type ClaimHit = {
   id: string;
@@ -236,6 +237,7 @@ export default function SearchClient({ claimsCompact }: { claimsCompact: string 
   const [data, setData] = useState<SearchResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [retryKey, setRetryKey] = useState(0);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const inputFocusedRef = useRef(false);
 
@@ -318,7 +320,7 @@ export default function SearchClient({ claimsCompact }: { claimsCompact: string 
         setLoading(false);
       });
     return () => controller.abort();
-  }, [urlQ, urlType, urlOffset, urlCountry, urlAxis]);
+  }, [urlQ, urlType, urlOffset, urlCountry, urlAxis, retryKey]);
 
   function onInputChange(v: string) {
     setInput(v);
@@ -512,11 +514,11 @@ export default function SearchClient({ claimsCompact }: { claimsCompact: string 
         </div>
       )}
 
-      {loading && showResults && (
-        <p className="text-sm text-gray-500">Searching…</p>
-      )}
+      {loading && showResults && <LoadingState label="Searching…" lines={4} />}
 
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && (
+        <ErrorState what="search results" detail={error} onRetry={() => setRetryKey((k) => k + 1)} />
+      )}
 
       {data && !loading && !error && showResults && (
         <Results data={data} type={urlType} tracedOnly={urlTraced} langAll={urlLangAll} />

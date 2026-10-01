@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
   description:
     "Molina and Rowland predicted in 1974 that CFCs would destroy stratospheric ozone. The claim was contested for over a decade before the Montreal Protocol ratified it in 1987 and developed-country production was phased out by 1995.",
   alternates: { canonical: "/stories/cfc-ozone-depletion", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/cfc-ozone-depletion")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "The Ozone Claim: From Chemistry to Treaty",
-    description:
-      "How Molina and Rowland's 1974 theoretical prediction became the Montreal Protocol — and what it shows about science-to-policy settling timelines.",
+    description: "How Molina and Rowland's 1974 theoretical prediction became the Montreal Protocol — and what it shows about science-to-policy settling timelines.",
     url: "/stories/cfc-ozone-depletion",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

@@ -6,10 +6,14 @@ import {
   OG_WIDTH as W,
   OG_HEIGHT as H,
   OG_CACHE_CONTROL,
+  OG_HOST,
   axisColor,
+  CurveCard,
   FallbackCard,
 } from "@/lib/og-shared";
 
+// Link-preview card for /claims/[id]: the claim's settling curve when it has a
+// status history (STATUS.md Phase 5), otherwise the axis card below.
 export const runtime = "nodejs";
 
 const OG_HEADERS = { "Cache-Control": OG_CACHE_CONTROL };
@@ -32,6 +36,7 @@ export async function GET(req: NextRequest) {
     text: string;
     epistemicAxis: string | null;
     claimEmergedAt: Date | null;
+    statusHistory: { toAxis: string; occurredAt: Date; community: string }[];
     _count: { edges: number; statusHistory: number };
   };
   let claim: ClaimCard | null = null;
@@ -42,6 +47,11 @@ export async function GET(req: NextRequest) {
         text: true,
         epistemicAxis: true,
         claimEmergedAt: true,
+        statusHistory: {
+          orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
+          select: { toAxis: true, occurredAt: true, community: true },
+          take: 60,
+        },
         _count: {
           select: {
             edges: { where: { deleted: false } },
@@ -70,6 +80,20 @@ export async function GET(req: NextRequest) {
     `${sources} evidence link${sources === 1 ? "" : "s"}`,
     transitions > 0 ? `${transitions} transition${transitions === 1 ? "" : "s"}` : null,
   ].filter(Boolean);
+
+  if (claim.statusHistory.length > 0) {
+    const communities = new Set(claim.statusHistory.map((s) => s.community).filter(Boolean)).size;
+    return new ImageResponse(
+      (
+        <CurveCard
+          title={truncate(claim.text, 220)}
+          milestones={claim.statusHistory.map((s) => ({ year: s.occurredAt.getUTCFullYear(), axis: s.toAxis }))}
+          caption={[`${axisLabel}`, ...metaBits.slice(1), communities > 1 ? `${communities} communities` : null].filter(Boolean).join(" · ")}
+        />
+      ),
+      { width: W, height: H, headers: OG_HEADERS },
+    );
+  }
 
   return new ImageResponse(
     (
@@ -108,7 +132,7 @@ export async function GET(req: NextRequest) {
             marginBottom: 24,
           }}
         >
-          EPISTEMIC RECEIPT 🧾
+          EPISTEMIC RECEIPT
         </span>
 
         {/* Claim text */}
@@ -170,7 +194,7 @@ export async function GET(req: NextRequest) {
             letterSpacing: "0.1em",
           }}
         >
-          epistemic-receipts.vercel.app
+          {OG_HOST}
         </span>
       </div>
     ),

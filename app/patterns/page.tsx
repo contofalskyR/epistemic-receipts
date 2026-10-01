@@ -5,6 +5,7 @@ import { liveClaimSql } from "@/lib/corpus";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 import { classifyCurveShape, CURVE_SHAPE_LABELS, CURVE_SHAPE_DESCRIPTIONS, type CurveShape } from "@/lib/curve-shapes";
 import { AXIS_BG_CLASS } from "@/lib/status";
+import { EmptyState } from "@/components/DataState";
 
 // ISR: shapes census is expensive; revalidate once per day.
 export const revalidate = 86400;
@@ -263,7 +264,7 @@ export default async function PatternsPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-600 text-sm italic">No claims match this pattern in the current corpus.</p>
+            <EmptyState title="No claims match this pattern in the current corpus." hint="The query ran and matched nothing — the pattern is defined, the corpus has no exemplar yet." />
           )}
 
           <div>

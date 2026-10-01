@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import SettlingCurveMini from "../components/SettlingCurveMini";
+import { EmptyState, ErrorState } from "@/components/DataState";
 
 const C = {
   bg: "#08080f",
@@ -74,6 +75,7 @@ export default function TrajectoryEncyclopedia() {
   const [responses, setResponses] = useState<Partial<Record<Lens, HistoryResponse>>>({});
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
   const [era, setEra] = useState<string>("all");
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
@@ -89,7 +91,10 @@ export default function TrajectoryEncyclopedia() {
     setLoading(true);
     setFailed(false);
     fetch(lens === "machine" ? "/api/history?lens=machine" : "/api/history")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((d: HistoryResponse) => {
         if (cancelled) return;
         setResponses((prev) => ({ ...prev, [lens]: d }));
@@ -103,7 +108,7 @@ export default function TrajectoryEncyclopedia() {
     return () => {
       cancelled = true;
     };
-  }, [lens, responses]);
+  }, [lens, responses, retryKey]);
 
   const eraTabs: EraDef[] = useMemo(
     () => [{ key: "all", label: "All", range: "" }, ...(data?.eras ?? [])],
@@ -249,13 +254,13 @@ export default function TrajectoryEncyclopedia() {
             ))}
           </div>
         ) : failed ? (
-          <p style={{ color: C.mut, fontSize: 14 }}>
-            Couldn&apos;t load trajectories. Please try again.
-          </p>
+          <ErrorState what="trajectories" onRetry={() => setRetryKey((k) => k + 1)} />
         ) : filtered.length === 0 ? (
-          <p className="py-12 text-center" style={{ color: C.mut, fontSize: 14 }}>
-            No trajectories match{query ? ` “${query}”` : " this era"}.
-          </p>
+          <EmptyState
+            title={`No trajectories match${query ? ` “${query}”` : " this era"}.`}
+            hint="The list loaded; nothing in it fits the current era or search."
+            action={{ label: "Show all eras", onClick: () => { setEra("all"); setQuery(""); setPage(1); } }}
+          />
         ) : (
           <>
             <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

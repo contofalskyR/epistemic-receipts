@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { socialMetadata } from "@/lib/og";
 import Link from "next/link";
+import { EmptyState } from "@/components/DataState";
 import {
   loadTier1Claims,
   loadTier2Claims,
@@ -13,19 +15,19 @@ import {
 import { AXIS_BG_CLASS, AXIS_FALLBACK_BG_CLASS, AXIS_LABEL } from "@/lib/status";
 import { TrajectoryDepth } from "@/components/TrajectoryDepth";
 
-export const revalidate = 3600;
+// Dynamic (reads ?t1page/?t2page/?pair), so a route-level `revalidate` never
+// applied; the lib/split-ledger loaders are cached for an hour instead.
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Split Ledger — Epistemic Receipts",
   description:
     "Claims where different ratifying communities have reached incompatible conclusions. Not a verdict — a record of where the ledgers disagree.",
-  openGraph: {
+  ...socialMetadata({
     title: "Split Ledger — Epistemic Receipts",
-    description:
-      "386 claims where the expert-literature, institutional, judicial, public, and market communities have recorded incompatible epistemic statuses.",
+    description: "386 claims where the expert-literature, institutional, judicial, public, and market communities have recorded incompatible epistemic statuses.",
     url: "/split-ledger",
-    siteName: "Epistemic Receipts",
-  },
+  }),
 };
 
 // ── Community lane — per-community axis badge row ────────────────────────────
@@ -201,7 +203,7 @@ export default async function SplitLedgerPage({
         </div>
 
         {tier1Result.claims.length === 0 ? (
-          <p className="text-sm text-gray-600 italic">No results for this page.</p>
+          <EmptyState title="No disagreements on this page." hint="The query ran and matched nothing — go back a page." action={{ label: "First page", href: "/split-ledger" }} />
         ) : (
           <ul className="space-y-3">
             {tier1Result.claims.map((claim) => (
@@ -288,7 +290,7 @@ export default async function SplitLedgerPage({
         </div>
 
         {tier2Result.claims.length === 0 ? (
-          <p className="text-sm text-gray-600 italic">No results for this pair.</p>
+          <EmptyState title="No stage-lag claims for this pair." hint="The query ran and matched nothing — pick another community pair." action={{ label: "All pairs", href: "/split-ledger#stage-lag" }} />
         ) : (
           <ul className="space-y-3" id="stage-lag">
             {tier2Result.claims.map((claim) => (

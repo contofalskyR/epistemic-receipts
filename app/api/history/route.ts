@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
+import { getCuratedTrajectories } from "@/lib/trajectory-list";
 
-export const revalidate = 600;
+// Reading searchParams makes this handler dynamic, so a route-level
+// `revalidate` never applied; each lens is instead cached for an hour with
+// unstable_cache (STATUS.md Phase 5). Era filtering and paging happen on the
+// cached array, so the key space is two entries.
+export const dynamic = "force-dynamic";
 
 // ─── Eras ────────────────────────────────────────────────────────────────────
 // No era field exists on Claim/ClaimStatusHistory, so we infer the era from the
@@ -131,47 +137,35 @@ async function loadMachineLens(): Promise<EncyclopediaItem[]> {
   });
 }
 
+// The curated lens is the cached curated list (lib/trajectory-list.ts, hourly,
+// in <2 MB chunks) reshaped — the previous dedicated query produced a 3.8 MB
+// payload that the data cache refused ("items over 2MB can not be cached"),
+// so every anonymous visit to /trajectories ran it. The card text is the
+// list's 160-char claim; the encyclopedia card truncates to 100 anyway.
 async function loadCuratedLens(): Promise<EncyclopediaItem[]> {
-  const claims = await prisma.claim.findMany({
-    where: { externalId: { startsWith: "trajectory:" }, deleted: false },
-    select: {
-      id: true,
-      externalId: true,
-      text: true,
-      claimEmergedAt: true,
-      statusHistory: {
-        orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
-        select: { seq: true, community: true, toAxis: true, occurredAt: true },
-      },
-    },
-  });
-
-  return claims.map((c) => {
-    const years = c.statusHistory.map((s) => s.occurredAt.getUTCFullYear());
-    if (years.length === 0 && c.claimEmergedAt) years.push(c.claimEmergedAt.getUTCFullYear());
-    const startYear = years.length ? Math.min(...years) : null;
-    const endYear = years.length ? Math.max(...years) : null;
+  const list = await getCuratedTrajectories();
+  return list.map((c) => {
+    const years = c.milestones.map((m) => m.year);
+    const startYear = years.length ? Math.min(...years) : c.firstYear;
+    const endYear = years.length ? Math.max(...years) : c.lastYear;
     const era: EraKey = startYear != null ? eraForYear(startYear) : "modern";
     return {
-      id: c.externalId!.replace(/^trajectory:/, ""),
+      id: c.id,
       kind: "curated" as const,
-      claim: c.text,
+      claim: c.claim,
       startYear,
       endYear,
       era,
-      transitionCount: c.statusHistory.length,
-      communities: [...new Set(c.statusHistory.map((s) => s.community))],
-      hasReversal: c.statusHistory.some((s) => s.toAxis === "REVERSED"),
-      hasAbandonment: c.statusHistory.some((s) => s.toAxis === "ABANDONED"),
-      // Lean milestone series for the card sparkline (SettlingCurveMini). Only
-      // year + axis — kept minimal because every trajectory ships in one payload.
-      milestones: c.statusHistory.map((s) => ({
-        year: s.occurredAt.getUTCFullYear(),
-        axis: s.toAxis,
-      })),
+      transitionCount: c.transitionCount,
+      communities: c.communities,
+      hasReversal: c.hasReversal,
+      hasAbandonment: c.hasAbandonment,
+      milestones: c.milestones,
     };
   });
 }
+
+const loadMachineLensCached = unstable_cache(loadMachineLens, ["api-history-machine"], { revalidate: 3600 });
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -179,7 +173,7 @@ export async function GET(req: NextRequest) {
   const pageParam = searchParams.get("page");
   const lens = searchParams.get("lens") === "machine" ? "machine" : "curated";
 
-  const all = lens === "machine" ? await loadMachineLens() : await loadCuratedLens();
+  const all = lens === "machine" ? await loadMachineLensCached() : await loadCuratedLens();
 
   // Curated lens: chronological, oldest first. Machine lens keeps the SQL
   // ranking (reversals → transition count → span).

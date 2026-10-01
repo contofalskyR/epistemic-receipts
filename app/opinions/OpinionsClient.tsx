@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
 
 const C = {
   bg: "#0a0a0a",
@@ -225,6 +226,9 @@ export default function OpinionsClient() {
   const [page, setPage] = useState(urlPage);
   const [data, setData] = useState<OpinionsResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  // A failed request is an error, never "No opinions found" (Phase 5).
+  const [error, setError] = useState<string | null>(null);
+  const [retryKey, setRetryKey] = useState(0);
 
   const pushUrl = useCallback(
     (c: string, df: string, dt: string, p: number) => {
@@ -247,20 +251,33 @@ export default function OpinionsClient() {
   }, [urlCourt, urlDateFrom, urlDateTo, urlPage]);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
+    setError(null);
     const sp = new URLSearchParams({ limit: "50", page: String(page) });
     if (court !== "all") sp.set("court", court);
     if (dateFrom) sp.set("dateFrom", dateFrom);
     if (dateTo) sp.set("dateTo", dateTo);
 
     fetch(`/api/opinions?${sp.toString()}`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((d: OpinionsResponse) => {
+        if (cancelled) return;
         setData(d);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
-  }, [court, dateFrom, dateTo, page]);
+      .catch((e: unknown) => {
+        if (cancelled) return;
+        setError(e instanceof Error ? e.message : "request failed");
+        setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [court, dateFrom, dateTo, page, retryKey]);
 
   function handleCourtChange(v: string) {
     setCourt(v as typeof court);
@@ -433,7 +450,7 @@ export default function OpinionsClient() {
           </div>
         </div>
 
-        {!loading && data && (
+        {!loading && !error && data && (
           <div style={{ padding: "0.75rem 0.25rem", fontSize: "0.78rem", color: C.faint }}>
             {total.toLocaleString()} opinion{total !== 1 ? "s" : ""}
             {court !== "all" ? ` · ${COURTS.find((c) => c.value === court)?.label}` : ""}
@@ -444,13 +461,28 @@ export default function OpinionsClient() {
       {/* Results */}
       <div style={{ maxWidth: "64rem", margin: "0 auto", padding: "0.5rem 1.5rem 4rem" }}>
         {loading ? (
-          <div style={{ padding: "3rem 0", textAlign: "center", color: C.faint, fontSize: "0.88rem" }}>
-            Loading…
-          </div>
+          <LoadingState label="Loading opinions…" lines={4} />
+        ) : error ? (
+          <ErrorState what="opinions" detail={error} onRetry={() => setRetryKey((k) => k + 1)} />
         ) : !data || data.results.length === 0 ? (
-          <div style={{ padding: "3rem 0", textAlign: "center", color: C.mut, fontSize: "0.88rem" }}>
-            No opinions found.
-          </div>
+          court !== "all" || dateFrom || dateTo ? (
+            <EmptyState
+              title="No opinions for this filter."
+              hint="The query ran and matched nothing — widen the court or date range."
+              action={{
+                label: "Clear filters",
+                onClick: () => {
+                  setCourt("all");
+                  setDateFrom("");
+                  setDateTo("");
+                  setPage(1);
+                  pushUrl("all", "", "", 1);
+                },
+              }}
+            />
+          ) : (
+            <EmptyState title="No opinions ingested yet." />
+          )
         ) : (
           <>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>

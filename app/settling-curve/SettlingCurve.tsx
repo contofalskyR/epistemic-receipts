@@ -7,6 +7,7 @@ import { ShareButtons } from "@/components/ShareButtons";
 import SettlingCurveNav from "./SettlingCurveNav";
 import { AXIS_COLOR } from "@/lib/status";
 import { EpistemicLegend } from "@/components/EpistemicLegend";
+import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
 
 const C = {
   bg: "#0a0a0a",
@@ -1076,26 +1077,17 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
         <div className="flex-1 overflow-y-auto px-2 py-3" style={{ background: C.bg, WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
           {filteredList.length === 0 ? (
             listError ? (
-              // Previously an API failure rendered as "No trajectories match
-              // these filters" on desktop — indistinguishable from an empty
-              // filter. Say what happened and offer a retry.
-              <div className="px-3 py-6 text-center">
-                <p style={{ color: "#f43f5e", fontSize: 12 }} className="mb-3">
-                  Couldn&apos;t load trajectories.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setRetryKey((k) => k + 1)}
-                  className="px-3 py-1.5 rounded font-mono"
-                  style={{ fontSize: 11, color: C.ink, border: `1px solid ${C.panelEdge}` }}
-                >
-                  Retry
-                </button>
-              </div>
+              // An API failure must never read as "No trajectories match these
+              // filters" — shared error state with Retry (Phase 5).
+              <ErrorState what="the trajectory list" onRetry={() => setRetryKey((k) => k + 1)} className="mx-1" />
+            ) : listLoading ? (
+              <LoadingState label="Loading trajectories…" lines={6} className="px-3" />
             ) : (
-              <div className="px-3 py-6 text-center" style={{ color: C.mut, fontSize: 12 }}>
-                {listLoading ? "Loading trajectories…" : "No trajectories match these filters."}
-              </div>
+              <EmptyState
+                title="No trajectories match these filters."
+                hint="The list loaded; nothing in it fits the current search or era."
+                className="mx-1"
+              />
             )
           ) : (
             erasInList.map((era) => {
