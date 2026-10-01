@@ -5,7 +5,7 @@
  * Derived 2026-07-03 from the Layer-1 baseline templates in
  * scripts/ingest-auto-trajectories.ts (186 pipelines, full partition — every
  * templated pipeline appears in exactly one category). Rationale:
- * CORPUS-PROMOTER-BULK-PLAN.md §3. Verify live numbers with
+ * docs/CORPUS-PROMOTER-BULK-PLAN.md §3. Verify live numbers with
  * scripts/corpus-completeness-report.ts.
  *
  * The epistemic position: a settling curve of length 1 is a real claim —

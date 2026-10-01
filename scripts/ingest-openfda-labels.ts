@@ -15,7 +15,7 @@
 // [start TO end]`. The sum of partition totals is asserted against the global
 // server total before any fetching begins.
 //
-// Architectural note (see CONSULTANT.md changelog 2026-05-21):
+// Architectural note (see docs/CONSULTANT.md changelog 2026-05-21):
 // Drug-label records may be background-tier under AGENTS.md (similar to
 // individual FAERS reports). This script was built per explicit task brief.
 // Full-run candidates should be reviewed against the reference-tier test

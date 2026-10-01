@@ -22,7 +22,7 @@ An instrument, not an influencer. Confident minimalism — the aesthetic of a se
 
 ## Front page
 
-The highest-leverage single surface (see HOMEPAGE-REDESIGN-PLAN.md for mechanics; this sets the brief):
+The highest-leverage single surface (see docs/archive/HOMEPAGE-REDESIGN-PLAN.md for mechanics; this sets the brief):
 
 1. **One full-bleed interactive settling curve** as the hero — semaglutide (25-year arc: 1996 first evidence → 2017 FDA approval → post-market) or the hot-hand double reversal (a debunking, debunked — the shape only this product can draw). The curve, not the interface, is the hero.
 2. **One line:** "Facts have histories. We keep the receipts."
@@ -62,7 +62,7 @@ Mainstream later, through their shares — the receipt cards are the bridge.
 - **Skeptic/science podcast sponsorships** — the Ground News playbook, aimed at hosts whose audiences already perform epistemic care. Read copy follows the one rule (derived numbers only).
 - **Show HN** — the settling-curve visualization is the demo; engineers share instruments.
 - **Journalists** — pitch the retraction story (26k+ retraction curves; publication→retraction spans) and, later, the first human-reviewed quiet reversals: findings that died without anyone writing an obituary — until now.
-- **Academia** — badges + the export formats + (separately) the cog-sci instrument (PITCH-COGSCI-SETTLING-CURVES.md).
+- **Academia** — badges + the export formats + (separately) the cog-sci instrument (docs/archive/PITCH-COGSCI-SETTLING-CURVES.md).
 
 ## Taglines (all promise-free by design)
 

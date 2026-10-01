@@ -185,7 +185,7 @@ function frac(dateStr: string) {
 }
 const yr = (d: string) => Number(d.split("-")[0]);
 
-// Chain order (ORDERING-SEMANTICS-2026-07-08.md): explicit seq wins; date is
+// Chain order (docs/ORDERING-SEMANTICS-2026-07-08.md): explicit seq wins; date is
 // the fallback for unbackfilled legacy rows. X-POSITIONS still come from
 // frac(date) — when a coarse YEAR date makes a later-in-chain dot sit left of
 // its predecessor, the connector visibly doubles back. That's honest: the

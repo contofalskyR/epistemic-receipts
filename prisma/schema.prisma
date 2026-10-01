@@ -687,7 +687,7 @@ model ClaimStatusHistory {
   createdAt    DateTime           @default(now())
   // Explicit per-claim row order (1..n), assigned by lib/transition-contract in the
   // insert transaction; prepends/amendBaseline renumber the whole claim in-transaction
-  // (ORDERING-SEMANTICS-2026-07-08.md). Nullable only for not-yet-backfilled legacy rows.
+  // (docs/ORDERING-SEMANTICS-2026-07-08.md). Nullable only for not-yet-backfilled legacy rows.
   seq           Int?
 
   claim          Claim                     @relation(fields: [claimId], references: [id], onDelete: Cascade)

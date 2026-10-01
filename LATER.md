@@ -73,8 +73,9 @@ the Analyze group can leave the Lab.
 
 | item | the one missing piece |
 |---|---|
-| link-integrity test | extend to `components/`, `lib/`, template hrefs; run in CI (Phase 4) |
+| link-integrity test | done in Phase 4 (2026-09-30): `tests/unit/link-integrity.test.ts` (anonymous surface incl. `components/`, `lib/`, template hrefs; every href exists) + the CI "Unit tests" step |
 | `middleware.ts` | Next 16 renames it `proxy.ts` (Node runtime); `tests/integration.test.ts` imports `{ middleware }` — rename in its own PR |
 | Prisma schema | `prisma/migrations/20260930120000_phase3_drop_saas_social_auth` is written, not applied — owner runs `prisma migrate deploy` |
 | `metadata` on Source/Edge/MetaEdge | queued migration (AGENTS.md) |
 | six claims written after the restore | find the writer (a cron or ingest route) |
+| MCP endpoint | unauthenticated read-only, over the public claim graph (`isPublicRoute` / `LIVE_CLAIM_WHERE`); phase 3 deleted the key-gated `/api/mcp` + `lib/v1` — recover the tool surface from `archive/full-site`, drop the key |

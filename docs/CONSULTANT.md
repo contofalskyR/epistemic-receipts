@@ -1,4 +1,4 @@
-# CONSULTANT.md — Epistemic Receipts Architectural Memory
+# docs/CONSULTANT.md — Epistemic Receipts Architectural Memory
 
 > **Every coding agent must read this file before making changes.**
 > **Every coding agent must update this file after making changes.**
@@ -334,7 +334,7 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 - **New API routes.** `app/api/labs/claim-diff/list/route.ts` returns trajectories with ≥ 2 snapshots, aggregated in a single raw SQL grouping (`snapshotCount`, `transitionCount`, year span). `app/api/labs/claim-diff/[trajectoryId]/route.ts` resolves the trajectory by either `externalId = 'trajectory:<slug>'` or raw `Claim.id`, returns the full transition log with snapshots and a computed inheritance diff between adjacent snapshots. Diff logic: match by `category` first, then split matches into `kept` vs `changed` by Jaccard token similarity on lowercased word-tokens (threshold 0.55). Unmatched prev-side categories become `dropped`; unmatched next-side become `added`. Both routes are read-only, `revalidate = 300`.
 - **`app/settling-curve/SettlingCurve.tsx`** — added a subtle `· Labs ↗` link inside the existing footnote paragraph (with `data-no-viewer="1"` so the global LinkViewer modal doesn't intercept the same-origin navigation). Zero other changes to the file — chart, sidebar, and receipt logic are untouched, per the task constraints.
 - **Constraints honored:** `prisma-client-js` (schema unchanged), `tsconfig.scripts.json` used for the enrichment script, no OpenAI key introduced (only `claude --print` subprocess), no new npm dependencies, `/settling-curve` behaviorally unchanged aside from the footnote link. `tsc --noEmit` clean on app/ + touched scripts. `npx prisma validate` reports the schema is valid. Editorial-not-algorithmic guard: this is a derived/experimental view sitting behind `/labs`, sourced from existing `ClaimStatusHistory.reason` text rather than a new bulk claim ingest.
-- **Files added:** `prisma/migrations/20260701000000_add_transition_claims_snapshot/migration.sql`, `scripts/enrich-transition-claims.ts`, `app/api/labs/claim-diff/list/route.ts`, `app/api/labs/claim-diff/[trajectoryId]/route.ts`, `app/labs/claim-diff/page.tsx`, `app/labs/claim-diff/ClaimDiffLab.tsx`. **Files edited:** `prisma/schema.prisma`, `app/settling-curve/SettlingCurve.tsx`, `CONSULTANT.md`.
+- **Files added:** `prisma/migrations/20260701000000_add_transition_claims_snapshot/migration.sql`, `scripts/enrich-transition-claims.ts`, `app/api/labs/claim-diff/list/route.ts`, `app/api/labs/claim-diff/[trajectoryId]/route.ts`, `app/labs/claim-diff/page.tsx`, `app/labs/claim-diff/ClaimDiffLab.tsx`. **Files edited:** `prisma/schema.prisma`, `app/settling-curve/SettlingCurve.tsx`, `docs/CONSULTANT.md`.
 
 ### 2026-06-19 — Link viewer modal (VM-window overlay for external links)
 - **Files changed:**
@@ -358,7 +358,7 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 ### 2026-06-17 03:52 EDT — Split-panel UI rebuild for /settling-curve — sidebar with search/filter/era groups, right panel chart-first, mobile drawer
 - **Commit:** settling-curve: split-panel UI with sidebar search + status/era filters
 - **Files changed:**
-  - CONSULTANT.md
+  - docs/CONSULTANT.md
   - app/HomepageSections.tsx
   - app/layout.tsx
   - app/settling-curve/SettlingCurve.tsx
@@ -370,7 +370,7 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 - **Mobile (<768px)**: sidebar hidden, a fixed bottom button `Browse Trajectories (N)` opens an 80vh slide-up drawer with a close button. Drawer reflects the live filter count.
 - **API additions** (`app/api/trajectories/route.ts`): list response now also returns `currentAxis` (last `toAxis`), `firstYear`, `lastYear` so the sidebar can color-dot, status-filter, and show the year span without a second roundtrip. Existing fields and `revalidate = 600` unchanged.
 - **Homepage / footer touch-ups**: appended a JUNE 17, 2026 entry to the homepage `CHANGELOG` array in `app/HomepageSections.tsx`; bumped `last updated` in `app/layout.tsx` footer from June 9 to June 17.
-- **Files changed:** `app/settling-curve/SettlingCurve.tsx` (full rewrite, chart logic preserved), `app/api/trajectories/route.ts`, `app/HomepageSections.tsx`, `app/layout.tsx`, `CONSULTANT.md`.
+- **Files changed:** `app/settling-curve/SettlingCurve.tsx` (full rewrite, chart logic preserved), `app/api/trajectories/route.ts`, `app/HomepageSections.tsx`, `app/layout.tsx`, `docs/CONSULTANT.md`.
 - No DB, schema, or migration changes. `npx tsc --noEmit` clean.
 
 ### 2026-06-10 00:10 EDT — Populate Settling Curve: retraction reversals (Phase A) + landmark court overrulings + detector (Phase B)
@@ -461,7 +461,7 @@ Subagent coding run (started from commit 4ed1370). All five tasks completed and 
 ### 2026-06-08 22:46 EDT — topic-watch weekly digest: WatchedTopic schema, seed 10 topics, cron route /api/cron/topic-alerts, vercel.json cron Mon 00:00 UTC
 - **Commit:** feat: topic-watch weekly Telegram digest
 - **Files changed:**
-  - CONSULTANT.md
+  - docs/CONSULTANT.md
   - app/HomepageSections.tsx
   - app/api/cron/topic-alerts/route.ts
   - prisma/migrations/20260608000000_add_watched_topic/migration.sql
@@ -516,7 +516,7 @@ Subagent coding run (started from commit 4ed1370). All five tasks completed and 
 
 **Known false-positive class.** Name collisions across centuries can mis-link (e.g., 1908 immunology laureate "Paul Ehrlich" linked to 20th-century ecologist "Paul R. Ehrlich" — both publish under matching token-set normalized names). `followUpContext.confidence = "medium"` flags every row for human curation; relations are queryable for review without polluting the Source/Edge tables.
 
-**Files added/changed:** `scripts/link-nobel-openalex.ts` (already committed in 5511362 alongside the NIH linker — Nobel entry was missing from that commit message), `app/HomepageSections.tsx` (Recent Updates entry), `CONSULTANT.md`.
+**Files added/changed:** `scripts/link-nobel-openalex.ts` (already committed in 5511362 alongside the NIH linker — Nobel entry was missing from that commit message), `app/HomepageSections.tsx` (Recent Updates entry), `docs/CONSULTANT.md`.
 
 ### 2026-06-08 — Books/Reader section cleanup
 
@@ -579,7 +579,7 @@ Subagent coding run (started from commit 4ed1370). All five tasks completed and 
 
 **Architecture.** Converted `app/page.tsx` from a fully client component into a server component that batches 9 DB reads via `Promise.all` (5 counts + 1 raw grouped query + 3 featured-claim `findFirst`s). Extracted the original hero/search UX into `app/HomeHero.tsx` (client) which accepts `children` so the server-rendered sections nest inside the existing `bg-gray-950` solid-bg wrapper that covers the fixed BlackHoleCanvas below the fold. Tailwind only — no new CSS, no inline styles beyond what BlackHoleCanvas already uses.
 
-**Files.** New: `app/HomeHero.tsx`, `app/HomepageSections.tsx`. Modified: `app/page.tsx` (now server), `.gitignore` (ignore `.claude/`), `CONSULTANT.md`.
+**Files.** New: `app/HomeHero.tsx`, `app/HomepageSections.tsx`. Modified: `app/page.tsx` (now server), `.gitignore` (ignore `.claude/`), `docs/CONSULTANT.md`.
 
 **Verification.** `npx tsc --noEmit` → 0 errors. Lint warning carries over from the original (`react-hooks/set-state-in-effect` on the search debounce effect) — unchanged from prior code.
 
@@ -597,7 +597,7 @@ Subagent coding run (started from commit 4ed1370). All five tasks completed and 
 
 **Verification.** `npx tsc --noEmit` → 0 errors.
 
-**Files.** `app/api/prereq-graph/route.ts`, `app/prereq-graph/page.tsx`, `app/prereq-graph/PrereqGraphClient.tsx`, `app/api/foreign-legislation/route.ts`, `app/foreign-legislation/page.tsx`, `app/foreign-legislation/ForeignLegislationClient.tsx`, `components/destinations/DestinationNav.tsx`, `app/components/Nav.tsx`, `app/page.tsx`, `CONSULTANT.md`.
+**Files.** `app/api/prereq-graph/route.ts`, `app/prereq-graph/page.tsx`, `app/prereq-graph/PrereqGraphClient.tsx`, `app/api/foreign-legislation/route.ts`, `app/foreign-legislation/page.tsx`, `app/foreign-legislation/ForeignLegislationClient.tsx`, `components/destinations/DestinationNav.tsx`, `app/components/Nav.tsx`, `app/page.tsx`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -620,7 +620,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 **Files changed.**
 - `scripts/backfill-who-axis.ts` (new)
 - `scripts/_audit-null-axis.ts` (new, read-only audit helper)
-- `CONSULTANT.md` (this entry)
+- `docs/CONSULTANT.md` (this entry)
 
 ---
 
@@ -660,7 +660,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 - `app/fields/[slug]/page.tsx` — same pattern as topics; replaced the right-side mono chip with the badge.
 - `app/api/fields/[slug]/route.ts` — added `epistemicAxis` to the `FieldDetailResponse.recentClaims` type, the `select`, and the response mapper.
 - `app/page.tsx` — new Recent Additions entry at the top describing the axis-badge rollout + the search `?axis=` filter chip.
-- `CONSULTANT.md` — this entry.
+- `docs/CONSULTANT.md` — this entry.
 
 **Surfaces audited (badge present).** `/claims/[id]` header + child list, `/search` result cards + axis filter chips, `/` homepage cards, `/bookmarks`, `/topics/[slug]`, `/fields/[slug]`.
 
@@ -805,7 +805,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 - `app/retraction-wall/page.tsx` — feed subscription buttons
 - `app/components/Nav.tsx` — Retraction API under Explore
 - `app/page.tsx` — new Recent Additions entry
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 **Build note.** `prisma migrate deploy` temporarily removed from build command for this deploy (advisory lock timeout, no new migrations). Restored after deploy. Same pattern as 2026-06-08 Epistemic Axis P3.
 
@@ -845,7 +845,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 **Files changed.**
 - `app/components/Nav.tsx` — Stock Act entry under Data dropdown
 - `app/page.tsx` — new Recent Additions entry
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 **Deploy.** `vercel --prod` → `dpl_8krHohNAebi2NYFjNz9hsrw3irAH`. Production at `epistemic-receipts.vercel.app/stock-act`.
 
@@ -889,7 +889,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 - `app/api/members/search/route.ts` (new)
 - `app/components/Nav.tsx` (Browse Votes / Members entries under Data)
 - `app/page.tsx` (June 8 Voteview changelog entry)
-- `CONSULTANT.md` (this entry)
+- `docs/CONSULTANT.md` (this entry)
 
 ### 2026-06-08 07:41 EDT — Retraction Wall + corrections audit log pages
 - **Commit:** docs: save Opus 4.8 brainstorm and investor memo (2026-06-08)
@@ -909,7 +909,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 - Recent retractions table: top 100 by `claimEmergedAt desc, createdAt desc`, with title (from `metadata.title`, falling back to text extraction), journal+publisher, retraction date, and per-row `CONTRADICTS` count grouped by `fromClaimId`. Each row links to `/claims/[id]`.
 - Framing copy emphasizes auto-propagation: "Our knowledge graph automatically updates — propagating the dispute to every paper that relies on it."
 
-**`/corrections` (`app/corrections/page.tsx`).** Static server component, `revalidate = 3600`. Hardcoded entries derived from this CONSULTANT.md:
+**`/corrections` (`app/corrections/page.tsx`).** Static server component, `revalidate = 3600`. Hardcoded entries derived from this docs/CONSULTANT.md:
 - 2026-06-08 CORRECTED — `Claim.currentStatus`/`epistemicStatus`: VERIFIED (2,011) and `established` (2,886) undocumented values resolved via `epistemicAxis` backfill (4,897 records).
 - 2026-05-12 RETIRED — `uspto_v1` Pipeline 5: fabricated metadata confirmed on audit, 182 claims set to `verificationStatus: DEPRECATED`. Both failure modes (training-data recall, assignee-field contamination) called out.
 - Section listing our handling principles (no hard deletes, written reasons, retire-don't-patch, separate humanReviewed/autoApproved).
@@ -926,7 +926,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 - `app/components/Nav.tsx` — added Retraction Wall to Explore dropdown
 - `app/layout.tsx` — Corrections link in footer
 - `app/page.tsx` — Retraction Wall promo at top of Recent Additions
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 **Deploy.** Pushed to Vercel production from `~/Projects/epistemic-receipts` via `vercel --prod`.
 
@@ -1046,7 +1046,7 @@ All three are legislation pipelines that should map to RECORDED but the counts a
 - `app/components/Nav.tsx` — `<nav>` className gains `z-50`
 - `app/layout.tsx` — footer now shows "last updated June 7, 2026" per the deploy-time update rule
 - `app/page.tsx` — new "Recent additions" entry summarizing the bug-fix sweep
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 **Telegram.** Completion notification sent to chat_id `7688025079` via `openclaw message send` per the run prompt.
 
@@ -1264,7 +1264,7 @@ type into a Set, then `createMany({ skipDuplicates: true })`).
 - GHDx bulk-download record pages (e.g. `/record/ihme-data/gbd-2021-cause-specific-mortality-1990-2021`) — HTTP 200 but every file link points to `/download-access/login`.
 - OurWorldInData CSV mirrors (`/grapher/total-number-of-deaths-by-cause.csv`, `share-of-deaths-by-cause.csv`) — HTTP 403 with body `"This chart contains non-redistributable data … cannot be downloaded as a CSV."` IHME's licence prohibits OWID from re-sharing.
 
-**Action.** Per CONSULTANT.md rule #1 (API-only sourcing, no training-data recall) and AGENTS.md "Curated lists require verifiable sources," no Claims were ingested. The stub script exits 1 with the blocked reason listed inline.
+**Action.** Per docs/CONSULTANT.md rule #1 (API-only sourcing, no training-data recall) and AGENTS.md "Curated lists require verifiable sources," no Claims were ingested. The stub script exits 1 with the blocked reason listed inline.
 
 **Unblock path.** Register at `https://ghdx.healthdata.org/download-access/login` → get GBD Results Tool API key from profile → store as `GBD_API_KEY` in `.env.local` → rebuild the script following the `scripts/ingest-who-gho.ts` pattern (one Source per (cause, country, year) batch, HARD_FACT / EMPIRICAL / VERIFIED). Post-ingest: link to `who_gho_v1` claims via CORROBORATES MetaEdge keyed on (country, year, cause keyword).
 
@@ -1283,7 +1283,7 @@ type into a Set, then `createMany({ skipDuplicates: true })`).
 
 **Claim/Source shape.** `claimType: 'INSTITUTIONAL'`, `currentStatus: 'HARD_FACT'`, `verificationStatus: 'VERIFIED'`, `methodologyType: 'primary'`, edge `evidenceType: 'EVIDENTIARY'` with `newScore: 95`. `externalId = iucn_{taxonid}`. Metadata carries the full taxonomy + category + population trend under a `dataset: 'iucn_redlist_v1'` namespace. Per-row writes wrapped in `prisma.$transaction(fn, { timeout: 30000 })` per AGENTS.md rule.
 
-**Files changed:** `scripts/ingest-iucn.ts` (new), `CONSULTANT.md`.
+**Files changed:** `scripts/ingest-iucn.ts` (new), `docs/CONSULTANT.md`.
 
 ### 2026-06-07 — Harvard Caselaw Access Project: ingester NOT built (dead API)
 
@@ -1291,7 +1291,7 @@ type into a Set, then `createMany({ skipDuplicates: true })`).
 
 **Finding.** Every request to `api.case.law/v1/…` returns `HTTP 301` redirecting to `https://case.law/docs/`. The REST API has been sunset. The replacement is `https://static.case.law/` — an S3-style static bucket organized by **reporter abbreviation** (`us/`, `f3d/`, `cal/`, `ny/`, `ill/`, etc.) with top-level metadata JSONs (`ReportersMetadata.json`, `VolumesMetadata.json`, `JurisdictionsMetadata.json`). There is no server-side citation-count ordering, no jurisdiction filter, no `decision_date_min` query — those are server-API concepts that no longer exist. "Top 2,000 most-cited cases" is not a query the static bucket supports; it would require downloading reporter manifests and computing rank ourselves.
 
-**Why I stopped instead of falling back to model recall.** Per CONSULTANT.md rule #1 (API-only sourcing) and the Pipeline 5 / USPTO cautionary tale: when the spec'd live source doesn't exist, the answer is NOT to fabricate "top 2,000 cases" from training data. That's exactly the failure that retired `uspto_v1`.
+**Why I stopped instead of falling back to model recall.** Per docs/CONSULTANT.md rule #1 (API-only sourcing) and the Pipeline 5 / USPTO cautionary tale: when the spec'd live source doesn't exist, the answer is NOT to fabricate "top 2,000 cases" from training data. That's exactly the failure that retired `uspto_v1`.
 
 **Also worth noting.** (a) No `CASELAW_API_KEY` in `.env.local` regardless. (b) Substantial overlap with existing CourtListener pipelines (`courtlistener_scotus_v1`, `courtlistener_circuits_v1`, `ingest-courtlistener-state-supreme.ts`) — Harvard CAP may be background-tier, not reference-tier, by the test in CLAUDE.md.
 
@@ -1315,7 +1315,7 @@ type into a Set, then `createMany({ skipDuplicates: true })`).
 
 **Legacy routes still on disk.** `/api/books/[bookId]/match/route.ts` and `/match/status/route.ts` plus `lib/bookMatchJob.ts` are untouched — they no longer have a caller in the UI, but they still work for local-dev convenience (where `ALLOW_EDITS=true` and `npx ts-node` is available). Safe to delete in a follow-up if confirmed unused.
 
-**Files changed:** `app/api/books/[bookId]/request-analysis/route.ts` (new), `app/api/books/[bookId]/matches/reasons/route.ts` (new), `app/books/BooksClient.tsx`, `scripts/match-book-to-graph.ts`, `CONSULTANT.md`.
+**Files changed:** `app/api/books/[bookId]/request-analysis/route.ts` (new), `app/api/books/[bookId]/matches/reasons/route.ts` (new), `app/books/BooksClient.tsx`, `scripts/match-book-to-graph.ts`, `docs/CONSULTANT.md`.
 
 ### 2026-06-07 — Homepage redesign: search-first discovery experience
 
@@ -1340,7 +1340,7 @@ type into a Set, then `createMany({ skipDuplicates: true })`).
 
 **Files touched.**
 - `app/page.tsx` — full rewrite (796 → ~280 lines)
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 **Verification.** `npx tsc --noEmit` clean.
 
@@ -1854,7 +1854,7 @@ First batch picks the 50 most-recently-created congress-119 claims; subsequent r
 - `npx tsc --noEmit --project tsconfig.json` — clean.
 - `npx tsc --noEmit --project tsconfig.scripts.json` — only pre-existing errors in unrelated Belgium/Malta scripts; canada/legislation files clean.
 
-**Files changed:** `scripts/ingest-canada-bills.ts`, `app/api/legislation/route.ts`, `app/legislation/LegislationClient.tsx`, `CONSULTANT.md`.
+**Files changed:** `scripts/ingest-canada-bills.ts`, `app/api/legislation/route.ts`, `app/legislation/LegislationClient.tsx`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -1890,14 +1890,14 @@ First batch picks the 50 most-recently-created congress-119 claims; subsequent r
 - `npx tsc --noEmit --project tsconfig.json` — clean.
 - `npx tsc --noEmit --project tsconfig.scripts.json` — pre-existing errors in unrelated scripts only; no errors in new or modified files.
 
-**Files changed:** `app/api/legislation/route.ts`, `app/legislation/LegislationClient.tsx`, `app/legislation/page.tsx`, `scripts/canada-bills-loop.sh` (new), `scripts/nz-bills-loop.sh` (new), `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+**Files changed:** `app/api/legislation/route.ts`, `app/legislation/LegislationClient.tsx`, `app/legislation/page.tsx`, `scripts/canada-bills-loop.sh` (new), `scripts/nz-bills-loop.sh` (new), `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `docs/CONSULTANT.md`.
 
 ---
 
 ### 2026-06-03 16:19 EDT — Legislation page: auto-update banner, terminal outcomes tab, full 119th Congress record tab
 - **Commit:** feat: /legislation page — live Congress bills tracker with status filters
 - **Files changed:**
-  - CONSULTANT.md
+  - docs/CONSULTANT.md
   - app/api/legislation/route.ts
   - app/layout.tsx
   - app/legislation/LegislationClient.tsx
@@ -1946,14 +1946,14 @@ First batch picks the 50 most-recently-created congress-119 claims; subsequent r
 - `scripts/ingest-congress-bills-tracker.ts`
 - `app/page.tsx` (changelog)
 - `app/layout.tsx` (footer date)
-- `CONSULTANT.md`
+- `docs/CONSULTANT.md`
 
 ---
 
 ### 2026-06-03 16:05 EDT — Congress bills tracker ingester + /legislation UI page built and deployed
 - **Commit:** feat: /legislation page — live Congress bills tracker with status filters
 - **Files changed:**
-  - CONSULTANT.md
+  - docs/CONSULTANT.md
   - app/api/legislation/route.ts
   - app/layout.tsx
   - app/legislation/LegislationClient.tsx
@@ -1973,7 +1973,7 @@ First batch picks the 50 most-recently-created congress-119 claims; subsequent r
 
 **Verification.** `npx tsc --noEmit` clean. UI not exercised in a browser (no dev server start) — the tracker ingester has not been launched yet, so the page will render the empty state until `congress_bills_tracker_v1` produces rows.
 
-**Files.** `app/api/legislation/route.ts` (new), `app/legislation/page.tsx` (new), `app/legislation/LegislationClient.tsx` (new), `app/layout.tsx` (nav link), `CONSULTANT.md` (this entry).
+**Files.** `app/api/legislation/route.ts` (new), `app/legislation/page.tsx` (new), `app/legislation/LegislationClient.tsx` (new), `app/layout.tsx` (nav link), `docs/CONSULTANT.md` (this entry).
 
 ---
 
@@ -1990,7 +1990,7 @@ First batch picks the 50 most-recently-created congress-119 claims; subsequent r
 
 **Verification.** `npx tsc --noEmit --project tsconfig.scripts.json` — clean on the new file (pre-existing errors in unrelated scripts unchanged). Script **not launched** per task instructions; launch with `bash scripts/congress-bills-loop.sh &`.
 
-**Files.** `scripts/ingest-congress-bills-tracker.ts` (new), `scripts/congress-bills-loop.sh` (new, +x), `CONSULTANT.md` (this entry).
+**Files.** `scripts/ingest-congress-bills-tracker.ts` (new), `scripts/congress-bills-loop.sh` (new, +x), `docs/CONSULTANT.md` (this entry).
 
 ---
 
@@ -2010,7 +2010,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Verification.** `npx tsc --noEmit --project tsconfig.scripts.json` — clean on both new files (pre-existing errors in unrelated scripts unchanged; `grep -E "ingest-courtlistener-(bia|tax)"` against the compiler output returns nothing). Scripts **not run** per task instructions — meant to be launched via the loop wrappers once approved.
 
-**Files.** `scripts/ingest-courtlistener-bia.ts` (new), `scripts/ingest-courtlistener-tax.ts` (new), `scripts/bia-loop.sh` (new, +x), `scripts/tax-loop.sh` (new, +x), `CONSULTANT.md` (this entry).
+**Files.** `scripts/ingest-courtlistener-bia.ts` (new), `scripts/ingest-courtlistener-tax.ts` (new), `scripts/bia-loop.sh` (new, +x), `scripts/tax-loop.sh` (new, +x), `docs/CONSULTANT.md` (this entry).
 
 ---
 
@@ -2026,7 +2026,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Verification.** `npx tsc --noEmit --project tsconfig.scripts.json` — clean on the new file (pre-existing errors in unrelated scripts unchanged). Script **not run** per task instructions — meant to be invoked once the circuits + state-supreme loops have accumulated enough Claims to make the citation graph interesting.
 
-**Files.** `scripts/ingest-courtlistener-citations.ts` (new), `CONSULTANT.md` (this entry).
+**Files.** `scripts/ingest-courtlistener-citations.ts` (new), `docs/CONSULTANT.md` (this entry).
 
 ---
 
@@ -2043,7 +2043,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Verification.** Migration dry-run printed 28 expected renames; live run reported 28 renamed / 0 skipped / 0 errors. Court catalogue dry-run attempted but immediately returned a 31,727s rate-limit from CourtListener (so no Topics-would-be-written sample available — the discrepancy was confirmed by reading the catalogue script source instead). Typecheck `npx tsc --noEmit --project tsconfig.scripts.json` clean on all three modified files (no new errors introduced; pre-existing errors in unrelated scripts unchanged).
 
-**Files.** `scripts/migrate-court-slugs.ts` (new), `scripts/ingest-courtlistener-circuits.ts` (CIRCUITS[] slugs only), `scripts/ingest-courtlistener-state-supreme.ts` (STATE_SUPREMES[] slugs only), `CONSULTANT.md` (this entry).
+**Files.** `scripts/migrate-court-slugs.ts` (new), `scripts/ingest-courtlistener-circuits.ts` (CIRCUITS[] slugs only), `scripts/ingest-courtlistener-state-supreme.ts` (STATE_SUPREMES[] slugs only), `docs/CONSULTANT.md` (this entry).
 
 ---
 
@@ -2059,7 +2059,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Verification.** `npx tsc --noEmit --project tsconfig.scripts.json` — both new files compile clean (pre-existing errors in unrelated scripts: `enrich-retractions.ts`, `enrich-voteview-topics.ts`, `ingest-belgium-legislation.ts`, `ingest-faers-current-drugs.ts`, etc., are unchanged). Scripts not run — per task instructions, do not start the loop or run the ingesters.
 
-**Files.** `scripts/ingest-courtlistener-disclosures.ts` (rewritten), `scripts/ingest-courtlistener-courts.ts` (rewritten), `scripts/disclosures-loop.sh` (light cleanup), `CONSULTANT.md` (this entry).
+**Files.** `scripts/ingest-courtlistener-disclosures.ts` (rewritten), `scripts/ingest-courtlistener-courts.ts` (rewritten), `scripts/disclosures-loop.sh` (light cleanup), `docs/CONSULTANT.md` (this entry).
 
 **Open questions raised during build.** (1) The `state-supreme-courts` parent topic and per-state slugs created by the state-supreme ingester now coexist with the new `state-courts` parent + raw-id slugs from this script — a future cleanup pass should decide whether to merge or keep the two trees parallel. (2) Same situation for `federal-courts` + `us-court-of-appeals-Nth-circuit` (circuits ingester) vs `federal-courts` + `caN` (this ingester). (3) The "foreign reimbursement" heuristic is intentionally permissive — it errs toward inclusion because every claim is PROVISIONAL; a future enrichment pass could tighten the location classifier (Wikidata Q-number lookups on the location string would be the principled fix).
 
@@ -2074,7 +2074,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Why.** CourtListener's opinion endpoints (SCOTUS Pipeline 4, federal circuits Pipeline 6 in progress) cover binding rulings, but a great deal of editorial-relevant CourtListener data lives outside opinions: financial disclosures give a procedural audit trail for judicial ethics scrutiny, and the court catalogue is the natural backbone for organizing every opinion / disclosure / docket-derived claim by issuing body. The court catalogue is **Topics-only by design** — courts themselves aren't claims, they're the taxonomy under which claims hang. The disclosure forms are reference-tier (per CONSULTANT rule 2): each form is a distinct citable filing event, so per-form Claims are valid bulk ingestion; line-item granularity (gifts, investments, positions) is left out at this stage because the form-level "judge filed disclosure for year X" claim is the unit that case studies will cite. Audit follow-on (line-item extraction with cross-references to outside-income litigants) is deferred to a future hand-curated layer per CONSULTANT rule 8.
 
-**Files.** `scripts/ingest-courtlistener-disclosures.ts` (new), `scripts/disclosures-loop.sh` (new, chmod +x), `scripts/ingest-courtlistener-courts.ts` (new), `app/page.tsx` (new top entry in June 3 changelog block), `app/layout.tsx` (footer updated to `last updated June 3, 2026`), `CONSULTANT.md` (this entry).
+**Files.** `scripts/ingest-courtlistener-disclosures.ts` (new), `scripts/disclosures-loop.sh` (new, chmod +x), `scripts/ingest-courtlistener-courts.ts` (new), `app/page.tsx` (new top entry in June 3 changelog block), `app/layout.tsx` (footer updated to `last updated June 3, 2026`), `docs/CONSULTANT.md` (this entry).
 
 **Verification.** `npx tsc --noEmit -p tsconfig.json` clean. Scripts not run by the agent — Robert launches the disclosures loop manually (`bash scripts/disclosures-loop.sh &`) and the courts script as a one-shot. Both scripts honor `--dry-run` for pre-launch sanity checking. Per the project rule, the next run should verify the in-DB count of `ingestedBy = 'courtlistener_disclosures_v1'` against the script's reported totals.
 
@@ -2103,7 +2103,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Why.** The /statistics taxonomy is great for browsing — but a reader trying to actually understand "what is a confidence interval" or "why was this paper underpowered" needs more than one sentence + a formula. The 10 methods covered here are the ones that show up over and over in receipts (every clinical trial in the DB cites p-values, CIs, OR/RR; every meta-analysis cites forest plots; ML and Bayesian work cite the rest), so building textbook depth for these specific 10 cleanly pays off without trying to deep-dive all 105.
 
-**Files changed.** `app/statistics/methods/page.tsx` (new, ~860 lines), `app/api/statistics/related-claims/route.ts` (new, ~55 lines), `app/statistics/page.tsx` (added 1 paragraph + Link at top of header), `app/page.tsx` (new top entry in June 2 changelog block), `app/layout.tsx` (footer date `June 2, 2026 (afternoon)`), `CONSULTANT.md` (this entry).
+**Files changed.** `app/statistics/methods/page.tsx` (new, ~860 lines), `app/api/statistics/related-claims/route.ts` (new, ~55 lines), `app/statistics/page.tsx` (added 1 paragraph + Link at top of header), `app/page.tsx` (new top entry in June 2 changelog block), `app/layout.tsx` (footer date `June 2, 2026 (afternoon)`), `docs/CONSULTANT.md` (this entry).
 
 **Verification.** `npx tsc --noEmit` clean. Recharts tooltip formatters narrowed to handle `ValueType | undefined` to satisfy Recharts 3.x types. Method content is static; only the related-claims block hits the DB and degrades gracefully on fetch failure (sets `{}` and renders empty states). API revalidate=300 keeps the lean query off the hot path.
 
@@ -2123,7 +2123,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Why.** The original taxonomy was a great scannable index but didn't earn its claim to be a "field guide." Robert wanted each card to be openable into a textbook-style entry, the way an undergraduate stats reference works — so a reader doing actual cross-referencing between the methods used in receipts and the methods listed on this page can verify they understand what the method is, why it exists, and what its mechanism is, without leaving the page. SVG figures were chosen for the 11 most-iconic methods (the ones that show up in every intro stats textbook with a picture) because — for these specific methods — the picture genuinely is the explanation.
 
-**Files changed.** `app/statistics/page.tsx` (full rewrite — 489 → ~770 lines), `app/page.tsx` (new line in June 2 block), `app/layout.tsx` (no change — footer already at June 2, 2026), `CONSULTANT.md` (this entry).
+**Files changed.** `app/statistics/page.tsx` (full rewrite — 489 → ~770 lines), `app/page.tsx` (new line in June 2 block), `app/layout.tsx` (no change — footer already at June 2, 2026), `docs/CONSULTANT.md` (this entry).
 
 **Verification.** `npx tsc --noEmit` clean. Card-click expansion + Enter/Space toggle + search-link `stopPropagation` verified in source; SVG strings well-formed (no unclosed tags, no JSX-bracketing pitfalls — all stored as raw template-literal strings in `FIGURES` and injected via `dangerouslySetInnerHTML`). Single-card-open policy verified in source: `setExpanded(prev => prev === key ? null : key)` opens-or-toggles, and any other card click replaces the open key (no second card can be open simultaneously).
 
@@ -2142,7 +2142,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Why.** The site's `/fields` page already surfaces academic disciplines, but Statistics-the-discipline was buried inside `formal-sciences` with no dedicated entry point. The taxonomy on this page is meant to be a "stemmy" reference — dense, precise, scannable — that helps a reader cross-reference the methodological language used in claims back to a unified taxonomy. It also seeds the future direction where each method becomes a backed-by-CITES-edges entry pointing at claims that genuinely apply that technique.
 
-**Files changed.** `app/statistics/page.tsx` (new), `app/layout.tsx` (nav link), `app/page.tsx` (June 2 changelog block), `CONSULTANT.md` (this entry). Footer date in `app/layout.tsx` already at `June 2, 2026` — no bump.
+**Files changed.** `app/statistics/page.tsx` (new), `app/layout.tsx` (nav link), `app/page.tsx` (June 2 changelog block), `docs/CONSULTANT.md` (this entry). Footer date in `app/layout.tsx` already at `June 2, 2026` — no bump.
 
 **Verification.** `npx tsc --noEmit` clean.
 
@@ -2170,7 +2170,7 @@ Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status ret
 
 **Why.** The PROVISIONAL → DISPUTED tagging was the missing piece between yesterday's REVERSED ClaimRelation links and how the claim status renders in the rest of the app: status badges on `/`, `/topics/[slug]`, claim cards in the globe sidebar, and the bookmarks list now correctly mark retracted papers as DISPUTED rather than PROVISIONAL. The UI changes are the user-visible payoff: the score column is now scannable in one read, and the severity description gives a one-glance answer to *how badly was this wrong* (a coarse `HIGH/MEDIUM/LOW` badge required the reader to translate).
 
-**Files changed.** `app/claims/[id]/page.tsx` (inline score string), `components/WhatHappenedNextPanel.tsx` (`severityDescription()` + render block), `scripts/tag-retracted-claims.ts` (new), `app/page.tsx` (June 2 changelog block), `CONSULTANT.md` (this entry). Footer date in `app/layout.tsx` was already at `June 2, 2026` from the earlier enrichment ship — no bump needed.
+**Files changed.** `app/claims/[id]/page.tsx` (inline score string), `components/WhatHappenedNextPanel.tsx` (`severityDescription()` + render block), `scripts/tag-retracted-claims.ts` (new), `app/page.tsx` (June 2 changelog block), `docs/CONSULTANT.md` (this entry). Footer date in `app/layout.tsx` was already at `June 2, 2026` from the earlier enrichment ship — no bump needed.
 
 **Run commands.**
 ```
@@ -2207,7 +2207,7 @@ ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/tag-retracted-c
 
 **Why this source.** The user prompt called out three candidates: (a) the RW registration-gated CSV at retractionwatch.com, (b) `http://api.labs.crossref.org/data/retractionwatch?doi=…` (the user spec), (c) CrossRef `/works/{doi}` for `update-to` metadata. (a) requires registration. (c) was already proven empty in the 2026-06-01 `link-retractions-crossref.ts` probe (`update-to.label` is just the literal string "Retraction" for ~99.9% of records; no reason text). (b) turns out to return the entire RW database in one CSV — strictly better than (a) and (c).
 
-**Files changed.** `scripts/enrich-retractions.ts` (new), `components/WhatHappenedNextPanel.tsx` (severity badge + reason text), `app/page.tsx` (June 2 changelog block), `app/layout.tsx` (footer date bump), `CONSULTANT.md` (this entry).
+**Files changed.** `scripts/enrich-retractions.ts` (new), `components/WhatHappenedNextPanel.tsx` (severity badge + reason text), `app/page.tsx` (June 2 changelog block), `app/layout.tsx` (footer date bump), `docs/CONSULTANT.md` (this entry).
 
 **Run commands.**
 ```
@@ -2241,7 +2241,7 @@ ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-retracti
 
 **Why the yield blew past the projection.** The brief estimated 500–2,000 new REVERSED links from a 50k retracted-paper ingest. The actual yield (11,293) was ~5× the upper bound. Two reasons: (1) the projection extrapolated from a 0.016% base rate, which applies to a *random* OpenAlex sample, not to one pre-filtered to `is_retracted:true`; the pre-filtered match rate against our `crossref_retractions_v1` corpus is ~22% (11,319 / 50,163), three orders of magnitude denser. (2) Material/chem/engineering retractions on OpenAlex correlate heavily with CrossRef retraction coverage — they're often the *same* paper-mill records appearing in both retraction-tracking systems.
 
-**Files changed.** `scripts/ingest-openalex.ts` (added `retraction-prone-fields` bucket, `runBucketBatched`, `ingestBatch`, `prepareWork`; made `BucketConfig.search` optional; added `extraFilters`; topic mappings), `CONSULTANT.md` (this entry).
+**Files changed.** `scripts/ingest-openalex.ts` (added `retraction-prone-fields` bucket, `runBucketBatched`, `ingestBatch`, `prepareWork`; made `BucketConfig.search` optional; added `extraFilters`; topic mappings), `docs/CONSULTANT.md` (this entry).
 
 **Run commands.**
 ```
@@ -2280,7 +2280,7 @@ ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/link-retraction
 
 **Followup blob.** Each OUTCOME row carries `{ outcomeType: 'enacted_law', pipeline_from: 'congress_votes_v1', pipeline_to: 'congress_v1', congress, billType, billNumber, heuristic: 'congress_vote_to_law_match', confidence: 'high' }`.
 
-**Files changed.** `scripts/link-congress-relations.ts` (new), `app/page.tsx` (June 1 homepage entry), `CONSULTANT.md`. Footer reads "last updated June 1, 2026" — no change needed.
+**Files changed.** `scripts/link-congress-relations.ts` (new), `app/page.tsx` (June 1 homepage entry), `docs/CONSULTANT.md`. Footer reads "last updated June 1, 2026" — no change needed.
 
 ---
 
@@ -2298,7 +2298,7 @@ ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/link-retraction
 
 **No schema, API, or data change.** The route (`/api/claims/[id]/followups`) and the relation-type buckets are unchanged. The existing `/api/claims/[id]/relations` route (citation graph: `cites`/`cited_by`/`related`) was not touched.
 
-**Files changed.** `components/WhatHappenedNextPanel.tsx`, `app/page.tsx` (homepage changelog), `CONSULTANT.md`. Footer already reads "last updated June 1, 2026".
+**Files changed.** `components/WhatHappenedNextPanel.tsx`, `app/page.tsx` (homepage changelog), `docs/CONSULTANT.md`. Footer already reads "last updated June 1, 2026".
 
 ---
 
@@ -2334,7 +2334,7 @@ Ingest OpenAlex papers from the high-retraction fields:
 
 Estimated yield: +500–2,000 REVERSED links based on the observed base rate (26 / 161k ≈ 0.016% of papers are retracted).
 
-**Files changed:** `scripts/link-retractions-crossref.ts` (new), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`.
+**Files changed:** `scripts/link-retractions-crossref.ts` (new), `app/page.tsx` (June 1 changelog entry), `docs/CONSULTANT.md`.
 
 ---
 
@@ -2369,7 +2369,7 @@ Estimated yield: +500–2,000 REVERSED links based on the observed base rate (26
 
 **Verification.** `npx tsc --noEmit` clean. Final `ClaimRelation` counts: `cites 977,435 · related 72,048 · SUPERSEDED_BY 39,966 · OUTCOME 33 · REVERSED 26` (total 1,089,508). The Pipeline 1 v2 batch grew SUPERSEDED_BY by 4,079 + 80 = 4,159 net (35,807 → 39,966).
 
-**Files changed.** `scripts/link-legislation-amendments.ts` (new), `scripts/link-clinicaltrials-outcomes.ts` (new), `scripts/link-retraction-originals.ts` (new), `scripts/link-congress-outcomes.ts` (new), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`. Footer `last updated June 1, 2026` already correct.
+**Files changed.** `scripts/link-legislation-amendments.ts` (new), `scripts/link-clinicaltrials-outcomes.ts` (new), `scripts/link-retraction-originals.ts` (new), `scripts/link-congress-outcomes.ts` (new), `app/page.tsx` (June 1 changelog entry), `docs/CONSULTANT.md`. Footer `last updated June 1, 2026` already correct.
 
 ---
 
@@ -2402,7 +2402,7 @@ This analysis lives in the script's leading doc comment so future agents inherit
 
 **Verification.** `npx tsc --noEmit` clean. Dev server probe of `/api/claims/cmpcukc2h001jpls2ysu9cl7j/followups` (a `congress_v1` Department of Defense Authorization Act, 1982) returned a populated `SUPERSEDED_BY` array — 1985 and 1988 amending bills both surface, each with full `followUpContext` (heuristic, matched_title, amending_fragment, pipeline pair, confidence). The `/claims/[id]` page rendered `HTTP 200` with the new section above the citation graph.
 
-**Files changed.** `prisma/schema.prisma` (followUpContext + index), `prisma/migrations/20260601120000_add_followup_relations/migration.sql` (new), `scripts/link-claim-followups.ts` (new), `app/api/claims/[id]/followups/route.ts` (new), `components/WhatHappenedNextPanel.tsx` (new), `app/claims/[id]/page.tsx` (import + render), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`. Footer `last updated June 1, 2026` already correct — no bump needed.
+**Files changed.** `prisma/schema.prisma` (followUpContext + index), `prisma/migrations/20260601120000_add_followup_relations/migration.sql` (new), `scripts/link-claim-followups.ts` (new), `app/api/claims/[id]/followups/route.ts` (new), `components/WhatHappenedNextPanel.tsx` (new), `app/claims/[id]/page.tsx` (import + render), `app/page.tsx` (June 1 changelog entry), `docs/CONSULTANT.md`. Footer `last updated June 1, 2026` already correct — no bump needed.
 
 ---
 
@@ -2458,7 +2458,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 /feedback                      200
 ```
 
-**Files changed.** `app/analysis/votes/page.tsx` (force-dynamic → revalidate=3600), `app/analysis/topics/page.tsx` (force-dynamic → revalidate=3600), `app/pipelines/page.tsx` (force-dynamic → revalidate=3600), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`.
+**Files changed.** `app/analysis/votes/page.tsx` (force-dynamic → revalidate=3600), `app/analysis/topics/page.tsx` (force-dynamic → revalidate=3600), `app/pipelines/page.tsx` (force-dynamic → revalidate=3600), `app/page.tsx` (June 1 changelog entry), `docs/CONSULTANT.md`.
 
 ---
 
@@ -2523,7 +2523,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 - `?indicator=…&country=norw` returns just Norway (1 country, 33 claims for life expectancy).
 - `?country=zzzzzz` returns 0 countries, 0 claims (no-match clause `AND 1 = 0` works).
 
-**Files changed.** `app/api/topics/world-bank-indicators/data/route.ts` (new), `app/topics/[slug]/WorldBankView.tsx` (new), `app/topics/[slug]/WorldBankChart.tsx` (new), `app/topics/[slug]/page.tsx` (slug-check → WorldBankView), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`.
+**Files changed.** `app/api/topics/world-bank-indicators/data/route.ts` (new), `app/topics/[slug]/WorldBankView.tsx` (new), `app/topics/[slug]/WorldBankChart.tsx` (new), `app/topics/[slug]/page.tsx` (slug-check → WorldBankView), `app/page.tsx` (June 1 changelog entry), `docs/CONSULTANT.md`.
 
 ---
 
@@ -2545,7 +2545,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 `npx tsc --noEmit --project tsconfig.scripts.json` clean for the new script. Pre-existing scripts had unrelated TS errors not caused by this change.
 
-**Files changed.** `scripts/ingest-openfec.ts` (new), `.env` / `.env.local` (added `OPENFEC_API_KEY`), `app/page.tsx` (June 1 changelog entry — appended above EU Parliament item in same date block), `CONSULTANT.md`. Footer date `app/layout.tsx` already at June 1, 2026 — no bump needed.
+**Files changed.** `scripts/ingest-openfec.ts` (new), `.env` / `.env.local` (added `OPENFEC_API_KEY`), `app/page.tsx` (June 1 changelog entry — appended above EU Parliament item in same date block), `docs/CONSULTANT.md`. Footer date `app/layout.tsx` already at June 1, 2026 — no bump needed.
 
 ---
 
@@ -2563,7 +2563,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **Verification.** `npx tsc --noEmit` clean. Post-run DB: 24,224 `eu_parliament_votes_v2` sources, 24,224 LegislativeVotes. Sample dry-run output: "The need for targeted criminal provisions" (2026-04-30, passed 378-161-12), per-group splits cleanly show EPP/S&D/Renew/Greens unified-for vs. ECR/PfE/ESN unified-against pattern.
 
-**Files changed.** `scripts/ingest-eu-parliament-votes.ts` (new), `lib/voteAnalysis.ts` (COUNTRY_LABELS + getBodyKey + bucket by label), `app/page.tsx` (changelog), `app/layout.tsx` (footer date bump), `CONSULTANT.md`.
+**Files changed.** `scripts/ingest-eu-parliament-votes.ts` (new), `lib/voteAnalysis.ts` (COUNTRY_LABELS + getBodyKey + bucket by label), `app/page.tsx` (changelog), `app/layout.tsx` (footer date bump), `docs/CONSULTANT.md`.
 
 ---
 
@@ -2583,7 +2583,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **Verification.** `npx tsc --noEmit` clean.
 
-**Files changed.** `lib/voteAnalysis.ts` (added `MIN_DECADE_BODY_VOTES`, `getBodyKey`, `DecadeBodyPoint`, `DecadeTrendByBody`, per-body accumulator + emit), `app/analysis/votes/DecadeTrendChart.tsx` (new), `app/analysis/votes/page.tsx` (import chart, swap table for chart + collapsible fallback), `app/page.tsx` (changelog entry), `app/layout.tsx` (footer date bump), `CONSULTANT.md`.
+**Files changed.** `lib/voteAnalysis.ts` (added `MIN_DECADE_BODY_VOTES`, `getBodyKey`, `DecadeBodyPoint`, `DecadeTrendByBody`, per-body accumulator + emit), `app/analysis/votes/DecadeTrendChart.tsx` (new), `app/analysis/votes/page.tsx` (import chart, swap table for chart + collapsible fallback), `app/page.tsx` (changelog entry), `app/layout.tsx` (footer date bump), `docs/CONSULTANT.md`.
 
 ---
 
@@ -2606,7 +2606,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **Verification.** `npx tsc --noEmit` shows only pre-existing errors in `app/analysis/votes/DecadeTrendChart.tsx` (untracked from a prior agent session) — zero new errors from this change. Footer `last updated May 31, 2026` already correct (today's date). Homepage `app/page.tsx` May 31 changelog block gained a new top `<li>` for this feature.
 
-**Files changed.** `lib/voteAnalysis.ts`, `app/analysis/votes/page.tsx`, `app/analysis/votes/TopicHeatmap.tsx` (new), `app/page.tsx`, `CONSULTANT.md`.
+**Files changed.** `lib/voteAnalysis.ts`, `app/analysis/votes/page.tsx`, `app/analysis/votes/TopicHeatmap.tsx` (new), `app/page.tsx`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -2634,7 +2634,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **Verification.** `npx tsc --noEmit` clean. No DB writes. No new client components. Footer `last updated May 31, 2026` already in place from earlier today's session (no change needed). Homepage `app/page.tsx` May 31 changelog block gained a new top `<li>` describing both improvements.
 
-**Files changed.** `lib/representationGap.ts`, `app/analysis/representation/page.tsx`, `app/analysis/votes/page.tsx`, `app/page.tsx`, `CONSULTANT.md`.
+**Files changed.** `lib/representationGap.ts`, `app/analysis/representation/page.tsx`, `app/analysis/votes/page.tsx`, `app/page.tsx`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -2656,7 +2656,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **Verification.** `npx tsc --noEmit` clean. Manual sanity check on PolityClaim distribution: 347,884 links across 205 country-tagged polities, so the CTE's HAVING clause should match a large subset of those. Pair-count cap at 100 + 50k-row claim limit keeps the function under Hobby's 10s ceiling.
 
-**Files changed.** `app/globe/GlobeClient.tsx` (claim card `<Link>`, 1000ms interval, Connections legend link), `lib/country-centroids.ts` (new), `app/api/globe/connections/route.ts` (new), `app/globe/connections/page.tsx` (new), `app/globe/connections/ConnectionsClient.tsx` (new), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+**Files changed.** `app/globe/GlobeClient.tsx` (claim card `<Link>`, 1000ms interval, Connections legend link), `lib/country-centroids.ts` (new), `app/api/globe/connections/route.ts` (new), `app/globe/connections/page.tsx` (new), `app/globe/connections/ConnectionsClient.tsx` (new), `app/page.tsx` (changelog entry), `docs/CONSULTANT.md`.
 
 ---
 
@@ -2683,7 +2683,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **Verification.** Dry-run on 3 claims confirmed 10 related matches and 0 errors. Commit run on 50 claims (`--no-stubs`) inserted **510 cites + 77 related = 587 ClaimRelation rows** in DB. `Claim.openAlexId` was backfilled on all 50 processed source claims. `npx tsc --noEmit` clean.
 
-**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260531200000_add_claim_relations/migration.sql` (new), `scripts/enrich-openalex-relations.ts` (new), `app/api/claims/[id]/relations/route.ts` (new), `components/ClaimRelationsPanel.tsx` (new), `app/claims/[id]/page.tsx`, `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260531200000_add_claim_relations/migration.sql` (new), `scripts/enrich-openalex-relations.ts` (new), `app/api/claims/[id]/relations/route.ts` (new), `components/ClaimRelationsPanel.tsx` (new), `app/claims/[id]/page.tsx`, `app/page.tsx` (changelog entry), `docs/CONSULTANT.md`.
 
 **Open work.** Stubbed-out: full enrichment over all 161,773 claims is not yet run — only 50 are populated. To complete: `ALLOW_EDITS=true npx tsx scripts/enrich-openalex-relations.ts --commit` (without `--limit`). Estimated time at 100ms throttle + 1–2 OpenAlex calls per claim: ~9 hours. Best run as a background process with periodic DB-count verification.
 
@@ -2692,7 +2692,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 ### 2026-05-31 14:55 EDT — Add anonymous-key bookmarks (Profile + Bookmark tables, /api/bookmarks routes, useBookmarks hook, /bookmarks page)
 - **Commit:** feat(bookmarks): anonymous-key bookmarks via Profile + Bookmark tables
 - **Files changed:**
-  - CONSULTANT.md
+  - docs/CONSULTANT.md
   - app/api/bookmarks/claims/route.ts
   - app/api/bookmarks/route.ts
   - app/bookmarks/page.tsx
@@ -2747,7 +2747,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **Verification.** `npx tsc --noEmit` clean.
 
-**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260531000000_add_bookmarks/migration.sql` (new), `app/api/bookmarks/route.ts` (new), `app/api/bookmarks/claims/route.ts` (new), `hooks/useBookmarks.ts` (new), `app/bookmarks/page.tsx` (new), `app/claims/[id]/page.tsx`, `app/layout.tsx`, `app/page.tsx`, `package.json`, `package-lock.json`, `CONSULTANT.md`.
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260531000000_add_bookmarks/migration.sql` (new), `app/api/bookmarks/route.ts` (new), `app/api/bookmarks/claims/route.ts` (new), `hooks/useBookmarks.ts` (new), `app/bookmarks/page.tsx` (new), `app/claims/[id]/page.tsx`, `app/layout.tsx`, `app/page.tsx`, `package.json`, `package-lock.json`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -2777,7 +2777,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **API:** `GET /api/analysis/topic-trends/votes` — raw Prisma query joining `LegislativeVote` + `Source` with `ingestedBy = 'voteview_v1'`, `voteDate` range from `ERAS` array, and `topics::jsonb @> $1::jsonb` containment filter. Returns `{ votes, total }`.
 
-**Files changed:** `app/analysis/topics/TopicTrendsClient.tsx` (rewrite), `app/api/analysis/topic-trends/votes/route.ts` (new), `ROADMAP.md`. Deployed to prod.
+**Files changed:** `app/analysis/topics/TopicTrendsClient.tsx` (rewrite), `app/api/analysis/topic-trends/votes/route.ts` (new), `docs/ROADMAP.md`. Deployed to prod.
 
 ---
 
@@ -2802,7 +2802,7 @@ These three pages render aggregated stats over the legislative-vote and pipeline
 
 **No schema changes.** Uses existing `PolityClaim` table and indexes (`@@index([polityId])`, `@@index([claimId])`).
 
-**Files changed.** `app/api/globe/country-claims/route.ts` (new), `app/globe/GlobeClient.tsx`, `app/page.tsx` (changelog entry), `ROADMAP.md` (Phase 3 marked shipped). Deployed to prod.
+**Files changed.** `app/api/globe/country-claims/route.ts` (new), `app/globe/GlobeClient.tsx`, `app/page.tsx` (changelog entry), `docs/ROADMAP.md` (Phase 3 marked shipped). Deployed to prod.
 
 ---
 
@@ -2918,7 +2918,7 @@ into `ConstituentOpinion`.
 `lib/representationGap.ts` (new),
 `app/api/analysis/representation/route.ts` (new),
 `app/analysis/representation/page.tsx` (new), `app/layout.tsx` (nav link +
-footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+footer date), `app/page.tsx` (changelog entry), `docs/CONSULTANT.md`.
 
 ---
 
@@ -2944,7 +2944,7 @@ footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
 
 **Verification.** `npx tsc --noEmit` clean. Dev-server smoke test against `http://localhost:3019`: `/historical-events` → 200, 55KB · `/historical-events/cuban-missile-crisis` → 200, 209KB, 736ms · `/historical-events/cold-war` → 200, 281KB, 1.3s (28k vote aggregate stays under 2s) · `/historical-events/cold-war?page=2` → 200 · `/api/historical-events` → 200 · `/api/historical-events/cuban-missile-crisis` → 200 with `pagination={page:1,pageSize:50,total:348,pageCount:7}` · `/api/historical-events/does-not-exist` → 404.
 
-**Files changed.** `prisma/schema.prisma` (3 new model fragments + 2 inverse relations on `LegislativeVote` / `Polity` / `HistoricalEvent`), `prisma/migrations/20260530180000_add_historical_event_graph_phase3/migration.sql` (new), `scripts/link-historical-events.ts` (new), `app/api/historical-events/route.ts` (new), `app/api/historical-events/[slug]/route.ts` (new), `app/historical-events/page.tsx` (new), `app/historical-events/[slug]/page.tsx` (new), `app/layout.tsx` (nav link), `app/page.tsx` (May 30 changelog entry), `CONSULTANT.md` (this entry).
+**Files changed.** `prisma/schema.prisma` (3 new model fragments + 2 inverse relations on `LegislativeVote` / `Polity` / `HistoricalEvent`), `prisma/migrations/20260530180000_add_historical_event_graph_phase3/migration.sql` (new), `scripts/link-historical-events.ts` (new), `app/api/historical-events/route.ts` (new), `app/api/historical-events/[slug]/route.ts` (new), `app/historical-events/page.tsx` (new), `app/historical-events/[slug]/page.tsx` (new), `app/layout.tsx` (nav link), `app/page.tsx` (May 30 changelog entry), `docs/CONSULTANT.md` (this entry).
 
 ---
 
@@ -3123,7 +3123,7 @@ for the Bayes-Factor pipeline).
 
 **Verification.** `npx tsc --noEmit` clean (project). `npx tsc --noEmit -p tsconfig.scripts.json` clean for `match-book-to-graph.ts` (remaining errors are pre-existing in other ingesters). Not executed end-to-end against a running process; left for user.
 
-**Files changed:** `app/books/page.tsx` (new), `app/books/BooksClient.tsx` (new), `app/api/books/route.ts` (new), `app/api/books/[bookId]/match/route.ts` (new), `app/api/books/[bookId]/match/status/route.ts` (new), `lib/bookMatchJob.ts` (new), `scripts/match-book-to-graph.ts` (progress-file emission), `app/layout.tsx` (nav link + footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+**Files changed:** `app/books/page.tsx` (new), `app/books/BooksClient.tsx` (new), `app/api/books/route.ts` (new), `app/api/books/[bookId]/match/route.ts` (new), `app/api/books/[bookId]/match/status/route.ts` (new), `lib/bookMatchJob.ts` (new), `scripts/match-book-to-graph.ts` (progress-file emission), `app/layout.tsx` (nav link + footer date), `app/page.tsx` (changelog entry), `docs/CONSULTANT.md`.
 
 ---
 
@@ -3144,7 +3144,7 @@ for the Bayes-Factor pipeline).
 
 **Verification.** `npx tsc --noEmit -p tsconfig.scripts.json` — clean for the new script (other pre-existing script errors unrelated). Script not run; left for user.
 
-**Files changed:** `scripts/match-book-to-graph.ts` (new), `package.json` + `package-lock.json` (added `@anthropic-ai/sdk`), `CONSULTANT.md`.
+**Files changed:** `scripts/match-book-to-graph.ts` (new), `package.json` + `package-lock.json` (added `@anthropic-ai/sdk`), `docs/CONSULTANT.md`.
 
 ---
 
@@ -3176,7 +3176,7 @@ for the Bayes-Factor pipeline).
 
 **Verification.** `npx tsc --noEmit` clean. Migration applied to prod. Prisma client generated.
 
-**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260528210000_add_match_reason/migration.sql`, `scripts/enrich-match-reasons.ts` (new), `scripts/ingest-book.ts`, `app/reader/[bookId]/ReaderClient.tsx`, `app/reader/[bookId]/page.tsx`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260528210000_add_match_reason/migration.sql`, `scripts/enrich-match-reasons.ts` (new), `scripts/ingest-book.ts`, `app/reader/[bookId]/ReaderClient.tsx`, `app/reader/[bookId]/page.tsx`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `docs/CONSULTANT.md`.
 
 ---
 
@@ -3204,7 +3204,7 @@ for the Bayes-Factor pipeline).
 - `scripts/ingest-openalex.ts` (added aesthetic-medicine bucket + subfield mapping)
 - `app/page.tsx` (changelog entry)
 - `app/layout.tsx` (footer date)
-- `CONSULTANT.md`
+- `docs/CONSULTANT.md`
 
 **Next step.** Full ingest runs remain pending and are out-of-scope for this commit. Topic `aesthetics` will be created on first run by whichever of the four pipelines fires first; subsequent runs share it.
 
@@ -3224,7 +3224,7 @@ for the Bayes-Factor pipeline).
 
 **Verification.** `npx tsc --noEmit` clean. Migration list confirms 13 applied. The trgm index turns `ILIKE '%foo%'` on `Claim.text` from a 842k-row seq scan into an index-backed lookup.
 
-**Files changed:** `app/api/topics/[slug]/route.ts`, `app/api/search/route.ts`, `app/api/globe/density-temporal/route.ts`, `app/api/globe/origins/route.ts`, `app/api/globe/density/route.ts`, `app/api/stats/phase2/route.ts`, `app/api/analysis/votes/route.ts`, `app/globe/page.tsx`, `app/stats/page.tsx`, `lib/stats-queries.ts`, `lib/voteAnalysis.ts`, `prisma/migrations/20260526123508_add_trgm_search_index/migration.sql`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+**Files changed:** `app/api/topics/[slug]/route.ts`, `app/api/search/route.ts`, `app/api/globe/density-temporal/route.ts`, `app/api/globe/origins/route.ts`, `app/api/globe/density/route.ts`, `app/api/stats/phase2/route.ts`, `app/api/analysis/votes/route.ts`, `app/globe/page.tsx`, `app/stats/page.tsx`, `lib/stats-queries.ts`, `lib/voteAnalysis.ts`, `prisma/migrations/20260526123508_add_trgm_search_index/migration.sql`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `docs/CONSULTANT.md`.
 
 ---
 
@@ -3243,7 +3243,7 @@ for the Bayes-Factor pipeline).
 
 **Verification.** `npx tsc --noEmit` clean. CONCURRENTLY apply on live DB: `created=37 skipped=0 failed=0`.
 
-**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260526190000_perf_homepage_indexes/migration.sql`, `scripts/apply-perf-indexes.ts`, `app/api/claims/homepage/route.ts`, `app/page.tsx`, `CONSULTANT.md`.
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260526190000_perf_homepage_indexes/migration.sql`, `scripts/apply-perf-indexes.ts`, `app/api/claims/homepage/route.ts`, `app/page.tsx`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -3270,7 +3270,7 @@ for the Bayes-Factor pipeline).
 
 **Scope discipline.** No DB migration, no schema changes, no new dependencies. Country filter applies to claims only (sources omitted by design per spec). Unknown country codes fall back to no-filter behavior. Did not touch globe rendering, density API, or the country/[code] route beyond what the task required.
 
-**Files changed:** `app/globe/GlobeClient.tsx`, `app/api/search/route.ts`, `app/search/SearchClient.tsx`, `CONSULTANT.md`.
+**Files changed:** `app/globe/GlobeClient.tsx`, `app/api/search/route.ts`, `app/search/SearchClient.tsx`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -3288,7 +3288,7 @@ for the Bayes-Factor pipeline).
 - `viewMode` useEffect updates `polygonsData`, `polygonCapColor`, `polygonStrokeColor`, `polygonAltitude`, `polygonSideColor` on the existing globe instance; no reinit.
 - Legend hidden in political mode (no density scale to show).
 
-**Files changed:** `app/globe/GlobeClient.tsx`, `CONSULTANT.md`.
+**Files changed:** `app/globe/GlobeClient.tsx`, `docs/CONSULTANT.md`.
 
 **Typecheck:** `npx tsc --noEmit` clean.
 
@@ -3306,7 +3306,7 @@ for the Bayes-Factor pipeline).
 - `app/api/globe/country/[code]/route.ts` previously counted only PoliticalContext-linked claims. Now matches the density API: counts the union of PoliticalContext-linked claims AND claims whose `ingestedBy` is in the country's pipeline set. `recentClaims` merges both buckets, deduped by claim id.
 - `PIPELINE_COUNTRY` and `PIPELINE_COUNTRY_NAME` extracted from `app/api/globe/density/route.ts` to `lib/globe-pipeline-country.ts` (new), with a reverse `COUNTRY_TO_PIPELINES` lookup. Both routes import from the shared lib.
 
-**Files changed:** `app/globe/GlobeClient.tsx`, `app/api/globe/density/route.ts`, `app/api/globe/country/[code]/route.ts`, `lib/globe-pipeline-country.ts` (new), `app/page.tsx` (changelog), `CONSULTANT.md`.
+**Files changed:** `app/globe/GlobeClient.tsx`, `app/api/globe/density/route.ts`, `app/api/globe/country/[code]/route.ts`, `lib/globe-pipeline-country.ts` (new), `app/page.tsx` (changelog), `docs/CONSULTANT.md`.
 
 **Typecheck:** `npx tsc --noEmit` clean.
 
@@ -3354,7 +3354,7 @@ Built the Academic Fields browser for Epistemic Receipts, cross-linking Topics t
 
 **TypeScript:** `npx tsc --noEmit` and `npx tsc --noEmit --project tsconfig.scripts.json` clean. All new files in the `app/` tree type-check with zero errors (pre-existing errors in unrelated scripts unchanged).
 
-**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260525223703_link_topic_academic_field/migration.sql`, `scripts/tag-topics-academic-field.ts`, `app/api/fields/route.ts`, `app/api/fields/[slug]/route.ts`, `app/fields/page.tsx`, `app/fields/[slug]/page.tsx`, `app/layout.tsx`, `app/page.tsx`, `CONSULTANT.md`.
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260525223703_link_topic_academic_field/migration.sql`, `scripts/tag-topics-academic-field.ts`, `app/api/fields/route.ts`, `app/api/fields/[slug]/route.ts`, `app/fields/page.tsx`, `app/fields/[slug]/page.tsx`, `app/layout.tsx`, `app/page.tsx`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -3378,7 +3378,7 @@ In `enrich-member-votes.ts`, the script reads `meta.chamber`, `meta.rollNumber`,
 
 **Verification.** `npx tsc --noEmit` and `npx tsc --noEmit --project tsconfig.scripts.json` clean on both edited files (the pre-existing project-wide tsc errors are in unrelated scripts — Belgium, FAERS, Federal Register, JaCAR, Malta, Nobel, UN SC, UN Treaties — none touched here). No DB access during this session per the task brief; the scripts were not run.
 
-**Files changed:** `scripts/backfill-congress-party-votes.ts`, `scripts/enrich-member-votes.ts`, `CONSULTANT.md`.
+**Files changed:** `scripts/backfill-congress-party-votes.ts`, `scripts/enrich-member-votes.ts`, `docs/CONSULTANT.md`.
 
 ### 2026-05-23 (openFDA Drug Labels full run shipped — `openfda_labels_v1`: 85,068 records)
 
@@ -3425,7 +3425,7 @@ New script `scripts/ingest-uk-national-archives.ts` (`uk_national_archives_v1`).
 - `claimText = title` (truncated 500 chars). `Claim.text` is the raw record title to keep the audit trail clean; richer claim phrasing can be added later via a separate enrichment pass.
 - `claimType: INSTITUTIONAL`, `currentStatus: HARD_FACT`, `verificationStatus: PROVISIONAL`, `humanReviewed: false`, `autoApproved: true` (matches brief + project convention for un-reviewed bulk-ingested archival records).
 - `claimEmergedAt`: parsed from `numStartDate` (YYYYMMDD) preferred over `startDate` ("DD/MM/YYYY"). `claimEmergedPrecision: DAY` when month+day are real, downgraded to `YEAR` when `numStartDate` ends in `0101` (Discovery's MMDD default for year-only records). Null when unparseable.
-- `metadata`: `{ dataset, discoveryId, reference, series, department, description, coveringDates, startDate, heldBy, closureStatus, originalArchive: 'The National Archives, Kew (TNA)' }`. The `originalArchive` field follows the Declassified & Archival Sources design vision (CONSULTANT.md L199) — separates fetch origin (Discovery URL) from epistemic origin (physical TNA holding).
+- `metadata`: `{ dataset, discoveryId, reference, series, department, description, coveringDates, startDate, heldBy, closureStatus, originalArchive: 'The National Archives, Kew (TNA)' }`. The `originalArchive` field follows the Declassified & Archival Sources design vision (docs/CONSULTANT.md L199) — separates fetch origin (Discovery URL) from epistemic origin (physical TNA holding).
 - `Source.name = "TNA Discovery — {reference}"`, `Source.url = https://discovery.nationalarchives.gov.uk/details/r/{discoveryId}`, `Source.methodologyType: 'primary'`, `Source.publishedAt = startDate`.
 - One `Edge.type: 'FOR'` + `evidenceType: 'PROCEDURAL'` per claim; `EdgeRevision.newScore: 90` ("PROVISIONAL pending content review" — lower than the 95 used by VERIFIED institutional records like ECHR/UNGA, because Discovery catalogue entries describe a document's existence rather than asserting its content).
 - Topic: `uk-national-archives` (name "UK National Archives", domain `government`). Brief said parent `Government Documents` — that topic does not exist today, so the script falls back to top-level per brief instruction. Runtime parent lookup (slug `government-documents`) so a future curator can create the parent without changing the script.
@@ -3450,7 +3450,7 @@ New script `scripts/ingest-uk-national-archives.ts` (`uk_national_archives_v1`).
 
 **Status:** built + dry-run validated. **Awaiting explicit go-ahead from Robert before any `--full` invocation.** Pipeline Registry / DB State table will be updated alongside the first production run.
 
-**Files changed:** `scripts/ingest-uk-national-archives.ts` (new), `pipeline-115-dry-run-sample.json` (new — dry-run output), `CONSULTANT.md` (this entry).
+**Files changed:** `scripts/ingest-uk-national-archives.ts` (new), `pipeline-115-dry-run-sample.json` (new — dry-run output), `docs/CONSULTANT.md` (this entry).
 
 ### 2026-05-23 (Pipelines 17/22/79 — NATO, Austria, Jamaica full production runs)
 
@@ -3503,7 +3503,7 @@ New script `scripts/ingest-nara-catalog.ts` (`nara_catalog_v1`). Layer 1 ingeste
 
 **Type check:** `npx tsc --noEmit --project tsconfig.scripts.json` — no errors in `ingest-nara-catalog.ts` (pre-existing errors in other scripts unchanged).
 
-**Files changed:** `scripts/ingest-nara-catalog.ts` (new), `CONSULTANT.md` (this entry + pipeline registry row 80 + archive roadmap status update).
+**Files changed:** `scripts/ingest-nara-catalog.ts` (new), `docs/CONSULTANT.md` (this entry + pipeline registry row 80 + archive roadmap status update).
 
 ### 2026-05-23 (Parliamentary-majority enrichment — Tier 2 full run shipped)
 
@@ -3557,7 +3557,7 @@ Extended the existing `/topics/[slug]` pages and `/api/topics/[slug]` route with
 
 **Scope discipline:** no DB migration, no Prisma client regeneration, no new dependencies, no auth changes. The existing party-name / party-emoji / party-color helpers are unchanged. The new aggregates use one extra `findMany` (timeline dates) and one extra `findMany` (legislative votes) per topic-page render; for the largest topics (~10k claims, hundreds of votes) page render stays well under 3 s end-to-end. No write paths touched.
 
-**Files changed:** `lib/voteAnalysis.ts` (export `extractPartyCounts`), `app/api/topics/[slug]/route.ts` (new aggregates), `app/topics/[slug]/page.tsx` (Timeline/VoteStats/PartyTallies sections + domain link in header), `app/page.tsx` (homepage changelog bullet), `CONSULTANT.md` (this entry).
+**Files changed:** `lib/voteAnalysis.ts` (export `extractPartyCounts`), `app/api/topics/[slug]/route.ts` (new aggregates), `app/topics/[slug]/page.tsx` (Timeline/VoteStats/PartyTallies sections + domain link in header), `app/page.tsx` (homepage changelog bullet), `docs/CONSULTANT.md` (this entry).
 
 ### 2026-05-23 (/search — cross-cutting full-text search across claims + sources)
 
@@ -3634,7 +3634,7 @@ Three pipeline scripts were verified by coding agents and confirmed working with
 - `ingest-periodic-table.ts` (`periodic_table_v1`) — 118 elements from Bowserinator/IUPAC JSON. Physics domain.
 - `ingest-who-essential-medicines.ts` (`who_essential_medicines_v1`) — 147 drugs from WHO EML 23rd ed. Medical domain.
 
-These are the first three hard-fact science/history pipelines to run post-legislative expansion. No architectural decisions pending — ready to ingest. ROADMAP.md and AGENTS.md updated.
+These are the first three hard-fact science/history pipelines to run post-legislative expansion. No architectural decisions pending — ready to ingest. docs/ROADMAP.md and AGENTS.md updated.
 
 ### 2026-05-23 (NYT Media Coverage enrichment — dry-run phase, quota blocked)
 
@@ -3799,10 +3799,10 @@ Ran the auto-approved English-language run from `scripts/pipeline-queue.json`. N
 - **Dry-run result (301 candidates):** Pages 1–18 fetched in ~13 s (700 ms politeness delay). Total **301** Laws of Georgia parsed; 0 malformed. Document-type distribution: Law of Georgia 271, Organic Law of Georgia 18, Law of the Republic of Georgia 9 (pre-1995 Georgian Republic), Constitution + constitutional 3. Issuer: Parliament of Georgia 289/301 (the remainder are pre-1995 issuers — Parliament of the Republic of Georgia 9, Supreme Council of the Republic of Georgia 1, Presidium of the Supreme Council of the Georgian SSR 1, საქართველოს დამფუძნებელი კრება/1921 Constituent Assembly 1). Decade coverage: 1920s 1 · 1980s 1 · 1990s 80 · 2000s 74 · 2010s 102 · 2020s 43 — i.e. the consolidated catalogue spans from the 1921 Constitution through 2026. **100% (301/301)** of records expose both an `?impose=translateEn` English-translation link and a `?impose=parallelEn` parallel English-Georgian view, so the source-URL strategy of preferring `translateEn` yields English text for every claim. Sample (newest 5): LAW OF GEORGIA ON FACTORING (N1451-Vმს-XIმპ, 2026-04-01) · LAW OF GEORGIA ON PET ANIMALS (N906-IIIრს-XIმპ, 2025-07-02) · ON INTERNATIONAL PROTECTION (N864-IIმს-XIმპ, 2025-06-26) · LAW OF GEORGIA FOREIGN AGENTS REGISTRATION ACT (N399-IIმს-XIმპ, 2025-04-01) · LAW OF GEORGIA ON THE DNA DATABASE (N336-IIმს-XIმპ, 2025-03-04). Output written to `pipeline-78-dry-run-sample.json`. Telegram notification sent to chat 7688025079 (message ID 6143) requesting approval. **Pipeline awaiting explicit go-ahead before sample/full run; no DB writes performed.** Homepage changelog / footer not yet updated — those are deploy-time updates and this run did not deploy.
 
 ### 2026-05-20 (Pipeline 54 shipped — Israel Knesset)
-- **Pipeline 54 (Israel Knesset Enacted Laws)** shipped — full production run of `scripts/ingest-israel-knesset.ts --full` completed in 225.3 s (after a `--sample 10` preflight that wrote 10 laws cleanly). Source: Knesset OData v3 ParliamentInfo service (`https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_IsraelLaw/`), free, no API key. **Entity-choice deviation from task brief:** brief suggested `KNS_Law` filtered on `IsActive=true`/`StatusID`, but probing showed `KNS_Law` (61,153 rows) is a chronological gazette dump mixing British Mandate ordinances, secondary regulations (חקיקת משנה / תקנות / צו) and primary statutes, with **no** `IsActive` or `StatusID` field at all on the record (TypeID/TypeDesc live inline). The brief-mentioned `KNS_LawType` reference endpoint returns HTTP 404 (`Resource not found for the segment 'KNS_LawType'`). The proper "enacted Israeli laws" entity is `KNS_IsraelLaw` — a curated authoritative list of 2,009 primary Israeli laws with each row carrying `KnessetNum`, `IsBasicLaw`, `IsBudgetLaw`, `LawValidityID`/`LawValidityDesc`, `ValidityStartDate`/`ValidityFinishDate`, original `PublicationDate`, and `LatestPublicationDate`. Selected `KNS_IsraelLaw` and documented the deviation. (`KNS_Status` entity also exists but its rows describe bill/session workflow states, not law-validity states.) Pagination via standard OData v3 `$skip`+`$top` (100 per page, 300 ms delay, ordered by `IsraelLawID`); cursor terminates when a partial page is returned. Per-page `$inlinecount=allpages` on page 1 confirmed server total = 2,009 ≡ fetched candidates = 2,009 exactly. Per ROADMAP.md long-horizon `legalStatus` note, ingested all 2,009 (not just the 1,077 currently in force) — the fact a law was enacted remains HARD_FACT even if later repealed; validity recorded in `Claim.metadata.lawValidityDesc`. Validity distribution: תקף (in force) 1,077 · בטל (abolished) 473 · נושן (obsolete) 343 · פקע (expired) 115 · טרם נכנס לתוקף (not yet in force) 1. Basic Laws (Israel's constitutional set): 18. Budget Laws: 77. Hebrew law names used verbatim as `claimText` per task spec (no translation). Each claim is `INSTITUTIONAL` / `HARD_FACT` / `VERIFIED`, `autoApproved: true`, `humanReviewed: false`, `claimEmergedAt: PublicationDate` (`DAY` precision), `externalId: israel_knesset_{IsraelLawID}`, `sourceExternalId: israel_knesset_source_{IsraelLawID}`, `Source.methodologyType: 'primary'`, `Source.url: https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_IsraelLaw({IsraelLawID}L)` (canonical OData entity URI), one `CITES` edge per claim. Topic `il-knesset` ("Knesset (Israel)", domain `government`) created via `ensureTopic('il-knesset', …, 'gov-region-asia-pacific')` — runtime lookup of the parent region ID, no hardcoding; topic-existence path also reconciles `parentTopicId` if missing. Batches of 50, transaction timeout 30 s. Independent DB verification (`prisma.claim.count({ ingestedBy: 'israel_knesset_v1', deleted: false })`) returned **2,009**, with Sources/Edges also 2,009 — perfect parity; topic confirmed parented under Asia-Pacific. Updated DB State table (added `israel_knesset_v1` row, 2,009; date bumped to 2026-05-20), PIPELINE_QUEUE.md (P54 added to Completed), and ROADMAP.md Future Legislative Pipelines row 54.
+- **Pipeline 54 (Israel Knesset Enacted Laws)** shipped — full production run of `scripts/ingest-israel-knesset.ts --full` completed in 225.3 s (after a `--sample 10` preflight that wrote 10 laws cleanly). Source: Knesset OData v3 ParliamentInfo service (`https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_IsraelLaw/`), free, no API key. **Entity-choice deviation from task brief:** brief suggested `KNS_Law` filtered on `IsActive=true`/`StatusID`, but probing showed `KNS_Law` (61,153 rows) is a chronological gazette dump mixing British Mandate ordinances, secondary regulations (חקיקת משנה / תקנות / צו) and primary statutes, with **no** `IsActive` or `StatusID` field at all on the record (TypeID/TypeDesc live inline). The brief-mentioned `KNS_LawType` reference endpoint returns HTTP 404 (`Resource not found for the segment 'KNS_LawType'`). The proper "enacted Israeli laws" entity is `KNS_IsraelLaw` — a curated authoritative list of 2,009 primary Israeli laws with each row carrying `KnessetNum`, `IsBasicLaw`, `IsBudgetLaw`, `LawValidityID`/`LawValidityDesc`, `ValidityStartDate`/`ValidityFinishDate`, original `PublicationDate`, and `LatestPublicationDate`. Selected `KNS_IsraelLaw` and documented the deviation. (`KNS_Status` entity also exists but its rows describe bill/session workflow states, not law-validity states.) Pagination via standard OData v3 `$skip`+`$top` (100 per page, 300 ms delay, ordered by `IsraelLawID`); cursor terminates when a partial page is returned. Per-page `$inlinecount=allpages` on page 1 confirmed server total = 2,009 ≡ fetched candidates = 2,009 exactly. Per docs/ROADMAP.md long-horizon `legalStatus` note, ingested all 2,009 (not just the 1,077 currently in force) — the fact a law was enacted remains HARD_FACT even if later repealed; validity recorded in `Claim.metadata.lawValidityDesc`. Validity distribution: תקף (in force) 1,077 · בטל (abolished) 473 · נושן (obsolete) 343 · פקע (expired) 115 · טרם נכנס לתוקף (not yet in force) 1. Basic Laws (Israel's constitutional set): 18. Budget Laws: 77. Hebrew law names used verbatim as `claimText` per task spec (no translation). Each claim is `INSTITUTIONAL` / `HARD_FACT` / `VERIFIED`, `autoApproved: true`, `humanReviewed: false`, `claimEmergedAt: PublicationDate` (`DAY` precision), `externalId: israel_knesset_{IsraelLawID}`, `sourceExternalId: israel_knesset_source_{IsraelLawID}`, `Source.methodologyType: 'primary'`, `Source.url: https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_IsraelLaw({IsraelLawID}L)` (canonical OData entity URI), one `CITES` edge per claim. Topic `il-knesset` ("Knesset (Israel)", domain `government`) created via `ensureTopic('il-knesset', …, 'gov-region-asia-pacific')` — runtime lookup of the parent region ID, no hardcoding; topic-existence path also reconciles `parentTopicId` if missing. Batches of 50, transaction timeout 30 s. Independent DB verification (`prisma.claim.count({ ingestedBy: 'israel_knesset_v1', deleted: false })`) returned **2,009**, with Sources/Edges also 2,009 — perfect parity; topic confirmed parented under Asia-Pacific. Updated DB State table (added `israel_knesset_v1` row, 2,009; date bumped to 2026-05-20), docs/archive/PIPELINE_QUEUE.md (P54 added to Completed), and docs/ROADMAP.md Future Legislative Pipelines row 54.
 
 ### 2026-05-20 (Pipeline 57 shipped — Scottish Parliament)
-- **Pipeline 57 (Scottish Parliament Enacted Acts)** shipped — full production run of `scripts/ingest-scotland-legislation.ts --full` completed in 45.1 s (after a `--sample 10` preflight that wrote 10 acts cleanly). Scottish Parliament Open Data API (`data.parliament.scot/api/Bills` + `/BillStages` + `/BillStageTypes` + `/BillTypes`, no key) returned 473 bills total. The API exposes no Royal Assent or BillStatus field; the canonical enactment signal is reaching the bill type's final stage (Sequence=3 — "Stage 3" for most types, "Final Stage" for Private bills). Joining BillStages → BillStageTypes on Sequence=3 produced **408 enacted candidates** (0 malformed) across all six post-devolution parliamentary sessions: Session 1 = 62, Session 2 = 66, Session 3 = 54, Session 4 = 80, Session 5 = 78, Session 6 = 68. Distribution by bill type: Government 160, Executive 146, Member's 41, Budget 28, Private 22, Committee 10, Hybrid 1. Script ingested all 408 with 0 errors (398 new + 10 from the preflight sample). Created 408 Claims + 408 Sources + 408 `CITES` Edges under `scotland_legislation_v1`, single topic `sc-parliament` ("Scottish Parliament", domain `government`) created via `ensureTopic('sc-parliament', …, 'gov-region-europe')` — runtime lookup of the parent region ID, no hardcoding. Independent DB verification (`prisma.claim.count({ ingestedBy: 'scotland_legislation_v1', deleted: false })`) returned **408**, matching the script's reported insert count exactly; topic confirmed parented under `gov-region-europe`. Source URL = `https://data.parliament.scot/api/Bills/{ID}` (the JSON bill record on parliament.scot's open data domain; the parliament.scot HTML slug pattern is unreliable — `abolition-of-feudal-tenure-etc-scotland-bill` is a 404 due to inconsistent dot handling). Metadata captures `billId`, `reference`, `billType`, `billTypeId`, `billStatus: 'Passed'`, `finalStageReached`, `parliamentarySession`, `shortName`. Scope distinction confirmed: these are Acts of the Scottish Parliament (ASPs), entirely separate from `uk_legislation_v1` (P23) UK Acts of Parliament. Updated DB State table (added `scotland_legislation_v1` row, 408), Pipeline Registry row 57 (Shipped 2026-05-20 | 408), and ROADMAP.md Future Legislative Pipelines row 57.
+- **Pipeline 57 (Scottish Parliament Enacted Acts)** shipped — full production run of `scripts/ingest-scotland-legislation.ts --full` completed in 45.1 s (after a `--sample 10` preflight that wrote 10 acts cleanly). Scottish Parliament Open Data API (`data.parliament.scot/api/Bills` + `/BillStages` + `/BillStageTypes` + `/BillTypes`, no key) returned 473 bills total. The API exposes no Royal Assent or BillStatus field; the canonical enactment signal is reaching the bill type's final stage (Sequence=3 — "Stage 3" for most types, "Final Stage" for Private bills). Joining BillStages → BillStageTypes on Sequence=3 produced **408 enacted candidates** (0 malformed) across all six post-devolution parliamentary sessions: Session 1 = 62, Session 2 = 66, Session 3 = 54, Session 4 = 80, Session 5 = 78, Session 6 = 68. Distribution by bill type: Government 160, Executive 146, Member's 41, Budget 28, Private 22, Committee 10, Hybrid 1. Script ingested all 408 with 0 errors (398 new + 10 from the preflight sample). Created 408 Claims + 408 Sources + 408 `CITES` Edges under `scotland_legislation_v1`, single topic `sc-parliament` ("Scottish Parliament", domain `government`) created via `ensureTopic('sc-parliament', …, 'gov-region-europe')` — runtime lookup of the parent region ID, no hardcoding. Independent DB verification (`prisma.claim.count({ ingestedBy: 'scotland_legislation_v1', deleted: false })`) returned **408**, matching the script's reported insert count exactly; topic confirmed parented under `gov-region-europe`. Source URL = `https://data.parliament.scot/api/Bills/{ID}` (the JSON bill record on parliament.scot's open data domain; the parliament.scot HTML slug pattern is unreliable — `abolition-of-feudal-tenure-etc-scotland-bill` is a 404 due to inconsistent dot handling). Metadata captures `billId`, `reference`, `billType`, `billTypeId`, `billStatus: 'Passed'`, `finalStageReached`, `parliamentarySession`, `shortName`. Scope distinction confirmed: these are Acts of the Scottish Parliament (ASPs), entirely separate from `uk_legislation_v1` (P23) UK Acts of Parliament. Updated DB State table (added `scotland_legislation_v1` row, 408), Pipeline Registry row 57 (Shipped 2026-05-20 | 408), and docs/ROADMAP.md Future Legislative Pipelines row 57.
 
 ### 2026-05-19 (latest — Pipeline 19 shipped)
 - **Pipeline 19 (Sweden Riksdag Riksdagsskrivelser)** shipped — full production run of `scripts/ingest-riksdag.ts --full --verbose` completed in 1254.4 s. Riksdag Open Data API (`data.riksdagen.se/dokumentlista/?doktyp=rskr&sort=datum&sortorder=desc&p=N`, follow `@nasta_sida`) returned 9,989 Riksdagsskrivelser across the entire archive (dry-run had only fetched the first 200; full run extended back to the earliest digitized rskr records). Script ingested all 9,989 with 0 skipped and 0 errors. Created 9,989 Claims + 9,989 Sources + 9,989 `CITES` Edges under `riksdag_v1`, single topic `se-riksdag` (domain `government`). Defensive seenIds dedupe set never tripped — pagination loop terminated cleanly via missing `@nasta_sida`. DB verification query `prisma.claim.count({ ingestedBy: 'riksdag_v1', deleted: false })` returned **9,989**, matching the script's reported insert count and post-ingestion summary (Claims/Sources/Edges all 9,989) exactly. Updated DB State table (added `riksdag_v1` row, 9,989) and Pipeline Registry row 19 (Shipped 2026-05-19 | 9,989).
@@ -3884,9 +3884,9 @@ Ran the auto-approved English-language run from `scripts/pipeline-queue.json`. N
 
 Wrote `/Users/robclaw/Projects/epistemic-receipts/WHITEPAPER.md` — a 3,500-word whitepaper covering the epistemic problem (provenance gap, AI hallucination, retraction blindness, regulatory compliance blindness), the Epistemic Receipts solution (Source → Edge → Claim graph, ThresholdEvent data structure, verification status semantics), current data assets (141,900 claims across 25+ pipelines as of May 23–25 2026), architecture (Next.js 16 / Prisma 6 / Neon Postgres / Vercel, schema design principles, pipeline design rules), the self-auditing vision (AiJob scaffold, OpenAlex integration, contradiction detection roadmap), business model (3 tiers: public/API/enterprise), roadmap (SCOTUS opinions, ClinicalTrials, NCBI Gene, ICD-11, declassified archives Layer 1 and Layer 2), and positioning rationale (EU AI Act, RAG grounding demand, pre-lock-in window).
 
-Tone: arXiv preprint combined with system design paper. Targeted at two audiences: academics who would cite it as a knowledge graph reference, and compliance/regulatory intelligence buyers (pharma, law firms, policy orgs). All statistics sourced from this CONSULTANT.md (current as of 2026-05-23 to 2026-05-25).
+Tone: arXiv preprint combined with system design paper. Targeted at two audiences: academics who would cite it as a knowledge graph reference, and compliance/regulatory intelligence buyers (pharma, law firms, policy orgs). All statistics sourced from this docs/CONSULTANT.md (current as of 2026-05-23 to 2026-05-25).
 
-**Files changed:** `WHITEPAPER.md` (created/overwritten), `CONSULTANT.md`.
+**Files changed:** `docs/archive/WHITEPAPER.md` (created/overwritten), `docs/CONSULTANT.md`.
 
 ---
 
@@ -3920,7 +3920,7 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 - **DB verified at time of writing: 10,093 claims, 10,093 sources, 10,093 edges** (`openalex_v1`). Jobs still running; final count will be higher.
 - Note: OpenAlex cursor pagination + relevance sort means top N results are the same each run. To page past already-ingested records, run with a large limit (≥10,000) so fetchCap (limit×3 or limit+200) is large enough to exhaust the initial skip zone.
 
-**Homepage / CONSULTANT.md updates:**
+**Homepage / docs/CONSULTANT.md updates:**
 - Pipeline Registry: #4 and #7 updated to Shipped with final counts; #116 added for OpenAlex.
 - DB State table: updated with 3 new pipeline entries and refreshed total counts.
 - `app/page.tsx` homepage changelog: May 25 entry updated with ingestion results.
@@ -3947,7 +3947,7 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 
 **TypeScript:** `npx tsc --noEmit` clean.
 
-**Files changed:** `next.config.ts`, `middleware.ts`, `public/robots.txt`, `app/layout.tsx` (footer date), `CONSULTANT.md`.
+**Files changed:** `next.config.ts`, `middleware.ts`, `public/robots.txt`, `app/layout.tsx` (footer date), `docs/CONSULTANT.md`.
 
 ---
 
@@ -3981,7 +3981,7 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 - `/api/domains`: was `topic.findMany({select:{domain:true}})` looping client-side. Now `groupBy` with `_count` and 5-min `revalidate`.
 - `/api/topics/[slug]`: `timelineClaims` and `topicVotes` `findMany` calls capped at 50,000 and 10,000 respectively (typical hits are 100s–1000s; cap is defensive against pathological topics).
 
-**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260526150151_add_perf_indexes/migration.sql`, `scripts/apply-perf-indexes.ts`, `app/api/edges/route.ts`, `app/api/sources/route.ts`, `app/api/timeline/route.ts`, `app/api/threshold-events/route.ts`, `app/api/meta-edges/route.ts`, `app/api/claims/homepage/route.ts`, `app/api/domains/route.ts`, `app/api/topics/[slug]/route.ts`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260526150151_add_perf_indexes/migration.sql`, `scripts/apply-perf-indexes.ts`, `app/api/edges/route.ts`, `app/api/sources/route.ts`, `app/api/timeline/route.ts`, `app/api/threshold-events/route.ts`, `app/api/meta-edges/route.ts`, `app/api/claims/homepage/route.ts`, `app/api/domains/route.ts`, `app/api/topics/[slug]/route.ts`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `docs/CONSULTANT.md`.
 
 **TypeScript:** `npx tsc --noEmit` clean.
 
@@ -3993,7 +3993,7 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 - The Prisma schema uses soft deletes (`deleted` flag). Any queries over public data should filter `deleted: false`.
 - Pipeline scripts live in `scripts/`. Run with `npx tsx scripts/<name>.ts`.
 - All pipeline scripts should be idempotent (skip existing records by externalId).
-- When adding a new pipeline, add it to ROADMAP.md and this registry.
+- When adding a new pipeline, add it to docs/ROADMAP.md and this registry.
 
 ### 2026-05-26 — CSP fix: add 'unsafe-inline' to script-src
 
@@ -4028,7 +4028,7 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 **Files added.**
 - `scripts/ingest-ofac-sdn.ts` (new)
 
-**Files changed:** `next.config.ts`, `CONSULTANT.md`.
+**Files changed:** `next.config.ts`, `docs/CONSULTANT.md`.
 
 ---
 
@@ -4047,7 +4047,7 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 
 **Nav (`app/layout.tsx`).** Removed the 43-entry per-discipline link block (every taxonomy slug was a top-level nav item) and replaced it with the single `Fields` link that was already present. Kept the rest of the nav unchanged (Search, Claims, Edges, Meta-edges, Timeline, Topics, Review, Pipelines, Datasets, Globe, Votes, Legislation, Analysis trio, Events, Reader, Books, Stats, Media Coverage, Bookmarks, Financial, About, Glossary, Feedback).
 
-**Files changed:** `app/fields/page.tsx` (rewritten), `app/layout.tsx` (nav + footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+**Files changed:** `app/fields/page.tsx` (rewritten), `app/layout.tsx` (nav + footer date), `app/page.tsx` (changelog entry), `docs/CONSULTANT.md`.
 
 **TypeScript:** `npx tsc --noEmit` clean on the touched files (pre-existing `.next/types/validator.ts` errors in unrelated `alerts/`, `queries/`, `auth/magic-link/`, `cron/alerts/` routes are unchanged).
 
@@ -4497,7 +4497,7 @@ Settling curve added to Nav "Explore" dropdown.
 - `app/page.tsx` — epistemicStatus badge on homepage + new changelog entry
 - `app/settling-curve/page.tsx` — new page
 - `app/components/Nav.tsx` — Settling Curve added to Explore dropdown
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 ---
 
@@ -4531,7 +4531,7 @@ Settling curve added to Nav "Explore" dropdown.
 - `next.config.ts` — removed legacy `/sources → /datasets` redirect
 - `app/HomepageSections.tsx` — new changelog entry at top
 - `app/layout.tsx` — footer date bumped to June 9, 2026
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 **Telegram.** Progress notifications sent after each phase. Completion notification sent to chat_id 7688025079.
 
@@ -4668,10 +4668,10 @@ Added `permissions: contents: read` to 10 of 11 workflow files. All actions were
 
 **B7-7 — Whitepaper close-out.**
 
-`WHITEPAPER.md` is tracked in git (no app route). Two whitepaper-cited claim IDs could not be DB-verified on VPS (no DATABASE_URL); Robert must verify post-merge via Neon console or deployed URL.
+`docs/archive/WHITEPAPER.md` is tracked in git (no app route). Two whitepaper-cited claim IDs could not be DB-verified on VPS (no DATABASE_URL); Robert must verify post-merge via Neon console or deployed URL.
 
 **Files added:**
-- `B7-REPORT.md`
+- `docs/archive/B7-REPORT.md`
 
 **Files modified:**
 - `lib/publicEdition.ts` — PUBLIC_ROUTES additions
@@ -4680,7 +4680,7 @@ Added `permissions: contents: read` to 10 of 11 workflow files. All actions were
 - `scripts/populate-trajectory-embeddings.ts` — deleted
 - `next.config.ts` — serverExternalPackages cleanup
 - `.github/workflows/*.yml` (10 files) — permissions block added
-- `CONSULTANT.md` — this entry
+- `docs/CONSULTANT.md` — this entry
 
 ---
 
@@ -4723,7 +4723,7 @@ Added `permissions: contents: read` to 10 of 11 workflow files. All actions were
 
 #### Seq ordering fix (B14 amendment 3)
 
-Six curve consumers were ordering by `occurredAt` instead of `seq`. Fixed all six with seq-first `orderBy` (see ORDERING-SEMANTICS-2026-07-08.md for the decision). Files changed:
+Six curve consumers were ordering by `occurredAt` instead of `seq`. Fixed all six with seq-first `orderBy` (see docs/ORDERING-SEMANTICS-2026-07-08.md for the decision). Files changed:
 
 - `app/components/DomainCurveRail.tsx` — seq-first orderBy + seq in select
 - `app/api/search/route.ts` — seq-first orderBy + seq in select
@@ -4741,7 +4741,7 @@ Regression test: `tests/unit/seq-ordering.test.ts` — covers the YEAR-precision
 **B6-1 — Independent verification & hardening.**
 Cross-checked all B3/B4/B5 claims against current main. Findings:
 - FIXED: unescaped `"` in `app/reversals/page.tsx` line 292 (pre-existing ESLint error, `"debunked"` → `&ldquo;debunked&rdquo;`)
-- FIXED: B3 CONSULTANT.md entry was absent (B3 worker never wrote it); added in this session
+- FIXED: B3 docs/CONSULTANT.md entry was absent (B3 worker never wrote it); added in this session
 - PASS: Residue footnotes in /reversals match honesty ledger on /settling-curve/coverage
 - PASS: /open-questions dormancy query correct (UTC, datePrecision=DAY guard)
 - PASS: /split-ledger Tier-1/Tier-2 logic matches B4-1 script
@@ -4784,7 +4784,7 @@ Added to sitemap.ts static list and PUBLIC_ROUTES.
 `lib/curve-shapes.ts`, `tests/unit/curve-shapes.test.ts`, `app/patterns/page.tsx`, `app/api/badge/trajectory/[slug]/route.ts`, `app/api/oembed/route.ts`, `briefs/2026-07-14-b6-report.md`
 
 **Files modified:**
-`CONSULTANT.md` (B3 entry added + this entry), `app/reversals/page.tsx` (ESLint fix), `lib/publicEdition.ts` (PUBLIC_ROUTES), `app/sitemap.ts` (/patterns added), `app/settling-curve/SettlingCurve.tsx` (curve-shapes link), `app/methodology/page.tsx` (curve-shapes link), `app/start-here/page.tsx` (curve-shapes card), `app/settling-curve/[id]/page.tsx` (oEmbed alternate), all 7 story pages (oEmbed alternate), `app/docs/api/page.tsx` (embeds section)
+`docs/CONSULTANT.md` (B3 entry added + this entry), `app/reversals/page.tsx` (ESLint fix), `lib/publicEdition.ts` (PUBLIC_ROUTES), `app/sitemap.ts` (/patterns added), `app/settling-curve/SettlingCurve.tsx` (curve-shapes link), `app/methodology/page.tsx` (curve-shapes link), `app/start-here/page.tsx` (curve-shapes card), `app/settling-curve/[id]/page.tsx` (oEmbed alternate), all 7 story pages (oEmbed alternate), `app/docs/api/page.tsx` (embeds section)
 
 **Gotcha:** `markerSource` not `source` on `ClaimStatusHistory` Prisma relation — confirmed still correct in schema.
 

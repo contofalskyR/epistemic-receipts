@@ -1,5 +1,5 @@
 /**
- * Regression tests for seq-first curve ordering (ORDERING-SEMANTICS-2026-07-08.md).
+ * Regression tests for seq-first curve ordering (docs/ORDERING-SEMANTICS-2026-07-08.md).
  *
  * The problem: YEAR-precision dates are stored as Jan 1 of that year, so
  * "sometime in 2019" sorts BEFORE "15 June 2019" even when it happened after.
@@ -27,7 +27,7 @@ function row(seq: number | null, occurredAt: string, label: string) {
   return { seq, occurredAt: new Date(occurredAt), label };
 }
 
-describe("seq-first curve ordering (ORDERING-SEMANTICS-2026-07-08.md regression)", () => {
+describe("seq-first curve ordering (docs/ORDERING-SEMANTICS-2026-07-08.md regression)", () => {
   it("seq overrides occurredAt when a YEAR-precision date sorts before a DAY-precision date of the same year", () => {
     // Scenario from the doc: "sometime in 2019" (stored as 2019-01-01) is seq=2,
     // but would sort BEFORE a June 2019 DAY-precision row (seq=1) by date alone.

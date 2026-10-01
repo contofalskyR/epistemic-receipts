@@ -33,7 +33,7 @@ export type TrajectoryDetail = {
 // CRAWLER HOT PATH — keep to one round-trip with lean selects.
 // ~235k trajectory URLs; every ISR miss runs this query live against Neon.
 const STATUS_HISTORY_SELECT = Prisma.validator<Prisma.ClaimStatusHistoryFindManyArgs>()({
-  // seq = explicit row order (ORDERING-SEMANTICS-2026-07-08.md); ASC puts
+  // seq = explicit row order (docs/ORDERING-SEMANTICS-2026-07-08.md); ASC puts
   // NULLs last so unbackfilled legacy rows fall back to date order.
   orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
   select: {

@@ -328,7 +328,7 @@ export default function PipelinesClient({
         )}
 
         {/* Unregistered tags — raw list renders in development only; public builds
-            get an aggregate line (PUBLISH-CHECKLIST.md). */}
+            get an aggregate line (docs/PUBLISH-CHECKLIST.md). */}
         {unregistered.length > 0 ? (
           <div style={{ paddingBottom: "4rem" }}>
             <div style={{ borderBottom: `1px solid ${C.panelEdge}`, paddingBottom: "0.6rem", marginBottom: "1rem" }}>

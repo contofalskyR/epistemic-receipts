@@ -6,7 +6,7 @@ Working model for all workers: **Sonnet 5**. Read this file, then `specs/README.
 
 ## Mission
 
-Execute the build plan in `SCALING.md` via the specs in `specs/` (00–50), following the orchestrator model in `specs/README.md`. End state per phase: Phase 0 = repo safe to change (CI/staging/observability); Phase 1 = corpus consumable as a product (harness, data cards, snapshots, license drafts); Phase 2 = first revenue surface (/v1 API, billing, MCP server, eval set). Phases 3–4 (30/31/40) start only when the owner says the Phase 2 surface has a design partner.
+Execute the build plan in `docs/SCALING.md` via the specs in `specs/` (00–50), following the orchestrator model in `specs/README.md`. End state per phase: Phase 0 = repo safe to change (CI/staging/observability); Phase 1 = corpus consumable as a product (harness, data cards, snapshots, license drafts); Phase 2 = first revenue surface (/v1 API, billing, MCP server, eval set). Phases 3–4 (30/31/40) start only when the owner says the Phase 2 surface has a design partner.
 
 Context you already hold: `~/.openclaw/workspace/memory/project_epistemic_receipts_monetization.md`. Repo doctrine: `AGENTS.md` (its rules override anything here on conflict). The site is live, public, read-only — nothing you do may degrade it.
 

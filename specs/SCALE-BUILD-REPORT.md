@@ -1,5 +1,5 @@
 # Epistemic Receipts — Scale Build Report
-_Generated 2026-07-07. Covers the full agentic build session for SCALING.md specs 00–50._
+_Generated 2026-07-07. Covers the full agentic build session for docs/SCALING.md specs 00–50._
 
 ---
 

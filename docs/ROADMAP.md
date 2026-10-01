@@ -217,12 +217,12 @@ Scripts exist for all; architectural review pending before full production runs.
 - `chebi_v1`: IN PROGRESS (target ~62,000 chemical compounds, EBI)
 - `rxnorm_v1`: IN PROGRESS (target ~14,632 drug ingredients, NLM)
 - `omim_v1`: PARTIAL (target ~15,000 phenotypes, OMIM — see In Progress)
-- `openfda_labels_v1`: 0 — BLOCKED pending CONSULTANT.md decisions (258k drug labels, FDA)
+- `openfda_labels_v1`: 0 — BLOCKED pending docs/CONSULTANT.md decisions (258k drug labels, FDA)
 - `ingest-faers-current-drugs.ts` → `faers_normalized_drugs_v1`: 999 (see P7)
 
 ## NARA Expansion Track — 2026-05-28
 
-Full roadmap in **`NARA-ROADMAP.md`** (committed 2026-05-28). 73 RGs across 5 tiers. Erase rows there as each RG finishes.
+Full roadmap in **`docs/archive/NARA-ROADMAP.md`** (committed 2026-05-28). 73 RGs across 5 tiers. Erase rows there as each RG finishes.
 
 **API key:** `<redacted — set NARA_API_KEY in .env.local>` | **Limit:** 10k calls/month
 **Script:** `scripts/ingest-nara-catalog.ts` — `--rg <N>` flag; `--full` for uncapped pagination
@@ -242,7 +242,7 @@ Full roadmap in **`NARA-ROADMAP.md`** (committed 2026-05-28). 73 RGs across 5 ti
 | RG 220 | Presidential Commissions (Warren, Kerner, Pike) | 📋 Tier 1 next |
 | RG 457 | NSA / SIGINT | 📋 Tier 1 next |
 | RG 107 | Secretary of War, WWII | 📋 Tier 1 next |
-| + 58 more | See NARA-ROADMAP.md Tiers 2–5 | 📋 queued |
+| + 58 more | See docs/archive/NARA-ROADMAP.md Tiers 2–5 | 📋 queued |
 
 ---
 

@@ -1,12 +1,12 @@
 # specs/ — Agent Handoff Specs
 
-Execution-ready specs for every build item in `SCALING.md`. Each spec is self-contained: an agent (Claude Code with Opus 4.8 or Sonnet 5) should be able to complete it without asking what was intended. Written 2026-07-06.
+Execution-ready specs for every build item in `docs/SCALING.md`. Each spec is self-contained: an agent (Claude Code with Opus 4.8 or Sonnet 5) should be able to complete it without asking what was intended. Written 2026-07-06.
 
 **Orchestrator boot document: `specs/HANDOFF-OPENCLAW.md`** — mission, all-Sonnet model policy, authorization grants, execution order, owner communication contract. An orchestrator session starts there.
 
 ## Execution protocol (paste into every agent session)
 
-1. Read `AGENTS.md`, `SECURITY-REVIEW-2026-06-12.md` (if present), and the single spec file you were assigned. Read `node_modules/next/dist/docs/` for any Next.js API you touch — this Next.js 16 differs from training data.
+1. Read `AGENTS.md`, `docs/SECURITY-REVIEW-2026-06-12.md` (if present), and the single spec file you were assigned. Read `node_modules/next/dist/docs/` for any Next.js API you touch — this Next.js 16 differs from training data.
 2. Work on a branch named `spec/<number>`. One spec per session. Do not start work outside your spec's Deliverables section — if something adjacent looks broken, log it in the PR description instead.
 3. If the spec doesn't answer a design question, STOP and record it under "Open questions" in the PR rather than inventing an answer. Fabricated substitutes for missing data or missing decisions are the known failure mode of this project (see AGENTS.md, Pipeline 5).
 4. Every mutation endpoint you add: `requireAdminOrDev()` or `CRON_SECRET` check + `isReadOnly()` + middleware allowlist entry + rate limit + input length caps. No `$queryRawUnsafe` string interpolation ever — bind params only (`likeParam` pattern in `app/api/retractions/route.ts` for ILIKE).

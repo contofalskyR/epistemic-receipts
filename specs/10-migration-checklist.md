@@ -57,7 +57,7 @@ Remaining active pipelines to migrate to `lib/ingest` harness. Sorted by natural
 | `faers_normalized_drugs_v1` | `ingest-faers-current-drugs.ts` | openFDA REST | S | |
 | `genbank_v1` | `ingest-genbank.ts` | NCBI REST | S | |
 | `icd11_v1` | `ingest-icd11.ts` | REST (ICD API OAuth) | M | Script exists; never run; needs API keys |
-| `openfda_labels_v1` | `ingest-openfda-labels.ts` | Bulk partition | M | BLOCKED pending CONSULTANT.md |
+| `openfda_labels_v1` | `ingest-openfda-labels.ts` | Bulk partition | M | BLOCKED pending docs/CONSULTANT.md |
 | `nuclear_tests_v1` | `ingest-nuclear-tests.ts` | Static curated list | XS | |
 | `periodic_table_v1` | `ingest-periodic-table.ts` | GitHub JSON | XS | |
 | `who_essential_medicines_v1` | `ingest-who-essential-medicines.ts` | Static curated list | XS | |

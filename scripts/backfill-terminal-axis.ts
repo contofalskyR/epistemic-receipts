@@ -12,7 +12,7 @@
  *   npx tsx scripts/backfill-terminal-axis.ts --execute  # write
  *
  * Run scripts/backfill-transition-seq.ts FIRST if seq coverage is incomplete —
- * seq is the order authority (ORDERING-SEMANTICS-2026-07-08.md).
+ * seq is the order authority (docs/ORDERING-SEMANTICS-2026-07-08.md).
  */
 import { PrismaClient } from "@prisma/client";
 

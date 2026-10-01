@@ -1,7 +1,7 @@
 /**
  * pick-promotable-claim.ts — openalex promoter claim selector.
  *
- * Retargeted 2026-07-03 (see CORPUS-PROMOTER-BULK-PLAN.md §5): after wave 1
+ * Retargeted 2026-07-03 (see docs/CORPUS-PROMOTER-BULK-PLAN.md §5): after wave 1
  * (205,679 vote/FDA claims), wave 2 (18,280 retraction curves), and the
  * completeness reclassification (lib/corpus-completeness.ts), openalex_v1 is
  * the only large pipeline whose settling curves genuinely need LLM research.

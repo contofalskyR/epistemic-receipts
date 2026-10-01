@@ -459,12 +459,11 @@ function TopicSlugContent() {
     <div className="space-y-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-gray-500 flex-wrap">
-        {/* The topic tree (/topics) is a Lab page — crumb root stays text. */}
+        {/* The topic tree (/topics) and the domain listing (/domains/[domain])
+            are Lab pages — crumb root and domain stay text. */}
         <span>Topics</span>
         <span className="text-gray-700">›</span>
-        <Link href={`/domains/${topic.domain}`} className="hover:text-gray-300 transition-colors capitalize">
-          {domainLabel}
-        </Link>
+        <span className="capitalize">{domainLabel}</span>
         {parentChain.map(p => (
           <>
             <span key={`sep-${p.slug}`} className="text-gray-700">›</span>
@@ -488,9 +487,7 @@ function TopicSlugContent() {
         <div className="flex items-center gap-3 text-xs text-gray-600">
           <span>{total.toLocaleString()} {total === 1 ? "claim" : "claims"}</span>
           <span className="text-gray-800">·</span>
-          <Link href={`/domains/${topic.domain}`} className="hover:text-gray-300 transition-colors">
-            {domainLabel}
-          </Link>
+          <span>{domainLabel}</span>
         </div>
       </div>
 

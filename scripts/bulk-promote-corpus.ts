@@ -5,7 +5,7 @@
  * Layer-1 baseline with fromAxis = null) into multi-step settling curves using
  * per-pipeline deterministic rules — one INSERT ... SELECT per pipeline, no LLM.
  *
- * Companion plan: CORPUS-PROMOTER-BULK-PLAN.md (rules rationale, edge cases,
+ * Companion plan: docs/CORPUS-PROMOTER-BULK-PLAN.md (rules rationale, edge cases,
  * corrections to the original corpus-promoter briefing).
  *
  * IMPORTANT — what the briefing got wrong (verified against

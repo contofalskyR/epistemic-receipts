@@ -19,7 +19,7 @@
 //
 // Scope: All 2,009 primary Israeli laws enacted by the Knesset (or carried
 //        over as 'Israeli law' at independence). Validity (in-force vs.
-//        repealed/expired) recorded in claim metadata — per ROADMAP.md long-
+//        repealed/expired) recorded in claim metadata — per docs/ROADMAP.md long-
 //        horizon note, repealed laws remain HARD_FACT (the fact that they
 //        were enacted is still true).
 //

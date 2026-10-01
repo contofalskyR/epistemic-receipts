@@ -34,6 +34,18 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
 One phase at a time, one branch + one PR per phase, stop for go-ahead between phases. Single agent, no subagents.
 `npm run build` before every push; data-facing counts verified with a read-only query. Nothing writes to the DB.
 
+## Docs (where things are, since Phase 4)
+
+- Root: `README.md`, `CLAUDE.md` → `AGENTS.md` (agent rules), `STATUS.md` (this tracker), `AUDIT.md` (route audit,
+  2026-09-29), `LATER.md` (backlog). Nothing else lives at the root.
+- `docs/`: the ten docs that code, specs, AGENTS.md or runbooks still cite — `CONSULTANT.md` (architectural memory),
+  `SCALING.md` (+ `specs/`), `SECURITY-REVIEW-2026-06-12.md`, `ORDERING-SEMANTICS-2026-07-08.md`,
+  `CORPUS-PROMOTER-BULK-PLAN.md`, `PUBLISH-CHECKLIST.md`, `ROADMAP.md`, `TASK_QUEUE.md` (read by
+  `scripts/er-worker.sh`), `HARD_FACTS_DOMAINS.md`, `epistemic-receipts-marketing.md` (house rule cited by
+  `lib/format.ts`) — beside the pre-existing dated handoffs and `docs/runbooks/`.
+- `docs/archive/`: 29 superseded root docs, one line each in `docs/archive/README.md`. Files unchanged (they still
+  name each other by old root paths). `briefs/` and `briefings/` untouched — historical.
+
 ## Environment facts (so a fresh agent needn't rediscover them)
 
 - `.env.local` has `DATABASE_URL` → the OCI Postgres (self-signed cert, URL ends in `?sslmode=require`).
@@ -63,7 +75,7 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 - [x] **Phase -1 — pg driver** · branch `phase-minus-1/pg-driver` · PR #22 merged · build green · counts verified.
 - [x] **Phase 0 — stop the bleeding** · branch `fix/front-door-phase-0` · done 2026-09-30 · build green · tsc clean ·
       310 tests pass · PR: owner pushes the branch and opens it (see Environment facts)
-  - [x] strip NARA key from `NARA-ROADMAP.md` — it was also in `HISTORY.md`, `ROADMAP.md`, `TASK_QUEUE.md`; all four
+  - [x] strip NARA key from `docs/archive/NARA-ROADMAP.md` — it was also in `docs/archive/HISTORY.md`, `docs/ROADMAP.md`, `docs/TASK_QUEUE.md`; all four
         now read `<redacted — set NARA_API_KEY in .env.local>`. Purge command was handed over in the Phase 0 chat
         report, deliberately NOT in the PR (public repo). Owner runs it after rotating.
   - [x] `/datasets/[tag]`: `await params` (un-404s every card linked from /about, /methodology)
@@ -177,8 +189,32 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - [x] `/sitemap.xml` fixed: `app/sitemap-index.xml/route.ts` builds the index from `generateSitemaps()`;
         `next.config.ts` rewrites `/sitemap.xml` → it (beforeFiles). Sitemap filters use `LIVE_CLAIM_WHERE`.
   - [x] `LATER.md` written (Congress-as-claims first).
-- [ ] **Phase 4 — guard** · route-link test in CI, extended to components/, lib/, template hrefs;
-      public→Lab links fail; every `PUBLIC_ROUTES` entry must have a page
+- [x] **Phase 4 — guard** · branch `fix/front-door-phase-4` · done 2026-09-30 · build green · tsc clean ·
+      385 unit tests pass, 1 skipped (was 268; +104 per-route manifest cases, +14 link-integrity) · PR: owner pushes the branch and opens it (sits on top of Phase 3's `f1336f3`; merge 2 → 3 → 4)
+  - [x] CI now runs the unit suite: new "Unit tests" step (`npm test`) in `.github/workflows/ci.yml` before the DB
+        steps. link-integrity, lab-gate, public-edition-routes, route-manifest and corpus-literals gate every PR —
+        none of them ran in CI before (only `test:integration` did).
+  - [x] `tests/unit/link-integrity.test.ts`: (1) the anonymous surface — every public `page.tsx`, the
+        layout/error/not-found files on its path, and the transitive closure of their local imports through
+        `app/components/`, `components/`, `lib/` — contains no href to a Lab route. Template hrefs are judged by
+        shape (`/members/${id}` → `/members/_`; a fully dynamic `/${x}` counts as Lab); navigation calls
+        (`router.push`, `redirect`) count as hrefs. One region-scoped exemption: Nav's admin-only `LAB_SECTIONS`,
+        and the test fails if that marker moves. (2) Every internal href in app/, components/, lib/ resolves to a
+        manifest page, an `app/api/**/route.ts`, or a `public/` file. (3) `next.config.ts` redirect destinations
+        exist. Mutation-tested (Lab href on a public page / in lib/ / in a reachable component, dynamic first
+        segment, renamed marker, Lab link outside the exemption, dead href): all seven fail the suite.
+  - [x] Found by the guard and fixed: `/topics/[slug]` (public) linked `/domains/<domain>` (Lab) twice — plain text
+        now, as the crumb root became in Phase 2; `/datasets/snapshots` linked `/datasets/snapshots/readme`, a page
+        that never existed (spec/12 ships the README inside each release) — text now.
+  - [x] `public-edition-routes.test.ts`: the superseded link block and its `LAB_ONLY` map (still exempting the
+        deleted `/pricing`) removed; keeps list-entries-are-pages, exact matcher and sitemap checks.
+        `route-manifest.test.ts`: every manifest route must have its `page.*` file by name; every pattern has a
+        dynamic segment.
+  - [x] Root doc pile consolidated (see Docs above): 10 referenced → `docs/`, 29 → `docs/archive/` + index. 227
+        references rewritten to repo-relative paths in live files (AGENTS.md, STATUS.md, AUDIT.md §E, code comments,
+        specs/, legal/, docs/, `scripts/er-worker.sh`). Left as-is: `docs/archive/*`, `briefs/`, `briefings/`, and
+        the applied migration `20260708150000_add_transition_seq` (Prisma checksums migration files).
+  - [x] `LATER.md` §4: MCP endpoint, unauthenticated read-only, over the public claim graph.
 - [ ] **Phase 5 — content** · source the taxonomies, inline receipts in stories, claim links on Analyze pages
 
 ## Owner's side (not blocking)
@@ -191,4 +227,4 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Owner says "go" → Phase 4 (guard). Before that: merge Phase 2 + Phase 3, run `npx prisma migrate deploy`.
+Owner says "go" → Phase 5 (content). Before that: merge Phase 2 → 3 → 4, run `npx prisma migrate deploy`.
