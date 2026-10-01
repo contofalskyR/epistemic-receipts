@@ -399,9 +399,9 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   }, [list, query, statusFilter, eraFilter, domainFilter]);
 
   // Header label. The SSR list is curated-only; the background /api/trajectories
-  // fetch appends up to 5,000 auto-generated claims (most recently created
-  // first), so after it lands the old "N CURATED TRAJECTORIES" read 10,698 for
-  // 5,698 curated arcs. Say what is actually in the list.
+  // fetch appends the newest auto-generated claims with two or more transitions
+  // (lib/trajectory-list.ts), so after it lands the old "N CURATED TRAJECTORIES"
+  // read 10,698 for 5,698 curated arcs. Say what is actually in the list.
   const listLabel = useMemo(() => {
     const curated = filteredList.filter((i) => i.isCurated !== false).length;
     const auto = filteredList.length - curated;
@@ -971,7 +971,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
 
           <div className="flex items-center justify-between mb-3">
             <span className="font-mono" style={{ fontSize: 9.5, color: C.faint, letterSpacing: "0.05em", textTransform: "uppercase" }}>
-              Showing curated trajectories
+              {listLoading ? "Loading trajectories…" : listLabel}
             </span>
           </div>
 

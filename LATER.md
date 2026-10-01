@@ -79,7 +79,6 @@ the Analyze group can leave the Lab.
 | `metadata` on Source/Edge/MetaEdge | queued migration (AGENTS.md) |
 | six claims written after the restore | find the writer (a cron or ingest route) |
 | `use cache` | `unstable_cache` is "replaced by `use cache`" in Next 16; migrating needs `cacheComponents: true` (whole-app rendering change) — its own PR, after the front door settles |
-| auto-generated trajectory list | `/api/trajectories` and the explorer label "5,000 most recent auto-generated" but the list is **empty**: the newest 5,000 claims with history each have one transition and the ≥2 filter runs after the `take` — filter in SQL (`statusHistory` count ≥ 2) or drop the label |
 | optional claim-page panels | `WhatHappenedNextPanel`, `ClaimRelationsPanel`, `TopicTimeline` hide on a failed fetch (they never claim zero) — a one-line error would be more honest than silence |
 | `/settling-curve` payload | the SSR grid ships all 5,698 curated cards (~3 MB of RSC props) on every visit; paginate or stream the grid |
 | MCP endpoint | unauthenticated read-only, over the public claim graph (`isPublicRoute` / `LIVE_CLAIM_WHERE`); phase 3 deleted the key-gated `/api/mcp` + `lib/v1` — recover the tool surface from `archive/full-site`, drop the key |
