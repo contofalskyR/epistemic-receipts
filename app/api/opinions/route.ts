@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { unstable_cache } from 'next/cache'
 import { prisma } from '@/lib/prisma'
 
 export const dynamic = 'force-dynamic'
+
+// Anonymous visits to /opinions must not reach Postgres on every request
+// (STATUS.md Phase 5): the whole page payload is cached for an hour per
+// (court, dateFrom, dateTo, page, limit) — a bounded key space — and the CDN
+// absorbs repeats on top of that.
+const CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400'
 
 const COURT_PIPELINE_MAP: Record<string, string[]> = {
   scotus: ['courtlistener_scotus_v1'],
@@ -24,14 +31,10 @@ function parseDate(raw: string | null): Date | null {
   return isNaN(d.getTime()) ? null : d
 }
 
-export async function GET(req: NextRequest) {
-  try {
-    const sp = req.nextUrl.searchParams
-    const courtFilter = sp.get('court') ?? 'all'
-    const dateFrom = parseDate(sp.get('dateFrom'))
-    const dateTo = parseDate(sp.get('dateTo'))
-    const pageParam = Math.max(1, parseInt(sp.get('page') ?? '1', 10) || 1)
-    const limitParam = Math.min(100, Math.max(1, parseInt(sp.get('limit') ?? '50', 10) || 50))
+const loadOpinions = unstable_cache(
+  async (courtFilter: string, dateFromIso: string | null, dateToIso: string | null, pageParam: number, limitParam: number) => {
+    const dateFrom = dateFromIso ? new Date(dateFromIso) : null
+    const dateTo = dateToIso ? new Date(dateToIso) : null
     const offset = (pageParam - 1) * limitParam
 
     const pipelines =
@@ -101,13 +104,35 @@ export async function GET(req: NextRequest) {
       }
     })
 
-    return NextResponse.json({
+    return {
       total,
       page: pageParam,
       limit: limitParam,
       pages: Math.ceil(total / limitParam),
       results,
-    })
+    }
+  },
+  ['api-opinions'],
+  { revalidate: 3600 },
+)
+
+export async function GET(req: NextRequest) {
+  try {
+    const sp = req.nextUrl.searchParams
+    const courtFilter = sp.get('court') ?? 'all'
+    const dateFrom = parseDate(sp.get('dateFrom'))
+    const dateTo = parseDate(sp.get('dateTo'))
+    const pageParam = Math.max(1, parseInt(sp.get('page') ?? '1', 10) || 1)
+    const limitParam = Math.min(100, Math.max(1, parseInt(sp.get('limit') ?? '50', 10) || 50))
+
+    const payload = await loadOpinions(
+      courtFilter,
+      dateFrom ? dateFrom.toISOString() : null,
+      dateTo ? dateTo.toISOString() : null,
+      pageParam,
+      limitParam,
+    )
+    return NextResponse.json(payload, { headers: { 'Cache-Control': CACHE_CONTROL } })
   } catch (err) {
     console.error('[/api/opinions] error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

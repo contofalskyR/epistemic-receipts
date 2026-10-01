@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
   description:
     "Fleischmann and Pons announced cold fusion in April 1989. By November, the DOE Energy Research Advisory Board found no convincing evidence. The arc closed in under a year.",
   alternates: { canonical: "/stories/cold-fusion", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/cold-fusion")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "Eight Months from Announcement to Abandonment: Cold Fusion",
-    description:
-      "One of the fastest CONTESTED → ABANDONED arcs in the database — a high-profile scientific claim that failed replication and was abandoned within months.",
+    description: "One of the fastest CONTESTED → ABANDONED arcs in the database — a high-profile scientific claim that failed replication and was abandoned within months.",
     url: "/stories/cold-fusion",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

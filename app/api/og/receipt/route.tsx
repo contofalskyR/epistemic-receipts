@@ -7,6 +7,7 @@ import {
   OG_CACHE_CONTROL,
   AXIS_COLOR,
   FallbackCard,
+  OG_HOST,
 } from "@/lib/og-shared";
 
 export const runtime = "nodejs";
@@ -148,7 +149,7 @@ export async function GET(req: NextRequest) {
           {community} community
         </span>
         <span style={{ fontSize: 13, color: "#55556e", letterSpacing: "0.08em" }}>
-          epistemic-receipts.vercel.app
+          {OG_HOST}
         </span>
       </div>
     </div>,

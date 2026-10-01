@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
   description:
     "Ancel Keys linked saturated fat to heart disease in 1953. The USDA Dietary Guidelines institutionalized the claim in 1980. A 2010 meta-analysis returned it to CONTESTED — where it remains.",
   alternates: { canonical: "/stories/dietary-fat-heart", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/dietary-fat-heart")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "The Dietary Fat Hypothesis: Settled, Then Contested Again",
-    description:
-      "Three transitions, one still-live dispute. The dietary fat–heart disease claim shows what CONTESTED → SETTLED → CONTESTED looks like in the database.",
+    description: "Three transitions, one still-live dispute. The dietary fat–heart disease claim shows what CONTESTED → SETTLED → CONTESTED looks like in the database.",
     url: "/stories/dietary-fat-heart",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

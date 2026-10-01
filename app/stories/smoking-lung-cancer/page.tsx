@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
   description:
     "Doll and Hill's 1950 BMJ case-control study contested by the tobacco industry for fourteen years, settled by the 1964 Surgeon General's report, and legally ratified by the 1998 Tobacco Master Settlement Agreement.",
   alternates: { canonical: "/stories/smoking-lung-cancer", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/smoking-lung-cancer")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "Smoke and Evidence: The Fourteen-Year Road to Consensus",
-    description:
-      "How the scientific and legal communities each ratified the link between cigarette smoking and lung cancer — one event in 1964, one in 1998.",
+    description: "How the scientific and legal communities each ratified the link between cigarette smoking and lung cancer — one event in 1964, one in 1998.",
     url: "/stories/smoking-lung-cancer",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

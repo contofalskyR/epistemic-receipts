@@ -12,6 +12,7 @@
  */
 
 import { prisma } from "@/lib/prisma";
+import { unstable_cache } from "next/cache";
 import { Prisma } from "@prisma/client";
 
 export const COMMUNITY_LABEL: Record<string, string> = {
@@ -247,7 +248,13 @@ async function buildClaims(claimIds: string[]): Promise<SplitLedgerClaim[]> {
 
 export const PAGE_SIZE = 50;
 
-export async function loadTier1Claims(page = 0): Promise<{
+// /split-ledger is dynamic (it reads ?t1page/?t2page/?pair), so the page's
+// `revalidate` never applied. The three loaders are cached for an hour per
+// argument instead (STATUS.md Phase 5); the in-process classification cache
+// above still saves the big CTE within one instance. Return shapes are plain
+// JSON (years and ISO strings, no Dates) so they survive the data cache.
+
+async function loadTier1ClaimsUncached(page = 0): Promise<{
   claims: SplitLedgerClaim[];
   total: number;
 }> {
@@ -257,7 +264,7 @@ export async function loadTier1Claims(page = 0): Promise<{
   return { claims, total: tier1.length };
 }
 
-export async function loadTier2Claims(
+async function loadTier2ClaimsUncached(
   communityPair: string | null = null,
   page = 0
 ): Promise<{ claims: SplitLedgerClaim[]; total: number }> {
@@ -268,10 +275,14 @@ export async function loadTier2Claims(
   return { claims, total: source.length };
 }
 
-export async function loadSplitLedgerCounts(): Promise<{
+async function loadSplitLedgerCountsUncached(): Promise<{
   tier1: number;
   tier2: number;
 }> {
   const { tier1, tier2 } = await getClassification();
   return { tier1: tier1.length, tier2: tier2.length };
 }
+
+export const loadTier1Claims = unstable_cache(loadTier1ClaimsUncached, ["split-ledger-tier1"], { revalidate: 3600 });
+export const loadTier2Claims = unstable_cache(loadTier2ClaimsUncached, ["split-ledger-tier2"], { revalidate: 3600 });
+export const loadSplitLedgerCounts = unstable_cache(loadSplitLedgerCountsUncached, ["split-ledger-counts"], { revalidate: 3600 });

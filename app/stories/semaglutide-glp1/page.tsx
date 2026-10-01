@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
   description:
     "A 1996 Nature paper identified GLP-1's appetite-suppressing role in rats. Semaglutide reached FDA approval for type 2 diabetes in 2017 and for obesity in 2021 — a 25-year arc from RECORDED to SETTLED.",
   alternates: { canonical: "/stories/semaglutide-glp1", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/semaglutide-glp1")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "From Lab Target to Ozempic: GLP-1's 25-Year Arc",
-    description:
-      "Six transitions from 1996 to 2021 — how a peripheral receptor discovery became one of the most widely prescribed drug classes in history.",
+    description: "Six transitions from 1996 to 2021 — how a peripheral receptor discovery became one of the most widely prescribed drug classes in history.",
     url: "/stories/semaglutide-glp1",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

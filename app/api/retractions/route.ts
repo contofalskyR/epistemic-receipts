@@ -1,17 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
-export const revalidate = 300;
+// Reading searchParams makes this handler dynamic, so a route-level
+// `revalidate` never applied. Instead (STATUS.md Phase 5) the payload is
+// cached for an hour per (field, reason, sortBy, page) — a bounded key space —
+// and free-text queries (`q`) bypass the data cache and get a short CDN TTL.
+export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 25;
 
-export async function GET(req: NextRequest) {
-  const sp = req.nextUrl.searchParams;
-  const field = sp.get("field") ?? "all";
-  const reason = sp.get("reason") ?? "all";
-  const q = (sp.get("q") ?? "").trim();
-  const sortBy = sp.get("sortBy") ?? "impact"; // "impact" | "date"
-  const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
+async function loadRetractions(field: string, reason: string, q: string, sortBy: string, page: number) {
   const offset = (page - 1) * PAGE_SIZE;
 
   const conditions: string[] = [
@@ -152,5 +151,28 @@ export async function GET(req: NextRequest) {
     };
   });
 
-  return NextResponse.json({ total, papers, page, pageSize: PAGE_SIZE });
+  return { total, papers, page, pageSize: PAGE_SIZE };
+}
+
+const loadRetractionsCached = unstable_cache(loadRetractions, ["api-retractions"], { revalidate: 3600 });
+
+export async function GET(req: NextRequest) {
+  const sp = req.nextUrl.searchParams;
+  const field = sp.get("field") ?? "all";
+  const reason = sp.get("reason") ?? "all";
+  const q = (sp.get("q") ?? "").trim();
+  const sortBy = sp.get("sortBy") ?? "impact"; // "impact" | "date"
+  const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
+
+  const payload = q
+    ? await loadRetractions(field, reason, q, sortBy, page)
+    : await loadRetractionsCached(field, reason, q, sortBy, page);
+
+  return NextResponse.json(payload, {
+    headers: {
+      "Cache-Control": q
+        ? "public, s-maxage=300, stale-while-revalidate=3600"
+        : "public, s-maxage=3600, stale-while-revalidate=86400",
+    },
+  });
 }

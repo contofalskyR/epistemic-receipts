@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 import { loadDormantContested, loadRecentlyWoken } from "@/lib/dormancy";
 import { AXIS_BG_CLASS } from "@/lib/status";
+import { EmptyState } from "@/components/DataState";
 
 export const revalidate = 3600;
 
@@ -91,7 +92,7 @@ export default async function OpenQuestionsPage() {
           Longest contested · no new activity
         </h2>
         {dormant.length === 0 ? (
-          <p className="text-sm text-gray-600 italic">No contested claims found.</p>
+          <EmptyState title="No dormant contested claims found." hint="The query ran and matched nothing — every CONTESTED claim with a dated transition has recent activity." />
         ) : (
           <ol className="space-y-2">
             {dormant.map((item, idx) => (

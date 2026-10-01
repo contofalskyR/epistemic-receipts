@@ -11,7 +11,6 @@ Last updated: [TBD — human fills]
 | Neon (production) | [FILL: Free / Scale / Business] | $[FILL] | |
 | Neon (staging branch) | included above | — | Branch compute billed separately on paid plans |
 | Resend | [FILL: Free / Starter / Pro] | $[FILL] | Free tier: 3,000 emails/month |
-| Sentry | [FILL: Free / Team] | $[FILL] | Free tier: 5k errors/month |
 | Domain registrar | [FILL] | $[FILL]/yr | Amortized monthly: $[FILL] |
 | **Total** | | **$[FILL]/month** | |
 
@@ -47,7 +46,6 @@ The owner reviews this file before each monthly billing cycle.
 |---------|-------|---------------|
 | Neon Free | 512 MB storage, 24h PITR | [FILL] |
 | Resend Free | 3,000 emails/month | [FILL] |
-| Sentry Free | 5,000 errors/month | [FILL] |
 | Vercel Hobby | 100 GB bandwidth | [FILL] |
 
 > If any usage exceeds 80% of a free-tier limit, upgrade the plan before it becomes

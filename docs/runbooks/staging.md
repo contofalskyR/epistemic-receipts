@@ -64,8 +64,6 @@ Set these environment variables on the staging project:
 | `SITE_PASSWORD` | SET to any password (keeps staging private) |
 | `RESEND_API_KEY` | Same as production (or a test key) |
 | `RESEND_FROM_EMAIL` | Same as production |
-| `SENTRY_DSN` | Same as production SENTRY_DSN |
-| `NEXT_PUBLIC_SENTRY_DSN` | Same as production |
 | `ALLOW_EDITS` | DO NOT SET (leave unset) |
 | `NEXT_PUBLIC_EDITION` | Leave unset (same edition as production) |
 
@@ -197,4 +195,3 @@ Suggested tool: [UptimeRobot](https://uptimerobot.com) (free tier: 5-minute chec
 - [ ] `prisma migrate deploy` succeeded on staging
 - [ ] Smoke test: staging homepage loads, search returns results
 - [ ] No new secrets or keys committed to the repo
-- [ ] Sentry receiving errors from staging (test at `/api/debug-sentry` if wired)

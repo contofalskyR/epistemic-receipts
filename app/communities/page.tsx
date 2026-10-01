@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
+import { socialMetadata } from "@/lib/og";
 
 export const revalidate = 3600;
 
@@ -9,13 +10,11 @@ export const metadata: Metadata = {
   title: "Ratifying Communities — Epistemic Receipts",
   description:
     "What the five ratifying communities are, what ratification means in each one, and live counts of claims and transitions tracked per community.",
-  openGraph: {
+  ...socialMetadata({
     title: "Ratifying Communities — Epistemic Receipts",
-    description:
-      "Expert literature, institutional, judicial, public, and market — what ratification means in each community and how many claims each tracks.",
+    description: "Expert literature, institutional, judicial, public, and market — what ratification means in each community and how many claims each tracks.",
     url: "/communities",
-    siteName: "Epistemic Receipts",
-  },
+  }),
 };
 
 // Communities in enum order from prisma/schema.prisma:

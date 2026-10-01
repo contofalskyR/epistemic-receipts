@@ -4,6 +4,7 @@ import type { ClaimDetail, EdgeDetail } from "@/lib/claim-detail";
 import { latestScore, formatDate } from "./claim-ui";
 import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
 import WhatHappenedNextPanel from "@/components/WhatHappenedNextPanel";
+import { EmptyState } from "@/components/DataState";
 
 // Client island for /claims/[id]. Receives the fully serialized claim from the
 // server page and renders the interactive lower half: the evidence table
@@ -380,7 +381,7 @@ export default function ClaimInteractive({ claim }: { claim: ClaimDetail }) {
           <a href="/glossary" className="underline hover:text-gray-400 transition-colors">Glossary →</a>
         </p>
         {claim.edges.length === 0 ? (
-          <p className="text-sm text-gray-700 italic">No sources linked to this claim yet.</p>
+          <EmptyState title="No sources linked to this claim yet." hint="The receipt exists; no evidence edge has been curated for it." />
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left">

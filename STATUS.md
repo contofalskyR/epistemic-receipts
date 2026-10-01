@@ -215,7 +215,43 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
         specs/, legal/, docs/, `scripts/er-worker.sh`). Left as-is: `docs/archive/*`, `briefs/`, `briefings/`, and
         the applied migration `20260708150000_add_transition_seq` (Prisma checksums migration files).
   - [x] `LATER.md` §4: MCP endpoint, unauthenticated read-only, over the public claim graph.
-- [ ] **Phase 5 — content** · source the taxonomies, inline receipts in stories, claim links on Analyze pages
+- [x] **Phase 5 — presentable** · branch `fix/front-door-phase-5` · done 2026-09-30 · build green · tsc clean ·
+      391 unit tests pass, 1 skipped (+6: `og-metadata.test.ts`) · PR: owner pushes the branch and opens it (sits on Phase 4's `8ac3770`; merge 2 → 3 → 4 → 5).
+      Replaces the old "content" Phase 5 — sourcing the taxonomies and story receipts stay in `LATER.md`.
+  - [x] Honest states: `components/DataState.tsx` = `LoadingState` / `EmptyState` / `ErrorState` (three sentences:
+        waiting · "No X for this filter" · "Couldn't load X" + Retry). Client fetchers now check `r.ok`, keep an
+        `error` state and a retry key: `/opinions`, `/retraction-explorer`, `/topics/[slug]` (404 ≠ error),
+        WorldBankView, `/trajectories`, `/search`, the explorer list. SSR empty lists use `EmptyState`
+        (patterns, open-questions, case-studies, split-ledger ×2, settling-curve/[id], datasets/[tag], receipt
+        sources). `app/error.tsx` + `app/loading.tsx` (root), `app/claims/[id]/error.tsx` on the shared state.
+        Verified in Chromium against the production build with `/api/*` intercepted to 500: every page shows the
+        error state and Retry recovers; empty filters show the empty state with "Clear filters".
+        Optional claim-page panels (`WhatHappenedNext`, `ClaimRelations`, `TopicTimeline`) still hide on failure.
+  - [x] Caching: `/settling-curve` and `/split-ledger` were dynamic all along (they read `searchParams`), so their
+        `revalidate` never applied; same for `/api/retractions`, `/api/history`, `/api/trajectories/[id]`. Now
+        `unstable_cache` (1 h) behind all of them + `Cache-Control: s-maxage=3600`: `lib/trajectory-list.ts`
+        (curated list in 1,000-row chunks — the whole list is 3.1 MB and the data cache refuses items over 2 MB,
+        logged as "Failed to set Next.js data cache"), `lib/split-ledger.ts` loaders, `/api/opinions`,
+        `/api/retractions` (free-text `q` bypasses), `/api/history` (curated lens derives from the chunked list;
+        machine lens cached), `/api/trajectories`, `/api/trajectories/[id]`. Measured warm: opinions 1.8 s → 8 ms,
+        trajectories 6.6 s → 20 ms, `/settling-curve` 6.5 s → 63 ms. `/`, `/retraction-explorer`, `/reversals`
+        were already ISR. `use cache` needs `cacheComponents: true` (whole-app change) — LATER.
+  - [x] Open Graph: `lib/og-shared.tsx` `CurveCard` draws the settling curve (SettlingCurveMini geometry, inline
+        SVG) for `/api/og/trajectory` and `/api/og/claim` (falls back to the axis card when a claim has no
+        history); `/api/og/default` is the card for everything else. `lib/og.ts` `socialMetadata()` attaches an
+        image to every `openGraph`/`twitter` block — a child `openGraph` replaces the parent's whole object, so
+        the root default alone was not enough; 11 pages (communities, start-here, split-ledger, 8 stories →
+        their trajectory's curve) converted. Verified: every page emits `og:image` + `twitter:card`.
+  - [x] README: one paragraph, three Playwright screenshots (`docs/screenshots/`, `scripts/screenshots.mjs`,
+        `playwright` devDependency), Run locally / Data (Zenodo DOI 10.5281/zenodo.23049991) / Architecture;
+        Pipeline Scripts kept.
+  - [x] Sentry removed: no DSN or auth token in any env, and the three `Sentry.init` config files were never loaded
+        (no `instrumentation.ts`/`instrumentation-client.ts`, required since SDK v8) — it was inert. Gone:
+        `@sentry/nextjs`, `withSentryConfig`, `sentry.*.config.ts`, `/api/sentry-tunnel` (+ middleware
+        allowlist/rate-limit rows), the CI `sourcemaps` job, runbook rows.
+  - Found on the way: the "5,000 most recent auto-generated" trajectories are **0** — the newest 5,000 claims
+        with history all carry one transition and the ≥2 filter runs after the `take` (LATER); `/settling-curve/[id]`
+        showed slugs as `№ AL-DRIFT` (`id.slice(-8)` meant for CUIDs) — slugs now shown whole.
 
 ## Owner's side (not blocking)
 
@@ -227,4 +263,5 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Owner says "go" → Phase 5 (content). Before that: merge Phase 2 → 3 → 4, run `npx prisma migrate deploy`.
+Merge Phase 2 → 3 → 4 → 5, run `npx prisma migrate deploy`, redeploy. Then the content backlog in `LATER.md`
+(Congress as claims first).

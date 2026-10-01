@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
   description:
     "Enacted in 1965, upheld unanimously by the Supreme Court in 1966, and then partially reversed in Shelby County v. Holder in 2013 — the VRA's preclearance mechanism traces a 48-year arc from RECORDED to SETTLED to REVERSED.",
   alternates: { canonical: "/stories/voting-rights-act-1965", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/voting-rights-act-1965")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "The Voting Rights Act: Settlement and Partial Reversal",
-    description:
-      "One of two legislative trajectories in the database with a REVERSED transition — enacted, settled by unanimous SCOTUS review, then partially reversed 48 years later.",
+    description: "One of two legislative trajectories in the database with a REVERSED transition — enacted, settled by unanimous SCOTUS review, then partially reversed 48 years later.",
     url: "/stories/voting-rights-act-1965",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

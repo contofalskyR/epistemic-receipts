@@ -7,6 +7,7 @@ import CitationButton from "@/components/CitationButton";
 import EmbedButton from "@/components/EmbedButton";
 import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
 import { SITE_URL } from "@/lib/site";
+import { EmptyState } from "@/components/DataState";
 
 const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
@@ -123,7 +124,8 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
       <div className="space-y-3 pb-6 border-b border-dashed border-gray-700">
         <p className="text-xs font-mono uppercase tracking-widest text-gray-500">
           Settling Curve <span className="text-gray-600">№</span>{" "}
-          <span className="text-gray-400" title={id}>{id.slice(-8)}</span>
+          {/* CUIDs are abbreviated to their tail; a slug is the name — show it whole. */}
+          <span className="text-gray-400" title={id}>{/^c[a-z0-9]{24}$/.test(id) ? id.slice(-8) : id}</span>
         </p>
         <h1 className="text-xl font-semibold text-white leading-snug">{traj.claimText}</h1>
         <div className="flex items-center gap-4 flex-wrap text-xs text-gray-500">
@@ -167,7 +169,7 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
           </span>
         </h2>
         {traj.transitions.length === 0 ? (
-          <p className="text-sm text-gray-600 italic">No transitions recorded.</p>
+          <EmptyState title="No transitions recorded for this claim." hint="The claim exists; its status history is empty, so there is no curve to draw yet." />
         ) : (
           <ol className="space-y-3">
             {traj.transitions.map((t, i) => (

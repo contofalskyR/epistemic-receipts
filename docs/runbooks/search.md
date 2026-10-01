@@ -117,7 +117,7 @@ Kill-restart safe — contentHash dedup prevents double-spend.
 Monitor in Vercel logs:
 - `ok: true` — success
 - `ok: false, message: "Spend guard triggered"` — hit EMBEDDING_MAX_TOKENS_PER_RUN cap
-- Any error in `errors` field — check Sentry
+- Any error in `errors` field — check the Vercel function logs (Sentry was removed 2026-09-30, Phase 5)
 
 ---
 

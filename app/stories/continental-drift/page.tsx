@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMetadata, trajectoryOgImage } from "@/lib/og";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTrajectoryDetail, type TrajectoryDetail } from "@/lib/trajectory-detail";
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
   description:
     "Wegener proposed continental drift in 1915. Mainstream geology abandoned it in 1926 for lack of a mechanism. Vine and Matthews's 1963 seafloor magnetic data finally settled the theory.",
   alternates: { canonical: "/stories/continental-drift", types: { "application/json+oembed": `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + "/stories/continental-drift")}` } },
-  openGraph: {
+  ...socialMetadata({
     title: "The Long Abandonment of Wegener",
-    description:
-      "Continental drift: contested in 1915, abandoned by 1926, settled in 1963 — a three-state trajectory spanning 48 years.",
+    description: "Continental drift: contested in 1915, abandoned by 1926, settled in 1963 — a three-state trajectory spanning 48 years.",
     url: "/stories/continental-drift",
-    siteName: "Epistemic Receipts",
     type: "article",
-  },
+    image: trajectoryOgImage(SLUG),
+  }),
 };
 
 function fmtDate(iso: string, precision: string | null): string {

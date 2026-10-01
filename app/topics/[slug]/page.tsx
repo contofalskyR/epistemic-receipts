@@ -5,6 +5,7 @@ import Link from "next/link";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import { TopicTimeline } from "@/components/TopicTimeline";
+import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
 import WorldBankView from "./WorldBankView";
 
 const DOMAIN_LABELS: Record<string, string> = {
@@ -408,18 +409,36 @@ function TopicSlugContent() {
 
   const [data, setData] = useState<TopicData | null>(null);
   const [notFound, setNotFound] = useState(false);
+  // Only a 404 is "Topic not found"; a 5xx or a network failure is an error
+  // with Retry, never a missing topic or an empty list (Phase 5).
+  const [error, setError] = useState<string | null>(null);
+  const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
     setData(null);
     setNotFound(false);
+    setError(null);
     const qs = new URLSearchParams({ page: String(page), sort });
     if (party) qs.set("party", party);
     if (leader) qs.set("leader", leader);
     if (q) qs.set("q", q);
     fetch(`/api/topics/${slug}?${qs.toString()}`)
-      .then(r => { if (!r.ok) { setNotFound(true); return null; } return r.json(); })
-      .then(d => { if (d) setData(d); });
-  }, [slug, page, sort, party, leader, q]);
+      .then(r => {
+        if (r.status === 404) return null;
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(d => {
+        if (cancelled) return;
+        if (d) setData(d);
+        else setNotFound(true);
+      })
+      .catch((e: unknown) => {
+        if (!cancelled) setError(e instanceof Error ? e.message : "request failed");
+      });
+    return () => { cancelled = true; };
+  }, [slug, page, sort, party, leader, q, retryKey]);
 
   useEffect(() => { setQInput(q); }, [q]);
 
@@ -445,7 +464,16 @@ function TopicSlugContent() {
     );
   }
 
-  if (!data) return <p className="text-gray-600 text-sm">Loading…</p>;
+  if (error) {
+    return (
+      <div className="space-y-4">
+        <Link href="/search" className="text-xs text-gray-500 hover:text-white">← Search</Link>
+        <ErrorState what="this topic" detail={error} onRetry={() => setRetryKey(k => k + 1)} />
+      </div>
+    );
+  }
+
+  if (!data) return <LoadingState label="Loading topic…" lines={5} />;
 
   const { topic, parentChain, siblings, claims, total, usedTextFallback, pages, availableParties, availableLeaders, timeline, voteStats, partyVoteTallies, partyRowsParsed, sourceTags } = data;
   const domainLabel = DOMAIN_LABELS[topic.domain] ?? topic.domain;
@@ -674,12 +702,18 @@ function TopicSlugContent() {
         </div>
 
         {total === 0 ? (
-          <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-8 text-center">
-            <p className="text-gray-600 text-sm">No claims tagged with this topic yet.</p>
-            <p className="text-gray-700 text-xs mt-1">
-              Claims are tagged via their edit page or the topic management API.
-            </p>
-          </div>
+          q || party || leader ? (
+            <EmptyState
+              title="No claims on this topic match the current filter."
+              hint="The query ran and matched nothing — clear the search or party filter."
+              action={{ label: "Clear filters", href: `/topics/${slug}` }}
+            />
+          ) : (
+            <EmptyState
+              title="No claims tagged with this topic yet."
+              hint="Claims are tagged via their edit page or the topic management API."
+            />
+          )
         ) : (
           <div className="space-y-3">
             {claims.map(c => (
@@ -770,7 +804,7 @@ function TopicSlugContent() {
 
 export default function TopicSlugPage() {
   return (
-    <Suspense fallback={<p className="text-gray-600 text-sm">Loading…</p>}>
+    <Suspense fallback={<LoadingState label="Loading topic…" lines={5} />}>
       <TopicSlugContent />
     </Suspense>
   );
