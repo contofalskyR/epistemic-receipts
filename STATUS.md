@@ -249,9 +249,21 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
         (no `instrumentation.ts`/`instrumentation-client.ts`, required since SDK v8) — it was inert. Gone:
         `@sentry/nextjs`, `withSentryConfig`, `sentry.*.config.ts`, `/api/sentry-tunnel` (+ middleware
         allowlist/rate-limit rows), the CI `sourcemaps` job, runbook rows.
-  - Found on the way: the "5,000 most recent auto-generated" trajectories are **0** — the newest 5,000 claims
-        with history all carry one transition and the ≥2 filter runs after the `take` (LATER); `/settling-curve/[id]`
-        showed slugs as `№ AL-DRIFT` (`id.slice(-8)` meant for CUIDs) — slugs now shown whole.
+  - Found on the way: `/settling-curve/[id]` showed slugs as `№ AL-DRIFT` (`id.slice(-8)` meant for CUIDs) — slugs
+        now shown whole.
+  - [x] Found on the way → fixed · branch `fix/auto-trajectories` · 2026-09-30 · build green · tsc clean · 396 unit
+        tests pass, 1 skipped (+5 `auto-trajectories.test.ts`) · PR: owner pushes the branch and opens it.
+        The "most recent auto-generated" trajectories were **0**: `getAutoTrajectories` took the newest 5,000 claims
+        with *any* history (each carries one transition) and only then applied the ≥2 filter. The count now runs in
+        SQL (`autoTrajectoryIdsSql`: `ClaimStatusHistory` GROUP BY claim HAVING COUNT(*) ≥ $min → live, non-curated,
+        `createdAt` DESC with an `id` tie-break, LIMIT $limit; bind parameters only, ~2 s cold). Read-only count:
+        236,181 live non-curated claims have ≥2 transitions, so `/api/trajectories` returns 5,698 curated + 5,000 auto,
+        each with ≥2 milestones, and the explorer reads "5,698 CURATED TRAJECTORIES · 5,000 MOST RECENT
+        AUTO-GENERATED" (the sidebar's typed "Showing curated trajectories" now shows the same derived label).
+        Chunked, not trimmed: 5,000 cards measure ~2.9 MB by the Data Cache's own count (over its 2 MB limit), so
+        the cards load in 1,000-id chunks (~580 KB each) keyed by their ids, under a cached id list (150 KB) — the
+        API keeps its documented 5,000. Only the full list is cached; `limit` slices afterwards and `minMilestones`
+        is capped in the key (NaN → 2), so query strings no longer grow the cache key space.
 
 ## Owner's side (not blocking)
 

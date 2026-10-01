@@ -1,8 +1,8 @@
 import "server-only";
 import { unstable_cache } from "next/cache";
-import type { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
-import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
+import { LIVE_CLAIM_WHERE, liveClaimSql } from "@/lib/corpus";
 
 // The curated trajectory list — one loader for /settling-curve (SSR initial
 // grid) and /api/trajectories (client refresh), cached for an hour so anonymous
@@ -148,26 +148,85 @@ export async function getCuratedTrajectories(): Promise<TrajectoryListItem[]> {
   return parts.flat();
 }
 
-/** The newest auto-generated (non-curated) claims that have a status history,
- *  as list cards, from the hourly cache. `minMilestones` is applied after the
- *  `take`, as the API always has — see LATER.md (the newest rows all carry a
- *  single transition, so the auto list is currently empty). */
-export const getAutoTrajectories = unstable_cache(
-  async (limit: number, minMilestones: number): Promise<TrajectoryListItem[]> => {
-    const rows = await prisma.claim.findMany({
-      where: {
-        AND: [
-          LIVE_CLAIM_WHERE,
-          { OR: [{ externalId: null }, { externalId: { not: { startsWith: "trajectory:" } } }] },
-        ],
-        statusHistory: { some: {} },
-      },
-      select: TRAJECTORY_SELECT,
-      orderBy: { createdAt: "desc" },
-      take: limit,
-    });
-    return rows.filter((c) => c.statusHistory.length >= minMilestones).map(toListItem);
+// ─── Auto-generated trajectories ─────────────────────────────────────────────
+//
+// The newest non-curated claims with at least `minMilestones` transitions. The
+// count filter runs in SQL: Prisma has no relation-count filter in `where`,
+// and the old loader filtered after `take` — the 5,000 newest claims with any
+// history each carry one transition, so the list came back empty while
+// 236,181 live claims had two or more (2026-09-30).
+//
+// Two hourly cache layers: the id list (one small entry) and the cards in
+// 1,000-id chunks — 5,000 cards measure ~2.9 MB by the Data Cache's own count,
+// over its 2 MB entry limit. A chunk is keyed by its ids, so it always matches
+// the id list that asked for it. Only the full list is cached: `limit` slices
+// afterwards and `minMilestones` is capped in the key, so query-string values
+// cannot grow the key space.
+
+export const AUTO_LIMIT = 5000;
+const MAX_KEY_MILESTONES = 10;
+
+/** Ids of the newest live non-curated claims with ≥ `minMilestones`
+ *  transitions, newest first. Bulk ingests share a `createdAt`, so `id` breaks
+ *  ties — the order (and every chunk boundary) is stable between runs. */
+export function autoTrajectoryIdsSql(minMilestones: number, limit: number): Prisma.Sql {
+  return Prisma.sql`
+    SELECT c.id
+    FROM (
+      SELECT "claimId" FROM "ClaimStatusHistory"
+      GROUP BY "claimId"
+      HAVING COUNT(*) >= ${minMilestones}
+    ) h
+    JOIN "Claim" c ON c.id = h."claimId"
+    WHERE ${liveClaimSql("c")}
+      AND (c."externalId" IS NULL OR c."externalId" NOT LIKE 'trajectory:%')
+    ORDER BY c."createdAt" DESC, c.id DESC
+    LIMIT ${limit}`;
+}
+
+const loadAutoIds = unstable_cache(
+  async (minMilestones: number): Promise<string[]> => {
+    const rows = await prisma.$queryRaw<{ id: string }[]>(autoTrajectoryIdsSql(minMilestones, AUTO_LIMIT));
+    return rows.map((r) => r.id);
   },
-  ["auto-trajectories"],
+  ["auto-trajectory-ids"],
   { revalidate: REVALIDATE },
 );
+
+const loadAutoChunk = unstable_cache(
+  async (ids: string[], minMilestones: number): Promise<TrajectoryListItem[]> => {
+    const rows = await prisma.claim.findMany({
+      where: { AND: [LIVE_CLAIM_WHERE, { id: { in: ids } }] },
+      select: TRAJECTORY_SELECT,
+    });
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    // SQL order; re-checked in case a row changed since the id list was cached.
+    return ids.flatMap((id) => {
+      const row = byId.get(id);
+      return row && row.statusHistory.length >= minMilestones ? [toListItem(row)] : [];
+    });
+  },
+  ["auto-trajectories-chunk"],
+  { revalidate: REVALIDATE },
+);
+
+/** The newest `limit` (≤ AUTO_LIMIT) auto-generated claims with at least
+ *  `minMilestones` transitions, as list cards, newest first, from the hourly
+ *  cache. Both arguments may come straight from a query string: NaN falls back
+ *  to the defaults. */
+export async function getAutoTrajectories(
+  limit: number = AUTO_LIMIT,
+  minMilestones = 2,
+): Promise<TrajectoryListItem[]> {
+  const take = Number.isFinite(limit) ? Math.min(AUTO_LIMIT, Math.max(1, Math.floor(limit))) : AUTO_LIMIT;
+  const min = Number.isFinite(minMilestones) ? Math.max(1, Math.floor(minMilestones)) : 2;
+  const keyMin = Math.min(min, MAX_KEY_MILESTONES);
+  const ids = await loadAutoIds(keyMin);
+  const chunks: string[][] = [];
+  for (let i = 0; i < Math.min(take, ids.length); i += CHUNK) chunks.push(ids.slice(i, i + CHUNK));
+  const parts = await Promise.all(chunks.map((chunk) => loadAutoChunk(chunk, keyMin)));
+  return parts
+    .flat()
+    .filter((t) => t.transitionCount >= min)
+    .slice(0, take);
+}
