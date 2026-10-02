@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { cleanDisplayText } from "@/lib/text";
 import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
@@ -311,7 +311,6 @@ export default function RetractionExplorerClient({
 }: {
   initialStats: { total: number; journals: number };
 }) {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   const urlField = searchParams.get("field") || "all";
@@ -332,18 +331,40 @@ export default function RetractionExplorerClient({
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const pushUrl = useCallback(
-    (overrides: Record<string, string>) => {
-      const p = new URLSearchParams(searchParams.toString());
-      for (const [k, v] of Object.entries(overrides)) {
-        const isDefault = !v || v === "all" || v === "1" || (k === "sortBy" && v === "impact");
-        if (isDefault) p.delete(k);
-        else p.set(k, v);
-      }
-      router.push(`/retraction-explorer?${p.toString()}`, { scroll: false });
-    },
-    [router, searchParams]
-  );
+  // Filters change the URL with history.pushState, not a router navigation
+  // (front door phase 6). This page is ISR: loaded with a query string, the
+  // router seeds its route cache from the prerendered payload (no search) while
+  // keeping the query in canonicalUrl, and for the 300 s static stale time
+  // every router navigation or <Link> to this page lands on that stale entry —
+  // chips, Clear filters and the nav link did nothing. pushState only updates the URL
+  // (Next syncs useSearchParams with it) and never consults the route cache.
+  // Built from window.location, which pushState updates at once, so a pending
+  // debounce cannot drop a chip clicked meanwhile.
+  const pushUrl = useCallback((overrides: Record<string, string>) => {
+    const p = new URLSearchParams(window.location.search);
+    for (const [k, v] of Object.entries(overrides)) {
+      const isDefault = !v || v === "all" || v === "1" || (k === "sortBy" && v === "impact");
+      if (isDefault) p.delete(k);
+      else p.set(k, v);
+    }
+    const qs = p.toString();
+    const url = qs ? `/retraction-explorer?${qs}` : "/retraction-explorer";
+    if (url !== window.location.pathname + window.location.search) window.history.pushState(null, "", url);
+  }, []);
+
+  // The search box follows the URL (back/forward, Clear filters) — except while
+  // a typed query waits for its debounce, so no keystroke is overwritten.
+  useEffect(() => {
+    if (debounceRef.current === null) setQInput(urlQ);
+  }, [urlQ]);
+
+  // A debounce still pending on unmount must not push this page's URL onto the next page.
+  useEffect(() => {
+    const timer = debounceRef;
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -383,6 +404,7 @@ export default function RetractionExplorerClient({
     setQInput(v);
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
+      debounceRef.current = null;
       pushUrl({ q: v, page: "1" });
     }, 300);
   };
@@ -640,7 +662,15 @@ export default function RetractionExplorerClient({
             <EmptyState
               title="No retracted papers for this filter."
               hint="The query ran and matched nothing — try another field, reason or search term."
-              action={{ label: "Clear filters", onClick: () => pushUrl({ field: "all", reason: "all", q: "", page: "1" }) }}
+              action={{
+                label: "Clear filters",
+                onClick: () => {
+                  if (debounceRef.current) clearTimeout(debounceRef.current);
+                  debounceRef.current = null;
+                  setQInput("");
+                  pushUrl({ field: "all", reason: "all", q: "", page: "1" });
+                },
+              }}
             />
           ) : (
             <EmptyState title="No retracted papers indexed yet." />
