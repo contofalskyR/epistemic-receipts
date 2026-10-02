@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { cleanDisplayText } from "@/lib/text";
 import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
+import { FIELD_OPTIONS, REASON_OPTIONS } from "@/lib/retraction-filters";
 
 type Paper = {
   id: string;
@@ -33,9 +34,6 @@ const S = {
   orange: "#fb923c",
   purple: "#a78bfa",
 } as const;
-
-const FIELD_OPTIONS = ["all", "Medicine", "Psychology", "Biology", "Physics", "Chemistry"];
-const REASON_OPTIONS = ["all", "Retraction", "Withdrawal", "Correction", "Reinstatement"];
 
 function journalShort(journal: string | null): string {
   if (!journal) return "—";
@@ -313,17 +311,18 @@ export default function RetractionExplorerClient({
 }: {
   initialStats: { total: number; journals: number };
 }) {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
-  const urlField = searchParams.get("field") ?? "all";
-  const urlReason = searchParams.get("reason") ?? "all";
+  const urlField = searchParams.get("field") || "all";
+  const urlReason = searchParams.get("reason") || "all";
   const urlQ = searchParams.get("q") ?? "";
   const urlSortBy = searchParams.get("sortBy") ?? "impact";
   const urlPage = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10) || 1);
 
   const [papers, setPapers] = useState<Paper[]>([]);
   const [total, setTotal] = useState(0);
+  // The API clamps the page to the real page count; pagination follows its page.
+  const [shownPage, setShownPage] = useState(urlPage);
   const [loading, setLoading] = useState(true);
   // A failed request is an error, never "No papers found" (Phase 5).
   const [error, setError] = useState<string | null>(null);
@@ -332,18 +331,42 @@ export default function RetractionExplorerClient({
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const pushUrl = useCallback(
-    (overrides: Record<string, string>) => {
-      const p = new URLSearchParams(searchParams.toString());
-      for (const [k, v] of Object.entries(overrides)) {
-        const isDefault = !v || v === "all" || v === "1" || (k === "sortBy" && v === "impact");
-        if (isDefault) p.delete(k);
-        else p.set(k, v);
-      }
-      router.push(`/retraction-explorer?${p.toString()}`, { scroll: false });
-    },
-    [router, searchParams]
-  );
+  // Filters change the URL with history.pushState, not a router navigation
+  // (front door phase 6): Next syncs useSearchParams with it, the fetch effect
+  // below reacts, and no RSC round trip or route-cache entry is involved — the
+  // ISR page's cached entry used to swallow every chip and Clear filters click
+  // after a deep link (page.tsx). Built from window.location, which pushState
+  // updates at once, so a pending debounce cannot drop a chip clicked meanwhile.
+  const pushUrl = useCallback((overrides: Record<string, string>) => {
+    const p = new URLSearchParams(window.location.search);
+    for (const [k, v] of Object.entries(overrides)) {
+      // Each key's own default — a typed query of "all" or "1" is a query.
+      const isDefault =
+        !v ||
+        ((k === "field" || k === "reason") && v === "all") ||
+        (k === "page" && v === "1") ||
+        (k === "sortBy" && v === "impact");
+      if (isDefault) p.delete(k);
+      else p.set(k, v);
+    }
+    const qs = p.toString();
+    const url = qs ? `/retraction-explorer?${qs}` : "/retraction-explorer";
+    if (url !== window.location.pathname + window.location.search) window.history.pushState(null, "", url);
+  }, []);
+
+  // The search box follows the URL (back/forward, Clear filters) — except while
+  // a typed query waits for its debounce, so no keystroke is overwritten.
+  useEffect(() => {
+    if (debounceRef.current === null) setQInput(urlQ);
+  }, [urlQ]);
+
+  // A debounce still pending on unmount must not push this page's URL onto the next page.
+  useEffect(() => {
+    const timer = debounceRef;
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -366,6 +389,7 @@ export default function RetractionExplorerClient({
         if (cancelled) return;
         setPapers(d.papers ?? []);
         setTotal(d.total ?? 0);
+        setShownPage(typeof d.page === "number" ? d.page : urlPage);
         setLoading(false);
       })
       .catch((e: unknown) => {
@@ -382,6 +406,7 @@ export default function RetractionExplorerClient({
     setQInput(v);
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
+      debounceRef.current = null;
       pushUrl({ q: v, page: "1" });
     }, 300);
   };
@@ -639,7 +664,15 @@ export default function RetractionExplorerClient({
             <EmptyState
               title="No retracted papers for this filter."
               hint="The query ran and matched nothing — try another field, reason or search term."
-              action={{ label: "Clear filters", onClick: () => pushUrl({ field: "all", reason: "all", q: "", page: "1" }) }}
+              action={{
+                label: "Clear filters",
+                onClick: () => {
+                  if (debounceRef.current) clearTimeout(debounceRef.current);
+                  debounceRef.current = null;
+                  setQInput("");
+                  pushUrl({ field: "all", reason: "all", q: "", page: "1" });
+                },
+              }}
             />
           ) : (
             <EmptyState title="No retracted papers indexed yet." />
@@ -662,35 +695,35 @@ export default function RetractionExplorerClient({
           }}
         >
           <button
-            disabled={urlPage <= 1}
-            onClick={() => pushUrl({ page: String(urlPage - 1) })}
+            disabled={shownPage <= 1}
+            onClick={() => pushUrl({ page: String(shownPage - 1) })}
             style={{
               padding: "0.45rem 1rem",
               background: S.surface,
               border: `1px solid ${S.border}`,
               borderRadius: "8px",
-              color: urlPage <= 1 ? S.muted : S.text,
-              cursor: urlPage <= 1 ? "not-allowed" : "pointer",
-              opacity: urlPage <= 1 ? 0.4 : 1,
+              color: shownPage <= 1 ? S.muted : S.text,
+              cursor: shownPage <= 1 ? "not-allowed" : "pointer",
+              opacity: shownPage <= 1 ? 0.4 : 1,
               fontSize: "0.82rem",
             }}
           >
             ← Prev
           </button>
           <span style={{ fontSize: "0.8rem", color: S.muted }}>
-            Page {urlPage} · {total.toLocaleString()} total
+            Page {shownPage} · {total.toLocaleString()} total
           </span>
           <button
-            disabled={urlPage * 25 >= total}
-            onClick={() => pushUrl({ page: String(urlPage + 1) })}
+            disabled={shownPage * 25 >= total}
+            onClick={() => pushUrl({ page: String(shownPage + 1) })}
             style={{
               padding: "0.45rem 1rem",
               background: S.surface,
               border: `1px solid ${S.border}`,
               borderRadius: "8px",
-              color: urlPage * 25 >= total ? S.muted : S.text,
-              cursor: urlPage * 25 >= total ? "not-allowed" : "pointer",
-              opacity: urlPage * 25 >= total ? 0.4 : 1,
+              color: shownPage * 25 >= total ? S.muted : S.text,
+              cursor: shownPage * 25 >= total ? "not-allowed" : "pointer",
+              opacity: shownPage * 25 >= total ? 0.4 : 1,
               fontSize: "0.82rem",
             }}
           >

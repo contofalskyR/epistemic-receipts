@@ -11,8 +11,9 @@ import { EmptyState } from "@/components/DataState";
 
 const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
-// ISR: empty generateStaticParams = on-demand ISR (render on first hit, cache
-// for a day). Do NOT add `export const dynamic = 'force-dynamic'` — it defeats ISR.
+// ISR: empty generateStaticParams = on-demand ISR (render on first hit, then
+// cache — up to an hour: the root layout's hourly corpusCount() lowers the 86400
+// below). Do NOT add `export const dynamic = 'force-dynamic'` — it defeats ISR.
 export const revalidate = 86400;
 
 export async function generateStaticParams() {

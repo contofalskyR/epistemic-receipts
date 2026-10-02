@@ -3,14 +3,15 @@
 One file, kept short, updated at every phase boundary. Agents: read this and `AUDIT.md`, not the doc pile.
 Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
 
-## Current state (2026-09-30)
+## Current state (2026-10-01)
 
 - DB: self-hosted PostgreSQL 17 + pgvector on OCI (83 GB volume, ~30 GB free). Restored from
   `epistemic_receipts_backup.dump`; all large tables verified present (Claim 1,758,105 / deleted=false 1,758,084;
   ClaimStatusHistory 1,822,644; Edge 1,718,766; ClaimRelation 4,820,213; MemberVote 1,798,569;
-  ClaimEmbedding 1,757,943; EdgeRevision 1,557,521). Still 0 rows: PipelineRun, User, ApiKey, ApiUsage, Session,
-  Account, VerificationToken, Follow, Collection*, *Subscription, AlertSent, SavedQuery, Org*, Litigation*,
-  TransitionClaimsSnapshot, SourceCredibilityEvent, SuggestedThresholdEvent, AiJob — believed empty on Neon too.
+  ClaimEmbedding 1,757,943; EdgeRevision 1,557,521). Still 0 rows (2026-10-01): PipelineRun, AlertSent, SavedQuery,
+  AiJob, TransitionClaimsSnapshot, SourceCredibilityEvent, SuggestedThresholdEvent — believed empty on Neon too. User,
+  ApiKey, ApiUsage, Session, Account, VerificationToken, Follow, Collection*, *Subscription, Org*, Litigation* were
+  dropped with the rest of the 20 Phase 3 tables (migration applied 2026-09-30; list under Phase 3).
 - App: `main` builds and deploys on Vercel with `@prisma/adapter-pg` (PR #22). Homepage curve, settling curves,
   law-settler confirmed live after redeploy.
 - Audit: `AUDIT.md` (route table, mismatches, nav proposal, risks) is the input for the restructure.
@@ -54,7 +55,7 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   went in Phase 3).
 - Read-only verification pattern (no writes, ever):
   `node -e 'require("dotenv").config({path:".env.local"}); const {Pool}=require("pg"); …pool.query("select …")'`.
-- `npm run build` = `prisma generate && node scripts/gen-route-manifest.mjs && next build`; it prerenders 309 pages against the live DB (reads only).
+- `npm run build` = `prisma generate && node scripts/gen-route-manifest.mjs && next build`; it prerenders ~275 pages against the live DB (reads only; 275 at Phase 6).
   **Locally, run it as `CIRCLE_NODE_TOTAL=2 npm run build`** (1 prerender worker, ~4 min, 0 timeouts — verified
   2026-09-30). The default 9 workers saturate the OCI Postgres and the sitemap's deep-OFFSET claim chunks
   (`app/sitemap.ts`, `claims-25..28`, ~37 s each in isolation) exceed Next's 60 s static-generation timeout →
@@ -63,9 +64,11 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   `experimental.cpus` reads — no config change needed.) Vercel builds fine as-is.
   `scripts/` is excluded from `tsconfig.json`, so build/`tsc` never type-check it. After deleting routes, run the
   build before `tsc --noEmit`: the stale generated `.next/types/validator.ts` otherwise reports phantom errors.
-- `gh` is not installed and git has no GitHub credential in this shell: agents commit locally, the owner pushes
-  with `! git push -u origin <branch>` and opens the PR at
-  `https://github.com/contofalskyR/epistemic-receipts/compare/main...<branch>?expand=1`.
+- `gh` is installed and logged in, and git pushes through the macOS keychain (checked 2026-10-01), so a push from this
+  shell would succeed — agents still never push or open PRs: agents commit locally, the owner pushes with
+  `! git push -u origin <branch>` and opens the PR at
+  `https://github.com/contofalskyR/epistemic-receipts/compare/main...<branch>?expand=1`. gitleaks 8.30.1 is installed
+  and `core.hooksPath=.githooks` is set (2026-10-01), so the pre-push secret scan runs on the owner's push.
 - Vercel production = `main`. Homepage is ISR (`revalidate = 3600`); after data changes, Redeploy without build cache.
 - Server: `ssh opc@…`, tmux session `restore`, PGDATA `/var/lib/pgsql/17/data`, dump at `/var/lib/pgsql/dump/`.
 - Known false positive: `165,250` / `165,233` in the code are `rgba()` colour literals, not counts.
@@ -180,9 +183,9 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - [x] **Prisma:** 20 models removed (User, Account, Session, VerificationToken, Org, Membership, OrgIpRange,
         OrgUsageDaily, ApiKey, ApiUsage, LitigationMatter, MatterClaim, MatterExport, Collection, CollectionItem,
         Profile, Follow, Bookmark, TopicSubscription, ClaimSubscription) + enums MatterStatus, ExportFormat +
-        Claim's four back-relations. Migration written, **NOT applied** (nothing writes to the DB):
-        `prisma/migrations/20260930120000_phase3_drop_saas_social_auth/migration.sql` — owner runs
-        `npx prisma migrate deploy` after merge. Until then the tables sit unused; the app never touches them.
+        Claim's four back-relations. Migration
+        `prisma/migrations/20260930120000_phase3_drop_saas_social_auth/migration.sql` applied to production 2026-09-30
+        23:15:52 UTC (`_prisma_migrations.finished_at`, read-only check 2026-10-01); the 20 tables are gone.
   - [x] real 404s: `scripts/gen-route-manifest.mjs` → `lib/route-manifest.json` (104 routes, 14 patterns) runs
         in `npm run build`; middleware gates only paths that exist, unknown paths reach Next's 404.
         `tests/unit/route-manifest.test.ts` fails if the committed file is stale.
@@ -265,6 +268,45 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
         API keeps its documented 5,000. Only the full list is cached; `limit` slices afterwards and `minMilestones`
         is capped in the key (NaN → 2), so query strings no longer grow the cache key space.
 
+- [x] **Phase 6 — hardening** · branch `fix/front-door-phase-6` (from `origin/main` `1e4e632`) · done 2026-10-01 ·
+      build green · tsc clean · 624 unit tests pass, 1 skipped (was 396) · eslint 0 errors · PR: owner pushes the branch and opens it.
+      The planned defects were reproduced on a production build of the untouched branch (curl + Chromium) and
+      accepted on the final build. A read-only multi-agent review of the diff then found one major and several minor
+      issues (reproduced on intermediate builds or by prototype); all are addressed on this branch (listed in the PR).
+  - [x] real 404s: `app/loading.tsx` (phase 5) removed — it streamed every page after a 200 shell, so unknown ids on
+        `/claims/`, `/settling-curve/`, `/datasets/`, `/embed/trajectory/` were ISR-cached 200s. Guard
+        `tests/unit/no-soft-404.test.ts`. By design: a throw while rendering a dynamic page is now a real 500; dynamic
+        routes are no longer prefetched; a 404's body is Next's error shell (noindex) with the not-found UI rendered
+        client-side; `app/not-found.tsx` and `app/claims/[id]/not-found.tsx` carry their own titles.
+  - [x] one robots.txt: `public/robots.txt` (stale; shadowed `app/robots.ts` under `next start`) removed;
+        `app/robots.ts` allows `/api/og/` (link-preview images) and keeps `Disallow: /api/`. `tests/unit/robots.test.ts`.
+  - [x] link previews: the root layout's block is image-only (`defaultSocialMetadata()`), so ~25 pages stop
+        inheriting the homepage's og:url/og:title; the homepage keeps its own og:url; Satori title clamp
+        (`textOverflow: "ellipsis"`) + shared `truncate()`. `tests/unit/og-metadata.test.ts` runs the real layout
+        metadata through Next's resolver.
+  - [x] middleware decodes the path once: 400 for malformed escapes; 308 for encoded ASCII aliases (allowlisted target,
+        no "//", stability check — no loops, no protocol-relative Location); every gate judges both spellings; the
+        dot rule is gone (any manifest page is gated, prefetch segment files included); `from=` is the raw path;
+        POST `/api/search/miss` gets its 5/min. `/login` redirects through `lib/safeRedirect.ts` (same origin only,
+        dot-segment safe) and reports rate limits and network errors honestly.
+  - [x] bounded cache keys on `/api/opinions` (dated views uncached), `/api/retractions` (+ `lib/retraction-filters.ts`),
+        `/split-ledger`, `/canon` and `/api/trajectories/[id]` (an uncached existence check keeps unknown ids out
+        of the Data Cache and makes hard-deleted or renamed rows 404 at once); the last hand-rolled SQL escape is gone.
+  - [x] honest states: curve detail error/not-found/Retry, Cite checks the status, `/sources` no longer swallows DB
+        errors, era counts "…"/"—", `/opinions` header from the unfiltered total, full-text curated search,
+        `/datasets/[tag]` "unset". `/retraction-explorer` filters move the URL with `history.pushState`, and it and
+        `/corrections` are rendered per request: as ISR pages, a deep link's query stuck to every later `<Link>` to
+        them for 5 minutes (the nav and homepage links to the explorer; a correction filed against an earlier
+        transition).
+  - [x] docs/CI: README corrected (DIRECT_URL, dev can write, the integration seed wipes its target — it now refuses a
+        database not named `*_test` — caching exceptions, transition sources); removed
+        `.github/workflows/api-contract.yml`, `public/api/openapi.yaml`, `.spectral.yaml`; the 6 resolved drift lines
+        (ApiKey/Org/Collection) pruned; `LATER.md` §5 holds the 2026-10-01 review findings not fixed here.
+  - Pending, owner-side: CI's "Check migration drift" step (expect "Only known drift present (10 lines) — OK");
+    the live checks after deploy (the redeploy also clears soft-404 and alias ISR entries).
+  - Owner decisions listed in the PR: `Allow` `/api/oembed` and the read APIs client pages render from; uninstall
+    `@stoplight/spectral-cli`; "unset" vs "unclassified"; the `/opinions` "linked to related legislation" copy.
+
 ## Owner's side (not blocking)
 
 - [ ] `grep -c error /tmp/restore-rest.log` on the server → expect 0 (then the empty tables above were empty on Neon)
@@ -275,5 +317,8 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Merge Phase 2 → 3 → 4 → 5, run `npx prisma migrate deploy`, redeploy. Then the content backlog in `LATER.md`
-(Congress as claims first).
+Phases −1…5 and `fix/auto-trajectories` are merged (PRs #22–#29, `origin/main` `1e4e632`); the Phase 3 migration is
+applied. Next: the owner merges Phase 6 (`fix/front-door-phase-6`) and redeploys → Phase 6b (`feat/wire-what-exists`)
+→ Phase 6c (`fix/bce-dates`: code first; the data fix is the owner's) → Phase 7 (`feat/congress-link`). `LATER.md` §1's
+premise is outdated: Congress roll-calls (`voteview_v1`) and enacted laws (`congress_v1`) are already claims — Phase 7
+links, corrects and relates them rather than re-ingesting.

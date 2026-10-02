@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
@@ -55,7 +56,8 @@ async function getCoverage(tag: string) {
 
   const verificationMix: Record<string, number> = {};
   for (const r of groups) {
-    const key = r.verificationStatus ?? "null";
+    // NULL is "unset": still a live claim (LIVE_CLAIM_WHERE), just never classified.
+    const key = r.verificationStatus ?? "unset";
     verificationMix[key] = (verificationMix[key] ?? 0) + r._count._all;
   }
 
@@ -200,12 +202,12 @@ export default async function DatasetPage({ params }: Props) {
                   {Object.entries(cov.verificationMix)
                     .sort(([, a], [, b]) => b - a)
                     .map(([status, count]) => (
-                      <>
-                        <dt key={status + "-k"} className="text-gray-500 font-mono">{status}</dt>
-                        <dd key={status + "-v"} className="text-gray-300 tabular-nums">
+                      <Fragment key={status}>
+                        <dt className="text-gray-500 font-mono">{status}</dt>
+                        <dd className="text-gray-300 tabular-nums">
                           {count.toLocaleString()}
                         </dd>
-                      </>
+                      </Fragment>
                     ))}
                 </dl>
               </div>

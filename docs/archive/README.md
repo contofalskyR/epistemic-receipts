@@ -1,7 +1,9 @@
 # docs/archive — superseded planning docs (index)
 
-Moved here from the repo root in front door phase 4 (2026-09-30). Nothing live points at
-these; `STATUS.md` is the tracker and `docs/` holds the docs that code, specs or AGENTS.md
+Moved here from the repo root in front door phase 4 (2026-09-30). No code points at these;
+some live docs (e.g. `AUDIT.md` §E, `STATUS.md`, `docs/ROADMAP.md`, `docs/PUBLISH-CHECKLIST.md`,
+`docs/TASK_QUEUE.md`) still cite them by their `docs/archive/` path — `git grep -n docs/archive -- ':!docs/archive'`
+lists them. `STATUS.md` is the tracker and `docs/` holds the docs that code, specs or AGENTS.md
 still cite. Files are unchanged (`git log --follow` keeps their history), so they still
 refer to each other by their old root-level names. Dates are the last commit before the move.
 

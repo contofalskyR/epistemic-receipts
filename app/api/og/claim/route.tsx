@@ -10,6 +10,7 @@ import {
   axisColor,
   CurveCard,
   FallbackCard,
+  truncate,
 } from "@/lib/og-shared";
 
 // Link-preview card for /claims/[id]: the claim's settling curve when it has a
@@ -17,10 +18,6 @@ import {
 export const runtime = "nodejs";
 
 const OG_HEADERS = { "Cache-Control": OG_CACHE_CONTROL };
-
-function truncate(text: string, max: number): string {
-  return text.length > max ? text.slice(0, max - 1).trimEnd() + "…" : text;
-}
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -149,6 +146,7 @@ export async function GET(req: NextRequest) {
             WebkitLineClamp: 4,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
+            textOverflow: "ellipsis", // Satori ignores the clamp without it
           }}
         >
           {truncate(claim.text, 260)}

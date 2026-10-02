@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 // Rendered when getClaimDetail(id) returns null — mirrors the old client
 // page's inline "Claim not found." view (Next serves it with a 404 status).
+// A real 404's <head> comes from the layouts and this file, not from the
+// page's generateMetadata fallback, so the title is set here (phase 6).
+export const metadata: Metadata = { title: "Claim not found — Epistemic Receipts" };
+
 export default function ClaimNotFound() {
   return (
     <div className="space-y-4">

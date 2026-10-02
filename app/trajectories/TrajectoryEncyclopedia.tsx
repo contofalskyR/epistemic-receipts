@@ -86,7 +86,13 @@ export default function TrajectoryEncyclopedia() {
   // payload is bounded (curated set / top-1000 machine curves), so filtering,
   // search, and pagination stay client-side.
   useEffect(() => {
-    if (responses[lens]) return;
+    if (responses[lens]) {
+      // Back on a lens already loaded: clear the other lens's in-flight or
+      // failed state, which would otherwise stay over this lens's data.
+      setLoading(false);
+      setFailed(false);
+      return;
+    }
     let cancelled = false;
     setLoading(true);
     setFailed(false);
@@ -131,7 +137,9 @@ export default function TrajectoryEncyclopedia() {
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const pageItems = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  const countFor = (key: string) => data?.eraCounts?.[key] ?? 0;
+  // A count only once the data is here: "…" while loading, "—" after a failure
+  // (it read "All 0" beside the error state).
+  const countFor = (key: string) => (data ? String(data.eraCounts?.[key] ?? 0) : loading ? "…" : "—");
 
   return (
     <div style={{ background: C.bg, color: C.ink, minHeight: "100%" }} className="w-full">
@@ -294,7 +302,7 @@ export default function TrajectoryEncyclopedia() {
                   <div className="mb-3">
                     <SettlingCurveMini
                       milestones={it.milestones}
-                      ariaLabel={`Epistemic trajectory sparkline for: ${it.claim}`}
+                      ariaLabel={`Epistemic trajectory sparkline for: ${truncate(it.claim, 160)}`} // the claim is full text (search)
                     />
                   </div>
 

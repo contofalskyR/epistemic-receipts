@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
-import { getCuratedTrajectories } from "@/lib/trajectory-list";
+import { getCuratedTexts, getCuratedTrajectories } from "@/lib/trajectory-list";
 
 // Reading searchParams makes this handler dynamic, so a route-level
 // `revalidate` never applied; each lens is instead cached for an hour with
@@ -140,10 +140,13 @@ async function loadMachineLens(): Promise<EncyclopediaItem[]> {
 // The curated lens is the cached curated list (lib/trajectory-list.ts, hourly,
 // in <2 MB chunks) reshaped — the previous dedicated query produced a 3.8 MB
 // payload that the data cache refused ("items over 2MB can not be cached"),
-// so every anonymous visit to /trajectories ran it. The card text is the
-// list's 160-char claim; the encyclopedia card truncates to 100 anyway.
+// so every anonymous visit to /trajectories ran it. The list cards carry a
+// 160-char claim; the full text comes from getCuratedTexts() (same rows, its
+// own hourly chunks) so the encyclopedia's search reaches every word (phase 6).
+// The ~3.6 MB response is built per request from those entries and cached by
+// the CDN — never as one Data Cache entry, which would be over the 2 MB limit.
 async function loadCuratedLens(): Promise<EncyclopediaItem[]> {
-  const list = await getCuratedTrajectories();
+  const [list, texts] = await Promise.all([getCuratedTrajectories(), getCuratedTexts()]);
   return list.map((c) => {
     const years = c.milestones.map((m) => m.year);
     const startYear = years.length ? Math.min(...years) : c.firstYear;
@@ -152,7 +155,7 @@ async function loadCuratedLens(): Promise<EncyclopediaItem[]> {
     return {
       id: c.id,
       kind: "curated" as const,
-      claim: c.claim,
+      claim: texts.get(c.id) ?? c.claim, // c.id is the slug
       startYear,
       endYear,
       era,

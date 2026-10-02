@@ -20,6 +20,9 @@ export const metadata: Metadata = {
 };
 
 const PAGE_SIZE = 50;
+// Pages past the cached census's last page that ?page may still reach: room for
+// the population to grow by up to 500 papers while the census entry is stale.
+const CENSUS_HEADROOM_PAGES = 10;
 const CITED_INT = Prisma.sql`CASE WHEN (c.metadata->>'cited_by_count') ~ '^[0-9]+$' THEN (c.metadata->>'cited_by_count')::int ELSE 0 END`;
 
 type CanonRow = {
@@ -199,11 +202,19 @@ export default async function CanonPage({
     : "all";
   const page = Math.max(1, Number.parseInt(sp.page ?? "1", 10) || 1);
 
-  const [agg, pageData] = await Promise.all([getCanonCensus(), getCanonPage(filter, page)]);
+  // The census total bounds every filter's page count, so capping the page
+  // before the cached call bounds getCanonPage's keys — every ?page=N used to
+  // add an entry (front door phase 6). The census and each page are separate
+  // hourly entries, so the cap leaves headroom for growth since the census
+  // was cached; the loader's own clamp and the rank labels below both start
+  // from the same pageArg, so they always agree.
+  const agg = await getCanonCensus();
+  const pageArg = Math.min(page, Math.ceil(agg.total / PAGE_SIZE) + CENSUS_HEADROOM_PAGES);
+  const pageData = await getCanonPage(filter, pageArg);
   const { filtered, rows, milestones } = pageData;
 
   const pageCount = Math.max(1, Math.ceil(filtered / PAGE_SIZE));
-  const safePage = Math.min(page, pageCount);
+  const safePage = Math.min(pageArg, pageCount);
   const offset = (safePage - 1) * PAGE_SIZE;
 
   const milestonesByClaim = new Map<string, MiniMilestone[]>();

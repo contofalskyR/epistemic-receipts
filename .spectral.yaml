@@ -1,7 +1,0 @@
-extends:
-  - "spectral:oas"
-rules:
-  operation-success-response: warn
-  operation-operationId: error
-  operation-description: warn
-  oas3-api-servers: warn

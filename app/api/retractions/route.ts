@@ -1,25 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
+import {
+  JOURNAL_KEYWORDS,
+  isRetractionField,
+  isRetractionReason,
+  type RetractionField,
+  type RetractionReason,
+} from "@/lib/retraction-filters";
 
 // Reading searchParams makes this handler dynamic, so a route-level
 // `revalidate` never applied. Instead (STATUS.md Phase 5) the payload is
-// cached for an hour per (field, reason, sortBy, page) — a bounded key space —
-// and free-text queries (`q`) bypass the data cache and get a short CDN TTL.
+// cached for an hour, and every key part is bounded first (phase 6): field and
+// reason are whitelisted (lib/retraction-filters.ts, shared with the
+// explorer), sortBy is "impact" or "date", and page is clamped to the real page
+// count from a cached count. Free-text queries (`q`, capped at 200 chars)
+// bypass the data cache and get a short CDN TTL. Bump the keyParts when a
+// cached return shape changes.
 export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 25;
+const Q_MAX = 200;
 
-async function loadRetractions(field: string, reason: string, q: string, sortBy: string, page: number) {
-  const offset = (page - 1) * PAGE_SIZE;
+type Sort = "impact" | "date";
+type Field = "all" | RetractionField;
 
+/** WHERE clause and its bind parameters, built per call. User input is passed
+ *  as bind parameters ($1, ...), never interpolated into the SQL string, and
+ *  LIKE wildcards are escaped so they match literally. The count and the rows
+ *  query each build their own pair, so the $n numbering always lines up. */
+function retractionWhere(field: Field, reason: RetractionReason, q: string): { where: string; params: unknown[] } {
   const conditions: string[] = [
     `c."ingestedBy" = 'crossref_retractions_v1'`,
     `c.deleted = false`,
   ];
 
-  // User input is passed as bind parameters ($1, ...), never interpolated
-  // into the SQL string. LIKE wildcards are escaped so they match literally.
   const params: unknown[] = [];
   const likeParam = (value: string): string => {
     const escaped = value.replace(/[\\%_]/g, (m) => `\\${m}`);
@@ -44,39 +59,18 @@ async function loadRetractions(field: string, reason: string, q: string, sortBy:
   }
 
   if (field !== "all") {
-    // All retraction claims share a single "retracted-papers" topic, so topic-slug
-    // filtering returns nothing useful. Derive the field from journal-name keywords
-    // instead — this is approximate but matches the only field signal we actually have.
-    const journalKeywords: Record<string, string[]> = {
-      Medicine: [
-        "medic", "clinical", "surg", "lancet", "nejm", "jama", "antimicrobial",
-        "infect", "oncolog", "cardio", "pharma", "therapeutic", "diabet", "obstetric",
-        "pediatr", "neurolog", "radio", "anesth", "immun", "vaccin", "vir", "hepat",
-      ],
-      Psychology: ["psycholog", "psychiatr", "behavior", "behaviour", "cognit", "mental health", "mental disord"],
-      Biology: [
-        "biolog", "biochem", "molecular", "cell", "genom", "genet", "microbi",
-        "ecolog", "evolution", "physiolog", "neurosci", "protein", "rna ", "dna ",
-      ],
-      Physics: ["physic", "astrophys", "quantum", "applied physics", "physical review"],
-      Chemistry: ["chemi", "polymer", "catalysis", "spectro", "electrochem", "organomet"],
-    };
-    const kws = journalKeywords[field];
-    if (kws && kws.length) {
-      const ors = kws
-        .map((kw) => `c.metadata->>'journal' ILIKE '%${kw.replace(/'/g, "''")}%'`)
-        .join(" OR ");
-      conditions.push(`(${ors})`);
-    } else {
-      // Unknown field — return 0 rows rather than ignoring silently.
-      conditions.push(`FALSE`);
-    }
+    // The field is a journal-name keyword match (lib/retraction-filters.ts).
+    const ors = JOURNAL_KEYWORDS[field]
+      .map((kw) => `c.metadata->>'journal' ILIKE ${likeParam(kw)}`)
+      .join(" OR ");
+    conditions.push(`(${ors})`);
   }
 
-  const where = conditions.join(" AND ");
+  return { where: conditions.join(" AND "), params };
+}
 
-  // Impact sort: tiered journal prestige. All strings are hardcoded — no user input.
-  const impactOrder = `
+// Impact sort: tiered journal prestige. All strings are hardcoded — no user input.
+const IMPACT_ORDER = `
     CASE
       WHEN c.metadata->>'journal' ILIKE '%nature%'              THEN 1
       WHEN c.metadata->>'journal' ILIKE '%science%'             THEN 1
@@ -103,35 +97,42 @@ async function loadRetractions(field: string, reason: string, q: string, sortBy:
     c."claimEmergedAt" DESC NULLS LAST
   `;
 
+async function countRetractions(field: Field, reason: RetractionReason, q: string): Promise<number> {
+  const { where, params } = retractionWhere(field, reason, q);
+  const r = await prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
+    `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`,
+    ...params
+  );
+  // A number, not the BigInt: unstable_cache stores JSON.stringify(result).
+  return Number(r[0]?.count ?? 0);
+}
+
+async function loadRetractionsPage(field: Field, reason: RetractionReason, q: string, sortBy: Sort, page: number) {
+  const { where, params } = retractionWhere(field, reason, q);
   const orderBy = sortBy === "date"
     ? `c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC`
-    : impactOrder;
+    : IMPACT_ORDER;
+  // LIMIT/OFFSET are server-computed integers: page is clamped before this call.
+  const offset = (page - 1) * PAGE_SIZE;
 
-  const [rows, countResult] = await Promise.all([
-    prisma.$queryRawUnsafe<
-      Array<{
-        id: string;
-        text: string;
-        metadata: unknown;
-        claimEmergedAt: Date | null;
-      }>
-    >(
-      `SELECT c.id, c.text, c.metadata, c."claimEmergedAt"
-       FROM "Claim" c
-       WHERE ${where}
-       ORDER BY ${orderBy}
-       LIMIT ${PAGE_SIZE} OFFSET ${offset}`,
-      ...params
-    ),
-    prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
-      `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`,
-      ...params
-    ),
-  ]);
+  const rows = await prisma.$queryRawUnsafe<
+    Array<{
+      id: string;
+      text: string;
+      metadata: unknown;
+      claimEmergedAt: Date | null;
+    }>
+  >(
+    `SELECT c.id, c.text, c.metadata, c."claimEmergedAt"
+     FROM "Claim" c
+     WHERE ${where}
+     ORDER BY ${orderBy}
+     LIMIT ${PAGE_SIZE} OFFSET ${offset}`,
+    ...params
+  );
 
-  const total = Number(countResult[0]?.count ?? 0);
-
-  const papers = rows.map((r) => {
+  // Plain JSON (ISO strings, no Dates): a cache hit returns JSON.parse(body).
+  return rows.map((r) => {
     const m = r.metadata as Record<string, unknown>;
     const retractionDate = r.claimEmergedAt;
     const year = retractionDate
@@ -150,29 +151,42 @@ async function loadRetractions(field: string, reason: string, q: string, sortBy:
       summary: (m?.summary as string) ?? null,
     };
   });
-
-  return { total, papers, page, pageSize: PAGE_SIZE };
 }
 
-const loadRetractionsCached = unstable_cache(loadRetractions, ["api-retractions"], { revalidate: 3600 });
+// The named functions themselves, so a change to their body changes the cache
+// key (unstable_cache keys on the callback's source). Called with q = "".
+const countRetractionsCached = unstable_cache(countRetractions, ["api-retractions-count"], { revalidate: 3600 });
+const loadRetractionsPageCached = unstable_cache(loadRetractionsPage, ["api-retractions-page"], { revalidate: 3600 });
 
 export async function GET(req: NextRequest) {
-  const sp = req.nextUrl.searchParams;
-  const field = sp.get("field") ?? "all";
-  const reason = sp.get("reason") ?? "all";
-  const q = (sp.get("q") ?? "").trim();
-  const sortBy = sp.get("sortBy") ?? "impact"; // "impact" | "date"
-  const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
-
-  const payload = q
-    ? await loadRetractions(field, reason, q, sortBy, page)
-    : await loadRetractionsCached(field, reason, q, sortBy, page);
-
-  return NextResponse.json(payload, {
-    headers: {
+  try {
+    const sp = req.nextUrl.searchParams;
+    const field = sp.get("field") || "all";
+    const reason = sp.get("reason") || "all";
+    const q = (sp.get("q") ?? "").trim().slice(0, Q_MAX);
+    const sortBy: Sort = sp.get("sortBy") === "date" ? "date" : "impact";
+    const rawPage = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
+    const headers = {
       "Cache-Control": q
         ? "public, s-maxage=300, stale-while-revalidate=3600"
         : "public, s-maxage=3600, stale-while-revalidate=86400",
-    },
-  });
+    };
+
+    // An unknown field or reason matches nothing — answered without touching
+    // the database or the cache.
+    if (!isRetractionField(field) || !isRetractionReason(reason)) {
+      return NextResponse.json({ total: 0, papers: [], page: 1, pageSize: PAGE_SIZE }, { headers });
+    }
+
+    const total = q ? await countRetractions(field, reason, q) : await countRetractionsCached(field, reason, "");
+    const page = Math.min(Math.max(1, Math.ceil(total / PAGE_SIZE)), rawPage);
+    const papers = q
+      ? await loadRetractionsPage(field, reason, q, sortBy, page)
+      : await loadRetractionsPageCached(field, reason, "", sortBy, page);
+
+    return NextResponse.json({ total, papers, page, pageSize: PAGE_SIZE }, { headers });
+  } catch (err) {
+    console.error("[/api/retractions] error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }

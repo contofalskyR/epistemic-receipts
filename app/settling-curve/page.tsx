@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SettlingCurve from "./SettlingCurve";
 import { FEATURED_TRAJECTORIES } from "@/lib/featured-trajectories";
 import { getCuratedTrajectories } from "@/lib/trajectory-list";
+import { trajectoryOgImage } from "@/lib/og";
 
 // Not ISR: generateMetadata reads ?t= (share card), which makes the route
 // dynamic. The data is cached instead — see SettlingCurvePage below.
@@ -28,14 +29,14 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     ? `${featured.hook} — Epistemic Receipts`
     : "Settling Curve — Epistemic Receipts";
 
-  const ogImageUrl = `/api/og/trajectory?id=${t}`;
+  const ogImageUrl = trajectoryOgImage(t).url; // encodes the raw ?t= value
 
   return {
     title,
     description:
       "Trace how scientific confidence in a claim builds — or unravels — across expert literature, institutions, courts, and public consensus.",
     // Canonical points to the permalink page so crawlers index the SSR version.
-    alternates: { canonical: `/settling-curve/${t}` },
+    alternates: { canonical: `/settling-curve/${encodeURIComponent(t)}` },
     openGraph: {
       title,
       images: [{ url: ogImageUrl, width: 1200, height: 630 }],

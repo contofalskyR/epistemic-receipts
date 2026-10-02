@@ -8,15 +8,12 @@ import {
   AXIS_COLOR,
   FallbackCard,
   OG_HOST,
+  truncate,
 } from "@/lib/og-shared";
 
 export const runtime = "nodejs";
 
 const HEADERS = { "Cache-Control": OG_CACHE_CONTROL };
-
-function truncate(text: string, max: number): string {
-  return text.length > max ? text.slice(0, max - 1).trimEnd() + "…" : text;
-}
 
 function axisLabel(axis: string): string {
   const MAP: Record<string, string> = {

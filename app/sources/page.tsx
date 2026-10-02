@@ -10,6 +10,9 @@ export const metadata = {
 };
 
 export default async function SourcesPage() {
-  const data = await loadSourcesSummary().catch(() => null);
+  // No catch (front door phase 6): a swallowed DB error used to render a
+  // permanent "Loading…" that ISR then cached. Now a failure fails the build
+  // loudly, and a failed revalidation keeps serving the last good page.
+  const data = await loadSourcesSummary();
   return <SourcesClient initialData={data} />;
 }

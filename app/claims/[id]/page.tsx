@@ -18,10 +18,11 @@ import { CLAIM_TYPE_LABEL, CLAIM_TYPE_TOOLTIP, EPISTEMIC_BADGE, formatDate } fro
 
 // ── ISR ───────────────────────────────────────────────────────────────────────
 // ~1.76M claim URLs exist and a crawler can hit any of them cold; every ISR
-// miss is a live Neon query (see lib/claim-detail.ts — the query is kept lean
-// for exactly this reason). Empty generateStaticParams + revalidate is the
+// miss is a live Postgres query (see lib/claim-detail.ts — the query is kept
+// lean for exactly this reason). Empty generateStaticParams + revalidate is the
 // Next 16 opt-in for on-demand ISR: nothing prerendered at build, each claim
-// rendered on first hit, then served from cache for a day.
+// rendered on first hit, then served from cache for up to an hour — the root
+// layout's corpusCount() (unstable_cache, revalidate 3600) lowers this 86400.
 // NOTE: if `cacheComponents` is ever enabled in next.config.ts, this segment
 // config is removed in that model and this page needs migrating.
 export const revalidate = 86400;

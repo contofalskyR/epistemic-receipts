@@ -16,6 +16,13 @@ export const OG_HOST = new URL(SITE_URL).host;
 export const OG_CACHE_CONTROL =
   "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800";
 
+/** Card text cut to `max` characters with an ellipsis. Satori lays out every
+ *  character it is given, so long claims are cut before rendering as well as
+ *  clamped (curated claims run to 1,206 characters). */
+export function truncate(text: string, max: number): string {
+  return text.length > max ? text.slice(0, max - 1).trimEnd() + "…" : text;
+}
+
 // Re-exported from lib/status so OG images and the app share one source of truth.
 export { AXIS_COLOR, axisColor } from "@/lib/status";
 
@@ -172,6 +179,9 @@ export function CurveCard({
             WebkitLineClamp: 3,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
+            // Satori honours the -webkit-box line clamp only with an ellipsis
+            // (@vercel/og: no textOverflow means no line limit at all).
+            textOverflow: "ellipsis",
           }}
         >
           {title}

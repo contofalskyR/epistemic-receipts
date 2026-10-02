@@ -28,6 +28,8 @@ type OpinionHit = {
 
 type OpinionsResponse = {
   total: number;
+  /** Every opinion, whatever the filter (the header's figure). */
+  allTotal?: number;
   page: number;
   limit: number;
   pages: number;
@@ -305,6 +307,11 @@ export default function OpinionsClient() {
 
   const total = data?.total ?? 0;
   const pages = data?.pages ?? 1;
+  // The API clamps the page to the real page count; show and step from its page.
+  const shownPage = data?.page ?? page;
+  // The header counts every opinion whatever the filter; no figure until the
+  // API has answered (it used to show the filtered total, or a typed one).
+  const allTotal = data?.allTotal;
 
   return (
     <div style={{ background: C.bg, minHeight: "100vh", marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem" }}>
@@ -370,7 +377,7 @@ export default function OpinionsClient() {
             </div>
           </div>
           <p style={{ color: C.mut, fontSize: "0.95rem", lineHeight: 1.6, maxWidth: "52rem", margin: "0 0 1.5rem" }}>
-            {total > 0 ? total.toLocaleString() : "2,711"} U.S. court opinions — SCOTUS, federal circuits, state supreme courts, and more — each linked to related legislation and indexed as searchable epistemic claims.
+            {typeof allTotal === "number" ? `${allTotal.toLocaleString("en-US")} ` : ""}U.S. court opinions — SCOTUS, federal circuits, state supreme courts, and more — each linked to related legislation and indexed as searchable epistemic claims.
           </p>
           <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap" }}>
             {(["SCOTUS", "Circuit", "State"] as const).map((label) => {
@@ -502,36 +509,36 @@ export default function OpinionsClient() {
                 }}
               >
                 <button
-                  onClick={() => handlePage(Math.max(1, page - 1))}
-                  disabled={page <= 1}
+                  onClick={() => handlePage(Math.max(1, shownPage - 1))}
+                  disabled={shownPage <= 1}
                   style={{
                     padding: "0.4rem 1rem",
                     borderRadius: 8,
                     background: C.panel,
                     border: `1px solid ${C.panelEdge}`,
-                    color: page <= 1 ? C.faint : C.mut,
+                    color: shownPage <= 1 ? C.faint : C.mut,
                     fontSize: "0.82rem",
-                    cursor: page <= 1 ? "not-allowed" : "pointer",
-                    opacity: page <= 1 ? 0.5 : 1,
+                    cursor: shownPage <= 1 ? "not-allowed" : "pointer",
+                    opacity: shownPage <= 1 ? 0.5 : 1,
                   }}
                 >
                   ← Prev
                 </button>
                 <span style={{ color: C.mut, fontSize: "0.82rem" }}>
-                  Page {page} of {pages}
+                  Page {shownPage} of {pages}
                 </span>
                 <button
-                  onClick={() => handlePage(Math.min(pages, page + 1))}
-                  disabled={page >= pages}
+                  onClick={() => handlePage(Math.min(pages, shownPage + 1))}
+                  disabled={shownPage >= pages}
                   style={{
                     padding: "0.4rem 1rem",
                     borderRadius: 8,
                     background: C.panel,
                     border: `1px solid ${C.panelEdge}`,
-                    color: page >= pages ? C.faint : C.mut,
+                    color: shownPage >= pages ? C.faint : C.mut,
                     fontSize: "0.82rem",
-                    cursor: page >= pages ? "not-allowed" : "pointer",
-                    opacity: page >= pages ? 0.5 : 1,
+                    cursor: shownPage >= pages ? "not-allowed" : "pointer",
+                    opacity: shownPage >= pages ? 0.5 : 1,
                   }}
                 >
                   Next →

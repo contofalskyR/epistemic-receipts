@@ -6,6 +6,15 @@ import { prisma } from "@/lib/prisma";
 // `revalidate` never applied. The trajectory itself is cached for an hour per
 // id (STATUS.md Phase 5); the export formats are rendered from the cached,
 // already-stringified transitions.
+//
+// Misses (phase 6): an uncached existence check runs first — one lookup over
+// the unique externalId and the primary key — so a made-up id is answered
+// 404 without creating a Data Cache entry, and a row that is hard-deleted or
+// renamed after it was cached is a 404 at once, whatever the cache still
+// holds. (Throwing inside the cached loader instead would keep a stale curve
+// forever: unstable_cache keeps the old value when a revalidation throws.)
+// The cached loader resolves null for a soft-deleted row, so its key space is
+// bounded by real rows.
 export const dynamic = "force-dynamic";
 
 const loadTrajectory = unstable_cache(async (id: string) => {
@@ -24,20 +33,17 @@ const loadTrajectory = unstable_cache(async (id: string) => {
     },
   };
 
-  let claim = await prisma.claim.findFirst({
-    where: { externalId: `trajectory:${id}`, deleted: false },
-    select: { id: true, text: true, ingestedBy: true, claimEmergedAt: true, statusHistory: statusHistorySelect },
-  });
+  const select = { id: true, text: true, ingestedBy: true, claimEmergedAt: true, deleted: true, statusHistory: statusHistorySelect };
+  // Curated slug first (externalId is unique), deleted or not.
+  let claim = await prisma.claim.findFirst({ where: { externalId: `trajectory:${id}` }, select });
 
-  // Fallback: treat the path param as a raw claim CUID (corpus search results).
-  if (!claim) {
-    claim = await prisma.claim.findFirst({
-      where: { id, deleted: false },
-      select: { id: true, text: true, ingestedBy: true, claimEmergedAt: true, statusHistory: statusHistorySelect },
-    });
+  // Fallback: treat the path param as a raw claim CUID (corpus search results);
+  // a live raw-id row wins over a deleted slug row, as before.
+  if (!claim || claim.deleted) {
+    claim = (await prisma.claim.findFirst({ where: { id }, select })) ?? claim;
   }
 
-  if (!claim) return null;
+  if (!claim || claim.deleted) return null;
 
   const transitions = claim.statusHistory.map((s) => ({
     id: s.id,
@@ -71,6 +77,11 @@ export async function GET(
   const wantBibtex = format === "bibtex";
   const wantRis = format === "ris";
 
+  const exists = await prisma.claim.findFirst({
+    where: { OR: [{ externalId: `trajectory:${id}` }, { id }] },
+    select: { id: true },
+  });
+  if (!exists) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const claim = await loadTrajectory(id);
   if (!claim) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const { transitions } = claim;

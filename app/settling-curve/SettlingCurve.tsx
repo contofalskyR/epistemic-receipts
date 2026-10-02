@@ -285,6 +285,12 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   const [activeId, setActiveId] = useState<string | null>(() => searchParams.get("t"));
   const [traj, setTraj] = useState<TrajectoryDetail | null>(null);
   const [loadingDetail, setLoadingDetail] = useState(true);
+  // A failed detail fetch is an error and an unknown id is "not found" — never
+  // "No transitions recorded yet", which is only for a curve that has none
+  // (front door phase 6).
+  const [detailError, setDetailError] = useState<string | null>(null);
+  const [detailMissing, setDetailMissing] = useState(false);
+  const [detailRetry, setDetailRetry] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [logOpen, setLogOpen] = useState(false);
 
@@ -323,7 +329,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
         setListLoading(false);
       })
       .catch(() => {
-        if (!cancelled) { setListLoading(false); setListError(true); setLoadingDetail(false); }
+        if (!cancelled) { setListLoading(false); setListError(true); }
       });
     return () => {
       cancelled = true;
@@ -341,6 +347,8 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
       setTraj(null);
       setSelected(null);
       setLoadingDetail(false);
+      setDetailError(null);
+      setDetailMissing(false);
     }
   }, [searchParams]);
 
@@ -351,20 +359,32 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
     setTraj(null);
     setSelected(null);
     setTitleExpanded(false);
-    fetch(`/api/trajectories/${activeId}`, { signal: AbortSignal.timeout(20000) })
-      .then((r) => r.json())
-      .then((data: TrajectoryDetail) => {
+    // Every fetch — a new id or a Retry — starts clean.
+    setDetailError(null);
+    setDetailMissing(false);
+    fetch(`/api/trajectories/${encodeURIComponent(activeId)}`, { signal: AbortSignal.timeout(20000) })
+      .then(async (r) => {
+        if (r.status === 404) return null;
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const data = (await r.json()) as TrajectoryDetail;
+        if (!data || !Array.isArray(data.transitions)) throw new Error("unexpected response");
+        return data;
+      })
+      .then((data) => {
         if (cancelled) return;
-        setTraj(data && Array.isArray(data.transitions) ? data : null);
+        if (data) setTraj(data);
+        else setDetailMissing(true);
         setLoadingDetail(false);
       })
-      .catch(() => {
-        if (!cancelled) setLoadingDetail(false);
+      .catch((e: unknown) => {
+        if (cancelled) return;
+        setDetailError(e instanceof Error ? e.message : "request failed");
+        setLoadingDetail(false);
       });
     return () => {
       cancelled = true;
     };
-  }, [activeId]);
+  }, [activeId, detailRetry]);
 
   const selectItem = (id: string) => {
     setActiveId(id);
@@ -445,7 +465,19 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   const displayTitle = titleNeedsToggle && !titleExpanded ? truncate(title, TITLE_CLAMP) : title;
 
   function renderChart() {
-    if ((loadingDetail || listLoading) && !traj) {
+    if (detailError) {
+      return <ErrorState what="this trajectory" detail={detailError} onRetry={() => setDetailRetry((k) => k + 1)} />;
+    }
+    if (detailMissing) {
+      return (
+        <EmptyState
+          title="No trajectory with this id."
+          hint="Check the link, or pick a curve from the list."
+          action={{ label: "All curves", onClick: backToAll }}
+        />
+      );
+    }
+    if (!traj) {
       return (
         <div className="rounded-lg p-2" style={{ background: C.panel, border: `1px solid ${C.panelEdge}` }}>
           <div
@@ -1754,7 +1786,14 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                       : undefined
                   }
                 >
-                  {displayTitle || (loadingDetail || listLoading ? "" : "Select a trajectory")}
+                  {displayTitle ||
+                    (detailMissing
+                      ? "Trajectory not found"
+                      : detailError
+                        ? "Trajectory unavailable"
+                        : loadingDetail || listLoading
+                          ? ""
+                          : "Select a trajectory")}
                   {titleNeedsToggle && !titleExpanded && (
                     <span
                       className="ml-2 align-middle font-mono"
@@ -1787,7 +1826,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                         <ShareButtons
                           url={typeof window !== "undefined" ? window.location.href : ""}
                           text={shareText}
-                          imageCardUrl={activeId ? `/api/og/trajectory?id=${activeId}` : undefined}
+                          imageCardUrl={activeId ? `/api/og/trajectory?id=${encodeURIComponent(activeId)}` : undefined}
                         />
                         {/* Raw-claim mode (id not in the curated list): link back to the receipt */}
                         {activeId && !activeItem && (

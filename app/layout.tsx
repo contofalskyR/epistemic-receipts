@@ -6,7 +6,7 @@ import FeedbackButton from "@/app/components/FeedbackButton";
 import LinkViewerProvider from "@/app/components/LinkViewerProvider";
 import { SITE_URL } from "@/lib/site";
 import { corpusCountCompact } from "@/lib/corpus";
-import { socialMetadata } from "@/lib/og";
+import { defaultSocialMetadata } from "@/lib/og";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -25,10 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: "Epistemic Receipts",
     description,
-    // Default link-preview card for every page that does not set its own
-    // (lib/og.ts). Pages that do must go through socialMetadata() too — a
-    // child `openGraph` replaces this whole block, image included.
-    ...socialMetadata({ title: "Epistemic Receipts", description, url: "/" }),
+    // Default link-preview card (lib/og.ts): the image and nothing else. A
+    // page without its own block inherits this one whole, and Next fills the
+    // og and twitter title/description from the page itself — a title or url
+    // set here would label every such page as the homepage. Pages with their
+    // own card set an image-bearing block, through the socialMetadata helper or
+    // by hand (claims/[id], settling-curve, settling-curve/[id], receipts/[id];
+    // og-metadata.test.ts enforces the image). receipts/[id] has no twitter
+    // block and relies on Next copying its og:image, so the twitter default
+    // here carries no image.
+    ...defaultSocialMetadata(),
   };
 }
 

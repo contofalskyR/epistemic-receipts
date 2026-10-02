@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+// Also the 404 for notFound() in /settling-curve/[id], /datasets/[tag] and
+// /embed/trajectory/[slug]: its <head> comes from the layouts on the path (the
+// root layout, plus app/embed/layout.tsx for embeds) and this file.
+export const metadata: Metadata = { title: "Page not found — Epistemic Receipts" };
 
 export default function NotFound() {
   return (

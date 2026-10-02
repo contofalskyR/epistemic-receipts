@@ -5,8 +5,10 @@ import { prisma } from "@/lib/prisma";
 import { LIVE_CLAIM_WHERE, liveClaimSql } from "@/lib/corpus";
 
 // The curated trajectory list — one loader for /settling-curve (SSR initial
-// grid) and /api/trajectories (client refresh), cached for an hour so anonymous
-// visits never run the 1.4 s curated query (STATUS.md Phase 5).
+// grid), /api/trajectories (client refresh) and /api/history's curated lens,
+// cached for an hour so anonymous visits never run the 1.4 s curated query
+// (STATUS.md Phase 5). getCuratedTexts() caches the full claim texts beside it
+// (the cards carry a 160-char claim), in the same chunks (phase 6).
 //
 // Why chunks: the whole list serialises to ~3.1 MB (5,698 cards, 2026-09-30),
 // over the Data Cache's 2 MB per-entry limit on Vercel — a single
@@ -95,6 +97,9 @@ type Row = {
   statusHistory: { community: string; toAxis: string; occurredAt: Date }[];
 };
 
+/** "trajectory:<slug>" → "<slug>": a curated card's id and its /settling-curve?t= key. */
+export const curatedSlug = (externalId: string) => externalId.replace(/^trajectory:/, "");
+
 /** Plain JSON shape (years, not Dates) so it survives the data cache. */
 export function toListItem(c: Row): TrajectoryListItem {
   const sorted = c.statusHistory;
@@ -102,7 +107,7 @@ export function toListItem(c: Row): TrajectoryListItem {
   const first = sorted[0];
   const isCurated = c.externalId?.startsWith("trajectory:") ?? false;
   return {
-    id: isCurated ? c.externalId!.replace(/^trajectory:/, "") : c.id,
+    id: isCurated ? curatedSlug(c.externalId!) : c.id,
     claimId: c.id,
     claim: c.text.length > 160 ? c.text.slice(0, 157) + "…" : c.text,
     domain: classifyDomain(c.ingestedBy),
@@ -146,6 +151,35 @@ export async function getCuratedTrajectories(): Promise<TrajectoryListItem[]> {
   const chunks = Math.max(1, Math.ceil(total / CHUNK));
   const parts = await Promise.all(Array.from({ length: chunks }, (_, i) => loadCuratedChunk(i)));
   return parts.flat();
+}
+
+// Full curated texts, for /api/history's search (front door phase 6: words
+// past the cards' 160 characters were unsearchable). Same where, order and
+// chunking as the list: ~0.38 MB per chunk by the Data Cache's own measure,
+// where all 5,698 texts in one entry would be ~2.16 MB, over its 2 MB limit.
+// A chunk is plain [slug, text] pairs — a cache hit returns JSON.parse(body),
+// so a Map would not survive it; the Map is built outside the cache.
+const loadCuratedTextChunk = unstable_cache(
+  async (chunk: number): Promise<[string, string][]> => {
+    const rows = await prisma.claim.findMany({
+      where: CURATED_WHERE,
+      select: { externalId: true, text: true },
+      orderBy: { externalId: "asc" },
+      skip: chunk * CHUNK,
+      take: CHUNK,
+    });
+    return rows.map((r): [string, string] => [curatedSlug(r.externalId!), r.text]);
+  },
+  ["curated-trajectory-texts-chunk"],
+  { revalidate: REVALIDATE },
+);
+
+/** slug → full claim text for every curated trajectory, from the hourly cache. */
+export async function getCuratedTexts(): Promise<Map<string, string>> {
+  const total = await countCurated();
+  const chunks = Math.max(1, Math.ceil(total / CHUNK));
+  const parts = await Promise.all(Array.from({ length: chunks }, (_, i) => loadCuratedTextChunk(i)));
+  return new Map(parts.flat());
 }
 
 // ─── Auto-generated trajectories ─────────────────────────────────────────────

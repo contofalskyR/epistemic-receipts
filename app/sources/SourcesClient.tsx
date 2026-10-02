@@ -341,19 +341,10 @@ function Chip({
   );
 }
 
-export default function SourcesClient({ initialData }: { initialData: SourcesSummary | null }) {
-  const [data] = useState<SourcesSummary | null>(initialData);
+export default function SourcesClient({ initialData: data }: { initialData: SourcesSummary }) {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const searchRef = useRef<HTMLInputElement>(null);
-
-  if (!data) {
-    return (
-      <div style={{ background: C.bg, minHeight: "100vh", marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem", display: "flex", alignItems: "center", justifyContent: "center", color: C.faint, fontSize: "0.88rem" }}>
-        Loading…
-      </div>
-    );
-  }
 
   const q = query.trim().toLowerCase();
 
