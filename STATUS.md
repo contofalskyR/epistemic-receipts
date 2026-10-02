@@ -55,7 +55,7 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   went in Phase 3).
 - Read-only verification pattern (no writes, ever):
   `node -e 'require("dotenv").config({path:".env.local"}); const {Pool}=require("pg"); …pool.query("select …")'`.
-- `npm run build` = `prisma generate && node scripts/gen-route-manifest.mjs && next build`; it prerenders ~277 pages against the live DB (reads only; 277 at Phase 6).
+- `npm run build` = `prisma generate && node scripts/gen-route-manifest.mjs && next build`; it prerenders ~275 pages against the live DB (reads only; 275 at Phase 6).
   **Locally, run it as `CIRCLE_NODE_TOTAL=2 npm run build`** (1 prerender worker, ~4 min, 0 timeouts — verified
   2026-09-30). The default 9 workers saturate the OCI Postgres and the sitemap's deep-OFFSET claim chunks
   (`app/sitemap.ts`, `claims-25..28`, ~37 s each in isolation) exceed Next's 60 s static-generation timeout →
@@ -267,6 +267,45 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
         the cards load in 1,000-id chunks (~580 KB each) keyed by their ids, under a cached id list (150 KB) — the
         API keeps its documented 5,000. Only the full list is cached; `limit` slices afterwards and `minMilestones`
         is capped in the key (NaN → 2), so query strings no longer grow the cache key space.
+
+- [x] **Phase 6 — hardening** · branch `fix/front-door-phase-6` (from `origin/main` `1e4e632`) · done 2026-10-01 ·
+      build green · tsc clean · 624 unit tests pass, 1 skipped (was 396) · eslint 0 errors · PR: owner pushes the branch and opens it.
+      The planned defects were reproduced on a production build of the untouched branch (curl + Chromium) and
+      accepted on the final build. A read-only multi-agent review of the diff then found one major and several minor
+      issues (reproduced on intermediate builds or by prototype); all are addressed on this branch (listed in the PR).
+  - [x] real 404s: `app/loading.tsx` (phase 5) removed — it streamed every page after a 200 shell, so unknown ids on
+        `/claims/`, `/settling-curve/`, `/datasets/`, `/embed/trajectory/` were ISR-cached 200s. Guard
+        `tests/unit/no-soft-404.test.ts`. By design: a throw while rendering a dynamic page is now a real 500; dynamic
+        routes are no longer prefetched; a 404's body is Next's error shell (noindex) with the not-found UI rendered
+        client-side; `app/not-found.tsx` and `app/claims/[id]/not-found.tsx` carry their own titles.
+  - [x] one robots.txt: `public/robots.txt` (stale; shadowed `app/robots.ts` under `next start`) removed;
+        `app/robots.ts` allows `/api/og/` (link-preview images) and keeps `Disallow: /api/`. `tests/unit/robots.test.ts`.
+  - [x] link previews: the root layout's block is image-only (`defaultSocialMetadata()`), so ~25 pages stop
+        inheriting the homepage's og:url/og:title; the homepage keeps its own og:url; Satori title clamp
+        (`textOverflow: "ellipsis"`) + shared `truncate()`. `tests/unit/og-metadata.test.ts` runs the real layout
+        metadata through Next's resolver.
+  - [x] middleware decodes the path once: 400 for malformed escapes; 308 for encoded ASCII aliases (allowlisted target,
+        no "//", stability check — no loops, no protocol-relative Location); every gate judges both spellings; the
+        dot rule is gone (any manifest page is gated, prefetch segment files included); `from=` is the raw path;
+        POST `/api/search/miss` gets its 5/min. `/login` redirects through `lib/safeRedirect.ts` (same origin only,
+        dot-segment safe) and reports rate limits and network errors honestly.
+  - [x] bounded cache keys on `/api/opinions` (dated views uncached), `/api/retractions` (+ `lib/retraction-filters.ts`),
+        `/split-ledger`, `/canon` and `/api/trajectories/[id]` (an uncached existence check keeps unknown ids out
+        of the Data Cache and makes hard-deleted or renamed rows 404 at once); the last hand-rolled SQL escape is gone.
+  - [x] honest states: curve detail error/not-found/Retry, Cite checks the status, `/sources` no longer swallows DB
+        errors, era counts "…"/"—", `/opinions` header from the unfiltered total, full-text curated search,
+        `/datasets/[tag]` "unset". `/retraction-explorer` filters move the URL with `history.pushState`, and it and
+        `/corrections` are rendered per request: as ISR pages, a deep link's query stuck to every later `<Link>` to
+        them for 5 minutes (the nav and homepage links to the explorer; a correction filed against an earlier
+        transition).
+  - [x] docs/CI: README corrected (DIRECT_URL, dev can write, the integration seed wipes its target — it now refuses a
+        database not named `*_test` — caching exceptions, transition sources); removed
+        `.github/workflows/api-contract.yml`, `public/api/openapi.yaml`, `.spectral.yaml`; the 6 resolved drift lines
+        (ApiKey/Org/Collection) pruned; `LATER.md` §5 holds the 2026-10-01 review findings not fixed here.
+  - Pending, owner-side: CI's "Check migration drift" step (expect "Only known drift present (10 lines) — OK");
+    the live checks after deploy (the redeploy also clears soft-404 and alias ISR entries).
+  - Owner decisions listed in the PR: `Allow` `/api/oembed` and the read APIs client pages render from; uninstall
+    `@stoplight/spectral-cli`; "unset" vs "unclassified"; the `/opinions` "linked to related legislation" copy.
 
 ## Owner's side (not blocking)
 
