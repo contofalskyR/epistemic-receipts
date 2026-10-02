@@ -6,6 +6,7 @@ import {
   loadTier1Claims,
   loadTier2Claims,
   loadSplitLedgerCounts,
+  splitLedgerParams,
   COMMUNITY_LABEL,
   TIER2_COMMUNITY_PAIRS,
   PAGE_SIZE,
@@ -120,19 +121,13 @@ function Pagination({
 export default async function SplitLedgerPage({
   searchParams,
 }: {
-  searchParams: Promise<{ t1page?: string; t2page?: string; pair?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const { t1page: t1pageRaw, t2page: t2pageRaw, pair: pairRaw } = await searchParams;
+  // Counts first: they bound the cached loaders' page arguments (phase 6).
+  const counts = await loadSplitLedgerCounts();
+  const { t1page, t2page, pair: activePair } = splitLedgerParams(await searchParams, counts);
 
-  const t1page = Math.max(0, parseInt(t1pageRaw ?? "0", 10) || 0);
-  const t2page = Math.max(0, parseInt(t2pageRaw ?? "0", 10) || 0);
-  const activePair =
-    pairRaw && TIER2_COMMUNITY_PAIRS.includes(decodeURIComponent(pairRaw))
-      ? decodeURIComponent(pairRaw)
-      : null;
-
-  const [counts, tier1Result, tier2Result] = await Promise.all([
-    loadSplitLedgerCounts(),
+  const [tier1Result, tier2Result] = await Promise.all([
     loadTier1Claims(t1page),
     loadTier2Claims(activePair, t2page),
   ]);
@@ -214,7 +209,7 @@ export default async function SplitLedgerPage({
 
         <Pagination
           page={t1page}
-          total={tier1Result.total}
+          total={counts.tier1}
           buildHref={(p) => {
             const params = new URLSearchParams();
             if (p > 0) params.set("t1page", String(p));
@@ -301,7 +296,7 @@ export default async function SplitLedgerPage({
 
         <Pagination
           page={t2page}
-          total={tier2Result.total}
+          total={activePair ? (counts.pairs[activePair] ?? 0) : counts.tier2}
           buildHref={(p) => {
             const params = new URLSearchParams();
             if (p > 0) params.set("t2page", String(p));

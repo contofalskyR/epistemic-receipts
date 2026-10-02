@@ -251,8 +251,11 @@ export const PAGE_SIZE = 50;
 // /split-ledger is dynamic (it reads ?t1page/?t2page/?pair), so the page's
 // `revalidate` never applied. The three loaders are cached for an hour per
 // argument instead (STATUS.md Phase 5); the in-process classification cache
-// above still saves the big CTE within one instance. Return shapes are plain
-// JSON (years and ISO strings, no Dates) so they survive the data cache.
+// above still saves the big CTE within one instance. The argument space is
+// bounded (phase 6): the page reads the counts first and splitLedgerParams()
+// whitelists the pair and clamps both pages to the real page count. Return
+// shapes are plain JSON (years and ISO strings, no Dates) so they survive the
+// data cache.
 
 async function loadTier1ClaimsUncached(page = 0): Promise<{
   claims: SplitLedgerClaim[];
@@ -275,12 +278,43 @@ async function loadTier2ClaimsUncached(
   return { claims, total: source.length };
 }
 
-async function loadSplitLedgerCountsUncached(): Promise<{
-  tier1: number;
-  tier2: number;
-}> {
-  const { tier1, tier2 } = await getClassification();
-  return { tier1: tier1.length, tier2: tier2.length };
+export type SplitLedgerCounts = { tier1: number; tier2: number; pairs: Record<string, number> };
+
+async function loadSplitLedgerCountsUncached(): Promise<SplitLedgerCounts> {
+  const { tier1, tier2, tier2ByPair } = await getClassification();
+  // One entry per listed pair (0 when a pair has no claims), never the
+  // classification's own keys.
+  const pairs: Record<string, number> = {};
+  for (const p of TIER2_COMMUNITY_PAIRS) pairs[p] = tier2ByPair[p]?.length ?? 0;
+  return { tier1: tier1.length, tier2: tier2.length, pairs };
+}
+
+type RawParam = string | string[] | undefined;
+const firstValue = (v: RawParam): string | undefined => (Array.isArray(v) ? v[0] : v);
+
+/** A 0-based page index from the query, clamped to [0, last page]; NaN → 0,
+ *  Infinity → the last page. */
+function clampPage(raw: RawParam, total: number): number {
+  const last = Math.max(0, Math.ceil(total / PAGE_SIZE) - 1);
+  const n = Number.parseInt(firstValue(raw) ?? "", 10);
+  return Number.isNaN(n) ? 0 : Math.min(last, Math.max(0, n));
+}
+
+/** The page's query as cache-key arguments: a listed pair (exactly as Next
+ *  delivered it — decoded once; a second decode threw on "%") or null, and
+ *  both pages clamped to the real page count, the tier-2 page by the active
+ *  pair's own count. */
+export function splitLedgerParams(
+  raw: { t1page?: RawParam; t2page?: RawParam; pair?: RawParam },
+  counts: SplitLedgerCounts,
+): { t1page: number; t2page: number; pair: string | null } {
+  const p = firstValue(raw.pair);
+  const pair = p !== undefined && TIER2_COMMUNITY_PAIRS.includes(p) ? p : null;
+  return {
+    pair,
+    t1page: clampPage(raw.t1page, counts.tier1),
+    t2page: clampPage(raw.t2page, pair ? (counts.pairs[pair] ?? 0) : counts.tier2),
+  };
 }
 
 export const loadTier1Claims = unstable_cache(loadTier1ClaimsUncached, ["split-ledger-tier1"], { revalidate: 3600 });

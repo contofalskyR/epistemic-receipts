@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { cleanDisplayText } from "@/lib/text";
 import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
+import { FIELD_OPTIONS, REASON_OPTIONS } from "@/lib/retraction-filters";
 
 type Paper = {
   id: string;
@@ -33,9 +34,6 @@ const S = {
   orange: "#fb923c",
   purple: "#a78bfa",
 } as const;
-
-const FIELD_OPTIONS = ["all", "Medicine", "Psychology", "Biology", "Physics", "Chemistry"];
-const REASON_OPTIONS = ["all", "Retraction", "Withdrawal", "Correction", "Reinstatement"];
 
 function journalShort(journal: string | null): string {
   if (!journal) return "—";
@@ -316,14 +314,16 @@ export default function RetractionExplorerClient({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const urlField = searchParams.get("field") ?? "all";
-  const urlReason = searchParams.get("reason") ?? "all";
+  const urlField = searchParams.get("field") || "all";
+  const urlReason = searchParams.get("reason") || "all";
   const urlQ = searchParams.get("q") ?? "";
   const urlSortBy = searchParams.get("sortBy") ?? "impact";
   const urlPage = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10) || 1);
 
   const [papers, setPapers] = useState<Paper[]>([]);
   const [total, setTotal] = useState(0);
+  // The API clamps the page to the real page count; pagination follows its page.
+  const [shownPage, setShownPage] = useState(urlPage);
   const [loading, setLoading] = useState(true);
   // A failed request is an error, never "No papers found" (Phase 5).
   const [error, setError] = useState<string | null>(null);
@@ -366,6 +366,7 @@ export default function RetractionExplorerClient({
         if (cancelled) return;
         setPapers(d.papers ?? []);
         setTotal(d.total ?? 0);
+        setShownPage(typeof d.page === "number" ? d.page : urlPage);
         setLoading(false);
       })
       .catch((e: unknown) => {
@@ -662,35 +663,35 @@ export default function RetractionExplorerClient({
           }}
         >
           <button
-            disabled={urlPage <= 1}
-            onClick={() => pushUrl({ page: String(urlPage - 1) })}
+            disabled={shownPage <= 1}
+            onClick={() => pushUrl({ page: String(shownPage - 1) })}
             style={{
               padding: "0.45rem 1rem",
               background: S.surface,
               border: `1px solid ${S.border}`,
               borderRadius: "8px",
-              color: urlPage <= 1 ? S.muted : S.text,
-              cursor: urlPage <= 1 ? "not-allowed" : "pointer",
-              opacity: urlPage <= 1 ? 0.4 : 1,
+              color: shownPage <= 1 ? S.muted : S.text,
+              cursor: shownPage <= 1 ? "not-allowed" : "pointer",
+              opacity: shownPage <= 1 ? 0.4 : 1,
               fontSize: "0.82rem",
             }}
           >
             ← Prev
           </button>
           <span style={{ fontSize: "0.8rem", color: S.muted }}>
-            Page {urlPage} · {total.toLocaleString()} total
+            Page {shownPage} · {total.toLocaleString()} total
           </span>
           <button
-            disabled={urlPage * 25 >= total}
-            onClick={() => pushUrl({ page: String(urlPage + 1) })}
+            disabled={shownPage * 25 >= total}
+            onClick={() => pushUrl({ page: String(shownPage + 1) })}
             style={{
               padding: "0.45rem 1rem",
               background: S.surface,
               border: `1px solid ${S.border}`,
               borderRadius: "8px",
-              color: urlPage * 25 >= total ? S.muted : S.text,
-              cursor: urlPage * 25 >= total ? "not-allowed" : "pointer",
-              opacity: urlPage * 25 >= total ? 0.4 : 1,
+              color: shownPage * 25 >= total ? S.muted : S.text,
+              cursor: shownPage * 25 >= total ? "not-allowed" : "pointer",
+              opacity: shownPage * 25 >= total ? 0.4 : 1,
               fontSize: "0.82rem",
             }}
           >

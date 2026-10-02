@@ -199,7 +199,11 @@ export default async function CanonPage({
     : "all";
   const page = Math.max(1, Number.parseInt(sp.page ?? "1", 10) || 1);
 
-  const [agg, pageData] = await Promise.all([getCanonCensus(), getCanonPage(filter, page)]);
+  // The census total bounds every filter's page count, so clamping before the
+  // cached call bounds getCanonPage's keys — every ?page=N used to add an
+  // entry (front door phase 6).
+  const agg = await getCanonCensus();
+  const pageData = await getCanonPage(filter, Math.min(page, Math.max(1, Math.ceil(agg.total / PAGE_SIZE))));
   const { filtered, rows, milestones } = pageData;
 
   const pageCount = Math.max(1, Math.ceil(filtered / PAGE_SIZE));
