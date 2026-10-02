@@ -3,14 +3,15 @@
 One file, kept short, updated at every phase boundary. Agents: read this and `AUDIT.md`, not the doc pile.
 Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
 
-## Current state (2026-09-30)
+## Current state (2026-10-01)
 
 - DB: self-hosted PostgreSQL 17 + pgvector on OCI (83 GB volume, ~30 GB free). Restored from
   `epistemic_receipts_backup.dump`; all large tables verified present (Claim 1,758,105 / deleted=false 1,758,084;
   ClaimStatusHistory 1,822,644; Edge 1,718,766; ClaimRelation 4,820,213; MemberVote 1,798,569;
-  ClaimEmbedding 1,757,943; EdgeRevision 1,557,521). Still 0 rows: PipelineRun, User, ApiKey, ApiUsage, Session,
-  Account, VerificationToken, Follow, Collection*, *Subscription, AlertSent, SavedQuery, Org*, Litigation*,
-  TransitionClaimsSnapshot, SourceCredibilityEvent, SuggestedThresholdEvent, AiJob — believed empty on Neon too.
+  ClaimEmbedding 1,757,943; EdgeRevision 1,557,521). Still 0 rows (2026-10-01): PipelineRun, AlertSent, SavedQuery,
+  AiJob, TransitionClaimsSnapshot, SourceCredibilityEvent, SuggestedThresholdEvent — believed empty on Neon too. User,
+  ApiKey, ApiUsage, Session, Account, VerificationToken, Follow, Collection*, *Subscription, Org*, Litigation* were
+  dropped with the rest of the 20 Phase 3 tables (migration applied 2026-09-30; list under Phase 3).
 - App: `main` builds and deploys on Vercel with `@prisma/adapter-pg` (PR #22). Homepage curve, settling curves,
   law-settler confirmed live after redeploy.
 - Audit: `AUDIT.md` (route table, mismatches, nav proposal, risks) is the input for the restructure.
@@ -54,7 +55,7 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   went in Phase 3).
 - Read-only verification pattern (no writes, ever):
   `node -e 'require("dotenv").config({path:".env.local"}); const {Pool}=require("pg"); …pool.query("select …")'`.
-- `npm run build` = `prisma generate && node scripts/gen-route-manifest.mjs && next build`; it prerenders 309 pages against the live DB (reads only).
+- `npm run build` = `prisma generate && node scripts/gen-route-manifest.mjs && next build`; it prerenders ~277 pages against the live DB (reads only; 277 at Phase 6).
   **Locally, run it as `CIRCLE_NODE_TOTAL=2 npm run build`** (1 prerender worker, ~4 min, 0 timeouts — verified
   2026-09-30). The default 9 workers saturate the OCI Postgres and the sitemap's deep-OFFSET claim chunks
   (`app/sitemap.ts`, `claims-25..28`, ~37 s each in isolation) exceed Next's 60 s static-generation timeout →
@@ -63,9 +64,11 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   `experimental.cpus` reads — no config change needed.) Vercel builds fine as-is.
   `scripts/` is excluded from `tsconfig.json`, so build/`tsc` never type-check it. After deleting routes, run the
   build before `tsc --noEmit`: the stale generated `.next/types/validator.ts` otherwise reports phantom errors.
-- `gh` is not installed and git has no GitHub credential in this shell: agents commit locally, the owner pushes
-  with `! git push -u origin <branch>` and opens the PR at
-  `https://github.com/contofalskyR/epistemic-receipts/compare/main...<branch>?expand=1`.
+- `gh` is installed and logged in, and git pushes through the macOS keychain (checked 2026-10-01), so a push from this
+  shell would succeed — agents still never push or open PRs: agents commit locally, the owner pushes with
+  `! git push -u origin <branch>` and opens the PR at
+  `https://github.com/contofalskyR/epistemic-receipts/compare/main...<branch>?expand=1`. gitleaks 8.30.1 is installed
+  and `core.hooksPath=.githooks` is set (2026-10-01), so the pre-push secret scan runs on the owner's push.
 - Vercel production = `main`. Homepage is ISR (`revalidate = 3600`); after data changes, Redeploy without build cache.
 - Server: `ssh opc@…`, tmux session `restore`, PGDATA `/var/lib/pgsql/17/data`, dump at `/var/lib/pgsql/dump/`.
 - Known false positive: `165,250` / `165,233` in the code are `rgba()` colour literals, not counts.
@@ -180,9 +183,9 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - [x] **Prisma:** 20 models removed (User, Account, Session, VerificationToken, Org, Membership, OrgIpRange,
         OrgUsageDaily, ApiKey, ApiUsage, LitigationMatter, MatterClaim, MatterExport, Collection, CollectionItem,
         Profile, Follow, Bookmark, TopicSubscription, ClaimSubscription) + enums MatterStatus, ExportFormat +
-        Claim's four back-relations. Migration written, **NOT applied** (nothing writes to the DB):
-        `prisma/migrations/20260930120000_phase3_drop_saas_social_auth/migration.sql` — owner runs
-        `npx prisma migrate deploy` after merge. Until then the tables sit unused; the app never touches them.
+        Claim's four back-relations. Migration
+        `prisma/migrations/20260930120000_phase3_drop_saas_social_auth/migration.sql` applied to production 2026-09-30
+        23:15:52 UTC (`_prisma_migrations.finished_at`, read-only check 2026-10-01); the 20 tables are gone.
   - [x] real 404s: `scripts/gen-route-manifest.mjs` → `lib/route-manifest.json` (104 routes, 14 patterns) runs
         in `npm run build`; middleware gates only paths that exist, unknown paths reach Next's 404.
         `tests/unit/route-manifest.test.ts` fails if the committed file is stale.
@@ -275,5 +278,8 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Merge Phase 2 → 3 → 4 → 5, run `npx prisma migrate deploy`, redeploy. Then the content backlog in `LATER.md`
-(Congress as claims first).
+Phases −1…5 and `fix/auto-trajectories` are merged (PRs #22–#29, `origin/main` `1e4e632`); the Phase 3 migration is
+applied. Next: the owner merges Phase 6 (`fix/front-door-phase-6`) and redeploys → Phase 6b (`feat/wire-what-exists`)
+→ Phase 6c (`fix/bce-dates`: code first; the data fix is the owner's) → Phase 7 (`feat/congress-link`). `LATER.md` §1's
+premise is outdated: Congress roll-calls (`voteview_v1`) and enacted laws (`congress_v1`) are already claims — Phase 7
+links, corrects and relates them rather than re-ingesting.

@@ -5,9 +5,10 @@
 # reports resolved lines so this file shrinks honestly. Do not add new lines
 # without understanding why the schema and migrations disagree.
 #
+# 2026-10-01: the ApiKey/Org/Collection lines were pruned — those tables were dropped by
+# prisma/migrations/20260930120000_phase3_drop_saas_social_auth (CI reported them resolved).
+#
 # Inventory (see AGENTS.md / incident notes 2026-07-06):
-# - ApiKey name/prefix/expiresAt: columns exist in schema, never migrated
-# - Org stripeCustomerId unique: same
 # - Claim/BookClaim embedding: stale legacy MiniLM columns, dropped from schema
 # - HNSW indexes on vector columns + expression indexes (text, searchVector):
 #   real objects Prisma's DSL cannot express — permanent residents here
@@ -15,11 +16,8 @@
 #   semantics live outside migration SQL
 # - MemberIdeology updatedAt (added 2026-07-22): B11-2's hand-written migration
 #   declared DEFAULT CURRENT_TIMESTAMP; the model uses @updatedAt (no default).
-#   Same permanent class as Claim/Collection/Org above. This single line kept
+#   Same permanent class as Claim above. This single line kept
 #   CI red from Jul 15-22.
-ApiKey :: [+] Added column `expiresAt`
-ApiKey :: [+] Added column `name`
-ApiKey :: [+] Added column `prefix`
 BookClaim :: [-] Removed column `embedding`
 Claim :: [-] Removed index on columns (embedding)
 Claim :: [-] Removed index on columns (text)
@@ -29,7 +27,4 @@ Claim :: [*] Altered column `searchVector` (default changed from `Some(DbGenerat
 Claim :: [*] Altered column `updatedAt` (default changed from `Some(Now)` to `None`)
 MemberIdeology :: [*] Altered column `updatedAt` (default changed from `Some(Now)` to `None`)
 ClaimEmbedding :: [-] Removed index on columns (embedding)
-Collection :: [*] Altered column `updatedAt` (default changed from `Some(Now)` to `None`)
-Org :: [*] Altered column `updatedAt` (default changed from `Some(Now)` to `None`)
-Org :: [+] Added unique index on columns (stripeCustomerId)
 TrajectorySearchDoc :: [-] Removed index on columns (embedding)

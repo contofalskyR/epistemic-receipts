@@ -13,7 +13,31 @@ export type SeedResult = {
   sameDayMultiStepClaimId: string;
 };
 
+/**
+ * seedTestData starts by deleting every Claim, Source, Edge and
+ * ClaimStatusHistory row in the database it is given, so it refuses one whose
+ * name does not end in `_test` (CI's is `epistemic_test`) unless
+ * ALLOW_DESTRUCTIVE_SEED=1. Explicit arguments, so a unit test never depends on
+ * the environment; the error names the database only, never the URL.
+ */
+export function assertDisposableDatabase(url: string | undefined, override: string | undefined): void {
+  if (override === "1") return;
+  let db = "";
+  try {
+    db = decodeURIComponent(new URL(url ?? "").pathname.replace(/^\/+/, ""));
+  } catch {
+    db = "";
+  }
+  if (!db.endsWith("_test")) {
+    throw new Error(
+      `tests/seed.ts deletes every Claim, Source, Edge and ClaimStatusHistory row; refusing database "${db || "(unparsable DATABASE_URL)"}" (its name must end in _test, or set ALLOW_DESTRUCTIVE_SEED=1 for a throwaway database).`,
+    );
+  }
+}
+
 export async function seedTestData(prisma: PrismaClient): Promise<SeedResult> {
+  assertDisposableDatabase(process.env.DATABASE_URL, process.env.ALLOW_DESTRUCTIVE_SEED);
+
   // Clear related tables first (order matters due to FK constraints)
   await prisma.claimStatusHistory.deleteMany({});
   await prisma.claimTopic.deleteMany({});
