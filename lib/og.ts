@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 // `twitter` per segment by *replacing* the whole object, so a page that sets
 // its own openGraph title silently drops the root layout's image — every
 // page-level block goes through socialMetadata() to keep an image attached.
+// The root layout uses defaultSocialMetadata() instead: image only, so pages
+// without a block of their own keep their own title (phase 6).
 //
 // Images: /api/og/trajectory and /api/og/claim draw the settling curve
 // (lib/og-shared.tsx CurveCard); /api/og/default is the card for everything
@@ -59,5 +61,19 @@ export function socialMetadata({
       description,
       images: [image.url],
     },
+  };
+}
+
+/** Root layout default: the image, nothing page-specific. A page without its
+ *  own openGraph inherits this object whole; Next then fills og:title,
+ *  og:description and the twitter title, description and image from the
+ *  page's own title, description and og image (resolve-metadata.js
+ *  postProcessMetadata). A title, description or url here would be inherited
+ *  verbatim — phase 5's root block gave ~25 pages the homepage's og:url and
+ *  title. */
+export function defaultSocialMetadata(image: OgImage = DEFAULT_OG_IMAGE): Pick<Metadata, "openGraph" | "twitter"> {
+  return {
+    openGraph: { siteName: "Epistemic Receipts", type: "website", images: [image] },
+    twitter: { card: "summary_large_image" },
   };
 }

@@ -8,6 +8,7 @@ import {
   OG_CACHE_CONTROL,
   CurveCard,
   FallbackCard,
+  truncate,
 } from "@/lib/og-shared";
 
 // Link-preview card for /settling-curve/[id], /settling-curve?t= and the
@@ -70,7 +71,7 @@ export async function GET(req: NextRequest) {
     return new ImageResponse(<FallbackCard />, { width: W, height: H, headers: OG_HEADERS });
   }
 
-  const title = featured?.hook ?? claimText ?? "";
+  const title = truncate(featured?.hook ?? claimText ?? "", 220); // as the claim card
   const communities = new Set(statusHistory.map((s) => s.community).filter(Boolean)).size;
   const caption =
     `${statusHistory.length} transition${statusHistory.length !== 1 ? "s" : ""}` +

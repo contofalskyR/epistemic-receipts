@@ -8,6 +8,7 @@ import HomepageSections, { type HomepageStats } from "./HomepageSections";
 import { buildSettlingRateAnalysis } from "@/lib/settlingRate";
 import { loadRecentTransitions } from "@/lib/feed";
 import { compactCount } from "@/lib/format";
+import { socialMetadata } from "@/lib/og";
 import { getSettlingCurveCounts } from "@/lib/curve-counts";
 import OnThisDay from "@/app/components/OnThisDay";
 import MobileTrajectoryCarousel from "@/app/components/MobileTrajectoryCarousel";
@@ -17,11 +18,16 @@ export const revalidate = 3600;
 
 // V1 landing metadata mirrors the hero copy. No corpus numbers here — metadata
 // is built at compile time and hand-written figures would drift from the DB
-// (marketing house rule: derived, never hand-written).
+// (marketing house rule: derived, never hand-written). The homepage is the one
+// page whose card carries the site root as og:url (the root layout's default
+// block is image-only).
+const title = "Epistemic Receipts — how long does “settled” stay settled?";
+const description =
+  "A research observatory of sourced claims, each carrying a dated epistemic trajectory — recorded, settled, contested, and sometimes reversed.";
 export const metadata: Metadata = {
-  title: "Epistemic Receipts — how long does “settled” stay settled?",
-  description:
-    "A research observatory of sourced claims, each carrying a dated epistemic trajectory — recorded, settled, contested, and sometimes reversed.",
+  title,
+  description,
+  ...socialMetadata({ title, description, url: "/" }),
 };
 
 async function loadHomepageData() {

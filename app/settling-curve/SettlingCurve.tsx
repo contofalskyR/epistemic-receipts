@@ -1787,7 +1787,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                         <ShareButtons
                           url={typeof window !== "undefined" ? window.location.href : ""}
                           text={shareText}
-                          imageCardUrl={activeId ? `/api/og/trajectory?id=${activeId}` : undefined}
+                          imageCardUrl={activeId ? `/api/og/trajectory?id=${encodeURIComponent(activeId)}` : undefined}
                         />
                         {/* Raw-claim mode (id not in the curated list): link back to the receipt */}
                         {activeId && !activeItem && (
