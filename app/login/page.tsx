@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { safeRedirectPath } from "@/lib/safeRedirect";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
@@ -16,13 +17,11 @@ export default function LoginPage() {
       body: JSON.stringify({ password }),
     });
     if (res.ok) {
-      const params = new URLSearchParams(window.location.search);
-      const from = params.get("from") ?? "";
-      // Only honor internal paths (single leading slash, not protocol-relative //)
-      const dest = /^\/(?!\/)/.test(from) ? from : "/";
-      window.location.href = dest;
+      // Back to the page the gate came from — a path on this origin only.
+      window.location.href = safeRedirectPath(new URLSearchParams(window.location.search).get("from"), window.location.origin);
     } else {
-      const data = await res.json();
+      // The middleware's 429 is plain text, not JSON.
+      const data = await res.json().catch(() => ({}));
       setError(data.error ?? "Incorrect password.");
       setLoading(false);
     }

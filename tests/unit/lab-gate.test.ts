@@ -5,6 +5,7 @@ import path from "node:path";
 import { NextRequest } from "next/server";
 import { middleware } from "@/middleware";
 import { isKnownRoute } from "@/lib/routeManifest";
+import { safeRedirectPath } from "@/lib/safeRedirect";
 
 // Front door phase 2 (STATUS.md, locked 2026-09-30): one deployment; every
 // page route not on the exact public list needs the admin session and gets the
@@ -198,6 +199,16 @@ describe("Lab gate (middleware.ts)", () => {
   it.each(["/votes/%E2%82%AC%2Fb", "/members/%25"])("%s: from= is the path as requested, so signing in returns to it", async (p) => {
     expect(gate(await middleware(req(p)))?.searchParams.get("from")).toBe(p);
   });
+
+  it.each(["/members/%2F..%2F..%2F%2Fevil.example", "/votes/%5C..%5C..%5C%5Cevil.example", "/members/%25"])(
+    "%s: /login's redirect back to from= stays on this origin",
+    async (p) => {
+      const g = gate(await middleware(req(p)));
+      expect(g).not.toBeNull();
+      const dest = safeRedirectPath(g!.searchParams.get("from"), "http://localhost");
+      expect(new URL(dest, "http://localhost/login").origin).toBe("http://localhost");
+    },
+  );
 
   it.each([
     "/settling-curve/cdc-blood-lead-reference-value-3.5-2021",
