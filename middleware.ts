@@ -13,7 +13,14 @@ const rateLimitMap = new Map<string, RateLimitEntry>();
 
 type RateRule = { pattern: RegExp; maxPerMin: number; methods?: string[] };
 
+// checkRateLimit takes the FIRST matching rule, so the exact write rules come
+// before the broad read prefixes — /api/search used to give
+// POST /api/search/miss 30/min instead of its 5 (front door phase 6).
 const RATE_LIMIT_RULES: RateRule[] = [
+  // Public write endpoints — tight limits (per IP, per isolate)
+  { pattern: /^\/api\/login$/, maxPerMin: 10, methods: ["POST"] },
+  { pattern: /^\/api\/feedback$/, maxPerMin: 5, methods: ["POST"] },
+  { pattern: /^\/api\/search\/miss$/, maxPerMin: 5, methods: ["POST"] },
   // Read endpoints — generous limits
   { pattern: /^\/api\/search(\/|$|\?)/, maxPerMin: 30 },
   { pattern: /^\/api\/stats(\/|$|\?)/, maxPerMin: 20 },
@@ -21,10 +28,6 @@ const RATE_LIMIT_RULES: RateRule[] = [
   { pattern: /^\/api\/globe(\/|$|\?)/, maxPerMin: 20 },
   // Server-side fetch proxy — tighter, since each call makes an outbound fetch
   { pattern: /^\/api\/proxy\/reader/, maxPerMin: 20 },
-  // Public write endpoints — tight limits (per IP, per isolate)
-  { pattern: /^\/api\/login$/, maxPerMin: 10, methods: ["POST"] },
-  { pattern: /^\/api\/feedback$/, maxPerMin: 5, methods: ["POST"] },
-  { pattern: /^\/api\/search\/miss$/, maxPerMin: 5, methods: ["POST"] },
 ];
 
 function checkRateLimit(
@@ -120,14 +123,64 @@ async function isAdminRequest(req: NextRequest): Promise<boolean> {
   return adminCookie === expectedHash;
 }
 
+// ─── Path spellings ───────────────────────────────────────────────────────────
+// req.nextUrl.pathname is still percent-encoded, while Next routes production
+// requests on the decoded path (router-utils/filesystem.js "check decoded
+// variant") and matches [id] segments on the raw one. So every gate below is
+// judged on BOTH spellings: a request passes a gate only if both do
+// (front door phase 6 — /settling-curve/%63overage served a Lab page).
+
+/** The request path decoded once, or null for a malformed escape (%ZZ, bad UTF-8). */
+function decodePath(raw: string): string | null {
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return null;
+  }
+}
+
+// A decoded path we 308 to: a leading "/" and no "//" anywhere (never a
+// protocol-relative Location, nothing Next would normalise again, and new
+// URL() below cannot throw), and only RFC 3986 unreserved characters, "/" and
+// ":" — characters no browser or proxy re-encodes, so the redirect cannot
+// loop (Chromium re-encodes "|", for one).
+const CANONICAL_PATH = /^(?!.*\/\/)\/[A-Za-z0-9\-._~:/]*$/;
+
+/** A page's prefetch segment files (/history.segments/_full.segment[.rsc]) are
+ *  judged as the page itself. */
+const pagePath = (p: string) => p.replace(/\.segments\/.*$/, "").replace(/\.rsc$/, "");
+
 // ─── Middleware ───────────────────────────────────────────────────────────────
 
 export async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const rawPath = req.nextUrl.pathname;
+  const pathname = decodePath(rawPath);
+  if (pathname === null) {
+    return new NextResponse("Bad Request", { status: 400, headers: { "Content-Type": "text/plain" } });
+  }
+  const spellings = pathname === rawPath ? [pathname] : [pathname, rawPath];
   const method = req.method;
   // Auth gates are enforced in production. `next dev` keeps the local
   // editing workflow available without configuring ADMIN_TOKEN.
   const isDev = process.env.NODE_ENV === "development";
+
+  // One URL per page: an encoded ASCII alias (/%68istory,
+  // /settling-curve/%63overage) gets a 308 to its decoded spelling — admins
+  // too, so an alias never renders (or writes an ISR entry for) a page under a
+  // second URL. /api/ is left alone. The target must be exactly the path it
+  // names: dot segments resolve ("/.//evil.example" would become the
+  // protocol-relative "//evil.example"), so those, "//", "%" and non-ASCII
+  // never redirect.
+  if (
+    pathname !== rawPath &&
+    !pathname.startsWith("/api/") &&
+    CANONICAL_PATH.test(pathname) &&
+    new URL(pathname, req.nextUrl.origin).pathname === pathname
+  ) {
+    const url = req.nextUrl.clone();
+    url.pathname = pathname;
+    return NextResponse.redirect(url, 308);
+  }
 
   // Rate limiting — applied before auth so bots can't even reach the auth check
   maybePrune();
@@ -153,29 +206,25 @@ export async function middleware(req: NextRequest) {
   // not on the exact public list needs the admin session and gets the same
   // gate as /admin — a redirect to /login?from=…. /login itself stays open so
   // the owner can sign in; API routes keep their own gates (reads public,
-  // writes admin below); paths with a file extension (robots.txt, sitemap.xml,
-  // assets) pass through. A path with no page file at all (lib/routeManifest.ts,
-  // generated at build time) falls through to Next's real 404 instead — the
-  // gate is for Lab pages, not for typos.
-  const isPageRequest = !pathname.startsWith("/api/") && !pathname.includes(".");
-  if (
-    !isDev &&
-    isPageRequest &&
-    pathname !== "/login" &&
-    !isPublicRoute(pathname) &&
-    isKnownRoute(pathname)
-  ) {
+  // writes admin below). A page is whatever lib/routeManifest.ts (generated
+  // from app/**/page.tsx at build time) knows, dots or not — /votes/x.y is a
+  // page. Files and metadata routes (robots.txt, sitemap.xml, public/) are not
+  // in it and pass through, and so does a path with no page file at all, to
+  // Next's real 404 — the gate is for Lab pages, not for typos. from= carries
+  // the path as requested, so signing in returns to the same URL.
+  const isLabPage = (p: string) => p !== "/login" && isKnownRoute(p) && !isPublicRoute(p);
+  if (!isDev && !pathname.startsWith("/api/") && spellings.some(p => isLabPage(pagePath(p)))) {
     if (!(await isAdminRequest(req))) {
       const loginUrl = req.nextUrl.clone();
       loginUrl.pathname = "/login";
       loginUrl.search = "";
-      loginUrl.searchParams.set("from", pathname);
+      loginUrl.searchParams.set("from", rawPath);
       return NextResponse.redirect(loginUrl);
     }
   }
 
   // ── Admin-only areas (pages and APIs) ──
-  if (!isDev && ADMIN_PATHS.some(p => p.test(pathname))) {
+  if (!isDev && spellings.some(s => ADMIN_PATHS.some(p => p.test(s)))) {
     if (!(await isAdminRequest(req))) {
       if (pathname.startsWith("/api/")) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -183,7 +232,7 @@ export async function middleware(req: NextRequest) {
       const loginUrl = req.nextUrl.clone();
       loginUrl.pathname = "/login";
       loginUrl.search = "";
-      loginUrl.searchParams.set("from", pathname);
+      loginUrl.searchParams.set("from", rawPath);
       return NextResponse.redirect(loginUrl);
     }
   }
@@ -193,7 +242,7 @@ export async function middleware(req: NextRequest) {
     !isDev &&
     pathname.startsWith("/api/") &&
     isMutation(method) &&
-    !PUBLIC_WRITE_PATHS.some(p => p.test(pathname))
+    !spellings.every(s => PUBLIC_WRITE_PATHS.some(p => p.test(s)))
   ) {
     if (!(await isAdminRequest(req))) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -204,11 +253,9 @@ export async function middleware(req: NextRequest) {
   // Leave SITE_PASSWORD unset in production to run the site public read-only.
   const sitePassword = process.env.SITE_PASSWORD;
   if (sitePassword) {
-    const allowedThrough =
-      pathname === "/login" ||
-      pathname === "/api/login" ||
-      pathname.startsWith("/embed/") ||
-      pathname.startsWith("/api/badge/");
+    const allowedThrough = spellings.every(
+      p => p === "/login" || p === "/api/login" || p.startsWith("/embed/") || p.startsWith("/api/badge/"),
+    );
 
     if (!allowedThrough) {
       const cookie = req.cookies.get("site_auth")?.value;
@@ -225,7 +272,8 @@ export async function middleware(req: NextRequest) {
         }
         const loginUrl = req.nextUrl.clone();
         loginUrl.pathname = "/login";
-        loginUrl.searchParams.set("from", pathname);
+        loginUrl.search = "";
+        loginUrl.searchParams.set("from", rawPath);
         return NextResponse.redirect(loginUrl);
       }
     }
