@@ -114,7 +114,7 @@ export const PUBLIC_ROUTES = [
 
 4. **Database:** create a Neon role with `SELECT`-only grants and use its connection string in project B. **Superseded 2026-07-16:** the role is `er_scoped_writes` — SELECT everywhere, INSERT/UPDATE/DELETE on `Profile`/`Bookmark`/`Follow`, INSERT on `Feedback`, and no access at all to the email-bearing subscription tables. Public edition physically cannot write, independent of `ALLOW_EDITS`/`ADMIN_TOKEN` (omit both from project B's env anyway). Public write paths that must still work (feedback, search-miss, subscribe) can keep a scoped-writes role or an API route that proxies via the lab deployment — decide per feature; default is read-only.
 
-5. **Crawlability split:** `robots.txt` and `sitemap.ts` (briefing 04) serve real content only when `IS_PUBLIC_EDITION`; the lab project serves `Disallow: /`. Search engines and AI crawlers only ever meet the curated surface. OG metadata likewise.
+5. **Crawlability split:** `robots.txt` and `sitemap.ts` (briefing 04) serve real content only when `IS_PUBLIC_EDITION`; the lab project serves `Disallow: /`. Search engines and AI crawlers only ever meet the curated surface. OG metadata likewise. *(Retired: the edition split went in front door phase 2, 2026-09-30. `app/robots.ts` is the one robots.txt; phase 6 deleted a stale `public/robots.txt` that had shadowed it since 2026-07-13.)*
 
 6. **Flip the switch:** set `SITE_PASSWORD` on project A. The lab returns to private; the public domain is the only anonymous surface.
 
