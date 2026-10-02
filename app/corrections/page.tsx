@@ -2,7 +2,13 @@ import Link from "next/link";
 import { Suspense } from "react";
 import CorrectionForm from "./CorrectionForm";
 
-export const revalidate = 3600;
+// Rendered per request (front door phase 6; the page reads nothing from the
+// database). As an ISR page it was prerendered without a query, so after a
+// document load of a flag link (?claim=…&transition=…) the client router kept
+// a route-cache entry from hydration that sent every <Link> to /corrections
+// back to that query for 5 minutes — the form then filed a general correction
+// against the earlier transition. /retraction-explorer had the same bug.
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Corrections — Epistemic Receipts",
