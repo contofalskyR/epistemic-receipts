@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Quote } from "lucide-react";
 
 type Props = {
@@ -12,28 +12,65 @@ const FORMATS = [
   { label: "RIS", value: "ris", ext: "ris" },
   { label: "CSL-JSON", value: "csl-json", ext: "json" },
 ] as const;
+type Format = (typeof FORMATS)[number];
 
 export default function CitationButton({ type, id }: Props) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
-  const ref = useRef<HTMLDivElement>(null);
+  const [note, setNote] = useState<string | null>(null);
 
-  async function copyFormat(format: string) {
-    const url = `/api/citations/${type}/${id}?format=${format}`;
+  // One fetch for Copy and Download, and only a 2xx body is ever copied or
+  // saved: the route answers 422 for an entity with no citable source (237
+  // curated trajectories have no live evidence edge), and the old buttons
+  // copied or downloaded that JSON error under a ✓ (front door phase 6).
+  async function fetchCitation(f: Format): Promise<Response | null> {
+    setNote(null);
+    setCopied(null);
+    let res: Response;
     try {
-      const res = await fetch(url);
-      const text = await res.text();
-      await navigator.clipboard.writeText(text);
-      setCopied(format);
+      res = await fetch(`/api/citations/${type}/${encodeURIComponent(id)}?format=${f.value}`);
+    } catch {
+      setNote("Couldn't load the citation (network error).");
+      return null;
+    }
+    if (res.status === 422) {
+      setNote(`No citable source recorded for this ${type} yet.`);
+      return null;
+    }
+    if (!res.ok) {
+      setNote(`Couldn't load the citation (HTTP ${res.status}).`);
+      return null;
+    }
+    return res;
+  }
+
+  async function copyFormat(f: Format) {
+    const res = await fetchCitation(f);
+    if (!res) return;
+    try {
+      await navigator.clipboard.writeText(await res.text());
+      setCopied(f.value);
       setTimeout(() => setCopied(null), 1500);
     } catch {
-      // fallback: open in new tab
-      window.open(url, "_blank");
+      setNote("Couldn't copy to the clipboard. Use the download button instead.");
     }
   }
 
+  async function downloadFormat(f: Format) {
+    const res = await fetchCitation(f);
+    if (!res) return;
+    const href = URL.createObjectURL(await res.blob());
+    const a = document.createElement("a");
+    a.href = href;
+    a.download = `${type}-${id}.${f.ext}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(href), 10_000);
+  }
+
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -51,23 +88,28 @@ export default function CitationButton({ type, id }: Props) {
               <span className="text-xs text-gray-300">{f.label}</span>
               <div className="flex gap-2">
                 <button
-                  onClick={() => copyFormat(f.value)}
+                  type="button"
+                  onClick={() => copyFormat(f)}
                   className="text-xs text-gray-400 hover:text-white"
                   title="Copy to clipboard"
                 >
                   {copied === f.value ? "✓" : "Copy"}
                 </button>
-                <a
-                  href={`/api/citations/${type}/${id}?format=${f.value}`}
-                  download={`${type}-${id}.${f.ext}`}
+                <button
+                  type="button"
+                  onClick={() => downloadFormat(f)}
                   className="text-xs text-gray-400 hover:text-white"
                   title="Download"
+                  aria-label={`Download ${f.label}`}
                 >
                   ↓
-                </a>
+                </button>
               </div>
             </div>
           ))}
+          <p role="status" aria-live="polite" className="px-3 text-xs text-amber-300/90">
+            {note ?? ""}
+          </p>
         </div>
       )}
     </div>

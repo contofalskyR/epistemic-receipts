@@ -309,6 +309,9 @@ export default function OpinionsClient() {
   const pages = data?.pages ?? 1;
   // The API clamps the page to the real page count; show and step from its page.
   const shownPage = data?.page ?? page;
+  // The header counts every opinion whatever the filter; no figure until the
+  // API has answered (it used to show the filtered total, or a typed one).
+  const allTotal = data?.allTotal;
 
   return (
     <div style={{ background: C.bg, minHeight: "100vh", marginTop: "-2rem", marginLeft: "-1.5rem", marginRight: "-1.5rem" }}>
@@ -374,7 +377,7 @@ export default function OpinionsClient() {
             </div>
           </div>
           <p style={{ color: C.mut, fontSize: "0.95rem", lineHeight: 1.6, maxWidth: "52rem", margin: "0 0 1.5rem" }}>
-            {total > 0 ? total.toLocaleString() : "2,711"} U.S. court opinions — SCOTUS, federal circuits, state supreme courts, and more — each linked to related legislation and indexed as searchable epistemic claims.
+            {typeof allTotal === "number" ? `${allTotal.toLocaleString("en-US")} ` : ""}U.S. court opinions — SCOTUS, federal circuits, state supreme courts, and more — each linked to related legislation and indexed as searchable epistemic claims.
           </p>
           <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap" }}>
             {(["SCOTUS", "Circuit", "State"] as const).map((label) => {
