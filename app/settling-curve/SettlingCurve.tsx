@@ -329,7 +329,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
         setListLoading(false);
       })
       .catch(() => {
-        if (!cancelled) { setListLoading(false); setListError(true); setLoadingDetail(false); }
+        if (!cancelled) { setListLoading(false); setListError(true); }
       });
     return () => {
       cancelled = true;
@@ -1786,7 +1786,14 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                       : undefined
                   }
                 >
-                  {displayTitle || (detailMissing ? "Trajectory not found" : loadingDetail || listLoading ? "" : "Select a trajectory")}
+                  {displayTitle ||
+                    (detailMissing
+                      ? "Trajectory not found"
+                      : detailError
+                        ? "Trajectory unavailable"
+                        : loadingDetail || listLoading
+                          ? ""
+                          : "Select a trajectory")}
                   {titleNeedsToggle && !titleExpanded && (
                     <span
                       className="ml-2 align-middle font-mono"

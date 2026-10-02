@@ -1,8 +1,9 @@
 import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { resolveRobots } from "next/dist/build/webpack/loaders/metadata/resolve-route-data";
+import { createRequire } from "node:module";
 import robots from "@/app/robots";
+import { SITE_URL } from "@/lib/site";
 
 // One robots.txt (front door phase 6, 2026-10-01). Under `next start` a file in
 // public/ is served before an app route, so a stale public/robots.txt
@@ -11,7 +12,17 @@ import robots from "@/app/robots";
 // is the only source now, and it keeps /api/og/ open for link-preview bots.
 
 const ROOT = path.resolve(__dirname, "../..");
-const TXT = resolveRobots(robots());
+
+/** robots.txt as Next serves it. Next's serializer (resolveRobots, Next 16.2.6)
+ *  is loaded lazily, so a moved internal fails these cases, not the
+ *  public/ shadow guard. */
+function served(): string {
+  const req = createRequire(import.meta.url);
+  const { resolveRobots } = req("next/dist/build/webpack/loaders/metadata/resolve-route-data.js") as {
+    resolveRobots: (r: ReturnType<typeof robots>) => string;
+  };
+  return resolveRobots(robots());
+}
 
 /** RFC 9309 for the `User-agent: *` group: the longest matching pattern wins,
  *  an equally long Allow beats Disallow, no match means allowed; `*` matches
@@ -47,17 +58,18 @@ describe("robots.txt", () => {
     }
   });
 
-  it("allows /api/og/, disallows the rest of /api/, and points at this host's sitemap", () => {
-    expect(TXT).toMatch(/^Allow: \/api\/og\/$/m);
-    expect(TXT).toMatch(/^Disallow: \/api\/$/m);
-    expect(TXT).toMatch(/^Sitemap: \S+\/sitemap\.xml$/m);
-    expect(TXT).not.toContain("api/v1");
+  it("allows /api/og/, disallows the rest of /api/, and points at this deployment's sitemap", () => {
+    const txt = served();
+    expect(txt).toMatch(/^Allow: \/api\/og\/$/m);
+    expect(txt).toMatch(/^Disallow: \/api\/$/m);
+    expect(txt).toContain(`Sitemap: ${SITE_URL}/sitemap.xml\n`);
+    expect(txt).not.toContain("api/v1");
   });
 
   it.each(["/", "/claims/abc", "/topics/medicine", "/settling-curve/continental-drift", "/api/og/claim?id=x", "/api/og/trajectory?id=y", "/api/og/default"])(
     "%s is crawlable",
     (p) => {
-      expect(allowed(TXT, p)).toBe(true);
+      expect(allowed(served(), p)).toBe(true);
     },
   );
 
@@ -77,6 +89,6 @@ describe("robots.txt", () => {
     "/labs/claim-diff",
     "/claims/abc/edit",
   ])("%s is disallowed", (p) => {
-    expect(allowed(TXT, p)).toBe(false);
+    expect(allowed(served(), p)).toBe(false);
   });
 });

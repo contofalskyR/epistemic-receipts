@@ -1,9 +1,16 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { socialMetadata, defaultSocialMetadata, DEFAULT_OG_IMAGE, trajectoryOgImage, claimOgImage } from "@/lib/og";
 import { truncate } from "@/lib/og-shared";
+
+// The root layout's real generateMetadata() runs below: stub its font loader
+// and its hourly corpus count.
+vi.mock("next/font/google", () => ({ Geist: () => ({ variable: "" }), Geist_Mono: () => ({ variable: "" }) }));
+vi.mock("@/lib/corpus", () => ({ corpusCountCompact: async () => "1.76M" }));
+import { generateMetadata as rootLayoutMetadata } from "@/app/layout";
+import { metadata as topicsLayoutMetadata } from "@/app/topics/layout";
 
 // Front door phase 5 (STATUS.md, 2026-09-30): link previews. Next merges
 // `openGraph` per segment by replacing the whole object, so a page that sets
@@ -69,6 +76,7 @@ describe("every openGraph block in app/ carries an image", () => {
     const src = fs.readFileSync(path.join(APP, "layout.tsx"), "utf8");
     expect(src).toMatch(/defaultSocialMetadata\(\)/);
     expect(src).not.toMatch(/socialMetadata\(\{/);
+    expect(src).not.toMatch(/^\s*(openGraph|twitter)\s*:/m); // no block of its own beside the default
     expect(src).toMatch(/metadataBase/);
   });
 
@@ -119,10 +127,10 @@ describe("Next's metadata resolver under the root default", () => {
     const { accumulateMetadata } = req("next/dist/lib/metadata/resolve-metadata.js") as { accumulateMetadata: Accumulate };
     return accumulateMetadata(route, items, Promise.resolve(route), { trailingSlash: false, isStaticMetadataRouteFile: false });
   }
-  const root = { metadataBase: new URL("https://er.test"), title: "Epistemic Receipts", description: "root description", ...defaultSocialMetadata() };
   const url = (u: unknown) => String(u);
 
   it("a page with only a title and description gets its own og and twitter title, no og:url, the default image", async () => {
+    const root = await rootLayoutMetadata();
     const page = { title: "Court Opinions — Epistemic Receipts", description: "page description" };
     const m = await accumulate("/opinions", [[root, null], [null, null], [page, null]]);
     expect(m.openGraph?.title?.absolute).toBe(page.title);
@@ -136,13 +144,14 @@ describe("Next's metadata resolver under the root default", () => {
   });
 
   it("a title from a nested layout (app/topics/layout.tsx) carries through", async () => {
-    const topics = { title: "Topics — Epistemic Receipts", description: "topics description" };
-    const m = await accumulate("/topics/medicine", [[root, null], [topics, null], [null, null], [null, null]]);
-    expect(m.openGraph?.title?.absolute).toBe(topics.title);
+    const root = await rootLayoutMetadata();
+    const m = await accumulate("/topics/medicine", [[root, null], [topicsLayoutMetadata, null], [null, null], [null, null]]);
+    expect(m.openGraph?.title?.absolute).toBe(topicsLayoutMetadata.title);
     expect(m.openGraph?.url ?? null).toBeNull();
   });
 
   it("a page with its own og image and no twitter block gets that image on twitter too", async () => {
+    const root = await rootLayoutMetadata();
     const page = { title: "A receipt", openGraph: { title: "A receipt", images: [{ url: "/api/og/receipt?id=x" }] } };
     const m = await accumulate("/receipts/x", [[root, null], [null, null], [page, null]]);
     expect(url(m.twitter?.images?.[0]?.url)).toMatch(/\/api\/og\/receipt\?id=x$/);

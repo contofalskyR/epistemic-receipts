@@ -29,7 +29,11 @@ export async function generateMetadata(): Promise<Metadata> {
     // page without its own block inherits this one whole, and Next fills the
     // og and twitter title/description from the page itself — a title or url
     // set here would label every such page as the homepage. Pages with their
-    // own card use the socialMetadata helper, which keeps the image attached.
+    // own card set an image-bearing block, through the socialMetadata helper or
+    // by hand (claims/[id], settling-curve, settling-curve/[id], receipts/[id];
+    // og-metadata.test.ts enforces the image). receipts/[id] has no twitter
+    // block and relies on Next copying its og:image, so the twitter default
+    // here carries no image.
     ...defaultSocialMetadata(),
   };
 }

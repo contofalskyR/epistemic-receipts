@@ -332,18 +332,20 @@ export default function RetractionExplorerClient({
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Filters change the URL with history.pushState, not a router navigation
-  // (front door phase 6). This page is ISR: loaded with a query string, the
-  // router seeds its route cache from the prerendered payload (no search) while
-  // keeping the query in canonicalUrl, and for the 300 s static stale time
-  // every router navigation or <Link> to this page lands on that stale entry —
-  // chips, Clear filters and the nav link did nothing. pushState only updates the URL
-  // (Next syncs useSearchParams with it) and never consults the route cache.
-  // Built from window.location, which pushState updates at once, so a pending
-  // debounce cannot drop a chip clicked meanwhile.
+  // (front door phase 6): Next syncs useSearchParams with it, the fetch effect
+  // below reacts, and no RSC round trip or route-cache entry is involved — the
+  // ISR page's cached entry used to swallow every chip and Clear filters click
+  // after a deep link (page.tsx). Built from window.location, which pushState
+  // updates at once, so a pending debounce cannot drop a chip clicked meanwhile.
   const pushUrl = useCallback((overrides: Record<string, string>) => {
     const p = new URLSearchParams(window.location.search);
     for (const [k, v] of Object.entries(overrides)) {
-      const isDefault = !v || v === "all" || v === "1" || (k === "sortBy" && v === "impact");
+      // Each key's own default — a typed query of "all" or "1" is a query.
+      const isDefault =
+        !v ||
+        ((k === "field" || k === "reason") && v === "all") ||
+        (k === "page" && v === "1") ||
+        (k === "sortBy" && v === "impact");
       if (isDefault) p.delete(k);
       else p.set(k, v);
     }

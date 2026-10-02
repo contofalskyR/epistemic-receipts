@@ -11,18 +11,33 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
-    });
+    let res: Response;
+    try {
+      res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+    } catch {
+      setError("Network error — try again.");
+      setLoading(false);
+      return;
+    }
     if (res.ok) {
       // Back to the page the gate came from — a path on this origin only.
       window.location.href = safeRedirectPath(new URLSearchParams(window.location.search).get("from"), window.location.origin);
     } else {
-      // The middleware's 429 is plain text, not JSON.
-      const data = await res.json().catch(() => ({}));
-      setError(data.error ?? "Incorrect password.");
+      // The route answers JSON with an error; the middleware's rate-limit 429
+      // is plain text, which must not read as a wrong password.
+      const data: { error?: string } = await res.json().catch(() => ({}));
+      setError(
+        data.error ??
+          (res.status === 429
+            ? "Too many attempts — wait a minute and try again."
+            : res.status === 401
+              ? "Incorrect password."
+              : `Sign-in failed (HTTP ${res.status}).`),
+      );
       setLoading(false);
     }
   }

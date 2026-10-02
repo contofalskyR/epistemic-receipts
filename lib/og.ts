@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 // Link-preview metadata (STATUS.md Phase 5). Next merges `openGraph` and
 // `twitter` per segment by *replacing* the whole object, so a page that sets
 // its own openGraph title silently drops the root layout's image — every
-// page-level block goes through socialMetadata() to keep an image attached.
-// The root layout uses defaultSocialMetadata() instead: image only, so pages
-// without a block of their own keep their own title (phase 6).
+// page-level block must carry an image: through socialMetadata(), or by hand
+// as claims/[id], settling-curve(/[id]) and receipts/[id] do
+// (tests/unit/og-metadata.test.ts enforces it). The root layout uses
+// defaultSocialMetadata(): image only, so pages without a block of their own
+// keep their own title (phase 6).
 //
 // Images: /api/og/trajectory and /api/og/claim draw the settling curve
 // (lib/og-shared.tsx CurveCard); /api/og/default is the card for everything

@@ -8,18 +8,13 @@ import { isPublicRoute } from "@/lib/publicEdition";
 // Six flat links + About (STATUS.md, locked 2026-09-30; AUDIT.md §D). Every
 // other public page is surfaced from the homepage and /settling-curve;
 // Methodology, Corrections and legal live in the footer (app/layout.tsx).
-// `hard`: a plain <a> (full page load), not a client <Link>. /retraction-explorer
-// is ISR, and once it has been opened with a query string the client router
-// keeps a route-cache entry from hydration that points at that query for the
-// 300 s static stale time — a <Link> there landed back on ?q=… (front door
-// phase 6; replaceState-on-mount and prefetch={false} cannot clear it).
-type NavLink = { href: string; label: string; hard?: boolean };
+type NavLink = { href: string; label: string };
 
 const TOP_LINKS: NavLink[] = [
   { href: "/settling-curve", label: "Settling Curve" },
   { href: "/search", label: "Search" },
   { href: "/opinions", label: "Opinions" },
-  { href: "/retraction-explorer", label: "Retractions", hard: true },
+  { href: "/retraction-explorer", label: "Retractions" },
   { href: "/split-ledger", label: "Split Ledger" },
   { href: "/reversals", label: "Reversals" },
 ];
@@ -220,17 +215,11 @@ export default function Nav({ claimsCompact }: { claimsCompact: string }) {
         <Link href="/" className="font-semibold text-white">
           Epistemic Receipts
         </Link>
-        {TOP_LINKS.map((l) =>
-          l.hard ? (
-            <a key={l.href} href={l.href} className="text-gray-400 hover:text-white transition-colors">
-              {l.label}
-            </a>
-          ) : (
-            <Link key={l.href} href={l.href} className="text-gray-400 hover:text-white transition-colors">
-              {l.label}
-            </Link>
-          ),
-        )}
+        {TOP_LINKS.map((l) => (
+          <Link key={l.href} href={l.href} className="text-gray-400 hover:text-white transition-colors">
+            {l.label}
+          </Link>
+        ))}
         <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
           About
         </Link>
@@ -270,27 +259,16 @@ export default function Nav({ claimsCompact }: { claimsCompact: string }) {
           >
             ⌕ Search {claimsCompact} claims
           </Link>
-          {TOP_LINKS.filter((l) => l.href !== "/search").map((l) =>
-            l.hard ? (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="block py-2 text-gray-300 hover:text-white transition-colors"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="block py-2 text-gray-300 hover:text-white transition-colors"
-              >
-                {l.label}
-              </Link>
-            ),
-          )}
+          {TOP_LINKS.filter((l) => l.href !== "/search").map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 text-gray-300 hover:text-white transition-colors"
+            >
+              {l.label}
+            </Link>
+          ))}
           <Link
             href="/about"
             onClick={() => setMobileOpen(false)}

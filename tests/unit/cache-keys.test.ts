@@ -39,6 +39,7 @@ import { GET as opinionsGET } from "@/app/api/opinions/route";
 import { GET as retractionsGET } from "@/app/api/retractions/route";
 import { GET as trajectoryGET } from "@/app/api/trajectories/[id]/route";
 import { splitLedgerParams, loadSplitLedgerCounts, TIER2_COMMUNITY_PAIRS } from "@/lib/split-ledger";
+import { FIELD_OPTIONS, REASON_OPTIONS } from "@/lib/retraction-filters";
 import SplitLedgerPage from "@/app/split-ledger/page";
 import CanonPage from "@/app/canon/page";
 
@@ -148,6 +149,7 @@ describe("/api/retractions", () => {
   const allParams = () => sqlCalls().flatMap(([, ...p]) => p) as string[];
   /** Every $n in the SQL has a parameter and every parameter is used. */
   const expectNumbering = () => {
+    expect(sqlCalls().length).toBeGreaterThan(0);
     for (const [sql, ...params] of sqlCalls()) {
       const idx = [...sql.matchAll(/\$(\d+)/g)].map((m) => Number(m[1]));
       expect(Math.max(0, ...idx)).toBe(params.length);
@@ -185,8 +187,27 @@ describe("/api/retractions", () => {
     expectNumbering();
   });
 
+  it.each([...FIELD_OPTIONS.map((f) => `field=${f}`), ...REASON_OPTIONS.map((r) => `reason=${r}`), "field=", "reason="])(
+    "%s is a valid filter: the count and page queries both run",
+    async (qs) => {
+      await retractionsGET(get(`/api/retractions?${qs}`));
+      expect(sqlCalls()).toHaveLength(2);
+      expectNumbering();
+    },
+  );
+
+  // The explorer's sub-nav sends these literals (RetractionExplorerClient), not FIELD_OPTIONS/REASON_OPTIONS.
+  it.each(["field=Medicine", "field=Psychology", "field=Biology", "reason=Retraction", "reason=Correction"])(
+    "%s (an explorer sub-nav value) reaches the database",
+    async (qs) => {
+      await retractionsGET(get(`/api/retractions?${qs}`));
+      expect(sqlCalls()).toHaveLength(2);
+    },
+  );
+
   it("keeps the $n numbering with reason, q and field together", async () => {
     await retractionsGET(get("/api/retractions?field=Biology&reason=Retraction&q=rna"));
+    expect(sqlCalls()).toHaveLength(2);
     expectNumbering();
     for (const [, ...params] of sqlCalls()) {
       expect(params.slice(0, 3)).toEqual(["%Retraction%", "%rna%", "%rna%"]);
@@ -250,49 +271,73 @@ describe("/api/trajectories/[id]", () => {
     ],
     ...over,
   });
+  // The uncached existence check queries { OR: [slug, id] }; the cached loader
+  // queries the slug ({ externalId }) and then the raw id ({ id }).
+  type Q = { where: Record<string, unknown>; select: Record<string, unknown> };
+  const isExistence = (q: Q) => "OR" in q.where;
+  const loaderCalls = () => (mp.claim.findFirst.mock.calls as [Q][]).filter(([q]) => !isExistence(q));
 
   beforeEach(() => {
     mp.claim.findFirst = vi.fn().mockResolvedValue(null);
   });
 
-  it("an unknown id is a 404 every time and is never stored", async () => {
+  it("an unknown id is a 404 every time, without touching the Data Cache", async () => {
     for (let i = 0; i < 2; i++) {
       const res = await call("nope-xyz");
       expect(res.status).toBe(404);
       expect(await res.json()).toEqual({ error: "Not found" });
     }
-    expect(mp.claim.findFirst).toHaveBeenCalledTimes(4); // slug lookup + raw-id fallback, twice
+    expect(mp.claim.findFirst).toHaveBeenCalledTimes(2); // the existence check only
+    expect(callsTo("api-trajectory-detail")).toEqual([]);
     expect(store().size).toBe(0);
     expect((await call("nope-xyz", "?format=csv")).status).toBe(404);
   });
 
-  it("looks the slug up whether or not it is deleted (externalId is unique)", async () => {
+  it("checks existence over the slug and the raw id before the cached loader, which reads the slug deleted or not", async () => {
+    mp.claim.findFirst = vi.fn(async (q: Q) => (isExistence(q) ? { id: "c1" } : row()));
     await call("continental-drift");
-    const first = mp.claim.findFirst.mock.calls[0][0];
-    expect(first.where).toEqual({ externalId: "trajectory:continental-drift" });
-    expect(first.select.deleted).toBe(true);
+    expect(mp.claim.findFirst.mock.calls[0][0].where).toEqual({
+      OR: [{ externalId: "trajectory:continental-drift" }, { id: "continental-drift" }],
+    });
+    const [[loader]] = loaderCalls();
+    expect(loader.where).toEqual({ externalId: "trajectory:continental-drift" });
+    expect(loader.select.deleted).toBe(true);
   });
 
-  it("a hit is served from the store the second time", async () => {
-    mp.claim.findFirst.mockResolvedValueOnce(row());
+  it("a hit is served from the store the second time (only the existence check runs again)", async () => {
+    mp.claim.findFirst = vi.fn(async (q: Q) => (isExistence(q) ? { id: "c1" } : row()));
     const a = await call("continental-drift");
     const b = await call("continental-drift");
     expect(a.status).toBe(200);
     expect(await b.json()).toEqual(await a.json());
-    expect(mp.claim.findFirst).toHaveBeenCalledTimes(1);
+    expect(loaderCalls()).toHaveLength(1);
     expect(a.headers.get("cache-control")).toBe("public, s-maxage=3600, stale-while-revalidate=86400");
   });
 
+  it("a row deleted outright (or renamed) after it was cached is a 404 at once — the cached curve is never served", async () => {
+    let present = true;
+    mp.claim.findFirst = vi.fn(async (q: Q) => (!present ? null : isExistence(q) ? { id: "c1" } : row()));
+    expect((await call("old-slug")).status).toBe(200);
+    present = false;
+    expect((await call("old-slug")).status).toBe(404);
+    expect((await call("old-slug", "?format=csv")).status).toBe(404);
+    expect(store().size).toBe(1); // the stale entry is still there, and is not consulted
+  });
+
   it("a soft-deleted claim is a cached 404 (bounded by real rows)", async () => {
-    mp.claim.findFirst.mockResolvedValueOnce(row({ deleted: true })).mockResolvedValueOnce(null);
+    mp.claim.findFirst = vi.fn(async (q: Q) =>
+      isExistence(q) ? { id: "c1" } : "externalId" in q.where ? row({ deleted: true }) : null,
+    );
     expect((await call("old-slug")).status).toBe(404);
     expect((await call("old-slug")).status).toBe(404);
-    expect(mp.claim.findFirst).toHaveBeenCalledTimes(2);
+    expect(loaderCalls()).toHaveLength(2); // slug + raw-id fallback, first request only
     expect(store().size).toBe(1);
   });
 
   it("a live raw-id row wins over a deleted slug row, as before", async () => {
-    mp.claim.findFirst.mockResolvedValueOnce(row({ deleted: true, text: "deleted" })).mockResolvedValueOnce(row({ text: "live" }));
+    mp.claim.findFirst = vi.fn(async (q: Q) =>
+      isExistence(q) ? { id: "c1" } : "externalId" in q.where ? row({ deleted: true, text: "deleted" }) : row({ text: "live" }),
+    );
     const res = await call("cmq7e9wie000bsa8h626rfx9j");
     expect(res.status).toBe(200);
     expect((await res.json()).claim).toBe("live");
@@ -398,9 +443,22 @@ describe("/canon", () => {
     });
   });
 
-  it("clamps ?page to the census page count before the cached page loader", async () => {
+  it("caps ?page at the census page count plus headroom before the cached page loader", async () => {
     await CanonPage({ searchParams: Promise.resolve({ page: "999999" }) });
-    expect(callsTo("canon-page")).toEqual([["all", 3]]); // ceil(120/50)
+    await CanonPage({ searchParams: Promise.resolve({ page: "123456" }) });
+    expect(callsTo("canon-page")).toEqual([["all", 13], ["all", 13]]); // ceil(120/50) + 10: one key for every large page
+  });
+
+  it("a census older than the population still reaches the real last page", async () => {
+    // census cached at 100 papers (2 pages); the population has since grown to 120 (3 pages)
+    mp.$queryRaw = vi.fn(async (q: unknown) => {
+      const text = sqlText(q);
+      if (text.includes("openalex_total")) return [{ total: 100, curved: 10, reversed: 2, reviewed: 5, openalex_total: 1000, no_count: 3 }];
+      if (text.includes("COUNT(*)::int AS n")) return [{ n: 120 }];
+      return [];
+    });
+    await CanonPage({ searchParams: Promise.resolve({ page: "3" }) });
+    expect(callsTo("canon-page")).toEqual([["all", 3]]);
   });
 
   it("an unknown filter is 'all'", async () => {

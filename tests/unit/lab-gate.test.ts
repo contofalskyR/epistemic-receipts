@@ -253,3 +253,42 @@ describe("Lab gate (middleware.ts)", () => {
     expect(statuses).toEqual([200, 200, 200, 200, 200, 429]);
   });
 });
+
+// SITE_PASSWORD (optional private mode, unset in production) gets the same
+// phase 6 rules: both spellings must be on its allow-list, the request's query
+// is not forwarded to /login, and from= is the path as requested.
+describe("SITE_PASSWORD private mode (middleware.ts)", () => {
+  const SITE = "ci-test-site-password-not-secret";
+  const siteCookie = createHash("sha256").update(SITE).digest("hex");
+
+  beforeAll(() => {
+    process.env.ADMIN_TOKEN = TOKEN;
+    Object.assign(process.env, { NODE_ENV: "production" });
+    process.env.SITE_PASSWORD = SITE;
+  });
+  afterAll(() => {
+    delete process.env.SITE_PASSWORD;
+    Object.assign(process.env, { NODE_ENV: "test" });
+    delete process.env.ADMIN_TOKEN;
+  });
+
+  it("an anonymous page request goes to /login with only from= (the query is not forwarded)", async () => {
+    const g = gate(await middleware(req("/opinions?utm_source=x&token=y")));
+    expect(g).not.toBeNull();
+    expect([...g!.searchParams.keys()]).toEqual(["from"]);
+    expect(g!.searchParams.get("from")).toBe("/opinions");
+  });
+
+  it.each(["/login", "/embed/trajectory/h-pylori", "/api/badge/x"])("%s stays open", async (p) => {
+    expect(passedThrough(await middleware(req(p)))).toBe(true);
+  });
+
+  it("a path on the allow-list in only one spelling is gated", async () => {
+    expect(gate(await middleware(req("/embed%2F%E2%82%AC")))).not.toBeNull();
+  });
+
+  it("the site cookie passes; an API read without it is 401", async () => {
+    expect(passedThrough(await middleware(req("/opinions", { cookie: `site_auth=${siteCookie}` })))).toBe(true);
+    expect((await middleware(req("/api/claims"))).status).toBe(401);
+  });
+});

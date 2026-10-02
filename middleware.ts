@@ -211,7 +211,8 @@ export async function middleware(req: NextRequest) {
   // page. Files and metadata routes (robots.txt, sitemap.xml, public/) are not
   // in it and pass through, and so does a path with no page file at all, to
   // Next's real 404 — the gate is for Lab pages, not for typos. from= carries
-  // the path as requested, so signing in returns to the same URL.
+  // the path as requested, so signing in returns to the same path (the query
+  // is dropped on purpose: tokens in it never reach /login).
   const isLabPage = (p: string) => p !== "/login" && isKnownRoute(p) && !isPublicRoute(p);
   if (!isDev && !pathname.startsWith("/api/") && spellings.some(p => isLabPage(pagePath(p)))) {
     if (!(await isAdminRequest(req))) {

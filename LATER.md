@@ -129,6 +129,6 @@ Found during phase 6 (2026-10-01), left for later:
 | item | the one missing piece |
 |---|---|
 | robots and client-rendered pages | `Disallow: /api/` (now actually served) keeps crawlers from the read APIs that `/topics/[slug]` (460 sitemap URLs), `/opinions` and `/retraction-explorer` render from, so those pages index without their data. Owner decision: `Allow` those reads, or render them server-side |
-| router navigation on ISR pages that read their own query | `/retraction-explorer` moved to `history.pushState` in phase 6; the same pattern remains in Lab `PrereqGraphClient` and `CongressTradesClient` (ISR, `router.push` on their own search params) |
+| router navigation on ISR pages that read their own query | after a deep link with a query, the client router keeps a hydration route-cache entry that sends every `<Link>` to the page back to that query for 5 minutes. Phase 6 renders `/retraction-explorer` per request (stats cached) and moves its filters with `history.pushState`; the same pattern remains in Lab `PrereqGraphClient` and `CongressTradesClient` (ISR, `router.push` on their own search params) |
 | one ISR 404 per bogus id | `/claims/[id]`, `/settling-curve/[id]` and `/datasets/[tag]` now return real 404s, and ISR caches one per unique unknown id; for `/datasets/[tag]` (tags are code) `dynamicParams = false` would bound it |
 | `@stoplight/spectral-cli` | unused since phase 6 deleted the API-contract workflow — uninstall is the owner's call |
