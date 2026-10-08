@@ -693,6 +693,7 @@ model ClaimStatusHistory {
   claim          Claim                     @relation(fields: [claimId], references: [id], onDelete: Cascade)
   markerSource   Source?                   @relation("StatusMarker", fields: [sourceId], references: [id])
   claimsSnapshot TransitionClaimsSnapshot?
+  sourceCandidate TransitionSourceCandidate?
 
   // Compound index serves claimId-only lookups via leftmost-prefix, so the
   // standalone @@index([claimId]) is dropped in favor of this one.
@@ -711,6 +712,50 @@ model TransitionClaimsSnapshot {
   createdAt            DateTime @default(now())
 
   claimStatusHistory ClaimStatusHistory @relation(fields: [claimStatusHistoryId], references: [id], onDelete: Cascade)
+}
+
+enum TransitionSourceStatus {
+  candidate
+  accepted
+  rejected
+  no_source_found
+}
+
+// A primary source proposed by scripts/source-transitions.ts (Claude + web
+// search) for one transition, awaiting human review. Nothing here is shown on
+// the site: scripts/review-transition-sources.ts flips status, and
+// scripts/promote-transition-sources.ts --confirm copies accepted rows into
+// Source + Edge (ingestedBy 'claude_sourcing_v1'). One row per transition.
+model TransitionSourceCandidate {
+  id                 String                 @id @default(cuid())
+  transitionId       String                 @unique
+  claimId            String
+  url                String?
+  title              String?
+  publisher          String?
+  publishedAt        DateTime?
+  excerpt            String? // ≤500 chars: the passage that supports the transition
+  confidence         Float? // 0–1, the model's own
+  rationale          String? // ≤300 chars
+  model              String // the model whose answer is stored
+  inputTokens        Int
+  outputTokens       Int
+  searchCount        Int                    @default(0)
+  costUsd            Decimal                @db.Decimal(10, 6) // all passes for this transition
+  urlInSearchResults Boolean                @default(false) // the URL was among the results the search tool returned
+  priorSourceId      String? // the marker source being upgraded (Wikipedia, or none)
+  trace              Json? // queries, result URLs, first-pass answer, raw publishedAt
+  status             TransitionSourceStatus
+  createdAt          DateTime               @default(now())
+  reviewedAt         DateTime?
+  promotedAt         DateTime?
+  promotedSourceId   String?
+  promotedEdgeId     String?
+
+  transition ClaimStatusHistory @relation(fields: [transitionId], references: [id], onDelete: Cascade)
+
+  @@index([claimId])
+  @@index([status])
 }
 
 // Full-text search document for trajectory semantic search.
