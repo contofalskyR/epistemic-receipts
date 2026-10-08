@@ -604,7 +604,7 @@ async function main() {
     };
     await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 
-    report();
+    if (done % 50 !== 0) report();
     if (stopReason) console.log(`■ stopped: ${stopReason}`);
     const hist = Array.from({ length: 10 }, (_, i) => confidences.filter((c) => Math.min(9, Math.floor(c * 10)) === i).length);
     console.log("\nconfidence (candidates):");
