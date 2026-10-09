@@ -123,6 +123,7 @@ describe('urls', () => {
     expect(isDisallowedHost('nonsense')).toBe(true)
     expect(isDisallowedHost('https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1964-077A')).toBe(false)
     expect(isDisallowedHost('https://notwikipedia.org.example.com/')).toBe(false)
+    expect(isDisallowedHost('https://ja.wikisource.org/wiki/%E4%BF%A1%E9%95%B7%E5%85%AC%E8%A8%98')).toBe(false)
   })
 
   it('matches a URL against search results across www, scheme, trailing slash and fragment', () => {
@@ -151,13 +152,17 @@ describe('escalation', () => {
   const at = (answer: Attempt['answer'], urlInSearchResults = true, model: Attempt['model'] = 'claude-haiku-5-5'): Attempt =>
     ({ model, answer, urlInSearchResults })
 
-  it('escalates on no source, malformed, Wikipedia, unseen URL or low confidence — not on a good answer', () => {
+  it('escalates on no source, malformed, Wikipedia or an unseen URL — not on a usable answer at any confidence', () => {
     expect(needsEscalation(at({ kind: 'no_source', no_source_found: true, rationale: 'r' }))).toBe(true)
     expect(needsEscalation(at(null))).toBe(true)
     expect(needsEscalation(at(src('https://en.wikipedia.org/wiki/X', 0.9)))).toBe(true)
     expect(needsEscalation(at(src('https://doi.org/10.1/x', 0.9), false))).toBe(true)
-    expect(needsEscalation(at(src('https://doi.org/10.1/x', 0.49)))).toBe(true)
-    expect(needsEscalation(at(src('https://doi.org/10.1/x', 0.5)))).toBe(false)
+    expect(needsEscalation(at(src('https://doi.org/10.1/x', 0.1)))).toBe(false)
+  })
+
+  it('also escalates low confidence when given a threshold (the pilot setting)', () => {
+    expect(needsEscalation(at(src('https://doi.org/10.1/x', 0.49)), 0.5)).toBe(true)
+    expect(needsEscalation(at(src('https://doi.org/10.1/x', 0.5)), 0.5)).toBe(false)
   })
 
   it('prefers a usable answer, then higher confidence, ties to the first pass', () => {

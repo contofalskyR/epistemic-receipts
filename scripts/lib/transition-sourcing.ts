@@ -265,7 +265,9 @@ export function reformatPrompt(previousReply: string, resultUrls: string[]): str
 
 // ── URLs ───────────────────────────────────────────────────────────────────
 
-/** Tertiary or user-edited hosts the brief rules out as an answer. */
+/** Tertiary or user-edited hosts the brief rules out as an answer. Wikisource
+ *  is allowed on purpose (owner decision 2026-10-08): it hosts transcribed
+ *  primary texts, not summaries. */
 const DISALLOWED_HOSTS = /(^|\.)(wikipedia\.org|wikimedia\.org|wikiwand\.com|wikidata\.org|dbpedia\.org|fandom\.com|wikia\.com|everybodywiki\.com)$/i;
 
 export function hostOf(url: string): string | null {
@@ -328,10 +330,12 @@ export function isUsable(a: Attempt): boolean {
   return a.answer?.kind === "source" && !isDisallowedHost(a.answer.url) && a.urlInSearchResults;
 }
 
-export const ESCALATE_BELOW = 0.5;
-
-export function needsEscalation(a: Attempt): boolean {
-  return !isUsable(a) || (a.answer as SourceAnswer).confidence < ESCALATE_BELOW;
+/** Escalate when the first pass has nothing usable, or (with `below` > 0)
+ *  when its confidence is under `below`. The pilot (2026-10-08) escalated
+ *  below 0.5: 71% of transitions, 10.5¢ each; the owner chose unusable-only
+ *  (below = 0) for the full run. */
+export function needsEscalation(a: Attempt, below = 0): boolean {
+  return !isUsable(a) || (a.answer as SourceAnswer).confidence < below;
 }
 
 /** Usable beats unusable; then the higher confidence; ties keep the cheaper pass. */

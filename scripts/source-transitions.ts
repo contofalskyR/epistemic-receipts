@@ -11,14 +11,16 @@
  *
  * Model ladder: claude-haiku-5-5 first; claude-sonnet-5-5 only when the first
  * pass is unusable (no source, malformed, Wikipedia, URL not among the search
- * results) or below 0.5 confidence. The stored row names the model whose
- * answer it keeps; tokens and cost cover both passes.
+ * results) — or, with --escalate-below C, also when its confidence is under C
+ * (the pilot used 0.5). The stored row names the model whose answer it keeps;
+ * tokens and cost cover both passes.
  *
  * Guardrails: every request's cost (tokens × documented prices + $0.01 per
  * search) is appended to logs/transition-sourcing-ledger.jsonl before its
  * result is stored. A run stops starting requests when the next one could
- * cross --budget (default $40 with --limit, else $140), when the ledger's
- * lifetime total could cross --total-cap ($180), or 15 minutes before
+ * cross --budget (default $40 with --limit, else $140), when lifetime spend
+ * (the ledger's total, or the table's cost sum if that is higher — a fresh
+ * machine without the ledger) could cross --total-cap ($180), or 15 minutes before
  * --deadline (2026-10-11 18:00 New York). Concurrency ≤ 4; 429/529/5xx back
  * off exponentially and honour retry-after. Resumable by construction: a
  * transition already in the table is never selected again.
@@ -29,7 +31,7 @@
  *   npx tsx scripts/source-transitions.ts --budget 140         # full curated run
  * Flags: --limit N  --claim <id|slug>  --since YYYY-MM-DD (transition date ≥)
  *        --budget USD  --total-cap USD  --concurrency ≤4  --max-searches N
- *        --no-escalate  --deadline ISO
+ *        --escalate-below C (default 0 = only unusable)  --no-escalate  --deadline ISO
  * Env (.env.local): DATABASE_URL, ANTHROPIC_API_KEY, ANTHROPIC_WORKSPACE_ID
  * (required with a multi-workspace "sk-ant-usr…" key).
  */
@@ -100,6 +102,7 @@ const TOTAL_CAP = num("total-cap", 180);
 const CONCURRENCY = Math.floor(num("concurrency", 4));
 const MAX_SEARCHES = Math.floor(num("max-searches", 3));
 const ESCALATE = !flag("no-escalate");
+const ESCALATE_BELOW = num("escalate-below", 0);
 const DEADLINE = new Date(opt("deadline") ?? "2026-10-11T22:00:00Z"); // 18:00 EDT
 const STOP_BEFORE_DEADLINE_MS = 15 * 60_000;
 const LEDGER = resolve(process.env.TRANSITION_SOURCING_LEDGER ?? "logs/transition-sourcing-ledger.jsonl");
@@ -108,6 +111,7 @@ const MAX_CONTINUATIONS = 3; // pause_turn re-sends per pass
 
 if (CONCURRENCY < 1 || CONCURRENCY > 4) die("--concurrency must be 1–4");
 if (MAX_SEARCHES < 1 || MAX_SEARCHES > 10) die("--max-searches must be 1–10");
+if (ESCALATE_BELOW > 1) die("--escalate-below is a confidence, 0–1");
 if (SINCE && Number.isNaN(Date.parse(SINCE))) die(`--since must be a date (got ${SINCE})`);
 if (Number.isNaN(DEADLINE.getTime())) die("--deadline must be an ISO timestamp");
 // --resume is accepted and is the only behaviour: rows already in the table are never reselected.
@@ -248,6 +252,13 @@ function ledgerTotal(): number {
 function ledgerAppend(entry: Record<string, unknown>) {
   mkdirSync(dirname(LEDGER), { recursive: true });
   appendFileSync(LEDGER, JSON.stringify({ ts: new Date().toISOString(), runId: RUN_ID, ...entry }) + "\n");
+}
+
+/** What the table has recorded so far — a floor for lifetime spend when this
+ *  machine's ledger is missing or shorter than another machine's. */
+async function tableSpend(pool: Pool): Promise<number> {
+  const r = await pool.query(`SELECT coalesce(sum("costUsd"), 0)::float AS usd FROM "TransitionSourceCandidate"`);
+  return r.rows[0].usd;
 }
 
 // ── API ────────────────────────────────────────────────────────────────────
@@ -441,7 +452,7 @@ async function sourceOne(
   mayEscalate: () => boolean,
 ): Promise<{ outcome: Outcome; costUsd: number; model: ModelId; confidence: number | null; escalated: boolean }> {
   const passes: PassResult[] = [await runPass(client, MODEL_TIERS[0], t, account)];
-  if (ESCALATE && needsEscalation(passes[0]) && mayEscalate()) passes.push(await runPass(client, MODEL_TIERS[1], t, account));
+  if (ESCALATE && needsEscalation(passes[0], ESCALATE_BELOW) && mayEscalate()) passes.push(await runPass(client, MODEL_TIERS[1], t, account));
   const chosen = (passes.length === 2 ? pickBetter(passes[0], passes[1]) : passes[0]) as PassResult;
   const cost = passes.reduce((a, p) => a + p.costUsd, 0);
   const isCandidate = chosen.answer?.kind === "source" && !isDisallowedHost(chosen.answer.url) && chosen.urlInSearchResults;
@@ -514,8 +525,9 @@ async function main() {
     if (DRY_RUN) {
       const rows = await hydrate(pool, await selectTargets(pool, withTable, 3));
       console.log(`DRY RUN — no API calls. ${eligible.toLocaleString()} eligible transitions (curated, Wikipedia/no source, not yet in the table).`);
-      console.log(`Model ${MODEL_TIERS[0]}${ESCALATE ? ` → ${MODEL_TIERS[1]} (when unusable or confidence < 0.5)` : ""}; tool ${WEB_SEARCH_TOOL_TYPE}, max_uses ${MAX_SEARCHES}; max_tokens ${MAX_TOKENS}.`);
-      console.log(`Budget $${BUDGET} this run · lifetime cap $${TOTAL_CAP} (ledger so far $${ledgerTotal().toFixed(4)}) · deadline ${DEADLINE.toISOString()}`);
+      console.log(`Model ${MODEL_TIERS[0]}${ESCALATE ? ` → ${MODEL_TIERS[1]} (when unusable${ESCALATE_BELOW > 0 ? ` or confidence < ${ESCALATE_BELOW}` : ""})` : ""}; tool ${WEB_SEARCH_TOOL_TYPE}, max_uses ${MAX_SEARCHES}; max_tokens ${MAX_TOKENS}.`);
+      const lifetime = withTable ? Math.max(ledgerTotal(), await tableSpend(pool)) : ledgerTotal();
+      console.log(`Budget $${BUDGET} this run · lifetime cap $${TOTAL_CAP} (spent so far $${lifetime.toFixed(4)}) · deadline ${DEADLINE.toISOString()}`);
       console.log(`Workspace header: ${process.env.ANTHROPIC_WORKSPACE_ID ? "set" : "NOT SET (required for a multi-workspace key)"}`);
       console.log(`\n${"═".repeat(78)}\nSYSTEM PROMPT (identical for every request)\n${"═".repeat(78)}\n${SYSTEM_PROMPT}`);
       rows.forEach((t, i) => {
@@ -525,7 +537,7 @@ async function main() {
       return;
     }
 
-    const lifetimeAtStart = ledgerTotal();
+    const lifetimeAtStart = Math.max(ledgerTotal(), await tableSpend(pool));
     const targets = await selectTargets(pool, withTable, LIMIT);
     console.log(`${RUN_ID} · ${targets.length} of ${eligible.toLocaleString()} eligible transitions · budget $${BUDGET} · lifetime $${lifetimeAtStart.toFixed(4)} of $${TOTAL_CAP} · concurrency ${CONCURRENCY}`);
     if (!targets.length) return;
