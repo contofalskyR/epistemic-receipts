@@ -347,8 +347,7 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 - [ ] transition sourcing: approve `scripts/promote-transition-sources.ts --confirm` for the 809 machine-accepted rows
       (or spot-check them first with `--sample 20 --status accepted`); then review the 3,808 left
       (`scripts/review-transition-sources.ts --sample 50 --min-confidence 0.7`,
-      then `--accept` / `--reject`), then promote with `scripts/promote-transition-sources.ts --confirm`. Push
-      `feat/transition-sourcing` and open its PR.
+      then `--accept` / `--reject`), then promote again. `feat/transition-sourcing` is merged (PR #31).
 
 ## Next action
 
