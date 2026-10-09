@@ -320,9 +320,10 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - Premise corrected: curated transitions were already 99.97% sourced (11,808 / 11,811), but 5,512 (47%) cite
     Wikipedia — 98% of those in `seed:human-history-trajectories`. Those, plus the 6 with no usable source, are
     the 5,518 targets.
-  - Done: 3,715 of 5,518 (pilot 200 + full run 3,515; md5 order, so a random sample) for $160.00. Results: 3,666
-    candidates (1,242 rated ≥ 0.5, 370 ≥ 0.7) and 49 `no_source_found`. Haiku 5.5 first, with Sonnet 5.5 only
-    when Haiku had nothing usable. 1,803 remain (~$71 at the same rate).
+  - Done: 4,764 of 5,518 (pilot 200, full run 3,515, top-up 1,049; md5 order, so a random sample) for **$198.80**,
+    i.e. the promo credit is used up. Results: 4,705 candidates (1,589 rated ≥ 0.5, 528 ≥ 0.7) and 59
+    `no_source_found`. Haiku 5.5 first, with Sonnet 5.5 only when Haiku had nothing usable. 754 remain
+    (~$28 at the same rate, which would now come from the purchased balance).
   - Spend came from the $200 promo credit, which expires 2026-10-12 UTC. The lifetime cap is $180; all API
     calls must finish by 2026-10-11 18:00 New York. Ledger: `logs/transition-sourcing-ledger.jsonl` (gitignored).
     The key is multi-workspace and needs `ANTHROPIC_WORKSPACE_ID` in `.env.local`.

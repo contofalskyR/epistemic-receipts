@@ -59,6 +59,12 @@ At the trajectory level:
 
 ## 2. What the search found
 
+> **Final totals (after a third run, 2026-10-09 02:52–03:30 UTC, $38.80):** 4,764 of 5,518 transitions
+> processed for **$198.80**. That gave 4,705 candidates (1,589 rated ≥ 0.5, 528 ≥ 0.7) and 59 no source
+> found; 754 transitions remain. The breakdowns below were computed on the first 3,715. Selection is in a
+> fixed random order, so they describe a random sample of the targets; the third run's rates were the same
+> (99% found, 8% escalated, 3.7¢ each).
+
 The pipeline processed 3,715 of the 5,518 transitions before the $140 budget ran out:
 - a 200-transition pilot ($21.02);
 - a full run of 3,515 ($138.98).
@@ -216,7 +222,7 @@ transcribed primary texts.
   answer was kept (95 cases), mean confidence rose from 0.33 to 0.51.
 - **Liveness:** URL checks on the pilot's 196 candidates found 130 that load. Most of the 50 403s were
   publisher bot walls; 8 timed out; one returned 410.
-- **Cost:** $160.00 for 3,715 transitions. Every request is logged in `logs/transition-sourcing-ledger.jsonl`
+- **Cost:** $198.80 for 4,764 transitions ($160.00 for the first 3,715). Every request is logged in `logs/transition-sourcing-ledger.jsonl`
   (gitignored), and its total equals the table's cost sum.
 
 ## 5. Open questions this raises
@@ -225,6 +231,6 @@ transcribed primary texts.
    precise? In the history set, 401 of them sit on century years.
 2. Should a PUBLIC-community transition need a receipt at all, or a different kind (a survey, a monument,
    a holiday law)?
-3. The 1,803 unprocessed transitions would cost about $71 at the same rate. Are they worth it before the
-   SETTLED-date question is answered? 419 of them (23%) are year-precise SETTLED transitions, where the
-   pass rarely finds a strong source.
+3. The 754 unprocessed transitions would cost about $28 at the same rate. Are they worth it before the
+   SETTLED-date question is answered? About a quarter of the remainder are year-precise SETTLED
+   transitions, where the pass rarely finds a strong source (23% of the 1,803 left after the second run).

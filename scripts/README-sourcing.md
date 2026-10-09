@@ -2,7 +2,8 @@
 
 > **2026-10-09:** the first full run was done from the Mac, not the Oracle box: `nohup caffeinate -i npx tsx
 > scripts/source-transitions.ts --budget 140`, on AC power with the lid open. It processed 3,515 transitions for
-> $138.98 and stopped at its budget. 1,803 remain. Findings are in `docs/TRANSITION-SOURCING-2026-10-09.md`.
+> $138.98 and stopped at its budget. A top-up (`--budget 39.75 --total-cap 199.75`) added 1,049 for $38.80. The
+> lifetime total is $198.80 and 754 remain. Findings are in `docs/TRANSITION-SOURCING-2026-10-09.md`.
 > The steps below still apply to any later run on the server.
 
 The full run takes hours and the laptop sleeps, so it runs on the Oracle box inside tmux. The script is
