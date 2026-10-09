@@ -3,23 +3,32 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import {
   ANSWER_JSON_SCHEMA,
+  MACHINE_REVIEWER,
+  autoReviewDecision,
+  isDeadLink,
+  type VerifyLike,
   MODEL_TIERS,
   PRICES,
   TARGET_SOURCE_SQL,
   buildUserPrompt,
   costOf,
   cuid,
+  decodeEntities,
   domainFromTag,
+  excerptMatch,
   extractJson,
   formatTransitionDate,
   fromFlat,
+  htmlToText,
   isDisallowedHost,
+  isMetaExcerpt,
   needsEscalation,
   parseAnswer,
   parsePublishedAt,
   pickBetter,
   reserveFor,
   sourceName,
+  squash,
   urlInResults,
   type Attempt,
   type TransitionInput,
@@ -243,5 +252,65 @@ describe('misc', () => {
     expect(new Set(tables('scripts/review-transition-sources.ts'))).toEqual(new Set(['TransitionSourceCandidate']))
     expect(new Set(tables('scripts/promote-transition-sources.ts'))).toEqual(new Set(['Source', 'Edge', 'TransitionSourceCandidate']))
     expect(readFileSync(path.join(root, 'scripts/promote-transition-sources.ts'), 'utf8')).toContain('process.argv.includes("--confirm")')
+  })
+})
+
+describe('page-text verification', () => {
+  it('decodes named and numeric entities', () => {
+    expect(decodeEntities('Science &amp; Justice &#8212; &#x2013; &nbsp;x &bogus;')).toBe('Science & Justice — –  x &bogus;')
+  })
+
+  it('keeps meta-tag content and drops scripts, styles and tags', () => {
+    const html = '<html><head><meta name="description" content="Treaty signed at Ghent"><style>p{}</style><script>var x="hidden"</script></head><body><p>Article <b>I</b></p></body></html>'
+    const t = htmlToText(html)
+    expect(t).toContain('Treaty signed at Ghent')
+    expect(t).toContain('Article')
+    expect(t).not.toContain('hidden')
+    expect(t).not.toContain('p{}')
+  })
+
+  it('compares across case, accents, punctuation and spacing', () => {
+    expect(squash('Über einen   Gesichtspunkt — 1905!')).toBe('ubereinengesichtspunkt1905')
+    const page = 'Tenshō 3, 5/21: 長篠の城へ入城中之者と一手に成 — the castle relieved.'
+    expect(excerptMatch('長篠の城へ入城中之者と一手に成', page, 6, 3)).toBe(1)
+    expect(excerptMatch('His conss. levatus est Theodosius Augustus ab Augusto Gratiano', 'his conss levatus est theodosius augustus ab augusto gratiano die XIIII')).toBe(1)
+    expect(excerptMatch('An entirely different passage about something else that is long', 'his conss levatus est theodosius augustus')).toBe(0)
+    expect(excerptMatch('anything', '')).toBeNull()
+  })
+
+  it('flags catalogue-record excerpts', () => {
+    expect(isMetaExcerpt('Maasir-i- Alamgiri (1947) by Sarkar. Publication date: 1947. Publisher: Calcutta')).toBe(true)
+    expect(isMetaExcerpt('The recantation of Thomas Cranmer ... 1556.. Digitized from IA40313010-55.')).toBe(true)
+    expect(isMetaExcerpt('he was discovered by a group of butchers in their corral at Oroville, August 29, 1911.')).toBe(false)
+  })
+})
+
+describe('machine review rule', () => {
+  const v = (o: Partial<VerifyLike>): VerifyLike => ({ status: 200, match: 0.9, textLen: 20_000, metaExcerpt: false, error: null, ...o })
+
+  it('accepts only a loaded page that carries a non-metadata excerpt, at confidence ≥ 0.5', () => {
+    expect(autoReviewDecision(v({}), 0.5).decision).toBe('accept')
+    expect(autoReviewDecision(v({}), 0.49).decision).toBe('keep')
+    expect(autoReviewDecision(v({ match: 0.59 }), 0.9).decision).toBe('keep')
+    expect(autoReviewDecision(v({ metaExcerpt: true }), 0.9).decision).toBe('keep')
+    expect(autoReviewDecision(v({ status: 403, match: null, textLen: 0 }), 0.9).decision).toBe('keep')
+    expect(autoReviewDecision(v({ match: 0.1, textLen: 1500 }), 0.9).rule).toBe('page text unreadable')
+    expect(autoReviewDecision(undefined, 0.9).decision).toBe('keep')
+  })
+
+  it('rejects only dead links: 404, 410, or a domain that no longer resolves', () => {
+    expect(autoReviewDecision(v({ status: 404, match: null }), 0.9).decision).toBe('reject')
+    expect(autoReviewDecision(v({ status: 410, match: null }), 0.9).decision).toBe('reject')
+    expect(autoReviewDecision(v({ status: null, match: null, error: 'ENOTFOUND' }), 0.9).decision).toBe('reject')
+    expect(autoReviewDecision(v({ status: null, match: null, error: 'UND_ERR_CONNECT_TIMEOUT' }), 0.9).decision).toBe('keep')
+    expect(autoReviewDecision(v({ status: null, match: null, error: 'EAI_AGAIN' }), 0.9).decision).toBe('keep')
+    expect(isDeadLink(v({ status: 500 }))).toBe(false)
+  })
+
+  it('marks machine acceptances apart from human ones in promotion', () => {
+    const promote = readFileSync(path.join(root, 'scripts/promote-transition-sources.ts'), 'utf8')
+    expect(promote).toContain("coalesce(trace->'review'->>'by', 'human') = 'human' AS human")
+    expect(promote).toContain('NOT $7')
+    expect(MACHINE_REVIEWER).toMatch(/^machine:/)
   })
 })

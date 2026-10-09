@@ -385,3 +385,83 @@ export function makePool(max = 4): Pool {
 /** Curated transitions this pipeline targets: the transition's marker source is
  *  missing, has no URL, or is Wikipedia (owner decision 2026-10-08). */
 export const TARGET_SOURCE_SQL = `(h."sourceId" IS NULL OR s.id IS NULL OR coalesce(s.url, '') = '' OR s.url ~* '^https?://([a-z0-9-]+\\.)*wikipedia\\.org/')`;
+
+// ── Page text (scripts/verify-transition-sources.ts) ──────────────────────
+
+const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", ndash: "–", mdash: "—", hellip: "…", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“" };
+
+export function decodeEntities(s: string): string {
+  return s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e: string) => {
+    if (e[0] === "#") {
+      const n = e[1] === "x" || e[1] === "X" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+      return Number.isFinite(n) && n > 0 && n < 0x110000 ? String.fromCodePoint(n) : m;
+    }
+    return ENTITIES[e.toLowerCase()] ?? m;
+  });
+}
+
+/** Visible text plus meta-tag content (abstracts and catalogue descriptions live there). */
+export function htmlToText(html: string): string {
+  const metas = [...html.matchAll(/<meta\b[^>]*\bcontent\s*=\s*("([^"]*)"|'([^']*)')[^>]*>/gi)].map((m) => m[2] ?? m[3] ?? "");
+  const body = html
+    .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1\s*>/gi, " ")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<[^>]+>/g, " ");
+  return decodeEntities(`${metas.join(" ")} ${body}`);
+}
+
+/** Case-, accent-, punctuation- and space-free form, so any script compares. */
+export function squash(s: string): string {
+  return s
+    .normalize("NFKD")
+    .replace(/\p{M}+/gu, "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, "");
+}
+
+export function excerptMatch(excerpt: string, pageText: string, win = 24, step = 12): number | null {
+  const e = squash(excerpt);
+  const p = squash(pageText);
+  if (!p.length) return null;
+  if (e.length < win) return e.length && p.includes(e) ? 1 : 0;
+  let hit = 0;
+  let n = 0;
+  for (let i = 0; i + win <= e.length; i += step) {
+    n++;
+    if (p.includes(e.slice(i, i + win))) hit++;
+  }
+  return n ? hit / n : null;
+}
+
+/** Excerpts that are a catalogue record rather than a passage from the source. */
+export function isMetaExcerpt(excerpt: string): boolean {
+  return /(publication date|publisher\s*:|digiti[sz]ed (from|by)|free download|borrow,? and streaming|first published\s*:|^\s*(volume|vol\.)\s*\d+|identifier\s*:|call number|isbn\b)/i.test(excerpt);
+}
+
+// ── Machine review (review-transition-sources.ts --auto-review) ────────────
+
+export const MACHINE_REVIEWER = "machine:verify-transition-sources";
+
+export type VerifyLike = { status: number | null; match: number | null; textLen: number; metaExcerpt: boolean; error: string | null };
+
+/** A link that is gone, not merely blocked: 404/410, or a domain that no longer resolves. */
+export function isDeadLink(v: VerifyLike): boolean {
+  return v.status === 404 || v.status === 410 || (v.status === null && /ENOTFOUND/.test(v.error ?? ""));
+}
+
+/** The rule the 2026-10-09 machine review applies to one candidate. It accepts
+ *  only what it can check: the page loads, the quoted excerpt is on it, the
+ *  excerpt is a passage (not a catalogue record), and the model rated the source
+ *  ≥ 0.5 as the primary record. It rejects only dead links. Everything else is
+ *  left for a human. */
+export function autoReviewDecision(v: VerifyLike | undefined, confidence: number | null): { decision: "accept" | "reject" | "keep"; rule: string } {
+  if (!v) return { decision: "keep", rule: "not verified" };
+  if (isDeadLink(v)) return { decision: "reject", rule: "dead link" };
+  const ok = v.status !== null && v.status >= 200 && v.status < 300;
+  if (!ok) return { decision: "keep", rule: v.status === null ? "unreachable" : `blocked (${v.status})` };
+  if (v.match === null || (v.textLen < 3000 && v.match < 0.2)) return { decision: "keep", rule: "page text unreadable" };
+  if (v.match < 0.6) return { decision: "keep", rule: v.match < 0.2 ? "excerpt not on page" : "excerpt partly on page" };
+  if (v.metaExcerpt) return { decision: "keep", rule: "excerpt is catalogue metadata" };
+  if ((confidence ?? 0) < 0.5) return { decision: "keep", rule: "excerpt on page, confidence < 0.5" };
+  return { decision: "accept", rule: "excerpt on page, confidence ≥ 0.5" };
+}

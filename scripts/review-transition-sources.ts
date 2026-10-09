@@ -1,18 +1,36 @@
 /**
  * review-transition-sources.ts — read and judge claude_sourcing_v1 candidates.
- * Writes only "TransitionSourceCandidate".status / reviewedAt.
+ * Writes only "TransitionSourceCandidate" (status, reviewedAt, trace.review, trace.verify).
  *
  *   npx tsx scripts/review-transition-sources.ts                 # counts + spend
  *   npx tsx scripts/review-transition-sources.ts --sample 50     # random candidates
  *   npx tsx scripts/review-transition-sources.ts --sample 20 --status no_source_found
  *   npx tsx scripts/review-transition-sources.ts --accept <id>[,<id>…]
  *   npx tsx scripts/review-transition-sources.ts --reject <id>[,<id>…]
+ *   npx tsx scripts/review-transition-sources.ts --auto-review logs/transition-verify.jsonl [--apply]
+ *
+ * --accept / --reject record trace.review.by = "human"; promotion then marks the
+ * Source and Edge humanReviewed. --auto-review applies autoReviewDecision() (scripts/lib)
+ * to the output of scripts/verify-transition-sources.ts. It re-checks each dead link
+ * with a browser user-agent before rejecting it, and is a dry run unless --apply. Its
+ * decisions record trace.review.by = "machine:verify-transition-sources"; promotion
+ * marks those humanReviewed false, autoApproved true (AGENTS.md: the two are separate
+ * signals).
  *
  * --sample also takes --min-confidence / --max-confidence and --seed <any text>
  * (the same seed gives the same sample). Promoted rows can no longer be flipped.
  */
 import { config as loadEnv } from "dotenv";
-import { formatTransitionDate, makePool, truncate } from "./lib/transition-sourcing";
+import { readFileSync } from "node:fs";
+import {
+  MACHINE_REVIEWER,
+  autoReviewDecision,
+  formatTransitionDate,
+  isDeadLink,
+  makePool,
+  truncate,
+  type VerifyLike,
+} from "./lib/transition-sourcing";
 
 loadEnv({ path: ".env.local", quiet: true });
 
@@ -41,7 +59,8 @@ async function main() {
       const status = accept ? "accepted" : "rejected";
       const r = await pool.query(
         `UPDATE "TransitionSourceCandidate"
-           SET status = $2::"TransitionSourceStatus", "reviewedAt" = now()
+           SET status = $2::"TransitionSourceStatus", "reviewedAt" = now(),
+               trace = jsonb_set(coalesce(trace, '{}'::jsonb), '{review}', jsonb_build_object('by', 'human', 'at', now()))
          WHERE id = ANY($1) AND "promotedAt" IS NULL ${accept ? `AND url IS NOT NULL` : ""}
          RETURNING id`,
         [list, status],
@@ -53,6 +72,9 @@ async function main() {
       return;
     }
 
+    const autoFile = opt("auto-review");
+    if (autoFile) return await autoReview(pool, autoFile, argv.includes("--apply"));
+
     const sample = opt("sample");
     if (sample) {
       const n = Number(sample);
@@ -62,6 +84,7 @@ async function main() {
       const r = await pool.query(
         `SELECT t.id, t.url, t.title, t.publisher, t."publishedAt", t.excerpt, t.confidence, t.rationale, t.model,
                 t."urlInSearchResults", t."costUsd"::float AS cost, c.text AS claim, c."externalId",
+                t.trace->'verify' AS verify, t.trace->'review'->>'by' AS "reviewedBy",
                 h."fromAxis", h."toAxis", h."occurredAt", h."datePrecision", s.url AS prior
          FROM "TransitionSourceCandidate" t
          JOIN "ClaimStatusHistory" h ON h.id = t."transitionId"
@@ -89,6 +112,10 @@ async function main() {
           console.log(`  excerpt   ${truncate((x.excerpt ?? "").replace(/\s+/g, " "), 300)}`);
         }
         console.log(`  why       ${truncate((x.rationale ?? "").replace(/\s+/g, " "), 300)}`);
+        if (x.verify) {
+          const m = x.verify.match === null ? "no text" : `excerpt match ${Number(x.verify.match).toFixed(2)}`;
+          console.log(`  check     HTTP ${x.verify.status ?? "—"} · ${m} · ${x.verify.rule}${x.reviewedBy ? ` · reviewed by ${x.reviewedBy}` : ""}`);
+        }
         console.log(rule);
       }
       return;
@@ -107,6 +134,103 @@ async function main() {
   } finally {
     await pool.end();
   }
+}
+
+type Verified = VerifyLike & { id: string; url: string };
+
+const BROWSER_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15";
+
+/** One more look before a link is called dead: a browser user-agent, 20 s. */
+async function stillDead(url: string): Promise<boolean> {
+  const ac = new AbortController();
+  const timer = setTimeout(() => ac.abort(), 20_000);
+  try {
+    const res = await fetch(url, { redirect: "follow", signal: ac.signal, headers: { "user-agent": BROWSER_UA } });
+    await res.body?.cancel().catch(() => {});
+    return res.status === 404 || res.status === 410;
+  } catch (e) {
+    return /ENOTFOUND/.test((e as { cause?: { code?: string } }).cause?.code ?? "");
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function autoReview(pool: ReturnType<typeof makePool>, file: string, apply: boolean) {
+  const verified = new Map<string, Verified>();
+  for (const line of readFileSync(file, "utf8").split("\n")) {
+    if (!line.trim()) continue;
+    try {
+      const v = JSON.parse(line) as Verified;
+      verified.set(v.id, v);
+    } catch {
+      /* torn line */
+    }
+  }
+  const rows = (
+    await pool.query<{ id: string; url: string; confidence: number | null }>(
+      `SELECT id, url, confidence FROM "TransitionSourceCandidate" WHERE status = 'candidate' AND "promotedAt" IS NULL AND url IS NOT NULL`,
+    )
+  ).rows;
+  const decided = rows.map((r) => ({ ...r, v: verified.get(r.id), ...autoReviewDecision(verified.get(r.id), r.confidence) }));
+
+  const rejects = decided.filter((d) => d.decision === "reject");
+  let i = 0;
+  await Promise.all(
+    Array.from({ length: 8 }, async () => {
+      while (i < rejects.length) {
+        const d = rejects[i++];
+        if (!(await stillDead(d.url))) Object.assign(d, { decision: "keep", rule: "dead on first check, alive on re-check" });
+      }
+    }),
+  );
+
+  const tally = new Map<string, number>();
+  for (const d of decided) tally.set(`${d.decision.padEnd(6)}  ${d.rule}`, (tally.get(`${d.decision.padEnd(6)}  ${d.rule}`) ?? 0) + 1);
+  console.log(`${rows.length} candidates · ${verified.size} verification records (${file})`);
+  for (const [k, n] of [...tally].sort()) console.log(`  ${String(n).padStart(5)}  ${k}`);
+  if (!apply) {
+    console.log("Dry run — nothing written. Re-run with --apply to record these decisions.");
+    return;
+  }
+
+  const at = new Date().toISOString();
+  const verifyOf = (d: (typeof decided)[number]) =>
+    JSON.stringify(d.v ? { status: d.v.status, match: d.v.match, textLen: d.v.textLen, metaExcerpt: d.v.metaExcerpt, dead: isDeadLink(d.v), rule: d.rule, at } : { rule: d.rule, at });
+  const db = await pool.connect();
+  try {
+    await db.query("BEGIN");
+    // Every candidate keeps its check result, so a human reviewer sees it in --sample.
+    await db.query(
+      `UPDATE "TransitionSourceCandidate" t SET trace = jsonb_set(coalesce(t.trace, '{}'::jsonb), '{verify}', x.v)
+       FROM unnest($1::text[], $2::jsonb[]) AS x(id, v) WHERE t.id = x.id`,
+      [decided.map((d) => d.id), decided.map(verifyOf)],
+    );
+    const flip = async (decision: "accept" | "reject", status: string) => {
+      const list = decided.filter((d) => d.decision === decision);
+      const r = await db.query(
+        `UPDATE "TransitionSourceCandidate" t
+           SET status = $2::"TransitionSourceStatus", "reviewedAt" = now(),
+               trace = jsonb_set(t.trace, '{review}', jsonb_build_object('by', $3::text, 'at', now(), 'rule', x.rule))
+         FROM unnest($1::text[], $4::text[]) AS x(id, rule)
+         WHERE t.id = x.id AND t.status = 'candidate' AND t."promotedAt" IS NULL`,
+        [list.map((d) => d.id), status, MACHINE_REVIEWER, list.map((d) => d.rule)],
+      );
+      return r.rowCount ?? 0;
+    };
+    const accepted = await flip("accept", "accepted");
+    const rejected = await flip("reject", "rejected");
+    await db.query("COMMIT");
+    console.log(`applied: accepted ${accepted} · rejected ${rejected} · left as candidate ${decided.length - accepted - rejected}`);
+  } catch (e) {
+    await db.query("ROLLBACK").catch(() => {});
+    throw e;
+  } finally {
+    db.release();
+  }
+  const v = await pool.query(
+    `SELECT status::text, coalesce(trace->'review'->>'by', '—') AS by, count(*)::int AS n FROM "TransitionSourceCandidate" GROUP BY 1, 2 ORDER BY 1, 2`,
+  );
+  console.log("table now:", v.rows.map((r) => `${r.status}/${r.by} ${r.n}`).join(" · "));
 }
 
 main().catch((e) => {
