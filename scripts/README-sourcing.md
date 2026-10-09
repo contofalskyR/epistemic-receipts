@@ -1,5 +1,10 @@
 # Transition sourcing (`claude_sourcing_v1`) — full curated run
 
+> **2026-10-09:** the first full run was done from the Mac, not the Oracle box: `nohup caffeinate -i npx tsx
+> scripts/source-transitions.ts --budget 140`, on AC power with the lid open. It processed 3,515 transitions for
+> $138.98 and stopped at its budget. 1,803 remain. Findings are in `docs/TRANSITION-SOURCING-2026-10-09.md`.
+> The steps below still apply to any later run on the server.
+
 The full run takes hours and the laptop sleeps, so it runs on the Oracle box inside tmux. The script is
 the same one used for the pilot (`scripts/source-transitions.ts`). It writes only to
 `"TransitionSourceCandidate"`. Review with `scripts/review-transition-sources.ts`; promote by hand with
