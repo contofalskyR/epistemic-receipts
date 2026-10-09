@@ -330,6 +330,12 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - Found: history "settling" dates cluster on round years. Of 1,621 year-precise RECORDED→SETTLED rows, 401 fall
     on a century year and 232 in 2000. About 90 candidates flag a stored date that disagrees with its record.
     Details and examples are in the findings doc.
+  - Machine review (2026-10-09, `feat/verify-transition-sources`): `scripts/verify-transition-sources.ts` fetched all
+    4,705 candidate URLs. The excerpt was on the page for 2,693; about 1,060 were bot-walled. `review --auto-review --apply`
+    then accepted 809 (excerpt on page, not metadata, confidence ≥ 0.5) and rejected 88 (links dead on two checks).
+    3,808 are left as candidates for a human. Every decision is recorded in `trace.review.by` as
+    `machine:verify-transition-sources`; promotion writes those rows as `humanReviewed` false, `autoApproved` true.
+    Not promoted yet: the plan is 809 rows, 768 distinct URLs, 34 of them already a Source.
 
 ## Owner's side (not blocking)
 
@@ -338,7 +344,9 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 - [ ] rotate the NARA API key when the new one arrives; put it in `.env.local` as `NARA_API_KEY` (the script reads
       that; no NARA var exists there today); then run the `git filter-repo` purge command from the Phase 0 chat report
       (mirror clone → `--replace-text` → force-push; collaborators re-clone)
-- [ ] transition sourcing: review the candidates (`scripts/review-transition-sources.ts --sample 50 --min-confidence 0.7`,
+- [ ] transition sourcing: approve `scripts/promote-transition-sources.ts --confirm` for the 809 machine-accepted rows
+      (or spot-check them first with `--sample 20 --status accepted`); then review the 3,808 left
+      (`scripts/review-transition-sources.ts --sample 50 --min-confidence 0.7`,
       then `--accept` / `--reject`), then promote with `scripts/promote-transition-sources.ts --confirm`. Push
       `feat/transition-sourcing` and open its PR.
 
