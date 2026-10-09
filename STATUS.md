@@ -33,7 +33,8 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
 ## Working rules
 
 One phase at a time, one branch + one PR per phase, stop for go-ahead between phases. Single agent, no subagents.
-`npm run build` before every push; data-facing counts verified with a read-only query. Nothing writes to the DB.
+`npm run build` before every push; data-facing counts verified with a read-only query. Nothing writes to the DB
+(one owner-approved exception: `TransitionSourceCandidate`, see Transition sourcing below).
 
 ## Docs (where things are, since Phase 4)
 
@@ -43,7 +44,8 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   `SCALING.md` (+ `specs/`), `SECURITY-REVIEW-2026-06-12.md`, `ORDERING-SEMANTICS-2026-07-08.md`,
   `CORPUS-PROMOTER-BULK-PLAN.md`, `PUBLISH-CHECKLIST.md`, `ROADMAP.md`, `TASK_QUEUE.md` (read by
   `scripts/er-worker.sh`), `HARD_FACTS_DOMAINS.md`, `epistemic-receipts-marketing.md` (house rule cited by
-  `lib/format.ts`) — beside the pre-existing dated handoffs and `docs/runbooks/`.
+  `lib/format.ts`) — beside the pre-existing dated handoffs and `docs/runbooks/`. Dated findings:
+  `TRANSITION-SOURCING-2026-10-09.md`.
 - `docs/archive/`: 29 superseded root docs, one line each in `docs/archive/README.md`. Files unchanged (they still
   name each other by old root paths). `briefs/` and `briefings/` untouched — historical.
 
@@ -307,6 +309,28 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - Owner decisions listed in the PR: `Allow` `/api/oembed` and the read APIs client pages render from; uninstall
     `@stoplight/spectral-cli`; "unset" vs "unclassified"; the `/opinions` "linked to related legislation" copy.
 
+- [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
+      run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
+      `docs/TRANSITION-SOURCING-2026-10-09.md`; runbook: `scripts/README-sourcing.md`.
+  - **The DB was written on purpose here, by owner approval:** migration `20261008120000_transition_source_candidates`
+    is applied (2026-10-08 23:25 UTC), and the new `TransitionSourceCandidate` table is the only table the
+    pipeline writes. `ClaimStatusHistory` (1,822,644), Source and Edge are untouched. Promotion into Source + Edge
+    is `scripts/promote-transition-sources.ts --confirm`, run by hand after review; it never touches
+    `ClaimStatusHistory`.
+  - Premise corrected: curated transitions were already 99.97% sourced (11,808 / 11,811), but 5,512 (47%) cite
+    Wikipedia — 98% of those in `seed:human-history-trajectories`. Those, plus the 6 with no usable source, are
+    the 5,518 targets.
+  - Done: 4,764 of 5,518 (pilot 200, full run 3,515, top-up 1,049; md5 order, so a random sample) for **$198.80**,
+    i.e. the promo credit is used up. Results: 4,705 candidates (1,589 rated ≥ 0.5, 528 ≥ 0.7) and 59
+    `no_source_found`. Haiku 5.5 first, with Sonnet 5.5 only when Haiku had nothing usable. 754 remain
+    (~$28 at the same rate, which would now come from the purchased balance).
+  - Spend came from the $200 promo credit, which expires 2026-10-12 UTC. The lifetime cap is $180; all API
+    calls must finish by 2026-10-11 18:00 New York. Ledger: `logs/transition-sourcing-ledger.jsonl` (gitignored).
+    The key is multi-workspace and needs `ANTHROPIC_WORKSPACE_ID` in `.env.local`.
+  - Found: history "settling" dates cluster on round years. Of 1,621 year-precise RECORDED→SETTLED rows, 401 fall
+    on a century year and 232 in 2000. About 90 candidates flag a stored date that disagrees with its record.
+    Details and examples are in the findings doc.
+
 ## Owner's side (not blocking)
 
 - [ ] `grep -c error /tmp/restore-rest.log` on the server → expect 0 (then the empty tables above were empty on Neon)
@@ -314,11 +338,15 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 - [ ] rotate the NARA API key when the new one arrives; put it in `.env.local` as `NARA_API_KEY` (the script reads
       that; no NARA var exists there today); then run the `git filter-repo` purge command from the Phase 0 chat report
       (mirror clone → `--replace-text` → force-push; collaborators re-clone)
+- [ ] transition sourcing: review the candidates (`scripts/review-transition-sources.ts --sample 50 --min-confidence 0.7`,
+      then `--accept` / `--reject`), then promote with `scripts/promote-transition-sources.ts --confirm`. Push
+      `feat/transition-sourcing` and open its PR.
 
 ## Next action
 
-Phases −1…5 and `fix/auto-trajectories` are merged (PRs #22–#29, `origin/main` `1e4e632`); the Phase 3 migration is
-applied. Next: the owner merges Phase 6 (`fix/front-door-phase-6`) and redeploys → Phase 6b (`feat/wire-what-exists`)
+Phases −1…6 and `fix/auto-trajectories` are merged (PRs #22–#30, `origin/main` `21ddb9c`); the Phase 3 migration is
+applied. `feat/transition-sourcing` is done, awaiting owner review (see its entry above). Next: the owner redeploys
+→ Phase 6b (`feat/wire-what-exists`)
 → Phase 6c (`fix/bce-dates`: code first; the data fix is the owner's) → Phase 7 (`feat/congress-link`). `LATER.md` §1's
 premise is outdated: Congress roll-calls (`voteview_v1`) and enacted laws (`congress_v1`) are already claims — Phase 7
 links, corrects and relates them rather than re-ingesting.

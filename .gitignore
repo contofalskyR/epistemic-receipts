@@ -76,6 +76,9 @@ prisma/migrations.sqlite-backup/
 # gate-3 go/no-go spec -- out of the repo from 07-14 to 07-24.
 !briefs/*-verification.md
 logs/
+# claude_sourcing_v1 spend ledger (scripts/source-transitions.ts); logs/ covers the default path
+logs/transition-sourcing-ledger.jsonl
+*transition-sourcing-ledger*.jsonl
 scripts/url-check-results.csv
 
 # Editor backups
