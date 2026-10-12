@@ -88,6 +88,8 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
     "/datasets/openalex_v1",
     "/embed/trajectory/h-pylori",
     "/stories/continental-drift",
+    "/receipts/x",
+    "/receipts/csh:trajectory:hiv-causes-aids:1",
   ])("%s (a [id]/[slug] page) is public", (r) => {
     expect(isPublicRoute(r)).toBe(true);
   });
@@ -103,7 +105,7 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
     "/history", "/physics", "/fields", "/statistics", "/analysis/settling-rate", "/stats", "/globe",
     "/legislation", "/drug-arc", "/historical-events", "/pipelines", "/meta-edges", "/feed", "/books",
     "/reader/some-book", "/congress-trades", "/votes", "/members", "/financial", "/domains/economics",
-    "/prereq-graph", "/retraction-wall", "/retractions", "/login", "/admin", "/review", "/receipts/x",
+    "/prereq-graph", "/retraction-wall", "/retractions", "/login", "/admin", "/review", "/receipts",
     "/stock-act", "/foreign-legislation", "/timeline",
   ])("%s is Lab", (r) => {
     expect(isPublicRoute(r)).toBe(false);
