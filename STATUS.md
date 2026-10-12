@@ -342,6 +342,10 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
     --apply` accepted 141 as `machine:verify-transition-sources-api` and rejected none (the tool gives no HTTP status,
     so it cannot call a link dead). Lifetime spend $233.98. Table: accepted 950 (809 + 141), candidate 4,407,
     rejected 88, no_source_found 73.
+  - **Promoted 2026-10-12 (owner approved):** `promote-transition-sources.ts --confirm` moved all 950 accepted rows into
+    Source + Edge in one transaction: 866 Sources created (84 reused), 926 CITES Edges created (24 already present),
+    every one `humanReviewed` false, `autoApproved` true. DB check: Source 1,687,314 → 1,688,180, Edge 1,718,774 →
+    1,719,700, ClaimStatusHistory unchanged at 1,822,644. Log: `logs/promote-2026-10-12.log`.
 
 ## Owner's side (not blocking)
 
@@ -350,8 +354,7 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 - [ ] rotate the NARA API key when the new one arrives; put it in `.env.local` as `NARA_API_KEY` (the script reads
       that; no NARA var exists there today); then run the `git filter-repo` purge command from the Phase 0 chat report
       (mirror clone → `--replace-text` → force-push; collaborators re-clone)
-- [ ] transition sourcing: approve `scripts/promote-transition-sources.ts --confirm` for the 950 machine-accepted rows
-      (or spot-check them first with `--sample 20 --status accepted`); then review the 4,407 left
+- [ ] transition sourcing: the 950 machine-accepted rows are promoted (2026-10-12); review the 4,407 left
       (`scripts/review-transition-sources.ts --sample 50 --min-confidence 0.7`,
       then `--accept` / `--reject`), then promote again. `feat/transition-sourcing` is merged (PR #31).
 
