@@ -47,6 +47,10 @@ export type EdgeDetail = {
   type: string;
   evidenceType: string;
   createdAt: string;
+  /** Automated checks approved this link (lib/verification.ts). */
+  autoApproved: boolean;
+  /** A person reviewed this link. */
+  humanReviewed: boolean;
   source: {
     id: string;
     name: string;
@@ -192,6 +196,8 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
       type: true,
       evidenceType: true,
       createdAt: true,
+      autoApproved: true,
+      humanReviewed: true,
       source: {
         select: {
           id: true,
@@ -303,6 +309,8 @@ function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
       type: edge.type,
       evidenceType: edge.evidenceType,
       createdAt: iso(edge.createdAt),
+      autoApproved: edge.autoApproved,
+      humanReviewed: edge.humanReviewed,
       source: {
         id: edge.source.id,
         name: edge.source.name,
