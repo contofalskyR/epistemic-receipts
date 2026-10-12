@@ -20,16 +20,20 @@ import { TrajectoryDepth } from "@/components/TrajectoryDepth";
 // applied; the lib/split-ledger loaders are cached for an hour instead.
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Split Ledger — Epistemic Receipts",
-  description:
-    "Claims where different ratifying communities have reached incompatible conclusions. Not a verdict — a record of where the ledgers disagree.",
-  ...socialMetadata({
+export async function generateMetadata(): Promise<Metadata> {
+  // The share-card count comes from the same cached classification as the page.
+  const { tier1 } = await loadSplitLedgerCounts();
+  return {
     title: "Split Ledger — Epistemic Receipts",
-    description: "386 claims where the expert-literature, institutional, judicial, public, and market communities have recorded incompatible epistemic statuses.",
-    url: "/split-ledger",
-  }),
-};
+    description:
+      "Claims where different ratifying communities have reached incompatible conclusions. Not a verdict — a record of where the ledgers disagree.",
+    ...socialMetadata({
+      title: "Split Ledger — Epistemic Receipts",
+      description: `${tier1.toLocaleString("en-US")} claims where the expert-literature, institutional, judicial, public, and market communities have recorded incompatible epistemic statuses.`,
+      url: "/split-ledger",
+    }),
+  };
+}
 
 // ── Community lane — per-community axis badge row ────────────────────────────
 

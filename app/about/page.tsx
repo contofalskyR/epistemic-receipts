@@ -25,10 +25,14 @@ export default function AboutPage() {
       <p>
         The site contains two kinds of claims. Reference claims are bulk-imported from
         authoritative sources (FDA drug approvals, Supreme Court rulings) — these are scaffolding.
-        Curated case studies are manually built with full receipts: Korematsu and its 70-year arc
-        through coram nobis and the Civil Liberties Act, smoking and the tobacco industry&apos;s
-        &ldquo;doubt is our product&rdquo; memo, the lab leak debate, Japan&apos;s surrender,
-        Pluto&apos;s reclassification, Ozempic&apos;s approval. The case studies are what the
+        Curated case studies are manually built with full receipts:{" "}
+        <Link href="/settling-curve/korematsu-trump-hawaii" className="underline underline-offset-2 hover:text-gray-200">Korematsu</Link> and its 70-year arc
+        through coram nobis and the Civil Liberties Act,{" "}
+        <Link href="/stories/smoking-lung-cancer" className="underline underline-offset-2 hover:text-gray-200">smoking</Link> and the tobacco industry&apos;s
+        &ldquo;doubt is our product&rdquo; memo, the lab leak debate,{" "}
+        <Link href="/settling-curve/japan-surrender-1945" className="underline underline-offset-2 hover:text-gray-200">Japan&apos;s surrender</Link>,{" "}
+        <Link href="/settling-curve/pluto-reclassified-dwarf-planet-2006" className="underline underline-offset-2 hover:text-gray-200">Pluto&apos;s reclassification</Link>,{" "}
+        <Link href="/stories/semaglutide-glp1" className="underline underline-offset-2 hover:text-gray-200">Ozempic&apos;s approval</Link>. The case studies are what the
         tool is for.
       </p>
 

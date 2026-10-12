@@ -398,7 +398,7 @@ describe("/split-ledger loaders and page", () => {
   beforeEach(() => {
     mp.$queryRaw = vi.fn(async (q: unknown) => {
       const text = sqlText(q);
-      if (text.includes("HAVING COUNT(DISTINCT community) >= 2")) return [{ claimId: "c1" }, { claimId: "c2" }, { claimId: "c3" }];
+      if (text.includes("HAVING COUNT(DISTINCT h.community) >= 2")) return [{ claimId: "c1" }, { claimId: "c2" }, { claimId: "c3" }];
       if (text.includes("DISTINCT ON")) return latest;
       if (text.includes("LEFT(c.text, 300)")) {
         return ["c1", "c2", "c3"].map((id) => ({

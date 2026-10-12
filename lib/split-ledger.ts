@@ -14,6 +14,20 @@
 import { prisma } from "@/lib/prisma";
 import { unstable_cache } from "next/cache";
 import { Prisma } from "@prisma/client";
+import { liveClaimSql } from "@/lib/corpus";
+
+/** Claims with transitions in two or more communities, live claims only (a
+ *  deleted or DEPRECATED claim's receipts are hidden everywhere else). */
+export function multiCommunityIdsSql(): Prisma.Sql {
+  return Prisma.sql`
+    SELECT h."claimId"
+    FROM "ClaimStatusHistory" h
+    JOIN "Claim" c ON c.id = h."claimId"
+    WHERE ${liveClaimSql("c")}
+    GROUP BY h."claimId"
+    HAVING COUNT(DISTINCT h.community) >= 2
+  `;
+}
 
 export const COMMUNITY_LABEL: Record<string, string> = {
   EXPERT_LITERATURE: "Expert literature",
@@ -96,12 +110,7 @@ async function getClassification() {
   }
 
   // Load all multi-community claims' latest axes
-  const multiIds = await prisma.$queryRaw<{ claimId: string }[]>`
-    SELECT "claimId"
-    FROM "ClaimStatusHistory"
-    GROUP BY "claimId"
-    HAVING COUNT(DISTINCT community) >= 2
-  `;
+  const multiIds = await prisma.$queryRaw<{ claimId: string }[]>(multiCommunityIdsSql());
 
   if (multiIds.length === 0) {
     _classificationCache = { tier1: [], tier2: [], tier2ByPair: {} };
@@ -179,7 +188,7 @@ async function enrichClaims(
         MAX(csh."occurredAt") AS "lastOccurredAt"
       FROM "Claim" c
       LEFT JOIN "ClaimStatusHistory" csh ON csh."claimId" = c.id
-      WHERE c.id = ANY(${claimIds}::text[])
+      WHERE c.id = ANY(${claimIds}::text[]) AND ${liveClaimSql("c")}
       GROUP BY c.id, c.text
     `
   );

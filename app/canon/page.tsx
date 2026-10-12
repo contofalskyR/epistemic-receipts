@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { doiLink } from "@/lib/doi";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
@@ -310,6 +311,7 @@ export default async function CanonPage({
           const rank = offset + i + 1;
           const title = cleanDisplayText(r.text);
           const reviewed = r.review?.reviewedAt ? r.review : null;
+          const doi = doiLink(r.doi);
           return (
             <li
               key={r.id}
@@ -343,7 +345,6 @@ export default async function CanonPage({
                           no verified settling event
                         </span>
                       )}
-                      {r.doi && <span className="text-gray-700 truncate max-w-[16rem]">doi:{r.doi}</span>}
                     </div>
                     {r.steps >= 2 && milestonesByClaim.has(r.id) && (
                       <div className="max-w-md pt-1">
@@ -357,6 +358,19 @@ export default async function CanonPage({
                   </div>
                 </div>
               </Link>
+              {/* Outside the row's claim link: an <a> may not nest in an <a>. */}
+              {doi && (
+                <div className="px-4 pb-3 -mt-2 pl-[3.75rem] text-[11px] font-mono">
+                  <a
+                    href={doi.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-gray-300 truncate inline-block max-w-[20rem] align-bottom"
+                  >
+                    {doi.label}
+                  </a>
+                </div>
+              )}
             </li>
           );
         })}
