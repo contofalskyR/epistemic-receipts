@@ -176,7 +176,7 @@ export default async function ClaimDetailPage({ params }: Props) {
           )}
           {(claim._count?.statusHistory ?? 0) >= 2 && (
             <Link
-              href={`/settling-curve?t=${encodeURIComponent(claim.id)}`}
+              href={`/settling-curve?t=${encodeURIComponent(claim.trajectorySlug ?? claim.id)}`}
               className="text-xs px-2 py-0.5 rounded-full font-medium bg-amber-500/15 text-amber-300 border border-amber-500/40 hover:bg-amber-500/25 transition-colors"
             >
               View settling curve →

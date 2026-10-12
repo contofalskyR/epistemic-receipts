@@ -2,6 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { trajectorySlug } from "@/lib/trajectory-shared";
 
 // ── Serialized (JSON-safe) trajectory-detail types ───────────────────────────
 // Dates → ISO strings; passed as props to client components or used in
@@ -24,6 +25,8 @@ export type TrajectoryTransition = {
 
 export type TrajectoryDetail = {
   claimId: string;
+  /** Curated slug (externalId "trajectory:<slug>"), or null for other claims. */
+  slug: string | null;
   claimText: string;
   ingestedBy: string | null;
   claimEmergedAt: string | null;
@@ -53,6 +56,7 @@ const STATUS_HISTORY_SELECT = Prisma.validator<Prisma.ClaimStatusHistoryFindMany
 
 const CLAIM_FIELDS = {
   id: true,
+  externalId: true,
   text: true,
   ingestedBy: true,
   claimEmergedAt: true,
@@ -105,6 +109,7 @@ async function queryTrajectoryDetail(id: string): Promise<TrajectoryDetail | nul
 
   return {
     claimId: claim.id,
+    slug: trajectorySlug(claim.externalId),
     claimText: claim.text,
     ingestedBy: claim.ingestedBy,
     claimEmergedAt: claim.claimEmergedAt ? claim.claimEmergedAt.toISOString() : null,

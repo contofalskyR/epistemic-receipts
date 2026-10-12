@@ -2,6 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { trajectorySlug } from "@/lib/trajectory-shared";
 
 // ── Serialized (JSON-safe) claim-detail types ─────────────────────────────────
 // These mirror the wire shape the old client page received from
@@ -114,6 +115,8 @@ export type ClaimDetail = {
   claimEmergedAt: string | null;
   claimEmergedPrecision: string | null;
   createdAt: string;
+  /** Curated slug (externalId "trajectory:<slug>"), or null. */
+  trajectorySlug: string | null;
   humanReviewed: boolean;
   epistemicStatus: string | null;
   ingestedBy: string;
@@ -162,6 +165,7 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
   claimEmergedAt: true,
   claimEmergedPrecision: true,
   createdAt: true,
+  externalId: true,
   humanReviewed: true,
   epistemicStatus: true,
   ingestedBy: true,
@@ -297,6 +301,7 @@ function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
     claimEmergedAt: isoOrNull(claim.claimEmergedAt),
     claimEmergedPrecision: claim.claimEmergedPrecision,
     createdAt: iso(claim.createdAt),
+    trajectorySlug: trajectorySlug(claim.externalId),
     humanReviewed: claim.humanReviewed,
     epistemicStatus: claim.epistemicStatus,
     ingestedBy: claim.ingestedBy,

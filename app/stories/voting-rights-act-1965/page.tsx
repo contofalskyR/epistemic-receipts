@@ -9,6 +9,7 @@ import EmbedButton from "@/components/EmbedButton";
 import { SITE_URL } from "@/lib/site";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
+import { trajectoryMilestones } from "@/lib/trajectory-shared";
 
 export const revalidate = 86400;
 
@@ -42,12 +43,7 @@ function fmtDate(iso: string, precision: string | null): string {
 }
 
 function CurvePanel({ traj, slug }: { traj: TrajectoryDetail; slug: string }) {
-  const milestones = traj.transitions.map((t) => ({
-    year: new Date(t.occurredAt).getUTCFullYear(),
-    axis: t.toAxis,
-    reason: t.reason,
-    community: t.community,
-  }));
+  const milestones = trajectoryMilestones(traj.transitions);
   const finalAxis = traj.transitions.at(-1)?.toAxis ?? null;
 
   return (
