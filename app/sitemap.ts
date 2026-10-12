@@ -4,10 +4,14 @@ import { SITE_URL } from "@/lib/site";
 import { isPublicRoute } from "@/lib/publicEdition";
 import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
 import { STAT_METHOD_SLUGS } from "@/lib/statMethods";
+import { getDataPipelines } from "@/lib/pipelines/registry";
 
 // Sitemap chunks: with generateSitemaps(), Next serves /sitemap/[id].xml
-// (per-chunk files) but does NOT emit an index — that lives in
-// app/sitemap.xml/route.ts (keep its chunk logic in sync with this file).
+// (per-chunk files) but does NOT emit an index — that is
+// app/sitemap-index.xml/route.ts, served at /sitemap.xml by the beforeFiles
+// rewrite in next.config.ts (keep its chunk logic in sync with this file).
+// Receipts (/receipts/[id]) are deliberately absent: they are noindex with a
+// canonical to their claim, and there are 1.8M of them.
 // Each chunk must stay under the 50k-URL protocol cap.
 const CHUNK = 50_000;
 
@@ -34,6 +38,24 @@ const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/open-questions`, changeFrequency: "weekly", priority: 0.7 },
   { url: `${SITE_URL}/split-ledger`, changeFrequency: "weekly", priority: 0.8 },
   { url: `${SITE_URL}/communities`, changeFrequency: "monthly", priority: 0.7 },
+  { url: `${SITE_URL}/settling-curve`, changeFrequency: "daily", priority: 1.0 },
+  { url: `${SITE_URL}/opinions`, changeFrequency: "weekly", priority: 0.8 },
+  { url: `${SITE_URL}/retraction-explorer`, changeFrequency: "weekly", priority: 0.8 },
+  { url: `${SITE_URL}/patterns`, changeFrequency: "weekly", priority: 0.8 },
+  { url: `${SITE_URL}/law-settler`, changeFrequency: "weekly", priority: 0.8 },
+  { url: `${SITE_URL}/methodology`, changeFrequency: "monthly", priority: 0.6 },
+  { url: `${SITE_URL}/datasets`, changeFrequency: "monthly", priority: 0.6 },
+  { url: `${SITE_URL}/corrections`, changeFrequency: "monthly", priority: 0.6 },
+  { url: `${SITE_URL}/feedback`, changeFrequency: "yearly", priority: 0.3 },
+  { url: `${SITE_URL}/terms`, changeFrequency: "yearly", priority: 0.3 },
+  { url: `${SITE_URL}/privacy`, changeFrequency: "yearly", priority: 0.3 },
+  { url: `${SITE_URL}/license`, changeFrequency: "yearly", priority: 0.3 },
+  // One provenance card per pipeline with a method (lib/pipelines/registry.ts).
+  ...getDataPipelines().map((p) => ({
+    url: `${SITE_URL}/datasets/${p.tag}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  })),
 ];
 
 // Page routes are deny-by-default (lib/publicEdition.ts). Advertising a URL the

@@ -46,6 +46,11 @@ describe("front door: the sitemap never advertises a URL the Lab gate intercepts
     expect(src).toMatch(/onlyPublic\(\[\.\.\.topicUrls, \.\.\.explorerUrls\]\)/);
   });
 
+  it("lists every public route", () => {
+    const listed = new Set([...src.matchAll(/\$\{SITE_URL\}(\/[^`"'$]*)`/g)].map((m) => m[1].replace(/\/$/, "") || "/"));
+    expect(PUBLIC_ROUTES.filter((r) => !listed.has(r))).toEqual([]);
+  });
+
   it("lists no static URL that would be dropped", () => {
     // Literal static URLs only; templated ones (`/topics/${slug}`) are judged at
     // runtime by onlyPublic() above.
