@@ -104,11 +104,20 @@ export default function AdaptiveClaimTimeline({
   // The #t-N anchors exist only while the panel is open, so a link to one
   // (copied from the panel, or a receipt page's back link and canonical) opens
   // it and scrolls to the row.
+  // After hydration (the server cannot see the hash): open on the next frame,
+  // scroll on the one after, once the row exists.
   useEffect(() => {
     if (!/^#t-\d+$/.test(window.location.hash)) return;
-    setPanelOpen(true);
     const id = window.location.hash.slice(1);
-    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: "center" }));
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      setPanelOpen(true);
+      inner = requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: "center" }));
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
   }, []);
 
   const layout = computeTimelineLayout(claim, displayAxis, todayIso);
