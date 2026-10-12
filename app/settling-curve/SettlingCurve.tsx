@@ -8,6 +8,7 @@ import SettlingCurveNav from "./SettlingCurveNav";
 import { AXIS_COLOR } from "@/lib/status";
 import { EpistemicLegend } from "@/components/EpistemicLegend";
 import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
+import { receiptHref } from "@/lib/receipts";
 
 const C = {
   bg: "#0a0a0a",
@@ -633,6 +634,11 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
               <Link href={flagHref(activeId, only)} className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
                 flag this receipt →
               </Link>
+              {only.id && (
+                <Link href={receiptHref(only.id)} prefetch={false} rel="nofollow" className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                  permalink →
+                </Link>
+              )}
             </div>
             <p className="mt-4" style={{ fontSize: 12, color: C.faint, lineHeight: 1.55 }}>
               A single-point curve is a real claim: nothing has moved yet. When a dated, sourced
@@ -799,6 +805,11 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                 <Link href={flagHref(activeId, detail)} className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
                   flag this receipt →
                 </Link>
+                {detail.id && (
+                  <Link href={receiptHref(detail.id)} prefetch={false} rel="nofollow" className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                    permalink →
+                  </Link>
+                )}
               </div>
               <p className="mt-4" style={{ fontSize: 12, color: C.faint }}>
                 Each point is a dated source — the receipt for when a community changed its mind. Tap any marker.
@@ -920,6 +931,11 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                         >
                           flag this receipt →
                         </Link>
+                        {tr.id && (
+                          <Link href={receiptHref(tr.id)} prefetch={false} rel="nofollow" className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                            permalink →
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>

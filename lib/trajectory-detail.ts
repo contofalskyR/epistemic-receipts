@@ -9,6 +9,8 @@ import { prisma } from "@/lib/prisma";
 // boundary.
 
 export type TrajectoryTransition = {
+  /** ClaimStatusHistory id — the transition's receipt is /receipts/<id>. */
+  id: string;
   /** Explicit chain order (1..n per claim); null on unbackfilled legacy rows. */
   seq: number | null;
   fromAxis: string | null;
@@ -37,6 +39,7 @@ const STATUS_HISTORY_SELECT = Prisma.validator<Prisma.ClaimStatusHistoryFindMany
   // NULLs last so unbackfilled legacy rows fall back to date order.
   orderBy: [{ seq: "asc" as const }, { occurredAt: "asc" as const }, { createdAt: "asc" as const }],
   select: {
+    id: true,
     seq: true,
     fromAxis: true,
     toAxis: true,
@@ -57,6 +60,7 @@ const CLAIM_FIELDS = {
 
 type RawStatusHistory = Prisma.ClaimStatusHistoryGetPayload<{
   select: {
+    id: true;
     seq: true;
     fromAxis: true;
     toAxis: true;
@@ -70,6 +74,7 @@ type RawStatusHistory = Prisma.ClaimStatusHistoryGetPayload<{
 
 function serializeTransition(s: RawStatusHistory): TrajectoryTransition {
   return {
+    id: s.id,
     seq: s.seq,
     fromAxis: s.fromAxis,
     toAxis: s.toAxis,

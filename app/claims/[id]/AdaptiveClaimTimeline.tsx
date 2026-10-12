@@ -1,5 +1,7 @@
 "use client";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import Link from "next/link";
+import { receiptHref } from "@/lib/receipts";
 import type { ClaimDetail, EdgeDetail, StatusTransitionSummary } from "@/lib/claim-detail";
 import {
   computeTimelineLayout,
@@ -99,12 +101,23 @@ export default function AdaptiveClaimTimeline({
 }) {
   const [panelOpen, setPanelOpen] = useState(false);
 
+  // The #t-N anchors exist only while the panel is open, so a link to one
+  // (copied from the panel, or a receipt page's back link and canonical) opens
+  // it and scrolls to the row.
+  useEffect(() => {
+    if (!/^#t-\d+$/.test(window.location.hash)) return;
+    setPanelOpen(true);
+    const id = window.location.hash.slice(1);
+    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: "center" }));
+  }, []);
+
   const layout = computeTimelineLayout(claim, displayAxis, todayIso);
   const panelToggle = () => setPanelOpen(v => !v);
 
   // ── Compact row ──────────────────────────────────────────────────────────────
   if (layout.mode === "compact") {
-    const { dotColor, primary, dateLabel, dormantMs, dormantWord, title } = layout;
+    const { dotColor, primary, dateLabel, dormantMs, dormantWord, title, markers } = layout;
+    const onlyTransition = markers[0]?.transitions.at(-1);
     return (
       <div
         title={title}
@@ -132,6 +145,17 @@ export default function AdaptiveClaimTimeline({
           <span style={{ marginLeft: "auto", fontSize: 11, color: MUT, whiteSpace: "nowrap" }}>
             {fmtDur(dormantMs)} · {dormantWord}
           </span>
+        )}
+        {onlyTransition && (
+          <Link
+            href={receiptHref(onlyTransition.id)}
+            prefetch={false}
+            rel="nofollow"
+            className="shrink-0 text-[11px] text-gray-500 hover:text-gray-300 font-mono"
+            style={dormantMs > 90 * DAY_MS ? undefined : { marginLeft: "auto" }}
+          >
+            receipt →
+          </Link>
         )}
       </div>
     );
@@ -588,6 +612,14 @@ export default function AdaptiveClaimTimeline({
                         #
                       </a>
                     )}
+                    <Link
+                      href={receiptHref(t.id)}
+                      prefetch={false}
+                      rel="nofollow"
+                      className={`${anchorHref ? "" : "ml-auto "}shrink-0 text-gray-600 hover:text-gray-300 font-mono`}
+                    >
+                      receipt →
+                    </Link>
                   </li>,
                 );
               });

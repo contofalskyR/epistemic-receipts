@@ -8,6 +8,7 @@ import EmbedButton from "@/components/EmbedButton";
 import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
 import { SITE_URL } from "@/lib/site";
 import { EmptyState } from "@/components/DataState";
+import { receiptHref } from "@/lib/receipts";
 
 const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
@@ -174,7 +175,7 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
         ) : (
           <ol className="space-y-3">
             {traj.transitions.map((t, i) => (
-              <li key={i} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-4 space-y-2">
+              <li key={i} id={t.seq != null ? `t-${t.seq}` : undefined} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-4 space-y-2">
                 {/* Arrow */}
                 <div className="flex items-center gap-2 flex-wrap">
                   {t.fromAxis ? (
@@ -225,6 +226,11 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
                     )}
                   </p>
                 )}
+                <p className="text-xs">
+                  <Link href={receiptHref(t.id)} prefetch={false} rel="nofollow" className="text-gray-500 hover:text-gray-300 font-mono">
+                    Receipt →
+                  </Link>
+                </p>
               </li>
             ))}
           </ol>

@@ -38,6 +38,7 @@ function toMainInput(events: FEvent[]): { claim: ClaimDetail; todayIso: string }
   let prevAxis: string | null = null;
   transitions.forEach((t, i) => {
     statusHistory.push({
+      id: `csh-${i + 1}`,
       seq: i + 1,
       fromAxis: prevAxis,
       toAxis: t.toAxis!,

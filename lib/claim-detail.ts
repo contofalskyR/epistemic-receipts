@@ -90,6 +90,8 @@ export type ChildClaimDetail = {
 export type TopicTag = { id: string; name: string; slug: string; domain: string };
 
 export type StatusTransitionSummary = {
+  /** ClaimStatusHistory id — the transition's receipt is /receipts/<id>. */
+  id: string;
   /** Explicit chain order (1..n per claim); null on unbackfilled legacy rows. */
   seq: number | null;
   fromAxis: string | null;
@@ -249,7 +251,7 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
       { occurredAt: "desc" },
       { createdAt: "desc" },
     ],
-    select: { seq: true, fromAxis: true, toAxis: true, community: true, occurredAt: true, datePrecision: true },
+    select: { id: true, seq: true, fromAxis: true, toAxis: true, community: true, occurredAt: true, datePrecision: true },
   },
 });
 
