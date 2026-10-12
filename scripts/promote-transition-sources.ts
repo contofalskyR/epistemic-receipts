@@ -8,8 +8,9 @@
  *
  * Per accepted, unpromoted candidate:
  *   Source — reused when a non-deleted Source already has exactly this URL,
- *            else created (methodologyType 'primary', ingestedBy 'claude_sourcing_v1',
- *            humanReviewed: the owner accepted it in review).
+ *            else created (methodologyType 'primary', ingestedBy 'claude_sourcing_v1').
+ *            humanReviewed only when a human accepted it (trace.review.by = 'human');
+ *            a machine acceptance (--auto-review) is humanReviewed false, autoApproved true.
  *   Edge   — CITES from that Source to the claim (the human-curated
  *            connection type, AGENTS.md "Editorial-not-algorithmic"), unless a
  *            non-deleted edge between the two already exists. No EdgeRevision:
@@ -34,6 +35,7 @@ type Row = {
   publisher: string | null;
   publishedAt: Date | null;
   reviewedAt: Date | null;
+  human: boolean;
 };
 
 async function main() {
@@ -43,7 +45,8 @@ async function main() {
     await db.query("BEGIN");
     const rows = (
       await db.query<Row>(
-        `SELECT id, "claimId", url, title, publisher, "publishedAt", "reviewedAt"
+        `SELECT id, "claimId", url, title, publisher, "publishedAt", "reviewedAt",
+                coalesce(trace->'review'->>'by', 'human') = 'human' AS human
          FROM "TransitionSourceCandidate"
          WHERE status = 'accepted' AND "promotedAt" IS NULL AND url IS NOT NULL
          ORDER BY "reviewedAt", id
@@ -59,7 +62,11 @@ async function main() {
       );
       for (const x of s.rows) existing.set(x.url, x.id);
     }
-    console.log(`accepted, not yet promoted: ${rows.length} · distinct URLs ${urls.length} · already a Source ${existing.size}`);
+    const humans = rows.filter((r) => r.human).length;
+    console.log(
+      `accepted, not yet promoted: ${rows.length} (human ${humans}, machine ${rows.length - humans}) · ` +
+        `distinct URLs ${urls.length} · already a Source ${existing.size}`,
+    );
 
     if (!CONFIRM) {
       await db.query("ROLLBACK");
@@ -77,8 +84,8 @@ async function main() {
         sourceId = cuid();
         await db.query(
           `INSERT INTO "Source" (id, name, url, "publishedAt", "methodologyType", "ingestedBy", "humanReviewed", "reviewedAt", "autoApproved")
-           VALUES ($1, $2, $3, $4, 'primary', $5, true, $6, false)`,
-          [sourceId, sourceName(r), r.url, r.publishedAt, PIPELINE_TAG, r.reviewedAt],
+           VALUES ($1, $2, $3, $4, 'primary', $5, $7, $6, NOT $7)`,
+          [sourceId, sourceName(r), r.url, r.publishedAt, PIPELINE_TAG, r.reviewedAt, r.human],
         );
         created.set(r.url, sourceId);
         n.sourcesCreated++;
@@ -93,8 +100,8 @@ async function main() {
         edgeId = cuid();
         await db.query(
           `INSERT INTO "Edge" (id, "sourceId", "claimId", type, "evidenceType", "ingestedBy", "humanReviewed", "reviewedAt", "autoApproved")
-           VALUES ($1, $2, $3, 'CITES', 'EVIDENTIARY', $4, true, $5, false)`,
-          [edgeId, sourceId, r.claimId, PIPELINE_TAG, r.reviewedAt],
+           VALUES ($1, $2, $3, 'CITES', 'EVIDENTIARY', $4, $6, $5, NOT $6)`,
+          [edgeId, sourceId, r.claimId, PIPELINE_TAG, r.reviewedAt, r.human],
         );
         n.edgesCreated++;
       }
