@@ -336,6 +336,12 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
     3,808 are left as candidates for a human. Every decision is recorded in `trace.review.by` as
     `machine:verify-transition-sources`; promotion writes those rows as `humanReviewed` false, `autoApproved` true.
     Not promoted yet: the plan is 809 rows, 768 distinct URLs, 34 of them already a Source.
+  - Second credit (2026-10-12): the last 754 targets were sourced for $29.98 (740 candidates, 14 no source), so all
+    5,518 are done. Their URLs were checked by the API's web fetch tool (`scripts/verify-transition-sources-api.ts`,
+    $5.19, `logs/transition-verify-api.jsonl`): 738 checked, 562 fetched, the excerpt found on 467. `--auto-review
+    --apply` accepted 141 as `machine:verify-transition-sources-api` and rejected none (the tool gives no HTTP status,
+    so it cannot call a link dead). Lifetime spend $233.98. Table: accepted 950 (809 + 141), candidate 4,407,
+    rejected 88, no_source_found 73.
 
 ## Owner's side (not blocking)
 
@@ -344,8 +350,8 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 - [ ] rotate the NARA API key when the new one arrives; put it in `.env.local` as `NARA_API_KEY` (the script reads
       that; no NARA var exists there today); then run the `git filter-repo` purge command from the Phase 0 chat report
       (mirror clone → `--replace-text` → force-push; collaborators re-clone)
-- [ ] transition sourcing: approve `scripts/promote-transition-sources.ts --confirm` for the 809 machine-accepted rows
-      (or spot-check them first with `--sample 20 --status accepted`); then review the 3,808 left
+- [ ] transition sourcing: approve `scripts/promote-transition-sources.ts --confirm` for the 950 machine-accepted rows
+      (or spot-check them first with `--sample 20 --status accepted`); then review the 4,407 left
       (`scripts/review-transition-sources.ts --sample 50 --min-confidence 0.7`,
       then `--accept` / `--reject`), then promote again. `feat/transition-sourcing` is merged (PR #31).
 

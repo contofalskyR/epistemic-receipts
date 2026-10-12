@@ -441,6 +441,8 @@ export function isMetaExcerpt(excerpt: string): boolean {
 // ── Machine review (review-transition-sources.ts --auto-review) ────────────
 
 export const MACHINE_REVIEWER = "machine:verify-transition-sources";
+/** Decisions made from verify-transition-sources-api.ts (page fetched by the API's web fetch tool). */
+export const MACHINE_REVIEWER_API = "machine:verify-transition-sources-api";
 
 export type VerifyLike = { status: number | null; match: number | null; textLen: number; metaExcerpt: boolean; error: string | null };
 

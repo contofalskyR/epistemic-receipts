@@ -4,6 +4,7 @@ import path from 'node:path'
 import {
   ANSWER_JSON_SCHEMA,
   MACHINE_REVIEWER,
+  MACHINE_REVIEWER_API,
   autoReviewDecision,
   isDeadLink,
   type VerifyLike,
@@ -312,5 +313,6 @@ describe('machine review rule', () => {
     expect(promote).toContain("coalesce(trace->'review'->>'by', 'human') = 'human' AS human")
     expect(promote).toContain('NOT $7')
     expect(MACHINE_REVIEWER).toMatch(/^machine:/)
+    expect(MACHINE_REVIEWER_API).toMatch(/^machine:/)
   })
 })

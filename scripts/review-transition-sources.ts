@@ -13,7 +13,10 @@
  * Source and Edge humanReviewed. --auto-review applies autoReviewDecision() (scripts/lib)
  * to the output of scripts/verify-transition-sources.ts. It re-checks each dead link
  * with a browser user-agent before rejecting it, and is a dry run unless --apply. Its
- * decisions record trace.review.by = "machine:verify-transition-sources"; promotion
+ * decisions record trace.review.by = "machine:verify-transition-sources" (or
+ * "machine:verify-transition-sources-api" when the file came from
+ * verify-transition-sources-api.ts), and trace.verify only on the rows the file
+ * checked, so an earlier check's result on other rows is kept; promotion
  * marks those humanReviewed false, autoApproved true (AGENTS.md: the two are separate
  * signals).
  *
@@ -24,6 +27,7 @@ import { config as loadEnv } from "dotenv";
 import { readFileSync } from "node:fs";
 import {
   MACHINE_REVIEWER,
+  MACHINE_REVIEWER_API,
   autoReviewDecision,
   formatTransitionDate,
   isDeadLink,
@@ -136,7 +140,7 @@ async function main() {
   }
 }
 
-type Verified = VerifyLike & { id: string; url: string };
+type Verified = VerifyLike & { id: string; url: string; via?: "api" };
 
 const BROWSER_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15";
 
@@ -186,7 +190,9 @@ async function autoReview(pool: ReturnType<typeof makePool>, file: string, apply
 
   const tally = new Map<string, number>();
   for (const d of decided) tally.set(`${d.decision.padEnd(6)}  ${d.rule}`, (tally.get(`${d.decision.padEnd(6)}  ${d.rule}`) ?? 0) + 1);
-  console.log(`${rows.length} candidates · ${verified.size} verification records (${file})`);
+  const vs = [...verified.values()];
+  const reviewer = vs.length > 0 && vs.every((v) => v.via === "api") ? MACHINE_REVIEWER_API : MACHINE_REVIEWER;
+  console.log(`${rows.length} candidates · ${verified.size} verification records (${file}) · reviewer ${reviewer}`);
   for (const [k, n] of [...tally].sort()) console.log(`  ${String(n).padStart(5)}  ${k}`);
   if (!apply) {
     console.log("Dry run — nothing written. Re-run with --apply to record these decisions.");
@@ -194,16 +200,18 @@ async function autoReview(pool: ReturnType<typeof makePool>, file: string, apply
   }
 
   const at = new Date().toISOString();
+  // Only rows this file checked get a new trace.verify; the rest keep whatever an earlier check wrote.
+  const checked = decided.filter((d) => d.v);
   const verifyOf = (d: (typeof decided)[number]) =>
-    JSON.stringify(d.v ? { status: d.v.status, match: d.v.match, textLen: d.v.textLen, metaExcerpt: d.v.metaExcerpt, dead: isDeadLink(d.v), rule: d.rule, at } : { rule: d.rule, at });
+    JSON.stringify({ status: d.v!.status, match: d.v!.match, textLen: d.v!.textLen, metaExcerpt: d.v!.metaExcerpt, dead: isDeadLink(d.v!), rule: d.rule, via: d.v!.via ?? "local", at });
   const db = await pool.connect();
   try {
     await db.query("BEGIN");
-    // Every candidate keeps its check result, so a human reviewer sees it in --sample.
+    // Every checked candidate keeps its check result, so a human reviewer sees it in --sample.
     await db.query(
       `UPDATE "TransitionSourceCandidate" t SET trace = jsonb_set(coalesce(t.trace, '{}'::jsonb), '{verify}', x.v)
        FROM unnest($1::text[], $2::jsonb[]) AS x(id, v) WHERE t.id = x.id`,
-      [decided.map((d) => d.id), decided.map(verifyOf)],
+      [checked.map((d) => d.id), checked.map(verifyOf)],
     );
     const flip = async (decision: "accept" | "reject", status: string) => {
       const list = decided.filter((d) => d.decision === decision);
@@ -213,7 +221,7 @@ async function autoReview(pool: ReturnType<typeof makePool>, file: string, apply
                trace = jsonb_set(t.trace, '{review}', jsonb_build_object('by', $3::text, 'at', now(), 'rule', x.rule))
          FROM unnest($1::text[], $4::text[]) AS x(id, rule)
          WHERE t.id = x.id AND t.status = 'candidate' AND t."promotedAt" IS NULL`,
-        [list.map((d) => d.id), status, MACHINE_REVIEWER, list.map((d) => d.rule)],
+        [list.map((d) => d.id), status, reviewer, list.map((d) => d.rule)],
       );
       return r.rowCount ?? 0;
     };
