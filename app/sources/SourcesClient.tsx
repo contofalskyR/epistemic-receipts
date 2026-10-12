@@ -148,6 +148,26 @@ interface SourceEntry {
   label: string;
   sourceUrl: string;
   count: number;
+  emergedFirstYear: number | null;
+  emergedLastYear: number | null;
+  newestRecordAt: string | null;
+  deprecated: number;
+  unclassified: number;
+  hasDataCard: boolean;
+  method: string | null;
+  cadence: string | null;
+  caveats: string | null;
+}
+
+/** "records dated 1789–2026 · newest added 2026-06-08 · 67 unclassified · 182 deprecated" */
+function dataLine(s: SourceEntry): string {
+  const parts: string[] = [];
+  const { emergedFirstYear: a, emergedLastYear: b } = s;
+  parts.push(a === null || b === null ? "undated" : a === b ? `records dated ${a}` : `records dated ${a}–${b}`);
+  if (s.newestRecordAt) parts.push(`newest added ${s.newestRecordAt.slice(0, 10)}`);
+  if (s.unclassified > 0) parts.push(`${s.unclassified.toLocaleString()} unclassified`);
+  if (s.deprecated > 0) parts.push(`${s.deprecated.toLocaleString()} deprecated`);
+  return parts.join(" · ");
 }
 
 interface CategoryBucket {
@@ -216,6 +236,22 @@ function MethodologyPanel({ s, color }: { s: SourceEntry; color: typeof CATEGORY
             </div>
           ))}
         </>
+      ) : s.method ? (
+        // No long-form write-up: fall back to the registry's own data-card text.
+        [
+          { label: "Ingestion method", text: s.method },
+          { label: "Cadence", text: s.cadence },
+          { label: "Caveats", text: s.caveats },
+        ]
+          .filter((r): r is { label: string; text: string } => !!r.text)
+          .map(({ label, text }) => (
+            <div key={label}>
+              <div style={{ fontSize: "0.68rem", fontWeight: 700, color: color.text, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.3rem" }}>
+                {label}
+              </div>
+              <p style={{ color: C.mut, fontSize: "0.8rem", lineHeight: 1.55, margin: 0 }}>{text}</p>
+            </div>
+          ))
       ) : (
         <p style={{ color: C.faint, fontSize: "0.82rem", fontStyle: "italic", margin: 0 }}>
           Methodology documentation for <code style={{ fontSize: "0.78rem", color: C.mut }}>{s.ingestedBy}</code> has not yet been written. Each claim from this source includes a source URL pointing to the original record.
@@ -305,7 +341,15 @@ function SourceCard({ s, color }: { s: SourceEntry; color: typeof CATEGORY_COLOR
             {open ? "▲ methodology" : "▼ methodology"}
           </span>
         </div>
+        <span style={{ color: C.faint, fontSize: "0.7rem", textAlign: "left" }}>{dataLine(s)}</span>
       </button>
+      {s.hasDataCard && (
+        <div style={{ padding: "0 1rem 0.75rem" }}>
+          <Link href={`/datasets/${s.ingestedBy}`} style={{ color: color.text, fontSize: "0.72rem", textDecoration: "none" }}>
+            Data card →
+          </Link>
+        </div>
+      )}
 
       {/* Expandable methodology panel */}
       {open && <MethodologyPanel s={s} color={color} />}

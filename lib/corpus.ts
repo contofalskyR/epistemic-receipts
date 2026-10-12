@@ -53,6 +53,43 @@ export const corpusCountByPipeline = unstable_cache(
   { revalidate: 3600, tags: ["corpus-count"] },
 );
 
+export type PipelineStats = PipelineCount & {
+  /** Range of claimEmergedAt years (SQL historical years); null when undated. */
+  emergedFirstYear: number | null;
+  emergedLastYear: number | null;
+  /** max(createdAt) as an ISO string — "newest record added", not a run log
+   *  (PipelineRun has no rows). */
+  newestRecordAt: string | null;
+  deprecated: number;
+  /** verificationStatus IS NULL — never classified, still counted. */
+  unclassified: number;
+};
+
+/** The SQL behind corpusStatsByPipeline: fixed text, no bound input. */
+export const PIPELINE_STATS_SQL = Prisma.sql`
+  SELECT "ingestedBy",
+         count(*)::int AS count,
+         min(extract(year FROM "claimEmergedAt"))::int AS "emergedFirstYear",
+         max(extract(year FROM "claimEmergedAt"))::int AS "emergedLastYear",
+         to_char(max("createdAt"), 'YYYY-MM-DD"T"HH24:MI:SS"Z"') AS "newestRecordAt", -- timestamp(3), stored in UTC
+         (count(*) FILTER (WHERE "verificationStatus" = 'DEPRECATED'))::int AS deprecated,
+         (count(*) FILTER (WHERE "verificationStatus" IS NULL))::int AS unclassified
+  FROM "Claim"
+  WHERE deleted = false
+  GROUP BY "ingestedBy"
+  ORDER BY count DESC`;
+
+/**
+ * corpusCountByPipeline() plus what a provenance card needs, from ONE
+ * GROUP BY under the same deleted = false definition (/sources). Strings and
+ * numbers only, so it survives the Data Cache.
+ */
+export const corpusStatsByPipeline = unstable_cache(
+  async (): Promise<PipelineStats[]> => prisma.$queryRaw<PipelineStats[]>(PIPELINE_STATS_SQL),
+  ["corpus-stats-by-pipeline"],
+  { revalidate: 3600, tags: ["corpus-count"] },
+);
+
 // ─── The default-view filter ─────────────────────────────────────────────────
 //
 // What a list, exemplar or per-topic count shows by default: non-deleted and
