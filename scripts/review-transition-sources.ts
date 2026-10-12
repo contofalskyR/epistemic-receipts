@@ -209,7 +209,10 @@ async function autoReview(pool: ReturnType<typeof makePool>, file: string, apply
     await db.query("BEGIN");
     // Every checked candidate keeps its check result, so a human reviewer sees it in --sample.
     await db.query(
-      `UPDATE "TransitionSourceCandidate" t SET trace = jsonb_set(coalesce(t.trace, '{}'::jsonb), '{verify}', x.v)
+      // A row re-checked by a different method keeps the earlier result under verify.previous.
+      `UPDATE "TransitionSourceCandidate" t SET trace = jsonb_set(coalesce(t.trace, '{}'::jsonb), '{verify}',
+         x.v || CASE WHEN coalesce(t.trace->'verify'->>'via', 'local') IS DISTINCT FROM x.v->>'via' AND t.trace ? 'verify'
+                     THEN jsonb_build_object('previous', t.trace->'verify') ELSE '{}'::jsonb END)
        FROM unnest($1::text[], $2::jsonb[]) AS x(id, v) WHERE t.id = x.id`,
       [checked.map((d) => d.id), checked.map(verifyOf)],
     );

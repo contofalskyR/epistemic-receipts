@@ -346,6 +346,12 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
     Source + Edge in one transaction: 866 Sources created (84 reused), 926 CITES Edges created (24 already present),
     every one `humanReviewed` false, `autoApproved` true. DB check: Source 1,687,314 → 1,688,180, Edge 1,718,774 →
     1,719,700, ClaimStatusHistory unchanged at 1,822,644. Log: `logs/promote-2026-10-12.log`.
+  - Re-check (2026-10-12, owner approved): `verify-transition-sources-api.ts --recheck-unread` fetched via the API the
+    1,705 candidates the local check never read (blocked, unreachable, unreadable); 1,666 checked for $8.32, 939
+    fetched, excerpt on 632. Auto-review accepted 198 (the replaced local result is kept in `trace.verify.previous`),
+    and promotion added 174 Sources (24 reused) and 193 Edges (5 present): Source 1,688,354, Edge 1,719,893,
+    ClaimStatusHistory 1,822,644. Totals: 1,148 promoted (1,040 Sources, 1,119 Edges, none humanReviewed),
+    4,209 candidates left. Lifetime spend $242.30 ($43.50 of the second $200 credit; the account's own $14 untouched).
 
 ## Owner's side (not blocking)
 
@@ -354,7 +360,7 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 - [ ] rotate the NARA API key when the new one arrives; put it in `.env.local` as `NARA_API_KEY` (the script reads
       that; no NARA var exists there today); then run the `git filter-repo` purge command from the Phase 0 chat report
       (mirror clone → `--replace-text` → force-push; collaborators re-clone)
-- [ ] transition sourcing: the 950 machine-accepted rows are promoted (2026-10-12); review the 4,407 left
+- [ ] transition sourcing: 1,148 machine-accepted rows are promoted (2026-10-12); review the 4,209 left
       (`scripts/review-transition-sources.ts --sample 50 --min-confidence 0.7`,
       then `--accept` / `--reject`), then promote again. `feat/transition-sourcing` is merged (PR #31).
 
