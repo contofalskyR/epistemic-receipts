@@ -1324,6 +1324,19 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
           <div className="mt-3">
             <EpistemicLegend label="Axis key:" />
           </div>
+          <nav aria-label="More views" className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono" style={{ fontSize: 11, letterSpacing: "0.04em" }}>
+            <span style={{ color: C.faint }}>MORE VIEWS:</span>
+            {[
+              { href: "/patterns", label: "Patterns of settling" },
+              { href: "/open-questions", label: "Open questions" },
+              { href: "/canon", label: "The Canon" },
+              { href: "/trajectories", label: "Encyclopedia & machine curves" },
+            ].map((v) => (
+              <Link key={v.href} href={v.href} style={{ color: C.mut }} className="hover:underline underline-offset-2">
+                {v.label}
+              </Link>
+            ))}
+          </nav>
         </header>
 
         {/* Filters — one compact row instead of a sidebar */}

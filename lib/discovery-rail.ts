@@ -22,6 +22,13 @@ export const DISCOVERY_HOOKS: DiscoveryHook[] = [
     href: "/settling-curve?t=helicobacter-pylori-peptic-ulcer-causation-1984",
   },
   {
+    eyebrow: "PATTERNS",
+    eyebrowColor: "text-violet-300",
+    title: "How claims actually settle",
+    blurb: "Six shapes — steady, contested, reversed, flip-flop, abandoned — across every multi-step claim.",
+    href: "/patterns",
+  },
+  {
     eyebrow: "SETTLED",
     eyebrowColor: "text-emerald-300",
     title: "Continents really do drift",
