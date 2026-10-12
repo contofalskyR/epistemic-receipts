@@ -19,13 +19,17 @@
  *   npx tsx scripts/verify-transition-sources-api.ts --limit 10       # try a few
  *   npx tsx scripts/verify-transition-sources-api.ts                  # candidates not in logs/transition-verify.jsonl
  *   npx tsx scripts/verify-transition-sources-api.ts --all            # every candidate
+ *   npx tsx scripts/verify-transition-sources-api.ts --recheck-unread # candidates the local check could not read
  *   npx tsx scripts/verify-transition-sources-api.ts --summary
  * A request the API rejects with a 400 for this URL's content (an unreadable PDF,
  * a PDF longer than the context window) is recorded as api:pdf_unprocessable /
  * api:too_long; five 400s in a row stop the run; the tool's transient errors (too_many_requests,
  * unavailable) are not recorded, so a re-run retries them.
  *
- * Flags: --budget USD (default 10)  --limit N  --all  --out FILE
+ * --recheck-unread selects candidates whose local check never saw the page text
+ * (blocked, unreachable, unreadable), from trace.verify in the database.
+ *
+ * Flags: --budget USD (default 10)  --limit N  --all  --recheck-unread  --out FILE
  */
 import { config as loadEnv } from "dotenv";
 import { appendFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
@@ -44,6 +48,7 @@ const LIMIT = opt("limit") ? Number(opt("limit")) : null;
 const BUDGET = Number(opt("budget") ?? 10);
 const OUT = resolve(opt("out") ?? "logs/transition-verify-api.jsonl");
 const LOCAL_OUT = resolve("logs/transition-verify.jsonl");
+const RECHECK_UNREAD = argv.includes("--recheck-unread");
 const LEDGER = resolve(process.env.TRANSITION_SOURCING_LEDGER ?? "logs/transition-sourcing-ledger.jsonl");
 const RUN_ID = `verify_api_${new Date().toISOString().replace(/[:.]/g, "-")}`;
 const MODEL = "claude-haiku-5-5" as const;
@@ -203,12 +208,20 @@ async function main() {
   let rows: { id: string; url: string; excerpt: string | null }[];
   try {
     rows = (
-      await pool.query(`SELECT id, url, excerpt FROM "TransitionSourceCandidate" WHERE status = 'candidate' AND url IS NOT NULL ORDER BY md5(id)`)
+      await pool.query(
+        `SELECT id, url, excerpt FROM "TransitionSourceCandidate"
+         WHERE status = 'candidate' AND url IS NOT NULL
+           AND ($1::boolean IS FALSE OR (
+             coalesce(trace->'verify'->>'via', 'local') = 'local'
+             AND (trace->'verify'->>'rule' IS NULL OR trace->'verify'->>'rule' ~ '^(blocked|unreachable|page text unreadable|dead on first check)')))
+         ORDER BY md5(id)`,
+        [RECHECK_UNREAD],
+      )
     ).rows;
   } finally {
     await pool.end();
   }
-  const local = argv.includes("--all") ? new Map() : readIds(LOCAL_OUT);
+  const local = argv.includes("--all") || RECHECK_UNREAD ? new Map() : readIds(LOCAL_OUT);
   const todo = rows.filter((r) => !done.has(r.id) && !local.has(r.id)).slice(0, LIMIT ?? undefined);
   console.log(
     `${rows.length} candidates · ${local.size} checked locally before · ${done.size} checked via API · checking ${todo.length} · budget $${BUDGET} · ${RUN_ID}`,
