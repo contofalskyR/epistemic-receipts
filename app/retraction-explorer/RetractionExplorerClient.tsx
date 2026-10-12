@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { cleanDisplayText } from "@/lib/text";
 import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
-import { FIELD_OPTIONS, REASON_OPTIONS } from "@/lib/retraction-filters";
+import { FIELD_OPTIONS } from "@/lib/retraction-filters";
 
 type Paper = {
   id: string;
@@ -469,8 +469,9 @@ export default function RetractionExplorerClient({
             { label: "Medicine", field: "Medicine", reason: "all" },
             { label: "Psychology", field: "Psychology", reason: "all" },
             { label: "Biology", field: "Biology", reason: "all" },
-            { label: "Retractions only", field: "all", reason: "Retraction" },
-            { label: "Corrections only", field: "all", reason: "Correction" },
+            // No "Retractions only" / "Corrections only": every live crossref
+            // row is a Retraction (26,624 of 26,624), so one equalled All and
+            // the other was always empty. The API still answers ?reason=.
           ].map((item) => {
             const active = urlField === item.field && urlReason === item.reason;
             return (
@@ -580,19 +581,6 @@ export default function RetractionExplorerClient({
               value={v}
               current={urlField}
               onSelect={(val) => pushUrl({ field: val, page: "1" })}
-            />
-          ))}
-        </div>
-
-        <span style={{ fontSize: "0.75rem", color: S.muted }}>Type</span>
-        <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
-          {REASON_OPTIONS.map((v) => (
-            <Chip
-              key={v}
-              label={v === "all" ? "All" : v}
-              value={v}
-              current={urlReason}
-              onSelect={(val) => pushUrl({ reason: val, page: "1" })}
             />
           ))}
         </div>
