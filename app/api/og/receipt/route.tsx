@@ -42,7 +42,7 @@ export async function GET(req: NextRequest) {
     community: string;
     occurredAt: Date;
     datePrecision: string | null;
-    claim: { text: string };
+    claim: { text: string; deleted: boolean; verificationStatus: string | null };
   } | null = null;
 
   try {
@@ -54,14 +54,15 @@ export async function GET(req: NextRequest) {
         community: true,
         occurredAt: true,
         datePrecision: true,
-        claim: { select: { text: true } },
+        claim: { select: { text: true, deleted: true, verificationStatus: true } },
       },
     });
   } catch {
     // DB unavailable
   }
 
-  if (!csh) {
+  // A hidden claim's receipt 404s; its card must not show the claim either.
+  if (!csh || csh.claim.deleted || csh.claim.verificationStatus === "DEPRECATED") {
     return new ImageResponse(<FallbackCard />, { width: W, height: H, headers: HEADERS });
   }
 

@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import { prisma } from "@/lib/prisma";
+import { serializeJsonLd } from "@/lib/jsonld";
+import { receiptOgImage, socialMetadata } from "@/lib/og";
+import { receiptHref } from "@/lib/receipts";
+import { pageParam } from "@/lib/route-param";
 import { AXIS_COLOR, AXIS_LABEL } from "@/lib/status";
 import { SITE_URL } from "@/lib/site";
 
@@ -28,7 +33,8 @@ function fmtPrecise(iso: string, precision: string | null): string {
   return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 }
 
-async function loadReceipt(id: string) {
+// One query per request, shared by generateMetadata and the page.
+const loadReceipt = cache(async (id: string) => {
   const csh = await prisma.claimStatusHistory.findUnique({
     where: { id },
     select: {
@@ -60,7 +66,7 @@ async function loadReceipt(id: string) {
   if (csh.claim.verificationStatus === "DEPRECATED") return null;
 
   return csh;
-}
+});
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
@@ -84,19 +90,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `${csh.claim.text.slice(0, 160)}`,
     robots: { index: false },
     alternates: { canonical },
-    openGraph: {
+    ...socialMetadata({
       title: `Receipt: ${fromTo} (${year})`,
       description: csh.claim.text.slice(0, 200),
-      url: `${SITE_URL}/receipts/${id}`,
-      siteName: "Epistemic Receipts",
+      url: receiptHref(id),
       type: "article",
-      images: [{ url: `${SITE_URL}/api/og/receipt?id=${encodeURIComponent(id)}`, width: 1200, height: 630 }],
-    },
+      image: receiptOgImage(id),
+    }),
   };
 }
 
 export default async function ReceiptPage({ params }: Props) {
-  const { id } = await params;
+  const id = pageParam((await params).id);
   const csh = await loadReceipt(id);
   if (!csh) notFound();
 
@@ -207,10 +212,10 @@ export default async function ReceiptPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             "@context": "https://schema.org",
             "@type": "Event",
-            "@id": `${SITE_URL}/receipts/${id}`,
+            "@id": `${SITE_URL}${receiptHref(id)}`,
             name: `${fromLabel ?? "Initial"} → ${toLabel}`,
             startDate: csh.occurredAt.toISOString().slice(0, csh.datePrecision === "YEAR" ? 4 : 10),
             description: csh.claim.text,
