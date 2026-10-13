@@ -52,6 +52,8 @@ export type EdgeDetail = {
   autoApproved: boolean;
   /** A person reviewed this link. */
   humanReviewed: boolean;
+  /** The pipeline that wrote this link (claude_sourcing_v1 gets the machine-verified label). */
+  ingestedBy: string;
   source: {
     id: string;
     name: string;
@@ -209,6 +211,7 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
       createdAt: true,
       autoApproved: true,
       humanReviewed: true,
+      ingestedBy: true,
       source: {
         select: {
           id: true,
@@ -325,6 +328,7 @@ function serializeClaimDetail(claim: RawClaimDetail, duplicateOf: string | null)
       createdAt: iso(edge.createdAt),
       autoApproved: edge.autoApproved,
       humanReviewed: edge.humanReviewed,
+      ingestedBy: edge.ingestedBy,
       source: {
         id: edge.source.id,
         name: edge.source.name,

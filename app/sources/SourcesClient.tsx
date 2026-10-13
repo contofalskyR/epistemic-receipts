@@ -18,7 +18,7 @@ const METHODOLOGY: Record<string, { desc: string; method: string; coverage: stri
   nara_catalog_v1: {
     desc: "The U.S. National Archives and Records Administration (NARA) Catalog API exposes finding-aid metadata for millions of archival records, including declassified documents, federal records, and historical materials.",
     method: "Ingested via the NARA Catalog REST API (catalog.archives.gov/api/v2) using page-based pagination with a 1,000-record page size. Record groups filtered by RG number (e.g. RG59 State Dept, RG330 SecDef, RG263 CIA, RG238 Nuremberg). Each archival record becomes one Claim with the record title as claim text and NARA's digital-object URL as the source link.",
-    coverage: "Tier 1 record groups covering diplomatic cables (RG59), defense records (RG330), intelligence files (RG263/128), Nuremberg trial records (RG238), and presidential commission reports (RG220). Approximately 10,000 records ingested across these groups as of 2026-06-07. Full NARA catalog is 73 record groups — expansion ongoing.",
+    coverage: "Tier 1 record groups covering diplomatic cables (RG59), defense records (RG330), intelligence files (RG263/128), Nuremberg trial records (RG238), and presidential commission reports (RG220). The full NARA catalog is 73 record groups; expansion ongoing.",
     verify: "Cross-reference any claim's externalId prefix (nara_catalog_v1:) against the NARA Catalog at catalog.archives.gov. The claim text matches the archival item's title field verbatim.",
   },
   voteview_v1: {
@@ -30,7 +30,7 @@ const METHODOLOGY: Record<string, { desc: string; method: string; coverage: stri
   ofac_sdn_v1: {
     desc: "The OFAC Specially Designated Nationals and Blocked Persons (SDN) List is the U.S. Treasury's primary sanctions database, listing individuals, companies, and entities subject to asset freezes and transaction prohibitions.",
     method: "Downloaded as the full XML file from sanctionslist.ofac.treas.gov/api/publicationsV2 and parsed into one Claim per SDN entry. Fields captured: entity name, entity type (individual/vessel/entity), programs (IRAN, RUSSIA, DPRK, etc.), aliases, and alpha-3 country code where available.",
-    coverage: "Complete SDN list as of ingest date. Thematic programs (SDGT, GLOMAG, NPWMD) and country-specific programs included. Entries without resolvable alpha-3 country codes (~30%) have no geographic link.",
+    coverage: "Complete SDN list as of ingest date. Thematic programs (SDGT, GLOMAG, NPWMD) and country-specific programs included. Entries without a resolvable alpha-3 country code have no geographic link.",
     verify: "Compare any SDN claim against the live list at sanctionslist.ofac.treas.gov. OFAC publishes a changelog for additions and removals.",
   },
   congress_bills_tracker_v1: {
@@ -72,7 +72,7 @@ const METHODOLOGY: Record<string, { desc: string; method: string; coverage: stri
   openalex_v1: {
     desc: "OpenAlex is a fully open catalog of scholarly works, institutions, authors, and concepts, built by OurResearch as a successor to Microsoft Academic Graph. It indexes over 250 million works.",
     method: "Ingested via OpenAlex REST API (/works endpoint) with field-based filters (concepts, publication year, open-access filters). Papers become Claims with title as claim text. Authors, institutions, and journal are stored in claim metadata. DOI, OpenAlex ID, and citation count captured.",
-    coverage: "Academic papers with DOIs published in peer-reviewed journals, across 19 scientific fields. Our ingest covers approximately 1.5M papers — a 0.6% sample of OpenAlex, focused on high-citation work. Preprints on arXiv/bioRxiv included when indexed by OpenAlex.",
+    coverage: "Academic papers with DOIs published in peer-reviewed journals, across 19 scientific fields. Our ingest is a small sample of OpenAlex, focused on high-citation work. Preprints on arXiv/bioRxiv included when indexed by OpenAlex.",
     verify: "Each claim's openAlexId links to openalex.org/W[id] for full metadata. DOIs resolve to publisher pages.",
   },
   clinicaltrials_v1: {
@@ -253,8 +253,10 @@ function MethodologyPanel({ s, color }: { s: SourceEntry; color: typeof CATEGORY
             </div>
           ))
       ) : (
-        <p style={{ color: C.faint, fontSize: "0.82rem", fontStyle: "italic", margin: 0 }}>
-          Methodology documentation for <code style={{ fontSize: "0.78rem", color: C.mut }}>{s.ingestedBy}</code> has not yet been written. Each claim from this source includes a source URL pointing to the original record.
+        // No write-up and no registry text: say only what the data shows (owner,
+        // 2026-10-12 — generated from the rows, no prose caveats).
+        <p style={{ color: C.mut, fontSize: "0.82rem", margin: 0 }}>
+          {s.count.toLocaleString()} {s.count === 1 ? "claim" : "claims"} · {dataLine(s)}. Each claim links its original record.
         </p>
       )}
       {s.sourceUrl && (

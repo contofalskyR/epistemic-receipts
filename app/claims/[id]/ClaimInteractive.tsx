@@ -6,6 +6,7 @@ import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
 import WhatHappenedNextPanel from "@/components/WhatHappenedNextPanel";
 import { EmptyState } from "@/components/DataState";
 import { MachineVerifiedBadge } from "@/components/MachineVerifiedBadge";
+import { isMachineVerifiedSource } from "@/lib/verification";
 
 // Client island for /claims/[id]. Receives the fully serialized claim from the
 // server page and renders the interactive lower half: the evidence table
@@ -257,12 +258,12 @@ function EdgeRow({ edge }: { edge: EdgeDetail; hasRetraction?: boolean }) {
                   Scholar ↗
                 </a>
               )}
-              <MachineVerifiedBadge link={edge} />
+              {isMachineVerifiedSource(edge) && <MachineVerifiedBadge link={edge} />}
             </span>
           ) : (
             <span className="flex items-center gap-2 flex-wrap">
               <span className="text-gray-300 text-sm">{edge.source.name}</span>
-              <MachineVerifiedBadge link={edge} />
+              {isMachineVerifiedSource(edge) && <MachineVerifiedBadge link={edge} />}
             </span>
           )}
         </td>

@@ -30,9 +30,10 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
 - Hard constraints: don't rename `middleware.ts`; don't move `/embed`, `/claims/[id]`, `/settling-curve/[id]`;
   no `/lab/` prefix; exact-match the public route list; move listing pages, not prefixes.
 - 2026-10-12 (Phase 6b): `/receipts/[id]` is public (AUDIT §B LAB → FRONT DOOR), still noindex with its canonical
-  on the claim, and not in the sitemap. Source links on `/claims/[id]` show "machine-verified" when the Edge is
-  `autoApproved` and not `humanReviewed` (1,528,999 of 1,719,851 live edges: mostly bulk imports, whose quality
-  gates set the flag; plus the 1,148 promoted `claude_sourcing_v1` links).
+  on the claim, and not in the sitemap. Source links on `/claims/[id]` show "machine-verified" only when the Edge was
+  written by `claude_sourcing_v1` and is `autoApproved`, not `humanReviewed` (owner 2026-10-12: the 1,148 promoted
+  links; bulk imports, whose own quality gates set `autoApproved`, get no badge). Machine-linked VOTE_ON relations on
+  law pages keep the label (Q6).
 - 2026-10-12: owner answered every 6b decision and all 15 Phase 7 questions (verbatim in the untracked
   `docs/phase7-questions.md`, "Owner answers"). Phase 7 is link, correct, relate — no ingest. Vote-result corrections
   live in `Claim.metadata.corrections` plus one `/corrections` entry per batch; no `ClaimStatusHistory` rows, no
@@ -444,6 +445,22 @@ which gets its own yes).
         hours"; static dot, data source and last pull. The refresh stays off; ABANDONED after 2027-01-03 is in LATER.
   - [ ] Next (Phase 7 remainder): per-type result batches for the 814 (each its own yes); the 122 pre-1989 cloture votes
         against senate.gov.
+
+- [ ] **6b follow-ups (owner answers 2026-10-12)** · PR A `feat/6b-followups-a`, PR B to follow
+  - [x] A: "machine-verified" only on `claude_sourcing_v1` source links (`isMachineVerifiedSource`); `/reversals` FDA
+        link → `/datasets/drugsatfda_v1`; registry: courtlistener_circuits_v1 / uk_legislation_v1 / fred_v1 live again,
+        stale typed counts and caveats removed (Hungary, Czech, Latvia, V-Dem, RxNorm, ChEBI, OMIM, openFDA labels, ICJ,
+        nuclear tests), `event:exoplanet_retractions_v1` registered with a data card (Science & Medicine; `/datasets/[tag]`
+        decodes the `:`); `/sources` stub sentence → a line generated from the rows, typed counts gone from the prose;
+        glossary matches `/methodology` (five values + two failure modes, UNRESOLVABLE added, OPEN-default sentence
+        dropped); topic fallback uses the indexed `searchVector` (`lib/topic-fallback.ts`, 23 ms vs a seq scan);
+        homepage ticker links each transition's receipt (DEPRECATED claims dropped, `rel=nofollow`); MCP package and
+        publish workflow deleted (kept on branch `archive/mcp-server`), four runbooks → `docs/archive/runbooks/`,
+        `@stoplight/spectral-cli` removed.
+  - [x] DB (owner-approved): tombstone `cmqmr9ait027dsa401xmbpt5r` (`trajectory:__rakhigarhi_dup_removed__`) deleted with
+        `duplicateOf` the real trajectory (its URL 308s there); live curated trajectories 5,697.
+  - [ ] B: promote `/analysis/settling-rate`; fold `/trajectories` into the explorer (308, era param, lens toggle);
+        embeds for every curated trajectory with no per-view Postgres read.
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:

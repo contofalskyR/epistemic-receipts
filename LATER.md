@@ -120,7 +120,7 @@ texts the import had cut to 80 characters (old text in `metadata.corrections`, b
 | `use cache` | `unstable_cache` is "replaced by `use cache`" in Next 16; migrating needs `cacheComponents: true` (whole-app rendering change) — its own PR, after the front door settles |
 | optional claim-page panels | `WhatHappenedNextPanel`, `ClaimRelationsPanel`, `TopicTimeline` hide on a failed fetch (they never claim zero) — a one-line error would be more honest than silence |
 | `/settling-curve` payload | the SSR grid ships all 5,698 curated cards (~3 MB of RSC props) on every visit; paginate or stream the grid |
-| MCP endpoint | unauthenticated read-only, over the public claim graph (`isPublicRoute` / `LIVE_CLAIM_WHERE`); phase 3 deleted the key-gated `/api/mcp` + `lib/v1` — recover the tool surface from `archive/full-site`, drop the key |
+| MCP endpoint | unauthenticated read-only, over the public claim graph (`isPublicRoute` / `LIVE_CLAIM_WHERE`); phase 3 deleted the key-gated `/api/mcp` + `lib/v1` — recover the tool surface from `archive/full-site`, drop the key. The old npm client (`packages/mcp-server`, publish workflow) was deleted 2026-10-13; it is kept on the `archive/mcp-server` branch |
 
 ## 5. Review findings, 2026-10-01 (not yet scheduled)
 

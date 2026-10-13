@@ -316,3 +316,11 @@ describe('machine review rule', () => {
     expect(MACHINE_REVIEWER_API).toMatch(/^machine:/)
   })
 })
+
+describe('machine-verified label', () => {
+  it('lib/verification.ts names this pipeline', async () => {
+    const { MACHINE_SOURCED_TAG } = await import('@/lib/verification')
+    const { PIPELINE_TAG } = await import('../../scripts/lib/transition-sourcing')
+    expect(MACHINE_SOURCED_TAG).toBe(PIPELINE_TAG)
+  })
+})
