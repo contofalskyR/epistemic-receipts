@@ -80,6 +80,7 @@ function toMainInput(events: FEvent[]): { claim: ClaimDetail; todayIso: string }
     claimEmergedPrecision: emerged?.precision ?? "DAY",
     createdAt: "2020-01-01T00:00:00.000Z",
     trajectorySlug: null,
+    isEnactedLaw: false,
     humanReviewed: false,
     epistemicStatus: null,
     ingestedBy: "test",

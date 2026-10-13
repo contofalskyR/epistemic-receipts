@@ -117,6 +117,9 @@ export type ClaimDetail = {
   createdAt: string;
   /** Curated slug (externalId "trajectory:<slug>"), or null. */
   trajectorySlug: string | null;
+  /** A congress_v1 enacted-law claim (externalId "congress_law_…"): the page
+   *  lists the roll-call votes linked to it (lib/law-votes.ts). */
+  isEnactedLaw: boolean;
   humanReviewed: boolean;
   epistemicStatus: string | null;
   ingestedBy: string;
@@ -302,6 +305,7 @@ function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
     claimEmergedPrecision: claim.claimEmergedPrecision,
     createdAt: iso(claim.createdAt),
     trajectorySlug: trajectorySlug(claim.externalId),
+    isEnactedLaw: (claim.externalId ?? "").startsWith("congress_law_"),
     humanReviewed: claim.humanReviewed,
     epistemicStatus: claim.epistemicStatus,
     ingestedBy: claim.ingestedBy,
