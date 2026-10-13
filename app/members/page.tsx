@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Members — Epistemic Receipts",
-  description: "Search 12,000+ House and Senate members across US congressional history.",
+  description: "Search US House and Senate members by name and open their recorded roll-call votes.",
 };
 
 export default function MembersPage() {

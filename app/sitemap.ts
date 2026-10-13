@@ -45,6 +45,10 @@ const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/law-settler`, changeFrequency: "weekly", priority: 0.8 },
   { url: `${SITE_URL}/methodology`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/datasets`, changeFrequency: "monthly", priority: 0.6 },
+  // Listings only: the vote and member pages stay out of the sitemap (owner,
+  // 2026-10-13); the claims behind them are already in it.
+  { url: `${SITE_URL}/votes`, changeFrequency: "weekly", priority: 0.5 },
+  { url: `${SITE_URL}/members`, changeFrequency: "monthly", priority: 0.5 },
   { url: `${SITE_URL}/corrections`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/feedback`, changeFrequency: "yearly", priority: 0.3 },
   { url: `${SITE_URL}/terms`, changeFrequency: "yearly", priority: 0.3 },

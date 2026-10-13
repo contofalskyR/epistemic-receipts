@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { congressVoteLinks } from "@/lib/us-votes";
 
 export const revalidate = 300;
 
@@ -34,9 +35,16 @@ export async function GET(req: NextRequest) {
 
   // Raw SQL — group by memberId, take most-recent memberName/state/party per member,
   // and rank by number of recorded votes. Search by memberName ILIKE.
-  // memberId is bioguide id; we only include rows that have one (Voteview rows do).
-  const params: unknown[] = [];
-  const conds: string[] = [`mv."memberId" IS NOT NULL`];
+  // US members only (Phase 7 Q13): a bioguide id with votes on US roll calls
+  // (voteview_v1 / congress_votes_v1). EU, UK and Canadian members stay in the
+  // Lab. Roll calls recorded in both US datasets count once.
+  const { doubled } = await congressVoteLinks();
+  const params: unknown[] = [doubled];
+  const conds: string[] = [
+    `mv."memberId" ~ '^[A-Z][0-9]{6}$'`,
+    `lv."dataSource" IN ('voteview_v1', 'congress_votes_v1')`,
+    `mv."legislativeVoteId" <> ALL($1::text[])`,
+  ];
 
   if (q.length > 0) {
     params.push(`%${q}%`);
@@ -63,6 +71,7 @@ export async function GET(req: NextRequest) {
        WHERE mi."bioguideId" = mv."memberId"
        ORDER BY mi.congress DESC LIMIT 1) AS "nominateDim1"
     FROM "MemberVote" mv
+    JOIN "LegislativeVote" lv ON lv.id = mv."legislativeVoteId"
     WHERE ${conds.join(" AND ")}
     GROUP BY mv."memberId"
     ORDER BY COUNT(*) DESC

@@ -178,18 +178,6 @@ function VoteRow({ vote }: { vote: VoteHit }) {
             }}>
               {result}
             </span>
-            {vote.topics.slice(0, 3).map(t => (
-              <span key={t} style={{
-                fontSize: "0.65rem",
-                padding: "0.12rem 0.4rem",
-                borderRadius: "5px",
-                color: C.faint,
-                background: "rgba(80,80,120,0.2)",
-                fontFamily: "monospace",
-              }}>
-                {t}
-              </span>
-            ))}
             {vote.sourceUrl && (
               <a
                 href={vote.sourceUrl}
@@ -431,8 +419,8 @@ export default function VotesClient() {
             Congressional <span style={{ color: C.brand }}>Roll Calls</span>
           </h1>
           <p style={{ color: C.mut, fontSize: "0.88rem", maxWidth: "580px", lineHeight: 1.55, margin: 0 }}>
-            113,000+ House and Senate roll call votes, 1789–present, sourced from Voteview.
-            Search by description, filter by chamber, result, presidency, or era.
+            Every House and Senate roll call vote since 1789, from Voteview. Each one is a claim with its
+            own receipt. Search by description, filter by chamber, result, presidency, or era.
           </p>
         </div>
 

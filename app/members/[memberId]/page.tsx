@@ -1,16 +1,47 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import { cache, Suspense } from "react";
 import { prisma } from "@/lib/prisma";
+import { congressVoteLinks, isPublicMember, publicVoteIds } from "@/lib/us-votes";
 import IdeologySection from "./IdeologySection";
 import LandmarkAnalytics from "./LandmarkAnalytics";
 
 export const revalidate = 600;
 
-export const metadata = {
-  title: "Member — Epistemic Receipts",
-  description: "Voting history, party unity, and chamber breakdown for a US Congress member.",
-};
+// Public only for a bioguide id with at least one vote on a US roll call that
+// has a claim (lib/us-votes.ts, Phase 7 Q13); everything else 404s. The 24 roll
+// calls recorded in both voteview_v1 and congress_votes_v1 count once: the
+// congress_votes_v1 copy is skipped (LATER §1).
+const latestAffiliation = cache((memberId: string) =>
+  prisma.memberVote.findFirst({
+    where: { memberId },
+    orderBy: { createdAt: "desc" },
+    select: { memberName: true, memberState: true, memberParty: true },
+  }),
+);
+
+export async function generateMetadata({ params }: { params: Promise<{ memberId: string }> }): Promise<Metadata> {
+  const { memberId } = await params;
+  const latest = (await isPublicMember(memberId)) ? await latestAffiliation(memberId) : null;
+  if (!latest) return { title: "Member not found — Epistemic Receipts", robots: { index: false } };
+  const where = [latest.memberState, latest.memberParty].filter(Boolean).join(", ");
+  return {
+    title: `${latest.memberName}${where ? ` (${where})` : ""} — voting record — Epistemic Receipts`,
+    description: `Recorded roll-call votes, party unity and chamber breakdown for ${latest.memberName}, US Congress (bioguide ${memberId}).`,
+    alternates: { canonical: `/members/${memberId}` },
+  };
+}
+
+/** "D" and "Democrat" are one party: group party history by its short label. */
+function partyShort(p: string | null): string {
+  if (!p) return "?";
+  const x = p.trim();
+  if (/^(democrat(ic)?|d)$/i.test(x)) return "Democrat";
+  if (/^(republican|gop|r)$/i.test(x)) return "Republican";
+  if (/^(independent|i|id)$/i.test(x)) return "Independent";
+  return x;
+}
 
 const PAGE_SIZE = 50;
 
@@ -57,34 +88,38 @@ export default async function MemberProfilePage({
   const page = Math.max(1, Number.parseInt(sp.page ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
 
+  if (!(await isPublicMember(memberId))) notFound();
+  const { doubled } = await congressVoteLinks();
+  const counted = { memberId, legislativeVoteId: { notIn: doubled } };
+
   // Pull a recent sample of this member's votes (most recent first by vote date)
   // plus aggregate counts.
-  const [latestRow, totalVotes, chamberBreakdown, partyMixRows, yeaCount, nayCount] = await Promise.all([
-    prisma.memberVote.findFirst({
-      where: { memberId },
-      orderBy: { createdAt: "desc" },
-      select: { memberName: true, memberState: true, memberParty: true },
-    }),
-    prisma.memberVote.count({ where: { memberId } }),
+  const [latestRow, totalVotes, chamberBreakdown, partyMixRaw, yeaCount, nayCount] = await Promise.all([
+    latestAffiliation(memberId),
+    prisma.memberVote.count({ where: counted }),
     prisma.memberVote.groupBy({
       by: ["chamber"],
-      where: { memberId },
+      where: counted,
       _count: { _all: true },
     }),
     prisma.memberVote.groupBy({
       by: ["memberParty"],
-      where: { memberId },
+      where: counted,
       _count: { _all: true },
     }),
     prisma.memberVote.count({
-      where: { memberId, vote: { in: ["Yea", "Yes", "yea", "yes"] } },
+      where: { ...counted, vote: { in: ["Yea", "Yes", "yea", "yes"] } },
     }),
     prisma.memberVote.count({
-      where: { memberId, vote: { in: ["Nay", "No", "nay", "no"] } },
+      where: { ...counted, vote: { in: ["Nay", "No", "nay", "no"] } },
     }),
   ]);
 
   if (!latestRow || totalVotes === 0) notFound();
+
+  const partyMix = new Map<string, number>();
+  for (const p of partyMixRaw) partyMix.set(partyShort(p.memberParty), (partyMix.get(partyShort(p.memberParty)) ?? 0) + p._count._all);
+  const partyMixRows = [...partyMix].map(([party, count]) => ({ party, count }));
 
   // Normalize raw Voteview chamber strings: "House of Representatives" → "House".
   const chamberMap: Record<string, number> = {};
@@ -96,7 +131,7 @@ export default async function MemberProfilePage({
 
   // Pull paginated vote history joined to the LegislativeVote + Source.
   const memberRows = await prisma.memberVote.findMany({
-    where: { memberId },
+    where: counted,
     select: {
       id: true,
       vote: true,
@@ -105,6 +140,7 @@ export default async function MemberProfilePage({
         select: {
           id: true,
           chamber: true,
+          dataSource: true,
           voteDate: true,
           result: true,
           yesCount: true,
@@ -120,6 +156,7 @@ export default async function MemberProfilePage({
   });
 
   const pageCount = Math.max(1, Math.ceil(totalVotes / PAGE_SIZE));
+  const linkable = await publicVoteIds(memberRows.map(r => r.legislativeVote));
 
   // Compute party-unity %: percentage of decided votes where the member voted with
   // their party majority on the same roll call. We pull all of this member's votes
@@ -132,6 +169,7 @@ export default async function MemberProfilePage({
       SELECT mv."legislativeVoteId", mv."vote", mv."memberParty"
       FROM "MemberVote" mv
       WHERE mv."memberId" = ${memberId}
+        AND mv."legislativeVoteId" <> ALL(${doubled}::text[])
         AND mv."memberParty" IS NOT NULL
         AND (mv."vote" ILIKE 'yea' OR mv."vote" ILIKE 'yes' OR mv."vote" ILIKE 'nay' OR mv."vote" ILIKE 'no')
     ),
@@ -224,13 +262,13 @@ export default async function MemberProfilePage({
           <h2 className="text-xs text-gray-500 font-mono uppercase tracking-widest mb-3">Party history</h2>
           <div className="rounded-lg border border-gray-800 bg-gray-900 divide-y divide-gray-800">
             {partyMixRows
-              .sort((a, b) => b._count._all - a._count._all)
+              .sort((a, b) => b.count - a.count)
               .map(p => (
-                <div key={p.memberParty ?? "_"} className="px-4 py-2 text-sm flex items-center justify-between">
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-mono ${partyClass(p.memberParty)}`}>
-                    {p.memberParty ?? "?"}
+                <div key={p.party} className="px-4 py-2 text-sm flex items-center justify-between">
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-mono ${partyClass(p.party)}`}>
+                    {p.party}
                   </span>
-                  <span className="text-gray-400 font-mono text-xs">{p._count._all.toLocaleString()} votes</span>
+                  <span className="text-gray-400 font-mono text-xs">{p.count.toLocaleString()} votes</span>
                 </div>
               ))}
           </div>
@@ -245,36 +283,42 @@ export default async function MemberProfilePage({
           </span>
         </div>
         <div className="rounded-lg border border-gray-800 bg-gray-900 divide-y divide-gray-800">
-          {memberRows.map(r => (
-            <Link
-              key={r.id}
-              href={`/votes/${r.legislativeVote.id}`}
-              className="block px-4 py-3 hover:bg-gray-800/60 transition-colors group"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  <div className="text-sm text-gray-200 group-hover:text-white line-clamp-2">{r.legislativeVote.source.name}</div>
-                  <div className="mt-1 flex items-center gap-2 text-xs text-gray-500 flex-wrap">
-                    <span className="font-mono">{formatDate(r.legislativeVote.voteDate)}</span>
-                    <span className="text-gray-700">·</span>
-                    <span>{r.legislativeVote.chamber}</span>
-                    <span className={`px-1.5 py-0.5 rounded font-mono uppercase ${resultStyle(r.legislativeVote.result)}`}>
-                      {r.legislativeVote.result ?? "unknown"}
-                    </span>
-                    <span className="text-gray-700">·</span>
-                    <span className="font-mono text-gray-500">
-                      <span className="text-green-400">{r.legislativeVote.yesCount ?? 0}</span>
-                      <span className="mx-1 text-gray-700">·</span>
-                      <span className="text-red-400">{r.legislativeVote.noCount ?? 0}</span>
-                    </span>
+          {memberRows.map(r => {
+            const row = (
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <div className="text-sm text-gray-200 group-hover:text-white line-clamp-2">{r.legislativeVote.source.name}</div>
+                    <div className="mt-1 flex items-center gap-2 text-xs text-gray-500 flex-wrap">
+                      <span className="font-mono">{formatDate(r.legislativeVote.voteDate)}</span>
+                      <span className="text-gray-700">·</span>
+                      <span>{r.legislativeVote.chamber}</span>
+                      <span className={`px-1.5 py-0.5 rounded font-mono uppercase ${resultStyle(r.legislativeVote.result)}`}>
+                        {r.legislativeVote.result ?? "unknown"}
+                      </span>
+                      <span className="text-gray-700">·</span>
+                      <span className="font-mono text-gray-500">
+                        <span className="text-green-400">{r.legislativeVote.yesCount ?? 0}</span>
+                        <span className="mx-1 text-gray-700">·</span>
+                        <span className="text-red-400">{r.legislativeVote.noCount ?? 0}</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <span className={`text-xs font-semibold ${voteStyle(r.vote)}`}>{r.vote}</span>
                   </div>
                 </div>
-                <div className="shrink-0 text-right">
-                  <span className={`text-xs font-semibold ${voteStyle(r.vote)}`}>{r.vote}</span>
-                </div>
+            );
+            // Only roll calls with a public page link (12 same-day congress_votes_v1 votes have no claim).
+            return linkable.has(r.legislativeVote.id) ? (
+              <Link key={r.id} href={`/votes/${r.legislativeVote.id}`} className="block px-4 py-3 hover:bg-gray-800/60 transition-colors group">
+                {row}
+              </Link>
+            ) : (
+              <div key={r.id} className="px-4 py-3 group">
+                {row}
               </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
 
         {pageCount > 1 && (

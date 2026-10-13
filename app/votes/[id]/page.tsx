@@ -1,13 +1,75 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import { prisma } from "@/lib/prisma";
+import { voteClaim, voteReviewGroup } from "@/lib/us-votes";
+import { REVIEW_GROUP_REASON, sourceLabel } from "@/lib/vote-review";
 
 export const revalidate = 3600;
 
-export const metadata = {
-  title: "Roll Call — Epistemic Receipts",
-  description: "Roll-call detail with member-level votes, party breakdown, and party unity score.",
-};
+// Public only when the roll call reaches a live US claim (lib/us-votes.ts,
+// Phase 7 Q13); every other id — EU / UK / Canadian votes included — 404s.
+const loadVote = cache((id: string) =>
+  prisma.legislativeVote.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      chamber: true,
+      yesCount: true,
+      noCount: true,
+      abstainCount: true,
+      totalSeats: true,
+      passageThreshold: true,
+      passageType: true,
+      voteDate: true,
+      result: true,
+      dataSource: true,
+      byPartyJson: true,
+      source: {
+        select: {
+          id: true,
+          name: true,
+          url: true,
+          publishedAt: true,
+          ingestedBy: true,
+        },
+      },
+      memberVotes: {
+        select: {
+          id: true,
+          memberId: true,
+          memberName: true,
+          memberState: true,
+          memberParty: true,
+          vote: true,
+        },
+        orderBy: [{ memberParty: "asc" }, { memberName: "asc" }],
+      },
+    },
+  }),
+);
+
+function clip(s: string, max: number): string {
+  return s.length > max ? `${s.slice(0, max - 1).trimEnd()}…` : s;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const vote = await loadVote(id);
+  const claim = vote ? await voteClaim(vote.id, vote.dataSource) : null;
+  if (!vote || !claim) return { title: "Roll call not found — Epistemic Receipts", robots: { index: false } };
+  const chamber = vote.chamber === "House of Representatives" ? "House" : vote.chamber;
+  const date = formatDate(vote.voteDate);
+  return {
+    title: `${chamber} roll call, ${date}: ${clip(vote.source.name, 80)} — Epistemic Receipts`,
+    description: clip(
+      `${vote.yesCount ?? 0}–${vote.noCount ?? 0}, ${vote.result ?? "result unknown"}. ${vote.source.name}`,
+      200,
+    ),
+    alternates: { canonical: `/votes/${vote.id}` },
+  };
+}
 
 function formatDate(iso: Date | string | null): string {
   if (!iso) return "—";
@@ -74,62 +136,18 @@ function unityForParty(members: MemberVote[]): { unity: number; majority: "Yea" 
 export default async function VoteDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const vote = await prisma.legislativeVote.findUnique({
-    where: { id },
-    select: {
-      id: true,
-      chamber: true,
-      yesCount: true,
-      noCount: true,
-      abstainCount: true,
-      totalSeats: true,
-      passageThreshold: true,
-      passageType: true,
-      voteDate: true,
-      result: true,
-      topics: true,
-      dataSource: true,
-      byPartyJson: true,
-      source: {
-        select: {
-          id: true,
-          name: true,
-          url: true,
-          publishedAt: true,
-          ingestedBy: true,
-        },
-      },
-      memberVotes: {
-        select: {
-          id: true,
-          memberId: true,
-          memberName: true,
-          memberState: true,
-          memberParty: true,
-          vote: true,
-        },
-        orderBy: [{ memberParty: "asc" }, { memberName: "asc" }],
-      },
-    },
-  });
-
+  const vote = await loadVote(id);
   if (!vote) notFound();
+  const claim = await voteClaim(vote.id, vote.dataSource);
+  if (!claim) notFound();
+  const review = await voteReviewGroup(vote.id, vote.dataSource);
+  const srcLabel = sourceLabel(vote.source.url);
 
   const yes = vote.yesCount ?? 0;
   const no = vote.noCount ?? 0;
   const abs = vote.abstainCount ?? 0;
   const total = yes + no + abs;
   const margin = yes - no;
-
-  const topics: string[] = (() => {
-    if (!vote.topics) return [];
-    try {
-      const t = JSON.parse(vote.topics);
-      return Array.isArray(t) ? t.filter((x: unknown) => typeof x === "string") : [];
-    } catch {
-      return [];
-    }
-  })();
 
   const members: MemberVote[] = vote.memberVotes;
   const yeaMembers = members.filter(m => isYea(m.vote)).sort(byPartyAndName);
@@ -180,11 +198,6 @@ export default async function VoteDetailPage({ params }: { params: Promise<{ id:
               {vote.passageThreshold}
             </span>
           )}
-          {topics.slice(0, 8).map(t => (
-            <span key={t} className="text-xs px-1.5 py-0.5 rounded font-mono bg-gray-800/60 text-gray-500">
-              {t}
-            </span>
-          ))}
           {vote.source.url && (
             <a
               href={vote.source.url}
@@ -195,11 +208,33 @@ export default async function VoteDetailPage({ params }: { params: Promise<{ id:
               <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor">
                 <path d="M3.5 1H1v10h10V8.5M7 1h4m0 0v4m0-4L5 7"/>
               </svg>
-              Primary source · Voteview
+              Primary source · {srcLabel ?? "link"}
             </a>
           )}
         </div>
       </div>
+
+      {review && (
+        <div className="rounded-lg border border-amber-800/60 bg-amber-950/30 px-4 py-3 text-sm text-amber-200">
+          <p className="font-semibold">Result under review</p>
+          <p className="mt-1 text-amber-200/80">
+            The result shown here may be wrong: {REVIEW_GROUP_REASON[review]}. We are correcting these votes in batches,
+            one vote type at a time.{" "}
+            <Link href="/corrections#vote-results-under-review" className="underline hover:text-amber-100">
+              Why →
+            </Link>
+          </p>
+        </div>
+      )}
+
+      <Link
+        href={`/claims/${claim.id}`}
+        className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group"
+      >
+        <p className="text-[10px] text-gray-500 font-mono uppercase tracking-widest">The claim</p>
+        <p className="mt-1 text-sm text-gray-300 group-hover:text-white leading-snug line-clamp-3">{claim.text}</p>
+        <p className="mt-1 text-xs text-gray-500 group-hover:text-gray-300">Receipt, sources and timeline →</p>
+      </Link>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         <Stat label="Yea" value={yes.toLocaleString()} tint="text-green-400" />

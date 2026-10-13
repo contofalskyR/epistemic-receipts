@@ -82,6 +82,7 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
   it.each([
     "/", "/methodology", "/communities", "/corrections", "/terms", "/privacy",
     "/settling-curve", "/search", "/opinions", "/retraction-explorer", "/split-ledger", "/reversals",
+    "/votes", "/members",
   ])("%s is public", (r) => {
     expect(isPublicRoute(r)).toBe(true);
   });
@@ -95,6 +96,8 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
     "/stories/continental-drift",
     "/receipts/x",
     "/receipts/csh:trajectory:hiv-causes-aids:1",
+    "/votes/cmppuv3je3q0xsapm0pg1nub2",
+    "/members/S000148",
   ])("%s (a [id]/[slug] page) is public", (r) => {
     expect(isPublicRoute(r)).toBe(true);
   });
@@ -109,7 +112,7 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
   it.each([
     "/history", "/physics", "/fields", "/statistics", "/analysis/settling-rate", "/stats", "/globe",
     "/legislation", "/drug-arc", "/historical-events", "/pipelines", "/meta-edges", "/feed", "/books",
-    "/reader/some-book", "/congress-trades", "/votes", "/members", "/financial", "/domains/economics",
+    "/reader/some-book", "/congress-trades", "/financial", "/domains/economics",
     "/prereq-graph", "/retraction-wall", "/retractions", "/login", "/admin", "/review", "/receipts",
     "/stock-act", "/foreign-legislation", "/timeline",
   ])("%s is Lab", (r) => {
