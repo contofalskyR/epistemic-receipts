@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import CorrectionForm from "./CorrectionForm";
+import reviewList from "@/data/vote-results-under-review.json";
+import { REVIEW_GROUP_LABEL, type ReviewGroup } from "@/lib/vote-review";
 
 // Rendered per request (front door phase 6; the page reads nothing from the
 // database). As an ISR page it was prerendered without a query, so after a
@@ -27,9 +29,30 @@ interface AuditEntry {
   details?: string[];      // bullet points
   recordsAffected?: number;
   resolutionLinks?: { label: string; href: string }[];
+  /** Fragment id, for links from elsewhere on the site (e.g. the vote page's review note). */
+  anchor?: string;
 }
 
+// The "Result under review" list behind /votes/[id] (data/vote-results-under-review.json).
+const reviewCounts = Object.entries(reviewList.counts as Partial<Record<ReviewGroup, number>>).sort((a, b) => (b[1] ?? 0) - (a[1] ?? 0));
+const reviewTotal = reviewList.votes.length;
+
 const ENTRIES: AuditEntry[] = [
+  {
+    date: "2026-10-13",
+    kind: "DIAGNOSTIC",
+    anchor: "vote-results-under-review",
+    source: "voteview_v1 (roll-call results)",
+    title: `${reviewTotal.toLocaleString()} roll-call results under review`,
+    description:
+      "The Voteview importer recorded each roll call as passed when it had more yeas than nays. That is wrong whenever a vote needed a supermajority (three-fifths for cloture and budget waivers, two-thirds to suspend the House rules, override a veto or ratify a treaty), and for ties the Vice President broke. The 475 Senate cloture votes are already corrected (entry below). These remaining votes carry a \"Result under review\" note on their roll-call page until they are fixed, one vote type at a time, each batch under its own rule and approval. About 122 Senate cloture votes from 1975–1988 may also be wrong, but Voteview records no outcome before 1989; they will be checked against the Senate's own table of cloture votes rather than guessed from their descriptions.",
+    details: reviewCounts.map(([g, n]) => `${(n ?? 0).toLocaleString()}: ${REVIEW_GROUP_LABEL[g as ReviewGroup]}`),
+    recordsAffected: reviewTotal,
+    resolutionLinks: [
+      { label: "The list", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/data/vote-results-under-review.json" },
+      { label: "How it is built", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/build-vote-review-list.ts" },
+    ],
+  },
   {
     date: "2026-10-13",
     kind: "CORRECTED",
@@ -168,7 +191,8 @@ export default function CorrectionsPage() {
         {sorted.map((e, i) => (
           <article
             key={i}
-            className="rounded-lg border border-gray-800 bg-gray-900/40 px-5 py-5 space-y-3"
+            id={e.anchor}
+            className="rounded-lg border border-gray-800 bg-gray-900/40 px-5 py-5 space-y-3 scroll-mt-20"
           >
             <header className="flex items-start gap-3 flex-wrap">
               <span className="font-mono text-xs text-gray-500 tabular-nums shrink-0 mt-0.5">

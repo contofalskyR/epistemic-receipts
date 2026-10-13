@@ -118,7 +118,7 @@ describe("Lab gate (middleware.ts)", () => {
   // ── Front door phase 6 (2026-10-01): one decoded path ──────────────────────
   // nextUrl.pathname is percent-encoded, but Next routes production requests
   // on the decoded path, so /settling-curve/%63overage served a Lab page
-  // anonymously, dotted Lab paths (/votes/x.y) skipped the gate, and
+  // anonymously, dotted Lab paths (/reader/x.y) skipped the gate, and
   // /claims/%ZZ was a bare 500.
 
   it.each([
@@ -132,7 +132,7 @@ describe("Lab gate (middleware.ts)", () => {
     ["/settling-curve%2Fcoverage", "/settling-curve/coverage"],
     ["/claims/%61bc", "/claims/abc"],
     ["/%6Cogin", "/login"],
-    ["/votes/a%2Fb", "/votes/a/b"],
+    ["/reader/a%2Fb", "/reader/a/b"],
     ["/receipts/csh%3Atrajectory%3Ahiv-causes-aids%3A1", "/receipts/csh:trajectory:hiv-causes-aids:1"],
   ])("%s is an encoded alias → 308 %s", async (from, to) => {
     expect(canonical(await middleware(req(from)))?.pathname).toBe(to);
@@ -181,10 +181,10 @@ describe("Lab gate (middleware.ts)", () => {
   });
 
   it.each([
-    "/members/%E2%82%AC",
-    "/votes/%E2%82%AC%2Fb",
-    "/votes/x.y",
-    "/members/A.B",
+    "/reader/%E2%82%AC",
+    "/domains/%E2%82%AC%2Fb",
+    "/reader/x.y",
+    "/domains/A.B",
     "/historical-events/a.b",
     "/fields/x.y",
     "/settling-curve/coverage%3Fx",
@@ -195,11 +195,11 @@ describe("Lab gate (middleware.ts)", () => {
     expect(gate(await middleware(req(p)))).not.toBeNull();
   });
 
-  it.each(["/votes/%E2%82%AC%2Fb", "/members/%25"])("%s: from= is the path as requested, so signing in returns to it", async (p) => {
+  it.each(["/domains/%E2%82%AC%2Fb", "/reader/%25"])("%s: from= is the path as requested, so signing in returns to it", async (p) => {
     expect(gate(await middleware(req(p)))?.searchParams.get("from")).toBe(p);
   });
 
-  it.each(["/members/%2F..%2F..%2F%2Fevil.example", "/votes/%5C..%5C..%5C%5Cevil.example", "/members/%25"])(
+  it.each(["/reader/%2F..%2F..%2F%2Fevil.example", "/domains/%5C..%5C..%5C%5Cevil.example", "/reader/%25"])(
     "%s: /login's redirect back to from= stays on this origin",
     async (p) => {
       const g = gate(await middleware(req(p)));

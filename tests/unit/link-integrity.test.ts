@@ -23,7 +23,7 @@ import { isKnownRoute } from "@/lib/routeManifest";
 //
 // Template hrefs are judged by shape: each `${…}` becomes one placeholder
 // segment, so `/claims/${id}` is judged as /claims/_ (a public pattern) and
-// `/members/${id}` as /members/_ (Lab). A fully dynamic first segment
+// `/reader/${id}` as /reader/_ (Lab). A fully dynamic first segment
 // (`/${slug}`) has no checkable target and counts as Lab on an anonymous page.
 
 const ROOT = path.resolve(__dirname, "../..");
@@ -367,7 +367,8 @@ describe("link integrity: no anonymous page links into the Lab", () => {
     expect(isPublicRoute(judgedPath(`/claims/${PLACEHOLDER}`))).toBe(true);
     expect(isPublicRoute(judgedPath(`/search?q=${PLACEHOLDER}`))).toBe(true);
     expect(isPublicRoute(judgedPath(`/settling-curve?t=${PLACEHOLDER}#x`))).toBe(true);
-    expect(isPublicRoute(judgedPath(`/members/${PLACEHOLDER}`))).toBe(false);
+    expect(isPublicRoute(judgedPath(`/members/${PLACEHOLDER}`))).toBe(true);
+    expect(isPublicRoute(judgedPath(`/reader/${PLACEHOLDER}`))).toBe(false);
     expect(isPublicRoute(judgedPath(`/claims/${PLACEHOLDER}/edit`))).toBe(false);
     expect(isPublicRoute(judgedPath(`/${PLACEHOLDER}`))).toBe(false);
     expect(judgedPath(`/opinions${PLACEHOLDER}`)).toBe("/opinions");

@@ -53,7 +53,8 @@ export async function GET(req: NextRequest) {
     source: { ingestedBy: "voteview_v1" },
   };
 
-  if (chamberRaw === "house") where.chamber = "House";
+  // Voteview stores "House of Representatives"; filtering on "House" matched nothing.
+  if (chamberRaw === "house") where.chamber = "House of Representatives";
   else if (chamberRaw === "senate") where.chamber = "Senate";
 
   if (resultRaw === "passed" || resultRaw === "failed" || resultRaw === "tied" || resultRaw === "unknown") {

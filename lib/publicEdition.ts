@@ -53,6 +53,10 @@ export const PUBLIC_ROUTES: string[] = [
   // Provenance
   "/sources",
   "/datasets",
+  // US roll calls and members (Phase 7 Q13, 2026-10-13): US records with claims
+  // only — the APIs behind both listings filter to them.
+  "/votes",
+  "/members",
   // Legal — footer-linked from every page
   "/terms",
   "/privacy",
@@ -67,6 +71,8 @@ export const PUBLIC_PATTERNS: RegExp[] = [
   /^\/datasets\/[^/]+$/, // app/datasets/[tag] — provenance card.
   /^\/embed\/trajectory\/[^/]+$/, // third-party iframes. Never move.
   /^\/receipts\/[^/]+$/, // app/receipts/[id] — one transition's receipt (noindex, canonical → claim). Public since phase 6b.
+  /^\/votes\/[^/]+$/, // app/votes/[id] — a US roll call; 404s unless a live US claim is behind it (lib/us-votes.ts). Phase 7 Q13.
+  /^\/members\/[^/]+$/, // app/members/[memberId] — a US member (bioguide) with claim-backed votes; else 404. Phase 7 Q13.
 ];
 
 // Lab pages that a pattern above would otherwise admit, or listing pages whose

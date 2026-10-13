@@ -38,6 +38,9 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
   live in `Claim.metadata.corrections` plus one `/corrections` entry per batch; no `ClaimStatusHistory` rows, no
   schema change. Reviews and censuses read through `app_ro` (`DATABASE_URL_RO`, SELECT only, `db/roles/app_ro.sql`);
   approved writes run by hand with the `.env.local` app role. Order: Senate cloture (Q2) → Q6–8 → Q13 → the rest.
+- 2026-10-13 (Phase 7 Q13): `/votes`, `/members`, `/votes/[id]` and `/members/[memberId]` are public (AUDIT §B LAB →
+  FRONT DOOR) for US records with a live claim only; everything else on those routes 404s. The two listings are in the
+  sitemap; the detail pages are not.
 
 ## Working rules
 
@@ -421,8 +424,18 @@ which gets its own yes).
         Senate LIS ids on 34,197 `congress_votes_v1` member votes to bioguide ids via unitedstates/congress-legislators
         (unique entry + surname + Senate state); mapping committed as `data/crosswalks/senate-lis-bioguide.json`.
         Audit: 0 LIS ids left; e.g. Schumer is one profile (S000148).
-  - [ ] Next: Q13 step 4 — page code (claim links, 404 rule, source label, titles, no topic chips, review note, member
-        pages skip the 24 doubled roll calls), then step 5 the public list.
+  - [x] **Q13 steps 4–5 (code), 2026-10-13:** `/votes`, `/members`, `/votes/[id]`, `/members/[memberId]` are public
+        (AUDIT §B LAB → FRONT DOOR). `lib/us-votes.ts` decides: a vote page exists only when its LegislativeVote reaches
+        a live US claim (voteview_v1 directly; congress_votes_v1 via `legislativeVoteId`, retired → `duplicateOf`),
+        else 404 (EU/UK/Canada, the 12 same-day votes); a member page only for a bioguide id with such votes. Vote pages
+        link their claim, label the source by host, carry per-vote titles/canonicals, drop the keyword topic chips, and
+        show "Result under review" for the 814 votes in `data/vote-results-under-review.json` (built by
+        `scripts/build-vote-review-list.ts` from Voteview's `vote_result`; the 122 pre-1989 cloture candidates are not
+        flagged — that would be a guess from text) with a link to the `/corrections` entry. Member pages skip the 24
+        roll calls recorded twice and merge "D"/"Democrat". `/api/votes` House filter fixed ("House of
+        Representatives": 59,793); `/api/members/search` US bioguide members only. Sitemap: the two listings only.
+  - [ ] Next (Phase 7 remainder): per-type result batches for the 814 (each its own yes); the 122 pre-1989 cloture votes
+        against senate.gov; STOCK Act relabel (Q9); `/legislation` refresh sentence (Q11).
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
@@ -485,6 +498,6 @@ Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34);
 (PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35), Q6 (12,285
 VOTE_ON + the law-page vote list, PR #36) Q7 (497 duplicates retired, 92 ENACTED_AS, PR #37) and the Voteview
 full-text restore (85,987 texts, PR #38) and Q8 (8 vote keys, PR #39) are written and audited. Q13 steps 1–3
-(39 vote results, 485 retired-claim vote keys, 174 senator ids merged) are written on `feat/phase7-q13-identity`.
-Next → Q13 step 4 (page code), then step 5 (public list). The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+(PR #40) are written and the vote and member pages are public (`feat/phase7-q13-pages`). Next → the rest of Phase 7
+(per-type result batches, Q9, Q11), each write with its own yes. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
 (`fix/bce-dates`) is unscheduled.

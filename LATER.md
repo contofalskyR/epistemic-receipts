@@ -15,8 +15,8 @@ relations → (7) duplicates → (8) `legislativeVoteId` keys → (13) `/votes` 
 
 | page | works today | the one missing piece |
 |---|---|---|
-| `/votes`, `/votes/[id]` | roll-call browser with source links | link each vote to its existing claim; public once results are corrected (Q13) |
-| `/members`, `/members/[memberId]` | member search / profile, ~2k enriched votes | same — list the claims a member voted on (landmark MemberVote subset only, Q10) |
+| `/votes`, `/votes/[id]` | public since Q13 (2026-10-13): claim links, "Result under review" on 814 votes | fix the 814 in per-type batches, then rebuild `data/vote-results-under-review.json` |
+| `/members`, `/members/[memberId]` | public since Q13: US bioguide members, senator ids merged | member-level votes cover the landmark subset only (Q10); 6,185 votes with no member id (below) |
 | `/congress-trades` | STOCK Act trades vs voting record | relabel the 921 trades as secondary sources credited to Quiver Quantitative (Q9); the set does not grow |
 | `/analysis/votes`, `/analysis/ideology`, `/analysis/representation`, `/analysis/topics` | careful analytics (votes truncated at 50k) | bars and points link to claims; these stay Lab (Q13) |
 | `/stats/media-coverage` | NYT coverage vs "dark-matter" bills | BillCoverage stays background data, not claims (Q14) |
