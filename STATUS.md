@@ -400,7 +400,11 @@ which gets its own yes).
         85,987 carry the batch, a rerun plans 0, all 113,319 texts keep the importer's shape, the 475 batch-1 results
         still read failed, `ClaimStatusHistory` 1,822,644. The 2 texts still ending "..." are Voteview's own. Embeddings
         not re-run: 86,063 stale (LATER §1, ~$0.18, needs `OPENAI_API_KEY`).
-  - [ ] Next: Q8 — `metadata.legislativeVoteId` on the 8 live `congress_votes_v1` claims only (owner 2026-10-12), then Q13.
+  - [x] **Q8 written 2026-10-13 (owner yes):** `scripts/link-congress-vote-lvs.ts --execute` keyed the 8 live
+        `congress_votes_v1` claims to their LegislativeVote (bill Source + chamber + date + tally, exactly one each):
+        `metadata.legislativeVoteId` + `legislativeVoteLink` (batch `p7-q8-lv-keys-2026-10`). Audit via `app_ro`:
+        8 of 8 keyed, exactly 8 claims changed, a rerun plans 0.
+  - [ ] Next: Q13 — `/votes/[id]` + `/members/[memberId]` leave the Lab once they link to claims.
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
@@ -462,6 +466,6 @@ which gets its own yes).
 Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34); transition sourcing is merged and promoted
 (PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35), Q6 (12,285
 VOTE_ON + the law-page vote list, PR #36) Q7 (497 duplicates retired, 92 ENACTED_AS, PR #37) and the Voteview
-full-text restore (85,987 texts, `feat/voteview-full-text`) are written and audited. Next → Q8 on the 8 live
-`congress_votes_v1` claims (its own yes), then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+full-text restore (85,987 texts, PR #38) and Q8 (8 vote keys, `feat/phase7-q8`) are written and audited.
+Next → Q13: the vote and member pages leave the Lab once they link to claims. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
 (`fix/bce-dates`) is unscheduled.
