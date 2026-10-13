@@ -3,7 +3,9 @@ import { Suspense } from "react";
 import LawSettlerClient from "./LawSettlerClient";
 import { prisma } from "@/lib/prisma";
 
-export const dynamic = "force-dynamic";
+// ISR: the page reads nothing at request time (the client reads ?t= itself), so
+// force-dynamic ran the 220-claim query on every visit.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Law Settler Curve — Epistemic Receipts",

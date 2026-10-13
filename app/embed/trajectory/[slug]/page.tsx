@@ -120,7 +120,7 @@ export default async function EmbedTrajectoryPage({ params, searchParams }: Prop
 
       {/* Settling curve SVG rail */}
       <div style={{ flex: 1, minHeight: 0 }}>
-        <SettlingCurveMini milestones={milestones} animate={false} />
+        <SettlingCurveMini milestones={milestones} animate={false} fit="box" />
       </div>
 
       {/* Attribution footer */}

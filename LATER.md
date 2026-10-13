@@ -29,11 +29,7 @@ the Analyze group can leave the Lab.
 
 | page | the one missing piece |
 |---|---|
-| `/settling-curve/[id]` | draw the curve (the page is the best per-claim receipt but has no curve graphic; explorer link uses the CUID, not the slug) |
-| `/canon` | make the DOI a link |
-| `/opinions` | hide the Circuit filter until `courtlistener_circuits_v1` has rows (the typed "2,711" went in phase 6) |
-| `/split-ledger` | apply `LIVE_CLAIM_WHERE` (the SQL keeps deleted/DEPRECATED rows); derive the "386" |
-| `/communities` | derive the "~1.1M" largest-community figure from the live count |
+| `/opinions` | ~~hide the Circuit filter until `courtlistener_circuits_v1` has rows~~ — outdated: it has 1,232 live rows (2026-10-01). The registry still marks the tag retired with "0 records" (owner: registry text) |
 | `/retraction-explorer` | field filter is a keyword heuristic; show the epistemic axis, not `updateType` |
 | `/search` | "semantic" copy is false (full-text + embeddings only when available); mark DEPRECATED rows |
 | `/` | hero implies the whole corpus while Fig. 1 is the dated cohort — one sentence of caption |
@@ -53,7 +49,6 @@ the Analyze group can leave the Lab.
 |---|---|
 | `/analysis/settling-rate` | drill-down: bars link into curve lists |
 | `/reader/[bookId]`, `/books` | a cleaned `/books` (its admin tooling spawns `npx ts-node`, dead on Vercel) |
-| `/receipts/[id]` | inbound links (from each transition on `/claims/[id]`) — or delete |
 | `/prereq-graph` | render `SUPERSEDED_BY`/`OUTCOME` edges distinctly, not just as "links" |
 | `/meta-edges` | document URLs and claim links; show the event date, not the insert time |
 | `/fields`, `/fields/[slug]` | `/fields` never links to `[slug]`; header count is a raw join |

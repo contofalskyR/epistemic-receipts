@@ -8,6 +8,18 @@ import SettlingCurveNav from "./SettlingCurveNav";
 import { AXIS_COLOR } from "@/lib/status";
 import { EpistemicLegend } from "@/components/EpistemicLegend";
 import { EmptyState, ErrorState, LoadingState } from "@/components/DataState";
+import { receiptHref } from "@/lib/receipts";
+import {
+  applyExplorerFilters,
+  hasActiveFilters,
+  parseExplorerFilters,
+  serializeExplorerFilters,
+  sortExplorerList,
+  DEFAULT_FILTERS,
+  type ExplorerFilters,
+  type StatusFilter,
+} from "@/lib/explorer-filters";
+import { CURVE_SHAPE_LABELS } from "@/lib/curve-shapes";
 
 const C = {
   bg: "#0a0a0a",
@@ -101,6 +113,7 @@ interface TrajectoryListItem {
   currentAxis?: Axis | null;
   firstYear?: number | null;
   lastYear?: number | null;
+  emergedYear?: number | null;
   milestones?: { year: number; axis: string }[];
 }
 
@@ -152,8 +165,6 @@ const ERA_FILTERS: { key: string; label: string; full: string | null }[] = [
   { key: "Modern", label: "Modern", full: "Modern" },
 ];
 
-type StatusFilter = "ALL" | "SETTLED" | "REVERSED" | "CONTESTED";
-
 const STATUS_FILTERS: { key: StatusFilter; label: string; color: string }[] = [
   { key: "ALL", label: "All", color: C.mut },
   { key: "SETTLED", label: "Settled", color: C.green },
@@ -170,14 +181,6 @@ function axisDotColor(item: TrajectoryListItem): string {
   if (a === "OPEN") return "#38bdf8";
   if (a === "UNRESOLVABLE") return "#a78bfa";
   return "#94a3b8";
-}
-
-function matchesStatusFilter(item: TrajectoryListItem, f: StatusFilter): boolean {
-  if (f === "ALL") return true;
-  if (f === "REVERSED") return item.hasReversal;
-  if (f === "SETTLED") return !item.hasReversal && item.currentAxis === "SETTLED";
-  if (f === "CONTESTED") return !item.hasReversal && item.currentAxis === "CONTESTED";
-  return true;
 }
 
 function frac(dateStr: string) {
@@ -294,10 +297,40 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   const [selected, setSelected] = useState<number | null>(null);
   const [logOpen, setLogOpen] = useState(false);
 
-  const [query, setQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>("ALL");
-  const [eraFilter, setEraFilter] = useState<string>("ALL");
-  const [domainFilter, setDomainFilter] = useState<string>("ALL");
+  // Filters live in the URL (lib/explorer-filters.ts): derived from
+  // useSearchParams on every render and written back with replaceState, so a
+  // filter link is shareable and a change never refetches the list. Not
+  // router.replace — this page is force-dynamic, so that would re-run the
+  // server render and re-ship the curated list.
+  const filters = useMemo(() => parseExplorerFilters(searchParams), [searchParams]);
+  const filterKey = serializeExplorerFilters(filters);
+  const { status: statusFilter, era: eraFilter, domain: domainFilter } = filters;
+  const setFilters = useCallback((patch: Partial<ExplorerFilters>) => {
+    const current = new URLSearchParams(window.location.search);
+    const qs = serializeExplorerFilters({ ...parseExplorerFilters(current), ...patch }, current);
+    window.history.replaceState(null, "", qs ? `/settling-curve?${qs}` : "/settling-curve");
+  }, []);
+  const setStatusFilter = (status: StatusFilter) => setFilters({ status });
+  const setEraFilter = (era: string) => setFilters({ era });
+  const setDomainFilter = (domain: string) => setFilters({ domain });
+  // The search box types into local state; the URL follows after a pause.
+  const [query, setQuery] = useState(filters.q);
+  const lastWrittenQ = useRef(filters.q);
+  useEffect(() => {
+    if (query === lastWrittenQ.current) return;
+    const id = setTimeout(() => {
+      lastWrittenQ.current = query;
+      setFilters({ q: query });
+    }, 250);
+    return () => clearTimeout(id);
+  }, [query, setFilters]);
+  useEffect(() => {
+    // Back/forward or a pasted link changed q: show it in the box.
+    if (filters.q !== lastWrittenQ.current) {
+      lastWrittenQ.current = filters.q;
+      setQuery(filters.q);
+    }
+  }, [filters.q]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState({ status: true, era: false, domain: false });
   const [receiptOpen, setReceiptOpen] = useState(true);
@@ -391,9 +424,11 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
     setSelected(null);
     setDrawerOpen(false);
     // Shallow URL update — keeps curve URLs shareable and browser-back working
-    // (Next syncs useSearchParams with native history).
+    // (Next syncs useSearchParams with native history). Filters stay beside t.
     if (typeof window !== "undefined") {
-      window.history.pushState(null, "", `/settling-curve?t=${encodeURIComponent(id)}`);
+      const sp = new URLSearchParams(window.location.search);
+      sp.set("t", id);
+      window.history.pushState(null, "", `/settling-curve?${sp.toString()}`);
     }
   };
 
@@ -403,20 +438,19 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
     setSelected(null);
     setTitleExpanded(false);
     if (typeof window !== "undefined") {
-      window.history.pushState(null, "", "/settling-curve");
+      const sp = new URLSearchParams(window.location.search);
+      sp.delete("t");
+      const qs = sp.toString();
+      window.history.pushState(null, "", qs ? `/settling-curve?${qs}` : "/settling-curve");
     }
   };
 
-  const filteredList = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return list.filter((item) => {
-      if (q && !item.claim.toLowerCase().includes(q)) return false;
-      if (!matchesStatusFilter(item, statusFilter)) return false;
-      if (eraFilter !== "ALL" && (item.era ?? "Unknown") !== eraFilter) return false;
-      if (domainFilter !== "ALL" && (item.domain ?? "history") !== domainFilter) return false;
-      return true;
-    });
-  }, [list, query, statusFilter, eraFilter, domainFilter]);
+  const filteredList = useMemo(
+    () => sortExplorerList(applyExplorerFilters(list, filters), filters.sort),
+    // filterKey, not filters: a ?t= change re-parses filters without changing them.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [list, filterKey],
+  );
 
   // Header label. The SSR list is curated-only; the background /api/trajectories
   // fetch appends the newest auto-generated claims with two or more transitions
@@ -435,7 +469,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   useEffect(() => {
     setVisibleCount(30);
     setGridVisibleCount(24);
-  }, [query, statusFilter, eraFilter, domainFilter]);
+  }, [filterKey]);
 
   // Sidebar sentinel (detail view only — the landing grid uses an explicit
   // Load-more button instead of infinite scroll)
@@ -633,6 +667,11 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
               <Link href={flagHref(activeId, only)} className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
                 flag this receipt →
               </Link>
+              {only.id && (
+                <Link href={receiptHref(only.id)} prefetch={false} rel="nofollow" className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                  permalink →
+                </Link>
+              )}
             </div>
             <p className="mt-4" style={{ fontSize: 12, color: C.faint, lineHeight: 1.55 }}>
               A single-point curve is a real claim: nothing has moved yet. When a dated, sourced
@@ -799,6 +838,11 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                 <Link href={flagHref(activeId, detail)} className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
                   flag this receipt →
                 </Link>
+                {detail.id && (
+                  <Link href={receiptHref(detail.id)} prefetch={false} rel="nofollow" className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                    permalink →
+                  </Link>
+                )}
               </div>
               <p className="mt-4" style={{ fontSize: 12, color: C.faint }}>
                 Each point is a dated source — the receipt for when a community changed its mind. Tap any marker.
@@ -920,6 +964,11 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                         >
                           flag this receipt →
                         </Link>
+                        {tr.id && (
+                          <Link href={receiptHref(tr.id)} prefetch={false} rel="nofollow" className="font-mono" style={{ fontSize: 9, color: C.faint, letterSpacing: "0.05em" }}>
+                            permalink →
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1275,6 +1324,19 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
           <div className="mt-3">
             <EpistemicLegend label="Axis key:" />
           </div>
+          <nav aria-label="More views" className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono" style={{ fontSize: 11, letterSpacing: "0.04em" }}>
+            <span style={{ color: C.faint }}>MORE VIEWS:</span>
+            {[
+              { href: "/patterns", label: "Patterns of settling" },
+              { href: "/open-questions", label: "Open questions" },
+              { href: "/canon", label: "The Canon" },
+              { href: "/trajectories", label: "Encyclopedia & machine curves" },
+            ].map((v) => (
+              <Link key={v.href} href={v.href} style={{ color: C.mut }} className="hover:underline underline-offset-2">
+                {v.label}
+              </Link>
+            ))}
+          </nav>
         </header>
 
         {/* Filters — one compact row instead of a sidebar */}
@@ -1313,11 +1375,33 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
           </div>
         </div>
 
+        {/* Filters that only arrive by link (/patterns, the settling-rate bars):
+            say they are on, and how to clear them. */}
+        {(filters.shape || filters.from !== null || filters.to !== null || filters.curated || filters.sort !== "default") && (
+          <p className="-mt-3 mb-6 font-mono" style={{ fontSize: 10, color: C.mut, letterSpacing: "0.05em" }}>
+            {[
+              filters.shape && `SHAPE: ${CURVE_SHAPE_LABELS[filters.shape].toUpperCase()}`,
+              (filters.from !== null || filters.to !== null) &&
+                `EMERGED ${filters.from ?? "…"}–${filters.to ?? "…"}`,
+              filters.curated && "CURATED ONLY",
+              filters.sort !== "default" && `SORTED BY ${filters.sort.toUpperCase()}`,
+            ].filter(Boolean).join(" · ")}
+            {" · "}
+            <button
+              type="button"
+              onClick={() => setFilters({ shape: null, from: null, to: null, curated: false, sort: "default" })}
+              style={{ color: C.brand, background: "none", border: "none", cursor: "pointer", padding: 0, letterSpacing: "inherit" }}
+            >
+              CLEAR
+            </button>
+          </p>
+        )}
+
         {/* Reversals showcase — the claims the world took back. Longest-held
             beliefs that flipped, drawn from the same list the grid uses, so
             every new reversal the pipelines create competes for a spot. Hidden
             once the visitor starts filtering/searching (the grid takes over). */}
-        {statusFilter === "ALL" && !query.trim() && (() => {
+        {!hasActiveFilters(filters) && (() => {
           const showcase = filteredList
             .filter((i) => i.hasReversal && (i.transitionCount ?? 0) >= 2)
             .sort((a, b) => {
@@ -1396,6 +1480,15 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
               Tap to retry
             </button>
           </div>
+        )}
+
+        {!listLoading && !listError && filteredList.length === 0 && (
+          <EmptyState
+            className="mb-6"
+            title="No trajectories for this filter."
+            hint="Counts cover the loaded list: the curated trajectories and the newest auto-generated ones."
+            action={{ label: "Clear filters", onClick: () => { setQuery(""); lastWrittenQ.current = ""; setFilters(DEFAULT_FILTERS); } }}
+          />
         )}
 
         {/* Card grid — /legislation's DomainCurveRail pattern */}

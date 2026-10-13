@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { corpusCountByPipeline } from "@/lib/corpus";
+import { corpusStatsByPipeline } from "@/lib/corpus";
 import { PIPELINES, CATEGORY_ORDER, type SourceCategory } from "@/lib/pipelines/registry";
 
 export const revalidate = 300;
@@ -11,20 +10,36 @@ interface SourceMeta {
   label: string;
   sourceUrl: string;
   category: Category;
+  method?: string;
+  cadence?: string;
+  caveats?: string;
 }
 
 // ingestedBy → source-level metadata, derived from the ONE pipeline registry
 // (lib/pipelines/registry.ts, front door phase 3). This file used to carry its
 // own 185-row SOURCE_REGISTRY that disagreed with the data cards and /pipelines.
 const SOURCE_REGISTRY: Record<string, SourceMeta> = Object.fromEntries(
-  PIPELINES.map((p) => [p.tag, { label: p.name, sourceUrl: p.upstreamUrl ?? "", category: p.category }]),
+  PIPELINES.map((p) => [
+    p.tag,
+    { label: p.name, sourceUrl: p.upstreamUrl ?? "", category: p.category, method: p.method, cadence: p.cadence, caveats: p.caveats },
+  ]),
 );
 
-interface SourceEntry {
+export interface SourceEntry {
   ingestedBy: string;
   label: string;
   sourceUrl: string;
   count: number;
+  emergedFirstYear: number | null;
+  emergedLastYear: number | null;
+  newestRecordAt: string | null;
+  deprecated: number;
+  unclassified: number;
+  /** The registry entry has a method, so /datasets/<tag> has a card. */
+  hasDataCard: boolean;
+  method: string | null;
+  cadence: string | null;
+  caveats: string | null;
 }
 
 interface CategoryBucket {
@@ -48,32 +63,50 @@ export interface SourcesSummary {
 }
 
 export async function loadSourcesSummary(): Promise<SourcesSummary> {
-  const [rows, unclassifiedClaims] = await Promise.all([
-    // One per-pipeline query site-wide (lib/corpus.ts), so this census, the
-    // homepage tiles and /pipelines can never disagree. It used to exclude the
-    // 182 DEPRECATED rows here alone; the corpus total counts them (and /stats
-    // says so), so the census does too.
-    corpusCountByPipeline(),
-    prisma.claim.count({ where: { deleted: false, verificationStatus: null } }),
-  ]);
+  // One per-pipeline GROUP BY (lib/corpus.ts) under the corpus definition, so
+  // this census sums to the headline and the homepage tiles. It counts the 182
+  // DEPRECATED rows like the corpus total does (and /stats says so).
+  const rows = await corpusStatsByPipeline();
 
   const buckets = new Map<Category, SourceEntry[]>();
   const unmapped: SourceEntry[] = [];
   let totalClaims = 0;
+  let unclassifiedClaims = 0;
 
   for (const row of rows) {
     const count = Number(row.count);
     totalClaims += count;
+    unclassifiedClaims += Number(row.unclassified);
+    const stats = {
+      count,
+      emergedFirstYear: row.emergedFirstYear,
+      emergedLastYear: row.emergedLastYear,
+      newestRecordAt: row.newestRecordAt,
+      deprecated: Number(row.deprecated),
+      unclassified: Number(row.unclassified),
+    };
     const meta: SourceMeta | undefined =
       SOURCE_REGISTRY[row.ingestedBy] ??
       (row.ingestedBy.startsWith("book-analysis:")
         ? { label: "Book analysis (reader extraction)", sourceUrl: "", category: "Editorial / Curated" }
         : undefined);
     if (!meta) {
-      unmapped.push({ ingestedBy: row.ingestedBy, label: row.ingestedBy, sourceUrl: "", count });
+      unmapped.push({
+        ingestedBy: row.ingestedBy, label: row.ingestedBy, sourceUrl: "", ...stats,
+        hasDataCard: false, method: null, cadence: null, caveats: null,
+      });
       continue;
     }
-    const entry: SourceEntry = { ingestedBy: row.ingestedBy, label: meta.label, sourceUrl: meta.sourceUrl, count };
+    const entry: SourceEntry = {
+      ingestedBy: row.ingestedBy,
+      label: meta.label,
+      sourceUrl: meta.sourceUrl,
+      ...stats,
+      hasDataCard: !!meta.method,
+      method: meta.method ?? null,
+      cadence: meta.cadence ?? null,
+      caveats: meta.caveats ?? null,
+    };
     const list = buckets.get(meta.category) ?? [];
     list.push(entry);
     buckets.set(meta.category, list);

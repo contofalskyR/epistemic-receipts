@@ -50,6 +50,8 @@ export type TrajectoryListItem = {
   currentAxis: string | null;
   firstYear: number | null;
   lastYear: number | null;
+  /** UTC year of claimEmergedAt — the explorer's from/to filter. */
+  emergedYear: number | null;
   isCurated: boolean;
   milestones: { year: number; axis: string }[];
 };
@@ -119,6 +121,7 @@ export function toListItem(c: Row): TrajectoryListItem {
     currentAxis: last?.toAxis ?? null,
     firstYear: first ? first.occurredAt.getUTCFullYear() : null,
     lastYear: last ? last.occurredAt.getUTCFullYear() : null,
+    emergedYear: c.claimEmergedAt ? c.claimEmergedAt.getUTCFullYear() : null,
     isCurated,
     milestones: sorted.map((s) => ({ year: s.occurredAt.getUTCFullYear(), axis: s.toAxis })),
   };
@@ -141,7 +144,7 @@ const loadCuratedChunk = unstable_cache(
     });
     return rows.map(toListItem);
   },
-  ["curated-trajectories-chunk"],
+  ["curated-trajectories-chunk", "v2-emerged-year"], // bump when toListItem's shape changes
   { revalidate: REVALIDATE },
 );
 
@@ -240,7 +243,7 @@ const loadAutoChunk = unstable_cache(
       return row && row.statusHistory.length >= minMilestones ? [toListItem(row)] : [];
     });
   },
-  ["auto-trajectories-chunk"],
+  ["auto-trajectories-chunk", "v2-emerged-year"], // bump when toListItem's shape changes
   { revalidate: REVALIDATE },
 );
 

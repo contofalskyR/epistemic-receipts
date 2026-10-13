@@ -46,6 +46,11 @@ describe("front door: the sitemap never advertises a URL the Lab gate intercepts
     expect(src).toMatch(/onlyPublic\(\[\.\.\.topicUrls, \.\.\.explorerUrls\]\)/);
   });
 
+  it("lists every public route", () => {
+    const listed = new Set([...src.matchAll(/\$\{SITE_URL\}(\/[^`"'$]*)`/g)].map((m) => m[1].replace(/\/$/, "") || "/"));
+    expect(PUBLIC_ROUTES.filter((r) => !listed.has(r))).toEqual([]);
+  });
+
   it("lists no static URL that would be dropped", () => {
     // Literal static URLs only; templated ones (`/topics/${slug}`) are judged at
     // runtime by onlyPublic() above.
@@ -88,6 +93,8 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
     "/datasets/openalex_v1",
     "/embed/trajectory/h-pylori",
     "/stories/continental-drift",
+    "/receipts/x",
+    "/receipts/csh:trajectory:hiv-causes-aids:1",
   ])("%s (a [id]/[slug] page) is public", (r) => {
     expect(isPublicRoute(r)).toBe(true);
   });
@@ -103,7 +110,7 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
     "/history", "/physics", "/fields", "/statistics", "/analysis/settling-rate", "/stats", "/globe",
     "/legislation", "/drug-arc", "/historical-events", "/pipelines", "/meta-edges", "/feed", "/books",
     "/reader/some-book", "/congress-trades", "/votes", "/members", "/financial", "/domains/economics",
-    "/prereq-graph", "/retraction-wall", "/retractions", "/login", "/admin", "/review", "/receipts/x",
+    "/prereq-graph", "/retraction-wall", "/retractions", "/login", "/admin", "/review", "/receipts",
     "/stock-act", "/foreign-legislation", "/timeline",
   ])("%s is Lab", (r) => {
     expect(isPublicRoute(r)).toBe(false);

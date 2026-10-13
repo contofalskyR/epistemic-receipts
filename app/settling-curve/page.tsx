@@ -21,6 +21,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       title: "Settling Curve — Epistemic Receipts",
       description:
         "Trace how scientific confidence in a claim builds — or unravels — across expert literature, institutions, courts, and public consensus.",
+      // Filter variants (?status=, ?shape=, …) are views of this page.
+      alternates: { canonical: "/settling-curve" },
     };
   }
 

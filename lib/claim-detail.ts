@@ -2,6 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { trajectorySlug } from "@/lib/trajectory-shared";
 
 // ── Serialized (JSON-safe) claim-detail types ─────────────────────────────────
 // These mirror the wire shape the old client page received from
@@ -47,6 +48,10 @@ export type EdgeDetail = {
   type: string;
   evidenceType: string;
   createdAt: string;
+  /** Automated checks approved this link (lib/verification.ts). */
+  autoApproved: boolean;
+  /** A person reviewed this link. */
+  humanReviewed: boolean;
   source: {
     id: string;
     name: string;
@@ -90,6 +95,8 @@ export type ChildClaimDetail = {
 export type TopicTag = { id: string; name: string; slug: string; domain: string };
 
 export type StatusTransitionSummary = {
+  /** ClaimStatusHistory id — the transition's receipt is /receipts/<id>. */
+  id: string;
   /** Explicit chain order (1..n per claim); null on unbackfilled legacy rows. */
   seq: number | null;
   fromAxis: string | null;
@@ -108,6 +115,8 @@ export type ClaimDetail = {
   claimEmergedAt: string | null;
   claimEmergedPrecision: string | null;
   createdAt: string;
+  /** Curated slug (externalId "trajectory:<slug>"), or null. */
+  trajectorySlug: string | null;
   humanReviewed: boolean;
   epistemicStatus: string | null;
   ingestedBy: string;
@@ -156,6 +165,7 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
   claimEmergedAt: true,
   claimEmergedPrecision: true,
   createdAt: true,
+  externalId: true,
   humanReviewed: true,
   epistemicStatus: true,
   ingestedBy: true,
@@ -190,6 +200,8 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
       type: true,
       evidenceType: true,
       createdAt: true,
+      autoApproved: true,
+      humanReviewed: true,
       source: {
         select: {
           id: true,
@@ -249,7 +261,7 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
       { occurredAt: "desc" },
       { createdAt: "desc" },
     ],
-    select: { seq: true, fromAxis: true, toAxis: true, community: true, occurredAt: true, datePrecision: true },
+    select: { id: true, seq: true, fromAxis: true, toAxis: true, community: true, occurredAt: true, datePrecision: true },
   },
 });
 
@@ -289,6 +301,7 @@ function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
     claimEmergedAt: isoOrNull(claim.claimEmergedAt),
     claimEmergedPrecision: claim.claimEmergedPrecision,
     createdAt: iso(claim.createdAt),
+    trajectorySlug: trajectorySlug(claim.externalId),
     humanReviewed: claim.humanReviewed,
     epistemicStatus: claim.epistemicStatus,
     ingestedBy: claim.ingestedBy,
@@ -301,6 +314,8 @@ function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
       type: edge.type,
       evidenceType: edge.evidenceType,
       createdAt: iso(edge.createdAt),
+      autoApproved: edge.autoApproved,
+      humanReviewed: edge.humanReviewed,
       source: {
         id: edge.source.id,
         name: edge.source.name,

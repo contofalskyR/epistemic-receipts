@@ -3,6 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import { socialMetadata } from "@/lib/og";
+import { communityRankLine } from "@/lib/community-rank";
 
 export const revalidate = 3600;
 
@@ -40,7 +41,7 @@ const COMMUNITY_DEFS: {
     ratification:
       "A transition is recorded when the published record moves — a landmark study establishes a claim (RECORDED → SETTLED), a systematic review opens it to dispute (SETTLED → CONTESTED), or a formal retraction withdraws it (SETTLED → REVERSED). The ratifying act is publication in the scholarly record.",
     notes:
-      "The largest community by transition count. Includes retraction records via CrossRef/Retraction Watch and open academic catalogs via OpenAlex. A retracted paper moves to REVERSED — the journal's or authors' formal withdrawal, not an external judgment.",
+      "Includes retraction records via CrossRef/Retraction Watch and open academic catalogs via OpenAlex. A retracted paper moves to REVERSED — the journal's or authors' formal withdrawal, not an external judgment.",
     exemplarSlug: "smoking-lung-cancer",
     exemplarTitle: "Cigarette smoking causes lung cancer",
     exemplarArc: "CONTESTED → SETTLED (1950 → 1998)",
@@ -54,7 +55,7 @@ const COMMUNITY_DEFS: {
     ratification:
       "An institution ratifies a claim by acting on it: an FDA approval (RECORDED → SETTLED), a drug withdrawal (SETTLED → REVERSED), or a regulatory challenge (SETTLED → CONTESTED). The ratifying act is a formal institutional decision with traceable authority.",
     notes:
-      "The largest community by claim count (~1.1M). Includes FDA drug approvals, congressional enactments, UN resolutions, EU regulations, and dozens of national legislative corpora. An institutional record does not require scientific consensus — regulatory decisions sometimes precede or contradict the expert-literature consensus.",
+      "Includes FDA drug approvals, congressional enactments, UN resolutions, EU regulations, and dozens of national legislative corpora. An institutional record does not require scientific consensus — regulatory decisions sometimes precede or contradict the expert-literature consensus.",
     exemplarSlug: "laiv-flumist-acip-not-recommended-reversal-2016",
     exemplarTitle: "FluMist (LAIV) not recommended — ACIP reversal",
     exemplarArc: "SETTLED → REVERSED (2003 → 2016 → 2018)",
@@ -82,7 +83,7 @@ const COMMUNITY_DEFS: {
     ratification:
       "Public-record ratification happens when an event is sufficiently documented across authoritative sources that its occurrence is no longer in question. An Apollo landing, a mine rescue, a treaty signing — these become SETTLED in the public record when the documentation is thorough and uncontested.",
     notes:
-      "Smallest community by transition count. Includes publicly documented events that do not fit neatly into expert-literature or institutional categories. The bar is documentation quality, not scientific or legal authority.",
+      "Includes publicly documented events that do not fit neatly into expert-literature or institutional categories. The bar is documentation quality, not scientific or legal authority.",
     exemplarSlug: "apollo11-moon-landing",
     exemplarTitle: "Apollo 11 humans first set foot on the Moon",
     exemplarArc: "RECORDED → SETTLED (1969)",
@@ -96,7 +97,7 @@ const COMMUNITY_DEFS: {
     ratification:
       "A market transition records a commercial fact: a product introduction (RECORDED → SETTLED), a commercial discontinuation (SETTLED → REVERSED), or a contested market claim (SETTLED → CONTESTED). The ratifying act is a documented commercial event with traceable sourcing.",
     notes:
-      "Smallest community by claim count (~91 claims). Includes technology product launches and commercial milestones. Market ratification is distinct from expert-literature consensus — a product can be commercially settled (widely adopted) while scientifically contested.",
+      "Includes technology product launches and commercial milestones. Market ratification is distinct from expert-literature consensus — a product can be commercially settled (widely adopted) while scientifically contested.",
     exemplarSlug: "ibm-pc-introduced-1981",
     exemplarTitle: "IBM introduced the IBM Personal Computer",
     exemplarArc: "RECORDED → SETTLED (1981)",
@@ -126,6 +127,7 @@ export default async function CommunitiesPage() {
   const countMap = new Map(
     rows.map((r) => [r.community, { claims: Number(r.claims), transitions: Number(r.transitions) }])
   );
+  const rankLine = communityRankLine(countMap);
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12 space-y-12">
@@ -150,6 +152,7 @@ export default async function CommunitiesPage() {
           <code className="text-[10px] text-gray-500">RatifyingCommunity</code>{" "}
           in the schema). Counts below are live.
         </p>
+        {rankLine && <p className="text-xs text-gray-500 max-w-2xl">{rankLine}</p>}
       </header>
 
       {/* Community cards */}

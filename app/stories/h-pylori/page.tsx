@@ -9,6 +9,7 @@ import EmbedButton from "@/components/EmbedButton";
 import { SITE_URL } from "@/lib/site";
 import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
+import { trajectoryMilestones } from "@/lib/trajectory-shared";
 
 // ISR, matching the other trajectory-backed pages — this reads two already-seeded
 // curated claims (scripts/seed-trajectories.ts), so a day-old cache is fine.
@@ -55,12 +56,7 @@ function CurvePanel({
   eyebrow: string;
   accent: string;
 }) {
-  const milestones = traj.transitions.map((t) => ({
-    year: new Date(t.occurredAt).getUTCFullYear(),
-    axis: t.toAxis,
-    reason: t.reason,
-    community: t.community,
-  }));
+  const milestones = trajectoryMilestones(traj.transitions);
   const finalAxis = traj.transitions.at(-1)?.toAxis ?? null;
 
   return (

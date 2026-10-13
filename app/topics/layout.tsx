@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 };
 
 // Metadata-only layout: topics/page.tsx is a client component ("use client"),
-// which cannot export metadata itself. Applies to the /topics index; the
-// /topics/[slug] pages carry their own metadata.
+// which cannot export metadata itself. It applies to the /topics index only;
+// app/topics/[slug]/page.tsx sets each topic's own (lib/topic-meta.ts).
 export default function TopicsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

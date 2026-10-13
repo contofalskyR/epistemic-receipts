@@ -33,7 +33,7 @@ async function getCoverage(tag: string) {
     prisma.claim.aggregate({
       where: { ingestedBy: tag, deleted: false },
       _min: { claimEmergedAt: true },
-      _max: { claimEmergedAt: true },
+      _max: { claimEmergedAt: true, createdAt: true },
       _count: { _all: true },
     }),
     prisma.pipelineRun.findFirst({
@@ -70,6 +70,7 @@ async function getCoverage(tag: string) {
     earliestClaim: aggregate._min.claimEmergedAt,
     latestClaim: aggregate._max.claimEmergedAt,
     lastRunAt: lastRun?.finishedAt ?? null,
+    newestRecordAt: aggregate._max.createdAt,
   };
 }
 
@@ -155,6 +156,12 @@ export default async function DatasetPage({ params }: Props) {
               <dd className="text-gray-500 italic">No pipeline runs recorded</dd>
             </>
           )}
+          {cov.newestRecordAt && (
+            <>
+              <dt className="text-gray-500">Newest record added</dt>
+              <dd className="text-gray-200 font-mono">{fmtDate(cov.newestRecordAt)}</dd>
+            </>
+          )}
         </dl>
       </section>
 
@@ -233,10 +240,17 @@ export default async function DatasetPage({ params }: Props) {
             Pipeline retired
           </h2>
           <p className="text-sm text-gray-400 leading-relaxed">
-            This pipeline is no longer active. Existing records remain in the database
-            with <span className="font-mono text-gray-300">verificationStatus=DEPRECATED</span> and
-            are preserved for audit purposes. The ingest script has been relocated to{" "}
-            <span className="font-mono text-gray-300">scripts/retired/</span>.
+            This pipeline is no longer active.{" "}
+            {cov.deprecated > 0 ? (
+              <>
+                Its {cov.deprecated.toLocaleString()} deprecated records remain in the database
+                with <span className="font-mono text-gray-300">verificationStatus=DEPRECATED</span> and
+                are preserved for audit purposes. The ingest script has been relocated to{" "}
+                <span className="font-mono text-gray-300">scripts/retired/</span>.
+              </>
+            ) : (
+              <>None of its {cov.total.toLocaleString()} records is marked deprecated.</>
+            )}
           </p>
           <p className="text-sm text-gray-500">
             See{" "}

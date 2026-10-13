@@ -44,7 +44,7 @@ const ENTRIES: AuditEntry[] = [
     ],
     recordsAffected: 4897,
     resolutionLinks: [
-      { label: "Diagnostic doc", href: "/" },
+      { label: "Diagnostic doc", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/docs/epistemic-status-diagnostic-2026-06-08.md" },
     ],
   },
   {
@@ -168,15 +168,27 @@ export default function CorrectionsPage() {
 
             {e.resolutionLinks && e.resolutionLinks.length > 0 && (
               <div className="flex gap-3 flex-wrap pt-1 border-t border-gray-800">
-                {e.resolutionLinks.map((l) => (
-                  <Link
-                    key={l.href + l.label}
-                    href={l.href}
-                    className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                  >
-                    {l.label} &rarr;
-                  </Link>
-                ))}
+                {e.resolutionLinks.map((l) =>
+                  /^https?:\/\//.test(l.href) ? (
+                    <a
+                      key={l.href + l.label}
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                    >
+                      {l.label} &rarr;
+                    </a>
+                  ) : (
+                    <Link
+                      key={l.href + l.label}
+                      href={l.href}
+                      className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                    >
+                      {l.label} &rarr;
+                    </Link>
+                  ),
+                )}
               </div>
             )}
           </article>

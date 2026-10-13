@@ -164,13 +164,15 @@ export default async function PatternsPage() {
     return { shape, count: shapeCounts[shape], exemplars };
   });
 
+  // The explorer filters by shape (lib/explorer-filters.ts) over its loaded
+  // list — the curated trajectories plus the newest auto-generated ones.
   const EXPLORER_LINKS: Record<CurveShape, string> = {
-    "monotone-settle": "/settling-curve?sort=transitions",
-    "contested-then-settled": "/settling-curve?sort=transitions",
-    "settle-then-reverse": "/settling-curve?sort=transitions",
-    "flip-flop": "/settling-curve?sort=transitions",
-    "abandoned": "/settling-curve?sort=transitions",
-    "other": "/settling-curve",
+    "monotone-settle": "/settling-curve?shape=monotone-settle&sort=transitions",
+    "contested-then-settled": "/settling-curve?shape=contested-then-settled&sort=transitions",
+    "settle-then-reverse": "/settling-curve?shape=settle-then-reverse&sort=transitions",
+    "flip-flop": "/settling-curve?shape=flip-flop&sort=transitions",
+    "abandoned": "/settling-curve?shape=abandoned&sort=transitions",
+    "other": "/settling-curve?shape=other",
   };
 
   return (

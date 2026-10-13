@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
-import { socialMetadata, defaultSocialMetadata, DEFAULT_OG_IMAGE, trajectoryOgImage, claimOgImage } from "@/lib/og";
+import { socialMetadata, defaultSocialMetadata, DEFAULT_OG_IMAGE, trajectoryOgImage, claimOgImage, receiptOgImage } from "@/lib/og";
 import { truncate } from "@/lib/og-shared";
 
 // The root layout's real generateMetadata() runs below: stub its font loader
@@ -42,13 +42,14 @@ describe("socialMetadata()", () => {
     const img = trajectoryOgImage("continental-drift");
     expect(img.url).toBe("/api/og/trajectory?id=continental-drift");
     expect(claimOgImage("abc").url).toBe("/api/og/claim?id=abc");
+    expect(receiptOgImage("csh:trajectory:x:1").url).toBe("/api/og/receipt?id=csh%3Atrajectory%3Ax%3A1");
     const m = socialMetadata({ title: "T", url: "/stories/continental-drift", type: "article", image: img });
     expect((m.openGraph as { images: unknown[] }).images).toEqual([img]);
     expect((m.twitter as { images: string[] }).images).toEqual([img.url]);
   });
 
   it("every OG image URL is relative — app/layout.tsx sets metadataBase", () => {
-    for (const u of [DEFAULT_OG_IMAGE.url, trajectoryOgImage("x").url, claimOgImage("y").url]) {
+    for (const u of [DEFAULT_OG_IMAGE.url, trajectoryOgImage("x").url, claimOgImage("y").url, receiptOgImage("z").url]) {
       expect(u.startsWith("/api/og/")).toBe(true);
     }
   });

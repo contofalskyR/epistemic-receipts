@@ -33,6 +33,11 @@ export function claimOgImage(claimId: string, alt = "Claim receipt"): OgImage {
   return { url: `/api/og/claim?id=${encodeURIComponent(claimId)}`, ...OG_IMAGE_SIZE, alt };
 }
 
+/** The card for one transition's receipt (/receipts/[id]). */
+export function receiptOgImage(id: string, alt = "Epistemic receipt"): OgImage {
+  return { url: `/api/og/receipt?id=${encodeURIComponent(id)}`, ...OG_IMAGE_SIZE, alt };
+}
+
 /** openGraph + twitter blocks with an image always attached. */
 export function socialMetadata({
   title,

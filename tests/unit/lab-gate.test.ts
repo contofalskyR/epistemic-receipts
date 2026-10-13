@@ -187,7 +187,6 @@ describe("Lab gate (middleware.ts)", () => {
     "/members/A.B",
     "/historical-events/a.b",
     "/fields/x.y",
-    "/receipts/a.b",
     "/settling-curve/coverage%3Fx",
     "/claims/a%2F/edit",
     "/history.segments/_full.segment.rsc",
@@ -213,6 +212,8 @@ describe("Lab gate (middleware.ts)", () => {
   it.each([
     "/settling-curve/cdc-blood-lead-reference-value-3.5-2021",
     "/claims/a.b",
+    "/receipts/a.b",
+    "/receipts/csh:trajectory:hiv-causes-aids:1",
     "/claims/abc.segments/_tree.segment.rsc",
     "/geo/historical/world_100.geojson",
     "/file.svg",

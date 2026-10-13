@@ -33,10 +33,16 @@ export default function SettlingCurveMini({
   className = "",
   ariaLabel,
   animate = true,
+  fit = "width",
 }: {
   milestones: MiniMilestone[];
   className?: string;
   ariaLabel?: string;
+  /** "width" (default): full width, height follows the aspect ratio.
+   *  "box": fill the parent's box and letterbox inside it — for a container of
+   *  fixed height, like the 200px embed frame, where "width" overflows and
+   *  clips the lower axis levels and the year labels on wide frames. */
+  fit?: "width" | "box";
   // Entry animations (line draw + dot pop). Disable for dense lists that render
   // many sparklines at once (e.g. the settling-curve sidebar) to avoid a
   // mount-time animation storm.
@@ -79,7 +85,8 @@ export default function SettlingCurveMini({
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
-      className={`w-full h-auto ${className}`}
+      className={`${fit === "box" ? "block w-full h-full" : "w-full h-auto"} ${className}`}
+      preserveAspectRatio="xMidYMid meet"
       role="img"
       aria-label={ariaLabel ?? "Epistemic trajectory sparkline"}
     >

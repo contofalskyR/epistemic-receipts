@@ -8,6 +8,9 @@ import EmbedButton from "@/components/EmbedButton";
 import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
 import { SITE_URL } from "@/lib/site";
 import { EmptyState } from "@/components/DataState";
+import { receiptHref } from "@/lib/receipts";
+import { trajectoryMilestones } from "@/lib/trajectory-shared";
+import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 
 const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
@@ -59,8 +62,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     240,
   );
 
-  const canonical = `/settling-curve/${id}`;
-  const ogImage = `/api/og/trajectory?id=${encodeURIComponent(id)}`;
+  // A curated trajectory reached by its claim id canonicalises to the slug.
+  const canonical = `/settling-curve/${traj.slug ?? id}`;
+  const ogImage = `/api/og/trajectory?id=${encodeURIComponent(traj.slug ?? id)}`;
 
   const oEmbedUrl = `${SITE_URL}/api/oembed?url=${encodeURIComponent(SITE_URL + canonical)}`;
 
@@ -140,7 +144,7 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
         </div>
         <div className="flex items-center gap-3 flex-wrap">
           <Link
-            href={`/settling-curve?t=${encodeURIComponent(traj.claimId)}`}
+            href={`/settling-curve?t=${encodeURIComponent(traj.slug ?? traj.claimId)}`}
             className="text-xs px-3 py-1 rounded-full font-medium bg-amber-500/15 text-amber-300 border border-amber-500/40 hover:bg-amber-500/25 transition-colors"
           >
             Open interactive curve →
@@ -153,13 +157,21 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
           </Link>
           <CitationButton type="claim" id={traj.claimId} />
           <EmbedButton
-            slug={CURATED_SLUGS.has(id) ? id : undefined}
+            slug={traj.slug && CURATED_SLUGS.has(traj.slug) ? traj.slug : undefined}
             claimId={traj.claimId}
             title={traj.claimText.slice(0, 80)}
             siteUrl={SITE_URL}
           />
         </div>
       </div>
+
+      {traj.transitions.length > 0 && (
+        <SettlingCurveMini
+          milestones={trajectoryMilestones(traj.transitions)}
+          animate={false}
+          ariaLabel={`Settling curve: ${traj.claimText}`}
+        />
+      )}
 
       {/* Transition log */}
       <section className="space-y-4">
@@ -174,7 +186,7 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
         ) : (
           <ol className="space-y-3">
             {traj.transitions.map((t, i) => (
-              <li key={i} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-4 space-y-2">
+              <li key={i} id={t.seq != null ? `t-${t.seq}` : undefined} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-4 space-y-2">
                 {/* Arrow */}
                 <div className="flex items-center gap-2 flex-wrap">
                   {t.fromAxis ? (
@@ -225,6 +237,11 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
                     )}
                   </p>
                 )}
+                <p className="text-xs">
+                  <Link href={receiptHref(t.id)} prefetch={false} rel="nofollow" className="text-gray-500 hover:text-gray-300 font-mono">
+                    Receipt →
+                  </Link>
+                </p>
               </li>
             ))}
           </ol>

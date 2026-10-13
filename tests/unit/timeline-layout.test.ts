@@ -38,6 +38,7 @@ function toMainInput(events: FEvent[]): { claim: ClaimDetail; todayIso: string }
   let prevAxis: string | null = null;
   transitions.forEach((t, i) => {
     statusHistory.push({
+      id: `csh-${i + 1}`,
       seq: i + 1,
       fromAxis: prevAxis,
       toAxis: t.toAxis!,
@@ -53,6 +54,8 @@ function toMainInput(events: FEvent[]): { claim: ClaimDetail; todayIso: string }
     type: "SUPPORTS",
     evidenceType: "DIRECT",
     createdAt: `${s.date}T00:00:00.000Z`,
+    autoApproved: false,
+    humanReviewed: false,
     source: {
       id: `src-${s.id}`,
       name: s.label,
@@ -76,6 +79,7 @@ function toMainInput(events: FEvent[]): { claim: ClaimDetail; todayIso: string }
     claimEmergedAt: emerged ? `${emerged.date}T00:00:00.000Z` : null,
     claimEmergedPrecision: emerged?.precision ?? "DAY",
     createdAt: "2020-01-01T00:00:00.000Z",
+    trajectorySlug: null,
     humanReviewed: false,
     epistemicStatus: null,
     ingestedBy: "test",

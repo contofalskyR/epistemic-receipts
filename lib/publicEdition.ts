@@ -66,6 +66,7 @@ export const PUBLIC_PATTERNS: RegExp[] = [
   /^\/topics\/[^/]+$/, // app/topics/[slug] — topic claims; the /topics tree itself is Lab.
   /^\/datasets\/[^/]+$/, // app/datasets/[tag] — provenance card.
   /^\/embed\/trajectory\/[^/]+$/, // third-party iframes. Never move.
+  /^\/receipts\/[^/]+$/, // app/receipts/[id] — one transition's receipt (noindex, canonical → claim). Public since phase 6b.
 ];
 
 // Lab pages that a pattern above would otherwise admit, or listing pages whose
