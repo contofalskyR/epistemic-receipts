@@ -5,14 +5,12 @@ import { getTrajectoryDetail } from "@/lib/trajectory-detail";
 import { serializeJsonLd, trajectoryJsonLd } from "@/lib/jsonld";
 import CitationButton from "@/components/CitationButton";
 import EmbedButton from "@/components/EmbedButton";
-import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
 import { SITE_URL } from "@/lib/site";
 import { EmptyState } from "@/components/DataState";
 import { receiptHref } from "@/lib/receipts";
 import { trajectoryMilestones } from "@/lib/trajectory-shared";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 
-const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
 // ISR: empty generateStaticParams = on-demand ISR (render on first hit, then
 // cache — up to an hour: the root layout's hourly corpusCount() lowers the 86400
@@ -157,7 +155,8 @@ export default async function TrajectoryPermalinkPage({ params }: Props) {
           </Link>
           <CitationButton type="claim" id={traj.claimId} />
           <EmbedButton
-            slug={traj.slug && CURATED_SLUGS.has(traj.slug) ? traj.slug : undefined}
+            // Every curated trajectory (it has a slug) is embeddable (lib/embeddable.ts).
+            slug={traj.slug ?? undefined}
             claimId={traj.claimId}
             title={traj.claimText.slice(0, 80)}
             siteUrl={SITE_URL}

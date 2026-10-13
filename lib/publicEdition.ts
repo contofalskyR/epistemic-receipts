@@ -35,7 +35,6 @@ export const PUBLIC_ROUTES: string[] = [
   "/split-ledger",
   "/reversals",
   // Receipt surfaces surfaced from the homepage and /settling-curve
-  "/trajectories",
   "/case-studies",
   "/canon",
   "/patterns",
@@ -57,6 +56,9 @@ export const PUBLIC_ROUTES: string[] = [
   // only — the APIs behind both listings filter to them.
   "/votes",
   "/members",
+  // The macro settling curve (6b follow-ups, owner 2026-10-12): linked from the
+  // explorer's More-views row and the homepage Fig. 1 caption, no nav slot.
+  "/analysis/settling-rate",
   // Legal — footer-linked from every page
   "/terms",
   "/privacy",

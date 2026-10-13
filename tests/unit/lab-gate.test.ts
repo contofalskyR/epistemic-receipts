@@ -59,7 +59,7 @@ describe("Lab gate (middleware.ts)", () => {
     },
   );
 
-  it.each(["/history", "/fields", "/statistics", "/stats", "/analysis/settling-rate", "/globe", "/claims", "/topics", "/settling-curve/coverage", "/settling-curve/overview", "/feed", "/books"])(
+  it.each(["/history", "/fields", "/statistics", "/stats", "/analysis/votes", "/globe", "/claims", "/topics", "/settling-curve/coverage", "/settling-curve/overview", "/feed", "/books"])(
     "%s (Lab) gets the admin gate anonymously",
     async (p) => {
       const g = gate(await middleware(req(p)));

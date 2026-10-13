@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
+import { curatedSlugs } from "@/lib/embeddable";
 import { SITE_URL } from "@/lib/site";
 
 // Curated trajectory slugs (same gate as /embed)
-const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
 // Known story slugs from app/stories/
 const STORY_SLUGS = new Set([
@@ -35,6 +34,7 @@ type OEmbedResponse = {
  */
 function parseUrl(
   rawUrl: string,
+  embeddable: Set<string>,
 ): { kind: "trajectory"; slug: string } | { kind: "story"; slug: string } | null {
   let parsed: URL;
   try {
@@ -51,7 +51,7 @@ function parseUrl(
   const trajMatch = parsed.pathname.match(/^\/settling-curve\/([^/]+)$/);
   if (trajMatch) {
     const slug = trajMatch[1];
-    return CURATED_SLUGS.has(slug) ? { kind: "trajectory", slug } : null;
+    return embeddable.has(slug) ? { kind: "trajectory", slug } : null;
   }
 
   // /stories/{slug}
@@ -72,7 +72,8 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: "url parameter required" }, { status: 400 });
   }
 
-  const parsed = parseUrl(rawUrl);
+  // Every live curated trajectory is embeddable (lib/embeddable.ts, owner 2026-10-12).
+  const parsed = parseUrl(rawUrl, new Set(await curatedSlugs()));
   if (!parsed) {
     return NextResponse.json(
       { error: "URL does not match a supported trajectory or story route on this origin" },

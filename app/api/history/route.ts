@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { unstable_cache } from "next/cache";
-import { prisma } from "@/lib/prisma";
 import { getCuratedTexts, getCuratedTrajectories } from "@/lib/trajectory-list";
+import { getMachineTrajectories } from "@/lib/machine-lens";
 
 // Reading searchParams makes this handler dynamic, so a route-level
 // `revalidate` never applied; each lens is instead cached for an hour with
@@ -40,25 +39,6 @@ function eraForYear(year: number): EraKey {
 
 const PAGE_SIZE = 24;
 
-// ── Machine-derived lens ──────────────────────────────────────────────────────
-// Notable non-curated curves: at least one REVERSED/ABANDONED transition, OR
-// 3+ transitions, OR an arc spanning a year or more. This deliberately excludes
-// the ~206k wave-1 same-day RECORDED→SETTLED certification pairs (n=2, span=0)
-// which are honest receipts but degenerate as browsable curves. Capped and
-// ranked: reversals first, then transition count, then time span.
-const MACHINE_LENS_LIMIT = 1000;
-
-type MachineAggRow = {
-  id: string;
-  text: string;
-  claimEmergedAt: Date | null;
-  n: number;
-  first_at: Date;
-  last_at: Date;
-  has_rev: boolean;
-  has_aband: boolean;
-};
-
 type EncyclopediaItem = {
   id: string;
   kind: "curated" | "machine";
@@ -73,68 +53,24 @@ type EncyclopediaItem = {
   milestones: { year: number; axis: string }[];
 };
 
+// ── Machine-derived lens ──────────────────────────────────────────────────────
+// The notable non-curated curves now live in lib/machine-lens.ts (shared with
+// the explorer's ?lens=machine since /trajectories folded into it); this keeps
+// /api/history's response shape for any external caller.
 async function loadMachineLens(): Promise<EncyclopediaItem[]> {
-  // Aggregate pass over ClaimStatusHistory (constants only — no user input).
-  const rows = (await prisma.$queryRawUnsafe(
-    `WITH agg AS (
-       SELECT "claimId",
-              COUNT(*)::int AS n,
-              MIN("occurredAt") AS first_at,
-              MAX("occurredAt") AS last_at,
-              BOOL_OR("toAxis" = 'REVERSED')  AS has_rev,
-              BOOL_OR("toAxis" = 'ABANDONED') AS has_aband
-       FROM "ClaimStatusHistory"
-       GROUP BY 1
-       HAVING COUNT(*) >= 2
-          AND (BOOL_OR("toAxis" = 'REVERSED')
-               OR BOOL_OR("toAxis" = 'ABANDONED')
-               OR COUNT(*) >= 3
-               OR MAX("occurredAt") - MIN("occurredAt") >= interval '365 days')
-     )
-     SELECT c.id, c.text, c."claimEmergedAt",
-            a.n, a.first_at, a.last_at, a.has_rev, a.has_aband
-     FROM agg a
-     JOIN "Claim" c ON c.id = a."claimId"
-     WHERE c.deleted = false
-       AND c."verificationStatus" IS DISTINCT FROM 'DEPRECATED'
-       AND (c."externalId" IS NULL OR c."externalId" NOT LIKE 'trajectory:%')
-     ORDER BY a.has_rev DESC, a.n DESC, (a.last_at - a.first_at) DESC
-     LIMIT ${MACHINE_LENS_LIMIT}`,
-  )) as MachineAggRow[];
-
-  // Milestones for the selected claims only (~1k claims, few rows each).
-  const history = await prisma.claimStatusHistory.findMany({
-    where: { claimId: { in: rows.map((r) => r.id) } },
-    orderBy: [{ seq: "asc" }, { occurredAt: "asc" }, { createdAt: "asc" }],
-    select: { claimId: true, seq: true, toAxis: true, community: true, occurredAt: true },
-  });
-  const byClaim = new Map<string, typeof history>();
-  for (const h of history) {
-    if (!byClaim.has(h.claimId)) byClaim.set(h.claimId, []);
-    byClaim.get(h.claimId)!.push(h);
-  }
-
-  return rows.map((r) => {
-    const hs = byClaim.get(r.id) ?? [];
-    const startYear = r.first_at.getUTCFullYear();
-    const endYear = r.last_at.getUTCFullYear();
-    return {
-      id: r.id, // claim id — machine cards link to /claims/<id>, not /settling-curve
-      kind: "machine" as const,
-      claim: r.text,
-      startYear,
-      endYear,
-      era: eraForYear(startYear),
-      transitionCount: r.n,
-      communities: [...new Set(hs.map((s) => String(s.community)))],
-      hasReversal: r.has_rev,
-      hasAbandonment: r.has_aband,
-      milestones: hs.map((s) => ({
-        year: s.occurredAt.getUTCFullYear(),
-        axis: s.toAxis,
-      })),
-    };
-  });
+  return (await getMachineTrajectories()).map((t) => ({
+    id: t.claimId, // claim id — machine cards link to /claims/<id>, not /settling-curve
+    kind: "machine" as const,
+    claim: t.claim,
+    startYear: t.firstYear,
+    endYear: t.lastYear,
+    era: eraForYear(t.firstYear ?? 1990),
+    transitionCount: t.transitionCount,
+    communities: t.communities,
+    hasReversal: t.hasReversal,
+    hasAbandonment: t.hasAbandonment,
+    milestones: t.milestones,
+  }));
 }
 
 // The curated lens is the cached curated list (lib/trajectory-list.ts, hourly,
@@ -168,7 +104,6 @@ async function loadCuratedLens(): Promise<EncyclopediaItem[]> {
   });
 }
 
-const loadMachineLensCached = unstable_cache(loadMachineLens, ["api-history-machine"], { revalidate: 3600 });
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -176,7 +111,7 @@ export async function GET(req: NextRequest) {
   const pageParam = searchParams.get("page");
   const lens = searchParams.get("lens") === "machine" ? "machine" : "curated";
 
-  const all = lens === "machine" ? await loadMachineLensCached() : await loadCuratedLens();
+  const all = lens === "machine" ? await loadMachineLens() : await loadCuratedLens();
 
   // Curated lens: chronological, oldest first. Machine lens keeps the SQL
   // ranking (reversals → transition count → span).

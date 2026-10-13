@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
-import { getTrajectoryDetail } from "@/lib/trajectory-detail";
+import { embedTrajectory } from "@/lib/embeddable";
 import SettlingCurveMini from "@/app/components/SettlingCurveMini";
 import { AXIS_COLOR, AXIS_LABEL } from "@/lib/status";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
-// Only slugs explicitly listed in the editorial domain-trajectories map are
-// embeddable. Any other trajectory: claim gets a 404, not a data leak.
-const CURATED_SLUGS = new Set(
-  Object.values(DOMAIN_TRAJECTORIES).flat(),
-);
+// Every live curated trajectory is embeddable (owner 2026-10-12); any other
+// slug 404s. Data comes from the Data Cache (lib/embeddable.ts), so a view
+// never queries Postgres.
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -21,10 +18,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  if (!CURATED_SLUGS.has(slug)) {
-    return { robots: { index: false } };
-  }
-  const traj = await getTrajectoryDetail(slug);
+  const traj = await embedTrajectory(slug);
   if (!traj) return { robots: { index: false } };
 
   const canonical = `${SITE_URL}/settling-curve/${slug}`;
@@ -45,9 +39,7 @@ export default async function EmbedTrajectoryPage({ params, searchParams }: Prop
   const { slug } = await params;
   const { theme = "dark" } = await searchParams;
 
-  if (!CURATED_SLUGS.has(slug)) notFound();
-
-  const traj = await getTrajectoryDetail(slug);
+  const traj = await embedTrajectory(slug);
   if (!traj) notFound();
 
   const isDark = theme !== "light";

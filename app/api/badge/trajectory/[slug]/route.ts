@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DOMAIN_TRAJECTORIES } from "@/lib/domain-trajectories";
-import { getTrajectoryDetail } from "@/lib/trajectory-detail";
+import { embedTrajectory, isEmbeddableSlug } from "@/lib/embeddable";
 import { AXIS_COLOR, AXIS_LABEL } from "@/lib/status";
 
 // Curated slugs only — same gate as /embed/trajectory/[slug]
-const CURATED_SLUGS = new Set(Object.values(DOMAIN_TRAJECTORIES).flat());
 
 function escXml(s: string): string {
   return s
@@ -70,7 +68,7 @@ export async function GET(
 ): Promise<NextResponse> {
   const { slug } = await params;
 
-  if (!CURATED_SLUGS.has(slug)) {
+  if (!(await isEmbeddableSlug(slug))) {
     return new NextResponse(unknownBadge(), {
       status: 404,
       headers: {
@@ -80,9 +78,9 @@ export async function GET(
     });
   }
 
-  let traj: Awaited<ReturnType<typeof getTrajectoryDetail>> = null;
+  let traj: Awaited<ReturnType<typeof embedTrajectory>> = null;
   try {
-    traj = await getTrajectoryDetail(slug);
+    traj = await embedTrajectory(slug);
   } catch {
     return new NextResponse(unknownBadge(), {
       status: 500,

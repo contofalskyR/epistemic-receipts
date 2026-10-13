@@ -178,7 +178,7 @@ export default function CorpusStatsSection() {
             <span className="text-zinc-600">(human-promoted epistemic transitions)</span>
           </span>
           <span>
-            <Link href="/trajectories" className="text-zinc-200 underline decoration-zinc-700 hover:decoration-zinc-400 transition-colors">
+            <Link href="/settling-curve" className="text-zinc-200 underline decoration-zinc-700 hover:decoration-zinc-400 transition-colors">
               {data.status_history_n.toLocaleString()}
             </Link>
             {" "}trajectory transitions{" "}

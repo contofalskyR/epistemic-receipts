@@ -313,6 +313,29 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   const setStatusFilter = (status: StatusFilter) => setFilters({ status });
   const setEraFilter = (era: string) => setFilters({ era });
   const setDomainFilter = (domain: string) => setFilters({ domain });
+  // Lens (ported from /trajectories, 6b follow-ups): All · Human-curated (curated=1)
+  // · Machine-derived (lens=machine, the notable machine curves — fetched once,
+  // only when the lens is first opened).
+  const setLens = (lens: "all" | "human" | "machine") =>
+    setFilters({ curated: lens === "human", machine: lens === "machine" });
+  const [machineList, setMachineList] = useState<TrajectoryListItem[] | null>(null);
+  const [machineError, setMachineError] = useState(false);
+  const [machineRetry, setMachineRetry] = useState(0);
+  useEffect(() => {
+    if (!filters.machine || machineList) return;
+    let cancelled = false;
+    fetch("/api/trajectories?source=machine", { signal: AbortSignal.timeout(30000) })
+      .then(async (r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const data: TrajectoryListItem[] = await r.json();
+        if (!Array.isArray(data)) throw new Error("bad payload");
+        return data;
+      })
+      .then((data) => { if (!cancelled) { setMachineList(data); setMachineError(false); } })
+      .catch(() => { if (!cancelled) setMachineError(true); });
+    return () => { cancelled = true; };
+  }, [filters.machine, machineList, machineRetry]);
+  const activeList = filters.machine ? (machineList ?? []) : list;
   // The search box types into local state; the URL follows after a pause.
   const [query, setQuery] = useState(filters.q);
   const lastWrittenQ = useRef(filters.q);
@@ -446,10 +469,10 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   };
 
   const filteredList = useMemo(
-    () => sortExplorerList(applyExplorerFilters(list, filters), filters.sort),
+    () => sortExplorerList(applyExplorerFilters(activeList, filters), filters.sort),
     // filterKey, not filters: a ?t= change re-parses filters without changing them.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [list, filterKey],
+    [activeList, filterKey],
   );
 
   // Header label. The SSR list is curated-only; the background /api/trajectories
@@ -457,13 +480,14 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   // (lib/trajectory-list.ts), so after it lands the old "N CURATED TRAJECTORIES"
   // read 10,698 for 5,698 curated arcs. Say what is actually in the list.
   const listLabel = useMemo(() => {
+    if (filters.machine) return `${filteredList.length.toLocaleString("en-US")} MACHINE-DERIVED CURVES · MOST NOTABLE`;
     const curated = filteredList.filter((i) => i.isCurated !== false).length;
     const auto = filteredList.length - curated;
     const curatedPart = `${curated.toLocaleString("en-US")} CURATED TRAJECTORIES`;
     return auto > 0
       ? `${curatedPart} · ${auto.toLocaleString("en-US")} MOST RECENT AUTO-GENERATED`
       : curatedPart;
-  }, [filteredList]);
+  }, [filteredList, filters.machine]);
 
   // Reset visible counts whenever filters change
   useEffect(() => {
@@ -488,7 +512,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
     return () => obs.disconnect();
   }, [loadMore]);
 
-  const activeItem = list.find((l) => l.id === activeId) || null;
+  const activeItem = list.find((l) => l.id === activeId) || machineList?.find((l) => l.id === activeId) || null;
   const [titleExpanded, setTitleExpanded] = useState(false);
   // Prefer the detail payload's FULL text — the list API truncates at 160 chars
   // and previously won this fallback chain, leaving long titles permanently
@@ -1136,7 +1160,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
                   { key: "astronomy", label: "Astronomy", emoji: "🔭" },
                   { key: "climate", label: "Climate", emoji: "🌍" },
                   { key: "nutrition", label: "Nutrition", emoji: "🥗" },
-                ].filter((d) => d.key === "ALL" || list.some((x) => (x.domain ?? "history") === d.key)).map((d) => {
+                ].filter((d) => d.key === "ALL" || activeList.some((x) => (x.domain ?? "history") === d.key)).map((d) => {
                   const on = domainFilter === d.key;
                   return (
                     <button key={d.key} type="button"
@@ -1296,7 +1320,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
   function renderLanding() {
     const gridItems = filteredList.slice(0, gridVisibleCount);
     const gridHasMore = gridVisibleCount < filteredList.length;
-    const domainsInList = ["ALL", ...Array.from(new Set(list.map((i) => i.domain ?? "history"))).sort()];
+    const domainsInList = ["ALL", ...Array.from(new Set(activeList.map((i) => i.domain ?? "history"))).sort()];
 
     const chip = (on: boolean, color: string) => ({
       fontSize: 10,
@@ -1330,7 +1354,7 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
               { href: "/patterns", label: "Patterns of settling" },
               { href: "/open-questions", label: "Open questions" },
               { href: "/canon", label: "The Canon" },
-              { href: "/trajectories", label: "Encyclopedia & machine curves" },
+              { href: "/analysis/settling-rate", label: "Settling rate by decade" },
             ].map((v) => (
               <Link key={v.href} href={v.href} style={{ color: C.mut }} className="hover:underline underline-offset-2">
                 {v.label}
@@ -1338,6 +1362,41 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
             ))}
           </nav>
         </header>
+
+        {/* Lens — ported from /trajectories (folded into the explorer, 6b follow-ups) */}
+        <div className="mb-3 flex flex-wrap items-center gap-1.5" role="group" aria-label="Lens">
+          {([
+            ["all", "All"],
+            ["human", "Human-curated"],
+            ["machine", "Machine-derived"],
+          ] as const).map(([key, label]) => {
+            const on = key === "machine" ? filters.machine : key === "human" ? filters.curated : !filters.machine && !filters.curated;
+            return (
+              <button key={key} type="button" aria-pressed={on} onClick={() => setLens(key)}
+                className="font-mono rounded-full px-2.5 py-1" style={chip(on, C.brand)}>
+                {label}
+              </button>
+            );
+          })}
+        </div>
+        {filters.machine && (
+          <p className="mb-4 max-w-3xl" style={{ fontSize: 12.5, color: C.mut, lineHeight: 1.5 }}>
+            The most notable curves generated by the data pipelines — ranked by reversals, transition count, and time
+            span. Not hand-curated: each opens with a link to its receipt and sources. Same-day certification pairs are
+            excluded.
+            {machineError && (
+              <>
+                {" "}
+                <span style={{ color: "#f87171" }}>Couldn&apos;t load the machine-derived curves.</span>{" "}
+                <button type="button" onClick={() => { setMachineError(false); setMachineRetry((n) => n + 1); }}
+                  style={{ color: C.brand, background: "none", border: "none", cursor: "pointer", padding: 0 }}>
+                  Retry
+                </button>
+              </>
+            )}
+            {!machineError && !machineList && " Loading…"}
+          </p>
+        )}
 
         {/* Filters — one compact row instead of a sidebar */}
         <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -1377,19 +1436,18 @@ function SettlingCurveInner({ initialList }: { initialList?: TrajectoryListItem[
 
         {/* Filters that only arrive by link (/patterns, the settling-rate bars):
             say they are on, and how to clear them. */}
-        {(filters.shape || filters.from !== null || filters.to !== null || filters.curated || filters.sort !== "default") && (
+        {(filters.shape || filters.from !== null || filters.to !== null || filters.sort !== "default") && (
           <p className="-mt-3 mb-6 font-mono" style={{ fontSize: 10, color: C.mut, letterSpacing: "0.05em" }}>
             {[
               filters.shape && `SHAPE: ${CURVE_SHAPE_LABELS[filters.shape].toUpperCase()}`,
               (filters.from !== null || filters.to !== null) &&
                 `EMERGED ${filters.from ?? "…"}–${filters.to ?? "…"}`,
-              filters.curated && "CURATED ONLY",
               filters.sort !== "default" && `SORTED BY ${filters.sort.toUpperCase()}`,
             ].filter(Boolean).join(" · ")}
             {" · "}
             <button
               type="button"
-              onClick={() => setFilters({ shape: null, from: null, to: null, curated: false, sort: "default" })}
+              onClick={() => setFilters({ shape: null, from: null, to: null, sort: "default" })}
               style={{ color: C.brand, background: "none", border: "none", cursor: "pointer", padding: 0, letterSpacing: "inherit" }}
             >
               CLEAR

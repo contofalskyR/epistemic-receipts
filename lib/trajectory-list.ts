@@ -127,7 +127,7 @@ export function toListItem(c: Row): TrajectoryListItem {
   };
 }
 
-const countCurated = unstable_cache(
+export const countCurated = unstable_cache(
   async () => prisma.claim.count({ where: CURATED_WHERE }),
   ["curated-trajectories-count"],
   { revalidate: REVALIDATE },

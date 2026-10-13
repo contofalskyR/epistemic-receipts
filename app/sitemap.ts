@@ -20,7 +20,6 @@ const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   { url: `${SITE_URL}/start-here`, changeFrequency: "monthly", priority: 0.9 },
   { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
   { url: `${SITE_URL}/glossary`, changeFrequency: "monthly", priority: 0.6 },
-  { url: `${SITE_URL}/trajectories`, changeFrequency: "daily", priority: 0.9 },
   { url: `${SITE_URL}/sources`, changeFrequency: "weekly", priority: 0.7 },
   { url: `${SITE_URL}/search`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/reversals`, changeFrequency: "weekly", priority: 0.7 },
@@ -49,6 +48,7 @@ const STATIC_URLS_ALL: MetadataRoute.Sitemap = [
   // 2026-10-13); the claims behind them are already in it.
   { url: `${SITE_URL}/votes`, changeFrequency: "weekly", priority: 0.5 },
   { url: `${SITE_URL}/members`, changeFrequency: "monthly", priority: 0.5 },
+  { url: `${SITE_URL}/analysis/settling-rate`, changeFrequency: "weekly", priority: 0.6 },
   { url: `${SITE_URL}/corrections`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${SITE_URL}/feedback`, changeFrequency: "yearly", priority: 0.3 },
   { url: `${SITE_URL}/terms`, changeFrequency: "yearly", priority: 0.3 },

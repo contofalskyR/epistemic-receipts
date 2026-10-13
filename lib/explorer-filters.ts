@@ -20,6 +20,9 @@ export type ExplorerFilters = {
   from: number | null;
   to: number | null;
   curated: boolean;
+  /** lens=machine: the notable machine-derived curves (lib/machine-lens.ts),
+   *  ported from /trajectories. Excludes curated. */
+  machine: boolean;
   sort: SortKey;
 };
 
@@ -32,6 +35,7 @@ export const DEFAULT_FILTERS: ExplorerFilters = {
   from: null,
   to: null,
   curated: false,
+  machine: false,
   sort: "default",
 };
 
@@ -53,7 +57,7 @@ export const DOMAINS = ["medicine", "astronomy", "climate", "nutrition", "law", 
 const STATUSES: StatusFilter[] = ["SETTLED", "REVERSED", "CONTESTED"];
 const SORTS: SortKey[] = ["transitions", "span", "recent"];
 const SHAPES = Object.keys(CURVE_SHAPE_LABELS) as CurveShape[];
-const FILTER_KEYS = ["q", "status", "era", "domain", "shape", "from", "to", "curated", "sort"] as const;
+const FILTER_KEYS = ["q", "status", "era", "domain", "shape", "from", "to", "curated", "lens", "sort"] as const;
 const MAX_Q = 200;
 
 type ParamSource = { get(name: string): string | null };
@@ -69,6 +73,7 @@ export function parseExplorerFilters(sp: ParamSource): ExplorerFilters {
   const domain = (sp.get("domain") ?? "").toLowerCase();
   const shape = sp.get("shape") as CurveShape | null;
   const sort = sp.get("sort") as SortKey | null;
+  const machine = sp.get("lens") === "machine";
   return {
     q: (sp.get("q") ?? "").slice(0, MAX_Q),
     status: STATUSES.includes(status) ? status : "ALL",
@@ -77,7 +82,8 @@ export function parseExplorerFilters(sp: ParamSource): ExplorerFilters {
     shape: shape && SHAPES.includes(shape) ? shape : null,
     from: year(sp.get("from")),
     to: year(sp.get("to")),
-    curated: sp.get("curated") === "1",
+    curated: !machine && sp.get("curated") === "1",
+    machine,
     sort: sort && SORTS.includes(sort) ? sort : "default",
   };
 }
@@ -94,7 +100,8 @@ export function serializeExplorerFilters(f: ExplorerFilters, base: URLSearchPara
   if (f.shape) sp.set("shape", f.shape);
   if (f.from !== null) sp.set("from", String(f.from));
   if (f.to !== null) sp.set("to", String(f.to));
-  if (f.curated) sp.set("curated", "1");
+  if (f.curated && !f.machine) sp.set("curated", "1");
+  if (f.machine) sp.set("lens", "machine");
   if (f.sort !== "default") sp.set("sort", f.sort);
   return sp.toString();
 }

@@ -90,7 +90,7 @@ function serializeTransition(s: RawStatusHistory): TrajectoryTransition {
   };
 }
 
-async function queryTrajectoryDetail(id: string): Promise<TrajectoryDetail | null> {
+export async function queryTrajectoryDetail(id: string): Promise<TrajectoryDetail | null> {
   // Primary: trajectory externalId lookup
   let claim = await prisma.claim.findFirst({
     where: { externalId: `trajectory:${id}`, deleted: false },

@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ErrorState, LoadingState } from "@/components/DataState";
 import {
   AreaChart,
   Area,
@@ -134,18 +136,31 @@ const tooltipStyle = {
 };
 
 export default function SettlingRateCharts() {
+  const router = useRouter();
   const [data, setData] = useState<Data | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
-    fetch("/api/analysis/settling-rate")
+    const controller = new AbortController();
+    fetch("/api/analysis/settling-rate", { signal: controller.signal })
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       })
-      .then(setData)
-      .catch((e) => setErr(String(e)));
-  }, []);
+      .then((d: Data) => {
+        setData(d);
+        setErr(null);
+      })
+      .catch((e) => {
+        if ((e as Error).name !== "AbortError") setErr((e as Error).message || "request failed");
+      });
+    return () => controller.abort();
+  }, [retryKey]);
+
+  // A decade bar opens the curated trajectories that emerged in that decade
+  // (explorer ?curated=1&from=&to=; both sides use the UTC emergence year).
+  const decadeHref = (start: number) => `/settling-curve?curated=1&from=${start}&to=${start + 9}`;
 
   const decadeData = data
     ? data.decadeStats.filter((d) => d.decadeStart >= 1600 && d.medianYears !== null)
@@ -175,11 +190,14 @@ export default function SettlingRateCharts() {
           accelerated.
         </p>
 
-        {err && (
-          <div style={{ color: C.red, padding: 16, border: `1px solid ${C.red}`, borderRadius: 8 }}>
-            Failed to load: {err}
-          </div>
+        {err && !data && (
+          <ErrorState
+            what="the settling-rate analysis"
+            detail={err}
+            onRetry={() => { setErr(null); setRetryKey((k) => k + 1); }}
+          />
         )}
+        {!err && !data && <LoadingState label="Loading the settling-rate analysis…" lines={0} />}
 
         {/* headline stats */}
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28 }}>
@@ -203,7 +221,7 @@ export default function SettlingRateCharts() {
               />
             </>
           ) : (
-            <Skeleton h={90} />
+            err ? null : <Skeleton h={90} />
           )}
         </div>
 
@@ -289,7 +307,7 @@ export default function SettlingRateCharts() {
               </AreaChart>
             </ResponsiveContainer>
           ) : (
-            <Skeleton />
+            err ? null : <Skeleton />
           )}
         </Panel>
 
@@ -332,7 +350,15 @@ export default function SettlingRateCharts() {
                   }}
                   labelFormatter={(l) => `${l}`}
                 />
-                <Bar dataKey="medianYears" radius={[2, 2, 0, 0]}>
+                <Bar
+                  dataKey="medianYears"
+                  radius={[2, 2, 0, 0]}
+                  cursor="pointer"
+                  onClick={(_d, index) => {
+                    const d = decadeData[index];
+                    if (d) router.push(decadeHref(d.decadeStart));
+                  }}
+                >
                   {decadeData.map((d) => (
                     <Cell key={d.decade} fill={eraColor(d.decadeStart)} />
                   ))}
@@ -340,7 +366,17 @@ export default function SettlingRateCharts() {
               </BarChart>
             </ResponsiveContainer>
           ) : (
-            <Skeleton />
+            err ? null : <Skeleton />
+          )}
+          {decadeData.length > 0 && (
+            <nav aria-label="Trajectories by decade" style={{ display: "flex", flexWrap: "wrap", gap: "4px 10px", marginTop: 10, fontSize: 11, fontFamily: "monospace" }}>
+              <span style={{ color: C.faint }}>OPEN A DECADE:</span>
+              {decadeData.map((d) => (
+                <Link key={d.decade} href={decadeHref(d.decadeStart)} style={{ color: C.mut }} className="hover:underline underline-offset-2">
+                  {d.decade}
+                </Link>
+              ))}
+            </nav>
           )}
         </Panel>
 
@@ -396,7 +432,7 @@ export default function SettlingRateCharts() {
               </AreaChart>
             </ResponsiveContainer>
           ) : (
-            <Skeleton />
+            err ? null : <Skeleton />
           )}
         </Panel>
 
