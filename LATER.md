@@ -5,25 +5,45 @@ a page that works but is not finished; the right-hand column is the single chang
 complete it. Pages deleted in phase 3 are not here (recover any from `archive/full-site`).
 Read `STATUS.md` first; this file is the backlog it points to.
 
-## 1. Congress as claims (do this first)
+## 1. Congress: link, correct, relate (do this first)
 
-The Congress data — 1.8M `MemberVote` rows, `LegislativeVote`, `MemberIdeology` (51k), `ConstituentOpinion`
-(25k), `BillCoverage` (16k), `congress_stock_act_v1` — is the largest body of real receipts on the site
-and none of it is a Claim. Every Lab page built on it has the same missing piece:
+Owner decision 2026-10-12 (`docs/phase7-questions.md`): the premise "none of it is a Claim" was wrong.
+`voteview_v1` (113,319 roll-calls), `congress_v1` (10,360 laws), `congress_bills_tracker_v1` (17,280),
+`congress_votes_v1` (505) and `congress_stock_act_v1` (921) are claims already. The work is to correct
+them, link them and relate them, not to ingest. Order: (2) Senate cloture corrections → (6) vote → law
+relations → (7) duplicates → (8) `legislativeVoteId` keys → (13) `/votes` + `/members` leave the Lab.
 
 | page | works today | the one missing piece |
 |---|---|---|
-| `/votes`, `/votes/[id]` | roll-call browser with source links | **votes are not claims**: no `Claim` + `ClaimStatusHistory` row per roll-call, so nothing links to a receipt |
-| `/members`, `/members/[memberId]` | member search / profile, ~2k enriched votes | same — a member's record should list claims they voted on, not bare votes |
-| `/congress-trades` | STOCK Act trades vs voting record | same — trades and votes need claim ids to line up as receipts ("small initial set" banner goes when they do) |
-| `/analysis/votes`, `/analysis/ideology`, `/analysis/representation`, `/analysis/topics` | careful analytics (votes truncated at 50k) | same — bars and points never link to a claim |
-| `/stats/media-coverage` | NYT coverage vs "dark-matter" bills | same — bills as claims would make tile and list totals reconcile |
-| `/legislation` | country grid, trackers | omits five Nordic/EU pipelines (~25.8k claims); "12-hour refresh" is false |
+| `/votes`, `/votes/[id]` | roll-call browser with source links | link each vote to its existing claim; public once results are corrected (Q13) |
+| `/members`, `/members/[memberId]` | member search / profile, ~2k enriched votes | same — list the claims a member voted on (landmark MemberVote subset only, Q10) |
+| `/congress-trades` | STOCK Act trades vs voting record | relabel the 921 trades as secondary sources credited to Quiver Quantitative (Q9); the set does not grow |
+| `/analysis/votes`, `/analysis/ideology`, `/analysis/representation`, `/analysis/topics` | careful analytics (votes truncated at 50k) | bars and points link to claims; these stay Lab (Q13) |
+| `/stats/media-coverage` | NYT coverage vs "dark-matter" bills | BillCoverage stays background data, not claims (Q14) |
+| `/legislation` | country grid, trackers | omits five Nordic/EU pipelines (~25.8k claims); remove the false "auto-refreshes every 12 hours" sentence (Q11) |
 
-The one piece: an ingester that writes one `Claim` per enacted bill / roll-call outcome (text, date,
-Source = congress.gov record, `ClaimStatusHistory` = introduced → passed → enacted/failed) and a
-`ClaimRelation` from each vote. After that, every page above gets `/claims/[id]` links for free and
-the Analyze group can leave the Lab.
+### Vote results still wrong after batch 1 (`scripts/correct-senate-cloture.ts`)
+
+Batch 1 corrects the 475 Senate cloture votes since 1989 whose Voteview `vote_result` says the motion
+was rejected. Voteview's `vote_result` usually names what happened to the measure, not whether the yeas
+won (an 80–20 vote to table an amendment is "Amendment Rejected"), so each remaining group needs its
+own rule. No guessing from description text. Census 2026-10-12 against `HSall_rollcalls.csv`:
+
+| group | claims | the rule it needs |
+|---|---|---|
+| Senate cloture votes, 1975–1988 (94th–100th) | 122 stored passed/tied with "CLOTURE" in the description | Voteview has no `vote_result` before the 101st; match each to the Senate's own cloture table (senate.gov "Senate Action on Cloture Motions"), which lists every cloture vote and its outcome |
+| House motions to suspend the rules (2/3) | 238 stored passed, Voteview "Failed" | `vote_question` is "On Motion to Suspend the Rules…" and yeas < 2/3 of those voting → failed |
+| Senate 3/5 votes other than cloture | 300 | mostly motions to waive a budget point of order: confirm the question is a waiver and yeas < 60 → failed |
+| Senate 2/3 votes | 45 | veto overrides, treaties, constitutional amendments, convictions: per question type, yeas < 2/3 of those present and voting → failed |
+| Senate ties | 85 tied → failed, 51 + 15 cloture tied → passed, 39 at 2/3 or 3/5 | Voteview's counts omit the Vice President: a tie the VP broke passed (say so in the text), any other tie failed |
+| House ties | 27 tied → failed, 2 tied → passed | a House tie fails; the 2 "Agreed to" ties need the Clerk's roll-call page |
+| contradictions | 5 Senate passed → failed at 1/2, 4 Senate failed → passed, 3 House close votes | `vote_result` contradicts the tally or the description: check each against senate.gov / clerk.house.gov by hand |
+| batch-1 thresholds | 2 (RS1080451, RS1160596) | Voteview's `majority_requirement` says 1/2 for cloture votes that needed 3/5; batch 1 kept Voteview's value |
+
+### Deferred by the owner (2026-10-12)
+
+- `congress_v1` laws get introduced/passed transitions (~10k Congress.gov calls, needs `CONGRESS_API_KEY`) — Q4, not now.
+- **After 2027-01-03:** mark the 119th Congress's unpassed tracker bills ABANDONED ("died with the 119th Congress") — Q11. The tracker refresh stays off.
 
 ## 2. Front-door pages that are one step from finished
 

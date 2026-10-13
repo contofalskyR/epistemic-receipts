@@ -31,6 +31,25 @@ interface AuditEntry {
 
 const ENTRIES: AuditEntry[] = [
   {
+    date: "2026-10-13",
+    kind: "CORRECTED",
+    source: "voteview_v1 (Senate roll calls)",
+    title: "475 Senate cloture votes were labelled \"passed\" — they failed",
+    description:
+      "The Voteview importer inferred each roll call's result as yeas > nays and ignored Voteview's own vote_result and the Senate's supermajority rules. Cloture needs three-fifths of senators (two-thirds on rules changes), so a 59–41 cloture vote fails; 475 such votes since 1989 read \"passed\" (466) or \"tied\" (9). Each claim now ends \"— failed.\", its vote records the failed result and the required threshold, and the claim's metadata keeps the correction: the text before and after, the Voteview roll-call link and tally, and the date. The vote's history is unchanged; only our label was wrong.",
+    details: [
+      "Evidence: Voteview's HSall_rollcalls.csv, where vote_result names the cloture motion as rejected for every one of the 475",
+      "Thresholds recorded from Voteview's majority_requirement: three-fifths 470, two-thirds 3, simple majority 2",
+      "Not yet corrected: 122 cloture votes from 1975–1988 (Voteview gives no vote_result before 1989) and 814 other votes whose stored result disagrees with Voteview; each group needs its own rule and is queued",
+    ],
+    recordsAffected: 475,
+    resolutionLinks: [
+      { label: "Example: 59–41 cloture vote, 1998", href: "/claims/cmq5l0zit5oyfsal83wd26glu" },
+      { label: "Correction script", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/correct-senate-cloture.ts" },
+      { label: "Voteview roll-call data", href: "https://voteview.com/data" },
+    ],
+  },
+  {
     date: "2026-06-08",
     kind: "CORRECTED",
     source: "Claim.currentStatus / epistemicStatus",
