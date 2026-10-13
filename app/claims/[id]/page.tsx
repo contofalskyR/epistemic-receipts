@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { getClaimDetail } from "@/lib/claim-detail";
 import { getLawVotes } from "@/lib/law-votes";
@@ -99,6 +99,8 @@ export default async function ClaimDetailPage({ params }: Props) {
   const { id } = await params;
   const claim = await getClaimDetail(id);
   if (!claim) notFound();
+  // Retired duplicate → the claim that replaced it (308).
+  if (claim.duplicateOf) permanentRedirect(`/claims/${claim.duplicateOf}`);
   const lawVotes = claim.isEnactedLaw ? await getLawVotes(claim.id) : [];
 
   // Display axis, not the stored column (leak site #5 — briefing 17 §4:
