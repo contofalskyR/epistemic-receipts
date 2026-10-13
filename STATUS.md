@@ -29,6 +29,10 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
 - The 33 taxonomies + `/fields` + `/statistics` move to Lab as one block.
 - Hard constraints: don't rename `middleware.ts`; don't move `/embed`, `/claims/[id]`, `/settling-curve/[id]`;
   no `/lab/` prefix; exact-match the public route list; move listing pages, not prefixes.
+- 2026-10-12 (Phase 6b): `/receipts/[id]` is public (AUDIT §B LAB → FRONT DOOR), still noindex with its canonical
+  on the claim, and not in the sitemap. Source links on `/claims/[id]` show "machine-verified" when the Edge is
+  `autoApproved` and not `humanReviewed` (1,528,999 of 1,719,851 live edges: mostly bulk imports, whose quality
+  gates set the flag; plus the 1,148 promoted `claude_sourcing_v1` links).
 
 ## Working rules
 
@@ -309,6 +313,43 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
   - Owner decisions listed in the PR: `Allow` `/api/oembed` and the read APIs client pages render from; uninstall
     `@stoplight/spectral-cli`; "unset" vs "unclassified"; the `/opinions` "linked to related legislation" copy.
 
+- [x] **Phase 6b — wire what exists** · branch `feat/wire-what-exists` (from `origin/main` `c6b3d63`) · done 2026-10-12 ·
+      build green (276/276, read-only DB) · tsc clean · 696 unit tests pass, 1 skipped · eslint 0 errors (no new
+      warnings) · not pushed. Plan: the untracked `docs/handoff-2026-10-01/phase6b-wire-map.md`.
+  - [x] receipts: `lib/route-param.ts` decodes the page param (Next 16 hands pages an encoded id, so all 22,513 ids
+        with ':' 404'd); one cached query; `serializeJsonLd`; `socialMetadata` + `receiptOgImage`; the OG card hides
+        deleted/DEPRECATED claims. Public pattern (decision above). Every transition links its receipt (claim
+        timeline, permalink log with `#t-N` anchors, explorer); a `#t-N` hash opens the claim's events panel.
+  - [x] machine-verified label on `/claims/[id]` source rows (`lib/verification.ts`; decision above).
+  - [x] `/settling-curve/[id]` draws its curve; slug links and canonical (claim id → slug); stories share
+        `trajectoryMilestones()`.
+  - [x] explorer URL filters (`lib/explorer-filters.ts`: q, status, era, domain, shape, from/to, curated, sort) via
+        `history.replaceState` — no list refetch; filters survive open/Back/reload; empty state; `/patterns` links
+        filter by shape. List items carry `emergedYear` (chunk cache keys bumped).
+  - [x] surfacing: More-views row on `/settling-curve`, `/patterns` discovery card, `/law-settler` ISR.
+  - [x] sitemap: every public route (12 were missing) + 103 data cards; static chunk 5,835 URLs; still 34 sitemaps;
+        a test fails if a public route is left out.
+  - [x] embed fits the 200px frame (`SettlingCurveMini fit="box"`): every mark inside at 320–1280px.
+  - [x] `/topics/[slug]` server page: per-topic title/description/canonical, real 404 + noindex.
+  - [x] `/sources` cards from one cached GROUP BY (`corpusStatsByPipeline`): data line, 99 data-card links, registry
+        method/cadence/caveats fallback; `/datasets/[tag]` "Newest record added", retirement notice honest.
+  - [x] one-liners: `/canon` DOI links (no nested `<a>`), `/corrections` diagnostic link, `/methodology` refusal
+        ledger derived (OFAC ~1,300, was "~10,000"; ISR daily), `/about` case-study links, `/communities` derived
+        ranks, `/split-ledger` live population (412 / 2,942) + derived share card.
+  - [x] `/retraction-explorer`: dropped the Type chips and "Retractions/Corrections only" (all 26,624 rows are
+        Retractions); the API still answers `?reason=`.
+  - Live checks on `npm start` (anonymous): 4 receipt shapes 200, encoded alias 308 → raw colons, unknown 404;
+        `/topics/no-such-topic-xyz` 404 + noindex; embed non-curated 404; Playwright: explorer chip → URL changes
+        with 0 document and 0 `/api/trajectories` requests, open/Back/reload keep filters, empty state + Clear;
+        `/claims/cmqeh3cjf000asaeq39xebunu#t-2` opens the panel at the row and its receipt link resolves.
+  - Found: `trajectory:caesar-assassination-44bce` emerges in AD 1 (a Phase 6c BCE row), so `?from=1&to=2` matches it.
+  - Not done — owner decisions (map "Owner decisions"): 2 promote `/analysis/settling-rate` (item 4 + its More-views
+    link and sitemap entry wait on it); 3 fold `/start-here`; 4 fold `/case-studies` / `/trajectories`; 5 the
+    `/reversals` drugsatfda link; 6 registry text (incl. naming `event:exoplanet_retractions_v1`, the three
+    retired-but-live tags, hungary caveat); 7 the tombstone claim; 8 embed allowlist + caching; 9 topic fallback
+    search; 10 the "lab leak" link; 11 glossary wording; 12 MCP package, runbook archive, spectral devDependency;
+    13 ticker → receipts.
+
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
       `docs/TRANSITION-SOURCING-2026-10-09.md`; runbook: `scripts/README-sourcing.md`.
@@ -367,8 +408,8 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 ## Next action
 
 Phases −1…6 and `fix/auto-trajectories` are merged (PRs #22–#30, `origin/main` `21ddb9c`); the Phase 3 migration is
-applied. `feat/transition-sourcing` is done, awaiting owner review (see its entry above). Next: the owner redeploys
-→ Phase 6b (`feat/wire-what-exists`)
-→ Phase 6c (`fix/bce-dates`: code first; the data fix is the owner's) → Phase 7 (`feat/congress-link`). `LATER.md` §1's
+applied. Transition sourcing is merged and promoted (PRs #31–#33). Phase 6b is done on `feat/wire-what-exists`,
+awaiting the owner's push, PR and the 6b decisions in its entry. Phase 7 owner questions: `docs/phase7-questions.md`
+(untracked). Next → Phase 6c (`fix/bce-dates`: code first; the data fix is the owner's) → Phase 7 (`feat/congress-link`). `LATER.md` §1's
 premise is outdated: Congress roll-calls (`voteview_v1`) and enacted laws (`congress_v1`) are already claims — Phase 7
 links, corrects and relates them rather than re-ingesting.
