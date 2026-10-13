@@ -40,6 +40,13 @@ own rule. No guessing from description text. Census 2026-10-12 against `HSall_ro
 | contradictions | 5 Senate passed → failed at 1/2, 4 Senate failed → passed, 3 House close votes | `vote_result` contradicts the tally or the description: check each against senate.gov / clerk.house.gov by hand |
 | batch-1 thresholds | 2 (RS1080451, RS1160596) | Voteview's `majority_requirement` says 1/2 for cloture votes that needed 3/5; batch 1 kept Voteview's value |
 
+### Vote → law links (`scripts/link-votes-to-laws.ts`, 12,285 VOTE_ON written 2026-10-13)
+
+| item | the one missing piece |
+|---|---|
+| H.J.Res. 368 (97th Congress) | Voteview's Senate roll call 426 on 1981-11-28 names it, but the `congress_v1` law claim `cmpcume1n02cppls2llu6x4x6` says enacted 1981-11-23 (the day of the 1981 shutdown veto), so the vote was left unlinked. Check the enactment date against Congress.gov / the Statutes at Large; fix the law claim if it is wrong, then rerun the linker (it adds only this pair). |
+| 119th-Congress tracker bills | VOTE_ON links only `congress_v1` laws; votes on `congress_bills_tracker_v1` bills that have not become law are not linked (Q5/Q6 scope). |
+
 ### Deferred by the owner (2026-10-12)
 
 - `congress_v1` laws get introduced/passed transitions (~10k Congress.gov calls, needs `CONGRESS_API_KEY`) — Q4, not now.

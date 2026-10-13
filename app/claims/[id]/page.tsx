@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { getClaimDetail } from "@/lib/claim-detail";
+import { getLawVotes } from "@/lib/law-votes";
+import type { LawVote } from "@/lib/law-votes-shared";
+import { MachineVerifiedBadge } from "@/components/MachineVerifiedBadge";
 import { SITE_URL } from "@/lib/site";
 import { claimJsonLd, serializeJsonLd } from "@/lib/jsonld";
 import { resolveDisplayAxis } from "@/lib/transition-contract";
@@ -96,6 +99,7 @@ export default async function ClaimDetailPage({ params }: Props) {
   const { id } = await params;
   const claim = await getClaimDetail(id);
   if (!claim) notFound();
+  const lawVotes = claim.isEnactedLaw ? await getLawVotes(claim.id) : [];
 
   // Display axis, not the stored column (leak site #5 — briefing 17 §4:
   // every epistemicAxis read goes through resolveDisplayAxis).
@@ -307,6 +311,8 @@ export default async function ClaimDetailPage({ params }: Props) {
       {/* Evidence table + follow-up/relations panels (client island) */}
       <ClaimInteractive claim={claim} />
 
+      {lawVotes.length > 0 && <LawVotesSection votes={lawVotes} />}
+
       {/* Child claims */}
       {claim.children.length > 0 && (
         <section className="space-y-3">
@@ -336,5 +342,60 @@ export default async function ClaimDetailPage({ params }: Props) {
         </section>
       )}
     </div>
+  );
+}
+
+// ── Roll-call votes on an enacted law (VOTE_ON, Phase 7 Q6) ──────────────────
+
+const LAW_VOTES_SHOWN = 10;
+
+const RESULT_STYLE: Record<string, string> = {
+  passed: "text-emerald-400",
+  failed: "text-red-400",
+  tied: "text-gray-400",
+};
+
+function LawVoteRow({ vote }: { vote: LawVote }) {
+  return (
+    <li className="flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-md border border-gray-800 bg-gray-900 px-3 py-2 text-xs">
+      <span className="font-mono text-gray-500">{vote.date ?? "—"}</span>
+      {vote.chamber && <span className="text-gray-400">{vote.chamber}</span>}
+      {vote.tally && <span className="font-mono text-gray-300">{vote.tally}</span>}
+      {vote.result && <span className={RESULT_STYLE[vote.result] ?? "text-gray-400"}>{vote.result}</span>}
+      <Link href={`/claims/${vote.claimId}`} prefetch={false} className="min-w-0 flex-1 basis-56 text-gray-300 hover:text-white">
+        {vote.description}
+      </Link>
+      <MachineVerifiedBadge link={vote} />
+    </li>
+  );
+}
+
+function LawVotesSection({ votes }: { votes: LawVote[] }) {
+  const shown = votes.slice(0, LAW_VOTES_SHOWN);
+  const rest = votes.slice(LAW_VOTES_SHOWN);
+  return (
+    <section id="votes" className="space-y-3">
+      <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+        Roll-call votes on this bill
+        <span className="ml-2 text-gray-700 font-normal normal-case tracking-normal">({votes.length})</span>
+      </h2>
+      <p className="text-xs text-gray-500">
+        Passage, amendment, procedural and veto votes whose Voteview record names this bill, matched on the exact bill
+        number.
+      </p>
+      <ul className="space-y-1.5">
+        {shown.map(v => <LawVoteRow key={v.claimId} vote={v} />)}
+      </ul>
+      {rest.length > 0 && (
+        <details>
+          <summary className="cursor-pointer text-xs text-gray-500 hover:text-gray-300">
+            Show all {votes.length} votes
+          </summary>
+          <ul className="mt-1.5 space-y-1.5">
+            {rest.map(v => <LawVoteRow key={v.claimId} vote={v} />)}
+          </ul>
+        </details>
+      )}
+    </section>
   );
 }

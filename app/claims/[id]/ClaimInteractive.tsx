@@ -5,7 +5,7 @@ import { latestScore, formatDate } from "./claim-ui";
 import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
 import WhatHappenedNextPanel from "@/components/WhatHappenedNextPanel";
 import { EmptyState } from "@/components/DataState";
-import { isMachineVerified, MACHINE_VERIFIED_LABEL, MACHINE_VERIFIED_TITLE } from "@/lib/verification";
+import { MachineVerifiedBadge } from "@/components/MachineVerifiedBadge";
 
 // Client island for /claims/[id]. Receives the fully serialized claim from the
 // server page and renders the interactive lower half: the evidence table
@@ -207,18 +207,6 @@ function MemberVotesSection({ legislativeVoteId, count }: { legislativeVoteId: s
 
 // ── Edges table row ───────────────────────────────────────────────────────────
 
-function MachineVerifiedBadge({ edge }: { edge: EdgeDetail }) {
-  if (!isMachineVerified(edge)) return null;
-  return (
-    <span
-      title={MACHINE_VERIFIED_TITLE}
-      className="text-[10px] px-1.5 py-0.5 rounded border border-gray-700 text-gray-500 whitespace-nowrap cursor-help"
-    >
-      {MACHINE_VERIFIED_LABEL}
-    </span>
-  );
-}
-
 function EdgeRow({ edge }: { edge: EdgeDetail; hasRetraction?: boolean }) {
   const [expanded, setExpanded] = useState(false);
   const colors = TYPE_COLOR[edge.type] ?? TYPE_COLOR.CITES;
@@ -269,12 +257,12 @@ function EdgeRow({ edge }: { edge: EdgeDetail; hasRetraction?: boolean }) {
                   Scholar ↗
                 </a>
               )}
-              <MachineVerifiedBadge edge={edge} />
+              <MachineVerifiedBadge link={edge} />
             </span>
           ) : (
             <span className="flex items-center gap-2 flex-wrap">
               <span className="text-gray-300 text-sm">{edge.source.name}</span>
-              <MachineVerifiedBadge edge={edge} />
+              <MachineVerifiedBadge link={edge} />
             </span>
           )}
         </td>

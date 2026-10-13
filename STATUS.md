@@ -372,8 +372,18 @@ which gets its own yes).
         the batch and read failed in text, metadata and vote; exactly 475 Claim + 475 LegislativeVote rows changed;
         `ClaimStatusHistory` still 1,822,644; a rerun plans 0. `/corrections` entry added.
   - [ ] Not corrected (LATER §1 lists the rule each needs): 122 cloture votes 1975–1988, 814 other mismatches.
-  - [ ] Next: Q6 vote → law relations, Q7 duplicates (exact counts before the write), Q8 `legislativeVoteId` keys,
-        then Q13.
+  - [x] **Q6 written 2026-10-13 (owner yes):** 12,285 `ClaimRelation` `VOTE_ON` from `voteview_v1` vote claims to the
+        2,933 `congress_v1` laws whose exact bill number Voteview's `bill_number` names (`scripts/link-votes-to-laws.ts`;
+        HJR/HJRE → hjres, SJR/SJRE → sjres; resolutions, nominations, treaties never match). `followUpContext`:
+        autoApproved true, humanReviewed false, method, Voteview link + bill_number, batch `p7-vote-on-2026-10`.
+        Audit via `app_ro`: 12,285 rows in the batch, all vote → law, exactly 12,285 relations created; a rerun plans
+        0. One pair held back (H.J.Res. 368, vote after the law's enactment date; LATER §1). Not linked: 46,696 votes
+        before the 97th Congress, 23,918 with no bill number, 16,922 on bills that never became law, 13,497 on bill
+        types that cannot.
+  - [x] Law claim pages list "Roll-call votes on this bill" (date, chamber, tally, result, link to the vote claim,
+        "machine-verified" with its hover text); `ClaimDetail.isEnactedLaw` gates the one extra indexed query
+        (`lib/law-votes.ts`); the badge is shared (`components/MachineVerifiedBadge.tsx`).
+  - [ ] Next: Q7 duplicates (exact counts before the write), Q8 `legislativeVoteId` keys, then Q13.
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
@@ -433,7 +443,7 @@ which gets its own yes).
 ## Next action
 
 Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34); transition sourcing is merged and promoted
-(PRs #31–#33). Phase 7 batch 1 (475 Senate cloture corrections) is written and audited on
-`feat/phase7-senate-corrections`. Next → Phase 7 Q6–Q8 (vote → law relations, duplicates, `legislativeVoteId`), each
-write batch with its own yes, then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+(PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35) and Q6
+(12,285 VOTE_ON vote → law links + the law-page vote list, `feat/phase7-vote-on`) are written and audited. Next →
+Q7 duplicates and Q8 `legislativeVoteId`, each write batch with its own yes, then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
 (`fix/bce-dates`) is unscheduled.
