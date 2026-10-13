@@ -402,11 +402,14 @@ export const PIPELINES: PipelineEntry[] = [
   {
     tag: "congress_stock_act_v1",
     name: "STOCK Act Disclosures",
-    upstreamName: "US House / Senate disclosure portals",
-    upstreamUrl: "https://efts.house.gov/EFDAPI/",
-    method: "REST API",
-    cadence: "monthly",
-    caveats: "Small initial set; full disclosure corpus expansion pending.",
+    // Phase 7 Q9 (2026-10-13): the trades came from Quiver Quantitative's API,
+    // not the House / Senate disclosure portals; one snapshot, never refreshed.
+    upstreamName: "Quiver Quantitative (congressional trading data)",
+    upstreamUrl: "https://www.quiverquant.com/congresstrading/",
+    method: "REST API (Quiver Quantitative), one snapshot taken 2026-06-08",
+    cadence: "static",
+    caveats:
+      "Secondary source: Quiver Quantitative's compilation of members' STOCK Act periodic transaction reports, not the filings themselves. One snapshot of recent trades; not refreshed and not being expanded.",
     category: "US Federal Government",
   },
   {
