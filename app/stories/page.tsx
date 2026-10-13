@@ -135,8 +135,8 @@ export default function StoriesIndexPage() {
         <Link href="/settling-curve" className="hover:text-amber-400 transition-colors">
           Browse all trajectories →
         </Link>
-        <Link href="/trajectories" className="hover:text-amber-400 transition-colors">
-          Trajectory encyclopedia →
+        <Link href="/settling-curve?lens=machine" className="hover:text-amber-400 transition-colors">
+          Machine-derived curves →
         </Link>
       </footer>
     </div>

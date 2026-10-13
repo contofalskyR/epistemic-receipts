@@ -1,5 +1,6 @@
 import "server-only";
 import { prisma } from "@/lib/prisma";
+import { CURATED_WHERE } from "@/lib/trajectory-list";
 
 // Macro settling-curve analysis over the trajectory corpus
 // (claims with externalId prefix "trajectory:"). Mirrors
@@ -48,12 +49,13 @@ function mean(xs: number[]): number | null {
 }
 
 export async function buildSettlingRateAnalysis(): Promise<SettlingRateData> {
+  // The explorer's curated population (CURATED_WHERE), so a decade bar's n and
+  // the explorer's ?curated=1&from=&to= count can never drift apart.
   const claims = await prisma.claim.findMany({
-    where: { deleted: false, externalId: { startsWith: "trajectory:" } },
+    where: CURATED_WHERE,
     select: { id: true, claimEmergedAt: true },
   });
   const claimIds = claims.map((c) => c.id);
-  const total = claims.length;
 
   type Hist = {
     claimId: string;
@@ -205,7 +207,7 @@ export async function buildSettlingRateAnalysis(): Promise<SettlingRateData> {
   }
 
   return {
-    totalTrajectories: total,
+    totalTrajectories: nEmerged, // labelled "with a known emergence date"
     medianVelocityYears: medianVelocity !== null ? +medianVelocity.toFixed(2) : null,
     meanVelocityYears: meanVelocity !== null ? +meanVelocity.toFixed(2) : null,
     kmMedianYears,

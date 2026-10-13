@@ -42,7 +42,7 @@ describe('parse / serialize', () => {
     const f = parse(qs)
     expect(f).toEqual({
       q: 'hiv', status: 'REVERSED', era: 'Cold War & Postwar', domain: 'law', shape: 'flip-flop',
-      from: 1950, to: 1959, curated: true, sort: 'span',
+      from: 1950, to: 1959, curated: true, machine: false, sort: 'span',
     })
     expect(parse(serializeExplorerFilters(f))).toEqual(f)
   })
@@ -54,6 +54,14 @@ describe('parse / serialize', () => {
 
   it('caps q at 200 characters', () => {
     expect(parse(`q=${'x'.repeat(500)}`).q).toHaveLength(200)
+  })
+
+  it('lens=machine round-trips and excludes curated', () => {
+    const f = parse('lens=machine&curated=1&era=cold-war')
+    expect(f).toMatchObject({ machine: true, curated: false, era: 'Cold War & Postwar' })
+    expect(serializeExplorerFilters(f)).toBe('era=cold-war&lens=machine')
+    expect(parse(serializeExplorerFilters(f))).toEqual(f)
+    expect(parse('lens=human').machine).toBe(false)
   })
 
   it('keeps non-filter params such as t', () => {

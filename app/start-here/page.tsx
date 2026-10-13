@@ -163,10 +163,10 @@ export default async function StartHerePage() {
           ))}
         </ul>
         <Link
-          href="/trajectories"
+          href="/settling-curve?curated=1"
           className="inline-block text-sm text-amber-400/80 hover:text-amber-300 transition-colors"
         >
-          Trajectory encyclopedia (all curated claims) →
+          All curated trajectories →
         </Link>
       </section>
 
@@ -214,7 +214,7 @@ export default async function StartHerePage() {
           {[
             { href: "/settling-curve", label: "Settling Curve", desc: "Interactive visualization for any trajectory" },
             { href: "/search", label: "Search", desc: `Full-text + semantic across ${claimsCompact} claims` },
-            { href: "/trajectories", label: "Trajectory Encyclopedia", desc: "All curated arcs by domain" },
+            { href: "/settling-curve?curated=1", label: "Curated trajectories", desc: "All curated arcs, filterable by era and domain" },
             { href: "/reversals", label: "Court Reversals", desc: "Eight landmark overruling arcs" },
             { href: "/canon", label: "The Canon", desc: "Most-cited papers, ranked, each with its audit state" },
             { href: "/sources", label: "Sources", desc: "Provenance and methodology for every data pipeline" },

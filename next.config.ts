@@ -96,6 +96,23 @@ const nextConfig: NextConfig = {
       // /reader/[bookId] is a real page and must keep rendering.
       { source: "/timeline", destination: "/settling-curve", permanent: true },
       { source: "/reader", destination: "/books", permanent: true },
+      // /trajectories folded into the explorer (6b follow-ups, owner 2026-10-12):
+      // its machine lens is ?lens=machine, its default (curated) lens ?curated=1.
+      // Query values pass through, so ?era= carries over; the encyclopedia's
+      // "world-wars" era is the explorer's "wwi-wwii" (first ?era= wins).
+      {
+        source: "/trajectories",
+        has: [{ type: "query", key: "lens", value: "machine" }],
+        destination: "/settling-curve?lens=machine",
+        permanent: true,
+      },
+      {
+        source: "/trajectories",
+        has: [{ type: "query", key: "era", value: "world-wars" }],
+        destination: "/settling-curve?curated=1&era=wwi-wwii",
+        permanent: true,
+      },
+      { source: "/trajectories", destination: "/settling-curve?curated=1", permanent: true },
     ];
   },
 };

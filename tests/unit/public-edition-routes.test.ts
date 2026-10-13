@@ -82,7 +82,7 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
   it.each([
     "/", "/methodology", "/communities", "/corrections", "/terms", "/privacy",
     "/settling-curve", "/search", "/opinions", "/retraction-explorer", "/split-ledger", "/reversals",
-    "/votes", "/members",
+    "/votes", "/members", "/analysis/settling-rate",
   ])("%s is public", (r) => {
     expect(isPublicRoute(r)).toBe(true);
   });
@@ -110,7 +110,7 @@ describe("isPublicRoute — exact match, patterns for dynamic pages, carve-outs"
   });
 
   it.each([
-    "/history", "/physics", "/fields", "/statistics", "/analysis/settling-rate", "/stats", "/globe",
+    "/history", "/physics", "/fields", "/statistics", "/analysis/votes", "/stats", "/globe",
     "/legislation", "/drug-arc", "/historical-events", "/pipelines", "/meta-edges", "/feed", "/books",
     "/reader/some-book", "/congress-trades", "/financial", "/domains/economics",
     "/prereq-graph", "/retraction-wall", "/retractions", "/login", "/admin", "/review", "/receipts",
