@@ -47,6 +47,16 @@ own rule. No guessing from description text. Census 2026-10-12 against `HSall_ro
 | H.J.Res. 368 (97th Congress) | Voteview's Senate roll call 426 on 1981-11-28 names it, but the `congress_v1` law claim `cmpcume1n02cppls2llu6x4x6` says enacted 1981-11-23 (the day of the 1981 shutdown veto), so the vote was left unlinked. Check the enactment date against Congress.gov / the Statutes at Large; fix the law claim if it is wrong, then rerun the linker (it adds only this pair). |
 | 119th-Congress tracker bills | VOTE_ON links only `congress_v1` laws; votes on `congress_bills_tracker_v1` bills that have not become law are not linked (Q5/Q6 scope). |
 
+### Voteview claim texts are cut to 80 characters (owner, 2026-10-12)
+
+`scripts/ingest-voteview-claims.ts` truncates the vote description to 77 characters + "..." (`buildClaimText`), so
+85,987 of the 113,319 live `voteview_v1` claims read `voted 52-42 on "TO INVOKE CLOTURE, THEREBY LIMITING DEBATE ON HR
+3385, NICARAGUAN ELECTION AS..."`. Since Q7 retired the 497 `congress_votes_v1` duplicates, these are the only public
+text for those votes. The one missing piece: re-derive every claim's text from the full Voteview description
+(`dtl_desc` / `vote_desc` / `vote_question` in `HSall_rollcalls.csv`), keeping the tally, Congress, roll call, date and
+the (corrected) result exactly as stored; record the old text in `metadata.corrections` as batch 1 did. One write batch
+of ~86k claims (its own yes); the search vector regenerates, embeddings go stale and need a re-embed decision.
+
 ### Deferred by the owner (2026-10-12)
 
 - `congress_v1` laws get introduced/passed transitions (~10k Congress.gov calls, needs `CONGRESS_API_KEY`) — Q4, not now.
