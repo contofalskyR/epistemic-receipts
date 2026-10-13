@@ -1,0 +1,1227 @@
+{
+ "applied": "2026-10-13",
+ "table": "MemberVote (congress_votes_v1 votes)",
+ "source": "https://github.com/unitedstates/congress-legislators (legislators-current.json + legislators-historical.json)",
+ "retrieved": "2026-10-13",
+ "by": "scripts/merge-senate-member-ids.ts",
+ "map": [
+  {
+   "lis": "S057",
+   "bioguide": "L000174",
+   "name": "Patrick J. Leahy",
+   "state": "VT",
+   "votes": 247
+  },
+  {
+   "lis": "S118",
+   "bioguide": "H000338",
+   "name": "Orrin G. Hatch",
+   "state": "UT",
+   "votes": 166
+  },
+  {
+   "lis": "S127",
+   "bioguide": "B000243",
+   "name": "Max Baucus",
+   "state": "MT",
+   "votes": 18
+  },
+  {
+   "lis": "S131",
+   "bioguide": "L000261",
+   "name": "Carl Levin",
+   "state": "MI",
+   "votes": 34
+  },
+  {
+   "lis": "S136",
+   "bioguide": "C000567",
+   "name": "Thad Cochran",
+   "state": "MS",
+   "votes": 147
+  },
+  {
+   "lis": "S153",
+   "bioguide": "G000386",
+   "name": "Chuck Grassley",
+   "state": "IA",
+   "votes": 342
+  },
+  {
+   "lis": "S166",
+   "bioguide": "L000123",
+   "name": "Frank R. Lautenberg",
+   "state": "NJ",
+   "votes": 5
+  },
+  {
+   "lis": "S172",
+   "bioguide": "H000206",
+   "name": "Tom Harkin",
+   "state": "IA",
+   "votes": 34
+  },
+  {
+   "lis": "S173",
+   "bioguide": "K000148",
+   "name": "John F. Kerry",
+   "state": "MA",
+   "votes": 2
+  },
+  {
+   "lis": "S174",
+   "bioguide": "M000355",
+   "name": "Mitch McConnell",
+   "state": "KY",
+   "votes": 342
+  },
+  {
+   "lis": "S176",
+   "bioguide": "R000361",
+   "name": "John D. Rockefeller, IV",
+   "state": "WV",
+   "votes": 34
+  },
+  {
+   "lis": "S182",
+   "bioguide": "M000702",
+   "name": "Barbara A. Mikulski",
+   "state": "MD",
+   "votes": 111
+  },
+  {
+   "lis": "S184",
+   "bioguide": "S000320",
+   "name": "Richard C. Shelby",
+   "state": "AL",
+   "votes": 247
+  },
+  {
+   "lis": "S197",
+   "bioguide": "M000303",
+   "name": "John McCain",
+   "state": "AZ",
+   "votes": 156
+  },
+  {
+   "lis": "S198",
+   "bioguide": "R000146",
+   "name": "Harry Reid",
+   "state": "NV",
+   "votes": 111
+  },
+  {
+   "lis": "S212",
+   "bioguide": "C000542",
+   "name": "Daniel Coats",
+   "state": "IN",
+   "votes": 111
+  },
+  {
+   "lis": "S221",
+   "bioguide": "F000062",
+   "name": "Dianne Feinstein",
+   "state": "CA",
+   "votes": 252
+  },
+  {
+   "lis": "S223",
+   "bioguide": "B000711",
+   "name": "Barbara Boxer",
+   "state": "CA",
+   "votes": 111
+  },
+  {
+   "lis": "S229",
+   "bioguide": "M001111",
+   "name": "Patty Murray",
+   "state": "WA",
+   "votes": 342
+  },
+  {
+   "lis": "S236",
+   "bioguide": "I000024",
+   "name": "James M. Inhofe",
+   "state": "OK",
+   "votes": 247
+  },
+  {
+   "lis": "S243",
+   "bioguide": "K000352",
+   "name": "Jon Kyl",
+   "state": "AZ",
+   "votes": 10
+  },
+  {
+   "lis": "S247",
+   "bioguide": "W000779",
+   "name": "Ron Wyden",
+   "state": "OR",
+   "votes": 342
+  },
+  {
+   "lis": "S252",
+   "bioguide": "C001035",
+   "name": "Susan M. Collins",
+   "state": "ME",
+   "votes": 342
+  },
+  {
+   "lis": "S253",
+   "bioguide": "D000563",
+   "name": "Richard J. Durbin",
+   "state": "IL",
+   "votes": 342
+  },
+  {
+   "lis": "S254",
+   "bioguide": "E000285",
+   "name": "Michael B. Enzi",
+   "state": "WY",
+   "votes": 203
+  },
+  {
+   "lis": "S257",
+   "bioguide": "J000177",
+   "name": "Tim Johnson",
+   "state": "SD",
+   "votes": 34
+  },
+  {
+   "lis": "S258",
+   "bioguide": "L000550",
+   "name": "Mary L. Landrieu",
+   "state": "LA",
+   "votes": 34
+  },
+  {
+   "lis": "S259",
+   "bioguide": "R000122",
+   "name": "Jack Reed",
+   "state": "RI",
+   "votes": 342
+  },
+  {
+   "lis": "S260",
+   "bioguide": "R000307",
+   "name": "Pat Roberts",
+   "state": "KS",
+   "votes": 203
+  },
+  {
+   "lis": "S261",
+   "bioguide": "S001141",
+   "name": "Jeff Sessions",
+   "state": "AL",
+   "votes": 115
+  },
+  {
+   "lis": "S266",
+   "bioguide": "C000880",
+   "name": "Mike Crapo",
+   "state": "ID",
+   "votes": 342
+  },
+  {
+   "lis": "S270",
+   "bioguide": "S000148",
+   "name": "Charles E. Schumer",
+   "state": "NY",
+   "votes": 342
+  },
+  {
+   "lis": "S275",
+   "bioguide": "C000127",
+   "name": "Maria Cantwell",
+   "state": "WA",
+   "votes": 342
+  },
+  {
+   "lis": "S277",
+   "bioguide": "C000174",
+   "name": "Thomas R. Carper",
+   "state": "DE",
+   "votes": 275
+  },
+  {
+   "lis": "S282",
+   "bioguide": "N000032",
+   "name": "Bill Nelson",
+   "state": "FL",
+   "votes": 166
+  },
+  {
+   "lis": "S284",
+   "bioguide": "S000770",
+   "name": "Debbie Stabenow",
+   "state": "MI",
+   "votes": 275
+  },
+  {
+   "lis": "S287",
+   "bioguide": "C001056",
+   "name": "John Cornyn",
+   "state": "TX",
+   "votes": 342
+  },
+  {
+   "lis": "S288",
+   "bioguide": "M001153",
+   "name": "Lisa Murkowski",
+   "state": "AK",
+   "votes": 342
+  },
+  {
+   "lis": "S289",
+   "bioguide": "A000360",
+   "name": "Lamar Alexander",
+   "state": "TN",
+   "votes": 203
+  },
+  {
+   "lis": "S290",
+   "bioguide": "C000286",
+   "name": "Saxby Chambliss",
+   "state": "GA",
+   "votes": 34
+  },
+  {
+   "lis": "S293",
+   "bioguide": "G000359",
+   "name": "Lindsey Graham",
+   "state": "SC",
+   "votes": 342
+  },
+  {
+   "lis": "S295",
+   "bioguide": "P000590",
+   "name": "Mark L. Pryor",
+   "state": "AR",
+   "votes": 34
+  },
+  {
+   "lis": "S299",
+   "bioguide": "V000127",
+   "name": "David Vitter",
+   "state": "LA",
+   "votes": 111
+  },
+  {
+   "lis": "S300",
+   "bioguide": "B001135",
+   "name": "Richard Burr",
+   "state": "NC",
+   "votes": 247
+  },
+  {
+   "lis": "S301",
+   "bioguide": "C000560",
+   "name": "Tom Coburn",
+   "state": "OK",
+   "votes": 34
+  },
+  {
+   "lis": "S303",
+   "bioguide": "T000250",
+   "name": "John Thune",
+   "state": "SD",
+   "votes": 342
+  },
+  {
+   "lis": "S305",
+   "bioguide": "I000055",
+   "name": "Johnny Isakson",
+   "state": "GA",
+   "votes": 188
+  },
+  {
+   "lis": "S306",
+   "bioguide": "M000639",
+   "name": "Robert Menendez",
+   "state": "NJ",
+   "votes": 271
+  },
+  {
+   "lis": "S307",
+   "bioguide": "B000944",
+   "name": "Sherrod Brown",
+   "state": "OH",
+   "votes": 275
+  },
+  {
+   "lis": "S308",
+   "bioguide": "C000141",
+   "name": "Benjamin L. Cardin",
+   "state": "MD",
+   "votes": 275
+  },
+  {
+   "lis": "S309",
+   "bioguide": "C001070",
+   "name": "Robert P. Casey, Jr.",
+   "state": "PA",
+   "votes": 275
+  },
+  {
+   "lis": "S310",
+   "bioguide": "C001071",
+   "name": "Bob Corker",
+   "state": "TN",
+   "votes": 166
+  },
+  {
+   "lis": "S311",
+   "bioguide": "K000367",
+   "name": "Amy Klobuchar",
+   "state": "MN",
+   "votes": 342
+  },
+  {
+   "lis": "S312",
+   "bioguide": "M001170",
+   "name": "Claire McCaskill",
+   "state": "MO",
+   "votes": 166
+  },
+  {
+   "lis": "S313",
+   "bioguide": "S000033",
+   "name": "Bernard Sanders",
+   "state": "VT",
+   "votes": 342
+  },
+  {
+   "lis": "S314",
+   "bioguide": "T000464",
+   "name": "Jon Tester",
+   "state": "MT",
+   "votes": 275
+  },
+  {
+   "lis": "S316",
+   "bioguide": "W000802",
+   "name": "Sheldon Whitehouse",
+   "state": "RI",
+   "votes": 342
+  },
+  {
+   "lis": "S317",
+   "bioguide": "B001261",
+   "name": "John Barrasso",
+   "state": "WY",
+   "votes": 342
+  },
+  {
+   "lis": "S318",
+   "bioguide": "W000437",
+   "name": "Roger F. Wicker",
+   "state": "MS",
+   "votes": 342
+  },
+  {
+   "lis": "S319",
+   "bioguide": "B001265",
+   "name": "Mark Begich",
+   "state": "AK",
+   "votes": 34
+  },
+  {
+   "lis": "S320",
+   "bioguide": "H001049",
+   "name": "Kay R. Hagan",
+   "state": "NC",
+   "votes": 34
+  },
+  {
+   "lis": "S321",
+   "bioguide": "J000291",
+   "name": "Mike Johanns",
+   "state": "NE",
+   "votes": 34
+  },
+  {
+   "lis": "S322",
+   "bioguide": "M001176",
+   "name": "Jeff Merkley",
+   "state": "OR",
+   "votes": 342
+  },
+  {
+   "lis": "S323",
+   "bioguide": "R000584",
+   "name": "James E. Risch",
+   "state": "ID",
+   "votes": 342
+  },
+  {
+   "lis": "S324",
+   "bioguide": "S001181",
+   "name": "Jeanne Shaheen",
+   "state": "NH",
+   "votes": 342
+  },
+  {
+   "lis": "S325",
+   "bioguide": "U000038",
+   "name": "Mark Udall",
+   "state": "CO",
+   "votes": 34
+  },
+  {
+   "lis": "S326",
+   "bioguide": "U000039",
+   "name": "Tom Udall",
+   "state": "NM",
+   "votes": 203
+  },
+  {
+   "lis": "S327",
+   "bioguide": "W000805",
+   "name": "Mark R. Warner",
+   "state": "VA",
+   "votes": 342
+  },
+  {
+   "lis": "S330",
+   "bioguide": "B001267",
+   "name": "Michael F. Bennet",
+   "state": "CO",
+   "votes": 342
+  },
+  {
+   "lis": "S331",
+   "bioguide": "G000555",
+   "name": "Kirsten E. Gillibrand",
+   "state": "NY",
+   "votes": 342
+  },
+  {
+   "lis": "S332",
+   "bioguide": "F000457",
+   "name": "Al Franken",
+   "state": "MN",
+   "votes": 137
+  },
+  {
+   "lis": "S337",
+   "bioguide": "C001088",
+   "name": "Christopher A. Coons",
+   "state": "DE",
+   "votes": 342
+  },
+  {
+   "lis": "S338",
+   "bioguide": "M001183",
+   "name": "Joe Manchin, III",
+   "state": "WV",
+   "votes": 275
+  },
+  {
+   "lis": "S339",
+   "bioguide": "K000360",
+   "name": "Mark Kirk",
+   "state": "IL",
+   "votes": 111
+  },
+  {
+   "lis": "S340",
+   "bioguide": "A000368",
+   "name": "Kelly Ayotte",
+   "state": "NH",
+   "votes": 111
+  },
+  {
+   "lis": "S341",
+   "bioguide": "B001277",
+   "name": "Richard Blumenthal",
+   "state": "CT",
+   "votes": 342
+  },
+  {
+   "lis": "S342",
+   "bioguide": "B000575",
+   "name": "Roy Blunt",
+   "state": "MO",
+   "votes": 247
+  },
+  {
+   "lis": "S343",
+   "bioguide": "B001236",
+   "name": "John Boozman",
+   "state": "AR",
+   "votes": 342
+  },
+  {
+   "lis": "S344",
+   "bioguide": "H001061",
+   "name": "John Hoeven",
+   "state": "ND",
+   "votes": 342
+  },
+  {
+   "lis": "S345",
+   "bioguide": "J000293",
+   "name": "Ron Johnson",
+   "state": "WI",
+   "votes": 342
+  },
+  {
+   "lis": "S346",
+   "bioguide": "L000577",
+   "name": "Mike Lee",
+   "state": "UT",
+   "votes": 342
+  },
+  {
+   "lis": "S347",
+   "bioguide": "M000934",
+   "name": "Jerry Moran",
+   "state": "KS",
+   "votes": 342
+  },
+  {
+   "lis": "S348",
+   "bioguide": "P000603",
+   "name": "Rand Paul",
+   "state": "KY",
+   "votes": 342
+  },
+  {
+   "lis": "S349",
+   "bioguide": "P000449",
+   "name": "Rob Portman",
+   "state": "OH",
+   "votes": 247
+  },
+  {
+   "lis": "S350",
+   "bioguide": "R000595",
+   "name": "Marco Rubio",
+   "state": "FL",
+   "votes": 278
+  },
+  {
+   "lis": "S351",
+   "bioguide": "T000461",
+   "name": "Patrick J. Toomey",
+   "state": "PA",
+   "votes": 247
+  },
+  {
+   "lis": "S352",
+   "bioguide": "H001041",
+   "name": "Dean Heller",
+   "state": "NV",
+   "votes": 166
+  },
+  {
+   "lis": "S353",
+   "bioguide": "S001194",
+   "name": "Brian Schatz",
+   "state": "HI",
+   "votes": 342
+  },
+  {
+   "lis": "S354",
+   "bioguide": "B001230",
+   "name": "Tammy Baldwin",
+   "state": "WI",
+   "votes": 342
+  },
+  {
+   "lis": "S355",
+   "bioguide": "C001098",
+   "name": "Ted Cruz",
+   "state": "TX",
+   "votes": 342
+  },
+  {
+   "lis": "S356",
+   "bioguide": "D000607",
+   "name": "Joe Donnelly",
+   "state": "IN",
+   "votes": 166
+  },
+  {
+   "lis": "S357",
+   "bioguide": "F000463",
+   "name": "Deb Fischer",
+   "state": "NE",
+   "votes": 342
+  },
+  {
+   "lis": "S358",
+   "bioguide": "F000444",
+   "name": "Jeff Flake",
+   "state": "AZ",
+   "votes": 166
+  },
+  {
+   "lis": "S359",
+   "bioguide": "H001046",
+   "name": "Martin Heinrich",
+   "state": "NM",
+   "votes": 342
+  },
+  {
+   "lis": "S360",
+   "bioguide": "H001069",
+   "name": "Heidi Heitkamp",
+   "state": "ND",
+   "votes": 166
+  },
+  {
+   "lis": "S361",
+   "bioguide": "H001042",
+   "name": "Mazie K. Hirono",
+   "state": "HI",
+   "votes": 342
+  },
+  {
+   "lis": "S362",
+   "bioguide": "K000384",
+   "name": "Tim Kaine",
+   "state": "VA",
+   "votes": 342
+  },
+  {
+   "lis": "S363",
+   "bioguide": "K000383",
+   "name": "Angus S. King, Jr.",
+   "state": "ME",
+   "votes": 342
+  },
+  {
+   "lis": "S364",
+   "bioguide": "M001169",
+   "name": "Christopher Murphy",
+   "state": "CT",
+   "votes": 342
+  },
+  {
+   "lis": "S365",
+   "bioguide": "S001184",
+   "name": "Tim Scott",
+   "state": "SC",
+   "votes": 342
+  },
+  {
+   "lis": "S366",
+   "bioguide": "W000817",
+   "name": "Elizabeth Warren",
+   "state": "MA",
+   "votes": 342
+  },
+  {
+   "lis": "S367",
+   "bioguide": "C001099",
+   "name": "William M. Cowan",
+   "state": "MA",
+   "votes": 3
+  },
+  {
+   "lis": "S368",
+   "bioguide": "C001100",
+   "name": "Jeff Chiesa",
+   "state": "NJ",
+   "votes": 4
+  },
+  {
+   "lis": "S369",
+   "bioguide": "M000133",
+   "name": "Edward J. Markey",
+   "state": "MA",
+   "votes": 337
+  },
+  {
+   "lis": "S370",
+   "bioguide": "B001288",
+   "name": "Cory A. Booker",
+   "state": "NJ",
+   "votes": 333
+  },
+  {
+   "lis": "S371",
+   "bioguide": "W000818",
+   "name": "John E. Walsh",
+   "state": "MT",
+   "votes": 16
+  },
+  {
+   "lis": "S372",
+   "bioguide": "C001047",
+   "name": "Shelley Moore Capito",
+   "state": "WV",
+   "votes": 308
+  },
+  {
+   "lis": "S373",
+   "bioguide": "C001075",
+   "name": "Bill Cassidy",
+   "state": "LA",
+   "votes": 308
+  },
+  {
+   "lis": "S374",
+   "bioguide": "C001095",
+   "name": "Tom Cotton",
+   "state": "AR",
+   "votes": 308
+  },
+  {
+   "lis": "S375",
+   "bioguide": "D000618",
+   "name": "Steve Daines",
+   "state": "MT",
+   "votes": 308
+  },
+  {
+   "lis": "S376",
+   "bioguide": "E000295",
+   "name": "Joni Ernst",
+   "state": "IA",
+   "votes": 308
+  },
+  {
+   "lis": "S377",
+   "bioguide": "G000562",
+   "name": "Cory Gardner",
+   "state": "CO",
+   "votes": 169
+  },
+  {
+   "lis": "S378",
+   "bioguide": "L000575",
+   "name": "James Lankford",
+   "state": "OK",
+   "votes": 308
+  },
+  {
+   "lis": "S379",
+   "bioguide": "P000612",
+   "name": "David Perdue",
+   "state": "GA",
+   "votes": 169
+  },
+  {
+   "lis": "S380",
+   "bioguide": "P000595",
+   "name": "Gary C. Peters",
+   "state": "MI",
+   "votes": 308
+  },
+  {
+   "lis": "S381",
+   "bioguide": "R000605",
+   "name": "Mike Rounds",
+   "state": "SD",
+   "votes": 308
+  },
+  {
+   "lis": "S382",
+   "bioguide": "S001197",
+   "name": "Ben Sasse",
+   "state": "NE",
+   "votes": 213
+  },
+  {
+   "lis": "S383",
+   "bioguide": "S001198",
+   "name": "Dan Sullivan",
+   "state": "AK",
+   "votes": 308
+  },
+  {
+   "lis": "S384",
+   "bioguide": "T000476",
+   "name": "Thom Tillis",
+   "state": "NC",
+   "votes": 308
+  },
+  {
+   "lis": "S385",
+   "bioguide": "C001113",
+   "name": "Catherine Cortez Masto",
+   "state": "NV",
+   "votes": 231
+  },
+  {
+   "lis": "S386",
+   "bioguide": "D000622",
+   "name": "Tammy Duckworth",
+   "state": "IL",
+   "votes": 231
+  },
+  {
+   "lis": "S387",
+   "bioguide": "H001075",
+   "name": "Kamala D. Harris",
+   "state": "CA",
+   "votes": 92
+  },
+  {
+   "lis": "S388",
+   "bioguide": "H001076",
+   "name": "Margaret Wood Hassan",
+   "state": "NH",
+   "votes": 231
+  },
+  {
+   "lis": "S389",
+   "bioguide": "K000393",
+   "name": "John Kennedy",
+   "state": "LA",
+   "votes": 231
+  },
+  {
+   "lis": "S390",
+   "bioguide": "V000128",
+   "name": "Chris Van Hollen",
+   "state": "MD",
+   "votes": 231
+  },
+  {
+   "lis": "S391",
+   "bioguide": "Y000064",
+   "name": "Todd Young",
+   "state": "IN",
+   "votes": 231
+  },
+  {
+   "lis": "S392",
+   "bioguide": "S001202",
+   "name": "Luther Strange",
+   "state": "AL",
+   "votes": 22
+  },
+  {
+   "lis": "S393",
+   "bioguide": "J000300",
+   "name": "Doug Jones",
+   "state": "AL",
+   "votes": 66
+  },
+  {
+   "lis": "S394",
+   "bioguide": "S001203",
+   "name": "Tina Smith",
+   "state": "MN",
+   "votes": 205
+  },
+  {
+   "lis": "S395",
+   "bioguide": "H001079",
+   "name": "Cindy Hyde-Smith",
+   "state": "MS",
+   "votes": 195
+  },
+  {
+   "lis": "S396",
+   "bioguide": "B001243",
+   "name": "Marsha Blackburn",
+   "state": "TN",
+   "votes": 176
+  },
+  {
+   "lis": "S397",
+   "bioguide": "B001310",
+   "name": "Mike Braun",
+   "state": "IN",
+   "votes": 109
+  },
+  {
+   "lis": "S398",
+   "bioguide": "C001096",
+   "name": "Kevin Cramer",
+   "state": "ND",
+   "votes": 176
+  },
+  {
+   "lis": "S399",
+   "bioguide": "H001089",
+   "name": "Josh Hawley",
+   "state": "MO",
+   "votes": 176
+  },
+  {
+   "lis": "S400",
+   "bioguide": "M001197",
+   "name": "Martha McSally",
+   "state": "AZ",
+   "votes": 33
+  },
+  {
+   "lis": "S401",
+   "bioguide": "R000615",
+   "name": "Mitt Romney",
+   "state": "UT",
+   "votes": 109
+  },
+  {
+   "lis": "S402",
+   "bioguide": "R000608",
+   "name": "Jacky Rosen",
+   "state": "NV",
+   "votes": 176
+  },
+  {
+   "lis": "S403",
+   "bioguide": "S001191",
+   "name": "Kyrsten Sinema",
+   "state": "AZ",
+   "votes": 109
+  },
+  {
+   "lis": "S404",
+   "bioguide": "S001217",
+   "name": "Rick Scott",
+   "state": "FL",
+   "votes": 176
+  },
+  {
+   "lis": "S405",
+   "bioguide": "L000594",
+   "name": "Kelly Loeffler",
+   "state": "GA",
+   "votes": 15
+  },
+  {
+   "lis": "S406",
+   "bioguide": "K000377",
+   "name": "Mark Kelly",
+   "state": "AZ",
+   "votes": 143
+  },
+  {
+   "lis": "S407",
+   "bioguide": "H000601",
+   "name": "Bill Hagerty",
+   "state": "TN",
+   "votes": 139
+  },
+  {
+   "lis": "S408",
+   "bioguide": "H000273",
+   "name": "John W. Hickenlooper",
+   "state": "CO",
+   "votes": 139
+  },
+  {
+   "lis": "S409",
+   "bioguide": "L000570",
+   "name": "Ben Ray Luján",
+   "state": "NM",
+   "votes": 139
+  },
+  {
+   "lis": "S410",
+   "bioguide": "L000571",
+   "name": "Cynthia M. Lummis",
+   "state": "WY",
+   "votes": 139
+  },
+  {
+   "lis": "S411",
+   "bioguide": "M001198",
+   "name": "Roger Marshall",
+   "state": "KS",
+   "votes": 139
+  },
+  {
+   "lis": "S412",
+   "bioguide": "T000278",
+   "name": "Tommy Tuberville",
+   "state": "AL",
+   "votes": 139
+  },
+  {
+   "lis": "S413",
+   "bioguide": "P000145",
+   "name": "Alex Padilla",
+   "state": "CA",
+   "votes": 139
+  },
+  {
+   "lis": "S414",
+   "bioguide": "O000174",
+   "name": "Jon Ossoff",
+   "state": "GA",
+   "votes": 139
+  },
+  {
+   "lis": "S415",
+   "bioguide": "W000790",
+   "name": "Raphael G. Warnock",
+   "state": "GA",
+   "votes": 139
+  },
+  {
+   "lis": "S416",
+   "bioguide": "B001319",
+   "name": "Katie Boyd Britt",
+   "state": "AL",
+   "votes": 95
+  },
+  {
+   "lis": "S417",
+   "bioguide": "B001305",
+   "name": "Ted Budd",
+   "state": "NC",
+   "votes": 95
+  },
+  {
+   "lis": "S418",
+   "bioguide": "F000479",
+   "name": "John Fetterman",
+   "state": "PA",
+   "votes": 95
+  },
+  {
+   "lis": "S419",
+   "bioguide": "M001190",
+   "name": "Markwayne Mullin",
+   "state": "OK",
+   "votes": 87
+  },
+  {
+   "lis": "S420",
+   "bioguide": "S001227",
+   "name": "Eric Schmitt",
+   "state": "MO",
+   "votes": 95
+  },
+  {
+   "lis": "S421",
+   "bioguide": "V000137",
+   "name": "J.D. Vance",
+   "state": "OH",
+   "votes": 28
+  },
+  {
+   "lis": "S422",
+   "bioguide": "W000800",
+   "name": "Peter Welch",
+   "state": "VT",
+   "votes": 95
+  },
+  {
+   "lis": "S423",
+   "bioguide": "R000618",
+   "name": "Pete Ricketts",
+   "state": "NE",
+   "votes": 95
+  },
+  {
+   "lis": "S424",
+   "bioguide": "B001320",
+   "name": "Laphonza R. Butler",
+   "state": "CA",
+   "votes": 19
+  },
+  {
+   "lis": "S426",
+   "bioguide": "K000394",
+   "name": "Andy Kim",
+   "state": "NJ",
+   "votes": 71
+  },
+  {
+   "lis": "S427",
+   "bioguide": "S001150",
+   "name": "Adam B. Schiff",
+   "state": "CA",
+   "votes": 71
+  },
+  {
+   "lis": "S428",
+   "bioguide": "A000382",
+   "name": "Angela D. Alsobrooks",
+   "state": "MD",
+   "votes": 67
+  },
+  {
+   "lis": "S429",
+   "bioguide": "B001299",
+   "name": "Jim Banks",
+   "state": "IN",
+   "votes": 67
+  },
+  {
+   "lis": "S430",
+   "bioguide": "B001303",
+   "name": "Lisa Blunt Rochester",
+   "state": "DE",
+   "votes": 67
+  },
+  {
+   "lis": "S431",
+   "bioguide": "C001114",
+   "name": "John R. Curtis",
+   "state": "UT",
+   "votes": 67
+  },
+  {
+   "lis": "S432",
+   "bioguide": "G000574",
+   "name": "Ruben Gallego",
+   "state": "AZ",
+   "votes": 67
+  },
+  {
+   "lis": "S433",
+   "bioguide": "M001243",
+   "name": "David McCormick",
+   "state": "PA",
+   "votes": 67
+  },
+  {
+   "lis": "S434",
+   "bioguide": "M001242",
+   "name": "Bernie Moreno",
+   "state": "OH",
+   "votes": 67
+  },
+  {
+   "lis": "S435",
+   "bioguide": "S001232",
+   "name": "Tim Sheehy",
+   "state": "MT",
+   "votes": 67
+  },
+  {
+   "lis": "S436",
+   "bioguide": "S001208",
+   "name": "Elissa Slotkin",
+   "state": "MI",
+   "votes": 67
+  },
+  {
+   "lis": "S437",
+   "bioguide": "J000312",
+   "name": "James C. Justice",
+   "state": "WV",
+   "votes": 67
+  },
+  {
+   "lis": "S438",
+   "bioguide": "H001104",
+   "name": "Jon Husted",
+   "state": "OH",
+   "votes": 64
+  },
+  {
+   "lis": "S439",
+   "bioguide": "M001244",
+   "name": "Ashley Moody",
+   "state": "FL",
+   "votes": 64
+  },
+  {
+   "lis": "S440",
+   "bioguide": "A000383",
+   "name": "Alan Armstrong",
+   "state": "OK",
+   "votes": 8
+  }
+ ]
+}

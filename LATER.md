@@ -57,6 +57,13 @@ texts the import had cut to 80 characters (old text in `metadata.corrections`, b
 | two 1995 table fragments | Voteview's own description of Senate roll calls 2 and 3 of the 104th Congress begins with a stray row of its source table ("2 5 JANUARY 1995 2 52 39 3 37 49 2 S.2 BY GRASSLEY …", "3 6 JANUARY 1995 3 74 17 23 17 51 0 (SENATE TABLED WELLSTONE …"). Left as Voteview has them; hand-fix claims `cmq5l0vyt5iaasal8p8xumtjl` and `cmq5l0vyt5iabsal8bxzanrm2` by dropping the prefix (record it in `metadata.corrections`). |
 | stale embeddings | re-embed 86,063 stale claims, ~$0.18, needs OPENAI_API_KEY; verify scripts/backfill-embeddings.ts runs against the new DB first. (85,987 from the full-text restore + 76 batch-1 cloture corrections outside it; exact count 8,957,636 tokens with tiktoken. The nightly `/api/cron/embed-incremental` will not do it: it answers 503 while `ALLOW_EDITS` is off and looks back only 25 hours.) |
 
+### Member votes (Phase 7 Q13, 2026-10-13)
+
+| item | the one missing piece |
+|---|---|
+| 6,185 Voteview member votes with no member id | `voteview_v1` member votes whose `memberId` is null (e.g. "ABBITT, Watkins Moorman"): they count on vote pages but reach no `/members` profile. Match on Voteview's ICPSR id from `HSall_members.csv` → bioguide via unitedstates/congress-legislators (`id.icpsr`), its own dry run and yes. Left alone by owner decision. |
+| 24 roll calls recorded twice | 24 votes have member votes on both the `voteview_v1` LegislativeVote and its `congress_votes_v1` twin (9 House, 3,885 rows; 15 Senate, 1,500 rows — identical since the LIS merge). Member pages skip the `congress_votes_v1` copy at read time; deleting the 5,385 duplicate rows is a separate decision. |
+
 ### Deferred by the owner (2026-10-12)
 
 - `congress_v1` laws get introduced/passed transitions (~10k Congress.gov calls, needs `CONGRESS_API_KEY`) — Q4, not now.

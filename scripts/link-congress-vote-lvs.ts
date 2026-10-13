@@ -12,6 +12,10 @@
  *   npx tsx scripts/link-congress-vote-lvs.ts             # plan only
  *   npx tsx scripts/link-congress-vote-lvs.ts --execute   # write (needs the owner's yes)
  *
+ * --retired (Q13 step 2, owner 2026-10-13): the same, for the claims Q7 retired
+ * as duplicates (deleted, metadata.retired batch p7-congress-dedup-2026-10), so
+ * every congress_votes_v1 vote reaches a claim (the twin, via duplicateOf).
+ *
  * Reads use DATABASE_URL_RO (app_ro); only --execute opens DATABASE_URL. One
  * transaction; each update requires the claim to be live and still unkeyed.
  */
@@ -21,7 +25,12 @@ import { Pool } from "pg";
 loadEnv({ path: ".env.local", quiet: true });
 
 const EXECUTE = process.argv.includes("--execute");
-const BATCH_ID = "p7-q8-lv-keys-2026-10";
+const RETIRED = process.argv.includes("--retired");
+// Batch labels, not secrets ("keys" = vote keys); gitleaks' generic-api-key rule reads "keys…" : "…" as one.
+const BATCH_ID = RETIRED ? "p7-q13-lv-keys-retired-2026-10" : "p7-q8-lv-keys-2026-10"; // gitleaks:allow
+const SCOPE = RETIRED
+  ? `deleted AND metadata->'retired'->>'batch' = 'p7-congress-dedup-2026-10'`
+  : "NOT deleted";
 const METHOD = "bill source + chamber + vote date + yea/nay tally, exactly one congress_votes_v1 LegislativeVote";
 
 function pool(url: string, readOnly: boolean): Pool {
@@ -43,13 +52,18 @@ async function main() {
   try {
     const rows = (
       await ro.query<Cand>(
-        `WITH cv AS (
+        `WITH keyed AS (
+           -- only congress_votes_v1 claims point at congress_votes_v1 votes; voteview_v1 claims key their own
+           SELECT metadata->>'legislativeVoteId' AS lv FROM "Claim"
+           WHERE "externalId" LIKE 'congress\\_vote\\_%' AND metadata ? 'legislativeVoteId'
+         ),
+         cv AS (
            SELECT id, "externalId" AS ext, metadata AS m FROM "Claim"
-           WHERE "externalId" LIKE 'congress\\_vote\\_%' AND NOT deleted AND metadata->>'legislativeVoteId' IS NULL
+           WHERE "externalId" LIKE 'congress\\_vote\\_%' AND ${SCOPE} AND metadata->>'legislativeVoteId' IS NULL
          )
          SELECT cv.id AS "claimId", cv.ext, (cv.m->>'yea') || '–' || (cv.m->>'nay') AS tally, cv.m->>'voteDate' AS date,
                 array_agg(lv.id) FILTER (WHERE lv.id IS NOT NULL) AS "lvIds",
-                (SELECT count(*)::int FROM "Claim" o WHERE o.metadata->>'legislativeVoteId' = ANY(array_agg(lv.id))) AS "claimedElsewhere"
+                (SELECT count(*)::int FROM keyed k WHERE k.lv = ANY(array_agg(lv.id))) AS "claimedElsewhere"
          FROM cv
          LEFT JOIN "Source" s ON s."externalId" = 'congress_law_source_' || (cv.m->>'congress') || '_' || lower(cv.m->>'billType') || '_' || (cv.m->>'billNumber')
          LEFT JOIN "LegislativeVote" lv ON lv."sourceId" = s.id AND lv."dataSource" = 'congress_votes_v1'
@@ -61,7 +75,7 @@ async function main() {
       )
     ).rows;
     const ok = rows.filter((r) => r.lvIds?.length === 1 && r.claimedElsewhere === 0);
-    console.log(`live, unkeyed congress_votes_v1 claims: ${rows.length} · to key: ${ok.length}`);
+    console.log(`${RETIRED ? "retired" : "live"}, unkeyed congress_votes_v1 claims: ${rows.length} · to key: ${ok.length}`);
     for (const r of rows) {
       const why = r.lvIds?.length === 1 ? (r.claimedElsewhere ? "vote already keyed by another claim" : "") : `${r.lvIds?.length ?? 0} matching votes`;
       console.log(`  ${why ? "skip" : "key "} ${r.ext} (${r.tally}, ${r.date}) → ${r.lvIds?.join(", ") ?? "—"}${why ? `  [${why}]` : ""}`);
@@ -81,7 +95,7 @@ async function main() {
            SET metadata = metadata || jsonb_build_object('legislativeVoteId', $2::text,
                  'legislativeVoteLink', jsonb_build_object('batch', $3::text, 'method', $4::text, 'date', $5::text, 'by', 'scripts/link-congress-vote-lvs.ts')),
                "updatedAt" = now()
-           WHERE id = $1 AND NOT deleted AND metadata->>'legislativeVoteId' IS NULL`,
+           WHERE id = $1 AND ${SCOPE} AND metadata->>'legislativeVoteId' IS NULL`,
           [r.claimId, r.lvIds![0], BATCH_ID, METHOD, today],
         );
         if (res.rowCount !== 1) throw new Error(`${r.claimId}: expected 1 row, got ${res.rowCount} — rolled back`);
@@ -98,11 +112,11 @@ async function main() {
       await ro.query<{ keyed: number; live: number }>(
         `SELECT count(*) FILTER (WHERE metadata->'legislativeVoteLink'->>'batch' = $1)::int AS keyed,
                 count(*)::int AS live
-         FROM "Claim" WHERE "externalId" LIKE 'congress\\_vote\\_%' AND NOT deleted`,
+         FROM "Claim" WHERE "externalId" LIKE 'congress\\_vote\\_%' AND ${SCOPE}`,
         [BATCH_ID],
       )
     ).rows[0];
-    console.log(`database: ${n.keyed} of ${n.live} live congress_votes_v1 claims carry ${BATCH_ID}`);
+    console.log(`database: ${n.keyed} of ${n.live} ${RETIRED ? "retired" : "live"} congress_votes_v1 claims carry ${BATCH_ID}`);
   } finally {
     await ro.end();
   }

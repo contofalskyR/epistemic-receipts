@@ -404,7 +404,25 @@ which gets its own yes).
         `congress_votes_v1` claims to their LegislativeVote (bill Source + chamber + date + tally, exactly one each):
         `metadata.legislativeVoteId` + `legislativeVoteLink` (batch `p7-q8-lv-keys-2026-10`). Audit via `app_ro`:
         8 of 8 keyed, exactly 8 claims changed, a rerun plans 0.
-  - [ ] Next: Q13 — `/votes/[id]` + `/members/[memberId]` leave the Lab once they link to claims.
+  - [x] Q13 read-only check (2026-10-13): pages 307 → /login anonymously; `/api/votes` and `/api/members/search` already
+        answer anonymously. Owner decisions 2026-10-13: the 936 known mismatches show "Result under review" (keyed off a
+        list) linking `/corrections`, fixed later in per-type batches; public `/votes/[id]` and `/members/[memberId]` 404
+        without a live US claim behind them (EU/UK/Canada stay Lab); listings public only after the House-filter fix and
+        limited to US records with claims; vote and member pages stay out of the sitemap.
+  - [x] **Q13 step 1 written 2026-10-13 (owner yes):** `scripts/correct-congress-votes-lv-results.ts --execute` set 39
+        `congress_votes_v1` LegislativeVotes (35 one-claim + 4 same-day pairs whose twins agree) to their corrected
+        Voteview twin's result (37 passed → failed, 2 tied → failed; threshold three_fifths), recorded on the retired
+        claims (batch `p7-q13-lv-results-2026-10`). Audit: exactly 39 votes + 39 claims changed; all 497 twinned votes
+        now agree.
+  - [x] **Q13 step 2 written 2026-10-13 (owner yes):** `scripts/link-congress-vote-lvs.ts --retired --execute` keyed
+        485 retired `congress_votes_v1` claims to their vote (batch `p7-q13-lv-keys-retired-2026-10`); the 12 claims in
+        six same-day pairs stay unlinked. Audit: exactly 485 claims changed, 485 distinct votes.
+  - [x] **Q13 step 3 written 2026-10-13 (owner yes):** `scripts/merge-senate-member-ids.ts --execute` rewrote the 174
+        Senate LIS ids on 34,197 `congress_votes_v1` member votes to bioguide ids via unitedstates/congress-legislators
+        (unique entry + surname + Senate state); mapping committed as `data/crosswalks/senate-lis-bioguide.json`.
+        Audit: 0 LIS ids left; e.g. Schumer is one profile (S000148).
+  - [ ] Next: Q13 step 4 — page code (claim links, 404 rule, source label, titles, no topic chips, review note, member
+        pages skip the 24 doubled roll calls), then step 5 the public list.
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
@@ -466,6 +484,7 @@ which gets its own yes).
 Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34); transition sourcing is merged and promoted
 (PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35), Q6 (12,285
 VOTE_ON + the law-page vote list, PR #36) Q7 (497 duplicates retired, 92 ENACTED_AS, PR #37) and the Voteview
-full-text restore (85,987 texts, PR #38) and Q8 (8 vote keys, `feat/phase7-q8`) are written and audited.
-Next → Q13: the vote and member pages leave the Lab once they link to claims. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+full-text restore (85,987 texts, PR #38) and Q8 (8 vote keys, PR #39) are written and audited. Q13 steps 1–3
+(39 vote results, 485 retired-claim vote keys, 174 senator ids merged) are written on `feat/phase7-q13-identity`.
+Next → Q13 step 4 (page code), then step 5 (public list). The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
 (`fix/bce-dates`) is unscheduled.
