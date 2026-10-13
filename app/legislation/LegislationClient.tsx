@@ -502,7 +502,7 @@ export default function LegislationClient() {
         )}
       </div>
 
-      {/* Live tracker banner — US + Canada */}
+      {/* Tracker banner — US + Canada: data source and last pull, no refresh promise (Phase 7 Q11) */}
       {specialView === "us" && (
         <AutoUpdateBanner
           lastRefresh={data ? (data.lastRefresh ?? null) : undefined}
@@ -759,13 +759,13 @@ function AutoUpdateBanner({
 }) {
   return (
     <div className="rounded-md border border-gray-800 bg-gray-900/40 px-3 py-2 flex items-center gap-3 text-xs">
-      <span className="relative flex h-2 w-2 shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-      </span>
+      {/* Not live: no tracker is refreshed on a schedule (the US one stopped on
+          2026-07-03; Phase 7 Q11), so no pulsing dot and no refresh promise.
+          "Last pull" says how old the data is. */}
+      <span className="inline-flex rounded-full h-2 w-2 shrink-0 bg-gray-500" />
       <span className="text-gray-300">
-        <span className="text-gray-100 font-medium">Live tracker</span>
-        <span className="text-gray-500"> — auto-refreshes every 12 hours from the </span>
+        <span className="text-gray-100 font-medium">Bill tracker</span>
+        <span className="text-gray-500"> — data from the </span>
         <a
           href={sourceUrl}
           target="_blank"
