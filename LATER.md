@@ -17,10 +17,10 @@ relations → (7) duplicates → (8) `legislativeVoteId` keys → (13) `/votes` 
 |---|---|---|
 | `/votes`, `/votes/[id]` | public since Q13 (2026-10-13): claim links, "Result under review" on 814 votes | fix the 814 in per-type batches, then rebuild `data/vote-results-under-review.json` |
 | `/members`, `/members/[memberId]` | public since Q13: US bioguide members, senator ids merged | member-level votes cover the landmark subset only (Q10); 6,185 votes with no member id (below) |
-| `/congress-trades` | STOCK Act trades vs voting record | relabel the 921 trades as secondary sources credited to Quiver Quantitative (Q9); the set does not grow |
+| `/congress-trades` | STOCK Act trades vs voting record; sources relabelled secondary, credited to Quiver (Q9, 2026-10-13) | the set does not grow (owner); stays Lab |
 | `/analysis/votes`, `/analysis/ideology`, `/analysis/representation`, `/analysis/topics` | careful analytics (votes truncated at 50k) | bars and points link to claims; these stay Lab (Q13) |
 | `/stats/media-coverage` | NYT coverage vs "dark-matter" bills | BillCoverage stays background data, not claims (Q14) |
-| `/legislation` | country grid, trackers | omits five Nordic/EU pipelines (~25.8k claims); remove the false "auto-refreshes every 12 hours" sentence (Q11) |
+| `/legislation` | country grid, trackers (no refresh promise since Q11) | omits five Nordic/EU pipelines (~25.8k claims) |
 
 ### Vote results still wrong after batch 1 (`scripts/correct-senate-cloture.ts`)
 

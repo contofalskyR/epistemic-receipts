@@ -434,8 +434,16 @@ which gets its own yes).
         flagged — that would be a guess from text) with a link to the `/corrections` entry. Member pages skip the 24
         roll calls recorded twice and merge "D"/"Democrat". `/api/votes` House filter fixed ("House of
         Representatives": 59,793); `/api/members/search` US bioguide members only. Sitemap: the two listings only.
+  - [x] **Q9 written 2026-10-13 (owner yes):** `scripts/relabel-stock-act-sources.ts --execute` relabelled the 921
+        `congress_stock_act_v1` Sources: primary → derivative, ", via Quiver Quantitative" on the name, URL → the
+        member's Quiver page (913; all 59 pages checked live, 200 + Quiver title) or Quiver's congressional-trading
+        page (8 without a bioguide id); old values in each claim's `metadata.corrections` (batch
+        `p7-q9-stock-act-relabel-2026-10`). Audit via `app_ro`: 921 derivative, 0 primary, 921 credited, exactly 921
+        claims changed, a rerun plans 0. Registry: upstream Quiver, one 2026-06-08 snapshot, static. The set does not grow.
+  - [x] **Q11 (code), 2026-10-13:** the `/legislation` tracker banner no longer says "Live" or "auto-refreshes every 12
+        hours"; static dot, data source and last pull. The refresh stays off; ABANDONED after 2027-01-03 is in LATER.
   - [ ] Next (Phase 7 remainder): per-type result batches for the 814 (each its own yes); the 122 pre-1989 cloture votes
-        against senate.gov; STOCK Act relabel (Q9); `/legislation` refresh sentence (Q11).
+        against senate.gov.
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
@@ -498,6 +506,7 @@ Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34);
 (PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35), Q6 (12,285
 VOTE_ON + the law-page vote list, PR #36) Q7 (497 duplicates retired, 92 ENACTED_AS, PR #37) and the Voteview
 full-text restore (85,987 texts, PR #38) and Q8 (8 vote keys, PR #39) are written and audited. Q13 steps 1–3
-(PR #40) are written and the vote and member pages are public (`feat/phase7-q13-pages`). Next → the rest of Phase 7
-(per-type result batches, Q9, Q11), each write with its own yes. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+(PR #40) are written and the vote and member pages are public (PR #41); Q9 (921 STOCK Act sources relabelled) and Q11
+(no refresh promise on `/legislation`) are on `feat/phase7-q9-q11`. Next → per-type batches for the 814 vote results and
+the 122 pre-1989 cloture votes, each write with its own yes. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
 (`fix/bce-dates`) is unscheduled.
