@@ -33,12 +33,18 @@ Owner: to resume in a fresh session, say "read STATUS.md, continue Phase N".
   on the claim, and not in the sitemap. Source links on `/claims/[id]` show "machine-verified" when the Edge is
   `autoApproved` and not `humanReviewed` (1,528,999 of 1,719,851 live edges: mostly bulk imports, whose quality
   gates set the flag; plus the 1,148 promoted `claude_sourcing_v1` links).
+- 2026-10-12: owner answered every 6b decision and all 15 Phase 7 questions (verbatim in the untracked
+  `docs/phase7-questions.md`, "Owner answers"). Phase 7 is link, correct, relate — no ingest. Vote-result corrections
+  live in `Claim.metadata.corrections` plus one `/corrections` entry per batch; no `ClaimStatusHistory` rows, no
+  schema change. Reviews and censuses read through `app_ro` (`DATABASE_URL_RO`, SELECT only, `db/roles/app_ro.sql`);
+  approved writes run by hand with the `.env.local` app role. Order: Senate cloture (Q2) → Q6–8 → Q13 → the rest.
 
 ## Working rules
 
 One phase at a time, one branch + one PR per phase, stop for go-ahead between phases. Single agent, no subagents.
 `npm run build` before every push; data-facing counts verified with a read-only query. Nothing writes to the DB
-(one owner-approved exception: `TransitionSourceCandidate`, see Transition sourcing below).
+(owner-approved exceptions: `TransitionSourceCandidate`, see Transition sourcing below; each Phase 7 write batch,
+which gets its own yes).
 
 ## Docs (where things are, since Phase 4)
 
@@ -350,6 +356,25 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
     search; 10 the "lab leak" link; 11 glossary wording; 12 MCP package, runbook archive, spectral devDependency;
     13 ticker → receipts.
 
+- [ ] **Phase 7 — Congress: link, correct, relate** · branch `feat/phase7-senate-corrections` (from `origin/main` `470d663`)
+  - [x] Scheduled jobs (Q15): `refresh-bill-coverage` (daily, upserts `BillCoverage`) and `ingest-pipeline` (monthly,
+        `congress_v1` + `doj_fara_v1` claims) both write, and both GitHub secrets still point at the retired Neon
+        host, so every run since 2026-09-27 failed before writing; `snapshot` (quarterly, read-only → R2) likewise.
+        The owner disabled the crons 2026-10-12.
+  - [x] Census 2026-10-12 (read-only, Voteview `HSall_rollcalls.csv`): of 113,319 `voteview_v1` claims, 33,687 since
+        the 101st Congress agree with Voteview's `vote_result`, 1,289 disagree, 78,306 predate `vote_result` (1989),
+        37 are Speaker elections; tallies all match.
+  - [x] **Batch 1 written 2026-10-13 (owner yes):** 475 Senate cloture votes since 1989 that read "passed" (466) or
+        "tied" (9) though Voteview says the motion was rejected. `scripts/correct-senate-cloture.ts --execute --all`:
+        `Claim.text` ends "— failed.", `metadata.result` failed + a `corrections[]` entry (batch
+        `p7-senate-cloture-2026-10`: before, after, Voteview link + tally, date); `LegislativeVote.result` failed,
+        `passageThreshold` three_fifths 470 / two_thirds 3 / simple_majority 2. Audit via `app_ro`: 475 claims carry
+        the batch and read failed in text, metadata and vote; exactly 475 Claim + 475 LegislativeVote rows changed;
+        `ClaimStatusHistory` still 1,822,644; a rerun plans 0. `/corrections` entry added.
+  - [ ] Not corrected (LATER §1 lists the rule each needs): 122 cloture votes 1975–1988, 814 other mismatches.
+  - [ ] Next: Q6 vote → law relations, Q7 duplicates (exact counts before the write), Q8 `legislativeVoteId` keys,
+        then Q13.
+
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
       `docs/TRANSITION-SOURCING-2026-10-09.md`; runbook: `scripts/README-sourcing.md`.
@@ -407,9 +432,8 @@ One phase at a time, one branch + one PR per phase, stop for go-ahead between ph
 
 ## Next action
 
-Phases −1…6 and `fix/auto-trajectories` are merged (PRs #22–#30, `origin/main` `21ddb9c`); the Phase 3 migration is
-applied. Transition sourcing is merged and promoted (PRs #31–#33). Phase 6b is done on `feat/wire-what-exists`,
-awaiting the owner's push, PR and the 6b decisions in its entry. Phase 7 owner questions: `docs/phase7-questions.md`
-(untracked). Next → Phase 6c (`fix/bce-dates`: code first; the data fix is the owner's) → Phase 7 (`feat/congress-link`). `LATER.md` §1's
-premise is outdated: Congress roll-calls (`voteview_v1`) and enacted laws (`congress_v1`) are already claims — Phase 7
-links, corrects and relates them rather than re-ingesting.
+Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34); transition sourcing is merged and promoted
+(PRs #31–#33). Phase 7 batch 1 (475 Senate cloture corrections) is written and audited on
+`feat/phase7-senate-corrections`. Next → Phase 7 Q6–Q8 (vote → law relations, duplicates, `legislativeVoteId`), each
+write batch with its own yes, then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+(`fix/bce-dates`) is unscheduled.
