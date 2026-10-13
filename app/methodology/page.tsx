@@ -450,7 +450,7 @@ export default async function MethodologyPage() {
           includes: {approxCount(curveless.chebi_v1)} ChEBI chemical entities no paper has ever cited;{" "}
           {approxCount(curveless.jacar_v1)} JACAR archival items whose catalog publishes no per-item
           creation date; {approxCount(curveless.rxnorm_v1)} RxNorm vocabulary concepts;{" "}
-          {approxCount(curveless.ofac_sdn_v1)} OFAC sanctions designations (Treasury publishes no
+          {approxCount(curveless.ofac_sdn_v1)}{" "}OFAC sanctions designations (Treasury publishes no
           per-entity designation dates); and smaller sets across other registries. The July&nbsp;2026
           National Archives bulk-catalog sweep settled the largest case: of 248,439 matched catalog
           records, 160,595 carried real production dates (now curves) and 91,788 have no date
