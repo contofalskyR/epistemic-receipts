@@ -10,3 +10,13 @@ export const MACHINE_VERIFIED_TITLE = "Added and checked by automated rules; no 
 export function isMachineVerified(edge: { autoApproved: boolean; humanReviewed: boolean }): boolean {
   return edge.autoApproved && !edge.humanReviewed;
 }
+
+/** The transition-sourcing pipeline (scripts/lib/transition-sourcing.ts PIPELINE_TAG). */
+export const MACHINE_SOURCED_TAG = "claude_sourcing_v1";
+
+/** Source links carry the label only when the transition-sourcing pass added
+ *  them (owner, 2026-10-12): bulk imports also set autoApproved from their own
+ *  quality gates, and labelling 89% of all links said nothing. */
+export function isMachineVerifiedSource(edge: { ingestedBy: string; autoApproved: boolean; humanReviewed: boolean }): boolean {
+  return edge.ingestedBy === MACHINE_SOURCED_TAG && isMachineVerified(edge);
+}

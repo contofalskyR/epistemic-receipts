@@ -254,11 +254,13 @@ export default async function ReversalsPage() {
             />
           </Suspense>
           <p className="text-xs text-gray-600">
+            {/* The explorer holds no drugsatfda_v1 trajectories, so the old
+                ?pipeline=…&status=REVERSED link always came up empty (owner, 2026-10-12). */}
             <Link
-              href="/settling-curve?pipeline=drugsatfda_v1&status=REVERSED"
+              href="/datasets/drugsatfda_v1"
               className="hover:text-gray-400 transition-colors underline"
             >
-              Browse all institutional reversal arcs in the explorer →
+              About the FDA approval data (data card) →
             </Link>
           </p>
         </section>

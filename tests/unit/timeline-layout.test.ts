@@ -55,6 +55,7 @@ function toMainInput(events: FEvent[]): { claim: ClaimDetail; todayIso: string }
     evidenceType: "DIRECT",
     createdAt: `${s.date}T00:00:00.000Z`,
     autoApproved: false,
+    ingestedBy: "manual",
     humanReviewed: false,
     source: {
       id: `src-${s.id}`,

@@ -7,6 +7,7 @@
 //      ClaimStatusHistory carries a `createdAt` ingestion timestamp; we order by it.
 //   2. Recent claims by pipeline + threshold events — powers the full /feed page.
 
+import { receiptHref } from "@/lib/receipts";
 import { prisma } from "@/lib/prisma";
 
 export const PIPELINE_WINDOW_DAYS = 7;
@@ -71,7 +72,8 @@ export type WhatsNewItem = {
   toAxis: string;
   occurredYear: number | null;
   reason: string | null;
-  href: string; // settling-curve for trajectories, otherwise the claim page
+  /** The transition's own receipt, /receipts/<id> (6b follow-up, owner 2026-10-12). */
+  href: string;
 };
 
 export async function loadRecentTransitions(limit = 6): Promise<WhatsNewItem[]> {
@@ -85,26 +87,24 @@ export async function loadRecentTransitions(limit = 6): Promise<WhatsNewItem[]> 
       toAxis: true,
       occurredAt: true,
       reason: true,
-      claim: { select: { text: true, externalId: true, deleted: true } },
+      claim: { select: { text: true, externalId: true, deleted: true, verificationStatus: true } },
     },
   });
 
   const seen = new Set<string>();
   const items: WhatsNewItem[] = [];
   for (const r of rows) {
-    if (!r.claim || r.claim.deleted) continue;
+    // Hidden claims: a DEPRECATED claim's receipt 404s, so it never reaches the ticker.
+    if (!r.claim || r.claim.deleted || r.claim.verificationStatus === "DEPRECATED") continue;
     const ext = r.claim.externalId ?? "";
     // Dedupe to one entry per CLAIM (a claim can gain several transitions at once).
     const key = ext || r.claimId;
     if (seen.has(key)) continue;
     seen.add(key);
 
-    const isTrajectory = ext.startsWith("trajectory:");
-    // NOTE: r.id is the ClaimStatusHistory row's id — claim links MUST use
-    // r.claimId (linking r.id produced "Claim not found", fixed 2026-07-04).
-    const href = isTrajectory
-      ? `/settling-curve?t=${ext.replace(/^trajectory:/, "")}`
-      : `/claims/${r.claimId}`;
+    // r.id is the ClaimStatusHistory row — exactly what a receipt page shows
+    // (it is not a claim id; /claims/<r.id> would 404).
+    const href = receiptHref(r.id);
 
     items.push({
       id: r.id,

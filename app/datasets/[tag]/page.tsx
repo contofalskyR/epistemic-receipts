@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { notFound } from "next/navigation";
+import { pageParam } from "@/lib/route-param";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { getDataPipelines, getPipeline } from "@/lib/pipelines/registry";
@@ -80,7 +81,9 @@ function fmtDate(d: Date | null | undefined) {
 }
 
 export default async function DatasetPage({ params }: Props) {
-  const { tag } = await params;
+  // Next hands page components an encoded segment (lib/route-param.ts); tags
+  // such as event:exoplanet_retractions_v1 carry a ':'. Metadata gets it decoded.
+  const tag = pageParam((await params).tag);
   const p = getPipeline(tag);
   if (!p) notFound();
 

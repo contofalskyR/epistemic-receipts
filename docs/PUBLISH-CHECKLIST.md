@@ -85,7 +85,7 @@ Both projects deploy from `main`. The public edition differs only by environment
 **Status 2026-07-06: code scaffolding SHIPPED.** `lib/publicEdition.ts` (allowlist + edition flags), the middleware deny-by-default page gate, the Nav filter (Lab group hidden on public edition), and edition-aware `app/robots.ts` (replacing static `public/robots.txt`) are all in the tree. Behavior is unchanged until `NEXT_PUBLIC_EDITION` is set — remaining steps are Vercel/ops only:
 
 - [ ] Create the second Vercel project (same repo, `main`), set `NEXT_PUBLIC_EDITION=public`.
-- [ ] Create the `er_scoped_writes` Neon role (`docs/runbooks/er_scoped_writes.sql` — B12 Q2, approved 2026-07-16; supersedes the “read-only” wording below); use its connection string as the public project's `DATABASE_URL`; omit `ALLOW_EDITS` and `ADMIN_TOKEN`.
+- [ ] ~~Create the `er_scoped_writes` Neon role~~ — **SUPERSEDED (2026-10-13):** one deployment; the Lab gate lives in `middleware.ts` (see `STATUS.md`); Neon is gone and the role's tables were dropped in phase 3. The SQL is archived at `docs/archive/runbooks/er_scoped_writes.sql`. Review and verification runs use the SELECT-only `app_ro` role (`db/roles/app_ro.sql`).
 - [ ] Attach the custom domain to the public project.
 - [ ] On the lab project: set `NEXT_PUBLIC_EDITION=lab`, then `SITE_PASSWORD` once the public domain is live.
 

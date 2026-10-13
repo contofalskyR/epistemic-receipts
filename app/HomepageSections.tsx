@@ -270,6 +270,8 @@ function MovedTicker({ items }: { items: WhatsNewItem[] }) {
           <Link
             key={t.id}
             href={t.href}
+            prefetch={false}
+            rel="nofollow"
             className="inline-flex shrink-0 items-center gap-2 text-[13px] text-gray-400 transition-colors hover:text-gray-200"
           >
             <EpistemicAxisBadge

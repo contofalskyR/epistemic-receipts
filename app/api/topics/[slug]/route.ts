@@ -8,6 +8,7 @@ import {
 } from "@/lib/voteAnalysis";
 import { resolveDisplayAxis } from "@/lib/transition-contract";
 import { LIVE_CLAIM_WHERE } from "@/lib/corpus";
+import { topicFallbackSql } from "@/lib/topic-fallback";
 
 const PAGE_SIZE = 20;
 
@@ -142,32 +143,21 @@ export async function GET(
 
   // Fallback: leaf topics like Neuroscience may have a Topic row but no ClaimTopic
   // associations (population is a future task — see docs/CONSULTANT.md). Surface real
-  // claims via a topic-name text match so the slug page isn't empty.
+  // claims whose text matches the topic name, through the indexed full-text search
+  // (lib/topic-fallback.ts; owner decision 2026-10-12, was an ILIKE seq scan).
   let usedTextFallback = false;
   if (total === 0 && topic.children.length === 0) {
-    const fallbackClaimWhere = {
-      ...baseClaimFilter,
-      text: { contains: topic.name, mode: "insensitive" as const },
-      ...pcFilter,
-      ...qFilter,
-    };
-    const fallbackOrderBy =
-      sort === "most_sources"
-        ? { edges: { _count: "desc" as const } }
-        : sort === "emerged_asc"
-          ? { claimEmergedAt: "asc" as const }
-          : { claimEmergedAt: "desc" as const };
-    const [fbTotal, fbClaims] = await Promise.all([
-      prisma.claim.count({ where: fallbackClaimWhere }),
-      prisma.claim.findMany({
-        where: fallbackClaimWhere,
-        orderBy: fallbackOrderBy,
-        skip: (page - 1) * PAGE_SIZE,
-        take: PAGE_SIZE,
-        include: claimInclude,
-      }),
+    const sql = topicFallbackSql({ name: topic.name, showDeprecated, party, leader, q, sort, page, pageSize: PAGE_SIZE });
+    const [countRows, idRows] = await Promise.all([
+      prisma.$queryRaw<{ n: number }[]>(sql.count),
+      prisma.$queryRaw<{ id: string }[]>(sql.ids),
     ]);
+    const fbTotal = countRows[0]?.n ?? 0;
     if (fbTotal > 0) {
+      const order = new Map(idRows.map((r, i) => [r.id, i]));
+      const fbClaims = (
+        await prisma.claim.findMany({ where: { id: { in: idRows.map((r) => r.id) } }, include: claimInclude })
+      ).sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
       total = fbTotal;
       claimTopics = fbClaims.map((c) => ({ claim: c })) as typeof claimTopics;
       usedTextFallback = true;

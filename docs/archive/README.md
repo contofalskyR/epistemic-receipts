@@ -38,3 +38,15 @@ refer to each other by their old root-level names. Dates are the last commit bef
 | `substack-article-technical.md` | 2026-07-06 | article draft (technical) |
 | `TAXONOMY-META-PROMPT.md` | 2026-06-07 | meta-prompt that generated the 33 taxonomy pages |
 | `WHITEPAPER.md` | 2026-05-26 | whitepaper draft (May 2026) |
+
+## runbooks/ (moved 2026-10-13, 6b follow-up)
+
+Runbooks for systems Phase 3 deleted (2026-09-30) or the two-project scheme retired. Owner decision 2026-10-12.
+
+| file | last change | what it is |
+|---|---|---|
+| `runbooks/billing.md` | before 2026-09-30 | Stripe billing runbook — billing deleted in front door phase 3 |
+| `runbooks/litigation.md` | before 2026-09-30 | litigation-tracking runbook — the Litigation tables were dropped in phase 3 |
+| `runbooks/orgs.md` | before 2026-09-30 | organisation accounts runbook — the Org tables were dropped in phase 3 |
+| `runbooks/er_scoped_writes.sql` | before 2026-09-30 | public-edition DB role (grants on Profile/Bookmark/Follow, dropped in phase 3; Neon is gone) |
+
