@@ -47,15 +47,15 @@ own rule. No guessing from description text. Census 2026-10-12 against `HSall_ro
 | H.J.Res. 368 (97th Congress) | Voteview's Senate roll call 426 on 1981-11-28 names it, but the `congress_v1` law claim `cmpcume1n02cppls2llu6x4x6` says enacted 1981-11-23 (the day of the 1981 shutdown veto), so the vote was left unlinked. Check the enactment date against Congress.gov / the Statutes at Large; fix the law claim if it is wrong, then rerun the linker (it adds only this pair). |
 | 119th-Congress tracker bills | VOTE_ON links only `congress_v1` laws; votes on `congress_bills_tracker_v1` bills that have not become law are not linked (Q5/Q6 scope). |
 
-### Voteview claim texts are cut to 80 characters (owner, 2026-10-12)
+### Voteview claim texts (full descriptions restored 2026-10-13)
 
-`scripts/ingest-voteview-claims.ts` truncates the vote description to 77 characters + "..." (`buildClaimText`), so
-85,987 of the 113,319 live `voteview_v1` claims read `voted 52-42 on "TO INVOKE CLOTURE, THEREBY LIMITING DEBATE ON HR
-3385, NICARAGUAN ELECTION AS..."`. Since Q7 retired the 497 `congress_votes_v1` duplicates, these are the only public
-text for those votes. The one missing piece: re-derive every claim's text from the full Voteview description
-(`dtl_desc` / `vote_desc` / `vote_question` in `HSall_rollcalls.csv`), keeping the tally, Congress, roll call, date and
-the (corrected) result exactly as stored; record the old text in `metadata.corrections` as batch 1 did. One write batch
-of ~86k claims (its own yes); the search vector regenerates, embeddings go stale and need a re-embed decision.
+`scripts/restore-voteview-full-text.ts` put the full Voteview description back into the 85,987 `voteview_v1` claim
+texts the import had cut to 80 characters (old text in `metadata.corrections`, batch `voteview-full-text-2026-10`).
+
+| item | the one missing piece |
+|---|---|
+| two 1995 table fragments | Voteview's own description of Senate roll calls 2 and 3 of the 104th Congress begins with a stray row of its source table ("2 5 JANUARY 1995 2 52 39 3 37 49 2 S.2 BY GRASSLEY …", "3 6 JANUARY 1995 3 74 17 23 17 51 0 (SENATE TABLED WELLSTONE …"). Left as Voteview has them; hand-fix claims `cmq5l0vyt5iaasal8p8xumtjl` and `cmq5l0vyt5iabsal8bxzanrm2` by dropping the prefix (record it in `metadata.corrections`). |
+| stale embeddings | re-embed 86,063 stale claims, ~$0.18, needs OPENAI_API_KEY; verify scripts/backfill-embeddings.ts runs against the new DB first. (85,987 from the full-text restore + 76 batch-1 cloture corrections outside it; exact count 8,957,636 tokens with tiktoken. The nightly `/api/cron/embed-incremental` will not do it: it answers 503 while `ALLOW_EDITS` is off and looks back only 25 hours.) |
 
 ### Deferred by the owner (2026-10-12)
 

@@ -393,6 +393,13 @@ which gets its own yes).
         8 `congress_votes_v1` claims stay live (7 tallies differ — 4 of them VP tie-breaks — and 1 without a Voteview row).
         Audit via `app_ro`: exactly 497 claims changed, 497 edges, 497 revisions, 92 relations; all 497 point at a live
         twin; live claims 1,758,092 → 1,757,595; `ClaimStatusHistory` 1,822,644; a rerun plans 0. `/corrections` entry.
+  - [x] **Voteview full text written 2026-10-13 (owner yes, before Q8):** `scripts/restore-voteview-full-text.ts
+        --execute --all` restored the full Voteview description in the 85,987 `voteview_v1` claim texts the import had
+        cut to 80 characters (matched on Congress + chamber + roll number; whitespace runs collapsed; everything else in
+        the text unchanged; old text in `metadata.corrections`, batch `voteview-full-text-2026-10`). Audit via `app_ro`:
+        85,987 carry the batch, a rerun plans 0, all 113,319 texts keep the importer's shape, the 475 batch-1 results
+        still read failed, `ClaimStatusHistory` 1,822,644. The 2 texts still ending "..." are Voteview's own. Embeddings
+        not re-run: 86,063 stale (LATER §1, ~$0.18, needs `OPENAI_API_KEY`).
   - [ ] Next: Q8 — `metadata.legislativeVoteId` on the 8 live `congress_votes_v1` claims only (owner 2026-10-12), then Q13.
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
@@ -454,6 +461,7 @@ which gets its own yes).
 
 Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34); transition sourcing is merged and promoted
 (PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35), Q6 (12,285
-VOTE_ON + the law-page vote list, PR #36) and Q7 (497 duplicates retired, 92 ENACTED_AS, `feat/phase7-dedup`) are
-written and audited. Next → Q8 on the 8 live `congress_votes_v1` claims (its own yes), then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+VOTE_ON + the law-page vote list, PR #36) Q7 (497 duplicates retired, 92 ENACTED_AS, PR #37) and the Voteview
+full-text restore (85,987 texts, `feat/voteview-full-text`) are written and audited. Next → Q8 on the 8 live
+`congress_votes_v1` claims (its own yes), then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
 (`fix/bce-dates`) is unscheduled.
