@@ -383,7 +383,17 @@ which gets its own yes).
   - [x] Law claim pages list "Roll-call votes on this bill" (date, chamber, tally, result, link to the vote claim,
         "machine-verified" with its hover text); `ClaimDetail.isEnactedLaw` gates the one extra indexed query
         (`lib/law-votes.ts`); the badge is shared (`components/MachineVerifiedBadge.tsx`).
-  - [ ] Next: Q7 duplicates (exact counts before the write), Q8 `legislativeVoteId` keys, then Q13.
+  - [x] **Q7 written 2026-10-13 (owner yes):** `scripts/dedupe-congress-votes.ts --execute --all`. 497 `congress_votes_v1`
+        claims with exactly one `voteview_v1` twin (Voteview clerk roll number + date + tally + bill number) retired:
+        deleted, `metadata.duplicateOf`, `metadata.retired` (batch `p7-congress-dedup-2026-10`); `/claims/<retired>`
+        308-redirects to the twin (`ClaimDetail.duplicateOf`). Each twin gained the official senate.gov /
+        clerk.house.gov roll-call Source as a second FOR edge (497 edges + EdgeRevision 95, `ingestedBy`
+        `p7_congress_dedup`, autoApproved). Topic tags (1,515), locations (505) and PASSED_DURING (956) stay with the
+        retired claims; member votes stay on their LegislativeVotes. 92 `ENACTED_AS` tracker bill → law (119th).
+        8 `congress_votes_v1` claims stay live (7 tallies differ — 4 of them VP tie-breaks — and 1 without a Voteview row).
+        Audit via `app_ro`: exactly 497 claims changed, 497 edges, 497 revisions, 92 relations; all 497 point at a live
+        twin; live claims 1,758,092 → 1,757,595; `ClaimStatusHistory` 1,822,644; a rerun plans 0. `/corrections` entry.
+  - [ ] Next: Q8 — `metadata.legislativeVoteId` on the 8 live `congress_votes_v1` claims only (owner 2026-10-12), then Q13.
 
 - [x] **Transition sourcing (`claude_sourcing_v1`)** · branch `feat/transition-sourcing` (from `origin/main` `21ddb9c`) ·
       run 2026-10-08/09 · build green · tsc clean · 646 unit tests pass, 1 skipped · not pushed. Findings:
@@ -443,7 +453,7 @@ which gets its own yes).
 ## Next action
 
 Phases −1…6, 6b and `fix/auto-trajectories` are merged (PRs #22–#30, #34); transition sourcing is merged and promoted
-(PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35) and Q6
-(12,285 VOTE_ON vote → law links + the law-page vote list, `feat/phase7-vote-on`) are written and audited. Next →
-Q7 duplicates and Q8 `legislativeVoteId`, each write batch with its own yes, then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
+(PRs #31–#33). Phase 7: batch 1 (475 Senate cloture corrections, PR #35), Q6 (12,285
+VOTE_ON + the law-page vote list, PR #36) and Q7 (497 duplicates retired, 92 ENACTED_AS, `feat/phase7-dedup`) are
+written and audited. Next → Q8 on the 8 live `congress_votes_v1` claims (its own yes), then Q13. The owner's 6b follow-up answers (items 2–13 + badge) are queued after; Phase 6c
 (`fix/bce-dates`) is unscheduled.

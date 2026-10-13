@@ -81,6 +81,7 @@ function toMainInput(events: FEvent[]): { claim: ClaimDetail; todayIso: string }
     createdAt: "2020-01-01T00:00:00.000Z",
     trajectorySlug: null,
     isEnactedLaw: false,
+    duplicateOf: null,
     humanReviewed: false,
     epistemicStatus: null,
     ingestedBy: "test",

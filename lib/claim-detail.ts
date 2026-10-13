@@ -120,6 +120,9 @@ export type ClaimDetail = {
   /** A congress_v1 enacted-law claim (externalId "congress_law_…"): the page
    *  lists the roll-call votes linked to it (lib/law-votes.ts). */
   isEnactedLaw: boolean;
+  /** A retired duplicate (deleted, metadata.duplicateOf): the id of the claim
+   *  that replaced it, which the page 308-redirects to. Null otherwise. */
+  duplicateOf: string | null;
   humanReviewed: boolean;
   epistemicStatus: string | null;
   ingestedBy: string;
@@ -169,6 +172,7 @@ const CLAIM_DETAIL_SELECT = Prisma.validator<Prisma.ClaimSelect>()({
   claimEmergedPrecision: true,
   createdAt: true,
   externalId: true,
+  deleted: true,
   humanReviewed: true,
   epistemicStatus: true,
   ingestedBy: true,
@@ -294,7 +298,7 @@ function queryClaimDetail(id: string) {
   return prisma.claim.findUnique({ where: { id }, select: CLAIM_DETAIL_SELECT });
 }
 
-function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
+function serializeClaimDetail(claim: RawClaimDetail, duplicateOf: string | null): ClaimDetail {
   return {
     id: claim.id,
     text: claim.text,
@@ -306,6 +310,7 @@ function serializeClaimDetail(claim: RawClaimDetail): ClaimDetail {
     createdAt: iso(claim.createdAt),
     trajectorySlug: trajectorySlug(claim.externalId),
     isEnactedLaw: (claim.externalId ?? "").startsWith("congress_law_"),
+    duplicateOf,
     humanReviewed: claim.humanReviewed,
     epistemicStatus: claim.epistemicStatus,
     ingestedBy: claim.ingestedBy,
@@ -395,5 +400,14 @@ export const getClaimDetail = cache(async (id: string): Promise<ClaimDetail | nu
     }
   }
 
-  return serializeClaimDetail(claim);
+  // A retired duplicate points at its replacement (Phase 7 Q7). Only deleted
+  // claims pay for this read; metadata is not in the main select.
+  let duplicateOf: string | null = null;
+  if (claim.deleted) {
+    const row = await prisma.claim.findUnique({ where: { id }, select: { metadata: true } });
+    const d = (row?.metadata as Record<string, unknown> | null)?.duplicateOf;
+    if (typeof d === "string" && /^[a-z0-9]{20,40}$/.test(d) && d !== id) duplicateOf = d;
+  }
+
+  return serializeClaimDetail(claim, duplicateOf);
 });

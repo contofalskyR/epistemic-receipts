@@ -33,6 +33,24 @@ const ENTRIES: AuditEntry[] = [
   {
     date: "2026-10-13",
     kind: "CORRECTED",
+    source: "congress_votes_v1 → voteview_v1",
+    title: "497 duplicate roll-call claims retired in favour of their Voteview records",
+    description:
+      "Two datasets held the same congressional roll calls: congress_votes_v1 (505 passage and cloture votes on enacted bills since 2013) and voteview_v1 (every roll call since 1789). 497 congress_votes_v1 claims matched exactly one Voteview record on date, official roll-call number, tally and bill number, and are retired: hidden from default views, kept for audit, and each points to the record that replaced it, so its old address redirects there. 37 of them still called failed cloture votes \"passed\", an error already corrected on the Voteview side. Each surviving claim gains the retired record's official senate.gov or clerk.house.gov roll-call page as a second source.",
+    details: [
+      "Matched on Voteview's official (clerk) roll-call number, date, yea/nay tally and bill number; every match was one-to-one",
+      "8 congress_votes_v1 claims stay live: 7 whose official tally differs from Voteview's (4 of them ties broken by the Vice President) and 1 with no Voteview record",
+      "Left behind with the retired claims: their topic tags, locations and \"passed during\" relations, whose provenance is undocumented",
+      "Also linked: the 92 bills of the 119th Congress tracked as bills and recorded as enacted laws (bill → law)",
+    ],
+    recordsAffected: 497,
+    resolutionLinks: [
+      { label: "Deduplication script", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/dedupe-congress-votes.ts" },
+    ],
+  },
+  {
+    date: "2026-10-13",
+    kind: "CORRECTED",
     source: "voteview_v1 (Senate roll calls)",
     title: "475 Senate cloture votes were labelled \"passed\" — they failed",
     description:
