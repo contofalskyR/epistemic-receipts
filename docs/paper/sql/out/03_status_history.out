@@ -1,5 +1,5 @@
 -- query: docs/paper/sql/03_status_history.sql
--- run:   2026-10-24T15:44:22Z · git ec9acd0 · role app_ro (read-only session)
+-- run:   2026-10-24T16:01:11Z · git 0000cc8 · role app_ro (read-only session)
 
 == 3a. rows and claims with history (all rows / deleted = false)
  rows_all | claims_with_history_all | rows_corpus | claims_with_history_corpus | corpus_claims_without_history 
@@ -276,4 +276,68 @@
  congress_bills_tracker_v1       |         4 |              4
  openalex_journals_v1            |         2 |              2
  nasa_exoplanet_v1               |         1 |              1
+
+== 3p. placeholder-dated rows excluded (deleted = false)
+ placeholder_rows | on_1970_01_01 | after_run_time | of_which_first_rows | of_which_later_rows | claims_affected 
+------------------+---------------+----------------+---------------------+---------------------+-----------------
+             6754 |          6666 |             88 |                6717 |                  37 |            6753
+
+== 3q. trajectory layer with placeholder rows excluded (deleted = false) — T0 / T1 / T2 as in 3m
+ claims_ge2_rows | t0_any_axis_change | t1_independent_dated_source | t2_documented_change | t2_minus_t1 | t1_curated | t2_curated | curated_ge2_rows 
+-----------------+--------------------+-----------------------------+----------------------+-------------+------------+------------+------------------
+          240944 |             240911 |                       15777 |                34488 |       18711 |       5077 |       5077 |             5263
+
+== 3r. T1 / T2 claims by pipeline, placeholder rows excluded (deleted = false)
+            pipeline             | t1_claims | t2_claims 
+---------------------------------+-----------+-----------
+ crossref_retractions_v1         |         0 |     18271
+ openalex_v1                     |     10211 |     10211
+ seed:human-history-trajectories |      3275 |      3275
+ seed:medicine-trajectories      |      1466 |      1466
+ nz_repealed_acts_v1             |         0 |       440
+ drugsatfda_v1                   |       268 |       268
+ openfda_labels_v1               |       140 |       140
+ law-settler                     |       130 |       130
+ seed:climate-trajectories       |        63 |        63
+ ofac_sdn_v1                     |        63 |        63
+ seed:astronomy-trajectories     |        61 |        61
+ seed:nutrition-trajectories     |        54 |        54
+ seed-trajectories               |        11 |        11
+ courtlistener_scotus_v1         |        11 |        11
+ seed:historical-trajectories    |         9 |         9
+ seed-court-reversals            |         8 |         8
+ congress_bills_tracker_v1       |         4 |         4
+ openalex_journals_v1            |         2 |         2
+ nasa_exoplanet_v1               |         1 |         1
+
+== 3o. corpus claims with no ClaimStatusHistory row, by pipeline
+       ingestedBy        | claims_without_history | of_which_emerged_null 
+-------------------------+------------------------+-----------------------
+ TOTAL                   |                 177966 |                177771
+ nara_catalog_v1         |                  91788 |                 91788
+ chebi_v1                |                  36591 |                 36591
+ jacar_v1                |                  30767 |                 30767
+ rxnorm_v1               |                  14632 |                 14632
+ omim_v1                 |                   1512 |                  1512
+ ofac_sdn_v1             |                   1311 |                  1311
+ pubchem_v1              |                    355 |                   355
+ impact_craters_v1       |                    214 |                   214
+ uspto_v1                |                    182 |                     0
+ wikidata_chips_v1       |                    132 |                   132
+ periodic_table_v1       |                    119 |                   119
+ africanlii_v1           |                     70 |                    70
+ paclii_legislation_v1   |                     64 |                    64
+ taiwan_archives_v1      |                     64 |                    64
+ loc_collections_v1      |                     56 |                    56
+ uk_national_archives_v1 |                     34 |                    34
+ nist_webbook_v1         |                     20 |                    20
+ courtlistener_scotus_v1 |                     13 |                     0
+ europeana_wwi_v1        |                     11 |                    11
+ wikidata_elements_v1    |                     10 |                    10
+ solar_system_v1         |                      7 |                     7
+ openalex_v1             |                      6 |                     6
+ slovenia_legislation_v1 |                      5 |                     5
+ wikidata_nobel_v1       |                      1 |                     1
+ uae_legislation_v1      |                      1 |                     1
+ romania_cnsas_v1        |                      1 |                     1
 

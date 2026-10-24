@@ -1,18 +1,21 @@
 -- script: scripts/paper/corrections-counts.ts
--- run:    2026-10-24T15:42:39.137Z · git ec9acd0 · role app_ro
+-- run:    2026-10-24T16:01:03.888Z · git 0000cc8 · role app_ro
 
 corpus (Claim.deleted = false): 1757599
 
-== /corrections page entries (app/corrections/page.tsx)
+== /corrections page entries (app/corrections/page.tsx, working tree)
 date        kind        recordsAffected  % corpus  source
 2026-10-13  DIAGNOSTIC              814    0.046%  voteview_v1 (roll-call results)
+2026-10-13  CORRECTED             85987    4.892%  voteview_v1 (claim texts)
+2026-10-13  CORRECTED               921    0.052%  congress_stock_act_v1 (sources)
+2026-10-13  CORRECTED                39    0.002%  congress_votes_v1 (roll-call results)
 2026-10-13  CORRECTED               497    0.028%  congress_votes_v1 → voteview_v1
 2026-10-13  CORRECTED               475    0.027%  voteview_v1 (Senate roll calls)
 2026-06-08  CORRECTED              4897    0.279%  Claim.currentStatus / epistemicStatus
 2026-05-12  RETIRED                 182    0.010%  uspto_v1 (Pipeline 5)
 
-entries: 5 · sum of recordsAffected: 6865 (0.391% of corpus)
-by kind: DIAGNOSTIC 814 (0.046%) · CORRECTED 5869 (0.334%) · RETIRED 182 (0.010%)
+entries: 8 · sum of recordsAffected: 93812 (5.338% of corpus)
+by kind: DIAGNOSTIC 814 (0.046%) · CORRECTED 92816 (5.281%) · RETIRED 182 (0.010%)
 
 == data/vote-results-under-review.json (generated 2026-10-13)
 votes: 814 (0.046% of corpus)

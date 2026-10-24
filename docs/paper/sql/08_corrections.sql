@@ -43,3 +43,21 @@ FROM "Claim";
 SELECT "ingestedBy", coalesce("verificationStatus", '(null)') AS "verificationStatus", deleted, count(*) AS claims
 FROM "Claim" WHERE metadata ? 'deprecation_reason'
 GROUP BY 1, 2, 3 ORDER BY 4 DESC;
+
+\echo '== 8g. corpus claims touched, excluding claims whose only record is the restored-text batch'
+WITH b AS (
+  SELECT c.id, c.deleted, c."verificationStatus", c.metadata,
+         coalesce((SELECT array_agg(DISTINCT x->>'batch') FROM jsonb_array_elements(
+           CASE WHEN jsonb_typeof(c.metadata->'corrections') = 'array' THEN c.metadata->'corrections' ELSE '[]'::jsonb END) x), '{}') AS batches
+  FROM "Claim" c
+  WHERE c."verificationStatus" = 'DEPRECATED' OR c.deleted OR c.metadata ? 'corrections' OR c.metadata ? 'duplicateOf'
+)
+SELECT count(*) FILTER (WHERE NOT deleted) AS corpus_touched,
+       count(*) FILTER (WHERE NOT deleted AND batches = ARRAY['voteview-full-text-2026-10']
+                          AND "verificationStatus" IS DISTINCT FROM 'DEPRECATED' AND NOT metadata ? 'duplicateOf') AS only_restored_text,
+       count(*) FILTER (WHERE NOT deleted AND NOT (batches = ARRAY['voteview-full-text-2026-10']
+                          AND "verificationStatus" IS DISTINCT FROM 'DEPRECATED' AND NOT metadata ? 'duplicateOf')) AS corpus_touched_excl_restored_text,
+       round(100.0 * count(*) FILTER (WHERE NOT deleted AND NOT (batches = ARRAY['voteview-full-text-2026-10']
+                          AND "verificationStatus" IS DISTINCT FROM 'DEPRECATED' AND NOT metadata ? 'duplicateOf'))
+             / (SELECT count(*) FROM "Claim" WHERE NOT deleted), 3) AS pct_excl_restored_text
+FROM b;

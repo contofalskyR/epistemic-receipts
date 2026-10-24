@@ -1,29 +1,29 @@
 -- query: docs/paper/sql/02_epistemic_axis.sql
--- run:   2026-10-24T15:42:58Z · git ec9acd0 · role app_ro (read-only session)
+-- run:   2026-10-24T16:01:22Z · git 0000cc8 · role app_ro (read-only session)
 
 == 2a. epistemicAxis, corpus (deleted = false)
- epistemicAxis | claims |  pct   | in_factstatus_enum 
----------------+--------+--------+--------------------
- SETTLED       | 859696 | 48.913 | t
- RECORDED      | 831132 | 47.288 | t
- REVERSED      |  43148 |  2.455 | t
- (null)        |  23128 |  1.316 | 
- CONTESTED     |    453 |  0.026 | t
- ABANDONED     |     34 |  0.002 | t
- OPEN          |      4 |  0.000 | t
- UNRESOLVABLE  |      4 |  0.000 | t
+ epistemicAxis | claims |   pct   | in_factstatus_enum 
+---------------+--------+---------+--------------------
+ SETTLED       | 859696 | 48.9131 | t
+ RECORDED      | 831132 | 47.2879 | t
+ REVERSED      |  43148 |  2.4549 | t
+ (null)        |  23128 |  1.3159 | 
+ CONTESTED     |    453 |  0.0258 | t
+ ABANDONED     |     34 |  0.0019 | t
+ OPEN          |      4 |  0.0002 | t
+ UNRESOLVABLE  |      4 |  0.0002 | t
 
 == 2b. epistemicAxis, live default view (deleted = false, not DEPRECATED)
- epistemicAxis | claims |  pct   
----------------+--------+--------
- SETTLED       | 859514 | 48.908
- RECORDED      | 831132 | 47.293
- REVERSED      |  43148 |  2.455
- (null)        |  23128 |  1.316
- CONTESTED     |    453 |  0.026
- ABANDONED     |     34 |  0.002
- OPEN          |      4 |  0.000
- UNRESOLVABLE  |      4 |  0.000
+ epistemicAxis | claims |   pct   
+---------------+--------+---------
+ SETTLED       | 859514 | 48.9078
+ RECORDED      | 831132 | 47.2928
+ REVERSED      |  43148 |  2.4552
+ (null)        |  23128 |  1.3160
+ CONTESTED     |    453 |  0.0258
+ ABANDONED     |     34 |  0.0019
+ OPEN          |      4 |  0.0002
+ UNRESOLVABLE  |      4 |  0.0002
 
 == 2c. every distinct epistemicAxis value in the table, deleted rows included
  epistemicAxis | all_rows 

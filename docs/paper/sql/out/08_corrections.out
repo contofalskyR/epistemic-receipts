@@ -1,5 +1,5 @@
 -- query: docs/paper/sql/08_corrections.sql
--- run:   2026-10-24T15:47:16Z · git ec9acd0 · role app_ro (read-only session)
+-- run:   2026-10-24T16:03:38Z · git 0000cc8 · role app_ro (read-only session)
 
 == 8a. DEPRECATED, deleted, duplicateOf, deprecation_reason
  deprecated | deprecated_deleted_false | with_deprecation_reason | deleted_true | deleted_with_duplicateof | claims_with_metadata_corrections 
@@ -34,4 +34,9 @@
 ------------+--------------------+---------+--------
  nobel_v1   | VERIFIED           | f       |    662
  uspto_v1   | DEPRECATED         | f       |    182
+
+== 8g. corpus claims touched, excluding claims whose only record is the restored-text batch
+ corpus_touched | only_restored_text | corpus_touched_excl_restored_text | pct_excl_restored_text 
+----------------+--------------------+-----------------------------------+------------------------
+          87166 |              85588 |                              1578 |                  0.090
 

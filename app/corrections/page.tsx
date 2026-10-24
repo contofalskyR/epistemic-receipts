@@ -56,6 +56,58 @@ const ENTRIES: AuditEntry[] = [
   {
     date: "2026-10-13",
     kind: "CORRECTED",
+    source: "voteview_v1 (claim texts)",
+    title: "85,987 roll-call claims had their vote description cut short — full text restored",
+    description:
+      "The Voteview importer cut each roll call's description to 77 characters and an ellipsis, so most vote claims named only the start of the question voted on. Each claim was matched to Voteview's record by Congress, chamber and roll-call number, and the full description put back. Nothing else in the text changed, and no vote result changed. Each claim's metadata keeps the old text.",
+    details: [
+      "Matched on Voteview's HSall_rollcalls.csv: Congress + chamber + roll-call number, one record per claim",
+      "Whitespace runs in Voteview's descriptions collapsed to single spaces; the 2 texts that still end in \"...\" are Voteview's own",
+      "The semantic-search embeddings for these claims were computed from the shortened texts and have not been recomputed yet",
+    ],
+    recordsAffected: 85987,
+    resolutionLinks: [
+      { label: "Restoration script", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/restore-voteview-full-text.ts" },
+      { label: "Voteview roll-call data", href: "https://voteview.com/data" },
+    ],
+  },
+  {
+    date: "2026-10-13",
+    kind: "CORRECTED",
+    source: "congress_stock_act_v1 (sources)",
+    title: "921 STOCK Act trade sources relabelled: they come from Quiver Quantitative, not the official filings",
+    description:
+      "The congressional stock-trade claims were imported from Quiver Quantitative's congressional-trading data, but each one's source was marked as a primary record and linked to the member's congressional biography page. Each source is now marked derivative, credits Quiver Quantitative by name, and links to Quiver's page for that member (checked live), or to Quiver's congressional-trading page for the 8 members without a congressional biography id. The trades themselves are unchanged. Each claim's metadata keeps the old source values.",
+    details: [
+      "Source type primary → derivative; \", via Quiver Quantitative\" added to each source name",
+      "913 links point to the member's Quiver page (all 59 member pages loaded with a Quiver title); 8 point to Quiver's congressional-trading page",
+      "The set is a single 2026-06-08 snapshot and does not grow",
+    ],
+    recordsAffected: 921,
+    resolutionLinks: [
+      { label: "Relabelling script", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/relabel-stock-act-sources.ts" },
+    ],
+  },
+  {
+    date: "2026-10-13",
+    kind: "CORRECTED",
+    source: "congress_votes_v1 (roll-call results)",
+    title: "39 retired roll-call records still called failed votes \"passed\" or \"tied\" — corrected to match Voteview",
+    description:
+      "Among the 497 duplicate roll-call claims retired in favour of their Voteview records (entry below), 39 still carried the same wrong result the Senate cloture fix had already corrected on the Voteview side: 37 read \"passed\" and 2 \"tied\" where the motion failed for want of three-fifths. Each now carries the corrected result of the Voteview record that replaced it, so every pair of twins agrees. These claims stay retired; their old addresses redirect to the Voteview records.",
+    details: [
+      "37 read \"passed\" and 2 \"tied\"; all 39 now read failed, as their Voteview twins do",
+      "Threshold recorded as three-fifths, from the Voteview twin",
+      "Each retired claim's metadata keeps the correction",
+    ],
+    recordsAffected: 39,
+    resolutionLinks: [
+      { label: "Correction script", href: "https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/correct-congress-votes-lv-results.ts" },
+    ],
+  },
+  {
+    date: "2026-10-13",
+    kind: "CORRECTED",
     source: "congress_votes_v1 → voteview_v1",
     title: "497 duplicate roll-call claims retired in favour of their Voteview records",
     description:

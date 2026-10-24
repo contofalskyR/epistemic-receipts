@@ -1,0 +1,208 @@
+-- script: scripts/paper/verification-status.ts
+-- run:    2026-10-24T15:56:46.398Z · git 0000cc8 · role app_ro
+
+pipeline	writer_literals	db_values	human_reviewed	auto_approved	claims
+african_court_v1	VERIFIED	VERIFIED 300	0	300	300
+africanlii_v1	PROVISIONAL	VERIFIED 962	0	962	962
+argentina_legislation_v1	VERIFIED	VERIFIED 25824	0	25824	25824
+australia_legislation_v1	VERIFIED	VERIFIED 4740	0	4740	4740
+bangladesh_legislation_v1	VERIFIED	VERIFIED 1664	0	1664	1664
+belgium_legislation_v1	VERIFIED	VERIFIED 7870	0	7870	7870
+book-analysis:cmppvaz700000sal1cnyfutdx	PROVISIONAL	PROVISIONAL 16	0	0	16
+brazil_legislation_v1	VERIFIED	VERIFIED 12818	0	12818	12818
+brunei_legislation_v1	PROVISIONAL	VERIFIED 288	0	288	288
+bundestag_v1	VERIFIED	VERIFIED 6343	0	6343	6343
+canada_bills_v1	VERIFIED	VERIFIED 1067	0	1067	1067
+caribbean_v1	VERIFIED	VERIFIED 675	0	675	675
+central_america_v1	VERIFIED	VERIFIED 1017	0	1017	1017
+central_asia_v1	VERIFIED	VERIFIED 369	0	369	369
+chebi_v1	VERIFIED	VERIFIED 62000	0	62000	62000
+chile_legislation_v1	VERIFIED	VERIFIED 15889	0	15889	15889
+clinicaltrials_v1	VERIFIED	VERIFIED 10957	0	10957	10957
+colombia_legislation_v1	VERIFIED	VERIFIED 8159	0	8159	8159
+congress_bills_tracker_v1	PROVISIONAL	PROVISIONAL 17280	0	0	17280
+congress_stock_act_v1	VERIFIED	VERIFIED 921	0	921	921
+congress_v1	VERIFIED	VERIFIED 10360	0	0	10360
+congress_votes_v1	VERIFIED	VERIFIED 8	0	8	8
+cosmetic_faers_v1	VERIFIED	VERIFIED 810	0	810	810
+costa_rica_legislation_v1	VERIFIED	VERIFIED 8483	0	0	8483
+courtlistener_bia_v1	PROVISIONAL	PROVISIONAL 240	0	0	240
+courtlistener_circuits_v1	PROVISIONAL	PROVISIONAL 1232	0	0	1232
+courtlistener_disclosures_v1	PROVISIONAL	PROVISIONAL 218	0	0	218
+courtlistener_scotus_v1	none	VERIFIED 400, (null) 73	73	473	473
+courtlistener_state_supreme_v1	PROVISIONAL	PROVISIONAL 580	0	0	580
+courtlistener_tax_v1	PROVISIONAL	PROVISIONAL 259	0	0	259
+croatia_legislation_v1	VERIFIED	VERIFIED 33	0	33	33
+crossref_retractions_v1	VERIFIED	VERIFIED 26624	0	26624	26624
+cyprus_legislation_v1	VERIFIED	VERIFIED 12682	0	12682	12682
+czech_abs_v1	VERIFIED	VERIFIED 104	0	104	104
+czech_legislation_v1	VERIFIED	VERIFIED 24173	0	0	24173
+denmark_legislation_v1	VERIFIED	VERIFIED 4550	0	4550	4550
+doj_fara_v1	VERIFIED	VERIFIED 811	0	0	811
+drugsatfda_v1	VERIFIED	VERIFIED 46255	0	46255	46255
+echr_judgments_v1	none	VERIFIED 9984	0	9984	9984
+echr_v1	VERIFIED	VERIFIED 312	0	312	312
+eec_council_v1	VERIFIED	VERIFIED 8933	0	8933	8933
+estonia_legislation_v1	VERIFIED	VERIFIED 5870	0	5870	5870
+eswatini_legislation_v1	VERIFIED	VERIFIED 326	0	326	326
+eu_legislation_v1	VERIFIED	VERIFIED 2122	0	2122	2122
+eu_parliament_v1	VERIFIED	VERIFIED 4331	0	4331	4331
+europeana_wwi_v1	VERIFIED	VERIFIED 10000	0	10000	10000
+event:exoplanet_retractions_v1	none	(null) 75	0	75	75
+faers_normalized_drugs_v1	PROVISIONAL	VERIFIED 999	0	999	999
+fda_aesthetic_devices_v1	VERIFIED	VERIFIED 372	0	372	372
+fec_finance_pac_v1	VERIFIED	VERIFIED 700	0	700	700
+fec_finance_v1	VERIFIED	VERIFIED 3500	0	3500	3500
+finland_legislation_v1	VERIFIED	VERIFIED 1683	0	1683	1683
+france_legislation_v1	VERIFIED	VERIFIED 3046	0	3046	3046
+fred_v1	VERIFIED	VERIFIED 4349	0	4349	4349
+fr_rules_v1	VERIFIED	VERIFIED 1920	0	1920	1920
+frus_v1	VERIFIED	VERIFIED 551	0	551	551
+genbank_v1	none	VERIFIED 99	0	99	99
+georgia_legislation_v1	PROVISIONAL	VERIFIED 301	0	301	301
+ghana_legislation_v1	VERIFIED	VERIFIED 413	0	413	413
+hungary_legislation_v1	VERIFIED	VERIFIED 69441	0	0	69441
+iau_constellations_v1	none	VERIFIED 88	0	88	88
+iau_v1	none	VERIFIED 5	0	5	5
+icc_cases_v1	PROVISIONAL	PROVISIONAL 35	0	35	35
+icc_judgments_v1	VERIFIED	VERIFIED 74	0	74	74
+icd11_v1	VERIFIED	VERIFIED 1374	0	1374	1374
+iceland_legislation_v1	VERIFIED	VERIFIED 1069	0	1069	1069
+icj_judgments_v1	VERIFIED	VERIFIED 800	0	800	800
+icsid_v1	VERIFIED	VERIFIED 500	0	500	500
+impact_craters_v1	VERIFIED	VERIFIED 214	0	214	214
+india_legislation_v1	VERIFIED	VERIFIED 3540	0	3540	3540
+israel_knesset_v1	VERIFIED	VERIFIED 2009	0	2009	2009
+italy_legislation_v1	VERIFIED	VERIFIED 16934	0	16934	16934
+jacar_v1	VERIFIED	VERIFIED 44600	0	44600	44600
+jamaica_legislation_v1	PROVISIONAL	VERIFIED 528	0	528	528
+japan_legislation_v1	VERIFIED	VERIFIED 2080	0	2080	2080
+kenya_legislation_v1	VERIFIED	VERIFIED 2984	0	2984	2984
+korea_legislation_v1	none	VERIFIED 2114	0	2114	2114
+latvia_legislation_v1	VERIFIED	VERIFIED 567	0	0	567
+law-settler	none	(null) 220	0	220	220
+lesotho_legislation_v1	VERIFIED	VERIFIED 90	0	90	90
+loc_collections_v1	VERIFIED	VERIFIED 3561	0	3561	3561
+luxembourg_legislation_v1	VERIFIED	VERIFIED 10006	0	0	10006
+malawi_legislation_v1	VERIFIED	VERIFIED 335	0	335	335
+malaysia_legislation_v1	VERIFIED	VERIFIED 883	0	883	883
+malta_legislation_v1	VERIFIED	VERIFIED 565	0	565	565
+manual	none	VERIFIED 22, (null) 1	22	0	23
+mauritius_legislation_v1	VERIFIED	VERIFIED 442	0	442	442
+mesh_v1	VERIFIED	VERIFIED 10000	0	0	10000
+mexico_legislation_v1	VERIFIED	VERIFIED 309	0	309	309
+miller_center_v1	VERIFIED	VERIFIED 1059	0	1059	1059
+namibia_legislation_v1	VERIFIED	VERIFIED 336	0	336	336
+nara_catalog_v1	VERIFIED	VERIFIED 308051	0	308051	308051
+nasa_exoplanet_v1	none	VERIFIED 6277	0	6277	6277
+nationalrat_v1	VERIFIED	VERIFIED 3868	0	3868	3868
+nato_official_texts_v1	VERIFIED	VERIFIED 459	0	459	459
+nih_reporter_v1	none	VERIFIED 11285	0	11285	11285
+nist_constants_v1	VERIFIED	VERIFIED 355	0	355	355
+nist_webbook_v1	VERIFIED	VERIFIED 20	0	20	20
+nobel_v1	VERIFIED	VERIFIED 1688	662	1688	1688
+norway_legislation_v1	VERIFIED	VERIFIED 2612	0	2612	2612
+nuclear_tests_v1	VERIFIED	VERIFIED 202	0	202	202
+nz_bills_v1	VERIFIED	VERIFIED 1879	0	1879	1879
+nz_legislation_v1	VERIFIED	VERIFIED 1041	0	1041	1041
+nz_local_acts_v1	VERIFIED	VERIFIED 611	0	611	611
+nz_repealed_acts_v1	VERIFIED	VERIFIED 4372	0	4372	4372
+ofac_sdn_v1	VERIFIED	VERIFIED 19034	0	19034	19034
+oireachtas_v1	VERIFIED	VERIFIED 4040	0	4040	4040
+omim_v1	VERIFIED	VERIFIED 1512	0	1512	1512
+openalex_journals_v1	none	(null) 25687	0	25687	25687
+openalex_v1	none	PROVISIONAL 200826, (null) 106630, DISPUTED 11319	0	318775	318775
+openfda_labels_v1	VERIFIED	VERIFIED 85068	0	85068	85068
+openfda_v1	none	VERIFIED 233	0	0	233
+openfec_ie_v1	VERIFIED	VERIFIED 600	0	0	600
+openfec_v1	VERIFIED	VERIFIED 600	0	0	600
+paclii_legislation_v1	PROVISIONAL	VERIFIED 1583	0	1583	1583
+pakistan_code_v1	HARD_FACT	HARD_FACT 943	0	943	943
+parlament_at_v1	VERIFIED	VERIFIED 3004	0	3004	3004
+pdg_particles_v1	VERIFIED	VERIFIED 226	0	226	226
+periodic_table_v1	VERIFIED	VERIFIED 119	0	119	119
+peru_legislation_v1	PROVISIONAL	VERIFIED 5202	0	5202	5202
+philippines_legislation_v1	VERIFIED	VERIFIED 11703	0	11703	11703
+poland_legislation_v1	VERIFIED	VERIFIED 6461	0	6461	6461
+portugal_legislation_v1	VERIFIED	VERIFIED 1292	0	1292	1292
+pubchem_v1	none	VERIFIED 355	0	355	355
+retraction_watch_v1	none	VERIFIED 55	55	55	55
+riksdag_v1	VERIFIED	VERIFIED 9989	0	9989	9989
+romania_cnsas_v1	VERIFIED	VERIFIED 3927	0	3927	3927
+romania_legislation_v1	VERIFIED	VERIFIED 13878	0	0	13878
+russia_legislation_v1	VERIFIED	VERIFIED 12015	0	12015	12015
+rwanda_legislation_v1	VERIFIED	VERIFIED 438	0	438	438
+rxnorm_v1	VERIFIED	VERIFIED 14632	0	14632	14632
+scotland_legislation_v1	VERIFIED	VERIFIED 408	0	408	408
+sec_edgar_v1	VERIFIED	VERIFIED 379	0	379	379
+seed:astronomy-trajectories	none	(null) 62	0	0	62
+seed:climate-trajectories	none	(null) 68	0	0	68
+seed-court-reversals	none	(null) 8	8	0	8
+seed:historical-trajectories	none	(null) 10	0	10	10
+seed:human-history-trajectories	none	(null) 3479	1	3479	3479
+seed:medicine-trajectories	none	(null) 1782	1	1782	1782
+seed:nutrition-trajectories	none	(null) 57	0	0	57
+seed-trajectories	none	(null) 11	11	0	11
+sierra_leone_legislation_v1	VERIFIED	VERIFIED 83	0	83	83
+singapore_legislation_v1	VERIFIED	VERIFIED 508	0	508	508
+sipri_milex_v1	VERIFIED	VERIFIED 8435	0	8435	8435
+slovakia_legislation_v1	VERIFIED	VERIFIED 4050	0	0	4050
+slovenia_legislation_v1	VERIFIED	VERIFIED 10	0	0	10
+solar_system_v1	none	VERIFIED 28	0	28	28
+south_africa_legislation_v1	VERIFIED	VERIFIED 578	0	578	578
+space_missions_v1	VERIFIED	VERIFIED 7318	0	7318	7318
+spain_legislation_v1	VERIFIED	VERIFIED 2045	0	2045	2045
+srilanka_legislation_v1	PROVISIONAL	VERIFIED 1704	0	1704	1704
+stasi_v1	VERIFIED	VERIFIED 2	0	2	2
+switzerland_legislation_v1	VERIFIED	VERIFIED 2413	0	2413	2413
+taiwan_archives_v1	VERIFIED	VERIFIED 3935	0	3935	3935
+taiwan_legislation_v1	VERIFIED	VERIFIED 1016	0	1016	1016
+tanzania_legislation_v1	VERIFIED	VERIFIED 434	0	434	434
+thailand_legislation_v1	VERIFIED	VERIFIED 4938	0	4938	4938
+tt_legislation_v1	PROVISIONAL	VERIFIED 368	0	368	368
+tweedekamer_v1	VERIFIED	VERIFIED 1530	0	1530	1530
+uae_legislation_v1	PROVISIONAL	VERIFIED 177	0	177	177
+ucdp_v1	VERIFIED	VERIFIED 3432	0	3432	3432
+uganda_legislation_v1	VERIFIED	VERIFIED 576	0	576	576
+uk_legislation_v1	VERIFIED	VERIFIED 11777	0	11777	11777
+uk_national_archives_v1	PROVISIONAL	VERIFIED 5000	0	5000	5000
+un_ga_resolutions_v1	VERIFIED	VERIFIED 501	0	501	501
+un_ga_v1	VERIFIED	VERIFIED 97	0	97	97
+un_sc_resolutions_v1	PROVISIONAL	VERIFIED 2798	0	2798	2798
+un_treaties_v1	VERIFIED	VERIFIED 419	0	419	419
+uruguay_legislation_v1	PROVISIONAL	VERIFIED 4297	0	4297	4297
+usgs_eq_v1	VERIFIED	VERIFIED 4696	0	4696	4696
+uspto_v1	none	DEPRECATED 182	0	182	182
+vdem_v1	VERIFIED	VERIFIED 19777	0	19777	19777
+volcanic_eruptions_v1	VERIFIED	VERIFIED 745	0	745	745
+voteview_v1	VERIFIED	VERIFIED 113319	0	113319	113319
+wales_senedd_v1	VERIFIED	VERIFIED 100	0	100	100
+western_balkans_v1	VERIFIED	VERIFIED 4062	0	4062	4062
+who_essential_medicines_v1	VERIFIED	VERIFIED 147	0	147	147
+who_gho_v1	VERIFIED	VERIFIED 33714	0	33714	33714
+wikidata_chips_v1	VERIFIED	VERIFIED 182	0	182	182
+wikidata_elements_v1	VERIFIED	VERIFIED 118	0	118	118
+wikidata_nobel_v1	VERIFIED	VERIFIED 1023	0	1023	1023
+wikidata_space_missions_v1	VERIFIED	VERIFIED 500	0	500	500
+wipo_lex_v1	VERIFIED	VERIFIED 9641	0	9641	9641
+worldbank_v1	VERIFIED	VERIFIED 54567	0	54567	54567
+wto_disputes_v1	VERIFIED	VERIFIED 645	0	645	645
+zambia_legislation_v1	VERIFIED	VERIFIED 1119	0	1119	1119
+zimbabwe_legislation_v1	VERIFIED	VERIFIED 513	0	513	513
+
+== summary: writer literal vs DB value
+writer hard-codes VERIFIED	pipelines 139	claims 1331154
+writer sets no literal (DB: PROVISIONAL/(null)/DISPUTED)	pipelines 1	claims 318775
+writer sets no literal (DB: (null))	pipelines 11	claims 31459
+writer sets no literal (DB: VERIFIED)	pipelines 11	claims 30523
+mixed or rewritten (writer PROVISIONAL; DB VERIFIED)	pipelines 13	claims 24207
+writer hard-codes PROVISIONAL	pipelines 8	claims 19860
+writer hard-codes HARD_FACT	pipelines 1	claims 943
+writer sets no literal (DB: VERIFIED/(null))	pipelines 2	claims 496
+writer sets no literal (DB: DEPRECATED)	pipelines 1	claims 182
+
+== post-ingest rewriters
+scripts/_audit-fixes/backfill-verification-status.ts	present
+scripts/tag-retracted-claims.ts	present
+scripts/fix-nobel-deprecated.ts	present
+scripts/retired/ingest-uspto-patents.ts	present

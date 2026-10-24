@@ -6,6 +6,7 @@
  * corpus (Claim.deleted = false, read through app_ro).
  *
  *   npx tsx scripts/paper/corrections-counts.ts > docs/paper/sql/out/corrections-counts.out
+ *   npx tsx scripts/paper/corrections-counts.ts --ref main   # the page as committed on a git ref
  *
  * The page's recordsAffected values are literals (one is reviewList.votes.length),
  * so they are read from the source text, not executed. Read-only.
@@ -19,8 +20,12 @@ loadEnv({ path: ".env.local", quiet: true });
 
 type Entry = { date: string; kind: string; source: string; recordsAffected: number | null };
 
+const refAt = process.argv.indexOf("--ref");
+const REF = refAt >= 0 ? process.argv[refAt + 1] : null;
+const PAGE = "app/corrections/page.tsx";
+
 function pageEntries(reviewTotal: number): Entry[] {
-  const src = fs.readFileSync("app/corrections/page.tsx", "utf8");
+  const src = REF ? execSync(`git show ${REF}:${PAGE}`).toString() : fs.readFileSync(PAGE, "utf8");
   const block = src.slice(src.indexOf("const ENTRIES"), src.indexOf("const KIND_STYLE"));
   // Each entry opens with `date: "YYYY-MM-DD"`; split on that and read the fields it carries.
   return block
@@ -64,7 +69,7 @@ async function main() {
   console.log(`-- script: scripts/paper/corrections-counts.ts`);
   console.log(`-- run:    ${new Date().toISOString()} · git ${execSync("git rev-parse --short HEAD").toString().trim()} · role app_ro`);
   console.log(`\ncorpus (Claim.deleted = false): ${corpus}`);
-  console.log(`\n== /corrections page entries (app/corrections/page.tsx)`);
+  console.log(`\n== /corrections page entries (${PAGE}${REF ? ` at ${REF}` : ", working tree"})`);
   console.log(`date        kind        recordsAffected  % corpus  source`);
   for (const e of entries)
     console.log(`${e.date}  ${e.kind.padEnd(10)}  ${String(e.recordsAffected ?? "—").padStart(15)}  ${(e.recordsAffected === null ? "—" : pct(e.recordsAffected)).padStart(8)}  ${e.source}`);

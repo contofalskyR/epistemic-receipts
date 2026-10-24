@@ -298,3 +298,91 @@ SELECT "ingestedBy", count(DISTINCT "claimId") AS t1_claims, count(*) AS t1_tran
 FROM h
 WHERE NOT deleted AND rn > 1 AND "toAxis" IS DISTINCT FROM prev_to AND sourced AND NOT sentinel AND "occurredAt" > prev_at
 GROUP BY 1 ORDER BY 2 DESC;
+
+-- ── Placeholder-date exclusion (owner decision 2026-10-24) ─────────────────────
+-- Placeholder = occurredAt on 1970-01-01, or after the run time (covers the
+-- 2999-01-01 and other year ≥ 2100 rows). Placeholder rows are dropped BEFORE
+-- ordering, so a transition is compared with the previous non-placeholder row.
+-- These are the counts the paper uses for the trajectory layer.
+
+\echo '== 3p. placeholder-dated rows excluded (deleted = false)'
+WITH h AS (
+  SELECT h.*, c.deleted, row_number() OVER w AS rn
+  FROM "ClaimStatusHistory" h JOIN "Claim" c ON c.id = h."claimId"
+  WINDOW w AS (PARTITION BY h."claimId" ORDER BY h.seq ASC NULLS LAST, h."occurredAt", h."createdAt")
+)
+SELECT count(*) FILTER (WHERE "occurredAt"::date = DATE '1970-01-01' OR "occurredAt" > now())             AS placeholder_rows,
+       count(*) FILTER (WHERE "occurredAt"::date = DATE '1970-01-01')                                     AS on_1970_01_01,
+       count(*) FILTER (WHERE "occurredAt" > now())                                                       AS after_run_time,
+       count(*) FILTER (WHERE rn = 1 AND ("occurredAt"::date = DATE '1970-01-01' OR "occurredAt" > now())) AS of_which_first_rows,
+       count(*) FILTER (WHERE rn > 1 AND ("occurredAt"::date = DATE '1970-01-01' OR "occurredAt" > now())) AS of_which_later_rows,
+       count(DISTINCT "claimId") FILTER (WHERE "occurredAt"::date = DATE '1970-01-01' OR "occurredAt" > now()) AS claims_affected
+FROM h WHERE NOT deleted;
+
+\echo '== 3q. trajectory layer with placeholder rows excluded (deleted = false) — T0 / T1 / T2 as in 3m'
+WITH h0 AS (
+  SELECT h.*, c."ingestedBy", c."externalId", c."verificationStatus"
+  FROM "ClaimStatusHistory" h JOIN "Claim" c ON c.id = h."claimId"
+  WHERE NOT c.deleted AND NOT (h."occurredAt"::date = DATE '1970-01-01' OR h."occurredAt" > now())
+), h AS (
+  SELECT h0."claimId", h0."toAxis", h0."occurredAt", h0."ingestedBy", h0."externalId", h0."verificationStatus",
+         row_number() OVER w AS rn, lag(h0."toAxis") OVER w AS prev_to, lag(h0."occurredAt") OVER w AS prev_at,
+         (s.id IS NOT NULL AND NOT s.deleted) AS sourced
+  FROM h0 LEFT JOIN "Source" s ON s.id = h0."sourceId"
+  WINDOW w AS (PARTITION BY h0."claimId" ORDER BY h0.seq ASC NULLS LAST, h0."occurredAt", h0."createdAt")
+), urlclaims AS (
+  SELECT DISTINCT e."claimId" FROM "Edge" e JOIN "Source" s ON s.id = e."sourceId"
+  WHERE NOT e.deleted AND NOT s.deleted AND s.url ~* '^https?://[a-z0-9.-]+\.[a-z]{2,}'
+), per AS (
+  SELECT h."claimId", count(*) AS n_rows,
+         bool_or(rn > 1 AND "toAxis" IS DISTINCT FROM prev_to) AS t0,
+         bool_or(rn > 1 AND "toAxis" IS DISTINCT FROM prev_to AND sourced AND "occurredAt" > prev_at) AS t1,
+         bool_or(rn > 1 AND "toAxis" IS DISTINCT FROM prev_to AND NOT sourced AND "occurredAt" > prev_at
+                 AND "ingestedBy" IN ('crossref_retractions_v1','nz_repealed_acts_v1','retraction_watch_v1')) AS w2,
+         bool_or(coalesce("externalId" LIKE 'trajectory:%', false) AND coalesce("verificationStatus" <> 'DEPRECATED', true)) AS curated
+  FROM h GROUP BY h."claimId"
+)
+SELECT count(*) FILTER (WHERE n_rows >= 2)                          AS claims_ge2_rows,
+       count(*) FILTER (WHERE t0)                                   AS t0_any_axis_change,
+       count(*) FILTER (WHERE t1)                                   AS t1_independent_dated_source,
+       count(*) FILTER (WHERE t1 OR (w2 AND u."claimId" IS NOT NULL)) AS t2_documented_change,
+       count(*) FILTER (WHERE (w2 AND u."claimId" IS NOT NULL) AND NOT t1) AS t2_minus_t1,
+       count(*) FILTER (WHERE t1 AND curated)                       AS t1_curated,
+       count(*) FILTER (WHERE (t1 OR (w2 AND u."claimId" IS NOT NULL)) AND curated) AS t2_curated,
+       count(*) FILTER (WHERE curated AND n_rows >= 2)              AS curated_ge2_rows
+FROM per LEFT JOIN urlclaims u ON u."claimId" = per."claimId";
+
+\echo '== 3r. T1 / T2 claims by pipeline, placeholder rows excluded (deleted = false)'
+WITH h0 AS (
+  SELECT h.*, c."ingestedBy"
+  FROM "ClaimStatusHistory" h JOIN "Claim" c ON c.id = h."claimId"
+  WHERE NOT c.deleted AND NOT (h."occurredAt"::date = DATE '1970-01-01' OR h."occurredAt" > now())
+), h AS (
+  SELECT h0."claimId", h0."toAxis", h0."occurredAt", h0."ingestedBy",
+         row_number() OVER w AS rn, lag(h0."toAxis") OVER w AS prev_to, lag(h0."occurredAt") OVER w AS prev_at,
+         (s.id IS NOT NULL AND NOT s.deleted) AS sourced
+  FROM h0 LEFT JOIN "Source" s ON s.id = h0."sourceId"
+  WINDOW w AS (PARTITION BY h0."claimId" ORDER BY h0.seq ASC NULLS LAST, h0."occurredAt", h0."createdAt")
+), urlclaims AS (
+  SELECT DISTINCT e."claimId" FROM "Edge" e JOIN "Source" s ON s.id = e."sourceId"
+  WHERE NOT e.deleted AND NOT s.deleted AND s.url ~* '^https?://[a-z0-9.-]+\.[a-z]{2,}'
+), per AS (
+  SELECT h."claimId", min("ingestedBy") AS pipeline,
+         bool_or(rn > 1 AND "toAxis" IS DISTINCT FROM prev_to AND sourced AND "occurredAt" > prev_at) AS t1,
+         bool_or(rn > 1 AND "toAxis" IS DISTINCT FROM prev_to AND NOT sourced AND "occurredAt" > prev_at
+                 AND "ingestedBy" IN ('crossref_retractions_v1','nz_repealed_acts_v1','retraction_watch_v1')) AS w2
+  FROM h GROUP BY h."claimId"
+)
+SELECT pipeline, count(*) FILTER (WHERE t1) AS t1_claims,
+       count(*) FILTER (WHERE t1 OR (w2 AND u."claimId" IS NOT NULL)) AS t2_claims
+FROM per LEFT JOIN urlclaims u ON u."claimId" = per."claimId"
+GROUP BY 1 HAVING count(*) FILTER (WHERE t1 OR (w2 AND u."claimId" IS NOT NULL)) > 0
+ORDER BY 3 DESC;
+
+\echo '== 3o. corpus claims with no ClaimStatusHistory row, by pipeline'
+-- scripts/ingest-auto-trajectories.ts writes a first row only when claimEmergedAt is non-null.
+SELECT coalesce(c."ingestedBy", 'TOTAL') AS "ingestedBy", count(*) AS claims_without_history,
+       count(*) FILTER (WHERE c."claimEmergedAt" IS NULL) AS of_which_emerged_null
+FROM "Claim" c
+WHERE NOT c.deleted AND NOT EXISTS (SELECT 1 FROM "ClaimStatusHistory" h WHERE h."claimId" = c.id)
+GROUP BY ROLLUP (c."ingestedBy") ORDER BY (c."ingestedBy" IS NULL) DESC, 2 DESC;

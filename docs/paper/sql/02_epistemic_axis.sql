@@ -6,7 +6,7 @@
 \echo '== 2a. epistemicAxis, corpus (deleted = false)'
 SELECT coalesce("epistemicAxis", '(null)') AS "epistemicAxis",
        count(*) AS claims,
-       round(100.0 * count(*) / sum(count(*)) OVER (), 3) AS pct,
+       round(100.0 * count(*) / sum(count(*)) OVER (), 4) AS pct,
        ("epistemicAxis" IN ('RECORDED','SETTLED','CONTESTED','OPEN','UNRESOLVABLE','REVERSED','ABANDONED')) AS in_factstatus_enum
 FROM "Claim" WHERE NOT deleted
 GROUP BY "epistemicAxis" ORDER BY 2 DESC;
@@ -14,7 +14,7 @@ GROUP BY "epistemicAxis" ORDER BY 2 DESC;
 \echo '== 2b. epistemicAxis, live default view (deleted = false, not DEPRECATED)'
 SELECT coalesce("epistemicAxis", '(null)') AS "epistemicAxis",
        count(*) AS claims,
-       round(100.0 * count(*) / sum(count(*)) OVER (), 3) AS pct
+       round(100.0 * count(*) / sum(count(*)) OVER (), 4) AS pct
 FROM "Claim" WHERE NOT deleted AND "verificationStatus" IS DISTINCT FROM 'DEPRECATED'
 GROUP BY "epistemicAxis" ORDER BY 2 DESC;
 

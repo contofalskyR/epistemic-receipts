@@ -6,8 +6,23 @@ production database through the read-only role `app_ro` (each session forced to
 The `git` SHA printed in each `.out` header is the branch base (`ec9acd0`); the queries are the versions committed
 on `paper/scientific-data`.
 
-Rerun: `scripts/paper/run-sql.sh` (all SQL), `npx tsx scripts/paper/corrections-counts.ts`,
-`npx tsx scripts/paper/pipeline-scripts.ts --md docs/paper/sources.md`.
+Rerun: `scripts/paper/run-sql.sh` (all SQL), `npx tsx scripts/paper/corrections-counts.ts [--ref main]`,
+`npx tsx scripts/paper/pipeline-scripts.ts --md docs/paper/sources.md`, then
+`npx tsx scripts/paper/verification-status.ts`, and `scripts/paper/seed-commit-trailers.sh`.
+
+## Headline figures (owner-approved wording, 2026-10-24)
+
+- **Record layer:** 1,757,599 claims (`deleted = false`), each with an `epistemicAxis` label (98.684 % non-null)
+  that for 1,579,633 of them is the status assigned at ingest.
+- **Trajectory layer, always reported as a pair:** **34,488 claims with a documented status change, 15,777 of which
+  carry an independent dated source for the change** (§3.4; placeholder-dated rows excluded). Never quote the first
+  number without the second.
+- **Curated subset:** 5,697 LLM-drafted, source-linked curated trajectories, 5,263 with at least one transition
+  after placeholder exclusion; 21 of the 5,697 have `humanReviewed` set (§4).
+- **Same-day relabels are not transitions.** The 205,182 bulk RECORDED→SETTLED rows written by
+  `scripts/bulk-promote-corpus.ts` (wave 1) carry the same timestamp as the row they follow. They are record-layer
+  schema events, a second label on the ingest date, and are excluded from every transition and trajectory count
+  that the paper quotes (§3.3).
 
 References like **[03 §3c]** mean `docs/paper/sql/03_status_history.sql`, section `3c`.
 
@@ -26,8 +41,14 @@ References like **[03 §3c]** mean `docs/paper/sql/03_status_history.sql`, secti
 | **Transition** | any history row after the first | — |
 | **Axis change** | a transition whose `toAxis` differs from the previous row's `toAxis` | — |
 | **Row-sourced** | `ClaimStatusHistory.sourceId` points to a non-deleted `Source` | — |
-| **Sentinel date** | `occurredAt` on 1970-01-01, in year ≥ 2100, or after the run time | — |
-| **Curated trajectory** | live claim with `externalId LIKE 'trajectory:%'` | `lib/trajectory-list.ts` `CURATED_WHERE` |
+| **Placeholder date** | `occurredAt` on 1970-01-01 or after the run time (this covers every year-≥ 2100 row). Excluded from all trajectory counts before rows are ordered (§3.4) | — |
+| **Same-day relabel** | a wave-1 bulk RECORDED→SETTLED row with the same timestamp as the row before it: a record-layer schema event, not a transition | `scripts/bulk-promote-corpus.ts` `WAVE1_RULES` |
+| **T1** | claim with ≥1 axis change that is row-sourced and dated strictly after the previous row | §3.4 |
+| **T2** | T1 plus claims with a retraction/repeal change documented by the claim's own Source link | §3.4 |
+| **Curated trajectory** (paper wording: *LLM-drafted, source-linked curated trajectory*) | live claim with `externalId LIKE 'trajectory:%'`. Never "hand-curated" or "human-curated" | `lib/trajectory-list.ts` `CURATED_WHERE` |
+
+§3.2–3.3 use an older "sentinel" filter (1970-01-01, year ≥ 2100, after the run time) that drops the flagged rows
+without reordering; it is kept to describe the raw table. The paper's trajectory figures are those in §3.4.
 
 ## 1. Claims [01]
 
@@ -53,28 +74,54 @@ VERIFIED | PROVISIONAL | DISPUTED | DEPRECATED). Values present [01 §1b]:
 `HARD_FACT` is not in the schema comment. The 519 deleted rows are 497 `congress_votes_v1` duplicates (all carry
 `metadata.duplicateOf`) and 22 `seed:human-history-trajectories` claims (1 with `duplicateOf`) [01 §1c].
 
+### 1.1 What sets each `verificationStatus` value [10; `scripts/paper/verification-status.ts`]
+
+**No value is a human judgement.** Every value is written by a script, either at insert time or by a later bulk
+rewrite [10 §10a–10c].
+
+| Value | Claims | Set by (code) |
+|---|---:|---|
+| VERIFIED | 1,386,306 | **A pipeline rule, not a human.** 139 pipelines (1,331,154 claims) hard-code `verificationStatus: 'VERIFIED'` in their ingester's insert (e.g. `scripts/ingest-retractions.ts:299`, `scripts/ingest-voteview-claims.ts:104`, `scripts/ingest-nara-catalog.ts:594`). 11 more (30,523 claims) set no literal yet hold VERIFIED. 13 ingesters (24,207 claims, e.g. `scripts/ingest-un-sc-resolutions.ts:358`, `ingest-peru.ts`, `ingest-paclii.ts`) write `'PROVISIONAL'`, but the DB holds VERIFIED; no committed script that made the change was found. `scripts/fix-nobel-deprecated.ts` set 662 `nobel_v1` claims from DEPRECATED back to VERIFIED |
+| PROVISIONAL | 220,686 | Ingesters that hard-code it: `congress_bills_tracker_v1` (17,280), the CourtListener circuit, state-supreme, tax, BIA and disclosures ingesters, `icc_cases_v1`, `book-analysis`. Plus `scripts/_audit-fixes/backfill-verification-status.ts`, which set null → PROVISIONAL where `autoApproved = true AND humanReviewed = false` (that is the 200,826 `openalex_v1` rows). Meaning in the docs (`docs/axis-collapse-decision-2026-06-09.md` §4): "auto-ingested, gates passed but not human-reviewed" |
+| DISPUTED | 11,319 | `scripts/tag-retracted-claims.ts`: `openalex_v1` PROVISIONAL → DISPUTED when a REVERSED `ClaimRelation` points from the paper to a `crossref_retractions_v1` retraction notice. All 11,319 are `openalex_v1` |
+| HARD_FACT | 943 | `scripts/ingest-pakistan-code.ts:379`, all `pakistan_code_v1`. The 2026-06-09 decision doc calls it a misfiled `currentStatus` value |
+| DEPRECATED | 182 | the `uspto_v1` retirement (2026-05-12; all `uspto_v1`) |
+| (null) | 138,163 | Writers that set no value: `openalex_v1` 106,630 (created 2026-06-06/07, after the 2026-05-29 PROVISIONAL backfill, which was not rerun [10 §10d]), `openalex_journals_v1` 25,687, every seed script and `law-settler` (5,697 curated), `event:exoplanet_retractions_v1` 75, `courtlistener_scotus_v1` 73 (the daily cron route) |
+
+**`humanReviewed` is not reliable either** [10 §10e, §10f]. 833 corpus claims have `humanReviewed = true`. Only
+**43** name a person (`reviewedBy = 'robert'`, 5 pipelines: `manual` 22 plus the 21 curated trajectories). The
+other **790** name a script: `nobel_v1_auto` 662, `courtlistener_scotus_v1_auto` 73 (the cron route
+`app/api/ingest/scotus/route.ts`, `reviewFields` block, sets `humanReviewed: true` on every claim and source it
+inserts) and `retraction_watch_v1_auto` 55. That breaks AGENTS.md "humanReviewed and autoApproved must reflect
+reality" (LATER.md §6). For the paper: **human review is recorded for 43 claims**; quote `reviewedBy`, not the
+flag.
+
 ## 2. `epistemicAxis` [02]
 
 `Claim.epistemicAxis` is nullable free text; the documented vocabulary is the Prisma enum `FactStatus` (7 values).
 Every value present is in `FactStatus`; nothing else appears [02 §2c].
 
-| `epistemicAxis` | Corpus | % | Live view | % |
+Full distribution, every value present [02 §2a, §2b]:
+
+| `epistemicAxis` | Corpus | % of corpus | Live view | % of live |
 |---|---:|---:|---:|---:|
-| SETTLED | 859,696 | 48.913 | 859,514 | 48.908 |
-| RECORDED | 831,132 | 47.288 | 831,132 | 47.293 |
-| REVERSED | 43,148 | 2.455 | 43,148 | 2.455 |
-| (null) | 23,128 | 1.316 | 23,128 | 1.316 |
-| CONTESTED | 453 | 0.026 | 453 | 0.026 |
-| ABANDONED | 34 | 0.002 | 34 | 0.002 |
-| OPEN | 4 | <0.001 | 4 | <0.001 |
-| UNRESOLVABLE | 4 | <0.001 | 4 | <0.001 |
+| SETTLED | 859,696 | 48.9131 | 859,514 | 48.9078 |
+| RECORDED | 831,132 | 47.2879 | 831,132 | 47.2928 |
+| REVERSED | 43,148 | 2.4549 | 43,148 | 2.4552 |
+| (null) | 23,128 | 1.3159 | 23,128 | 1.3160 |
+| CONTESTED | 453 | 0.0258 | 453 | 0.0258 |
+| ABANDONED | 34 | 0.0019 | 34 | 0.0019 |
+| OPEN | 4 | 0.0002 | 4 | 0.0002 |
+| UNRESOLVABLE | 4 | 0.0002 | 4 | 0.0002 |
+| **Total** | **1,757,599** | 100 | **1,757,417** | 100 |
 
 - Non-null: 1,734,471 of 1,757,599 = **98.684 %**; SETTLED or RECORDED: 1,690,828 = 96.201 % [02 §2g].
 - **ABANDONED exists: 34** (seed:medicine 20, congress_bills_tracker 7, law-settler 5, seed-trajectories 1,
   seed:nutrition 1). **UNRESOLVABLE exists: 4**, all `seed:human-history-trajectories`. OPEN: 4, same pipeline.
   CONTESTED 453: 333 in the curated_editorial domain [06 §6b], 114 `openfda_labels_v1`, 4 `courtlistener_scotus_v1`,
   1 each `drugsatfda_v1` and `openalex_v1` [02 §2e].
-- Null axis: `nara_catalog_v1` 23,055, `courtlistener_scotus_v1` 73 [02 §2d].
+- Null axis: `nara_catalog_v1` 23,055, `courtlistener_scotus_v1` 73 [02 §2d]. On 2026-06-09 the axis was recorded
+  as 100 % populated (`docs/axis-collapse-decision-2026-06-09.md`), so these nulls were written after that date.
 - `epistemicAxis` equals the `toAxis` of the claim's last history row for 1,579,163 claims, differs for 470,
   and 177,966 claims have no history row [02 §2f].
 
@@ -88,6 +135,21 @@ Every value present is in `FactStatus`; nothing else appears [02 §2c].
 | Rows on corpus claims | 1,821,600 |
 | Corpus claims with ≥1 row | 1,579,633 |
 | Corpus claims with no row | 177,966 |
+
+**Why 1,757,599 claims but 1,579,633 first rows** [03 §3o]: 177,966 corpus claims have no history row at all.
+`scripts/ingest-auto-trajectories.ts` (lines 270–315) writes a claim's first row only when `claimEmergedAt` is non-null
+and the claim is live, and uses that date as `occurredAt`. So:
+
+| Reason | Claims |
+|---|---:|
+| `claimEmergedAt` is null (no date, so no row: the date-refusal rule) | 177,771 |
+| DEPRECATED (`uspto_v1`; the writer skips non-live claims) | 182 |
+| written after the baseline run (`courtlistener_scotus_v1`, the daily cron, which writes no history) | 13 |
+| **Total without history** | **177,966** |
+
+The undated ones by pipeline: `nara_catalog_v1` 91,788 · `chebi_v1` 36,591 · `jacar_v1` 30,767 · `rxnorm_v1` 14,632
+(all of it) · `omim_v1` 1,512 (all) · `ofac_sdn_v1` 1,311 · `pubchem_v1` 355 (all) · `impact_craters_v1` 214 (all) ·
+`wikidata_chips_v1` 132 · `periodic_table_v1` 119 (all) · 16 more pipelines < 100 each.
 
 Rows per corpus claim [03 §3b] (the maximum is 4):
 
@@ -139,19 +201,29 @@ Rows per corpus claim [03 §3b] (the maximum is 4):
 - Transition pairs [03 §3f]: RECORDED→SETTLED 209,718; RECORDED→REVERSED 29,433; SETTLED→REVERSED 916;
   RECORDED→CONTESTED 543; CONTESTED→SETTLED 368; SETTLED→CONTESTED 330; everything else < 200 each.
 
-### 3.4 Trajectory layer: candidate definitions (corpus claims) [03 §3m, §3n]
+### 3.4 Trajectory layer (corpus claims, placeholder-dated rows excluded) [03 §3p, §3q, §3r]
 
-| Definition | Claims |
-|---|---:|
-| T0 — ≥1 axis change of any kind (includes 205,182 W1 same-date relabels) | 240,950 |
-| **T1** — ≥1 axis change that is row-sourced, has a non-sentinel date, and is dated strictly after the previous row | **15,780** |
-| — of which curated trajectories | 5,080 |
-| **T2** — T1 plus claims with a W2 retraction/repeal transition dated after the previous row, whose claim has an Edge to a URL-bearing Source | **34,493** |
+Placeholder rows (`occurredAt` on 1970-01-01 or after the run time) are dropped **before** rows are ordered, so each
+transition is compared with the previous real-dated row. Excluded [03 §3p]: **6,754 rows on 6,753 claims**
+(6,666 on 1970-01-01, 88 after the run time), 6,717 of them first rows and 37 later rows.
 
-T1 by pipeline: `openalex_v1` 10,211 (retraction-linked) · `seed:human-history` 3,277 · `seed:medicine` 1,467 ·
-`drugsatfda_v1` 268 · `openfda_labels_v1` 140 · `law-settler` 130 · `seed:climate` 63 · `ofac_sdn_v1` 63 ·
-`seed:astronomy` 61 · `seed:nutrition` 54 · 7 more pipelines < 15 each. 744 claims have ≥2 dated, sourced axis
-changes [03 §3d].
+| Definition | Claims (placeholders excluded) | Before exclusion [03 §3m] |
+|---|---:|---:|
+| **T2: documented status change** = T1 + claims whose retraction/repeal change (W2, dated after the previous row) is documented by the claim's own Edge to a URL-bearing Source | **34,488** | 34,493 |
+| **T1: with an independent dated source** = ≥1 axis change that is row-sourced and dated strictly after the previous row | **15,777** | 15,780 |
+| T2 − T1 (retraction/repeal only) | 18,711 | — |
+| T1 ∩ curated | 5,077 | 5,080 |
+| T0: any axis change, same-day relabels included (**not** a trajectory count) | 240,911 | 240,950 |
+| Claims with ≥2 rows (**not** a trajectory count) | 240,944 | 240,983 |
+
+**Paper form:** "34,488 claims with a documented status change, 15,777 of which carry an independent dated source
+for the change." Same-day relabels (W1, §3.3) are record-layer schema events and appear in neither number.
+
+By pipeline [03 §3r] (T1 / T2): `crossref_retractions_v1` 0 / 18,271 · `openalex_v1` 10,211 / 10,211 (papers
+with a dated retraction notice as the row source) · `seed:human-history` 3,275 / 3,275 · `seed:medicine` 1,466 /
+1,466 · `nz_repealed_acts_v1` 0 / 440 · `drugsatfda_v1` 268 · `openfda_labels_v1` 140 · `law-settler` 130 ·
+`seed:climate` 63 · `ofac_sdn_v1` 63 · `seed:astronomy` 61 · `seed:nutrition` 54 · 7 more pipelines < 15 each.
+744 claims have ≥2 dated, sourced axis changes before exclusion [03 §3d].
 
 ### 3.5 Dates [03 §3g, §3h; 06 §6c]
 
@@ -174,6 +246,10 @@ Community [03 §3j]: INSTITUTIONAL 1,364,824 · EXPERT_LITERATURE 439,045 · JUD
 
 ## 4. Curated trajectories [04]
 
+Paper wording: **LLM-drafted, source-linked curated trajectories**. Never "hand-curated" or "human-curated": the
+content was drafted with an LLM in the seed scripts (git trailers below) and each transition links a source. Human
+review is recorded on 21 of 5,697 (`humanReviewed` with `reviewedBy = 'robert'`, §1.1).
+
 Definition in code: `lib/trajectory-list.ts` `CURATED_WHERE` = live claim with `externalId` starting
 `trajectory:`. (`lib/corpus-completeness.ts` `CURATED_EDITORIAL_PREFIXES` is a pipeline-based notion — `seed:`,
 `seed-`, `law-settler`, `book-analysis:` — which adds the 16 `book-analysis` claims.)
@@ -186,7 +262,8 @@ Definition in code: `lib/trajectory-list.ts` `CURATED_WHERE` = live claim with `
 | — with 3 rows | 722 |
 | — with 4 rows | 46 |
 | — with ≥2 rows | 5,299 |
-| — meeting T1 (§3.4) | 5,080 |
+| — with ≥2 rows after placeholder exclusion [03 §3q] | 5,263 |
+| — meeting T1 (= T2 for this subset), placeholders excluded [03 §3q] | 5,077 |
 | `trajectory:` claims, deleted | 22 |
 
 Totals [04 §4d]; T1 figure [03 §3m]. By pipeline: `seed:human-history-trajectories` 3,479 ·
@@ -194,8 +271,8 @@ Totals [04 §4d]; T1 figure [03 §3m]. By pipeline: `seed:human-history-trajecto
 `seed:nutrition` 57 · `seed-trajectories` 11 · `seed:historical` 10 · `seed-court-reversals` 8 [04 §4b].
 
 `humanReviewed = true` on 21 of them [04 §4d] (seed-trajectories 11, seed-court-reversals 8, one each in
-seed:human-history and seed:medicine [04 §4c]). "Curated" here means written by an editorial seed script, not that
-the `humanReviewed` flag is set. Of the 1,134 commits touching `scripts/seed-*.ts` (2026-05-03 to 2026-09-02), 745
+seed:human-history and seed:medicine [04 §4c]), all with `reviewedBy = 'robert'` [10 §10f]. "Curated" here means
+written by an editorial seed script, not that the `humanReviewed` flag is set. Of the 1,134 commits touching `scripts/seed-*.ts` (2026-05-03 to 2026-09-02), 745
 carry a `Co-Authored-By: Claude …` trailer; trailers by model: Sonnet 4.6 382, Opus 4.8 219, Opus 4.8 (1M context)
 142, Opus 4.7 1, Opus 4.6 1 [`scripts/paper/seed-commit-trailers.sh`].
 
@@ -294,36 +371,45 @@ the curated seed scripts (hardcoded content; model recorded only as git trailers
 
 Denominator: corpus = 1,757,599.
 
-**On the `/corrections` page** (`app/corrections/page.tsx`, 5 entries):
+Reported two ways, never summed together: what the public `/corrections` page lists, and what the database records.
 
-| Date | Kind | Records affected | % | What |
-|---|---|---:|---:|---|
-| 2026-10-13 | DIAGNOSTIC | 814 | 0.046 | Roll-call results under review (`data/vote-results-under-review.json`: senate-three-fifths 300, house-suspension 238, senate-tie 190, senate-two-thirds 45, house-tie 29, contradiction 12) |
-| 2026-10-13 | CORRECTED | 497 | 0.028 | `congress_votes_v1` duplicates retired (deduped) |
-| 2026-10-13 | CORRECTED | 475 | 0.027 | Senate cloture votes relabelled failed |
-| 2026-06-08 | CORRECTED | 4,897 | 0.279 | Legacy status values remapped in the `epistemicAxis` backfill (currentStatus VERIFIED 2,011 + epistemicStatus established 2,886, both still present [08 §8e]) |
-| 2026-05-12 | RETIRED | 182 | 0.010 | `uspto_v1` deprecated |
-| | **Sum** | **6,865** | **0.391** | |
+**A. The `/corrections` page** (`app/corrections/page.tsx`; `scripts/paper/corrections-counts.ts --ref main` for the
+published page, without `--ref` for this branch):
 
-**In the database** [08]:
+| Date | Type | Records | % of corpus | Entry | On `main` | Added in this branch |
+|---|---|---:|---:|---|:-:|:-:|
+| 2026-10-13 | Under review (DIAGNOSTIC) | 814 | 0.046 | Roll-call results under review (`data/vote-results-under-review.json`: senate-three-fifths 300, house-suspension 238, senate-tie 190, senate-two-thirds 45, house-tie 29, contradiction 12) | ✓ | |
+| 2026-10-13 | **Restored text** (CORRECTED) | **85,987** | **4.892** | Voteview claim texts cut to 77 characters + "…", full description restored | | ✓ |
+| 2026-10-13 | Relabelled sources (CORRECTED) | 921 | 0.052 | STOCK Act trade sources relabelled derivative, credited to Quiver Quantitative | | ✓ |
+| 2026-10-13 | Corrected result (CORRECTED) | 39 | 0.002 | Retired `congress_votes_v1` results aligned with their Voteview twins (the 39 are among the 497 below) | | ✓ |
+| 2026-10-13 | Deduplicated (CORRECTED) | 497 | 0.028 | `congress_votes_v1` duplicates retired | ✓ | |
+| 2026-10-13 | Corrected result (CORRECTED) | 475 | 0.027 | Senate cloture votes relabelled failed | ✓ | |
+| 2026-06-08 | Remapped (CORRECTED) | 4,897 | 0.279 | Legacy status values mapped in the `epistemicAxis` backfill (currentStatus VERIFIED 2,011 + epistemicStatus established 2,886, both still present [08 §8e]) | ✓ | |
+| 2026-05-12 | Deprecated (RETIRED) | 182 | 0.010 | `uspto_v1` retired | ✓ | |
+
+- Page sum on `main` (5 entries): **6,865 (0.391 %)**.
+- Page sum with this branch (8 entries): 93,812 (5.338 %). This double-counts the 39 (also in the 497). Without the
+  restored texts: 7,825 (0.445 %).
+- By type with this branch: restored text 85,987 · remapped 4,897 · corrected result 514 (475 + 39) ·
+  relabelled sources 921 · under review 814 · deduplicated 497 · deprecated 182.
+
+**B. The database** [08]:
 
 | | Count |
 |---|---:|
 | `verificationStatus = 'DEPRECATED'` | 182 (all `deleted = false`) |
-| `metadata ? 'deprecation_reason'` | 844 |
+| `metadata ? 'deprecation_reason'` | 844 (182 `uspto_v1` DEPRECATED + 662 `nobel_v1` VERIFIED, left behind by `scripts/fix-nobel-deprecated.ts` [08 §8f]) |
 | `deleted = true` | 519 (498 with `metadata.duplicateOf`) |
 | Claims with `metadata.corrections` | 87,023 |
-| — batch `voteview-full-text-2026-10` (truncated texts restored) | 85,987 |
-| — batch `p7-q9-stock-act-relabel-2026-10` | 921 |
-| — batch `p7-senate-cloture-2026-10` | 475 |
-| — batch `p7-q13-lv-results-2026-10` | 39 claims (43 entries; all 39 are deleted dedup claims) |
-| Claims touched by any of DEPRECATED / deleted / `metadata.corrections` / `duplicateOf` | 87,685 (87,166 in corpus = 4.959 %) |
+| — batch `voteview-full-text-2026-10` (**restored text**) | **85,987** |
+| — batch `p7-q9-stock-act-relabel-2026-10` (relabelled sources) | 921 |
+| — batch `p7-senate-cloture-2026-10` (corrected result) | 475 |
+| — batch `p7-q13-lv-results-2026-10` (corrected result) | 39 claims, 43 entries; all 39 are deleted dedup claims |
+| Claims touched by any of DEPRECATED / deleted / `metadata.corrections` / `duplicateOf` | 87,685 (87,166 in the corpus = 4.959 %) |
+| — excluding claims whose only record is the restored-text batch [08 §8g] | 1,578 in the corpus (0.090 %); 85,588 claims carry only that batch |
 | `ClaimStatusHistory` rows (corrections add none) | 1,822,644 |
 
-Three DB correction batches have no `/corrections` page entry: voteview full text (85,987), stock-act relabel (921),
-q13 LegislativeVote results (39). `metadata.deprecation_reason` is on 844 claims: the 182 DEPRECATED `uspto_v1`
-claims and **662 `nobel_v1` claims that are VERIFIED, not DEPRECATED** [08 §8f] (LATER.md).
-Percentages in the page table: `scripts/paper/corrections-counts.ts`.
+The 814 under review and the 4,897 remapped legacy values change no stored field, so they appear only on the page (A).
 
 ## 9. Transition sourcing (`claude_sourcing_v1`) [09]
 
@@ -362,9 +448,10 @@ transitions whose source was Wikipedia or missing).
    baselines (the ingest-time status) and rows of deleted claims. Transitions: 241,967. Of those, 205,182 are W1
    same-date relabels, 18,722 retraction/repeal entry rows, 17,952 row-sourced (§3.2–3.3).
 2. **"241,501 settling curves"** — claims with ≥2 rows *including deleted claims*. Corpus: 240,983, and 205K of
-   those are W1 relabels on the ingest date, not changes over time. Trajectory layer: T1 15,780 or T2 34,493 (§3.4).
-3. **"34,711 exhibit at least one observable status change"** — closest reproducible figure is T2 = 34,493;
-   the draft's derivation is unknown.
+   those are W1 relabels on the ingest date, not changes over time. Trajectory layer: 34,488 claims with a documented
+   status change, 15,777 of them with an independent dated source (§3.4).
+3. **"34,711 exhibit at least one observable status change"** — closest reproducible figure is T2 = 34,493 before
+   placeholder exclusion (34,488 after); the draft's derivation is unknown. It must always be paired with T1.
 4. **"Dated transitions cover 90% of the transition record"** — not reproducible. 100 % of rows have a date
    (the column is required); the issue is sentinel dates (6,666 on 1970-01-01, 74 in year ≥ 2100) and W1's
    copied dates, not missing ones.
@@ -386,15 +473,17 @@ transitions whose source was Wikipedia or missing).
 11. **Domain table** — not reproducible from any field; the figures here (§6) come from an explicit mapping and
     differ: the draft has no row for non-US legislation (441,789 here with US laws included), and its
     "Climate and Environment 88,000" matches no pipeline set.
-12. **Corrections "6,865 records (0.39%)"** — matches the `/corrections` page sum, but the page omits three DB
-    batches (85,987 + 921 + 39 claims). Claims touched by any recorded correction or retirement: 87,166 in the
-    corpus (4.959 %). The "657 confirmed mislabeling/fabrication" figure (= 475 + 182) leaves out the 921 stock-act
+12. **Corrections "6,865 records (0.39%)"** — matches the `/corrections` page sum on `main`, but the page omits
+    three DB batches (85,987 + 921 + 39 claims; entries added in this branch). Claims touched by any recorded
+    correction or retirement: 87,166 in the corpus (4.959 %), 1,578 (0.090 %) excluding the restored texts. The "657 confirmed mislabeling/fabrication" figure (= 475 + 182) leaves out the 921 stock-act
     relabels and the 85,987 truncated texts.
 13. **Corpus 1,757,596** — now 1,757,599 (SCOTUS ingest still running, §1). The "1.76M" headline holds.
 14. **Schema names in Data Records** — `claimText` is `text`; `axis`/`effectiveDate` are `toAxis`/`fromAxis`/
     `occurredAt`; `sourceType` is `methodologyType` (primary/derivative/opinion + 13 stray values); `verificationStatus`
     has no ACTIVE or UNDER_REVIEW (actual: VERIFIED, PROVISIONAL, DISPUTED, HARD_FACT, DEPRECATED, null); `Edge` links
     a claim to a Source, not claim to claim. Rewritten from `prisma/schema.prisma` in Phase 2.
-15. **The 5,697 curated curves** — 398 have a single history row (not curves) and 617 fail T1; only 21 have
-    `humanReviewed = true`. The draft does not mention the curated set, `claude_sourcing_v1`, or that the 1,148
+15. **The 5,697 curated curves** — 398 have a single history row (not curves) and 620 fail T1 after placeholder
+    exclusion; only 21 have recorded human review. They are LLM-drafted (git trailers, §4), not hand-curated. The draft does not mention the curated set, `claude_sourcing_v1`, or that the 1,148
     promoted sources were machine-accepted.
+16. **Human review** — the draft implies a human approval step on every batch; the database records a human
+    reviewer on 43 claims (§1.1). VERIFIED is written by pipeline code, not by a reviewer.
