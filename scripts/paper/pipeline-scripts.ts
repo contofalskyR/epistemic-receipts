@@ -26,6 +26,15 @@ import { PIPELINES } from "../../lib/pipelines/registry";
 
 const argv = process.argv.slice(2);
 
+// Upstream licence per pipeline (curated, with source URLs): docs/paper/upstream-licences.csv.
+const LICENCES = new Map<string, { licence: string; status: string; url: string }>();
+if (fs.existsSync("docs/paper/upstream-licences.csv")) {
+  for (const line of fs.readFileSync("docs/paper/upstream-licences.csv", "utf8").trim().split("\n").slice(1)) {
+    const cells = line.match(/("([^"]|"")*"|[^,]*)(,|$)/g)!.map((c) => c.replace(/,$/, "").replace(/^"|"$/g, "").replace(/""/g, '"'));
+    LICENCES.set(cells[0], { licence: cells[3], status: cells[4], url: cells[5] });
+  }
+}
+
 loadEnv({ path: ".env.local", quiet: true });
 
 const ROOT = "scripts";
@@ -161,8 +170,10 @@ async function main() {
     if (llm.length) withLlm.push(tag);
     const reg = registry.get(tag);
     const cell = (x: string) => x.replace(/\|/g, "\\|");
+    const lic = LICENCES.get(tag);
+    const licCell = lic ? `**${lic.status}** — ${cell(lic.licence)}${lic.url ? ` ([terms](${lic.url}))` : ""}` : "—";
     md.push(
-      `| \`${tag}\` | ${claims.toLocaleString("en-US")} | ${cell(reg ? reg.upstreamName + (reg.upstreamUrl ? ` (${reg.upstreamUrl})` : "") : "not in registry")} | ${writers.map((x) => "`" + x.f + "`").join(", ") || "not found"}${laterWriters ? ` (+${laterWriters} later writers)` : ""} | ${edges.toLocaleString("en-US")} | ${hosts} | ${cell(top_hosts ?? "—")} | ${cell(provenance(tag, writers.map((x) => x.f), llm.map((x) => x.f), [...models]))} |`,
+      `| \`${tag}\` | ${claims.toLocaleString("en-US")} | ${cell(reg ? reg.upstreamName + (reg.upstreamUrl ? ` (${reg.upstreamUrl})` : "") : "not in registry")} | ${writers.map((x) => "`" + x.f + "`").join(", ") || "not found"}${laterWriters ? ` (+${laterWriters} later writers)` : ""} | ${edges.toLocaleString("en-US")} | ${hosts} | ${cell(top_hosts ?? "—")} | ${cell(provenance(tag, writers.map((x) => x.f), llm.map((x) => x.f), [...models]))} | ${licCell} |`,
     );
   }
   if (mdPath) {
@@ -188,12 +199,13 @@ async function main() {
         "- **Upstream** — `upstreamName` (`upstreamUrl`) from `lib/pipelines/registry.ts`. Editorial text in the repo, not checked against the upstream here.",
         "- **Writer script** — the primary ingester: a file under `scripts/` named `ingest-`/`seed-`/`import-*` that names the tag as a string literal (run-time-built tags are mapped by hand in the script's `DYNAMIC` list). \"+N later writers\" counts other scripts that name the tag and write (INSERT/create/upsert: link-, enrich-, backfill-, correction scripts). A file listed here is a candidate, not proof it produced every row.",
         "- **Edges / hosts / top hosts** — non-deleted `Edge` rows from the pipeline's corpus claims to non-deleted `Source` rows, the number of distinct `Source.url` hosts (`www.` stripped), and the two most common hosts. A host stands in for the source institution; one institution can serve several hosts.",
+        "- **Upstream licence** — status and terms from `docs/paper/upstream-licences.csv` (checked 2026-10-24 against the linked page; statuses open | sa | nc | nd | restricted | unclear | not_checked; review and proposals in `docs/paper/licence-review.md`).",
         "- **Prompt / model recorded** — whether a writer script calls an LLM (Anthropic/OpenAI SDK or API host, or the `claude` CLI), and if so whether it pins a model id. \"n/a\" means the writer makes no LLM call: the claim text comes from a code template over the upstream record.",
         "",
         "Processes that write status-history rows or sources but no claims of their own (`claude_sourcing_v1`, the corpus promoter, `bulk-promote-corpus.ts`, `ingest-auto-trajectories.ts`, the `event:*` and `enrich*` tags) are in `docs/paper/numbers.md` §3 and §9.",
         "",
-        "| Pipeline | Claims | Upstream (registry) | Writer script | Edges | Hosts | Top hosts | Prompt / model recorded |",
-        "|---|---:|---|---|---:|---:|---|---|",
+        "| Pipeline | Claims | Upstream (registry) | Writer script | Edges | Hosts | Top hosts | Prompt / model recorded | Upstream licence |",
+        "|---|---:|---|---|---:|---:|---|---|---|",
         ...md,
         "",
       ].join("\n"),

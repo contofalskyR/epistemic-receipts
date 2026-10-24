@@ -1,0 +1,42 @@
+{
+  "title": "Epistemic Receipts: a cross-domain corpus of source-linked claims with dated epistemic-status transitions",
+  "upload_type": "dataset",
+  "version": "2.0.0",
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Contofalsky, Robert",
+      "affiliation": "Rutgers, The State University of New Jersey",
+      "orcid": "0009-0005-4907-4144"
+    }
+  ],
+  "keywords": [
+    "provenance",
+    "claims",
+    "epistemic status",
+    "status transitions",
+    "retractions",
+    "legislation",
+    "court opinions",
+    "institutional records",
+    "knowledge graph",
+    "open data",
+    "Parquet"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/contofalskyR/epistemic-receipts",
+      "relation": "isSupplementedBy",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://epistemic-receipts.vercel.app/methodology",
+      "relation": "isDocumentedBy",
+      "resource_type": "other"
+    }
+  ],
+  "notes": "Version 2.0.0 replaces the version 1.0.0 database dump with an open-format export (Parquet and gzipped CSV) of the corpus tables only.",
+  "description_template": "docs/paper/zenodo/description.html",
+  "language": "eng"
+}

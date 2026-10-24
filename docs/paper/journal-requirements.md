@@ -73,6 +73,8 @@ for human or animal studies; recommended as a Methods sub-heading).
   first, AI-ready, open, etc)." → The working title *"Epistemic Receipts: a cross-domain corpus of 1.76 million
   source-linked claims with dated epistemic-status transitions"* breaks three rules: it has a colon, contains the
   brand name, and is 118 characters long (`python3 -c 'print(len("…"))'`).
+  **Replaced 2026-10-24** by "A cross-domain corpus of 1.76 million source-linked claims with dated epistemic-status
+  transitions" (98 characters, no colon, no brand name).
 - **Abstract:** "We recommend the Abstract should not exceed 170 words … should not make any claims regarding new scientific
   findings. We recommend URLs for download … are not included." No sub-headings.
 - **Main sections, especially Methods:** "have no word length limits."

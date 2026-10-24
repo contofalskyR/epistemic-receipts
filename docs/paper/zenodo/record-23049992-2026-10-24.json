@@ -1,0 +1,112 @@
+{
+  "id": 23049992,
+  "conceptrecid": "23049991",
+  "doi": "10.5281/zenodo.23049992",
+  "conceptdoi": "10.5281/zenodo.23049991",
+  "created": "2026-09-30T02:39:11.695724+00:00",
+  "updated": "2026-09-30T02:39:11.857383+00:00",
+  "metadata": {
+    "title": "Epistemic Receipts: a cross-referenced claim graph from 50+ primary sources",
+    "doi": "10.5281/zenodo.23049992",
+    "publication_date": "2026-09-30",
+    "description": "<p>Epistemic Receipts is a knowledge graph of 1,758,105 claims drawn from 50+ primary sources, with each claim linked to the authoritative record it came from and tagged with an evidentiary status: SETTLED, CONTESTED, RECORDED, or OPEN. Claims are cross-referenced across datasets (e.g. a clinical trial linked to its published paper and its FDA approval), yielding 2.7M claim&ndash;topic links and 4.8M relations in total.</p>\n<p>Sources include: NARA declassified records, OpenAlex, Congress.gov (bills, votes, members), WHO GHO, FDA openFDA, UN Security Council and General Assembly resolutions, UN Treaties, CourtListener (SCOTUS, circuit and state supreme courts), DOJ FARA, SEC EDGAR, NIH RePORTER, ClinicalTrials.gov, SIPRI, UCDP, V-Dem, Crossref retractions, Nobel Prize, PubChem, MeSH, and 60+ national legislative corpora.</p>\n<p>FILE<br>epistemic_receipts_backup.dump &mdash; PostgreSQL 17 custom-format dump (pg_dump -Fc), 12.06 GB compressed, ~4 GB restored. MD5: 8a33f93aefd150aa01160c119e01a94a.</p>\n<p>RESTORE<br>Requires PostgreSQL 16+ with the pgvector extension installed.<br>&nbsp; createdb epistemic<br>&nbsp; psql -d epistemic -c \"CREATE EXTENSION vector;\"<br>&nbsp; pg_restore -j 2 --no-owner -d epistemic epistemic_receipts_backup.dump<br>GRANT statements referencing the role \"er_scoped_writes\" will fail harmlessly if that role does not exist.</p>\n<p>SCHEMA AND CODE<br>The Prisma schema and the ingestion pipelines that produced this data are in the companion repository: https://github.com/contofalskyR/epistemic-receipts. The AGENTS.md file there documents each pipeline and its source.</p>\n<p>ATTRIBUTION<br>This dataset is a derived work. Each claim carries a reference to its originating source, and those sources retain their own terms of use. This compilation is released under CC BY 4.0; downstream users should attribute the underlying sources per their respective licenses.</p>\n<p>Author: Robert Contofalsky, Rutgers University (ORCID 0009-0005-4907-4144).</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Contofalsky, Robert",
+        "affiliation": "Rutgers, The State University of New Jersey",
+        "orcid": "0009-0005-4907-4144"
+      }
+    ],
+    "keywords": [
+      "provenance",
+      "claims",
+      "open data",
+      "epistemic status",
+      "epistemology",
+      "PostgreSQL",
+      "knowledge graph"
+    ],
+    "version": "1.0.0",
+    "language": "eng",
+    "custom": {
+      "code:codeRepository": "https://github.com/contofalskyR/epistemic-receipts",
+      "code:programmingLanguage": [
+        {
+          "id": "typescript",
+          "title": {
+            "en": "TypeScript"
+          }
+        }
+      ],
+      "code:developmentStatus": {
+        "id": "active",
+        "title": {
+          "en": "Active"
+        }
+      }
+    },
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "23049991"
+          }
+        }
+      ]
+    }
+  },
+  "files": [
+    {
+      "id": "03c9f7cd-3665-4ba3-b79a-102fe75348a5",
+      "key": "epistemic_receipts_backup.dump",
+      "size": 12061415256,
+      "checksum": "md5:8a33f93aefd150aa01160c119e01a94a",
+      "links": {
+        "self": "https://zenodo.org/api/records/23049992/files/epistemic_receipts_backup.dump/content"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://zenodo.org/api/records/23049992",
+    "self_html": "https://zenodo.org/records/23049992",
+    "preview_html": "https://zenodo.org/records/23049992?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.23049992",
+    "self_doi": "https://doi.org/10.5281/zenodo.23049992",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.23049992",
+    "reserve_doi": "https://zenodo.org/api/records/23049992/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/23049991",
+    "parent_html": "https://zenodo.org/records/23049991",
+    "parent_doi": "https://doi.org/10.5281/zenodo.23049991",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.23049991",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:23049992/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:23049992/sequence/default",
+    "files": "https://zenodo.org/api/records/23049992/files",
+    "media_files": "https://zenodo.org/api/records/23049992/media-files",
+    "latest": "https://zenodo.org/api/records/23049992/versions/latest",
+    "latest_html": "https://zenodo.org/records/23049992/latest",
+    "versions": "https://zenodo.org/api/records/23049992/versions",
+    "draft": "https://zenodo.org/api/records/23049992/draft",
+    "access_links": "https://zenodo.org/api/records/23049992/access/links",
+    "access_grants": "https://zenodo.org/api/records/23049992/access/grants",
+    "access_users": "https://zenodo.org/api/records/23049992/access/users",
+    "access_request": "https://zenodo.org/api/records/23049992/access/request",
+    "access": "https://zenodo.org/api/records/23049992/access",
+    "communities": "https://zenodo.org/api/records/23049992/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/23049992/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/23049992/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/23049992/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/23049992/quota-increase",
+    "requests": "https://zenodo.org/api/records/23049992/requests"
+  }
+}

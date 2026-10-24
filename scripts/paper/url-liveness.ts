@@ -213,16 +213,23 @@ function parseCsv(text: string): Result[] {
   });
 }
 
-type Bucket = "2xx/3xx" | "403/429 (refused)" | "404/410 (gone)" | "other 4xx" | "5xx" | "timeout/network";
+// Four categories for the paper (owner, 2026-10-24); refusals are never "dead".
+//   resolve      final status 2xx/3xx, except 202
+//   bot-refused  403, 429, 405 (the server refuses this automated client), other 4xx except 404/410,
+//                and 202: the hosts that answer 202 here (courtlistener.com, legislation.govt.nz,
+//                eur-lex.europa.eu, digitallibrary.un.org, pubmed …) serve an empty bot-challenge
+//                page with that status, not the document (checked by hand with curl, 2026-10-24)
+//   gone         404, 410
+//   unreachable  timeout, network or TLS error, 5xx
+type Bucket = "resolve" | "bot-refused" | "gone" | "unreachable";
 function bucket(r: Result): Bucket {
-  if (r.status === null) return "timeout/network";
-  if (r.status < 400) return "2xx/3xx";
-  if (r.status === 403 || r.status === 429) return "403/429 (refused)";
-  if (r.status === 404 || r.status === 410) return "404/410 (gone)";
-  if (r.status < 500) return "other 4xx";
-  return "5xx";
+  if (r.status === null || r.status >= 500) return "unreachable";
+  if (r.status === 202) return "bot-refused";
+  if (r.status < 400) return "resolve";
+  if (r.status === 404 || r.status === 410) return "gone";
+  return "bot-refused";
 }
-const BUCKETS: Bucket[] = ["2xx/3xx", "403/429 (refused)", "404/410 (gone)", "other 4xx", "5xx", "timeout/network"];
+const BUCKETS: Bucket[] = ["resolve", "bot-refused", "gone", "unreachable"];
 
 function summarise(results: Result[], meta: string) {
   const pct = (n: number, d: number) => (d ? ((100 * n) / d).toFixed(1) : "—");
@@ -242,7 +249,7 @@ function summarise(results: Result[], meta: string) {
     "",
     meta,
     "",
-    "Statuses are final statuses after redirects. 403/429 mean the server refused an automated client (often a bot wall), not that the document is gone; 404/410 mean gone. HEAD was retried as GET on 400/403/405/501 or a network error.",
+    "Statuses are final statuses after redirects. Categories: **resolve** = 2xx/3xx except 202; **bot-refused** = 403, 429, 405, another 4xx except 404/410, or 202 (an empty bot-challenge page; the server refused this automated client, and the document may well open in a browser); **gone** = 404/410; **unreachable** = timeout, network or TLS error, or 5xx. HEAD was retried as GET on 400/403/405/501 or a network error.",
     "",
     "## Overall",
     "",
@@ -251,7 +258,15 @@ function summarise(results: Result[], meta: string) {
     ...BUCKETS.map((b) => `| ${b} | ${all.get(b)} | ${pct(all.get(b)!, results.length)} | ${(100 * weighted.get(b)!).toFixed(1)} |`),
     `| **Total** | **${results.length}** | 100 | 100 |`,
     "",
-    `Redirected (final URL differs): ${results.filter((r) => r.redirected).length} (${pct(results.filter((r) => r.redirected).length, results.length)} %). Needed the GET fallback: ${results.filter((r) => r.method !== "HEAD").length}.`,
+    `Redirected (final URL differs): ${results.filter((r) => r.redirected).length} (${pct(results.filter((r) => r.redirected).length, results.length)} %). Needed the GET fallback: ${results.filter((r) => r.method !== "HEAD").length}. Exact statuses: ${[...new Map(results.map((r) => [String(r.status ?? r.error), 0])).keys()].map((k) => `${k} ${results.filter((r) => String(r.status ?? r.error) === k).length}`).join(", ")}.`,
+    "",
+    "## Hosts per category (final host, top 15)",
+    "",
+    ...(["bot-refused", "gone", "unreachable"] as Bucket[]).map((b) => {
+      const m = new Map<string, number>();
+      for (const r of results.filter((x) => bucket(x) === b)) { const h = r.final_host || host(r.url); m.set(h, (m.get(h) ?? 0) + 1); }
+      return `- **${b}:** ${[...m].sort((x, y) => y[1] - x[1]).slice(0, 15).map(([h, n]) => `${h} ${n}`).join(", ") || "none"}`;
+    }),
     "",
     "## By pipeline",
     "",

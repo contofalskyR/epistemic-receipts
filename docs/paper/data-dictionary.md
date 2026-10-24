@@ -5,8 +5,10 @@ One row per column of the five exported tables. Types are the PostgreSQL types P
 `integer`). "Null" gives the corpus null count where it matters (`docs/paper/sql/out/11_schema_values.out`).
 Examples are real rows (`docs/paper/sql/12_examples.sql`): the 1998 Senate cloture vote
 `cmq5l0zit5oyfsal83wd26glu`, one of its Source/Edge rows, a curated transition, and a REVERSED relation. Text
-examples are truncated with "…". In the Parquet/CSV export (Phase 3), timestamps are ISO 8601 UTC and `jsonb`
-columns are JSON strings.
+examples are truncated with "…". In the Parquet/CSV export (`scripts/paper/export.ts`), timestamps are ISO 8601 UTC,
+`jsonb` columns are JSON strings, and file and column names are as below: legacy columns get a `legacy_` prefix,
+the always-false `deleted` columns are dropped, and derived columns are marked **derived**. Email addresses inside
+exported text are replaced by `[email removed]` (counts in `MANIFEST.json`).
 
 ## Claim (1,757,599 rows, `deleted = false`)
 
@@ -29,13 +31,19 @@ columns are JSON strings.
 | `reviewedBy` | text | Reviewer: a person (`robert`, 43 claims) or a script tag ending `_auto` | yes (1,133 non-null) | null |
 | `reviewedAt` | timestamp | When `reviewedBy` reviewed it | yes (471 non-null) | null |
 | `reviewConfidence` | enum ReviewConfidence | HIGH, MEDIUM, LOW | yes (1,178 non-null) | null |
-| `currentStatus` | text | **Legacy** status (HARD_FACT, DISPUTED, VERIFIED, NEVER_RESOLVES), superseded by `epistemicAxis`; kept for audit | no | `HARD_FACT` |
-| `epistemicStatus` | text | **Legacy** pipeline status (approved, retracted, registered_trial, settled_judgment, confirmed, established, contested_dissent), superseded by `epistemicAxis` | yes (1,565,628) | null |
+| `legacy_currentStatus` | text | **Legacy** (DB column `currentStatus`) status (HARD_FACT, DISPUTED, VERIFIED, NEVER_RESOLVES), superseded by `epistemicAxis`; kept for audit | no | `HARD_FACT` |
+| `legacy_epistemicStatus` | text | **Legacy** (DB column `epistemicStatus`) pipeline status (approved, retracted, registered_trial, settled_judgment, confirmed, established, contested_dissent), superseded by `epistemicAxis` | yes (1,565,628) | null |
 | `createdAt` | timestamp | When the row was written (ingest time, not the event date) | no | `2026-06-08 19:06:39.699` |
 | `updatedAt` | timestamp | Last modification of the row | no | `2026-10-13 03:26:39.708` |
-| `deleted` | boolean | Retired record. Always `false` in the export | no | `false` |
+| `claimEmergedPlaceholder` | boolean | **derived**: `claimEmergedAt` is on 1970-01-01 or after the snapshot (a placeholder, not a date) | no | `false` |
+| `domain` | text | **derived**: editorial pipeline → domain grouping (`docs/paper/domain-map.csv`, provisional) | no | `legislative_votes` |
+| `curatedTrajectory` | boolean | **derived**: `externalId` starts `trajectory:` (LLM-drafted, source-linked curated trajectory) | no | `false` |
+| `trajectoryT1` | boolean | **derived**: the claim has ≥1 status change with an independent dated source (`status_history.trajectoryChange = 't1'`) | no | `false` |
+| `trajectoryT2` | boolean | **derived**: the claim has ≥1 documented status change (`t1` or `t2_only`). Always report with `trajectoryT1` | no | `false` |
+| `upstreamLicence` | text | **derived**: what the upstream provider's terms say (`docs/paper/upstream-licences.csv`) | yes | `No licence stated on voteview.com/about …` |
+| `upstreamLicenceStatus` | text | **derived**: open, sa, nc, nd, restricted, unclear, not_checked | yes | `unclear` |
 
-Not exported: `searchVector` (generated full-text column).
+Not exported: `searchVector` (generated full-text column), `deleted` (always false).
 
 ### Common `Claim.metadata` keys (top 40 by claims, [11 §11d])
 
@@ -64,13 +72,14 @@ Not exported: `searchVector` (generated full-text column).
 | `reason` | text | Why the status holds at that date | yes in schema; non-null on every row | `Roll-call result certified in the official congressional record …` |
 | `sourceId` | text → `Source.id` | The document that marks this status ("marker" source). Non-null on 30,068 rows | yes | null (curated example: `cmqzmncxb000p8odsri514rxd`) |
 | `createdAt` | timestamp | When the row was written | no | `2026-07-03 14:49:38.895` |
+| `rowKind` | text | **derived**: `first` (the ingest status, never a transition), `row_sourced`, `same_day_relabel` (bulk RECORDED→SETTLED on the first row's date: a schema event, not a transition), `retraction_repeal_entry`, `other` | no | `same_day_relabel` |
+| `placeholderDate` | boolean | **derived**: `occurredAt` on 1970-01-01 or after the snapshot. Ignored when deciding `trajectoryChange` | no | `false` |
+| `trajectoryChange` | text | **derived**: `t1` = axis change, row-sourced, dated after the previous real-dated row; `t2_only` = retraction/repeal change documented by the claim's own URL-bearing Edge; null = not a counted change | yes | null |
 
 Row semantics: the first row per claim is the ingest status, not a transition. A later row with the same timestamp as
-the row before it, written by the wave-1 bulk rule, is a same-day relabel, not a transition (numbers.md §3.3). The
-export will carry a derived `rowKind` column (`first`, `same_day_relabel`, `retraction_repeal_entry`, `row_sourced`,
-`other`) and a `placeholderDate` flag, so readers need not rederive them (Phase 3 proposal).
+the row before it, written by the wave-1 bulk rule, is a same-day relabel, not a transition (numbers.md §3.3).
 
-## Source (1,688,359 rows; proposal: export the 1,658,927 referenced by an exported Edge or history row)
+## Source (`sources`: only the Sources referenced by an exported edge or history row; 1,658,927 at the census)
 
 | Column | Type | Meaning | Nullable | Example |
 |---|---|---|---|---|
@@ -87,7 +96,7 @@ export will carry a derived `rowKind` column (`first`, `same_day_relabel`, `retr
 | `reviewedAt` | timestamp | Review time | yes | null |
 | `reviewConfidence` | enum ReviewConfidence | HIGH, MEDIUM, LOW | yes | null |
 | `createdAt` | timestamp | When the row was written | no | `2026-05-28 18:57:41.808` |
-| `deleted` | boolean | Always `false` (no Source is deleted) | no | `false` |
+
 
 ## Edge (1,719,781 rows)
 
@@ -105,9 +114,9 @@ export will carry a derived `rowKind` column (`first`, `same_day_relabel`, `retr
 | `reviewedAt` | timestamp | Review time | yes | null |
 | `reviewConfidence` | enum ReviewConfidence | HIGH, MEDIUM, LOW | yes | null |
 | `createdAt` | timestamp | When the row was written | no | `2026-06-08 19:06:39.947` |
-| `deleted` | boolean | Always `false` in the export | no | `false` |
 
-## ClaimRelation (4,831,149 rows with both ends exported)
+
+## ClaimRelation (`claim_relations` + `claim_relations_context`; 4,831,149 rows with both ends exported, split by `linkKind`)
 
 | Column | Type | Meaning | Nullable | Example |
 |---|---|---|---|---|
@@ -117,4 +126,16 @@ export will carry a derived `rowKind` column (`first`, `same_day_relabel`, `retr
 | `relationType` | text | One of 20 types (data-records.md table) | no | `REVERSED` |
 | `year` | integer | Year the link refers to, for time-windowed context links | yes | null |
 | `followUpContext` | jsonb | How the link was made: `heuristic` (78 % of rows), `method`, `confidence`, matched keys, batch | yes (1,050,001 null) | `{"doi": "10.1016/j.bbr.2009.03.026", "via": "db_doi_match", "note": "Original paper linked to its CrossRef retraction record via DOI", "source": "crossref_api", …}` |
+| `linkKind` | text | **derived**: `upstream_record` (CITES/RELATED from OpenAlex records) and `identifier_match` (DOI, NCT id, bill number, award id) → `claim_relations`; `name_or_text_match` and `time_window` (country × year windows) → `claim_relations_context`, machine-derived context links, not core graph (`docs/paper/sql/14_relation_heuristics.sql`) | no | `identifier_match` |
+| `heuristic` | text | **derived**: `followUpContext.heuristic`, the matching rule | yes | `doi_exact_match` |
 | `createdAt` | timestamp | When the row was written | no | `2026-06-02 01:21:27.097` |
+
+## pipelines (one row per `claims.ingestedBy`)
+
+| Column | Type | Meaning | Nullable | Example |
+|---|---|---|---|---|
+| `pipeline` | text | `claims.ingestedBy` | no | `voteview_v1` |
+| `domain` | text | Domain grouping (`docs/paper/domain-map.csv`) | no | `legislative_votes` |
+| `claims` | integer | Exported claims from this pipeline | no | `113319` |
+| `upstreamName`, `upstreamUrl` | text | Upstream provider (`lib/pipelines/registry.ts`) | yes | `Voteview / Lewis et al.`, `https://voteview.com/data` |
+| `upstreamLicence`, `upstreamLicenceStatus`, `upstreamLicenceUrl` | text | Upstream terms, status, and the page they come from (`docs/paper/upstream-licences.csv`) | yes | `unclear` |

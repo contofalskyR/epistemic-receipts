@@ -12,6 +12,9 @@ Rerun: `scripts/paper/run-sql.sh` (all SQL), `npx tsx scripts/paper/corrections-
 
 ## Headline figures (owner-approved wording, 2026-10-24)
 
+- **Working title** (owner, 2026-10-24): "A cross-domain corpus of 1.76 million source-linked claims with dated
+  epistemic-status transitions" (98 characters; no colon, no brand name). The dataset name goes in the abstract.
+
 - **Record layer:** 1,757,599 claims (`deleted = false`), each with an `epistemicAxis` label (98.684 % non-null)
   that for 1,579,633 of them is the status assigned at ingest.
 - **Trajectory layer, always reported as a pair:** **34,488 claims with a documented status change, 15,777 of which
@@ -498,40 +501,48 @@ transitions whose source was Wikipedia or missing).
 
 ## 11. Source URL liveness (Phase 2) [`scripts/paper/url-liveness.ts`; `docs/paper/url-liveness/`]
 
-Checked 2026-10-24 16:14–16:20 UTC from one client (macOS, residential network). HEAD → GET fallback, 10 s timeout,
-≥ 1.5 s between requests to one host, redirects followed. Nothing written to the DB.
+Checked 2026-10-24 16:14–16:26 UTC from one client (macOS, residential network): HEAD, then GET if refused, 10 s
+timeout, ≥ 1.5 s between requests to one host, redirects followed. Nothing written to the DB.
 
-**A. Edge-linked Sources** (`summary.md`, `results.csv`): 1,000 URLs across 181 pipelines (seed `er-paper-2026-10`;
-min 3 per pipeline, rest proportional to URL count).
+**Paper form: four categories, never folded together, refusing hosts named** (owner, 2026-10-24):
+- **resolve:** final status 2xx/3xx, except 202.
+- **bot-refused:** 403, 429, 405, or 202. The server refused this automated client; the document may open in a
+  browser. 202 is included because the hosts that return it here (courtlistener.com, legislation.govt.nz,
+  eur-lex.europa.eu, digitallibrary.un.org, PubMed) serve an empty bot-challenge page with that status. Checked by
+  hand with curl.
+- **gone:** 404 or 410.
+- **unreachable:** timeout, network or TLS error, or 5xx.
 
-| Outcome (final status) | URLs | % | % weighted by pipeline claim count |
-|---|---:|---:|---:|
-| 2xx/3xx | 790 | 79.0 | 83.4 |
-| 403/429 (refused an automated client) | 138 | 13.8 | 13.0 |
-| 404/410 (gone) | 13 | 1.3 | 0.3 |
-| other 4xx | 2 | 0.2 | 0.0 |
-| 5xx | 10 | 1.0 | 0.6 |
-| timeout / network | 47 | 4.7 | 2.7 |
+| Sample | URLs | Resolve | Bot-refused | Gone | Unreachable |
+|---|---:|---:|---:|---:|---:|
+| **A.** Edge-linked Sources, 181 pipelines (`summary.md`) | 1,000 | 725 (72.5 %) | 205 (20.5 %) | 13 (1.3 %) | 57 (5.7 %) |
+| **B.** Transition marker Sources, the evidence behind T1, 18 pipelines (`summary-markers.md`) | 300 | 248 (82.7 %) | 47 (15.7 %) | 5 (1.7 %) | 0 |
 
-- 234 redirected; 218 needed the GET fallback.
-- Refusals concentrate on hosts, not pipelines: congress.gov 14/14, onlinelibrary.wiley.com 7/7, legislatie.just.ro
-  7/7, europeana.eu 6/6, academic.oup.com 6/6 …; `openalex_v1` 48 of 93 resolve and 44 are refused (publisher bot
-  walls behind doi.org). A 403 is not a dead link; a browser check of a refused subsample would separate the two
-  (not done).
-- By pipeline: `summary.md`.
+Sample A weighted by pipeline claim count: 79.6 / 16.8 / 0.3 / 3.3 %. Do not weight sample B: some pipelines have
+1–6 marker URLs standing for 100K claims.
 
-**B. Transition marker Sources** (`summary-markers.md`, `results-markers.csv`; `--markers --n 300`): the Sources on
-`ClaimStatusHistory` rows after a claim's first, i.e. the evidence behind T1. 300 URLs across 18 pipelines.
+Refusing hosts:
+- **Sample A:** courtlistener.com 18, congress.gov 14, legislation.govt.nz 14, ieeexplore.ieee.org 11,
+  eur-lex.europa.eu 10, digitallibrary.un.org 10, onlinelibrary.wiley.com 7, europeana.eu 6, academic.oup.com 6,
+  discovery.nationalarchives.gov.uk 5, ft.dk 4, europarl.europa.eu 4, legifrance.gouv.fr 4, loc.gov 4, omim.org 4.
+- **Sample B:** supreme.justia.com 6, ieeexplore.ieee.org 6, dl.acm.org 6, britannica.com 5, congress.gov 3,
+  constitution.congress.gov 2, ui.adsabs.harvard.edu 2, nejm.org 2.
 
-| Outcome (final status) | URLs | % |
-|---|---:|---:|
-| 2xx/3xx | 255 | 85.0 |
-| 403/429 (refused) | 38 | 12.7 |
-| 404/410 (gone) | 5 | 1.7 |
-| other 4xx | 2 | 0.7 |
-| 5xx / timeout | 0 | 0.0 |
+Gone and unreachable:
+- **Gone (sample A):** iau.org 4, documents.gov.lk 4, agc.gov.bn 3, doi.org 1, fda.gov 1.
+- **Gone (sample B):** fda.gov 3, world-nuclear-news.org 1, cdc.gov 1.
+- **Unreachable (sample A):** legislatie.just.ro 7, suin-juriscol.gov.co 5, data.riksdagen.se 5, ocs.go.th 5,
+  bdlaws.minlaw.gov.bd 4, ris.bka.gv.at 4 (503), cnsas.ro 4 (503) … By cause: 19 timeouts, 16 TLS certificate-chain
+  failures (UNABLE_TO_VERIFY_LEAF_SIGNATURE, which a browser would likely accept), 12 connection errors, 10 HTTP 503.
 
-- Use the unweighted figures here: the claim-count weighting in the summary file lets pipelines with one or two marker
-  URLs (`voteview_v1` 1, `openfda_labels_v1` 6 sampled) stand for 100K-claim pipelines.
-- Curated seeds: `seed:human-history` 52/59 resolve (2 gone), `seed:medicine` 23/26 (1 gone); `openalex_v1`
-  retraction notices 151/163.
+A browser check of a refused subsample would separate bot walls from missing documents (not done).
+
+## 12. Human review and `verificationStatus` (statement for the paper)
+
+- **`humanReviewed = true` on 833 corpus claims; `reviewedBy = 'robert'` on 43 of them** (the only reviewer who is a
+  person). The other 790 carry a script tag: `nobel_v1_auto` 662, `courtlistener_scotus_v1_auto` 73,
+  `retraction_watch_v1_auto` 55 [10 §10f].
+- **`VERIFIED` is set by ingest code, never by a reviewer.** 139 ingesters hard-code `verificationStatus: 'VERIFIED'`
+  in their insert (1,331,154 claims); the rest of the VERIFIED claims come from other scripts, not from review
+  (§1.1; `scripts/paper/verification-status.ts`).
+- Of the 5,697 curated trajectories, 21 have human review recorded (§4).

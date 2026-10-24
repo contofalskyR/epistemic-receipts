@@ -1,0 +1,28 @@
+-- query: docs/paper/sql/15_pii_scan.sql
+-- run:   2026-10-24T17:02:44Z · git a932322 · role app_ro (read-only session)
+
+== 15a. pattern counts per exported column
+              col              | email | ipv4 | secret 
+-------------------------------+-------+------+--------
+ Claim.text                    |   134 |  967 |      0
+ Claim.metadata                |     8 |   76 |      0
+ Claim.reviewedBy              |     0 |    0 |      0
+ ClaimStatusHistory.reason     |     0 |   79 |      0
+ Source.name                   |     0 |  526 |      0
+ Source.url                    |     0 |    1 |      3
+ ClaimRelation.followUpContext |     0 |    0 |      0
+
+== 15b. Claim rows with an email-like string (text or metadata), by pipeline, with one example match
+    ingestedBy    | claims |            example             
+------------------+--------+--------------------------------
+ openalex_v1      |    133 | 34158958@qq.com.Hong
+ ofac_sdn_v1      |      6 | adelb@shabakah.net.sa
+ europeana_wwi_v1 |      1 | yves.soetens@skynet.be
+ mesh_v1          |      1 | CDRH-EUA-Templates@fda.hhs.gov
+ nara_catalog_v1  |      1 | alastair.mcpherson@acq.defence
+
+== 15c. Source rows with an email-like string or a key-like URL parameter, by ingestedBy, with one example
+ ingestedBy  | sources |  example  
+-------------+---------+-----------
+ openalex_v1 |       3 | ?key=1222
+

@@ -1,0 +1,41 @@
+-- query: docs/paper/sql/14_relation_heuristics.sql
+-- run:   2026-10-24T17:02:06Z · git a932322 · role app_ro (read-only session)
+
+== 14a. relationType × followUpContext.heuristic / .method / .via (both claims not deleted)
+       relationType       |                  heuristic                  |                      method                       |            via            | relations 
+--------------------------+---------------------------------------------+---------------------------------------------------+---------------------------+-----------
+ AUTHORED_BY              | openalex_author_search_top_token_match      |                                                   |                           |       765
+ CITES                    | (none)                                      |                                                   |                           |    977934
+ COMPOUND_IN              | ingredient_name_match                       |                                                   |                           |     59505
+ CONFLICT_CONTEXT         | country_year_window                         |                                                   |                           |     10270
+ CONTRADICTS              | doi_match                                   |                                                   |                           |     11319
+ DISCOVERED_BY            | discoverer_to_mission_payload_match         |                                                   |                           |      4269
+ DISEASE_STUDIED          | disease_name_ilike_trial_text               |                                                   |                           |      4804
+ ECONOMIC_CONTEXT         | country_year_window                         |                                                   |                           |   3445737
+ ECONOMIC_IMPACT          | country_match_ofac_in_force                 |                                                   |                           |      2540
+ ENACTED_AS               | (none)                                      | exact bill number (congress + bill type + number) |                           |        92
+ FUNDED_BY                | nih_reporter_publications+pubmed_doi        |                                                   |                           |       285
+ FUNDED_BY                | openalex_awards_funder_award_id             |                                                   |                           |         7
+ MILITARY_CONTEXT         | country_year_window_match                   |                                                   |                           |     21749
+ MILITARY_CONTEXT         | country_iso_year_exact                      |                                                   |                           |      8345
+ MILITARY_CONTEXT         | country_iso_year_join                       |                                                   |                           |      2601
+ OUTCOME                  | (none)                                      |                                                   | ingredient_match          |      2656
+ OUTCOME                  | nct_id_match                                |                                                   | text                      |        32
+ OUTCOME                  | congress_vote_to_law_match                  |                                                   |                           |         8
+ OUTCOME                  | nara_act_name_match                         |                                                   |                           |         1
+ PASSED_DURING            | us_vote_year_window_lopsided                |                                                   |                           |        12
+ RELATED                  | (none)                                      |                                                   |                           |     72067
+ REVERSED                 | doi_exact_match                             |                                                   | db_doi_match              |     11321
+ REVERSED                 | doi_exact_match                             |                                                   | openalex_metadata_doi_url |         5
+ SANCTION_CONTEXT         | country_year_window                         |                                                   |                           |     48639
+ SANCTION_CONTEXT         | country_match_within_window                 |                                                   |                           |       110
+ SANCTION_ECONOMIC_IMPACT | country_year_window                         |                                                   |                           |     93825
+ SUPERSEDED_BY            | same_drug_manufacturer_later_effective_date |                                                   |                           |     35786
+ SUPERSEDED_BY            | legislation_cyprus_legislation_v1           |                                                   |                           |      3122
+ SUPERSEDED_BY            | legislation_chile_legislation_v1            |                                                   |                           |       810
+ SUPERSEDED_BY            | legislation_luxembourg_legislation_v1       |                                                   |                           |       137
+ SUPERSEDED_BY            | congress_amend_act_name                     |                                                   |                           |        89
+ SUPERSEDED_BY            | amendment_text_match                        |                                                   |                           |        12
+ SUPERSEDED_BY            | legislation_uk_legislation_v1               |                                                   |                           |        10
+ VOTE_ON                  | (none)                                      | exact bill number (congress + bill type + number) |                           |     12285
+
