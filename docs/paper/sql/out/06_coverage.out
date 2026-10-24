@@ -1,0 +1,336 @@
+-- query: docs/paper/sql/06_coverage.sql
+-- run:   2026-10-24T15:46:20Z · git ec9acd0 · role app_ro (read-only session)
+
+== 6a. claims by domain
+           domain            | pipelines | claims |  pct   
+-----------------------------+-----------+--------+--------
+ legislation_regulation      |        90 | 441789 | 25.136
+ history_archives            |        12 | 380992 | 21.677
+ scholarly_literature        |         7 | 373927 | 21.275
+ medicine_health             |        14 | 217358 | 12.367
+ legislative_votes           |         3 | 117658 |  6.694
+ international_governance    |        10 | 109911 |  6.253
+ natural_sciences_technology |        19 |  83527 |  4.752
+ courts                      |        13 |  15434 |  0.878
+ economics_finance           |         8 |  11267 |  0.641
+ curated_editorial           |        11 |   5736 |  0.326
+
+== 6b. epistemicAxis by domain
+           domain            | recorded | settled | reversed | contested | open | abandoned | unresolvable | null_axis | total  
+-----------------------------+----------+---------+----------+-----------+------+-----------+--------------+-----------+--------
+ legislation_regulation      |    19043 |  418367 |     4372 |         0 |    0 |         7 |            0 |         0 | 441789
+ history_archives            |   258271 |   99666 |        0 |         0 |    0 |         0 |            0 |     23055 | 380992
+ scholarly_literature        |   333203 |    2721 |    38002 |         1 |    0 |         0 |            0 |         0 | 373927
+ medicine_health             |    58370 |  158601 |      272 |       115 |    0 |         0 |            0 |         0 | 217358
+ legislative_votes           |        0 |  117658 |        0 |         0 |    0 |         0 |            0 |         0 | 117658
+ international_governance    |   105739 |    4109 |       63 |         0 |    0 |         0 |            0 |         0 | 109911
+ natural_sciences_technology |    45093 |   38433 |        1 |         0 |    0 |         0 |            0 |         0 |  83527
+ courts                      |       35 |   15315 |        7 |         4 |    0 |         0 |            0 |        73 |  15434
+ economics_finance           |    11267 |       0 |        0 |         0 |    0 |         0 |            0 |         0 |  11267
+ curated_editorial           |      111 |    4826 |      431 |       333 |    4 |        27 |            4 |         0 |   5736
+
+== 6c. claimEmergedAt: null, precision, sentinels
+ corpus  | emerged_null | emerged_1970_01_01 | emerged_in_future | emerged_before_1800 |     min_emerged     |     max_emerged     
+---------+--------------+--------------------+-------------------+---------------------+---------------------+---------------------
+ 1757599 |       177772 |               6630 |                88 |                6788 | 0001-03-15 00:00:00 | 2999-01-01 00:00:00
+
+ claimEmergedPrecision | claims  
+-----------------------+---------
+ DAY                   | 1204656
+ YEAR                  |  268941
+ (null)                |  264434
+ MONTH                 |   19243
+ QUARTER               |     325
+
+== 6d. claims by decade (century before 1800)
+     bucket      | claims 
+-----------------+--------
+ 0s (century)    |     72
+ 100s (century)  |     57
+ 200s (century)  |     35
+ 300s (century)  |     71
+ 400s (century)  |     64
+ 500s (century)  |     29
+ 600s (century)  |     49
+ 700s (century)  |     38
+ 800s (century)  |     34
+ 900s (century)  |     33
+ 1000s (century) |     55
+ 1100s (century) |     56
+ 1200s (century) |    109
+ 1300s (century) |    101
+ 1400s (century) |     49
+ 1500s (century) |    256
+ 1600s (century) |    328
+ 1700s (century) |   5352
+ 1800s           |   2769
+ 1810s           |   5308
+ 1820s           |   1978
+ 1830s           |   4653
+ 1840s           |   6869
+ 1850s           |   8436
+ 1860s           |  10344
+ 1870s           |   9426
+ 1880s           |   8921
+ 1890s           |   9216
+ 1900s           |  11874
+ 1910s           |  23611
+ 1920s           |  11062
+ 1930s           |  20015
+ 1940s           |  39816
+ 1950s           |  32221
+ 1960s           |  62274
+ 1970s           |  75103
+ 1980s           |  70273
+ 1990s           | 160607
+ 2000s           | 312549
+ 2010s           | 354443
+ 2020s           | 331197
+ 2220s           |      8
+ 2990s           |     66
+ (null)          | 177772
+
+== 6e. claims by domain × bucket (decade ≥ 1800, century before; CSV-friendly long form)
+           domain            | bucket_start | claims 
+-----------------------------+--------------+--------
+ courts                      |         1800 |      1
+ courts                      |         1810 |      1
+ courts                      |         1900 |      3
+ courts                      |         1910 |      1
+ courts                      |         1920 |      5
+ courts                      |         1930 |     12
+ courts                      |         1940 |     38
+ courts                      |         1950 |    146
+ courts                      |         1960 |    168
+ courts                      |         1970 |    322
+ courts                      |         1980 |    720
+ courts                      |         1990 |   1786
+ courts                      |         2000 |  10219
+ courts                      |         2010 |   1138
+ courts                      |         2020 |    874
+ curated_editorial           |            0 |     72
+ curated_editorial           |          100 |     57
+ curated_editorial           |          200 |     35
+ curated_editorial           |          300 |     71
+ curated_editorial           |          400 |     64
+ curated_editorial           |          500 |     29
+ curated_editorial           |          600 |     49
+ curated_editorial           |          700 |     38
+ curated_editorial           |          800 |     34
+ curated_editorial           |          900 |     33
+ curated_editorial           |         1000 |     53
+ curated_editorial           |         1100 |     54
+ curated_editorial           |         1200 |    108
+ curated_editorial           |         1300 |     96
+ curated_editorial           |         1400 |     42
+ curated_editorial           |         1500 |    196
+ curated_editorial           |         1600 |    238
+ curated_editorial           |         1700 |    150
+ curated_editorial           |         1800 |     35
+ curated_editorial           |         1810 |     29
+ curated_editorial           |         1820 |     42
+ curated_editorial           |         1830 |     35
+ curated_editorial           |         1840 |     50
+ curated_editorial           |         1850 |     63
+ curated_editorial           |         1860 |     67
+ curated_editorial           |         1870 |     71
+ curated_editorial           |         1880 |     77
+ curated_editorial           |         1890 |     92
+ curated_editorial           |         1900 |     85
+ curated_editorial           |         1910 |    153
+ curated_editorial           |         1920 |    180
+ curated_editorial           |         1930 |    236
+ curated_editorial           |         1940 |    280
+ curated_editorial           |         1950 |    184
+ curated_editorial           |         1960 |    331
+ curated_editorial           |         1970 |    324
+ curated_editorial           |         1980 |    283
+ curated_editorial           |         1990 |    331
+ curated_editorial           |         2000 |    497
+ curated_editorial           |         2010 |    569
+ curated_editorial           |         2020 |    303
+ economics_finance           |         1940 |     72
+ economics_finance           |         1950 |    358
+ economics_finance           |         1960 |    520
+ economics_finance           |         1970 |    520
+ economics_finance           |         1980 |    556
+ economics_finance           |         1990 |    666
+ economics_finance           |         2000 |    853
+ economics_finance           |         2010 |   3082
+ economics_finance           |         2020 |   4640
+ history_archives            |         1000 |      1
+ history_archives            |         1100 |      2
+ history_archives            |         1200 |      1
+ history_archives            |         1300 |      4
+ history_archives            |         1400 |      7
+ history_archives            |         1500 |     27
+ history_archives            |         1600 |     34
+ history_archives            |         1700 |   4047
+ history_archives            |         1800 |   1300
+ history_archives            |         1810 |   3145
+ history_archives            |         1820 |    261
+ history_archives            |         1830 |    709
+ history_archives            |         1840 |    758
+ history_archives            |         1850 |   1122
+ history_archives            |         1860 |   1601
+ history_archives            |         1870 |   1022
+ history_archives            |         1880 |   1301
+ history_archives            |         1890 |   1802
+ history_archives            |         1900 |   2437
+ history_archives            |         1910 |  10733
+ history_archives            |         1920 |   1500
+ history_archives            |         1930 |  10113
+ history_archives            |         1940 |  26669
+ history_archives            |         1950 |   9906
+ history_archives            |         1960 |  24649
+ history_archives            |         1970 |  27265
+ history_archives            |         1980 |   9912
+ history_archives            |         1990 |  40991
+ history_archives            |         2000 |  71432
+ history_archives            |         2010 |   5088
+ history_archives            |         2020 |    432
+ history_archives            |              | 122721
+ international_governance    |         1900 |   1255
+ international_governance    |         1910 |   1362
+ international_governance    |         1920 |   1514
+ international_governance    |         1930 |   1507
+ international_governance    |         1940 |   1680
+ international_governance    |         1950 |   2163
+ international_governance    |         1960 |   2807
+ international_governance    |         1970 |   4435
+ international_governance    |         1980 |   3611
+ international_governance    |         1990 |  21288
+ international_governance    |         2000 |  23737
+ international_governance    |         2010 |  28152
+ international_governance    |         2020 |  15089
+ international_governance    |              |   1311
+ legislation_regulation      |         1000 |      1
+ legislation_regulation      |         1500 |      3
+ legislation_regulation      |         1600 |      3
+ legislation_regulation      |         1700 |     29
+ legislation_regulation      |         1800 |     47
+ legislation_regulation      |         1810 |     41
+ legislation_regulation      |         1820 |     91
+ legislation_regulation      |         1830 |     92
+ legislation_regulation      |         1840 |    437
+ legislation_regulation      |         1850 |   1753
+ legislation_regulation      |         1860 |   2288
+ legislation_regulation      |         1870 |   2832
+ legislation_regulation      |         1880 |   3254
+ legislation_regulation      |         1890 |   3400
+ legislation_regulation      |         1900 |   5711
+ legislation_regulation      |         1910 |   7264
+ legislation_regulation      |         1920 |   4282
+ legislation_regulation      |         1930 |   4948
+ legislation_regulation      |         1940 |   7637
+ legislation_regulation      |         1950 |  14621
+ legislation_regulation      |         1960 |  22111
+ legislation_regulation      |         1970 |  19253
+ legislation_regulation      |         1980 |  25526
+ legislation_regulation      |         1990 |  43540
+ legislation_regulation      |         2000 |  71159
+ legislation_regulation      |         2010 | 103853
+ legislation_regulation      |         2020 |  97399
+ legislation_regulation      |         2220 |      8
+ legislation_regulation      |         2990 |     66
+ legislation_regulation      |              |    140
+ legislative_votes           |         1700 |   1039
+ legislative_votes           |         1800 |   1358
+ legislative_votes           |         1810 |   2077
+ legislative_votes           |         1820 |   1566
+ legislative_votes           |         1830 |   3807
+ legislative_votes           |         1840 |   5599
+ legislative_votes           |         1850 |   5487
+ legislative_votes           |         1860 |   6367
+ legislative_votes           |         1870 |   5459
+ legislative_votes           |         1880 |   4261
+ legislative_votes           |         1890 |   3473
+ legislative_votes           |         1900 |   1619
+ legislative_votes           |         1910 |   3333
+ legislative_votes           |         1920 |   2717
+ legislative_votes           |         1930 |   2122
+ legislative_votes           |         1940 |   2238
+ legislative_votes           |         1950 |   2463
+ legislative_votes           |         1960 |   4121
+ legislative_votes           |         1970 |  10967
+ legislative_votes           |         1980 |   8545
+ legislative_votes           |         1990 |   9107
+ legislative_votes           |         2000 |  10179
+ legislative_votes           |         2010 |  11723
+ legislative_votes           |         2020 |   8031
+ medicine_health             |         1930 |     24
+ medicine_health             |         1940 |    168
+ medicine_health             |         1950 |    617
+ medicine_health             |         1960 |   3359
+ medicine_health             |         1970 |   3753
+ medicine_health             |         1980 |   5297
+ medicine_health             |         1990 |   6143
+ medicine_health             |         2000 |  23718
+ medicine_health             |         2010 |  39208
+ medicine_health             |         2020 | 118927
+ medicine_health             |              |  16144
+ natural_sciences_technology |         1300 |      1
+ natural_sciences_technology |         1500 |     30
+ natural_sciences_technology |         1600 |     52
+ natural_sciences_technology |         1700 |     86
+ natural_sciences_technology |         1800 |     27
+ natural_sciences_technology |         1810 |     15
+ natural_sciences_technology |         1820 |     18
+ natural_sciences_technology |         1830 |      9
+ natural_sciences_technology |         1840 |     25
+ natural_sciences_technology |         1850 |     11
+ natural_sciences_technology |         1860 |     19
+ natural_sciences_technology |         1870 |     32
+ natural_sciences_technology |         1880 |     19
+ natural_sciences_technology |         1890 |     26
+ natural_sciences_technology |         1900 |    304
+ natural_sciences_technology |         1910 |    377
+ natural_sciences_technology |         1920 |    363
+ natural_sciences_technology |         1930 |    447
+ natural_sciences_technology |         1940 |    437
+ natural_sciences_technology |         1950 |    670
+ natural_sciences_technology |         1960 |   2257
+ natural_sciences_technology |         1970 |   3169
+ natural_sciences_technology |         1980 |   4100
+ natural_sciences_technology |         1990 |   5544
+ natural_sciences_technology |         2000 |   9248
+ natural_sciences_technology |         2010 |  13618
+ natural_sciences_technology |         2020 |   5175
+ natural_sciences_technology |              |  37448
+ scholarly_literature        |         1600 |      1
+ scholarly_literature        |         1700 |      1
+ scholarly_literature        |         1800 |      1
+ scholarly_literature        |         1830 |      1
+ scholarly_literature        |         1860 |      2
+ scholarly_literature        |         1870 |     10
+ scholarly_literature        |         1880 |      9
+ scholarly_literature        |         1890 |    423
+ scholarly_literature        |         1900 |    460
+ scholarly_literature        |         1910 |    388
+ scholarly_literature        |         1920 |    501
+ scholarly_literature        |         1930 |    606
+ scholarly_literature        |         1940 |    597
+ scholarly_literature        |         1950 |   1093
+ scholarly_literature        |         1960 |   1951
+ scholarly_literature        |         1970 |   5095
+ scholarly_literature        |         1980 |  11723
+ scholarly_literature        |         1990 |  31211
+ scholarly_literature        |         2000 |  91507
+ scholarly_literature        |         2010 | 148012
+ scholarly_literature        |         2020 |  80327
+ scholarly_literature        |              |      8
+
+== 6f. claims by domain × era (claimEmergedAt; null and sentinel kept apart)
+           domain            | before_1800 | 1800_1899 | 1900_1949 | 1950_1989 | 1990_2009 | 2010_present | after_run_date | on_1970_01_01 | null_date | total  
+-----------------------------+-------------+-----------+-----------+-----------+-----------+--------------+----------------+---------------+-----------+--------
+ legislation_regulation      |          36 |     14235 |     29842 |     81010 |    114699 |       201241 |             85 |           501 |       140 | 441789
+ history_archives            |        4123 |     13021 |     51452 |     65996 |    112423 |         5520 |              0 |          5736 |    122721 | 380992
+ scholarly_literature        |           2 |       446 |      2552 |     19772 |    122718 |       228339 |              0 |            90 |         8 | 373927
+ medicine_health             |           0 |         0 |       192 |     12945 |     29861 |       158132 |              3 |            81 |     16144 | 217358
+ legislative_votes           |        1039 |     39454 |     12029 |     26096 |     19286 |        19754 |              0 |             0 |         0 | 117658
+ international_governance    |           0 |         0 |      7318 |     12820 |     45025 |        43241 |              0 |           196 |      1311 | 109911
+ natural_sciences_technology |         169 |       201 |      1928 |     10181 |     14792 |        18793 |              0 |            15 |     37448 |  83527
+ courts                      |           0 |         2 |        59 |      1356 |     12005 |         2012 |              0 |             0 |         0 |  15434
+ economics_finance           |           0 |         0 |        72 |      1949 |      1519 |         7722 |              0 |             5 |         0 |  11267
+ curated_editorial           |        1419 |       561 |       934 |      1116 |       828 |          872 |              0 |             6 |         0 |   5736
+

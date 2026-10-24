@@ -1,0 +1,81 @@
+-- query: docs/paper/sql/05_source_linkage.sql
+-- run:   2026-10-24T15:45:56Z · git ec9acd0 · role app_ro (read-only session)
+
+== 5a. claims with ≥1 Edge to a Source / with ≥1 URL-bearing Source
+ corpus  | with_edge_to_source | pct_with_edge | with_url_via_edge | pct_url_via_edge | with_url_via_edge_or_marker | pct_url_edge_or_marker | with_no_source_link | pct_no_source_link 
+---------+---------------------+---------------+-------------------+------------------+-----------------------------+------------------------+---------------------+--------------------
+ 1757599 |             1710995 |        97.348 |           1690378 |           96.175 |                     1690871 |                 96.203 |               46115 |              2.624
+
+== 5b. claims with no URL-bearing source, by pipeline (deleted = false)
+               ingestedBy                | claims_without_url | pipeline_claims 
+-----------------------------------------+--------------------+-----------------
+ drugsatfda_v1                           |              45987 |           46255
+ taiwan_archives_v1                      |               3935 |            3935
+ openalex_v1                             |               3184 |          318775
+ luxembourg_legislation_v1               |               2555 |           10006
+ fec_finance_v1                          |               2260 |            3500
+ korea_legislation_v1                    |               2114 |            2114
+ portugal_legislation_v1                 |               1135 |            1292
+ pakistan_code_v1                        |                943 |             943
+ doj_fara_v1                             |                811 |             811
+ israel_knesset_v1                       |                600 |            2009
+ switzerland_legislation_v1              |                515 |            2413
+ worldbank_v1                            |                485 |           54567
+ riksdag_v1                              |                436 |            9989
+ fec_finance_pac_v1                      |                429 |             700
+ bundestag_v1                            |                369 |            6343
+ openfec_v1                              |                279 |             600
+ russia_legislation_v1                   |                144 |           12015
+ courtlistener_disclosures_v1            |                140 |             218
+ romania_cnsas_v1                        |                112 |            3927
+ nuclear_tests_v1                        |                106 |             202
+ uspto_v1                                |                 85 |             182
+ book-analysis:cmppvaz700000sal1cnyfutdx |                 16 |              16
+ openalex_journals_v1                    |                 14 |           25687
+ manual                                  |                 12 |              23
+ eu_legislation_v1                       |                 11 |            2122
+ crossref_retractions_v1                 |                 11 |           26624
+ sec_edgar_v1                            |                 11 |             379
+ philippines_legislation_v1              |                  7 |           11703
+ jacar_v1                                |                  5 |           44600
+ mesh_v1                                 |                  5 |           10000
+ faers_normalized_drugs_v1               |                  3 |             999
+ canada_bills_v1                         |                  3 |            1067
+ hungary_legislation_v1                  |                  2 |           69441
+ stasi_v1                                |                  1 |               2
+ italy_legislation_v1                    |                  1 |           16934
+ kenya_legislation_v1                    |                  1 |            2984
+ brunei_legislation_v1                   |                  1 |             288
+
+== 5c. Edge.type and Source.methodologyType (non-deleted)
+         field          |           value           |  count  
+------------------------+---------------------------+---------
+ Edge.type              | FOR                       | 1301209
+ Edge.type              | CITES                     |  418973
+ Edge.type              | AGAINST                   |     103
+ Edge.type              | RETRACTS                  |      55
+ Edge.type              | SUPPORTS                  |      10
+ Edge.type              | CORRECTED                 |       1
+ Edge.type              | CONTRADICTS               |       1
+ Edge.type              | DISPUTES                  |       1
+ Source.methodologyType | primary                   | 1682278
+ Source.methodologyType | derivative                |    5962
+ Source.methodologyType | opinion                   |      53
+ Source.methodologyType | secondary                 |      41
+ Source.methodologyType | guideline                 |       9
+ Source.methodologyType | review                    |       5
+ Source.methodologyType | meta-analysis             |       3
+ Source.methodologyType | regulatory                |       2
+ Source.methodologyType | meta_analysis             |       1
+ Source.methodologyType | consensus                 |       1
+ Source.methodologyType | institutional_recognition |       1
+ Source.methodologyType | critique                  |       1
+ Source.methodologyType | methodological-critique   |       1
+ Source.methodologyType | systematic-review         |       1
+
+== 5d. table sizes
+   t    |  rows   | not_deleted | not_deleted_with_url 
+--------+---------+-------------+----------------------
+ Edge   | 1720395 |     1720353 |                     
+ Source | 1688359 |     1688359 |              1662804
+

@@ -1,0 +1,36 @@
+-- query: docs/paper/sql/01_claims.sql
+-- run:   2026-10-24T15:42:56Z · git ec9acd0 · role app_ro (read-only session)
+
+== 1a. totals
+ claims_all_rows | corpus_deleted_false | deleted_true | live_default_view 
+-----------------+----------------------+--------------+-------------------
+         1758118 |              1757599 |          519 |           1757417
+
+== 1b. verificationStatus × deleted
+ verificationStatus | deleted_false | deleted_true | pct_of_corpus 
+--------------------+---------------+--------------+---------------
+ VERIFIED           |       1386306 |          497 |        78.875
+ PROVISIONAL        |        220686 |            0 |        12.556
+ (null)             |        138163 |           22 |         7.861
+ DISPUTED           |         11319 |            0 |         0.644
+ HARD_FACT          |           943 |            0 |         0.054
+ DEPRECATED         |           182 |            0 |         0.010
+
+== 1c. deleted = true rows by pipeline
+           ingestedBy            | deleted_true | with_metadata_duplicateof 
+---------------------------------+--------------+---------------------------
+ congress_votes_v1               |          497 |                       497
+ seed:human-history-trajectories |           22 |                         1
+
+== 1d. claims created on or after 2026-09-29 (restore date in STATUS.md), by pipeline and day
+       ingestedBy        | created_day | claims | deleted_true 
+-------------------------+-------------+--------+--------------
+ courtlistener_scotus_v1 | 2026-09-30  |      6 |            0
+ courtlistener_scotus_v1 | 2026-10-01  |      1 |            0
+ courtlistener_scotus_v1 | 2026-10-06  |      1 |            0
+ courtlistener_scotus_v1 | 2026-10-14  |      1 |            0
+ courtlistener_scotus_v1 | 2026-10-15  |      1 |            0
+ courtlistener_scotus_v1 | 2026-10-20  |      1 |            0
+ courtlistener_scotus_v1 | 2026-10-23  |      1 |            0
+ courtlistener_scotus_v1 | 2026-10-24  |      1 |            0
+

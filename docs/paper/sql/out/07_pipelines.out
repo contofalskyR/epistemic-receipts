@@ -1,0 +1,359 @@
+-- query: docs/paper/sql/07_pipelines.sql
+-- run:   2026-10-24T15:46:35Z · git ec9acd0 · role app_ro (read-only session)
+
+== 7a. distinct ingestedBy values per table
+            t             | distinct_ingestedby 
+--------------------------+---------------------
+ Source (deleted = false) |                 319
+ Edge (deleted = false)   |                 179
+ Claim (all rows)         |                 187
+ Claim (deleted = false)  |                 187
+
+== 7b. per pipeline: claims, edges, linked sources, distinct hosts, top hosts
+                pipeline                 | claims | edges  | sources | distinct_hosts |                                   top_hosts                                    
+-----------------------------------------+--------+--------+---------+----------------+--------------------------------------------------------------------------------
+ openalex_v1                             | 318775 | 318831 |  318831 |            940 | doi.org 307708; pubmed.ncbi.nlm.nih.gov 1931; ci.nii.ac.jp 1249
+ nara_catalog_v1                         | 308051 | 308051 |  308051 |              1 | catalog.archives.gov 308051
+ voteview_v1                             | 113319 | 113816 |  113816 |              3 | voteview.com 113319; senate.gov 334; clerk.house.gov 163
+ openfda_labels_v1                       |  85068 |  85116 |   85115 |              8 | dailymed.nlm.nih.gov 85068; doi.org 22; fda.gov 13
+ hungary_legislation_v1                  |  69441 |  69441 |   69441 |              1 | njt.jog.gov.hu 69439
+ chebi_v1                                |  62000 |  62000 |   62000 |              1 | ebi.ac.uk 62000
+ worldbank_v1                            |  54567 |  54567 |   54567 |              1 | data.worldbank.org 54082
+ drugsatfda_v1                           |  46255 |      0 |       0 |              0 | 
+ jacar_v1                                |  44600 |  44600 |   44600 |              1 | jacar.archives.go.jp 44595
+ who_gho_v1                              |  33714 |  33714 |      10 |              1 | who.int 33714
+ crossref_retractions_v1                 |  26624 |  26624 |   26624 |              1 | doi.org 26613
+ argentina_legislation_v1                |  25824 |  25824 |   25824 |              1 | servicios.infoleg.gob.ar 25824
+ openalex_journals_v1                    |  25687 |  25687 |   25687 |             25 | doi.org 25630; caod.oriprobe.com 10; philpapers.org 5
+ czech_legislation_v1                    |  24173 |  24173 |   24173 |              1 | psp.cz 24173
+ vdem_v1                                 |  19777 |  19777 |       1 |              1 | v-dem.net 19777
+ ofac_sdn_v1                             |  19034 |  19034 |   19034 |              1 | ofac.treasury.gov 19034
+ congress_bills_tracker_v1               |  17280 |  17280 |   17280 |              1 | congress.gov 17280
+ italy_legislation_v1                    |  16934 |  16934 |   16934 |              1 | normattiva.it 16933
+ chile_legislation_v1                    |  15889 |  15889 |   15889 |              1 | leychile.cl 15889
+ rxnorm_v1                               |  14632 |  14632 |   14632 |              1 | mor.nlm.nih.gov 14632
+ romania_legislation_v1                  |  13878 |  13878 |   13878 |              1 | legislatie.just.ro 13878
+ brazil_legislation_v1                   |  12818 |  12818 |   12817 |              1 | camara.leg.br 12818
+ cyprus_legislation_v1                   |  12682 |  12682 |   12682 |              1 | cylaw.org 12682
+ russia_legislation_v1                   |  12015 |  12015 |   12015 |              1 | kremlin.ru 11871
+ uk_legislation_v1                       |  11777 |  11777 |   11777 |              1 | legislation.gov.uk 11777
+ philippines_legislation_v1              |  11703 |  11703 |   11703 |              1 | lawphil.net 11696
+ nih_reporter_v1                         |  11285 |  11285 |   11285 |              1 | reporter.nih.gov 11285
+ clinicaltrials_v1                       |  10957 |  10957 |   10957 |              1 | clinicaltrials.gov 10957
+ congress_v1                             |  10360 |  10360 |   10360 |              1 | congress.gov 10360
+ luxembourg_legislation_v1               |  10006 |  10006 |   10006 |              1 | data.legilux.public.lu 7451
+ europeana_wwi_v1                        |  10000 |  10000 |   10000 |              1 | europeana.eu 10000
+ mesh_v1                                 |  10000 |  10000 |   10000 |              1 | meshb.nlm.nih.gov 9995
+ riksdag_v1                              |   9989 |   9989 |    9989 |              1 | data.riksdagen.se 9553
+ echr_judgments_v1                       |   9984 |   9984 |    9984 |              1 | hudoc.echr.coe.int 9984
+ wipo_lex_v1                             |   9641 |   9641 |    9641 |              1 | wipo.int 9641
+ eec_council_v1                          |   8933 |   8933 |    8933 |              1 | eur-lex.europa.eu 8933
+ costa_rica_legislation_v1               |   8483 |   8483 |    8483 |              1 | pgrweb.go.cr 8483
+ sipri_milex_v1                          |   8435 |   8435 |    8435 |              1 | sipri.org 8435
+ colombia_legislation_v1                 |   8159 |   8159 |    8159 |              1 | suin-juriscol.gov.co 8159
+ belgium_legislation_v1                  |   7870 |   7870 |    7870 |              1 | ejustice.just.fgov.be 7870
+ space_missions_v1                       |   7318 |   7318 |       1 |              1 | planet4589.org 7318
+ poland_legislation_v1                   |   6461 |   6461 |    6461 |              1 | eli.gov.pl 6461
+ bundestag_v1                            |   6343 |   6343 |    6343 |              1 | dip.bundestag.de 5974
+ nasa_exoplanet_v1                       |   6277 |   6277 |    6277 |              1 | exoplanetarchive.ipac.caltech.edu 6277
+ estonia_legislation_v1                  |   5870 |   5870 |    5870 |              1 | riigiteataja.ee 5870
+ peru_legislation_v1                     |   5202 |   5202 |    5202 |              2 | leyes.congreso.gob.pe 5201; web.archive.org 1
+ uk_national_archives_v1                 |   5000 |   5000 |    5000 |              1 | discovery.nationalarchives.gov.uk 5000
+ thailand_legislation_v1                 |   4938 |   4938 |    4938 |              1 | ocs.go.th 4938
+ australia_legislation_v1                |   4740 |   4740 |    4740 |              1 | legislation.gov.au 4740
+ usgs_eq_v1                              |   4696 |   4696 |    4696 |              1 | earthquake.usgs.gov 4696
+ denmark_legislation_v1                  |   4550 |   4550 |    4550 |              1 | ft.dk 4550
+ nz_repealed_acts_v1                     |   4372 |   4372 |    4372 |              1 | legislation.govt.nz 4372
+ fred_v1                                 |   4349 |   4349 |    4349 |              1 | fred.stlouisfed.org 4349
+ eu_parliament_v1                        |   4331 |   4331 |    4331 |              1 | europarl.europa.eu 4331
+ uruguay_legislation_v1                  |   4297 |   4297 |    4297 |              1 | impo.com.uy 4297
+ western_balkans_v1                      |   4062 |   4062 |    4062 |              1 | gzk.rks-gov.net 4062
+ slovakia_legislation_v1                 |   4050 |   4050 |    4050 |              1 | slov-lex.sk 4050
+ oireachtas_v1                           |   4040 |   4040 |    4040 |              1 | oireachtas.ie 4040
+ taiwan_archives_v1                      |   3935 |   3935 |    3935 |              0 | 
+ romania_cnsas_v1                        |   3927 |   3927 |    3927 |              2 | cnsas.ro 3808; web.archive.org 7
+ nationalrat_v1                          |   3868 |   3868 |    3868 |              1 | parlament.gv.at 3868
+ loc_collections_v1                      |   3561 |   3561 |    3561 |              1 | loc.gov 3561
+ india_legislation_v1                    |   3540 |   3540 |    3540 |              1 | sansad.in 3540
+ fec_finance_v1                          |   3500 |   3500 |    3500 |              1 | fec.gov 1240
+ seed:human-history-trajectories         |   3479 |   9142 |    8920 |            937 | en.wikipedia.org 5810; britannica.com 187; nature.com 142
+ ucdp_v1                                 |   3432 |   3432 |    3432 |              1 | ucdp.uu.se 3432
+ france_legislation_v1                   |   3046 |   3046 |    3046 |              1 | legifrance.gouv.fr 3046
+ parlament_at_v1                         |   3004 |   3004 |    3004 |              1 | ris.bka.gv.at 3004
+ kenya_legislation_v1                    |   2984 |   2984 |    2984 |              1 | new.kenyalaw.org 2983
+ un_sc_resolutions_v1                    |   2798 |   2798 |    2798 |              1 | digitallibrary.un.org 2798
+ norway_legislation_v1                   |   2612 |   2612 |    2612 |              1 | stortinget.no 2612
+ switzerland_legislation_v1              |   2413 |   2413 |    2413 |              1 | fedlex.admin.ch 1898
+ eu_legislation_v1                       |   2122 |   2122 |    2122 |              1 | eur-lex.europa.eu 2111
+ korea_legislation_v1                    |   2114 |   2114 |    2114 |              0 | 
+ japan_legislation_v1                    |   2080 |   2080 |    2080 |              1 | laws.e-gov.go.jp 2080
+ spain_legislation_v1                    |   2045 |   2045 |    2045 |              1 | boe.es 2045
+ israel_knesset_v1                       |   2009 |   2009 |    2009 |              1 | knesset.gov.il 1409
+ fr_rules_v1                             |   1920 |   1920 |    1920 |              1 | federalregister.gov 1920
+ nz_bills_v1                             |   1879 |   1879 |    1879 |              1 | legislation.govt.nz 1879
+ seed:medicine-trajectories              |   1782 |   3712 |    3432 |            345 | pubmed.ncbi.nlm.nih.gov 1593; pmc.ncbi.nlm.nih.gov 230; accessdata.fda.gov 158
+ srilanka_legislation_v1                 |   1704 |   1704 |    1704 |              1 | documents.gov.lk 1704
+ nobel_v1                                |   1688 |   1688 |    1378 |              1 | nobelprize.org 1688
+ finland_legislation_v1                  |   1683 |   1683 |    1683 |              1 | avoindata.eduskunta.fi 1683
+ bangladesh_legislation_v1               |   1664 |   1664 |    1664 |              1 | bdlaws.minlaw.gov.bd 1664
+ paclii_legislation_v1                   |   1583 |   1583 |    1583 |              1 | web.archive.org 1583
+ tweedekamer_v1                          |   1530 |   1530 |    1530 |              1 | tweedekamer.nl 1530
+ omim_v1                                 |   1512 |   1512 |    1512 |              1 | omim.org 1512
+ icd11_v1                                |   1374 |   1374 |    1374 |              1 | icd.who.int 1374
+ portugal_legislation_v1                 |   1292 |   1292 |    1292 |              1 | parlamento.pt 157
+ courtlistener_circuits_v1               |   1232 |   1232 |    1232 |              1 | courtlistener.com 1232
+ zambia_legislation_v1                   |   1119 |   1119 |    1119 |              1 | zambialii.org 1119
+ iceland_legislation_v1                  |   1069 |   1069 |    1069 |              1 | althingi.is 1069
+ canada_bills_v1                         |   1067 |   1067 |    1067 |              1 | parl.ca 1064
+ miller_center_v1                        |   1059 |   1059 |    1059 |              1 | millercenter.org 1059
+ nz_legislation_v1                       |   1041 |   1041 |    1041 |              1 | legislation.govt.nz 1041
+ wikidata_nobel_v1                       |   1023 |   1023 |    1023 |              1 | wikidata.org 1023
+ central_america_v1                      |   1017 |   1017 |    1017 |              1 | web.archive.org 1017
+ taiwan_legislation_v1                   |   1016 |   1016 |    1016 |              1 | law.moj.gov.tw 1016
+ faers_normalized_drugs_v1               |    999 |    999 |     999 |              1 | api.fda.gov 996
+ africanlii_v1                           |    962 |    962 |     962 |              1 | web.archive.org 962
+ pakistan_code_v1                        |    943 |    943 |     943 |              0 | 
+ congress_stock_act_v1                   |    921 |    921 |     921 |              1 | quiverquant.com 921
+ malaysia_legislation_v1                 |    883 |    883 |     883 |              1 | lom.agc.gov.my 883
+ doj_fara_v1                             |    811 |    811 |     811 |              0 | 
+ cosmetic_faers_v1                       |    810 |    810 |     810 |              1 | api.fda.gov 810
+ icj_judgments_v1                        |    800 |    800 |     800 |              1 | icj-cij.org 800
+ volcanic_eruptions_v1                   |    745 |    745 |     745 |              2 | volcano.si.edu 743; ngdc.noaa.gov 2
+ fec_finance_pac_v1                      |    700 |    700 |     700 |              1 | fec.gov 271
+ caribbean_v1                            |    675 |    675 |     675 |              1 | laws.bahamas.gov.bs 675
+ wto_disputes_v1                         |    645 |    645 |     645 |              1 | wto.org 645
+ nz_local_acts_v1                        |    611 |    611 |     611 |              1 | legislation.govt.nz 611
+ openfec_v1                              |    600 |    600 |     600 |              1 | fec.gov 321
+ openfec_ie_v1                           |    600 |    600 |     600 |              1 | fec.gov 600
+ courtlistener_state_supreme_v1          |    580 |    580 |     580 |              1 | courtlistener.com 580
+ south_africa_legislation_v1             |    578 |    578 |     578 |              1 | api.pmg.org.za 578
+ uganda_legislation_v1                   |    576 |    576 |     576 |              1 | ulii.org 576
+ latvia_legislation_v1                   |    567 |    567 |     567 |              1 | likumi.lv 567
+ malta_legislation_v1                    |    565 |    565 |     565 |              1 | legislation.mt 565
+ frus_v1                                 |    551 |    551 |     551 |              1 | history.state.gov 551
+ jamaica_legislation_v1                  |    528 |    528 |     528 |              1 | laws.moj.gov.jm 528
+ zimbabwe_legislation_v1                 |    513 |    513 |     513 |              1 | zimlii.org 513
+ singapore_legislation_v1                |    508 |    508 |     508 |              1 | sso.agc.gov.sg 508
+ un_ga_resolutions_v1                    |    501 |    501 |     501 |              1 | digitallibrary.un.org 501
+ wikidata_space_missions_v1              |    500 |    500 |     500 |              1 | wikidata.org 500
+ icsid_v1                                |    500 |    500 |     500 |              1 | icsid.worldbank.org 500
+ courtlistener_scotus_v1                 |    473 |    473 |     473 |              1 | courtlistener.com 473
+ nato_official_texts_v1                  |    459 |    459 |     459 |              1 | nato.int 459
+ mauritius_legislation_v1                |    442 |    442 |     442 |              1 | mauritiuslii.org 442
+ rwanda_legislation_v1                   |    438 |    438 |     438 |              1 | rwandalii.org 438
+ tanzania_legislation_v1                 |    434 |    434 |     434 |              1 | tanzlii.org 434
+ un_treaties_v1                          |    419 |    419 |     419 |              1 | treaties.un.org 419
+ ghana_legislation_v1                    |    413 |    413 |     413 |              1 | ghalii.org 413
+ scotland_legislation_v1                 |    408 |    408 |     408 |              1 | data.parliament.scot 408
+ sec_edgar_v1                            |    379 |    379 |     379 |              1 | sec.gov 368
+ fda_aesthetic_devices_v1                |    372 |    372 |     372 |              1 | accessdata.fda.gov 372
+ central_asia_v1                         |    369 |    369 |     369 |              1 | web.archive.org 369
+ tt_legislation_v1                       |    368 |    368 |     368 |              1 | rgd.legalaffairs.gov.tt 368
+ pubchem_v1                              |    355 |    564 |     564 |              2 | pubchem.ncbi.nlm.nih.gov 355; accessdata.fda.gov 209
+ nist_constants_v1                       |    355 |    355 |     355 |              1 | physics.nist.gov 355
+ namibia_legislation_v1                  |    336 |    336 |     336 |              1 | namiblii.org 336
+ malawi_legislation_v1                   |    335 |    335 |     335 |              1 | malawilii.org 335
+ eswatini_legislation_v1                 |    326 |    326 |     326 |              1 | eswatinilii.org 326
+ echr_v1                                 |    312 |    312 |     312 |              1 | hudoc.echr.coe.int 312
+ mexico_legislation_v1                   |    309 |    309 |     309 |              1 | diputados.gob.mx 309
+ georgia_legislation_v1                  |    301 |    301 |     301 |              1 | matsne.gov.ge 301
+ african_court_v1                        |    300 |    300 |     300 |              1 | african-court.org 300
+ brunei_legislation_v1                   |    288 |    288 |     288 |              1 | agc.gov.bn 287
+ courtlistener_tax_v1                    |    259 |    259 |     259 |              1 | courtlistener.com 259
+ courtlistener_bia_v1                    |    240 |    240 |     240 |              1 | courtlistener.com 240
+ openfda_v1                              |    233 |    233 |     233 |              1 | accessdata.fda.gov 233
+ pdg_particles_v1                        |    226 |    226 |     226 |              1 | pdg.lbl.gov 226
+ law-settler                             |    220 |     14 |      14 |              9 | law.justia.com 4; supremecourt.gov 2; supreme.justia.com 2
+ courtlistener_disclosures_v1            |    218 |    218 |     102 |              1 | courtlistener.com 78
+ impact_craters_v1                       |    214 |    214 |     214 |              1 | en.wikipedia.org 214
+ nuclear_tests_v1                        |    202 |    202 |     202 |              1 | en.wikipedia.org 96
+ wikidata_chips_v1                       |    182 |    182 |     182 |              1 | wikidata.org 182
+ uspto_v1                                |    182 |     97 |      97 |              1 | patents.google.com 97
+ uae_legislation_v1                      |    177 |    177 |     177 |              1 | web.archive.org 177
+ who_essential_medicines_v1              |    147 |    147 |     147 |              1 | who.int 147
+ periodic_table_v1                       |    119 |    119 |     119 |              1 | nist.gov 119
+ wikidata_elements_v1                    |    118 |    118 |     118 |              1 | wikidata.org 118
+ czech_abs_v1                            |    104 |    104 |     104 |              1 | abscr.cz 104
+ wales_senedd_v1                         |    100 |    100 |     100 |              1 | legislation.gov.uk 100
+ genbank_v1                              |     99 |     99 |      99 |              1 | ncbi.nlm.nih.gov 99
+ un_ga_v1                                |     97 |     97 |      97 |              1 | digitallibrary.un.org 97
+ lesotho_legislation_v1                  |     90 |     90 |      90 |              1 | lesotholii.org 90
+ iau_constellations_v1                   |     88 |     88 |       1 |              1 | iau.org 88
+ sierra_leone_legislation_v1             |     83 |     83 |      83 |              1 | sierralii.org 83
+ event:exoplanet_retractions_v1          |     75 |     75 |      75 |              2 | ui.adsabs.harvard.edu 74; iopscience.iop.org 1
+ icc_judgments_v1                        |     74 |     74 |      74 |              1 | icc-cpi.int 74
+ seed:climate-trajectories               |     68 |    134 |     130 |             55 | nature.com 21; doi.org 9; ipcc.ch 8
+ seed:astronomy-trajectories             |     62 |    131 |     130 |             25 | doi.org 47; ui.adsabs.harvard.edu 23; nobelprize.org 20
+ seed:nutrition-trajectories             |     57 |    140 |     135 |             33 | pubmed.ncbi.nlm.nih.gov 63; doi.org 11; federalregister.gov 10
+ retraction_watch_v1                     |     55 |    110 |     110 |              1 | doi.org 110
+ icc_cases_v1                            |     35 |     35 |      35 |              1 | icc-cpi.int 35
+ croatia_legislation_v1                  |     33 |     33 |      33 |              1 | narodne-novine.nn.hr 33
+ solar_system_v1                         |     28 |     28 |      28 |              2 | science.nasa.gov 25; ssd.jpl.nasa.gov 3
+ manual                                  |     23 |     62 |      47 |             11 | oversight.house.gov 2; profiles.nlm.nih.gov 2; supreme.justia.com 2
+ nist_webbook_v1                         |     20 |     20 |      20 |              1 | webbook.nist.gov 20
+ book-analysis:cmppvaz700000sal1cnyfutdx |     16 |     16 |       1 |              0 | 
+ seed-trajectories                       |     11 |     10 |      10 |              6 | archives.gov 4; supreme.justia.com 2; epa.gov 1
+ slovenia_legislation_v1                 |     10 |     10 |      10 |              1 | pisrs.si 10
+ seed:historical-trajectories            |     10 |     31 |      31 |             25 | cambridge.org 2; en.wikipedia.org 2; hq.nasa.gov 2
+ seed-court-reversals                    |      8 |      1 |       1 |              1 | tile.loc.gov 1
+ congress_votes_v1                       |      8 |      8 |       8 |              1 | senate.gov 8
+ iau_v1                                  |      5 |      5 |       5 |              1 | iau.org 5
+ stasi_v1                                |      2 |      2 |       2 |              1 | stasi-unterlagen-archiv.de 1
+
+== 7c. distinct source hosts across the corpus (Edge-linked, non-deleted)
+ distinct_hosts_all | distinct_hosts_bulk_pipelines 
+--------------------+-------------------------------
+               2248 |                          1081
+
+== 7d. Source / Edge ingestedBy values that are not Claim pipelines (non-deleted)
+   t    |                                 ingestedBy                                 | count 
+--------+----------------------------------------------------------------------------+-------
+ Edge   | claude_sourcing_v1                                                         |  1119
+ Edge   | p7_congress_dedup                                                          |   497
+ Source | eu_parliament_votes_v2                                                     | 24224
+ Source | claude_sourcing_v1                                                         |  1040
+ Source | event:fda_withdrawals_v1                                                   |   162
+ Source | enrich:openfda_labels_v1                                                   |   116
+ Source | enrich-openfda-labels                                                      |    81
+ Source | enrich-openfda_labels_v1                                                   |    75
+ Source | enrich:openalex_v1                                                         |    63
+ Source | event:ofac_delistings_v1                                                   |    63
+ Source | enrich:corpus-openalex_v1                                                  |    44
+ Source | enrich-openalex_v1                                                         |    29
+ Source | enrich-corpus-openalex_v1                                                  |    21
+ Source | enrich_openfda_labels_v1                                                   |    12
+ Source | event:scotus_overrulings_v1                                                |    11
+ Source | enrich:congress_bills_tracker_v1                                           |    11
+ Source | openfda_labels_v1-enrichment                                               |     9
+ Source | enrich:trajectory-intermediates                                            |     7
+ Source | enrich:intermediate-transitions                                            |     6
+ Source | enrich:openfda_labels_v1-carbidopa-levodopa                                |     6
+ Source | enrich:trajectory-intermediates-v2                                         |     5
+ Source | openfda_labels_v1_enrichment                                               |     5
+ Source | enrich:trajectory-intermediates-v1                                         |     4
+ Source | trajectory-enrichment-agent                                                |     4
+ Source | enrich:openalex_v1-trajectories                                            |     4
+ Source | enrich:openfda_labels_v1-mucinex-sinus-max-severe-congestion               |     4
+ Source | enrich:openfda_labels_v1-primaquine-vivax-malaria                          |     3
+ Source | enrich:openfda_labels_v1-oxybutynin-chloride                               |     3
+ Source | enrich:openfda_labels_v1-oxcarbazepine                                     |     3
+ Source | enrich:openfda_labels_v1-adapalene-bpo-acne                                |     3
+ Source | enrich:openfda_labels_v1-menthol-topical-analgesic-arc                     |     3
+ Source | enrich:openfda_labels_v1-keytruda-pembrolizumab                            |     3
+ Source | enrich:openfda_labels_v1-ibuprofen-indications                             |     3
+ Source | enrich:openfda_labels_v1-evereden-zinc-oxide-sunscreen                     |     3
+ Source | enrich:openfda_labels_v1-ergocalciferol                                    |     3
+ Source | enrich:openfda_labels_v1:sumatriptan-migraine-indication                   |     3
+ Source | enrich:openfda_labels_v1-divalproex-indications                            |     3
+ Source | enrich:openfda_labels_v1-dexmedetomidine                                   |     3
+ Source | enrich:openfda_labels_v1-dapagliflozin                                     |     3
+ Source | enrich:openfda_labels_v1:tofacitinib-no-indication                         |     3
+ Source | enrich:openfda_labels_v1-capecitabine-colorectal                           |     3
+ Source | enrich:openfda_labels_v1-sinus-phenylephrine                               |     3
+ Source | enrich:openalex_v1-ninds-tpa-stroke-1995                                   |     2
+ Source | enrich:corpus-openalex_v1-ukpds38-tight-bp-control-1998                    |     2
+ Source | enrich:ehlers-clark-ptsd-cognitive-model                                   |     2
+ Source | enrichment                                                                 |     2
+ Source | enrich:openalex_v1-arksey-omalley-scoping-studies-2005                     |     2
+ Source | enrich:openalex_v1-chaiken-trope-1999-dual-process-social-psychology       |     2
+ Source | enrich:openalex_v1-finlay-dlqi                                             |     2
+ Source | enrich:openalex_v1-frederick-2005-cognitive-reflection-test                |     2
+ Source | enrich:openalex_v1-hayes-2006-acceptance-commitment-therapy                |     2
+ Source | enrich:openalex_v1-koppen-geiger-climate-classification-2006               |     2
+ Source | enrich:openalex_v1-maml-2017                                               |     2
+ Source | enrich:openalex_v1-mellor-yamada-1982-turbulence-closure                   |     2
+ Source | enrich:openalex_v1-nia-aa-2011-mci-due-to-alzheimers                       |     2
+ Source | enrich:openalex_v1-phq9-kroenke-2001                                       |     2
+ Source | enrich:openfda_labels_v1-acetaminophen-phenylephrine                       |     2
+ Source | enrich:openfda_labels_v1-acyclovir                                         |     2
+ Source | enrich:openfda_labels_v1-chloroxylenol                                     |     2
+ Source | enrich:openfda_labels_v1-chloroxylenol-antiseptic                          |     2
+ Source | enrich:openfda_labels_v1-penicillin-v-potassium                            |     2
+ Source | enrich:openalex_v1-lipid-1998-pravastatin                                  |     1
+ Source | enrich:drugsatfda_v1                                                       |     1
+ Source | enrich:openalex_v1-megan-isoprene-emissions-2006                           |     1
+ Source | enrich:dirac-antimatter-contested-trajectory                               |     1
+ Source | enrich:openalex_v1-menon-uddin-insula                                      |     1
+ Source | enrich:openalex_v1-mpdl3280a-pdl1-predictive                               |     1
+ Source | enrich:openalex_v1-nascet-carotid-endarterectomy                           |     1
+ Source | enrich:corpus-openalex_v1-shamloo-retraction                               |     1
+ Source | enrich:openalex_v1-funk-2015-chirps-precipitation-dataset                  |     1
+ Source | enrich:openalex_v1-novel-coronavirus-outbreak-global-health-concern        |     1
+ Source | enrich:openalex_v1-oliver-1980-satisfaction-disconfirmation                |     1
+ Source | enrich:openalex_v1-oyserman-individualism-collectivism                     |     1
+ Source | enrich:openalex_v1-patton-stanford-barratt-1995-bis11                      |     1
+ Source | enrich:openalex_v1-pearson-2003-inflammatory-markers-cvd                   |     1
+ Source | enrich:openalex_v1-penman-1948-evaporation                                 |     1
+ Source | openalex_v1-enrichment                                                     |     1
+ Source | enrich:openalex_v1-prisma-2009-reporting-systematic-reviews                |     1
+ Source | enrich:openalex_v1-pswq-1990                                               |     1
+ Source | enrich:openalex_v1-radloff-1977-cesd-scale                                 |     1
+ Source | enrich:openalex_v1-riahi-2017-ssp-overview                                 |     1
+ Source | enrich:openalex_v1-rockafellar-2000-optimization-conditional-value-at-risk |     1
+ Source | enrich:openalex_v1-rothman-1990-multiple-comparisons                       |     1
+ Source | enrich:openalex_v1-structural-racism-2017                                  |     1
+ Source | enrich:openalex_v1-tcga-2008-glioblastoma                                  |     1
+ Source | enrich:openalex_v1-tide-immunotherapy                                      |     1
+ Source | enrich:openalex_v1-friedman-2002-stochastic-gradient-boosting              |     1
+ Source | enrich:openalex_v1-ukpds35-glycaemia-complications                         |     1
+ Source | enrich:openalex_v1-vitousek-human-domination-1997                          |     1
+ Source | enrich:openalex_v1-williamson-2000-new-institutional-economics             |     1
+ Source | enrich:openalex_v1-xu-covid-ards-pathology-2020                            |     1
+ Source | enrich:openalex_v1-fox-anticorrelated-brain-networks-2005                  |     1
+ Source | enrich:openalex_v1-eysenck-2007-act                                        |     1
+ Source | enrich:openalex_v1-endophenotype-concept                                   |     1
+ Source | enrich:openalex_v1-eccles-wigfield-2002-motivational-beliefs               |     1
+ Source | enrich-corpus-openalex_v1-q-learning                                       |     1
+ Source | enrich:corpus-openalex_v1-pope-dockery-pm-health-2006                      |     1
+ Source | enrich:openalex_v1-easl-2017-hbv-guidelines                                |     1
+ Source | enrich:openalex_v1-durlak-2011-sel-meta-analysis                           |     1
+ Source | enrich:openalex_v1-dgkf-state-space-hinfinity-control                      |     1
+ Source | enrich:corpus-openalex_v1-mostly-harmless-econometrics                     |     1
+ Source | enrich:corpus-openalex_v1-autistic-child-theory-of-mind                    |     1
+ Source | enrich:openalex_v1-decoding-tumour-radiomics-2014                          |     1
+ Source | enrich:openalex_v1-conbuildmat-duplication-retraction                      |     1
+ Source | enrich:openalex_v1-cognitive-therapy-depression                            |     1
+ Source | enrich:openalex_v1-caprie-1996-clopidogrel-versus-aspirin                  |     1
+ Source | enrich:openalex_v1-bush-2000-acc                                           |     1
+ Source | enrich:openalex_v1-bhattacherjee-2001-is-continuance                       |     1
+ Source | enrich:openalex_v1-bandura-2004-health-promotion                           |     1
+ Source | enrich:openalex_v1-bandura-1993-self-efficacy                              |     1
+ Source | enrich:openalex_v1-bandura-1986-social-foundations                         |     1
+ Source | enrich:openalex_v1-atp3-ncep-cholesterol-update                            |     1
+ Source | enrich:openalex_v1-aspirin-clopidogrel-secondary-stroke-2014               |     1
+ Source | enrich:cella-fact-g-cancer-qol                                             |     1
+ Source | enrich:openalex_v1-ashkin-1986-optical-trap                                |     1
+ Source | enrich:openalex_v1-akyildiz-2006-cognitive-radio-survey                    |     1
+ Source | enrich:openalex_v1-agnzn-ferrite-retraction                                |     1
+ Source | enrich:king-levine-finance-growth                                          |     1
+ Source | enrich-ostrom-2009-ses                                                     |     1
+ Source | enrich:persistence-soil-organic-matter-schmidt-2011                        |     1
+ Source | enrich:posttraumatic-growth-tedeschi-calhoun-2004                          |     1
+ Source | enrich:prion-contested-trajectory                                          |     1
+ Source | enrich:pt-symmetric-hamiltonians-real-spectra-1998                         |     1
+ Source | enrich:save-captopril-lv-dysfunction-pfeffer-1992                          |     1
+ Source | enrich:hopfield-tank-neural-optimization                                   |     1
+ Source | enrich:held-soden-hydrological-cycle-2006                                  |     1
+ Source | enrich-green-1995-rjmcmc                                                   |     1
+ Source | enrich:openalex_v1-greenwald-1995-implicit-social-cognition                |     1
+ Source | enrich:voteview_v1                                                         |     1
+ Source | enrich:openalex_v1-heliyon-e18289-retraction                               |     1
+ Source | enrich:openalex_v1-huang-2020-covid-clinical-features                      |     1
+ Source | enrich:openalex_v1-hughes-1982-clinical-dementia-rating                    |     1
+ Source | enrich:openalex_v1-ipcc-2007-ar4-wg1-physical-science-basis                |     1
+ Source | enrich:openalex_v1-ipcc-2023-ar6-wg1-physical-science-basis                |     1
+ Source | enrich:openalex_v1-knack-keefer-1995-institutions                          |     1
+ Source | enrich:fermentation-contested-trajectory                                   |     1
+ Source | enrich:openalex_v1-lazarus-1991                                            |     1
+ Source | enrich:openalex_v1-lindblom-1959-muddling-through                          |     1
+
+== 7e. non-claim Source / Edge tags by class (non-deleted)
+   t    |       tag_class        | tags | rows  
+--------+------------------------+------+-------
+ Edge   | claude_sourcing_v1     |    1 |  1119
+ Edge   | p7_congress_dedup      |    1 |   497
+ Source | eu_parliament_votes_v2 |    1 | 24224
+ Source | claude_sourcing_v1     |    1 |  1040
+ Source | enrich*                |  131 |   669
+ Source | event:*                |    3 |   236
+

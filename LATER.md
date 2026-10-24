@@ -171,3 +171,22 @@ Found during phase 6 (2026-10-01), left for later:
 | router navigation on ISR pages that read their own query | after a deep link with a query, the client router keeps a hydration route-cache entry that sends every `<Link>` to the page back to that query for 5 minutes. Phase 6 renders `/retraction-explorer` (stats cached) and `/corrections` per request and moves the explorer's filters with `history.pushState`; the same pattern remains in Lab `PrereqGraphClient` and `CongressTradesClient` (ISR, `router.push` on their own search params) |
 | one ISR 404 per bogus id | `/claims/[id]`, `/settling-curve/[id]` and `/datasets/[tag]` now return real 404s, and ISR caches one per unique unknown id; for `/datasets/[tag]` (tags are code) `dynamicParams = false` would bound it |
 | `@stoplight/spectral-cli` | unused since phase 6 deleted the API-contract workflow — uninstall is the owner's call |
+
+## 6. Data Descriptor census findings, 2026-10-24 (read-only; nothing fixed)
+
+Found while building `docs/paper/numbers.md` (branch `paper/scientific-data`); queries in `docs/paper/sql/`.
+Every item is a DB or site correction and needs its own yes.
+
+| item | the one missing piece |
+|---|---|
+| sentinel dates | 6,666 `ClaimStatusHistory` rows and 6,630 `claimEmergedAt` values sit on 1970-01-01 (romania_cnsas_v1 3,872, nara_catalog_v1 1,841, czech_legislation 164, vdem 156, …); 66 france_legislation_v1 rows on 2999-01-01, 8 chile rows in year ≥ 2100, 14 more in the future (`03 §3g–3h`, `06 §6c`). Decide per pipeline: real date from the record, or null + a refusal note |
+| out-of-order rows | 23 row-sourced transitions are dated earlier than the row before them in `seq` order (20 seed:human-history); 60 transitions have `fromAxis` ≠ the previous row's `toAxis`; 80 baselines carry a `fromAxis`; 761 rows have null `seq` (`03 §3i`, `§3l`) |
+| axis drift | 470 claims whose `epistemicAxis` differs from their last history row's `toAxis` (`02 §2f`) |
+| null axis | 23,128 claims with null `epistemicAxis`: nara_catalog_v1 23,055, courtlistener_scotus_v1 73 (`02 §2d`) |
+| deprecation_reason on live claims | 662 `nobel_v1` claims carry `metadata.deprecation_reason` but are VERIFIED, not DEPRECATED (`08 §8f`) — either the reason is stale or the status is wrong |
+| sources without URLs | drugsatfda_v1: 45,987 of 46,255 claims have no URL-bearing Source; taiwan_archives_v1 and korea_legislation_v1 have none at all (`05 §5b`) |
+| missing ingester | `echr_judgments_v1` (9,984 claims) has no writer script under `scripts/` (`scripts/paper/pipeline-scripts.ts`) |
+| `/corrections` gaps | the page omits three batches recorded in `Claim.metadata.corrections`: `voteview-full-text-2026-10` (85,987), `p7-q9-stock-act-relabel-2026-10` (921), `p7-q13-lv-results-2026-10` (39) (`08 §8b`) |
+| still writing | 13 `courtlistener_scotus_v1` claims were created 2026-09-30 → 2026-10-24 (one on 10-24), after the restore (`01 §1d`) — find the writer (likely the `/api/ingest/scotus` cron) and decide whether it runs during the paper's export freeze |
+| `app_ro` read-only default | `current_setting('default_transaction_read_only')` returns `off` for `app_ro` (checked 2026-10-24): the 2026-10-13 rotation/hardening commands appear not to have run. The paper scripts force it on per session |
+| `Source.methodologyType` | 13 ad-hoc values beyond primary/derivative/opinion (secondary 41, guideline 9, review 5, `meta-analysis` and `meta_analysis`, …) (`05 §5c`) |

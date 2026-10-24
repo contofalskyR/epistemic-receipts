@@ -1,0 +1,78 @@
+-- query: docs/paper/sql/02_epistemic_axis.sql
+-- run:   2026-10-24T15:42:58Z · git ec9acd0 · role app_ro (read-only session)
+
+== 2a. epistemicAxis, corpus (deleted = false)
+ epistemicAxis | claims |  pct   | in_factstatus_enum 
+---------------+--------+--------+--------------------
+ SETTLED       | 859696 | 48.913 | t
+ RECORDED      | 831132 | 47.288 | t
+ REVERSED      |  43148 |  2.455 | t
+ (null)        |  23128 |  1.316 | 
+ CONTESTED     |    453 |  0.026 | t
+ ABANDONED     |     34 |  0.002 | t
+ OPEN          |      4 |  0.000 | t
+ UNRESOLVABLE  |      4 |  0.000 | t
+
+== 2b. epistemicAxis, live default view (deleted = false, not DEPRECATED)
+ epistemicAxis | claims |  pct   
+---------------+--------+--------
+ SETTLED       | 859514 | 48.908
+ RECORDED      | 831132 | 47.293
+ REVERSED      |  43148 |  2.455
+ (null)        |  23128 |  1.316
+ CONTESTED     |    453 |  0.026
+ ABANDONED     |     34 |  0.002
+ OPEN          |      4 |  0.000
+ UNRESOLVABLE  |      4 |  0.000
+
+== 2c. every distinct epistemicAxis value in the table, deleted rows included
+ epistemicAxis | all_rows 
+---------------+----------
+ SETTLED       |   860213
+ RECORDED      |   831133
+ REVERSED      |    43148
+ (null)        |    23128
+ CONTESTED     |      454
+ ABANDONED     |       34
+ OPEN          |        4
+ UNRESOLVABLE  |        4
+
+== 2d. null epistemicAxis (deleted = false) by pipeline
+       ingestedBy        | null_axis 
+-------------------------+-----------
+ nara_catalog_v1         |     23055
+ courtlistener_scotus_v1 |        73
+
+== 2e. ABANDONED / UNRESOLVABLE / OPEN / CONTESTED claims (deleted = false) by pipeline
+ epistemicAxis |           ingestedBy            | claims 
+---------------+---------------------------------+--------
+ ABANDONED     | seed:medicine-trajectories      |     20
+ ABANDONED     | congress_bills_tracker_v1       |      7
+ ABANDONED     | law-settler                     |      5
+ ABANDONED     | seed-trajectories               |      1
+ ABANDONED     | seed:nutrition-trajectories     |      1
+ CONTESTED     | seed:medicine-trajectories      |    201
+ CONTESTED     | openfda_labels_v1               |    114
+ CONTESTED     | seed:human-history-trajectories |     86
+ CONTESTED     | law-settler                     |     20
+ CONTESTED     | seed:nutrition-trajectories     |     14
+ CONTESTED     | seed:climate-trajectories       |      9
+ CONTESTED     | courtlistener_scotus_v1         |      4
+ CONTESTED     | seed-trajectories               |      1
+ CONTESTED     | drugsatfda_v1                   |      1
+ CONTESTED     | openalex_v1                     |      1
+ CONTESTED     | seed:astronomy-trajectories     |      1
+ CONTESTED     | seed:historical-trajectories    |      1
+ OPEN          | seed:human-history-trajectories |      4
+ UNRESOLVABLE  | seed:human-history-trajectories |      4
+
+== 2f. epistemicAxis vs the toAxis of the claim's last ClaimStatusHistory row (deleted = false)
+ no_history | axis_equals_last_toaxis | axis_differs_from_last_toaxis 
+------------+-------------------------+-------------------------------
+     177966 |                 1579163 |                           470
+
+== 2g. summary (deleted = false)
+ corpus  | non_null_axis | pct_non_null | settled_or_recorded | pct_settled_or_recorded 
+---------+---------------+--------------+---------------------+-------------------------
+ 1757599 |       1734471 |       98.684 |             1690828 |                  96.201
+

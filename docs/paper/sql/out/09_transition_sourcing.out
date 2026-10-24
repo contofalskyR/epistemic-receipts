@@ -1,0 +1,31 @@
+-- query: docs/paper/sql/09_transition_sourcing.sql
+-- run:   2026-10-24T15:47:22Z · git ec9acd0 · role app_ro (read-only session)
+
+== 9a. candidates by status and reviewer
+     status      |              reviewed_by              | rows | promoted | url_in_search_results | confidence_ge_0_5 
+-----------------+---------------------------------------+------+----------+-----------------------+-------------------
+ accepted        | machine:verify-transition-sources     |  809 |      809 |                   809 |               809
+ accepted        | machine:verify-transition-sources-api |  339 |      339 |                   339 |               339
+ candidate       | (none)                                | 4209 |        0 |                  4209 |               640
+ no_source_found | (none)                                |   73 |        0 |                     0 |                 0
+ rejected        | machine:verify-transition-sources     |   88 |        0 |                    88 |                35
+
+== 9b. totals
+ candidates_all | pending_candidate | accepted | promoted | promoted_distinct_sources | promoted_distinct_edges | claims_with_promoted_source | cost_usd_total |               models                
+----------------+-------------------+----------+----------+---------------------------+-------------------------+-----------------------------+----------------+-------------------------------------
+           5518 |              4209 |     1148 |     1148 |                      1083 |                    1125 |                         978 |         228.78 | claude-haiku-5-5, claude-sonnet-5-5
+
+== 9c. Source / Edge rows written by claude_sourcing_v1
+   t    | rows | human_reviewed | auto_approved | deleted 
+--------+------+----------------+---------------+---------
+ Source | 1040 |              0 |          1040 |       0
+ Edge   | 1119 |              0 |          1119 |       0
+
+== 9d. pending candidates by confidence band and verify outcome
+ confidence_band | pending | with_verify_record 
+-----------------+---------+--------------------
+ <0.5            |    3569 |               3568
+ 0.5-0.7         |     404 |                404
+ >=0.7           |     236 |                236
+                 |    4209 |               4208
+

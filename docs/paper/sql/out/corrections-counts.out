@@ -1,0 +1,24 @@
+-- script: scripts/paper/corrections-counts.ts
+-- run:    2026-10-24T15:42:39.137Z · git ec9acd0 · role app_ro
+
+corpus (Claim.deleted = false): 1757599
+
+== /corrections page entries (app/corrections/page.tsx)
+date        kind        recordsAffected  % corpus  source
+2026-10-13  DIAGNOSTIC              814    0.046%  voteview_v1 (roll-call results)
+2026-10-13  CORRECTED               497    0.028%  congress_votes_v1 → voteview_v1
+2026-10-13  CORRECTED               475    0.027%  voteview_v1 (Senate roll calls)
+2026-06-08  CORRECTED              4897    0.279%  Claim.currentStatus / epistemicStatus
+2026-05-12  RETIRED                 182    0.010%  uspto_v1 (Pipeline 5)
+
+entries: 5 · sum of recordsAffected: 6865 (0.391% of corpus)
+by kind: DIAGNOSTIC 814 (0.046%) · CORRECTED 5869 (0.334%) · RETIRED 182 (0.010%)
+
+== data/vote-results-under-review.json (generated 2026-10-13)
+votes: 814 (0.046% of corpus)
+  house-suspension: 238
+  house-tie: 29
+  senate-tie: 190
+  senate-three-fifths: 300
+  senate-two-thirds: 45
+  contradiction: 12

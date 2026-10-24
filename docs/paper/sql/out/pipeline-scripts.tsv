@@ -1,0 +1,188 @@
+pipeline	claims	registry_upstream	registry_url	registry_method	writer_scripts	later_writer_scripts	other_mentions	llm_call_in_writer	model_ids_in_writer
+openalex_v1	318775	OpenAlex academic papers	https://openalex.org		scripts/ingest-openalex.ts	11	9	none	—
+nara_catalog_v1	308051	NARA Catalog (RG 263/59/330/128/148)	https://catalog.archives.gov		scripts/ingest-nara-catalog.ts	2	6	none	—
+voteview_v1	113319	Voteview / Lewis et al.	https://voteview.com/data	Bulk CSV download	scripts/ingest-voteview-claims.ts, scripts/ingest-voteview.ts	3	8	none	—
+openfda_labels_v1	85068	openFDA	https://open.fda.gov/apis/drug/label/	REST API	scripts/ingest-clinicaltrials.ts, scripts/ingest-openfda-labels.ts	3	2	none	—
+hungary_legislation_v1	69441	Hungarian National Assembly	https://mkogy.hu	REST API	scripts/ingest-hungary-legislation.ts	0	0	none	—
+chebi_v1	62000	EBI ChEBI	https://www.ebi.ac.uk/chebi/	Bulk OBO download	scripts/ingest-chebi.ts	1	2	none	—
+worldbank_v1	54567	World Bank Open Data	https://api.worldbank.org/v2/	REST API	scripts/ingest-worldbank.ts	5	3	none	—
+drugsatfda_v1	46255	Drugs@FDA approvals	https://www.accessdata.fda.gov/scripts/cder/daf		scripts/ingest-drugs-fda.ts	0	3	none	—
+jacar_v1	44600	Japan Center for Asian Historical Records	https://www.jacar.archives.go.jp	REST API	scripts/ingest-jacar.ts	0	2	none	—
+who_gho_v1	33714	World Health Organization	https://ghoapi.azureedge.net/api	REST API	scripts/ingest-who-gho.ts	0	2	none	—
+crossref_retractions_v1	26624	CrossRef	https://api.crossref.org/works	REST API	scripts/ingest-retractions.ts	5	6	none	—
+argentina_legislation_v1	25824	Argentina — InfoLEG	http://www.infoleg.gob.ar		scripts/ingest-argentina-legislation.ts	0	1	none	—
+openalex_journals_v1	25687	OpenAlex journals	https://openalex.org		scripts/ingest-openalex-journals.ts	0	0	none	—
+czech_legislation_v1	24173	Czech Parliament	https://psp.cz	REST API	scripts/ingest-czech-legislation.ts	0	0	none	—
+vdem_v1	19777	Varieties of Democracy (V-Dem)	https://www.v-dem.net/data/	Bulk download	scripts/ingest-vdem.ts	3	0	none	—
+ofac_sdn_v1	19034	OFAC SDN sanctions list	https://sanctionslist.ofac.treas.gov		scripts/ingest-ofac-sdn.ts	4	5	none	—
+congress_bills_tracker_v1	17280	Congress.gov bill tracker	https://www.congress.gov		scripts/ingest-congress-bills-tracker.ts	3	0	none	—
+italy_legislation_v1	16934	Italy — Normattiva	https://www.normattiva.it		scripts/ingest-italy-legislation.ts	0	0	none	—
+chile_legislation_v1	15889	Chile — BCN	https://www.bcn.cl		scripts/ingest-chile-legislation.ts	1	0	none	—
+rxnorm_v1	14632	NLM RxNorm	https://rxnav.nlm.nih.gov/REST/	REST API	scripts/ingest-rxnorm.ts	0	2	none	—
+romania_legislation_v1	13878	Romanian Government	https://legislatie.just.ro	REST API	scripts/ingest-romania-legislation.ts	0	0	none	—
+brazil_legislation_v1	12818	Brazil — Planalto	https://www.planalto.gov.br		scripts/ingest-brazil-legislation.ts	0	1	none	—
+cyprus_legislation_v1	12682	Cyprus — CyLaw	http://www.cylaw.org		scripts/ingest-cyprus-legislation.ts	1	0	none	—
+russia_legislation_v1	12015	Russia — pravo.gov.ru	http://pravo.gov.ru		scripts/ingest-russia-legislation.ts	0	0	none	—
+uk_legislation_v1	11777	legislation.gov.uk	https://www.legislation.gov.uk	REST API	scripts/ingest-uk-legislation.ts	3	0	none	—
+philippines_legislation_v1	11703	Philippines — Official Gazette	https://www.officialgazette.gov.ph		scripts/ingest-philippines-legislation.ts	0	0	none	—
+nih_reporter_v1	11285	NIH RePORTER	https://api.reporter.nih.gov	REST API	scripts/ingest-nih-reporter.ts	2	1	none	—
+clinicaltrials_v1	10957	ClinicalTrials.gov (NLM)	https://clinicaltrials.gov/api/v2/	REST API	scripts/ingest-clinicaltrials.ts, scripts/ingest-drugs-fda.ts	4	1	none	—
+congress_v1	10360	Congress.gov	https://api.congress.gov	REST API	scripts/ingest-congress.ts, scripts/legacy/ingest-congress.ts	6	5	none	—
+luxembourg_legislation_v1	10006	Luxembourg — Legilux	https://legilux.public.lu		scripts/ingest-luxembourg-legislation.ts	1	0	none	—
+europeana_wwi_v1	10000	Europeana	https://www.europeana.eu	REST API	scripts/ingest-europeana-wwi.ts	0	2	none	—
+mesh_v1	10000	MeSH (Medical Subject Headings)	https://www.nlm.nih.gov/mesh		scripts/ingest-mesh.ts	0	2	none	—
+riksdag_v1	9989	Sveriges riksdag	https://riksdagen.se/sv/sok/?typ=doktyp&doktyp=bet	Open API	scripts/ingest-riksdag.ts	1	0	none	—
+echr_judgments_v1	9984	European Court of Human Rights	https://hudoc.echr.coe.int	REST API (HUDOC)	not found	0	1	none	—
+wipo_lex_v1	9641	WIPO Lex	https://www.wipo.int/wipolex/	REST API	scripts/ingest-wipo-lex.ts	0	0	none	—
+eec_council_v1	8933	EEC Council (historical)	https://eur-lex.europa.eu		scripts/ingest-eec-council.ts	0	0	none	—
+costa_rica_legislation_v1	8483	Costa Rica — SCIJ	http://www.pgrweb.go.cr/scij		scripts/ingest-costa-rica-legislation.ts	0	0	none	—
+sipri_milex_v1	8435	SIPRI military expenditure	https://www.sipri.org/databases/milex		scripts/ingest-sipri-milex.ts	3	0	none	—
+colombia_legislation_v1	8159	Colombia — Secretaría Jurídica	https://www.secretariajuridica.gov.co		scripts/ingest-colombia-legislation.ts	0	0	none	—
+belgium_legislation_v1	7870	Belgium — Official Gazette	https://www.ejustice.just.fgov.be		scripts/ingest-belgium-legislation.ts	0	0	none	—
+space_missions_v1	7318	Jonathan McDowell — GCAT	https://planet4589.org/space/gcat/	Bulk TSV download	scripts/ingest-space-missions-wikidata.ts, scripts/ingest-space-missions.ts	1	0	none	—
+poland_legislation_v1	6461	Poland — ISAP	https://isap.sejm.gov.pl		scripts/ingest-poland-legislation.ts	0	1	none	—
+bundestag_v1	6343	Deutscher Bundestag DIP	https://search.dip.bundestag.de/api/v1/	REST API	scripts/ingest-bundestag.ts	2	1	none	—
+nasa_exoplanet_v1	6277	NASA Exoplanet Archive	https://exoplanetarchive.ipac.caltech.edu	REST API (TAP)	scripts/ingest-astronomy.ts	1	1	none	—
+estonia_legislation_v1	5870	Riigi Teataja	https://www.riigiteataja.ee	REST API	scripts/ingest-estonia-legislation.ts	1	0	none	—
+peru_legislation_v1	5202	Congreso de la República del Perú	https://congreso.gob.pe	REST API	scripts/ingest-peru.ts	1	0	none	—
+uk_national_archives_v1	5000	UK National Archives	https://www.nationalarchives.gov.uk		scripts/ingest-uk-national-archives.ts	0	2	none	—
+thailand_legislation_v1	4938	Thailand — Office of the Council of State	https://www.krisdika.go.th		scripts/ingest-thailand-legislation.ts	0	0	none	—
+australia_legislation_v1	4740	Australia — Federal Register of Legislation	https://www.legislation.gov.au		scripts/ingest-australia-legislation.ts	1	0	none	—
+usgs_eq_v1	4696	USGS Earthquake Hazards Program	https://earthquake.usgs.gov/fdsnws/event/1/	REST API (FDSN)	scripts/ingest-usgs-earthquakes.ts	1	0	none	—
+denmark_legislation_v1	4550	Denmark — Retsinformation	https://www.retsinformation.dk		scripts/ingest-denmark-legislation.ts	0	0	none	—
+nz_repealed_acts_v1	4372	New Zealand Parliamentary Counsel Office	https://www.legislation.govt.nz	REST API	scripts/ingest-nz-legislation.ts	2	2	none	—
+fred_v1	4349	Federal Reserve Bank of St. Louis	https://fred.stlouisfed.org	REST API (requires FRED_API_KEY)	scripts/ingest-fred.ts	0	0	none	—
+eu_parliament_v1	4331	European Parliament	https://www.europarl.europa.eu	REST API	scripts/ingest-eu-parliament.ts	3	0	none	—
+uruguay_legislation_v1	4297	Parlamento del Uruguay	https://parlamento.gub.uy	REST API	scripts/ingest-uruguay.ts	1	0	none	—
+western_balkans_v1	4062	Western Balkans legislation			scripts/ingest-western-balkans.ts	0	0	none	—
+slovakia_legislation_v1	4050	Slovak Parliament	https://www.nrsr.sk	REST API	scripts/ingest-slovakia-legislation.ts	0	0	none	—
+oireachtas_v1	4040	Houses of the Oireachtas	https://api.oireachtas.ie	Open API	scripts/ingest-oireachtas.ts	1	0	none	—
+taiwan_archives_v1	3935	Archives Administration, Executive Yuan (Taiwan)	https://archives.gov.tw	REST API	scripts/ingest-taiwan-archives.ts	0	2	none	—
+romania_cnsas_v1	3927	CNSAS (Romania National Council for Studying Securitate Archives)	https://www.cnsas.ro	Archive crawl (Wayback CDX)	scripts/ingest-romania-cnsas.ts	0	2	none	—
+nationalrat_v1	3868	Parlament.gv.at	https://www.parlament.gv.at	REST API	scripts/ingest-nationalrat.ts	1	0	none	—
+loc_collections_v1	3561	Library of Congress collections	https://www.loc.gov		scripts/ingest-loc-collections.ts	0	2	none	—
+india_legislation_v1	3540	India — India Code	https://www.indiacode.nic.in		scripts/ingest-india-legislation.ts	0	0	none	—
+fec_finance_v1	3500	FEC candidate finance	https://www.fec.gov		scripts/ingest-fec-finance.ts	0	0	none	—
+seed:human-history-trajectories	3479	Curated — human-history trajectories			scripts/seed-human-history-trajectories.ts	0	1	none	—
+ucdp_v1	3432	UCDP armed conflict dataset	https://ucdp.uu.se		scripts/ingest-ucdp.ts	2	0	none	—
+france_legislation_v1	3046	France — Légifrance	https://www.legifrance.gouv.fr		scripts/ingest-france-legislation.ts	0	1	none	—
+parlament_at_v1	3004	Austria — Parlament (auxiliary)	https://www.parlament.gv.at		scripts/ingest-parlament-at.ts	0	0	none	—
+kenya_legislation_v1	2984	Kenya — Kenya Law	http://kenyalaw.org		scripts/ingest-kenya-legislation.ts	0	0	none	—
+un_sc_resolutions_v1	2798	United Nations	https://digitallibrary.un.org	REST API	scripts/ingest-un-sc-resolutions.ts	3	0	none	—
+norway_legislation_v1	2612	Stortinget	https://data.stortinget.no	REST API	scripts/ingest-norway-legislation.ts	0	0	none	—
+switzerland_legislation_v1	2413	Switzerland — Fedlex	https://www.fedlex.admin.ch		scripts/ingest-switzerland-legislation.ts	0	0	none	—
+eu_legislation_v1	2122	EU legislation (EUR-Lex)	https://eur-lex.europa.eu		scripts/ingest-eu-legislation.ts	3	0	none	—
+korea_legislation_v1	2114	Korea Legislation Research Institute	https://www.law.go.kr	REST API	scripts/ingest-korea-legislation.ts	0	2	none	—
+japan_legislation_v1	2080	National Diet Library / e-Gov	https://laws.e-gov.go.jp	REST API	scripts/ingest-japan-legislation.ts	0	1	none	—
+spain_legislation_v1	2045	Spain — BOE	https://www.boe.es		scripts/ingest-spain-legislation.ts	0	0	none	—
+israel_knesset_v1	2009	Knesset of Israel	https://main.knesset.gov.il	REST API	scripts/ingest-israel-knesset.ts	2	0	none	—
+fr_rules_v1	1920	Federal Register (NARA)	https://www.federalregister.gov/api/v1	REST API	scripts/ingest-federal-register.ts	0	1	none	—
+nz_bills_v1	1879	New Zealand Parliamentary Counsel Office	https://www.legislation.govt.nz	REST API	scripts/ingest-nz-legislation.ts	2	0	none	—
+seed:medicine-trajectories	1782	Curated — medicine trajectories			scripts/seed-medicine-trajectories.ts	0	1	none	—
+srilanka_legislation_v1	1704	Parliament of Sri Lanka	https://www.parliament.lk	REST API	scripts/ingest-srilanka.ts	1	0	none	—
+nobel_v1	1688	Nobel Foundation	https://api.nobelprize.org/2.1/	REST API	scripts/ingest-nobel-laureates.ts, scripts/ingest-nobel-prizes.ts	2	2	none	—
+finland_legislation_v1	1683	Finnish Parliament	https://www.eduskunta.fi	REST API	scripts/ingest-finland-legislation.ts	1	0	none	—
+bangladesh_legislation_v1	1664	Bangladesh National Parliament	https://bdlaws.minlaw.gov.bd	REST API	scripts/ingest-bangladesh-legislation.ts	1	0	none	—
+paclii_legislation_v1	1583	PacLII (Pacific Islands Legal Information Institute)	https://www.paclii.org	Archive crawl (Wayback CDX)	scripts/ingest-paclii.ts, scripts/legacy/ingest-paclii.ts	0	2	none	—
+tweedekamer_v1	1530	Tweede Kamer der Staten-Generaal	https://gegevens.tweedekamer.nl	OData API	scripts/ingest-tweedekamer.ts	2	0	none	—
+omim_v1	1512	OMIM (Online Mendelian Inheritance in Man)	https://omim.org	REST API (requires OMIM_API_KEY)	scripts/ingest-omim.ts	1	2	none	—
+icd11_v1	1374	World Health Organization	https://icd.who.int/icdapi	REST API (ICD-11 MMS)	scripts/ingest-icd11.ts	0	1	none	—
+portugal_legislation_v1	1292	Assembleia da República	https://www.parlamento.pt	REST API	scripts/ingest-portugal-legislation.ts	1	0	none	—
+courtlistener_circuits_v1	1232	CourtListener (Free Law Project)	https://www.courtlistener.com	REST API	scripts/ingest-courtlistener-circuits.ts, scripts/ingest-courtlistener-citations.ts	1	0	none	—
+zambia_legislation_v1	1119	Zambia — ZambiaLII	https://zambialii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+iceland_legislation_v1	1069	Althingi	https://www.althingi.is	REST API	scripts/ingest-iceland-legislation.ts	1	0	none	—
+canada_bills_v1	1067	LEGISinfo (Parliament of Canada)	https://www.parl.ca/legisinfo	REST API	scripts/ingest-canada-bills.ts	3	0	none	—
+miller_center_v1	1059	Miller Center presidential speeches	https://millercenter.org		scripts/ingest-miller-center.ts	0	0	none	—
+nz_legislation_v1	1041	New Zealand Parliamentary Counsel Office	https://www.legislation.govt.nz	REST API	scripts/ingest-nz-legislation.ts	1	0	none	—
+wikidata_nobel_v1	1023	Nobel laureates (Wikidata)	https://www.wikidata.org		scripts/ingest-nobel-laureates.ts	1	1	none	—
+central_america_v1	1017	Central America legislation			scripts/ingest-central-america.ts	0	0	none	—
+taiwan_legislation_v1	1016	Legislative Yuan (Taiwan)	https://data.ly.gov.tw	REST API	scripts/ingest-taiwan-legislation.ts	1	0	none	—
+faers_normalized_drugs_v1	999	FDA FAERS via openFDA	https://api.fda.gov/drug/event.json	REST API	scripts/ingest-faers-current-drugs.ts	0	0	none	—
+africanlii_v1	962	AfricaLII (African Legal Information Institute)	https://africalii.org	REST API	scripts/ingest-africanlii.ts	0	2	none	—
+pakistan_code_v1	943	Pakistan Code (Federal Acts)	https://pakistancode.gov.pk		scripts/ingest-pakistan-code.ts	0	0	none	—
+congress_stock_act_v1	921	Quiver Quantitative (congressional trading data)	https://www.quiverquant.com/congresstrading/	REST API (Quiver Quantitative), one snapshot taken 2026-06-08	scripts/ingest-congress-stock-act.ts	0	2	none	—
+malaysia_legislation_v1	883	Malaysian Attorney General's Chambers	https://www.agc.gov.my	Bulk download	scripts/ingest-malaysia-legislation.ts	1	0	none	—
+doj_fara_v1	811	Department of Justice FARA Unit	https://efile.fara.gov	Bulk CSV	scripts/ingest-doj-fara.ts, scripts/legacy/ingest-doj-fara.ts	0	0	none	—
+cosmetic_faers_v1	810	FDA cosmetic FAERS reports	https://open.fda.gov		scripts/ingest-cosmetic-faers.ts	0	0	none	—
+icj_judgments_v1	800	International Court of Justice	https://www.icj-cij.org/decisions	Bulk download	scripts/ingest-icj-judgments.ts	0	0	none	—
+volcanic_eruptions_v1	745	NOAA NGDC / Smithsonian GVP	https://www.ngdc.noaa.gov/hazel/hazard-service/api/v1/volcanoes	REST API (NOAA), fallback GVP	scripts/ingest-volcanic-eruptions.ts	0	0	none	—
+fec_finance_pac_v1	700	FEC PAC finance	https://www.fec.gov		scripts/ingest-fec-finance.ts	0	0	none	—
+caribbean_v1	675	Caribbean legislation			scripts/ingest-caribbean.ts	0	0	none	—
+wto_disputes_v1	645	World Trade Organization	https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm	REST API	scripts/ingest-wto-disputes.ts	0	0	none	—
+nz_local_acts_v1	611	New Zealand Parliamentary Counsel Office	https://www.legislation.govt.nz	REST API	scripts/ingest-nz-legislation.ts	1	0	none	—
+openfec_v1	600	OpenFEC (FEC)	https://api.open.fec.gov/v1/	REST API	scripts/ingest-openfec.ts	0	0	none	—
+openfec_ie_v1	600	OpenFEC (FEC)	https://api.open.fec.gov/v1/	REST API	scripts/ingest-openfec.ts	0	0	none	—
+courtlistener_state_supreme_v1	580	CourtListener state supreme courts	https://www.courtlistener.com		scripts/ingest-courtlistener-citations.ts, scripts/ingest-courtlistener-state-supreme.ts	0	0	none	—
+south_africa_legislation_v1	578	South African Parliament	https://www.parliament.gov.za	REST API	scripts/ingest-south-africa-legislation.ts	1	1	none	—
+uganda_legislation_v1	576	Uganda — ULII	https://ulii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+latvia_legislation_v1	567	Likumi.lv	https://likumi.lv	Archive crawl (CDX)	scripts/ingest-latvia-legislation.ts	0	0	none	—
+malta_legislation_v1	565	Malta Government	https://legislation.mt	REST API	scripts/ingest-malta-legislation.ts	0	0	none	—
+frus_v1	551	U.S. Department of State / history.state.gov	https://history.state.gov/historicaldocuments	REST API	scripts/ingest-frus.ts	0	0	none	—
+jamaica_legislation_v1	528	Parliament of Jamaica	https://japarliament.gov.jm	REST API	scripts/ingest-jamaica.ts	0	0	none	—
+zimbabwe_legislation_v1	513	Zimbabwe — ZimLII	https://zimlii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+singapore_legislation_v1	508	Singapore Attorney-General's Chambers	https://sso.agc.gov.sg	REST API	scripts/ingest-singapore-legislation.ts	0	0	none	—
+un_ga_resolutions_v1	501	United Nations	https://digitallibrary.un.org	REST API	scripts/ingest-un-ga-resolutions.ts	0	0	none	—
+wikidata_space_missions_v1	500	Space missions (Wikidata)	https://www.wikidata.org		scripts/ingest-space-missions-wikidata.ts	0	0	none	—
+icsid_v1	500	ICSID arbitration cases	https://icsid.worldbank.org		scripts/ingest-icsid.ts	1	0	none	—
+courtlistener_scotus_v1	473	CourtListener (Free Law Project)	https://www.courtlistener.com/api/rest/v4/	REST API	scripts/ingest-courtlistener-citations.ts, scripts/ingest-courtlistener-scotus.ts	2	2	none	—
+nato_official_texts_v1	459	NATO	https://www.nato.int/cps/en/natohq/official_texts.htm	Archive crawl (Wayback CDX)	scripts/ingest-nato-official-texts.ts	0	0	none	—
+mauritius_legislation_v1	442	Mauritius — MauritiusLII	https://mauritiuslii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+rwanda_legislation_v1	438	Rwanda — Government Gazette	https://www.minijust.gov.rw		scripts/ingest-africa-lii.ts	0	0	none	—
+tanzania_legislation_v1	434	Tanzania — TanzLII	https://tanzlii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+un_treaties_v1	419	UN Treaty Collection	https://treaties.un.org		scripts/ingest-un-treaties.ts	0	0	none	—
+ghana_legislation_v1	413	Ghana — Parliament	https://www.parliament.gh		scripts/ingest-africa-lii.ts	0	0	none	—
+scotland_legislation_v1	408	legislation.gov.uk	https://www.legislation.gov.uk	REST API	scripts/ingest-scotland-legislation.ts	1	0	none	—
+sec_edgar_v1	379	SEC EDGAR	https://www.sec.gov/cgi-bin/browse-edgar	REST API + archive crawl	scripts/ingest-sec-edgar.ts	0	0	none	—
+fda_aesthetic_devices_v1	372	FDA aesthetic device clearances	https://www.accessdata.fda.gov		scripts/ingest-fda-aesthetic-devices.ts	0	1	none	—
+central_asia_v1	369	Central Asia legislation			scripts/ingest-central-asia.ts	0	0	none	—
+tt_legislation_v1	368	Parliament of Trinidad and Tobago	https://ttparliament.org	REST API	scripts/ingest-tt.ts	1	0	none	—
+pubchem_v1	355	PubChem / NCBI	https://pubchem.ncbi.nlm.nih.gov	REST API (PUG)	scripts/ingest-pubchem.ts	0	1	none	—
+nist_constants_v1	355	NIST / CODATA	https://physics.nist.gov/cuu/Constants/	Bulk file (CODATA 2022)	scripts/ingest-nist.ts	0	0	none	—
+namibia_legislation_v1	336	Namibia — NamibLII	https://namiblii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+malawi_legislation_v1	335	Malawi — MalawiLII	https://malawilii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+eswatini_legislation_v1	326	Eswatini — EswatiniLII	https://eswatinilii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+echr_v1	312	ECHR judgments (HUDOC)	https://hudoc.echr.coe.int		scripts/ingest-echr.ts	0	1	none	—
+mexico_legislation_v1	309	Mexico — Cámara de Diputados	https://www.diputados.gob.mx		scripts/ingest-mexico-legislation.ts	1	1	none	—
+georgia_legislation_v1	301	Parliament of Georgia	https://matsne.gov.ge	REST API	scripts/ingest-georgia.ts	0	0	none	—
+african_court_v1	300	African Court on Human Rights	https://www.african-court.org		scripts/ingest-african-court.ts	0	0	none	—
+brunei_legislation_v1	288	Attorney General's Chambers of Brunei Darussalam	https://www.agc.gov.bn	REST API	scripts/ingest-brunei.ts	1	0	none	—
+courtlistener_tax_v1	259	CourtListener US Tax Court	https://www.courtlistener.com		scripts/ingest-courtlistener-tax.ts	0	0	none	—
+courtlistener_bia_v1	240	CourtListener BIA decisions	https://www.courtlistener.com		scripts/ingest-courtlistener-bia.ts	0	0	none	—
+openfda_v1	233	openFDA (FDA)	https://open.fda.gov/apis/drug/	REST API	scripts/ingest-openfda.ts, scripts/ingest-pubchem.ts	1	3	none	—
+pdg_particles_v1	226	Particle Data Group	https://pdg.lbl.gov		scripts/ingest-pdg-particles.ts	0	1	none	—
+law-settler	220	Curated — law settling curves			scripts/seed-law-trajectories.ts	0	2	none	—
+courtlistener_disclosures_v1	218	CourtListener judicial disclosures	https://www.courtlistener.com		scripts/ingest-courtlistener-disclosures.ts	0	1	none	—
+impact_craters_v1	214	Earth Impact Database	https://impact.uwo.ca		scripts/ingest-impact-craters.ts	0	2	none	—
+nuclear_tests_v1	202	Wikipedia / CTBTO / DOE declassified records	https://en.wikipedia.org/wiki/List_of_nuclear_weapons_tests	Static curated list (Wikipedia-sourced)	scripts/ingest-nuclear-tests.ts	0	0	none	—
+wikidata_chips_v1	182	CHIPS Act tracking (Wikidata)	https://www.wikidata.org		scripts/ingest-chips-wikidata.ts	0	1	none	—
+uspto_v1	182	United States Patent and Trademark Office	https://developer.uspto.gov	Hardcoded curated list (training-data recall — see retirement writeup)	scripts/retired/ingest-uspto-patents.ts	0	1	none	—
+uae_legislation_v1	177	UAE Government	https://uaelegislation.gov.ae	REST API	scripts/ingest-uae.ts	0	0	none	—
+who_essential_medicines_v1	147	World Health Organization	https://www.who.int/groups/expert-committee-on-selection-and-use-of-essential-medicines/essential-medicines-lists	Static (23rd edition, 2023)	scripts/ingest-who-essential-medicines.ts	0	1	none	—
+periodic_table_v1	119	IUPAC / Bowserinator JSON	https://github.com/Bowserinator/Periodic-Table-JSON	Static JSON (IUPAC-derived)	scripts/ingest-chemical-elements.ts, scripts/ingest-periodic-table.ts	0	2	none	—
+wikidata_elements_v1	118	Periodic elements (Wikidata)	https://www.wikidata.org		scripts/ingest-chemical-elements.ts	0	1	none	—
+czech_abs_v1	104	Security Services Archive (ABS), Czech Republic	https://www.abscr.cz	Structured database	scripts/ingest-czech-abs.ts	0	0	none	—
+wales_senedd_v1	100	Senedd Cymru	https://senedd.wales	REST API	scripts/ingest-wales-senedd.ts	0	0	none	—
+genbank_v1	99	NCBI GenBank	https://www.ncbi.nlm.nih.gov/genbank/	Entrez API	scripts/ingest-genbank.ts	0	0	none	—
+un_ga_v1	97	UN General Assembly (extended)	https://digitallibrary.un.org		scripts/ingest-un-ga-resolutions.ts	0	0	none	—
+lesotho_legislation_v1	90	Lesotho — LesothoLII	https://lesotholii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+iau_constellations_v1	88	International Astronomical Union	https://www.iau.org/public/themes/constellations/	Static curated list	scripts/ingest-astronomy.ts	0	0	none	—
+sierra_leone_legislation_v1	83	Sierra Leone — SierraLII	https://sierralii.org		scripts/ingest-africa-lii.ts	0	0	none	—
+event:exoplanet_retractions_v1	75	NASA Exoplanet Archive — Targets Excluded from the Archive	https://exoplanetarchive.ipac.caltech.edu/docs/removed_targets.html	Page parse; each entry cites its refuting paper (ADS)	scripts/event-pipelines/exoplanet-retractions.ts	0	1	none	—
+icc_judgments_v1	74	ICC judgments	https://www.icc-cpi.int		scripts/ingest-icc-judgments.ts	0	0	none	—
+seed:climate-trajectories	68	Curated — climate trajectories			scripts/seed-climate-trajectories.ts	0	0	none	—
+seed:astronomy-trajectories	62	Curated — astronomy trajectories			scripts/seed-astronomy-trajectories.ts	0	0	none	—
+seed:nutrition-trajectories	57	Curated — nutrition trajectories			scripts/seed-nutrition-trajectories.ts	0	0	none	—
+retraction_watch_v1	55	Retraction Watch	https://retractionwatch.com	Bulk dataset	scripts/detect-contradictions.ts, scripts/link-retraction-originals.ts	0	1	none	—
+icc_cases_v1	35	ICC cases	https://www.icc-cpi.int		scripts/ingest-icc-cases.ts	0	0	none	—
+croatia_legislation_v1	33	Croatia — Narodne novine	https://narodne-novine.nn.hr		scripts/ingest-croatia-legislation.ts	0	0	none	—
+solar_system_v1	28	NASA / IAU	https://solarsystem.nasa.gov	Static curated list	scripts/ingest-astronomy.ts	0	0	none	—
+manual	23	Manually curated (admin interface)			scripts/seed-case-studies.ts, scripts/seed-smoking-cancer.ts	60	4	none	—
+nist_webbook_v1	20	NIST Chemistry WebBook	https://webbook.nist.gov		scripts/ingest-nist.ts	0	0	none	—
+book-analysis:cmppvaz700000sal1cnyfutdx	16	not in registry			scripts/analyze-book-connections.ts	0	0	scripts/analyze-book-connections.ts	—
+seed-trajectories	11	Curated — mixed seed trajectories			scripts/seed-trajectories.ts	0	0	none	—
+slovenia_legislation_v1	10	PISRS (Pravno-informacijski sistem)	https://www.pisrs.si	XML sitemaps	scripts/ingest-slovenia-legislation.ts	0	0	none	—
+seed:historical-trajectories	10	Curated — historical trajectories			scripts/seed-historical-trajectories.ts	0	0	none	—
+seed-court-reversals	8	Curated — court reversals			scripts/seed-court-reversals.ts	0	0	none	—
+congress_votes_v1	8	Congress.gov	https://api.congress.gov	REST API	scripts/ingest-congress-votes.ts	5	3	none	—
+iau_v1	5	International Astronomical Union	https://www.iau.org	Static curated list	scripts/ingest-astronomy.ts	0	0	none	—
+stasi_v1	2	Bundesarchiv / Stasi-Mediathek	https://www.stasi-mediathek.de	Structured database	scripts/ingest-stasi.ts	0	0	none	—

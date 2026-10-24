@@ -1,0 +1,40 @@
+-- query: docs/paper/sql/04_curated.sql
+-- run:   2026-10-24T15:45:52Z · git ec9acd0 · role app_ro (read-only session)
+
+== 4a. curated trajectories (CURATED_WHERE)
+ curated_live | trajectory_externalid_all_rows | trajectory_externalid_deleted 
+--------------+--------------------------------+-------------------------------
+         5697 |                           5719 |                            22
+
+== 4b. curated trajectories by pipeline and number of ClaimStatusHistory rows
+           ingestedBy            | curated | rows_0 | rows_1 | rows_2 | rows_3 | rows_ge4 
+---------------------------------+---------+--------+--------+--------+--------+----------
+ seed:human-history-trajectories |    3479 |      0 |     40 |   2930 |    484 |       25
+ seed:medicine-trajectories      |    1782 |      0 |    262 |   1354 |    155 |       11
+ law-settler                     |     220 |      0 |     89 |     94 |     29 |        8
+ seed:climate-trajectories       |      68 |      0 |      5 |     59 |      4 |        0
+ seed:astronomy-trajectories     |      62 |      0 |      0 |     59 |      3 |        0
+ seed:nutrition-trajectories     |      57 |      0 |      2 |     30 |     24 |        1
+ seed-trajectories               |      11 |      0 |      0 |      2 |      8 |        1
+ seed:historical-trajectories    |      10 |      0 |      0 |      0 |     10 |        0
+ seed-court-reversals            |       8 |      0 |      0 |      3 |      5 |        0
+
+== 4c. CURATED_EDITORIAL pipelines (lib/corpus-completeness.ts), deleted = false
+               ingestedBy                | claims | with_trajectory_externalid | humanreviewed_true 
+-----------------------------------------+--------+----------------------------+--------------------
+ seed:human-history-trajectories         |   3479 |                       3479 |                  1
+ seed:medicine-trajectories              |   1782 |                       1782 |                  1
+ law-settler                             |    220 |                        220 |                  0
+ seed:climate-trajectories               |     68 |                         68 |                  0
+ seed:astronomy-trajectories             |     62 |                         62 |                  0
+ seed:nutrition-trajectories             |     57 |                         57 |                  0
+ book-analysis:cmppvaz700000sal1cnyfutdx |     16 |                          0 |                  0
+ seed-trajectories                       |     11 |                         11 |                 11
+ seed:historical-trajectories            |     10 |                         10 |                  0
+ seed-court-reversals                    |      8 |                          8 |                  8
+
+== 4d. curated trajectories: totals
+ curated | rows_1 | rows_2 | rows_3 | rows_ge4 | rows_ge2 | humanreviewed_true 
+---------+--------+--------+--------+----------+----------+--------------------
+    5697 |    398 |   4531 |    722 |       46 |     5299 |                 21
+

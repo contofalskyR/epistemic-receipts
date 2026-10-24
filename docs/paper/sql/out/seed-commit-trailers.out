@@ -1,0 +1,13 @@
+-- script: scripts/paper/seed-commit-trailers.sh
+-- run:    2026-10-24T15:42:47Z · git ec9acd0
+
+commits touching scripts/seed-*.ts: 1134
+commits with a Co-Authored-By: Claude trailer: 745
+first / last commit: 2026-05-03 / 2026-09-02
+
+trailers by model:
+ 382 Co-Authored-By: Claude Sonnet 4.6
+ 219 Co-Authored-By: Claude Opus 4.8
+ 142 Co-Authored-By: Claude Opus 4.8 (1M context)
+   1 Co-Authored-By: Claude Opus 4.7
+   1 Co-Authored-By: Claude Opus 4.6

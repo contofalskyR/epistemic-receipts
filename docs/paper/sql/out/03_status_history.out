@@ -1,0 +1,279 @@
+-- query: docs/paper/sql/03_status_history.sql
+-- run:   2026-10-24T15:44:22Z · git ec9acd0 · role app_ro (read-only session)
+
+== 3a. rows and claims with history (all rows / deleted = false)
+ rows_all | claims_with_history_all | rows_corpus | claims_with_history_corpus | corpus_claims_without_history 
+----------+-------------------------+-------------+----------------------------+-------------------------------
+  1822644 |                 1580152 |     1821600 |                    1579633 |                        177966
+
+== 3b. rows per claim (deleted = false; claims without history shown as 0)
+ rows_per_claim | claims  |  pct   
+----------------+---------+--------
+              0 |  177966 | 10.126
+              1 | 1338650 | 76.164
+              2 |  240049 | 13.658
+              3 |     884 |  0.050
+              4 |      50 |  0.003
+
+== 3c. baselines vs transitions (deleted = false)
+ baseline_rows | baseline_rows_sourced | transitions | transitions_axis_changed | transitions_axis_repeated | transitions_with_dateprecision | transitions_sentinel_date | transitions_non_sentinel_date | transitions_sourceid_nonnull | transitions_sourced_live_source | transitions_sourced_with_url | transitions_dated_sourced_changed 
+---------------+-----------------------+-------------+--------------------------+---------------------------+--------------------------------+---------------------------+-------------------------------+------------------------------+---------------------------------+------------------------------+-----------------------------------
+       1579633 |                 12067 |      241967 |                   241737 |                       230 |                         241967 |                        37 |                        241930 |                        17952 |                           17952 |                        17948 |                             17686
+
+== 3d. claims by transition kind (deleted = false)
+ claims_ge2_rows | claims_ge1_axis_change | claims_ge1_dated_sourced_axis_change | same_live_default_view | claims_ge2_dated_sourced_axis_changes 
+-----------------+------------------------+--------------------------------------+------------------------+---------------------------------------
+          240983 |                 240950 |                                16904 |                  16904 |                                   744
+
+== 3e. transitions by pipeline (deleted = false)
+           ingestedBy            | transitions | axis_changed | sourced | sentinel_date | dated_sourced_changed 
+---------------------------------+-------------+--------------+---------+---------------+-----------------------
+ voteview_v1                     |      113319 |       113319 |       1 |             0 |                     1
+ openfda_labels_v1               |       85189 |        85189 |     261 |             1 |                   261
+ crossref_retractions_v1         |       18280 |        18280 |       0 |             0 |                     0
+ openalex_v1                     |       11227 |        11226 |   11223 |             0 |                 11222
+ eu_parliament_v1                |        4331 |         4331 |       0 |             0 |                     0
+ seed:human-history-trajectories |        3973 |         3813 |    3972 |            27 |                  3785
+ seed:medicine-trajectories      |        1697 |         1651 |    1697 |             8 |                  1643
+ tweedekamer_v1                  |        1530 |         1530 |       0 |             0 |                     0
+ canada_bills_v1                 |        1067 |         1067 |       0 |             0 |                     0
+ nz_repealed_acts_v1             |         442 |          442 |       0 |             0 |                     0
+ drugsatfda_v1                   |         268 |          268 |     268 |             0 |                   268
+ law-settler                     |         176 |          170 |     176 |             0 |                   170
+ congress_bills_tracker_v1       |         116 |          116 |      11 |             0 |                    11
+ seed:nutrition-trajectories     |          81 |           74 |      81 |             0 |                    74
+ seed:climate-trajectories       |          67 |           65 |      67 |             0 |                    65
+ seed:astronomy-trajectories     |          65 |           64 |      65 |             0 |                    64
+ ofac_sdn_v1                     |          63 |           63 |      63 |             0 |                    63
+ seed-trajectories               |          21 |           17 |      21 |             0 |                    17
+ seed:historical-trajectories    |          20 |           17 |      20 |             1 |                    16
+ seed-court-reversals            |          13 |           13 |      12 |             0 |                    12
+ courtlistener_scotus_v1         |          11 |           11 |      11 |             0 |                    11
+ congress_votes_v1               |           8 |            8 |       0 |             0 |                     0
+ openalex_journals_v1            |           2 |            2 |       2 |             0 |                     2
+ nasa_exoplanet_v1               |           1 |            1 |       1 |             0 |                     1
+
+== 3f. transitions by (previous toAxis → toAxis) (deleted = false)
+ from_axis |   to_axis    | transitions | sourced 
+-----------+--------------+-------------+---------
+ RECORDED  | SETTLED      |      209718 |    4434
+ RECORDED  | REVERSED     |       29433 |   11153
+ SETTLED   | REVERSED     |         916 |     474
+ RECORDED  | CONTESTED    |         543 |     541
+ CONTESTED | SETTLED      |         368 |     368
+ SETTLED   | CONTESTED    |         330 |     329
+ SETTLED   | SETTLED      |         195 |     195
+ CONTESTED | REVERSED     |         146 |     146
+ SETTLED   | RECORDED     |          55 |      55
+ REVERSED  | SETTLED      |          54 |      54
+ OPEN      | RECORDED     |          53 |      53
+ CONTESTED | RECORDED     |          22 |      22
+ RECORDED  | ABANDONED    |          22 |      16
+ OPEN      | SETTLED      |          19 |      19
+ CONTESTED | CONTESTED    |          16 |      16
+ REVERSED  | REVERSED     |          12 |      12
+ SETTLED   | ABANDONED    |          10 |      10
+ CONTESTED | ABANDONED    |          10 |      10
+ REVERSED  | CONTESTED    |           9 |       9
+ OPEN      | CONTESTED    |           8 |       8
+ RECORDED  | RECORDED     |           7 |       7
+ RECORDED  | OPEN         |           7 |       7
+ ABANDONED | SETTLED      |           4 |       4
+ CONTESTED | UNRESOLVABLE |           2 |       2
+ ABANDONED | CONTESTED    |           2 |       2
+ ABANDONED | REVERSED     |           1 |       1
+ RECORDED  | UNRESOLVABLE |           1 |       1
+ REVERSED  | ABANDONED    |           1 |       1
+ CONTESTED | OPEN         |           1 |       1
+ OPEN      | UNRESOLVABLE |           1 |       1
+ ABANDONED | RECORDED     |           1 |       1
+
+== 3g. dates on all rows (deleted = false): precision and sentinels
+ datePrecision |  rows   | on_1970_01_01 | year_ge_2100 | future_before_2100 | year_lt_1000 
+---------------+---------+---------------+--------------+--------------------+--------------
+ DAY           | 1513885 |          5503 |           74 |                 14 |          361
+ YEAR          |  272073 |          1157 |            0 |                  0 |           86
+ MONTH         |   35316 |             5 |            0 |                  0 |          103
+ QUARTER       |     326 |             1 |            0 |                  0 |            6
+
+== 3h. sentinel-dated rows by pipeline (deleted = false)
+           ingestedBy            | on_1970_01_01 | year_ge_2100 | future_before_2100 
+---------------------------------+---------------+--------------+--------------------
+ romania_cnsas_v1                |          3872 |            0 |                  0
+ nara_catalog_v1                 |          1841 |            0 |                  0
+ czech_legislation_v1            |           164 |            0 |                  0
+ vdem_v1                         |           156 |            0 |                  0
+ cyprus_legislation_v1           |            97 |            0 |                  0
+ mesh_v1                         |            81 |            0 |                  0
+ openalex_v1                     |            51 |            0 |                  0
+ africanlii_v1                   |            42 |            0 |                  0
+ philippines_legislation_v1      |            42 |            0 |                  0
+ paclii_legislation_v1           |            35 |            0 |                  0
+ ucdp_v1                         |            34 |            0 |                  0
+ seed:human-history-trajectories |            29 |            0 |                  0
+ openalex_journals_v1            |            26 |            0 |                  0
+ korea_legislation_v1            |            23 |            0 |                  0
+ nz_repealed_acts_v1             |            18 |            0 |                  0
+ colombia_legislation_v1         |            17 |            0 |                  0
+ chebi_v1                        |            15 |            0 |                  0
+ wipo_lex_v1                     |            14 |            0 |                  0
+ thailand_legislation_v1         |            12 |            0 |                  0
+ uk_national_archives_v1         |            11 |            0 |                  0
+ caribbean_v1                    |            10 |            0 |                  0
+ taiwan_archives_v1              |            10 |            0 |                  0
+ singapore_legislation_v1        |            10 |            0 |                  0
+ seed:medicine-trajectories      |             9 |            0 |                  0
+ wikidata_nobel_v1               |             9 |            0 |                  0
+ un_ga_resolutions_v1            |             6 |            0 |                  0
+ crossref_retractions_v1         |             6 |            0 |                  0
+ nz_local_acts_v1                |             6 |            0 |                  0
+ fred_v1                         |             5 |            0 |                  0
+ nz_legislation_v1               |             5 |            0 |                  0
+ bangladesh_legislation_v1       |             4 |            0 |                  0
+ pakistan_code_v1                |             2 |            0 |                  0
+ seed:nutrition-trajectories     |             1 |            0 |                  0
+ seed:historical-trajectories    |             1 |            0 |                  0
+ jacar_v1                        |             1 |            0 |                  0
+ europeana_wwi_v1                |             1 |            0 |                  0
+ france_legislation_v1           |             0 |           66 |                  0
+ chile_legislation_v1            |             0 |            8 |                  4
+ clinicaltrials_v1               |             0 |            0 |                  1
+ openfda_labels_v1               |             0 |            0 |                  2
+ hungary_legislation_v1          |             0 |            0 |                  6
+ poland_legislation_v1           |             0 |            0 |                  1
+
+== 3i. row-shape checks (all rows): fromAxis on baselines, fromAxis vs previous toAxis, null seq
+ baselines_with_fromaxis | transitions_fromaxis_ne_prev_toaxis | rows_seq_null | rows_seq_ne_rank 
+-------------------------+-------------------------------------+---------------+------------------
+                      80 |                                  60 |           761 |                0
+
+== 3j. community (all rows, deleted = false)
+     community     |  rows   
+-------------------+---------
+ INSTITUTIONAL     | 1364824
+ EXPERT_LITERATURE |  439045
+ JUDICIAL          |   16176
+ PUBLIC            |    1451
+ MARKET            |     104
+
+== 3k. sourced transitions (deleted = false) by claim pipeline × marker-source class
+         claim_pipeline          |            marker_source            | transitions | source_tags | source_humanreviewed | source_autoapproved 
+---------------------------------+-------------------------------------+-------------+-------------+----------------------+---------------------
+ openalex_v1                     | crossref_retractions_v1             |       10892 |           1 |                    0 |               10892
+ seed:human-history-trajectories | seed:human-history-trajectories     |        3947 |           1 |                    0 |                   0
+ seed:medicine-trajectories      | seed:medicine-trajectories          |        1677 |           1 |                    0 |                   0
+ drugsatfda_v1                   | event:fda_withdrawals_v1            |         267 |           1 |                    0 |                   0
+ openfda_labels_v1               | enrich* (per-claim enrichment tags) |         256 |          29 |                    0 |                 175
+ openalex_v1                     | enrich* (per-claim enrichment tags) |         255 |          92 |                    2 |                  47
+ law-settler                     | law-settler                         |         176 |           1 |                    0 |                 176
+ seed:nutrition-trajectories     | manual                              |          81 |           1 |                    0 |                   0
+ openalex_v1                     | manual                              |          71 |           1 |                    0 |                   0
+ ofac_sdn_v1                     | event:ofac_delistings_v1            |          63 |           1 |                    0 |                   0
+ seed:astronomy-trajectories     | manual                              |          62 |           1 |                    0 |                   0
+ seed:climate-trajectories       | manual                              |          60 |           1 |                    0 |                   0
+ seed:historical-trajectories    | seed:historical-trajectories        |          18 |           1 |                    0 |                   0
+ seed-trajectories               | seed-trajectories                   |          17 |           1 |                   17 |                   0
+ courtlistener_scotus_v1         | event:scotus_overrulings_v1         |          11 |           1 |                    0 |                   0
+ congress_bills_tracker_v1       | enrich* (per-claim enrichment tags) |          11 |           1 |                    0 |                  11
+ seed:human-history-trajectories | enrich* (per-claim enrichment tags) |          10 |           5 |                    0 |                   2
+ seed:medicine-trajectories      | enrich* (per-claim enrichment tags) |          10 |           4 |                    0 |                   4
+ seed:human-history-trajectories | manual                              |           8 |           1 |                    0 |                   0
+ seed-court-reversals            | seed-court-reversals                |           7 |           1 |                    7 |                   0
+ seed:climate-trajectories       | seed:human-history-trajectories     |           5 |           1 |                    0 |                   0
+ seed:medicine-trajectories      | seed:human-history-trajectories     |           5 |           1 |                    0 |                   0
+ openfda_labels_v1               | seed:medicine-trajectories          |           5 |           1 |                    0 |                   0
+ seed:human-history-trajectories | seed:medicine-trajectories          |           4 |           1 |                    0 |                   0
+ openalex_v1                     | openalex_v1                         |           4 |           1 |                    0 |                   0
+ seed-court-reversals            | enrich* (per-claim enrichment tags) |           4 |           1 |                    0 |                   4
+ seed:medicine-trajectories      | manual                              |           4 |           1 |                    0 |                   0
+ seed-trajectories               | seed:human-history-trajectories     |           4 |           1 |                    0 |                   0
+ seed:astronomy-trajectories     | seed:human-history-trajectories     |           3 |           1 |                    0 |                   0
+ openalex_journals_v1            | crossref_retractions_v1             |           2 |           1 |                    0 |                   2
+ seed:historical-trajectories    | seed:human-history-trajectories     |           2 |           1 |                    0 |                   0
+ seed:human-history-trajectories | seed-trajectories                   |           2 |           1 |                    2 |                   0
+ openalex_v1                     | seed:human-history-trajectories     |           1 |           1 |                    0 |                   0
+ seed:medicine-trajectories      | seed-trajectories                   |           1 |           1 |                    1 |                   0
+ nasa_exoplanet_v1               | event:exoplanet_retractions_v1      |           1 |           1 |                    0 |                   0
+ voteview_v1                     | enrich* (per-claim enrichment tags) |           1 |           1 |                    0 |                   1
+ seed:human-history-trajectories | seed:historical-trajectories        |           1 |           1 |                    0 |                   0
+ seed-court-reversals            | echr_judgments_v1                   |           1 |           1 |                    0 |                   0
+ seed:climate-trajectories       | seed-trajectories                   |           1 |           1 |                    1 |                   0
+ seed:climate-trajectories       | enrich* (per-claim enrichment tags) |           1 |           1 |                    0 |                   1
+ drugsatfda_v1                   | seed:medicine-trajectories          |           1 |           1 |                    0 |                   0
+
+== 3k2. sourced transitions by marker-source class (deleted = false)
+        marker_class        | transitions | source_tags 
+----------------------------+-------------+-------------
+ crossref_retractions_v1    |       10894 |           1
+ seed scripts / law-settler |        5877 |           6
+ enrich*                    |         548 |         130
+ event:*                    |         342 |           4
+ manual                     |         286 |           1
+ openalex_v1                |           4 |           1
+ echr_judgments_v1          |           1 |           1
+
+== 3l. transitions (deleted = false) by class
+             class              |            pipeline             | transitions | axis_changed | same_timestamp_as_previous | later_than_previous | earlier_than_previous 
+--------------------------------+---------------------------------+-------------+--------------+----------------------------+---------------------+-----------------------
+ O other unsourced              | (all pipelines)                 |         111 |          111 |                          1 |                 110 |                     0
+ O other unsourced              | congress_bills_tracker_v1       |         105 |          105 |                          1 |                 104 |                     0
+ O other unsourced              | openalex_v1                     |           4 |            4 |                          0 |                   4 |                     0
+ O other unsourced              | seed:human-history-trajectories |           1 |            1 |                          0 |                   1 |                     0
+ O other unsourced              | seed-court-reversals            |           1 |            1 |                          0 |                   1 |                     0
+ S row-sourced                  | (all pipelines)                 |       17952 |        17722 |                       1150 |               16779 |                    23
+ S row-sourced                  | openalex_v1                     |       11223 |        11222 |                        963 |               10260 |                     0
+ S row-sourced                  | seed:human-history-trajectories |        3972 |         3812 |                        157 |                3795 |                    20
+ S row-sourced                  | seed:medicine-trajectories      |        1697 |         1651 |                         19 |                1677 |                     1
+ S row-sourced                  | drugsatfda_v1                   |         268 |          268 |                          0 |                 268 |                     0
+ S row-sourced                  | openfda_labels_v1               |         261 |          261 |                          0 |                 261 |                     0
+ S row-sourced                  | law-settler                     |         176 |          170 |                          0 |                 176 |                     0
+ S row-sourced                  | seed:nutrition-trajectories     |          81 |           74 |                          0 |                  81 |                     0
+ S row-sourced                  | seed:climate-trajectories       |          67 |           65 |                          0 |                  67 |                     0
+ S row-sourced                  | seed:astronomy-trajectories     |          65 |           64 |                          1 |                  63 |                     1
+ S row-sourced                  | ofac_sdn_v1                     |          63 |           63 |                          0 |                  63 |                     0
+ S row-sourced                  | seed-trajectories               |          21 |           17 |                          1 |                  19 |                     1
+ S row-sourced                  | seed:historical-trajectories    |          20 |           17 |                          1 |                  19 |                     0
+ S row-sourced                  | seed-court-reversals            |          12 |           12 |                          0 |                  12 |                     0
+ S row-sourced                  | courtlistener_scotus_v1         |          11 |           11 |                          0 |                  11 |                     0
+ S row-sourced                  | congress_bills_tracker_v1       |          11 |           11 |                          7 |                   4 |                     0
+ S row-sourced                  | openalex_journals_v1            |           2 |            2 |                          0 |                   2 |                     0
+ S row-sourced                  | nasa_exoplanet_v1               |           1 |            1 |                          0 |                   1 |                     0
+ S row-sourced                  | voteview_v1                     |           1 |            1 |                          1 |                   0 |                     0
+ TOTAL                          | (all pipelines)                 |      241967 |       241737 |                     206333 |               35611 |                    23
+ W1 bulk same-date completion   | (all pipelines)                 |      205182 |       205182 |                     205182 |                   0 |                     0
+ W1 bulk same-date completion   | voteview_v1                     |      113318 |       113318 |                     113318 |                   0 |                     0
+ W1 bulk same-date completion   | openfda_labels_v1               |       84928 |        84928 |                      84928 |                   0 |                     0
+ W1 bulk same-date completion   | eu_parliament_v1                |        4331 |         4331 |                       4331 |                   0 |                     0
+ W1 bulk same-date completion   | tweedekamer_v1                  |        1530 |         1530 |                       1530 |                   0 |                     0
+ W1 bulk same-date completion   | canada_bills_v1                 |        1067 |         1067 |                       1067 |                   0 |                     0
+ W1 bulk same-date completion   | congress_votes_v1               |           8 |            8 |                          8 |                   0 |                     0
+ W2 retraction/repeal entry row | (all pipelines)                 |       18722 |        18722 |                          0 |               18722 |                     0
+ W2 retraction/repeal entry row | crossref_retractions_v1         |       18280 |        18280 |                          0 |               18280 |                     0
+ W2 retraction/repeal entry row | nz_repealed_acts_v1             |         442 |          442 |                          0 |                 442 |                     0
+
+== 3m. trajectory-layer candidates: claims (deleted = false) under alternative definitions
+ t0_any_axis_change | t1_row_sourced_dated_later | t1_of_which_curated | t2_t1_plus_retraction_repeal | curated_with_history | curated_not_in_t1 
+--------------------+----------------------------+---------------------+------------------------------+----------------------+-------------------
+             240950 |                      15780 |                5080 |                        34493 |                 5697 |               617
+
+== 3n. T1 claims by pipeline (deleted = false)
+           ingestedBy            | t1_claims | t1_transitions 
+---------------------------------+-----------+----------------
+ openalex_v1                     |     10211 |          10259
+ seed:human-history-trajectories |      3277 |           3611
+ seed:medicine-trajectories      |      1467 |           1623
+ drugsatfda_v1                   |       268 |            268
+ openfda_labels_v1               |       140 |            261
+ law-settler                     |       130 |            170
+ seed:climate-trajectories       |        63 |             65
+ ofac_sdn_v1                     |        63 |             63
+ seed:astronomy-trajectories     |        61 |             63
+ seed:nutrition-trajectories     |        54 |             74
+ seed-trajectories               |        11 |             15
+ courtlistener_scotus_v1         |        11 |             11
+ seed:historical-trajectories    |         9 |             15
+ seed-court-reversals            |         8 |             12
+ congress_bills_tracker_v1       |         4 |              4
+ openalex_journals_v1            |         2 |              2
+ nasa_exoplanet_v1               |         1 |              1
+

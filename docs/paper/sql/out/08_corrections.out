@@ -1,0 +1,37 @@
+-- query: docs/paper/sql/08_corrections.sql
+-- run:   2026-10-24T15:47:16Z · git ec9acd0 · role app_ro (read-only session)
+
+== 8a. DEPRECATED, deleted, duplicateOf, deprecation_reason
+ deprecated | deprecated_deleted_false | with_deprecation_reason | deleted_true | deleted_with_duplicateof | claims_with_metadata_corrections 
+------------+--------------------------+-------------------------+--------------+--------------------------+----------------------------------
+        182 |                      182 |                     844 |          519 |                      498 |                            87023
+
+== 8b. Claim.metadata.corrections entries by batch
+              batch              | entries | claims | of_which_deleted 
+---------------------------------+---------+--------+------------------
+ voteview-full-text-2026-10      |   85987 |  85987 |                0
+ p7-q9-stock-act-relabel-2026-10 |     921 |    921 |                0
+ p7-senate-cloture-2026-10       |     475 |    475 |                0
+ p7-q13-lv-results-2026-10       |      43 |     39 |               39
+
+== 8c. claims touched by any recorded correction or retirement (union, all rows)
+ claims_touched | of_which_deleted_false | pct_of_corpus 
+----------------+------------------------+---------------
+          87685 |                  87166 |         4.959
+
+== 8d. ClaimStatusHistory rows (check: corrections never add history rows)
+ claimstatushistory_rows 
+-------------------------
+                 1822644
+
+== 8e. epistemicStatus / currentStatus legacy values named by the 2026-06-08 /corrections entry
+ currentstatus_verified | epistemicstatus_established 
+------------------------+-----------------------------
+                   2011 |                        2886
+
+== 8f. claims carrying metadata.deprecation_reason, by pipeline and verificationStatus
+ ingestedBy | verificationStatus | deleted | claims 
+------------+--------------------+---------+--------
+ nobel_v1   | VERIFIED           | f       |    662
+ uspto_v1   | DEPRECATED         | f       |    182
+
