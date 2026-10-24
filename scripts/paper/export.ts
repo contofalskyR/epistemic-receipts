@@ -37,7 +37,9 @@
  *
  * Options: --out <dir> (required), --sample <n> (LIMIT n per file, for testing;
  * flags a sample in the manifest), --exclude-pipelines a,b (drop those pipelines'
- * claims and everything attached to them), --keep-csv (keep uncompressed CSV).
+ * claims and everything attached to them), --keep-csv (keep uncompressed CSV),
+ * --resume (reuse the snapshot already copied into --out: skip psql, convert the
+ * CSVs still there, keep the tables already converted).
  */
 import { config as loadEnv } from "dotenv";
 import { execSync, spawnSync } from "child_process";
@@ -57,6 +59,7 @@ const OUT = opt("out");
 const SAMPLE = opt("sample") ? Number(opt("sample")) : null;
 const EXCLUDE = (opt("exclude-pipelines") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 const KEEP_CSV = argv.includes("--keep-csv");
+const RESUME = argv.includes("--resume");
 if (!OUT) throw new Error("--out <dir> is required");
 
 const EMAIL_RE = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}";
@@ -322,10 +325,21 @@ async function main() {
     ...FILES.map((f) => `\\copy (${oneLine(f.sql)}) TO ${q(csvPath(f.name))} WITH (FORMAT csv, HEADER true)\n\\echo ${marker}copied|${f.name}`),
     "COMMIT;",
   ].join("\n");
-  const t0 = Date.now();
-  const log = psql(script);
-  console.error(`snapshot copied in ${((Date.now() - t0) / 1000).toFixed(0)} s`);
-  const lines = log.split("\n").filter((l) => l.startsWith(marker)).map((l) => l.slice(marker.length).split("|"));
+  // The snapshot's own facts are kept beside the CSVs so --resume can finish a
+  // conversion without taking a new snapshot.
+  const snapFile = path.join(out, ".snapshot.json");
+  let lines: string[][];
+  if (RESUME) {
+    if (!fs.existsSync(snapFile)) throw new Error(`--resume: ${snapFile} not found`);
+    lines = JSON.parse(fs.readFileSync(snapFile, "utf8"));
+    console.error(`resuming the snapshot in ${snapFile}`);
+  } else {
+    const t0 = Date.now();
+    const log = psql(script);
+    console.error(`snapshot copied in ${((Date.now() - t0) / 1000).toFixed(0)} s`);
+    lines = log.split("\n").filter((l) => l.startsWith(marker)).map((l) => l.slice(marker.length).split("|"));
+    fs.writeFileSync(snapFile, JSON.stringify(lines));
+  }
   const [, snapAt, snapId, pgVersion] = lines.find((l) => l[0] === "snapshot")!;
   const tableCols = new Map(
     lines.find((l) => l[0] === "tables")![1].split(";").map((x) => { const [t, c] = x.split(":"); return [t, (c ?? "").split(",").filter(Boolean)]; }),
@@ -339,14 +353,21 @@ async function main() {
     const csv = csvPath(f.name);
     const cols = Object.entries(f.types).map(([k, v]) => `'${k}': '${v}'`).join(", ");
     const parquet = path.join(out, `${f.name}.parquet`);
-    await duck.run(
-      `COPY (SELECT * FROM read_csv(${q(csv)}, header = true, columns = {${cols}}, timestampformat = '%Y-%m-%dT%H:%M:%S.%gZ', allow_quoted_nulls = false, max_line_size = 100000000))
-       TO ${q(parquet)} (FORMAT parquet, COMPRESSION zstd)`,
-    );
-    const rows = Number((await duck.runAndReadAll(`SELECT count(*) FROM read_parquet(${q(parquet)})`)).getRows()[0][0]);
     const gz = `${csv}.gz`;
-    await pipeline(fs.createReadStream(csv), createGzip({ level: 9 }), fs.createWriteStream(gz));
-    if (!KEEP_CSV) fs.unlinkSync(csv);
+    const done = RESUME && !fs.existsSync(csv) && fs.existsSync(gz) && fs.existsSync(parquet) && fs.statSync(parquet).size > 0;
+    if (!done) {
+      // psql writes RFC 4180 CSV (quotes doubled inside quoted fields); state the
+      // dialect instead of letting the sniffer guess it (it guessed "no escape"
+      // on status_history in the 2026-10-24 rehearsal and failed).
+      await duck.run(
+        `COPY (SELECT * FROM read_csv(${q(csv)}, auto_detect = false, header = true, delim = ',', quote = '"', escape = '"',
+           columns = {${cols}}, timestampformat = '%Y-%m-%dT%H:%M:%S.%gZ', allow_quoted_nulls = false, max_line_size = 100000000))
+         TO ${q(parquet)} (FORMAT parquet, COMPRESSION zstd)`,
+      );
+      await pipeline(fs.createReadStream(csv), createGzip({ level: 9 }), fs.createWriteStream(gz));
+      if (!KEEP_CSV) fs.unlinkSync(csv);
+    }
+    const rows = Number((await duck.runAndReadAll(`SELECT count(*) FROM read_parquet(${q(parquet)})`)).getRows()[0][0]);
     for (const [p, format] of [[gz, "csv.gz"], [parquet, "parquet"]] as const) {
       files.push({ path: path.basename(p), table: f.name, format, rows, bytes: fs.statSync(p).size, sha256: await sha256(p) });
     }
