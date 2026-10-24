@@ -519,3 +519,19 @@ min 3 per pipeline, rest proportional to URL count).
   walls behind doi.org). A 403 is not a dead link; a browser check of a refused subsample would separate the two
   (not done).
 - By pipeline: `summary.md`.
+
+**B. Transition marker Sources** (`summary-markers.md`, `results-markers.csv`; `--markers --n 300`): the Sources on
+`ClaimStatusHistory` rows after a claim's first, i.e. the evidence behind T1. 300 URLs across 18 pipelines.
+
+| Outcome (final status) | URLs | % |
+|---|---:|---:|
+| 2xx/3xx | 255 | 85.0 |
+| 403/429 (refused) | 38 | 12.7 |
+| 404/410 (gone) | 5 | 1.7 |
+| other 4xx | 2 | 0.7 |
+| 5xx / timeout | 0 | 0.0 |
+
+- Use the unweighted figures here: the claim-count weighting in the summary file lets pipelines with one or two marker
+  URLs (`voteview_v1` 1, `openfda_labels_v1` 6 sampled) stand for 100K-claim pipelines.
+- Curated seeds: `seed:human-history` 52/59 resolve (2 gone), `seed:medicine` 23/26 (1 gone); `openalex_v1`
+  retraction notices 151/163.
