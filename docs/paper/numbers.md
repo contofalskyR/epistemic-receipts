@@ -12,8 +12,13 @@ Rerun: `scripts/paper/run-sql.sh` (all SQL), `npx tsx scripts/paper/corrections-
 
 ## Headline figures (owner-approved wording, 2026-10-24)
 
-- **Working title** (owner, 2026-10-24): "A cross-domain corpus of 1.76 million source-linked claims with dated
-  epistemic-status transitions" (98 characters; no colon, no brand name). The dataset name goes in the abstract.
+- **Working title** (owner, 2026-10-24, revised): "A cross-domain corpus of 1.7 million source-linked claims with dated
+  epistemic-status transitions" (97 characters; no colon, no brand name). The dataset name goes in the abstract.
+- **The paper describes the released dataset** (owner, 2026-10-24). Every figure in the paper comes from the final
+  export's `MANIFEST.json` and `scripts/paper/validate-export.ts` run, not from this census. The release excludes 12
+  pipelines on licence grounds (66,949 claims; `docs/paper/licence-review.md`), so it holds 1,690,650 claims at
+  census values. The census totals in this file and the exclusions go in Methods. The census figures below remain the
+  record of the full database.
 
 - **Record layer:** 1,757,599 claims (`deleted = false`), each with an `epistemicAxis` label (98.684 % non-null)
   that for 1,579,633 of them is the status assigned at ingest.

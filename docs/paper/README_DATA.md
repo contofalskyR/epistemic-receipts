@@ -104,7 +104,8 @@ terms and their source are in `pipelines`. Upstream data remain subject to their
 
 Not included: pipelines whose upstream terms do not allow redistribution in a compiled dataset (WHO GHO, ICD-11 and
 the Essential Medicines List; FRED; OMIM; the UN resolution and treaty collections; Quiver congressional-trading
-data) and SIPRI military expenditure (permission needed above 10 % of the data set). They are listed, with the terms
+data), SIPRI military expenditure (permission needed above 10 % of the data set), and Cypriot legislation from
+CyLaw (redistribution of the compilation reported as prohibited). They are listed, with the terms
 that exclude them, in `MANIFEST.json` → `excludedPipelines`.
 
 ## Citation

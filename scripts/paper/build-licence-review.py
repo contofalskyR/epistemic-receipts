@@ -24,7 +24,7 @@ out = [
     "-NC / -SA only when inherited from third-party primary data, and nothing compiled from -ND inputs "
     "(`journal-requirements.md`).",
     "",
-    "**Owner decisions (2026-10-24):** exclude every `restricted` pipeline (UN included) and SIPRI; keep `nc` and `sa` "
+    "**Owner decisions (2026-10-24):** exclude every `restricted` pipeline (UN included), SIPRI, and `cyprus_legislation_v1` (a third-party note of a redistribution ban, until a primary source says otherwise); keep `nc` and `sa` "
     "pipelines with the per-row licence columns (`claims.upstreamLicence`, `claims.upstreamLicenceStatus`); keep "
     "`unclear` and `not_checked` with a per-row status for this export. `scripts/paper/export.ts` reads the `decision` "
     "column: excluded pipelines lose their claims and everything attached, and are listed in `MANIFEST.excludedPipelines`.",
@@ -61,7 +61,7 @@ for st, title in [("nc", "Kept with per-row licence: nc"), ("sa", "Kept with per
 rs = sorted([r for r in rows if r["status"] == "not_checked"], key=lambda r: -n(r))
 out += ["", f"## Kept with per-row status: not_checked ({len(rs)} pipelines, {sum(map(n, rs)):,} claims)", "", "| Pipeline | Claims | Upstream |", "|---|---:|---|"]
 out += [f"| `{r['pipeline']}` | {n(r):,} | {r['upstream']} |" for r in rs]
-big = sorted([r for r in rows if r["status"] in ("unclear", "not_checked") and n(r) > 10000], key=lambda r: -n(r))
+big = sorted([r for r in rows if r["status"] in ("unclear", "not_checked") and r["decision"] != "exclude" and n(r) > 10000], key=lambda r: -n(r))
 out += ["", f"## Still unresolved above 10,000 claims ({len(big)})", ""]
 out += [f"- `{r['pipeline']}` ({n(r):,}): {r['licence']}" for r in big]
 out.append("")
