@@ -57,7 +57,7 @@ const argv = process.argv.slice(2);
 const opt = (k: string) => (argv.includes(`--${k}`) ? argv[argv.indexOf(`--${k}`) + 1] : undefined);
 const OUT = opt("out");
 const SAMPLE = opt("sample") ? Number(opt("sample")) : null;
-const EXCLUDE = (opt("exclude-pipelines") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+const EXTRA_EXCLUDE = (opt("exclude-pipelines") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 const KEEP_CSV = argv.includes("--keep-csv");
 const RESUME = argv.includes("--resume");
 if (!OUT) throw new Error("--out <dir> is required");
@@ -66,7 +66,6 @@ const EMAIL_RE = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}";
 const REDACTED = "[email removed]";
 const LIMIT = SAMPLE ? ` LIMIT ${SAMPLE}` : "";
 const q = (s: string) => `'${s.replace(/'/g, "''")}'`;
-const exclList = EXCLUDE.length ? EXCLUDE.map(q).join(",") : "''";
 
 // ── Pipeline → domain (docs/paper/domain-map.csv) as a VALUES list ─────────────
 const domainRows = fs.readFileSync("docs/paper/domain-map.csv", "utf8").trim().split("\n").slice(1).map((l) => l.split(","));
@@ -74,8 +73,14 @@ const DOMAIN_VALUES = `(VALUES ${domainRows.map(([p, d]) => `(${q(p)},${q(d)})`)
 
 // ── Optional per-pipeline upstream licence table ───────────────────────────────
 const LICENCE_CSV = "docs/paper/upstream-licences.csv";
-type Licence = { pipeline: string; licence: string; status: string; licence_url: string };
+type Licence = { pipeline: string; licence: string; status: string; licence_url: string; decision: string };
 const licences: Licence[] = fs.existsSync(LICENCE_CSV) ? parseCsv(fs.readFileSync(LICENCE_CSV, "utf8")) as unknown as Licence[] : [];
+// Pipelines excluded by the owner's licence decisions (upstream-licences.csv decision = exclude),
+// plus any given with --exclude-pipelines. Excluding a pipeline drops its claims and everything
+// attached to them (history, edges, sources only they reference, relations touching them).
+const LICENCE_EXCLUDED = licences.filter((l) => l.decision === "exclude");
+const EXCLUDE = [...new Set([...LICENCE_EXCLUDED.map((l) => l.pipeline), ...EXTRA_EXCLUDE])];
+const exclList = EXCLUDE.length ? EXCLUDE.map(q).join(",") : "''";
 const LICENCE_VALUES = `(VALUES ${licences.length ? licences.map((l) => `(${q(l.pipeline)},${q(l.licence)},${q(l.status)})`).join(",") : "('', '', '')"})`;
 
 // ── Shared SQL fragments ───────────────────────────────────────────────────────
@@ -391,7 +396,10 @@ async function main() {
     snapshot: { at: snapAt, postgresSnapshot: snapId, postgresVersion: pgVersion, isolation: "REPEATABLE READ READ ONLY", role: "app_ro" },
     git: { commit: gitSha, uncommittedExportInputs: gitDirty },
     sample: SAMPLE,
-    excludedPipelines: EXCLUDE,
+    excludedPipelines: EXCLUDE.map((p) => {
+      const l = LICENCE_EXCLUDED.find((x) => x.pipeline === p);
+      return { pipeline: p, reason: l ? `upstream licence ${l.status}: ${l.licence}` : "--exclude-pipelines", licenceUrl: l?.licence_url ?? null };
+    }),
     rules: {
       claims: "Claim.deleted = false",
       status_history: "rows of exported claims; placeholderDate = occurredAt on 1970-01-01 or after snapshot.at",

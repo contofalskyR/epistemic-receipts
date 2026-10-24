@@ -97,8 +97,15 @@ Order a claim's history by `seq`, then `occurredAt`, then `createdAt`; `seq` is 
 
 ## Licence
 
-Creative Commons Attribution 4.0 International (CC BY 4.0), except where `pipelines.upstreamLicenceStatus` records a
-different upstream condition for a pipeline's records. Upstream data remain subject to their providers' terms.
+Creative Commons Attribution 4.0 International (CC BY 4.0) for the dataset as a whole. Where a pipeline's upstream
+terms add a condition, each claim says so: `upstreamLicenceStatus` = `nc` (records inherit a non-commercial condition),
+`sa` (records inherit a share-alike condition), or `unclear` / `not_checked` (upstream terms not established); the
+terms and their source are in `pipelines`. Upstream data remain subject to their providers' terms.
+
+Not included: pipelines whose upstream terms do not allow redistribution in a compiled dataset (WHO GHO, ICD-11 and
+the Essential Medicines List; FRED; OMIM; the UN resolution and treaty collections; Quiver congressional-trading
+data) and SIPRI military expenditure (permission needed above 10 % of the data set). They are listed, with the terms
+that exclude them, in `MANIFEST.json` → `excludedPipelines`.
 
 ## Citation
 

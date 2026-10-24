@@ -1,188 +1,188 @@
-pipeline,claims,upstream,licence,status,licence_url,checked_on,note
-openalex_v1,318775,OpenAlex academic papers,CC0,open,https://help.openalex.org/access/pricing/,2026-10-24,
-nara_catalog_v1,308051,NARA Catalog (RG 263/59/330/128/148),"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-voteview_v1,113319,Voteview / Lewis et al.,No licence stated on voteview.com/about or the data help page,unclear,https://voteview.com/about,2026-10-24,
-openfda_labels_v1,85068,openFDA,CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,GMDN device terms excepted
-hungary_legislation_v1,69441,Hungarian National Assembly,not checked,not_checked,,,
-chebi_v1,62000,EBI ChEBI,CC BY 4.0,open,https://www.ebi.ac.uk/chebi/about/,2026-10-24,
-worldbank_v1,54567,World Bank Open Data,CC BY 4.0 (default; some third-party indicators restricted per indicator metadata),open,https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets,2026-10-24,check indicator-level third-party notes for the indicators used
-drugsatfda_v1,46255,Drugs@FDA approvals,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-jacar_v1,44600,Japan Center for Asian Historical Records,"JACAR: secondary use of NAJ / Diplomatic Archives images permitted; metadata reuse not addressed; site ""All rights reserved""",unclear,https://www.jacar.archives.go.jp/aj/www/doc/en,2026-10-24,
-who_gho_v1,33714,World Health Organization,WHO dataset terms: use for public health purposes; alteration beyond minimal styling needs permission; WHO may terminate,restricted,https://www.who.int/about/policies/publishing/data-policy/terms-and-conditions,2026-10-24,ICD-11 and EML may have their own licences (not checked)
-crossref_retractions_v1,26624,CrossRef,"Retraction Watch data ""publicly available"" via Crossref; no licence stated on the documentation page",unclear,https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/,2026-10-24,
-argentina_legislation_v1,25824,Argentina — InfoLEG,not checked,not_checked,,,
-openalex_journals_v1,25687,OpenAlex journals,CC0,open,https://help.openalex.org/access/pricing/,2026-10-24,
-czech_legislation_v1,24173,Czech Parliament,not checked,not_checked,,,
-vdem_v1,19777,Varieties of Democracy (V-Dem),CC BY-SA 4.0,sa,https://www.v-dem.net/data/the-v-dem-dataset/,2026-10-24,
-ofac_sdn_v1,19034,OFAC SDN sanctions list,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-congress_bills_tracker_v1,17280,Congress.gov bill tracker,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-italy_legislation_v1,16934,Italy — Normattiva,"Italian public data open by default, CC BY 4.0 per AgID guidelines (2015 Open Knowledge entry); Normattiva portal terms not read",unclear,https://2015.index.okfn.org/place/italy/legislation,2026-10-24,
-chile_legislation_v1,15889,Chile — BCN,not checked,not_checked,,,
-rxnorm_v1,14632,NLM RxNorm,NLM-created RxNorm names/RXCUIs public domain; full dataset includes proprietary sources under UMLS licence,unclear,https://www.nlm.nih.gov/research/umls/rxnorm/docs/termsofservice.html,2026-10-24,confirm only NLM-created (SAB=RXNORM) names are used
-romania_legislation_v1,13878,Romanian Government,not checked,not_checked,,,
-brazil_legislation_v1,12818,Brazil — Planalto,not checked,not_checked,,,
-cyprus_legislation_v1,12682,Cyprus — CyLaw,not checked,not_checked,,,
-russia_legislation_v1,12015,Russia — pravo.gov.ru,not checked,not_checked,,,
-uk_legislation_v1,11777,legislation.gov.uk,Open Government Licence v3.0,open,https://www.legislation.gov.uk/help#licence,2026-10-24,
-philippines_legislation_v1,11703,Philippines — Official Gazette,not checked,not_checked,,,
-nih_reporter_v1,11285,NIH RePORTER,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-clinicaltrials_v1,10957,ClinicalTrials.gov (NLM),"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-congress_v1,10360,Congress.gov,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-luxembourg_legislation_v1,10006,Luxembourg — Legilux,not checked,not_checked,,,
-europeana_wwi_v1,10000,Europeana,"CC0 (Europeana metadata, Data Exchange Agreement)",open,https://pro.europeana.eu/page/the-data-exchange-agreement,2026-10-24,
-mesh_v1,10000,MeSH (Medical Subject Headings),"NLM MeSH terms: free redistribution with conditions (attribution, no misrepresentation)",open,https://www.nlm.nih.gov/databases/download/terms_and_conditions_mesh.html,2026-10-24,
-riksdag_v1,9989,Sveriges riksdag,CC0 (stated in a 2025/26 Riksdag motion; Riksdag terms page not found),unclear,https://data.riksdagen.se/,2026-10-24,secondary source only
-echr_judgments_v1,9984,European Court of Human Rights,"ECHR site: reproduction free of charge for private, information or education use; commercial use needs written permission",nc,https://www.echr.coe.int/copyright-and-disclaimer,2026-10-24,
-wipo_lex_v1,9641,WIPO Lex,WIPO terms: CC licences for WIPO publications; legal texts in WIPO Lex not addressed,unclear,https://www.wipo.int/en/web/terms-of-use,2026-10-24,
-eec_council_v1,8933,EEC Council (historical),"CC BY 4.0 (EUR-Lex legal notice, Commission Decision 2011/833/EU)",open,https://eur-lex.europa.eu/content/legal-notice/legal-notice.html,2026-10-24,page text read through a search summary; fetch returned no body
-costa_rica_legislation_v1,8483,Costa Rica — SCIJ,not checked,not_checked,,,
-sipri_milex_v1,8435,SIPRI military expenditure,SIPRI terms: non-commercial fair use; reproducing more than 10% of a data set needs permission,nc,https://www.sipri.org/about/terms-and-conditions,2026-10-24,"8,435 + sipri_v1 claims likely exceed 10% of the data set"
-colombia_legislation_v1,8159,Colombia — Secretaría Jurídica,not checked,not_checked,,,
-belgium_legislation_v1,7870,Belgium — Official Gazette,not checked,not_checked,,,
-space_missions_v1,7318,Jonathan McDowell — GCAT,CC BY 4.0 (GCAT),open,https://planet4589.org/space/gcat/,2026-10-24,
-poland_legislation_v1,6461,Poland — ISAP,not checked,not_checked,,,
-bundestag_v1,6343,Deutscher Bundestag DIP,DIP: data provided free of charge; no reuse licence named in the parts read,unclear,https://dip.bundestag.de/documents/nutzungsbedingungen_dip.pdf,2026-10-24,section 4 of the terms not read
-nasa_exoplanet_v1,6277,NASA Exoplanet Archive,not checked,not_checked,,,
-estonia_legislation_v1,5870,Riigi Teataja,not checked,not_checked,,,
-peru_legislation_v1,5202,Congreso de la República del Perú,not checked,not_checked,,,
-uk_national_archives_v1,5000,UK National Archives,not checked,not_checked,,,
-thailand_legislation_v1,4938,Thailand — Office of the Council of State,not checked,not_checked,,,
-australia_legislation_v1,4740,Australia — Federal Register of Legislation,not checked,not_checked,,,
-usgs_eq_v1,4696,USGS Earthquake Hazards Program,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-denmark_legislation_v1,4550,Denmark — Retsinformation,not checked,not_checked,,,
-nz_repealed_acts_v1,4372,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,
-fred_v1,4349,Federal Reserve Bank of St. Louis,"FRED terms: API content may not be stored, archived or compiled into a database; third-party copyrighted series need owner permission",restricted,https://fred.stlouisfed.org/legal/,2026-10-24,includes CSUSHPINSA (S&P CoreLogic Case-Shiller)
-eu_parliament_v1,4331,European Parliament,not checked,not_checked,,,
-uruguay_legislation_v1,4297,Parlamento del Uruguay,not checked,not_checked,,,
-western_balkans_v1,4062,Western Balkans legislation,not checked,not_checked,,,
-slovakia_legislation_v1,4050,Slovak Parliament,not checked,not_checked,,,
-oireachtas_v1,4040,Houses of the Oireachtas,Oireachtas (Open Data) PSI Licence = CC BY 4.0,open,https://www.oireachtas.ie/en/open-data/license,2026-10-24,
-taiwan_archives_v1,3935,"Archives Administration, Executive Yuan (Taiwan)",not checked,not_checked,,,
-romania_cnsas_v1,3927,CNSAS (Romania National Council for Studying Securitate Archives),not checked,not_checked,,,
-nationalrat_v1,3868,Parlament.gv.at,not checked,not_checked,,,
-loc_collections_v1,3561,Library of Congress collections,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-india_legislation_v1,3540,India — India Code,not checked,not_checked,,,
-fec_finance_v1,3500,FEC candidate finance,"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
-seed:human-history-trajectories,3479,Curated — human-history trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-ucdp_v1,3432,UCDP armed conflict dataset,CC BY 4.0,open,https://ucdp.uu.se/downloads/,2026-10-24,
-france_legislation_v1,3046,France — Légifrance,not checked,not_checked,,,
-parlament_at_v1,3004,Austria — Parlament (auxiliary),not checked,not_checked,,,
-kenya_legislation_v1,2984,Kenya — Kenya Law,not checked,not_checked,,,
-un_sc_resolutions_v1,2798,United Nations,"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
-norway_legislation_v1,2612,Stortinget,not checked,not_checked,,,
-switzerland_legislation_v1,2413,Switzerland — Fedlex,not checked,not_checked,,,
-eu_legislation_v1,2122,EU legislation (EUR-Lex),"CC BY 4.0 (EUR-Lex legal notice, Commission Decision 2011/833/EU)",open,https://eur-lex.europa.eu/content/legal-notice/legal-notice.html,2026-10-24,page text read through a search summary; fetch returned no body
-korea_legislation_v1,2114,Korea Legislation Research Institute,not checked,not_checked,,,
-japan_legislation_v1,2080,National Diet Library / e-Gov,not checked,not_checked,,,
-spain_legislation_v1,2045,Spain — BOE,not checked,not_checked,,,
-israel_knesset_v1,2009,Knesset of Israel,not checked,not_checked,,,
-fr_rules_v1,1920,Federal Register (NARA),"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-nz_bills_v1,1879,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,
-seed:medicine-trajectories,1782,Curated — medicine trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-srilanka_legislation_v1,1704,Parliament of Sri Lanka,not checked,not_checked,,,
-nobel_v1,1688,Nobel Foundation,"CC0 (Nobel Prize API terms; conditions: do not alter data, no endorsement)",open,https://www.nobelprize.org/organization/terms-of-use-for-api-nobelprize-org-and-data-nobelprize-org/,2026-10-24,
-finland_legislation_v1,1683,Finnish Parliament,not checked,not_checked,,,
-bangladesh_legislation_v1,1664,Bangladesh National Parliament,not checked,not_checked,,,
-paclii_legislation_v1,1583,PacLII (Pacific Islands Legal Information Institute),not checked,not_checked,,,
-tweedekamer_v1,1530,Tweede Kamer der Staten-Generaal,CC0 1.0 (listing on data.overheid.nl),open,https://data.overheid.nl/dataset/open-data-portaal-van-de-tweede-kamer-der-staten-generaal,2026-10-24,the Tweede Kamer disclaimer itself not checked
-omim_v1,1512,OMIM (Online Mendelian Inheritance in Man),"OMIM: personal, educational or research use; redistribution needs a Johns Hopkins licence",restricted,https://omim.org/help/agreement,2026-10-24,omim.org returned 403; terms from copies quoted in third-party licence files
-icd11_v1,1374,World Health Organization,WHO dataset terms: use for public health purposes; alteration beyond minimal styling needs permission; WHO may terminate,restricted,https://www.who.int/about/policies/publishing/data-policy/terms-and-conditions,2026-10-24,ICD-11 and EML may have their own licences (not checked)
-portugal_legislation_v1,1292,Assembleia da República,not checked,not_checked,,,
-courtlistener_circuits_v1,1232,CourtListener (Free Law Project),"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,"records fetched via the API; site text is CC BY-ND, bulk data PD"
-zambia_legislation_v1,1119,Zambia — ZambiaLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-iceland_legislation_v1,1069,Althingi,not checked,not_checked,,,
-canada_bills_v1,1067,LEGISinfo (Parliament of Canada),"Parliament of Canada: Speaker's permission covers proceedings, not commercial use; bill metadata coverage unclear",unclear,https://2015.index.okfn.org/place/canada/legislation,2026-10-24,secondary source (Open Knowledge index); parl.ca terms page returned 403/404
-miller_center_v1,1059,Miller Center presidential speeches,"Site ""© Rector and Visitors of the University of Virginia""; speech transcripts licence not stated",unclear,https://millercenter.org/the-presidency/presidential-speeches,2026-10-24,
-nz_legislation_v1,1041,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,
-wikidata_nobel_v1,1023,Nobel laureates (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,
-central_america_v1,1017,Central America legislation,not checked,not_checked,,,
-taiwan_legislation_v1,1016,Legislative Yuan (Taiwan),not checked,not_checked,,,
-faers_normalized_drugs_v1,999,FDA FAERS via openFDA,CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,GMDN device terms excepted
-africanlii_v1,962,AfricaLII (African Legal Information Institute),"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-pakistan_code_v1,943,Pakistan Code (Federal Acts),not checked,not_checked,,,
-congress_stock_act_v1,921,Quiver Quantitative (congressional trading data),"Quiver Quantitative ToS: personal, non-commercial use; no reproduction or distribution",restricted,https://www.quiverquant.com/termsofservice/,2026-10-24,
-malaysia_legislation_v1,883,Malaysian Attorney General's Chambers,not checked,not_checked,,,
-doj_fara_v1,811,Department of Justice FARA Unit,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-cosmetic_faers_v1,810,FDA cosmetic FAERS reports,CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,GMDN device terms excepted
-icj_judgments_v1,800,International Court of Justice,not checked,not_checked,,,
-volcanic_eruptions_v1,745,NOAA NGDC / Smithsonian GVP,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-fec_finance_pac_v1,700,FEC PAC finance,"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
-caribbean_v1,675,Caribbean legislation,not checked,not_checked,,,
-wto_disputes_v1,645,World Trade Organization,not checked,not_checked,,,
-nz_local_acts_v1,611,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,
-openfec_v1,600,OpenFEC (FEC),"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
-openfec_ie_v1,600,OpenFEC (FEC),"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
-courtlistener_state_supreme_v1,580,CourtListener state supreme courts,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,"records fetched via the API; site text is CC BY-ND, bulk data PD"
-south_africa_legislation_v1,578,South African Parliament,not checked,not_checked,,,
-uganda_legislation_v1,576,Uganda — ULII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-latvia_legislation_v1,567,Likumi.lv,not checked,not_checked,,,
-malta_legislation_v1,565,Malta Government,not checked,not_checked,,,
-frus_v1,551,U.S. Department of State / history.state.gov,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-jamaica_legislation_v1,528,Parliament of Jamaica,not checked,not_checked,,,
-zimbabwe_legislation_v1,513,Zimbabwe — ZimLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-singapore_legislation_v1,508,Singapore Attorney-General's Chambers,not checked,not_checked,,,
-un_ga_resolutions_v1,501,United Nations,"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
-wikidata_space_missions_v1,500,Space missions (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,
-icsid_v1,500,ICSID arbitration cases,not checked,not_checked,,,
-courtlistener_scotus_v1,473,CourtListener (Free Law Project),"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,"records fetched via the API; site text is CC BY-ND, bulk data PD"
-nato_official_texts_v1,459,NATO,not checked,not_checked,,,
-mauritius_legislation_v1,442,Mauritius — MauritiusLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-rwanda_legislation_v1,438,Rwanda — Government Gazette,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-tanzania_legislation_v1,434,Tanzania — TanzLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-un_treaties_v1,419,UN Treaty Collection,"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
-ghana_legislation_v1,413,Ghana — Parliament,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-scotland_legislation_v1,408,legislation.gov.uk,not checked,not_checked,,,
-sec_edgar_v1,379,SEC EDGAR,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-fda_aesthetic_devices_v1,372,FDA aesthetic device clearances,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-central_asia_v1,369,Central Asia legislation,not checked,not_checked,,,
-tt_legislation_v1,368,Parliament of Trinidad and Tobago,not checked,not_checked,,,
-pubchem_v1,355,PubChem / NCBI,not checked,not_checked,,,
-nist_constants_v1,355,NIST / CODATA,not checked,not_checked,,,
-namibia_legislation_v1,336,Namibia — NamibLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-malawi_legislation_v1,335,Malawi — MalawiLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-eswatini_legislation_v1,326,Eswatini — EswatiniLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-echr_v1,312,ECHR judgments (HUDOC),"ECHR site: reproduction free of charge for private, information or education use; commercial use needs written permission",nc,https://www.echr.coe.int/copyright-and-disclaimer,2026-10-24,
-mexico_legislation_v1,309,Mexico — Cámara de Diputados,not checked,not_checked,,,
-georgia_legislation_v1,301,Parliament of Georgia,not checked,not_checked,,,
-african_court_v1,300,African Court on Human Rights,not checked,not_checked,,,
-brunei_legislation_v1,288,Attorney General's Chambers of Brunei Darussalam,not checked,not_checked,,,
-courtlistener_tax_v1,259,CourtListener US Tax Court,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,"records fetched via the API; site text is CC BY-ND, bulk data PD"
-courtlistener_bia_v1,240,CourtListener BIA decisions,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,"records fetched via the API; site text is CC BY-ND, bulk data PD"
-openfda_v1,233,openFDA (FDA),CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,GMDN device terms excepted
-pdg_particles_v1,226,Particle Data Group,not checked,not_checked,,,
-law-settler,220,Curated — law settling curves,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-courtlistener_disclosures_v1,218,CourtListener judicial disclosures,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,"records fetched via the API; site text is CC BY-ND, bulk data PD"
-impact_craters_v1,214,Earth Impact Database,not checked,not_checked,,,
-nuclear_tests_v1,202,Wikipedia / CTBTO / DOE declassified records,Curated list sourced to Wikipedia pages (CC BY-SA text); claims carry facts and links,unclear,https://en.wikipedia.org/wiki/Wikipedia:Copyrights,2026-10-24,
-wikidata_chips_v1,182,CHIPS Act tracking (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,
-uspto_v1,182,United States Patent and Trademark Office,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-uae_legislation_v1,177,UAE Government,not checked,not_checked,,,
-who_essential_medicines_v1,147,World Health Organization,WHO dataset terms: use for public health purposes; alteration beyond minimal styling needs permission; WHO may terminate,restricted,https://www.who.int/about/policies/publishing/data-policy/terms-and-conditions,2026-10-24,ICD-11 and EML may have their own licences (not checked)
-periodic_table_v1,119,IUPAC / Bowserinator JSON,CC BY-SA 3.0 (Bowserinator/Periodic-Table-JSON LICENSE.md),sa,https://github.com/Bowserinator/Periodic-Table-JSON,2026-10-24,
-wikidata_elements_v1,118,Periodic elements (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,
-czech_abs_v1,104,"Security Services Archive (ABS), Czech Republic",not checked,not_checked,,,
-wales_senedd_v1,100,Senedd Cymru,Open Government Licence v3.0,open,https://www.legislation.gov.uk/help#licence,2026-10-24,
-genbank_v1,99,NCBI GenBank,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-un_ga_v1,97,UN General Assembly (extended),"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
-lesotho_legislation_v1,90,Lesotho — LesothoLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-iau_constellations_v1,88,International Astronomical Union,not checked,not_checked,,,
-sierra_leone_legislation_v1,83,Sierra Leone — SierraLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,country pipelines from scripts/ingest-africa-lii.ts
-event:exoplanet_retractions_v1,75,NASA Exoplanet Archive — Targets Excluded from the Archive,"Retraction Watch data ""publicly available"" via Crossref; no licence stated on the documentation page",unclear,https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/,2026-10-24,
-icc_judgments_v1,74,ICC judgments,not checked,not_checked,,,
-seed:climate-trajectories,68,Curated — climate trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-seed:astronomy-trajectories,62,Curated — astronomy trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-seed:nutrition-trajectories,57,Curated — nutrition trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-retraction_watch_v1,55,Retraction Watch,"Retraction Watch data ""publicly available"" via Crossref; no licence stated on the documentation page",unclear,https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/,2026-10-24,
-icc_cases_v1,35,ICC cases,not checked,not_checked,,,
-croatia_legislation_v1,33,Croatia — Narodne novine,not checked,not_checked,,,
-solar_system_v1,28,NASA / IAU,not checked,not_checked,,,
-manual,23,Manually curated (admin interface),Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-nist_webbook_v1,20,NIST Chemistry WebBook,not checked,not_checked,,,
-book-analysis:cmppvaz700000sal1cnyfutdx,16,not in registry,LLM-extracted claims from a book (copyrighted work),unclear,,2026-10-24,short claims extracted from an in-copyright book; check quotation length
-seed-trajectories,11,Curated — mixed seed trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-slovenia_legislation_v1,10,PISRS (Pravno-informacijski sistem),not checked,not_checked,,,
-seed:historical-trajectories,10,Curated — historical trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-seed-court-reversals,8,Curated — court reversals,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,"text written for this project; sources are linked, not copied"
-congress_votes_v1,8,Congress.gov,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,federal agency source; agency-specific terms not checked; third-party content in records excepted
-iau_v1,5,International Astronomical Union,not checked,not_checked,,,
-stasi_v1,2,Bundesarchiv / Stasi-Mediathek,not checked,not_checked,,,
+pipeline,claims,upstream,licence,status,licence_url,checked_on,decision,note
+openalex_v1,318775,OpenAlex academic papers,CC0,open,https://help.openalex.org/access/pricing/,2026-10-24,include_with_licence,
+nara_catalog_v1,308051,NARA Catalog (RG 263/59/330/128/148),"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+voteview_v1,113319,Voteview / Lewis et al.,"No licence stated on voteview.com; permission requested (docs/paper/voteview-email.md, not yet sent)",unclear,https://voteview.com/about,2026-10-24,include_with_licence,
+openfda_labels_v1,85068,openFDA,CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,include_with_licence,GMDN device terms excepted
+hungary_legislation_v1,69441,Hungarian National Assembly,"Official texts excluded from copyright: Act LXXVI of 1999 on Copyright, s. 1(4) (""Legislation, other legal instruments of state administration … are not protected"")",open,https://www.wipo.int/wipolex/en/legislation/details/18269,2026-10-24,include_with_licence,"text read via the IP Office (SZTNH) English translation, now 404 at its old URL; portal terms not checked"
+chebi_v1,62000,EBI ChEBI,CC BY 4.0,open,https://www.ebi.ac.uk/chebi/about/,2026-10-24,include_with_licence,
+worldbank_v1,54567,World Bank Open Data,CC BY 4.0 (default; some third-party indicators restricted per indicator metadata),open,https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets,2026-10-24,include_with_licence,check indicator-level third-party notes for the indicators used
+drugsatfda_v1,46255,Drugs@FDA approvals,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+jacar_v1,44600,Japan Center for Asian Historical Records,"JACAR: secondary use of NAJ / Diplomatic Archives images permitted; metadata (catalogue, English titles) reuse terms not found",unclear,https://www.jacar.archives.go.jp/aj/www/doc/en,2026-10-24,include_with_licence,
+who_gho_v1,33714,World Health Organization,WHO dataset terms: use for public health purposes; alteration beyond minimal styling needs permission; WHO may terminate,restricted,https://www.who.int/about/policies/publishing/data-policy/terms-and-conditions,2026-10-24,exclude,ICD-11 and EML may have their own licences (not checked)
+crossref_retractions_v1,26624,CrossRef,"Crossref licensing table: Retraction Watch database CC0; bibliographic metadata ""Facts, not subject to copyright""",open,https://www.crossref.org/documentation/retrieve-metadata/,2026-10-24,include_with_licence,
+argentina_legislation_v1,25824,Argentina — InfoLEG,InfoLEG terms not found,unclear,https://servicios.infoleg.gob.ar/,2026-10-24,include_with_licence,
+openalex_journals_v1,25687,OpenAlex journals,CC0,open,https://help.openalex.org/access/pricing/,2026-10-24,include_with_licence,
+czech_legislation_v1,24173,Czech Parliament,"Official works excluded from copyright: Act 121/2000 Coll., s. 3(a) (""an official work, such as a legal regulation …"")",open,https://mk.gov.cz/doc/cms_library/czech-republics-copyright-act-no-121_2000-as-amended_last-no-218_2025unofficial-010725_corr160226-21322.pdf,2026-10-24,include_with_licence,Ministry of Culture unofficial translation; psp.cz portal terms not checked
+vdem_v1,19777,Varieties of Democracy (V-Dem),CC BY-SA 4.0,sa,https://www.v-dem.net/data/the-v-dem-dataset/,2026-10-24,include_with_licence,
+ofac_sdn_v1,19034,OFAC SDN sanctions list,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+congress_bills_tracker_v1,17280,Congress.gov bill tracker,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+italy_legislation_v1,16934,Italy — Normattiva,"Official acts excluded from copyright: Legge 633/1941, art. 5 (""non si applicano ai testi degli atti ufficiali dello stato"")",open,https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1941-04-22;633~art5,2026-10-24,include_with_licence,Normattiva portal terms not checked
+chile_legislation_v1,15889,Chile — BCN,BCN site content historically CC BY-NC-SA Chile (2007 announcement); laws treated as public domain by Wikimedia (secondary). No current BCN terms found,unclear,https://creativecommons.org/2007/01/26/chilean-library-of-congress-releases-all-of-their-content-under-cc-by-nc-sa-chile-license/,2026-10-24,include_with_licence,possible NC on the compilation
+rxnorm_v1,14632,NLM RxNorm,NLM-created RxNorm names and RXCUIs are public domain; the ingester takes only TTY=IN concepts from RxNav (scripts/ingest-rxnorm.ts),open,https://www.nlm.nih.gov/research/umls/rxnorm/docs/termsofservice.html,2026-10-24,include_with_licence,
+romania_legislation_v1,13878,Romanian Government,Law 8/1996 exclusion for official texts not verified from a primary text; legislatie.just.ro terms not found,unclear,https://legislatie.just.ro/,2026-10-24,include_with_licence,
+brazil_legislation_v1,12818,Brazil — Planalto,"Official acts excluded from copyright: Lei 9.610/1998, art. 8, IV (""textos de … leis, decretos, regulamentos, decisões judiciais e demais atos oficiais"")",open,https://www.planalto.gov.br/ccivil_03/leis/l9610.htm,2026-10-24,include_with_licence,camara.leg.br portal terms not checked
+cyprus_legislation_v1,12682,Cyprus — CyLaw,CyLaw terms not found; a third-party developer note says they prohibit bulk extraction and redistribution of the compilation,unclear,https://n-lex.europa.eu/n-lex/info/info-cy/index?lang=en,2026-10-24,include_with_licence,possibly restricted; CyLaw is a private not-for-profit compilation
+russia_legislation_v1,12015,Russia — pravo.gov.ru,Official documents excluded from copyright: Civil Code art. 1259(6)(1) (laws and other official documents of state bodies),open,https://www.consultant.ru/document/cons_doc_LAW_299006/018fb0285b06f08f34e9ee7e1b03e77f9a848d9f/,2026-10-24,include_with_licence,"read via ConsultantPlus, not pravo.gov.ru; kremlin.ru portal terms not checked"
+uk_legislation_v1,11777,legislation.gov.uk,Open Government Licence v3.0,open,https://www.legislation.gov.uk/help#licence,2026-10-24,include_with_licence,
+philippines_legislation_v1,11703,Philippines — Official Gazette,"No copyright in official texts and government works: RA 8293, s. 175 (""any official text of a legislative, administrative or legal nature"") and s. 176.1",open,https://lawphil.net/statutes/repacts/ra1997/ra_8293_1997.html,2026-10-24,include_with_licence,s. 176.1 requires agency approval to exploit government works for profit (statutes exempt per commentary); lawphil.net compilation terms not checked
+nih_reporter_v1,11285,NIH RePORTER,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+clinicaltrials_v1,10957,ClinicalTrials.gov (NLM),"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+congress_v1,10360,Congress.gov,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+luxembourg_legislation_v1,10006,Luxembourg — Legilux,CC BY 4.0 (Legilux datasets on data.public.lu),open,https://data.public.lu/en/datasets/62c83bfd9794ec8e47b5bc68/,2026-10-24,include_with_licence,listing read via search summary
+europeana_wwi_v1,10000,Europeana,"CC0 (Europeana metadata, Data Exchange Agreement)",open,https://pro.europeana.eu/page/the-data-exchange-agreement,2026-10-24,include_with_licence,
+mesh_v1,10000,MeSH (Medical Subject Headings),"NLM MeSH terms: free redistribution with conditions (attribution, no misrepresentation)",open,https://www.nlm.nih.gov/databases/download/terms_and_conditions_mesh.html,2026-10-24,include_with_licence,
+riksdag_v1,9989,Sveriges riksdag,CC0 (stated in a 2025/26 Riksdag motion; Riksdag terms page not found),unclear,https://data.riksdagen.se/,2026-10-24,include_with_licence,secondary source only
+echr_judgments_v1,9984,European Court of Human Rights,"ECHR site: reproduction free of charge for private, information or education use; commercial use needs written permission",nc,https://www.echr.coe.int/copyright-and-disclaimer,2026-10-24,include_with_licence,
+wipo_lex_v1,9641,WIPO Lex,WIPO terms: CC licences for WIPO publications; legal texts in WIPO Lex not addressed,unclear,https://www.wipo.int/en/web/terms-of-use,2026-10-24,include_with_licence,
+eec_council_v1,8933,EEC Council (historical),"CC BY 4.0 (EUR-Lex legal notice, Commission Decision 2011/833/EU)",open,https://eur-lex.europa.eu/content/legal-notice/legal-notice.html,2026-10-24,include_with_licence,page text read through a search summary; fetch returned no body
+costa_rica_legislation_v1,8483,Costa Rica — SCIJ,not checked,not_checked,,,include_with_licence,
+sipri_milex_v1,8435,SIPRI military expenditure,SIPRI terms: non-commercial fair use; reproducing more than 10% of a data set needs permission,nc,https://www.sipri.org/about/terms-and-conditions,2026-10-24,exclude,"8,435 + sipri_v1 claims likely exceed 10% of the data set"
+colombia_legislation_v1,8159,Colombia — Secretaría Jurídica,not checked,not_checked,,,include_with_licence,
+belgium_legislation_v1,7870,Belgium — Official Gazette,not checked,not_checked,,,include_with_licence,
+space_missions_v1,7318,Jonathan McDowell — GCAT,CC BY 4.0 (GCAT),open,https://planet4589.org/space/gcat/,2026-10-24,include_with_licence,
+poland_legislation_v1,6461,Poland — ISAP,not checked,not_checked,,,include_with_licence,
+bundestag_v1,6343,Deutscher Bundestag DIP,DIP: data provided free of charge; no reuse licence named in the parts read,unclear,https://dip.bundestag.de/documents/nutzungsbedingungen_dip.pdf,2026-10-24,include_with_licence,section 4 of the terms not read
+nasa_exoplanet_v1,6277,NASA Exoplanet Archive,not checked,not_checked,,,include_with_licence,
+estonia_legislation_v1,5870,Riigi Teataja,not checked,not_checked,,,include_with_licence,
+peru_legislation_v1,5202,Congreso de la República del Perú,not checked,not_checked,,,include_with_licence,
+uk_national_archives_v1,5000,UK National Archives,not checked,not_checked,,,include_with_licence,
+thailand_legislation_v1,4938,Thailand — Office of the Council of State,not checked,not_checked,,,include_with_licence,
+australia_legislation_v1,4740,Australia — Federal Register of Legislation,not checked,not_checked,,,include_with_licence,
+usgs_eq_v1,4696,USGS Earthquake Hazards Program,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+denmark_legislation_v1,4550,Denmark — Retsinformation,not checked,not_checked,,,include_with_licence,
+nz_repealed_acts_v1,4372,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,include_with_licence,
+fred_v1,4349,Federal Reserve Bank of St. Louis,"FRED terms: API content may not be stored, archived or compiled into a database; third-party copyrighted series need owner permission",restricted,https://fred.stlouisfed.org/legal/,2026-10-24,exclude,includes CSUSHPINSA (S&P CoreLogic Case-Shiller)
+eu_parliament_v1,4331,European Parliament,not checked,not_checked,,,include_with_licence,
+uruguay_legislation_v1,4297,Parlamento del Uruguay,not checked,not_checked,,,include_with_licence,
+western_balkans_v1,4062,Western Balkans legislation,not checked,not_checked,,,include_with_licence,
+slovakia_legislation_v1,4050,Slovak Parliament,not checked,not_checked,,,include_with_licence,
+oireachtas_v1,4040,Houses of the Oireachtas,Oireachtas (Open Data) PSI Licence = CC BY 4.0,open,https://www.oireachtas.ie/en/open-data/license,2026-10-24,include_with_licence,
+taiwan_archives_v1,3935,"Archives Administration, Executive Yuan (Taiwan)",not checked,not_checked,,,include_with_licence,
+romania_cnsas_v1,3927,CNSAS (Romania National Council for Studying Securitate Archives),not checked,not_checked,,,include_with_licence,
+nationalrat_v1,3868,Parlament.gv.at,not checked,not_checked,,,include_with_licence,
+loc_collections_v1,3561,Library of Congress collections,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+india_legislation_v1,3540,India — India Code,not checked,not_checked,,,include_with_licence,
+fec_finance_v1,3500,FEC candidate finance,"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
+seed:human-history-trajectories,3479,Curated — human-history trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+ucdp_v1,3432,UCDP armed conflict dataset,CC BY 4.0,open,https://ucdp.uu.se/downloads/,2026-10-24,include_with_licence,
+france_legislation_v1,3046,France — Légifrance,not checked,not_checked,,,include_with_licence,
+parlament_at_v1,3004,Austria — Parlament (auxiliary),not checked,not_checked,,,include_with_licence,
+kenya_legislation_v1,2984,Kenya — Kenya Law,not checked,not_checked,,,include_with_licence,
+un_sc_resolutions_v1,2798,United Nations,"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,exclude,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
+norway_legislation_v1,2612,Stortinget,not checked,not_checked,,,include_with_licence,
+switzerland_legislation_v1,2413,Switzerland — Fedlex,not checked,not_checked,,,include_with_licence,
+eu_legislation_v1,2122,EU legislation (EUR-Lex),"CC BY 4.0 (EUR-Lex legal notice, Commission Decision 2011/833/EU)",open,https://eur-lex.europa.eu/content/legal-notice/legal-notice.html,2026-10-24,include_with_licence,page text read through a search summary; fetch returned no body
+korea_legislation_v1,2114,Korea Legislation Research Institute,not checked,not_checked,,,include_with_licence,
+japan_legislation_v1,2080,National Diet Library / e-Gov,not checked,not_checked,,,include_with_licence,
+spain_legislation_v1,2045,Spain — BOE,not checked,not_checked,,,include_with_licence,
+israel_knesset_v1,2009,Knesset of Israel,not checked,not_checked,,,include_with_licence,
+fr_rules_v1,1920,Federal Register (NARA),"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+nz_bills_v1,1879,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,include_with_licence,
+seed:medicine-trajectories,1782,Curated — medicine trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+srilanka_legislation_v1,1704,Parliament of Sri Lanka,not checked,not_checked,,,include_with_licence,
+nobel_v1,1688,Nobel Foundation,"CC0 (Nobel Prize API terms; conditions: do not alter data, no endorsement)",open,https://www.nobelprize.org/organization/terms-of-use-for-api-nobelprize-org-and-data-nobelprize-org/,2026-10-24,include_with_licence,
+finland_legislation_v1,1683,Finnish Parliament,not checked,not_checked,,,include_with_licence,
+bangladesh_legislation_v1,1664,Bangladesh National Parliament,not checked,not_checked,,,include_with_licence,
+paclii_legislation_v1,1583,PacLII (Pacific Islands Legal Information Institute),not checked,not_checked,,,include_with_licence,
+tweedekamer_v1,1530,Tweede Kamer der Staten-Generaal,CC0 1.0 (listing on data.overheid.nl),open,https://data.overheid.nl/dataset/open-data-portaal-van-de-tweede-kamer-der-staten-generaal,2026-10-24,include_with_licence,the Tweede Kamer disclaimer itself not checked
+omim_v1,1512,OMIM (Online Mendelian Inheritance in Man),"OMIM: personal, educational or research use; redistribution needs a Johns Hopkins licence",restricted,https://omim.org/help/agreement,2026-10-24,exclude,omim.org returned 403; terms from copies quoted in third-party licence files
+icd11_v1,1374,World Health Organization,WHO dataset terms: use for public health purposes; alteration beyond minimal styling needs permission; WHO may terminate,restricted,https://www.who.int/about/policies/publishing/data-policy/terms-and-conditions,2026-10-24,exclude,ICD-11 and EML may have their own licences (not checked)
+portugal_legislation_v1,1292,Assembleia da República,not checked,not_checked,,,include_with_licence,
+courtlistener_circuits_v1,1232,CourtListener (Free Law Project),"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,include_with_licence,"records fetched via the API; site text is CC BY-ND, bulk data PD"
+zambia_legislation_v1,1119,Zambia — ZambiaLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+iceland_legislation_v1,1069,Althingi,not checked,not_checked,,,include_with_licence,
+canada_bills_v1,1067,LEGISinfo (Parliament of Canada),"Parliament of Canada: Speaker's permission covers proceedings, not commercial use; bill metadata coverage unclear",unclear,https://2015.index.okfn.org/place/canada/legislation,2026-10-24,include_with_licence,secondary source (Open Knowledge index); parl.ca terms page returned 403/404
+miller_center_v1,1059,Miller Center presidential speeches,"Site ""© Rector and Visitors of the University of Virginia""; speech transcripts licence not stated",unclear,https://millercenter.org/the-presidency/presidential-speeches,2026-10-24,include_with_licence,
+nz_legislation_v1,1041,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,include_with_licence,
+wikidata_nobel_v1,1023,Nobel laureates (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,include_with_licence,
+central_america_v1,1017,Central America legislation,not checked,not_checked,,,include_with_licence,
+taiwan_legislation_v1,1016,Legislative Yuan (Taiwan),not checked,not_checked,,,include_with_licence,
+faers_normalized_drugs_v1,999,FDA FAERS via openFDA,CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,include_with_licence,GMDN device terms excepted
+africanlii_v1,962,AfricaLII (African Legal Information Institute),"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+pakistan_code_v1,943,Pakistan Code (Federal Acts),not checked,not_checked,,,include_with_licence,
+congress_stock_act_v1,921,Quiver Quantitative (congressional trading data),"Quiver Quantitative ToS: personal, non-commercial use; no reproduction or distribution",restricted,https://www.quiverquant.com/termsofservice/,2026-10-24,exclude,
+malaysia_legislation_v1,883,Malaysian Attorney General's Chambers,not checked,not_checked,,,include_with_licence,
+doj_fara_v1,811,Department of Justice FARA Unit,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+cosmetic_faers_v1,810,FDA cosmetic FAERS reports,CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,include_with_licence,GMDN device terms excepted
+icj_judgments_v1,800,International Court of Justice,not checked,not_checked,,,include_with_licence,
+volcanic_eruptions_v1,745,NOAA NGDC / Smithsonian GVP,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+fec_finance_pac_v1,700,FEC PAC finance,"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
+caribbean_v1,675,Caribbean legislation,not checked,not_checked,,,include_with_licence,
+wto_disputes_v1,645,World Trade Organization,not checked,not_checked,,,include_with_licence,
+nz_local_acts_v1,611,New Zealand Parliamentary Counsel Office,not checked,not_checked,,,include_with_licence,
+openfec_v1,600,OpenFEC (FEC),"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
+openfec_ie_v1,600,OpenFEC (FEC),"Public domain (US Government work, 17 U.S.C. §105)",unclear,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,"US Government work, but FEC data carries a statutory sale-or-use restriction on individual contributor information; not verified which fields apply"
+courtlistener_state_supreme_v1,580,CourtListener state supreme courts,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,include_with_licence,"records fetched via the API; site text is CC BY-ND, bulk data PD"
+south_africa_legislation_v1,578,South African Parliament,not checked,not_checked,,,include_with_licence,
+uganda_legislation_v1,576,Uganda — ULII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+latvia_legislation_v1,567,Likumi.lv,not checked,not_checked,,,include_with_licence,
+malta_legislation_v1,565,Malta Government,not checked,not_checked,,,include_with_licence,
+frus_v1,551,U.S. Department of State / history.state.gov,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+jamaica_legislation_v1,528,Parliament of Jamaica,not checked,not_checked,,,include_with_licence,
+zimbabwe_legislation_v1,513,Zimbabwe — ZimLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+singapore_legislation_v1,508,Singapore Attorney-General's Chambers,not checked,not_checked,,,include_with_licence,
+un_ga_resolutions_v1,501,United Nations,"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,exclude,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
+wikidata_space_missions_v1,500,Space missions (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,include_with_licence,
+icsid_v1,500,ICSID arbitration cases,not checked,not_checked,,,include_with_licence,
+courtlistener_scotus_v1,473,CourtListener (Free Law Project),"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,include_with_licence,"records fetched via the API; site text is CC BY-ND, bulk data PD"
+nato_official_texts_v1,459,NATO,not checked,not_checked,,,include_with_licence,
+mauritius_legislation_v1,442,Mauritius — MauritiusLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+rwanda_legislation_v1,438,Rwanda — Government Gazette,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+tanzania_legislation_v1,434,Tanzania — TanzLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+un_treaties_v1,419,UN Treaty Collection,"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,exclude,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
+ghana_legislation_v1,413,Ghana — Parliament,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+scotland_legislation_v1,408,legislation.gov.uk,not checked,not_checked,,,include_with_licence,
+sec_edgar_v1,379,SEC EDGAR,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+fda_aesthetic_devices_v1,372,FDA aesthetic device clearances,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+central_asia_v1,369,Central Asia legislation,not checked,not_checked,,,include_with_licence,
+tt_legislation_v1,368,Parliament of Trinidad and Tobago,not checked,not_checked,,,include_with_licence,
+pubchem_v1,355,PubChem / NCBI,not checked,not_checked,,,include_with_licence,
+nist_constants_v1,355,NIST / CODATA,not checked,not_checked,,,include_with_licence,
+namibia_legislation_v1,336,Namibia — NamibLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+malawi_legislation_v1,335,Malawi — MalawiLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+eswatini_legislation_v1,326,Eswatini — EswatiniLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+echr_v1,312,ECHR judgments (HUDOC),"ECHR site: reproduction free of charge for private, information or education use; commercial use needs written permission",nc,https://www.echr.coe.int/copyright-and-disclaimer,2026-10-24,include_with_licence,
+mexico_legislation_v1,309,Mexico — Cámara de Diputados,not checked,not_checked,,,include_with_licence,
+georgia_legislation_v1,301,Parliament of Georgia,not checked,not_checked,,,include_with_licence,
+african_court_v1,300,African Court on Human Rights,not checked,not_checked,,,include_with_licence,
+brunei_legislation_v1,288,Attorney General's Chambers of Brunei Darussalam,not checked,not_checked,,,include_with_licence,
+courtlistener_tax_v1,259,CourtListener US Tax Court,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,include_with_licence,"records fetched via the API; site text is CC BY-ND, bulk data PD"
+courtlistener_bia_v1,240,CourtListener BIA decisions,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,include_with_licence,"records fetched via the API; site text is CC BY-ND, bulk data PD"
+openfda_v1,233,openFDA (FDA),CC0 (openFDA),open,https://open.fda.gov/license/,2026-10-24,include_with_licence,GMDN device terms excepted
+pdg_particles_v1,226,Particle Data Group,not checked,not_checked,,,include_with_licence,
+law-settler,220,Curated — law settling curves,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+courtlistener_disclosures_v1,218,CourtListener judicial disclosures,"Public Domain Mark (CourtListener bulk data ""free of known copyright restrictions"")",open,https://wiki.free.law/c/courtlistener/help/api/bulk-data/bulk-legal-data,2026-10-24,include_with_licence,"records fetched via the API; site text is CC BY-ND, bulk data PD"
+impact_craters_v1,214,Earth Impact Database,not checked,not_checked,,,include_with_licence,
+nuclear_tests_v1,202,Wikipedia / CTBTO / DOE declassified records,Curated list sourced to Wikipedia pages (CC BY-SA text); claims carry facts and links,unclear,https://en.wikipedia.org/wiki/Wikipedia:Copyrights,2026-10-24,include_with_licence,
+wikidata_chips_v1,182,CHIPS Act tracking (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,include_with_licence,
+uspto_v1,182,United States Patent and Trademark Office,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+uae_legislation_v1,177,UAE Government,not checked,not_checked,,,include_with_licence,
+who_essential_medicines_v1,147,World Health Organization,WHO dataset terms: use for public health purposes; alteration beyond minimal styling needs permission; WHO may terminate,restricted,https://www.who.int/about/policies/publishing/data-policy/terms-and-conditions,2026-10-24,exclude,ICD-11 and EML may have their own licences (not checked)
+periodic_table_v1,119,IUPAC / Bowserinator JSON,CC BY-SA 3.0 (Bowserinator/Periodic-Table-JSON LICENSE.md),sa,https://github.com/Bowserinator/Periodic-Table-JSON,2026-10-24,include_with_licence,
+wikidata_elements_v1,118,Periodic elements (Wikidata),CC0 (Wikidata),open,https://www.wikidata.org/wiki/Wikidata:Licensing,2026-10-24,include_with_licence,
+czech_abs_v1,104,"Security Services Archive (ABS), Czech Republic",not checked,not_checked,,,include_with_licence,
+wales_senedd_v1,100,Senedd Cymru,Open Government Licence v3.0,open,https://www.legislation.gov.uk/help#licence,2026-10-24,include_with_licence,
+genbank_v1,99,NCBI GenBank,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+un_ga_v1,97,UN General Assembly (extended),"UN site terms: personal non-commercial use, no redistribution, no compilations or derivative works",restricted,https://www.un.org/en/about-us/terms-of-use,2026-10-24,exclude,"claims carry facts (symbol, date, outcome) and links; UN document-specific terms not checked"
+lesotho_legislation_v1,90,Lesotho — LesothoLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+iau_constellations_v1,88,International Astronomical Union,not checked,not_checked,,,include_with_licence,
+sierra_leone_legislation_v1,83,Sierra Leone — SierraLII,"CC BY-NC 4.0 (AfricanLII; some collections more permissive, per landing page)",nc,https://africanlii.org/en/terms-of-use/,2026-10-24,include_with_licence,country pipelines from scripts/ingest-africa-lii.ts
+event:exoplanet_retractions_v1,75,NASA Exoplanet Archive — Targets Excluded from the Archive,"Crossref licensing table: Retraction Watch database CC0; bibliographic metadata ""Facts, not subject to copyright""",open,https://www.crossref.org/documentation/retrieve-metadata/,2026-10-24,include_with_licence,
+icc_judgments_v1,74,ICC judgments,not checked,not_checked,,,include_with_licence,
+seed:climate-trajectories,68,Curated — climate trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+seed:astronomy-trajectories,62,Curated — astronomy trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+seed:nutrition-trajectories,57,Curated — nutrition trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+retraction_watch_v1,55,Retraction Watch,"Crossref licensing table: Retraction Watch database CC0; bibliographic metadata ""Facts, not subject to copyright""",open,https://www.crossref.org/documentation/retrieve-metadata/,2026-10-24,include_with_licence,
+icc_cases_v1,35,ICC cases,not checked,not_checked,,,include_with_licence,
+croatia_legislation_v1,33,Croatia — Narodne novine,not checked,not_checked,,,include_with_licence,
+solar_system_v1,28,NASA / IAU,not checked,not_checked,,,include_with_licence,
+manual,23,Manually curated (admin interface),Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+nist_webbook_v1,20,NIST Chemistry WebBook,not checked,not_checked,,,include_with_licence,
+book-analysis:cmppvaz700000sal1cnyfutdx,16,not in registry,LLM-extracted claims from a book (copyrighted work),unclear,,2026-10-24,include_with_licence,short claims extracted from an in-copyright book; check quotation length
+seed-trajectories,11,Curated — mixed seed trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+slovenia_legislation_v1,10,PISRS (Pravno-informacijski sistem),not checked,not_checked,,,include_with_licence,
+seed:historical-trajectories,10,Curated — historical trajectories,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+seed-court-reversals,8,Curated — court reversals,Project-authored (LLM-drafted curated text); released under the dataset licence,open,,2026-10-24,include_with_licence,"text written for this project; sources are linked, not copied"
+congress_votes_v1,8,Congress.gov,"Public domain (US Government work, 17 U.S.C. §105)",open,https://www.law.cornell.edu/uscode/text/17/105,2026-10-24,include_with_licence,federal agency source; agency-specific terms not checked; third-party content in records excepted
+iau_v1,5,International Astronomical Union,not checked,not_checked,,,include_with_licence,
+stasi_v1,2,Bundesarchiv / Stasi-Mediathek,not checked,not_checked,,,include_with_licence,
