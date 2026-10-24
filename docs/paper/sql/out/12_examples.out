@@ -1,0 +1,110 @@
+-- query: docs/paper/sql/12_examples.sql
+-- run:   2026-10-24T16:09:01Z · git fc1cd04 · role app_ro (read-only session)
+
+== 12a. Claim
+-[ RECORD 1 ]---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+id                    | cmq5l0zit5oyfsal83wd26glu
+text                  | The U.S. Senate voted 59-41 on "(THREE-FIFTHS OF THOSE SENATORS DULY CHOSEN AND SWORN NOT HAVING VOTED IN THE AFFIRMATIVE, SENATE REJECTED THE MOTION TO INVOKE 
+createdAt             | 2026-06-08 19:06:39.699
+currentStatus         | HARD_FACT
+claimType             | EMPIRICAL
+parentClaimId         | 
+claimEmergedAt        | 1998-09-09 00:00:00
+claimEmergedPrecision | DAY
+ingestedBy            | voteview_v1
+humanReviewed         | f
+reviewConfidence      | 
+reviewedAt            | 
+reviewedBy            | 
+externalId            | voteview_claim_cmppuv3je3q0xsapm0pg1nub2
+deleted               | f
+autoApproved          | t
+verificationStatus    | VERIFIED
+openAlexId            | 
+metadata              | {"result": "failed", "noCount": 41, "congress": 105, "yesCount": 59, "dataSource": "voteview_v1", "rollNumber": 560, "chamberCode": "s", "corrections": [{"by": 
+epistemicStatus       | 
+epistemicAxis         | SETTLED
+updatedAt             | 2026-10-13 03:26:39.708
+
+== 12b. ClaimStatusHistory (that claim)
+-[ RECORD 1 ]-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+id            | cmqyj2bl214lrsamse4d89qy6
+claimId       | cmq5l0zit5oyfsal83wd26glu
+fromAxis      | 
+toAxis        | RECORDED
+community     | INSTITUTIONAL
+reason        | Congressional roll-call vote officially recorded.
+occurredAt    | 1998-09-09 00:00:00
+datePrecision | DAY
+sourceId      | 
+createdAt     | 2026-06-29 01:17:01.86
+seq           | 1
+-[ RECORD 2 ]-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+id            | cmq5l0zit5oyfsal83wd26glu-SETTLED-1998-09-09
+claimId       | cmq5l0zit5oyfsal83wd26glu
+fromAxis      | RECORDED
+toAxis        | SETTLED
+community     | INSTITUTIONAL
+reason        | Roll-call result certified in the official congressional record (House/Senate Journal; Voteview/ICPSR archive) — the recorded outcome is institutionally settled
+occurredAt    | 1998-09-09 00:00:00
+datePrecision | DAY
+sourceId      | 
+createdAt     | 2026-07-03 14:49:38.895
+seq           | 2
+
+== 12c. ClaimStatusHistory (a row-sourced curated transition)
+-[ RECORD 1 ]-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+id            | csh:trajectory:goeppert-mayer-jensen-nuclear-shell-model-1949:1
+claimId       | cmqzmncuk000l8ods6zjmwhm9
+fromAxis      | RECORDED
+toAxis        | SETTLED
+community     | EXPERT_LITERATURE
+reason        | Goeppert Mayer and Jensen elaborated the theory in their 1950 papers and joint 1955 monograph "Elementary Theory of Nuclear Shell Structure"; the shell model be
+occurredAt    | 1963-12-10 00:00:00
+datePrecision | DAY
+sourceId      | cmqzmncxb000p8odsri514rxd
+createdAt     | 2026-06-29 19:45:08.417
+seq           | 2
+
+== 12d. Edge + Source (that claim)
+-[ RECORD 1 ]----+--------------------------
+id               | cmq5l0zpo5pcbsal83uy3gxua
+sourceId         | cmppuv35n3p8xsapmeu1cpya2
+claimId          | cmq5l0zit5oyfsal83wd26glu
+type             | FOR
+evidenceType     | EVIDENTIARY
+deleted          | f
+createdAt        | 2026-06-08 19:06:39.947
+ingestedBy       | voteview_v1
+humanReviewed    | f
+reviewConfidence | 
+reviewedAt       | 
+reviewedBy       | 
+autoApproved     | t
+
+-[ RECORD 1 ]----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+id               | cmppuv35n3p8xsapmeu1cpya2
+name             | (THREE-FIFTHS OF THOSE SENATORS DULY CHOSEN AND SWORN NOT HAVING VOTED IN THE AFFIRMATIVE, SENATE REJECTED THE MOTION TO INVOKE CLOTURE ON THE MOTION TO PROCEED TO CONSIDER S. 1873, STATING THE POLICY OF THE UNITED STATES REGARDING THE DEPLOYMENT OF A MISSILE DEFENSE SYSTEM CAPABLE OF DEFENDING THE UNITED STATES AGAINST LIMITED BALLISTIC MISSILE ATTACK.)
+url              | https://voteview.com/rollcall/RS1050560
+publishedAt      | 1998-09-09 00:00:00
+methodologyType  | primary
+createdAt        | 2026-05-28 18:57:41.808
+ingestedBy       | voteview_v1
+humanReviewed    | f
+reviewConfidence | 
+reviewedAt       | 
+reviewedBy       | 
+externalId       | voteview_source_105_s_560
+deleted          | f
+autoApproved     | t
+
+== 12e. ClaimRelation (a REVERSED paper → retraction notice)
+-[ RECORD 1 ]---+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+id              | cmpvyc08p0001saej0hkaldyh
+fromClaimId     | cmpm8jwd73kbvsadn7z9dv611
+toClaimId       | cmp9to1fv2s5dploskmizwuyu
+relationType    | REVERSED
+year            | 
+followUpContext | {"doi": "10.1016/j.bbr.2009.03.026", "via": "db_doi_match", "note": "Original paper linked to its CrossRef retraction record via DOI", "source": "crossref_api",
+createdAt       | 2026-06-02 01:21:27.097
+

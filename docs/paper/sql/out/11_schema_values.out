@@ -1,0 +1,162 @@
+-- query: docs/paper/sql/11_schema_values.sql
+-- run:   2026-10-24T16:06:52Z · git fc1cd04 · role app_ro (read-only session)
+
+== 11a. ClaimRelation.relationType (all rows) and how many touch deleted claims
+       relationType       | relations | touching_deleted_claim | with_followupcontext | with_year 
+--------------------------+-----------+------------------------+----------------------+-----------
+ ECONOMIC_CONTEXT         |   3445737 |                      0 |              3445737 |   3445737
+ CITES                    |    977934 |                      0 |                    0 |         0
+ SANCTION_ECONOMIC_IMPACT |     93825 |                      0 |                93825 |     93825
+ RELATED                  |     72067 |                      0 |                    0 |         0
+ COMPOUND_IN              |     59505 |                      0 |                59505 |         0
+ SANCTION_CONTEXT         |     48749 |                      0 |                48749 |     48749
+ SUPERSEDED_BY            |     39966 |                      0 |                39966 |         0
+ MILITARY_CONTEXT         |     32695 |                      0 |                32695 |     32695
+ VOTE_ON                  |     12285 |                      0 |                12285 |     12285
+ REVERSED                 |     11326 |                      0 |                11326 |         0
+ CONTRADICTS              |     11319 |                      0 |                11319 |         0
+ CONFLICT_CONTEXT         |     10270 |                      0 |                10270 |     10270
+ DISEASE_STUDIED          |      4804 |                      0 |                 4804 |         0
+ DISCOVERED_BY            |      4269 |                      0 |                 4269 |         0
+ OUTCOME                  |      3194 |                    497 |                 3194 |         0
+ ECONOMIC_IMPACT          |      2540 |                      0 |                 2540 |      2540
+ PASSED_DURING            |       956 |                    944 |                  956 |       956
+ AUTHORED_BY              |       765 |                      0 |                  765 |         0
+ FUNDED_BY                |       292 |                      0 |                  292 |         0
+ ENACTED_AS               |        92 |                      0 |                   92 |        92
+
+== 11b. Claim categorical columns (deleted = false)
+           col            |       value       |  count  
+--------------------------+-------------------+---------
+ claimEmergedPrecision    | DAY               | 1204656
+ claimEmergedPrecision    | YEAR              |  268941
+ claimEmergedPrecision    | (null)            |  264434
+ claimEmergedPrecision    | MONTH             |   19243
+ claimEmergedPrecision    | QUARTER           |     325
+ claimType                | INSTITUTIONAL     | 1067400
+ claimType                | EMPIRICAL         |  685121
+ claimType                | MEASUREMENT       |    4349
+ claimType                | HYBRID            |     709
+ claimType                | INTERPRETIVE      |      20
+ currentStatus (legacy)   | HARD_FACT         | 1732509
+ currentStatus (legacy)   | DISPUTED          |   23078
+ currentStatus (legacy)   | VERIFIED          |    2011
+ currentStatus (legacy)   | NEVER_RESOLVES    |       1
+ epistemicStatus (legacy) | (null)            | 1565628
+ epistemicStatus (legacy) | approved          |  131928
+ epistemicStatus (legacy) | retracted         |   26679
+ epistemicStatus (legacy) | registered_trial  |   10957
+ epistemicStatus (legacy) | settled_judgment  |   10295
+ epistemicStatus (legacy) | confirmed         |    9225
+ epistemicStatus (legacy) | established       |    2886
+ epistemicStatus (legacy) | contested_dissent |       1
+ reviewConfidence         | (null)            | 1756421
+ reviewConfidence         | HIGH              |     705
+ reviewConfidence         | MEDIUM            |     473
+
+== 11c. Claim null counts and other field coverage (deleted = false)
+ corpus  | parentclaimid | claimemergedat | externalid | openalexid | metadata | epistemicstatus | reviewedat | reviewedby | reviewconfidence 
+---------+---------------+----------------+------------+------------+----------+-----------------+------------+------------+------------------
+ 1757599 |           217 |        1579827 |    1757525 |     161973 |  1719804 |          191971 |        471 |       1133 |             1178
+
+== 11d. top-level Claim.metadata keys (deleted = false), top 40
+         key         | claims  | pipelines 
+---------------------+---------+-----------
+ dataset             | 1536904 |       152
+ title               |  444957 |        36
+ doi                 |  371086 |         3
+ year                |  353262 |        54
+ openalex_id         |  344462 |         2
+ venue               |  344462 |         2
+ cited_by_count      |  344462 |         2
+ citationsFetchedAt  |  318775 |         1
+ citationsByYear     |  318775 |         1
+ seriesTitle         |  312400 |         2
+ digitized           |  308051 |         1
+ accessRestriction   |  308051 |         1
+ recordGroup         |  308051 |         1
+ scopeNote           |  308051 |         1
+ beginDate           |  308051 |         1
+ naId                |  308051 |         1
+ endDate             |  308051 |         1
+ is_retracted        |  276975 |         1
+ naraDateSweep       |  258435 |         1
+ statMethodsTaggedAt |  212145 |         1
+ statMethods         |  212145 |         1
+ naraDateField       |  166647 |         1
+ countryCode         |  156510 |        21
+ congress            |  140967 |         4
+ status              |  140917 |        12
+ country             |  123958 |        47
+ countryName         |  117699 |         4
+ rollNumber          |  113327 |         2
+ legislativeVoteId   |  113327 |         2
+ chamberCode         |  113319 |         1
+ yesCount            |  113319 |         1
+ dataSource          |  113319 |         1
+ result              |  113319 |         1
+ noCount             |  113319 |         1
+ value               |   92988 |         5
+ category            |   92599 |         9
+ unit                |   88636 |         3
+ indicatorCode       |   88281 |         2
+ actNumber           |   88256 |        11
+ corrections         |   86984 |         2
+
+== 11e. Source null counts
+ sources |   url   | publishedat | externalid | humanreviewed_true | autoapproved_true | reviewedby 
+---------+---------+-------------+------------+--------------------+-------------------+------------
+ 1688359 | 1662805 |     1134753 |    1686826 |                935 |           1239342 |        933
+
+== 11f. Edge.evidenceType, review flags
+ evidenceType  |  edges  | humanreviewed_true | autoapproved_true | deleted 
+---------------+---------+--------------------+-------------------+---------
+ EVIDENTIARY   | 1690902 |                 98 |           1521247 |      42
+ PROCEDURAL    |   29479 |               1095 |              9432 |       0
+ ARGUMENTATIVE |      14 |                 14 |                 0 |       0
+
+== 11g. ClaimStatusHistory null counts
+  rows   | fromaxis | reason  | dateprecision | sourceid |   seq   
+---------+----------+---------+---------------+----------+---------
+ 1822644 |   242572 | 1822644 |       1822644 |    30068 | 1821883
+
+== 11h. row counts of other tables a paper might cite
+             t             |  count  
+---------------------------+---------
+ ClaimTopic                | 2723040
+ MemberVote                | 1798569
+ ClaimEmbedding            | 1757943
+ EdgeRevision              | 1558025
+ ClaimLocation             |  433680
+ LegislativeVote           |  140491
+ TransitionSourceCandidate |    5518
+ ThresholdEvent            |    3961
+ Polity                    |    2361
+ Topic                     |     460
+ HistoricalEvent           |       9
+ MetaEdge                  |       5
+
+== 11i. ClaimRelation: top from-pipeline → to-pipeline pairs per relationType, and followUpContext keys
+       relationType       |                                            top_pairs                                            |                                                                                                                                                                      context_keys                                                                                                                                                                      
+--------------------------+-------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ AUTHORED_BY              | openalex_v1 → nobel_v1 393; openalex_v1 → wikidata_nobel_v1 372                                 | category,confidence,heuristic,laureateName,nobelPipeline,openalexAuthorCitedBy,openalexAuthorId,openalexAuthorName,openalexWorkId,workCitedByCount,workTitle,year
+ CITES                    | openalex_v1 → openalex_v1 977573; openalex_journals_v1 → openalex_journals_v1 200               | 
+ COMPOUND_IN              | chebi_v1 → openfda_labels_v1 59505                                                              | chebiName,confidence,heuristic,matchedIngredientKey,pipeline_from,pipeline_to
+ CONFLICT_CONTEXT         | ucdp_v1 → vdem_v1 10270                                                                         | alpha2,confidence,heuristic,pipeline_from,pipeline_to,ucdpYear,vdemYear,window,yearOffset
+ CONTRADICTS              | crossref_retractions_v1 → openalex_v1 11319                                                     | heuristic,pipeline_from,pipeline_to
+ DISCOVERED_BY            | nasa_exoplanet_v1 → space_missions_v1 4269                                                      | confidence,discovererText,heuristic,pipeline_from,pipeline_to
+ DISEASE_STUDIED          | omim_v1 → clinicaltrials_v1 4804                                                                | confidence,heuristic,matchedName,pipeline_from,pipeline_to
+ ECONOMIC_CONTEXT         | hungary_legislation_v1 → worldbank_v1 1062724; czech_legislation_v1 → worldbank_v1 225754       | confidence,crisisContext,heuristic,indicatorCode,indicatorYear,iso3,legislationYear,pipeline_from,pipeline_to,window,yearOffsetFromLegislation
+ ECONOMIC_IMPACT          | ofac_sdn_v1 → worldbank_v1 2540                                                                 | country,heuristic,indicatorCode,indicatorYear,note,per_country_cap,pipeline_from,pipeline_to,since_year
+ ENACTED_AS               | congress_bills_tracker_v1 → congress_v1 92                                                      | autoApproved,batch,by,evidence,humanReviewed,method
+ FUNDED_BY                | openalex_v1 → nih_reporter_v1 292                                                               | activityInstituteSerial,confidence,coreProjectNum,doi,heuristic,matchedAwardId,openalexWorkId,pipeline_from,pipeline_to,pmid
+ MILITARY_CONTEXT         | sipri_milex_v1 → un_sc_resolutions_v1 21749; sipri_milex_v1 → vdem_v1 8345                      | alpha3,confidence,country,heuristic,iso,matchedAlias,pipeline_from,pipeline_to,sipriCountryName,sipriYear,unscYear,year,yearDelta,yearWindow
+ OUTCOME                  | clinicaltrials_v1 → drugsatfda_v1 2656; congress_votes_v1 → congress_v1 505                     | actName,billNumber,billType,confidence,congress,heuristic,inferredStatus,ingredient,nctId,outcomeType,pipeline_from,pipeline_to,primaryCompletion,via
+ PASSED_DURING            | congress_votes_v1 → worldbank_v1 956                                                            | heuristic,indicatorCode,indicatorYear,nayPct,note,partyLineProxy,pipeline_from,pipeline_to,voteYear,window,yeaPct,yearOffsetFromVote
+ RELATED                  | openalex_v1 → openalex_v1 72051; openalex_journals_v1 → openalex_v1 12                          | 
+ REVERSED                 | openalex_v1 → crossref_retractions_v1 11319; openalex_v1 → retraction_watch_v1 5                | confidence,doi,heuristic,note,originalDoi,pipeline_from,pipeline_to,retractionCategory,retractionCorpus,retractionDoi,retractionNature,retractionReason,retractionReasonsAll,retractionReasonSource,retractionSeverity,retractionWatchRecordId,retractionWatchRetractionDate,retractionWatchRetractionDoi,retractionWatchUrl,retractionYear,source,via
+ SANCTION_CONTEXT         | ofac_sdn_v1 → vdem_v1 48639; icsid_v1 → ofac_sdn_v1 110                                         | alpha3,cap_per_case,confidence,country,heuristic,icsid_filing_year,pipeline_from,pipeline_to,sanctionProgram,sanctionYear,sanctionYearSource,vdemYear,window,window_years,yearOffsetFromSanction
+ SANCTION_ECONOMIC_IMPACT | ofac_sdn_v1 → worldbank_v1 93825                                                                | confidence,heuristic,indicator,indicatorYear,iso3,pipeline_from,pipeline_to,sanctionProgram,sanctionYear,sanctionYearSource,value,window,yearsFromSanction
+ SUPERSEDED_BY            | openfda_labels_v1 → openfda_labels_v1 35786; cyprus_legislation_v1 → cyprus_legislation_v1 3122 | amending_fragment,amendmentType,confidence,corpus,country,generic_name,heuristic,lawNumber,manufacturer_name,matched_title,note,pipeline_from,pipeline_to,publicLawRef,referencedAct
+ VOTE_ON                  | voteview_v1 → congress_v1 12285                                                                 | autoApproved,batch,by,evidence,humanReviewed,method
+

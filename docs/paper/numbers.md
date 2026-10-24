@@ -487,3 +487,35 @@ transitions whose source was Wikipedia or missing).
     promoted sources were machine-accepted.
 16. **Human review** — the draft implies a human approval step on every batch; the database records a human
     reviewer on 43 claims (§1.1). VERIFIED is written by pipeline code, not by a reviewer.
+17. **Licence "ER-Community-1.0 … non-commercial"** — the Zenodo record is CC-BY-4.0 (`external-facts.md`), and
+    *Scientific Data* does not allow -NC licences on deposited data (`journal-requirements.md`).
+18. **"The archive contains a full PostgreSQL schema export and CSV dumps of the primary tables"** — the archive holds
+    one file, a 12.06 GB `pg_dump` of the whole database; there are no CSVs (`external-facts.md`, with a privacy flag).
+19. **`ClaimRelation` types "SUPPORTS, CONTRADICTS, SUPERSEDES, PART_OF"** — 20 types occur; of those four only
+    CONTRADICTS exists; 78 % of relations are heuristic context links (`data-records.md`).
+20. **`Edge` "relationships between claims"** — an Edge links a claim to a Source (`data-records.md`).
+21. **Title** — the working title has a colon and the brand name, both barred by the journal (`journal-requirements.md`).
+
+## 11. Source URL liveness (Phase 2) [`scripts/paper/url-liveness.ts`; `docs/paper/url-liveness/`]
+
+Checked 2026-10-24 16:14–16:20 UTC from one client (macOS, residential network). HEAD → GET fallback, 10 s timeout,
+≥ 1.5 s between requests to one host, redirects followed. Nothing written to the DB.
+
+**A. Edge-linked Sources** (`summary.md`, `results.csv`): 1,000 URLs across 181 pipelines (seed `er-paper-2026-10`;
+min 3 per pipeline, rest proportional to URL count).
+
+| Outcome (final status) | URLs | % | % weighted by pipeline claim count |
+|---|---:|---:|---:|
+| 2xx/3xx | 790 | 79.0 | 83.4 |
+| 403/429 (refused an automated client) | 138 | 13.8 | 13.0 |
+| 404/410 (gone) | 13 | 1.3 | 0.3 |
+| other 4xx | 2 | 0.2 | 0.0 |
+| 5xx | 10 | 1.0 | 0.6 |
+| timeout / network | 47 | 4.7 | 2.7 |
+
+- 234 redirected; 218 needed the GET fallback.
+- Refusals concentrate on hosts, not pipelines: congress.gov 14/14, onlinelibrary.wiley.com 7/7, legislatie.just.ro
+  7/7, europeana.eu 6/6, academic.oup.com 6/6 …; `openalex_v1` 48 of 93 resolve and 44 are refused (publisher bot
+  walls behind doi.org). A 403 is not a dead link; a browser check of a refused subsample would separate the two
+  (not done).
+- By pipeline: `summary.md`.

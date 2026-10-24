@@ -1,0 +1,25 @@
+-- query: docs/paper/sql/13_export_counts.sql
+-- run:   2026-10-24T16:09:45Z · git fc1cd04 · role app_ro (read-only session)
+
+== 13a. export row counts
+         t          | export_rows | table_rows 
+--------------------+-------------+------------
+ Claim              |     1757599 |    1758118
+ ClaimStatusHistory |     1821600 |    1822644
+ Edge               |     1719781 |    1720395
+ Source             |     1688359 |    1688359
+ ClaimRelation      |     4831149 |    4832590
+
+== 13b. Sources referenced by an exported Edge or history row, and unreferenced
+ referenced | unreferenced 
+------------+--------------
+    1658927 |        29432
+
+== 13c. ClaimRelation export rows by heuristic presence
+                     kind                      | relations 
+-----------------------------------------------+-----------
+ heuristic link (followUpContext.heuristic)    |   3766115
+ no context recorded                           |   1050001
+ method-recorded link (followUpContext.method) |     12377
+ context without heuristic/method              |      2656
+

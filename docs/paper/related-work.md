@@ -1,0 +1,24 @@
+# Related work candidates (for a narrow comparison; no novelty claims here)
+
+One line each: what it has, and what it lacks **relative to this dataset**, based on the cited page or paper only.
+The comparison axes: (a) claim-level records, (b) a status label per claim, (c) dated status changes, (d) a source
+document per change, (e) more than one domain. Fetched or searched 2026-10-24. Whether any "first" claim is made is
+Robert's decision.
+
+| Resource | Has | Lacks relative to ER | Source |
+|---|---|---|---|
+| Retraction Watch database (open via Crossref since Sept 2023) | Retractions, plus less comprehensive expressions of concern and corrections, gathered from publisher sites, updated every working day; CSV + REST API (`update-to`). Retraction is a dated status change with a notice | One domain (scholarly literature) and one direction (downward); paper-level, not claim-level; no status before retraction. ER ingests it (`crossref_retractions_v1`, `retraction_watch_v1`) | https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/ |
+| Wikidata ranks + temporal qualifiers | Statement ranks: preferred = "the most current statement … that best represent consensus", deprecated = "known to include errors" / outdated knowledge; past-true facts get start time (P580) / end time (P582) | No epistemic-status vocabulary (rank is current preference, not a dated trajectory); deprecation is not dated or sourced as an event; no history of how a statement's rank changed (only edit history) | https://www.wikidata.org/wiki/Help:Ranking |
+| Legal citators: Shepard's (LexisNexis), KeyCite (Westlaw) | Case-level negative-treatment flags (overruled, reversed, questioned, caution), linked to the citing decisions | Proprietary and not open; one domain; current flag, not a dated status series; per-document | Comparison guides: https://researchguides.library.vanderbilt.edu/legalresearch2022/casecitator ; https://njlla.org/category/bcite/ |
+| SciFact (Wadden et al., EMNLP 2020) | 1.4K expert-written scientific claims paired with abstracts labelled supports / refutes, with rationale sentences | Static labels at one point in time; no dates or status changes; one domain; claims are rewritten citation sentences | https://arxiv.org/abs/2004.14974 |
+| CLIMATE-FEVER (Diggelmann et al., 2020) | 1,535 real-world climate claims, each with 5 Wikipedia evidence sentences labelled support / refute / not enough info | Static; Wikipedia evidence rather than primary records; one domain; no time dimension | https://arxiv.org/abs/2012.00614 |
+| LIAR (Wang, ACL 2017) | ~12.8K PolitiFact statements with six-way truthfulness labels and speaker metadata | Political statements only; single label from one fact-checker; no status over time; no primary-source link per label | https://aclanthology.org/P17-2067/ (arXiv 1705.00648) |
+| MultiFC (Augenstein et al., EMNLP 2019) | Claims from 26 English fact-checking sites, with evidence pages, metadata and journalist veracity labels | Fact-checker verdicts at one time, heterogeneous label sets; no trajectories; no institutional primary records | https://aclanthology.org/D19-1475/ |
+| ClaimsKG (GESIS; v2.0.0, Jan 2023) | Knowledge graph of 74,066 fact-checked claims / 72,127 claim reviews from 13 fact-checking sites, 1996–2023, harmonised truth ratings, dates, DBpedia entities; CC BY-SA 4.0 | Ratings by fact-checkers, not institutional records; one rating per review, not a status series; no review text | https://search.gesis.org/research_data/SDN-10.7802-2620 |
+| TempLAMA (Dhingra et al., TACL 2022) | Cloze queries whose correct answer changes with time (drawn from Wikidata), for probing language models | A probe set of time-varying facts (answers change), not claims whose epistemic status changes; no status vocabulary or source documents | https://aclanthology.org/2022.tacl-1.15 |
+| TimeQA (Chen et al., NeurIPS 2021 Datasets) | Time-sensitive QA pairs built from time-evolving Wikidata facts aligned to Wikipedia, crowd-verified | QA over facts whose values change, not status of claims; Wikipedia/Wikidata only; no institutional sources | https://arxiv.org/abs/2108.06314 |
+| FReD — FORRT Replication Database | 1,239 original psychology findings paired with replication findings (JOPD 2024 data paper), with outcome coding (signal / consistent / success) | One field (mostly psychology); replication outcome rather than a dated status vocabulary; finding-level, not claim-level | https://doi.org/10.5334/jopd.101 ; https://forrt.org/fred-apps/explorer/ |
+
+Not yet checked and worth a look before the related-work paragraph is written (no claims made about them here):
+AVeriTeC, FEVER, SituatedQA, StreamingQA, Scite (Smart Citations; commercial), PubPeer, OpenAlex `is_retracted`,
+CourtListener citation graph, and the Caselaw Access Project.
